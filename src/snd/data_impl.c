@@ -106,20 +106,28 @@ __int64 Data_f6b70()
   __int64 v4;
   __int64 result;
 
-  v0 = (void (***)(__int64))GameData_2178de0;
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v0 = (void (***)(__int64))GameData_2178de0,
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   if (GameData_2178de0 != 0) {
     v1 = GameData_2178de0;
     GameData_2178de0 = 0;
     (**v0)(v1);
     v2 = snd_g_memory_ptr[0];
     (*(void (**)(_QWORD, void (***)(__int64)))(**(_QWORD**)snd_g_memory_ptr[0] +
-                                               24LL))(*snd_g_memory_ptr[0], v0);
+                                               24LL))(*snd_g_memory_ptr[0], v0),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
     v3 = (_QWORD*)GameData_2178de8;
     GameData_2178de8 = 0;
     if (*v3 != 0) {
       v4 = *v2;
       v3[1] = *v3;
-      (*(void (**)(__int64))(*(_QWORD*)v4 + 24LL))(v4);
+      (*(void (**)(__int64))(*(_QWORD*)v4 + 24LL))(v4),
+          result = COERCE_AS(__typeof__(result),
+                             PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
     }
     return (*(__int64 (**)(__int64, _QWORD*))(*(_QWORD*)*v2 + 24LL))(*v2, v3);
   }

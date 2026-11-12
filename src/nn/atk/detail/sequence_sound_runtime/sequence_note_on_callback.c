@@ -23,7 +23,6 @@ __int64 GameRoutine_2a2a60(_QWORD);
 __int64 GameRoutine_2a5520(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 extern _UNKNOWN* GameData_2135058;
-
 extern __int64 (
     *nn_atk_detail_driver_SequenceSoundLoader_FreePlayerHeapTask_vtable[])();
 extern __int64 GameData_2135380[5];
@@ -53,6 +52,9 @@ _QWORD* SequenceNoteOnCallback_Unknown2(__int64 a1, __int64 a2,
                                         unsigned __int8 a3, __int64 a4);
 __int64 SequenceNoteOnCallback_2933d0(__int64 a1, __int64 a2, __int64 a3,
                                       __int64 a4);
+__int64 BaseNx_2832c0(unsigned int*, char);
+unsigned __int64 SoundArchivePlayer_27dc10();
+
 unsigned __int64 SequenceNoteOnCallback_291fa0(__int64 a1, __int64 a2,
                                                unsigned __int64 a3,
                                                unsigned int* a4)
@@ -290,14 +292,24 @@ __int64 SequenceNoteOnCallback_2925c0(int* a1, int a2)
   int v5;
   __int64 v6;
   __int64 v7;
-  unsigned __int64 v9;
-  int v10;
+  struct {
+    unsigned __int64 v9;
+    int v10;
+  } v9_;
 
+  v5 = COERCE_AS(__typeof__(v5),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v2 = *a1;
-  v9 = GameRoutine_27dc10();
-  v10 = v5;
-  v6 = GameRoutine_2832c0((unsigned int*)&v9, 1);
-  v7 = v6 + GameRoutine_2832c0((unsigned int*)&v9, 0) + 1624;
+  v9_.v9 = SoundArchivePlayer_27dc10(),
+  v5 = COERCE_AS(__typeof__(v5),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9_.v10 = v5;
+  v6 = BaseNx_2832c0((unsigned int*)&v9_.v9, 1),
+  v5 = COERCE_AS(__typeof__(v5),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = v6 + BaseNx_2832c0((unsigned int*)&v9_.v9, 0) + 1624,
+  v5 = COERCE_AS(__typeof__(v5),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if (v6 == 0) {
     v7 = 1528;
   }

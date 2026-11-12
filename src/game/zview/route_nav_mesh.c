@@ -62,6 +62,26 @@ __int64 RouteNavMesh_fe7760(__int64* a1);
 void RouteNavMesh_fe7820(_QWORD* a1, __int64 a2);
 __attribute__((swiftcall)) void
 RouteNavMesh_fe7b50(PSEUDO_X8 x8_, _QWORD* result, __int128* a2, __int128* a3);
+__int64*** GameRoutine_fe7fa0_alt1(__int64*** result, __int64**,
+                                   __int64*) __asm__("GameRoutine_fe7fa0");
+__int64 GameHr_268800(__int64*, __int64, __int64, __int64, _DWORD*, __int64);
+__int64 dtNavMeshQuery_findPath_alt1(_QWORD*, unsigned int, unsigned int,
+                                     float*, float*, __int64, unsigned int*,
+                                     _DWORD*,
+                                     int) __asm__("dtNavMeshQuery_findPath");
+__int64 dtNavMeshQuery_findStraightPath_alt1(
+    __int64*, _DWORD*, _DWORD*, unsigned int*, int, __int64, __int64, __int64,
+    int*, int, int) __asm__("dtNavMeshQuery_findStraightPath");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+void GameRoutine_fe7ea0_alt1(__int64*,
+                             unsigned __int64) __asm__("GameRoutine_fe7ea0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __n128 RouteNavMesh_Unknown5(_QWORD* a1)
 {
@@ -558,48 +578,45 @@ __attribute__((swiftcall)) void
 
 RouteNavMesh_fe7b50(PSEUDO_X8 x8_, _QWORD* result, __int128* a2, __int128* a3)
 {
+
+#pragma clang fp contract(off)
   __int64 a4 = (__int64)PSEUDO_X8_VALUE(x8_);
   bool v4;
   _QWORD* v5;
-  _QWORD* v9;
-  __int64 v10;
+  __int64* v9;
+  unsigned int* v10;
   __int64 v11;
   __int64 v12;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
+  _QWORD* v15;
   __int64 v16;
   __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  _QWORD* v21;
+  __int128 v18;
+  __int64* v19;
+  __int128 v20;
   __int64 v22;
   __int64 v23;
   __int64 v24;
   __int64 v25;
   __int64 v26;
-  __int128 v27;
-  __int64 v28;
-  __int128 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  __int64 v33;
-  __int64 v34;
+  __int64 v27;
+  __int64** v28;
+  __int64* v29[2];
+  struct {
+    __int64 v30;
+    __int64 v31;
+    __int64 v32;
+  } v30_;
+  float v33[3];
+  float v34[3];
   __int64 v35;
-  char v36[24];
-  _QWORD v37[2];
-  __int64 v38;
+  struct {
+    __int64 v36;
+    __int64 v37;
+    __int64 v38;
+  } v36_;
   __int64 v39;
-  __int64 v40;
-  _DWORD v41[3];
-  _BYTE v42[12];
-  __int64 v43;
-  __int64 v44;
-  __int64 v45;
-  __int64 v46;
-  __int64 v47;
 
   v4 = result[3] == 0 || result[4] == 0;
   if (v4 || (v5 = result, result[5] == 0)) {
@@ -607,121 +624,123 @@ RouteNavMesh_fe7b50(PSEUDO_X8 x8_, _QWORD* result, __int128* a2, __int128* a3)
     *(_BYTE*)(a4 + 24) = 0;
   }
   else {
-    nn_os_LockMutex(result + 40);
-    v9 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-    v10 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         1024, 16, 0);
-    memset(v10, 0, 1024, v11, v12, v13);
-    v14 = fw_memory_HeapManager_Allocate(*v9, 3072, 16, 0);
-    v15 = v14 + 3072;
-    v16 = v14;
-    v44 = v14;
-    v46 = v14 + 3072;
-    memset(v14, 0, 3072, v17, v18, v19);
-    v20 = *v9;
-    v45 = v15;
-    v21 = (_QWORD*)fw_memory_HeapManager_Allocate(v20, 256, 16, 0);
-    *v21 = 0;
-    v21[1] = 0;
-    v21[2] = 0;
-    v21[3] = 0;
-    v21[4] = 0;
-    v21[5] = 0;
-    v21[6] = 0;
-    v21[7] = 0;
-    v21[8] = 0;
-    v21[9] = 0;
-    v21[10] = 0;
-    v21[11] = 0;
-    v21[12] = 0;
-    v21[13] = 0;
-    v21[14] = 0;
-    v21[15] = 0;
-    v21[16] = 0;
-    v21[17] = 0;
-    v21[18] = 0;
-    v21[19] = 0;
-    v21[20] = 0;
-    v21[21] = 0;
-    v21[22] = 0;
-    v21[23] = 0;
-    v21[24] = 0;
-    v21[25] = 0;
-    v21[26] = 0;
-    v21[27] = 0;
-    v21[28] = 0;
-    v21[29] = 0;
-    v22 = *v9;
-    v21[30] = 0;
-    v21[31] = 0;
-    v23 = fw_memory_HeapManager_Allocate(v22, 1024, 16, 0);
-    memset(v23, 0, 1024, v24, v25, v26);
-    v27 = *a2;
-    v28 = v5[5];
-    v47 = 0;
-    v43 = 0;
-    qmemcpy(v42, &v27, sizeof(v42));
-    v29 = *a3;
-    *(_QWORD*)v41 = *(_QWORD*)a3;
-    v41[2] = DWORD2(v29);
-    if ((unsigned int)GameRoutine_268800(v28, v42, &GameData_1ba1724, v5 + 6,
-                                         (char*)&v43 + 4, 0) == 0x40000000 &&
-        (unsigned int)GameRoutine_268800(v5[5], v41, &GameData_1ba1724, v5 + 6,
-                                         &v43, 0) == 0x40000000 &&
-        (unsigned int)dtNavMeshQuery_findPath(
-            v5[5], HIDWORD(v43), (unsigned int)v43, v42, v41, v5 + 6, v10,
-            (char*)&v47 + 4, 256) == 0x40000000 &&
-        (unsigned int)dtNavMeshQuery_findStraightPath(
-            v5[5], v42, v41, v10, HIDWORD(v47), v16, v21, v23, &v47, 256, 0) ==
-            0x40000000 &&
-        (int)v47 >= 1) {
-      v39 = 0;
-      v40 = 0;
-      v38 = 0;
-      GameRoutine_fe7ea0(&v38);
-      v37[0] = &v44;
-      v37[1] = (int)v47;
-      GameRoutine_fe7fa0(v36, v37, &v38);
-      v30 = v39;
-      *(_QWORD*)a4 = v38;
-      *(_QWORD*)(a4 + 8) = v30;
-      *(_QWORD*)(a4 + 16) = v40;
+    nn_os_LockMutex_alt1((__int64)(result + 40));
+    v9 = (__int64*)fw_memory_g_heap_manager_ptr;
+    v10 = (unsigned int*)fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 1024, 16, 0);
+    memset_alt1((__int64)v10, 0, 0x400u);
+    v11 = fw_memory_HeapManager_Allocate_alt1(*v9, 3072, 16, 0);
+    v12 = v11 + 3072;
+    v13 = v11;
+    v36_.v36 = v11;
+    v36_.v38 = v11 + 3072;
+    memset_alt1(v11, 0, 0xC00u);
+    v14 = *v9;
+    v36_.v37 = v12;
+    v15 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v14, 256, 16, 0);
+    *v15 = 0;
+    v15[1] = 0;
+    v15[2] = 0;
+    v15[3] = 0;
+    v15[4] = 0;
+    v15[5] = 0;
+    v15[6] = 0;
+    v15[7] = 0;
+    v15[8] = 0;
+    v15[9] = 0;
+    v15[10] = 0;
+    v15[11] = 0;
+    v15[12] = 0;
+    v15[13] = 0;
+    v15[14] = 0;
+    v15[15] = 0;
+    v15[16] = 0;
+    v15[17] = 0;
+    v15[18] = 0;
+    v15[19] = 0;
+    v15[20] = 0;
+    v15[21] = 0;
+    v15[22] = 0;
+    v15[23] = 0;
+    v15[24] = 0;
+    v15[25] = 0;
+    v15[26] = 0;
+    v15[27] = 0;
+    v15[28] = 0;
+    v15[29] = 0;
+    v16 = *v9;
+    v15[30] = 0;
+    v15[31] = 0;
+    v17 = fw_memory_HeapManager_Allocate_alt1(v16, 1024, 16, 0);
+    memset_alt1(v17, 0, 0x400u);
+    v18 = *a2;
+    v19 = (__int64*)v5[5];
+    v39 = 0;
+    v35 = 0;
+    qmemcpy(v34, &v18, sizeof(v34));
+    v20 = *a3;
+    *(_QWORD*)v33 = *(_QWORD*)a3;
+    v33[2] = *((float*)&v20 + 2);
+    if ((unsigned int)GameHr_268800(
+            v19, (__int64)v34, (__int64)&GameData_1ba1724, (__int64)(v5 + 6),
+            (_DWORD*)&v35 + 1, 0) == 0x40000000 &&
+        (unsigned int)GameHr_268800((__int64*)v5[5], (__int64)v33,
+                                    (__int64)&GameData_1ba1724,
+                                    (__int64)(v5 + 6), &v35, 0) == 0x40000000 &&
+        (unsigned int)dtNavMeshQuery_findPath_alt1(
+            (_QWORD*)v5[5], HIDWORD(v35), v35, v34, v33, (__int64)(v5 + 6), v10,
+            (_DWORD*)&v39 + 1, 256) == 0x40000000 &&
+        (unsigned int)dtNavMeshQuery_findStraightPath_alt1(
+            (__int64*)v5[5], v34, v33, v10, SHIDWORD(v39), v13, (__int64)v15,
+            v17, (int*)&v39, 256, 0) == 0x40000000 &&
+        (int)v39 >= 1) {
+      v30_.v31 = 0;
+      v30_.v32 = 0;
+      v30_.v30 = 0;
+      GameRoutine_fe7ea0_alt1(&v30_.v30, (unsigned int)v39);
+      v29[0] = &v36_.v36;
+      v29[1] = (__int64*)(int)v39;
+      GameRoutine_fe7fa0_alt1(&v28, v29, &v30_.v30);
+      v22 = v30_.v31;
+      *(_QWORD*)a4 = v30_.v30;
+      *(_QWORD*)(a4 + 8) = v22;
+      *(_QWORD*)(a4 + 16) = v30_.v32;
       *(_BYTE*)(a4 + 24) = 1;
     }
     else {
       *(_BYTE*)a4 = 0;
       *(_BYTE*)(a4 + 24) = 0;
     }
-    if (*(_QWORD*)(*v9 + 200LL) != 0) {
-      v31 = 128;
+    if (*(_QWORD*)(*v9 + 200) != 0) {
+      v23 = 128;
     }
     else {
-      v31 = 56;
+      v23 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v9 + v31);
-    if (*(_QWORD*)(*v9 + 200LL) != 0) {
-      v32 = 128;
+    nn_mem_StandardAllocator_Free_alt1(*v9 + v23, v17);
+    if (*(_QWORD*)(*v9 + 200) != 0) {
+      v24 = 128;
     }
     else {
-      v32 = 56;
+      v24 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v9 + v32);
-    if (v44 != 0) {
-      v33 = *v9;
-      v45 = v44;
-      v34 = 128;
-      if (*(_QWORD*)(v33 + 200) == 0) {
-        v34 = 56;
+    nn_mem_StandardAllocator_Free_alt1(*v9 + v24, (__int64)v15);
+    if (v36_.v36 != 0) {
+      v25 = *v9;
+      v36_.v37 = v36_.v36;
+      v26 = 128;
+      if (*(_QWORD*)(v25 + 200) == 0) {
+        v26 = 56;
       }
-      nn_mem_StandardAllocator_Free(v33 + v34);
+      nn_mem_StandardAllocator_Free_alt1(v25 + v26, v36_.v36);
     }
-    v35 = 128;
-    if (*(_QWORD*)(*v9 + 200LL) == 0) {
-      v35 = 56;
+    v27 = 128;
+    if (*(_QWORD*)(*v9 + 200) == 0) {
+      v27 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v9 + v35);
+    nn_mem_StandardAllocator_Free_alt1(*v9 + v27, (__int64)v10);
     {
-      (_QWORD*)nn_os_UnlockMutex(v5 + 40);
+      (_QWORD*)nn_os_UnlockMutex_alt1((__int64)(v5 + 40));
       return;
     }
   }

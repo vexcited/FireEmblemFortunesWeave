@@ -25,6 +25,9 @@ __int64 game_67ef00(__int64 result, __int64, __int64);
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void game_UnitAutoGrowSkillUpdater_Update(__int64* a1);
+__int64 Unit_6cc580_alt1(__int64, _DWORD*) __asm__("Unit_6cc580");
+__int64 Unit_6cc9e0_alt1(__int64, _DWORD*) __asm__("Unit_6cc9e0");
+bool GameRoutine_6fcb20_alt1(__int64, _QWORD*) __asm__("GameRoutine_6fcb20");
 
 void game_UnitAutoGrowSkillUpdater_Update(__int64* a1)
 {
@@ -235,16 +238,16 @@ __int64 game_UnitAutoGrowSkillUpdater_Update_lambda0_Invoke(__int64 result,
   v4 = *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) + 8LL * (*v2 & 0xFFF));
   if (*(_QWORD*)(*(_QWORD*)a2 + 48LL) == v4 && (*v2 & 0xFFF) != 0) {
     v5 = **(_QWORD**)(result + 16);
-    result = GameRoutine_6fcb20(v4, v5 + 1840);
+    result = GameRoutine_6fcb20_alt1(v4, (_QWORD*)(v5 + 1840));
     if ((result & 1) != 0) {
       v6 = *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*v3 + 64) +
                                           8LL * (*v2 & 0xFFF)) +
                                104LL);
       if (v6 == 2) {
-        return Unit_6cc580(v5, v2, 0);
+        return Unit_6cc580_alt1(v5, v2);
       }
       else if (v6 == 1) {
-        return Unit_6cc9e0(v5, v2, 0);
+        return Unit_6cc9e0_alt1(v5, v2);
       }
     }
   }

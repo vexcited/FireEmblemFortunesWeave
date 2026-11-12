@@ -32,24 +32,36 @@ __n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
 extern __int64 (*mocull_BuildLeader_vtable[])();
 extern __int64 (*mocull_BuildWorker_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 BuildLeader_193c620(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                            __int64 a5, __int64 a6);
+__int64 BuildLeader_193c620_alt1(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
+                                 __int64 a5,
+                                 __int64 a6) __asm__("BuildLeader_193c620");
 __attribute__((swiftcall)) void
 BuildLeader_193c980(PSEUDO_X8 x8_, __int64 result, __int64* a2);
 __int64 BuildLeader_Unknown4(__int64 a1);
-__int64 BuildLeader_193cbc0(__int64* a1, __int64 a2);
+__int64 BuildLeader_193cbc0_alt1(__int64* a1,
+                                 __int64 a2) __asm__("BuildLeader_193cbc0");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 nn_os_InitializeMessageQueue_alt1(
+    __int64, __int64, unsigned __int64) __asm__("nn_os_InitializeMessageQueue");
+__int64 nn_os_StartThread_alt1(__int64) __asm__("nn_os_StartThread");
+void BuildLeader_Unknown2_alt2(__int64) __asm__("BuildLeader_Unknown2");
+void BuildWorker_Unknown2_alt1(__int64) __asm__("BuildWorker_Unknown2");
+void fw_world_InitializeWorker_alt1(__int64, __int64, __int64) __asm__(
+    "fw_world_InitializeWorker");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 BuildLeader_193c620(__int64 a1, __int64 a2, __int64 a3);
+void BuildLeader_193cbc0(__int64* a1, __int64 a2);
 
-__int64 BuildLeader_193c620(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                            __int64 a5, __int64 a6)
+__int64 BuildLeader_193c620(__int64 a1, __int64 a2, __int64 a3)
 {
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-
-  memset(a1 + 8, 0, 473, a4, a5, a6);
+  memset_alt1(a1 + 8, 0, 0x1D9u);
   *(_QWORD*)(a1 + 488) = a3;
   *(_QWORD*)a1 = mocull_BuildLeader_vtable;
-  memset(a1 + 496, 0, 640, v9, v10, v11);
+  memset_alt1(a1 + 496, 0, 0x280u);
   *(_QWORD*)(a1 + 624) = 10000;
   nn_os_InitializeLightEvent(a1 + 632, 1, 0);
   *(_DWORD*)(a1 + 768) = 0;
@@ -80,11 +92,11 @@ __int64 BuildLeader_193c620(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   *(_QWORD*)(a1 + 1152) = 0;
   *(_QWORD*)(a1 + 1144) = 0;
   *(_QWORD*)(a1 + 1136) = 0;
-  nn_os_InitializeMessageQueue(a1 + 1168, a1 + 1136, 4);
+  nn_os_InitializeMessageQueue_alt1(a1 + 1168, a1 + 1136, 4u);
   *(_QWORD*)(a1 + 1248) = 0;
   *(_QWORD*)(a1 + 1240) = 0;
-  fw_world_InitializeWorker(a1, 536870923, a2);
-  return nn_os_StartThread(a1 + 32);
+  fw_world_InitializeWorker_alt1(a1, 536870923, a2);
+  return nn_os_StartThread_alt1(a1 + 32);
 }
 
 __int64 BuildLeader_Unknown2(__int64 a1)
@@ -261,9 +273,9 @@ __int64 BuildLeader_Unknown4(__int64 a1)
   return result;
 }
 
-__int64 BuildLeader_193cbc0(__int64* a1, __int64 a2)
+void BuildLeader_193cbc0(__int64* a1, __int64 a2)
 {
-  _QWORD* v4;
+  __int64* v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
@@ -273,24 +285,14 @@ __int64 BuildLeader_193cbc0(__int64* a1, __int64 a2)
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 result;
-  __int64 v22;
-  __int64 v23;
 
   a1[1] = 0;
   a1[2] = 0;
   *a1 = 0;
-  v4 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-  v5 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      736, 16, 0);
-  memset(v5 + 8, 0, 473, v6, v7, v8);
+  v4 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v5 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 736, 16, 0);
+  memset_alt1(v5 + 8, 0, 0x1D9u);
   *(_QWORD*)(v5 + 512) = 0;
   *(_QWORD*)(v5 + 520) = 0;
   *(_QWORD*)(v5 + 528) = 0;
@@ -318,76 +320,75 @@ __int64 BuildLeader_193cbc0(__int64* a1, __int64 a2)
   *(_QWORD*)(v5 + 696) = 0;
   *(_DWORD*)(v5 + 704) = 1036831949;
   *(_BYTE*)(v5 + 720) = 0;
-  fw_world_InitializeWorker(v5, 0x12000000BLL, a2);
+  fw_world_InitializeWorker_alt1(v5, 0x12000000BLL, a2);
   nn_os_InitializeLightEvent(v5 + 484, 0, 1);
   nn_os_InitializeLightEvent(v5 + 496, 1, 0);
-  nn_os_StartThread(v5 + 32);
-  v9 = *a1;
+  nn_os_StartThread_alt1(v5 + 32);
+  v6 = *a1;
   *a1 = v5;
+  if (v6 != 0) {
+    BuildWorker_Unknown2_alt1(v6);
+    v7 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v7 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v7, v6);
+  }
+  v8 = fw_memory_HeapManager_Allocate_alt1(*v4, 736, 16, 0);
+  memset_alt1(v8 + 8, 0, 0x1D9u);
+  *(_QWORD*)v8 = mocull_BuildWorker_vtable;
+  *(_QWORD*)(v8 + 512) = 0;
+  *(_QWORD*)(v8 + 520) = 0;
+  *(_QWORD*)(v8 + 528) = 0;
+  *(_QWORD*)(v8 + 536) = 0;
+  *(_QWORD*)(v8 + 544) = 0x78000000000LL;
+  *(_DWORD*)(v8 + 552) = 1080;
+  *(_QWORD*)(v8 + 560) = 0;
+  *(_QWORD*)(v8 + 568) = 0;
+  *(_QWORD*)(v8 + 576) = 0;
+  *(_QWORD*)(v8 + 584) = 0;
+  *(_QWORD*)(v8 + 592) = 0;
+  *(_QWORD*)(v8 + 600) = 0;
+  *(_QWORD*)(v8 + 608) = 0;
+  *(_QWORD*)(v8 + 616) = 0;
+  *(_QWORD*)(v8 + 624) = 0;
+  *(_QWORD*)(v8 + 632) = 0;
+  *(_QWORD*)(v8 + 640) = 0;
+  *(_QWORD*)(v8 + 648) = 0;
+  *(_QWORD*)(v8 + 656) = 0;
+  *(_QWORD*)(v8 + 664) = 0;
+  *(_QWORD*)(v8 + 672) = 0;
+  *(_QWORD*)(v8 + 680) = 0;
+  *(_QWORD*)(v8 + 688) = 0;
+  *(_QWORD*)(v8 + 696) = 0;
+  *(_DWORD*)(v8 + 704) = 1036831949;
+  *(_BYTE*)(v8 + 720) = 0;
+  fw_world_InitializeWorker_alt1(v8, 0x22000000BLL, a2);
+  nn_os_InitializeLightEvent(v8 + 484, 0, 1);
+  nn_os_InitializeLightEvent(v8 + 496, 1, 0);
+  nn_os_StartThread_alt1(v8 + 32);
+  v9 = a1[1];
+  a1[1] = v8;
   if (v9 != 0) {
-    BuildWorker_Unknown2(v9);
+    BuildWorker_Unknown2_alt1(v9);
     v10 = 128;
-    if (*(_QWORD*)(*v4 + 200LL) == 0) {
+    if (*(_QWORD*)(*v4 + 200) == 0) {
       v10 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v4 + v10);
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v10, v9);
   }
-  v11 = fw_memory_HeapManager_Allocate(*v4, 736, 16, 0);
-  memset(v11 + 8, 0, 473, v12, v13, v14);
-  *(_QWORD*)v11 = mocull_BuildWorker_vtable;
-  *(_QWORD*)(v11 + 512) = 0;
-  *(_QWORD*)(v11 + 520) = 0;
-  *(_QWORD*)(v11 + 528) = 0;
-  *(_QWORD*)(v11 + 536) = 0;
-  *(_QWORD*)(v11 + 544) = 0x78000000000LL;
-  *(_DWORD*)(v11 + 552) = 1080;
-  *(_QWORD*)(v11 + 560) = 0;
-  *(_QWORD*)(v11 + 568) = 0;
-  *(_QWORD*)(v11 + 576) = 0;
-  *(_QWORD*)(v11 + 584) = 0;
-  *(_QWORD*)(v11 + 592) = 0;
-  *(_QWORD*)(v11 + 600) = 0;
-  *(_QWORD*)(v11 + 608) = 0;
-  *(_QWORD*)(v11 + 616) = 0;
-  *(_QWORD*)(v11 + 624) = 0;
-  *(_QWORD*)(v11 + 632) = 0;
-  *(_QWORD*)(v11 + 640) = 0;
-  *(_QWORD*)(v11 + 648) = 0;
-  *(_QWORD*)(v11 + 656) = 0;
-  *(_QWORD*)(v11 + 664) = 0;
-  *(_QWORD*)(v11 + 672) = 0;
-  *(_QWORD*)(v11 + 680) = 0;
-  *(_QWORD*)(v11 + 688) = 0;
-  *(_QWORD*)(v11 + 696) = 0;
-  *(_DWORD*)(v11 + 704) = 1036831949;
-  *(_BYTE*)(v11 + 720) = 0;
-  fw_world_InitializeWorker(v11, 0x22000000BLL, a2);
-  nn_os_InitializeLightEvent(v11 + 484, 0, 1);
-  nn_os_InitializeLightEvent(v11 + 496, 1, 0);
-  nn_os_StartThread(v11 + 32);
-  v15 = a1[1];
-  a1[1] = v11;
-  if (v15 != 0) {
-    BuildWorker_Unknown2(v15);
-    v16 = 128;
-    if (*(_QWORD*)(*v4 + 200LL) == 0) {
-      v16 = 56;
+  v11 = fw_memory_HeapManager_Allocate_alt1(*v4, 1264, 16, 0);
+  BuildLeader_193c620(v11, a2, (__int64)a1);
+  v12 = a1[2];
+  a1[2] = v11;
+  if (v12 != 0) {
+    BuildLeader_Unknown2_alt2(v12);
+    v13 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v13 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v4 + v16);
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v13, v12);
   }
-  v17 = fw_memory_HeapManager_Allocate(*v4, 1264, 16, 0);
-  result = BuildLeader_193c620(v17, a2, (__int64)a1, v18, v19, v20);
-  v22 = a1[2];
-  a1[2] = v17;
-  if (v22 != 0) {
-    BuildLeader_Unknown2_alt1(v22);
-    v23 = 128;
-    if (*(_QWORD*)(*v4 + 200LL) == 0) {
-      v23 = 56;
-    }
-    return nn_mem_StandardAllocator_Free(*v4 + v23);
-  }
-  return result;
 }
 
 #pragma GCC visibility pop

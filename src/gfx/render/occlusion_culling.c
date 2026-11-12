@@ -11,14 +11,14 @@ __int64 OcclusionCulling_DeletingDestructor(__int64 a1);
 __int64
     OcclusionCulling_1938520_alt1(_QWORD,
                                   _QWORD) __asm__("OcclusionCulling_1938520");
-__int64 OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2);
+__int64 OcclusionCulling_Unknown3_alt1(
+    float32x4_t* a1, float32x4_t* a2) __asm__("OcclusionCulling_Unknown3");
 extern __int128 GameData_1a830a0;
 bool OcclusionCulling_1938520(__int64 a1, int32x2_t* a2);
+bool OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2);
 
-__int64 OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
+bool OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
 {
-  __int64 v2;
-  __int64 v3;
   float32x4_t v4;
   float32x4_t v5;
   int16x4_t v7;
@@ -29,7 +29,7 @@ __int64 OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
   int16x4_t v12;
   float32x4_t v13;
   float32x4_t v14;
-  unsigned __int64 v15;
+  __int64 v15;
   float32x4_t v16;
   float32x4_t v17;
   float v18;
@@ -59,12 +59,12 @@ __int64 OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
   float32x4_t v50;
   float32x4_t v51;
   float32x4_t v52;
-  unsigned __int64 v53;
-  unsigned __int64 v54;
-  int v55;
-  int v56;
-  __int64 v57;
-  __int64 v58;
+  struct {
+    int32x2_t v53;
+    unsigned __int64 v54;
+    int v55;
+    int v56;
+  } v53_;
 
   v4 = *a2;
   v5 = a1[2];
@@ -85,14 +85,12 @@ __int64 OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
     if ((LANES64(v12).n64_u8[0] & 1) == 0 && (LANES64(v7).n64_u8[2] & 1) == 0 &&
         (LANES64(v12).n64_u8[2] & 1) == 0 && (LANES64(v7).n64_u8[4] & 1) == 0 &&
         (LANES64(v12).n64_u8[4] & 1) == 0) {
-      return 1;
+      return true;
     }
   }
-  v57 = v2;
-  v58 = v3;
   v13 = a1[11];
   v14 = a1[12];
-  v15 = LANES128(a1[1]).n128_u64[0];
+  v15 = LANES128(a1[1]).n128_i64[0];
   v17 = a1[13];
   v16 = a1[14];
   v18 = LANES128(a1[15]).n128_f32[0];
@@ -132,10 +130,10 @@ __int64 OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
       LANES128(v32).n128_f32[3] < v18 || LANES128(v24).n128_f32[3] < v18 ||
       LANES128(v29).n128_f32[3] < v18 || LANES128(v27).n128_f32[3] < v18 ||
       LANES128(v33).n128_f32[3] < v18 || LANES128(v30).n128_f32[3] < v18) {
-    v54 = 0;
-    v56 = 0;
-    v53 = 0;
-    v55 = -1082130432;
+    v53_.v54 = 0;
+    v53_.v56 = 0;
+    LANES64(v53_.v53).n64_u64[0] = 0;
+    v53_.v55 = -1082130432;
     v42 = 1;
   }
   else {
@@ -161,7 +159,7 @@ __int64 OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
                 v51),
             v48),
         v50);
-    v55 = LANES128(v52).n128_i32[2];
+    v53_.v55 = LANES128(v52).n128_i32[2];
     LANES128(v47).n128_u64[0] =
         LANES64_OF(
             vmin_f32(
@@ -188,15 +186,17 @@ __int64 OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
                     COERCE_AS(float32x2_t, LANES128(v48).n128_u64[0])),
                 COERCE_AS(float32x2_t, LANES128(v50).n128_u64[0])))
             .n64_u64[0];
-    v53 = LANES64_OF(vzip1_s32(COERCE_AS(int32x2_t, LANES128(v47).n128_u64[0]),
-                               COERCE_AS(int32x2_t, LANES128(v52).n128_u64[0])))
-              .n64_u64[0];
-    v54 = LANES64_OF(vzip2_s32(COERCE_AS(int32x2_t, LANES128(v47).n128_u64[0]),
-                               COERCE_AS(int32x2_t, LANES128(v52).n128_u64[0])))
-              .n64_u64[0];
+    LANES64(v53_.v53).n64_u64[0] =
+        LANES64_OF(vzip1_s32(COERCE_AS(int32x2_t, LANES128(v47).n128_u64[0]),
+                             COERCE_AS(int32x2_t, LANES128(v52).n128_u64[0])))
+            .n64_u64[0];
+    v53_.v54 =
+        LANES64_OF(vzip2_s32(COERCE_AS(int32x2_t, LANES128(v47).n128_u64[0]),
+                             COERCE_AS(int32x2_t, LANES128(v52).n128_u64[0])))
+            .n64_u64[0];
   }
-  LOBYTE(v56) = v42;
-  return ((unsigned int)OcclusionCulling_1938520_alt1(v15, &v53) ^ 1) & 1;
+  LOBYTE(v53_.v56) = v42;
+  return !OcclusionCulling_1938520(v15, &v53_.v53);
 }
 
 __int64 OcclusionCulling_Unknown5(__int64 result)

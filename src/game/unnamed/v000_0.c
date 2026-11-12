@@ -3,78 +3,42 @@
 #pragma GCC visibility push(hidden)
 
 extern unsigned int GameData_1b00670[49];
-
 extern float GameData_1b0f900[128];
-
 extern __int64 (*GameData_1f7f0d8)();
-
 extern __int64 (*GameData_1f7fb90)();
-
 extern __int64 (*GameData_1f82fb8[])();
-
 extern __int64 GameData_2178e90;
-
 extern __int64 GameData_2198f88;
-
 extern __int64 GameData_2199c38;
-
 extern __int64 GameData_219c9b8;
-
 extern char GameData_219d028;
-
 extern _UNKNOWN* GameData_219d0a0;
-
 extern _UNKNOWN GameData_21a3768;
-
 extern _UNKNOWN GameData_21a3788;
-
 __int64 GameRoutine_1050();
-
 __int64 GameRoutine_11c560(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, float, float,
                            float);
-
 __int64 GameRoutine_1a09b90(_QWORD);
-
 __int64 GameRoutine_1a09bd0(_QWORD);
-
 __int64 GameRoutine_1a0a170(_QWORD);
-
 __int64 GameRoutine_1a0b9a0(_QWORD);
-
 __int64 GameRoutine_283b60(void);
-
 __int64 GameRoutine_2a8b00(void);
-
 __int64 GameRoutine_2aaa90(void);
-
 __int64 GameRoutine_2aae00(void);
-
 __int64 GameRoutine_2b51f0(_QWORD, _QWORD);
-
 __int64 GameRoutine_4c20(_QWORD);
-
 __int64 GameRoutine_d5b0(int, int, int, unsigned __int64);
-
 __int64 GameRoutine_d680(_QWORD);
-
 __int64 GameRoutine_db10(_QWORD);
-
 __int64 GameRoutine_f30();
-
+void __attribute__((noreturn)) GameHr_4c20();
+void __attribute__((noreturn)) GameHr_d5ac();
 __int64 GameHr_f20() { return GameRoutine_1a0b9a0(GameRoutine_f30); }
 
 __int64 GameHr_10c0() { return GameRoutine_1a0b9a0(GameRoutine_1050); }
 
-__int64 GameHr_d5ac(__int64 a1)
-{
-  int v1;
-  int v2;
-  int v3;
-  unsigned __int64 v4;
-
-  v1 = GameRoutine_4c20(a1);
-  return GameRoutine_d5b0(v1, v2, v3, v4);
-}
+void __attribute__((noreturn)) GameHr_d5ac() { GameHr_4c20(); }
 
 __int64 GameHr_d67c(__int64 a1)
 {

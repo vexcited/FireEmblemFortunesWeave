@@ -10,7 +10,7 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD, long double);
 extern __int64 (*game_combat_ActionAttack_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ActionAttack_DeletingDestructor(_QWORD* a1);
-__int64 ActionAttack_Unknown2(_QWORD* a1);
+__int64 ActionAttack_Unknown2_alt1(_QWORD* a1) __asm__("ActionAttack_Unknown2");
 __int64 ActionAttack_Unknown7(__int64 result);
 __int64 GameRoutine_1061280(__int64 result, unsigned __int8, int, __int64);
 __int64 GameRoutine_1063460(_QWORD, _QWORD);
@@ -26,7 +26,7 @@ extern __int64* GameData_212d448[9];
 struct PseudoSret GameRoutine_10691b0(_QWORD);
 void __attribute__((noreturn)) GameRoutine_1063f60(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
-char** ActionAttack_1063100(char** result);
+char** ActionAttack_1063100_alt2(char** result) __asm__("ActionAttack_1063100");
 float game_combat_ActionAttack_OnEnter_lambda2_Clone(__int64 a1);
 float game_combat_ActionAttack_OnEnter_lambda2_CloneInto(__int64 a1,
                                                          __int64 a2);
@@ -87,6 +87,20 @@ void game_combat_ActionAttack_OnEnter_lambda1_Invoke(__int64 a1, int8x16_t** a2,
 __attribute__((swiftcall)) void
 game_combat_ActionAttack_OnEnter_lambda2_Invoke_10643b0(PSEUDO_X8 x8_,
                                                         float32x4_t* a1);
+__int64 GameRoutine_1098db0_alt1(__int64) __asm__("GameRoutine_1098db0");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+void GameRoutine_1063460_alt1(__int64*, _QWORD*) __asm__("GameRoutine_1063460");
+void GameRoutine_10635c0_alt1(__int64*, _QWORD*) __asm__("GameRoutine_10635c0");
+void GameRoutine_1063720_alt1(__int64*, _QWORD*) __asm__("GameRoutine_1063720");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ActionAttack_Unknown2(_QWORD* a1);
+void ActionAttack_1063100(__int64* a1);
 
 __int64 ActionAttack_DeletingDestructor(_QWORD* a1)
 {
@@ -98,23 +112,22 @@ __int64 ActionAttack_DeletingDestructor(_QWORD* a1)
   return GameRoutine_1098db0(a1 + 6);
 }
 
-__int64 ActionAttack_Unknown2(_QWORD* a1)
+void ActionAttack_Unknown2(_QWORD* a1)
 {
-  long double v3;
-  __int64 v4;
+  __int64 v3;
 
   *a1 = game_combat_ActionAttack_vtable;
-  GameRoutine_1098db0(a1 + 34);
-  GameRoutine_1098db0(a1 + 27);
-  GameRoutine_1098db0(a1 + 20);
-  GameRoutine_1098db0(a1 + 13);
-  GameRoutine_1098db0(a1 + 6);
-  v4 = 128;
+  GameRoutine_1098db0_alt1((__int64)(a1 + 34));
+  GameRoutine_1098db0_alt1((__int64)(a1 + 27));
+  GameRoutine_1098db0_alt1((__int64)(a1 + 20));
+  GameRoutine_1098db0_alt1((__int64)(a1 + 13));
+  GameRoutine_1098db0_alt1((__int64)(a1 + 6));
+  v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v4 = 56;
+    v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(
-      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, v3);
+  nn_mem_StandardAllocator_Free_alt2(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)a1);
 }
 
 __int64 ActionAttack_Unknown5(__int64 a1)
@@ -1648,64 +1661,59 @@ __int64 ActionAttack_Unknown7(__int64 result)
   return result;
 }
 
-char** ActionAttack_1063100(char** result)
+void ActionAttack_1063100(__int64* a1)
 {
   char* v1;
   char* v2;
-  char** v3;
   __int64 v4;
-  char* v5;
+  __int64 v5;
   __int64 v6;
-  char* v7;
-  char* v8;
+  __int64 v7;
+  __int64 v8;
   __int64 v9;
   unsigned __int64 v10;
-  _QWORD* v11;
+  __int64* v11;
   char* v12;
-  long double v13;
-  char** v14;
-  char* v15;
-  char* v16;
+  __int64 v13;
+  char* v14;
+  __int64 v15;
+  __int64 v16;
   __int64 v17;
   __int64 v18;
   __int64 v19;
-  long double v20;
-  __int64 v21;
+  char* v20;
+  unsigned __int64 v21;
   char* v22;
-  char* v23;
-  char* v24;
-  __int64 v25;
-  unsigned __int64 v26;
+  __int64 v23;
+  unsigned __int64 v24;
+  unsigned __int64 v25;
+  __int64 v26;
   unsigned __int64 v27;
-  __int64 v28;
-  long double v29;
-  __int64 v30;
-  bool v31;
-  signed __int64 v32;
-  _QWORD* v33;
+  bool v28;
+  signed __int64 v29;
+  _QWORD* v30;
+  __int64 v31;
+  __int64 v32;
+  __int64 v33;
   __int64 v34;
   __int64 v35;
-  char* v36;
-  char* v37;
+  __int64 v36;
+  __int64 v37;
   __int64 v38;
-  __int64 v39;
-  __int64 v40;
-  __int64 v41;
 
-  v2 = result[1];
-  v1 = result[2];
-  v3 = result;
+  v2 = (char*)a1[1];
+  v1 = (char*)a1[2];
   if (v1 == v2) {
     v4 = 0;
   }
   else {
     v4 = ((v1 - v2) << 6) - 1;
   }
-  v5 = result[4];
-  if (v4 - (unsigned __int64)&v5[(_QWORD)result[5]] < 0x200) {
-    v7 = result[3];
-    v8 = *result;
-    v9 = v7 - *result;
+  v5 = a1[4];
+  if ((unsigned __int64)(v4 - (a1[5] + v5)) < 0x200) {
+    v7 = a1[3];
+    v8 = *a1;
+    v9 = v7 - *a1;
     if (v1 - v2 >= (unsigned __int64)v9) {
       if (v7 == v8) {
         v10 = 1;
@@ -1715,146 +1723,145 @@ char** ActionAttack_1063100(char** result)
       }
       if (v10 >> 61 != 0) {
       LABEL_49:
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v11 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-      v12 = (char*)fw_memory_HeapManager_Allocate(
+      v11 = (__int64*)fw_memory_g_heap_manager_ptr;
+      v12 = (char*)fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v10, 16, 0);
-      result = (char**)fw_memory_HeapManager_Allocate(*v11, 4096, 16, 0);
-      v14 = result;
+      v13 = fw_memory_HeapManager_Allocate_alt1(*v11, 4096, 16, 0);
       if (v10 != 0) {
-        v15 = &v12[8 * v10];
+        v14 = &v12[8 * v10];
       }
       else {
-        v19 = fw_memory_HeapManager_Allocate(*v11, 8, 16, 0);
-        v15 = (char*)(v19 + 8);
-        v21 = 128;
-        if (*(_QWORD*)(*v11 + 200LL) == 0) {
-          v21 = 56;
+        v18 = fw_memory_HeapManager_Allocate_alt1(*v11, 8, 16, 0);
+        v14 = (char*)(v18 + 8);
+        v19 = 128;
+        if (*(_QWORD*)(*v11 + 200) == 0) {
+          v19 = 56;
         }
-        result = (char**)nn_mem_StandardAllocator_Free(*v11 + v21, v20);
-        v2 = v3[1];
-        v1 = v3[2];
-        v12 = (char*)v19;
+        nn_mem_StandardAllocator_Free_alt2(*v11 + v19, (__int64)v12);
+        v2 = (char*)a1[1];
+        v1 = (char*)a1[2];
+        v12 = (char*)v18;
       }
-      *(_QWORD*)v12 = v14;
-      v22 = v12 + 8;
+      *(_QWORD*)v12 = v13;
+      v20 = v12 + 8;
       if (v2 != v1) {
-        v23 = v12;
+        v21 = (unsigned __int64)v12;
         while (1) {
-          if (v22 == v15) {
-            if (v12 <= v23) {
-              if (v22 == v23) {
-                v27 = 1;
+          if (v20 == v14) {
+            if ((unsigned __int64)v12 <= v21) {
+              if (v20 == (char*)v21) {
+                v25 = 1;
               }
               else {
-                v27 = (v22 - v23) >> 2;
+                v25 = (__int64)&v20[-v21] >> 2;
               }
-              if (v27 >> 61 != 0) {
+              if (v25 >> 61 != 0) {
                 goto LABEL_49;
               }
-              v28 = fw_memory_HeapManager_Allocate(*v11, 8 * v27, 16, 0);
-              v30 = v28;
-              v24 = (char*)(v28 + 8 * (v27 >> 2));
-              v32 = v22 - v12;
-              v31 = v22 == v12;
-              v22 = v24;
-              if (!v31) {
-                v22 = &v24[v32];
-                v33 = (_QWORD*)(v28 + 8 * (v27 >> 2));
+              v26 = fw_memory_HeapManager_Allocate_alt1(*v11, 8 * v25, 16, 0);
+              v27 = v26;
+              v22 = (char*)(v26 + 8 * (v25 >> 2));
+              v29 = v20 - v12;
+              v28 = v20 == v12;
+              v20 = v22;
+              if (!v28) {
+                v20 = &v22[v29];
+                v30 = (_QWORD*)(v26 + 8 * (v25 >> 2));
                 do {
-                  v34 = *(_QWORD*)v12;
+                  v31 = *(_QWORD*)v12;
                   v12 += 8;
-                  v32 -= 8LL;
-                  *v33++ = v34;
-                } while (v32 != 0);
+                  v29 -= 8LL;
+                  *v30++ = v31;
+                } while (v29 != 0);
               }
-              v15 = (char*)(v28 + 8 * v27);
-              v35 = 128;
-              if (*(_QWORD*)(*v11 + 200LL) == 0) {
-                v35 = 56;
+              v14 = (char*)(v26 + 8 * v25);
+              v32 = 128;
+              if (*(_QWORD*)(*v11 + 200) == 0) {
+                v32 = 56;
               }
-              result = (char**)nn_mem_StandardAllocator_Free(*v11 + v35, v29);
-              v23 = (char*)v30;
+              nn_mem_StandardAllocator_Free_alt2(*v11 + v32, v21);
+              v21 = v27;
             }
             else {
-              v26 = (((v12 - v23) >> 3) + 1 +
-                     ((unsigned __int64)(((v12 - v23) >> 3) + 1) >> 63)) >>
+              v24 = (((__int64)&v12[-v21] >> 3) + 1 +
+                     ((unsigned __int64)(((__int64)&v12[-v21] >> 3) + 1) >>
+                      63)) >>
                     1;
-              v24 = &v12[-8 * v26];
-              if (v22 != v12) {
-                result = (char**)memmove(&v12[-8 * v26], v12, v22 - v12);
+              v22 = &v12[-8 * v24];
+              if (v20 != v12) {
+                memmove_alt1((__int64)&v12[-8 * v24], (__int64)v12, v20 - v12);
               }
-              v22 = &v24[v22 - v12];
+              v20 = &v22[v20 - v12];
             }
           }
           else {
-            v24 = v12;
+            v22 = v12;
           }
-          v25 = *(_QWORD*)v2;
+          v23 = *(_QWORD*)v2;
           v2 += 8;
-          v12 = v24;
-          *(_QWORD*)v22 = v25;
-          v22 += 8;
-          if (v2 == v3[2]) {
+          v12 = v22;
+          *(_QWORD*)v20 = v23;
+          v20 += 8;
+          if (v2 == (char*)a1[2]) {
             goto LABEL_42;
           }
         }
       }
-      v23 = v12;
-      v24 = v12;
+      v21 = (unsigned __int64)v12;
+      v22 = v12;
     LABEL_42:
-      v36 = v3[4];
-      v37 = *v3;
-      *v3 = v23;
-      v3[1] = v24;
-      v38 = 256;
-      v3[2] = v22;
-      v3[3] = v15;
-      v39 = (__int64)(v36 + 512);
-      if (v22 - v24 != 8) {
-        v38 = v39;
+      v33 = a1[4];
+      v34 = *a1;
+      *a1 = v21;
+      a1[1] = (__int64)v22;
+      v35 = 256;
+      a1[2] = (__int64)v20;
+      a1[3] = (__int64)v14;
+      v36 = v33 + 512;
+      if (v20 - v22 != 8) {
+        v35 = v36;
       }
-      v3[4] = (char*)v38;
-      if (v37 != nullptr) {
-        v40 = 128;
-        if (*(_QWORD*)(*v11 + 200LL) == 0) {
-          v40 = 56;
+      a1[4] = v35;
+      if (v34 != 0) {
+        v37 = 128;
+        if (*(_QWORD*)(*v11 + 200) == 0) {
+          v37 = 56;
         }
-        return (char**)nn_mem_StandardAllocator_Free(*v11 + v40, v13);
+        nn_mem_StandardAllocator_Free_alt2(*v11 + v37, v34);
       }
     }
     else {
-      if (v2 == v8) {
-        v41 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, 4096, 16,
-                                             0);
-        GameRoutine_1063720(v3, &v41);
-        v16 = v3[2];
-        v17 = *((_QWORD*)v16 - 1);
-        v3[2] = v16 - 8;
-        v41 = v17;
-        result = (char**)GameRoutine_1063460(v3, &v41);
+      if (v2 == (char*)v8) {
+        v38 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                  4096, 16, 0);
+        GameRoutine_1063720_alt1(a1, &v38);
+        v15 = a1[2];
+        v16 = *(_QWORD*)(v15 - 8);
+        a1[2] = v15 - 8;
+        v38 = v16;
+        GameRoutine_1063460_alt1(a1, &v38);
       }
       else {
-        v41 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, 4096, 16,
-                                             0);
-        result = (char**)GameRoutine_10635c0(v3, &v41);
+        v38 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                  4096, 16, 0);
+        GameRoutine_10635c0_alt1(a1, &v38);
       }
-      v18 = 256;
-      if (v3[2] - v3[1] != 8) {
-        v18 = (__int64)(v3[4] + 512);
+      v17 = 256;
+      if (a1[2] - a1[1] != 8) {
+        v17 = a1[4] + 512;
       }
-      v3[4] = (char*)v18;
+      a1[4] = v17;
     }
   }
   else {
-    result[4] = v5 + 512;
+    a1[4] = v5 + 512;
     v6 = *((_QWORD*)v1 - 1);
-    result[2] = v1 - 8;
-    v41 = v6;
-    return (char**)GameRoutine_1063460(result, &v41);
+    a1[2] = (__int64)(v1 - 8);
+    v38 = v6;
+    GameRoutine_1063460_alt1(a1, &v38);
   }
-  return result;
 }
 
 void game_combat_ActionAttack_OnEnter_lambda1_Invoke(__int64 a1, int8x16_t** a2,

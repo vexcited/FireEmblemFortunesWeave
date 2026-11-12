@@ -27,38 +27,56 @@ __n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
     "std___1___shared_weak_count___release_weak");
 extern __int64 GameData_22054a8;
 void cmdbtl_camera_StartDefaultWithRelocate(char a1, float a2);
+_QWORD*
+CmdbtlPartyNatives_e9a800_alt1(_QWORD*,
+                               __int64) __asm__("CmdbtlPartyNatives_e9a800");
+__int64 GameHr_e80e80(__int64, float*);
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __int64 cmdbtl_camera_StartSelfie(int a1, __int128* a2, float a3, float a4,
                                   float a5, float a6)
 {
+
+#pragma clang fp contract(off)
   __int64 v12;
   __int64 v13;
   __int64 v14;
   _QWORD* v15;
   __int64 v16;
   __int64* v17;
-  __int64 v18;
+  _QWORD* v18;
   __int64 v19;
   __int64 v20;
-  __int64 (***v21)();
+  __int64 v21;
   __int64 (**v22)();
   __int128 v23;
   __int128 v24;
   __int64 result;
   __int64 v26;
-  __int64 (**v27)();
-  __int64 (***v28)();
-  int* v29;
-  __int64 (***v30)();
-  float v31;
-  float v32;
-  float v33;
-  __int128 v34;
-  char v35;
-  float v36;
-  char v37;
-  __int64 (**v38)();
-  __int64 v39;
+  struct {
+    __int64 (**v27)();
+    _QWORD* v28;
+    int* v29;
+    char gap24_[8];
+    __int64 (***v30)();
+    char gap40_[8];
+    float v31;
+    float v32;
+    float v33;
+    char gap60_[4];
+    __int128 v34;
+    char v35;
+    char gap81_[3];
+    float v36;
+    char v37;
+  } v27_;
+  struct {
+    __int64 (**v38)();
+    __int64 v39;
+  } v38_;
   int v40;
 
   v12 = *as_g_script_manager_ptr;
@@ -89,62 +107,62 @@ __int64 cmdbtl_camera_StartSelfie(int a1, __int128* a2, float a3, float a4,
   (*(void (**)(__int64))(*v15 + v16))((__int64)v15);
 LABEL_9:
   v40 = a1;
-  v38 = nullptr;
-  v39 = 0;
+  v38_.v38 = nullptr;
+  v38_.v39 = 0;
   v17 = GameData_212ea58;
-  v27 = GameData_1fed038;
-  v28 = &v38;
-  v30 = &v27;
-  v18 = *GameData_212ea58;
-  v29 = &v40;
-  CmdbtlPartyNatives_e9a800(v18, &v27);
-  if (v30 == &v27) {
+  v27_.v27 = GameData_1fed038;
+  v27_.v28 = &v38_.v38;
+  v27_.v30 = &v27_.v27;
+  v18 = (_QWORD*)*GameData_212ea58;
+  v27_.v29 = &v40;
+  CmdbtlPartyNatives_e9a800_alt1(v18, (__int64)&v27_.v27);
+  if (v27_.v30 == &v27_.v27) {
     v19 = 4;
     goto LABEL_13;
   }
-  if (v30 != nullptr) {
+  if (v27_.v30 != nullptr) {
     v19 = 5;
   LABEL_13:
-    (*v30)[v19]();
+    ((__int64 (*)(__int64))(*v27_.v30)[v19])((__int64)v27_.v30);
   }
-  LOBYTE(v30) = 0;
-  LOBYTE(v29) = 0;
+  LOBYTE(v27_.v30) = 0;
+  LOBYTE(v27_.v29) = 0;
   v20 = *v17;
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                             memory_order_acquire) &
        1) == 0 &&
-      (unsigned int)__cxa_guard_acquire(&GameData_21a6130) != 0) {
+      __cxa_guard_acquire_alt1((__int64)&GameData_21a6130) != 0) {
     v26 = *((_QWORD*)GameData_212c540 + 1);
     *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
     *((_QWORD*)&GameData_21a6120 + 1) = v26;
-    __cxa_guard_release(&GameData_21a6130);
+    __cxa_guard_release_alt1((__int64)&GameData_21a6130);
   }
-  v34 = GameData_21a6120;
-  v37 = 1;
-  v22 = v38;
-  v21 = (__int64 (***)())v39;
-  if (v39 != 0) {
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v39 + 16), 1u,
+  v27_.v34 = GameData_21a6120;
+  v27_.v37 = 1;
+  v22 = v38_.v38;
+  v21 = v38_.v39;
+  if (v38_.v39 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v38_.v39 + 16), 1u,
                               memory_order_relaxed);
   }
   v23 = *a2;
-  v27 = v22;
-  v28 = v21;
-  v31 = a3;
-  v32 = a4;
-  v33 = a5;
-  v35 = 0;
-  v36 = a6;
+  v27_.v27 = v22;
+  v27_.v28 = (_QWORD*)v21;
+  v27_.v31 = a3;
+  v27_.v32 = a4;
+  v27_.v33 = a5;
+  v27_.v35 = 0;
+  v27_.v36 = a6;
   *(_QWORD*)&v24 = v23;
   *((_QWORD*)&v24 + 1) = DWORD2(v23);
-  v34 = v24;
-  GameRoutine_e80e80(v20 + 16, &v27);
-  if (v28 != nullptr) {
-    std___1___shared_weak_count___release_weak(v28);
+  v27_.v34 = v24;
+  GameHr_e80e80(v20 + 16, (float*)&v27_.v27);
+  if (v27_.v28 != nullptr) {
+    std___1___shared_weak_count___release_weak_alt2((__int64)v27_.v28);
   }
-  result = v39;
-  if (v39 != 0) {
-    return std___1___shared_weak_count___release_weak(v39);
+  result = v38_.v39;
+  if (v38_.v39 != 0) {
+    return std___1___shared_weak_count___release_weak_alt2(v38_.v39);
   }
   return result;
 }

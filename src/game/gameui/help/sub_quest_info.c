@@ -21,6 +21,9 @@ extern int GameData_2265740;
 extern int GameData_2265758;
 __int64* SubQuestInfo_Destructor(__int64 a1);
 bool SubQuestInfo_Unknown30(_QWORD* a1);
+void GameSubquestData_1257e40(__int64*, _QWORD*);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64* SubQuestInfo_Destructor(__int64 a1)
 {
@@ -183,7 +186,7 @@ __int64* SubQuestInfo_Destructor(__int64 a1)
 
 bool SubQuestInfo_Unknown30(_QWORD* a1)
 {
-  __int64 v2;
+  __int64* v2;
   __int64 v3;
   unsigned __int64 v4;
   __int64 v5;
@@ -199,17 +202,19 @@ bool SubQuestInfo_Unknown30(_QWORD* a1)
   int v15;
   int v16;
   __int64 v17;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
+  struct {
+    __int64 v19;
+    __int64 v20;
+    __int64 v21;
+  } v19_;
 
-  v2 = a1[1];
-  v20 = 0;
-  v21 = 0;
-  v19 = 0;
-  GameRoutine_1257e40(v2, &v19);
-  v3 = v20 - v19;
-  if (v20 == v19) {
+  v2 = (__int64*)a1[1];
+  v19_.v20 = 0;
+  v19_.v21 = 0;
+  v19_.v19 = 0;
+  GameSubquestData_1257e40(v2, &v19_.v19);
+  v3 = v19_.v20 - v19_.v19;
+  if (v19_.v20 == v19_.v19) {
     v7 = 0;
     goto LABEL_11;
   }
@@ -223,7 +228,7 @@ bool SubQuestInfo_Unknown30(_QWORD* a1)
     }
     goto LABEL_9;
   }
-  v8 = (_DWORD*)(v19 + 16);
+  v8 = (_DWORD*)(v19_.v19 + 16);
   v9 = 0;
   v7 = 0;
   v10 = -(__int64)(v4 & 0xFFFFFFFFFFFFFFF8LL);
@@ -238,24 +243,23 @@ bool SubQuestInfo_Unknown30(_QWORD* a1)
   v6 = -v9;
   if (v5 != 0) {
   LABEL_9:
-    v14 = (int*)(v19 + 4 * v6);
+    v14 = (int*)(v19_.v19 + 4 * v6);
     do {
       v15 = *v14++;
       --v5;
       v7 += v15;
     } while (v5 != 0);
   }
-
 LABEL_11:
   v16 = (*(__int64 (**)(_QWORD*))(*a1 + 192LL))(a1);
-  if (v19 != 0) {
-    v20 = v19;
+  if (v19_.v19 != 0) {
+    v19_.v20 = v19_.v19;
     v17 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v17 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v17,
-                                  v19);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v19_.v19);
   }
   return v7 >= v16;
 }

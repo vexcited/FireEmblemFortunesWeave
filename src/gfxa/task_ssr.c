@@ -2885,75 +2885,195 @@ __int64 TaskSSR_b7cee0(__int64 a1, __int64 a2, __int64 a3, _QWORD* a4,
   __int64 v43;
   _QWORD v44[2];
 
-  v8 = (__int64 (**)(__int64))GameData_212e778[0];
-  v9 = (__int64 (**)(__int64))GameData_212e780;
+  v12 = COERCE_AS(__typeof__(v12),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v22 = COERCE_AS(__typeof__(v22),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v36 = COERCE_AS(__typeof__(v36),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v8 = (__int64 (**)(__int64))GameData_212e778[0],
+  v12 = COERCE_AS(__typeof__(v12),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v22 = COERCE_AS(__typeof__(v22),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v36 = COERCE_AS(__typeof__(v36),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9 = (__int64 (**)(__int64))GameData_212e780,
+  v12 = COERCE_AS(__typeof__(v12),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v22 = COERCE_AS(__typeof__(v22),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v36 = COERCE_AS(__typeof__(v36),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if ((*(_BYTE*)(a5 + 84) & 1) != 0 || (*(_BYTE*)(a1 + 1032) & 1) != 0) {
     v11 = X8CALL_X0(
         _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
                      **(_QWORD**)(a1 + 8) + 32LL))((void*)*(_QWORD**)(a1 + 8),
-                                                   *(_QWORD*)(a1 + 8)));
+                                                   *(_QWORD*)(a1 + 8))),
+    v12 = COERCE_AS(__typeof__(v12),
+                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v22 = COERCE_AS(__typeof__(v22),
+                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v36 = COERCE_AS(__typeof__(v36),
+                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     (*(void (**)(_QWORD, _QWORD*, __int64))(*(_QWORD*)*a4 + 96LL))(*a4, v11,
-                                                                   v12);
+                                                                   v12),
+        v12 = COERCE_AS(__typeof__(v12),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v22 = COERCE_AS(__typeof__(v22),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v36 = COERCE_AS(__typeof__(v36),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v13 = *a4;
     v14 = (*v8)((__int64)v11);
     v15 = (*v9)((__int64)v11);
     (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(
-        *(_QWORD*)v13 + 72LL))(v13, 0, 0, v14, v15);
+        *(_QWORD*)v13 + 72LL))(v13, 0, 0, v14, v15),
+        v12 = COERCE_AS(__typeof__(v12),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v22 = COERCE_AS(__typeof__(v22),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v36 = COERCE_AS(__typeof__(v36),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v16 = *a4;
     v17 = (*v8)((__int64)v11);
     v18 = (*v9)((__int64)v11);
     (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(
-        *(_QWORD*)v16 + 88LL))(v16, 0, 0, v17, v18);
+        *(_QWORD*)v16 + 88LL))(v16, 0, 0, v17, v18),
+        v12 = COERCE_AS(__typeof__(v12),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v22 = COERCE_AS(__typeof__(v22),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v36 = COERCE_AS(__typeof__(v36),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v19 = *a4;
     v44[0] = 0;
     v44[1] = 0;
     (*(void (**)(__int64, _QWORD, _QWORD*))(*(_QWORD*)v19 + 144LL))(v19, 0,
-                                                                    v44);
+                                                                    v44),
+        v12 = COERCE_AS(__typeof__(v12),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v22 = COERCE_AS(__typeof__(v22),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v36 = COERCE_AS(__typeof__(v36),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     *(_BYTE*)(a1 + 1032) = 0;
   }
   v20 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a3 + 8) + 16LL))(
-      *(_QWORD*)(a3 + 8));
-  v21 = (*(__int64 (**)(__int64))(*(_QWORD*)v20 + 32LL))(v20);
-  (*(void (**)(_QWORD, __int64, __int64))(*(_QWORD*)*a4 + 96LL))(*a4, v21, v22);
+      *(_QWORD*)(a3 + 8)),
+  v12 = COERCE_AS(__typeof__(v12),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v22 = COERCE_AS(__typeof__(v22),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v36 = COERCE_AS(__typeof__(v36),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v21 = (*(__int64 (**)(__int64))(*(_QWORD*)v20 + 32LL))(v20),
+  v12 = COERCE_AS(__typeof__(v12),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v22 = COERCE_AS(__typeof__(v22),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v36 = COERCE_AS(__typeof__(v36),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  (*(void (**)(_QWORD, __int64, __int64))(*(_QWORD*)*a4 + 96LL))(*a4, v21, v22),
+      v12 = COERCE_AS(__typeof__(v12),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v22 = COERCE_AS(__typeof__(v22),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v36 = COERCE_AS(__typeof__(v36),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v23 = *a4;
   v24 = (*v8)(v21);
   v25 = (*v9)(v21);
   (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(*(_QWORD*)v23 + 72LL))(
-      v23, 0, 0, v24, v25);
+      v23, 0, 0, v24, v25),
+      v12 = COERCE_AS(__typeof__(v12),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v22 = COERCE_AS(__typeof__(v22),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v36 = COERCE_AS(__typeof__(v36),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v26 = *a4;
   v27 = (*v8)(v21);
   v28 = (*v9)(v21);
   (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(*(_QWORD*)v26 + 88LL))(
-      v26, 0, 0, v27, v28);
+      v26, 0, 0, v27, v28),
+      v12 = COERCE_AS(__typeof__(v12),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v22 = COERCE_AS(__typeof__(v22),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v36 = COERCE_AS(__typeof__(v36),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v29 = *a4;
   v44[0] = 0;
   v44[1] = 0;
   result = (*(__int64 (**)(__int64, _QWORD, _QWORD*))(*(_QWORD*)v29 + 144LL))(
-      v29, 0, v44);
+      v29, 0, v44),
+  v12 = COERCE_AS(__typeof__(v12),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v22 = COERCE_AS(__typeof__(v22),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v36 = COERCE_AS(__typeof__(v36),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if (*(int*)(a5 + 28) >= 2) {
     v31 = (__int64*)(a3 + 16);
     v32 = 1;
     do {
       v33 = *v31++;
-      v34 = (*(__int64 (**)(__int64))(*(_QWORD*)v33 + 16LL))(v33);
-      v35 = (*(__int64 (**)(__int64))(*(_QWORD*)v34 + 32LL))(v34);
+      v34 = (*(__int64 (**)(__int64))(*(_QWORD*)v33 + 16LL))(v33),
+      v12 = COERCE_AS(__typeof__(v12),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v22 = COERCE_AS(__typeof__(v22),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v36 = COERCE_AS(__typeof__(v36),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v35 = (*(__int64 (**)(__int64))(*(_QWORD*)v34 + 32LL))(v34),
+      v12 = COERCE_AS(__typeof__(v12),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v22 = COERCE_AS(__typeof__(v22),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v36 = COERCE_AS(__typeof__(v36),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       (*(void (**)(_QWORD, __int64, __int64))(*(_QWORD*)*a4 + 96LL))(*a4, v35,
-                                                                     v36);
+                                                                     v36),
+          v12 = COERCE_AS(__typeof__(v12),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v22 = COERCE_AS(__typeof__(v22),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v36 = COERCE_AS(__typeof__(v36),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       v37 = *a4;
       v38 = (*v8)(v35);
       v39 = (*v9)(v35);
       (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(
-          *(_QWORD*)v37 + 72LL))(v37, 0, 0, v38, v39);
+          *(_QWORD*)v37 + 72LL))(v37, 0, 0, v38, v39),
+          v12 = COERCE_AS(__typeof__(v12),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v22 = COERCE_AS(__typeof__(v22),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v36 = COERCE_AS(__typeof__(v36),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       v40 = *a4;
       v41 = (*v8)(v35);
       v42 = (*v9)(v35);
       (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(
-          *(_QWORD*)v40 + 88LL))(v40, 0, 0, v41, v42);
+          *(_QWORD*)v40 + 88LL))(v40, 0, 0, v41, v42),
+          v12 = COERCE_AS(__typeof__(v12),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v22 = COERCE_AS(__typeof__(v22),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v36 = COERCE_AS(__typeof__(v36),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       v43 = *a4;
       v44[0] = 0;
       v44[1] = 0;
       result = (*(__int64 (**)(__int64, _QWORD, _QWORD*))(*(_QWORD*)v43 +
-                                                          144LL))(v43, 0, v44);
+                                                          144LL))(v43, 0, v44),
+      v12 = COERCE_AS(__typeof__(v12),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v22 = COERCE_AS(__typeof__(v22),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v36 = COERCE_AS(__typeof__(v36),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       ++v32;
     } while (v32 < *(int*)(a5 + 28));
   }

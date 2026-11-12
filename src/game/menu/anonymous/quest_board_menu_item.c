@@ -51,8 +51,11 @@ __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184acf0(
     __int64 a1);
 __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b110(
     __int64 result);
-__int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b2c0(
-    __int64 result, __int64* a2);
+__int64
+game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b2c0_alt1(
+    __int64 result,
+    __int64* a2) __asm__("game_menu_anonymous_QuestBoardMenuItem_ACall_"
+                         "closure1_Invoke_184b2c0");
 __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, _QWORD,
                                                        _QWORD);
 __attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
@@ -72,6 +75,28 @@ __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure_Invoke(__int64 a1);
 __int64
 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke(__int64 result,
                                                              __int64* a2);
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64
+GameSubquestData_1267be0_alt1(__int64, __int64, __int64,
+                              _BYTE*) __asm__("GameSubquestData_1267be0");
+__int64 ProcInst_657850_alt1(__int64, __int64, __int64, char,
+                             __int64) __asm__("ProcInst_657850");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void GameSubquestData_1267cf0_alt1(__int64, __int64, __int64*, __int64,
+                                   _BYTE*) __asm__("GameSubquestData_1267cf0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b2c0(
+    __int64 a1, __int64* a2);
 
 __int64 QuestBoardMenuItem_DeletingDestructor(__int64 a1)
 {
@@ -201,18 +226,22 @@ game_menu_anonymous_QuestBoardMenuItem_ACall_closure_Invoke_1849c00(__int64 a1)
   __int64 result;
   __int64 v2;
   __int64 v3;
-  __int64 v5;
-  __int64 v6;
+  struct {
+    __int64 v5;
+    __int64 v6;
+  } v5_;
 
-  GameRoutine_1560070((void*)&v5, *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 848LL,
-                      "L_Info/L_Stamp");
-  result = v6;
-  if (v6 != 0) {
-    v2 = std___1___shared_weak_count_lock(v6);
-    v3 = v5;
-    result = v6;
-    if (v6 != 0) {
-      result = std___1___shared_weak_count___release_weak(v6);
+  LayoutAccessor_1560070_alt1(
+      (void*)(&v5_.v5),
+      (__int64*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 848LL),
+      "L_Info/L_Stamp");
+  result = v5_.v6;
+  if (v5_.v6 != 0) {
+    v2 = std___1___shared_weak_count_lock_alt1(v5_.v6);
+    v3 = v5_.v5;
+    result = v5_.v6;
+    if (v5_.v6 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v5_.v6);
     }
     if (v2 == 0 || v3 == 0) {
       if (v2 == 0) {
@@ -220,12 +249,12 @@ game_menu_anonymous_QuestBoardMenuItem_ACall_closure_Invoke_1849c00(__int64 a1)
       }
     }
     else {
-      result = LayoutAccessor_1562680(v3, "Wait", 1.0);
+      result = GameHr_1562680(v3, "Wait", 0x1.0000000000000p+0f);
     }
     if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
-      return std___1___shared_weak_count___release_weak(v2);
+      return std___1___shared_weak_count___release_weak_alt1(v2);
     }
   }
   return result;
@@ -464,23 +493,26 @@ __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b110(
   __int64 v1;
   __int64 v2;
   __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  struct {
+    __int64 v4;
+    __int64 v5;
+  } v4_;
 
   v1 = *(_QWORD*)(result + 8);
   if (*(_BYTE*)(v1 + 160) == 1) {
-    GameRoutine_1560070((void*)&v4, *(_QWORD*)(v1 + 8) + 848LL,
-                        "L_Info/L_Stamp");
-    result = v5;
-    if (v5 != 0) {
-      v2 = std___1___shared_weak_count_lock(v5);
-      v3 = v4;
-      result = v5;
-      if (v5 != 0) {
-        result = std___1___shared_weak_count___release_weak(v5);
+    LayoutAccessor_1560070_alt1((void*)(&v4_.v4),
+                                (__int64*)(*(_QWORD*)(v1 + 8) + 848LL),
+                                "L_Info/L_Stamp");
+    result = v4_.v5;
+    if (v4_.v5 != 0) {
+      v2 = std___1___shared_weak_count_lock_alt1(v4_.v5);
+      v3 = v4_.v4;
+      result = v4_.v5;
+      if (v4_.v5 != 0) {
+        result = std___1___shared_weak_count___release_weak_alt1(v4_.v5);
       }
       if (v2 != 0 && v3 != 0) {
-        result = LayoutAccessor_1562680(v3, "Wait", 1.0);
+        result = GameHr_1562680(v3, "Wait", 0x1.0000000000000p+0f);
       }
       else if (v2 == 0) {
         return result;
@@ -488,80 +520,79 @@ __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b110(
       if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
-        return std___1___shared_weak_count___release_weak(v2);
+        return std___1___shared_weak_count___release_weak_alt1(v2);
       }
     }
   }
   return result;
 }
 
-__int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b2c0(
-    __int64 result, __int64* a2)
+void game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b2c0(
+    __int64 a1, __int64* a2)
 {
-  __int64 v2;
-  __int64 v3;
   __int64 v4;
   _BYTE* v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  _BYTE v10[32];
-  _BYTE* v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
+  struct {
+    _BYTE v10[32];
+    _BYTE* v11;
+  } v10_;
+  struct {
+    __int64 v12;
+    __int64 v13;
+    __int64 v14;
+  } v12_;
   _BYTE v17[4];
 
-  v4 = *(_QWORD*)(result + 8);
+  v4 = *(_QWORD*)(a1 + 8);
   if (*(_BYTE*)(v4 + 160) != 1) {
-    return result;
+    return;
   }
-  v15 = v2;
-  v16 = v3;
   v5 = *(_BYTE**)(v4 + 152);
-  v13 = 0;
-  v14 = 0;
-  v11 = nullptr;
+  v12_.v13 = 0;
+  v12_.v14 = 0;
+  v10_.v11 = nullptr;
   v6 = *a2;
-  v12 = 0;
+  v12_.v12 = 0;
   if (v5[9] == 3) {
     v5[9] = 4;
     v17[0] = 1;
     if ((*(_BYTE*)(*(_QWORD*)v5 + 161LL) & 4) != 0) {
-      GameSubquestData_1267be0(v5, &v12, v10, v17);
+      GameSubquestData_1267be0_alt1((__int64)v5, (__int64)&v12_.v12,
+                                    (__int64)v10_.v10, v17);
     }
     else {
-      v7 = fw_memory_HeapManager_Allocate(
+      v7 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 288, 16, 0);
-      GameSubquestData_1267cf0(v7, v5, &v12, v10, v17);
-      ProcInst_657850(v7, GameData_2130b30, "ProcReward", 1, v6);
+      GameSubquestData_1267cf0_alt1(v7, (__int64)v5, &v12_.v12,
+                                    (__int64)v10_.v10, v17);
+      ProcInst_657850_alt1(v7, (__int64)GameData_2130b30, (__int64)"ProcReward",
+                           1, v6);
     }
-    result = (__int64)v11;
-    if (v11 == v10) {
+    if (v10_.v11 == v10_.v10) {
       v8 = 32;
     }
     else {
-      if (v11 == nullptr) {
+      if (v10_.v11 == nullptr) {
         goto LABEL_11;
       }
       v8 = 40;
     }
-    result = (*(__int64 (**)(void*))(*(_QWORD*)v11 + v8))((void*)v11);
+    (*(void (**)(__int64))(*(_QWORD*)v10_.v11 + v8))((__int64)v10_.v11);
   }
 LABEL_11:
-  if (v12 != 0) {
-    v13 = v12;
+  if (v12_.v12 != 0) {
+    v12_.v13 = v12_.v12;
     v9 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v9 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, v12);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, v12_.v12);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

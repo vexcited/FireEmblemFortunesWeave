@@ -35,6 +35,8 @@ extern __int128 GameData_21a5670;
 float32x4_t game_character_CharacterLookAt_Startup_lambda0_Invoke(__int64 a1,
                                                                   __int64 a2,
                                                                   __int64* a3);
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 void CharacterLookAt_10b7fc0(__int64 a1)
 {
@@ -465,13 +467,13 @@ float32x4_t game_character_CharacterLookAt_Startup_lambda0_Invoke(__int64 a1,
                               memory_order_acquire) &
          1) == 0) {
       v23 = v5;
-      v18 = __cxa_guard_acquire(&GameData_21a5680);
+      v18 = __cxa_guard_acquire_alt1((__int64)&GameData_21a5680);
       v5 = v23;
       if (v18 != 0) {
         v19 = *((_QWORD*)GameData_212c2f8 + 1);
         *(_QWORD*)&GameData_21a5670 = *(_QWORD*)GameData_212c2f8;
         *((_QWORD*)&GameData_21a5670 + 1) = v19;
-        __cxa_guard_release(&GameData_21a5680);
+        __cxa_guard_release_alt1((__int64)&GameData_21a5680);
         v5 = v23;
       }
     }

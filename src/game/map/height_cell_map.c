@@ -19,6 +19,8 @@ unsigned __int64 HeightCellMap_1002e20(unsigned __int64 result,
                                        unsigned __int8* a2, int a3);
 unsigned __int64 HeightCellMap_1003040(unsigned __int64 result,
                                        unsigned __int8* a2, int a3, int a4);
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 bool HeightCellMap_1002b40(_QWORD* a1, char* a2, float* a3)
 {
@@ -96,92 +98,98 @@ bool HeightCellMap_1002b40(_QWORD* a1, char* a2, float* a3)
 _QWORD* game_map_HeightCellMap_Commit(__int64 a1)
 {
   _QWORD* v2;
-  _QWORD* result;
+  _QWORD* v3;
   __int64 v4;
-  __int64 v5;
-  __int64 v6;
-  _QWORD* v7;
-  __int64 v8;
-  _QWORD* v9;
+  _QWORD* v5;
+  _QWORD* v6;
+  __int64 v7;
+  _QWORD* v8;
+  _QWORD* result;
   __int64 v10;
-  _QWORD v11[4];
-  _QWORD* v12;
-  _QWORD v13[4];
-  _QWORD* v14;
-  _QWORD v15[4];
-  _QWORD* v16;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+  struct {
+    _QWORD v13[4];
+    _QWORD* v14;
+  } v13_;
+  struct {
+    _QWORD v15[4];
+    _QWORD* v16;
+  } v15_;
 
   v2 = *(_QWORD**)(a1 + 16);
-  result = v15;
-  v15[0] = GameData_20004f8;
-  v16 = v15;
+  v3 = v15_.v15;
+  v15_.v15[0] = GameData_20004f8;
+  v15_.v16 = v15_.v15;
   if (v2 != nullptr) {
     while (1) {
-      (*(void (**)(_QWORD*, _QWORD*))(*result + 48LL))(result, v2 + 4);
+      (*(void (**)(_QWORD*, _QWORD*))(*v3 + 48LL))(v3, v2 + 4);
       v2 = (_QWORD*)*v2;
-      result = v16;
+      v3 = v15_.v16;
       if (v2 == nullptr) {
         break;
       }
-      if (v16 == nullptr) {
+      if (v15_.v16 == nullptr) {
       LABEL_24:
-        GameRoutine_60a310(result, v4, v5);
+        GameRoutine_60a310_alt1();
       }
     }
-    if (v16 != v15) {
-      if (v16 != nullptr) {
-        v6 = 40;
+    if (v15_.v16 != v15_.v15) {
+      if (v15_.v16 != nullptr) {
+        v4 = 40;
       LABEL_9:
-        (*(void (**)(__int64))(*result + v6))((__int64)result);
+        (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
       }
-      v7 = *(_QWORD**)(a1 + 16);
-      result = v13;
-      v13[0] = GameData_2000588;
-      v14 = v13;
-      if (v7 != nullptr) {
-        result = v13;
+      v5 = *(_QWORD**)(a1 + 16);
+      v6 = v13_.v13;
+      v13_.v13[0] = GameData_2000588;
+      v13_.v14 = v13_.v13;
+      if (v5 != nullptr) {
+        v6 = v13_.v13;
         while (1) {
-          (*(void (**)(_QWORD*, _QWORD*))(*result + 48LL))(result, v7 + 4);
-          v7 = (_QWORD*)*v7;
-          result = v14;
-          if (v7 == nullptr) {
+          (*(void (**)(_QWORD*, _QWORD*))(*v6 + 48LL))(v6, v5 + 4);
+          v5 = (_QWORD*)*v5;
+          v6 = v13_.v14;
+          if (v5 == nullptr) {
             break;
           }
-          if (v14 == nullptr) {
+          if (v13_.v14 == nullptr) {
             goto LABEL_24;
           }
         }
-        if (v14 != v13) {
-          if (v14 != nullptr) {
-            v8 = 40;
+        if (v13_.v14 != v13_.v13) {
+          if (v13_.v14 != nullptr) {
+            v7 = 40;
           LABEL_19:
-            (*(void (**)(__int64))(*result + v8))((__int64)result);
+            (*(void (**)(__int64))(*v6 + v7))((__int64)v6);
           }
-          v9 = *(_QWORD**)(a1 + 16);
-          result = v11;
-          v11[0] = GameData_2000608;
-          v12 = v11;
-          if (v9 == nullptr) {
+          v8 = *(_QWORD**)(a1 + 16);
+          result = v11_.v11;
+          v11_.v11[0] = GameData_2000608;
+          v11_.v12 = v11_.v11;
+          if (v8 == nullptr) {
             goto LABEL_28;
           }
-          result = v11;
+          result = v11_.v11;
           while (1) {
-            (*(void (**)(_QWORD*, _QWORD*))(*result + 48LL))(result, v9 + 4);
-            v9 = (_QWORD*)*v9;
-            result = v12;
-            if (v9 == nullptr) {
+            (*(void (**)(_QWORD*, _QWORD*))(*result + 48LL))(result, v8 + 4);
+            v8 = (_QWORD*)*v8;
+            result = v11_.v12;
+            if (v8 == nullptr) {
               break;
             }
-            if (v12 == nullptr) {
+            if (v11_.v12 == nullptr) {
               goto LABEL_24;
             }
           }
-          if (v12 == v11) {
+          if (v11_.v12 == v11_.v11) {
           LABEL_28:
             v10 = 32;
           }
           else {
-            if (v12 == nullptr) {
+            if (v11_.v12 == nullptr) {
               return result;
             }
             v10 = 40;
@@ -189,11 +197,11 @@ _QWORD* game_map_HeightCellMap_Commit(__int64 a1)
           return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v10))(result);
         }
       }
-      v8 = 32;
+      v7 = 32;
       goto LABEL_19;
     }
   }
-  v6 = 32;
+  v4 = 32;
   goto LABEL_9;
 }
 

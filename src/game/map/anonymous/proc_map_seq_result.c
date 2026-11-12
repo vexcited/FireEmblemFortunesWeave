@@ -23,9 +23,21 @@ void __attribute__((noreturn)) GameRoutine_8c47e0(void);
 __int64 game_map_anonymous_ProcMapSeqResult_Reliance(__int64 a1);
 __int64 game_map_anonymous_ProcMapSeqResult_CalcBonusExp_closure_Invoke(
     __int64 result, __int64* a2, int* a3);
-__int64 game_map_anonymous_ProcMapSeqResult_Reliance_closure_Invoke(
-    __int64 a1, __int64 a2, unsigned int* a3);
+__int64 game_map_anonymous_ProcMapSeqResult_Reliance_closure_Invoke_alt1(
+    __int64 a1, __int64 a2,
+    unsigned int* a3) __asm__("game_map_anonymous_ProcMapSeqResult_Reliance_"
+                              "closure_Invoke");
 __int64* ProcMapSeqResult_8c4680(__int64* result, _QWORD* a2);
+__int64 GameReliance_8e0520_alt1(__int64, int) __asm__("GameReliance_8e0520");
+__int64 GameReliance_8e05a0_alt1(__int64, int) __asm__("GameReliance_8e05a0");
+__int64 GameRoutine_8c7640_alt1(__int64) __asm__("GameRoutine_8c7640");
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+void ProcMapSeqResult_8c4680_alt2(__int64*,
+                                  _QWORD*) __asm__("ProcMapSeqResult_8c4680");
+void game_map_anonymous_ProcMapSeqResult_Reliance_closure_Invoke(__int64 a1,
+                                                                 __int64 a2,
+                                                                 int* a3);
 
 __int64 game_map_anonymous_ProcMapSeqResult_Reliance(__int64 a1)
 {
@@ -171,108 +183,113 @@ __int64 game_map_anonymous_ProcMapSeqResult_CalcBonusExp_closure_Invoke(
   return result;
 }
 
-__int64 game_map_anonymous_ProcMapSeqResult_Reliance_closure_Invoke(
-    __int64 a1, __int64 a2, unsigned int* a3)
+void game_map_anonymous_ProcMapSeqResult_Reliance_closure_Invoke(__int64 a1,
+                                                                 __int64 a2,
+                                                                 int* a3)
 {
   __int64 v4;
-  __int64 result;
+  int v5;
   unsigned int v6;
   __int64 v7;
-  __int64 v9;
-  signed int v10;
-  int v11;
-  unsigned __int64 v12;
+  __int64 v8;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
   int v13;
   int v14;
-  int v15;
-  unsigned int v16;
+  unsigned __int64 v15;
+  int v16;
   int v17;
-  char v18;
-  char v19;
-  _QWORD v20[2];
+  int v18;
+  unsigned int v19;
+  int v20;
   char v21;
   char v22;
+  struct {
+    _QWORD v23[2];
+    char v24;
+    char v25;
+  } v23_;
 
   v4 = *(_QWORD*)(a1 + 8);
-  result = GameReliance_8e05a0(a2, *a3);
-  if ((int)result < 1) {
-    return result;
+  v5 = GameReliance_8e05a0_alt1(a2, *a3);
+  if (v5 < 1) {
+    return;
   }
-  v6 = result;
-  v7 = GameRoutine_8c7640(*(_QWORD*)(a2 + 24));
-  result = GameRoutine_8c7640(*(_QWORD*)(a2 + 32));
-  if (v7 == 0 || result == 0) {
-    return result;
+  v6 = v5;
+  v7 = GameRoutine_8c7640_alt1(*(_QWORD*)(a2 + 24));
+  v8 = GameRoutine_8c7640_alt1(*(_QWORD*)(a2 + 32));
+  if (v7 == 0 || v8 == 0) {
+    return;
   }
-  v9 = result;
+  v10 = v8;
   if (game_GameModeData_instance_ != 0) {
-    result = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48),
-        *(_QWORD*)(v7 + 24) + 1072LL);
-    if (result != 0 && *(_DWORD*)(result + 32) != 0) {
-      return result;
+    v11 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)(*(_QWORD*)(v7 + 24) + 1072LL));
+    if (v11 != 0 && *(_DWORD*)(v11 + 32) != 0) {
+      return;
     }
     if (game_GameModeData_instance_ != 0) {
-      result = game_GameVariableTable_Find(
-          *(_QWORD*)(game_GameModeData_instance_ + 48),
-          *(_QWORD*)(v9 + 24) + 1072LL);
-      if (result != 0 && *(_DWORD*)(result + 32) != 0) {
-        return result;
+      v12 = game_GameVariableTable_Find_alt1(
+          *(_QWORD**)(game_GameModeData_instance_ + 48),
+          (unsigned __int64*)(*(_QWORD*)(v10 + 24) + 1072LL));
+      if (v12 != 0 && *(_DWORD*)(v12 + 32) != 0) {
+        return;
       }
     }
   }
-  v10 = *(unsigned __int16*)(a2 + 12);
-  result = (*(__int64 (**)(__int64, _QWORD, __int64))(*(_QWORD*)a2 + 16LL))(
-      a2, v6, 1);
-  if (v10 == *(unsigned __int16*)(a2 + 12)) {
-    return result;
+  v13 = *(unsigned __int16*)(a2 + 12);
+  (*(void (**)(__int64, _QWORD, __int64))(*(_QWORD*)a2 + 16LL))(a2, v6, 1);
+  if (v13 == *(unsigned __int16*)(a2 + 12)) {
+    return;
   }
-  v11 = *(unsigned __int8*)(a2 + 11);
-  v12 = (unsigned __int64)(GameData_21d99d0 - GameData_21d99c8) >> 2;
-  if ((int)v12 >= 1) {
-    v13 = *(_DWORD*)GameData_21d99c8;
-    v14 = 0;
-    v15 = *(_DWORD*)(GameData_21d99c8 + 4LL * (unsigned int)(v12 - 1));
-    if (v15 >= v10) {
-      v15 = v10;
+  v14 = *(unsigned __int8*)(a2 + 11);
+  v15 = (unsigned __int64)(GameData_21d99d0 - GameData_21d99c8) >> 2;
+  if ((int)v15 >= 1) {
+    v16 = *(_DWORD*)GameData_21d99c8;
+    v17 = 0;
+    v18 = *(_DWORD*)(GameData_21d99c8 + 4LL * (unsigned int)(v15 - 1));
+    if (v18 >= v13) {
+      v18 = v13;
     }
-    if (v13 <= v10) {
-      v13 = v15;
+    if (v16 <= v13) {
+      v16 = v18;
     }
     while (1) {
-      v16 = (unsigned int)(v14 + v12) >> 1;
-      v17 = *(_DWORD*)(GameData_21d99c8 + 4LL * v16);
-      if (v13 == v17) {
+      v19 = (unsigned int)(v17 + v15) >> 1;
+      v20 = *(_DWORD*)(GameData_21d99c8 + 4LL * v19);
+      if (v16 == v20) {
         break;
       }
-      if (v13 < v17) {
-        LODWORD(v12) = (unsigned int)(v14 + v12) >> 1;
+      if (v16 < v20) {
+        LODWORD(v15) = (unsigned int)(v17 + v15) >> 1;
       }
       else {
-        v14 = v16 + 1;
+        v17 = v19 + 1;
       }
-      if (v14 >= (int)v12) {
+      if (v17 >= (int)v15) {
         goto LABEL_25;
       }
     }
-    if (v11 == (unsigned __int8)(v16 + 1)) {
-      return result;
+    if (v14 == (unsigned __int8)(v19 + 1)) {
+      return;
     }
   LABEL_26:
-    v20[0] = v7;
-    v20[1] = v9;
-    v18 = GameReliance_8e0520(a2, (unsigned int)v10);
-    v19 = *(_BYTE*)(a2 + 11);
-    v21 = v18;
-    v22 = v19;
-    return ProcMapSeqResult_8c4680_alt1(v4 + 176, v20);
+    v23_.v23[0] = v7;
+    v23_.v23[1] = v10;
+    v21 = GameReliance_8e0520_alt1(a2, v13);
+    v22 = *(_BYTE*)(a2 + 11);
+    v23_.v24 = v21;
+    v23_.v25 = v22;
+    ProcMapSeqResult_8c4680_alt2((__int64*)(v4 + 176), v23_.v23);
+    return;
   }
-  LOBYTE(v14) = 0;
+  LOBYTE(v17) = 0;
 LABEL_25:
-  if (v11 != (unsigned __int8)v14) {
+  if (v14 != (unsigned __int8)v17) {
     goto LABEL_26;
   }
-  return result;
 }
 
 __int64* ProcMapSeqResult_8c4680(__int64* result, _QWORD* a2)

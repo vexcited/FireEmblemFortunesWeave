@@ -51,6 +51,12 @@ __int64 FinalMix_Unknown14(__int64 a1, _QWORD* a2, unsigned int a3, __int64 a4,
 __int64 FinalMix_2b4fd0_alt1(_QWORD, _QWORD, _QWORD) __asm__("FinalMix_2b4fd0");
 __int64 FinalMix_2b5220(__int64 result, unsigned int a2, char a3, __int64 a4,
                         __int64 a5);
+__int64 EffectAux_2af400(__int64, __int64, __int64, __int64 (***)(_QWORD));
+__int64 EffectAux_2af520(__int64, __int64);
+__int64 FinalMix_2af880(_QWORD, _QWORD, _QWORD);
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+void* SoundVoiceNX_14e360_alt1() __asm__("SoundVoiceNX_14e360");
 
 __int64 FinalMix_DeletingDestructor(__int64 a1)
 {
@@ -715,25 +721,26 @@ __int64 FinalMix_Unknown13(_QWORD* a1, _QWORD* a2, unsigned int a3, __int64 a4,
   __int64 result;
   int v11;
   __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  unsigned int v15;
-  int v16;
+  void* v13;
+  unsigned int v14;
+  int v15;
+  __int64 v16;
   __int64 v17;
-  __int64 v18;
-  char v19;
-  char* v20;
-  char v21;
-  char* v22;
-  int v23;
+  char v18;
+  char* v19;
+  char v20;
+  char* v21;
+  int v22;
+  __int64 v23;
   __int64 v24;
-  __int64 v25;
-  _QWORD* v26;
-  __int64 v27;
-  int v28;
-  __int16 v29;
+  _QWORD* v25;
+  __int64 v26;
+  struct {
+    int v27;
+    __int16 v28;
+  } v27_;
 
-  result = SoundVoiceNX_14e360(a1);
+  result = (__int64)SoundVoiceNX_14e360_alt1();
   v11 = *(_DWORD*)(result + 1552);
   if (v11 != 32000) {
   LABEL_4:
@@ -752,60 +759,59 @@ __int64 FinalMix_Unknown13(_QWORD* a1, _QWORD* a2, unsigned int a3, __int64 a4,
     v11 = *(_DWORD*)(v12 + 1552);
     goto LABEL_4;
   }
-
 LABEL_6:
-  v13 = (*(__int64 (**)(_QWORD*, __int64, __int64))(*a2 + 88LL))(a2, a4, a5);
-  v14 = SoundVoiceNX_14e360(v13);
+  (*(void (**)(_QWORD*, __int64, __int64))(*a2 + 88LL))(a2, a4, a5);
+  v13 = SoundVoiceNX_14e360_alt1();
   result = (*(__int64 (**)(_QWORD*, __int64, _QWORD*))(*a2 + 24LL))(
-      a2, v14 + 24, a1);
+      a2, (__int64)v13 + 24, a1);
   if ((result & 1) != 0) {
-    v15 = (*(__int64 (**)(_QWORD*, _QWORD))(*a1 + 48LL))(a1, a3);
-    v16 = (*(__int64 (**)(_QWORD*, _QWORD, _QWORD))(*a1 + 64LL))(a1, a3, 0);
-    v29 = 0;
-    v28 = 0;
-    if ((int)v15 >= 1) {
-      v17 = v15 & 7;
-      if (v15 >= 8) {
-        v18 = 0;
+    v14 = (*(__int64 (**)(_QWORD*, _QWORD))(*a1 + 48LL))(a1, a3);
+    v15 = (*(__int64 (**)(_QWORD*, _QWORD, _QWORD))(*a1 + 64LL))(a1, a3, 0);
+    v27_.v28 = 0;
+    v27_.v27 = 0;
+    if ((int)v14 >= 1) {
+      v16 = v14 & 7;
+      if (v14 >= 8) {
+        v17 = 0;
         do {
-          v19 = v16 + v18;
-          v20 = (char*)&v28 + v18 + 3;
-          v21 = v16 + v18 + 1;
-          *((_BYTE*)&v28 + v18) = v16 + v18;
-          v18 += 8;
-          *(v20 - 2) = v21;
-          *(v20 - 1) = v19 + 2;
-          *v20 = v19 + 3;
-          v20[1] = v19 + 4;
-          v20[2] = v19 + 5;
-          v20[3] = v19 + 6;
-          v20[4] = v19 + 7;
-        } while ((v15 & 0x7FFFFFF8) != v18);
+          v18 = v15 + v17;
+          v19 = (char*)&v27_.v27 + v17 + 3;
+          v20 = v15 + v17 + 1;
+          *((_BYTE*)&v27_.v27 + v17) = v15 + v17;
+          v17 += 8;
+          *(v19 - 2) = v20;
+          *(v19 - 1) = v18 + 2;
+          *v19 = v18 + 3;
+          v19[1] = v18 + 4;
+          v19[2] = v18 + 5;
+          v19[3] = v18 + 6;
+          v19[4] = v18 + 7;
+        } while ((v14 & 0x7FFFFFF8) != v17);
       }
       else {
-        v18 = 0;
+        v17 = 0;
       }
-      if ((v15 & 7) != 0) {
-        v22 = (char*)&v28 + v18;
-        v23 = v16 + v18;
+      if ((v14 & 7) != 0) {
+        v21 = (char*)&v27_.v27 + v17;
+        v22 = v15 + v17;
         do {
-          *v22++ = v23++;
-          --v17;
-        } while (v17 != 0);
+          *v21++ = v22++;
+          --v16;
+        } while (v16 != 0);
       }
     }
     (*(void (**)(_QWORD*, int*, int*, _QWORD, _QWORD))(*a2 + 32LL))(
-        a2, &v28, &v28, v15, v15);
-    nn_os_LockMutex(a1 + 1);
-    v24 = a1[5];
-    v25 = 16LL * (int)a3;
-    v27 = a2[1];
-    v26 = a2 + 1;
-    *v26 = *(_QWORD*)(v24 + v25);
-    *(_QWORD*)(v27 + 8) = v24 + v25;
-    *(_QWORD*)(*(_QWORD*)(v24 + v25) + 8LL) = v26;
-    *(_QWORD*)(v24 + v25) = v27;
-    return nn_os_UnlockMutex(a1 + 1);
+        a2, &v27_.v27, &v27_.v27, v14, v14);
+    nn_os_LockMutex_alt1((__int64)(a1 + 1));
+    v23 = a1[5];
+    v24 = 16LL * (int)a3;
+    v26 = a2[1];
+    v25 = a2 + 1;
+    *v25 = *(_QWORD*)(v23 + v24);
+    *(_QWORD*)(v26 + 8) = v23 + v24;
+    *(_QWORD*)(*(_QWORD*)(v23 + v24) + 8LL) = v25;
+    *(_QWORD*)(v23 + v24) = v26;
+    return nn_os_UnlockMutex_alt1((__int64)(a1 + 1));
   }
   return result;
 }
@@ -814,80 +820,81 @@ __int64 FinalMix_Unknown14(__int64 a1, _QWORD* a2, unsigned int a3, __int64 a4,
                            __int64 a5)
 {
   __int64 result;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
+  void* v11;
+  void* v12;
+  int v13;
   int v14;
-  int v15;
+  __int64 v15;
   __int64 v16;
-  __int64 v17;
-  char v18;
-  char* v19;
-  char v20;
-  char* v21;
-  int v22;
+  char v17;
+  char* v18;
+  char v19;
+  char* v20;
+  int v21;
+  __int64 v22;
   __int64 v23;
-  __int64 v24;
-  _QWORD* v25;
-  __int64 v26;
-  int v27;
-  __int16 v28;
+  _QWORD* v24;
+  __int64 v25;
+  struct {
+    int v26;
+    __int16 v27;
+  } v26_;
 
   result = (*(__int64 (**)(_QWORD*))(*a2 + 16LL))(a2);
   if ((result & 1) != 0) {
-    v11 = GameRoutine_2af880(a2, a4, a5);
-    v12 = SoundVoiceNX_14e360(v11);
-    v13 = SoundVoiceNX_14e360(v12);
-    result = GameRoutine_2af400((__int64)a2, v12 + 24, v13 + 1552,
-                                (__int64 (***)(_QWORD))a1);
+    FinalMix_2af880(a2, a4, a5);
+    v11 = SoundVoiceNX_14e360_alt1();
+    v12 = SoundVoiceNX_14e360_alt1();
+    result = EffectAux_2af400((__int64)a2, (__int64)v11 + 24,
+                              (__int64)v12 + 1552, (__int64 (***)(_QWORD))a1);
     if ((result & 1) != 0) {
-      v14 = (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)a1 + 48LL))(a1, a3);
-      v15 = (*(__int64 (**)(__int64, _QWORD, _QWORD))(*(_QWORD*)a1 + 64LL))(
+      v13 = (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)a1 + 48LL))(a1, a3);
+      v14 = (*(__int64 (**)(__int64, _QWORD, _QWORD))(*(_QWORD*)a1 + 64LL))(
           a1, a3, 0);
-      v28 = 0;
-      v27 = 0;
-      if (v14 >= 1) {
-        v16 = v14 & 7;
-        if ((unsigned int)v14 >= 8) {
-          v17 = 0;
+      v26_.v27 = 0;
+      v26_.v26 = 0;
+      if (v13 >= 1) {
+        v15 = v13 & 7;
+        if ((unsigned int)v13 >= 8) {
+          v16 = 0;
           do {
-            v18 = v15 + v17;
-            v19 = (char*)&v27 + v17 + 3;
-            v20 = v15 + v17 + 1;
-            *((_BYTE*)&v27 + v17) = v15 + v17;
-            v17 += 8;
-            *(v19 - 2) = v20;
-            *(v19 - 1) = v18 + 2;
-            *v19 = v18 + 3;
-            v19[1] = v18 + 4;
-            v19[2] = v18 + 5;
-            v19[3] = v18 + 6;
-            v19[4] = v18 + 7;
-          } while ((v14 & 0x7FFFFFF8) != v17);
+            v17 = v14 + v16;
+            v18 = (char*)&v26_.v26 + v16 + 3;
+            v19 = v14 + v16 + 1;
+            *((_BYTE*)&v26_.v26 + v16) = v14 + v16;
+            v16 += 8;
+            *(v18 - 2) = v19;
+            *(v18 - 1) = v17 + 2;
+            *v18 = v17 + 3;
+            v18[1] = v17 + 4;
+            v18[2] = v17 + 5;
+            v18[3] = v17 + 6;
+            v18[4] = v17 + 7;
+          } while ((v13 & 0x7FFFFFF8) != v16);
         }
         else {
-          v17 = 0;
+          v16 = 0;
         }
-        if ((v14 & 7) != 0) {
-          v21 = (char*)&v27 + v17;
-          v22 = v15 + v17;
+        if ((v13 & 7) != 0) {
+          v20 = (char*)&v26_.v26 + v16;
+          v21 = v14 + v16;
           do {
-            *v21++ = v22++;
-            --v16;
-          } while (v16 != 0);
+            *v20++ = v21++;
+            --v15;
+          } while (v15 != 0);
         }
       }
-      GameRoutine_2af520((__int64)a2, (__int64)&v27);
-      nn_os_LockMutex(a1 + 8);
-      v23 = *(_QWORD*)(a1 + 48);
-      v24 = 16LL * (int)a3;
-      v26 = a2[1];
-      v25 = a2 + 1;
-      *v25 = *(_QWORD*)(v23 + v24);
-      *(_QWORD*)(v26 + 8) = v23 + v24;
-      *(_QWORD*)(*(_QWORD*)(v23 + v24) + 8LL) = v25;
-      *(_QWORD*)(v23 + v24) = v26;
-      return nn_os_UnlockMutex(a1 + 8);
+      EffectAux_2af520((__int64)a2, (__int64)&v26_.v26);
+      nn_os_LockMutex_alt1(a1 + 8);
+      v22 = *(_QWORD*)(a1 + 48);
+      v23 = 16LL * (int)a3;
+      v25 = a2[1];
+      v24 = a2 + 1;
+      *v24 = *(_QWORD*)(v22 + v23);
+      *(_QWORD*)(v25 + 8) = v22 + v23;
+      *(_QWORD*)(*(_QWORD*)(v22 + v23) + 8LL) = v24;
+      *(_QWORD*)(v22 + v23) = v25;
+      return nn_os_UnlockMutex_alt1(a1 + 8);
     }
   }
   return result;

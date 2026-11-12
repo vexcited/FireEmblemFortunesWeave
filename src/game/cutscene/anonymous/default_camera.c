@@ -13,6 +13,8 @@ extern __int64 GameData_212c638;
 extern __int64 GameData_21c6978;
 __attribute__((swiftcall)) void DefaultCamera_DeletingDestructor(PSEUDO_X8 x8_);
 __attribute__((swiftcall)) void DefaultCamera_Unknown2(PSEUDO_X8 x8_);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __attribute__((swiftcall)) void DefaultCamera_DeletingDestructor(PSEUDO_X8 x8_)
 {
@@ -81,6 +83,8 @@ __attribute__((swiftcall)) void DefaultCamera_Unknown2(PSEUDO_X8 x8_)
   _OWORD* v5;
   __int64 result;
 
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   v1 = *(_QWORD*)(GameData_21c6978 + 32);
   if (*(_QWORD*)(GameData_21c6978 + 24) == v1) {
     goto LABEL_10;
@@ -107,8 +111,10 @@ __attribute__((swiftcall)) void DefaultCamera_Unknown2(PSEUDO_X8 x8_)
     goto LABEL_10;
   }
   v5 = a1;
-  (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
-  result = std___1___shared_weak_count___release_weak(v3);
+  (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3),
+      result = COERCE_AS(__typeof__(result),
+                         PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  result = std___1___shared_weak_count___release_weak_alt1(v3);
   a1 = v5;
   if (v4 == 0) {
   LABEL_10:

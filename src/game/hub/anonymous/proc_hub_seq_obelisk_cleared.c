@@ -28,7 +28,8 @@ void __attribute__((noreturn)) GameRoutine_fba420(void);
 __int64*
 game_hub_anonymous_ProcHubSeqObeliskCleared_CallAchievementDialog(__int64 a1);
 __int64 ProcHubSeqObeliskCleared_fba1c0(__int64 a1);
-__int64 ProcHubSeqObeliskCleared_fba200();
+__int64 ProcHubSeqObeliskCleared_fba200_alt1() __asm__(
+    "ProcHubSeqObeliskCleared_fba200");
 __int64 ProcHubSeqObeliskCleared_fba250();
 __int64* ProcHubSeqObeliskCleared_fba300(__int64* result, int a2);
 __int64
@@ -37,6 +38,8 @@ game_hub_anonymous_ProcHubSeqObeliskCleared_CallAchievementDialog_closure0_Invok
 extern __int64 GameData_21f3ca0;
 extern __int64 game_script_hub_g_frame_counter;
 float ProcHubSeqObeliskCleared_Unknown3(__int64 a1, float result);
+void GameHr_cdeee0(__int64 result, __int64);
+void ProcHubSeqObeliskCleared_fba200();
 __int64*
 
 game_hub_anonymous_ProcHubSeqObeliskCleared_CallAchievementDialog(__int64 a1)
@@ -120,18 +123,21 @@ __int64 ProcHubSeqObeliskCleared_fba1c0(__int64 a1)
   return game_VariableManager_SetFlag(&v2, 1);
 }
 
-__int64 ProcHubSeqObeliskCleared_fba200()
+void ProcHubSeqObeliskCleared_fba200()
 {
   __int64 v0;
-  int v2;
-  __int16 v3;
-  int v4;
+  struct {
+    int v1;
+    __int16 v2;
+    char gap10_[2];
+    int v3;
+  } v1_;
 
-  v3 = 0;
+  v1_.v2 = 0;
   v0 = *(_QWORD*)GameData_212dc60[0];
-  v4 = 1065353216;
-  v2 = 1069547520;
-  return GameRoutine_cdeee0(v0, &v2);
+  v1_.v3 = 1065353216;
+  v1_.v1 = 1069547520;
+  GameHr_cdeee0(v0, (__int64)&v1_.v1);
 }
 
 __int64 ProcHubSeqObeliskCleared_fba250()

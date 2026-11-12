@@ -49,6 +49,13 @@ extern __int64* GameData_212d6a8;
 extern int GameData_1be9118[];
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 game_cmdbtl_CmdBtlCommandLinkMenu_CreateBind(__int64 result);
+__attribute__((swiftcall)) void CmdBtlUnit_e7e340(PSEUDO_X8, __int64 result,
+                                                  int);
+__int64 game_gameui_anonymous_15d2830(__int64*, __int64, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
 
 __int64 CmdBtlCommandLinkMenu_Unknown84(__int64 a1)
 {
@@ -65,7 +72,7 @@ _QWORD* CmdBtlCommandLinkMenu_Unknown88(_QWORD* result)
 {
   __int64 v1;
   _QWORD* v2;
-  unsigned int v3;
+  int v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
@@ -75,8 +82,10 @@ _QWORD* CmdBtlCommandLinkMenu_Unknown88(_QWORD* result)
   __int64* v10;
   __int64 v11;
   __int64 v12;
-  __int64 v13;
-  __int64 v14;
+  struct {
+    __int64 v13;
+    __int64 v14;
+  } v13_;
 
   v1 = *(_QWORD*)(*GameData_212ea58 + 640);
   if (v1 == 0) {
@@ -98,7 +107,7 @@ _QWORD* CmdBtlCommandLinkMenu_Unknown88(_QWORD* result)
     v4 = result[12];
     if (v4 == 0) {
     LABEL_11:
-      GameRoutine_e7e340((void*)&v13, 0, v3);
+      CmdBtlUnit_e7e340((void*)(&v13_.v13), 0, v3);
       goto LABEL_12;
     }
   }
@@ -112,64 +121,62 @@ _QWORD* CmdBtlCommandLinkMenu_Unknown88(_QWORD* result)
   }
   atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 16), 1u,
                             memory_order_relaxed);
-  v6 = std___1___shared_weak_count_lock(v4);
+  v6 = std___1___shared_weak_count_lock_alt1(v4);
   if (v6 == 0) {
     goto LABEL_11;
   }
   v7 = v6;
-  GameRoutine_e7e340((void*)&v13, v5, v3);
+  CmdBtlUnit_e7e340((void*)(&v13_.v13), v5, v3);
   if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-    std___1___shared_weak_count___release_weak(v7);
+    std___1___shared_weak_count___release_weak_alt1(v7);
   }
-
 LABEL_12:
-  if (v13 != 0) {
-    v8 = *(__int64**)(v13 + 8);
-    v9 = v14;
-    if (v14 == 0) {
+  if (v13_.v13 != 0) {
+    v8 = *(__int64**)(v13_.v13 + 8);
+    v9 = v13_.v14;
+    if (v13_.v14 == 0) {
       goto LABEL_18;
     }
   LABEL_16:
     if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-      std___1___shared_weak_count___release_weak(v9);
+      std___1___shared_weak_count___release_weak_alt1(v9);
     }
     goto LABEL_18;
   }
   v8 = nullptr;
-  v9 = v14;
-  if (v14 != 0) {
+  v9 = v13_.v14;
+  if (v13_.v14 != 0) {
     goto LABEL_16;
   }
-
 LABEL_18:
   v10 = game_g_empty_item_ptr;
   if (v8 != nullptr) {
     v10 = v8;
   }
-  v13 = *v10;
+  v13_.v13 = *v10;
   if (v4 == 0) {
-    return (_QWORD*)GameRoutine_15d2830((__int64)(v2 + 133),
-                                        (unsigned __int16*)&v13, 0);
+    return (_QWORD*)game_gameui_anonymous_15d2830(v2 + 133, (__int64)&v13_.v13,
+                                                  0);
   }
-  v11 = std___1___shared_weak_count_lock(v4);
+  v11 = std___1___shared_weak_count_lock_alt1(v4);
   if (v11 != 0) {
     v12 = v11;
-    GameRoutine_15d2830((__int64)(v2 + 133), (unsigned __int16*)&v13,
-                        *(_QWORD*)(v5 + 16));
+    game_gameui_anonymous_15d2830(v2 + 133, (__int64)&v13_.v13,
+                                  *(_QWORD*)(v5 + 16));
     if (atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-      std___1___shared_weak_count___release_weak(v12);
+      std___1___shared_weak_count___release_weak_alt1(v12);
     }
   }
   else {
-    GameRoutine_15d2830((__int64)(v2 + 133), (unsigned __int16*)&v13, 0);
+    game_gameui_anonymous_15d2830(v2 + 133, (__int64)&v13_.v13, 0);
   }
-  return (_QWORD*)std___1___shared_weak_count___release_weak(v4);
+  return (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v4);
 }
 
 __int64 game_cmdbtl_CmdBtlCommandLinkMenu_CreateBind(__int64 result)

@@ -16,6 +16,8 @@ extern __int64 GameData_21c9758;
 extern int GameData_21f4d44;
 __int64 ObjectTransparentModule_Unknown9(__int64 a1);
 __int64 ObjectTransparentModule_f3cec0(__int64 result, float a2, float a3);
+__int64 GameRoutine_f3ca00_alt1(__int64, __int64) __asm__("GameRoutine_f3ca00");
+void ObjectTransparent_f392c0(__int64, __int64);
 
 __int64 ObjectTransparentModule_Unknown8(__int64 a1)
 {
@@ -23,25 +25,28 @@ __int64 ObjectTransparentModule_Unknown8(__int64 a1)
   __int64 result;
   __int64 v4;
   int v5;
-  int v6;
-  char v7;
-  __int64 v8;
-  __int64 v9;
+  struct {
+    int v6;
+    char v7;
+    char gap13_[3];
+    __int64 v8;
+    __int64 v9;
+  } v6_;
 
   v2 = (__int64*)GameData_212c7d8[0];
   result = *(_QWORD*)GameData_212c7d8[0];
   if (*(_QWORD*)GameData_212c7d8[0] != 0) {
-    GameRoutine_f392c0(result, a1);
+    ObjectTransparent_f392c0(result, a1);
     if (*(_BYTE*)(a1 + 100) == 1) {
       *(_BYTE*)(a1 + 100) = 0;
     }
     v4 = *v2;
-    v8 = 0;
-    v9 = 0;
+    v6_.v8 = 0;
+    v6_.v9 = 0;
     v5 = *(_DWORD*)(v4 + 304);
-    v7 = 1;
-    v6 = v5;
-    return GameRoutine_f3ca00(a1, &v6);
+    v6_.v7 = 1;
+    v6_.v6 = v5;
+    return GameRoutine_f3ca00_alt1(a1, (__int64)&v6_.v6);
   }
   return result;
 }

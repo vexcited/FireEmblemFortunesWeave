@@ -10,6 +10,9 @@ float GameRoutine_e9f200(_QWORD);
 __int64 LegionStackApproach_Unknown2(__int64 result);
 __int64 LegionStackApproach_Unknown4(__int64 a1);
 __int64 LegionStackApproach_Unknown5(__int64 a1);
+__int64 GameHr_e40f80(__int64, unsigned int*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 LegionStackApproach_Unknown2(__int64 result)
 {
@@ -33,27 +36,35 @@ __int64 LegionStackApproach_Unknown2(__int64 result)
   int v20;
   __int64 v21;
   int v22;
-  int v23;
-  char v24;
-  char v25;
-  char v26;
-  char v27;
-  char v28;
-  char v29;
-  char v30;
+  struct {
+    unsigned int v23;
+    char v24;
+    char gap5_[3];
+    char v25;
+    char gap9_[3];
+    char v26;
+    char gap13_[3];
+    char v27;
+    char gap17_[3];
+    char v28;
+    char gap21_[3];
+    char v29;
+    char gap25_[3];
+    char v30;
+  } v23_;
 
   v1 = result;
   if (*(_BYTE*)(result + 60) == 1) {
-    v25 = 0;
-    v26 = 0;
-    v27 = 0;
-    v28 = 0;
-    v29 = 0;
-    v30 = 0;
-    v23 = 869686455;
-    v24 = 1;
+    v23_.v25 = 0;
+    v23_.v26 = 0;
+    v23_.v27 = 0;
+    v23_.v28 = 0;
+    v23_.v29 = 0;
+    v23_.v30 = 0;
+    v23_.v23 = 869686455;
+    v23_.v24 = 1;
     result =
-        GameRoutine_e40f80(*(_QWORD*)(*(_QWORD*)(result + 40) + 104LL), &v23);
+        GameHr_e40f80(*(_QWORD*)(*(_QWORD*)(result + 40) + 104LL), &v23_.v23);
   }
   else {
     v2 = *(_QWORD*)(*(_QWORD*)(result + 40) + 120LL);
@@ -101,18 +112,18 @@ __int64 LegionStackApproach_Unknown2(__int64 result)
                                 memory_order_relaxed);
       v16 = *(_QWORD*)(v15 + 40);
       if (*(_QWORD*)(result + 8) == -1 || v16 == 0) {
-        return std___1___shared_weak_count___release_weak(result);
+        return std___1___shared_weak_count___release_weak_alt1(result);
       }
       v18 = *(_QWORD*)(v16 + 80);
       if (v18 == 0) {
-        return std___1___shared_weak_count___release_weak(result);
+        return std___1___shared_weak_count___release_weak_alt1(result);
       }
       v19 = *(_QWORD*)(v18 + 8) == -1 || *(_QWORD*)(v16 + 88) == 0;
       if (v19 || *(_QWORD*)(result + 8) == -1) {
-        return std___1___shared_weak_count___release_weak(result);
+        return std___1___shared_weak_count___release_weak_alt1(result);
       }
       else {
-        result = std___1___shared_weak_count___release_weak(result);
+        result = std___1___shared_weak_count___release_weak_alt1(result);
         v20 = *(_DWORD*)(v1 + 56);
         v21 = *(_QWORD*)(*(_QWORD*)(v1 + 40) + 120LL);
         *(_QWORD*)(v21 + 120) = 0;

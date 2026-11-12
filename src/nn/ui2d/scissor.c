@@ -8,6 +8,7 @@ __int64 Pane_58f460(__int64 result, __int64, __int64);
 extern __int64 (*nn_ui2d_Scissor_vtable[])();
 __int64 Scissor_597560(_QWORD* a1, _BYTE* a2, __int64 a3);
 __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3);
+__int64 DrawInfo_5fdf40(__int64, __int64, int, __int64);
 
 __int64 Scissor_597560(_QWORD* a1, _BYTE* a2, __int64 a3)
 {
@@ -20,8 +21,6 @@ __int64 Scissor_597560(_QWORD* a1, _BYTE* a2, __int64 a3)
 
 __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3)
 {
-  __int64 v3;
-  __int64 v4;
   __int128 v5;
   float v6;
   float v7;
@@ -71,15 +70,15 @@ __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3)
   __int64 v53;
   __int64 v54;
   __int64 v55;
-  __int64 v56;
-  __int64 v57;
-  __int64 v58;
-  __int64 v59;
+  struct {
+    __int64 v56;
+    __int64 v57;
+    __int64 v58;
+    __int64 v59;
+  } v56_;
   __int64 v60;
   __int128 v61;
   __int64 v62;
-  __int64 v63;
-  __int64 v64;
 
   if ((*(_BYTE*)(result + 88) & 1) == 0 || *(_BYTE*)(result + 90) == 0) {
     return Pane_58f460(result, a2, a3);
@@ -100,10 +99,10 @@ __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3)
   if ((*(_BYTE*)(a2 + 404) & 0x10) != 0) {
     v13 = *((float*)&v5 + 3) - *(float*)(a2 + 392);
     v11 = v11 - *(float*)(a2 + 396);
-    v14 = 1.0;
+    v14 = 0x1.0000000000000p+0f;
   }
   else {
-    v14 = 1.0;
+    v14 = 0x1.0000000000000p+0f;
     if ((*(_BYTE*)(a2 + 404) & 0x80) != 0) {
       v15 = *(_QWORD*)(a2 + 192);
       if (v15 != 0) {
@@ -116,10 +115,11 @@ __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3)
   v16 = *(unsigned __int8*)(result + 91);
   v17 = v16 & 3;
   v18 = (v16 >> 2) & 3;
-  v19 = (float)((float)(*(float*)&v5 * *(float*)(result + 80)) / v14) * 0.5;
+  v19 = (float)((float)(*(float*)&v5 * *(float*)(result + 80)) / v14) *
+        0x1.0000000000000p-1f;
   v20 =
       (float)((float)(*(float*)(result + 132) * *(float*)(result + 84)) / v14) *
-      0.5;
+      0x1.0000000000000p-1f;
   v21 = fabsf(v19);
   v22 = v13 - v19;
   v23 = v13 + v19;
@@ -137,7 +137,7 @@ __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3)
   if (v18 == 1) {
     v11 = v26;
   }
-  v29 = v13 - (float)(v27 * 0.5);
+  v29 = v13 - (float)(v27 * 0x1.0000000000000p-1f);
   if (v18 == 2) {
     v11 = v25;
   }
@@ -146,12 +146,13 @@ __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3)
     v11 = -v11;
   }
   v31 = v7 / v6;
-  v32 = v9 + (float)((float)(v29 + (float)(v6 * 0.5)) * (float)(v7 / v6));
+  v32 = v9 + (float)((float)(v29 + (float)(v6 * 0x1.0000000000000p-1f)) *
+                     (float)(v7 / v6));
   v33 = v31 * v27;
-  v34 =
-      v10 +
-      (float)((float)((float)(v11 - (float)(v28 * 0.5)) + (float)(v12 * 0.5)) *
-              v30);
+  v34 = v10 +
+        (float)((float)((float)(v11 - (float)(v28 * 0x1.0000000000000p-1f)) +
+                        (float)(v12 * 0x1.0000000000000p-1f)) *
+                v30);
   v35 = v30 * v28;
   if (v32 >= v9) {
     v36 = v32;
@@ -190,24 +191,25 @@ __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3)
     v45 = v42;
   }
   v46 = v43 < v44 && v36 < v38;
-  if (v46 && v40 > 0.0 && v45 > 0.0) {
-    v63 = v3;
-    v64 = v4;
+  if (v46 && v40 > 0x0.0p+0f && v45 > 0x0.0p+0f) {
     v47 = result;
     HIDWORD(v61) = 0;
     v62 = 0;
-    LODWORD(v60) = (int)(float)(v36 + 0.5);
-    HIDWORD(v60) = (int)(float)(v43 + 0.5);
-    LODWORD(v61) = (int)(float)((float)(v36 + v40) + 0.5) - v60;
+    LODWORD(v60) = (int)(float)(v36 + 0x1.0000000000000p-1f);
+    HIDWORD(v60) = (int)(float)(v43 + 0x1.0000000000000p-1f);
+    LODWORD(v61) =
+        (int)(float)((float)(v36 + v40) + 0x1.0000000000000p-1f) - v60;
     *(_QWORD*)((char*)&v61 + 4) =
-        (unsigned int)((int)(float)((float)(v43 + v45) + 0.5) - HIDWORD(v60));
+        (unsigned int)((int)(float)((float)(v43 + v45) +
+                                    0x1.0000000000000p-1f) -
+                       HIDWORD(v60));
     v50 = *(_QWORD*)(a2 + 312);
-    v56 = *(_QWORD*)(a2 + 304);
-    v57 = v50;
+    v56_.v56 = *(_QWORD*)(a2 + 304);
+    v56_.v57 = v50;
     v51 = *(_QWORD*)(a2 + 328);
-    v58 = *(_QWORD*)(a2 + 320);
-    v59 = v51;
-    GameRoutine_5fdf40(a3, 0, 1, &v60);
+    v56_.v58 = *(_QWORD*)(a2 + 320);
+    v56_.v59 = v51;
+    DrawInfo_5fdf40(a3, 0, 1, (__int64)&v60);
     v52 = v61;
     *(_QWORD*)(a2 + 304) = v60;
     *(_QWORD*)(a2 + 312) = v52;
@@ -215,12 +217,12 @@ __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3)
     *(_QWORD*)(a2 + 320) = *((_QWORD*)&v61 + 1);
     *(_QWORD*)(a2 + 328) = v53;
     Pane_58f460(v47, a2, a3);
-    result = GameRoutine_5fdf40(a3, 0, 1, &v56);
-    v54 = v57;
-    *(_QWORD*)(a2 + 304) = v56;
+    result = DrawInfo_5fdf40(a3, 0, 1, (__int64)&v56_.v56);
+    v54 = v56_.v57;
+    *(_QWORD*)(a2 + 304) = v56_.v56;
     *(_QWORD*)(a2 + 312) = v54;
-    v55 = v59;
-    *(_QWORD*)(a2 + 320) = v58;
+    v55 = v56_.v59;
+    *(_QWORD*)(a2 + 320) = v56_.v58;
     *(_QWORD*)(a2 + 328) = v55;
   }
   return result;

@@ -24,6 +24,9 @@ extern __int64 GameData_21cd130;
 extern __int64* GameData_212eba8[8];
 _QWORD* game_map_Zoom_CreateZoomSeq_lambda1_Invoke(__int64 a1, __int64* a2);
 __int64 game_map_Zoom_CreateZoomSeq_lambda2_Invoke(__int64 a1);
+__int64 game_e5f420(__int64, char*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 Zoom_Destructor(_QWORD* a1)
 {
@@ -237,33 +240,36 @@ __int64 game_map_Zoom_CreateZoomSeq_lambda2_Invoke(__int64 a1)
   __int64 v6;
   __int64 v7;
   __int64 v8;
-  _BYTE v9[2];
-  __int16 v10;
-  char v11;
-  char v12;
-  __int16 v13;
-  char v14;
-  char v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
+  struct {
+    char v9[2];
+    __int16 v10;
+    char v11;
+    char v12;
+    __int16 v13;
+    char v14;
+    char v15;
+    char gap18_[6];
+    __int64 v16;
+    __int64 v17;
+    __int64 v18;
+  } v9_;
 
   v1 = *(_QWORD*)(a1 + 8);
   *(_QWORD*)(*GameData_212eba8[0] + 192) = 0;
   result = *(_QWORD*)(v1 + 40);
   if (result != 0) {
-    v16 = 0;
-    v10 = 0;
+    v9_.v16 = 0;
+    v9_.v10 = 0;
     v3 = *(_QWORD*)(GameData_21cd130 + 48);
     v4 = *(_DWORD*)(v3 + 8);
-    v9[1] = *(_DWORD*)(v3 + 12);
+    v9_.v9[1] = *(_DWORD*)(v3 + 12);
     LOBYTE(v3) = *(_BYTE*)(v1 + 30);
-    v9[0] = v4;
-    v11 = 1;
-    v15 = 1;
-    v12 = v3;
-    v13 = *(_WORD*)(v1 + 31);
-    v14 = *(_BYTE*)(v1 + 33);
+    v9_.v9[0] = v4;
+    v9_.v11 = 1;
+    v9_.v15 = 1;
+    v9_.v12 = v3;
+    v9_.v13 = *(_WORD*)(v1 + 31);
+    v9_.v14 = *(_BYTE*)(v1 + 33);
     v5 = *(_QWORD*)(GameData_21c6978 + 32);
     if (*(_QWORD*)(GameData_21c6978 + 24) == v5) {
       v7 = 0;
@@ -284,14 +290,14 @@ __int64 game_map_Zoom_CreateZoomSeq_lambda2_Invoke(__int64 a1)
         v7 = 0;
       }
     }
-    v17 = v7;
-    v18 = v6;
-    result = GameRoutine_e5f420(result, v9);
-    v8 = v18;
-    if (v18 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
-                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+    v9_.v17 = v7;
+    v9_.v18 = v6;
+    result = game_e5f420(result, v9_.v9);
+    v8 = v9_.v18;
+    if (v9_.v18 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9_.v18 + 8),
+                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-      result = std___1___shared_weak_count___release_weak(v8);
+      result = std___1___shared_weak_count___release_weak_alt1(v8);
     }
   }
   *(_BYTE*)(v1 + 21) = 1;

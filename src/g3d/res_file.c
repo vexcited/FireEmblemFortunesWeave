@@ -43,6 +43,10 @@ unsigned __int64 ResFile_ad7640(__int64 a1);
 __int64 ResFile_ad8b40(__int64 a1, __int64 a2, float** a3);
 __int64* GameRoutine_adb760(__int64* result, unsigned __int64);
 _QWORD* ResFile_adb3c0(float* a1, unsigned __int8* a2, char* a3);
+_QWORD* GameRoutine_a934d0_alt1(_QWORD* result,
+                                _QWORD*) __asm__("GameRoutine_a934d0");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __attribute__((swiftcall)) void ResFile_ad6ca0(PSEUDO_X8 x8_)
 {
@@ -77,17 +81,15 @@ __attribute__((swiftcall)) void ResFile_ad6ca0(PSEUDO_X8 x8_)
 
 _QWORD* g3d_ResFile_prepareAsyncLoading(_QWORD* result, _QWORD* a2)
 {
-  __int64 v2;
-  __int64 v3;
   _QWORD* v4;
-  _QWORD* v6;
+  __int64* v6;
   _QWORD* v7;
   __int64 v8;
-  __int64 v9;
+  _QWORD* v9;
   __int64 v10;
   _QWORD* v11;
   __int64 v12;
-  __int64 v13;
+  _QWORD* v13;
   __int64 v14;
   _QWORD* v15;
   _QWORD* v16;
@@ -96,18 +98,16 @@ _QWORD* g3d_ResFile_prepareAsyncLoading(_QWORD* result, _QWORD* a2)
   _QWORD* v19;
   __int64 v20;
   __int64 v21;
-  _QWORD v22[4];
-  _QWORD* v23;
-  __int64 v24;
-  __int64 v25;
+  struct {
+    _QWORD v22[4];
+    _QWORD* v23;
+  } v22_;
 
   if (result[10] == 0) {
-    v24 = v2;
-    v25 = v3;
     v4 = result;
     if (result[12] == 0) {
-      v6 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-      v7 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      v6 = (__int64*)fw_memory_g_heap_manager_ptr;
+      v7 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0);
       v7[2] = 0;
       v8 = v4[11];
@@ -119,25 +119,25 @@ _QWORD* g3d_ResFile_prepareAsyncLoading(_QWORD* result, _QWORD* a2)
       if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-        std___1___shared_weak_count___release_weak(v8);
+        std___1___shared_weak_count___release_weak_alt1(v8);
       }
-      v9 = v4[10];
-      v22[0] = GameData_1fc2618;
-      v22[1] = v4;
-      v23 = v22;
-      GameRoutine_a934d0(v22, v9);
-      if (v23 == v22) {
+      v9 = (_QWORD*)v4[10];
+      v22_.v22[0] = GameData_1fc2618;
+      v22_.v22[1] = v4;
+      v22_.v23 = v22_.v22;
+      GameRoutine_a934d0_alt1(v22_.v22, v9);
+      if (v22_.v23 == v22_.v22) {
         v10 = 32;
       }
       else {
-        if (v23 == nullptr) {
+        if (v22_.v23 == nullptr) {
           goto LABEL_12;
         }
         v10 = 40;
       }
-      (*(void (**)(__int64))(*v23 + v10))((__int64)v23);
+      (*(void (**)(__int64))(*v22_.v23 + v10))((__int64)v22_.v23);
     LABEL_12:
-      v11 = (_QWORD*)fw_memory_HeapManager_Allocate(*v6, 80, 16, 0);
+      v11 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(*v6, 80, 16, 0);
       v12 = v4[13];
       v11[1] = 0;
       v11[2] = 0;
@@ -148,36 +148,36 @@ _QWORD* g3d_ResFile_prepareAsyncLoading(_QWORD* result, _QWORD* a2)
       if (v12 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-        std___1___shared_weak_count___release_weak(v12);
+        std___1___shared_weak_count___release_weak_alt1(v12);
       }
-      v13 = v4[12];
-      v22[0] = GameData_1fc2698;
-      v22[1] = v4;
-      v23 = v22;
-      GameRoutine_a934d0(v22, v13);
-      if (v23 == v22) {
+      v13 = (_QWORD*)v4[12];
+      v22_.v22[0] = GameData_1fc2698;
+      v22_.v22[1] = v4;
+      v22_.v23 = v22_.v22;
+      GameRoutine_a934d0_alt1(v22_.v22, v13);
+      if (v22_.v23 == v22_.v22) {
         v14 = 32;
       }
       else {
-        if (v23 == nullptr) {
+        if (v22_.v23 == nullptr) {
           goto LABEL_20;
         }
         v14 = 40;
       }
-      (*(void (**)(__int64))(*v23 + v14))((__int64)v23);
+      (*(void (**)(__int64))(*v22_.v23 + v14))((__int64)v22_.v23);
     LABEL_20:
       v15 = (_QWORD*)a2[4];
       v16 = a2;
       if (v15 == nullptr) {
-        v23 = nullptr;
+        v22_.v23 = nullptr;
         goto LABEL_29;
       }
       if (v15 != a2) {
-        v23 = (_QWORD*)a2[4];
+        v22_.v23 = (_QWORD*)a2[4];
         goto LABEL_29;
       }
-      v23 = v22;
-      (*(void (**)(_QWORD*, _QWORD*))(*v15 + 24LL))(v15, v22);
+      v22_.v23 = v22_.v22;
+      (*(void (**)(_QWORD*, _QWORD*))(*v15 + 24LL))(v15, v22_.v22);
       v17 = (_QWORD*)a2[4];
       a2[4] = 0;
       if (v17 == a2) {
@@ -207,28 +207,29 @@ _QWORD* g3d_ResFile_prepareAsyncLoading(_QWORD* result, _QWORD* a2)
       }
       (*(void (**)(__int64))(*v19 + v20))((__int64)v19);
     LABEL_34:
-      result = v23;
-      if (v23 == nullptr) {
+      result = v22_.v23;
+      if (v22_.v23 == nullptr) {
         v4[18] = 0;
         return result;
       }
-      if (v23 != v22) {
-        v4[18] = v23;
+      if (v22_.v23 != v22_.v22) {
+        v4[18] = v22_.v23;
         return result;
       }
       v4[18] = v4 + 14;
       (*(void (**)(_QWORD*, _QWORD*))(*result + 24LL))(result, v4 + 14);
-      result = v23;
-      if (v23 == v22) {
+      result = v22_.v23;
+      if (v22_.v23 == v22_.v22) {
         v21 = 32;
       }
       else {
-        if (v23 == nullptr) {
+        if (v22_.v23 == nullptr) {
           return result;
         }
         v21 = 40;
       }
-      return (_QWORD*)(*(__int64 (**)(__int64))(*v23 + v21))((__int64)v23);
+      return (_QWORD*)(*(__int64 (**)(__int64))(*v22_.v23 + v21))(
+          (__int64)v22_.v23);
     }
   }
   return result;

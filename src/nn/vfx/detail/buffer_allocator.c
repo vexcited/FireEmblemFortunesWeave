@@ -23,6 +23,8 @@ __int64 BufferAllocator_5b57b0(__int64 a1);
 
 __int64 BufferAllocator_5b2c60(__int64 result)
 {
+
+#pragma clang fp contract(off)
   __int64 v1;
   __int64 v2;
   __int64 v3;
@@ -52,12 +54,14 @@ __int64 BufferAllocator_5b2c60(__int64 result)
   float v27;
   int v28;
   char* v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  float v33;
-  int v34;
-  __int64 v35;
+  struct {
+    __int64 v30;
+    __int64 v31;
+    __int64 v32;
+    float v33;
+    int v34;
+    __int64 v35;
+  } v30_;
 
   v1 = *(_QWORD*)(result + 1008);
   v2 = *(_QWORD*)(result + 992);
@@ -93,13 +97,11 @@ __int64 BufferAllocator_5b2c60(__int64 result)
   if (v3 == 0) {
     goto LABEL_8;
   }
-
 LABEL_4:
   v7 = *(__int64 (**)(_QWORD))(v3 + 64);
   if (v5 == nullptr) {
     goto LABEL_9;
   }
-
 LABEL_11:
   if (*(int*)(result + 40) >= 1) {
     v8 = 0;
@@ -112,15 +114,15 @@ LABEL_11:
             v11 = *(_QWORD*)(v4 + 176) + v8;
             v12 = *(float*)(v11 + 8);
             v13 = *(_DWORD*)(v11 + 12);
-            v32 = v4;
-            v35 = (unsigned int)v9;
-            v33 = v10 - v12;
-            v34 = v13;
-            v30 = *(_QWORD*)(v11 + 16);
-            v31 = *(_QWORD*)(v11 + 24);
-            v5(&v30);
-            v6(&v30);
-            result = v7(&v30);
+            v30_.v32 = v4;
+            v30_.v35 = (unsigned int)v9;
+            v30_.v33 = v10 - v12;
+            v30_.v34 = v13;
+            v30_.v30 = *(_QWORD*)(v11 + 16);
+            v30_.v31 = *(_QWORD*)(v11 + 24);
+            v5(&v30_.v30);
+            v6(&v30_.v30);
+            result = v7(&v30_.v30);
             ++v9;
             *(_QWORD*)(*(_QWORD*)(v4 + 176) + v8 + 24) = 0;
             v14 = *(_QWORD*)(v4 + 176) + v8;
@@ -134,14 +136,14 @@ LABEL_11:
             v26 = (float*)((char*)v7 + *(_QWORD*)(v4 + 176));
             v27 = v26[2];
             v28 = *((_DWORD*)v26 + 3);
-            v32 = v4;
-            v35 = (unsigned int)v8;
-            v33 = v25 - v27;
-            v34 = v28;
-            v30 = *((_QWORD*)v26 + 2);
-            v31 = *((_QWORD*)v26 + 3);
-            v5(&v30);
-            result = ((__int64 (*)(__int64*))v6)(&v30);
+            v30_.v32 = v4;
+            v30_.v35 = (unsigned int)v8;
+            v30_.v33 = v25 - v27;
+            v30_.v34 = v28;
+            v30_.v30 = *((_QWORD*)v26 + 2);
+            v30_.v31 = *((_QWORD*)v26 + 3);
+            v5(&v30_.v30);
+            result = ((__int64 (*)(__int64*))v6)(&v30_.v30);
             ++v8;
             *(_QWORD*)((char*)v7 + *(_QWORD*)(v4 + 176) + 24) = 0;
             v29 = (char*)v7 + *(_QWORD*)(v4 + 176);
@@ -156,15 +158,15 @@ LABEL_11:
           v22 = (float*)((char*)v6 + *(_QWORD*)(v4 + 176));
           v23 = v22[2];
           v24 = *((_DWORD*)v22 + 3);
-          v32 = v4;
-          v35 = (unsigned int)v8;
-          v33 = v21 - v23;
-          v34 = v24;
-          v30 = *((_QWORD*)v22 + 2);
-          v31 = *((_QWORD*)v22 + 3);
-          result = ((__int64 (*)(__int64*))v5)(&v30);
+          v30_.v32 = v4;
+          v30_.v35 = (unsigned int)v8;
+          v30_.v33 = v21 - v23;
+          v30_.v34 = v24;
+          v30_.v30 = *((_QWORD*)v22 + 2);
+          v30_.v31 = *((_QWORD*)v22 + 3);
+          result = ((__int64 (*)(__int64*))v5)(&v30_.v30);
           if (v7 != nullptr) {
-            result = v7(&v30);
+            result = v7(&v30_.v30);
           }
           ++v8;
           *(_QWORD*)((char*)v6 + *(_QWORD*)(v4 + 176) + 24) = 0;
@@ -180,17 +182,17 @@ LABEL_11:
         v17 = (float*)((char*)v5 + *(_QWORD*)(v4 + 176));
         v18 = v17[2];
         v19 = *((_DWORD*)v17 + 3);
-        v32 = v4;
-        v35 = (unsigned int)v8;
-        v33 = v16 - v18;
-        v34 = v19;
-        v30 = *((_QWORD*)v17 + 2);
-        v31 = *((_QWORD*)v17 + 3);
+        v30_.v32 = v4;
+        v30_.v35 = (unsigned int)v8;
+        v30_.v33 = v16 - v18;
+        v30_.v34 = v19;
+        v30_.v30 = *((_QWORD*)v17 + 2);
+        v30_.v31 = *((_QWORD*)v17 + 3);
         if (v6 != nullptr) {
-          result = ((__int64 (*)(__int64*))v6)(&v30);
+          result = ((__int64 (*)(__int64*))v6)(&v30_.v30);
         }
         if (v7 != nullptr) {
-          result = v7(&v30);
+          result = v7(&v30_.v30);
         }
         ++v8;
         *(_QWORD*)((char*)v5 + *(_QWORD*)(v4 + 176) + 24) = 0;

@@ -25,16 +25,31 @@ __int64 MultiMenu_1788900(_QWORD* a1, char a2, char a3);
 __int64 MultiMenu_1788ae0(__int64 a1, char a2);
 __int64 MultiMenu_1788c00(__int64 a1, char a2, char a3);
 __int64 MultiMenu_17890a0(__int64 a1, char a2);
+__int64 GameRoutine_60a020_alt1(__int64,
+                                const char*) __asm__("GameRoutine_60a020");
+__int64 GameRoutine_97ee10_alt1(__int64 result,
+                                unsigned __int8) __asm__("GameRoutine_97ee10");
+__int64 ProcInst_657850_alt1(__int64, __int64, __int64, char,
+                             __int64) __asm__("ProcInst_657850");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+unsigned __int64 GameRoutine_887920_alt1(_QWORD*,
+                                         __int64) __asm__("GameRoutine_887920");
+void TutorialInfo_162b900_alt1(__int64,
+                               __int64) __asm__("TutorialInfo_162b900");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 MultiMenu_1788180(_QWORD* a1)
 {
   _QWORD* v1;
   __int64 v2;
-  __int64 v3;
+  const char* v3;
   unsigned int v4;
   __int64 result;
   unsigned __int64 v6;
-  __int64 v7;
+  const char* v7;
   unsigned __int64 v8;
   _QWORD* v9;
   char* v10;
@@ -43,46 +58,51 @@ __int64 MultiMenu_1788180(_QWORD* a1)
   unsigned int v13;
   __int64 v14;
   __int64 v15;
-  __int16 v16;
-  unsigned __int64 v17;
-  char* v18;
+  struct {
+    __int16 v16;
+    char gap10_[6];
+    unsigned __int64 v17;
+    char* v18;
+  } v16_;
 
   if ((*(_BYTE*)(a1[132] + 356LL) & 1) != 0) {
     return 0;
   }
   v1 = a1;
   v2 = a1[42];
-  v16 = 0;
+  v16_.v16 = 0;
   if (v2 != 0 &&
-      (v3 = (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 32LL))(v2)) != 0) {
-    GameRoutine_60a020(&v16, v3);
-    v4 = (unsigned __int8)v16;
+      (v3 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)v2 + 32LL))(v2)) !=
+          nullptr) {
+    GameRoutine_60a020_alt1((__int64)&v16_.v16, v3);
+    v4 = (unsigned __int8)v16_.v16;
   }
   else {
     v4 = 0;
   }
   if ((v4 & 1) != 0) {
-    v6 = v17;
+    v6 = v16_.v17;
   }
   else {
     v6 = v4 >> 1;
   }
   if (v6 == 0) {
-    v7 = (*(__int64 (**)(_QWORD*))(*v1 + 536LL))(v1);
-    if (v7 != 0) {
-      GameRoutine_60a020(&v16, v7);
+    v7 = (const char*)(*(__int64 (**)(_QWORD*))(*v1 + 536LL))(v1);
+    if (v7 != nullptr) {
+      GameRoutine_60a020_alt1((__int64)&v16_.v16, v7);
     }
   }
-  v8 = v17;
-  if ((v16 & 1) == 0) {
-    v8 = (unsigned __int64)(unsigned __int8)v16 >> 1;
+  v8 = v16_.v17;
+  if ((v16_.v16 & 1) == 0) {
+    v8 = (unsigned __int64)(unsigned __int8)v16_.v16 >> 1;
   }
   if (v8 == 0 ||
-      ((v9 = (_QWORD*)v1[19], (v16 & 1) != 0) ? (v10 = v18)
-                                              : (v10 = (char*)&v16 + 1),
-       GameRoutine_887920(&v15, v10), v11 = v15, v15 == 0)) {
+      ((v9 = (_QWORD*)v1[19], (v16_.v16 & 1) != 0)
+           ? (v10 = v16_.v18)
+           : (v10 = (char*)&v16_.v16 + 1),
+       GameRoutine_887920_alt1(&v15, (__int64)v10), v11 = v15, v15 == 0)) {
     result = 0;
-    if ((v16 & 1) == 0) {
+    if ((v16_.v16 & 1) == 0) {
       return result;
     }
     goto LABEL_25;
@@ -90,23 +110,24 @@ __int64 MultiMenu_1788180(_QWORD* a1)
   if (v9 != nullptr) {
     v1 = v9;
   }
-  GameRoutine_97ee10(v15, 1);
-  v12 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                       1088, 16, 0);
-  TutorialInfo_162b900(v12, v11);
-  *(_BYTE*)(ProcInst_657850(v12, GameData_212c730, "TutorialInfo", 1, v1) +
+  GameRoutine_97ee10_alt1(v15, 1u);
+  v12 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 1088, 16, 0);
+  TutorialInfo_162b900_alt1(v12, v11);
+  *(_BYTE*)(ProcInst_657850_alt1(v12, (__int64)GameData_212c730,
+                                 (__int64)"TutorialInfo", 1, (__int64)v1) +
             1080) = 1;
   result = 11;
-  if ((v16 & 1) != 0) {
+  if ((v16_.v16 & 1) != 0) {
   LABEL_25:
-    if (v18 != nullptr) {
+    if (v16_.v18 != nullptr) {
       v13 = result;
       v14 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v14 = 56;
       }
-      nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v18);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v16_.v18);
       return v13;
     }
   }

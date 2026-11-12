@@ -58,6 +58,13 @@ __int64 game_menu_SendUnitItemMenu_CreateBind(__int64 a1, __int64 a2,
 _QWORD* game_menu_SendUnitItemMenu_CreateBind_lambda1_Destructor(_QWORD* a1);
 _QWORD* game_menu_SendUnitItemMenu_CreateBind_lambda1_Destroy(_QWORD* a1);
 __int64 game_menu_SendUnitItemMenu_ACall_lambda0_Invoke(__int64 a1);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 game_gameui_anonymous_15d2540(__int64*, _WORD*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
 
 __int64 game_menu_SendUnitItemMenu_CreateBind(__int64 a1, __int64 a2,
                                               __int64 a3, char a4, char a5,
@@ -268,38 +275,39 @@ __int64 SendUnitItemMenu_Unknown88(__int64 a1)
   __int64* v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
+  struct {
+    __int64* v9;
+    __int64 v10;
+  } v9_;
 
   result = *(_QWORD*)(a1 + 336);
   if (result != 0) {
     result = __dynamic_cast(result, GameData_212e008[0], &GameData_20a3328, 0);
     if (result != 0) {
       v3 = result;
-      GameRoutine_1560070((void*)&v10, a1 + 848, "L_ItemDetail");
+      LayoutAccessor_1560070((void*)(&v9_.v9), (__int64*)(a1 + 848),
+                             "L_ItemDetail");
       v4 = *(_QWORD**)(v3 + 96);
       v5 = *(int*)(v3 + 40);
-      result = v11;
+      result = v9_.v10;
       v6 = v5 >= (__int64)(v4[1] - *v4) >> 3 ? game_g_empty_item_ptr
                                              : (__int64*)(*v4 + 8 * v5);
-      if (v11 != 0) {
-        v7 = *(_QWORD*)(a1 + 1064);
-        v8 = std___1___shared_weak_count_lock(v11);
-        if (v8 != 0) {
-          v9 = v8;
-          if (v10 != 0) {
-            GameRoutine_15d2540(v10, v6, v7);
+      if (v9_.v10 != 0) {
+        v7 = std___1___shared_weak_count_lock_alt1(v9_.v10);
+        if (v7 != 0) {
+          v8 = v7;
+          if (v9_.v9 != nullptr) {
+            game_gameui_anonymous_15d2540(v9_.v9, v6);
           }
-          if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+          if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-            std___1___shared_weak_count___release_weak(v9);
+            (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+            std___1___shared_weak_count___release_weak_alt1(v8);
           }
         }
-        result = v11;
-        if (v11 != 0) {
-          return std___1___shared_weak_count___release_weak(v11);
+        result = v9_.v10;
+        if (v9_.v10 != 0) {
+          return std___1___shared_weak_count___release_weak_alt1(v9_.v10);
         }
       }
     }

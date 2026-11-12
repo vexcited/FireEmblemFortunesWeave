@@ -119,6 +119,13 @@ GameRoutine_8875e0_alt1() __asm__("GameRoutine_8875e0");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 Troop_1343c40(__int64 a1, __int64 a2);
+__int64 GameRoutine_9011a0_alt1(_QWORD*,
+                                __int16*) __asm__("GameRoutine_9011a0");
+void GameRoutine_932c10_alt1(__int64*, _QWORD*) __asm__("GameRoutine_932c10");
+void GameSideStoryData_12b50c0_alt1(__int64, __int64*) __asm__(
+    "GameSideStoryData_12b50c0");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 _QWORD* Troop_133e4e0(__int64 a1)
 {
@@ -775,7 +782,7 @@ LABEL_23:
 __attribute__((swiftcall)) void game_gmap_Troop_GetAmong(PSEUDO_X8 x8_,
                                                          _QWORD* result)
 {
-  _QWORD* a2 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64 v2;
   __int64 v3;
   bool v4;
@@ -786,10 +793,16 @@ __attribute__((swiftcall)) void game_gmap_Troop_GetAmong(PSEUDO_X8 x8_,
   __int64 v10;
   __int64 v11;
   __int64 v12;
-  _QWORD v13[4];
-  _QWORD* v14;
+  struct {
+    _QWORD v13[4];
+    _QWORD* v14;
+  } v13_;
   __int64 v15;
 
+  v7 = COERCE_AS(__typeof__(v7),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   v2 = result[12];
   v3 = result[69];
   a2[1] = 0;
@@ -801,12 +814,16 @@ __attribute__((swiftcall)) void game_gmap_Troop_GetAmong(PSEUDO_X8 x8_,
                                          *((__int16*)result + 322) !=
                                      0)) {
     v5 = result;
-    GameRoutine_932c10(a2, result + 69);
-    v13[2] = a2;
-    result = v13;
-    v13[0] = GameData_202c818;
-    v13[1] = v5;
-    v14 = v13;
+    GameRoutine_932c10_alt1(a2, result + 69),
+        v7 = COERCE_AS(__typeof__(v7),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v8 = COERCE_AS(__typeof__(v8),
+                       PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+    v13_.v13[2] = a2;
+    result = v13_.v13;
+    v13_.v13[0] = GameData_202c818;
+    v13_.v13[1] = v5;
+    v13_.v14 = v13_.v13;
     v9 = (__int64*)GameData_21f2540;
     v10 = GameData_21f2548;
     if (GameData_21f2540 == GameData_21f2548) {
@@ -815,18 +832,26 @@ __attribute__((swiftcall)) void game_gmap_Troop_GetAmong(PSEUDO_X8 x8_,
     do {
       v11 = *v9++;
       v15 = v11;
-      if (v14 == nullptr) {
-        GameRoutine_60a310(0, v7);
+      if (v13_.v14 == nullptr) {
+        GameRoutine_60a310_alt1(),
+            v7 = COERCE_AS(__typeof__(v7),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v8 = COERCE_AS(__typeof__(v8),
+                           PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
       }
-      (*(void (**)(_QWORD*, __int64*))(*v14 + 48LL))(v14, &v15);
+      (*(void (**)(_QWORD*, __int64*))(*v13_.v14 + 48LL))(v13_.v14, &v15),
+          v7 = COERCE_AS(__typeof__(v7),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v8 = COERCE_AS(__typeof__(v8),
+                         PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
     } while (v9 != (__int64*)v10);
-    result = v14;
-    if (v14 == v13) {
+    result = v13_.v14;
+    if (v13_.v14 == v13_.v13) {
     LABEL_13:
       v12 = 32;
     }
     else {
-      if (v14 == nullptr) {
+      if (v13_.v14 == nullptr) {
         result;
         return;
       }
@@ -834,7 +859,11 @@ __attribute__((swiftcall)) void game_gmap_Troop_GetAmong(PSEUDO_X8 x8_,
     }
     {
       (_QWORD*)(*(__int64 (**)(_QWORD*, __int64, __int64))(*result + v12))(
-          result, v7, v8);
+          result, v7, v8),
+          v7 = COERCE_AS(__typeof__(v7),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v8 = COERCE_AS(__typeof__(v8),
+                         PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
       return;
     }
   }
@@ -846,23 +875,21 @@ __attribute__((swiftcall)) void game_gmap_Troop_GetAmong(PSEUDO_X8 x8_,
 
 __int64 Troop_1342e60(__int64 a1)
 {
-  __int64 v1;
-  __int64 v2;
   bool v3;
   __int64 result;
   __int64* v6;
   __int64 v7;
-  __int64 v8;
+  _QWORD* v8;
   __int64 v9;
-  __int64 v10;
+  __int16* v10;
   __int64 v11;
   unsigned int v12;
   __int64 v13;
-  __int64* v14;
-  __int64* v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
+  struct {
+    __int64* v14;
+    __int64 v15;
+    __int64 v16;
+  } v14_;
 
   v3 = *(_QWORD*)(a1 + 96) != 0 || *(_QWORD*)(a1 + 552) == 0;
   if (v3 || *(_QWORD*)(a1 + 104) == 0 && *(__int16*)(a1 + 642) *
@@ -871,8 +898,6 @@ __int64 Troop_1342e60(__int64 a1)
                                              0) {
     return 0;
   }
-  v17 = v1;
-  v18 = v2;
   if (game_gmap_GmapClock_instance_ == 0 ||
       *(__int16*)(game_gmap_GmapClock_instance_ + 22) *
               *(__int16*)(game_gmap_GmapClock_instance_ + 20) *
@@ -884,22 +909,23 @@ __int64 Troop_1342e60(__int64 a1)
       0) {
     return 0;
   }
-  v15 = nullptr;
-  v16 = 0;
-  v14 = nullptr;
-  GameSideStoryData_12b50c0(*(_QWORD*)GameData_212c7b8[0], &v14);
-  v6 = v14;
-  if (v14 == v15) {
+  v14_.v15 = 0;
+  v14_.v16 = 0;
+  v14_.v14 = nullptr;
+  GameSideStoryData_12b50c0_alt1(*(_QWORD*)GameData_212c7b8[0],
+                                 (__int64*)&v14_.v14);
+  v6 = v14_.v14;
+  if (v14_.v14 == (__int64*)v14_.v15) {
   LABEL_18:
-    v8 = *(_QWORD*)(a1 + 104);
+    v8 = *(_QWORD**)(a1 + 104);
     v9 = *(_QWORD*)(*(_QWORD*)a1 + 120LL);
     if (game_gmap_GmapClock_instance_ != 0) {
-      v10 = game_gmap_GmapClock_instance_ + 8;
+      v10 = (__int16*)(game_gmap_GmapClock_instance_ + 8);
     }
     else {
-      v10 = game_gmap_GmapClock_kDefaultTime_ptr;
+      v10 = (__int16*)game_gmap_GmapClock_kDefaultTime_ptr;
     }
-    v11 = GameRoutine_9011a0(v8, v10);
+    v11 = GameRoutine_9011a0_alt1(v8, v10);
     if (v11 != 0) {
       result = v9 != *(_QWORD*)(v11 + 64);
       goto LABEL_24;
@@ -911,21 +937,22 @@ __int64 Troop_1342e60(__int64 a1)
       if (*(_QWORD*)(*(_QWORD*)v7 + 216LL) == *(_QWORD*)(a1 + 552)) {
         break;
       }
-      if (v6 == v15) {
+      if (v6 == (__int64*)v14_.v15) {
         goto LABEL_18;
       }
     }
   }
   result = 1;
 LABEL_24:
-  if (v14 != nullptr) {
-    v15 = v14;
+  if (v14_.v14 != nullptr) {
+    v14_.v15 = (__int64)v14_.v14;
     v12 = result;
     v13 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v13 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v13);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, (__int64)v14_.v14);
     return v12;
   }
   return result;

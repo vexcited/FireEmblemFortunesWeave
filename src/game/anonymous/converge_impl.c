@@ -25,40 +25,52 @@ extern __int64 GameData_225d6f8;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_GameModeData_instance_;
 void __attribute__((noreturn)) GameRoutine_8f2260(void);
-__int64
-game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor(_QWORD* a1);
+__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor_alt1(
+    _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_closure_"
+                        "Destructor");
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_DeletingDestructor(
     _QWORD* a1, long double a2);
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure_Clone(_QWORD* a1);
-_QWORD*
-game_anonymous_ConvergeImpl_TryRunConverge_closure_CloneInto(_QWORD* result,
-                                                             _QWORD* a2);
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_Destroy(__int64 a1);
-__int64
-game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destructor(_QWORD* a1);
+_QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure_CloneInto_alt1(
+    _QWORD* result, _QWORD* a2) __asm__("game_anonymous_ConvergeImpl_"
+                                        "TryRunConverge_closure_CloneInto");
+__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_Destroy_alt1(
+    __int64 a1) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_closure_"
+                        "Destroy");
+__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destructor_alt1(
+    _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_closure0_"
+                        "Destructor");
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure0_DeletingDestructor(
     _QWORD* a1, long double a2);
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure0_Clone(_QWORD* a1);
 _QWORD*
 game_anonymous_ConvergeImpl_TryRunConverge_closure0_CloneInto(_QWORD* result,
                                                               _QWORD* a2);
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destroy(__int64 a1);
-__int64
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor(_QWORD* a1);
+__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destroy_alt1(
+    __int64 a1) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_closure0_"
+                        "Destroy");
+__int64 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor_alt1(
+    _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_RunAutoGrowthDialog_"
+                        "closure_Destructor");
 __int64
 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_DeletingDestructor(
     _QWORD* a1, long double a2);
 _QWORD*
 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Clone(_QWORD* a1);
-_QWORD* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_CloneInto(
-    _QWORD* result, _QWORD* a2);
-__int64
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destroy(__int64 a1);
+_QWORD* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_CloneInto_alt1(
+    _QWORD* result,
+    _QWORD* a2) __asm__("game_anonymous_ConvergeImpl_RunAutoGrowthDialog_"
+                        "closure_CloneInto");
+__int64 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destroy_alt1(
+    __int64 a1) __asm__("game_anonymous_ConvergeImpl_RunAutoGrowthDialog_"
+                        "closure_Destroy");
 __int64
 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Invoke(__int64 a1,
                                                                __int64* a2);
 __int64
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor(_QWORD* a1);
+game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor_alt1(
+    _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_RunAutoGrowthDialog_"
+                        "closure0_Destructor");
 __int64
 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_DeletingDestructor(
     _QWORD* a1, long double a2);
@@ -66,19 +78,23 @@ _QWORD*
 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Clone(_QWORD* a1);
 _QWORD* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_CloneInto(
     _QWORD* result, _QWORD* a2);
-__int64
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destroy(__int64 a1);
+__int64 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destroy_alt1(
+    __int64 a1) __asm__("game_anonymous_ConvergeImpl_RunAutoGrowthDialog_"
+                        "closure0_Destroy");
 __int64
 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Invoke(__int64 a1);
-__int64
-game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destructor(_QWORD* a1);
+__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destructor_alt1(
+    _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_closure1_"
+                        "Destructor");
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure1_DeletingDestructor(
     _QWORD* a1, long double a2);
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure1_Clone(_QWORD* a1);
 _QWORD*
 game_anonymous_ConvergeImpl_TryRunConverge_closure1_CloneInto(_QWORD* result,
                                                               _QWORD* a2);
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destroy(__int64 a1);
+__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destroy_alt1(
+    __int64 a1) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_closure1_"
+                        "Destroy");
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure2_Invoke();
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure3_Invoke(__int64 a1,
                                                                    __int64* a2);
@@ -116,6 +132,33 @@ GameRoutine_8f2260_alt1() __asm__("GameRoutine_8f2260");
 bool ConvergeImpl_104f0e0(__int64 a1, __int64 a2);
 __int64* GameConverge_8f24c0_alt1(__int64*,
                                   __int64*) __asm__("GameConverge_8f24c0");
+extern __int64 (
+    *game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor_ptr
+        [])();
+extern __int64 (
+    *game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor_ptr
+        [])();
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor(_QWORD* a1);
+__int64*
+game_anonymous_ConvergeImpl_TryRunConverge_closure_CloneInto(__int64* result,
+                                                             _QWORD* a2);
+void game_anonymous_ConvergeImpl_TryRunConverge_closure_Destroy(__int64 a1);
+void game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destructor(_QWORD* a1);
+void game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destroy(__int64 a1);
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor(
+    _QWORD* a1);
+__int64* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_CloneInto(
+    __int64* result, _QWORD* a2);
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destroy(
+    __int64 a1);
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor(
+    _QWORD* a1);
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destroy(
+    __int64 a1);
+void game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destructor(_QWORD* a1);
+void game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destroy(__int64 a1);
 
 bool ConvergeImpl_104f0e0(__int64 a1, __int64 a2)
 {
@@ -959,32 +1002,28 @@ LABEL_201:
   return v4 != v47;
 }
 
-__int64
-
-game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor(_QWORD* a1)
+void game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor(_QWORD* a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
-  *a1 = GameData_2004e18;
+  *a1 = game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor_ptr;
   v2 = a1[3];
-  result = (__int64)(a1 + 3);
+  v1 = a1 + 3;
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_DeletingDestructor(
@@ -1060,19 +1099,19 @@ _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure_Clone(_QWORD* a1)
   return v8;
 }
 
-_QWORD*
+__int64*
 
-game_anonymous_ConvergeImpl_TryRunConverge_closure_CloneInto(_QWORD* result,
+game_anonymous_ConvergeImpl_TryRunConverge_closure_CloneInto(__int64* result,
                                                              _QWORD* a2)
 {
   __int64 v2;
   __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  __int64* v4;
+  __int64* v5;
   __int64 v6;
-  __int64 v8;
+  __int64* v8;
 
-  *a2 = GameData_2004e18;
+  *a2 = game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor_ptr;
   v2 = result[1];
   v3 = result[2];
   a2[3] = 0;
@@ -1080,79 +1119,73 @@ game_anonymous_ConvergeImpl_TryRunConverge_closure_CloneInto(_QWORD* result,
   a2[5] = 0;
   a2[1] = v2;
   a2[2] = v3;
-  v4 = result[3];
-  v5 = result[4];
-  v6 = v5 - v4;
+  v4 = (__int64*)result[3];
+  v5 = (__int64*)result[4];
+  v6 = (char*)v5 - (char*)v4;
   if (v5 != v4) {
     if (0xAAAAAAAAAAAAAAABLL * (v6 >> 4) >= 0x555555555555556LL) {
-      GameRoutine_8f2260();
+      GameRoutine_8f2260_alt1();
     }
-    v8 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                        v5 - v4, 16, 0);
+    v8 = (__int64*)fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, (char*)v5 - (char*)v4, 16, 0);
     a2[3] = v8;
     a2[4] = v8;
-    a2[5] = v8 + v6;
+    a2[5] = (char*)v8 + v6;
     do {
-      result = (_QWORD*)GameConverge_8f24c0(v8, v4);
-      v4 += 48;
-      v8 += 48;
+      result = GameConverge_8f24c0_alt1(v8, v4);
+      v4 += 6;
+      v8 += 6;
     } while (v4 != v5);
     a2[4] = v8;
   }
   return result;
 }
 
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_Destroy(__int64 a1)
+void game_anonymous_ConvergeImpl_TryRunConverge_closure_Destroy(__int64 a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
   v2 = *(_QWORD*)(a1 + 24);
-  result = a1 + 24;
+  v1 = (__int64*)(a1 + 24);
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
-__int64
-
-game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destructor(_QWORD* a1)
+void game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destructor(_QWORD* a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
-  *a1 = GameData_2004e98;
+  *a1 = game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destructor_ptr;
   v2 = a1[3];
-  result = (__int64)(a1 + 3);
+  v1 = a1 + 3;
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure0_DeletingDestructor(
@@ -1273,57 +1306,52 @@ game_anonymous_ConvergeImpl_TryRunConverge_closure0_CloneInto(_QWORD* result,
   return result;
 }
 
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destroy(__int64 a1)
+void game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destroy(__int64 a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
   v2 = *(_QWORD*)(a1 + 24);
-  result = a1 + 24;
+  v1 = (__int64*)(a1 + 24);
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
-__int64
-
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor(_QWORD* a1)
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor(
+    _QWORD* a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
-  *a1 = GameData_2004f08;
+  *a1 = game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor_ptr;
   v2 = a1[3];
-  result = (__int64)(a1 + 3);
+  v1 = a1 + 3;
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
 __int64
@@ -1402,17 +1430,17 @@ game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Clone(_QWORD* a1)
   return v8;
 }
 
-_QWORD* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_CloneInto(
-    _QWORD* result, _QWORD* a2)
+__int64* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_CloneInto(
+    __int64* result, _QWORD* a2)
 {
   __int64 v2;
   __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  __int64* v4;
+  __int64* v5;
   __int64 v6;
-  __int64 v8;
+  __int64* v8;
 
-  *a2 = GameData_2004f08;
+  *a2 = game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor_ptr;
   v2 = result[1];
   v3 = result[2];
   a2[3] = 0;
@@ -1420,53 +1448,49 @@ _QWORD* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_CloneInto(
   a2[5] = 0;
   a2[1] = v2;
   a2[2] = v3;
-  v4 = result[3];
-  v5 = result[4];
-  v6 = v5 - v4;
+  v4 = (__int64*)result[3];
+  v5 = (__int64*)result[4];
+  v6 = (char*)v5 - (char*)v4;
   if (v5 != v4) {
     if (0xAAAAAAAAAAAAAAABLL * (v6 >> 4) >= 0x555555555555556LL) {
-      GameRoutine_8f2260();
+      GameRoutine_8f2260_alt1();
     }
-    v8 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                        v5 - v4, 16, 0);
+    v8 = (__int64*)fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, (char*)v5 - (char*)v4, 16, 0);
     a2[3] = v8;
     a2[4] = v8;
-    a2[5] = v8 + v6;
+    a2[5] = (char*)v8 + v6;
     do {
-      result = (_QWORD*)GameConverge_8f24c0(v8, v4);
-      v4 += 48;
-      v8 += 48;
+      result = GameConverge_8f24c0_alt1(v8, v4);
+      v4 += 6;
+      v8 += 6;
     } while (v4 != v5);
     a2[4] = v8;
   }
   return result;
 }
 
-__int64
-
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destroy(__int64 a1)
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destroy(__int64 a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
   v2 = *(_QWORD*)(a1 + 24);
-  result = a1 + 24;
+  v1 = (__int64*)(a1 + 24);
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
 __int64
@@ -1496,32 +1520,29 @@ game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Invoke(__int64 a1,
   return 2;
 }
 
-__int64
-
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor(_QWORD* a1)
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor(
+    _QWORD* a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
-  *a1 = GameData_2004f88;
+  *a1 = game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor_ptr;
   v2 = a1[3];
-  result = (__int64)(a1 + 3);
+  v1 = a1 + 3;
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
 __int64
@@ -1640,31 +1661,28 @@ _QWORD* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_CloneInto(
   return result;
 }
 
-__int64
-
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destroy(__int64 a1)
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destroy(
+    __int64 a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
   v2 = *(_QWORD*)(a1 + 24);
-  result = a1 + 24;
+  v1 = (__int64*)(a1 + 24);
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
 __int64
@@ -1679,32 +1697,28 @@ game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Invoke(__int64 a1)
   return 2;
 }
 
-__int64
-
-game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destructor(_QWORD* a1)
+void game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destructor(_QWORD* a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
-  *a1 = GameData_2005098;
+  *a1 = game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destructor_ptr;
   v2 = a1[3];
-  result = (__int64)(a1 + 3);
+  v1 = a1 + 3;
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure1_DeletingDestructor(
@@ -1821,29 +1835,27 @@ game_anonymous_ConvergeImpl_TryRunConverge_closure1_CloneInto(_QWORD* result,
   return result;
 }
 
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destroy(__int64 a1)
+void game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destroy(__int64 a1)
 {
-  __int64 result;
+  __int64* v1;
   __int64 v2;
-  _QWORD* v3;
-  long double v4;
-  __int64 v5;
+  __int64* v3;
+  __int64 v4;
 
   v2 = *(_QWORD*)(a1 + 24);
-  result = a1 + 24;
+  v1 = (__int64*)(a1 + 24);
   if (v2 != 0) {
-    v3 = (_QWORD*)result;
-    result = GameConverge_8f23a0(result);
+    v3 = v1;
+    GameConverge_8f23a0_alt1(v1);
     if (*v3 != 0) {
-      v5 = 128;
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, *v3);
     }
   }
-  return result;
 }
 
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure2_Invoke()

@@ -9,21 +9,32 @@ __attribute__((swiftcall)) void MmlParser_28d3b0(PSEUDO_X8 x8_,
                                                  __int64 a1, __int64 a2,
                                                  int a3);
 __int64 MmlParser_28d400(__int64 a1, unsigned int a2, unsigned int* a3);
+__attribute__((swiftcall)) void
+SequenceSoundPlayer_28e690_alt1(PSEUDO_X8, __int64 result,
+                                int) __asm__("SequenceSoundPlayer_28e690");
+__attribute__((swiftcall)) void
+nn_atk_detail_294f30_alt1(PSEUDO_X8, __int64 result,
+                          int) __asm__("nn_atk_detail_294f30");
 
 __attribute__((swiftcall)) void MmlParser_28d3b0(PSEUDO_X8 x8_,
                                                  __int64 unused_int0,
                                                  __int64 a1, __int64 a2, int a3)
 {
   _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
-  _QWORD* result;
+  __int64 result;
 
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   if (a3 <= 31) {
-    (SequenceSoundPlayer_28e690((void*)(a4), a1), (void*)(a4));
+    X8CALL_X0(__int64, SequenceSoundPlayer_28e690_alt1((void*)(a4), a1, a3)),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
     return;
   }
   if ((unsigned int)a3 <= 0x2F) {
-    (nn_atk_detail_294f30((void*)(a4), a2, (unsigned int)(a3 - 32)),
-     (void*)(a4));
+    X8CALL_X0(__int64, nn_atk_detail_294f30_alt1((void*)(a4), a2, a3 - 32)),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
     return;
   }
   *a4 = 0;

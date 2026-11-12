@@ -13,7 +13,8 @@ extern __int64 (*game_character_CharacterBaseModule_vtable)();
 extern __int64 (*game_character_CharacterDie_vtable[])();
 extern __int64 GameData_21ec7b0;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 CharacterDie_Destructor(_QWORD* a1);
+__n128
+CharacterDie_Destructor_alt1(_QWORD* a1) __asm__("CharacterDie_Destructor");
 __int64 CharacterDie_DeletingDestructor(_QWORD* a1);
 __int64 game_character_CharacterDie_CharacterDie_lambda0_Invoke(__int64 a1,
                                                                 long double a2);
@@ -27,6 +28,7 @@ int32x2_t* WallCollisionModule_1105be0(_QWORD*, float);
 void CharacterDie_10bb840(__int64 a1, _QWORD* a2);
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
+__int64 CharacterDie_Destructor(_QWORD* a1);
 
 __int64 CharacterDie_Unknown5(__int64 a1)
 {
@@ -44,12 +46,11 @@ __int64 CharacterDie_Unknown5(__int64 a1)
   return result;
 }
 
-__n128 CharacterDie_Destructor(_QWORD* a1)
+__int64 CharacterDie_Destructor(_QWORD* a1)
 {
   __int64 v2;
-  __n128 result;
-  __int64 v4;
-  __int64 v5;
+  __int64 v3;
+  __int64 result;
 
   *a1 = game_character_CharacterDie_vtable;
   v2 = a1[8];
@@ -57,15 +58,15 @@ __n128 CharacterDie_Destructor(_QWORD* a1)
   if (v2 != 0) {
     (*(void (**)(__int64))(*(_QWORD*)v2 + 8LL))(v2);
   }
-  v4 = a1[7];
+  v3 = a1[7];
   a1[7] = 0;
-  if (v4 != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v4 + 8LL))(v4);
+  if (v3 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v3 + 8LL))(v3);
   }
-  v5 = a1[4];
+  result = a1[4];
   *a1 = &game_character_CharacterBaseModule_vtable;
-  if (v5 != 0) {
-    return std___1___shared_weak_count___release_weak(v5);
+  if (result != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(result);
   }
   return result;
 }

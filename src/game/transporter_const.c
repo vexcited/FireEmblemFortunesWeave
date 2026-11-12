@@ -37,8 +37,10 @@ bool TransporterConst_89ca00(unsigned __int16* a1);
 __int64 TransporterConst_89cc80(unsigned __int8 a1, __int64 a2);
 __int64 game_TransporterConst_List_Impl_GetStock(unsigned __int16* a1);
 __int64 TransporterConst_89ce60();
-__int64 game_TransporterConst_List_Impl_UpdateMerge_closure_Invoke(
-    __int64 result, unsigned __int16* a2);
+__int64 game_TransporterConst_List_Impl_UpdateMerge_closure_Invoke_alt1(
+    __int64 result,
+    unsigned __int16* a2) __asm__("game_TransporterConst_List_Impl_UpdateMerge_"
+                                  "closure_Invoke");
 __int64 game_TransporterConst_List_Impl_GetStock_closure_Invoke(__int64 result,
                                                                 __int64 a2);
 __int64 game_TransporterConst_List_Impl_EachData_closure_Invoke(__int64 result,
@@ -84,6 +86,12 @@ __attribute__((swiftcall)) void TransporterConst_89c190(PSEUDO_X8 x8_,
 _QWORD* TransporterConst_89c760(__int64 a1, __int64 a2);
 __attribute__((swiftcall)) void TransporterConst_89cb30(PSEUDO_X8 x8_,
                                                         _QWORD* result, int a2);
+_QWORD* game_89d820(float*, unsigned __int64*, __int64, __int64**);
+void GameRoutine_6e5900_alt1(__int64*, _DWORD*) __asm__("GameRoutine_6e5900");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+void game_TransporterConst_List_Impl_UpdateMerge_closure_Invoke(
+    __int64 a1, unsigned __int16* a2);
 __attribute__((swiftcall)) void
 
 TransporterConst_89b3d0(PSEUDO_X8 x8_, _QWORD* a1, _QWORD* a2, int a3)
@@ -579,38 +587,39 @@ _QWORD* game_TransporterConst_List_Impl_EachData(_QWORD* result, __int64 a2,
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  _QWORD* v7;
+  __int64 v7;
   __int64 v8;
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  __int64 v12;
-  _QWORD v13[2];
-  __int64 v14;
-  _QWORD* v15;
+  struct {
+    _QWORD v12[2];
+    __int64 v13;
+    char gap24_[8];
+    _QWORD* v14;
+  } v12_;
 
   if (a2 != 0) {
     v3 = result;
     if ((((0x10000000000LL << *(_BYTE*)(a2 + 72)) |
           (1LL << *(_BYTE*)(a2 + 73))) &
          0xFFBFFFFFFFA39FFFLL) != 0) {
-      result = v13;
-      v14 = a3;
-      v13[0] = GameData_1fa8040;
-      v13[1] = a2;
+      result = v12_.v12;
+      v12_.v13 = a3;
+      v12_.v12[0] = GameData_1fa8040;
+      v12_.v12[1] = a2;
       v4 = *((unsigned int*)v3 + 18);
-      v15 = v13;
+      v12_.v14 = v12_.v12;
       if ((int)v4 >= 1) {
         v5 = 0;
         v6 = 12 * v4;
         while (1) {
           a2 = v3[1] + v5;
           if (*(_WORD*)(a2 + 2) != 0) {
-            v7 = v15;
-            if (v15 == nullptr) {
+            if (v12_.v14 == nullptr) {
               goto LABEL_21;
             }
-            (*(void (**)(_QWORD*))(*v15 + 48LL))(v15);
+            (*(void (**)(_QWORD*))(*v12_.v14 + 48LL))(v12_.v14);
           }
           v5 += 12;
           if (v6 == v5) {
@@ -620,43 +629,42 @@ _QWORD* game_TransporterConst_List_Impl_EachData(_QWORD* result, __int64 a2,
       }
     }
     else {
-      result = v13;
-      v14 = a3;
-      v13[0] = GameData_1fa7fc0;
-      v13[1] = a2;
-      v8 = *((int*)v3 + 19);
-      v15 = v13;
-      if ((int)v8 >= 1) {
-        v9 = *((int*)v3 + 18);
-        v10 = v9 + v8;
-        v11 = 12 * v9;
+      result = v12_.v12;
+      v12_.v13 = a3;
+      v12_.v12[0] = GameData_1fa7fc0;
+      v12_.v12[1] = a2;
+      v7 = *((int*)v3 + 19);
+      v12_.v14 = v12_.v12;
+      if ((int)v7 >= 1) {
+        v8 = *((int*)v3 + 18);
+        v9 = v8 + v7;
+        v10 = 12 * v8;
         do {
-          a2 = v3[1] + v11;
+          a2 = v3[1] + v10;
           if (*(_WORD*)(a2 + 2) != 0) {
-            v7 = v15;
-            if (v15 == nullptr) {
+            if (v12_.v14 == nullptr) {
             LABEL_21:
-              GameRoutine_60a310(v7, a2);
+              GameRoutine_60a310_alt1();
             }
-            (*(void (**)(_QWORD*))(*v15 + 48LL))(v15);
+            (*(void (**)(_QWORD*))(*v12_.v14 + 48LL))(v12_.v14);
           }
-          ++v9;
-          v11 += 12;
-        } while (v9 < v10);
+          ++v8;
+          v10 += 12;
+        } while (v8 < v9);
       LABEL_15:
-        result = v15;
-        if (v15 != v13) {
-          if (v15 == nullptr) {
+        result = v12_.v14;
+        if (v12_.v14 != v12_.v12) {
+          if (v12_.v14 == nullptr) {
             return result;
           }
-          v12 = 40;
+          v11 = 40;
           return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64, __int64))(
-              *result + v12))(result, a2, a3);
+              *result + v11))(result, a2, a3);
         }
       }
     }
-    v12 = 32;
-    return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64, __int64))(*result + v12))(
+    v11 = 32;
+    return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64, __int64))(*result + v11))(
         result, a2, a3);
   }
   return result;
@@ -1208,20 +1216,19 @@ __int64 TransporterConst_89ce60()
   return result;
 }
 
-__int64
-
-game_TransporterConst_List_Impl_UpdateMerge_closure_Invoke(__int64 result,
-                                                           unsigned __int16* a2)
+void game_TransporterConst_List_Impl_UpdateMerge_closure_Invoke(
+    __int64 a1, unsigned __int16* a2)
 {
-  __int64 v2;
-  __int64 v3;
+
+#pragma clang fp contract(off)
+  unsigned __int64 v2;
+  unsigned __int64 v3;
   __int64 v4;
-  __int64* v5;
-  __int64 v6;
-  __int64 v8;
-  __int64 v9;
-  _BYTE v10[17];
-  __int64* v11;
+  unsigned __int64* v5;
+  float* v6;
+  _QWORD* v8;
+  unsigned __int64 v9[4];
+  unsigned __int64* v10;
 
   v4 = *(
       _QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * a2[2]) +
@@ -1230,20 +1237,19 @@ game_TransporterConst_List_Impl_UpdateMerge_closure_Invoke(__int64 result,
               ((__int64)(*(_QWORD*)(v4 + 536) - *(_QWORD*)(v4 + 528)) >> 3) +
           *(int*)(v4 + 552) !=
       0) {
-    v5 = *(__int64**)(v4 + 600);
+    v5 = *(unsigned __int64**)(v4 + 600);
     if (v5 != nullptr) {
-      *(_QWORD*)&v10[1] = v2;
-      *(_QWORD*)&v10[9] = v3;
-      v6 = *(_QWORD*)(result + 8);
-      v9 = *v5;
-      v11 = &v9;
-      v8 = GameRoutine_89d820(v6, &v9, std___1_piecewise_construct_ptr, &v11,
-                              v10);
-      LODWORD(v11) = *a2;
-      return GameRoutine_6e5900(v8 + 24, &v11);
+      v9[2] = v2;
+      v9[3] = v3;
+      v6 = *(float**)(a1 + 8);
+      v9[0] = *v5;
+      v10 = v9;
+      v8 = game_89d820(v6, v9, (__int64)std___1_piecewise_construct_ptr,
+                       (__int64**)&v10);
+      LODWORD(v10) = *a2;
+      GameRoutine_6e5900_alt1(v8 + 3, &v10);
     }
   }
-  return result;
 }
 
 __int64 game_TransporterConst_List_Impl_GetStock_closure_Invoke(__int64 result,

@@ -38,6 +38,15 @@ extern __int64 game_GameModeData_instance_;
 __int64 ShopMenuItem_Trade_Unknown82(__int64 a1);
 __int64 ShopMenuItem_Trade_Unknown4(_QWORD* a1);
 __int64 ShopMenuItem_Trade_1867b40(__int64 a1, __int64 a2);
+__int64 GameRoutine_9b11a0_alt1(_QWORD*, unsigned __int64*,
+                                int) __asm__("GameRoutine_9b11a0");
+__int64 game_8a26a0_alt1(__int64**) __asm__("game_8a26a0");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 
 __int64 ShopMenuItem_Trade_Unknown82(__int64 a1)
 {
@@ -47,18 +56,20 @@ __int64 ShopMenuItem_Trade_Unknown82(__int64 a1)
   int v5;
   __int64 v6;
   __int64 v7;
-  __int64 v9;
-  __int64 v10;
-  void* v11;
+  struct {
+    __int64 v9;
+    void* v10;
+  } v9_;
 
   *GameData_2132020 = 1;
-  snd_Fade_Fade_10c830(&v10, 0.0f);
-  snd_play_ff2d0((void*)(&v9), "SE_EVT_Goods_Swap", "SE_EVT_Goods_Swap", &v10,
-                 0, 65537, 0, 0.0f, 1.0f);
-  snd_Fade_Destroy_Fade(&v10);
+  snd_Fade_Fade_10c830_alt1((__int64)&v9_.v9, 0x0.0p+0f);
+  snd_play_ff2d0_alt1((__int64)"SE_EVT_Goods_Swap",
+                      (__int64)"SE_EVT_Goods_Swap", (__int64)&v9_.v9, 0,
+                      0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+  snd_Fade_Destroy_Fade_alt1(&v9_.v9);
   if (*(int*)(a1 + 84) >= 1) {
-    for (i = 0; i < *(_DWORD*)(a1 + 84); ++i) {
-      if ((game_8a26a0(*(_QWORD*)(a1 + 120)) & 1) == 0) {
+    for (i = 0; i < (signed __int32)*(_DWORD*)(a1 + 84); ++i) {
+      if ((game_8a26a0_alt1(*(__int64***)(a1 + 120)) & 1) == 0) {
         continue;
       }
       v4 = *(_QWORD*)(a1 + 112);
@@ -67,18 +78,18 @@ __int64 ShopMenuItem_Trade_Unknown82(__int64 a1)
       }
       v5 = *(unsigned __int8*)(*(_QWORD*)(v4 + 24) + 64LL);
       if (v5 == 7) {
-        v11 = &GameData_1a90dca;
+        v9_.v10 = &GameData_1a90dca;
         v3 = &GameData_1a90dca;
       }
       else {
         if (v5 != 5) {
           continue;
         }
-        v11 = &GameData_1a90da4;
+        v9_.v10 = &GameData_1a90da4;
         v3 = &GameData_1a90da4;
       }
-      v10 = game_HashString(v3);
-      GameRoutine_9b11a0(&GameData_21f61c0, &v10, 1);
+      v9_.v9 = game_HashString_alt1((__int64)v3);
+      GameRoutine_9b11a0_alt1(&GameData_21f61c0, (unsigned __int64*)&v9_.v9, 1);
     }
   }
   v6 = (*(__int64 (**)(__int64))(*(_QWORD*)(a1 + 96) + 80LL))(a1 + 96);

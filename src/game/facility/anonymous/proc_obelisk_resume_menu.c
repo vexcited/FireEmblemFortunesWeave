@@ -12,7 +12,8 @@ __int64 GameRoutine_1593d90(_QWORD, _QWORD);
 extern __int16 GameData_21eea60;
 long double GameRoutine_16df7a0(void);
 __int64 ProcObeliskResumeMenu_Unknown2(__int64 a1);
-__int64 ProcObeliskResumeMenu_Unknown84(__int64 a1);
+__int64 ProcObeliskResumeMenu_Unknown84_alt1(__int64 a1) __asm__(
+    "ProcObeliskResumeMenu_Unknown84");
 __int64 GameRoutine_17e4db0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_f8a870(_QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -58,7 +59,8 @@ extern __int64 (*GameData_2001310[])();
 extern __int64* GameData_212d670[3];
 extern __int64* GameData_212d678[2];
 struct PseudoSret LayoutAccessor_1560070(_QWORD, _QWORD);
-__n128 ProcObeliskResumeMenu_Unknown89(__int64 a1);
+__n128 ProcObeliskResumeMenu_Unknown89_alt1(__int64 a1) __asm__(
+    "ProcObeliskResumeMenu_Unknown89");
 __int64 ProcObeliskResumeMenu_Unknown102(__int64 a1);
 __n128 ProcObeliskResumeMenu_1727070(__int64 a1);
 __n128 ProcObeliskResumeMenu_17276f0(__int64 a1, unsigned __int8 a2, char a3);
@@ -77,86 +79,96 @@ void ProcObeliskResumeMenu_1727400_alt1(__int64*) __asm__(
     "ProcObeliskResumeMenu_1727400");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64* LayoutAccessor_155fbe0(__int64*, const char*);
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 GameRoutine_1593d90_alt1(__int64*,
+                                 __int64) __asm__("GameRoutine_1593d90");
+__int64 GameRoutine_16df7a0_alt1(__int64 result) __asm__("GameRoutine_16df7a0");
+__int64 GameRoutine_f8a870_alt1(__int64 result,
+                                __int64*) __asm__("GameRoutine_f8a870");
+__int64 LayoutAccessor_1563280(__int64*, const char*, char);
+bool game_879ce0_alt1(__int64, __int64*, __int64) __asm__("game_879ce0");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+__int64 ProcObeliskResumeMenu_Unknown84(__int64* a1);
+__int64 ProcObeliskResumeMenu_Unknown89(__int64 a1);
 
 __int64 ProcObeliskResumeMenu_Unknown2(__int64 a1)
 {
-  long double v2;
   __int64 result;
-  long double v4;
-  long double v5;
-  __int64 v6;
-  unsigned __int64 v7;
-  __int64 v8;
-  unsigned __int64 v9;
-  __int16* v10;
-  __int16* v11;
+  __int64 v3;
+  unsigned __int64 v4;
+  __int64 v5;
+  unsigned __int64 v6;
+  __int16* v7;
+  __int16* v8;
 
-  v2 = GameRoutine_16df7a0();
-  result = GameRoutine_1563280(a1 + 848, "In_L", 0, v2);
+  GameRoutine_16df7a0_alt1(a1);
+  result = LayoutAccessor_1563280((__int64*)(a1 + 848), "In_L", 0);
   if ((result & 1) == 0) {
-    result = GameRoutine_1563280(a1 + 848, "In_R", 0, v4);
+    result = LayoutAccessor_1563280((__int64*)(a1 + 848), "In_R", 0);
     if ((result & 1) == 0) {
-      v6 = *(_QWORD*)(a1 + 1088);
-      v7 = *(int*)(a1 + 1076);
-      if (v7 < (*(_QWORD*)(a1 + 1096) - v6) >> 2) {
-        v7 = *(int*)(v6 + 4 * v7);
+      v3 = *(_QWORD*)(a1 + 1088);
+      v4 = *(int*)(a1 + 1076);
+      if (v4 < (*(_QWORD*)(a1 + 1096) - v3) >> 2) {
+        v4 = *(int*)(v3 + 4 * v4);
       }
-      v8 = *(_QWORD*)(a1 + 1216);
-      v9 = 0x6DB6DB6DB6DB6DB7LL * ((*(_QWORD*)(a1 + 1224) - v8) >> 4);
-      v10 = (__int16*)(v8 + 112LL * (int)v7);
-      if (v9 <= v7) {
-        v11 = &GameData_21eea60;
+      v5 = *(_QWORD*)(a1 + 1216);
+      v6 = 0x6DB6DB6DB6DB6DB7LL * ((*(_QWORD*)(a1 + 1224) - v5) >> 4);
+      v7 = (__int16*)(v5 + 112LL * (int)v4);
+      if (v6 <= v4) {
+        v8 = &GameData_21eea60;
       }
       else {
-        v11 = v10;
+        v8 = v7;
       }
-      if (*(_DWORD*)(a1 + 1432) == *((unsigned __int8*)v11 + 12)) {
-        LODWORD(v5) = 1.0;
-        return GameRoutine_1562680(a1 + 848, "Wait", v5);
+      if (*(_DWORD*)(a1 + 1432) == *((unsigned __int8*)v8 + 12)) {
+        return GameHr_1562680(a1 + 848, "Wait", 0x1.0000000000000p+0f);
       }
     }
   }
   return result;
 }
 
-__int64 ProcObeliskResumeMenu_Unknown84(__int64 a1)
+__int64 ProcObeliskResumeMenu_Unknown84(__int64* a1)
 {
-  __int64 v2;
+  __int64* v2;
   int v3;
-  _QWORD v5[2];
-  char v6;
-  int v7;
-  int v8;
-  char v9;
-  __int64 v10;
+  struct {
+    _QWORD v5[2];
+    char v6;
+    char gap25_[3];
+    int v7;
+    int v8;
+    char v9;
+    char gap37_[3];
+    __int64 v10;
+  } v5_;
 
-  v2 = GameRoutine_155fbe0(a1 + 848, "L_KeyHelp");
-  v3 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
-  v9 = 0;
-  v10 = 0;
-  v5[0] = "OpenStatus";
-  v5[1] = "MID_KeyHelp_Status";
-  v6 = 1;
-  v7 = 2;
-  v8 = v3;
-  return GameRoutine_1593d90(v2, v5);
+  v2 = LayoutAccessor_155fbe0(a1 + 106, "L_KeyHelp");
+  v3 = (*(__int64 (**)(__int64*))(*a1 + 192))(a1);
+  v5_.v9 = 0;
+  v5_.v10 = 0;
+  v5_.v5[0] = "OpenStatus";
+  v5_.v5[1] = "MID_KeyHelp_Status";
+  v5_.v6 = 1;
+  v5_.v7 = 2;
+  v5_.v8 = v3;
+  return GameRoutine_1593d90_alt1(v2, (__int64)v5_.v5);
 }
 
-__n128 ProcObeliskResumeMenu_Unknown89(__int64 a1)
+__int64 ProcObeliskResumeMenu_Unknown89(__int64 a1)
 {
-  __n128 result;
-
   if (*(_BYTE*)(a1 + 1440) == 1) {
     *(_BYTE*)(a1 + 1440) = 0;
-    return ProcObeliskResumeMenu_1726d70_alt1(a1);
+    return ProcObeliskResumeMenu_1726d70(a1);
   }
-  return result;
+  return a1;
 }
 
 __int64 ProcObeliskResumeMenu_Unknown102(__int64 a1)
 {
-  __int64 v1;
-  __int64 v2;
+  const char* v1;
+  const char* v2;
   __int64 v3;
   unsigned __int64 v4;
   __int64 v5;
@@ -171,7 +183,7 @@ __int64 ProcObeliskResumeMenu_Unknown102(__int64 a1)
     _QWORD v17[4];
     _QWORD* v18;
   } v17_;
-  _QWORD v19[4];
+  const char* v19[4];
 
   v3 = *(_QWORD*)(a1 + 1088);
   v4 = *(int*)(a1 + 1076);
@@ -201,10 +213,10 @@ __int64 ProcObeliskResumeMenu_Unknown102(__int64 a1)
     v14 = 7;
   }
   v19[0] = GameRoutine_874b20(v14, *(_BYTE*)(a1 + 1200), v9, v10);
-  v19[1] = strlen(v19[0]);
+  v19[1] = (const char*)strlen_alt1(v19[0]);
   v17_.v17[0] = GameData_2001310;
   v17_.v18 = v17_.v17;
-  game_879ce0(a1, v19, (__int64)v17_.v17);
+  game_879ce0_alt1(a1, (__int64*)v19, (__int64)v17_.v17);
   if (v17_.v18 == v17_.v17) {
     v15 = 32;
     goto LABEL_21;
@@ -1085,8 +1097,6 @@ __int64
 
 game_facility_anonymous_ProcObeliskResumeMenu_ACall_closure_Invoke(__int64 a1)
 {
-  __int64 v1;
-  __int64 v2;
   __int64 v3;
   __int64 v4;
   unsigned __int64 v5;
@@ -1098,13 +1108,10 @@ game_facility_anonymous_ProcObeliskResumeMenu_ACall_closure_Invoke(__int64 a1)
   __int16* v11;
   int v12;
   int v13;
-  _BOOL4 v15;
-  char v16;
+  __int64 v15;
+  int v16;
   int v17;
-  int v18;
-  char v19;
-  __int64 v20;
-  __int64 v21;
+  char v18;
 
   v3 = *(_QWORD*)(a1 + 8);
   v4 = *(_QWORD*)(v3 + 1088);
@@ -1131,14 +1138,12 @@ game_facility_anonymous_ProcObeliskResumeMenu_ACall_closure_Invoke(__int64 a1)
       v8 = false;
     }
   }
-  v20 = v1;
-  v21 = v2;
-  v15 = v8;
-  v16 = v7;
-  v17 = v12;
-  v18 = v13;
-  v19 = 1;
-  GameRoutine_f8a870(*(_QWORD*)GameData_212efc0, &v15);
+  LODWORD(v15) = v8;
+  BYTE4(v15) = v7;
+  v16 = v12;
+  v17 = v13;
+  v18 = 1;
+  GameRoutine_f8a870_alt1(*(_QWORD*)GameData_212efc0, &v15);
   return 4;
 }
 

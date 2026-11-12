@@ -354,6 +354,13 @@ __int64 UnitSkillList_858e20(__int64 result, _DWORD* a2);
 __int64* UnitSkillList_858f80(__int64 a1, __int64* a2);
 __int64* UnitSkillList_8590e0(__int64 a1, _DWORD* a2);
 __int64* UnitSkillList_859210(__int64 a1, unsigned int* a2);
+__int64 GameRoutine_6fc510_alt1(__int64) __asm__("GameRoutine_6fc510");
+__int64 game_Unit_SkillList_CountActive_alt1(__int64, _QWORD*) __asm__(
+    "game_Unit_SkillList_CountActive");
+void GameRoutine_66dd60_alt1(__int64*, unsigned __int64,
+                             _DWORD*) __asm__("GameRoutine_66dd60");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 UnitSkillList_67f4a0(__int64 a1, unsigned __int64* a2)
 {
@@ -1580,20 +1587,22 @@ bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3)
   __int64 v29;
   __int64 v30;
   __int64 v31;
-  __int64 v32;
-  __int64 v33;
-  __int64 v34;
-  int v35;
+  struct {
+    __int64 v32;
+    __int64 v33;
+    __int64 v34;
+    int v35;
+  } v32_;
   int v36;
 
   v3 = (unsigned __int16)*a3;
   if (*a3 == 0) {
     return false;
   }
-  v35 = 0;
-  v33 = 0;
-  v34 = 0;
-  v32 = 0;
+  v32_.v35 = 0;
+  v32_.v33 = 0;
+  v32_.v34 = 0;
+  v32_.v32 = 0;
   v6 = GameData_212c878[0];
   v7 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8 * v3) +
                   24LL);
@@ -1603,7 +1612,7 @@ bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3)
     if (v9 != v8) {
       v36 = 0;
       v10 = a2;
-      GameRoutine_66dd60(&v32, (v9 - v8) >> 2, &v36);
+      GameRoutine_66dd60_alt1(&v32_.v32, (v9 - v8) >> 2, &v36);
       v8 = *(_QWORD*)(v7 + 200);
       v9 = *(_QWORD*)(v7 + 208);
       a2 = v10;
@@ -1611,7 +1620,7 @@ bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3)
     if (v9 != v8) {
       v11 = 0;
       do {
-        *(_DWORD*)(v32 + 4 * v11) |= *(_DWORD*)(v8 + 4 * v11);
+        *(_DWORD*)(v32_.v32 + 4 * v11) |= *(_DWORD*)(v8 + 4 * v11);
         ++v11;
         v8 = *(_QWORD*)(v7 + 200);
       } while (v11 < (*(_QWORD*)(v7 + 208) - v8) >> 2);
@@ -1622,17 +1631,17 @@ bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3)
     v13 = *v12;
     v14 = v12[1];
     v15 = (v14 - *v12) >> 2;
-    v16 = (v33 - v32) >> 2;
+    v16 = (v32_.v33 - v32_.v32) >> 2;
     if (v15 > v16) {
       v36 = 0;
-      GameRoutine_66dd60(&v32, v15 - v16, &v36);
+      GameRoutine_66dd60_alt1(&v32_.v32, v15 - v16, &v36);
       v13 = *v12;
       v14 = v12[1];
     }
     if (v14 != v13) {
       v17 = 0;
       do {
-        *(_DWORD*)(v32 + 4 * v17) |= *(_DWORD*)(v13 + 4 * v17);
+        *(_DWORD*)(v32_.v32 + 4 * v17) |= *(_DWORD*)(v13 + 4 * v17);
         ++v17;
         v13 = *v12;
       } while (v17 < (v12[1] - *v12) >> 2);
@@ -1642,7 +1651,7 @@ bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3)
     goto LABEL_16;
   }
   v18 = *(_QWORD*)(*(_QWORD*)(GameData_21c99b0 + 64) + 8LL * (*a1 & 0xFFF));
-  if ((GameRoutine_6fc510(v18) & 1) != 0) {
+  if ((GameRoutine_6fc510_alt1(v18) & 1) != 0) {
     goto LABEL_16;
   }
   if (*(_BYTE*)(v18 + 273) != 0) {
@@ -1660,7 +1669,7 @@ bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3)
     v28 = *(_QWORD*)(v26 + 808);
     if (v28 != v27) {
       while (
-          (unsigned int)game_Unit_SkillList_CountActive(v27, &v32) !=
+          (unsigned int)game_Unit_SkillList_CountActive_alt1(v27, &v32_.v32) !=
           (unsigned int)((*(_QWORD*)(v27 + 40) - *(_QWORD*)(v27 + 32)) >> 2)) {
         v27 += 96;
         if (v27 == v28) {
@@ -1672,7 +1681,7 @@ bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3)
     v30 = *(_QWORD*)(v26 + 832);
     if (v30 != v29) {
       while (
-          (unsigned int)game_Unit_SkillList_CountActive(v29, &v32) !=
+          (unsigned int)game_Unit_SkillList_CountActive_alt1(v29, &v32_.v32) !=
           (unsigned int)((*(_QWORD*)(v29 + 40) - *(_QWORD*)(v29 + 32)) >> 2)) {
         v29 += 96;
         if (v29 == v30) {
@@ -1684,23 +1693,21 @@ bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3)
       goto LABEL_17;
     }
   }
-
 LABEL_36:
   v31 = *(_QWORD*)(*(_QWORD*)(GameData_21c99b0 + 64) + 8LL * (*a1 & 0xFFF));
   v19 = *(_BYTE*)(*(_QWORD*)(v31 + 24) + 1112LL) != 1 ||
         *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v6 + 64) +
                               8LL * (unsigned __int16)*a3) +
                    192LL) == v31;
-
 LABEL_17:
-  if (v32 != 0) {
-    v33 = v32;
+  if (v32_.v32 != 0) {
+    v32_.v33 = v32_.v32;
     v20 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v20 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v20,
-                                  v32);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v20, v32_.v32);
   }
   return v19;
 }

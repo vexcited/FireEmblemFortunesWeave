@@ -17,6 +17,9 @@ __int64 DeliveryItemExecutor_DeletingDestructor(__int64 a1, __int64 a2,
 __int64 DeliveryItemExecutor_1261a00(_QWORD* a1);
 __int64 DeliveryItemExecutor_Unknown6(__int64 result);
 bool DeliveryItemExecutor_Unknown4(__int64 a1);
+_QWORD* game_8f7120(__int64, __int64*, __int64*);
+__attribute__((swiftcall)) void TransporterConst_89cb30(PSEUDO_X8,
+                                                        __int64 result, int);
 
 __int64 DeliveryItemExecutor_Destructor(__int64 a1, unsigned __int16* a2)
 {
@@ -80,8 +83,8 @@ __int64 DeliveryItemExecutor_Unknown6(__int64 result)
   _QWORD* v1;
   __int64 v2;
   __int64 v3;
-  _QWORD* v4;
-  _QWORD* v5;
+  __int64* v4;
+  __int64* v5;
   int v6;
   __int64 v7;
   __int64 v8;
@@ -96,15 +99,15 @@ __int64 DeliveryItemExecutor_Unknown6(__int64 result)
   __int64 v18;
   int v19;
   int v20;
-  __int64 v21;
+  char v21[8];
 
   v1 = *(_QWORD**)(result + 32);
   if (v1 != nullptr) {
     v2 = result;
     v3 = game_TransporterConst_List_instance__ptr[0];
     do {
-      v4 = (_QWORD*)v1[4];
-      v5 = (_QWORD*)v1[5];
+      v4 = (__int64*)v1[4];
+      v5 = (__int64*)v1[5];
       if (v4 != v5) {
         v6 = *(_DWORD*)(v2 + 8);
         do {
@@ -118,7 +121,7 @@ __int64 DeliveryItemExecutor_Unknown6(__int64 result)
                 v12 = *v4 + 8LL * *(int*)(v11 - 4);
                 if (*(_WORD*)(v12 + 828) != 0) {
                   *(_QWORD*)(v12 + 828) = 0;
-                  result = GameRoutine_8f7120(v2 + 56, v4, v4);
+                  result = (__int64)game_8f7120(v2 + 56, v4, v4);
                   if (v6 < 2) {
                     goto LABEL_4;
                   }
@@ -162,12 +165,14 @@ __int64 DeliveryItemExecutor_Unknown6(__int64 result)
                     if (*(_WORD*)(v18 + 2) != 0) {
                       v20 = v6 - v19;
                       if (v6 < v19) {
-                        result = (__int64)X8CALL_X0(
-                            _QWORD*, GameRoutine_89cb30((void*)&v21));
+                        result = X8CALL_X0(
+                            __int64, TransporterConst_89cb30(
+                                         (void*)((__int64)v21), result, v6));
                         goto LABEL_4;
                       }
-                      result = (__int64)X8CALL_X0(
-                          _QWORD*, GameRoutine_89cb30((void*)&v21));
+                      result = X8CALL_X0(
+                          __int64, TransporterConst_89cb30(
+                                       (void*)((__int64)v21), result, v19));
                       v6 = v20;
                       if (v20 == 0) {
                         goto LABEL_4;

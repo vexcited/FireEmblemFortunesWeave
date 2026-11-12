@@ -10,24 +10,32 @@ __attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
 __int64 snd_Fade_Destroy_Fade(_QWORD);
 __n128 snd_Fade_Fade_10c830(_QWORD, double);
 __int64 UnitGridSelectMenu_178aa80(__int64 a1, int a2);
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 
 __int64 UnitGridSelectMenu_178aa80(__int64 a1, int a2)
 {
   __int64 v2;
   __int64 v3;
   __int64 result;
-  __int64 v5;
-  _BYTE v6[200];
-  __int64 v7;
-  __int64 v8;
+  _QWORD v5[27];
 
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   if (a2 == 1) {
-    v7 = v2;
-    v8 = v3;
-    snd_Fade_Fade_10c830(v6, 0.0f);
-    snd_play_ff2d0((void*)(&v5), "SE_SYS_NG", "SE_SYS_NG", v6, 0, 65537, 0,
-                   0.0f, 1.0f);
-    return snd_Fade_Destroy_Fade(v6);
+    v5[25] = v2;
+    v5[26] = v3;
+    snd_Fade_Fade_10c830_alt1((__int64)v5, 0x0.0p+0f),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    snd_play_ff2d0_alt1((__int64)"SE_SYS_NG", (__int64)"SE_SYS_NG", (__int64)v5,
+                        0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    return snd_Fade_Destroy_Fade_alt1(v5);
   }
   return result;
 }

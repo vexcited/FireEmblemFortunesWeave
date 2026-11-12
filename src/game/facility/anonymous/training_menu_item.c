@@ -24,93 +24,108 @@ extern __int64* GameData_212e030[4];
 extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 __int64 TrainingMenuItem_ACall(__int64 a1);
-__int64 TrainingMenuItem_Unknown76(__int64 a1, __int64 a2, int a3);
+__int64
+TrainingMenuItem_Unknown76_alt1(__int64 a1, __int64 a2,
+                                int a3) __asm__("TrainingMenuItem_Unknown76");
 __int64 TrainingMenuItem_Unknown55(__int64 a1);
 __int64 TrainingMenuItem_Unknown73_15f65b0(_QWORD* a1);
 extern __int64 GameData_2247280;
 __int64 game_facility_anonymous_TrainingMenuItem_ACall_closure_Invoke();
+__int64* LayoutAccessor_155fbe0(__int64*, const char*);
+__int64 GameHr_16ef100(_QWORD*, const char*);
+__int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+__int64 ui_LayoutAccessor_FindTextBox_alt1(__int64*, __int64) __asm__(
+    "ui_LayoutAccessor_FindTextBox");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
+                              char) __asm__("GameRoutine_a4dbe0");
+void GameRoutine_156c5d0_alt1(__int64, __int64,
+                              char) __asm__("GameRoutine_156c5d0");
+__int64 TrainingMenuItem_Unknown76(__int64 a1, _QWORD* a2, int a3);
 
 __int64 TrainingMenuItem_ACall(__int64 a1)
 {
-  __int64 v1;
-  __int64 v2;
   __int64 v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
-  _QWORD v9[4];
-  _QWORD* v10;
-  _QWORD v11[4];
-  _QWORD* v12;
-  _QWORD v13[4];
-  _QWORD* v14;
-  __int64 v15;
-  __int64 v16;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } v9_;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+  struct {
+    _QWORD v13[4];
+    _QWORD* v14;
+  } v13_;
   const char* v17;
 
   if (*(_DWORD*)(a1 + 84) != 0) {
     return 1;
   }
-  v15 = v1;
-  v16 = v2;
   v4 = *(_QWORD*)(a1 + 8);
   v17 = "MID_SortiePlanMenu_Training_Confirm";
-  v13[0] = GameData_1fb4988;
-  v10 = v9;
+  v13_.v13[0] = GameData_1fb4988;
+  v9_.v10 = v9_.v9;
   if (*(_QWORD*)(v4 + 152) != 0) {
     v5 = *(_QWORD*)(v4 + 152);
   }
   else {
     v5 = v4;
   }
-  v14 = v13;
-  v12 = v11;
-  v11[0] = GameData_1fb4a08;
-  v9[0] = GameData_1fb4a08;
-  GameRoutine_871860(v5, &v17, v13, v11, v9);
-  if (v10 == v9) {
+  v13_.v14 = v13_.v13;
+  v11_.v12 = v11_.v11;
+  v11_.v11[0] = GameData_1fb4a08;
+  v9_.v9[0] = GameData_1fb4a08;
+  MapSortieMenu_871860(v5, (__int64)&v17, (__int64)v13_.v13, (__int64)v11_.v11,
+                       (__int64)v9_.v9);
+  if (v9_.v10 == v9_.v9) {
     v6 = 32;
   }
   else {
-    if (v10 == nullptr) {
+    if (v9_.v10 == nullptr) {
       goto LABEL_11;
     }
     v6 = 40;
   }
-  (*(void (**)(__int64))(*v10 + v6))((__int64)v10);
-
+  (*(void (**)(__int64))(*v9_.v10 + v6))((__int64)v9_.v10);
 LABEL_11:
-  if (v12 == v11) {
+  if (v11_.v12 == v11_.v11) {
     v7 = 32;
   }
   else {
-    if (v12 == nullptr) {
+    if (v11_.v12 == nullptr) {
       goto LABEL_16;
     }
     v7 = 40;
   }
-  (*(void (**)(__int64))(*v12 + v7))((__int64)v12);
-
+  (*(void (**)(__int64))(*v11_.v12 + v7))((__int64)v11_.v12);
 LABEL_16:
-  if (v14 == v13) {
+  if (v13_.v14 == v13_.v13) {
     v8 = 32;
     goto LABEL_20;
   }
-  if (v14 != nullptr) {
+  if (v13_.v14 != nullptr) {
     v8 = 40;
   LABEL_20:
-    (*(void (**)(__int64))(*v14 + v8))((__int64)v14);
+    (*(void (**)(__int64))(*v13_.v14 + v8))((__int64)v13_.v14);
   }
   return 12;
 }
 
-__int64 TrainingMenuItem_Unknown76(__int64 a1, __int64 a2, int a3)
+__int64 TrainingMenuItem_Unknown76(__int64 a1, _QWORD* a2, int a3)
 {
   __int64 result;
 
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   if ((a3 & 0x100000) != 0) {
-    return GameRoutine_16ef100(a2, "MID_Menu_Cause_NotPerson_BottomUp");
+    return GameHr_16ef100(a2, "MID_Menu_Cause_NotPerson_BottomUp");
   }
   return result;
 }
@@ -198,68 +213,33 @@ __int64 TrainingMenuItem_Unknown73_15f65b0(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
+  __int64* v4;
+  __int64* v5;
+  char* v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
-  _QWORD v11[4];
-  int v12;
-  int v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
 
   (*(void (**)(_QWORD*, __int64))(*a1 + 592LL))(a1, 1);
   v2 = a1[1];
   if (v2 != 0 && (v3 = __dynamic_cast(a1[1], GameData_212e030[0],
                                       GameData_212dff0[0], 0)) != 0) {
-    v4 = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 1112LL))(v3);
+    v4 = (__int64*)(*(__int64 (**)(__int64))(*(_QWORD*)v3 + 1112LL))(v3);
   }
   else {
-    v4 = v2 + 848;
+    v4 = (__int64*)(v2 + 848);
   }
-  v5 = GameRoutine_155fbe0(v4, "L_ReceptionTime");
-  v14 = -1;
-  v15 = -1;
-  v16 = -1;
-  v17 = -1;
-  v6 = *msg_MessageManager_instance__ptr[0];
-  v18 = -1;
-  v19 = -1;
-  v20 = -1;
-  v21 = -1;
-  v22 = -1;
-  v23 = -1;
-  v24 = -1;
-  v25 = -1;
-  v11[0] = GameData_212e348 + 2;
-  v11[1] = 0xFFFF0001FFFF0000LL;
-  v11[2] = 0xFFFF0004FFFF0002LL;
-  v11[3] = 0xFFFF0006FFFF0005LL;
-  v26 = 8;
-  v12 = -65529;
-  v13 = -65528;
-  v7 = GameRoutine_a4dbe0(v6, "MID_Facility_OpeningHour", 0, v11);
-  if (v7 != 0) {
-    v8 = v7;
-    v9 = ui_LayoutAccessor_FindTextBox(v5, "T_Txt");
-    if (v9 != 0) {
-      GameRoutine_156c5d0(v9, v8, 0);
+  v5 = LayoutAccessor_155fbe0(v4, "L_ReceptionTime");
+  v6 = GameRoutine_a4dbe0_alt1(*msg_MessageManager_instance__ptr[0],
+                               "MID_Facility_OpeningHour", 0);
+  if (v6 != nullptr) {
+    v7 = (__int64)v6;
+    v8 = ui_LayoutAccessor_FindTextBox_alt1(v5, (__int64)"T_Txt");
+    if (v8 != 0) {
+      GameRoutine_156c5d0_alt1(v8, v7, 0);
     }
   }
-  return ui_LayoutAccessor_SetPaneVisible(a1[1] + 848LL, "N_HelpDetail", 0);
+  return ui_LayoutAccessor_SetPaneVisible_alt1(a1[1] + 848LL,
+                                               (__int64)"N_HelpDetail", 0);
 }
 
 #pragma GCC visibility pop

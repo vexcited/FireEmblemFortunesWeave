@@ -21,6 +21,9 @@ extern __int64 GameData_21f3d10;
 extern __int64 game_hub_ProcHubSeqView_instance_;
 extern __int64 game_script_hub_talk_g_select_menu;
 __int64 game_hub_anonymous_HubMenuItem_ExitGmap_ACall_closure_Invoke();
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
 
 __int64 HubMenuItem_ExitGmap_IsDecidable(__int64 a1)
 {
@@ -30,19 +33,23 @@ __int64 HubMenuItem_ExitGmap_IsDecidable(__int64 a1)
   char v5;
   int v6;
   bool v7;
-  int v8;
-  int v9;
-  bool v10;
+  __int64 v8;
+  __int64 v9;
+  int v10;
   int v11;
-  __int64 v13;
-  __int64* v14;
+  bool v12;
+  int v13;
+  struct {
+    __int64 v15;
+    __int64* v16;
+  } v15_;
 
-  v14 = &GameData_1ad2a61;
-  v2 = game_HashString(&GameData_1ad2a61);
-  v13 = v2;
+  v15_.v16 = &GameData_1ad2a61;
+  v15_.v15 = game_HashString_alt1((__int64)&GameData_1ad2a61);
   if (game_GameModeData_instance_ != 0) {
-    v2 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v13);
+    v2 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v15_.v15);
     if (v2 != 0 && *(_DWORD*)(v2 + 32) != 0) {
       goto LABEL_38;
     }
@@ -71,15 +78,16 @@ __int64 HubMenuItem_ExitGmap_IsDecidable(__int64 a1)
                   *(__int16*)(game_gmap_GmapClock_instance_ + 20) *
                   *(__int16*)(game_gmap_GmapClock_instance_ + 24) ==
               0) {
-        v14 = (__int64*)&GameData_1adebe5;
-        v2 = game_HashString(&GameData_1adebe5);
+        v15_.v16 = (__int64*)&GameData_1adebe5;
+        v8 = game_HashString_alt1((__int64)&GameData_1adebe5);
         v3 = game_GameModeData_instance_;
-        v13 = v2;
+        v15_.v15 = v8;
         if (game_GameModeData_instance_ == 0 ||
-            (v2 = game_GameVariableTable_Find(
-                 *(_QWORD*)(game_GameModeData_instance_ + 48), &v13),
-             v3 = game_GameModeData_instance_, v2 == 0) ||
-            *(_DWORD*)(v2 + 32) == 0) {
+            (v9 = game_GameVariableTable_Find_alt1(
+                 *(_QWORD**)(game_GameModeData_instance_ + 48),
+                 (unsigned __int64*)&v15_.v15),
+             v3 = game_GameModeData_instance_, v9 == 0) ||
+            *(_DWORD*)(v9 + 32) == 0) {
           if (v3 == 0) {
             goto LABEL_37;
           }
@@ -96,22 +104,21 @@ __int64 HubMenuItem_ExitGmap_IsDecidable(__int64 a1)
       }
     }
   LABEL_28:
-    v8 = *(unsigned __int8*)(v3 + 15);
-    if ((unsigned int)(v8 - 2) < 3) {
-      v9 = *(_DWORD*)(v3 + 64);
-      v10 = v9 == 4;
-      if (v9 < 4) {
+    v10 = *(unsigned __int8*)(v3 + 15);
+    if ((unsigned int)(v10 - 2) < 3) {
+      v11 = *(_DWORD*)(v3 + 64);
+      v12 = v11 == 4;
+      if (v11 < 4) {
         goto LABEL_38;
       }
       goto LABEL_33;
     }
-    if (v8 == 1) {
-      v11 = *(_DWORD*)(v3 + 64);
-      v10 = v11 == 3;
-      if (v11 >= 3) {
+    if (v10 == 1) {
+      v13 = *(_DWORD*)(v3 + 64);
+      v12 = v13 == 3;
+      if (v13 >= 3) {
       LABEL_33:
-        if (!v10 ||
-            GameData_21f3ce8 != 0 && (GameRoutine_d9fc90(v2) & 1) != 0) {
+        if (!v12 || GameData_21f3ce8 != 0 && HubMenuItemExitGmap_d9fc90()) {
           goto LABEL_37;
         }
       }

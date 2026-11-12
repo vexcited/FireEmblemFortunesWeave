@@ -50,10 +50,21 @@ void __attribute__((noreturn)) GameRoutine_a9fd80();
 void __attribute__((noreturn)) GameRoutine_aa0e00();
 void __attribute__((noreturn)) GameRoutine_abae00();
 void __attribute__((noreturn)) GameRoutine_abc340();
-__int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3);
+__int64 GlobalEnvTask_b37340_alt1(__int64 a1, __int64 a2,
+                                  _QWORD* a3) __asm__("GlobalEnvTask_b37340");
 __int64 GlobalEnvTask_Unknown3(__int64 result, _QWORD* a2);
+__int64
+gfxa_TaskIBL_Worker_Worker_alt1(_QWORD*, __int64,
+                                int) __asm__("gfxa_TaskIBL_Worker_Worker");
+__int64 gfxa_TaskSkyHDRI_Updater_Updater(__int64, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void gfxa_b6a300_alt1(__int64, _QWORD*, __int64*) __asm__("gfxa_b6a300");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3);
 
-__int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
+void GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
 {
   __int64 v3;
   __int64 v5;
@@ -106,18 +117,17 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
   _QWORD* v52;
   __int64 v53;
   __int64 v54;
-  __int64* v55;
-  __int64 result;
-  _QWORD* v57;
+  _QWORD* v55;
+  _QWORD* v56;
+  __int64 v57;
   __int64 v58;
-  __int64 v59;
-  char v60;
-  __int64 v61;
-  int v62;
+  char v59;
+  __int64 v60;
+  int v61;
   struct {
-    __int64 v63;
-    int v64;
-  } v63_;
+    __int64 v62;
+    int v63;
+  } v62_;
 
   v3 = a2;
   *(_QWORD*)a1 = gfxa_GlobalEnvTask_vtable;
@@ -153,7 +163,7 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
   *(_DWORD*)(a1 + 168) = -1;
   *(_QWORD*)(a1 + 176) = 0;
   v8 = fw_memory_HeapManager_Allocate(v7, 384, 16, 0);
-  GameRoutine_b78660(v8, v3);
+  gfxa_TaskSkyHDRI_Updater_Updater(v8, v3);
   v9 = *(_QWORD*)(a1 + 96);
   *(_QWORD*)(a1 + 96) = v8;
   if (v9 != 0) {
@@ -174,11 +184,11 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
     if (*(_QWORD*)(*v6 + 200) == 0) {
       v12 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*v6 + v12);
+    nn_mem_StandardAllocator_Free_alt2(*v6 + v12, v9);
   }
   v13 = *(_QWORD*)(a1 + 8);
   v14 = fw_memory_HeapManager_Allocate(*v6, 384, 16, 0);
-  GameRoutine_b78660(v14, v13);
+  gfxa_TaskSkyHDRI_Updater_Updater(v14, v13);
   v15 = *(_QWORD*)(a1 + 104);
   *(_QWORD*)(a1 + 104) = v14;
   if (v15 != 0) {
@@ -199,11 +209,11 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
     if (*(_QWORD*)(*v6 + 200) == 0) {
       v18 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*v6 + v18);
+    nn_mem_StandardAllocator_Free_alt2(*v6 + v18, v15);
   }
   v19 = *(_QWORD*)(a1 + 8);
   v20 = fw_memory_HeapManager_Allocate(*v6, 384, 16, 0);
-  GameRoutine_b78660(v20, v19);
+  gfxa_TaskSkyHDRI_Updater_Updater(v20, v19);
   v21 = *(_QWORD*)(a1 + 112);
   *(_QWORD*)(a1 + 112) = v20;
   if (v21 != 0) {
@@ -224,7 +234,7 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
     if (*(_QWORD*)(*v6 + 200) == 0) {
       v24 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*v6 + v24);
+    nn_mem_StandardAllocator_Free_alt2(*v6 + v24, v21);
   }
   v25 = *(_QWORD*)(a1 + 8);
   v26 = (__int64*)fw_memory_HeapManager_Allocate(*v6, 304, 16, 0);
@@ -248,30 +258,30 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
     if (v30 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v30 + 8),
                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v30 + 16LL))(v30);
-      std___1___shared_weak_count___release_weak(v30);
+      std___1___shared_weak_count___release_weak_alt1(v30);
     }
     v31 = 128;
     if (*(_QWORD*)(*v6 + 200) == 0) {
       v31 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*v6 + v31);
+    nn_mem_StandardAllocator_Free_alt2(*v6 + v31, (__int64)v27);
   }
-  GameRoutine_b34420((void*)((__int64)&v63_.v63),
+  GameRoutine_b34420((void*)((__int64)&v62_.v62),
                      *(_QWORD**)(*(_QWORD*)(a1 + 8) + 13424LL),
                      (__int64)"Graphics/Textures/common_default", 0x20u,
                      (__int64)"Cmn_Default_LSPV_BC", 0x13u, 0);
   v32 = *v6;
   v33 = *(_QWORD**)(a1 + 8);
-  v62 = 32;
-  v60 = 1;
-  *(_QWORD*)(a1 + 160) = v63_.v63;
-  *(_DWORD*)(a1 + 168) = v63_.v64;
+  v61 = 32;
+  v59 = 1;
+  *(_QWORD*)(a1 + 160) = v62_.v62;
+  *(_DWORD*)(a1 + 168) = v62_.v63;
   v34 = *(_DWORD*)(a1 + 128);
-  LODWORD(v59) = 1;
-  HIDWORD(v59) = v34;
-  v61 = 0x8000000080LL;
+  LODWORD(v58) = 1;
+  HIDWORD(v58) = v34;
+  v60 = 0x8000000080LL;
   v35 = fw_memory_HeapManager_Allocate(v32, 136, 16, 0);
-  gfxa_b6a300(v35, v33, &v59);
+  gfxa_b6a300_alt1(v35, v33, &v58);
   v36 = (_QWORD*)fw_memory_HeapManager_Allocate(*v6, 32, 16, 0);
   v37 = *(_QWORD*)(a1 + 40);
   v36[2] = 0;
@@ -283,18 +293,18 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
   if (v37 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v37 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v37 + 16LL))(v37);
-    std___1___shared_weak_count___release_weak(v37);
+    std___1___shared_weak_count___release_weak_alt1(v37);
   }
   v38 = *(_DWORD*)(a1 + 132);
   v39 = *v6;
   v40 = *(_QWORD**)(a1 + 8);
-  v60 = 0;
-  v62 = 32;
-  LODWORD(v59) = 1;
-  HIDWORD(v59) = v38;
-  v61 = 0x2000000100LL;
+  v59 = 0;
+  v61 = 32;
+  LODWORD(v58) = 1;
+  HIDWORD(v58) = v38;
+  v60 = 0x2000000100LL;
   v41 = fw_memory_HeapManager_Allocate(v39, 136, 16, 0);
-  gfxa_b6a300(v41, v40, &v59);
+  gfxa_b6a300_alt1(v41, v40, &v58);
   v42 = (_QWORD*)fw_memory_HeapManager_Allocate(*v6, 32, 16, 0);
   v43 = *(_QWORD*)(a1 + 56);
   *v42 = &GameData_1fc4f80;
@@ -306,16 +316,16 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
   if (v43 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v43 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v43 + 16LL))(v43);
-    std___1___shared_weak_count___release_weak(v43);
+    std___1___shared_weak_count___release_weak_alt1(v43);
   }
   v44 = *v6;
   v45 = *(_QWORD**)(a1 + 8);
-  v60 = 0;
-  v59 = 0x300000001LL;
-  v61 = 0x2000000020LL;
-  v62 = 32;
+  v59 = 0;
+  v58 = 0x300000001LL;
+  v60 = 0x2000000020LL;
+  v61 = 32;
   v46 = fw_memory_HeapManager_Allocate(v44, 136, 16, 0);
-  gfxa_b6a300(v46, v45, &v59);
+  gfxa_b6a300_alt1(v46, v45, &v58);
   v47 = (_QWORD*)fw_memory_HeapManager_Allocate(*v6, 32, 16, 0);
   v48 = *(_QWORD*)(a1 + 72);
   *v47 = &GameData_1fc4f80;
@@ -327,13 +337,13 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
   if (v48 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v48 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v48 + 16LL))(v48);
-    std___1___shared_weak_count___release_weak(v48);
+    std___1___shared_weak_count___release_weak_alt1(v48);
   }
   v49 = *v6;
   v50 = *(_QWORD*)(a1 + 8);
-  v59 = 0x40000000800LL;
+  v58 = 0x40000000800LL;
   v51 = fw_memory_HeapManager_Allocate(v49, 32, 16, 0);
-  gfxa_b77270(v51, v50, &v59);
+  gfxa_b77270(v51, v50, &v58);
   v52 = (_QWORD*)fw_memory_HeapManager_Allocate(*v6, 32, 16, 0);
   v53 = *(_QWORD*)(a1 + 88);
   v52[2] = 0;
@@ -345,22 +355,21 @@ __int64 GlobalEnvTask_b37340(__int64 a1, __int64 a2, _QWORD* a3)
   if (v53 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v53 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v53 + 16LL))(v53);
-    std___1___shared_weak_count___release_weak(v53);
+    std___1___shared_weak_count___release_weak_alt1(v53);
   }
   v54 = *(_QWORD*)(a1 + 8);
-  v55 = (__int64*)fw_memory_HeapManager_Allocate(*v6, 184, 16, 0);
-  result = gfxa_TaskIBL_Worker_Worker(v55, v54, 2);
-  v57 = *(_QWORD**)(a1 + 152);
+  v55 = (_QWORD*)fw_memory_HeapManager_Allocate(*v6, 184, 16, 0);
+  gfxa_TaskIBL_Worker_Worker_alt1(v55, v54, 2);
+  v56 = *(_QWORD**)(a1 + 152);
   *(_QWORD*)(a1 + 152) = v55;
-  if (v57 != nullptr) {
-    ResourceBuilder_b6adf0(v57);
-    v58 = 128;
+  if (v56 != nullptr) {
+    ResourceBuilder_b6adf0(v56);
+    v57 = 128;
     if (*(_QWORD*)(*v6 + 200) == 0) {
-      v58 = 56;
+      v57 = 56;
     }
-    return nn_mem_StandardAllocator_Free_alt1(*v6 + v58);
+    nn_mem_StandardAllocator_Free_alt2(*v6 + v57, (__int64)v56);
   }
-  return result;
 }
 
 _QWORD* GlobalEnvTask_Destructor(_QWORD* result)

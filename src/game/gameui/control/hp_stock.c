@@ -27,6 +27,20 @@ __attribute__((swiftcall)) void
 HPStock_18a1c50(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, __int64 a2);
 __attribute__((swiftcall)) void HPStock_18a1e80(PSEUDO_X8 x8_, __int64 a1,
                                                 __int64 a2);
+_QWORD* ui_LayoutAccessor_Setup_155dea0_alt1(_QWORD*, _QWORD*, __int64) __asm__(
+    "ui_LayoutAccessor_Setup_155dea0");
+__int64
+LayoutAccessor_1562cf0_alt1(__int64 result,
+                            const char*) __asm__("LayoutAccessor_1562cf0");
+__int64 LayoutEx_579160_alt1(__int64, __int64) __asm__("LayoutEx_579160");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void ui_ILayoutControl_UpdatePath_alt1(__int64) __asm__(
+    "ui_ILayoutControl_UpdatePath");
 __attribute__((swiftcall)) void
 
 HPStock_18a1c50(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, __int64 a2)
@@ -35,24 +49,26 @@ HPStock_18a1c50(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, __int64 a2)
   _QWORD* v6;
   _QWORD* v7;
   _QWORD* v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
+  const char* v9;
+  unsigned __int64 v10;
+  const char* v11;
+  unsigned __int64 v12;
   __int64 v13;
   __int64 v14;
   __int64 v15;
   __int64 v16;
   __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
+  char* v18;
+  char* v19;
+  char* v20;
+  char* v21;
   __int64 result;
-  __int64 v23;
-  __int64 v24;
+  struct {
+    __int64 v23;
+    __int64 v24;
+  } v23_;
 
-  v6 = (_QWORD*)LayoutEx_579160(200, 8);
+  v6 = (_QWORD*)LayoutEx_579160_alt1(200, 8);
   v6[1] = 0;
   v6[2] = 0;
   v7 = v6;
@@ -67,15 +83,15 @@ HPStock_18a1c50(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, __int64 a2)
   v6[11] = 0;
   v6[3] = &ui_ILayoutControl_vtable;
   v8 = v6 + 3;
-  v9 = *(_QWORD*)(a1 + 24) + 176LL;
-  v10 = strlen(v9);
+  v9 = (const char*)(*(_QWORD*)(a1 + 24) + 176LL);
+  v10 = strlen_alt1(v9);
   v7[5] = v9;
   v7[6] = v10;
-  v11 = *(_QWORD*)(a1 + 48);
-  v12 = strlen(v11);
+  v11 = *(const char**)(a1 + 48);
+  v12 = strlen_alt1(v11);
   v7[7] = v11;
   v7[8] = v12;
-  ui_ILayoutControl_UpdatePath(v8);
+  ui_ILayoutControl_UpdatePath_alt1((__int64)v8);
   v7[12] = 0;
   v7[13] = 0;
   v7[14] = 0;
@@ -97,38 +113,38 @@ HPStock_18a1c50(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, __int64 a2)
       v15 = *(_QWORD*)(a2 + 16);
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v13 + 16), 1u,
                                 memory_order_relaxed);
-      v23 = 0;
-      v16 = std___1___shared_weak_count_lock(v15);
-      v24 = v16;
+      v23_.v23 = 0;
+      v16 = std___1___shared_weak_count_lock_alt1(v15);
+      v23_.v24 = v16;
       if (v16 != 0) {
         v17 = v16;
-        v23 = v14;
-        ui_LayoutAccessor_Setup_155dea0(v7 + 12, &v23, a1);
+        v23_.v23 = v14;
+        ui_LayoutAccessor_Setup_155dea0_alt1(v7 + 12, &v23_.v23, a1);
         if (atomic_fetch_add((atomic_ullong* volatile)(v17 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
-          std___1___shared_weak_count___release_weak(v17);
+          std___1___shared_weak_count___release_weak_alt1(v17);
         }
       }
       else {
-        ui_LayoutAccessor_Setup_155dea0(v7 + 12, &v23, a1);
+        ui_LayoutAccessor_Setup_155dea0_alt1(v7 + 12, &v23_.v23, a1);
       }
-      std___1___shared_weak_count___release_weak(v13);
+      std___1___shared_weak_count___release_weak_alt1(v13);
     }
     else {
-      v23 = 0;
-      v24 = 0;
-      ui_LayoutAccessor_Setup_155dea0(v7 + 12, &v23, a1);
+      v23_.v23 = 0;
+      v23_.v24 = 0;
+      ui_LayoutAccessor_Setup_155dea0_alt1(v7 + 12, &v23_.v23, a1);
     }
   }
-  v18 = game_util_Format("Stock%02d", 2);
-  LayoutAccessor_1562cf0(v7 + 12, v18);
-  v19 = game_util_Format("Icon%02d_%s", 0, "Enable");
-  LayoutAccessor_1562cf0(v7 + 12, v19);
-  v20 = game_util_Format("Icon%02d_%s", 1, "Enable");
-  LayoutAccessor_1562cf0(v7 + 12, v20);
-  v21 = game_util_Format("Icon%02d_%s", 2, "Enable");
-  result = LayoutAccessor_1562cf0(v7 + 12, v21);
+  v18 = game_util_Format_alt1("Stock%02d", 2);
+  LayoutAccessor_1562cf0_alt1((__int64)(v7 + 12), v18);
+  v19 = game_util_Format_alt1("Icon%02d_%s", 0, "Enable");
+  LayoutAccessor_1562cf0_alt1((__int64)(v7 + 12), v19);
+  v20 = game_util_Format_alt1("Icon%02d_%s", 1, "Enable");
+  LayoutAccessor_1562cf0_alt1((__int64)(v7 + 12), v20);
+  v21 = game_util_Format_alt1("Icon%02d_%s", 2, "Enable");
+  result = LayoutAccessor_1562cf0_alt1((__int64)(v7 + 12), v21);
   *a3 = v8;
   a3[1] = v7;
   v7[3] = HPStock_18a2270_ptr;

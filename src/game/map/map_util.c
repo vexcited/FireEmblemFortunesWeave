@@ -41,8 +41,8 @@ extern __int64* GameData_212cfb8[11];
 extern __int64* GameData_212d000[2];
 extern char game_script_map_event_g_active_unit;
 void __attribute__((noreturn)) GameRoutine_60a310(void);
-__int64 MapUtil_753260(__int64 a1, unsigned int a2, unsigned int a3,
-                       __int64 a4);
+__int64 MapUtil_753260_alt1(__int64 a1, unsigned int a2, unsigned int a3,
+                            __int64 a4) __asm__("MapUtil_753260");
 __int64 MapUtil_753390(__int64 a1, unsigned int a2, int a3, __int64 a4);
 __int64 MapUtil_753570(int a1, int a2);
 __int64 MapUtil_753920(__int64 result, unsigned __int16* a2, __int64 a3);
@@ -172,6 +172,9 @@ float MapUtil_752d30(int8x16_t* a1, int8x16_t* a2);
 __int64 MapUtil_755860(__int64 result);
 __int64 MapUtil_755a10(__int64 result);
 __int64 MapUtil_75f320(__int64 a1, long double a2);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 MapUtil_753260(__int64 a1, unsigned int a2, int a3, __int64 a4);
 
 _QWORD* game_map_MapUtil_GetCheerUnit(__int64 a1)
 {
@@ -469,7 +472,7 @@ __attribute__((swiftcall)) void MapUtil_752e60(PSEUDO_X8 x8_, __int64 result,
   }
 }
 
-__int64 MapUtil_753260(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4)
+__int64 MapUtil_753260(__int64 a1, unsigned int a2, int a3, __int64 a4)
 {
   unsigned int v5;
   __int64 v8;
@@ -477,10 +480,13 @@ __int64 MapUtil_753260(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4)
   char* v10;
   char v11;
   __int64 v12;
-  int v14;
-  char* v15;
-  char* v16;
-  __int64 v17;
+  struct {
+    int v14;
+    char gap4_[4];
+    char* v15;
+    char* v16;
+    __int64 v17;
+  } v14_;
 
   if (a1 == 0) {
     return a1 & 1;
@@ -488,43 +494,43 @@ __int64 MapUtil_753260(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4)
   v5 = *(unsigned __int8*)(a1 + 417);
   v8 = a1;
   if (v5 >= 2) {
-    v14 = 0;
-    v15 = nullptr;
-    v16 = nullptr;
-    v17 = 0;
-    GameRoutine_74d660((__int64)&v14, v5, 0, 0);
-    v9 = v15;
-    v10 = v16;
-    if (v15 != v16) {
+    v14_.v14 = 0;
+    v14_.v15 = nullptr;
+    v14_.v16 = nullptr;
+    v14_.v17 = 0;
+    GameRoutine_74d660((__int64)&v14_.v14, v5, 0, 0);
+    v9 = v14_.v15;
+    v10 = v14_.v16;
+    if (v14_.v15 != v14_.v16) {
       do {
-        LOBYTE(a1) = MapUtil_753390_alt1(v8, a2 + *v9, a3 + v9[1], a4);
+        LOBYTE(a1) = MapUtil_753390(v8, a2 + *v9, a3 + v9[1], a4);
         if ((a1 & 1) == 0) {
           break;
         }
         v9 += 4;
       } while (v9 != v10);
-      v9 = v15;
-      if (v15 == nullptr) {
+      v9 = v14_.v15;
+      if (v14_.v15 == nullptr) {
         return a1 & 1;
       }
       goto LABEL_7;
     }
     LOBYTE(a1) = 1;
-    if (v15 != nullptr) {
+    if (v14_.v15 != nullptr) {
     LABEL_7:
-      v16 = v9;
+      v14_.v16 = v9;
       v11 = a1;
       v12 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v12 = 56;
       }
-      nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v9);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, (__int64)v9);
       LOBYTE(a1) = v11;
     }
     return a1 & 1;
   }
-  return MapUtil_753390_alt1(a1, a2, a3, a4);
+  return MapUtil_753390(a1, a2, a3, a4);
 }
 
 __int64 MapUtil_753390(__int64 a1, unsigned int a2, int a3, __int64 a4)
@@ -1076,7 +1082,7 @@ bool MapUtil_7545a0(unsigned int* a1, unsigned int* a2, unsigned int a3,
   *a2 = -1;
   if (a4 != 0) {
     v9 = a6;
-    if ((MapUtil_753260(a4, a5, a6, a7) & 1) != 0) {
+    if ((MapUtil_753260_alt1(a4, a5, a6, a7) & 1) != 0) {
       *a1 = a5;
       *a2 = v9;
       return true;
@@ -1099,7 +1105,7 @@ bool MapUtil_7545a0(unsigned int* a1, unsigned int* a2, unsigned int a3,
         v22 = (v14 - v9) * (v14 - v9);
         do {
           if ((int)(v22 + (v18 + v21) * (v18 + v21)) < v19 &&
-              (MapUtil_753260(a4, v21, v14, a7) & 1) != 0) {
+              (MapUtil_753260_alt1(a4, v21, v14, a7) & 1) != 0) {
             *a1 = v21;
             v19 = v22 + (v18 + v21) * (v18 + v21);
             *a2 = v14;

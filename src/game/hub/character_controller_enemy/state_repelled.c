@@ -9,23 +9,26 @@ void __attribute__((noreturn)) GameRoutine_8123d0(_QWORD, _QWORD);
 __int64 StateRepelled_Unknown3(__int64 result);
 __int64 StateRepelled_Unknown4(__int64 result);
 __int64 StateRepelled_Unknown5_10c7e40(__int64 result);
+__int64 HitboxModule_d4e240(__int64, __int64);
+__int64 HubCharacterNatives_cf66e0(__int64);
+void __attribute__((noreturn))
+GameRoutine_8123d0_alt1() __asm__("GameRoutine_8123d0");
 
 __int64 StateRepelled_Unknown3(__int64 result)
 {
   __int64 v1;
-  __int64 v2;
 
   v1 = *(_QWORD*)(result + 8);
   if ((*(_BYTE*)(v1 + 244) & 1) == 0) {
     *(_BYTE*)(v1 + 244) = 1;
     if (*(_BYTE*)(v1 + 256) == 1) {
-      result = GameRoutine_cf66e0(
+      result = HubCharacterNatives_cf66e0(
           *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v1 + 8) + 24LL) + 8LL));
       if (result != 0) {
         if ((*(_BYTE*)(v1 + 256) & 1) == 0) {
-          GameRoutine_8123d0(result, v2);
+          GameRoutine_8123d0_alt1();
         }
-        result = GameRoutine_d4e240(result, *(_QWORD*)(v1 + 248));
+        result = HitboxModule_d4e240(result, *(_QWORD*)(v1 + 248));
       }
       if (*(_BYTE*)(v1 + 256) == 1) {
         *(_BYTE*)(v1 + 256) = 0;

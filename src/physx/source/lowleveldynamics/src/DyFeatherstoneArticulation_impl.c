@@ -9,9 +9,18 @@ void GameRoutine_327da0(__int64, __int64, unsigned int, float*, float32x4_t*,
 __attribute__((swiftcall)) void
 physx_Dy_FeatherstoneArticulation_pxcFsGetVelocity(PSEUDO_X8 x8_, __int64 a1,
                                                    unsigned int a2, __int64 a3);
-float physx_Dy_setupComplexLimit(__int64 a1, __int64 a2, unsigned int a3,
-                                 float* a4, __int64 a5, __int64 a6, float a7,
-                                 float a8, float a9, float a10);
+float physx_Dy_setupComplexLimit_alt1(
+    __int64 a1, __int64 a2, unsigned int a3, float* a4, __int64 a5, __int64 a6,
+    float a7, float a8, float a9,
+    float a10) __asm__("physx_Dy_setupComplexLimit");
+unsigned __int64 GameRoutine_327da0_alt1(unsigned __int64 result, __int64,
+                                         unsigned int, float*, float32x4_t*,
+                                         unsigned int, float*,
+                                         float*) __asm__("GameRoutine_327da0");
+float physx_Dy_setupComplexLimit(unsigned __int64 a1, __int64 a2,
+                                 unsigned int a3, float* a4, __int64 a5,
+                                 __int64 a6, float a7, float a8, float a9,
+                                 float a10);
 __attribute__((swiftcall)) void
 
 physx_Dy_FeatherstoneArticulation_pxcFsGetVelocity(PSEUDO_X8 x8_, __int64 a1,
@@ -697,13 +706,13 @@ LABEL_55:
   }
 }
 
-float physx_Dy_setupComplexLimit(__int64 a1, __int64 a2, unsigned int a3,
-                                 float* a4, __int64 a5, __int64 a6, float a7,
-                                 float a8, float a9, float a10)
+float physx_Dy_setupComplexLimit(unsigned __int64 a1, __int64 a2,
+                                 unsigned int a3, float* a4, __int64 a5,
+                                 __int64 a6, float a7, float a8, float a9,
+                                 float a10)
 {
   float v12;
   float v13;
-  __int64 v15;
   float v19;
   unsigned int v20;
   __int128 v22;
@@ -741,7 +750,6 @@ float physx_Dy_setupComplexLimit(__int64 a1, __int64 a2, unsigned int a3,
 
   v12 = *a4;
   v13 = a4[1];
-  v15 = a3;
   v19 = a4[2];
   v20 = *(_DWORD*)(a1 + 40LL * a3 + 32);
   *(_OWORD*)v41 = (__typeof__(*(_OWORD*)v41)){0};
@@ -753,8 +761,8 @@ float physx_Dy_setupComplexLimit(__int64 a1, __int64 a2, unsigned int a3,
   *((float*)&v23 + 1) = -v13;
   *((_QWORD*)&v23 + 1) = COERCE_UNSIGNED_INT(-v19);
   *(_OWORD*)&v41[2] = v23;
-  GameRoutine_327da0(a1, a2, v20, (float*)v42, &v47_.v47, v15, (float*)v41,
-                     v43_.v43);
+  GameRoutine_327da0_alt1(a1, a2, v20, (float*)v42, &v47_.v47, a3, (float*)v41,
+                          v43_.v43);
   v24 = v47_.v48;
   v25 = v47_.v49;
   v26 = *a4;

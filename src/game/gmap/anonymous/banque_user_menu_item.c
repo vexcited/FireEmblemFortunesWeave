@@ -32,6 +32,14 @@ extern __int64 (*GameData_2071258[])();
 extern __int64* GameData_212d640[9];
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall(_QWORD* a1);
+__int64
+GmapBanquetMenu_16416e0_alt1(__int64*) __asm__("GmapBanquetMenu_16416e0");
+__int64 _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb_alt1(
+    __int64 result, char, unsigned __int8,
+    unsigned __int8) __asm__("_ZN4game4menu9BasicMenu13Unknown16dea40Ebbb");
+__int64 game_IsVibrationEnabled_alt1(_BYTE*) __asm__("game_IsVibrationEnabled");
+__int64 game_menu_BasicMenu_Unknown16dd9a0_alt1(__int64 result) __asm__(
+    "game_menu_BasicMenu_Unknown16dd9a0");
 
 __int64 BanqueUserMenuItem_IsEnable(_QWORD* a1)
 {
@@ -278,7 +286,7 @@ __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure_Invoke(__int64 a1)
   __int64* v5;
   int v6;
   __int64 v7;
-  __int64 v8;
+  __int64* v8;
   __int64 v9;
   unsigned __int64 v10;
   __int64 v11;
@@ -332,7 +340,7 @@ __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure_Invoke(__int64 a1)
       }
     }
   }
-  v8 = v2 + 304;
+  v8 = (__int64*)(v2 + 304);
   GmapBanquetMenu_16415a0(*(_QWORD*)(v1 + 88), (unsigned int)v6);
   v9 = *(_QWORD*)(v2 + 360);
   v10 = v6;
@@ -355,7 +363,7 @@ __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure_Invoke(__int64 a1)
     v14 = 0;
     v15 = 0;
     do {
-      v17 = *(_QWORD*)(*(_QWORD*)v8 + 232LL);
+      v17 = *(_QWORD*)(*v8 + 232);
       if (v15 != 0) {
         if ((unsigned int)(v15 - 1) >= 7) {
           v18 = v14 & 0xFFFFFFF8;
@@ -378,21 +386,21 @@ __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure_Invoke(__int64 a1)
       v13 = *(_QWORD*)(v2 + 360);
     } while (v15 < (*(_QWORD*)(v2 + 368) - v13) >> 2);
   }
-  game_menu_BasicMenu_Unknown16dd9a0(*(_QWORD*)(v2 + 304));
-  game_menu_BasicMenu_Unknown16dd9a0(*(_QWORD*)(v2 + 312));
-  game_menu_BasicMenu_Unknown16dd9a0(*(_QWORD*)(v2 + 320));
-  v20 = *(_QWORD*)(v8 + 8LL * *(unsigned int*)(v2 + 352));
+  game_menu_BasicMenu_Unknown16dd9a0_alt1(*(_QWORD*)(v2 + 304));
+  game_menu_BasicMenu_Unknown16dd9a0_alt1(*(_QWORD*)(v2 + 312));
+  game_menu_BasicMenu_Unknown16dd9a0_alt1(*(_QWORD*)(v2 + 320));
+  v20 = v8[*(unsigned int*)(v2 + 352)];
   if (v20 != 0) {
     v21 = *(_QWORD*)(v20 + 336);
     if (v21 != 0) {
       (*(void (**)(_QWORD))(*(_QWORD*)v21 + 168LL))(*(_QWORD*)(v20 + 336));
     }
     *(_QWORD*)(v20 + 336) = v21;
-    _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb(v20, 1, 0, 0);
+    _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb_alt1(v20, 1, 0, 0);
     v22 = *(_QWORD*)(v20 + 336);
     if (v22 != 0) {
       (*(void (**)(__int64))(*(_QWORD*)v22 + 160LL))(v22);
-      game_IsVibrationEnabled(game_g_game_setting + 712);
+      game_IsVibrationEnabled_alt1((_BYTE*)(game_g_game_setting + 712));
       v23 = *(_QWORD*)(v20 + 336);
       v24 = 4;
       if (v23 != 0) {
@@ -409,7 +417,7 @@ __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure_Invoke(__int64 a1)
     }
     *(_DWORD*)(v20 + 356) = *(_DWORD*)(v20 + 356) & 0xFFFFFFFB | v24;
   }
-  GmapBanquetMenu_16416e0(v2);
+  GmapBanquetMenu_16416e0_alt1((__int64*)v2);
   v25 = *(_QWORD**)(v2 + 304);
   v26 = v25[42];
   if (v26 != 0) {
@@ -436,17 +444,18 @@ __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure_Invoke(__int64 a1)
               0) {
             if (v32 + 1 == v29) {
               (*(void (**)(__int64, _QWORD))(*(_QWORD*)v26 + 64LL))(v26, 0);
-              v34 = *(_QWORD*)v8;
-              v35 = *(_QWORD*)(*(_QWORD*)v8 + 336LL);
+              v34 = *v8;
+              v35 = *(_QWORD*)(*v8 + 336);
               if (v35 != 0) {
                 (*(void (**)(__int64))(*(_QWORD*)v35 + 168LL))(v35);
               }
               *(_QWORD*)(v34 + 336) = v33;
-              _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb(v34, 1, 0, 0);
+              _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb_alt1(v34, 1, 0, 0);
               v36 = *(_QWORD*)(v34 + 336);
               if (v36 != 0) {
                 (*(void (**)(__int64))(*(_QWORD*)v36 + 160LL))(v36);
-                game_IsVibrationEnabled(game_g_game_setting + 712);
+                game_IsVibrationEnabled_alt1(
+                    (_BYTE*)(game_g_game_setting + 712));
                 v37 = *(_QWORD*)(v34 + 336);
                 v38 = 4;
                 if (v37 != 0) {

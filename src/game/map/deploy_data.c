@@ -132,10 +132,17 @@ void __attribute__((noreturn)) GameRoutine_74e1f0(_QWORD);
 void __attribute__((noreturn)) GameRoutine_8123d0(_QWORD);
 void __attribute__((noreturn)) GameRoutine_f29120(void);
 void __attribute__((noreturn)) String_60a1d0(void);
-__attribute__((swiftcall)) void DeployData_f256b0(PSEUDO_X8 x8_, __int64 a1,
-                                                  __int64 a2, __int64 a3,
-                                                  __int64 a4);
+__attribute__((swiftcall)) void
+DeployData_f256b0_alt1(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3,
+                       __int64 a4) __asm__("DeployData_f256b0");
 __int64 DeployData_f25a60(unsigned int* a1, unsigned int* a2);
+__int64* GameHr_fbb8a0(unsigned int, unsigned int, __int64);
+__int64 GameRoutine_f25920_alt1(__int64, int, int, unsigned int,
+                                __int16) __asm__("GameRoutine_f25920");
+__attribute__((swiftcall)) void DeployData_f256b0(PSEUDO_X8 x8_, __int64 a1,
+                                                  unsigned int a2,
+                                                  unsigned int a3,
+                                                  unsigned int a4);
 
 __int64 game_map_DeployData_TargetEnumerate(__int64 a1, __int64* a2, int a3)
 {
@@ -1217,14 +1224,12 @@ LABEL_65:
   return result;
 }
 
-__attribute__((swiftcall)) void
-
-DeployData_f256b0(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3, __int64 a4)
+__attribute__((swiftcall)) void DeployData_f256b0(PSEUDO_X8 x8_, __int64 a1,
+                                                  unsigned int a2,
+                                                  unsigned int a3,
+                                                  unsigned int a4)
 {
   __int64 a5 = (__int64)PSEUDO_X8_VALUE(x8_);
-  int v6;
-  unsigned int v7;
-  unsigned int v8;
   __int64 result;
   _QWORD* v11;
   __int16 v12;
@@ -1248,27 +1253,30 @@ DeployData_f256b0(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3, __int64 a4)
   unsigned __int64 v30;
   __int64* v31;
 
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   *(_BYTE*)(a5 + 5) = 0;
   *(_QWORD*)(a5 + 8) = 0;
-  v6 = a4;
-  v7 = a3;
-  v8 = a2;
   *(_DWORD*)a5 = (unsigned __int8)a2 | ((unsigned __int8)a3 << 8);
-  result = GameRoutine_f25920(a1, a2, a3, a4, 0);
+  result = GameRoutine_f25920_alt1(a1, a2, a3, a4, 0),
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   *(_BYTE*)(a5 + 4) = result & 1;
   if ((result & 1) != 0) {
     v11 = (_QWORD*)(a1 + 126976);
-    v12 = (_WORD)v7 << 8;
-    result = GameRoutine_fbb8a0(v8, v7, v11[27]);
-    if (v6 == 2) {
+    v12 = (_WORD)a3 << 8;
+    result = (__int64)GameHr_fbb8a0(a2, a3, v11[27]),
+    v13 = COERCE_AS(__typeof__(v13),
+                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    if (a4 == 2) {
       if (v13 == 2) {
         v19 = v11[18];
         if (v19 != 0 && v11[20] != 0) {
-          v20 = (unsigned __int16)(v12 | v8);
-          v21 = (unsigned __int16)(v12 | v8);
+          v20 = (unsigned __int16)(v12 | a2);
+          v21 = (unsigned __int16)(v12 | a2);
           v22 = v19 - 1;
           if ((v19 & (v19 - 1)) != 0) {
-            v23 = (unsigned __int16)(v12 | v8);
+            v23 = (unsigned __int16)(v12 | a2);
             if (v19 <= v21) {
               v23 = v20 % (unsigned int)v19;
             }
@@ -1324,15 +1332,15 @@ DeployData_f256b0(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3, __int64 a4)
         }
       }
     }
-    else if (v6 == 1) {
+    else if (a4 == 1) {
       if (v13 == 1) {
         v14 = v11[18];
         if (v14 != 0 && v11[20] != 0) {
-          v15 = (unsigned __int16)(v12 | v8);
-          v16 = (unsigned __int16)(v12 | v8);
+          v15 = (unsigned __int16)(v12 | a2);
+          v16 = (unsigned __int16)(v12 | a2);
           v17 = v14 - 1;
           if ((v14 & (v14 - 1)) != 0) {
-            v18 = (unsigned __int16)(v12 | v8);
+            v18 = (unsigned __int16)(v12 | a2);
             if (v14 <= v16) {
               v18 = v15 % (unsigned int)v14;
             }
@@ -1388,7 +1396,7 @@ DeployData_f256b0(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3, __int64 a4)
         }
       }
     }
-    else if (v6 == 0 && (v13 & 0xFFFFFFFE) == 2) {
+    else if (a4 == 0 && (v13 & 0xFFFFFFFE) == 2) {
     LABEL_6:
       *(_QWORD*)(a5 + 8) = result;
       *(_BYTE*)(a5 + 5) = 1;
@@ -3882,9 +3890,9 @@ LABEL_181:
           while (1) {
             v371 = *v366;
             v372 = v366[1];
-            v297 = X8CALL_X0(__int64, DeployData_f256b0((void*)((__int64)&v470),
-                                                        (__int64)v459, v371,
-                                                        v372, v259));
+            v297 = X8CALL_X0(__int64, DeployData_f256b0_alt1(
+                                          (void*)((__int64)&v470),
+                                          (__int64)v459, v371, v372, v259));
             if (BYTE4(v470) == 1) {
               v373 = v371;
               if (v368 < v369) {

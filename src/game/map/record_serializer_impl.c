@@ -24,9 +24,18 @@ __int64 RecordSerializer_123cfa0(__int64 a1, __int64 a2);
 __int64 RecordSerializer_123d0b0(__int64 result);
 __int64 RecordSerializer_123d170(__int64 a1);
 __int64 RecordSerializer_123d420(__int64 a1);
-__int64 RecordSerializer_123d650(__int64 a1, __int64 a2);
+__int64
+RecordSerializer_123d650_alt1(__int64 a1,
+                              __int64 a2) __asm__("RecordSerializer_123d650");
 __int64* RecordSerializer_123d810(__int64* result, __int64* a2);
 void RecordSerializer_126ad60(__int64 a1, __int64 a2);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void GameRoutine_660f80_alt1(__int64*) __asm__("GameRoutine_660f80");
+void RecordSerializer_123d810_alt1(__int64*, __int64*) __asm__(
+    "RecordSerializer_123d810");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void RecordSerializer_123d650(__int64 a1, __int64 a2);
 
 __int64 RecordSerializer_123cfa0(__int64 a1, __int64 a2)
 {
@@ -333,7 +342,7 @@ __int64 RecordSerializer_123d420(__int64 a1)
   return result;
 }
 
-__int64 RecordSerializer_123d650(__int64 a1, __int64 a2)
+void RecordSerializer_123d650(__int64 a1, __int64 a2)
 {
   __int64 v2;
   __int64 v3;
@@ -341,25 +350,29 @@ __int64 RecordSerializer_123d650(__int64 a1, __int64 a2)
   __int64 v7;
   unsigned __int64 v8;
   unsigned int v9;
-  __int64 v10;
+  unsigned __int64 v10;
   __int16 v11;
-  __int64 result;
+  __int64 v12;
   __int64 v13;
   __int64 v14;
   __int64 v15;
   __int64 v16;
-  __int64 v17;
-  bool v18;
+  bool v17;
+  unsigned __int64 v18;
   unsigned __int64 v19;
-  unsigned __int64 v20;
+  __int64 v20;
   __int64 v21;
   __int64 v22;
-  __int64 v23;
-  int v24;
+  int v23;
+  __int64 v24;
   __int64 v25;
-  __int64 v26;
-  __int16 v27;
+  struct {
+    __int64 v26;
+    __int16 v27;
+  } v26_;
 
+  v11 = COERCE_AS(__typeof__(v11),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v2 = *(_QWORD*)(a1 + 32);
   v3 = *(_QWORD*)(a1 + 40);
   v4 = *(_DWORD*)(a1 + 128);
@@ -369,7 +382,9 @@ __int64 RecordSerializer_123d650(__int64 a1, __int64 a2)
   }
   v8 = *(_QWORD*)(a1 + 64) + *(_QWORD*)(a1 + 56);
   if (v7 == v8) {
-    GameRoutine_660f80(a1 + 24);
+    GameRoutine_660f80_alt1((__int64*)(a1 + 24)),
+        v11 = COERCE_AS(__typeof__(v11),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v2 = *(_QWORD*)(a1 + 32);
     v8 = *(_QWORD*)(a1 + 64) + *(_QWORD*)(a1 + 56);
   }
@@ -377,50 +392,59 @@ __int64 RecordSerializer_123d650(__int64 a1, __int64 a2)
       *(_DWORD*)(a1 + 20);
   *(_DWORD*)(a1 + 20) = v4;
   ++*(_QWORD*)(a1 + 64);
-  (**(void (***)(__int64, __int64))a2)(a2, a1);
+  (**(void (***)(__int64, __int64))a2)(a2, a1),
+      v11 = COERCE_AS(__typeof__(v11),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v9 = *(_DWORD*)(a1 + 144);
   v10 = *(int*)(a1 + 20) - (__int64)*(int*)(a1 + 128);
-  v26 = (*(__int64 (**)(__int64, _QWORD, _QWORD))(*(_QWORD*)a2 + 8LL))(
-      a2, v9, (unsigned int)v10);
-  v27 = v11;
-  result = RecordSerializer_123d810(a1 + 152, &v26);
-  v13 = *(_QWORD*)(a1 + 136);
-  if (v13 != 0) {
+  v26_.v26 = (*(__int64 (**)(__int64, _QWORD, _QWORD))(*(_QWORD*)a2 + 8LL))(
+      a2, v9, (unsigned int)v10),
+  v11 = COERCE_AS(__typeof__(v11),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v26_.v27 = v11;
+  RecordSerializer_123d810_alt1((__int64*)(a1 + 152), &v26_.v26),
+      v11 = COERCE_AS(__typeof__(v11),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v12 = *(_QWORD*)(a1 + 136);
+  if (v12 != 0) {
     if ((int)v10 <= (int)(491520 - v9)) {
-      result =
-          memcpy(v13 + (int)v9, *(_QWORD*)(a1 + 8) + *(int*)(a1 + 128), v10);
+      memcpy_alt1(v12 + (int)v9, *(_QWORD*)(a1 + 8) + *(int*)(a1 + 128), v10),
+          v11 = COERCE_AS(__typeof__(v11),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
     *(_DWORD*)(a1 + 144) += v10;
   }
-  v15 = *(_QWORD*)(a1 + 56);
-  v14 = *(_QWORD*)(a1 + 64);
-  v17 = *(_QWORD*)(a1 + 32);
-  v16 = *(_QWORD*)(a1 + 40);
-  v18 = v16 == v17;
-  v19 = v14 - 1 + v15;
-  v20 = v19 >> 10;
-  v21 = v19 & 0x3FF;
-  v22 = ((v16 - v17) << 7) - 1;
-  v23 = *(_QWORD*)(v17 + 8 * v20);
-  if (v18) {
-    v22 = 0;
+  v14 = *(_QWORD*)(a1 + 56);
+  v13 = *(_QWORD*)(a1 + 64);
+  v16 = *(_QWORD*)(a1 + 32);
+  v15 = *(_QWORD*)(a1 + 40);
+  v17 = v15 == v16;
+  v18 = v13 - 1 + v14;
+  v19 = v18 >> 10;
+  v20 = v18 & 0x3FF;
+  v21 = ((v15 - v16) << 7) - 1;
+  v22 = *(_QWORD*)(v16 + 8 * v19);
+  if (v17) {
+    v21 = 0;
   }
-  v24 = *(_DWORD*)(v23 + 4 * v21);
-  *(_QWORD*)(a1 + 64) = v14 - 1;
-  *(_DWORD*)(a1 + 20) = v24;
-  if ((unsigned __int64)(v22 - (v14 + v15) + 1) >= 0x800) {
-    if (*(_QWORD*)(v16 - 8) != 0) {
+  v23 = *(_DWORD*)(v22 + 4 * v20);
+  *(_QWORD*)(a1 + 64) = v13 - 1;
+  *(_DWORD*)(a1 + 20) = v23;
+  if ((unsigned __int64)(v21 - (v13 + v14) + 1) >= 0x800) {
+    v24 = *(_QWORD*)(v15 - 8);
+    if (v24 != 0) {
       v25 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v25 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v25);
-      v16 = *(_QWORD*)(a1 + 40);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v25, v24),
+          v11 = COERCE_AS(__typeof__(v11),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v15 = *(_QWORD*)(a1 + 40);
     }
-    *(_QWORD*)(a1 + 40) = v16 - 8;
+    *(_QWORD*)(a1 + 40) = v15 - 8;
   }
-  return result;
 }
 
 __int64* RecordSerializer_123d810(__int64* result, __int64* a2)

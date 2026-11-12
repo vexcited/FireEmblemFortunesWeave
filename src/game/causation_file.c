@@ -76,6 +76,8 @@ extern char GameData_21f8530;
 extern char GameData_21f8548;
 __int64 CausationFile_9dbdc0(__int64 result);
 bool CausationFile_9dc200(__int64 a1);
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 __int64 CausationFile_9dbdc0(__int64 result)
 {
@@ -273,70 +275,94 @@ LABEL_6:
 _QWORD* game_CausationFile_EachFlag(__int64 a1)
 {
   int v2;
-  _QWORD* result;
+  _QWORD* v3;
   __int64 v4;
   __int64 v5;
-  int v6;
-  __int64 v7;
+  _QWORD* result;
+  int v7;
   __int64 v8;
-  _QWORD v9[4];
-  _QWORD* v10;
-  _BYTE v11[4];
+  __int64 v9;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  _BYTE v12[4];
 
-  v11[0] = 0;
+  v4 = COERCE_AS(__typeof__(v4),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v12[0] = 0;
   v2 = 1;
-  v9[0] = GameData_1fb9ae8;
-  v9[1] = a1;
-  result = v9;
-  v10 = v9;
+  v10_.v10[0] = GameData_1fb9ae8;
+  v10_.v10[1] = a1;
+  v3 = v10_.v10;
+  v10_.v11 = v10_.v10;
   while (1) {
-    (*(void (**)(_QWORD*, _BYTE*))(*result + 48LL))(result, v11);
-    result = v10;
+    (*(void (**)(_QWORD*, _BYTE*))(*v3 + 48LL))(v3, v12),
+        v4 = COERCE_AS(__typeof__(v4),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v8 = COERCE_AS(__typeof__(v8),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v3 = v10_.v11;
     if (v2 == 32) {
       break;
     }
-    v11[0] = v2++;
-    if (v10 == nullptr) {
+    v12[0] = v2++;
+    if (v10_.v11 == nullptr) {
     LABEL_13:
-      GameRoutine_60a310(result);
+      GameRoutine_60a310_alt1(),
+          v4 = COERCE_AS(__typeof__(v4),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v8 = COERCE_AS(__typeof__(v8),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
   }
-  if (v10 == v9) {
+  if (v10_.v11 == v10_.v10) {
     v5 = 32;
     goto LABEL_9;
   }
-  if (v10 != nullptr) {
+  if (v10_.v11 != nullptr) {
     v5 = 40;
   LABEL_9:
-    (*(void (**)(_QWORD*, __int64))(*v10 + v5))(v10, v4);
+    (*(void (**)(_QWORD*, __int64))(*v10_.v11 + v5))(v10_.v11, v4),
+        v4 = COERCE_AS(__typeof__(v4),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v8 = COERCE_AS(__typeof__(v8),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
-  result = v9;
-  v11[0] = 0;
-  v9[0] = GameData_1fb9b68;
-  v9[1] = a1;
-  v10 = v9;
-  v6 = 1;
+  result = v10_.v10;
+  v12[0] = 0;
+  v10_.v10[0] = GameData_1fb9b68;
+  v10_.v10[1] = a1;
+  v10_.v11 = v10_.v10;
+  v7 = 1;
   while (1) {
-    (*(void (**)(_QWORD*, _BYTE*))(*result + 48LL))(result, v11);
-    result = v10;
-    if (v6 == 32) {
+    (*(void (**)(_QWORD*, _BYTE*))(*result + 48LL))(result, v12),
+        v4 = COERCE_AS(__typeof__(v4),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v8 = COERCE_AS(__typeof__(v8),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    result = v10_.v11;
+    if (v7 == 32) {
       break;
     }
-    v11[0] = v6++;
-    if (v10 == nullptr) {
+    v12[0] = v7++;
+    if (v10_.v11 == nullptr) {
       goto LABEL_13;
     }
   }
-  if (v10 == v9) {
-    v8 = 32;
+  if (v10_.v11 == v10_.v10) {
+    v9 = 32;
   }
   else {
-    if (v10 == nullptr) {
+    if (v10_.v11 == nullptr) {
       return result;
     }
-    v8 = 40;
+    v9 = 40;
   }
-  return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*v10 + v8))(v10, v7);
+  return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*v10_.v11 + v9))(v10_.v11,
+                                                                      v8);
 }
 
 __int64 CausationFile_Unknown4()

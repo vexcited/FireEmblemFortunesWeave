@@ -9,7 +9,8 @@ extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 (*game_anonymous_ProcGameSkip_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcGameSkipView_instance_;
-__int64 ProcGameSkip_Destructor(__int64 a1);
+__int64
+ProcGameSkip_Destructor_alt1(__int64 a1) __asm__("ProcGameSkip_Destructor");
 __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
 __int64 game_809ba0(__int64, float);
@@ -31,11 +32,17 @@ extern __int64 game_sound_g_game_sound;
 void GameRoutine_810ef0();
 void GameRoutine_9a44a0();
 void ProcGameSkip_Unknown2(__int64 a1, long double a2);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcGameSkip_Destructor(__int64 a1);
 
-__int64 ProcGameSkip_Destructor(__int64 a1)
+void ProcGameSkip_Destructor(__int64 a1)
 {
-  _QWORD* v1;
-  _QWORD* v2;
+  __int64* v1;
+  __int64* v2;
   __int64 v4;
   unsigned __int64 v5;
   __int64 v6;
@@ -46,8 +53,8 @@ __int64 ProcGameSkip_Destructor(__int64 a1)
   __int64 v11;
   __int64 v12;
 
-  v1 = *(_QWORD**)(a1 + 184);
-  v2 = *(_QWORD**)(a1 + 192);
+  v1 = *(__int64**)(a1 + 184);
+  v2 = *(__int64**)(a1 + 192);
   *(_QWORD*)(a1 + 216) = 0;
   *(_QWORD*)a1 = game_anonymous_ProcGameSkip_vtable;
   v4 = fw_memory_g_heap_manager_ptr;
@@ -61,9 +68,9 @@ __int64 ProcGameSkip_Destructor(__int64 a1)
         else {
           v6 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v6, *v1);
-        v1 = *(_QWORD**)(a1 + 184);
-        v2 = *(_QWORD**)(a1 + 192);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v6, *v1);
+        v1 = *(__int64**)(a1 + 184);
+        v2 = *(__int64**)(a1 + 192);
       }
       *(_QWORD*)(a1 + 184) = ++v1;
       v5 = v2 - v1;
@@ -79,7 +86,6 @@ __int64 ProcGameSkip_Destructor(__int64 a1)
     v7 = 128;
   }
   *(_QWORD*)(a1 + 208) = v7;
-
 LABEL_14:
   if (v1 != v2) {
     do {
@@ -90,7 +96,7 @@ LABEL_14:
         else {
           v8 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v8, *v1);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v8, *v1);
       }
       ++v1;
     } while (v1 != v2);
@@ -106,15 +112,15 @@ LABEL_14:
     if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
       v12 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v12, v11);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v12, v11);
   }
   game_ProcGameSkipView_instance_ = 0;
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
 void ProcGameSkip_Unknown2(__int64 a1, long double a2)

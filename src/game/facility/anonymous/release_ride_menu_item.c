@@ -28,6 +28,16 @@ extern __int64 (*GameData_20af778[])();
 extern __int64 (*GameData_20af7f8[])();
 void* game_97b2f0(__int64);
 __int64 game_facility_anonymous_ReleaseRideMenuItem_ACall(_QWORD* a1);
+__int64* game_8aef60(__int64, unsigned __int16*);
+__int64 GameRoutine_932600_alt1(unsigned __int8*) __asm__("GameRoutine_932600");
+__int64 ItemSeq_8af940_alt1(__int64, __int64*, __int64, const char**,
+                            const char**, char) __asm__("ItemSeq_8af940");
+__int64 Message_16f9b50(__int64);
+__int64 RidePool_93d820_alt1(__int64 result) __asm__("RidePool_93d820");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+unsigned __int8* Unit_931120(unsigned __int8*);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 game_facility_anonymous_ReleaseRideMenuItem_ACall(_QWORD* a1)
 {
@@ -158,70 +168,76 @@ game_facility_anonymous_ReleaseRideMenuItem_ACall_closure_Invoke(__int64 a1)
 {
   __int64 v1;
   __int64 v2;
-  __int64 v3;
+  unsigned __int8* v3;
   __int64 v4;
-  __int64 v5;
+  unsigned __int16* v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
   __int64 v10;
-  _QWORD v12[2];
-  const char* v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
+  __int64 v11;
+  const char* v13[2];
+  struct {
+    const char* v14;
+    const char* v15;
+    __int64 v16;
+  } v14_;
+  const char* v17;
 
   v1 = *(_QWORD*)(a1 + 8);
   v2 = GameData_212cf88[0];
-  v3 = GameRoutine_931120(
-      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf88[0] + 8LL) + 120LL) +
-      ((__int64)*(int*)(v1 + 40) << 6));
-  v4 = GameRoutine_932600(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)v2 + 8LL) + 120LL) +
-                          ((__int64)*(int*)(v1 + 40) << 6));
-  if (v4 != 0 && **(_WORD**)(v4 + 24) != 0) {
-    v5 = *(_QWORD*)(v1 + 8);
-    v16 = v3;
-    v14 = 0;
-    v15 = 0;
-    v13 = nullptr;
-    v12[0] = "MID_ReleaseMenu_GetItem_Result";
-    if (*(_QWORD*)(v5 + 152) != 0) {
-      v6 = *(_QWORD*)(v5 + 152);
+  v3 = Unit_931120(
+      (unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf88[0] +
+                                               8LL) +
+                                    120LL) +
+                         ((__int64)*(int*)(v1 + 40) << 6)));
+  v4 = GameRoutine_932600_alt1(
+      (unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)v2 + 8LL) + 120LL) +
+                         ((__int64)*(int*)(v1 + 40) << 6)));
+  if (v4 != 0 && *(v5 = *(unsigned __int16**)(v4 + 24)) != 0) {
+    v6 = *(_QWORD*)(v1 + 8);
+    v17 = (const char*)v3;
+    v14_.v15 = nullptr;
+    v14_.v16 = 0;
+    v14_.v14 = nullptr;
+    v13[0] = "MID_ReleaseMenu_GetItem_Result";
+    if (*(_QWORD*)(v6 + 152) != 0) {
+      v7 = *(_QWORD*)(v6 + 152);
     }
     else {
-      v6 = v5;
+      v7 = v6;
     }
-    GameRoutine_8aef60(&v13);
-    ItemSeq_8af940(v6, &v13, 0, v12, &v16, 0);
-    if (v13 != nullptr) {
-      v14 = (__int64)v13;
-      v7 = 128;
+    game_8aef60((__int64)&v14_.v14, v5);
+    ItemSeq_8af940_alt1(v7, (__int64*)&v14_.v14, 0, v13, &v17, 0);
+    if (v14_.v14 != nullptr) {
+      v14_.v15 = v14_.v14;
+      v8 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v7 = 56;
+        v8 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v7,
-                                    v13);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, (__int64)v14_.v14);
     }
   }
   else {
-    v8 = *(_QWORD*)(v1 + 8);
-    v12[0] = v3;
-    if (*(_QWORD*)(v8 + 152) != 0) {
-      v9 = *(_QWORD*)(v8 + 152);
+    v9 = *(_QWORD*)(v1 + 8);
+    v13[0] = (const char*)v3;
+    if (*(_QWORD*)(v9 + 152) != 0) {
+      v10 = *(_QWORD*)(v9 + 152);
     }
     else {
-      v9 = v8;
+      v10 = v9;
     }
-    v13 = "MID_ReleaseMenu_Result";
-    v14 = 22;
-    v12[1] = strlen(v3);
-    GameRoutine_16f9b50(v9, &v13, v12);
+    v14_.v14 = "MID_ReleaseMenu_Result";
+    v14_.v15 = (_BYTE*)(((__int128*)0x10LL) + 6);
+    v13[1] = (const char*)strlen_alt1((const char*)v3);
+    Message_16f9b50(v10);
   }
-  RidePool_93d820(*(unsigned int*)(v1 + 40));
-  v10 = __dynamic_cast(*(_QWORD*)(v1 + 8), GameData_212e030[0],
+  RidePool_93d820_alt1(*(unsigned int*)(v1 + 40));
+  v11 = __dynamic_cast(*(_QWORD*)(v1 + 8), GameData_212e030[0],
                        GameData_212e090[0], 0);
-  (*(void (**)(__int64))(*(_QWORD*)v10 + 1112LL))(v10);
+  (*(void (**)(__int64))(*(_QWORD*)v11 + 1112LL))(v11);
   return 2;
 }
 

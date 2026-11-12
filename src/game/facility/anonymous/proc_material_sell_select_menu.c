@@ -36,8 +36,10 @@ game_facility_anonymous_ProcMaterialSellSelectMenu_AddItemList_closure_Invoke(
 bool game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_Invoke_170a850(
     __int64 a1, _QWORD* a2);
 __int64
-game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_Invoke_170a990(
-    __int64 a1, _QWORD* a2, __int64* a3);
+game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_Invoke_170a990_alt1(
+    __int64 a1, _QWORD* a2,
+    __int64* a3) __asm__("game_facility_anonymous_ProcMaterialSellSelectMenu_"
+                         "SortAndFilter_closure_Invoke_170a990");
 __attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
                                                _QWORD, _QWORD, _QWORD, _QWORD,
                                                double, float);
@@ -82,6 +84,9 @@ void GameRoutine_156c5d0(__int64, __int64, char);
 void GameRoutine_156c910(__int64, __int64, int, ...);
 void GameRoutine_157cff0(__int64*, __int64, int, char);
 __int64 ProcMaterialSellSelectMenu_Unknown109(__int64* a1);
+bool GameRoutine_19ef8e0_alt1(_QWORD*, _QWORD*) __asm__("GameRoutine_19ef8e0");
+bool game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_Invoke_170a990(
+    __int64 a1, _QWORD* a2, __int64* a3);
 
 __int64 ProcMaterialSellSelectMenu_Destructor(__int64 a1)
 {
@@ -745,18 +750,20 @@ bool game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_In
                                    73LL);
 }
 
-__int64
-
-game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_Invoke_170a990(
+bool game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_Invoke_170a990(
     __int64 a1, _QWORD* a2, __int64* a3)
 {
   __int64 v3;
   __int64 v4;
   __int64 v5;
-  _QWORD v7[3];
-  char v8;
-  _QWORD v9[3];
-  char v10;
+  struct {
+    _QWORD v7[3];
+    char v8;
+  } v7_;
+  struct {
+    _QWORD v9[3];
+    char v10;
+  } v9_;
 
   v3 = *a3;
   if (*a2 == 0) {
@@ -773,15 +780,15 @@ game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_Invoke_
   }
 LABEL_4:
   v5 = (*(__int64 (**)(__int64))(*(_QWORD*)v4 + 560LL))(v4);
-  v7[0] = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 560LL))(v3);
-  v7[1] = 0;
-  v9[0] = v5;
-  v9[1] = 0;
-  v9[2] = 0;
-  v10 = 0;
-  v7[2] = 0;
-  v8 = 0;
-  return GameRoutine_19ef8e0(v9, v7) & 1;
+  v7_.v7[0] = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 560LL))(v3);
+  v7_.v7[1] = 0;
+  v9_.v9[0] = v5;
+  v9_.v9[1] = 0;
+  v9_.v9[2] = 0;
+  v9_.v10 = 0;
+  v7_.v7[2] = 0;
+  v7_.v8 = 0;
+  return GameRoutine_19ef8e0_alt1(v9_.v9, v7_.v7);
 }
 
 #pragma GCC visibility pop

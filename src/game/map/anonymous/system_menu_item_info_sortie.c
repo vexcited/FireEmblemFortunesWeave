@@ -15,6 +15,15 @@ extern __int64* GameData_212d658[6];
 extern __int64* GameData_212d6c0[3];
 extern __int64* GameData_212d6c8[2];
 __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1);
+__int64* game_820d50(int);
+__int64 GameRoutine_16eb960_alt1(__int64,
+                                 _QWORD*) __asm__("GameRoutine_16eb960");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+void BasicMenuCursor_16e0c00(_QWORD*, __int64);
 
 __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1)
 {
@@ -25,8 +34,8 @@ __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1)
   __int64 v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
-  _QWORD* v10;
+  _QWORD* v9;
+  __int64* v10;
   __int64 v11;
   __int64 v12;
   __int64 v13;
@@ -36,10 +45,11 @@ __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1)
   int v17;
   __int64 v18;
 
-  v2 = GameRoutine_820d50(11);
+  v2 = game_820d50(11);
   if (game_GameModeData_instance_ != 0 &&
-      (v3 = game_GameVariableTable_Find(
-           *(_QWORD*)(game_GameModeData_instance_ + 48), v2)) != 0) {
+      (v3 = game_GameVariableTable_Find_alt1(
+           *(_QWORD**)(game_GameModeData_instance_ + 48),
+           (unsigned __int64*)v2)) != 0) {
     v4 = *(_DWORD*)(v3 + 32) == 0;
     result = 1;
     if (!v4) {
@@ -61,10 +71,10 @@ __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1)
     else {
       v8 = v6;
     }
-    v9 = GameRoutine_16eb960(v8, &v16);
-    v10 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-    v11 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         144, 16, 0);
+    v9 = (_QWORD*)GameRoutine_16eb960_alt1(v8, &v16);
+    v10 = (__int64*)fw_memory_g_heap_manager_ptr;
+    v11 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 144, 16, 0);
     *(_QWORD*)(v11 + 16) = 0;
     *(_QWORD*)(v11 + 24) = 0;
     *(_QWORD*)(v11 + 32) = 0;
@@ -86,8 +96,8 @@ __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1)
     *(_BYTE*)(v11 + 82) = 1;
     *(_QWORD*)v11 = GameData_212d6c0[0] + 2;
     *(_QWORD*)(v11 + 8) = 0;
-    GameRoutine_16e0c00(v9, v11);
-    v12 = fw_memory_HeapManager_Allocate(*v10, 144, 16, 0);
+    BasicMenuCursor_16e0c00(v9, v11);
+    v12 = fw_memory_HeapManager_Allocate_alt1(*v10, 144, 16, 0);
     *(_QWORD*)(v12 + 16) = 0;
     *(_QWORD*)(v12 + 24) = 0;
     *(_QWORD*)(v12 + 32) = 0;
@@ -109,8 +119,8 @@ __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1)
     *(_BYTE*)(v12 + 82) = 1;
     *(_QWORD*)v12 = GameData_212d648[0] + 2;
     *(_QWORD*)(v12 + 8) = 0;
-    GameRoutine_16e0c00(v9, v12);
-    v13 = fw_memory_HeapManager_Allocate(*v10, 144, 16, 0);
+    BasicMenuCursor_16e0c00(v9, v12);
+    v13 = fw_memory_HeapManager_Allocate_alt1(*v10, 144, 16, 0);
     *(_QWORD*)(v13 + 16) = 0;
     *(_QWORD*)(v13 + 24) = 0;
     *(_QWORD*)(v13 + 32) = 0;
@@ -132,8 +142,8 @@ __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1)
     *(_BYTE*)(v13 + 82) = 1;
     *(_QWORD*)v13 = GameData_212d650[0] + 2;
     *(_QWORD*)(v13 + 8) = 0;
-    GameRoutine_16e0c00(v9, v13);
-    v14 = fw_memory_HeapManager_Allocate(*v10, 144, 16, 0);
+    BasicMenuCursor_16e0c00(v9, v13);
+    v14 = fw_memory_HeapManager_Allocate_alt1(*v10, 144, 16, 0);
     *(_QWORD*)(v14 + 16) = 0;
     *(_QWORD*)(v14 + 24) = 0;
     *(_QWORD*)(v14 + 32) = 0;
@@ -155,8 +165,8 @@ __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1)
     *(_BYTE*)(v14 + 82) = 1;
     *(_QWORD*)v14 = GameData_212d658[0] + 2;
     *(_QWORD*)(v14 + 8) = 0;
-    GameRoutine_16e0c00(v9, v14);
-    v15 = fw_memory_HeapManager_Allocate(*v10, 144, 16, 0);
+    BasicMenuCursor_16e0c00(v9, v14);
+    v15 = fw_memory_HeapManager_Allocate_alt1(*v10, 144, 16, 0);
     *(_QWORD*)(v15 + 16) = 0;
     *(_QWORD*)(v15 + 24) = 0;
     *(_QWORD*)(v15 + 32) = 0;
@@ -178,7 +188,7 @@ __int64 SystemMenuItem_Info_Sortie_Unknown25(__int64 a1)
     *(_BYTE*)(v15 + 82) = 1;
     *(_QWORD*)v15 = GameData_212d6c8[0] + 2;
     *(_QWORD*)(v15 + 8) = 0;
-    GameRoutine_16e0c00(v9, v15);
+    BasicMenuCursor_16e0c00(v9, v15);
     return 10;
   }
   return result;

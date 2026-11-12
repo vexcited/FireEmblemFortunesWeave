@@ -62,10 +62,12 @@ void __attribute__((noreturn))
 String_60a1d0_alt1(_QWORD) __asm__("String_60a1d0");
 void __attribute__((noreturn)) String_60a230();
 __int64 wld_map_c20680(float* a1, float32x4_t* a2);
-__attribute__((swiftcall)) void wld_map_c20fe0(PSEUDO_X8 x8_, _QWORD* result,
-                                               __int64 a2, __int64 a3);
-__attribute__((swiftcall)) void wld_map_c21740(PSEUDO_X8 x8_, __int64 result,
-                                               __int64 a2, unsigned __int64 a3);
+__attribute__((swiftcall)) void
+wld_map_c20fe0_alt1(PSEUDO_X8 x8_, _QWORD* result, __int64 a2,
+                    __int64 a3) __asm__("wld_map_c20fe0");
+__attribute__((swiftcall)) void
+wld_map_c21740_alt1(PSEUDO_X8 x8_, __int64 result, __int64 a2,
+                    unsigned __int64 a3) __asm__("wld_map_c21740");
 __int64 wld_map_c218a0(__int64* a1, __int64 a2);
 __int64 wld_map_c22d40(_QWORD* a1, __int64* a2);
 _QWORD* wld_map_c235c0(__int64 a1);
@@ -73,20 +75,47 @@ __attribute__((swiftcall)) void wld_map_c23be0(PSEUDO_X8 x8_, __int64 a1,
                                                __int64 a2, unsigned __int64 a3);
 __int64 wld_map_c23d20(__int64 a1, __int64 a2, unsigned __int64 a3);
 __int64 wld_map_c24890(__int64 a1, __int64 a2, unsigned __int64 a3);
-__attribute__((swiftcall)) void wld_map_c24a80(PSEUDO_X8 x8_, __int64 result,
-                                               __int64 a2, __int64 a3);
-__attribute__((swiftcall)) void wld_map_c24c40(PSEUDO_X8 x8_, __int64 result,
-                                               int a2, __int64 a3, __int64 a4);
+__attribute__((swiftcall)) void
+wld_map_c24a80_alt2(PSEUDO_X8 x8_, __int64 result, __int64 a2,
+                    __int64 a3) __asm__("wld_map_c24a80");
+__attribute__((swiftcall)) void
+wld_map_c24c40_alt1(PSEUDO_X8 x8_, __int64 result, int a2, __int64 a3,
+                    __int64 a4) __asm__("wld_map_c24c40");
 __attribute__((swiftcall)) void Object_a87520(PSEUDO_X8, __int64*,
                                               unsigned __int64, char);
 void __attribute__((noreturn))
 GameRoutine_60a210_alt1(_QWORD) __asm__("GameRoutine_60a210");
 void __attribute__((noreturn))
 GameRoutine_81e570_alt1(void) __asm__("GameRoutine_81e570");
-__int64* wld_map_c21f20(__int64* result, _QWORD* a2, char* a3, char* a4,
-                        __int64 a5);
+__int64* wld_map_c21f20_alt2(__int64* result, _QWORD* a2, char* a3, char* a4,
+                             __int64 a5) __asm__("wld_map_c21f20");
 __attribute__((swiftcall)) void wld_map_c24020(PSEUDO_X8 x8_, __int64 a1,
                                                unsigned __int64 a2);
+__int64
+GameRoutine_1a0a680_alt1(__int64, unsigned __int64, const char*,
+                         unsigned __int64) __asm__("GameRoutine_1a0a680");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+int memcmp_alt2(__int64, __int64, unsigned __int64) __asm__("memcmp");
+void GameRoutine_c23f00_alt1(__int64*, _QWORD*) __asm__("GameRoutine_c23f00");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__attribute__((swiftcall)) void wld_map_c20fe0(PSEUDO_X8 x8_, __int64 a1,
+                                               __int64 a2, unsigned __int64 a3);
+__attribute__((swiftcall)) void wld_map_c21740(PSEUDO_X8 x8_, __int64* result,
+                                               __int64 a2, unsigned __int64 a3);
+void wld_map_c21f20(__int64* a1, __int64 a2, char* a3, char* a4, __int64 a5);
+__attribute__((swiftcall)) void wld_map_c24a80(PSEUDO_X8 x8_, __int64 a1,
+                                               __int64 a2, unsigned __int64 a3);
+__attribute__((swiftcall)) void wld_map_c24c40(PSEUDO_X8 x8_, __int64 a1,
+                                               int a2, __int64 a3,
+                                               unsigned __int64 a4);
 
 __int64 wld_map_c20680(float* a1, float32x4_t* a2)
 {
@@ -595,33 +624,32 @@ LABEL_78:
   return result;
 }
 
-__attribute__((swiftcall)) void wld_map_c20fe0(PSEUDO_X8 x8_, _QWORD* result,
-                                               __int64 a2, __int64 a3)
+__attribute__((swiftcall)) void wld_map_c20fe0(PSEUDO_X8 x8_, __int64 a1,
+                                               __int64 a2, unsigned __int64 a3)
 {
-  _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64* a4 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64 v5;
-  _QWORD* v8;
   __int64 v9;
   __int64 v10;
-  __int64 v11;
-  __int64 v12;
+  char* v11;
+  char* v12;
   __int64 v13;
   _QWORD* i;
   __int64 v15;
   __int64 v16;
   __int64 v17;
-  long double v18;
+  char* v18;
   __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
+  struct {
+    char* v20;
+    char* v21;
+    __int64 v22;
+  } v20_;
 
   a4[1] = 0;
   a4[2] = 0;
   *a4 = 0;
-  v5 = result[12];
-  v8 = result;
+  v5 = *(_QWORD*)(a1 + 96);
   if (v5 != 0) {
     v9 = *(_QWORD*)(v5 + 24);
     v10 = *(_QWORD*)(v5 + 32);
@@ -629,84 +657,81 @@ __attribute__((swiftcall)) void wld_map_c20fe0(PSEUDO_X8 x8_, _QWORD* result,
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v10 + 8), 1u,
                                 memory_order_relaxed);
     }
-    result = (wld_map_c24a80_alt1((void*)(&v21), v9, a2, a3), (void*)(&v21));
-    v12 = v21;
-    v11 = v22;
-    v21 = 0;
-    v22 = 0;
-    *a4 = v12;
-    a4[1] = v11;
-    v13 = v23;
-    v23 = 0;
+    wld_map_c24a80((void*)(&v20_.v20), v9, a2, a3);
+    v12 = v20_.v20;
+    v11 = v20_.v21;
+    v20_.v20 = nullptr;
+    v20_.v21 = nullptr;
+    *a4 = (__int64)v12;
+    a4[1] = (__int64)v11;
+    v13 = v20_.v22;
+    v20_.v22 = 0;
     a4[2] = v13;
     if (v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-      result = (_QWORD*)std___1___shared_weak_count___release_weak(v10);
+      std___1___shared_weak_count___release_weak_alt1(v10);
     }
   }
-  for (i = (_QWORD*)v8[15]; i != nullptr; i = (_QWORD*)*i) {
+  for (i = *(_QWORD**)(a1 + 120); i != nullptr; i = (_QWORD*)*i) {
     v15 = i[5];
     v16 = *(_QWORD*)(v15 + 24);
     v17 = *(_QWORD*)(v15 + 32);
     if (v17 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v17 + 8), 1u,
                                 memory_order_relaxed);
-      result = (wld_map_c24a80_alt1((void*)(&v21), v16, a2, a3), (void*)(&v21));
+      wld_map_c24a80((void*)(&v20_.v20), v16, a2, a3);
       if (atomic_fetch_add((atomic_ullong* volatile)(v17 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
-        result = (_QWORD*)std___1___shared_weak_count___release_weak(v17);
+        std___1___shared_weak_count___release_weak_alt1(v17);
       }
     }
     else {
-      result = (wld_map_c24a80_alt1((void*)(&v21), v16, a2, a3), (void*)(&v21));
+      wld_map_c24a80((void*)(&v20_.v20), v16, a2, a3);
     }
-    v19 = v21;
-    if (v22 != v21) {
-      result = (_QWORD*)wld_map_c21f20_alt1(a4, a4[1]);
-      v19 = v21;
+    v18 = v20_.v20;
+    if (v20_.v21 != v20_.v20) {
+      wld_map_c21f20(a4, a4[1], v20_.v20, v20_.v21, (v20_.v21 - v20_.v20) >> 3);
+      v18 = v20_.v20;
     }
-    if (v19 != 0) {
-      v22 = v19;
+    if (v18 != nullptr) {
+      v20_.v21 = v18;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) != 0) {
-        v20 = 128;
+        v19 = 128;
       }
       else {
-        v20 = 56;
+        v19 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v20, v18);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, (__int64)v18);
     }
-  }
-  {
-    result;
-    return;
   }
 }
 
-__attribute__((swiftcall)) void wld_map_c21740(PSEUDO_X8 x8_, __int64 result,
+__attribute__((swiftcall)) void wld_map_c21740(PSEUDO_X8 x8_, __int64* result,
                                                __int64 a2, unsigned __int64 a3)
 {
   _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
-  __int64 v5;
+  __int64* v5;
   char* v7;
   __int64 v8;
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  long double v12;
+  __int64* v12;
   __int64 v13;
   __int64 v14;
   __int64 v15;
-  __int64 v16;
-  _QWORD v17[2];
-  __int64 v18;
+  struct {
+    _QWORD v16[2];
+    __int64 v17;
+  } v16_;
 
   v5 = result;
   if (a3 != 0) {
     if (a3 >= 0xFFFFFFFFFFFFFFF7LL) {
-      String_60a1d0_alt1(result);
+      String_60a1d0();
     }
     if (a3 >= 0x17) {
       v9 = a2;
@@ -716,41 +741,41 @@ __attribute__((swiftcall)) void wld_map_c21740(PSEUDO_X8 x8_, __int64 result,
       else {
         v10 = (a3 | 7) + 1;
       }
-      v11 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager, v10,
-                                                16, 0);
+      v11 =
+          fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v10, 16, 0);
       a2 = v9;
       v7 = (char*)v11;
-      v17[1] = a3;
-      v18 = v11;
-      v17[0] = v10 | 1;
+      v16_.v16[1] = a3;
+      v16_.v17 = v11;
+      v16_.v16[0] = v10 | 1;
     }
     else {
-      LOBYTE(v17[0]) = 2 * a3;
-      v7 = (char*)v17 + 1;
+      LOBYTE(v16_.v16[0]) = 2 * a3;
+      v7 = (char*)v16_.v16 + 1;
     }
-    memmove(v7, a2, a3);
+    memmove_alt1((__int64)v7, a2, a3);
   }
   else {
-    v8 = *(_QWORD*)(result + 96);
+    v8 = result[12];
     if (v8 != 0) {
       goto LABEL_19;
     }
-    LOBYTE(v17[0]) = 0;
-    v7 = (char*)v17 + 1;
+    LOBYTE(v16_.v16[0]) = 0;
+    v7 = (char*)v16_.v16 + 1;
   }
   v7[a3] = 0;
-  result = GameRoutine_c22420_alt1(v5 + 104, v17);
-  if ((v17[0] & 1) != 0 && v18 != 0) {
-    v13 = result;
-    v14 = 128;
+  result = GameRoutine_c22420(v5 + 13, (unsigned __int8*)v16_.v16);
+  if ((v16_.v16[0] & 1) != 0 && v16_.v17 != 0) {
+    v12 = result;
+    v13 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v14 = 56;
+      v13 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v12);
-    result = v13;
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, v16_.v17);
+    result = v12;
   }
-  if (result == 0) {
+  if (result == nullptr) {
     *a4 = 0;
     a4[1] = 0;
     {
@@ -758,14 +783,14 @@ __attribute__((swiftcall)) void wld_map_c21740(PSEUDO_X8 x8_, __int64 result,
       return;
     }
   }
-  v8 = *(_QWORD*)(result + 40);
+  v8 = result[5];
 LABEL_19:
-  v16 = *(_QWORD*)(v8 + 24);
-  v15 = *(_QWORD*)(v8 + 32);
-  *a4 = v16;
-  a4[1] = v15;
-  if (v15 != 0) {
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v15 + 8), 1u,
+  v15 = *(_QWORD*)(v8 + 24);
+  v14 = *(_QWORD*)(v8 + 32);
+  *a4 = v15;
+  a4[1] = v14;
+  if (v14 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v14 + 8), 1u,
                               memory_order_relaxed);
   }
   {
@@ -1214,76 +1239,72 @@ LABEL_59:
   return 0;
 }
 
-__int64* wld_map_c21f20(__int64* result, _QWORD* a2, char* a3, char* a4,
-                        __int64 a5)
+void wld_map_c21f20(__int64* a1, __int64 a2, char* a3, char* a4, __int64 a5)
 {
   __int64 v5;
   unsigned __int64 v6;
   char* v8;
-  _QWORD* v9;
-  __int64* v10;
+  __int64 v9;
   __int64 v11;
   unsigned __int64 v12;
   __int64 v13;
   unsigned __int64 v14;
   __int64 v15;
-  unsigned __int64 v16;
+  __int64 v16;
   __int64 v17;
-  signed __int64 v18;
+  __int64 v18;
   char* v19;
-  char* v20;
-  char* v21;
+  __int64 v20;
+  __int64 v21;
   __int64 v22;
   char* v23;
-  __int64 v24;
+  char* v24;
   __int64 v25;
   __int64 v26;
-  _QWORD* v27;
+  __int64 v27;
   __int64* v28;
   _QWORD* i;
   __int64 v30;
   unsigned __int64 v31;
   _QWORD* v32;
-  long double v33;
+  __int64 v33;
   __int64 v34;
   __int64 v35;
-  __int64 v36;
-  bool v37;
-  __int64 v38;
+  bool v36;
+  __int64 v37;
 
   if (a5 >= 1) {
-    v6 = result[1];
-    v5 = result[2];
+    v6 = a1[1];
+    v5 = a1[2];
     v8 = a3;
     v9 = a2;
-    v10 = result;
     if (a5 <= (__int64)(v5 - v6) >> 3) {
-      v16 = v6 - (_QWORD)a2;
-      v17 = (__int64)(v6 - (_QWORD)a2) >> 3;
+      v16 = v6 - a2;
+      v17 = (__int64)(v6 - a2) >> 3;
       if (a5 <= v17) {
-        v27 = &a2[a5];
+        v27 = a2 + 8 * a5;
         v28 = (__int64*)(v6 - 8 * a5);
-        for (i = (_QWORD*)result[1]; (unsigned __int64)v28 < v6; ++i) {
+        for (i = (_QWORD*)a1[1]; (unsigned __int64)v28 < v6; ++i) {
           v30 = *v28++;
           *i = v30;
         }
-        result[1] = (__int64)i;
-        if ((_QWORD*)v6 != v27) {
-          result = (__int64*)memmove(&a2[a5], a2, v6 - (_QWORD)v27);
+        a1[1] = (__int64)i;
+        if (v6 != v27) {
+          memmove_alt1(a2 + 8 * a5, a2, v6 - v27);
         }
         v31 = 8 * a5 - 8;
         if ((~(_BYTE)v31 & 0x38) != 0) {
-          v35 = -(__int64)(((unsigned __int8)((unsigned int)v31 >> 3) + 1) & 7);
-          v32 = v9;
+          v34 = -(__int64)(((unsigned __int8)((unsigned int)v31 >> 3) + 1) & 7);
+          v32 = (_QWORD*)v9;
           do {
-            v36 = *(_QWORD*)v8;
+            v35 = *(_QWORD*)v8;
             v8 += 8;
-            v37 = __CFADD__(v35++, 1);
-            *v32++ = v36;
-          } while (!v37);
+            v36 = __CFADD__(v34++, 1);
+            *v32++ = v35;
+          } while (!v36);
         }
         else {
-          v32 = v9;
+          v32 = (_QWORD*)v9;
         }
         if (v31 >= 0x38) {
           do {
@@ -1294,54 +1315,55 @@ __int64* wld_map_c21f20(__int64* result, _QWORD* a2, char* a3, char* a4,
             v32[4] = *((_QWORD*)v8 + 4);
             v32[5] = *((_QWORD*)v8 + 5);
             v32[6] = *((_QWORD*)v8 + 6);
-            v38 = *((_QWORD*)v8 + 7);
+            v37 = *((_QWORD*)v8 + 7);
             v8 += 64;
-            v32[7] = v38;
+            v32[7] = v37;
             v32 += 8;
-          } while (v32 != &v9[a5]);
+          } while (v32 != (_QWORD*)(v9 + 8 * a5));
         }
       }
       else {
         v18 = a4 - &a3[v16];
         if (a4 != &a3[v16]) {
           v19 = a4;
-          result = (__int64*)memmove(result[1], &a3[v16], a4 - &a3[v16]);
+          memmove_alt1(a1[1], (__int64)&a3[v16], a4 - &a3[v16]);
           a4 = v19;
         }
-        v20 = (char*)(v6 + v18);
-        v10[1] = v6 + v18;
+        v20 = v6 + v18;
+        a1[1] = v6 + v18;
         if (v17 >= 1) {
-          v21 = (char*)&v9[a5];
+          v21 = v9 + 8 * a5;
           v22 = v6 + v18;
-          if ((unsigned __int64)&v20[-8 * a5] < v6) {
-            v23 = (char*)v9 + (_QWORD)a4;
-            v24 = (__int64)v9 + (_QWORD)a4 + -8 * a5;
+          if (v20 - 8 * a5 < v6) {
+            v23 = &a4[v9];
+            v24 = &a4[v9 + -8 * a5];
             do {
-              v25 = *(_QWORD*)(v24 - (_QWORD)v8);
+              v25 = *(_QWORD*)(v24 - v8);
               v24 += 8;
               *(_QWORD*)(v23 - v8) = v25;
               v23 += 8;
-            } while (v24 - (__int64)v8 < v6);
+            } while (v24 - v8 < v6);
             v22 = v23 - v8;
           }
-          v10[1] = v22;
+          a1[1] = v22;
           if (v20 != v21) {
-            result = (__int64*)memmove(&v9[a5], v9, v20 - v21);
+            memmove_alt1(v9 + 8 * a5, v9, v20 - v21);
           }
           do {
             v26 = *(_QWORD*)v8;
             v8 += 8;
-            v16 -= 8LL;
-            *v9++ = v26;
+            v16 -= 8;
+            *(_QWORD*)v9 = v26;
+            v9 += 8;
           } while (v16 != 0);
         }
       }
     }
     else {
-      v11 = *result;
-      v12 = a5 + ((__int64)(v6 - *result) >> 3);
+      v11 = *a1;
+      v12 = a5 + ((__int64)(v6 - *a1) >> 3);
       if (v12 >> 61 != 0) {
-        GameRoutine_81e570_alt1();
+        GameRoutine_81e570();
       }
       v13 = v5 - v11;
       if (v13 >> 2 > v12) {
@@ -1355,32 +1377,31 @@ __int64* wld_map_c21f20(__int64* result, _QWORD* a2, char* a3, char* a4,
       }
       if (v14 != 0) {
         if (v14 >> 61 != 0) {
-          GameRoutine_60a210_alt1(result);
+          GameRoutine_60a210();
         }
-        v15 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
-                                                  8 * v14, 16, 0);
+        v15 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, 8 * v14,
+                                             16, 0);
       }
       else {
         v15 = 0;
       }
-      memcpy((char*)v9 + v15 - v11, v8, 8 * a5);
-      memcpy((char*)&v9[a5] + v15 - v11, v9, v6 - (_QWORD)v9);
-      v10[1] = (__int64)v9;
-      result = (__int64*)memcpy(v15, v11, (char*)v9 - v11);
-      *v10 = v15;
-      v10[1] = v15 - v11 + 8 * a5 + v6;
-      v10[2] = v15 + 8 * v14;
+      memcpy_alt1(v15 + v9 - v11, (__int64)v8, 8 * a5);
+      memcpy_alt1(v15 + v9 - v11 + 8 * a5, v9, v6 - v9);
+      a1[1] = v9;
+      memcpy_alt1(v15, v11, v9 - v11);
+      *a1 = v15;
+      a1[1] = v15 - v11 + 8 * a5 + v6;
+      a1[2] = v15 + 8 * v14;
       if (v11 != 0) {
-        v34 = 128;
+        v33 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v34 = 56;
+          v33 = 56;
         }
-        return (__int64*)nn_mem_StandardAllocator_Free_alt1(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v34, v33);
+        nn_mem_StandardAllocator_Free_alt2(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v33, v11);
       }
     }
   }
-  return result;
 }
 
 __int64 wld_map_c22d40(_QWORD* a1, __int64* a2)
@@ -1805,19 +1826,20 @@ __attribute__((swiftcall)) void wld_map_c23be0(PSEUDO_X8 x8_, __int64 a1,
   unsigned __int64 v11;
   bool v12;
   unsigned __int64 v13;
-  __int64 v14;
+  const char* v14;
   unsigned __int64 v15;
-  __int64* result;
-  long double v17;
+  __int64* v16;
+  __int64 v17;
   __int64 v18;
   __int64 v19;
   __int64 v20;
-  __int64 v21;
-  _QWORD v22[2];
-  __int64 v23;
+  struct {
+    _QWORD v21[2];
+    __int64 v22;
+  } v21_;
 
   if (a3 >= 0xFFFFFFFFFFFFFFF7LL) {
-    String_60a1d0_alt1(a1);
+    String_60a1d0();
   }
   if (a3 >= 0x17) {
     v8 = a2;
@@ -1827,30 +1849,29 @@ __attribute__((swiftcall)) void wld_map_c23be0(PSEUDO_X8 x8_, __int64 a1,
     else {
       v9 = (a3 | 7) + 1;
     }
-    v10 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager, v9, 16,
-                                              0);
+    v10 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v9, 16, 0);
     a2 = v8;
     v7 = (char*)v10;
-    v22[1] = a3;
-    v23 = v10;
-    v22[0] = v9 | 1;
+    v21_.v21[1] = a3;
+    v21_.v22 = v10;
+    v21_.v21[0] = v9 | 1;
     goto LABEL_9;
   }
-  LOBYTE(v22[0]) = 2 * a3;
-  v7 = (char*)v22 + 1;
+  LOBYTE(v21_.v21[0]) = 2 * a3;
+  v7 = (char*)v21_.v21 + 1;
   if (a3 != 0) {
   LABEL_9:
-    memmove(v7, a2, a3);
+    memmove_alt1((__int64)v7, a2, a3);
   }
   v7[a3] = 0;
   v11 = *(unsigned __int8*)(a1 + 56);
   v12 = (v11 & 1) == 0;
   v13 = v11 >> 1;
   if (v12) {
-    v14 = a1 + 57;
+    v14 = (const char*)(a1 + 57);
   }
   else {
-    v14 = *(_QWORD*)(a1 + 72);
+    v14 = *(const char**)(a1 + 72);
   }
   if (v12) {
     v15 = v13;
@@ -1858,30 +1879,23 @@ __attribute__((swiftcall)) void wld_map_c23be0(PSEUDO_X8 x8_, __int64 a1,
   else {
     v15 = *(_QWORD*)(a1 + 64);
   }
-  result = (__int64*)GameRoutine_1a0a680(v22, 0, v14, v15);
-  v18 = *result;
-  v19 = result[1];
-  *result = 0;
-  result[1] = 0;
-  *a4 = v18;
-  a4[1] = v19;
-  v20 = result[2];
-  result[2] = 0;
-  a4[2] = v20;
-  if ((v22[0] & 1) != 0 && v23 != 0) {
-    v21 = 128;
+  v16 = (__int64*)GameRoutine_1a0a680_alt1((__int64)v21_.v21, 0, v14, v15);
+  v17 = *v16;
+  v18 = v16[1];
+  *v16 = 0;
+  v16[1] = 0;
+  *a4 = v17;
+  a4[1] = v18;
+  v19 = v16[2];
+  v16[2] = 0;
+  a4[2] = v19;
+  if ((v21_.v21[0] & 1) != 0 && v21_.v22 != 0) {
+    v20 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v21 = 56;
+      v20 = 56;
     }
-    {
-      (__int64*)nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, v17);
-      return;
-    }
-  }
-  {
-    result;
-    return;
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v20, v21_.v22);
   }
 }
 
@@ -1891,7 +1905,7 @@ __int64 wld_map_c23d20(__int64 a1, __int64 a2, unsigned __int64 a3)
   char v7;
   unsigned __int64 v8;
   char* v9;
-  __int64 v10;
+  unsigned __int64 v10;
   __int64 v11;
   unsigned __int64 v12;
   __int64* v13;
@@ -1904,7 +1918,7 @@ __int64 wld_map_c23d20(__int64 a1, __int64 a2, unsigned __int64 a3)
   unsigned __int64 v20;
   __int64 v21;
   unsigned __int64 v22;
-  char* v23;
+  unsigned __int64 v23;
   __int64 v24;
   __int64 v25;
   struct {
@@ -1935,7 +1949,7 @@ __int64 wld_map_c23d20(__int64 a1, __int64 a2, unsigned __int64 a3)
     else {
       v10 = v8;
     }
-    memmove(v6 + 16, v9, v10);
+    memmove_alt1(v6 + 16, (__int64)v9, v10);
   }
   *(_QWORD*)(v6 + 272) = v8;
   *(_BYTE*)(v6 + 16 + v8) = 0;
@@ -1944,7 +1958,8 @@ __int64 wld_map_c23d20(__int64 a1, __int64 a2, unsigned __int64 a3)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v11 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v11);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, (__int64)v27_.v28);
   }
   v13 = *(__int64**)(a1 + 96);
   v12 = *(_QWORD*)(a1 + 104);
@@ -1977,11 +1992,11 @@ __int64 wld_map_c23d20(__int64 a1, __int64 a2, unsigned __int64 a3)
       v21 = 0;
     }
     v22 = v21 + 8 * v20;
-    v23 = (char*)v13 - v15;
+    v23 = (unsigned __int64)v13 - v15;
     v24 = (__int64)&v16[v21 + -8 * v17];
     *(_QWORD*)&v16[v21] = v6;
     v14 = (__int64)&v16[v21 + 8];
-    memcpy(v24, v15, v23);
+    memcpy_alt1(v24, v15, v23);
     *(_QWORD*)(a1 + 88) = v24;
     *(_QWORD*)(a1 + 96) = v14;
     *(_QWORD*)(a1 + 104) = v22;
@@ -1990,8 +2005,8 @@ __int64 wld_map_c23d20(__int64 a1, __int64 a2, unsigned __int64 a3)
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v25 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v25);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v25, v15);
     }
   }
   else {
@@ -2136,7 +2151,7 @@ __int64 wld_map_c24890(__int64 a1, __int64 a2, unsigned __int64 a3)
   char v7;
   unsigned __int64 v8;
   char* v9;
-  __int64 v10;
+  unsigned __int64 v10;
   __int64 v11;
   unsigned __int64 v12;
   __int64* v13;
@@ -2149,7 +2164,7 @@ __int64 wld_map_c24890(__int64 a1, __int64 a2, unsigned __int64 a3)
   unsigned __int64 v20;
   __int64 v21;
   unsigned __int64 v22;
-  char* v23;
+  unsigned __int64 v23;
   __int64 v24;
   __int64 v25;
   struct {
@@ -2180,7 +2195,7 @@ __int64 wld_map_c24890(__int64 a1, __int64 a2, unsigned __int64 a3)
     else {
       v10 = v8;
     }
-    memmove(v6 + 16, v9, v10);
+    memmove_alt1(v6 + 16, (__int64)v9, v10);
   }
   *(_QWORD*)(v6 + 272) = v8;
   *(_BYTE*)(v6 + 16 + v8) = 0;
@@ -2189,7 +2204,8 @@ __int64 wld_map_c24890(__int64 a1, __int64 a2, unsigned __int64 a3)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v11 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v11);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, (__int64)v27_.v28);
   }
   v13 = *(__int64**)(a1 + 120);
   v12 = *(_QWORD*)(a1 + 128);
@@ -2222,11 +2238,11 @@ __int64 wld_map_c24890(__int64 a1, __int64 a2, unsigned __int64 a3)
       v21 = 0;
     }
     v22 = v21 + 8 * v20;
-    v23 = (char*)v13 - v15;
+    v23 = (unsigned __int64)v13 - v15;
     v24 = (__int64)&v16[v21 + -8 * v17];
     *(_QWORD*)&v16[v21] = v6;
     v14 = (__int64)&v16[v21 + 8];
-    memcpy(v24, v15, v23);
+    memcpy_alt1(v24, v15, v23);
     *(_QWORD*)(a1 + 112) = v24;
     *(_QWORD*)(a1 + 120) = v14;
     *(_QWORD*)(a1 + 128) = v22;
@@ -2235,8 +2251,8 @@ __int64 wld_map_c24890(__int64 a1, __int64 a2, unsigned __int64 a3)
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v25 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v25);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v25, v15);
     }
   }
   else {
@@ -2247,12 +2263,12 @@ __int64 wld_map_c24890(__int64 a1, __int64 a2, unsigned __int64 a3)
   return v6;
 }
 
-__attribute__((swiftcall)) void wld_map_c24a80(PSEUDO_X8 x8_, __int64 result,
-                                               __int64 a2, __int64 a3)
+__attribute__((swiftcall)) void wld_map_c24a80(PSEUDO_X8 x8_, __int64 a1,
+                                               __int64 a2, unsigned __int64 a3)
 {
-  _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
-  __int64* v4;
-  __int64* v5;
+  __int64* a4 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v4;
+  _QWORD* v5;
   atomic_uchar* v9;
   int* v10;
   __int64 v11;
@@ -2264,11 +2280,10 @@ __attribute__((swiftcall)) void wld_map_c24a80(PSEUDO_X8 x8_, __int64 result,
   unsigned __int8* v17;
   unsigned __int64 v18;
   unsigned __int64 v19;
-  unsigned __int8* v20;
-  _QWORD* v21;
+  __int64 v20;
 
-  v4 = *(__int64**)(result + 136);
-  v5 = *(__int64**)(result + 144);
+  v4 = *(_QWORD**)(a1 + 136);
+  v5 = *(_QWORD**)(a1 + 144);
   a4[1] = 0;
   a4[2] = 0;
   *a4 = 0;
@@ -2277,14 +2292,10 @@ __attribute__((swiftcall)) void wld_map_c24a80(PSEUDO_X8 x8_, __int64 result,
     v10 = GameData_212d490;
     do {
       v11 = *v4;
-      if ((atomic_load_explicit(v9, memory_order_acquire) & 1) == 0) {
-        result = __cxa_guard_acquire(v9);
-        if ((_DWORD)result != 0) {
-          *v10 =
-              (unsigned int)(wld_Crc32((void*)(v21), 0, "MapObjectModule", 15),
-                             (void*)(v21));
-          result = __cxa_guard_release(v9);
-        }
+      if ((atomic_load_explicit(v9, memory_order_acquire) & 1) == 0 &&
+          __cxa_guard_acquire_alt1((__int64)v9) != 0) {
+        *v10 = wld_Crc32_alt1(0, "MapObjectModule", 0xFu);
+        __cxa_guard_release_alt1((__int64)v9);
       }
       v12 = *(_QWORD*)(v11 + 512);
       v13 = v12;
@@ -2298,11 +2309,9 @@ __attribute__((swiftcall)) void wld_map_c24a80(PSEUDO_X8 x8_, __int64 result,
       } while (v14 != *v10);
       if (*(_QWORD*)(v11 + 512) == v12 || (v15 = *(_QWORD*)(v12 + 8)) == 0) {
       LABEL_23:
-        if (a3 == *(_QWORD*)(*v4 + 272)) {
-          result = memcmp_alt1(a2, *v4 + 16);
-          if ((_DWORD)result == 0) {
-            goto LABEL_3;
-          }
+        if (a3 == *(_QWORD*)(*v4 + 272LL) &&
+            memcmp_alt2(a2, *v4 + 16LL, a3) == 0) {
+          goto LABEL_3;
         }
       }
       else {
@@ -2316,9 +2325,8 @@ __attribute__((swiftcall)) void wld_map_c24a80(PSEUDO_X8 x8_, __int64 result,
               v19 = v18 >> 1;
             }
             if (a3 == v19) {
-              v20 = (v18 & 1) != 0 ? *((unsigned __int8**)v16 + 2) : v16 + 1;
-              result = memcmp_alt1(a2, v20);
-              if ((_DWORD)result == 0) {
+              v20 = (v18 & 1) != 0 ? *((_QWORD*)v16 + 2) : (__int64)(v16 + 1);
+              if (memcmp_alt2(a2, v20, a3) == 0) {
                 break;
               }
             }
@@ -2330,25 +2338,22 @@ __attribute__((swiftcall)) void wld_map_c24a80(PSEUDO_X8 x8_, __int64 result,
         }
         if (v16 != v17) {
         LABEL_3:
-          result = GameRoutine_c23f00(a4, v4);
+          GameRoutine_c23f00_alt1(a4, v4);
         }
       }
     LABEL_4:
       ++v4;
     } while (v4 != v5);
   }
-  {
-    result;
-    return;
-  }
 }
 
-__attribute__((swiftcall)) void wld_map_c24c40(PSEUDO_X8 x8_, __int64 result,
-                                               int a2, __int64 a3, __int64 a4)
+__attribute__((swiftcall)) void wld_map_c24c40(PSEUDO_X8 x8_, __int64 a1,
+                                               int a2, __int64 a3,
+                                               unsigned __int64 a4)
 {
-  _QWORD* a5 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
-  __int64* v5;
-  __int64* v6;
+  __int64* a5 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v5;
+  _QWORD* v6;
   atomic_uchar* v11;
   int* v12;
   __int64 v13;
@@ -2363,11 +2368,11 @@ __attribute__((swiftcall)) void wld_map_c24c40(PSEUDO_X8 x8_, __int64 result,
   __int64 v22;
   __int64 v23;
   __int64 v24;
-  _QWORD* v25;
+  int v25;
   __int64 v26;
 
-  v5 = *(__int64**)(result + 88);
-  v6 = *(__int64**)(result + 96);
+  v5 = *(_QWORD**)(a1 + 88);
+  v6 = *(_QWORD**)(a1 + 96);
   a5[1] = 0;
   a5[2] = 0;
   *a5 = 0;
@@ -2376,16 +2381,14 @@ __attribute__((swiftcall)) void wld_map_c24c40(PSEUDO_X8 x8_, __int64 result,
     v12 = GameData_212d490;
     do {
       v13 = *v5;
-      if (a2 == *(_DWORD*)(*v5 + 284)) {
+      if (a2 == *(_DWORD*)(*v5 + 284LL)) {
         if ((atomic_load_explicit(v11, memory_order_acquire) & 1) == 0) {
           v26 = v13;
-          result = __cxa_guard_acquire(v11);
+          v25 = __cxa_guard_acquire_alt1((__int64)v11);
           v13 = v26;
-          if ((_DWORD)result != 0) {
-            *v12 = (unsigned int)(wld_Crc32((void*)(v25), 0, "MapObjectModule",
-                                            15),
-                                  (void*)(v25));
-            result = __cxa_guard_release(v11);
+          if (v25 != 0) {
+            *v12 = wld_Crc32_alt1(0, "MapObjectModule", 0xFu);
+            __cxa_guard_release_alt1((__int64)v11);
             v13 = v26;
           }
         }
@@ -2415,9 +2418,8 @@ __attribute__((swiftcall)) void wld_map_c24c40(PSEUDO_X8 x8_, __int64 result,
                   else {
                     v24 = v22;
                   }
-                  result = memcmp_alt1(a3, v24);
-                  if ((_DWORD)result == 0) {
-                    result = GameRoutine_c23f00(a5, v5);
+                  if (memcmp_alt2(a3, v24, a4) == 0) {
+                    GameRoutine_c23f00_alt1(a5, v5);
                   }
                 }
               }
@@ -2428,10 +2430,6 @@ __attribute__((swiftcall)) void wld_map_c24c40(PSEUDO_X8 x8_, __int64 result,
       }
       ++v5;
     } while (v5 != v6);
-  }
-  {
-    result;
-    return;
   }
 }
 

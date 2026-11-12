@@ -23,33 +23,38 @@ __int64 SoundHeap_Unknown2(__int64 a1, __int64 a2);
 _BYTE* SoundHeap_27c0d0(__int64 a1, __int64 a2);
 __int64 SoundHeap_Unknown3(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
 __int64 SoundHeap_Unknown4(__int64 a1, __int64 a2);
+_QWORD* SoundHeap_2a41d0(_QWORD* result);
+__int64* SoundHeap_2a44e0(_QWORD*);
+__int64 BaseNx_2a0de0(__int64, int);
+__int64 SoundArchivePlayer_27dbe0(__int64);
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+void* BaseNx_2a1860();
 
 __int64 SoundHeap_27bef0(__int64 a1)
 {
-  __int64 v2;
+  _BYTE* v2;
   __int64 v3;
-  _BYTE* v4;
-  _BYTE* v5;
-  unsigned int v6;
+  int v4;
 
-  nn_os_LockMutex(a1 + 8);
+  nn_os_LockMutex_alt1(a1 + 8);
   if (*(_QWORD*)(a1 + 40) != 0) {
-    nn_os_LockMutex(a1 + 8);
-    GameRoutine_2a44e0(a1 + 40);
-    v2 = nn_os_UnlockMutex(a1 + 8);
-    v4 = (_BYTE*)GameRoutine_2a1860(v2, v3);
-    if (*v4 == 1) {
-      v5 = v4;
-      v6 = GameRoutine_2a0eb0(v4, 1);
-      GameRoutine_2a0de0(v5, v6);
+    nn_os_LockMutex_alt1(a1 + 8);
+    SoundHeap_2a44e0((_QWORD*)(a1 + 40));
+    nn_os_UnlockMutex_alt1(a1 + 8);
+    v2 = BaseNx_2a1860();
+    if (*v2 == 1) {
+      v3 = (__int64)v2;
+      v4 = GameRoutine_2a0eb0(v2, 1);
+      BaseNx_2a0de0(v3, v4);
     }
     if (*(_BYTE*)(a1 + 72) == 1) {
-      GameRoutine_27dbe0(a1 + 64);
+      SoundArchivePlayer_27dbe0(a1 + 64);
       *(_BYTE*)(a1 + 72) = 0;
     }
-    GameRoutine_2a41d0(a1 + 40);
+    SoundHeap_2a41d0((_QWORD*)(a1 + 40));
   }
-  return nn_os_UnlockMutex(a1 + 8);
+  return nn_os_UnlockMutex_alt1(a1 + 8);
 }
 
 __int64 SoundHeap_27bfd0(__int64 a1, __int64 a2, unsigned __int64 a3)

@@ -12,6 +12,15 @@ __int64 strlen(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 PropertyFile_Destructor(__int64 a1);
 __int64 PropertyFile_Unknown2(__int64 result);
+__int64 fs_609260(__int64, const char*, char);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 strcpy_alt1(__int64, const char*) __asm__("strcpy");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 PropertyFile_Destructor(__int64 a1)
 {
@@ -243,35 +252,32 @@ __int64 PropertyFile_Unknown2(__int64 result)
 {
   __int64 v1;
   __int64 v2;
-  _QWORD* v3;
+  __int64* v3;
   unsigned __int64 v4;
-  __int64 v5;
-  unsigned __int8* v6;
+  const char* v5;
+  char* v6;
   int v7;
   __int64 v8;
-  unsigned __int8* v9;
+  const char* v9;
   __int64 v10;
-  unsigned __int8* v11;
-  __int64 v12;
+  char* v11;
+  unsigned __int64 v12;
   __int64 v13;
   __int64 v14;
   __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
 
   v1 = *(_QWORD*)(result + 576);
   if (v1 < 4) {
     return result;
   }
   v2 = *(_QWORD*)(result + 592);
-  v3 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v3 = (__int64*)fw_memory_g_heap_manager_ptr;
   v4 = v2 + v1;
-  v5 = v2 + 3;
+  v5 = (const char*)(v2 + 3);
   do {
-    v6 = (unsigned __int8*)v5;
+    v6 = (char*)v5;
     while (1) {
-      v7 = *v6;
+      v7 = (unsigned __int8)*v6;
       if (v7 != 13) {
         break;
       }
@@ -289,39 +295,39 @@ __int64 PropertyFile_Unknown2(__int64 result)
     }
     v8 = result;
     *v6 = 0;
-    result = GameRoutine_609260((float*)(result + 800), v5, 0);
+    result = fs_609260(result + 800, v5, 0);
     *v6 = 58;
     v9 = v6 + 1;
     if ((unsigned __int64)v9 >= v4) {
       return result;
     }
     v10 = result;
-    v11 = v9;
+    v11 = (char*)v9;
     while (*v11 != 13 || v11[1] != 10) {
       if ((unsigned __int64)++v11 >= v4) {
         return result;
       }
     }
     *v11 = 0;
-    v12 = strlen(v9);
-    v13 = fw_memory_HeapManager_Allocate(*v3, v12 + 1, 16, 0);
-    memset(v13, 0, v12 + 1, v14, v15, v16);
-    v17 = *(_QWORD*)(v10 + 24);
+    v12 = strlen_alt1(v9);
+    v13 = fw_memory_HeapManager_Allocate_alt1(*v3, v12 + 1, 16, 0);
+    memset_alt1(v13, 0, v12 + 1);
+    v14 = *(_QWORD*)(v10 + 24);
     *(_QWORD*)(v10 + 24) = v13;
-    if (v17 != 0) {
-      v18 = 128;
-      if (*(_QWORD*)(*v3 + 200LL) == 0) {
-        v18 = 56;
+    if (v14 != 0) {
+      v15 = 128;
+      if (*(_QWORD*)(*v3 + 200) == 0) {
+        v15 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v3 + v18, v17);
+      nn_mem_StandardAllocator_Free_alt1(*v3 + v15, v14);
       v13 = *(_QWORD*)(v10 + 24);
     }
-    strcpy(v13, v9);
+    strcpy_alt1(v13, v9);
     *(_BYTE*)(v10 + 36) = 0;
     *v11 = 13;
     result = v8;
   LABEL_19:
-    v5 = (__int64)(v11 + 2);
+    v5 = v11 + 2;
   } while ((unsigned __int64)(v11 + 2) < v4);
   return result;
 }

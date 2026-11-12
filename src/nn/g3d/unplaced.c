@@ -53,6 +53,9 @@ float32x2_t nn_g3d_5f5ac0(__int64 a1, __int64 a2, __int64 a3, double a4,
 __int64 nn_g3d_5f6180(__int64 result, unsigned __int16* a2, __int64 a3,
                       float a4);
 __int64 nn_g3d_5f66c0(__int64 result);
+extern _UNKNOWN* nn_g3d_5f33e0_ptr_ptr;
+extern _UNKNOWN* nn_g3d_5f5100_ptr_ptr;
+extern __int64 (*nn_g3d_5f3f20_ptr[4])();
 
 __int64 nn_g3d_5e2c00(__int64 result)
 {
@@ -2485,10 +2488,11 @@ __int64 nn_g3d_5f6180(__int64 result, unsigned __int16* a2, __int64 a3,
       v65 = v18;
       v54 = (v17 >> 2) & 3;
       v55 = v19;
-      v53 = (char*)GameData_21365f8 + 24 * ((*((_DWORD*)v14 + 31) >> 2) & 3);
+      v53 =
+          (char*)nn_g3d_5f5100_ptr_ptr + 24 * ((*((_DWORD*)v14 + 31) >> 2) & 3);
       v51 = v13;
       v50 = v15;
-      v52 = &GameData_1f8dbd8[2 * ((*(_DWORD*)(v9 + 12) & 2LL) != 0)];
+      v52 = &nn_g3d_5f3f20_ptr[2 * ((*(_DWORD*)(v9 + 12) & 2LL) != 0)];
       do {
         v27 = *(_DWORD*)(*((_QWORD*)v22 + 11) + v24);
         if ((v27 & 0x80000000) == 0) {
@@ -2542,7 +2546,7 @@ __int64 nn_g3d_5f6180(__int64 result, unsigned __int16* a2, __int64 a3,
                       COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0f));
                 }
                 (*((void (**)(_QWORD*, _QWORD, __int128*, _QWORD,
-                              long double))GameData_2136608 +
+                              long double))nn_g3d_5f33e0_ptr_ptr +
                    6 * ((v33 & 2) != 0) + 2 * ((v38 & 0x100000) != 0)))(
                     v23, *v23, &v56, (unsigned int)v28, v13);
                 v21 = v50;
@@ -2568,7 +2572,7 @@ __int64 nn_g3d_5f6180(__int64 result, unsigned __int16* a2, __int64 a3,
                         *(_QWORD*)v49 + 16LL))(v49, &v56, a4);
                   }
                   result = (*((__int64 (**)(_QWORD*, _QWORD, _DWORD*,
-                                            _QWORD))GameData_2136608 +
+                                            _QWORD))nn_g3d_5f33e0_ptr_ptr +
                               6 * ((v47 & 2) != 0) + 2 * ((v48 >> 20) & 3)))(
                       v23, *v23, v61, (unsigned int)v28);
                 }
@@ -2593,7 +2597,7 @@ __int64 nn_g3d_5f6180(__int64 result, unsigned __int16* a2, __int64 a3,
                     LODWORD(v13) = HIDWORD(v56);
                   }
                   result = (*((__int64 (**)(_QWORD*, _QWORD, _DWORD*, _QWORD,
-                                            long double))GameData_2136608 +
+                                            long double))nn_g3d_5f33e0_ptr_ptr +
                               6 * ((v43 & 2) != 0) + 2 * ((v44 >> 20) & 3)))(
                       v23, *v23, v61, (unsigned int)v28, v13);
                 }

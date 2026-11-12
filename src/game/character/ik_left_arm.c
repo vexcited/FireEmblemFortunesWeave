@@ -9,7 +9,8 @@ extern __int64 (*GameData_200c598[])();
 extern __int64 (*game_character_IKLeftArm_vtable[])();
 extern __int64 (*kaneko_WPHolder_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 IKLeftArm_10e5930(__int64 a1, __int64* a2, __int64 a3);
+__n128 IKLeftArm_10e5930_alt2(__int64 a1, __int64* a2,
+                              __int64 a3) __asm__("IKLeftArm_10e5930");
 __n128 IKLeftArm_Destructor_10e5bb0(_QWORD* a1);
 __int64 IKLeftArm_DeletingDestructor(_QWORD* a1);
 __n128 IKLeftArm_Destructor_10e5dc0(_QWORD* a1);
@@ -38,6 +39,12 @@ long double GameRoutine_10d9a00(__int64);
 void game_10d9020(_QWORD*, __int64, __int64*);
 void game_character_IKLeftArm_IKLeftArm(__int64 a1, _QWORD* a2, __int64 a3);
 void IKLeftArm_Unknown4(__int64 a1);
+__int64
+CharacterTrailModule_d3d630_alt1(__int64*, __int64*, __int64,
+                                 int) __asm__("CharacterTrailModule_d3d630");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 IKLeftArm_10e5930(__int64* a1, __int64* a2, __int64 a3);
 
 void game_character_IKLeftArm_IKLeftArm(__int64 a1, _QWORD* a2, __int64 a3)
 {
@@ -268,23 +275,26 @@ LABEL_17:
   }
 }
 
-__n128 IKLeftArm_10e5930(__int64 a1, __int64* a2, __int64 a3)
+__int64 IKLeftArm_10e5930(__int64* a1, __int64* a2, __int64 a3)
 {
   __int64 v3;
-  __n128 result;
-  __int64 v5;
-  __int64 v6;
+  __int64 result;
+  struct {
+    __int64 v5;
+    __int64 v6;
+  } v5_;
 
   v3 = a2[1];
-  v5 = *a2;
-  v6 = v3;
+  v5_.v5 = *a2;
+  v5_.v6 = v3;
   if (v3 != 0) {
     atomic_fetch_add_explicit((atomic_ullong* volatile)(v3 + 16), 1u,
                               memory_order_relaxed);
   }
-  CharacterTrailModule_d3d630(a1, &v5, a3, 1);
-  if (v6 != 0) {
-    return std___1___shared_weak_count___release_weak(v6);
+  CharacterTrailModule_d3d630_alt1(a1, &v5_.v5, a3, 1);
+  result = v5_.v6;
+  if (v5_.v6 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v5_.v6);
   }
   return result;
 }

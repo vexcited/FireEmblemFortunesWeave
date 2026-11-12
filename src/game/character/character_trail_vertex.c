@@ -19,6 +19,9 @@ __attribute__((swiftcall)) void CharacterTrailVertex_d35680(PSEUDO_X8 x8_,
                                                             int8x16_t* a1,
                                                             _QWORD* a2,
                                                             float32x4_t* a3);
+__attribute__((swiftcall)) void
+math_Quat_Slerp_alt1(PSEUDO_X8, float32x4_t* result, float32x4_t*,
+                     float) __asm__("math_Quat_Slerp");
 
 __int64* CharacterTrailVertex_d35160(__int64* result, _DWORD* a2)
 {
@@ -100,8 +103,6 @@ __attribute__((swiftcall)) void
 CharacterTrailVertex_d35500(PSEUDO_X8 x8_, float32x4_t** a1, float32x4_t result)
 {
   _QWORD* a2 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
-  __int64 v3;
-  __int64 v4;
   float32x4_t* v5;
   float32x4_t* v6;
   __int64 v7;
@@ -127,9 +128,7 @@ CharacterTrailVertex_d35500(PSEUDO_X8 x8_, float32x4_t** a1, float32x4_t result)
   unsigned __int64 v28;
   __int128 v29;
   float v30;
-  int8x16_t v31;
-  __int64 v32;
-  __int64 v33;
+  float32x4_t v31;
 
   v5 = *a1;
   v6 = a1[1];
@@ -140,8 +139,6 @@ CharacterTrailVertex_d35500(PSEUDO_X8 x8_, float32x4_t** a1, float32x4_t result)
   *a2 = 0;
   a2[1] = 0;
   if (v6 != v5) {
-    v32 = v3;
-    v33 = v4;
     v7 = -1 - 0x3333333333333333LL * (v6 - v5);
     if (v7 != 0) {
       v8 = LANES128(v6[-1]).n128_f32[0];
@@ -164,18 +161,18 @@ CharacterTrailVertex_d35500(PSEUDO_X8 x8_, float32x4_t** a1, float32x4_t result)
         }
       }
       v14 = v13 - v12;
-      if (v14 == 0.0f) {
-        v19 = 0.0f;
+      if (v14 == 0x0.0p+0f) {
+        v19 = 0x0.0p+0f;
       }
       else {
         v15 = v11 - v12;
-        v16 = 1.0f;
+        v16 = 0x1.0000000000000p+0f;
         v17 = v15 / v14;
-        if (v17 <= 1.0f) {
+        if (v17 <= 0x1.0000000000000p+0f) {
           v16 = v17;
         }
-        v18 = v17 < 0.0f;
-        v19 = 0.0f;
+        v18 = v17 < 0x0.0p+0f;
+        v19 = 0x0.0p+0f;
         if (!v18) {
           v19 = v16;
         }
@@ -186,7 +183,7 @@ CharacterTrailVertex_d35500(PSEUDO_X8 x8_, float32x4_t** a1, float32x4_t result)
       v27 = *(_OWORD*)a2;
       *((_QWORD*)&v27 + 1) = LANES128(v26).n128_u32[2];
       *(_OWORD*)a2 = v27;
-      math_Quat_Slerp((void*)(&v31), &v9[-4], &v9[1]);
+      math_Quat_Slerp_alt1((void*)(&v31), v9 - 4, v9 + 1, v19);
       v28 = LANES128_OF(vextq_s8(v31, v31, 8u)).n128_u64[0];
       a2[2] = LANES128(v31).n128_u64[0];
       a2[3] = v28;

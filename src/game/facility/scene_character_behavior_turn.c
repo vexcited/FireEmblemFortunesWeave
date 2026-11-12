@@ -13,14 +13,27 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_script_hub_g_frame_counter;
 float Cursor_734120(int, int, float, float, float, float);
 void SceneCharacter_1401180(__int64, float);
-void SceneCharacterBehaviorTurn_Unknown3(__int64 a1);
+void SceneCharacterBehaviorTurn_Unknown3_alt1(__int64 a1) __asm__(
+    "SceneCharacterBehaviorTurn_Unknown3");
 void SceneCharacterBehaviorTurn_14055a0(__int64 a1);
+__int64 SceneCharacter_1401180_alt1(__int64,
+                                    float) __asm__("SceneCharacter_1401180");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void SceneCharacter_1401550_alt1(__int64,
+                                 __int64) __asm__("SceneCharacter_1401550");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 SceneCharacterBehaviorTurn_Unknown3(__int64 result);
 
-void SceneCharacterBehaviorTurn_Unknown3(__int64 a1)
+__int64 SceneCharacterBehaviorTurn_Unknown3(__int64 result)
 {
 
 #pragma clang fp contract(off)
   float v1;
+  __int64 v2;
   __int64 v3;
   int v4;
   int v5;
@@ -39,26 +52,29 @@ void SceneCharacterBehaviorTurn_Unknown3(__int64 a1)
   int v18;
   __int64 v19;
   struct {
-    _QWORD v20[3];
-    int v21;
-    char v22;
+    __int64 v20;
+    char gap24_[8];
+    __int64 v21;
+    int v22;
+    char v23;
     char gap45_[3];
-    int v23;
     int v24;
     int v25;
-    __int16 v26;
+    int v26;
+    __int16 v27;
   } v20_;
 
-  v1 = *(float*)(a1 + 28);
+  v1 = *(float*)(result + 28);
+  v2 = result;
   if (v1 == 0x0.0p+0f) {
-    *(_BYTE*)(a1 + 24) = 0;
+    *(_BYTE*)(result + 24) = 0;
   }
   else {
     for (; v1 < -0x1.6800000000000p+7f; v1 = v1 + 0x1.6800000000000p+8f)
       ;
     for (; v1 >= 0x1.6800000000000p+7f; v1 = v1 + -0x1.6800000000000p+8f)
       ;
-    v3 = *(_QWORD*)(a1 + 16);
+    v3 = *(_QWORD*)(result + 16);
     if (v1 <= -0x1.2c00000000000p+7f) {
       v4 = 1804569207;
     }
@@ -82,7 +98,7 @@ void SceneCharacterBehaviorTurn_Unknown3(__int64 a1)
     v8 = GameData_2131328;
     if ((explicit & 1) == 0) {
       v19 = v3;
-      v18 = __cxa_guard_acquire(GameData_2131330);
+      v18 = __cxa_guard_acquire_alt1((__int64)GameData_2131330);
       v8 = GameData_2131328;
       v3 = v19;
       if (v18 != 0) {
@@ -90,7 +106,7 @@ void SceneCharacterBehaviorTurn_Unknown3(__int64 a1)
             0;
         *v8 = 0xBF800000BF800000LL;
         *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v8) = -1082130432;
-        __cxa_guard_release(GameData_2131330);
+        __cxa_guard_release_alt1((__int64)GameData_2131330);
         v8 = GameData_2131328;
         v3 = v19;
       }
@@ -98,23 +114,23 @@ void SceneCharacterBehaviorTurn_Unknown3(__int64 a1)
     v9 = *(_DWORD*)v8;
     v10 = *((_DWORD*)v8 + 1);
     v11 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v8);
-    v20_.v20[0] = 0;
-    v20_.v21 = v6;
-    v20_.v22 = 0;
-    v20_.v25 = v11;
-    v20_.v23 = v9;
-    v20_.v24 = v10;
-    v20_.v26 = WORD2(v11);
-    SceneCharacter_1401550(v3, (__int64)v20_.v20);
-    if ((v20_.v20[0] & 1) != 0 && v20_.v20[2] != 0) {
+    v20_.v20 = 0;
+    v20_.v22 = v6;
+    v20_.v23 = 0;
+    v20_.v26 = v11;
+    v20_.v24 = v9;
+    v20_.v25 = v10;
+    v20_.v27 = WORD2(v11);
+    SceneCharacter_1401550_alt1(v3, (__int64)&v20_.v20);
+    if ((v20_.v20 & 1) != 0 && v20_.v21 != 0) {
       v12 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v12 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v12);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v20_.v21);
     }
-    v13 = *(_QWORD*)(a1 + 16);
+    v13 = *(_QWORD*)(v2 + 16);
     v14 = *(_QWORD*)(v13 + 192);
     v15 = *(_QWORD*)(v13 + 200);
     if (v15 != 0) {
@@ -128,7 +144,7 @@ void SceneCharacterBehaviorTurn_Unknown3(__int64 a1)
       if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
-        std___1___shared_weak_count___release_weak();
+        std___1___shared_weak_count___release_weak_alt1(v15);
       }
     }
     else {
@@ -138,13 +154,14 @@ void SceneCharacterBehaviorTurn_Unknown3(__int64 a1)
       for (; i >= 0x1.6800000000000p+7f; i = i + -0x1.6800000000000p+8f)
         ;
     }
-    v17 = *(_QWORD*)(a1 + 16);
-    *(float*)(a1 + 48) = i;
-    *(_QWORD*)(a1 + 40) = 1056964608;
-    *(float*)(a1 + 52) = v1 + i;
-    *(float*)(a1 + 56) = i;
-    SceneCharacter_1401180(v17, 0x1.0000000000000p-1f);
+    v17 = *(_QWORD*)(v2 + 16);
+    *(float*)(v2 + 48) = i;
+    *(_QWORD*)(v2 + 40) = 1056964608;
+    *(float*)(v2 + 52) = v1 + i;
+    *(float*)(v2 + 56) = i;
+    return SceneCharacter_1401180_alt1(v17, 0x1.0000000000000p-1f);
   }
+  return result;
 }
 
 void SceneCharacterBehaviorTurn_14055a0(__int64 a1)

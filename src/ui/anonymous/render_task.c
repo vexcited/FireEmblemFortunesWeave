@@ -14,6 +14,12 @@ extern __int64 fw_memory_g_heap_manager;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_22416f8;
 __int64 RenderTask_Unknown3(__int64 a1);
+__int64 Layout_13636c0(__int64 result);
+__int64 RenderTask_1369840(__int64 result);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 RenderTask_Unknown3(__int64 a1)
 {
@@ -94,7 +100,7 @@ __int64 RenderTask_Unknown3(__int64 a1)
             if (v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
                                              0xFFFFFFFFFFFFFFFFLL) == 0) {
               (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-              std___1___shared_weak_count___release_weak(v10);
+              std___1___shared_weak_count___release_weak_alt1(v10);
             }
             v4 += 2;
           }
@@ -109,7 +115,7 @@ __int64 RenderTask_Unknown3(__int64 a1)
             if (v11 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                                              0xFFFFFFFFFFFFFFFFLL) == 0) {
               (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-              std___1___shared_weak_count___release_weak(v11);
+              std___1___shared_weak_count___release_weak_alt1(v11);
             }
             v6 -= 2;
           }
@@ -122,7 +128,6 @@ __int64 RenderTask_Unknown3(__int64 a1)
   LABEL_23:
     v4 = v6;
   }
-
 LABEL_32:
   while (v3 != v4) {
     v12 = (_BYTE*)*v3;
@@ -176,7 +181,8 @@ LABEL_32:
             else {
               v18 = 56;
             }
-            nn_mem_StandardAllocator_Free(*(_QWORD*)v17 + v18);
+            nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v17 + v18,
+                                               (__int64)v21);
           }
           ++v13;
         }
@@ -184,7 +190,6 @@ LABEL_32:
       } while (v16 != v14);
     }
   }
-
 LABEL_56:
   v24 = (int**)v1[143];
   if (v13 != v24) {
@@ -211,17 +216,16 @@ LABEL_56:
         else {
           v25 = 56;
         }
-        nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v25);
+        nn_mem_StandardAllocator_Free_alt1(fw_memory_g_heap_manager + v25, v26);
       }
     } while (v24 != v13);
     v1[143] = v13;
   }
-  result = GameRoutine_1369840(v1 + 158);
+  result = RenderTask_1369840((__int64)(v1 + 158));
   GameData_22416f8 = (GameData_22416f8 & 1) == 0;
   v31 = *(_QWORD*)(a1 + 8);
   v32 = *(__int64**)(v31 + 1112);
-  for (i = *(__int64**)(v31 + 1120); v32 != i;
-       result = GameRoutine_13636c0(v34)) {
+  for (i = *(__int64**)(v31 + 1120); v32 != i; result = Layout_13636c0(v34)) {
     v34 = *v32;
     v32 += 2;
   }

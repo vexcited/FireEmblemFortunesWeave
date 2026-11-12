@@ -26,11 +26,17 @@ __int64 ModelAnimObj_Unknown17(__int64 result);
 __int64 ModelAnimObj_Unknown21(__int64 result);
 _QWORD* ModelAnimObj_Unknown33(_QWORD* result, __int64 a2, float a3);
 _QWORD* ModelAnimObj_Unknown35(_QWORD* result, __int64 a2, float a3);
-_QWORD* ModelAnimObj_Unknown45(_QWORD* result, __int64 a2, float a3);
-_QWORD* ModelAnimObj_Unknown47(_QWORD* result, __int64 a2, float a3);
+_QWORD* ModelAnimObj_Unknown45_alt1(_QWORD* result, __int64 a2,
+                                    float a3) __asm__("ModelAnimObj_Unknown45");
+_QWORD* ModelAnimObj_Unknown47_alt1(_QWORD* result, __int64 a2,
+                                    float a3) __asm__("ModelAnimObj_Unknown47");
 float ModelAnimObj_DeletingDestructor(__int64 a1, int a2);
 float ModelAnimObj_Unknown4(__int64 a1, int a2);
 float ModelAnimObj_Unknown7(__int64 a1, int a2);
+void nn_g3d_5f33e0(__int64, __int64, __int64, int, float);
+void nn_g3d_5f3800(__int64, __int64, __int64, int, float);
+void ModelAnimObj_Unknown45(__int64* a1, __int64 a2, float a3);
+void ModelAnimObj_Unknown47(__int64* a1, __int64 a2, float a3);
 
 float ModelAnimObj_Destructor(__int64* a1, __int64 a2, float a3)
 {
@@ -823,88 +829,101 @@ _QWORD* ModelAnimObj_Unknown35(_QWORD* result, __int64 a2, float a3)
   return result;
 }
 
-_QWORD* ModelAnimObj_Unknown45(_QWORD* result, __int64 a2, float a3)
+void ModelAnimObj_Unknown45(__int64* a1, __int64 a2, float a3)
 {
+
+#pragma clang fp contract(off)
   __int64 v3;
   __int64 v4;
   __int64 v6;
-  _QWORD* v8;
   __int64 v9;
   int v10;
-  __int64 v11;
+  int v11;
   __int64 v12;
-  int v13;
-  float v14;
+  struct {
+    __int64 v13;
+    int v14;
+    float v15;
+  } v13_;
 
   if (*(_WORD*)(a2 + 100) != 0) {
     v3 = *(_QWORD*)(a2 + 72);
-    v4 = *result;
+    v4 = *a1;
     v6 = 4LL * *(unsigned __int16*)(a2 + 100);
-    v8 = result;
     v9 = 0;
     do {
       v10 = *(_DWORD*)(*(_QWORD*)(a2 + 88) + v9);
-      if ((v10 & 0x80000000) == 0 &&
-          (*(_DWORD*)(*(_QWORD*)(a2 + 88) + v9) & 0x7FFF) != 0x7FFF) {
-        v11 = v8[3];
-        v12 = a2;
-        v13 = v10 & 0x7FFF;
-        v14 = a3;
-        (*(void (**)(__int64, __int64*))(*(_QWORD*)v11 + 16LL))(v11, &v12);
-        result = (_QWORD*)GameRoutine_5f33e0(v8, v4, v3, v14);
+      if ((v10 & 0x80000000) == 0) {
+        v11 = *(_DWORD*)(*(_QWORD*)(a2 + 88) + v9) & 0x7FFF;
+        if (v11 != 0x7FFF) {
+          v12 = a1[3];
+          v13_.v13 = a2;
+          v13_.v14 = v10 & 0x7FFF;
+          v13_.v15 = a3;
+          (*(void (**)(__int64, __int64*))(*(_QWORD*)v12 + 16LL))(v12,
+                                                                  &v13_.v13);
+          nn_g3d_5f33e0((__int64)a1, v4, v3, v11, v13_.v15);
+        }
       }
       v9 += 4;
       v3 += 48;
     } while (v6 != v9);
   }
-  return result;
 }
 
-_QWORD* ModelAnimObj_Unknown47(_QWORD* result, __int64 a2, float a3)
+void ModelAnimObj_Unknown47(__int64* a1, __int64 a2, float a3)
 {
+
+#pragma clang fp contract(off)
   __int64 v3;
   __int64 v4;
   __int64 v6;
-  _QWORD* v8;
   __int64 v9;
   int v10;
-  __int64 v11;
+  int v11;
   __int64 v12;
-  int v13;
-  float v14;
+  struct {
+    __int64 v13;
+    int v14;
+    float v15;
+  } v13_;
 
   if (*(_WORD*)(a2 + 100) != 0) {
     v3 = *(_QWORD*)(a2 + 72);
-    v4 = *result;
+    v4 = *a1;
     v6 = 4LL * *(unsigned __int16*)(a2 + 100);
-    v8 = result;
     v9 = 0;
     do {
       v10 = *(_DWORD*)(*(_QWORD*)(a2 + 88) + v9);
-      if ((v10 & 0x80000000) == 0 &&
-          (*(_DWORD*)(*(_QWORD*)(a2 + 88) + v9) & 0x7FFF) != 0x7FFF) {
-        v11 = v8[3];
-        v12 = a2;
-        v13 = v10 & 0x7FFF;
-        v14 = a3;
-        (*(void (**)(__int64, __int64*))(*(_QWORD*)v11 + 16LL))(v11, &v12);
-        result = (_QWORD*)GameRoutine_5f3800(v8, v4, v3, v14);
+      if ((v10 & 0x80000000) == 0) {
+        v11 = *(_DWORD*)(*(_QWORD*)(a2 + 88) + v9) & 0x7FFF;
+        if (v11 != 0x7FFF) {
+          v12 = a1[3];
+          v13_.v13 = a2;
+          v13_.v14 = v10 & 0x7FFF;
+          v13_.v15 = a3;
+          (*(void (**)(__int64, __int64*))(*(_QWORD*)v12 + 16LL))(v12,
+                                                                  &v13_.v13);
+          nn_g3d_5f3800((__int64)a1, v4, v3, v11, v13_.v15);
+        }
       }
       v9 += 4;
       v3 += 48;
     } while (v6 != v9);
   }
-  return result;
 }
 
 float ModelAnimObj_DeletingDestructor(__int64 a1, int a2)
 {
+
+#pragma clang fp contract(off)
   __int64 v2;
   int v3;
   unsigned __int64 v4;
   float v5;
   float result;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
   v2 = 16;
   if (a2 != 0) {
     HIDWORD(v4) = a2;
@@ -927,12 +946,15 @@ float ModelAnimObj_DeletingDestructor(__int64 a1, int a2)
 
 float ModelAnimObj_Unknown4(__int64 a1, int a2)
 {
+
+#pragma clang fp contract(off)
   unsigned int v2;
   unsigned __int64 v3;
   __int64 v4;
   float v5;
   float result;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
   HIDWORD(v3) = a2;
   LODWORD(v3) = a2;
   v2 = v3 >> 20;
@@ -958,12 +980,15 @@ float ModelAnimObj_Unknown4(__int64 a1, int a2)
 
 float ModelAnimObj_Unknown7(__int64 a1, int a2)
 {
+
+#pragma clang fp contract(off)
   unsigned int v2;
   unsigned __int64 v3;
   float v4;
   __int64 v5;
   float result;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
   HIDWORD(v3) = a2;
   LODWORD(v3) = a2;
   v2 = v3 >> 20;

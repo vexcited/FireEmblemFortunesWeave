@@ -58,9 +58,22 @@ extern int GameData_223e228;
 extern int GameData_223e258;
 extern int GameData_223e268;
 _QWORD* system_WaitSec(float a1);
+_QWORD* game_script_WaitProc_alt1() __asm__("game_script_WaitProc");
+__int64 ProcInst_657850_alt1(__int64, __int64, const char*, char,
+                             __int64) __asm__("ProcInst_657850");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_ProcInst_Register_alt1(__int64) __asm__("game_ProcInst_Register");
+__int64
+game_script_StartWaitProc_alt1(__int64) __asm__("game_script_StartWaitProc");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 _QWORD* system_WaitSec(float a1)
 {
+
+#pragma clang fp contract(off)
   __int64* v2;
   __int64 v3;
   __int64 v4;
@@ -102,7 +115,7 @@ _QWORD* system_WaitSec(float a1)
   if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(v5 + 24) + 456LL))(
            *(_QWORD*)(v5 + 24)) &
        1) == 0) {
-    return (_QWORD*)game_script_WaitProc();
+    return game_script_WaitProc_alt1();
   }
   if (game_ProcGameSkipView_instance_ != 0 &&
       *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) == 3) {
@@ -114,13 +127,13 @@ _QWORD* system_WaitSec(float a1)
       v7 = 3;
     }
     v8 = (v7 & v6) == 0;
-    if (a1 <= 0.0f) {
+    if (a1 <= 0x0.0p+0f) {
       goto LABEL_17;
     }
   }
   else {
     v8 = false;
-    if (a1 <= 0.0f) {
+    if (a1 <= 0x0.0p+0f) {
       goto LABEL_17;
     }
   }
@@ -150,7 +163,7 @@ _QWORD* system_WaitSec(float a1)
           if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_223e278,
                                     memory_order_acquire) &
                1) == 0 &&
-              (unsigned int)__cxa_guard_acquire(&GameData_223e278) != 0) {
+              __cxa_guard_acquire_alt1((__int64)&GameData_223e278) != 0) {
             GameData_223e1f8 = 14;
             GameData_223e218 = 0;
             GameData_223e220 = 0;
@@ -167,9 +180,9 @@ _QWORD* system_WaitSec(float a1)
             GameData_223e200 = 0;
             GameData_223e208 = 16;
             GameData_223e210 = 1;
-            __cxa_guard_release(&GameData_223e278);
+            __cxa_guard_release_alt1((__int64)&GameData_223e278);
           }
-          v20 = fw_memory_HeapManager_Allocate(
+          v20 = fw_memory_HeapManager_Allocate_alt1(
               *(_QWORD*)fw_memory_g_heap_manager_ptr, 160, 16, 0);
           v21 = GameData_212c608[0];
           *(_QWORD*)(v20 + 96) = 0;
@@ -192,13 +205,15 @@ _QWORD* system_WaitSec(float a1)
           *(_QWORD*)(v20 + 88) = 0;
           *(_QWORD*)v20 = v21 + 16;
           *(_QWORD*)(v20 + 8) = 0;
-          game_ProcInst_Register();
+          game_ProcInst_Register_alt1(v20);
           *(_QWORD*)v20 = anonymous_WaitProc_vtable;
           *(float*)(v20 + 152) =
-              (float)(int)(float)((float)(a1 * 1000.0f) * 0.06f);
-          ProcInst_657850(v20, &GameData_223e1f8, "WaitProc", 1, v13);
+              (float)(int)(float)((float)(a1 * 0x1.f400000000000p+9f) *
+                                  0x1.eb851e0000000p-5f);
+          ProcInst_657850_alt1(v20, (__int64)&GameData_223e1f8, "WaitProc", 1,
+                               v13);
         }
-        game_script_StartWaitProc(v20);
+        game_script_StartWaitProc_alt1(v20);
         v22 = (_QWORD*)*v10;
         if (*v10 != 0 ||
             (v22 = *(_QWORD**)GameData_212eb20[0],
@@ -229,8 +244,8 @@ _QWORD* system_WaitSec(float a1)
                  : (v26 = 3),
              (v26 & v25) != 0)) {
           v27 = *(float*)(v24 + 144);
-          if (v27 < 1.0f) {
-            v27 = 1.0f;
+          if (v27 < 0x1.0000000000000p+0f) {
+            v27 = 0x1.0000000000000p+0f;
           }
           *(_WORD*)(v24 + 136) = *(_WORD*)(v24 + 136) & 0xFF97 | 0x20;
           *(float*)(v24 + 144) = v27;
@@ -283,6 +298,8 @@ LABEL_17:
 
 _QWORD* SystemNatives_1192410()
 {
+
+#pragma clang fp contract(off)
   __int64* v0;
   __int64 v1;
   __int64 v2;
@@ -321,7 +338,7 @@ _QWORD* SystemNatives_1192410()
   if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(v3 + 24) + 456LL))(
            *(_QWORD*)(v3 + 24)) &
        1) == 0) {
-    return (_QWORD*)game_script_WaitProc();
+    return game_script_WaitProc_alt1();
   }
   if (game_ProcFadeView_instance_ == 0 ||
       *(float*)((v4 = game_ProcFadeView_instance_ +
@@ -374,12 +391,11 @@ _QWORD* SystemNatives_1192410()
     goto LABEL_22;
   }
   v8 = 0;
-
 LABEL_22:
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_223e300,
                             memory_order_acquire) &
        1) == 0 &&
-      (unsigned int)__cxa_guard_acquire(&GameData_223e300) != 0) {
+      __cxa_guard_acquire_alt1((__int64)&GameData_223e300) != 0) {
     GameData_223e280 = 14;
     GameData_223e2a0 = 0;
     GameData_223e2a8 = 0;
@@ -396,10 +412,10 @@ LABEL_22:
     GameData_223e288 = 0;
     GameData_223e290 = 16;
     GameData_223e298 = 1;
-    __cxa_guard_release(&GameData_223e300);
+    __cxa_guard_release_alt1((__int64)&GameData_223e300);
   }
-  v14 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                       152, 16, 0);
+  v14 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 152, 16, 0);
   v15 = GameData_212c608[0];
   *(_QWORD*)(v14 + 96) = 0;
   *(_QWORD*)(v14 + 104) = 0;
@@ -421,10 +437,11 @@ LABEL_22:
   *(_QWORD*)(v14 + 88) = 0;
   *(_QWORD*)v14 = v15 + 16;
   *(_QWORD*)(v14 + 8) = 0;
-  game_ProcInst_Register();
+  game_ProcInst_Register_alt1(v14);
   *(_QWORD*)v14 = anonymous_FadeWaitProc_vtable;
-  v16 = GameRoutine_657850(v14, &GameData_223e280, "FadeWaitProc", 1, v8);
-  game_script_StartWaitProc(v16);
+  v16 = ProcInst_657850_alt1(v14, (__int64)&GameData_223e280, "FadeWaitProc", 1,
+                             v8);
+  game_script_StartWaitProc_alt1(v16);
   v17 = (_QWORD*)*v5;
   if (*v5 != 0 ||
       (v17 = *(_QWORD**)GameData_212eb20[0],
@@ -452,8 +469,8 @@ LABEL_22:
            : (v21 = 3),
        (v21 & v20) != 0)) {
     v22 = *(float*)(v19 + 144);
-    if (v22 < 1.0f) {
-      v22 = 1.0f;
+    if (v22 < 0x1.0000000000000p+0f) {
+      v22 = 0x1.0000000000000p+0f;
     }
     *(_WORD*)(v19 + 136) = *(_WORD*)(v19 + 136) & 0xFF97 | 0x20;
     *(float*)(v19 + 144) = v22;

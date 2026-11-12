@@ -61,7 +61,12 @@ game_menu_anonymous_ProcDeliveryMaterialMenu_CreateDialog_closure0_Invoke(
 __int64
 game_menu_anonymous_ProcDeliveryMaterialMenu_BCall_closure_Invoke(__int64 a1);
 __int64
-game_menu_anonymous_ProcDeliveryMaterialMenu_SortAndFilter_closure_Invoke_17a3740(
+game_menu_anonymous_ProcDeliveryMaterialMenu_SortAndFilter_closure_Invoke_17a3740_alt1(
+    __int64 a1, _QWORD* a2,
+    __int64* a3) __asm__("game_menu_anonymous_ProcDeliveryMaterialMenu_"
+                         "SortAndFilter_closure_Invoke_17a3740");
+bool GameRoutine_19ef8e0_alt1(_QWORD*, _QWORD*) __asm__("GameRoutine_19ef8e0");
+bool game_menu_anonymous_ProcDeliveryMaterialMenu_SortAndFilter_closure_Invoke_17a3740(
     __int64 a1, _QWORD* a2, __int64* a3);
 
 __int64 ProcDeliveryMaterialMenu_Unknown88(__int64 a1)
@@ -698,9 +703,7 @@ bool game_menu_anonymous_ProcDeliveryMaterialMenu_SortAndFilter_closure_Invoke_1
                              73LL);
 }
 
-__int64
-
-game_menu_anonymous_ProcDeliveryMaterialMenu_SortAndFilter_closure_Invoke_17a3740(
+bool game_menu_anonymous_ProcDeliveryMaterialMenu_SortAndFilter_closure_Invoke_17a3740(
     __int64 a1, _QWORD* a2, __int64* a3)
 {
   __int64 v3;
@@ -712,10 +715,14 @@ game_menu_anonymous_ProcDeliveryMaterialMenu_SortAndFilter_closure_Invoke_17a374
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  _QWORD v13[3];
-  char v14;
-  _QWORD v15[3];
-  char v16;
+  struct {
+    _QWORD v13[3];
+    char v14;
+  } v13_;
+  struct {
+    _QWORD v15[3];
+    char v16;
+  } v15_;
 
   v3 = *a3;
   if (*a2 != 0) {
@@ -759,15 +766,15 @@ LABEL_6:
                    8LL) +
         12LL * (int)v9 + 4;
   }
-  v15[0] = v8;
-  v15[1] = 0;
-  v15[2] = 0;
-  v16 = 0;
-  v13[0] = v11;
-  v13[1] = 0;
-  v13[2] = 0;
-  v14 = 0;
-  return GameRoutine_19ef8e0(v15, v13) & 1;
+  v15_.v15[0] = v8;
+  v15_.v15[1] = 0;
+  v15_.v15[2] = 0;
+  v15_.v16 = 0;
+  v13_.v13[0] = v11;
+  v13_.v13[1] = 0;
+  v13_.v13[2] = 0;
+  v13_.v14 = 0;
+  return GameRoutine_19ef8e0_alt1(v15_.v15, v13_.v13);
 }
 
 #pragma GCC visibility pop

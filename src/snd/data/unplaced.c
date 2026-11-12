@@ -81,7 +81,7 @@ __int64 snd_data_ee200(__int64* a1, char* a2);
 __int64* snd_data_ee440(__int64* a1, char* a2);
 __int64 snd_data_ef080(__int64 result, char a2);
 __int64 snd_data_f0230(__int64 a1, __int64 a2, char* a3);
-_QWORD* snd_data_f3c60(_QWORD* result);
+_QWORD* snd_data_f3c60_alt1(_QWORD* result) __asm__("snd_data_f3c60");
 void snd_data_f4400();
 void snd_data_f4860();
 void snd_data_f4c20();
@@ -93,6 +93,11 @@ float GameRoutine_f8bc0(__int64, __int64);
 void __attribute__((noreturn)) GameRoutine_f7d90();
 void __attribute__((noreturn)) GameRoutine_f8b90();
 void snd_data_f8400(char** result, unsigned __int64 a2, long double a3);
+__int64 GameRoutine_a2af20_alt1(__int64, __int64, __int64,
+                                ...) __asm__("GameRoutine_a2af20");
+__int64 strcpy_alt1(__int64, const char*) __asm__("strcpy");
+__int64 strstr_alt1(const char*, const char*) __asm__("strstr");
+const char** snd_data_f3c60(const char** result);
 
 __int64 snd_data_ee200(__int64* a1, char* a2)
 {
@@ -399,7 +404,7 @@ __int64 snd_data_ef080(__int64 result, char a2)
   __int64 v63;
   __int64 v64;
   _BYTE v65[16];
-  _BYTE v66[264];
+  char v66[264];
 
   if (snd_data_s_windDataList == 0) {
     v2 = (const char*)result;
@@ -430,10 +435,11 @@ __int64 snd_data_ef080(__int64 result, char a2)
         v62 = v2;
         v63 = (unsigned int)v11;
         do {
-          if (strstr(v64 + (v12 << 8), "data_sndDisposMove") != 0) {
-            GameRoutine_a2af20((__int64)v66, 256, "%s/%s", v2,
-                               (const char*)(v64 + (v12 << 8)));
-            v13 = (_BYTE*)strstr(v66, ".zst");
+          if (strstr_alt1((const char*)(v64 + (v12 << 8)),
+                          "data_sndDisposMove") != 0) {
+            GameRoutine_a2af20_alt1((__int64)v66, 256, (__int64)"%s/%s", v2,
+                                    (const char*)(v64 + (v12 << 8)));
+            v13 = (_BYTE*)strstr_alt1(v66, ".zst");
             if (v13 != nullptr) {
               *v13 = 0;
             }
@@ -748,9 +754,9 @@ __int64 snd_data_f0230(__int64 a1, __int64 a2, char* a3)
   return result;
 }
 
-_QWORD* snd_data_f3c60(_QWORD* result)
+const char** snd_data_f3c60(const char** result)
 {
-  _QWORD* v1;
+  const char** v1;
   __int64* v2;
   _QWORD* v3;
   __int64 v4;
@@ -784,8 +790,8 @@ _QWORD* snd_data_f3c60(_QWORD* result)
   __int64 v33;
   unsigned __int64 v34;
   __int64 v35;
-  __int64 v36;
-  _QWORD* v37;
+  const char* v36;
+  const char** v37;
   __int64 v38;
   __int64 v39;
   __int64 v40;
@@ -937,19 +943,19 @@ _QWORD* snd_data_f3c60(_QWORD* result)
           v14[1] = (__int64)v10;
         } while (v8 != v9);
       }
-      return (_QWORD*)(*(__int64 (**)(__int64, __int64))(*(_QWORD*)*v2 + 24LL))(
-          *v2, v4);
+      return (const char**)(*(__int64 (**)(__int64, __int64))(*(_QWORD*)*v2 +
+                                                              24LL))(*v2, v4);
     }
     else {
       v35 = GameRoutine_ed4a0((__int64)&snd_data_s_dataFile);
-      result = (_QWORD*)(*(__int64 (**)(__int64, const char*))(
+      result = (const char**)(*(__int64 (**)(__int64, const char*))(
           *(_QWORD*)v35 + 120LL))(v35, "snd::data::s_categoryData");
       v36 = *result;
-      if (*result != 0) {
+      if (*result != nullptr) {
         v37 = result;
         v38 = 0;
         do {
-          result = (_QWORD*)strcpy(&v72_.v72, v36);
+          result = (const char**)strcpy_alt1((__int64)&v72_.v72, v36);
           v46 = GameData_2178df0;
           v47 = *(_QWORD**)(GameData_2178df0 + 8);
           v48 = *(_QWORD*)(GameData_2178df0 + 16);
@@ -985,13 +991,13 @@ _QWORD* snd_data_f3c60(_QWORD* result)
               v50 = 0x3FFFFFFFFFFFFFFLL;
             }
             v52 = v50 << 6;
-            result =
-                (_QWORD*)(*(__int64 (**)(__int64, unsigned __int64, __int64))(
-                    *(_QWORD*)*v2 + 16LL))(*v2, v50 << 6, 32);
+            result = (const char**)(*(__int64 (**)(
+                __int64, unsigned __int64, __int64))(*(_QWORD*)*v2 + 16LL))(
+                *v2, v50 << 6, 32);
             v53 = v72_.v72;
             v54 = v72_.v73;
             v55 = v72_.v75;
-            v56 = (_QWORD*)((char*)result + v49);
+            v56 = (const char**)((char*)result + v49);
             v56[2] = v72_.v74;
             v56[3] = v55;
             *v56 = v53;
@@ -1007,8 +1013,8 @@ _QWORD* snd_data_f3c60(_QWORD* result)
             v61 = *(__int64**)(v46 + 8);
             v62 = (char*)result + v49 + *(_QWORD*)v46 - (_QWORD)v61;
             if (*(__int64**)v46 != v61) {
-              v63 =
-                  (_QWORD*)((char*)result + v49 + *(_QWORD*)v46 - (_QWORD)v61);
+              v63 = (const char**)((char*)result + v49 + *(_QWORD*)v46 -
+                                   (_QWORD)v61);
               do {
                 v64 = *v60;
                 v65 = v60[1];
@@ -1036,13 +1042,13 @@ _QWORD* snd_data_f3c60(_QWORD* result)
             *(_QWORD*)(v46 + 8) = v56 + 8;
             *(_QWORD*)(v46 + 16) = v71;
             if (v60 != nullptr) {
-              result = (_QWORD*)(*(__int64 (**)(__int64))(*(_QWORD*)*v2 +
-                                                          24LL))(*v2);
+              result = (const char**)(*(__int64 (**)(__int64))(*(_QWORD*)*v2 +
+                                                               24LL))(*v2);
             }
           }
           *(_QWORD*)(v46 + 8) = v42;
           v36 = v37[++v38];
-        } while (v36 != 0);
+        } while (v36 != nullptr);
       }
     }
   }
@@ -1520,7 +1526,7 @@ void snd_data_f4c20()
   v99 = COERCE_AS(__typeof__(v99),
                   PSEUDO_REGISTER(unsigned long long, "x7", "=r"));
   if (GameData_2178dc0 == 0) {
-    snd_data_f3c60(nullptr),
+    snd_data_f3c60_alt1(nullptr),
         v62 = COERCE_AS(__typeof__(v62),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
         v63 = COERCE_AS(__typeof__(v63),
@@ -3398,7 +3404,7 @@ void snd_data_f5b80()
   char v70;
 
   if (GameData_2178dd0 == 0) {
-    snd_data_f3c60(nullptr);
+    snd_data_f3c60_alt1(nullptr);
     v0 = snd_s_target_ptr;
     if (((*(__int64 (**)(_QWORD, _QWORD))(*(_QWORD*)*snd_s_target_ptr +
                                           1296LL))(*snd_s_target_ptr, 0) &

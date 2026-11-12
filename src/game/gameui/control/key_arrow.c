@@ -19,13 +19,23 @@ extern char* game_menu_kTabAnimations[21];
 long double Element_18863e0(_QWORD, _QWORD, _QWORD);
 __attribute__((swiftcall)) void KeyArrow_1796880(PSEUDO_X8 x8_, __int64 a1,
                                                  __int64 a2);
+__int64 Element_18850d0_alt1(__int64, __int64,
+                             __int64) __asm__("Element_18850d0");
+__int64 Element_18863e0_alt1(__int64, const char**,
+                             char) __asm__("Element_18863e0");
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 LayoutEx_579160_alt1(__int64, __int64) __asm__("LayoutEx_579160");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+const char* GameRoutine_156d490_alt1(__int64*) __asm__("GameRoutine_156d490");
 
 __attribute__((swiftcall)) void KeyArrow_1796880(PSEUDO_X8 x8_, __int64 a1,
                                                  __int64 a2)
 {
-  _QWORD* a3 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64* a3 = (__int64*)PSEUDO_X8_VALUE(x8_);
   _QWORD* v6;
-  _QWORD* v7;
+  __int64 v7;
   _QWORD* v8;
   __int64 v9;
   _QWORD* v10;
@@ -34,19 +44,17 @@ __attribute__((swiftcall)) void KeyArrow_1796880(PSEUDO_X8 x8_, __int64 a1,
   __int64 v13;
   _QWORD* v14;
   __int64 v15;
-  long double v16;
-  long double v17;
-  unsigned __int8 v18;
+  unsigned __int8 v16;
   __int64 result;
-  _QWORD v20[2];
+  const char* v18[2];
 
-  v6 = (_QWORD*)LayoutEx_579160(1072, 8);
-  v7 = v6 + 3;
+  v6 = (_QWORD*)LayoutEx_579160_alt1(1072, 8);
+  v7 = (__int64)(v6 + 3);
   v8 = v6;
   v6[1] = 0;
   v6[2] = 0;
   *v6 = GameData_20c9c40;
-  Element_18850d0(v6 + 3, a1, a2);
+  Element_18850d0_alt1((__int64)(v6 + 3), a1, a2);
   v9 = GameData_2131d90[0] + 376;
   v8[3] = GameData_2131d90[0] + 16;
   v8[12] = v9;
@@ -70,7 +78,7 @@ __attribute__((swiftcall)) void KeyArrow_1796880(PSEUDO_X8 x8_, __int64 a1,
   }
   if (v12 == v13) {
   LABEL_4:
-    v14 = (_QWORD*)fw_memory_HeapManager_Allocate(
+    v14 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr, 24, 16, 0);
     v14[1] = v13;
     v14[2] = v10;
@@ -83,16 +91,15 @@ __attribute__((swiftcall)) void KeyArrow_1796880(PSEUDO_X8 x8_, __int64 a1,
   v8[3] = game_gameui_control_KeyArrow_vtable;
   v8[12] = GameData_20c9c00;
   *((_BYTE*)v8 + 1065) = *(_BYTE*)(a1 + 1041);
-  v20[0] = "Wait";
-  v20[1] = 4;
-  v16 = Element_18863e0(v7, v20, 0);
-  *(__n128*)&v17 = GameRoutine_156d490(v8 + 14, v16);
-  *((_BYTE*)v8 + 1065) = v18;
-  LODWORD(v17) = 1.0;
-  result =
-      LayoutAccessor_1562680(v8 + 14, game_menu_kTabAnimations[3 * v18], v17);
+  v18[0] = "Wait";
+  v18[1] = (_BYTE*)((_UNKNOWN*)0x4LL);
+  Element_18863e0_alt1(v7, v18, 0);
+  v16 = (unsigned __int8)GameRoutine_156d490_alt1(v8 + 14);
+  *((_BYTE*)v8 + 1065) = v16;
+  result = GameHr_1562680((__int64)(v8 + 14), game_menu_kTabAnimations[3 * v16],
+                          0x1.0000000000000p+0f);
   *a3 = v7;
-  a3[1] = v8;
+  a3[1] = (__int64)v8;
   v8[3] = game_gameui_control_KeyIcon_Destroy_KeyIcon_17aa580_ptr;
   v8[12] = GameData_20c9df8;
   {

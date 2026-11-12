@@ -4,17 +4,20 @@
 
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_character_CharacterBaseModule_vtable)();
-__n128 CharacterBaseModule_Destructor(_QWORD* a1);
+__n128 CharacterBaseModule_Destructor_alt1(_QWORD* a1) __asm__(
+    "CharacterBaseModule_Destructor");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 CharacterBaseModule_Destructor(_QWORD* a1);
 
-__n128 CharacterBaseModule_Destructor(_QWORD* a1)
+__int64 CharacterBaseModule_Destructor(_QWORD* a1)
 {
-  __int64 v1;
-  __n128 result;
+  __int64 result;
 
   *a1 = &game_character_CharacterBaseModule_vtable;
-  v1 = a1[4];
-  if (v1 != 0) {
-    return std___1___shared_weak_count___release_weak(v1);
+  result = a1[4];
+  if (result != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(result);
   }
   return result;
 }

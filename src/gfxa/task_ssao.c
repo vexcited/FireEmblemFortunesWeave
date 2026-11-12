@@ -41,6 +41,10 @@ float cosf(float);
 float sinf(float);
 float tanf(float);
 __int64 TaskSSAO_b79fc0(_DWORD* a1, __int64 a2, __int64 a3, __int64 a4);
+__int64 GameHr_ad5280(_QWORD*);
+__int64 game_615760(__int64, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 gfxa_TaskSSAO_Impl_Impl(_QWORD* a1, __int64 a2)
 {
@@ -51,27 +55,27 @@ __int64 gfxa_TaskSSAO_Impl_Impl(_QWORD* a1, __int64 a2)
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  __int64* v10;
+  _QWORD* v10;
   __int64 (**v11)();
   __int64 v12;
   __int64 v13;
   __int64 v14;
-  __int64* v15;
+  _QWORD* v15;
   __int64 (**v16)();
   __int64 v17;
   __int64 v18;
   __int64 v19;
-  __int64* v20;
+  _QWORD* v20;
   __int64 (**v21)();
   __int64 v22;
   __int64 v23;
   __int64 v24;
-  __int64* v25;
+  _QWORD* v25;
   __int64 (**v26)();
   __int64 v27;
   __int64 v28;
   __int64 v29;
-  __int64* v30;
+  _QWORD* v30;
   __int64* v31;
   __int64 v32;
   __int64 result;
@@ -132,16 +136,16 @@ __int64 gfxa_TaskSSAO_Impl_Impl(_QWORD* a1, __int64 a2)
   if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-    std___1___shared_weak_count___release_weak(v8);
+    std___1___shared_weak_count___release_weak_alt1(v8);
   }
   v9 = v35_.v36;
   if (v35_.v36 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v35_.v36 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-    std___1___shared_weak_count___release_weak(v9);
+    std___1___shared_weak_count___release_weak_alt1(v9);
   }
   v10 = GameRoutine_ad5000((_QWORD*)a1[1], (__int64)"pass", 4u, 0);
-  GameRoutine_ad5280(v10);
+  GameHr_ad5280(v10);
   gfx_shader_Archive_CreateShader((void*)(&v35_.v35),
                                   *(__int64**)(*a1 + 13408LL),
                                   (__int64)"Lighting", 8u, (__int64)"HBAO", 4u);
@@ -155,16 +159,16 @@ __int64 gfxa_TaskSSAO_Impl_Impl(_QWORD* a1, __int64 a2)
   if (v13 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
-    std___1___shared_weak_count___release_weak(v13);
+    std___1___shared_weak_count___release_weak_alt1(v13);
   }
   v14 = v35_.v36;
   if (v35_.v36 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v35_.v36 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
-    std___1___shared_weak_count___release_weak(v14);
+    std___1___shared_weak_count___release_weak_alt1(v14);
   }
   v15 = GameRoutine_ad5000((_QWORD*)a1[3], (__int64)"pass", 4u, 1);
-  GameRoutine_ad5280(v15);
+  GameHr_ad5280(v15);
   gfx_shader_Archive_CreateShader((void*)(&v35_.v35),
                                   *(__int64**)(*a1 + 13408LL),
                                   (__int64)"Lighting", 8u, (__int64)"HBAO", 4u);
@@ -178,16 +182,16 @@ __int64 gfxa_TaskSSAO_Impl_Impl(_QWORD* a1, __int64 a2)
   if (v18 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v18 + 16LL))(v18);
-    std___1___shared_weak_count___release_weak(v18);
+    std___1___shared_weak_count___release_weak_alt1(v18);
   }
   v19 = v35_.v36;
   if (v35_.v36 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v35_.v36 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v19 + 16LL))(v19);
-    std___1___shared_weak_count___release_weak(v19);
+    std___1___shared_weak_count___release_weak_alt1(v19);
   }
   v20 = GameRoutine_ad5000((_QWORD*)a1[5], (__int64)"pass", 4u, 2);
-  GameRoutine_ad5280(v20);
+  GameHr_ad5280(v20);
   gfx_shader_Archive_CreateShader(
       (void*)(&v35_.v35), *(__int64**)(*a1 + 13408LL), (__int64)"Lighting", 8u,
       (__int64)"HBAO_Deinterleave", 0x11u);
@@ -201,17 +205,17 @@ __int64 gfxa_TaskSSAO_Impl_Impl(_QWORD* a1, __int64 a2)
   if (v23 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v23 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23);
-    std___1___shared_weak_count___release_weak(v23);
+    std___1___shared_weak_count___release_weak_alt1(v23);
   }
   v24 = v35_.v36;
   if (v35_.v36 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v35_.v36 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v24 + 16LL))(v24);
-    std___1___shared_weak_count___release_weak(v24);
+    std___1___shared_weak_count___release_weak_alt1(v24);
   }
   v25 = GameRoutine_ad5000((_QWORD*)a1[7], (__int64)"deinterleave_pass", 0x11u,
                            0);
-  GameRoutine_ad5280(v25);
+  GameHr_ad5280(v25);
   gfx_shader_Archive_CreateShader(
       (void*)(&v35_.v35), *(__int64**)(*a1 + 13408LL), (__int64)"Lighting", 8u,
       (__int64)"HBAO_Deinterleave", 0x11u);
@@ -225,17 +229,17 @@ __int64 gfxa_TaskSSAO_Impl_Impl(_QWORD* a1, __int64 a2)
   if (v28 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v28 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v28 + 16LL))(v28);
-    std___1___shared_weak_count___release_weak(v28);
+    std___1___shared_weak_count___release_weak_alt1(v28);
   }
   v29 = v35_.v36;
   if (v35_.v36 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v35_.v36 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v29 + 16LL))(v29);
-    std___1___shared_weak_count___release_weak(v29);
+    std___1___shared_weak_count___release_weak_alt1(v29);
   }
   v30 = GameRoutine_ad5000((_QWORD*)a1[9], (__int64)"deinterleave_pass", 0x11u,
                            1);
-  GameRoutine_ad5280(v30);
+  GameHr_ad5280(v30);
   DecalObject_a91100(v3, *(_QWORD*)(*a1 + 312LL),
                      *(_QWORD*)(*(_QWORD*)(*a1 + 552LL) + 16LL), 740);
   DecalObject_a91100(v4, *(_QWORD*)(*a1 + 312LL),
@@ -255,7 +259,7 @@ __int64 gfxa_TaskSSAO_Impl_Impl(_QWORD* a1, __int64 a2)
   GameRoutine_604060((__int64)(a1 + 25),
                      (__int64*)(*game_g_frame_clock_ptr[0] + 568),
                      (__int64)v38_.v38);
-  a1[40] = GameRoutine_615760(*(_QWORD*)(*v31 + 552), (__int64)(a1 + 25));
+  a1[40] = game_615760(*(_QWORD*)(*v31 + 552), (__int64)(a1 + 25));
   if (v35_.v37 == &v35_.v35) {
     v32 = 4;
   }
@@ -280,7 +284,7 @@ LABEL_38:
   }
   GameRoutine_604060((__int64)(a1 + 41), (__int64*)(*v31 + 568),
                      (__int64)v38_.v38);
-  a1[56] = GameRoutine_615760(*(_QWORD*)(*v31 + 552), (__int64)(a1 + 41));
+  a1[56] = game_615760(*(_QWORD*)(*v31 + 552), (__int64)(a1 + 41));
   result = (__int64)v35_.v37;
   if (v35_.v37 == &v35_.v35) {
     v34 = 4;

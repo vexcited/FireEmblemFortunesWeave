@@ -25,10 +25,12 @@ __int64 VectorGraphicsShapeLayer_Unknown8(__int64 a1, __int64 a2);
 __int64 VectorGraphicsShapeLayer_5a9d80(__int64 result, _DWORD* a2, int* a3,
                                         _DWORD* a4, int* a5);
 void VectorGraphicsShapeLayer_5ab480(__int64 a1, __int64 a2, float a3);
-__int64 VectorGraphicsShapeLayer_5ac140(__int64 a1, _QWORD* a2, __int64 a3,
-                                        __int64 a4, __int64 a5, __int64 a6);
-__int64 VectorGraphicsShapeLayer_5ac310(__int64 a1, _QWORD* a2, __int64 a3,
-                                        __int64 a4, __int64 a5, __int64 a6);
+__int64 VectorGraphicsShapeLayer_5ac140_alt1(
+    __int64 a1, _QWORD* a2, __int64 a3, __int64 a4, __int64 a5,
+    __int64 a6) __asm__("VectorGraphicsShapeLayer_5ac140");
+__int64 VectorGraphicsShapeLayer_5ac310_alt1(
+    __int64 a1, _QWORD* a2, __int64 a3, __int64 a4, __int64 a5,
+    __int64 a6) __asm__("VectorGraphicsShapeLayer_5ac310");
 __int64* VectorGraphicsShapeLayer_5ac6c0(__int64 a1, _QWORD* a2, __int64 a3,
                                          __int64 a4);
 __int64 VectorGraphicsShapeLayer_Unknown11(__int64 a1, _QWORD* a2, __int64 a3,
@@ -65,8 +67,9 @@ void VectorGraphicsShapeLayer_5aaae0(__int64 a1, __int64* a2, _QWORD** a3,
                                      int a7, char a8, float a9);
 void VectorGraphicsShapeLayer_5ab720(__int64 a1, __int64 a2, float32x2_t* a3,
                                      float a4);
-void VectorGraphicsShapeLayer_Unknown6(__int64 a1, __int64 a2, float32x4_t* a3,
-                                       float a4);
+void VectorGraphicsShapeLayer_Unknown6_alt1(
+    __int64 a1, __int64 a2, float32x4_t* a3,
+    float a4) __asm__("VectorGraphicsShapeLayer_Unknown6");
 __int64 acosf_alt1(double) __asm__("acosf");
 extern _UNKNOWN* GameData_2135448;
 float nn_ui2d_5a3700_alt1(unsigned __int16*,
@@ -77,6 +80,30 @@ void VectorGraphicsShapeLayer_5aa110(__int64 a1, _QWORD** a2, _DWORD** a3,
 __int64 VectorGraphicsShapeLayer_5aa5a0(__int64 a1, __int64 a2, _DWORD** a3,
                                         __int64 a4, __int64* a5,
                                         float32x2_t* a6, char a7);
+__int64 GameRoutine_577d40_alt1(__int64,
+                                unsigned int) __asm__("GameRoutine_577d40");
+__int64 GameRoutine_5fcd30_alt1(__int64, unsigned int, unsigned int, _QWORD*,
+                                unsigned int,
+                                unsigned int) __asm__("GameRoutine_5fcd30");
+__int64 GameRoutine_5fd220_alt1(__int64,
+                                __int64*) __asm__("GameRoutine_5fd220");
+__int64 GameRoutine_5fd2e0_alt1(__int64, __int64) __asm__("GameRoutine_5fd2e0");
+__int64 GameRoutine_5fe120_alt1(__int64, unsigned int, unsigned int, _QWORD*,
+                                __int64) __asm__("GameRoutine_5fe120");
+__int64 RectDrawer_5fcbc0(__int64, __int64*);
+__int64 RectDrawer_5fd5f0(__int64, unsigned int, _QWORD*, __int64, __int64);
+__int64 VectorGraphicsLayer_Unknown6_alt1(
+    __int64 result, __int64, __int64,
+    float) __asm__("VectorGraphicsLayer_Unknown6");
+void VectorGraphicsShapeLayer_5ab720_alt1(
+    __int64, __int64, __int64,
+    float) __asm__("VectorGraphicsShapeLayer_5ab720");
+void VectorGraphicsShapeLayer_Unknown6(__int64 a1, __int64 a2, __int64 a3,
+                                       float a4);
+__int64 VectorGraphicsShapeLayer_5ac140(__int64 a1, __int64* a2, __int64 a3,
+                                        __int64 a4, __int64 a5, __int64 a6);
+__int64 VectorGraphicsShapeLayer_5ac310(__int64 a1, __int64* a2, __int64 a3,
+                                        __int64 a4, __int64 a5, __int64 a6);
 
 __int64 VectorGraphicsShapeLayer_Unknown2(__int64 result, __int64 a2,
                                           __int64 a3, __int64 a4, __int64 a5,
@@ -1630,6 +1657,7 @@ void VectorGraphicsShapeLayer_5ab480(__int64 a1, __int64 a2, float a3)
   float v33;
   float v34;
 
+  v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(float, "s0", "=w"));
   if (*(_DWORD*)(a1 + 192) != 0) {
     v6 = 0;
     while (1) {
@@ -1642,7 +1670,9 @@ void VectorGraphicsShapeLayer_5ab480(__int64 a1, __int64 a2, float a3)
           v11 = *(_QWORD*)(*(_QWORD*)(v8 + 24) + 8 * v10);
           if (v11 != 0) {
             (*(void (**)(__int64, __int64, float))(*(_QWORD*)v11 + 40LL))(
-                v11, a2, a3);
+                v11, a2, a3),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
             v9 = *v7;
           }
           ++v10;
@@ -1673,11 +1703,13 @@ void VectorGraphicsShapeLayer_5ab480(__int64 a1, __int64 a2, float a3)
     if (v17 <= 1) {
       v18 = *(float*)(v16 + 24);
     LABEL_38:
-      v33 = v18 * 0.5f;
+      v33 = v18 * 0x1.0000000000000p-1f;
       *(float*)v15 = v33;
-      v34 = acosf((float)(-2.0f / v33) + 1.0f);
-      if (v34 > 0.0f) {
-        v14 = (int)(float)(3.1416f / v34) + 1;
+      v34 =
+          acosf((float)(-0x1.0000000000000p+1f / v33) + 0x1.0000000000000p+0f),
+      v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(float, "s0", "=w"));
+      if (v34 > 0x0.0p+0f) {
+        v14 = (int)(float)(0x1.921fb60000000p+1f / v34) + 1;
       }
       else {
         v14 = 1;
@@ -1687,7 +1719,7 @@ void VectorGraphicsShapeLayer_5ab480(__int64 a1, __int64 a2, float a3)
       goto LABEL_13;
     }
     v19 = *(float**)(v16 + 24);
-    v20 = 0.0f;
+    v20 = 0x0.0p+0f;
     v21 = *v19;
     if (a3 > *v19) {
       v22 = &v19[8 * v17];
@@ -1699,28 +1731,36 @@ void VectorGraphicsShapeLayer_5ab480(__int64 a1, __int64 a2, float a3)
           v26 = v19[8];
           if (a3 >= v21 && a3 < v26) {
             v31 = (float)(a3 - v21) / (float)(v26 - v21);
-            if (v31 < 0.0f) {
-              v31 = 0.0f;
+            if (v31 < 0x0.0p+0f) {
+              v31 = 0x0.0p+0f;
             }
-            if (v31 > 1.0f) {
-              v31 = 1.0f;
+            if (v31 > 0x1.0000000000000p+0f) {
+              v31 = 0x1.0000000000000p+0f;
             }
-            GameRoutine_5a3500((__int64)v19, v31);
-            v20 = (float)(v32 * (float)(v32 * v32)) +
-                  (float)((float)(v19[2] *
-                                  (float)((float)(1.0f - v32) *
-                                          (float)(v32 * (float)(v32 * 3.0f)))) +
-                          (float)(v19[4] *
-                                  (float)((float)(1.0f - v32) *
-                                          (float)((float)(v32 * 3.0f) *
-                                                  (float)(1.0f - v32)))));
+            nn_ui2d_5a3500((__int64)v19, v31),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+            v20 =
+                (float)(PSEUDO_UNFUSED(v32 * (float)(v32 * v32))) +
+                (float)((float)(PSEUDO_UNFUSED(
+                            v19[2] *
+                            (float)((float)(0x1.0000000000000p+0f - v32) *
+                                    (float)(v32 *
+                                            (float)(v32 *
+                                                    0x1.8000000000000p+1f))))) +
+                        (float)(v19[4] *
+                                (float)((float)(0x1.0000000000000p+0f - v32) *
+                                        (float)((float)(v32 *
+                                                        0x1.8000000000000p+1f) *
+                                                (float)(0x1.0000000000000p+0f -
+                                                        v32)))));
             goto LABEL_37;
           }
           v21 = v19[8];
           v19 += 8;
           --v24;
         } while (v24 != 0);
-        v20 = 0.0f;
+        v20 = 0x0.0p+0f;
         v19 = v25;
         if (v25 != nullptr) {
           goto LABEL_37;
@@ -1729,7 +1769,7 @@ void VectorGraphicsShapeLayer_5ab480(__int64 a1, __int64 a2, float a3)
       }
       v28 = *((_BYTE*)v22 - 4);
       v29 = v22 - 16;
-      v20 = 1.0f;
+      v20 = 0x1.0000000000000p+0f;
       if ((v28 & 1) != 0) {
         v30 = v23;
       }
@@ -1739,7 +1779,7 @@ void VectorGraphicsShapeLayer_5ab480(__int64 a1, __int64 a2, float a3)
       v19 = v30;
       if (v30 == nullptr) {
       LABEL_31:
-        v18 = 0.0f;
+        v18 = 0x0.0p+0f;
         goto LABEL_38;
       }
     }
@@ -2390,7 +2430,7 @@ void VectorGraphicsShapeLayer_5ab720(__int64 a1, __int64 a2, float32x2_t* a3,
   }
 }
 
-void VectorGraphicsShapeLayer_Unknown6(__int64 a1, __int64 a2, float32x4_t* a3,
+void VectorGraphicsShapeLayer_Unknown6(__int64 a1, __int64 a2, __int64 a3,
                                        float a4)
 {
   __int64 v8;
@@ -2419,7 +2459,7 @@ void VectorGraphicsShapeLayer_Unknown6(__int64 a1, __int64 a2, float32x4_t* a3,
 
   v13 = COERCE_AS(__typeof__(v13),
                   PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-  VectorGraphicsLayer_Unknown6(a1, a2, a3, a4),
+  VectorGraphicsLayer_Unknown6_alt1(a1, a2, a3, a4),
       v13 = COERCE_AS(__typeof__(v13),
                       PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   if (*(_BYTE*)(a1 + 28) == 1) {
@@ -2505,13 +2545,13 @@ void VectorGraphicsShapeLayer_Unknown6(__int64 a1, __int64 a2, float32x4_t* a3,
     VectorGraphicsShapeLayer_5ab480(a1, a2, a4),
         v13 = COERCE_AS(__typeof__(v13),
                         PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-    VectorGraphicsShapeLayer_5ab720(a1, a2, (float32x2_t*)a3, a4),
+    VectorGraphicsShapeLayer_5ab720_alt1(a1, a2, a3, a4),
         v13 = COERCE_AS(__typeof__(v13),
                         PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   }
 }
 
-__int64 VectorGraphicsShapeLayer_5ac140(__int64 a1, _QWORD* a2, __int64 a3,
+__int64 VectorGraphicsShapeLayer_5ac140(__int64 a1, __int64* a2, __int64 a3,
                                         __int64 a4, __int64 a5, __int64 a6)
 {
   int v6;
@@ -2520,74 +2560,76 @@ __int64 VectorGraphicsShapeLayer_5ac140(__int64 a1, _QWORD* a2, __int64 a3,
   __int64 v15;
   __int64 v16;
   __int64 v17;
-  __int64 v18;
+  unsigned int v18;
   __int64* v19;
   __int64 v20;
   __int64 v21;
-  __int64 v22;
+  unsigned int v22;
   __int64* v23;
   __int64 v24;
   __int64 v25;
-  __int64 v26;
+  __int64* v26;
   int v27;
   unsigned int v28;
   __int64 v29;
   __int64 v30;
   __int64 result;
   __int64 v32;
-  __int64 v33;
-  __int64 v34;
+  struct {
+    __int64 v33;
+    __int64 v34;
+  } v33_;
 
   v6 = *(_DWORD*)(a3 + 208);
-  v33 = 0;
-  v34 = 0;
+  v33_.v33 = 0;
+  v33_.v34 = 0;
   v7 = *(_QWORD*)(a1 + 216);
   v14 = v6 & ~(v6 >> 31);
   v15 = *(int*)(a1 + 204);
-  GameRoutine_5fcbc0(*(_QWORD*)(a2[25] + 8LL) + 72LL * *(int*)(a2[25] + 48LL),
-                     &v33);
-  v33 += v7;
-  GameRoutine_5fd5f0(a4, 0, &v33, 8, 8 * v15);
+  RectDrawer_5fcbc0(*(_QWORD*)(a2[25] + 8) + 72LL * *(int*)(a2[25] + 48),
+                    &v33_.v33);
+  v33_.v33 += v7;
+  RectDrawer_5fd5f0(a4, 0, &v33_.v33, 8, 8 * v15);
   v16 = *(_QWORD*)(a6 + 16);
   v17 = 24LL * v14;
-  v18 = *(unsigned int*)(a3 + v17 + 92);
+  v18 = *(_DWORD*)(a3 + v17 + 92);
   if ((v18 & 0x80000000) == 0) {
-    v19 = (__int64*)(*(_QWORD*)(a2[25] + 16LL) + 16LL * *(int*)(a2[25] + 48LL));
+    v19 = (__int64*)(*(_QWORD*)(a2[25] + 16) + 16LL * *(int*)(a2[25] + 48));
     v21 = *v19;
     v20 = v19[1];
-    v33 = v21 + a5;
-    v34 = v20;
-    GameRoutine_5fe120(a4, v18, 0, &v33, 64);
+    v33_.v33 = v21 + a5;
+    v33_.v34 = v20;
+    GameRoutine_5fe120_alt1(a4, v18, 0, &v33_.v33, 64);
   }
-  v22 = *(unsigned int*)(a3 + v17 + 96);
+  v22 = *(_DWORD*)(a3 + v17 + 96);
   if ((v22 & 0x80000000) == 0) {
-    v23 = (__int64*)(*(_QWORD*)(a2[25] + 16LL) + 16LL * *(int*)(a2[25] + 48LL));
+    v23 = (__int64*)(*(_QWORD*)(a2[25] + 16) + 16LL * *(int*)(a2[25] + 48));
     v25 = *v23;
     v24 = v23[1];
-    v33 = v25 + v16;
-    v34 = v24;
-    GameRoutine_5fe120(a4, v22, 4, &v33, 16);
+    v33_.v33 = v25 + v16;
+    v33_.v34 = v24;
+    GameRoutine_5fe120_alt1(a4, v22, 4u, &v33_.v33, 16);
   }
-  GameRoutine_5fd2e0(a4, a2[23] + 1012LL);
-  v26 = GameRoutine_577d40(a2[23], 0);
-  GameRoutine_5fd220(a4, v26);
+  GameRoutine_5fd2e0_alt1(a4, a2[23] + 1012);
+  v26 = (__int64*)GameRoutine_577d40_alt1(a2[23], 0);
+  GameRoutine_5fd220_alt1(a4, v26);
   v27 = *(_DWORD*)(a6 + 4);
   v28 = *(_DWORD*)(a6 + 8);
   v29 = *(_QWORD*)(a1 + 224) + 4LL * v27;
   v30 = a2[25];
-  v33 = 0;
-  v34 = 0;
-  GameRoutine_5fcbc0(*(_QWORD*)(v30 + 8) + 72LL * *(int*)(v30 + 48), &v33);
-  v33 += v29;
-  result = GameRoutine_5fcd30(a4, 3, 2, &v33, v28, 0);
+  v33_.v33 = 0;
+  v33_.v34 = 0;
+  RectDrawer_5fcbc0(*(_QWORD*)(v30 + 8) + 72LL * *(int*)(v30 + 48), &v33_.v33);
+  v33_.v33 += v29;
+  result = GameRoutine_5fcd30_alt1(a4, 3u, 2u, &v33_.v33, v28, 0);
   v32 = a2[43];
   if (v32 != 0) {
-    return GameRoutine_5fd2e0(a4, v32);
+    return GameRoutine_5fd2e0_alt1(a4, v32);
   }
   return result;
 }
 
-__int64 VectorGraphicsShapeLayer_5ac310(__int64 a1, _QWORD* a2, __int64 a3,
+__int64 VectorGraphicsShapeLayer_5ac310(__int64 a1, __int64* a2, __int64 a3,
                                         __int64 a4, __int64 a5, __int64 a6)
 {
   int v6;
@@ -2596,69 +2638,71 @@ __int64 VectorGraphicsShapeLayer_5ac310(__int64 a1, _QWORD* a2, __int64 a3,
   __int64 v15;
   __int64 v16;
   __int64 v17;
-  __int64 v18;
+  unsigned int v18;
   __int64* v19;
   __int64 v20;
   __int64 v21;
-  __int64 v22;
+  unsigned int v22;
   __int64* v23;
   __int64 v24;
   __int64 v25;
-  __int64 v26;
+  __int64* v26;
   int v27;
   unsigned int v28;
   __int64 v29;
   __int64 v30;
   __int64 result;
   __int64 v32;
-  __int64 v33;
-  __int64 v34;
+  struct {
+    __int64 v33;
+    __int64 v34;
+  } v33_;
 
   v6 = *(_DWORD*)(a3 + 208);
-  v33 = 0;
-  v34 = 0;
+  v33_.v33 = 0;
+  v33_.v34 = 0;
   v7 = *(_QWORD*)(a1 + 216);
   v14 = v6 & ~(v6 >> 31);
   v15 = *(int*)(a1 + 204);
-  GameRoutine_5fcbc0(*(_QWORD*)(a2[25] + 8LL) + 72LL * *(int*)(a2[25] + 48LL),
-                     &v33);
-  v33 += v7;
-  GameRoutine_5fd5f0(a4, 0, &v33, 8, 8 * v15);
+  RectDrawer_5fcbc0(*(_QWORD*)(a2[25] + 8) + 72LL * *(int*)(a2[25] + 48),
+                    &v33_.v33);
+  v33_.v33 += v7;
+  RectDrawer_5fd5f0(a4, 0, &v33_.v33, 8, 8 * v15);
   v16 = *(_QWORD*)(a6 + 16);
   v17 = 24LL * v14;
-  v18 = *(unsigned int*)(a3 + v17 + 92);
+  v18 = *(_DWORD*)(a3 + v17 + 92);
   if ((v18 & 0x80000000) == 0) {
-    v19 = (__int64*)(*(_QWORD*)(a2[25] + 16LL) + 16LL * *(int*)(a2[25] + 48LL));
+    v19 = (__int64*)(*(_QWORD*)(a2[25] + 16) + 16LL * *(int*)(a2[25] + 48));
     v21 = *v19;
     v20 = v19[1];
-    v33 = v21 + a5;
-    v34 = v20;
-    GameRoutine_5fe120(a4, v18, 0, &v33, 64);
+    v33_.v33 = v21 + a5;
+    v33_.v34 = v20;
+    GameRoutine_5fe120_alt1(a4, v18, 0, &v33_.v33, 64);
   }
-  v22 = *(unsigned int*)(a3 + v17 + 96);
+  v22 = *(_DWORD*)(a3 + v17 + 96);
   if ((v22 & 0x80000000) == 0) {
-    v23 = (__int64*)(*(_QWORD*)(a2[25] + 16LL) + 16LL * *(int*)(a2[25] + 48LL));
+    v23 = (__int64*)(*(_QWORD*)(a2[25] + 16) + 16LL * *(int*)(a2[25] + 48));
     v25 = *v23;
     v24 = v23[1];
-    v33 = v25 + v16;
-    v34 = v24;
-    GameRoutine_5fe120(a4, v22, 4, &v33, 16);
+    v33_.v33 = v25 + v16;
+    v33_.v34 = v24;
+    GameRoutine_5fe120_alt1(a4, v22, 4u, &v33_.v33, 16);
   }
-  GameRoutine_5fd2e0(a4, a2[23] + 984LL);
-  v26 = GameRoutine_577d40(a2[23], 1);
-  GameRoutine_5fd220(a4, v26);
+  GameRoutine_5fd2e0_alt1(a4, a2[23] + 984);
+  v26 = (__int64*)GameRoutine_577d40_alt1(a2[23], 1u);
+  GameRoutine_5fd220_alt1(a4, v26);
   v27 = *(_DWORD*)(a6 + 4);
   v28 = *(_DWORD*)(a6 + 8);
   v29 = *(_QWORD*)(a1 + 224) + 4LL * v27;
   v30 = a2[25];
-  v33 = 0;
-  v34 = 0;
-  GameRoutine_5fcbc0(*(_QWORD*)(v30 + 8) + 72LL * *(int*)(v30 + 48), &v33);
-  v33 += v29;
-  result = GameRoutine_5fcd30(a4, 3, 2, &v33, v28, 0);
+  v33_.v33 = 0;
+  v33_.v34 = 0;
+  RectDrawer_5fcbc0(*(_QWORD*)(v30 + 8) + 72LL * *(int*)(v30 + 48), &v33_.v33);
+  v33_.v33 += v29;
+  result = GameRoutine_5fcd30_alt1(a4, 3u, 2u, &v33_.v33, v28, 0);
   v32 = a2[43];
   if (v32 != 0) {
-    return GameRoutine_5fd2e0(a4, v32);
+    return GameRoutine_5fd2e0_alt1(a4, v32);
   }
   return result;
 }
@@ -2764,8 +2808,8 @@ __int64* VectorGraphicsShapeLayer_5ac6c0(__int64 a1, _QWORD* a2, __int64 a3,
                   v35 = *v33;
                   v34 = (__int64)(v33 - 2);
                   if (v35 == *(_QWORD*)(v27 + 16)) {
-                    VectorGraphicsShapeLayer_5ac310(a1, a2, a3, a4,
-                                                    *(_QWORD*)v30, v34);
+                    VectorGraphicsShapeLayer_5ac310_alt1(a1, a2, a3, a4,
+                                                         *(_QWORD*)v30, v34);
                     v29 = *(_QWORD*)(a1 + 168);
                   }
                 }
@@ -2774,7 +2818,7 @@ __int64* VectorGraphicsShapeLayer_5ac6c0(__int64 a1, _QWORD* a2, __int64 a3,
                 v31 += 24;
               } while (v32 < *(unsigned int*)(v30 + 36));
             }
-            result = (__int64*)VectorGraphicsShapeLayer_5ac140(
+            result = (__int64*)VectorGraphicsShapeLayer_5ac140_alt1(
                 a1, a2, a3, a4, *(_QWORD*)v30, v27);
           }
           goto LABEL_16;

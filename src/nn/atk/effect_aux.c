@@ -75,24 +75,26 @@ __int64 EffectAux_2af520(__int64 a1, __int64 a2)
   char* v12;
   unsigned int* v13;
   unsigned int v14;
-  int v16;
-  __int16 v17;
+  struct {
+    int v16;
+    __int16 v17;
+  } v16_;
 
   v2 = *(_DWORD*)(a1 + 44);
-  v17 = 0;
-  v16 = 0;
+  v16_.v17 = 0;
+  v16_.v16 = 0;
   if (v2 >= 1) {
     v3 = v2 & 7;
     if ((unsigned int)v2 < 8) {
       v4 = 0;
       if ((v2 & 7) == 0) {
-        return nn_audio_SetAuxInputOutput(a1 + 24, &v16, &v16);
+        return nn_audio_SetAuxInputOutput(a1 + 24, &v16_.v16, &v16_.v16);
       }
       goto LABEL_8;
     }
     v5 = (unsigned int*)(a1 + 108);
     v6 = 0;
-    v7 = (char*)&v16 + 3;
+    v7 = (char*)&v16_.v16 + 3;
     do {
       v6 -= 8;
       v8 = *(_BYTE*)(a2 + *(v5 - 6));
@@ -113,7 +115,7 @@ __int64 EffectAux_2af520(__int64 a1, __int64 a2)
     v4 = -v6;
     if ((v2 & 7) != 0) {
     LABEL_8:
-      v12 = (char*)&v16 + v4;
+      v12 = (char*)&v16_.v16 + v4;
       v13 = (unsigned int*)(a1 + 4 * v4 + 80);
       do {
         v14 = *v13++;
@@ -122,7 +124,7 @@ __int64 EffectAux_2af520(__int64 a1, __int64 a2)
       } while (v3 != 0);
     }
   }
-  return nn_audio_SetAuxInputOutput(a1 + 24, &v16, &v16);
+  return nn_audio_SetAuxInputOutput(a1 + 24, &v16_.v16, &v16_.v16);
 }
 
 __int64 EffectAux_2af630(__int64 result, __int64 a2, __int64 (***a3)(_QWORD))

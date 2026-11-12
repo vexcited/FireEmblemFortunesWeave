@@ -45,9 +45,22 @@ extern __int64* GameData_2130f98[4];
 extern __int64 GameData_212c608[2];
 extern __int64 GameData_2131678;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64
-game_telop_TelopScoutSuccessResult_CreateBind_lambda0_Invoke(__int64 a1,
-                                                             __int64* a2);
+__int64 game_telop_TelopScoutSuccessResult_CreateBind_lambda0_Invoke_alt1(
+    __int64 a1, __int64* a2) __asm__("game_telop_TelopScoutSuccessResult_"
+                                     "CreateBind_lambda0_Invoke");
+__int64 ProcInst_657850_alt1(__int64, __int64, __int64, char,
+                             __int64) __asm__("ProcInst_657850");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_ProcInst_Register_alt1(__int64) __asm__("game_ProcInst_Register");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+void GameRoutine_1374b10_alt1(__int64, int) __asm__("GameRoutine_1374b10");
+void GameRoutine_1378190_alt1(__int64,
+                              const char*) __asm__("GameRoutine_1378190");
+void Se_80e330_alt1(__int64, const char*) __asm__("Se_80e330");
+void game_telop_TelopScoutSuccessResult_CreateBind_lambda0_Invoke(__int64 a1,
+                                                                  __int64* a2);
 
 __int64 TelopScoutSuccessResult_Unknown57(__int64 a1)
 {
@@ -186,33 +199,28 @@ __int64 TelopScoutSuccessResult_Unknown57(__int64 a1)
   return result;
 }
 
-__int64
-
-game_telop_TelopScoutSuccessResult_CreateBind_lambda0_Invoke(__int64 a1,
-                                                             __int64* a2)
+void game_telop_TelopScoutSuccessResult_CreateBind_lambda0_Invoke(__int64 a1,
+                                                                  __int64* a2)
 {
   __int64 v2;
   __int64* v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
+  __int64* v8;
   __int64 v9;
   __int64 v10;
   __int64* v11;
-  __int64 v12;
-  __int64 v13;
-  __int64* v14;
-  char* v15;
-  char* v16;
-  int v17;
+  char* v12;
+  char* v13;
+  int v14;
 
   v2 = *a2;
   v4 = (__int64*)fw_memory_g_heap_manager_ptr;
-  v5 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      1184, 16, 0);
-  memset(v5 + 144, 0, 1040, v6, v7, v8);
-  v9 = GameData_212c608[0];
+  v5 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 1184, 16, 0);
+  memset_alt1(v5 + 144, 0, 0x410u);
+  v6 = GameData_212c608[0];
   *(_QWORD*)(v5 + 96) = 0;
   *(_QWORD*)(v5 + 104) = 0;
   *(_QWORD*)(v5 + 112) = 0;
@@ -231,9 +239,9 @@ game_telop_TelopScoutSuccessResult_CreateBind_lambda0_Invoke(__int64 a1,
   *(_QWORD*)(v5 + 72) = 0;
   *(_QWORD*)(v5 + 80) = 0;
   *(_QWORD*)(v5 + 88) = 0;
-  *(_QWORD*)v5 = v9 + 16;
+  *(_QWORD*)v5 = v6 + 16;
   *(_QWORD*)(v5 + 8) = 0;
-  game_ProcInst_Register(v5);
+  game_ProcInst_Register_alt1(v5);
   *(_QWORD*)(v5 + 200) = 0;
   *(_QWORD*)(v5 + 152) = 0;
   *(_QWORD*)(v5 + 160) = 0;
@@ -310,49 +318,49 @@ game_telop_TelopScoutSuccessResult_CreateBind_lambda0_Invoke(__int64 a1,
   *(_QWORD*)(v5 + 792) = 0;
   *(_BYTE*)(v5 + 800) = 0;
   *(_QWORD*)(v5 + 640) = v5 + 648;
-  v10 = *v4;
-  v11 = GameData_2130240[0] + 2;
+  v7 = *v4;
+  v8 = GameData_2130240[0] + 2;
   *(_BYTE*)(v5 + 816) = 0;
   *(_BYTE*)(v5 + 820) = 0;
   *(_WORD*)(v5 + 824) = 0;
-  *(_QWORD*)(v5 + 808) = v11;
+  *(_QWORD*)(v5 + 808) = v8;
   *(_QWORD*)v5 = game_telop_TelopResult_vtable;
-  v12 = fw_memory_HeapManager_Allocate(v10, 296, 16, 0);
-  *(_DWORD*)(v12 + 48) = 0x2000;
-  v13 = GameData_2131678;
-  *(_WORD*)(v12 + 108) = 256;
-  *(_QWORD*)(v12 + 8) = 0;
-  *(_QWORD*)(v12 + 16) = 0;
-  *(_DWORD*)(v12 + 32) = 0;
-  *(_QWORD*)(v12 + 40) = 0;
-  *(_DWORD*)(v12 + 104) = 0;
-  *(_QWORD*)(v12 + 56) = 0;
-  *(_QWORD*)(v12 + 64) = 0;
-  *(_QWORD*)(v12 + 72) = 0;
-  *(_WORD*)(v12 + 80) = 0;
-  *(_DWORD*)(v12 + 112) = -1082130432;
-  *(_WORD*)(v12 + 116) = 0;
-  *(_WORD*)(v12 + 136) = 0;
-  *(_BYTE*)(v12 + 160) = 0;
-  *(_BYTE*)(v12 + 288) = 0;
-  *(_QWORD*)(v12 + 272) = 0;
-  *(_QWORD*)(v12 + 280) = 0;
-  *(_QWORD*)(v12 + 256) = 0;
-  *(_QWORD*)(v12 + 264) = 0;
-  *(_QWORD*)(v12 + 240) = 0;
-  *(_QWORD*)(v12 + 248) = 0;
-  *(_QWORD*)(v12 + 224) = 0;
-  *(_QWORD*)(v12 + 232) = 0;
-  *(_QWORD*)(v12 + 208) = 0;
-  *(_QWORD*)(v12 + 216) = 0;
-  *(_QWORD*)(v12 + 192) = 0;
-  *(_QWORD*)(v12 + 200) = 0;
-  *(_QWORD*)(v12 + 176) = 0;
-  *(_QWORD*)(v12 + 184) = 0;
-  *(_QWORD*)(v12 + 168) = 0;
-  *(_QWORD*)(v12 + 120) = 0;
-  *(_DWORD*)(v12 + 127) = 0;
-  *(_QWORD*)(v5 + 856) = v12;
+  v9 = fw_memory_HeapManager_Allocate_alt1(v7, 296, 16, 0);
+  *(_DWORD*)(v9 + 48) = 0x2000;
+  v10 = GameData_2131678;
+  *(_WORD*)(v9 + 108) = 256;
+  *(_QWORD*)(v9 + 8) = 0;
+  *(_QWORD*)(v9 + 16) = 0;
+  *(_DWORD*)(v9 + 32) = 0;
+  *(_QWORD*)(v9 + 40) = 0;
+  *(_DWORD*)(v9 + 104) = 0;
+  *(_QWORD*)(v9 + 56) = 0;
+  *(_QWORD*)(v9 + 64) = 0;
+  *(_QWORD*)(v9 + 72) = 0;
+  *(_WORD*)(v9 + 80) = 0;
+  *(_DWORD*)(v9 + 112) = -1082130432;
+  *(_WORD*)(v9 + 116) = 0;
+  *(_WORD*)(v9 + 136) = 0;
+  *(_BYTE*)(v9 + 160) = 0;
+  *(_BYTE*)(v9 + 288) = 0;
+  *(_QWORD*)(v9 + 272) = 0;
+  *(_QWORD*)(v9 + 280) = 0;
+  *(_QWORD*)(v9 + 256) = 0;
+  *(_QWORD*)(v9 + 264) = 0;
+  *(_QWORD*)(v9 + 240) = 0;
+  *(_QWORD*)(v9 + 248) = 0;
+  *(_QWORD*)(v9 + 224) = 0;
+  *(_QWORD*)(v9 + 232) = 0;
+  *(_QWORD*)(v9 + 208) = 0;
+  *(_QWORD*)(v9 + 216) = 0;
+  *(_QWORD*)(v9 + 192) = 0;
+  *(_QWORD*)(v9 + 200) = 0;
+  *(_QWORD*)(v9 + 176) = 0;
+  *(_QWORD*)(v9 + 184) = 0;
+  *(_QWORD*)(v9 + 168) = 0;
+  *(_QWORD*)(v9 + 120) = 0;
+  *(_DWORD*)(v9 + 127) = 0;
+  *(_QWORD*)(v5 + 856) = v9;
   *(_WORD*)(v5 + 960) = 0;
   *(_QWORD*)(v5 + 1016) = 0;
   *(_QWORD*)(v5 + 992) = 0;
@@ -374,12 +382,12 @@ game_telop_TelopScoutSuccessResult_CreateBind_lambda0_Invoke(__int64 a1,
   *(_WORD*)(v5 + 1040) = 0;
   *(_WORD*)(v5 + 1064) = 0;
   *(_WORD*)(v5 + 1088) = 0;
-  *(_QWORD*)v12 = v13 + 16;
-  *(_DWORD*)(v12 + 292) = 2;
-  *(_QWORD*)(v12 + 24) = 0;
-  *(_QWORD*)(v5 + 848) = v12 + 24;
+  *(_QWORD*)v9 = v10 + 16;
+  *(_DWORD*)(v9 + 292) = 2;
+  *(_QWORD*)(v9 + 24) = 0;
+  *(_QWORD*)(v5 + 848) = v9 + 24;
   *(_QWORD*)(v5 + 1007) = 0;
-  v14 = GameData_2130f98[0] + 2;
+  v11 = GameData_2130f98[0] + 2;
   *(_QWORD*)(v5 + 1160) = 0;
   *(_BYTE*)(v5 + 1152) = 0;
   *(_QWORD*)(v5 + 1144) = 0;
@@ -389,38 +397,41 @@ game_telop_TelopScoutSuccessResult_CreateBind_lambda0_Invoke(__int64 a1,
   *(_QWORD*)(v5 + 1112) = 0;
   *(_QWORD*)(v5 + 1168) = 0;
   *(_DWORD*)(v5 + 1176) = 0;
-  *(_QWORD*)(v5 + 984) = v14;
+  *(_QWORD*)(v5 + 984) = v11;
   *(_QWORD*)v5 = game_telop_TelopScoutSuccessResult_vtable;
-  ProcInst_657850(v5, GameData_2130f68, "TelopScoutSuccessResult", 1, v2);
+  ProcInst_657850_alt1(v5, (__int64)GameData_2130f68,
+                       (__int64)"TelopScoutSuccessResult", 1, v2);
   if ((*(_BYTE*)(v5 + 272) & 1) != 0) {
     *(_QWORD*)(v5 + 280) = 17;
-    v15 = *(char**)(v5 + 288);
+    v12 = *(char**)(v5 + 288);
   }
   else {
     *(_BYTE*)(v5 + 272) = 34;
-    v15 = (char*)(v5 + 273);
+    v12 = (char*)(v5 + 273);
   }
-  strcpy(v15, "Layout/Common.arc");
+  strcpy(v12, "Layout/Common.arc");
   if ((*(_BYTE*)(v5 + 296) & 1) != 0) {
     *(_QWORD*)(v5 + 304) = 16;
-    v16 = *(char**)(v5 + 312);
+    v13 = *(char**)(v5 + 312);
   }
   else {
     *(_BYTE*)(v5 + 296) = 32;
-    v16 = (char*)(v5 + 297);
+    v13 = (char*)(v5 + 297);
   }
-  strcpy(v16, "Common_TlpResult");
-  GameRoutine_1374b10(v5, 2);
-  Se_80e330(v5, "SE_SYS_Telop_Mini_In");
-  GameRoutine_1378190(v5, "SE_SYS_Telop_Mini_Out");
-  v17 = *(_DWORD*)(a1 + 16);
+  strcpy(v13, "Common_TlpResult");
+  GameRoutine_1374b10_alt1(v5, 2);
+  Se_80e330_alt1(v5, "SE_SYS_Telop_Mini_In");
+  GameRoutine_1378190_alt1(v5, "SE_SYS_Telop_Mini_Out");
+  v14 = *(_DWORD*)(a1 + 16);
   *(_QWORD*)(v5 + 1168) = *(_QWORD*)(a1 + 8);
-  *(_DWORD*)(v5 + 1176) = v17;
-  if (v17 == 0) {
-    return Se_80e330(v5, "FF_Scout_Success");
+  *(_DWORD*)(v5 + 1176) = v14;
+  if (v14 != 0) {
+    Se_80e330_alt1(v5, "SE_SYS_Telop_Join_In");
+    GameRoutine_1378190_alt1(v5, "SE_SYS_Telop_Join_Out");
   }
-  Se_80e330(v5, "SE_SYS_Telop_Join_In");
-  return GameRoutine_1378190(v5, "SE_SYS_Telop_Join_Out");
+  else {
+    Se_80e330_alt1(v5, "FF_Scout_Success");
+  }
 }
 
 __int64

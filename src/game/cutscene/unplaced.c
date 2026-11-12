@@ -69,6 +69,10 @@ __attribute__((swiftcall)) void game_cutscene_18002e0(PSEUDO_X8 x8_,
                                                       unsigned __int8* a1);
 __int64 game_cutscene_181a060(__int64 a1, __n128 a2);
 void game_cutscene_181aa10(__int64 a1, char a2);
+unsigned __int64 fs_6360e0(__int64, __int64, unsigned __int64, char, int);
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 float32x4_t* game_cutscene_17fd220(float32x4_t** a1, float32x4_t* a2)
 {
@@ -591,50 +595,52 @@ __int64 game_cutscene_17ffbf0(__int64 a1, unsigned __int64 a2)
 {
   int v2;
   unsigned __int64 v3;
-  char* v4;
+  __int64 v4;
   __int64 v5;
-  __int64 v6;
+  unsigned __int64 v6;
   __int64 v7;
-  _QWORD v9[2];
-  char* v10;
+  struct {
+    _QWORD v9[2];
+    __int64 v10;
+  } v9_;
 
-  game_cutscene_17ffa60_alt1((void*)(v9), a1, a2);
-  v2 = v9[0] & 1;
-  v3 = (unsigned __int64)LOBYTE(v9[0]) >> 1;
+  game_cutscene_17ffa60((void*)(v9_.v9), a1, a2);
+  v2 = v9_.v9[0] & 1;
+  v3 = (unsigned __int64)LOBYTE(v9_.v9[0]) >> 1;
   if (v2 != 0) {
-    v3 = v9[1];
+    v3 = v9_.v9[1];
   }
   if (v3 == 0) {
     LOBYTE(v4) = 0;
     if (v2 == 0) {
-      return (unsigned __int8)v4 & 1;
+      return v4 & 1;
     }
     goto LABEL_12;
   }
   if (v2 != 0) {
-    v4 = v10;
+    v4 = v9_.v10;
   }
   else {
-    v4 = (char*)v9 + 1;
+    v4 = (__int64)v9_.v9 + 1;
   }
-  if (v4 != nullptr) {
+  if (v4 != 0) {
     v5 = *snd_g_fileIndex_ptr[0];
-    v6 = strlen(v4);
-    LOBYTE(v4) = GameRoutine_6360e0(v5, v4, v6, 0, 0);
-    v2 = v9[0] & 1;
+    v6 = strlen_alt1((const char*)v4);
+    LOBYTE(v4) = fs_6360e0(v5, v4, v6, 0, 0);
+    v2 = v9_.v9[0] & 1;
   }
   if (v2 != 0) {
   LABEL_12:
-    if (v10 != nullptr) {
+    if (v9_.v10 != 0) {
       v7 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v7 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v7);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, v9_.v10);
     }
   }
-  return (unsigned __int8)v4 & 1;
+  return v4 & 1;
 }
 
 __n128 game_cutscene_17ffe50(__int64* a1)

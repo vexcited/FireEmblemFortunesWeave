@@ -16,59 +16,31 @@ extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 __int64 TelopCmdbtlClear_Unknown33(__int64 a1);
 __int64 TelopCmdbtlClear_DeletingDestructor(_QWORD* a1);
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 ui_LayoutAccessor_FindTextBox_alt1(__int64*, __int64) __asm__(
+    "ui_LayoutAccessor_FindTextBox");
+char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
+                              char) __asm__("GameRoutine_a4dbe0");
+void GameRoutine_156c5d0_alt1(__int64, __int64,
+                              char) __asm__("GameRoutine_156c5d0");
 
 __int64 TelopCmdbtlClear_Unknown33(__int64 a1)
 {
-  __int64 v2;
+  char* v2;
   __int64 v3;
   __int64 v4;
-  __int64 v5;
-  _QWORD v7[4];
-  int v8;
-  int v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
 
-  v10 = -1;
-  v11 = -1;
-  v12 = -1;
-  v13 = -1;
-  v2 = *msg_MessageManager_instance__ptr[0];
-  v14 = -1;
-  v15 = -1;
-  v16 = -1;
-  v17 = -1;
-  v18 = -1;
-  v19 = -1;
-  v20 = -1;
-  v21 = -1;
-  v7[0] = GameData_212e348 + 2;
-  v7[1] = 0xFFFF0001FFFF0000LL;
-  v7[2] = 0xFFFF0004FFFF0002LL;
-  v7[3] = 0xFFFF0006FFFF0005LL;
-  v22 = 8;
-  v8 = -65529;
-  v9 = -65528;
-  v3 = GameRoutine_a4dbe0(v2, "MID_Sys_Result_Win", 0, v7);
-  if (v3 != 0) {
-    v4 = v3;
-    v5 = ui_LayoutAccessor_FindTextBox(a1 + 168, "T_Title");
-    if (v5 != 0) {
-      GameRoutine_156c5d0(v5, v4, 0);
+  v2 = GameRoutine_a4dbe0_alt1(*msg_MessageManager_instance__ptr[0],
+                               "MID_Sys_Result_Win", 0);
+  if (v2 != nullptr) {
+    v3 = (__int64)v2;
+    v4 = ui_LayoutAccessor_FindTextBox_alt1((__int64*)(a1 + 168),
+                                            (__int64)"T_Title");
+    if (v4 != 0) {
+      GameRoutine_156c5d0_alt1(v4, v3, 0);
     }
   }
-  return GameRoutine_1562680(a1 + 168, "Info_Off", 1.0);
+  return GameHr_1562680(a1 + 168, "Info_Off", 0x1.0000000000000p+0f);
 }
 
 __int64 TelopCmdbtlClear_DeletingDestructor(_QWORD* a1)

@@ -31,7 +31,9 @@ extern __int64 game_ProcGameSkipView_instance_;
 extern int* GameData_212d4a0;
 struct PseudoSret GameRoutine_bd3a40(_QWORD, _QWORD);
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
-__int64 game_ObjectInfoConst_CreateEffect(__int64 result, int a2, __int64 a3);
+__int64 game_ObjectInfoConst_CreateEffect_alt1(
+    __int64 result, int a2,
+    __int64 a3) __asm__("game_ObjectInfoConst_CreateEffect");
 unsigned __int64
 game_ObjectInfoConst_CreateEffect_lambda1_Invoke(unsigned __int64 result,
                                                  __int64* a2);
@@ -65,11 +67,17 @@ _QWORD* EffectModule_bd3360_alt1(_QWORD* result,
                                  __int64*) __asm__("EffectModule_bd3360");
 __int64 GameRoutine_bd3660_alt1(__int64 result,
                                 __int64*) __asm__("GameRoutine_bd3660");
+__int64 GameHr_98ed40(__int64);
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void GameRoutine_98f2b0_alt1(__int64) __asm__("GameRoutine_98f2b0");
+void __cxa_guard_release_alt2(__int64) __asm__("__cxa_guard_release");
+void game_ObjectInfoConst_CreateEffect(__int64 a1, int a2, __int64 a3);
 
-__int64 game_ObjectInfoConst_CreateEffect(__int64 result, int a2, __int64 a3)
+void game_ObjectInfoConst_CreateEffect(__int64 a1, int a2, __int64 a3)
 {
   __int64 v4;
-  __int64 v6;
   unsigned int v7;
   unsigned __int8 explicit;
   int* v9;
@@ -78,7 +86,7 @@ __int64 game_ObjectInfoConst_CreateEffect(__int64 result, int a2, __int64 a3)
   int v12;
   __int64 v13;
   __int64 v14;
-  _QWORD* v15;
+  __int64* v15;
   __int64 v16;
   __int64 (**v17)();
   __int64 (***v18)();
@@ -92,32 +100,28 @@ __int64 game_ObjectInfoConst_CreateEffect(__int64 result, int a2, __int64 a3)
   __int64* v26;
   __int64* v27;
   __int64 v28;
-  __int64 v29;
-  __int64 v30;
+  __int64* v29;
+  __int64 v30[2];
   __int64 v31;
-  _QWORD* v32;
-  _QWORD v33[2];
-  __int64 v34;
 
-  if (result != 0 && a3 != 0) {
-    v4 = *(_QWORD*)(result + 24);
-    v6 = result;
+  if (a1 != 0 && a3 != 0) {
+    v4 = *(_QWORD*)(a1 + 24);
     v7 = *(_DWORD*)(a3 + 284) - 1;
     if (v7 > 4) {
       if ((*(_BYTE*)(v4 + 65) & 1) == 0) {
-        return result;
+        return;
       }
     }
     else if ((*((_BYTE*)GameData_1b56208[v7] + v4) & 1) == 0) {
-      return result;
+      return;
     }
     explicit = atomic_load_explicit((atomic_uchar* volatile)GameData_212d4a8,
                                     memory_order_acquire);
     v9 = GameData_212d4a0;
     if ((explicit & 1) == 0 &&
-        (unsigned int)__cxa_guard_acquire(GameData_212d4a8) != 0) {
-      *v9 = wld_Crc32(0, "EffectModule", 12);
-      __cxa_guard_release(GameData_212d4a8, v29, v30, v31);
+        __cxa_guard_acquire_alt1((__int64)GameData_212d4a8) != 0) {
+      *v9 = wld_Crc32_alt1(0, "EffectModule", 0xCu);
+      __cxa_guard_release_alt2((__int64)GameData_212d4a8);
     }
     v10 = *(_QWORD*)(a3 + 512);
     v11 = v10;
@@ -135,24 +139,23 @@ __int64 game_ObjectInfoConst_CreateEffect(__int64 result, int a2, __int64 a3)
         break;
       }
     }
-    result = GameRoutine_98ed40(a3);
-    v13 = result;
-    if (result == 0) {
-      return result;
+    v13 = GameHr_98ed40(a3);
+    if (v13 == 0) {
+      return;
     }
   LABEL_14:
-    v33[0] = 0;
-    v33[1] = 0;
-    v14 = *(_QWORD*)(v6 + 24);
-    v32 = v33;
-    v15 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-    v16 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         40, 16, 0);
+    v30[0] = 0;
+    v30[1] = 0;
+    v14 = *(_QWORD*)(a1 + 24);
+    v29 = v30;
+    v15 = (__int64*)fw_memory_g_heap_manager_ptr;
+    v16 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 40, 16, 0);
     v17 = GameData_1fb2378;
     *(_QWORD*)(v16 + 16) = a3;
     *(_DWORD*)(v16 + 24) = a2;
-    v18 = (__int64 (***)())v16;
-    *(_QWORD*)(v16 + 32) = &v32;
+    v18 = (__int64 (***)(void))v16;
+    *(_QWORD*)(v16 + 32) = &v29;
     *(_QWORD*)v16 = GameData_1fb2378;
     *(_QWORD*)(v16 + 8) = v13;
     v19 = *(__int64**)(v14 + 40);
@@ -160,19 +163,19 @@ __int64 game_ObjectInfoConst_CreateEffect(__int64 result, int a2, __int64 a3)
     if (v19 != v20) {
       do {
         v21 = *v19++;
-        v34 = v21;
-        ((void (*)(__int64 (***)(), __int64*))(*v18)[6])(v18, &v34);
+        v31 = v21;
+        ((void (*)(__int64 (***)(void), __int64*))(*v18)[6])(v18, &v31);
       } while (v19 != v20);
       v17 = *v18;
     }
-    ((void (*)(__int64 (***)()))v17[5])(v18);
-    v22 = *(_QWORD*)(v6 + 24);
-    v23 = fw_memory_HeapManager_Allocate(*v15, 40, 16, 0);
+    ((void (*)(__int64 (***)(void)))v17[5])(v18);
+    v22 = *(_QWORD*)(a1 + 24);
+    v23 = fw_memory_HeapManager_Allocate_alt1(*v15, 40, 16, 0);
     v24 = GameData_1fb23f8;
     *(_QWORD*)(v23 + 16) = a3;
     *(_DWORD*)(v23 + 24) = a2;
-    v25 = (__int64 (***)())v23;
-    *(_QWORD*)(v23 + 32) = &v32;
+    v25 = (__int64 (***)(void))v23;
+    *(_QWORD*)(v23 + 32) = &v29;
     *(_QWORD*)v23 = GameData_1fb23f8;
     *(_QWORD*)(v23 + 8) = v13;
     v26 = *(__int64**)(v22 + 40);
@@ -180,15 +183,14 @@ __int64 game_ObjectInfoConst_CreateEffect(__int64 result, int a2, __int64 a3)
     if (v26 != v27) {
       do {
         v28 = *v26++;
-        v34 = v28;
-        ((void (*)(__int64 (***)(), __int64*))(*v25)[6])(v25, &v34);
+        v31 = v28;
+        ((void (*)(__int64 (***)(void), __int64*))(*v25)[6])(v25, &v31);
       } while (v26 != v27);
       v24 = *v25;
     }
-    ((void (*)(__int64 (***)()))v24[5])(v25);
-    return GameRoutine_98f2b0(v33[0]);
+    ((void (*)(__int64 (***)(void)))v24[5])(v25);
+    GameRoutine_98f2b0_alt1(v30[0]);
   }
-  return result;
 }
 
 __int64* game_ObjectInfoConst_CreateEffect_lambda0_Invoke(__int64* result,

@@ -10,6 +10,8 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 _QWORD* game_facility_SellController_Clear(__int64* a1);
 __int64 game_facility_SellController_Clear_lambda0_Invoke(__int64 a1,
                                                           __int64 a2);
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 _QWORD* game_facility_SellController_Clear(__int64* a1)
 {
@@ -23,18 +25,19 @@ _QWORD* game_facility_SellController_Clear(__int64* a1)
   __int64 v8;
   __int64 v9;
   __int64 v10;
-  __int64 v11;
-  _QWORD v12[4];
-  _QWORD* v13;
-  __int64 v14;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+  __int64 v13;
 
   v1 = *a1;
   a1[2] = a1[1];
-  result = v12;
+  result = v11_.v11;
   v4 = *(_QWORD*)(v1 + 256);
   v3 = *(_QWORD*)(v1 + 264);
-  v12[0] = GameData_20a7440;
-  v13 = v12;
+  v11_.v11[0] = GameData_20a7440;
+  v11_.v12 = v11_.v11;
   if (v3 == v4) {
     goto LABEL_12;
   }
@@ -48,12 +51,13 @@ _QWORD* game_facility_SellController_Clear(__int64* a1)
       if (v9 == 0) {
         goto LABEL_3;
       }
-      v14 = v9;
-      if (v13 == nullptr) {
-        GameRoutine_60a310(0, v10);
+      v13 = v9;
+      if (v11_.v12 == nullptr) {
+        GameRoutine_60a310_alt1();
       }
-      if (((*(__int64 (**)(_QWORD*, __int64*))(*v13 + 48LL))(v13, &v14) & 1) !=
-          0) {
+      if (((*(__int64 (**)(_QWORD*, __int64*))(*v11_.v12 + 48LL))(v11_.v12,
+                                                                  &v13) &
+           1) != 0) {
         break;
       }
       v4 = *(_QWORD*)(v1 + 256);
@@ -62,17 +66,17 @@ _QWORD* game_facility_SellController_Clear(__int64* a1)
   LABEL_3:
     ++v5;
   } while (v5 < (v3 - v4) >> 3);
-  result = v13;
-  if (v13 != v12) {
-    if (v13 != nullptr) {
-      v11 = 40;
-      return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v11))(result);
+  result = v11_.v12;
+  if (v11_.v12 != v11_.v11) {
+    if (v11_.v12 != nullptr) {
+      v10 = 40;
+      return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v10))(result);
     }
     return result;
   }
 LABEL_12:
-  v11 = 32;
-  return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v11))(result);
+  v10 = 32;
+  return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v10))(result);
 }
 
 __int64 game_facility_SellController_Clear_lambda0_Invoke(__int64 a1,

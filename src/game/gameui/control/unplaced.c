@@ -36,110 +36,137 @@ extern __int64 GameData_212c638;
 extern __int64 GameData_21ec7b0;
 extern __int64 game_GameModeData_instance_;
 extern __int64 ui_Manager_instance_;
-__int64 game_gameui_control_18aa140(__int64 a1, __int64 a2);
+__int64 game_gameui_control_18aa140_alt1(__int64 a1, __int64 a2) __asm__(
+    "game_gameui_control_18aa140");
 __attribute__((swiftcall)) void
 game_gameui_control_18b4660(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3);
 __int64 game_gameui_control_18bee90(__int64 result, __int64 a2, char a3,
                                     char a4);
+__int64* game_820d50_alt1(int) __asm__("game_820d50");
+__int64 GameHr_18a57c0(__int64);
+__int64
+LayoutAccessor_1562cf0_alt1(__int64 result,
+                            const char*) __asm__("LayoutAccessor_1562cf0");
+__int64 Manager_136a920_alt1(__int64, __int64, int, unsigned int,
+                             const char*) __asm__("Manager_136a920");
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 game_HasSkill_alt1(_QWORD*, unsigned int*) __asm__("game_HasSkill");
+__int64
+ui_LayoutAccessor_FindPane_alt1(__int64*,
+                                __int64) __asm__("ui_LayoutAccessor_FindPane");
+__int64 ui_LayoutAccessor_FindTextBox_alt1(__int64*, __int64) __asm__(
+    "ui_LayoutAccessor_FindTextBox");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+extern _UNKNOWN GameData_2104478_alt1 __asm__("GameData_2104478");
+void GameRoutine_18a5bc0_alt1(__int64) __asm__("GameRoutine_18a5bc0");
+void GameRoutine_190a0c0_alt1(float*, __int64, float*, _QWORD*,
+                              __int64) __asm__("GameRoutine_190a0c0");
+void LayoutAccessor_1562060_alt1(__int64*, __int64,
+                                 const char*) __asm__("LayoutAccessor_1562060");
+void game_gameui_control_18aa140(__int64 a1, __int64 a2);
 
-__int64 game_gameui_control_18aa140(__int64 a1, __int64 a2)
+void game_gameui_control_18aa140(__int64 a1, __int64 a2)
 {
-  long double v4;
-  __int64 v5;
-  char v6;
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  char v5;
+  __int64* v6;
   __int64 v7;
   __int64 v8;
+  __int64 v9;
   __int64 v10;
   __int64 v11;
-  __int64 v12;
-  long double v13;
+  const char* v12;
+  __int64 v13;
   __int64 v14;
-  __int64 v15;
-  long double v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  int v20;
+  _QWORD* v15;
+  int v16;
+  int v17;
+  char v18;
+  float v19;
+  _DWORD v20[2];
   int v21;
-  char v22;
-  _BYTE v23[4];
-  _DWORD v24[2];
-  int v25;
 
-  ui_LayoutAccessor_SetPaneVisible(a1 + 88, "L_Efficacy00", 0);
-  ui_LayoutAccessor_SetPaneVisible(a1 + 88, "L_Efficacy01", 0);
-  *(__n128*)&v4 = ui_LayoutAccessor_SetPaneVisible(a1 + 88, "L_Efficacy02", 0);
+  ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 88, (__int64)"L_Efficacy00", 0);
+  ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 88, (__int64)"L_Efficacy01", 0);
+  ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 88, (__int64)"L_Efficacy02", 0);
   *(_BYTE*)(a1 + 1060) = 0;
-  if (a2 == 0) {
-    return GameRoutine_18a57c0(a1, v4);
-  }
-  v5 = *(_QWORD*)(a2 + 440);
-  v6 = v5 != 0 ? *(_BYTE*)(v5 + 16) : 9;
-  if (((1 << v6) & 0xF1) == 0) {
-    return GameRoutine_18a57c0(a1, v4);
-  }
-  v7 = game_820d50(2);
-  if (game_GameModeData_instance_ != 0) {
-    v8 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), v7);
-    if (v8 != 0 && *(_DWORD*)(v8 + 32) != 0) {
-      return GameRoutine_18a57c0(a1, v4);
-    }
-  }
-  v10 = game_g_shared_system_skills_ptr;
-  v25 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x17CLL) +
-                   game_g_shared_system_skills_ptr) &
-        0xFFF;
-  if ((game_HasSkill(a2 + 1744, &v25) & 1) != 0) {
-    v11 = 3;
+  if (a2 == 0 ||
+      ((v4 = *(_QWORD*)(a2 + 440)) == 0 ? (v5 = 9) : (v5 = *(_BYTE*)(v4 + 16)),
+       ((1 << v5) & 0xF1) == 0 ||
+           (v6 = game_820d50_alt1(2), game_GameModeData_instance_ != 0) &&
+               (v7 = game_GameVariableTable_Find_alt1(
+                    *(_QWORD**)(game_GameModeData_instance_ + 48),
+                    (unsigned __int64*)v6)) != 0 &&
+               *(_DWORD*)(v7 + 32) != 0)) {
+    GameHr_18a57c0(a1);
   }
   else {
-    v25 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x180LL) + v10) & 0xFFF;
-    if ((game_HasSkill(a2 + 1744, &v25) & 1) != 0) {
-      v11 = 2;
+    v8 = game_g_shared_system_skills_ptr;
+    v21 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x17CLL) +
+                     game_g_shared_system_skills_ptr) &
+          0xFFF;
+    if ((game_HasSkill_alt1((_QWORD*)(a2 + 1744), (unsigned int*)&v21) & 1) !=
+        0) {
+      v9 = 3;
     }
     else {
-      v25 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x178LL) + v10) & 0xFFF;
-      v11 = game_HasSkill(a2 + 1744, &v25) & 1;
+      v21 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x180LL) + v8) & 0xFFF;
+      if ((game_HasSkill_alt1((_QWORD*)(a2 + 1744), (unsigned int*)&v21) & 1) !=
+          0) {
+        v9 = 2;
+      }
+      else {
+        v21 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x178LL) + v8) & 0xFFF;
+        v9 = game_HasSkill_alt1((_QWORD*)(a2 + 1744), (unsigned int*)&v21) & 1;
+      }
     }
+    LayoutAccessor_1562cf0_alt1(a1 + 88, "Icon");
+    v10 = ui_LayoutAccessor_FindPane_alt1((__int64*)(a1 + 88), (__int64)"Icon");
+    if (v10 != 0) {
+      v11 = __dynamic_cast(v10, GameData_212d670[0], GameData_212d678[0], 0);
+      if (v11 != 0) {
+        Manager_136a920_alt1(ui_Manager_instance_ + 1264, v11, 0, 7u,
+                             *((const char**)&GameData_2104458 + v9));
+      }
+    }
+    v12 = (const char*)GameData_2104498[v9];
+    LayoutAccessor_1562060_alt1((__int64*)(a1 + 88), (__int64)"T_Txt",
+                                *((const char**)&GameData_2104478_alt1 + v9));
+    ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 88, (__int64)"L_InfoTxt", 1);
+    LayoutAccessor_1562060_alt1((__int64*)(a1 + 88), (__int64)"L_InfoTxt/T_Txt",
+                                v12);
+    v13 = ui_LayoutAccessor_FindTextBox_alt1((__int64*)(a1 + 88),
+                                             (__int64)"L_InfoTxt/T_Txt");
+    if (v13 != 0) {
+      v14 = v13;
+      v15 = (_QWORD*)ui_LayoutAccessor_FindTextBox_alt1(
+          (__int64*)(a1 + 88), (__int64)"L_InfoTxt/T_Txt");
+      if (v15 != nullptr) {
+        GameRoutine_190a0c0_alt1((float*)&v21, (__int64)v20, &v19, v15,
+                                 v15[27]);
+        v16 = v20[0];
+        v17 = v20[1];
+      }
+      else {
+        v16 = 0;
+        v17 = 0;
+      }
+      v18 = *(_BYTE*)(v14 + 88);
+      *(_DWORD*)(v14 + 80) = v16;
+      *(_DWORD*)(v14 + 84) = v17;
+      *(_BYTE*)(v14 + 88) = v18 | 0x10;
+    }
+    LayoutAccessor_1562cf0_alt1(a1 + 88, "InfoTitleOn");
+    LayoutAccessor_1562cf0_alt1(a1 + 88, "NumNone");
+    LayoutAccessor_1562cf0_alt1(a1 + 88, "StatusDetailOff");
+    LayoutAccessor_1562cf0_alt1(a1 + 88, "StatusOff");
+    LayoutAccessor_1562cf0_alt1(a1 + 88, "Wdw_TitleOn_Status02");
+    GameRoutine_18a5bc0_alt1(a1);
   }
-  LayoutAccessor_1562cf0(a1 + 88, "Icon");
-  v12 = ui_LayoutAccessor_FindPane(a1 + 88, "Icon");
-  if (v12 != 0) {
-    v14 = __dynamic_cast(v12, GameData_212d670[0], GameData_212d678[0], 0);
-    if (v14 != 0) {
-      Manager_136a920(ui_Manager_instance_ + 1264, v14, 0, 7,
-                      *((_QWORD*)&GameData_2104458 + v11));
-    }
-  }
-  v15 = GameData_2104498[v11];
-  LayoutAccessor_1562060(a1 + 88, "T_Txt", GameData_2104478[v11], v13);
-  *(__n128*)&v16 = ui_LayoutAccessor_SetPaneVisible(a1 + 88, "L_InfoTxt", 1);
-  LayoutAccessor_1562060(a1 + 88, "L_InfoTxt/T_Txt", v15, v16);
-  v17 = ui_LayoutAccessor_FindTextBox(a1 + 88, "L_InfoTxt/T_Txt");
-  if (v17 != 0) {
-    v18 = v17;
-    v19 = ui_LayoutAccessor_FindTextBox(a1 + 88, "L_InfoTxt/T_Txt");
-    if (v19 != 0) {
-      GameRoutine_190a0c0(&v25, v24, v23, v19, *(_QWORD*)(v19 + 216));
-      v20 = v24[0];
-      v21 = v24[1];
-    }
-    else {
-      v20 = 0;
-      v21 = 0;
-    }
-    v22 = *(_BYTE*)(v18 + 88);
-    *(_DWORD*)(v18 + 80) = v20;
-    *(_DWORD*)(v18 + 84) = v21;
-    *(_BYTE*)(v18 + 88) = v22 | 0x10;
-  }
-  LayoutAccessor_1562cf0(a1 + 88, "InfoTitleOn");
-  LayoutAccessor_1562cf0(a1 + 88, "NumNone");
-  LayoutAccessor_1562cf0(a1 + 88, "StatusDetailOff");
-  LayoutAccessor_1562cf0(a1 + 88, "StatusOff");
-  LayoutAccessor_1562cf0(a1 + 88, "Wdw_TitleOn_Status02");
-  return GameRoutine_18a5bc0(a1);
 }
 
 __attribute__((swiftcall)) void

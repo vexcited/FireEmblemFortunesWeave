@@ -15,7 +15,7 @@ __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*GameData_200c180[])();
 extern __int64 (*game_character_IKFoot_vtable[])();
 extern __int64 (*kaneko_WPHolder_vtable[])();
-__n128 IKFoot_Destructor(_QWORD* a1);
+__n128 IKFoot_Destructor_alt1(_QWORD* a1) __asm__("IKFoot_Destructor");
 __int64 GameRoutine_109f0c0(__int64 result, __int64);
 __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
@@ -112,6 +112,11 @@ void __attribute__((noreturn)) GameRoutine_10e5410();
 void __attribute__((noreturn)) GameRoutine_60a210();
 void game_character_IKFoot_IKFoot(__int64 a1, _QWORD* a2, __int64 a3);
 float IKFoot_Unknown3(__int64 a1, float32x4_t a2);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt3(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 IKFoot_Destructor(_QWORD* a1);
 
 void game_character_IKFoot_IKFoot(__int64 a1, _QWORD* a2, __int64 a3)
 {
@@ -1067,20 +1072,19 @@ _QWORD* IKFoot_10e4480(_QWORD* result, unsigned __int64 a2, long double a3)
   return result;
 }
 
-__n128 IKFoot_Destructor(_QWORD* a1)
+__int64 IKFoot_Destructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __n128 result;
+  __int64 v7;
   __int64 v8;
   __int64 v9;
   __int64 v10;
-  __int64 v11;
+  __int64 result;
   __int64 v12;
-  __int64 v13;
 
   v1 = a1[10];
   *a1 = game_character_IKFoot_vtable;
@@ -1101,42 +1105,43 @@ __n128 IKFoot_Destructor(_QWORD* a1)
         else {
           v6 = 56;
         }
-        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v6);
+        nn_mem_StandardAllocator_Free_alt3(*(_QWORD*)v4 + v6, v5);
       }
-      v8 = *(_QWORD*)(v3 - 184);
-      if (v8 != 0) {
-        *(_QWORD*)(v3 - 176) = v8;
+      v7 = *(_QWORD*)(v3 - 184);
+      if (v7 != 0) {
+        *(_QWORD*)(v3 - 176) = v7;
         if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
-          v9 = 128;
+          v8 = 128;
         }
         else {
-          v9 = 56;
+          v8 = 56;
         }
-        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v9);
+        nn_mem_StandardAllocator_Free_alt3(*(_QWORD*)v4 + v8, v7);
       }
       v3 -= 192;
     } while (v3 != v1);
-    v10 = a1[10];
+    v9 = a1[10];
     a1[11] = v1;
-    if (v10 != 0) {
+    v1 = v9;
+    if (v9 != 0) {
     LABEL_16:
-      v11 = 128;
+      v10 = 128;
       if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
-        v11 = 56;
+        v10 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v11);
+      nn_mem_StandardAllocator_Free_alt3(*(_QWORD*)v4 + v10, v1);
     }
   }
-  v12 = a1[9];
+  result = a1[9];
   a1[5] = kaneko_WPHolder_vtable;
-  if (v12 != 0) {
-    result = std___1___shared_weak_count___release_weak(v12);
+  if (result != 0) {
+    result = std___1___shared_weak_count___release_weak_alt1(result);
   }
-  v13 = a1[7];
-  if (v13 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
+  v12 = a1[7];
+  if (v12 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
-    return std___1___shared_weak_count___release_weak(v13);
+    (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
+    return std___1___shared_weak_count___release_weak_alt1(v12);
   }
   return result;
 }

@@ -48,7 +48,8 @@ void __attribute__((noreturn)) String_60a250(_QWORD);
 __int64 KeyMap_1557b10_alt1(__int64 a1, int a2) __asm__("KeyMap_1557b10");
 _QWORD* KeyMap_1559360(_QWORD* result, int a2, int a3);
 void KeyMap_15596e0(__int64 a1, int* a2);
-void KeyMap_1559920(float* a1, unsigned __int64 a2);
+void KeyMap_1559920_alt2(float* a1,
+                         unsigned __int64 a2) __asm__("KeyMap_1559920");
 _QWORD* KeyMap_1559e20(_QWORD* result, unsigned int a2, int a3, int a4);
 _QWORD* KeyMap_155a1a0(_QWORD* result);
 _QWORD* KeyMap_155a380(_QWORD* result);
@@ -84,6 +85,11 @@ void KeyMap_155c000_alt2(_QWORD*) __asm__("KeyMap_155c000");
 void __attribute__((noreturn))
 String_60a250_alt1(const char*) __asm__("String_60a250");
 void KeyMap_1557b10(__int64 a1, int a2);
+__int64
+std___1___next_prime_alt1(unsigned __int64) __asm__("std___1___next_prime");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void KeyMap_1559920(__int64 a1, unsigned __int64 a2);
 
 void KeyMap_1557b10(__int64 a1, int a2)
 {
@@ -1332,7 +1338,7 @@ LABEL_22:
   ++*(_QWORD*)(a1 + 24);
 }
 
-void KeyMap_1559920(float* a1, unsigned __int64 a2)
+void KeyMap_1559920(__int64 a1, unsigned __int64 a2)
 {
 
 #pragma clang fp contract(off)
@@ -1348,8 +1354,8 @@ void KeyMap_1559920(float* a1, unsigned __int64 a2)
   unsigned __int64 v12;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
-  __int64* v16;
+  _QWORD* v15;
+  __int64 v16;
   unsigned __int64 v17;
   unsigned __int64 v18;
   _QWORD* i;
@@ -1367,16 +1373,17 @@ void KeyMap_1559920(float* a1, unsigned __int64 a2)
   else {
     primeEm = a2;
     if ((a2 & (a2 - 1)) != 0) {
-      primeEm = std___1___next_prime(a2);
+      primeEm = std___1___next_prime_alt1(a2);
     }
   }
-  v4 = *((_QWORD*)a1 + 1);
+  v4 = *(_QWORD*)(a1 + 8);
   if (primeEm <= v4) {
     if (primeEm >= v4) {
       return;
     }
     v11 = v4 >= 3 && (v4 & (v4 - 1)) == 0;
-    v12 = vcvtps_u64_f32((float)*((unsigned __int64*)a1 + 3) / a1[8]);
+    v12 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
+                         *(float*)(a1 + 32));
     if (v11) {
       v24 = 1LL << -(char)__clz(v12 - 1);
       if (v12 >= 2) {
@@ -1384,7 +1391,7 @@ void KeyMap_1559920(float* a1, unsigned __int64 a2)
       }
     }
     else {
-      v12 = std___1___next_prime(v12);
+      v12 = std___1___next_prime_alt1(v12);
     }
     if (primeEm <= v12) {
       primeEm = v12;
@@ -1400,10 +1407,10 @@ void KeyMap_1559920(float* a1, unsigned __int64 a2)
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v26 = 56;
         }
-        nn_mem_StandardAllocator_Free_alt1(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v26);
+        nn_mem_StandardAllocator_Free_alt2(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v26, v25);
       }
-      *((_QWORD*)a1 + 1) = 0;
+      *(_QWORD*)(a1 + 8) = 0;
       return;
     }
   }
@@ -1420,10 +1427,10 @@ void KeyMap_1559920(float* a1, unsigned __int64 a2)
     if (*(_QWORD*)(*(_QWORD*)v5 + 200LL) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v5 + v8);
+    nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v5 + v8, v7);
   }
   v9 = primeEm & 7;
-  *((_QWORD*)a1 + 1) = primeEm;
+  *(_QWORD*)(a1 + 8) = primeEm;
   if (primeEm >= 8) {
     v10 = 0;
     do {
@@ -1450,31 +1457,31 @@ void KeyMap_1559920(float* a1, unsigned __int64 a2)
       v14 += 8;
     } while (v9 != 0);
   }
-  v16 = (__int64*)(a1 + 4);
-  v15 = *((_QWORD*)a1 + 2);
-  if (v15 != 0) {
-    v17 = *(_QWORD*)(v15 + 8);
+  v16 = a1 + 16;
+  v15 = *(_QWORD**)(a1 + 16);
+  if (v15 != nullptr) {
+    v17 = v15[1];
     v18 = primeEm - 1;
     if ((primeEm & (primeEm - 1)) == 0) {
       v21 = v17 & v18;
       *(_QWORD*)(*(_QWORD*)a1 + 8 * v21) = v16;
       while (1) {
-        v22 = *(_QWORD**)v15;
-        if (*(_QWORD*)v15 == 0) {
+        v22 = (_QWORD*)*v15;
+        if (*v15 == 0) {
           break;
         }
         v23 = v22[1] & v18;
         if (v23 == v21) {
-          v15 = *(_QWORD*)v15;
+          v15 = (_QWORD*)*v15;
         }
         else if (*(_QWORD*)(*(_QWORD*)a1 + 8 * v23) != 0) {
-          *(_QWORD*)v15 = *v22;
+          *v15 = *v22;
           *v22 = **(_QWORD**)(*(_QWORD*)a1 + 8 * v23);
           **(_QWORD**)(*(_QWORD*)a1 + 8 * v23) = v22;
         }
         else {
           *(_QWORD*)(*(_QWORD*)a1 + 8 * v23) = v15;
-          v15 = (__int64)v22;
+          v15 = v22;
           v21 = v23;
         }
       }
@@ -1484,7 +1491,7 @@ void KeyMap_1559920(float* a1, unsigned __int64 a2)
       v17 %= primeEm;
     }
     *(_QWORD*)(*(_QWORD*)a1 + 8 * v17) = v16;
-    for (i = *(_QWORD**)v15; i != nullptr; v17 = v20) {
+    for (i = (_QWORD*)*v15; i != nullptr; v17 = v20) {
       v20 = i[1];
       if (v20 >= primeEm) {
         v20 %= primeEm;
@@ -1494,14 +1501,14 @@ void KeyMap_1559920(float* a1, unsigned __int64 a2)
           *(_QWORD*)(*(_QWORD*)a1 + 8 * v20) = v15;
           goto LABEL_32;
         }
-        *(_QWORD*)v15 = *i;
+        *v15 = *i;
         *i = **(_QWORD**)(*(_QWORD*)a1 + 8 * v20);
         **(_QWORD**)(*(_QWORD*)a1 + 8 * v20) = i;
-        i = (_QWORD*)v15;
+        i = v15;
       }
       v20 = v17;
     LABEL_32:
-      v15 = (__int64)i;
+      v15 = i;
       i = (_QWORD*)*i;
     }
   }

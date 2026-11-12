@@ -7,11 +7,13 @@ extern __int64 GameData_2240178;
 extern __int64 game_GameModeData_instance_;
 extern char GameData_1a9f09e;
 __int64 Variable_Destructor(__int64 a1, __int64 a2);
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
 
 __int64 Variable_Destructor(__int64 a1, __int64 a2)
 {
-  __int64 v2;
-  __int64 v3;
+  unsigned __int64 v2;
+  unsigned __int64 v3;
   __int64 v4;
   unsigned __int8 v6;
   __int64 result;
@@ -26,15 +28,15 @@ __int64 Variable_Destructor(__int64 a1, __int64 a2)
   __int64 v16;
   __int64 v17;
   __int64 v18;
-  __int64* v19;
-  __int64* i;
+  unsigned __int64* v19;
+  unsigned __int64* i;
   int v21;
   __int64 v22;
   __int64 v23;
   __int64 v24;
   __int64 v25;
   __int64 v26;
-  __int64 v27;
+  unsigned __int64 v27;
   __int64 v28;
   __int64 v29;
   __int64 v30;
@@ -43,7 +45,7 @@ __int64 Variable_Destructor(__int64 a1, __int64 a2)
   __int64 v33;
   __int64 v34;
   __int64 v35;
-  _QWORD v36[4];
+  unsigned __int64 v36[4];
 
   v4 = *(int*)(a2 + 20);
   v6 = *(_BYTE*)(a1 + 8);
@@ -76,11 +78,11 @@ __int64 Variable_Destructor(__int64 a1, __int64 a2)
     v18 = *(int*)(result + 20);
     *(_DWORD*)(result + 20) = v18 + 1;
     *(_BYTE*)(*(_QWORD*)(result + 8) + v18) = v15 >> 27;
-    v19 = *(__int64**)(v11 + 16);
-    for (i = *(__int64**)(v11 + 24); v19 != i;
+    v19 = *(unsigned __int64**)(v11 + 16);
+    for (i = *(unsigned __int64**)(v11 + 24); v19 != i;
          *(_BYTE*)(*(_QWORD*)(v10 + 8) + v25) = HIBYTE(v21)) {
       v26 = *(int*)(v10 + 20);
-      v36[1] = &GameData_1a9f09e;
+      v36[1] = (unsigned __int64)&GameData_1a9f09e;
       v27 = *v19;
       *(_DWORD*)(v10 + 20) = v26 + 1;
       v28 = *(_QWORD*)(v10 + 8);
@@ -107,7 +109,7 @@ __int64 Variable_Destructor(__int64 a1, __int64 a2)
       v35 = *(int*)(v10 + 20);
       *(_DWORD*)(v10 + 20) = v35 + 1;
       *(_BYTE*)(*(_QWORD*)(v10 + 8) + v35) = HIBYTE(v27);
-      result = game_GameVariableTable_Find(*(_QWORD*)(v12 + 48), v36);
+      result = game_GameVariableTable_Find_alt1(*(_QWORD**)(v12 + 48), v36);
       if (result != 0) {
         v21 = *(_DWORD*)(result + 32);
       }

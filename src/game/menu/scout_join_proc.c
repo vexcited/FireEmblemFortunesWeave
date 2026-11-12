@@ -8,7 +8,7 @@ __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 GameData_212c7b0[11];
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 ScoutJoinProc_f6ca00(__int64 a1);
+__n128 ScoutJoinProc_f6ca00_alt1(__int64 a1) __asm__("ScoutJoinProc_f6ca00");
 _QWORD* HubTalkNatives_e13380(__int64, unsigned __int8**, _QWORD*, _QWORD*,
                               __int64, __int64, __int64, __int64);
 __int64 BasicInfo_15e5fa0(void);
@@ -36,6 +36,16 @@ __int64 game_menu_ScoutJoinProc_RunAutoGrowthDialog(__int64 result);
 __int64 game_menu_ScoutJoinProc_RunAutoGrowthDialog_closure_Invoke(__int64 a1,
                                                                    __int64* a2);
 __int64 game_menu_ScoutJoinProc_RunAutoGrowthDialog_closure0_Invoke(__int64 a1);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+void GameSubquestData_1259ea0_alt1(__int64, __int64*,
+                                   char) __asm__("GameSubquestData_1259ea0");
+void GameSubquestData_125c2c0_alt1(__int64, __int64, __int64,
+                                   int) __asm__("GameSubquestData_125c2c0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ScoutJoinProc_f6ca00(__int64 a1);
 
 __int64 game_menu_ScoutJoinProc_RunAutoGrowthDialog(__int64 result)
 {
@@ -179,68 +189,68 @@ __int64 game_menu_ScoutJoinProc_RunAutoGrowthDialog(__int64 result)
   return result;
 }
 
-__n128 ScoutJoinProc_f6ca00(__int64 a1)
+void ScoutJoinProc_f6ca00(__int64 a1)
 {
   __int64 v2;
-  __n128 result;
-  __int64* v4;
+  __int64 v3;
+  __int64 v4;
   __int64* v5;
-  _QWORD* v6;
-  __int64 v7;
-  _QWORD* v8;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
   __int64 v9;
   __int64 v10;
-  __int64* v11;
-  __int64* v12;
-  __int64 v13;
-  _QWORD* v14;
-  _QWORD* v15;
-  _QWORD* v16;
+  struct {
+    __int64 v11;
+    __int64 v12;
+    __int64 v13;
+  } v11_;
+  _QWORD v14[3];
 
   if (*(_QWORD*)(a1 + 152) != 0) {
     v2 = *(_QWORD*)GameData_212c7b0[0];
     if (*(_QWORD*)GameData_212c7b0[0] != 0) {
-      v12 = nullptr;
-      v13 = 0;
-      v11 = nullptr;
-      GameSubquestData_1259ea0(v2, &v11, 1);
-      v4 = v11;
-      v5 = v12;
-      if (v11 != v12) {
-        v6 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+      v11_.v12 = 0;
+      v11_.v13 = 0;
+      v11_.v11 = 0;
+      GameSubquestData_1259ea0_alt1(v2, &v11_.v11, 1);
+      v3 = v11_.v11;
+      v4 = v11_.v12;
+      if (v11_.v11 != v11_.v12) {
+        v5 = (__int64*)fw_memory_g_heap_manager_ptr;
         do {
-          v7 = *v4;
-          if (*(_QWORD*)(*(_QWORD*)*v4 + 408LL) == *(_QWORD*)(a1 + 152)) {
-            v8 = (_QWORD*)fw_memory_HeapManager_Allocate(*v6, 8, 16, 0);
-            *v8 = v7;
-            v14 = v8;
-            v15 = v8 + 1;
-            v16 = v8 + 1;
-            GameSubquestData_125c2c0();
-            if (*(_QWORD*)(*v6 + 200LL) != 0) {
+          v6 = *(_QWORD*)v3;
+          if (*(_QWORD*)(**(_QWORD**)v3 + 408LL) == *(_QWORD*)(a1 + 152)) {
+            v7 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(*v5, 8, 16, 0);
+            *v7 = v6;
+            v8 = (__int64)v7;
+            v14[0] = v7;
+            v14[1] = v7 + 1;
+            v14[2] = v7 + 1;
+            GameSubquestData_125c2c0_alt1((__int64)v7, 0, (__int64)v14, 0);
+            if (*(_QWORD*)(*v5 + 200) != 0) {
               v9 = 128;
             }
             else {
               v9 = 56;
             }
-            result = nn_mem_StandardAllocator_Free(*v6 + v9);
+            nn_mem_StandardAllocator_Free_alt1(*v5 + v9, v8);
           }
-          ++v4;
-        } while (v4 != v5);
-        v4 = v11;
+          v3 += 8;
+        } while (v3 != v4);
+        v3 = v11_.v11;
       }
-      if (v4 != nullptr) {
-        v12 = v4;
+      if (v3 != 0) {
+        v11_.v12 = v3;
         v10 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v10 = 56;
         }
-        return nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v10);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v10, v3);
       }
     }
   }
-  return result;
 }
 
 __int64 game_menu_ScoutJoinProc_RunAutoGrowthDialog_closure_Invoke(__int64 a1,

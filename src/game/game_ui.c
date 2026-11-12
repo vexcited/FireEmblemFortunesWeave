@@ -791,22 +791,25 @@ void game_GameUI_Setup_lambda4_Invoke()
   __int64 v1;
   __int64 v2;
   __int64 v3;
-  __int64 (**v4)();
-  int v5;
-  __int64 v6;
+  struct {
+    __int64 (**v4)();
+    int v5;
+    char gap12_[4];
+    __int64 v6;
+  } v4_;
   __int64 var4;
 
-  v6 = 0;
-  v4 = ui_Event_vtable;
-  v5 = 46;
+  v4_.v6 = 0;
+  v4_.v4 = ui_Event_vtable;
+  v4_.v5 = 46;
   v0 = *(_QWORD*)(ui_Manager_instance_ + 1248);
   v1 = ui_Manager_instance_ + 1240;
   while (v0 != v1) {
     v2 = *(_QWORD*)(v0 + 16);
     if (v2 != 0) {
       (*(__attribute__((swiftcall)) void (**)(
-          PSEUDO_X8, __int64, __int64 (***)()))(*(_QWORD*)v2 + 16LL))(
-          (void*)&var4, v2, &v4);
+          PSEUDO_X8, __int64, __int64 (***)(void)))(*(_QWORD*)v2 + 16LL))(
+          (void*)(&var4), v2, &v4_.v4);
     }
     v0 = *(_QWORD*)(v0 + 8);
   }

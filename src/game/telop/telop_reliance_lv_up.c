@@ -19,8 +19,10 @@ extern __int64 GameData_212c608[2];
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcGameSkipView_instance_;
 extern __int64* GameData_2130240[8];
-__int64 game_telop_TelopRelianceLvUp_CreateBind_lambda0_Invoke(__int64 a1,
-                                                               __int64* a2);
+__int64 game_telop_TelopRelianceLvUp_CreateBind_lambda0_Invoke_alt1(
+    __int64 a1,
+    __int64*
+        a2) __asm__("game_telop_TelopRelianceLvUp_CreateBind_lambda0_Invoke");
 __int64 game_telop_TelopRelianceLvUp_CreateBind_lambda1_Invoke(__int64 a1,
                                                                __int64* a2);
 __int64 GameReliance_8e18b0(__int64, _QWORD*, _QWORD*);
@@ -34,6 +36,21 @@ extern __int64 game_GameModeData_instance_;
 __int64 game_telop_TelopRelianceLvUp_CreateBind(__int64 a1, __int64 a2,
                                                 __int64 a3, char a4,
                                                 unsigned __int8 a5);
+__int64 ProcInst_657850_alt1(__int64, __int64, __int64, char,
+                             __int64) __asm__("ProcInst_657850");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_ProcInst_Register_alt1(__int64) __asm__("game_ProcInst_Register");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+void GameHr_8679c0();
+void GameRoutine_1378190_alt1(__int64,
+                              const char*) __asm__("GameRoutine_1378190");
+void Se_80e330_alt1(__int64, const char*) __asm__("Se_80e330");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_telop_TelopRelianceLvUp_CreateBind_lambda0_Invoke(__int64 a1,
+                                                            __int64* a2);
 
 __int64 game_telop_TelopRelianceLvUp_CreateBind(__int64 a1, __int64 a2,
                                                 __int64 a3, char a4,
@@ -148,51 +165,49 @@ __int64 game_telop_TelopRelianceLvUp_CreateBind(__int64 a1, __int64 a2,
   return v14;
 }
 
-__int64 game_telop_TelopRelianceLvUp_CreateBind_lambda0_Invoke(__int64 a1,
-                                                               __int64* a2)
+void game_telop_TelopRelianceLvUp_CreateBind_lambda0_Invoke(__int64 a1,
+                                                            __int64* a2)
 {
+
+#pragma clang fp contract(off)
   __int64 v2;
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64* v10;
+  __int64* v7;
+  char* v8;
+  char* v9;
+  _QWORD* v10;
   __int64 v11;
-  char* v12;
-  char* v13;
-  _QWORD* v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  bool v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
   __int64 v18;
-  bool v19;
-  unsigned __int64 v20;
-  unsigned __int64 v21;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
   __int64 v22;
   __int64 v23;
   __int64 v24;
   __int64 v25;
-  __int64 v26;
+  unsigned int v26;
   __int64 v27;
-  __int64 v28;
+  unsigned int v28;
   unsigned int v29;
-  __int64 result;
+  bool v30;
   __int64 v31;
-  unsigned int v32;
-  unsigned int v33;
-  bool v34;
-  __int64 v35;
-  int v36;
-  int v37;
+  int v32;
+  int v33;
 
   v2 = *a2;
   v4 = fw_memory_g_heap_manager_ptr;
-  v5 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      872, 16, 0);
-  memset(v5 + 144, 0, 728, v6, v7, v8);
-  v9 = GameData_212c608[0];
+  v5 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 872, 16, 0);
+  memset_alt1(v5 + 144, 0, 0x2D8u);
+  v6 = GameData_212c608[0];
   *(_QWORD*)(v5 + 96) = 0;
   *(_QWORD*)(v5 + 104) = 0;
   *(_QWORD*)(v5 + 112) = 0;
@@ -211,9 +226,9 @@ __int64 game_telop_TelopRelianceLvUp_CreateBind_lambda0_Invoke(__int64 a1,
   *(_QWORD*)(v5 + 72) = 0;
   *(_QWORD*)(v5 + 80) = 0;
   *(_QWORD*)(v5 + 88) = 0;
-  *(_QWORD*)v5 = v9 + 16;
+  *(_QWORD*)v5 = v6 + 16;
   *(_QWORD*)(v5 + 8) = 0;
-  game_ProcInst_Register(v5);
+  game_ProcInst_Register_alt1(v5);
   *(_QWORD*)(v5 + 200) = 0;
   *(_QWORD*)(v5 + 152) = 0;
   *(_QWORD*)(v5 + 160) = 0;
@@ -289,7 +304,7 @@ __int64 game_telop_TelopRelianceLvUp_CreateBind_lambda0_Invoke(__int64 a1,
   *(_BYTE*)(v5 + 784) = 0;
   *(_QWORD*)(v5 + 792) = 0;
   *(_QWORD*)(v5 + 640) = v5 + 648;
-  v10 = GameData_2130240[0] + 2;
+  v7 = GameData_2130240[0] + 2;
   *(_BYTE*)(v5 + 800) = 0;
   *(_BYTE*)(v5 + 816) = 0;
   *(_BYTE*)(v5 + 820) = 0;
@@ -297,99 +312,100 @@ __int64 game_telop_TelopRelianceLvUp_CreateBind_lambda0_Invoke(__int64 a1,
   *(_QWORD*)(v5 + 856) = 0;
   *(_QWORD*)(v5 + 848) = 0;
   *(_QWORD*)(v5 + 840) = 0;
-  *(_QWORD*)(v5 + 808) = v10;
+  *(_QWORD*)(v5 + 808) = v7;
   *(_QWORD*)v5 = game_telop_TelopRelianceLvUp_vtable;
-  v11 = ProcInst_657850(v5, &GameData_2170810, "TelopRelianceLvUp", 1, v2);
+  ProcInst_657850_alt1(v5, (__int64)&GameData_2170810,
+                       (__int64)"TelopRelianceLvUp", 1, v2);
   if ((*(_BYTE*)(v5 + 272) & 1) != 0) {
     *(_QWORD*)(v5 + 280) = 17;
-    v12 = *(char**)(v5 + 288);
+    v8 = *(char**)(v5 + 288);
   }
   else {
     *(_BYTE*)(v5 + 272) = 34;
-    v12 = (char*)(v5 + 273);
+    v8 = (char*)(v5 + 273);
   }
-  strcpy(v12, "Layout/Common.arc");
+  strcpy(v8, "Layout/Common.arc");
   if ((*(_BYTE*)(v5 + 296) & 1) != 0) {
     *(_QWORD*)(v5 + 304) = 22;
-    v13 = *(char**)(v5 + 312);
+    v9 = *(char**)(v5 + 312);
   }
   else {
     *(_BYTE*)(v5 + 296) = 44;
-    v13 = (char*)(v5 + 297);
+    v9 = (char*)(v5 + 297);
   }
-  strcpy(v13, "Common_TlpRelianceLvUP");
+  strcpy(v9, "Common_TlpRelianceLvUP");
   if (*(_DWORD*)(v5 + 320) == 2) {
-    v14 = (_QWORD*)game_ProcGameSkipView_instance_;
+    v10 = (_QWORD*)game_ProcGameSkipView_instance_;
     if (game_ProcGameSkipView_instance_ != 0) {
-      v16 = *(_QWORD*)(game_ProcGameSkipView_instance_ + 208);
-      v15 = *(_QWORD*)(game_ProcGameSkipView_instance_ + 216);
-      v18 = *(_QWORD*)(game_ProcGameSkipView_instance_ + 184);
-      v17 = *(_QWORD*)(game_ProcGameSkipView_instance_ + 192);
-      v19 = v17 == v18;
-      v20 = v15 - 1 + v16;
-      v21 = v20 >> 7;
-      v22 = v20 & 0x7F;
-      v23 = 16 * (v17 - v18) - 1;
-      v24 = *(_QWORD*)(v18 + 8 * v21);
-      if (v19) {
-        v23 = 0;
+      v12 = *(_QWORD*)(game_ProcGameSkipView_instance_ + 208);
+      v11 = *(_QWORD*)(game_ProcGameSkipView_instance_ + 216);
+      v14 = *(_QWORD*)(game_ProcGameSkipView_instance_ + 184);
+      v13 = *(_QWORD*)(game_ProcGameSkipView_instance_ + 192);
+      v15 = v13 == v14;
+      v16 = v11 - 1 + v12;
+      v17 = v16 >> 7;
+      v18 = v16 & 0x7F;
+      v19 = 16 * (v13 - v14) - 1;
+      v20 = *(_QWORD*)(v14 + 8 * v17);
+      if (v15) {
+        v19 = 0;
       }
-      v25 = v24 + 32 * v22;
+      v21 = v20 + 32 * v18;
       *(_DWORD*)(game_ProcGameSkipView_instance_ + 156) =
-          *(_DWORD*)v25 & 0xFFFFFFFD |
+          *(_DWORD*)v21 & 0xFFFFFFFD |
           (2 * ((*(_DWORD*)(game_ProcGameSkipView_instance_ + 156) & 2) != 0));
-      v14[21] = *(_QWORD*)(v25 + 24);
-      v26 = *(_QWORD*)(v25 + 16);
-      v14[27] = v15 - 1;
-      v14[20] = v26;
-      if ((unsigned __int64)(v23 - (v15 + v16) - 255) <= 0xFFFFFFFFFFFFFEFFLL) {
-        if (*(_QWORD*)(v17 - 8) != 0) {
-          v27 = 128;
+      v10[21] = *(_QWORD*)(v21 + 24);
+      v22 = *(_QWORD*)(v21 + 16);
+      v10[27] = v11 - 1;
+      v10[20] = v22;
+      if ((unsigned __int64)(v19 - (v11 + v12) - 255) <= 0xFFFFFFFFFFFFFEFFLL) {
+        v23 = *(_QWORD*)(v13 - 8);
+        if (v23 != 0) {
+          v24 = 128;
           if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
-            v27 = 56;
+            v24 = 56;
           }
-          v11 = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v27);
-          v17 = v14[24];
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v24, v23);
+          v13 = v10[24];
         }
-        v14[24] = v17 - 8;
+        v10[24] = v13 - 8;
       }
     }
   }
   *(_DWORD*)(v5 + 320) = 2;
-  GameRoutine_8679c0(v11);
-  v28 = game_ProcGameSkipView_instance_;
+  GameHr_8679c0();
+  v25 = game_ProcGameSkipView_instance_;
   if (game_ProcGameSkipView_instance_ != 0) {
-    v29 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156);
-    if ((v29 & 0x10) == 0) {
-      v29 = v29 & 0xFFFFFFE2 | 1;
-      if (*(float*)(game_ProcGameSkipView_instance_ + 224) > 0.0) {
+    v26 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156);
+    if ((v26 & 0x10) == 0) {
+      v26 = v26 & 0xFFFFFFE2 | 1;
+      if (*(float*)(game_ProcGameSkipView_instance_ + 224) > 0x0.0p+0f) {
         *(_DWORD*)(game_ProcGameSkipView_instance_ + 224) = 0;
       }
     }
-    *(_DWORD*)(v28 + 156) = v29 | 0x10;
+    *(_DWORD*)(v25 + 156) = v26 | 0x10;
   }
-  Se_80e330(v5, "SE_SYS_Telop_RelianceLevelup_In");
-  result = GameRoutine_1378190(v5, (__int64)"SE_SYS_Telop_RelianceLevelup_Out");
-  v31 = *(_QWORD*)(a1 + 8);
-  v32 = *(unsigned __int16*)(v31 + 16);
-  v33 = *(unsigned __int16*)(*(_QWORD*)(a1 + 16) + 16LL);
-  v34 = v32 >= v33;
-  if (v32 >= v33) {
-    v35 = *(_QWORD*)(a1 + 16);
-  }
-  else {
-    v35 = *(_QWORD*)(a1 + 8);
-  }
-  if (!v34) {
+  Se_80e330_alt1(v5, "SE_SYS_Telop_RelianceLevelup_In");
+  GameRoutine_1378190_alt1(v5, "SE_SYS_Telop_RelianceLevelup_Out");
+  v27 = *(_QWORD*)(a1 + 8);
+  v28 = *(unsigned __int16*)(v27 + 16);
+  v29 = *(unsigned __int16*)(*(_QWORD*)(a1 + 16) + 16LL);
+  v30 = v28 >= v29;
+  if (v28 >= v29) {
     v31 = *(_QWORD*)(a1 + 16);
   }
-  v36 = *(unsigned __int8*)(a1 + 25);
-  *(_QWORD*)(v5 + 832) = v31;
-  v37 = *(unsigned __int8*)(a1 + 24);
-  *(_QWORD*)(v5 + 824) = v35;
-  *(_DWORD*)(v5 + 844) = v36;
-  *(_DWORD*)(v5 + 840) = v37;
-  return result;
+  else {
+    v31 = *(_QWORD*)(a1 + 8);
+  }
+  if (!v30) {
+    v27 = *(_QWORD*)(a1 + 16);
+  }
+  v32 = *(unsigned __int8*)(a1 + 25);
+  *(_QWORD*)(v5 + 832) = v27;
+  v33 = *(unsigned __int8*)(a1 + 24);
+  *(_QWORD*)(v5 + 824) = v31;
+  *(_DWORD*)(v5 + 844) = v32;
+  *(_DWORD*)(v5 + 840) = v33;
 }
 
 __int64 game_telop_TelopRelianceLvUp_CreateBind_lambda1_Invoke(__int64 a1,

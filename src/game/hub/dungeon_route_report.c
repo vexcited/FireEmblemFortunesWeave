@@ -45,6 +45,13 @@ float atan2f(long double, float);
 float powf(float, float);
 void game_hub_DungeonRouteReport_Update_lambda1_Invoke(__int64 a1, __int64 a2,
                                                        atomic_uint* a3);
+__int64 Manager_d55430_alt1() __asm__("Manager_d55430");
+__int64 game_14a1b00(__int64*, float);
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __n128 DungeonRouteReport_f60360(_QWORD* a1)
 {
@@ -182,6 +189,8 @@ _QWORD* DungeonRouteReport_f604e0(_QWORD* result)
 
 __int64 DungeonRouteReport_f608a0(__int64 a1)
 {
+
+#pragma clang fp contract(off)
   __int64 v2;
   float v3;
   float v4;
@@ -206,75 +215,83 @@ __int64 DungeonRouteReport_f608a0(__int64 a1)
   __int64 v23;
   __int64 result;
   float v25;
-  __int64 v26;
-  void* v27;
+  struct {
+    __int64 v26;
+    void* v27;
+  } v26_;
 
-  v27 = &GameData_1adb73c;
-  v2 = game_HashString(&GameData_1adb73c);
-  v3 = 0.0;
-  v4 = 0.0;
-  v26 = v2;
+  v26_.v27 = &GameData_1adb73c;
+  v2 = game_HashString_alt1((__int64)&GameData_1adb73c);
+  v3 = 0x0.0p+0f;
+  v4 = 0x0.0p+0f;
+  v26_.v26 = v2;
   if (game_GameModeData_instance_ != 0) {
-    v5 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v26);
-    v4 = 0.0;
+    v5 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v26_.v26);
+    v4 = 0x0.0p+0f;
     if (v5 != 0) {
       v4 = (float)*(int*)(v5 + 32);
     }
   }
   *(float*)(a1 + 68) = v4;
-  v27 = &GameData_1ab0ecf;
-  v26 = game_HashString(&GameData_1ab0ecf);
+  v26_.v27 = &GameData_1ab0ecf;
+  v26_.v26 = game_HashString_alt1((__int64)&GameData_1ab0ecf);
   if (game_GameModeData_instance_ != 0) {
-    v6 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v26);
+    v6 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v26_.v26);
     if (v6 != 0) {
       v3 = (float)*(int*)(v6 + 32);
     }
   }
   *(float*)(a1 + 76) = v3;
-  v27 = &GameData_1adef41;
-  v7 = game_HashString(&GameData_1adef41);
-  v8 = 0.0;
-  v9 = 0.0;
-  v26 = v7;
+  v26_.v27 = &GameData_1adef41;
+  v7 = game_HashString_alt1((__int64)&GameData_1adef41);
+  v8 = 0x0.0p+0f;
+  v9 = 0x0.0p+0f;
+  v26_.v26 = v7;
   if (game_GameModeData_instance_ != 0) {
-    v10 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v26);
-    v9 = 0.0;
+    v10 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v26_.v26);
+    v9 = 0x0.0p+0f;
     if (v10 != 0) {
       v9 = (float)*(int*)(v10 + 32);
     }
   }
   *(float*)(a1 + 80) = v9;
-  v27 = &GameData_1ac3eca;
-  v26 = game_HashString(&GameData_1ac3eca);
+  v26_.v27 = &GameData_1ac3eca;
+  v26_.v26 = game_HashString_alt1((__int64)&GameData_1ac3eca);
   if (game_GameModeData_instance_ != 0) {
-    v11 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v26);
+    v11 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v26_.v26);
     if (v11 != 0) {
       v8 = (float)*(int*)(v11 + 32);
     }
   }
-  v27 = &GameData_1ad729b;
-  *(float*)(a1 + 84) = v8 / 100.0;
-  v12 = 0.0;
-  v26 = game_HashString(&GameData_1ad729b);
+  v26_.v27 = &GameData_1ad729b;
+  *(float*)(a1 + 84) = v8 / 0x1.9000000000000p+6f;
+  v12 = 0x0.0p+0f;
+  v26_.v26 = game_HashString_alt1((__int64)&GameData_1ad729b);
   if (game_GameModeData_instance_ != 0) {
-    v13 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v26);
+    v13 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v26_.v26);
     if (v13 != 0) {
       v12 = (float)*(int*)(v13 + 32);
     }
   }
-  v27 = &GameData_1aa53fd;
-  *(float*)(a1 + 72) = v12 / 100.0;
-  v14 = game_HashString(&GameData_1aa53fd);
+  v26_.v27 = &GameData_1aa53fd;
+  *(float*)(a1 + 72) = v12 / 0x1.9000000000000p+6f;
+  v14 = game_HashString_alt1((__int64)&GameData_1aa53fd);
   v15 = game_GameModeData_instance_;
-  v26 = v14;
+  v26_.v26 = v14;
   if (game_GameModeData_instance_ != 0) {
-    v16 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v26);
+    v16 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v26_.v26);
     if (v16 != 0) {
       v15 = *(_DWORD*)(v16 + 32);
     }
@@ -283,44 +300,47 @@ __int64 DungeonRouteReport_f608a0(__int64 a1)
     }
   }
   *(_DWORD*)(a1 + 88) = v15;
-  v27 = &GameData_1aa18e9;
-  v17 = game_HashString(&GameData_1aa18e9);
-  v18 = 0.0;
-  v19 = 0.0;
-  v26 = v17;
+  v26_.v27 = &GameData_1aa18e9;
+  v17 = game_HashString_alt1((__int64)&GameData_1aa18e9);
+  v18 = 0x0.0p+0f;
+  v19 = 0x0.0p+0f;
+  v26_.v26 = v17;
   if (game_GameModeData_instance_ != 0) {
-    v20 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v26);
-    v19 = 0.0;
+    v20 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v26_.v26);
+    v19 = 0x0.0p+0f;
     if (v20 != 0) {
       v19 = (float)*(int*)(v20 + 32);
     }
   }
-  v27 = &GameData_1ac0a92;
-  *(float*)(a1 + 92) = v19 / 100.0;
-  v26 = game_HashString(&GameData_1ac0a92);
+  v26_.v27 = &GameData_1ac0a92;
+  *(float*)(a1 + 92) = v19 / 0x1.9000000000000p+6f;
+  v26_.v26 = game_HashString_alt1((__int64)&GameData_1ac0a92);
   if (game_GameModeData_instance_ != 0) {
-    v21 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v26);
+    v21 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v26_.v26);
     if (v21 != 0) {
       v18 = (float)*(int*)(v21 + 32);
     }
   }
-  v27 = &GameData_1aea6fb;
-  *(float*)(a1 + 96) = v18 / 100.0;
-  v22 = 0.0;
-  v26 = game_HashString(&GameData_1aea6fb);
+  v26_.v27 = &GameData_1aea6fb;
+  *(float*)(a1 + 96) = v18 / 0x1.9000000000000p+6f;
+  v22 = 0x0.0p+0f;
+  v26_.v26 = game_HashString_alt1((__int64)&GameData_1aea6fb);
   if (game_GameModeData_instance_ != 0) {
-    v23 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v26);
+    v23 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v26_.v26);
     if (v23 != 0) {
       v22 = (float)*(int*)(v23 + 32);
     }
   }
-  *(float*)(a1 + 100) = v22 / 100.0;
-  result = Manager_d55430(*(_QWORD*)GameData_212dbb8[0]);
+  *(float*)(a1 + 100) = v22 / 0x1.9000000000000p+6f;
+  result = Manager_d55430_alt1();
   if ((result & 1) != 0) {
-    v25 = *(float*)(a1 + 68) * 0.25;
+    v25 = *(float*)(a1 + 68) * 0x1.0000000000000p-2f;
     *(int*)(a1 + 88) /= 2;
     *(float*)(a1 + 68) = v25;
   }
@@ -329,17 +349,20 @@ __int64 DungeonRouteReport_f608a0(__int64 a1)
 
 long double DungeonRouteReport_f60e40(__int64 a1)
 {
+
+#pragma clang fp contract(off)
   __int64 v1;
   unsigned __int64 v3;
   _QWORD* v4;
   __int64 v5;
   __int64 v6;
-  __int64* v7;
+  __int64 v7;
   __int64 v8;
   long double result;
   __int128 v10;
   __int64 v11;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v1 = *(_QWORD*)(a1 + 8);
   if (*(_QWORD*)(a1 + 16) != v1) {
     v3 = 0;
@@ -354,11 +377,13 @@ long double DungeonRouteReport_f60e40(__int64 a1)
       if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                                 memory_order_acquire) &
            1) == 0 &&
-          (unsigned int)__cxa_guard_acquire(&GameData_21a6130) != 0) {
+          __cxa_guard_acquire_alt1((__int64)&GameData_21a6130) != 0) {
         v11 = v4[1];
         *(_QWORD*)&GameData_21a6120 = *v4;
         *((_QWORD*)&GameData_21a6120 + 1) = v11;
-        __cxa_guard_release(&GameData_21a6130);
+        __cxa_guard_release_alt1((__int64)&GameData_21a6130),
+            result = COERCE_AS(__typeof__(result),
+                               PSEUDO_REGISTER(__n128, "v0", "=w"));
       }
       result = *(long double*)&GameData_21a6120;
       *(_DWORD*)(v5 + 56) = 0;
@@ -374,19 +399,21 @@ long double DungeonRouteReport_f60e40(__int64 a1)
         return result;
       }
     }
-    v7 = *(__int64**)(v6 + 8);
+    v7 = *(_QWORD*)(v6 + 8);
     *(_BYTE*)v6 = 0;
-    v8 = *v7;
-    if (*v7 != 0) {
-      if (*(_DWORD*)(v8 + 16) == *((_DWORD*)v7 + 2)) {
+    v8 = *(_QWORD*)v7;
+    if (*(_QWORD*)v7 != 0) {
+      if (*(_DWORD*)(v8 + 16) == *(_DWORD*)(v7 + 8)) {
         *(_BYTE*)(v8 + 33) = 0;
         if (*(_BYTE*)v6 != 0) {
           goto LABEL_9;
         }
       }
-      v7 = *(__int64**)(v6 + 8);
+      v7 = *(_QWORD*)(v6 + 8);
     }
-    GameRoutine_14a1b00(v7, 0.0);
+    game_14a1b00((__int64*)v7, 0x0.0p+0f),
+        result =
+            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   LABEL_9:
     *(_QWORD*)(v5 + 80) = 0;
     goto LABEL_10;

@@ -2801,8 +2801,8 @@ __int64 Camera_Unknown2_7c1a10(__int64 result, __int64 a2)
 
 __int64 Camera_Unknown9(__int64 a1, __int64 a2, long double a3, long double a4)
 {
-  __int64 v4;
-  __int64 v5;
+
+#pragma clang fp contract(off)
   __int64 v6;
   __int64 v7;
   __int64 v8;
@@ -2824,12 +2824,8 @@ __int64 Camera_Unknown9(__int64 a1, __int64 a2, long double a3, long double a4)
   float v25;
   int v27;
   float v28;
-  __int64 v29;
-  __int64 v30;
 
   v6 = *(_QWORD*)(a1 + 432);
-  v29 = v4;
-  v30 = v5;
   v7 = *(int*)(a2 + 20);
   v8 = *(_QWORD*)(a2 + 8);
   v10 = v6;
@@ -2847,7 +2843,7 @@ __int64 Camera_Unknown9(__int64 a1, __int64 a2, long double a3, long double a4)
     v15 = v6 + 16;
     LODWORD(a4) = v27;
   }
-  else if (*(float*)(v6 + 24) <= 0.0) {
+  else if (*(float*)(v6 + 24) <= 0x0.0p+0f) {
     if (((*(__int64 (**)(__int64, int*, __int64, float))(
              *(_QWORD*)(v6 + 16) + 8LL))(v6 + 16, &v27, v6 + 48,
                                          *(float*)&v27) &
@@ -2868,7 +2864,6 @@ __int64 Camera_Unknown9(__int64 a1, __int64 a2, long double a3, long double a4)
   (*(void (**)(__int64, long double, long double))(v14 + 24))(v15, a3, a4);
   *(_QWORD*)(v10 + 24) = 0;
   *(_WORD*)(v10 + 40) = 256;
-
 LABEL_8:
   v18 = *(int*)(a2 + 20);
   v19 = *(_QWORD*)(a2 + 8);
@@ -2891,7 +2886,7 @@ LABEL_8:
     *(_WORD*)(v10 + 80) = 256;
     goto LABEL_15;
   }
-  if (*(float*)(v10 + 64) > 0.0) {
+  if (*(float*)(v10 + 64) > 0x0.0p+0f) {
     v25 = v28;
     (*(void (**)(__int64))(*(_QWORD*)(v10 + 56) + 16LL))(v10 + 56);
     v23 = *(_QWORD*)(v10 + 56);
@@ -2908,7 +2903,6 @@ LABEL_8:
     v24 = v10 + 56;
     goto LABEL_14;
   }
-
 LABEL_15:
   *(_DWORD*)(a2 + 20) += 4;
   return Camera_7c0d80(v10);

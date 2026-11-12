@@ -19,6 +19,13 @@ __int64 EmptyMenuItem_Unknown55_1710fc0(__int64 a1);
 __int64 EmptyMenuItem_OnSelect(__int64 a1);
 __int64 EmptyMenuItem_Unknown55_17b04a0(__int64 a1);
 __int64 EmptyMenuItem_DeletingDestructor(__int64 a1);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
 
 __int64 EmptyMenuItem_Unknown55_1710fc0(__int64 a1)
 {
@@ -51,26 +58,29 @@ __int64 EmptyMenuItem_OnSelect(__int64 a1)
   __int64 result;
   __int64 v4;
   __int64 v5;
-  __int64 v6;
-  __int64 v7;
+  struct {
+    __int64 v6;
+    __int64 v7;
+  } v6_;
 
   v2 = 512;
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
-  GameRoutine_1560070((void*)&v6, *(_QWORD*)(a1 + 8) + 848LL,
-                      "L_UnitInfoDetail");
-  result = v7;
-  if (v7 != 0) {
-    v4 = std___1___shared_weak_count_lock(v7);
-    v5 = v6;
-    result = v7;
-    if (v7 != 0) {
-      result = std___1___shared_weak_count___release_weak(v7);
+  (*(void (**)(__int64))(*(_QWORD*)a1 + v2))((__int64)a1);
+  LayoutAccessor_1560070((void*)(&v6_.v6),
+                         (__int64*)(*(_QWORD*)(a1 + 8) + 848LL),
+                         "L_UnitInfoDetail");
+  result = v6_.v7;
+  if (v6_.v7 != 0) {
+    v4 = std___1___shared_weak_count_lock_alt1(v6_.v7);
+    v5 = v6_.v6;
+    result = v6_.v7;
+    if (v6_.v7 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v6_.v7);
     }
     if (v4 != 0 && v5 != 0) {
-      result = GameRoutine_155e830(v5, 0);
+      result = LayoutAccessor_155e830(v5, 0);
     }
     else if (v4 == 0) {
       return result;
@@ -78,7 +88,7 @@ __int64 EmptyMenuItem_OnSelect(__int64 a1)
     if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-      return std___1___shared_weak_count___release_weak(v4);
+      return std___1___shared_weak_count___release_weak_alt1(v4);
     }
   }
   return result;

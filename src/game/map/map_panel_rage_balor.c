@@ -13,9 +13,9 @@ extern __int64 (*GameData_1ffed50[])();
 __int64
 game_map_MapPanelRageBalor_UpdateRage_lambda0_Invoke_feb2a0(__int64 a1,
                                                             __int64* a2);
-_QWORD* game_map_MapPanelRageBalor_UpdateRage_lambda0_Invoke_feb430(__int64 a1,
-                                                                    int* a2,
-                                                                    int* a3);
+_QWORD* game_map_MapPanelRageBalor_UpdateRage_lambda0_Invoke_feb430_alt1(
+    __int64 a1, int* a2, int* a3) __asm__("game_map_MapPanelRageBalor_"
+                                          "UpdateRage_lambda0_Invoke_feb430");
 __int64 game_map_MapPanelRageBalor_UpdateRage_lambda1_Invoke(__int64 a1,
                                                              _DWORD* a2,
                                                              _DWORD* a3);
@@ -45,6 +45,10 @@ float32x4_t* GameRoutine_fcacb0(__int64, float32x4_t*, int, char, char, __int16,
                                 unsigned __int64*);
 void __attribute__((noreturn)) GameRoutine_60a310();
 __int64 MapPanelRageBalor_Unknown3(__int64 result);
+_BYTE* GameRoutine_74e080_alt1(__int64*, __int64) __asm__("GameRoutine_74e080");
+_BYTE* game_map_MapPanelRageBalor_UpdateRage_lambda0_Invoke_feb430(__int64 a1,
+                                                                   int* a2,
+                                                                   int* a3);
 
 __int64 MapPanelRageBalor_Unknown3(__int64 result)
 {
@@ -494,27 +498,29 @@ __int64 game_map_MapPanelRageBalor_UpdateRage_lambda0_Invoke_feb2a0(__int64 a1,
   return (*(__int64 (**)(__int64))(*v8 + v6))((__int64)v8);
 }
 
-_QWORD* game_map_MapPanelRageBalor_UpdateRage_lambda0_Invoke_feb430(__int64 a1,
-                                                                    int* a2,
-                                                                    int* a3)
+_BYTE* game_map_MapPanelRageBalor_UpdateRage_lambda0_Invoke_feb430(__int64 a1,
+                                                                   int* a2,
+                                                                   int* a3)
 {
   int v4;
   int v5;
-  _QWORD* result;
-  __int64 v7;
-  _BYTE v8[2];
-  __int16 v9;
+  _BYTE* result;
+  __int64* v7;
+  struct {
+    _BYTE v8[2];
+    __int16 v9;
+  } v8_;
 
   v4 = *a2;
   v5 = *a3;
-  result = (_QWORD*)(*(__int64 (**)(_QWORD))(***(_QWORD***)(a1 + 8) + 224LL))(
+  result = (_BYTE*)(*(__int64 (**)(_QWORD))(***(_QWORD***)(a1 + 8) + 224LL))(
       **(_QWORD**)(a1 + 8));
-  if (*result == **(_QWORD**)(a1 + 16)) {
-    v7 = *(_QWORD*)(a1 + 24);
-    v8[0] = v4;
-    v8[1] = v5;
-    v9 = 0;
-    return (_QWORD*)GameRoutine_74e080(v7, v8);
+  if (*(_QWORD*)result == **(_QWORD**)(a1 + 16)) {
+    v7 = *(__int64**)(a1 + 24);
+    v8_.v8[0] = v4;
+    v8_.v8[1] = v5;
+    v8_.v9 = 0;
+    return GameRoutine_74e080_alt1(v7, (__int64)v8_.v8);
   }
   return result;
 }

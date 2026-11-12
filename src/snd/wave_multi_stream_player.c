@@ -56,6 +56,13 @@ __int64 WaveMultiStreamPlayer_Unknown201(__int64 a1);
 __int64 WaveMultiStreamPlayer_Unknown202(__int64 a1);
 __int64* GameRoutine_180060_alt1(__int64) __asm__("GameRoutine_180060");
 double WaveMultiStreamPlayer_1809e0(__int64 a1, int a2);
+__int64 GameRoutine_112180_alt1(__int64, __int64) __asm__("GameRoutine_112180");
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+__int64
+snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
+__int64 snd_fnd_WeakHandle_set_alt1(__int64,
+                                    __int64) __asm__("snd_fnd_WeakHandle_set");
 
 __int64 WaveMultiStreamPlayer_Destructor(__int64** a1)
 {
@@ -196,10 +203,12 @@ __int64 WaveMultiStreamPlayer_Unknown155(__int64 a1, __int64 a2, char a3,
   __int64 v14;
   __int64 v15;
   __int64 v16;
-  __int64 v18;
-  int v19;
+  struct {
+    __int64 v18;
+    int v19;
+  } v18_;
 
-  nn_os_LockMutex(GameData_2134be8);
+  nn_os_LockMutex_alt1((__int64)GameData_2134be8);
   v10 = *(_QWORD*)(a1 + 11160);
   if (*(_QWORD*)(a1 + 11168) == v10) {
   LABEL_10:
@@ -210,10 +219,10 @@ __int64 WaveMultiStreamPlayer_Unknown155(__int64 a1, __int64 a2, char a3,
       (*(void (**)(unsigned __int64, __int64))(*(_QWORD*)v12 + 1216LL))(v12, 1);
       (*(void (**)(unsigned __int64, __int64, _QWORD, _QWORD, _QWORD))(
           *(_QWORD*)v12 + 1240LL))(v12, a2, a3 & 1, a4 & 1, a5 & 1);
-      v18 = 0;
-      v19 = 0x2000;
-      snd_fnd_WeakHandle_set(&v18, v12 + 5552);
-      WaveMultiStreamPlayer_17fce0(a1 + 11160, &v18);
+      v18_.v18 = 0;
+      v18_.v19 = 0x2000;
+      snd_fnd_WeakHandle_set_alt1((__int64)&v18_.v18, v12 + 5552);
+      WaveMultiStreamPlayer_17fce0((__int64*)(a1 + 11160), (__int64)&v18_.v18);
       LODWORD(v12) =
           ((*(_QWORD*)(a1 + 11168) - *(_QWORD*)(a1 + 11160)) >> 4) - 1;
     }
@@ -225,14 +234,15 @@ __int64 WaveMultiStreamPlayer_Unknown155(__int64 a1, __int64 a2, char a3,
     v11 = 0;
     v12 = 0;
     while (1) {
-      if ((snd_fnd_WeakHandle_isValid(v10 + v11) & 1) == 0) {
+      if ((snd_fnd_WeakHandle_isValid_alt1((__int64*)(v10 + v11)) & 1) == 0) {
         v13 = GameRoutine_17c140(*(_QWORD**)(a1 + 5568));
         v14 = v13;
-        v18 = 0;
-        v19 = 0x2000;
+        v18_.v18 = 0;
+        v18_.v19 = 0x2000;
         v15 = v13 != 0 ? v13 + 5552 : 0LL;
-        snd_fnd_WeakHandle_set(&v18, v15);
-        GameRoutine_112180(*(_QWORD*)(a1 + 11160) + v11, &v18);
+        snd_fnd_WeakHandle_set_alt1((__int64)&v18_.v18, v15);
+        GameRoutine_112180_alt1(*(_QWORD*)(a1 + 11160) + v11,
+                                (__int64)&v18_.v18);
         if (v14 != 0) {
           break;
         }
@@ -249,7 +259,7 @@ __int64 WaveMultiStreamPlayer_Unknown155(__int64 a1, __int64 a2, char a3,
     (*(void (**)(__int64, __int64, _QWORD, _QWORD, _QWORD))(
         *(_QWORD*)v14 + 1240LL))(v14, a2, a3 & 1, a4 & 1, a5 & 1);
   }
-  nn_os_UnlockMutex(&GameData_2199b90);
+  nn_os_UnlockMutex_alt1((__int64)&GameData_2199b90);
   return (unsigned int)v12;
 }
 

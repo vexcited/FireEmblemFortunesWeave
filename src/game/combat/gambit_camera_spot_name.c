@@ -13,6 +13,9 @@ __int64 GambitCameraSpotName_Dispatch(__int64 a1);
 __int64 GambitCameraSpotName_Destructor(__int64 result);
 __int64 GambitCameraSpotName_DeletingDestructor(__int64 a1);
 __attribute__((swiftcall)) void GambitCameraSpotName_Unknown3(PSEUDO_X8 x8_);
+__int64 LegionGambitCamera_e5a5e0(__int64 result, __int64, __int64);
+void __attribute__((noreturn))
+GameRoutine_d38e30_alt1() __asm__("GameRoutine_d38e30");
 
 __int64 GambitCameraSpotName_Dispatch(__int64 a1)
 {
@@ -97,11 +100,11 @@ __int64 GambitCameraSpotName_Dispatch(__int64 a1)
   }
   else {
     if (v18 <= (unsigned int)v17) {
-      GameRoutine_d38e30(v6);
+      GameRoutine_d38e30_alt1();
     }
     v21 = v14 + 104LL * (unsigned int)v17;
   }
-  return GameRoutine_e5a5e0(v6, v21, &v23);
+  return LegionGambitCamera_e5a5e0(v6, v21, (__int64)&v23);
 }
 
 __int64 GambitCameraSpotName_Destructor(__int64 result)

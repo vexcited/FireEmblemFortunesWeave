@@ -22,6 +22,7 @@ extern __int64* GameData_2130f98[4];
 extern __int64 GameData_212c608[2];
 extern __int64 GameData_2131678;
 __int64 TelopItemSkillLearn_1767590(__int64 a1);
+__int64 LayoutAccessor_1562cf0(__int64 result, const char*);
 
 __int64 TelopItemSkillLearn_1767590(__int64 a1)
 {
@@ -251,15 +252,18 @@ __int64 TelopItemSkillLearn_DeletingDestructor(_QWORD* a1)
 
 __int64 TelopItemSkillLearn_Unknown56(__int64 a1)
 {
-  char v3[15];
-  __int64 v4;
+  struct {
+    char gap8_[1];
+    char v3[15];
+    __int64 v4;
+  } v3_;
 
-  v4 = 0;
-  v3[12] = 0;
-  *(_WORD*)&v3[13] = 0;
-  strcpy(v3, "Pos_TalkOff");
-  GameRoutine_1562cf0(a1 + 168, v3);
-  return GameRoutine_1562cf0(a1 + 168, "Type_TitleOff");
+  v3_.v4 = 0;
+  v3_.v3[12] = 0;
+  *(_WORD*)&v3_.v3[13] = 0;
+  strcpy(v3_.v3, "Pos_TalkOff");
+  LayoutAccessor_1562cf0(a1 + 168, v3_.v3);
+  return LayoutAccessor_1562cf0(a1 + 168, "Type_TitleOff");
 }
 
 #pragma GCC visibility pop

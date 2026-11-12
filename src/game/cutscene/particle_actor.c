@@ -13,57 +13,62 @@ __int64 ParticleActor_Unknown8(_QWORD* a1, __int64 a2);
 __int64 ParticleActor_Unknown9(__int64 a1, float* a2);
 __int64 ParticleActor_Destructor(_QWORD* a1);
 __int64 ParticleActor_DeletingDestructor(_QWORD* a1);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 __int64 ParticleActor_Unknown8(_QWORD* a1, __int64 a2)
 {
   __int64 result;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  unsigned __int64 v8;
-  __int64 v9;
-  unsigned __int64 v10;
+  unsigned __int64 v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  __int64 v10;
   __int64 v11;
-  __int64 v12;
-  bool v13;
-  __int64 v14;
-  unsigned __int64 v15;
-  _QWORD v16[2];
+  bool v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  _QWORD v15[2];
 
   result = a1[2];
   if (result != 0) {
-    result = std___1___shared_weak_count_lock(result);
+    result = std___1___shared_weak_count_lock_alt1(result);
     if (result != 0) {
-      v6 = a1[1];
-      v7 = result;
-      if (v6 != 0) {
-        v8 = *(unsigned __int8*)(v6 + 120);
-        v9 = v6 + 121;
-        v12 = v6 + 128;
-        v10 = *(_QWORD*)(v6 + 128);
-        v11 = *(_QWORD*)(v12 + 8);
-        v13 = (v8 & 1) == 0;
-        v14 = *(_QWORD*)(a2 + 32);
-        v15 = v8 >> 1;
-        if (v13) {
-          v10 = v15;
+      v5 = a1[1];
+      v6 = result;
+      if (v5 != 0) {
+        v7 = *(unsigned __int8*)(v5 + 120);
+        v8 = v5 + 121;
+        v11 = v5 + 128;
+        v9 = *(_QWORD*)(v5 + 128);
+        v10 = *(_QWORD*)(v11 + 8);
+        v12 = (v7 & 1) == 0;
+        v13 = *(_QWORD*)(a2 + 32);
+        v14 = v7 >> 1;
+        if (v12) {
+          v9 = v14;
         }
         else {
-          v9 = v11;
+          v8 = v10;
         }
-        v16[0] = v9;
-        v16[1] = v10;
-        if (v14 == 0) {
-          GameRoutine_60a310(0, v5);
+        v15[0] = v8;
+        v15[1] = v9;
+        if (v13 == 0) {
+          GameRoutine_60a310_alt1();
         }
         result =
-            (*(__int64 (**)(__int64, _QWORD*))(*(_QWORD*)v14 + 48LL))(v14, v16);
+            (*(__int64 (**)(__int64, _QWORD*))(*(_QWORD*)v13 + 48LL))(v13, v15);
         a1[5] = result;
       }
-      if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+      if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-        return std___1___shared_weak_count___release_weak(v7);
+        (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+        return std___1___shared_weak_count___release_weak_alt1(v6);
       }
     }
   }

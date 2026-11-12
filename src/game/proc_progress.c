@@ -22,9 +22,14 @@ __int16* ProcProgress_86b660(__int64 a1, int a2);
 extern __int64 game_ProcFadeView_instance_;
 extern __int64 game_g_frame_clock;
 __int16* ProcProgress_Unknown2(__int64 a1);
+__int16* game_8697c0(__int16* result, char, float);
+unsigned __int16*
+Dir_70d7a0_alt1(unsigned __int16* result) __asm__("Dir_70d7a0");
 
 __int16* ProcProgress_86b660(__int64 a1, int a2)
 {
+
+#pragma clang fp contract(off)
   __int16 v2;
   __int16 v3;
   int v4;
@@ -51,7 +56,7 @@ __int16* ProcProgress_86b660(__int64 a1, int a2)
     v14 = 0;
     v12 = v2 + a2 / 60;
     v13 = v5 + a2 % 60;
-    Dir_70d7a0(&v10);
+    Dir_70d7a0_alt1((unsigned __int16*)&v10);
   }
   if (game_gmap_GmapClock_instance_ != 0) {
     ScheduleNatives_869280(game_gmap_GmapClock_instance_, &v10);
@@ -70,12 +75,12 @@ __int16* ProcProgress_86b660(__int64 a1, int a2)
       (v6 != 0 ? (v7 = (__int16*)(v6 + 8))
                : (v7 = (__int16*)game_gmap_GmapClock_kDefaultTime_ptr),
        v6 == 0)) {
-    v8 = 0.0;
+    v8 = 0x0.0p+0f;
   }
   else {
     v8 = *(float*)(v6 + 44);
   }
-  return GameRoutine_8697c0(v7, 1, v8);
+  return game_8697c0(v7, 1, v8);
 }
 
 __int64 ProcProgress_Destructor(__int64 a1)

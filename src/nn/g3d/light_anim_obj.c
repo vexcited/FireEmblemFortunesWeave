@@ -52,6 +52,8 @@ void LightAnimObj_5e81c0(__int64 a1, _DWORD* a2, long double a3)
 
 void LightAnimObj_5e82a0(__int64 a1, _DWORD* a2, __int64 a3, long double a4)
 {
+
+#pragma clang fp contract(off)
   int v4;
   unsigned int v8;
   __int64 v9;

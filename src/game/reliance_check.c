@@ -14,7 +14,8 @@ __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_19a85a0(void);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
-__int64 RelianceCheck_19a7f00(__int64 result, __int64 a2, int a3);
+__int64 RelianceCheck_19a7f00_alt1(__int64 result, __int64 a2,
+                                   int a3) __asm__("RelianceCheck_19a7f00");
 void RelianceCheck_19a8310();
 __int64 GameReliance_8e17a0(_QWORD, _QWORD, _QWORD);
 __int64 ProcInst_657850(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -35,6 +36,17 @@ GameRoutine_19a85a0_alt1(_QWORD) __asm__("GameRoutine_19a85a0");
 __int64 RelianceCheck_19a8080(__int64 a1);
 __int64 RelianceCheck_19a8340(__int64 result, __int64 a2, __int64 a3,
                               __int64 a4, __int64 a5, __int64 a6);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_19a85a0_alt2() __asm__("GameRoutine_19a85a0");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void RelianceCheck_19a7f00(__int64 a1, __int64 a2, int a3);
 
 _QWORD* RelianceCheck_Destructor(_QWORD* result)
 {
@@ -73,14 +85,14 @@ _QWORD* RelianceCheck_Destructor(_QWORD* result)
   return result;
 }
 
-__int64 RelianceCheck_19a7f00(__int64 result, __int64 a2, int a3)
+void RelianceCheck_19a7f00(__int64 a1, __int64 a2, int a3)
 {
   __int64* v3;
   unsigned __int64 v4;
   unsigned __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
+  signed __int64 v8;
   unsigned __int64 v9;
   __int64 v10;
   unsigned __int64 v11;
@@ -101,7 +113,7 @@ __int64 RelianceCheck_19a7f00(__int64 result, __int64 a2, int a3)
     v8 = v5 - *(_QWORD*)game_RelianceCheck_unknown_;
     v9 = 1 - 0x5555555555555555LL * (v8 >> 3);
     if (v9 > 0xAAAAAAAAAAAAAAALL) {
-      GameRoutine_19a85a0();
+      GameRoutine_19a85a0_alt2();
     }
     v10 = fw_memory_g_heap_manager_ptr;
     v11 = 0xAAAAAAAAAAAAAAABLL * ((__int64)(v4 - v7) >> 3);
@@ -116,27 +128,27 @@ __int64 RelianceCheck_19a7f00(__int64 result, __int64 a2, int a3)
     }
     if (v12 != 0) {
       if (v12 > 0xAAAAAAAAAAAAAAALL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v13 = result;
+      v13 = a1;
       v14 = a2;
       v15 = a3;
-      v16 = fw_memory_HeapManager_Allocate(
+      v16 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 24 * v12, 16, 0);
       a3 = v15;
       a2 = v14;
-      result = v13;
+      a1 = v13;
     }
     else {
       v16 = 0;
     }
     v17 = v16 + v8;
     v18 = v16 + 24 * v12;
-    *(_QWORD*)v17 = result;
+    *(_QWORD*)v17 = a1;
     *(_QWORD*)(v17 + 8) = a2;
     *(_DWORD*)(v17 + 16) = a3;
     v6 = v16 + v8 + 24;
-    result = memcpy(v16, v7, v8);
+    memcpy_alt1(v16, v7, v8);
     *v3 = v16;
     v3[1] = v6;
     v3[2] = v18;
@@ -145,17 +157,16 @@ __int64 RelianceCheck_19a7f00(__int64 result, __int64 a2, int a3)
       if (*(_QWORD*)(*(_QWORD*)v10 + 200LL) == 0) {
         v19 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v10 + v19);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v10 + v19, v7);
     }
   }
   else {
-    *(_QWORD*)v5 = result;
+    *(_QWORD*)v5 = a1;
     *(_QWORD*)(v5 + 8) = a2;
     v6 = v5 + 24;
     *(_DWORD*)(v5 + 16) = a3;
   }
   v3[1] = v6;
-  return result;
 }
 
 __int64 RelianceCheck_19a8080(__int64 a1)

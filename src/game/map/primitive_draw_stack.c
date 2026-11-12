@@ -79,6 +79,11 @@ __int64* PrimitiveDrawStack_f533a0(__int64* result, __int64* a2,
 void game_map_PrimitiveDrawStack_DrawMain_lambda0_Invoke(__int64 a1,
                                                          float32x4_t** a2);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
+_QWORD* PrimitiveDrawStack_f533a0_alt1(
+    _QWORD* result, _QWORD*, unsigned __int64, __int64,
+    signed __int64) __asm__("PrimitiveDrawStack_f533a0");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 void PrimitiveDrawStack_Destructor(_QWORD* a1)
 {
@@ -888,19 +893,23 @@ __int64 game_map_PrimitiveDrawStack_EachDrawElementsMultiThread_lambda0_Invoke(
   __int64 v12;
   __int64 v13;
   __int64 v14;
+  __int64 v15;
 
   v3 = *(_QWORD**)(result + 24);
   v5 = result;
-  if (**(_DWORD**)(result + 8) / (2 * **(_DWORD**)(result + 16)) <= 1) {
+  if ((signed __int32)**(_DWORD**)(result + 8) /
+          (2 * **(_DWORD**)(result + 16)) <=
+      1) {
     v6 = 1;
   }
   else {
-    v6 = **(_DWORD**)(result + 8) / (2 * **(_DWORD**)(result + 16));
+    v6 = (signed __int32)**(_DWORD**)(result + 8) /
+         (2 * **(_DWORD**)(result + 16));
   }
   add = atomic_fetch_add(a3, v6);
   v8 = v3[5];
   v9 = v3[6];
-  if (**(_DWORD**)(result + 8) >= (signed int)(add + v6)) {
+  if ((signed __int32)**(_DWORD**)(result + 8) >= (signed int)(add + v6)) {
     v10 = add + v6;
   }
   else {
@@ -916,7 +925,7 @@ __int64 game_map_PrimitiveDrawStack_EachDrawElementsMultiThread_lambda0_Invoke(
         v12 = *(_QWORD*)(*(_QWORD*)(v5 + 32) + 32LL);
         if (v12 == 0) {
         LABEL_37:
-          GameRoutine_60a310(v12, a2, a3);
+          GameRoutine_60a310_alt1();
         }
         result =
             (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v12 + 48LL))(v12, v8);
@@ -929,7 +938,7 @@ __int64 game_map_PrimitiveDrawStack_EachDrawElementsMultiThread_lambda0_Invoke(
           v6 >>= 1;
         }
         add = atomic_fetch_add(a3, v6);
-        if (**(_DWORD**)(v5 + 8) >= (signed int)(add + v6)) {
+        if ((signed __int32)**(_DWORD**)(v5 + 8) >= (signed int)(add + v6)) {
           v10 = add + v6;
         }
         else {
@@ -943,12 +952,12 @@ __int64 game_map_PrimitiveDrawStack_EachDrawElementsMultiThread_lambda0_Invoke(
   v14 = v3[9];
   while (v13 != v14) {
     if (add <= v11 && v11 < v10) {
-      v12 = *(_QWORD*)(*(_QWORD*)(v5 + 32) + 32LL);
-      if (v12 == 0) {
+      v15 = *(_QWORD*)(*(_QWORD*)(v5 + 32) + 32LL);
+      if (v15 == 0) {
         goto LABEL_37;
       }
       result =
-          (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v12 + 48LL))(v12, v13);
+          (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v15 + 48LL))(v15, v13);
     }
     if (++v11 >= v10) {
       if (v6 >> 1 <= 1) {
@@ -958,7 +967,7 @@ __int64 game_map_PrimitiveDrawStack_EachDrawElementsMultiThread_lambda0_Invoke(
         v6 >>= 1;
       }
       add = atomic_fetch_add(a3, v6);
-      if (**(_DWORD**)(v5 + 8) >= (signed int)(add + v6)) {
+      if ((signed __int32)**(_DWORD**)(v5 + 8) >= (signed int)(add + v6)) {
         v10 = add + v6;
       }
       else {
@@ -1514,9 +1523,9 @@ __int64* PrimitiveDrawStack_f536e0(__int64* result, __int64* a2,
       v51 = result;
       v55 = 3 * (a3 >> 1);
       v56 = &result[6 * (a3 >> 1)];
-      GameRoutine_f533a0_alt1(result, v56, v50, (__int64)a4, v50);
-      result = GameRoutine_f533a0_alt1(v56, a2, a3 - v50, (__int64)&a4[2 * v55],
-                                       a3 - v50);
+      PrimitiveDrawStack_f533a0_alt1(result, v56, v50, (__int64)a4, v50);
+      result = PrimitiveDrawStack_f533a0_alt1(v56, a2, a3 - v50,
+                                              (__int64)&a4[2 * v55], a3 - v50);
       if (16 * v55 != 0) {
         v57 = v56;
         v58 = a4;

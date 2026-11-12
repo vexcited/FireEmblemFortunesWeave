@@ -57,6 +57,10 @@ int8x16_t Camera_b3bb60(__int64);
 void GameRoutine_ceba80(__int64, long double);
 void GameRoutine_d28340();
 void game_zview_Manager_Initialize_lambda0_Invoke(__int64 a1, long double a2);
+__int64 Cursor_f57c50_alt1(__int64) __asm__("Cursor_f57c50");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
 
 __int64 Manager_Destructor_d2e850(__int64 a1)
 {
@@ -280,13 +284,12 @@ __int64 Manager_d2ed90(__int64 result, int a2)
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
 
   if (*(_DWORD*)(result + 8) != a2) {
     *(_DWORD*)(result + 8) = a2;
     if (a2 == 1) {
       v2 = (__int64*)fw_memory_g_heap_manager_ptr;
-      v3 = fw_memory_HeapManager_Allocate(
+      v3 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 16, 16, 0);
       v4 = (__int64*)v3;
       v5 = GameData_212eda8[0];
@@ -297,16 +300,16 @@ __int64 Manager_d2ed90(__int64 result, int a2)
       v6 = *v2;
       *v4 = (__int64)(GameData_212f9a0 + 2);
       v4[1] = 0;
-      v7 = fw_memory_HeapManager_Allocate(v6, 496, 16, 0);
-      Cursor_f57c50(v7, v8);
-      v9 = v4[1];
+      v7 = fw_memory_HeapManager_Allocate_alt1(v6, 496, 16, 0);
+      Cursor_f57c50_alt1(v7);
+      v8 = v4[1];
       v4[1] = v7;
-      if (v9 != 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v9 + 8LL))(v9);
+      if (v8 != 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v8 + 8LL))(v8);
       }
-      v10 = *v4;
+      v9 = *v4;
       *v5 = (__int64)v4;
-      return (*(__int64 (**)(__int64*))(v10 + 16))(v4);
+      return (*(__int64 (**)(__int64*))(v9 + 16))(v4);
     }
   }
   return result;

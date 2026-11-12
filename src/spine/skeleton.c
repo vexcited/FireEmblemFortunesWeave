@@ -13,6 +13,8 @@ extern __int64* GameData_2132a40[6];
 extern __int64* GameData_2132a48[5];
 extern __int64* GameData_2132a68;
 __int64 Skeleton_Destructor(_QWORD* a1);
+__int64 spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(_QWORD*) __asm__(
+    "spine_SpineObject_Destroy_SpineObject_4e8a0");
 
 __int64 Skeleton_Destructor(_QWORD* a1)
 {
@@ -113,7 +115,6 @@ __int64 Skeleton_Destructor(_QWORD* a1)
                   "operator[]");
     __udf(0);
   }
-
 LABEL_14:
   v11 = a1[7];
   if ((int)v11 >= 1) {
@@ -239,7 +240,7 @@ LABEL_14:
       v4 = v33-- > 1;
     } while (v4);
   }
-  spine_SpineObject_Destroy_SpineObject_4e8a0(a1 + 31);
+  spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(a1 + 31);
   a1[26] = GameData_2132a68 + 2;
   a1[27] = 0;
   v39 = a1[29];
@@ -249,7 +250,7 @@ LABEL_14:
                                                           40LL))(
         v40, v39, "/Program/Externals/Spine/include\\spine/Vector.h", 206);
   }
-  spine_SpineObject_Destroy_SpineObject_4e8a0(a1 + 26);
+  spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(a1 + 26);
   v41 = a1[25];
   a1[22] = GameData_1f515a8;
   a1[23] = 0;
@@ -259,7 +260,7 @@ LABEL_14:
                                                           40LL))(
         v42, v41, "/Program/Externals/Spine/include\\spine/Vector.h", 206);
   }
-  spine_SpineObject_Destroy_SpineObject_4e8a0(a1 + 22);
+  spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(a1 + 22);
   v43 = a1[21];
   a1[18] = GameData_1f51570;
   a1[19] = 0;
@@ -269,7 +270,7 @@ LABEL_14:
                                                           40LL))(
         v44, v43, "/Program/Externals/Spine/include\\spine/Vector.h", 206);
   }
-  spine_SpineObject_Destroy_SpineObject_4e8a0(a1 + 18);
+  spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(a1 + 18);
   v45 = a1[17];
   a1[14] = GameData_1f51538;
   a1[15] = 0;
@@ -279,7 +280,7 @@ LABEL_14:
                                                           40LL))(
         v46, v45, "/Program/Externals/Spine/include\\spine/Vector.h", 206);
   }
-  spine_SpineObject_Destroy_SpineObject_4e8a0(a1 + 14);
+  spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(a1 + 14);
   v47 = GameData_2132a48[0] + 2;
   a1[10] = GameData_2132a48[0] + 2;
   a1[11] = 0;
@@ -290,7 +291,7 @@ LABEL_14:
                                                           40LL))(
         v49, v48, "/Program/Externals/Spine/include\\spine/Vector.h", 206);
   }
-  spine_SpineObject_Destroy_SpineObject_4e8a0(a1 + 10);
+  spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(a1 + 10);
   v50 = a1[9];
   a1[6] = v47;
   a1[7] = 0;
@@ -300,7 +301,7 @@ LABEL_14:
                                                           40LL))(
         v51, v50, "/Program/Externals/Spine/include\\spine/Vector.h", 206);
   }
-  spine_SpineObject_Destroy_SpineObject_4e8a0(a1 + 6);
+  spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(a1 + 6);
   v52 = a1[5];
   a1[2] = GameData_1f50fd8;
   a1[3] = 0;
@@ -310,8 +311,8 @@ LABEL_14:
                                                           40LL))(
         v53, v52, "/Program/Externals/Spine/include\\spine/Vector.h", 206);
   }
-  spine_SpineObject_Destroy_SpineObject_4e8a0(a1 + 2);
-  return spine_SpineObject_Destroy_SpineObject_4e8a0(a1);
+  spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(a1 + 2);
+  return spine_SpineObject_Destroy_SpineObject_4e8a0_alt1(a1);
 }
 
 #pragma GCC visibility pop

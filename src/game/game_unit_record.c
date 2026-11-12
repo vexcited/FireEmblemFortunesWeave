@@ -31,6 +31,15 @@ void GameRoutine_130c5c0_alt1(__int64*,
 void GameUnitRecord_130b1a0(__int64 a1, int a2, __int64 a3);
 void GameUnitRecord_130c860(__int64 a1, unsigned __int64* a2, __int64* a3,
                             __int64* a4);
+_QWORD*
+game_UnitPool_Find_6ead60_alt1(__int64*,
+                               int*) __asm__("game_UnitPool_Find_6ead60");
+__int64 GameRoutine_130ab20_alt1(__int64*, __int64,
+                                 __int64*) __asm__("GameRoutine_130ab20");
+float* GameUnitRecord_130c860_alt1(float* result, unsigned __int64*, __int64*,
+                                   __int64*) __asm__("GameUnitRecord_130c860");
+void __attribute__((noreturn))
+String_60a250_alt1(const char*) __asm__("String_60a250");
 
 __int64 GameUnitRecord_Destructor(_QWORD* a1)
 {
@@ -1117,9 +1126,11 @@ __int64 GameUnitRecord_130b980(float* a1, __int64* a2)
 __attribute__((swiftcall)) void GameUnitRecord_130c080(PSEUDO_X8 x8_,
                                                        __int64 a1)
 {
+
+#pragma clang fp contract(off)
   _QWORD* a2 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
   __int64 result;
-  __int64 v5;
+  float* v5;
   unsigned __int64** v6;
   __int64 v7;
   _QWORD* v8;
@@ -1133,29 +1144,33 @@ __attribute__((swiftcall)) void GameUnitRecord_130c080(PSEUDO_X8 x8_,
   _QWORD* v17;
   unsigned __int64 v18;
   __int64 v19;
-  _QWORD* v20;
+  __int64* v20;
   unsigned __int64 v21;
   _QWORD* v22;
   _QWORD* v23;
   unsigned __int64 v24;
   __int64 v25;
   unsigned __int64* v26;
-  unsigned __int64 v27;
-  unsigned __int64* v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  int v33;
-  __int64 v34;
+  __int64 v27;
+  struct {
+    unsigned __int64* v28;
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+    __int64 v32;
+    int v33;
+    char gap52_[4];
+    __int64 v34;
+  } v28_;
   int v35;
   unsigned __int64 v36;
 
   *a2 = game_GameUnitRecord_vtable;
-  result = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, 48, 16, 0);
+  result =
+      fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager, 48, 16, 0);
   a2[1] = result;
   *(_QWORD*)(result + 8) = 0;
-  v5 = result + 8;
+  v5 = (float*)(result + 8);
   *(_QWORD*)(result + 16) = 0;
   *(_QWORD*)(result + 24) = 0;
   *(_QWORD*)(result + 32) = 0;
@@ -1189,19 +1204,21 @@ __attribute__((swiftcall)) void GameUnitRecord_130c080(PSEUDO_X8 x8_,
         v27 = 0;
       }
       v36 = v27;
-      v28 = v26;
+      v28_.v28 = v26;
       v35 = 241;
-      result = game_UnitPool_Find_6ead60(&v28, &v35);
+      result =
+          (__int64)game_UnitPool_Find_6ead60_alt1((__int64*)&v28_.v28, &v35);
       if (result != 0) {
-        v29 = 0;
-        v30 = 0;
-        v33 = 0;
-        v31 = 0;
-        v32 = 0;
-        v34 = 0;
-        result = GameRoutine_130ab20(&v28, result, 0);
-        if (v28 != nullptr) {
-          result = GameRoutine_130c860(v5, &v36, &v36, &v28);
+        v28_.v29 = 0;
+        v28_.v30 = 0;
+        v28_.v33 = 0;
+        v28_.v31 = 0;
+        v28_.v32 = 0;
+        v28_.v34 = 0;
+        result = GameRoutine_130ab20_alt1((__int64*)&v28_.v28, result, nullptr);
+        if (v28_.v28 != nullptr) {
+          result = (__int64)GameUnitRecord_130c860_alt1(
+              v5, &v36, (__int64*)&v36, (__int64*)&v28_.v28);
         }
       }
       ++v6;
@@ -1220,9 +1237,9 @@ __attribute__((swiftcall)) void GameUnitRecord_130c080(PSEUDO_X8 x8_,
       v11 = 0;
     }
     v36 = v11;
-    v28 = v10;
+    v28_.v28 = v10;
     v35 = 241;
-    result = game_UnitPool_Find_6ead60(&v28, &v35);
+    result = (__int64)game_UnitPool_Find_6ead60_alt1((__int64*)&v28_.v28, &v35);
     v12 = v8[2];
     if (v12 != 0 && v8[4] != 0) {
       v14 = v12 - 1;
@@ -1273,7 +1290,7 @@ __attribute__((swiftcall)) void GameUnitRecord_130c080(PSEUDO_X8 x8_,
                 v22 = *(_QWORD**)(*v9 + 8 * v21);
                 if (v22 == nullptr || (v23 = (_QWORD*)*v22) == nullptr) {
                 LABEL_66:
-                  String_60a250("unordered_map::at: key not found");
+                  String_60a250_alt1("unordered_map::at: key not found");
                 }
                 if ((v12 & v14) == 0) {
                   while (1) {
@@ -1333,15 +1350,16 @@ __attribute__((swiftcall)) void GameUnitRecord_130c080(PSEUDO_X8 x8_,
     if (result != 0) {
       v20 = nullptr;
     LABEL_34:
-      v34 = 0;
-      v29 = 0;
-      v30 = 0;
-      v31 = 0;
-      v32 = 0;
-      v33 = 0;
-      result = GameRoutine_130ab20(&v28, result, v20);
-      if (v28 != nullptr) {
-        result = GameRoutine_130c860(v5, &v36, &v36, &v28);
+      v28_.v34 = 0;
+      v28_.v29 = 0;
+      v28_.v30 = 0;
+      v28_.v31 = 0;
+      v28_.v32 = 0;
+      v28_.v33 = 0;
+      result = GameRoutine_130ab20_alt1((__int64*)&v28_.v28, result, v20);
+      if (v28_.v28 != nullptr) {
+        result = (__int64)GameUnitRecord_130c860_alt1(v5, &v36, (__int64*)&v36,
+                                                      (__int64*)&v28_.v28);
       }
     }
     ++v6;

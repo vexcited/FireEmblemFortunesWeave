@@ -1,12 +1,15 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_character_PhysicsObject_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 PhysicsObject_Destructor(_QWORD* a1);
+__n128
+PhysicsObject_Destructor_alt1(_QWORD* a1) __asm__("PhysicsObject_Destructor");
 __int64 PhysicsObject_DeletingDestructor(_QWORD* a1);
 __attribute__((swiftcall)) void GameRoutine_1096110(PSEUDO_X8, __int64 result,
                                                     unsigned __int8*,
@@ -42,8 +45,22 @@ float sinf(float);
 __int64 PhysicsObject_10f9fe0(__int64 result, _OWORD* a2);
 __int64 PhysicsObject_10fa1a0(__int64 result, _OWORD* a2);
 _QWORD* PhysicsObject_10fa360(_QWORD* result, float32x4_t* a2);
-void game_character_PhysicsObject_PhysicsObject_lambda0_Invoke(__int64 a1,
-                                                               __int64* a2);
+void game_character_PhysicsObject_PhysicsObject_lambda0_Invoke_alt1(
+    __int64 a1, __int64* a2) __asm__("game_character_PhysicsObject_"
+                                     "PhysicsObject_lambda0_Invoke");
+__attribute__((swiftcall)) void
+GameRoutine_1096110_alt1(PSEUDO_X8, __int64, const char*, const char*,
+                         int8x16_t*, float) __asm__("GameRoutine_1096110");
+__int64
+GameRoutine_10fa840_alt1(unsigned __int64*) __asm__("GameRoutine_10fa840");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 strchr_alt1(const char*, int) __asm__("strchr");
+__int64 PhysicsObject_Destructor(_QWORD* a1);
+__n128 game_character_PhysicsObject_PhysicsObject_lambda0_Invoke(__int64 a1,
+                                                                 __int64* a2,
+                                                                 __n128 result);
 
 __int64 PhysicsObject_10f9fe0(__int64 result, _OWORD* a2)
 {
@@ -489,15 +506,14 @@ _QWORD* PhysicsObject_10fa360(_QWORD* result, float32x4_t* a2)
   return result;
 }
 
-__n128 PhysicsObject_Destructor(_QWORD* a1)
+__int64 PhysicsObject_Destructor(_QWORD* a1)
 {
-  __int64 v1;
-  __n128 result;
+  __int64 result;
 
   *a1 = game_character_PhysicsObject_vtable;
-  v1 = a1[4];
-  if (v1 != 0) {
-    return std___1___shared_weak_count___release_weak(v1);
+  result = a1[4];
+  if (result != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(result);
   }
   return result;
 }
@@ -520,141 +536,187 @@ __int64 PhysicsObject_DeletingDestructor(_QWORD* a1)
                                        v2);
 }
 
-void game_character_PhysicsObject_PhysicsObject_lambda0_Invoke(__int64 a1,
-                                                               __int64* a2)
+__n128 game_character_PhysicsObject_PhysicsObject_lambda0_Invoke(__int64 a1,
+                                                                 __int64* a2,
+                                                                 __n128 result)
 {
-  __int64 v2;
+
+#pragma clang fp contract(off)
   __int64 v3;
   __int64 v4;
   __int64 v5;
-  bool v6;
-  __int64 v7;
+  __int64 v6;
+  bool v7;
   __int64 v8;
-  float v9;
-  int v10;
-  int8x16_t* v11;
-  __int64 v12;
-  long double v13;
+  __int64 v9;
+  float v10;
+  int v11;
+  int8x16_t* v12;
+  __int64 v13;
   char v14;
   __int64 v15;
   float32x2_t v16;
-  long double v17;
-  char* v18;
-  __int64 v19;
-  __int64 v20;
-  int v21;
+  const char* v17;
+  __int64 v18;
+  const char* v19;
+  int v20;
+  __int64 v21;
   __int64 v22;
   __int64 v23;
-  __int64 v24;
-  long double v25;
-  __int64 v26;
-  long double v27;
-  float32x2_t v28;
-  unsigned __int32 v29;
-  __int128 v30;
-  __int64 v31;
-  __int64 v32;
-  char v33;
-  _QWORD v34[3];
-  int v35;
+  int8x16_t v24;
+  unsigned __int64 v25;
+  int8x16_t v26;
+  struct {
+    float32x2_t v27;
+    unsigned __int32 v28;
+  } v27_;
+  struct {
+    __int128 v29;
+    __int64 v30;
+    __int64 v31;
+    char gap64_[17];
+    char v32;
+  } v29_;
+  struct {
+    unsigned __int64 v33[3];
+    int v34;
+  } v33_;
 
-  v2 = *(_QWORD*)(a1 + 8);
-  v3 = *(_QWORD*)(v2 + 32);
-  if (v3 != 0) {
-    v4 = *a2;
-    v5 = *(_QWORD*)(v2 + 40);
-    v6 = *(_QWORD*)(v3 + 8) == -1 || v5 == 0;
-    if (!v6 && (*(_BYTE*)(v5 + 340) & 8) == 0) {
-      v7 = GameData_21ec7b0;
+  v14 = COERCE_AS(__typeof__(v14),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v3 = *(_QWORD*)(a1 + 8);
+  v4 = *(_QWORD*)(v3 + 32);
+  if (v4 != 0) {
+    v5 = *a2;
+    v6 = *(_QWORD*)(v3 + 40);
+    v7 = *(_QWORD*)(v4 + 8) == -1 || v6 == 0;
+    if (!v7 && (*(_BYTE*)(v6 + 340) & 8) == 0) {
+      v8 = GameData_21ec7b0;
       if (GameData_21ec7b0 != 0) {
-        v8 = nn_os_ConvertToTimeSpan(
+        v9 = nn_os_ConvertToTimeSpan(
                  *(_QWORD*)(game_script_hub_g_frame_counter + 344)) /
                  1000 -
-             *(_QWORD*)(v7 + 136);
-        v9 = 0x1.e848000000000p+19;
+             *(_QWORD*)(v8 + 136),
+        v14 = COERCE_AS(__typeof__(v14),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        v10 = 0x1.e848000000000p+19f;
       }
       else {
-        v8 = nn_os_ConvertToTimeSpan(
+        v9 = nn_os_ConvertToTimeSpan(
                  *(_QWORD*)(game_script_hub_g_frame_counter + 344)) /
-             1000000;
-        v9 = 0x1.f400000000000p+9;
+             1000000,
+        v14 = COERCE_AS(__typeof__(v14),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        v10 = 0x1.f400000000000p+9f;
       }
-      if ((float)((float)((float)v8 / v9) - *(float*)(v2 + 48)) >=
-          0x1.3333340000000p-2) {
-        v10 = *(_DWORD*)(v2 + 52);
-        if (v10 <= 4) {
-          *(_DWORD*)(v2 + 52) = v10 + 1;
-          v11 = *(int8x16_t**)(v2 + 8);
-          if (LANES128(v11[18]).n128_u8[1] == 1 &&
-              (LANES128(v11[18]).n128_u8[0] & 1) != 0 &&
-              (LANES128(v11[18]).n128_u8[12] & 0xFD) != 1) {
-            v12 = *(_QWORD*)(v2 + 8);
+      PSEUDO_LOW_LANE128(result, n128_f32,
+                         (float)((float)v9 / v10) - *(float*)(v3 + 48));
+      if (LANES128(result).n128_f32[0] >= 0x1.3333340000000p-2f) {
+        v11 = *(_DWORD*)(v3 + 52);
+        if (v11 <= 4) {
+          *(_DWORD*)(v3 + 52) = v11 + 1;
+          v12 = *(int8x16_t**)(v3 + 8);
+          if (LANES128(v12[18]).n128_u8[1] == 1 &&
+              (LANES128(v12[18]).n128_u8[0] & 1) != 0 &&
+              (LANES128(v12[18]).n128_u8[12] & 0xFD) != 1) {
+            v13 = *(_QWORD*)(v3 + 8);
             while (1) {
-              v12 = *(_QWORD*)(v12 + 736);
-              if (v12 == 0) {
+              v13 = *(_QWORD*)(v13 + 736);
+              if (v13 == 0) {
                 break;
               }
-              if (*(_BYTE*)(v12 + 289) != 1 || *(_BYTE*)(v12 + 288) != 1 ||
-                  (*(_BYTE*)(v12 + 300) & 0xFD) == 1) {
-                return;
+              if (*(_BYTE*)(v13 + 289) != 1 || *(_BYTE*)(v13 + 288) != 1 ||
+                  (*(_BYTE*)(v13 + 300) & 0xFD) == 1) {
+                return result;
               }
             }
-            v31 = 0;
-            v32 = 0;
-            v30 = (__typeof__(v30)){0};
-            *(__n128*)&v13 = GameRoutine_109ded0(&v30, v11 + 19, 513);
-            if ((v14 & 1) != 0 && (v33 & 2) == 0) {
+            v29_.v30 = 0;
+            v29_.v31 = 0;
+            v29_.v29 = (__typeof__(v29_.v29)){0};
+            result = GameRoutine_109ded0(&v29_.v29, v12 + 19, 513),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+            if ((v14 & 1) != 0 && (v29_.v32 & 2) == 0) {
               v15 = (*(__int64 (**)(_QWORD, long double))(
-                  **(_QWORD**)(v4 + 24) + 40LL))(*(_QWORD*)(v4 + 24), v13);
-              (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
-                  *(_QWORD*)v15 + 336LL))((void*)&v28, (void*)v15);
-              LANES64(v16).n64_u32[0] = v29;
-              *(float32x2_t*)&v17 =
-                  vadd_f32(vmul_f32(v16, v16), vmul_f32(v28, v28));
-              *(float32x2_t*)&v17 = vsqrt_f32(
-                  vpadd_f32(*(float32x2_t*)&v17, *(float32x2_t*)&v17));
-              if (*(float*)&v17 <= *(float*)(GameData_21d8778 + 568)) {
-                if (*(float*)&v17 <= *(float*)(GameData_21d8778 + 572)) {
-                  return;
+                  **(_QWORD**)(v5 + 24) + 40LL))(*(_QWORD*)(v5 + 24),
+                                                 *(long double*)&result),
+              v14 = COERCE_AS(__typeof__(v14),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+              (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+                  *(_QWORD*)v15 + 336LL))((void*)(&v27_.v27), (__int64)v15),
+                  v14 = COERCE_AS(
+                      __typeof__(v14),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+              PSEUDO_LOW_LANE64(v16, n64_u32, v27_.v28);
+              LANES128(result).n128_u64[0] =
+                  LANES64_OF(vadd_f32(vmul_f32(v16, v16),
+                                      vmul_f32(v27_.v27, v27_.v27)))
+                      .n64_u64[0];
+              LANES128(result).n128_u64[0] =
+                  LANES64_OF(
+                      vsqrt_f32(vpadd_f32(
+                          COERCE_AS(float32x2_t, LANES128(result).n128_u64[0]),
+                          COERCE_AS(float32x2_t,
+                                    LANES128(result).n128_u64[0]))))
+                      .n64_u64[0];
+              if (LANES128(result).n128_f32[0] <=
+                  *(float*)(GameData_21d8778 + 568)) {
+                if (LANES128(result).n128_f32[0] <=
+                    *(float*)(GameData_21d8778 + 572)) {
+                  return result;
                 }
-                v18 = "SE_ACT_<LD/MB>_Drop_<WeaponID>_<Ground>_L";
+                v17 = "SE_ACT_<LD/MB>_Drop_<WeaponID>_<Ground>_L";
               }
               else {
-                v18 = "SE_ACT_<LD/MB>_Drop_<WeaponID>_<Ground>_H";
+                v17 = "SE_ACT_<LD/MB>_Drop_<WeaponID>_<Ground>_H";
               }
-              v19 = *(_QWORD*)(v2 + 8);
-              v21 = *(unsigned __int8*)(v19 + 16);
-              v20 = v19 + 16;
-              if (v21 != 0) {
-                v22 = strchr(v20, 58);
-                if (v22 != 0) {
-                  v34[1] = v22 + 1;
-                  v34[0] = game_HashString(v22 + 1);
-                  v23 = GameRoutine_10fa840(v34);
-                  if (v23 != 0) {
-                    *(_QWORD*)(*(_QWORD*)(v5 + 136) + 120LL) =
-                        *(_QWORD*)(v23 + 48);
+              v18 = *(_QWORD*)(v3 + 8);
+              v20 = *(unsigned __int8*)(v18 + 16);
+              v19 = (const char*)(v18 + 16);
+              if (v20 != 0) {
+                v21 = strchr_alt1(v19, 58),
+                v14 =
+                    COERCE_AS(__typeof__(v14),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+                if (v21 != 0) {
+                  v33_.v33[1] = v21 + 1;
+                  v33_.v33[0] = game_HashString_alt1(v21 + 1),
+                  v14 = COERCE_AS(
+                      __typeof__(v14),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+                  v22 = GameRoutine_10fa840_alt1(v33_.v33),
+                  v14 = COERCE_AS(
+                      __typeof__(v14),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+                  if (v22 != 0) {
+                    *(_QWORD*)(*(_QWORD*)(v6 + 136) + 120LL) =
+                        *(_QWORD*)(v22 + 48);
                   }
                 }
               }
-              v24 = *(_QWORD*)(v5 + 136);
+              v23 = *(_QWORD*)(v6 + 136);
               (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, long double))(
-                  **(_QWORD**)(*(_QWORD*)(v4 + 24) + 16LL) + 176LL))((void*)v34,
-                                                                     v17);
-              *(_QWORD*)&v25 = v34[2];
-              LODWORD(v26) = v35;
-              *((_QWORD*)&v25 + 1) = v26;
-              v27 = v25;
-              LODWORD(v25) = 1.0;
-              GameRoutine_1096110((void*)((__int64)v34), v24,
-                                  (unsigned __int8*)v18, nullptr, (__int64)&v27,
-                                  v25);
+                  **(_QWORD**)(*(_QWORD*)(v5 + 24) + 16LL) + 176LL))(
+                  (void*)(v33_.v33), *(long double*)&result),
+                  v14 = COERCE_AS(
+                      __typeof__(v14),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+              LANES128(v24).n128_u64[0] = v33_.v33[2];
+              LODWORD(v25) = v33_.v34;
+              LANES128(v24).n128_u64[1] = v25;
+              v26 = v24;
+              GameRoutine_1096110_alt1((void*)((__int64)v33_.v33), v23, v17,
+                                       nullptr, &v26, 0x1.0000000000000p+0f),
+                  v14 = COERCE_AS(
+                      __typeof__(v14),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
             }
           }
         }
       }
     }
   }
+  return result;
 }
 
 #pragma GCC visibility pop

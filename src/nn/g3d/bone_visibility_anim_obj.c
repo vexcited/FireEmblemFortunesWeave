@@ -10,13 +10,17 @@ __int64 strlen(_QWORD);
 __int64 BoneVisibilityAnimObj_5e0360(__int64 a1, __int64 a2);
 __int64 BoneVisibilityAnimObj_Unknown2(__int64 a1);
 __int64 BoneVisibilityAnimObj_Unknown5(__int64 a1, _QWORD* a2);
-__int64 BoneVisibilityAnimObj_Unknown3(__int64 result);
+__int64 BoneVisibilityAnimObj_Unknown3_alt1(__int64 result) __asm__(
+    "BoneVisibilityAnimObj_Unknown3");
 __int64 BoneVisibilityAnimObj_Unknown7(__int64 result, __int64 a2);
 __int64
 MaterialAnimObj_5dfe60_alt1(__int64 result,
                             unsigned __int16) __asm__("MaterialAnimObj_5dfe60");
 __int64 MaterialAnimObj_5dff40(__int64 result, __int64);
 __int64 BoneVisibilityAnimObj_Unknown6(__int64 a1, __int64 a2);
+__int64 GameRoutine_5e53f0_alt1(__int64,
+                                long double) __asm__("GameRoutine_5e53f0");
+__int64 BoneVisibilityAnimObj_Unknown3(__int64 result, long double a2);
 
 __int64 BoneVisibilityAnimObj_5e0360(__int64 a1, __int64 a2)
 {
@@ -174,68 +178,67 @@ __int64 BoneVisibilityAnimObj_Unknown6(__int64 a1, __int64 a2)
                     0x3FFCLL);
 }
 
-__int64 BoneVisibilityAnimObj_Unknown3(__int64 result)
+__int64 BoneVisibilityAnimObj_Unknown3(__int64 result, long double a2)
 {
-  float v1;
-  int v2;
-  __int64 v3;
+
+#pragma clang fp contract(off)
+  float v2;
+  int v3;
   __int64 v4;
-  int v5;
-  __int64 v7;
+  __int64 v5;
+  int v6;
+  __int64 v8;
   __int64 j;
-  __int64 v9;
   __int64 v10;
   __int64 v11;
+  __int64 v12;
   __int64 i;
-  __int64 v13;
   __int64 v14;
-  int v15;
-  __int64 v16;
+  __int64 v15;
 
-  v1 = **(float**)(result + 8);
-  if (*(float*)(result + 64) != v1) {
-    v2 = *(_DWORD*)(result + 60);
-    v3 = *(_QWORD*)(result + 72);
-    v4 = result;
-    v5 = *(_DWORD*)(result + 116);
-    if (v2 >= 1 && v2 <= *(_DWORD*)(result + 56)) {
-      if (v5 >= 1) {
-        v10 = 0;
+  v2 = **(float**)(result + 8);
+  if (*(float*)(result + 64) != v2) {
+    v3 = *(_DWORD*)(result + 60);
+    v4 = *(_QWORD*)(result + 72);
+    v5 = result;
+    v6 = *(_DWORD*)(result + 116);
+    if (v3 >= 1 && v3 <= (signed __int32)*(_DWORD*)(result + 56)) {
+      if (v6 >= 1) {
         v11 = 0;
-        for (i = 0; i < v5; ++i) {
-          v13 = *(_QWORD*)(v4 + 120);
-          v14 = *(int*)(v13 + 4 * v11 + 20);
-          if ((*(_DWORD*)(*(_QWORD*)(v4 + 88) + 4 * v14) & 0x40000000) == 0) {
-            result =
-                GameRoutine_5e53f0(v13 + v10, *(_QWORD*)(v4 + 48) + v11, v1);
-            *(_DWORD*)(v3 + 4LL * ((int)v14 >> 5)) =
-                (((_DWORD)result != 0) << v14) |
-                *(_DWORD*)(v3 + 4LL * ((int)v14 >> 5)) & ~(1 << v14);
-            v5 = *(_DWORD*)(v4 + 116);
+        v12 = 0;
+        for (i = 0; i < v6; ++i) {
+          v14 = *(_QWORD*)(v5 + 120);
+          v15 = *(int*)(v14 + 4 * v12 + 20);
+          if ((*(_DWORD*)(*(_QWORD*)(v5 + 88) + 4 * v15) & 0x40000000) == 0) {
+            *(float*)&a2 = v2;
+            result = GameRoutine_5e53f0_alt1(v14 + v11, a2);
+            *(_DWORD*)(v4 + 4LL * ((int)v15 >> 5)) =
+                (((_DWORD)result != 0) << v15) |
+                *(_DWORD*)(v4 + 4LL * ((int)v15 >> 5)) & ~(1 << v15);
+            v6 = *(_DWORD*)(v5 + 116);
           }
-          v11 += 12;
-          v10 += 48;
+          v12 += 12;
+          v11 += 48;
         }
       }
     }
-    else if (v5 >= 1) {
-      v7 = 0;
-      for (j = 0; j < v5; ++j) {
-        result = *(_QWORD*)(v4 + 120) + v7;
-        v9 = *(int*)(result + 20);
-        if ((*(_DWORD*)(*(_QWORD*)(v4 + 88) + 4 * v9) & 0x40000000) == 0) {
-          v16 = 0;
-          v15 = 2139095040;
-          result = GameRoutine_5e53f0(result, &v15, v1);
-          *(_DWORD*)(v3 + 4LL * ((int)v9 >> 5)) =
-              *(_DWORD*)(v3 + 4LL * ((int)v9 >> 5)) & ~(1 << v9) |
-              (((_DWORD)result != 0) << v9);
-          v5 = *(_DWORD*)(v4 + 116);
+    else if (v6 >= 1) {
+      v8 = 0;
+      for (j = 0; j < v6; ++j) {
+        result = *(_QWORD*)(v5 + 120) + v8;
+        v10 = *(int*)(result + 20);
+        if ((*(_DWORD*)(*(_QWORD*)(v5 + 88) + 4 * v10) & 0x40000000) == 0) {
+          *(float*)&a2 = v2;
+          result = GameRoutine_5e53f0_alt1(result, a2);
+          *(_DWORD*)(v4 + 4LL * ((int)v10 >> 5)) =
+              *(_DWORD*)(v4 + 4LL * ((int)v10 >> 5)) & ~(1 << v10) |
+              (((_DWORD)result != 0) << v10);
+          v6 = *(_DWORD*)(v5 + 116);
         }
-        v7 += 48;
+        v8 += 48;
       }
     }
-    *(_DWORD*)(v4 + 64) = **(_DWORD**)(v4 + 8);
+    *(_DWORD*)(v5 + 64) = **(_DWORD**)(v5 + 8);
   }
   return result;
 }

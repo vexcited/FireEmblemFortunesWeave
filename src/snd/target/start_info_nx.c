@@ -29,6 +29,7 @@ extern __int64 snd_g_proxy_ptr[2];
 void GameRoutine_651250_alt1(void*) __asm__("GameRoutine_651250");
 void __attribute__((noreturn)) String_60a1d0();
 __int64 StartInfoNX_Unknown16(__int64* a1);
+__int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
 
 __int64 StartInfoNX_Unknown3(__int64 result, int a2)
 {
@@ -97,22 +98,20 @@ __int64 StartInfoNX_Unknown14(__int64 result)
 __int64 StartInfoNX_Unknown15(__int64 a1, __int64 a2)
 {
   __int64 result;
-  float v5;
-  _QWORD* v6;
+  _QWORD* v5;
+  __int64 v6;
   __int64 v7;
-  float v8;
-  __int64 v9;
 
   result = (*(__int64 (**)(__int64, _QWORD, _QWORD, _QWORD))(
       *(_QWORD*)snd_target_s_platform + 232LL))(
       snd_target_s_platform, *(unsigned int*)(a2 + 5768),
       *(unsigned int*)(a2 + 5772), *(_QWORD*)(a2 + 5776));
   if ((result & 1) != 0) {
-    v6 = *(_QWORD**)(a2 + 5672);
-    v7 = snd_fnd_WeakHandle_get(*v6 + 24LL, v5);
-    *(_QWORD*)(a1 + 72) = (*(__int64 (**)(__int64))(*(_QWORD*)v7 + 72LL))(v7);
-    v9 = snd_fnd_WeakHandle_get(*v6 + 24LL, v8);
-    result = (*(__int64 (**)(__int64))(*(_QWORD*)v9 + 80LL))(v9);
+    v5 = *(_QWORD**)(a2 + 5672);
+    v6 = snd_fnd_WeakHandle_get_alt1(*v5 + 24LL);
+    *(_QWORD*)(a1 + 72) = (*(__int64 (**)(__int64))(*(_QWORD*)v6 + 72LL))(v6);
+    v7 = snd_fnd_WeakHandle_get_alt1(*v5 + 24LL);
+    result = (*(__int64 (**)(__int64))(*(_QWORD*)v7 + 80LL))(v7);
     *(_QWORD*)(a1 + 88) = (unsigned int)result;
   }
   return result;

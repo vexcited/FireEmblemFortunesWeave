@@ -107,6 +107,9 @@ __int64
 game_menu_anonymous_ProcNextSeq_CheckFree_closure_Invoke_16b19c0(__int64 a1,
                                                                  __int64* a2);
 _QWORD* ProcNextSeq_Destructor(__int64 a1);
+const char*
+game_HashString32_alt1(const char* result) __asm__("game_HashString32");
+void GameHr_8679c0();
 
 __int64 game_menu_anonymous_ProcNextSeq_CheckNextFree(__int64 a1)
 {
@@ -377,7 +380,7 @@ __int64 ProcNextSeq_16b0370(__int64 a1)
     *v2 = (__int64)v5;
     (*(void (**)(__int64*))(v7 + 16))(v5);
   }
-  GameRoutine_8679c0();
+  GameHr_8679c0();
   v8 = game_ProcGameSkipView_instance_;
   if (game_ProcGameSkipView_instance_ != 0) {
     v9 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156);
@@ -488,7 +491,8 @@ __int64 ProcNextSeq_16b0370(__int64 a1)
   *(_QWORD*)(a1 + 40) = v15;
   *(_QWORD*)(v15 + 24) = "IndividualMenu";
   *(_QWORD*)(v15 + 32) = a1;
-  *(_DWORD*)(v15 + 140) = game_HashString32((__int64)"IndividualMenu");
+  *(_DWORD*)(v15 + 140) =
+      (unsigned int)game_HashString32_alt1("IndividualMenu");
   *(_QWORD*)(v15 + 64) = 0;
   *(_QWORD*)(v15 + 72) = 24;
   *(_QWORD*)(v15 + 80) = 1;

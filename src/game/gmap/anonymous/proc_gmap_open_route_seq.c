@@ -18,21 +18,33 @@ extern __int64 game_script_hub_g_frame_counter;
 extern __int64* GameData_212c790;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_892740(void);
-__int64 game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen(__int64 result);
+__int64 game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen_alt1(
+    __int64 result) __asm__("game_gmap_anonymous_ProcGmapOpenRouteSeq_"
+                            "BeginRouteOpen");
 __int64 ProcGmapOpenRouteSeq_14ce090(__int64 result);
 __int64 ProcGmapOpenRouteSeq_14ce120(__int64 result);
 __int64 game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen_closure_Invoke(
     __int64 result, __int64 a2);
+bool SpotMgr_1333c60_alt1() __asm__("SpotMgr_1333c60");
+bool SpotMgr_1333de0_alt1(__int64) __asm__("SpotMgr_1333de0");
+void GameRoutine_13289e0_alt1(float32x4_t*) __asm__("GameRoutine_13289e0");
+void SpotMgr_1332f00(__int64);
+void game_gmap_1329500(__int64, char*, char, char);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen(__int64 a1);
 
-__int64 game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen(__int64 result)
+void game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen(__int64 a1)
 {
+
+#pragma clang fp contract(off)
   __int64 v1;
   __int64 v2;
   __int64 v3;
   __int64 v4;
-  __int64* v5;
-  __int64* v6;
-  __int64 v7;
+  float32x4_t** v5;
+  float32x4_t** v6;
+  float32x4_t* v7;
   __int64 v8;
   __int64* v9;
   __int64* v10;
@@ -43,59 +55,61 @@ __int64 game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen(__int64 result)
   _QWORD* v15;
   _QWORD* v16;
   __int64 v17;
-  _QWORD v18[4];
-  _QWORD* v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
+  struct {
+    _QWORD v18[4];
+    _QWORD* v19;
+  } v18_;
+  struct {
+    __int64 v20;
+    __int64 v21;
+    __int64 v22;
+  } v20_;
 
   if (game_GameModeData_instance_ != 0 &&
       (*(_BYTE*)(game_GameModeData_instance_ + 92) & 2) != 0) {
-    return result;
+    return;
   }
-  *(_DWORD*)(result + 152) = 0;
-  result = SpotMgr_1333c60();
-  if ((result & 1) != 0) {
-    v21 = 0;
-    v22 = 0;
-    v20 = 0;
-    v18[0] = GameData_2046240;
-    v18[1] = &v20;
-    v19 = v18;
-    SpotMgr_1333de0(v18);
-    GameRoutine_1332f00(&v20);
-    result = (__int64)v19;
-    if (v19 == v18) {
+  *(_DWORD*)(a1 + 152) = 0;
+  if (SpotMgr_1333c60_alt1()) {
+    v20_.v21 = 0;
+    v20_.v22 = 0;
+    v20_.v20 = 0;
+    v18_.v18[0] = GameData_2046240;
+    v18_.v18[1] = &v20_.v20;
+    v18_.v19 = v18_.v18;
+    SpotMgr_1333de0_alt1((__int64)v18_.v18);
+    SpotMgr_1332f00((__int64)&v20_.v20);
+    if (v18_.v19 == v18_.v18) {
       v1 = 32;
     }
     else {
-      if (v19 == nullptr) {
+      if (v18_.v19 == nullptr) {
         goto LABEL_9;
       }
       v1 = 40;
     }
-    result = (*(__int64 (**)(void*))(*v19 + v1))(v19);
+    (*(void (**)(__int64))(*v18_.v19 + v1))((__int64)v18_.v19);
   LABEL_9:
-    if (v20 != 0) {
-      v21 = v20;
+    if (v20_.v20 != 0) {
+      v20_.v21 = v20_.v20;
       v2 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v2 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v20);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v20_.v20);
     }
   }
   v3 = GameData_21c9700;
   v4 = *(_QWORD*)(GameData_21c9700 + 8);
-  v5 = *(__int64**)(v4 + 144);
-  v6 = *(__int64**)(v4 + 152);
+  v5 = *(float32x4_t***)(v4 + 144);
+  v6 = *(float32x4_t***)(v4 + 152);
   if (v5 != v6) {
     do {
       v7 = *v5++;
-      result = GameRoutine_13289e0(v7);
+      GameRoutine_13289e0_alt1(v7);
     } while (v5 != v6);
-    v5 = *(__int64**)(v4 + 144);
+    v5 = *(float32x4_t***)(v4 + 144);
     v3 = GameData_21c9700;
   }
   *(_QWORD*)(v4 + 152) = v5;
@@ -120,7 +134,7 @@ __int64 game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen(__int64 result)
         v17 = *(_QWORD*)(v12 + 120);
         *(_BYTE*)(v12 + 176) = 1;
         if (v17 != 0) {
-          result = GameRoutine_1329500(v18, v12, 1, 1);
+          game_gmap_1329500((__int64)v18_.v18, (char*)v12, 1, 1);
         }
       }
     LABEL_18:
@@ -129,7 +143,6 @@ __int64 game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen(__int64 result)
     v9 = *(__int64**)(v8 + 168);
   }
   *(_QWORD*)(v8 + 176) = v9;
-  return result;
 }
 
 __int64 ProcGmapOpenRouteSeq_14ce090(__int64 result)

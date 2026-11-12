@@ -12,6 +12,9 @@ __int64 MapCombatPrediction_Unknown4(__int64 result);
 __int64 MapCombatPrediction_Unknown5(__int64 a1);
 __int64 MapCombatPrediction_a157e0(_QWORD* a1, int a2, int a3, int a4,
                                    __int64 a5);
+__int64 GameRoutine_19f4d00_alt1(__int64, int*,
+                                 _DWORD**) __asm__("GameRoutine_19f4d00");
+
 __int64 MapCombatPrediction_a157e0(_QWORD* a1, int a2, int a3, int a4,
                                    __int64 a5)
 {
@@ -363,7 +366,7 @@ __int64 MapCombatPrediction_Unknown5(__int64 a1)
   unsigned __int64 v47;
   __int64 v48;
   unsigned int v49;
-  unsigned int* v50;
+  int* v50;
 
   v1 = *(_QWORD*)(a1 + 96);
   if (v1 == 0) {
@@ -569,10 +572,10 @@ __int64 MapCombatPrediction_Unknown5(__int64 a1)
                   if (v47 == v39) {
                     if (*((_DWORD*)v46 + 4) == v39) {
                     LABEL_98:
-                      v50 = &v49;
-                      return *(
-                          _QWORD*)(GameRoutine_19f4d00(a1 + 136, &v49, &v50) +
-                                   24);
+                      v50 = (int*)&v49;
+                      return *(_QWORD*)(GameRoutine_19f4d00_alt1(
+                                            a1 + 136, (int*)&v49, &v50) +
+                                        24);
                     }
                   }
                   else {

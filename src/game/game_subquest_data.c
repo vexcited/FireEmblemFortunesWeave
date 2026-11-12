@@ -316,6 +316,10 @@ __int64 game_UnitItemList_Sort_alt1(__int64, unsigned int,
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void GameSubquestData_125ec20(__int64 a1, __int64 a2);
+__int64 ProcList_9bd480(__int64);
+__int64
+game_ProcList_Call_9bcfa0_alt1(__int64,
+                               __int64) __asm__("game_ProcList_Call_9bcfa0");
 
 __attribute__((swiftcall)) void GameSubquestData_1256b40(PSEUDO_X8 x8_,
                                                          __int64 result)
@@ -660,26 +664,22 @@ __int64 GameSubquestData_1257440(__int64 a1)
 
 __int64 GameSubquestData_1257620(__int64 result, char a2)
 {
-  __int64 v2;
-  __int64 v3;
   int v4;
   __int64 v5;
   char v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
+  struct {
+    __int64 v10;
+    __int64 v11;
+  } v10_;
 
   v4 = *(unsigned __int8*)(result + 9);
   if ((v4 & 0xFE) != 4) {
-    v12 = v2;
-    v13 = v3;
     v5 = result;
     if (v4 == 1) {
-      result = GameSubquestData_1257720_alt1(result, 0);
+      result = GameSubquestData_1257720((__int64*)result, 0);
       v6 = 0;
       if ((result & 1) == 0) {
         return result;
@@ -702,7 +702,7 @@ __int64 GameSubquestData_1257620(__int64 result, char a2)
       return result;
     }
     if ((v4 & 0xFE) == 2) {
-      result = GameSubquestData_1257720_alt1(result, a2 & 1);
+      result = GameSubquestData_1257720((__int64*)result, a2 & 1);
       if ((result & 1) != 0) {
         *(_WORD*)(v5 + 9) = 5;
         v7 = *(_QWORD*)v5;
@@ -710,9 +710,9 @@ __int64 GameSubquestData_1257620(__int64 result, char a2)
           v8 = 8LL * *(unsigned __int16*)(v7 + 304);
           v9 = 0;
           do {
-            v11 = *(_QWORD*)(*(_QWORD*)(v7 + 312) + v9);
-            v10 = game_HashString(v11);
-            result = game_VariableManager_SetFlag(&v10, 0);
+            v10_.v11 = *(_QWORD*)(*(_QWORD*)(v7 + 312) + v9);
+            v10_.v10 = game_HashString_alt1(v10_.v11);
+            result = game_VariableManager_SetFlag_alt1((__int64)&v10_.v10, 0);
             v9 += 8;
           } while (v8 != v9);
         }
@@ -4137,8 +4137,6 @@ __int64 GameSubquestData_125c0c0(__int64 a1, __int64* a2)
 
 void GameSubquestData_125c1a0(__int64 a1, __int64 a2, __int64** a3)
 {
-  __int64 v3;
-  __int64 v4;
   __int64 v6;
   __int64* v7;
   __int64* v8;
@@ -4147,15 +4145,13 @@ void GameSubquestData_125c1a0(__int64 a1, __int64 a2, __int64** a3)
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  _QWORD v14[4];
-  _QWORD* v15;
-  __int64 v16;
-  __int64 v17;
+  struct {
+    _QWORD v14[4];
+    _QWORD* v15;
+  } v14_;
 
   if (a3[1] != *a3) {
-    v16 = v3;
-    v17 = v4;
-    v6 = GameRoutine_9bd480(a2);
+    v6 = ProcList_9bd480(a2);
     if (v6 != 0) {
       v8 = *a3;
       v7 = a3[1];
@@ -4163,36 +4159,36 @@ void GameSubquestData_125c1a0(__int64 a1, __int64 a2, __int64** a3)
         v9 = v6;
         do {
           v11 = *v8;
-          v15 = v14;
-          v14[0] = GameData_201dfb8;
-          v14[1] = v11;
-          game_ProcList_Call_9bcfa0(v9, v14);
-          if (v15 == v14) {
+          v14_.v15 = v14_.v14;
+          v14_.v14[0] = GameData_201dfb8;
+          v14_.v14[1] = v11;
+          game_ProcList_Call_9bcfa0_alt1(v9, (__int64)v14_.v14);
+          if (v14_.v15 == v14_.v14) {
             v12 = 32;
           }
           else {
-            if (v15 == nullptr) {
+            if (v14_.v15 == nullptr) {
               goto LABEL_13;
             }
             v12 = 40;
           }
-          (*(void (**)(void*))(*v15 + v12))(v15);
+          (*(void (**)(__int64))(*v14_.v15 + v12))((__int64)v14_.v15);
         LABEL_13:
           v13 = *v8;
-          v15 = v14;
-          v14[0] = GameData_201e038;
-          v14[1] = v13;
-          game_ProcList_Call_9bcfa0(v9, v14);
-          if (v15 == v14) {
+          v14_.v15 = v14_.v14;
+          v14_.v14[0] = GameData_201e038;
+          v14_.v14[1] = v13;
+          game_ProcList_Call_9bcfa0_alt1(v9, (__int64)v14_.v14);
+          if (v14_.v15 == v14_.v14) {
             v10 = 32;
           }
           else {
-            if (v15 == nullptr) {
+            if (v14_.v15 == nullptr) {
               goto LABEL_7;
             }
             v10 = 40;
           }
-          (*(void (**)(void*))(*v15 + v10))(v15);
+          (*(void (**)(__int64))(*v14_.v15 + v10))((__int64)v14_.v15);
         LABEL_7:
           ++v8;
         } while (v8 != v7);

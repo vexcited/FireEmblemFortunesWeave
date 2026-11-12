@@ -73,6 +73,8 @@ void __attribute__((noreturn)) String_60a1d0(_QWORD);
 void MultiMenuSequence_1786b20(_QWORD* a1);
 __attribute__((swiftcall)) void MultiMenuSequence_1786e90(PSEUDO_X8 x8_,
                                                           __int64 a1);
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 void __attribute__((noreturn)) MultiMenuSequence_DeletingDestructor()
 {
@@ -979,23 +981,24 @@ game_menu_MultiMenuSequence_RequestChangeParentUnit_lambda0_Invoke_17892c0(
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  __int64 v12;
-  _QWORD v14[4];
-  _QWORD* v15;
-  __int64 v16;
+  struct {
+    _QWORD v13[4];
+    _QWORD* v14;
+  } v13_;
+  __int64 v15;
 
   v2 = *(_QWORD*)(a1 + 8);
   v3 = *(_QWORD*)(a1 + 16);
-  v4 = v14;
+  v4 = v13_.v13;
   v5 = *(_QWORD**)(v2 + 232);
   v6 = *(_QWORD**)(v2 + 240);
-  v15 = v14;
-  v14[0] = GameData_20c5608;
-  v14[1] = v3;
+  v13_.v14 = v13_.v13;
+  v13_.v13[0] = GameData_20c5608;
+  v13_.v13[1] = v3;
   if (v5 == v6) {
-    v11 = 0;
+    v10 = 0;
   LABEL_14:
-    v12 = 32;
+    v11 = 32;
     goto LABEL_15;
   }
   v7 = GameData_212e008[0];
@@ -1004,32 +1007,33 @@ game_menu_MultiMenuSequence_RequestChangeParentUnit_lambda0_Invoke_17892c0(
     if (*v5 != 0) {
       v9 = __dynamic_cast(*v5, v7, v8, 0);
       if (v9 != 0) {
-        v11 = v9;
-        v16 = v9;
-        if (v15 == nullptr) {
-          GameRoutine_60a310(0, a2, v10);
+        v10 = v9;
+        v15 = v9;
+        if (v13_.v14 == nullptr) {
+          GameRoutine_60a310_alt1();
         }
-        if (((*(__int64 (**)(_QWORD*, __int64*))(*v15 + 48LL))(v15, &v16) &
+        if (((*(__int64 (**)(_QWORD*, __int64*))(*v13_.v14 + 48LL))(v13_.v14,
+                                                                    &v15) &
              1) != 0) {
           break;
         }
       }
     }
     if (++v5 == v6) {
-      v11 = 0;
+      v10 = 0;
       break;
     }
   }
-  v4 = v15;
-  if (v15 == v14) {
+  v4 = v13_.v14;
+  if (v13_.v14 == v13_.v13) {
     goto LABEL_14;
   }
-  if (v15 != nullptr) {
-    v12 = 40;
+  if (v13_.v14 != nullptr) {
+    v11 = 40;
   LABEL_15:
-    (*(void (**)(_QWORD*, __int64))(*v4 + v12))(v4, a2);
+    (*(void (**)(_QWORD*, __int64))(*v4 + v11))(v4, a2);
   }
-  return v11;
+  return v10;
 }
 
 bool game_menu_MultiMenuSequence_RequestChangeParentUnit_lambda0_Invoke_17894c0(
@@ -1053,23 +1057,24 @@ game_menu_MultiMenuSequence_RequestChangeParentUnit_lambda1_Invoke_17895e0(
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  __int64 v12;
-  _QWORD v14[4];
-  _QWORD* v15;
-  __int64 v16;
+  struct {
+    _QWORD v13[4];
+    _QWORD* v14;
+  } v13_;
+  __int64 v15;
 
   v2 = *(_QWORD*)(a1 + 8);
   v3 = *(_QWORD*)(a1 + 16);
-  v4 = v14;
+  v4 = v13_.v13;
   v5 = *(_QWORD**)(v2 + 232);
   v6 = *(_QWORD**)(v2 + 240);
-  v15 = v14;
-  v14[0] = GameData_20c5708;
-  v14[1] = v3;
+  v13_.v14 = v13_.v13;
+  v13_.v13[0] = GameData_20c5708;
+  v13_.v13[1] = v3;
   if (v5 == v6) {
-    v11 = 0;
+    v10 = 0;
   LABEL_14:
-    v12 = 32;
+    v11 = 32;
     goto LABEL_15;
   }
   v7 = GameData_212e008[0];
@@ -1078,32 +1083,33 @@ game_menu_MultiMenuSequence_RequestChangeParentUnit_lambda1_Invoke_17895e0(
     if (*v5 != 0) {
       v9 = __dynamic_cast(*v5, v7, v8, 0);
       if (v9 != 0) {
-        v11 = v9;
-        v16 = v9;
-        if (v15 == nullptr) {
-          GameRoutine_60a310(0, a2, v10);
+        v10 = v9;
+        v15 = v9;
+        if (v13_.v14 == nullptr) {
+          GameRoutine_60a310_alt1();
         }
-        if (((*(__int64 (**)(_QWORD*, __int64*))(*v15 + 48LL))(v15, &v16) &
+        if (((*(__int64 (**)(_QWORD*, __int64*))(*v13_.v14 + 48LL))(v13_.v14,
+                                                                    &v15) &
              1) != 0) {
           break;
         }
       }
     }
     if (++v5 == v6) {
-      v11 = 0;
+      v10 = 0;
       break;
     }
   }
-  v4 = v15;
-  if (v15 == v14) {
+  v4 = v13_.v14;
+  if (v13_.v14 == v13_.v13) {
     goto LABEL_14;
   }
-  if (v15 != nullptr) {
-    v12 = 40;
+  if (v13_.v14 != nullptr) {
+    v11 = 40;
   LABEL_15:
-    (*(void (**)(_QWORD*, __int64))(*v4 + v12))(v4, a2);
+    (*(void (**)(_QWORD*, __int64))(*v4 + v11))(v4, a2);
   }
-  return v11;
+  return v10;
 }
 
 bool game_menu_MultiMenuSequence_RequestChangeParentUnit_lambda1_Invoke_17897e0(

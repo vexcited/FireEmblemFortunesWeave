@@ -31,7 +31,8 @@ void __attribute__((noreturn)) GameRoutine_60a1d0(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a230(_QWORD);
 __int64 SpineSlotChecker_Unknown3(__int64 a1, __int64 a2, unsigned __int64 a3);
 __int64 SpineSlotChecker_Unknown4(__int64 result, int* a2);
-__int64 SpineSlotChecker_19233d0(__int64 result);
+__int64 SpineSlotChecker_19233d0_alt1(__int64 result) __asm__(
+    "SpineSlotChecker_19233d0");
 __int64 SpineSlotChecker_1923b20(__int64 result, __int64 a2);
 __int64 SpineSlotChecker_19244a0(__int64 a1, unsigned __int8 a2);
 __int64 SpineSlotChecker_19248c0(__int64 a1);
@@ -43,6 +44,16 @@ __int64 GameRoutine_60a020(_QWORD, _QWORD);
 extern char* GameData_2110a28[7];
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
 __int64 SpineSlotChecker_19220e0(__int64 result, _BYTE* a2, char a3);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+const char* SpineSlotChecker_19233d0(const char* result);
 
 __int64 SpineSlotChecker_19220e0(__int64 result, _BYTE* a2, char a3)
 {
@@ -283,40 +294,42 @@ __int64 SpineSlotChecker_Unknown4(__int64 result, int* a2)
   return result;
 }
 
-__int64 SpineSlotChecker_19233d0(__int64 result)
+const char* SpineSlotChecker_19233d0(const char* result)
 {
   __int64 v1;
   unsigned __int64 v2;
   unsigned __int64 v3;
   char* v4;
   __int64 v5;
-  char* v6;
+  __int64 v6;
   unsigned __int64 v7;
   char* v8;
-  __int64 v9;
-  __int64 v11;
+  unsigned __int64 v9;
+  unsigned __int64 v11;
   int v12;
   unsigned int v13;
   __int64 v14;
-  __int64 v15;
+  unsigned __int64 v15;
   int v16;
   int v17;
-  __int64 v18;
+  unsigned __int64 v18;
   int v19;
-  __int64 v20;
+  unsigned __int64 v20;
   int v21;
-  __int64 v22;
-  __int64 v24;
-  unsigned __int64 v25;
-  char* v26;
+  unsigned __int64 v22;
+  struct {
+    __int64 v24;
+    unsigned __int64 v25;
+    char* v26;
+  } v24_;
 
-  if (result == 0) {
+  if (result == nullptr) {
     return result;
   }
-  v1 = result;
-  v2 = strlen(result);
+  v1 = (__int64)result;
+  v2 = strlen_alt1(result);
   if (v2 >= 0xFFFFFFFFFFFFFFF7LL) {
-    GameRoutine_60a1d0(v2);
+    String_60a1d0_alt1();
   }
   v3 = v2;
   if (v2 >= 0x17) {
@@ -326,32 +339,32 @@ __int64 SpineSlotChecker_19233d0(__int64 result)
     else {
       v5 = (v2 | 7) + 1;
     }
-    v4 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v5, 16,
-                                               0);
-    v25 = v3;
-    v26 = v4;
-    v24 = v5 | 1;
+    v4 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                    v5, 16, 0);
+    v24_.v25 = v3;
+    v24_.v26 = v4;
+    v24_.v24 = v5 | 1;
     goto LABEL_10;
   }
-  LOBYTE(v24) = 2 * v2;
-  v4 = (char*)&v24 + 1;
+  LOBYTE(v24_.v24) = 2 * v2;
+  v4 = (char*)&v24_.v24 + 1;
   if (v2 != 0) {
   LABEL_10:
-    memcpy(v4, v1, v3);
+    memcpy_alt1((__int64)v4, v1, v3);
   }
   v4[v3] = 0;
-  v6 = v26;
-  if ((v24 & 1) != 0) {
-    v7 = v25;
+  v6 = (__int64)v24_.v26;
+  if ((v24_.v24 & 1) != 0) {
+    v7 = v24_.v25;
   }
   else {
-    v7 = (unsigned __int64)(unsigned __int8)v24 >> 1;
+    v7 = (unsigned __int64)(unsigned __int8)v24_.v24 >> 1;
   }
-  if ((v24 & 1) != 0) {
-    v8 = v26;
+  if ((v24_.v24 & 1) != 0) {
+    v8 = v24_.v26;
   }
   else {
-    v8 = (char*)&v24 + 1;
+    v8 = (char*)&v24_.v24 + 1;
   }
   if (v7 >= 0x1C) {
     v9 = 28;
@@ -359,9 +372,10 @@ __int64 SpineSlotChecker_19233d0(__int64 result)
   else {
     v9 = v7;
   }
-  if ((unsigned int)memcmp(v8, "Contents:/UI/Face/Hell.sprop", v9) == 0 &&
+  if (memcmp_alt1((__int64)v8, (__int64)"Contents:/UI/Face/Hell.sprop", v9) ==
+          0 &&
       v7 == 28) {
-    result = 1;
+    result = (_BYTE*)(((_UNKNOWN*)0x0LL) + 1);
   }
   else {
     if (v7 >= 0x1E) {
@@ -370,7 +384,8 @@ __int64 SpineSlotChecker_19233d0(__int64 result)
     else {
       v11 = v7;
     }
-    v12 = memcmp(v8, "Contents:/UI/Face/Shadow.sprop", v11);
+    v12 = memcmp_alt1((__int64)v8, (__int64)"Contents:/UI/Face/Shadow.sprop",
+                      v11);
     if (v7 != 30 || v12 != 0) {
       if (v7 >= 0x21) {
         v15 = 33;
@@ -378,9 +393,11 @@ __int64 SpineSlotChecker_19233d0(__int64 result)
       else {
         v15 = v7;
       }
-      v16 = memcmp(v8, "Contents:/UI/Face/EyeShadow.sprop", v15);
+      v16 = memcmp_alt1((__int64)v8,
+                        (__int64)"Contents:/UI/Face/EyeShadow.sprop", v15);
       if (v7 != 33 || v16 != 0) {
-        v17 = memcmp(v8, "Contents:/UI/Face/Memory.sprop", v11);
+        v17 = memcmp_alt1((__int64)v8,
+                          (__int64)"Contents:/UI/Face/Memory.sprop", v11);
         if (v7 != 30 || v17 != 0) {
           if (v7 >= 0x20) {
             v18 = 32;
@@ -388,7 +405,8 @@ __int64 SpineSlotChecker_19233d0(__int64 result)
           else {
             v18 = v7;
           }
-          v19 = memcmp(v8, "Contents:/UI/Face/Guardian.sprop", v18);
+          v19 = memcmp_alt1((__int64)v8,
+                            (__int64)"Contents:/UI/Face/Guardian.sprop", v18);
           if (v7 != 32 || v19 != 0) {
             if (v7 >= 0x1F) {
               v20 = 31;
@@ -396,7 +414,8 @@ __int64 SpineSlotChecker_19233d0(__int64 result)
             else {
               v20 = v7;
             }
-            v21 = memcmp(v8, "Contents:/UI/Face/Phantom.sprop", v20);
+            v21 = memcmp_alt1((__int64)v8,
+                              (__int64)"Contents:/UI/Face/Phantom.sprop", v20);
             if (v7 != 31 || v21 != 0) {
               if (v7 >= 0x1B) {
                 v22 = 27;
@@ -404,43 +423,45 @@ __int64 SpineSlotChecker_19233d0(__int64 result)
               else {
                 v22 = v7;
               }
-              if ((unsigned int)memcmp(v8, "Contents:/UI/Face/God.sprop",
-                                       v22) == 0 &&
+              if (memcmp_alt1((__int64)v8,
+                              (__int64)"Contents:/UI/Face/God.sprop",
+                              v22) == 0 &&
                   v7 == 27) {
-                result = 7;
+                result = (_BYTE*)((_UNKNOWN*)0x7LL);
               }
               else {
-                result = 0;
+                result = nullptr;
               }
             }
             else {
-              result = 6;
+              result = (_BYTE*)((_UNKNOWN*)0x6LL);
             }
           }
           else {
-            result = 5;
+            result = (_BYTE*)((_UNKNOWN*)0x5LL);
           }
         }
         else {
-          result = 4;
+          result = (_BYTE*)((_UNKNOWN*)0x4LL);
         }
       }
       else {
-        result = 3;
+        result = (_BYTE*)(((_UNKNOWN*)0x0LL) + 3);
       }
     }
     else {
-      result = 2;
+      result = (_BYTE*)(((_UNKNOWN*)0x0LL) + 2);
     }
   }
-  if ((v24 & 1) != 0 && v6 != nullptr) {
-    v13 = result;
+  if ((v24_.v24 & 1) != 0 && v6 != 0) {
+    v13 = (unsigned int)result;
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v14 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v14);
-    return v13;
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v6);
+    return (const char*)v13;
   }
   return result;
 }

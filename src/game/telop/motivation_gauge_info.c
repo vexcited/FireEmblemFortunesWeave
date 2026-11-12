@@ -23,58 +23,88 @@ extern __int64* GameData_212d670[3];
 extern __int64* GameData_212d678[2];
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
 __int64 MotivationGaugeInfo_Unknown28(__int64 a1);
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64*
+LayoutAccessor_155fbe0_alt1(__int64*,
+                            const char*) __asm__("LayoutAccessor_155fbe0");
+__int64 Alignment_56b600_alt1(__int64 result) __asm__("Alignment_56b600");
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 GameHr_1840740(__int64, unsigned int, __int64, unsigned __int8, char);
+__int64 LayoutAccessor_155e830_alt1(__int64 result,
+                                    char) __asm__("LayoutAccessor_155e830");
+__int64
+LayoutAccessor_1562cf0_alt1(__int64 result,
+                            const char*) __asm__("LayoutAccessor_1562cf0");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64 ui_LayoutAccessor_FindAlignment_alt1(__int64*, __int64) __asm__(
+    "ui_LayoutAccessor_FindAlignment");
+__int64
+ui_LayoutAccessor_FindPane_alt1(__int64*,
+                                __int64) __asm__("ui_LayoutAccessor_FindPane");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+__int64 ui_LayoutAccessor_SetPriority_alt1(__int64 result, int) __asm__(
+    "ui_LayoutAccessor_SetPriority");
+char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
 
 __int64 MotivationGaugeInfo_Unknown28(__int64 a1)
 {
   char* v1;
-  char* v2;
+  __int64 v2;
   __int64* v4;
   int i;
   char* v6;
   __int64* v7;
-  __int64 v8;
-  __int64 v9;
+  char* v8;
+  __int64* v9;
   __int64 v10;
-  __int64 v11;
+  __int64* v11;
   int v12;
-  __int64 v13;
-  __int64 v14;
+  __int64* v13;
+  char* v14;
   __int64 v15;
   __int64 v16;
   const char* v17;
-  __int64 v18;
+  char* v18;
   __int64 v19;
   __int64 v20;
   const char* v21;
-  __int64 v22;
-  long double v23;
+  char* v22;
+  __int64 v23;
   __int64 v24;
-  __int64 v25;
-  const char* v26;
-  __int64* v27;
-  __int64 v28;
-  char* v29;
+  const char* v25;
+  __int64 v26;
+  char* v27;
+  char* v28;
+  int v29;
   int v30;
-  int v31;
-  __int64* v32;
+  __int64* v31;
+  __int64 v32;
   __int64 v33;
-  __int64* v34;
-  __int64 v36;
-  __int64 v37;
+  struct {
+    __int64 v35;
+    __int64 v36;
+  } v35_;
 
-  v2 = *(char**)(a1 + 208);
+  v2 = *(_QWORD*)(a1 + 208);
   v1 = *(char**)(a1 + 216);
   v4 = ui_LayoutAccessor_empty__ptr[0];
-  if (v2 != v1) {
+  if ((char*)v2 != v1) {
     i = 0;
     while (1) {
       if (*(_QWORD*)v2 == 0 || *(_BYTE*)(a1 + 253) == 1 &&
-                                   *((_DWORD*)v2 + 2) == *((_DWORD*)v2 + 3)) {
-        v6 = (char*)(v1 - (v2 + 24));
-        if (v1 != v2 + 24) {
-          memmove(v2, v2 + 24, v6 - 4);
+                                   *(_DWORD*)(v2 + 8) == *(_DWORD*)(v2 + 12)) {
+        v6 = &v1[-v2 - 24];
+        if (v1 != (char*)(v2 + 24)) {
+          memmove_alt1(v2, v2 + 24, (unsigned __int64)(v6 - 4));
         }
-        v1 = &v6[(_QWORD)v2];
+        v1 = &v6[v2];
         v2 -= 24;
         *(_QWORD*)(a1 + 216) = v1;
         goto LABEL_4;
@@ -85,24 +115,24 @@ __int64 MotivationGaugeInfo_Unknown28(__int64 a1)
       else {
         v7 = v4;
       }
-      v8 = game_util_Format("L_MotivationGauge%02d", (unsigned int)i);
-      v9 = LayoutAccessor_155fbe0(v7, v8);
-      LayoutAccessor_155e830(v9, 1);
-      v10 = ui_LayoutAccessor_FindPane(v9, "Face");
+      v8 = game_util_Format_alt1("L_MotivationGauge%02d", (unsigned int)i);
+      v9 = LayoutAccessor_155fbe0_alt1(v7, v8);
+      LayoutAccessor_155e830_alt1((__int64)v9, 1);
+      v10 = ui_LayoutAccessor_FindPane_alt1(v9, (__int64)"Face");
       if (v10 != 0) {
         v10 = __dynamic_cast(v10, GameData_212d670[0], GameData_212d678[0], 0);
       }
-      GameRoutine_1840740(v10, 0, *(_QWORD*)v2, 6, 1);
-      v11 = LayoutAccessor_155fbe0(v9, "L_Motivation");
-      v12 = *((_DWORD*)v2 + 2);
+      GameHr_1840740(v10, 0, *(_QWORD*)v2, 6u, 1);
+      v11 = LayoutAccessor_155fbe0_alt1(v9, "L_Motivation");
+      v12 = *(_DWORD*)(v2 + 8);
       v13 = v11;
-      v14 = game_util_Format("L_Motivation%02d", 0);
-      LayoutAccessor_1560070((void*)(&v36), v13, v14);
-      if (v37 != 0) {
-        v15 = std___1___shared_weak_count_lock(v37);
-        v16 = v36;
-        if (v37 != 0) {
-          std___1___shared_weak_count___release_weak();
+      v14 = game_util_Format_alt1("L_Motivation%02d", 0);
+      LayoutAccessor_1560070_alt1((void*)(&v35_.v35), v13, v14);
+      if (v35_.v36 != 0) {
+        v15 = std___1___shared_weak_count_lock_alt1(v35_.v36);
+        v16 = v35_.v35;
+        if (v35_.v36 != 0) {
+          std___1___shared_weak_count___release_weak_alt1(v35_.v36);
         }
         if (v15 != 0 && v16 != 0) {
           if (v12 >= 1) {
@@ -111,7 +141,7 @@ __int64 MotivationGaugeInfo_Unknown28(__int64 a1)
           else {
             v17 = "GaugeOff";
           }
-          LayoutAccessor_1562cf0(v16, v17);
+          LayoutAccessor_1562cf0_alt1(v16, v17);
         }
         else if (v15 == 0) {
           goto LABEL_28;
@@ -119,19 +149,19 @@ __int64 MotivationGaugeInfo_Unknown28(__int64 a1)
         if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
-          std___1___shared_weak_count___release_weak();
+          std___1___shared_weak_count___release_weak_alt1(v15);
         }
       }
     LABEL_28:
-      v18 = game_util_Format("L_Motivation%02d", 1);
-      LayoutAccessor_1560070((void*)(&v36), v13, v18);
-      if (v37 == 0) {
+      v18 = game_util_Format_alt1("L_Motivation%02d", 1);
+      LayoutAccessor_1560070_alt1((void*)(&v35_.v35), v13, v18);
+      if (v35_.v36 == 0) {
         goto LABEL_40;
       }
-      v19 = std___1___shared_weak_count_lock(v37);
-      v20 = v36;
-      if (v37 != 0) {
-        std___1___shared_weak_count___release_weak();
+      v19 = std___1___shared_weak_count_lock_alt1(v35_.v36);
+      v20 = v35_.v35;
+      if (v35_.v36 != 0) {
+        std___1___shared_weak_count___release_weak_alt1(v35_.v36);
       }
       if (v19 != 0 && v20 != 0) {
         if (v12 >= 2) {
@@ -140,7 +170,7 @@ __int64 MotivationGaugeInfo_Unknown28(__int64 a1)
         else {
           v21 = "GaugeOff";
         }
-        LayoutAccessor_1562cf0(v20, v21);
+        LayoutAccessor_1562cf0_alt1(v20, v21);
       }
       else if (v19 == 0) {
         goto LABEL_40;
@@ -148,49 +178,44 @@ __int64 MotivationGaugeInfo_Unknown28(__int64 a1)
       if (atomic_fetch_add((atomic_ullong* volatile)(v19 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v19 + 16LL))(v19);
-        std___1___shared_weak_count___release_weak();
+        std___1___shared_weak_count___release_weak_alt1(v19);
       }
     LABEL_40:
-      v22 = game_util_Format("L_Motivation%02d", 2);
-      LayoutAccessor_1560070((void*)(&v36), v13, v22);
-      if (v37 != 0) {
-        v24 = std___1___shared_weak_count_lock(v37);
-        v25 = v36;
-        if (v37 != 0) {
-          *((_QWORD*)&v23 + 1) =
-              LANES128_OF(std___1___shared_weak_count___release_weak())
-                  .n128_u64[1];
+      v22 = game_util_Format_alt1("L_Motivation%02d", 2);
+      LayoutAccessor_1560070_alt1((void*)(&v35_.v35), v13, v22);
+      if (v35_.v36 != 0) {
+        v23 = std___1___shared_weak_count_lock_alt1(v35_.v36);
+        v24 = v35_.v35;
+        if (v35_.v36 != 0) {
+          std___1___shared_weak_count___release_weak_alt1(v35_.v36);
         }
-        if (v24 != 0 && v25 != 0) {
+        if (v23 != 0 && v24 != 0) {
           if (v12 >= 3) {
-            v26 = "GaugeOn";
+            v25 = "GaugeOn";
           }
           else {
-            v26 = "GaugeOff";
+            v25 = "GaugeOff";
           }
-          LayoutAccessor_1562cf0(v25, v26);
+          LayoutAccessor_1562cf0_alt1(v24, v25);
         LABEL_50:
-          if (atomic_fetch_add((atomic_ullong* volatile)(v24 + 8),
+          if (atomic_fetch_add((atomic_ullong* volatile)(v23 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(__int64))(*(_QWORD*)v24 + 16LL))(v24);
-            *((_QWORD*)&v23 + 1) =
-                LANES128_OF(std___1___shared_weak_count___release_weak())
-                    .n128_u64[1];
+            (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23);
+            std___1___shared_weak_count___release_weak_alt1(v23);
           }
           goto LABEL_3;
         }
-        if (v24 != 0) {
+        if (v23 != 0) {
           goto LABEL_50;
         }
       }
     LABEL_3:
-      *(_QWORD*)&v23 = 0;
-      LayoutAccessor_1562680(v9, "In", v23);
+      GameHr_1562680((__int64)v9, "In", 0x0.0p+0f);
       v1 = *(char**)(a1 + 216);
       ++i;
     LABEL_4:
       v2 += 24;
-      if (v2 == v1) {
+      if ((char*)v2 == v1) {
         if (i > 4) {
           goto LABEL_60;
         }
@@ -201,49 +226,50 @@ __int64 MotivationGaugeInfo_Unknown28(__int64 a1)
   for (i = 0; i != 5; ++i) {
   LABEL_55:
     if (*(_QWORD*)(a1 + 168) != 0) {
-      v27 = *(__int64**)(a1 + 168);
+      v26 = *(_QWORD*)(a1 + 168);
     }
     else {
-      v27 = v4;
+      v26 = (__int64)v4;
     }
-    v28 = game_util_Format("L_MotivationGauge%02d", (unsigned int)i);
-    ui_LayoutAccessor_SetPaneVisible(v27, v28, 0);
+    v27 = game_util_Format_alt1("L_MotivationGauge%02d", (unsigned int)i);
+    ui_LayoutAccessor_SetPaneVisible_alt1(v26, (__int64)v27, 0);
   }
   v1 = *(char**)(a1 + 216);
 LABEL_60:
-  v29 = *(char**)(a1 + 208);
-  if (v29 == v1) {
+  v28 = *(char**)(a1 + 208);
+  if (v28 == v1) {
     *(_BYTE*)(a1 + 252) = 0;
   }
   else {
-    *(_BYTE*)(a1 + 252) = *((_DWORD*)v29 + 3) < *((_DWORD*)v29 + 2);
-    v30 = *(_DWORD*)(a1 + 248);
+    *(_BYTE*)(a1 + 252) = (signed __int32)*((_DWORD*)v28 + 3) <
+                          (signed __int32)*((_DWORD*)v28 + 2);
+    v29 = *(_DWORD*)(a1 + 248);
     do {
-      v31 = *((_DWORD*)v29 + 4);
-      if (v31 > v30) {
-        *(_DWORD*)(a1 + 248) = v31;
-        v30 = v31;
+      v30 = *((_DWORD*)v28 + 4);
+      if (v30 > v29) {
+        *(_DWORD*)(a1 + 248) = v30;
+        v29 = v30;
       }
-      v29 += 24;
-    } while (v29 != v1);
+      v28 += 24;
+    } while (v28 != v1);
   }
   if (*(_QWORD*)(a1 + 168) != 0) {
-    v32 = *(__int64**)(a1 + 168);
+    v31 = *(__int64**)(a1 + 168);
   }
   else {
-    v32 = v4;
+    v31 = v4;
   }
-  v33 = ui_LayoutAccessor_FindAlignment(v32, "A_Motivation");
-  if (v33 != 0) {
-    Alignment_56b600(v33);
+  v32 = ui_LayoutAccessor_FindAlignment_alt1(v31, (__int64)"A_Motivation");
+  if (v32 != 0) {
+    Alignment_56b600_alt1(v32);
   }
   if (*(_QWORD*)(a1 + 168) != 0) {
-    v34 = *(__int64**)(a1 + 168);
+    v33 = *(_QWORD*)(a1 + 168);
   }
   else {
-    v34 = v4;
+    v33 = (__int64)v4;
   }
-  return ui_LayoutAccessor_SetPriority(v34, 1090);
+  return ui_LayoutAccessor_SetPriority_alt1(v33, 1090);
 }
 
 #pragma GCC visibility pop

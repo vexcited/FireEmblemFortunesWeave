@@ -45,6 +45,9 @@ __int64 WaveVoice_18d880(__int64 a1, __int64 a2);
 __int64 WaveVoice_18e630(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                          __int64 a5, __int64 a6, __int64 a7, __int64 a8,
                          __int64 a9);
+__int64 GameHr_18d540(__int64, __int64);
+__int64 Voice_1449c0_alt1(_QWORD*, __int64, __int64, __int64,
+                          __int64) __asm__("Voice_1449c0");
 
 __int64 WaveVoice_18d880(__int64 a1, __int64 a2)
 {
@@ -452,17 +455,19 @@ __int64 WaveVoice_18e630(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   __int64 v17;
   __int64 v18;
   __int64 v19;
-  __int64 v21;
-  int v22;
+  struct {
+    __int64 v21;
+    int v22;
+  } v21_;
 
   v15 = a1 + 4096;
-  Voice_1449c0(a1, a2, a4, a8, a9);
+  Voice_1449c0_alt1((_QWORD*)a1, a2, a4, a8, a9);
   *(_QWORD*)(a1 + 6072) = 0;
   v16 = GameData_2134c90;
   *(_BYTE*)(v15 + 1992) = 0;
   *(_DWORD*)(a1 + 6080) = 0x2000;
-  v21 = 0;
-  v22 = 0x2000;
+  v21_.v21 = 0;
+  v21_.v22 = 0x2000;
   *(_QWORD*)a1 = v16 + 2;
   *(_QWORD*)(a1 + 5592) = v16 + 245;
   *(_QWORD*)(a1 + 40) = v16 + 104;
@@ -474,23 +479,23 @@ __int64 WaveVoice_18e630(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   else {
     v17 = 0;
   }
-  snd_fnd_WeakHandle_set_alt1(&v21, v17);
-  GameRoutine_112180_alt1(a1 + 5800, &v21);
-  v21 = 0;
-  v22 = 0x2000;
+  snd_fnd_WeakHandle_set((__int64)&v21_.v21, v17);
+  GameRoutine_112180(a1 + 5800, (__int64)&v21_.v21);
+  v21_.v21 = 0;
+  v21_.v22 = 0x2000;
   if (a7 != 0) {
     v18 = a7 + 5592;
   }
   else {
     v18 = 0;
   }
-  snd_fnd_WeakHandle_set_alt1(&v21, v18);
-  GameRoutine_112180_alt1(a1 + 5848, &v21);
+  snd_fnd_WeakHandle_set((__int64)&v21_.v21, v18);
+  GameRoutine_112180(a1 + 5848, (__int64)&v21_.v21);
   v19 = *(_QWORD*)(a1 + 5648);
   *(_DWORD*)(a1 + 5920) = *(_DWORD*)(a8 + 208);
   ((void (*)(__int64, __int64))GameRoutine_f05f0)(v19, a5);
   *(_QWORD*)(a1 + 5656) = a6;
-  Crc32List_18d540(a1, a8);
+  GameHr_18d540(a1, a8);
   WaveVoice_18d880(a1, a8);
   return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 784LL))(a1);
 }

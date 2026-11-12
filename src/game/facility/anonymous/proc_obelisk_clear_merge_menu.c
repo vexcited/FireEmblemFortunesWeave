@@ -36,8 +36,10 @@ __n128 ProcObeliskClearMergeMenu_Unknown88(__int64 a1);
 __int64 ProcObeliskClearMergeMenu_Unknown100(__int64 a1);
 __int64 ProcObeliskClearMergeMenu_Unknown101(__int64 a1);
 __int64
-game_facility_anonymous_ProcObeliskClearMergeMenu_CreateBind_closure_Invoke(
-    __int64 a1, __int64 a2);
+game_facility_anonymous_ProcObeliskClearMergeMenu_CreateBind_closure_Invoke_alt1(
+    __int64 a1,
+    __int64 a2) __asm__("game_facility_anonymous_ProcObeliskClearMergeMenu_"
+                        "CreateBind_closure_Invoke");
 __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
                                                        __int64);
 __int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
@@ -56,6 +58,19 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_158ca00_alt1(
 __n128 ProcObeliskUnitMergeRouteSelectMenu_158c260_alt1(
     __int64**, __int64, __int64, unsigned int,
     char) __asm__("ProcObeliskUnitMergeRouteSelectMenu_158c260");
+__int64 GameRoutine_6c2b50_alt1(__int64) __asm__("GameRoutine_6c2b50");
+__int64 GameRoutine_6c3980_alt1(__int64 result,
+                                __int64) __asm__("GameRoutine_6c3980");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+bool GameRoutine_158c7c0_alt1(char, __int64,
+                              __int64) __asm__("GameRoutine_158c7c0");
+int* GameRoutine_158cbc0_alt1(__int64, __int64) __asm__("GameRoutine_158cbc0");
+void BasicMenuCursor_16e0c00_alt1(_QWORD*,
+                                  __int64) __asm__("BasicMenuCursor_16e0c00");
+void game_facility_anonymous_ProcObeliskClearMergeMenu_CreateBind_closure_Invoke(
+    __int64 a1, __int64 a2);
 
 __int64 ProcObeliskClearMergeMenu_Unknown85(__int64 a1)
 {
@@ -410,22 +425,18 @@ __int64 ProcObeliskClearMergeMenu_Unknown139(__int64 a1, __int64* a2)
   return result;
 }
 
-__int64
-
-game_facility_anonymous_ProcObeliskClearMergeMenu_CreateBind_closure_Invoke(
+void game_facility_anonymous_ProcObeliskClearMergeMenu_CreateBind_closure_Invoke(
     __int64 a1, __int64 a2)
 {
-  __int64 v2;
+  _QWORD* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   bool v6;
   __int64 v7;
-  long double v8;
-  long double v9;
-  char v10;
+  bool v8;
 
-  v2 = **(_QWORD**)(a1 + 8);
+  v2 = **(_QWORD***)(a1 + 8);
   v3 = *(_QWORD*)(*(_QWORD*)a2 + 24LL);
   v4 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)a2 + 8LL) + 392LL);
   if (v4 != 0) {
@@ -435,8 +446,8 @@ game_facility_anonymous_ProcObeliskClearMergeMenu_CreateBind_closure_Invoke(
     v5 = *(_QWORD*)(*(_QWORD*)a2 + 24LL);
   }
   v6 = v4 == 0;
-  v7 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      4560, 16, 0);
+  v7 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 4560, 16, 0);
   *(_WORD*)(v7 + 16) = 0;
   *(_DWORD*)(v7 + 40) = 0;
   *(_QWORD*)(v7 + 48) = 0;
@@ -448,17 +459,18 @@ game_facility_anonymous_ProcObeliskClearMergeMenu_CreateBind_closure_Invoke(
   *(_BYTE*)(v7 + 82) = 1;
   *(_QWORD*)v7 = game_facility_anonymous_ObeliskClearMergeMenuItem_vtable;
   *(_QWORD*)(v7 + 8) = 0;
-  GameRoutine_6c2b50(v7 + 96, v8);
-  GameRoutine_6c2b50(v7 + 2320, v9);
+  GameRoutine_6c2b50_alt1(v7 + 96);
+  GameRoutine_6c2b50_alt1(v7 + 2320);
   *(_DWORD*)(v7 + 4544) = 0;
-  GameRoutine_6c3980(v7 + 96, v5);
-  GameRoutine_6c3980(v7 + 2320, v3);
-  *(_BYTE*)(v7 + 4544) = GameRoutine_158cbc0(v7 + 2320, v7 + 96) & 1;
-  *(_BYTE*)(v7 + 4545) = GameRoutine_158c7c0(1, v7 + 2320, v7 + 96) & 1;
-  v10 = GameRoutine_158c7c0(2, v7 + 2320, v7 + 96);
+  GameRoutine_6c3980_alt1(v7 + 96, v5);
+  GameRoutine_6c3980_alt1(v7 + 2320, v3);
+  *(_BYTE*)(v7 + 4544) =
+      (unsigned __int8)GameRoutine_158cbc0_alt1(v7 + 2320, v7 + 96) & 1;
+  *(_BYTE*)(v7 + 4545) = GameRoutine_158c7c0_alt1(1, v7 + 2320, v7 + 96);
+  v8 = GameRoutine_158c7c0_alt1(2, v7 + 2320, v7 + 96);
   *(_BYTE*)(v7 + 4547) = v6;
-  *(_BYTE*)(v7 + 4546) = v10 & 1;
-  return BasicMenuCursor_16e0c00(v2, v7);
+  *(_BYTE*)(v7 + 4546) = v8;
+  BasicMenuCursor_16e0c00_alt1(v2, v7);
 }
 
 #pragma GCC visibility pop

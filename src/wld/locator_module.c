@@ -29,6 +29,14 @@ __int64 LocatorModule_a7bee0(__int64 a1, __int64 a2);
 __int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, long double) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64* LocatorModule_a7c2c0(__int64* result, __int64 a2, long double a3);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 wld_a7ab80(__int64, __int64);
+void LocatorModule_a7c180_alt2(__int64*,
+                               _QWORD*) __asm__("LocatorModule_a7c180");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 _QWORD* LocatorModule_Destructor(_QWORD* result)
 {
@@ -233,7 +241,7 @@ __int64 LocatorModule_a7c000(_QWORD* a1, int a2)
 {
   __int64* v2;
   __int64* v3;
-  _QWORD* v4;
+  __int64* v4;
   __int64 v6;
   _QWORD* v7;
   __int64 v8;
@@ -248,8 +256,10 @@ __int64 LocatorModule_a7c000(_QWORD* a1, int a2)
   __int64 v17;
   __int64 v18;
   __int64 v20;
-  _QWORD v21[4];
-  int v22;
+  struct {
+    _QWORD v21[4];
+    int v22;
+  } v21_;
 
   v2 = (__int64*)a1[5];
   v3 = (__int64*)a1[6];
@@ -267,22 +277,22 @@ __int64 LocatorModule_a7c000(_QWORD* a1, int a2)
     v9 = v7[3];
     v8 = v7[4];
     v10 = *(_QWORD*)(*v7 + 8LL);
-    v21[0] = a1;
-    v21[1] = v8 + ((__int64)a2 << 6);
-    v21[2] = v9 + 96LL * a2;
+    v21_.v21[0] = a1;
+    v21_.v21[1] = v8 + ((__int64)a2 << 6);
+    v21_.v21[2] = v9 + 96LL * a2;
     if (v10 != 0) {
       v10 = *(_QWORD*)(v10 + 16LL * a2 + 32) + 2LL;
     }
-    v21[3] = v10;
-    v22 = a2;
+    v21_.v21[3] = v10;
+    v21_.v22 = a2;
     v11 = fw_memory_g_heap_manager_ptr;
-    v12 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         368, 16, 0);
-    GameRoutine_a7ab80(v12, (__int64)v21);
+    v12 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 368, 16, 0);
+    wld_a7ab80(v12, (__int64)v21_.v21);
     v13 = *(_DWORD*)(v12 + 20);
     v20 = v12;
     *(_DWORD*)(v12 + 20) = v13 + 1;
-    LocatorModule_a7c180_alt1(v4, &v20);
+    LocatorModule_a7c180_alt2(v4, &v20);
     v14 = v20;
     v6 = *(_QWORD*)(a1[6] - 8LL);
     v20 = 0;
@@ -303,7 +313,7 @@ __int64 LocatorModule_a7c000(_QWORD* a1, int a2)
       if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
         v18 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v18, v14);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v11 + v18, v14);
     }
   }
   else {

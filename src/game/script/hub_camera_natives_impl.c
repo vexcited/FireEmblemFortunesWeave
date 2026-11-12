@@ -7,17 +7,22 @@ extern __int64 GameData_21f3cb0;
 extern __int64 as_g_thread_info;
 extern __int64* as_g_script_manager_ptr;
 __int64 HubCameraNatives_e11540(float a1);
+__int64 game_zview_d1f7d0(__int64, __int64);
 
 __int64 HubCameraNatives_e11540(float a1)
 {
+
+#pragma clang fp contract(off)
   __int64 v2;
   __int64 v3;
   __int64 v4;
   _QWORD* v5;
   __int64 v6;
   __int64 result;
-  float v8;
-  char v9;
+  struct {
+    float v8;
+    char v9;
+  } v8_;
 
   v2 = *as_g_script_manager_ptr;
   v3 = *(
@@ -45,15 +50,14 @@ __int64 HubCameraNatives_e11540(float a1)
     v6 = 40;
   }
   (*(void (**)(__int64))(*v5 + v6))((__int64)v5);
-
 LABEL_9:
   result = GameData_21f3cb0;
   if (*(_BYTE*)(GameData_21f3cb0 + 1136) != 0) {
     *(_BYTE*)(GameData_21f3cb0 + 1136) = 0;
     *(float*)(result + 1140) = a1;
-    v8 = a1;
-    v9 = 1;
-    return GameRoutine_d1f7d0(result, (__int64)&v8);
+    v8_.v8 = a1;
+    v8_.v9 = 1;
+    return game_zview_d1f7d0(result, (__int64)&v8_.v8);
   }
   return result;
 }

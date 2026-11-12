@@ -43,6 +43,9 @@ __int64 GameRoutine_5fc3f0(_QWORD);
 __int64 GameRoutine_5fd940(__int64, __int64, __int64, float, float, float,
                            float);
 __int64 VectorGraphicsTexture_5adfc0(__int64 a1, _QWORD* a2, __int64 a3);
+__int64 GameRoutine_5fc260_alt1(__int64 result) __asm__("GameRoutine_5fc260");
+__int64 GameRoutine_5fc280_alt1(__int64 result) __asm__("GameRoutine_5fc280");
+__int64 GameRoutine_5fc390_alt1(__int64 result) __asm__("GameRoutine_5fc390");
 
 __int64 VectorGraphicsTexture_DeletingDestructor(_QWORD* a1)
 {
@@ -119,50 +122,54 @@ __int64 VectorGraphicsTexture_Unknown4(__int64 a1, __int64 a2, __int64* a3)
   int v7;
   __int64 result;
   _QWORD v9[4];
-  __int64 v10;
-  _QWORD* v11;
-  __int64 v12;
-  __int64 v13;
+  struct {
+    __int64 v10;
+    _QWORD* v11;
+    __int64 v12;
+    __int64 v13;
+  } v10_;
   _QWORD v14[3];
   _QWORD v15[5];
-  _QWORD v16[3];
-  __int64* v17;
-  __int64 v18;
+  struct {
+    _QWORD v16[3];
+    __int64* v17;
+    __int64 v18;
+  } v16_;
 
   v3 = *a3;
   v4 = a3[1];
   memset(v15, 0, sizeof(v15));
   memset(v14, 0, sizeof(v14));
-  v16[0] = v3;
-  v16[1] = v4;
-  v16[2] = a3[2];
-  v17 = nullptr;
-  v18 = a3[4];
+  v16_.v16[0] = v3;
+  v16_.v16[1] = v4;
+  v16_.v16[2] = a3[2];
+  v16_.v17 = nullptr;
+  v16_.v18 = a3[4];
   if (*(_QWORD*)(a1 + 448) != 0) {
-    GameRoutine_5fc280(v14);
+    GameRoutine_5fc280_alt1((__int64)v14);
     BYTE2(v14[0]) = 0;
     WORD2(v14[0]) |= 0xEu;
-    GameRoutine_5fc260(v15);
+    GameRoutine_5fc260_alt1((__int64)v15);
     v7 = *(_DWORD*)(a1 + 340);
-    v16[0] = v14;
+    v16_.v16[0] = v14;
     LOBYTE(v15[0]) = v7;
   }
-  v12 = 0;
-  v13 = 0;
-  v10 = 0;
-  v11 = nullptr;
+  v10_.v12 = 0;
+  v10_.v13 = 0;
+  v10_.v10 = 0;
+  v10_.v11 = nullptr;
   memset(v9, 0, sizeof(v9));
-  GameRoutine_5fc390(&v10);
+  GameRoutine_5fc390_alt1((__int64)&v10_.v10);
   GameRoutine_5fc380(v9);
   result = *(_QWORD*)(a1 + 40);
-  v11 = v9;
-  v17 = &v10;
+  v10_.v11 = v9;
+  v16_.v17 = &v10_.v10;
   LODWORD(v9[0]) = 2817;
-  LOBYTE(v10) = 1;
-  HIDWORD(v10) = 4871;
+  LOBYTE(v10_.v10) = 1;
+  HIDWORD(v10_.v10) = 4871;
   if (result != 0) {
     return (*(__int64 (**)(__int64, __int64, _QWORD*, __int64))(
-        *(_QWORD*)result + 32LL))(result, a2, v16, a1 + 64);
+        *(_QWORD*)result + 32LL))(result, a2, v16_.v16, a1 + 64);
   }
   return result;
 }

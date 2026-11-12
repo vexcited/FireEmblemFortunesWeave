@@ -27,8 +27,14 @@ __int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
                                              __int64 a3, unsigned int a4);
 __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda0_Invoke(__int64 a1, __int64 a2,
                                                        __int64 a3);
+__int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda1_Invoke_alt1(
+    __int64 a1, __int64 a2,
+    _QWORD* a3) __asm__("gfxa_MainPass3DUI_Setup3DUIPass_lambda1_Invoke");
+__int64
+gfxa_Task3DUI_Impl_draw_alt1(__int64, _QWORD*, _QWORD*, __int64*,
+                             unsigned int*) __asm__("gfxa_Task3DUI_Impl_draw");
 __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda1_Invoke(__int64 a1, __int64 a2,
-                                                       _QWORD* a3);
+                                                       __int64* a3);
 
 __int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
                                              __int64 a3, unsigned int a4)
@@ -269,8 +275,10 @@ __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda0_Invoke(__int64 a1, __int64 a2,
 }
 
 __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda1_Invoke(__int64 a1, __int64 a2,
-                                                       _QWORD* a3)
+                                                       __int64* a3)
 {
+
+#pragma clang fp contract(off)
   _QWORD* v3;
   __int64* v6;
   __int64 v7;
@@ -288,9 +296,12 @@ __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda1_Invoke(__int64 a1, __int64 a2,
   float* v19;
   float v20;
   float v21;
-  __int64 v23;
-  float v24;
-  __int64 v25;
+  struct {
+    __int64 v23;
+    float v24;
+    char gap20_[4];
+    __int64 v25;
+  } v23_;
 
   v3 = *(_QWORD**)(a1 + 8);
   v6 = (__int64*)(*v3 + 13304LL);
@@ -299,15 +310,15 @@ __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda1_Invoke(__int64 a1, __int64 a2,
   }
   v7 = *v6;
   v8 = HIDWORD(*v6);
-  v23 = *v6;
+  v23_.v23 = *v6;
   v9 = nn_os_ConvertToTimeSpan(*(_QWORD*)(as_g_base_frame_counter + 128));
   v11 = *(_QWORD**)a2;
   v10 = *(_QWORD**)(a2 + 8);
   v12 = (float)(v9 / 1000000);
   v13 = v3[1];
   v14 = v3[3];
-  v15 = v12 / 1000.0;
-  v25 = v13;
+  v15 = v12 / 0x1.f400000000000p+9f;
+  v23_.v25 = v13;
   LODWORD(v13) = *(_DWORD*)(v14 + 40);
   v16 = (int)v13 < -1;
   v17 = ((_BYTE)v13 + 1) & 1;
@@ -315,22 +326,23 @@ __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda1_Invoke(__int64 a1, __int64 a2,
     v17 = -v17;
   }
   *(_DWORD*)(v14 + 40) = v17;
-  v24 = v12 / 1000.0;
+  v23_.v24 = v12 / 0x1.f400000000000p+9f;
   v18 = *(_QWORD*)(v14 + 8LL * v17 + 24);
   v19 = (float*)(*(__int64 (**)(__int64))(*(_QWORD*)v18 + 56LL))(v18);
   v19[2] = v15;
-  v20 = 1.0 / (float)(int)v7;
-  v21 = 1.0 / (float)(int)v8;
+  v20 = 0x1.0000000000000p+0f / (float)(int)v7;
+  v21 = 0x1.0000000000000p+0f / (float)(int)v8;
   if ((_DWORD)v7 == 0) {
-    v20 = 0.0;
+    v20 = 0x0.0p+0f;
   }
   if (v8 == 0) {
-    v21 = 0.0;
+    v21 = 0x0.0p+0f;
   }
   *v19 = v20;
   v19[1] = v21;
   (*(void (**)(__int64))(*(_QWORD*)v18 + 64LL))(v18);
-  return gfxa_Task3DUI_Impl_draw(v14, v11, v10, a3, (unsigned int*)&v23);
+  return gfxa_Task3DUI_Impl_draw_alt1(v14, v11, v10, a3,
+                                      (unsigned int*)&v23_.v23);
 }
 
 #pragma GCC visibility pop

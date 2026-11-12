@@ -69,6 +69,7 @@ long double TextBox_59d920(_QWORD, _QWORD);
 __int64 AnimTransformBasic_56f080(__int64 result, __int64 a2);
 void AnimTransformBasic_56f760(__int64 a1, float* a2, __int64 a3, __int64 a4,
                                __int64 a5, __int64 a6, __int64 a7, __int64 a8);
+__int64 LayoutEx_57b5c0_alt1(__int64) __asm__("LayoutEx_57b5c0");
 
 bool AnimTransformBasic_56e6a0(__int64 a1)
 {
@@ -1999,7 +2000,7 @@ __int64 AnimTransformBasic_571340(__int64 a1, __int64 a2, __int64 a3,
   __int64 v19;
   __int64 v20;
 
-  v9 = LayoutEx_57b5c0(a3);
+  v9 = LayoutEx_57b5c0_alt1(a3);
   (*(void (**)(__int64, __int64, __int64, _QWORD, _QWORD))(
       *(_QWORD*)v9 + 72LL))(v9, a2, a5, *(_QWORD*)(a1 + 8),
                             *(unsigned __int16*)(a1 + 112));

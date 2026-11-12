@@ -35,6 +35,11 @@ unsigned __int64 GameRoutine_d2b5f0(__int64);
 void GameRoutine_66ae00_alt1(__int64*) __asm__("GameRoutine_66ae00");
 __n128 game_character_CharacterSelfie_Start(__int64 a1, char a2, __int64* a3);
 __int64 CharacterSelfie_10a6b90();
+__int64 GameRoutine_66ae00_alt2(__int64 result) __asm__("GameRoutine_66ae00");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void CharacterBuilder_1084400_alt2(__int64,
+                                   int) __asm__("CharacterBuilder_1084400");
 
 __n128 CharacterSelfie_Destructor(_QWORD* a1)
 {
@@ -366,17 +371,15 @@ LABEL_17:
 
 void CharacterSelfie_10a6ac0(__int64 a1)
 {
-  __int64 v1;
-  __int64 v2;
   __int64 v5;
   __int64 v6;
   __int64 v8;
   __int64 v9;
   __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
+  struct {
+    __int64 v12;
+    __int64 v13;
+  } v12_;
 
   if (*(_QWORD*)(a1 + 128) != 0 && *(_QWORD*)(a1 + 136) != 0 &&
       *(_QWORD*)(a1 + 120) != 0) {
@@ -386,24 +389,22 @@ void CharacterSelfie_10a6ac0(__int64 a1)
     *(_QWORD*)(a1 + 136) = 0;
     *(_QWORD*)(a1 + 120) = 0;
     if (v5 != 0) {
-      v14 = v1;
-      v15 = v2;
       v6 = *(_QWORD*)(a1 + 176);
-      v12 = v5;
-      v13 = v6;
+      v12_.v12 = v5;
+      v12_.v13 = v6;
       if (v6 != 0) {
         atomic_fetch_add_explicit((atomic_ullong* volatile)(v6 + 16), 1u,
                                   memory_order_relaxed);
       }
-      GameRoutine_66ae00(&v12);
-      if (v13 != 0) {
-        std___1___shared_weak_count___release_weak(v13);
+      GameRoutine_66ae00_alt2((__int64)&v12_.v12);
+      if (v12_.v13 != 0) {
+        std___1___shared_weak_count___release_weak_alt1(v12_.v13);
       }
       v8 = *(_QWORD*)(a1 + 32);
       if (v8 != 0) {
         v9 = *(_QWORD*)(a1 + 40);
         if (*(_QWORD*)(v8 + 8) != -1 && v9 != 0) {
-          CharacterBuilder_1084400(v9, 0xFFFFFFFFLL);
+          CharacterBuilder_1084400_alt2(v9, -1);
         }
       }
       if (GameData_21ec7b0 != 0) {

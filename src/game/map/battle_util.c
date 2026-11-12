@@ -1439,6 +1439,9 @@ __attribute__((swiftcall)) void BattleUtil_7aa190(PSEUDO_X8 x8_, __int64 a1,
                                                   char a2, char a3);
 float BattleUtil_7aa490(__int64 a1, char a2, char a3);
 __int64 BattleUtil_7ac940(__int64 a1, __int64 a2);
+_WORD*
+game_UnitItemList_EachItem_alt1(_WORD* result,
+                                __int64) __asm__("game_UnitItemList_EachItem");
 
 int* game_map_BattleUtil_GetFactorSkill(__int64 a1)
 {
@@ -2160,42 +2163,46 @@ __int64 game_map_BattleUtil_EachFactorSkill_7a8c20(__int64 result, __int64 a2,
   _WORD* v14;
   __int64 i;
   __int64 v16;
-  _BYTE v17[32];
-  _BYTE* v18;
-  char v19[32];
-  _QWORD* v20;
+  struct {
+    _BYTE v17[32];
+    _BYTE* v18;
+  } v17_;
+  struct {
+    char v19[32];
+    _QWORD* v20;
+  } v19_;
 
   if (result != 0 && a2 != 0) {
     v6 = result;
-    result = game_map_BattleUtil_EachFactorSkill_7a8e00_alt1(result + 1744,
-                                                             a2 + 1744, a5);
+    result = game_map_BattleUtil_EachFactorSkill_7a8e00(result + 1744,
+                                                        a2 + 1744, a5);
     if ((a3 & 1) == 0) {
       goto LABEL_23;
     }
     v10 = *(_QWORD*)(a5 + 32);
     if (v10 != 0) {
       if (v10 == a5) {
-        v18 = v17;
-        (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v10 + 24LL))(v10, v17);
-        v11 = v18;
+        v17_.v18 = v17_.v17;
+        (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v10 + 24LL))(v10, v17_.v17);
+        v11 = v17_.v18;
       }
       else {
         v11 = (_BYTE*)(*(__int64 (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-        v18 = v11;
+        v17_.v18 = v11;
       }
     }
     else {
       v11 = nullptr;
-      v18 = nullptr;
+      v17_.v18 = nullptr;
     }
-    v12 = (_QWORD*)fw_memory_HeapManager_Allocate(
+    v12 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0);
     v13 = v12;
     *v12 = GameData_1f98f48;
     v12[2] = v6;
     v12[3] = a2;
     if (v11 != nullptr) {
-      if (v11 == v17) {
+      if (v11 == v17_.v17) {
         v12[8] = v12 + 4;
         (*(void (**)(_BYTE*))(*(_QWORD*)v11 + 24LL))(v11);
       }
@@ -2206,8 +2213,8 @@ __int64 game_map_BattleUtil_EachFactorSkill_7a8c20(__int64 result, __int64 a2,
     else {
       v12[8] = 0;
     }
-    v20 = v13;
-    game_UnitItemList_EachItem(v6 + 828, v19);
+    v19_.v20 = v13;
+    game_UnitItemList_EachItem_alt1((_WORD*)(v6 + 828), (__int64)v19_.v19);
     v14 = (_WORD*)(v6 + 876);
     for (i = 24; i != 0; --i) {
       if (*v14 != 0) {
@@ -2216,20 +2223,21 @@ __int64 game_map_BattleUtil_EachFactorSkill_7a8c20(__int64 result, __int64 a2,
       v14 += 4;
     }
     (*(void (**)(_QWORD*))(*v13 + 40LL))(v13);
-    result = (__int64)v18;
-    if (v18 == v17) {
+    result = (__int64)v17_.v18;
+    if (v17_.v18 == v17_.v17) {
       v16 = 32;
     }
     else {
-      if (v18 == nullptr) {
+      if (v17_.v18 == nullptr) {
         goto LABEL_23;
       }
       v16 = 40;
     }
-    result = (*(__int64 (**)(__int64))(*(_QWORD*)v18 + v16))((__int64)v18);
+    result =
+        (*(__int64 (**)(__int64))(*(_QWORD*)v17_.v18 + v16))((__int64)v17_.v18);
   LABEL_23:
     if (a4 != 0) {
-      return game_map_BattleUtil_EachFactorSkill_7a8e00_alt1(
+      return game_map_BattleUtil_EachFactorSkill_7a8e00(
           *(_QWORD*)(a4 + 24) + 512LL, a2 + 1744, a5);
     }
   }
@@ -2239,12 +2247,10 @@ __int64 game_map_BattleUtil_EachFactorSkill_7a8c20(__int64 result, __int64 a2,
 __int64 game_map_BattleUtil_EachFactorSkill_7a8e00(__int64 result, __int64 a2,
                                                    __int64 a3)
 {
-  __int64 v3;
-  __int64 v4;
   __int64 v5;
   __int64 v6;
   _BYTE* v9;
-  _QWORD* v10;
+  __int64* v10;
   _QWORD* v11;
   _QWORD* v12;
   __int64 v13;
@@ -2266,49 +2272,50 @@ __int64 game_map_BattleUtil_EachFactorSkill_7a8e00(__int64 result, __int64 a2,
   __int64* v29;
   __int64 v30;
   __int64 v31;
-  _BYTE v32[32];
-  _BYTE* v33;
-  __int64 v34;
-  __int64 v35;
-  _BYTE v36[32];
-  _BYTE* v37;
-  __int64 v38;
-  __int64 v39;
+  struct {
+    _BYTE v32[32];
+    _BYTE* v33;
+    char gap56_[8];
+    __int64 v34;
+    __int64 v35;
+  } v32_;
+  struct {
+    _BYTE v36[32];
+    _BYTE* v37;
+  } v36_;
 
   if ((*(_BYTE*)(result + 88) & 6) == 0) {
     return result;
   }
-  v38 = v3;
-  v39 = v4;
   v5 = result;
-  v34 = result;
-  v35 = a2;
+  v32_.v34 = result;
+  v32_.v35 = a2;
   v6 = *(_QWORD*)(a3 + 32);
   if (v6 != 0) {
     if (v6 == a3) {
-      v37 = v36;
-      (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v6 + 24LL))(v6, v36);
-      v9 = v37;
+      v36_.v37 = v36_.v36;
+      (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v6 + 24LL))(v6, v36_.v36);
+      v9 = v36_.v37;
     }
     else {
       v9 = (_BYTE*)(*(__int64 (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-      v37 = v9;
+      v36_.v37 = v9;
     }
   }
   else {
     v9 = nullptr;
-    v37 = nullptr;
+    v36_.v37 = nullptr;
   }
-  v10 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-  v11 = (_QWORD*)fw_memory_HeapManager_Allocate(
+  v10 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v11 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0);
   v12 = v11;
   *v11 = GameData_1f98fc8;
-  v13 = v35;
-  v11[2] = v34;
+  v13 = v32_.v35;
+  v11[2] = v32_.v34;
   v11[3] = v13;
   if (v9 != nullptr) {
-    if (v9 == v36) {
+    if (v9 == v36_.v36) {
       v11[8] = v11 + 4;
       (*(void (**)(_BYTE*))(*(_QWORD*)v9 + 24LL))(v9);
       if ((*(_BYTE*)(v5 + 88) & 2) == 0) {
@@ -2350,34 +2357,34 @@ __int64 game_map_BattleUtil_EachFactorSkill_7a8e00(__int64 result, __int64 a2,
   }
 LABEL_19:
   (*(void (**)(_QWORD*))(*v12 + 40LL))(v12);
-  if (v37 == v36) {
+  if (v36_.v37 == v36_.v36) {
     v20 = 32;
   }
   else {
-    if (v37 == nullptr) {
+    if (v36_.v37 == nullptr) {
       goto LABEL_24;
     }
     v20 = 40;
   }
-  (*(void (**)(__int64))(*(_QWORD*)v37 + v20))((__int64)v37);
+  (*(void (**)(__int64))(*(_QWORD*)v36_.v37 + v20))((__int64)v36_.v37);
 LABEL_24:
   v21 = *(_QWORD*)(a3 + 32);
   if (v21 != 0) {
     if (v21 == a3) {
-      v33 = v32;
-      (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v21 + 24LL))(v21, v32);
-      v22 = v33;
+      v32_.v33 = v32_.v32;
+      (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v21 + 24LL))(v21, v32_.v32);
+      v22 = v32_.v33;
     }
     else {
       v22 = (_BYTE*)(*(__int64 (**)(__int64))(*(_QWORD*)v21 + 16LL))(v21);
-      v33 = v22;
+      v32_.v33 = v22;
     }
   }
   else {
     v22 = nullptr;
-    v33 = nullptr;
+    v32_.v33 = nullptr;
   }
-  v23 = (_QWORD*)fw_memory_HeapManager_Allocate(*v10, 80, 16, 0);
+  v23 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(*v10, 80, 16, 0);
   v24 = v23;
   *v23 = GameData_1f99048;
   v23[2] = v5;
@@ -2389,7 +2396,7 @@ LABEL_24:
     }
     goto LABEL_36;
   }
-  if (v22 != v32) {
+  if (v22 != v32_.v32) {
     v23[8] = (*(__int64 (**)(_BYTE*))(*(_QWORD*)v22 + 16LL))(v22);
     if ((*(_BYTE*)(v5 + 88) & 4) == 0) {
       goto LABEL_41;
@@ -2424,17 +2431,18 @@ LABEL_24:
   }
 LABEL_41:
   (*(void (**)(_QWORD*))(*v24 + 40LL))(v24);
-  result = (__int64)v33;
-  if (v33 == v32) {
+  result = (__int64)v32_.v33;
+  if (v32_.v33 == v32_.v32) {
     v31 = 32;
   }
   else {
-    if (v33 == nullptr) {
+    if (v32_.v33 == nullptr) {
       return result;
     }
     v31 = 40;
   }
-  return (*(__int64 (**)(__int64))(*(_QWORD*)v33 + v31))((__int64)v33);
+  return (*(__int64 (**)(__int64))(*(_QWORD*)v32_.v33 + v31))(
+      (__int64)v32_.v33);
 }
 
 __int64 BattleUtil_7a9320(int a1)

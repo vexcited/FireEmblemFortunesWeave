@@ -30,6 +30,18 @@ __int64 AdvancedWaveSoundPlayer_Unknown9(__int64 result, double a2, float a3);
 __int64 AdvancedWaveSoundPlayer_Unknown3_27fe60(__int64 result, double a2,
                                                 float a3);
 __int64 AdvancedWaveSoundPlayer_Unknown4(__int64 a1);
+_DWORD* BaseNx_288cb0(__int64, __int64, char);
+__int64 BaseNx_2888d0(__int64 result, __int64, char);
+__int64 BaseNx_288b50(__int64, unsigned int);
+__int64 BaseNx_288da0(_QWORD*, __int64);
+__int64 GameRoutine_2a6460_alt1(__int64) __asm__("GameRoutine_2a6460");
+__int64 GameRoutine_2a6520_alt1(__int64, unsigned int*, int, __int64,
+                                unsigned int) __asm__("GameRoutine_2a6520");
+__int64 GameRoutine_2a6920_alt1(__int64 result,
+                                int) __asm__("GameRoutine_2a6920");
+__int64 GameRoutine_2a6930_alt1(__int64) __asm__("GameRoutine_2a6930");
+__int64 GameRoutine_2a6b30_alt1(unsigned int, unsigned int, __int64,
+                                __int64) __asm__("GameRoutine_2a6b30");
 
 __int64 AdvancedWaveSoundPlayer_Unknown2(__int64 result)
 {
@@ -274,6 +286,8 @@ __int64 AdvancedWaveSoundPlayer_27f6e0(__int64 a1, __int64 a2)
 
 __int64 AdvancedWaveSoundPlayer_27f940(__int64 a1, double a2, float a3)
 {
+
+#pragma clang fp contract(off)
   int v4;
   __int64 v5;
   __int64 v6;
@@ -299,33 +313,35 @@ __int64 AdvancedWaveSoundPlayer_27f940(__int64 a1, double a2, float a3)
   __int64 v26;
   __int64 v27;
   __int64 v28;
-  __int64 v29;
+  unsigned int v29;
   __int64 v30;
   __int64 v31;
   __int64 v33;
   __int64 v34;
   int v35;
   _QWORD v36[5];
-  __int64 v37;
-  __int64 v38;
-  __int64 v39;
-  __int64 v40;
-  __int64 v41;
-  __int64 v42;
-  __int64 v43;
-  __int64 v44;
-  __int64 v45;
-  __int64 v46;
-  __int64 v47;
-  __int64 v48;
-  __int64 v49;
-  __int64 v50;
-  __int64 v51;
-  __int64 v52;
-  __int64 v53;
-  __int64 v54;
-  __int64 v55;
-  __int64 v56;
+  struct {
+    __int64 v37;
+    __int64 v38;
+    __int64 v39;
+    __int64 v40;
+    __int64 v41;
+    __int64 v42;
+    __int64 v43;
+    __int64 v44;
+    __int64 v45;
+    __int64 v46;
+    __int64 v47;
+    __int64 v48;
+    __int64 v49;
+    __int64 v50;
+    __int64 v51;
+    __int64 v52;
+    __int64 v53;
+    __int64 v54;
+    __int64 v55;
+    __int64 v56;
+  } v37_;
   _QWORD v57[5];
 
   v34 = *(unsigned int*)(a1 + 228);
@@ -363,46 +379,46 @@ __int64 AdvancedWaveSoundPlayer_27f940(__int64 a1, double a2, float a3)
         }
         v27 = *(_QWORD*)(a1 + 1896);
         memset(v57, 0, 32);
-        GameRoutine_2888d0(v57, v27, 0);
-        v28 = GameRoutine_288b50(v57, *(unsigned int*)(a1 + v11 + 236));
+        BaseNx_2888d0((__int64)v57, v27, 0);
+        v28 = BaseNx_288b50((__int64)v57, *(_DWORD*)(a1 + v11 + 236));
         if (v28 != 0) {
-          v55 = 0;
-          v56 = 0;
-          v53 = 0;
-          v54 = 0;
-          v51 = 0;
-          v52 = 0;
-          v49 = 0;
-          v50 = 0;
-          v47 = 0;
-          v48 = 0;
-          v45 = 0;
-          v46 = 0;
-          v43 = 0;
-          v44 = 0;
-          v41 = 0;
-          v42 = 0;
-          v39 = 0;
-          v40 = 0;
-          v37 = 0;
-          v38 = 0;
+          v37_.v55 = 0;
+          v37_.v56 = 0;
+          v37_.v53 = 0;
+          v37_.v54 = 0;
+          v37_.v51 = 0;
+          v37_.v52 = 0;
+          v37_.v49 = 0;
+          v37_.v50 = 0;
+          v37_.v47 = 0;
+          v37_.v48 = 0;
+          v37_.v45 = 0;
+          v37_.v46 = 0;
+          v37_.v43 = 0;
+          v37_.v44 = 0;
+          v37_.v41 = 0;
+          v37_.v42 = 0;
+          v37_.v39 = 0;
+          v37_.v40 = 0;
+          v37_.v37 = 0;
+          v37_.v38 = 0;
           memset(v36, 0, sizeof(v36));
-          GameRoutine_288cb0(v36, v28, 0);
-          if ((GameRoutine_288da0(v36, &v37, 0) & 1) != 0) {
-            if ((int)v38 >= 2) {
+          BaseNx_288cb0((__int64)v36, v28, 0);
+          if ((BaseNx_288da0(v36, (__int64)&v37_.v37) & 1) != 0) {
+            if ((int)v37_.v38 >= 2) {
               v29 = 2;
             }
             else {
-              v29 = (unsigned int)v38;
+              v29 = v37_.v38;
             }
-            v30 = GameRoutine_2a6b30(v29, 128, 0, a1);
+            v30 = GameRoutine_2a6b30_alt1(v29, 0x80u, 0, a1);
             if (v30 != 0) {
               v31 = v30;
-              GameRoutine_2a6920(v30, *(unsigned int*)(a1 + 1904));
-              GameRoutine_2a6930(v31, *(_QWORD*)(a1 + 48), *(_QWORD*)(a1 + 56));
-              GameRoutine_2a6520(
-                  v31, &v37, *(unsigned int*)(a1 + v11 + 244),
-                  (unsigned int)((__int64)(SHIDWORD(v38) *
+              GameRoutine_2a6920_alt1(v30, *(_DWORD*)(a1 + 1904));
+              GameRoutine_2a6930_alt1(v31);
+              GameRoutine_2a6520_alt1(
+                  v31, (unsigned int*)&v37_.v37, *(_DWORD*)(a1 + v11 + 244),
+                  (unsigned int)((__int64)(SHIDWORD(v37_.v38) *
                                            (unsigned __int64)*(
                                                unsigned int*)(a1 + v11 + 248)) /
                                  1000),
@@ -424,7 +440,7 @@ __int64 AdvancedWaveSoundPlayer_27f940(__int64 a1, double a2, float a3)
         }
         v15 = *(_DWORD*)(v14 + 356) - 5;
         if (v15 <= 0) {
-          GameRoutine_2a6460();
+          GameRoutine_2a6460_alt1(v14);
           v9 = 0;
         LABEL_25:
           *(_QWORD*)(v13 + 1232) = 0;
@@ -434,7 +450,8 @@ __int64 AdvancedWaveSoundPlayer_27f940(__int64 a1, double a2, float a3)
         v9 = 0;
         LOBYTE(a3) = *(_BYTE*)(a1 + v11 + 256);
         *(float*)(v14 + 200) =
-            *(float*)(a1 + 72) * (float)((float)LODWORD(a3) / 255.0);
+            *(float*)(a1 + 72) *
+            (float)((float)LODWORD(a3) / 0x1.fe00000000000p+7f);
         *(float*)(v14 + 204) = *(float*)(a1 + 76) * *(float*)(a1 + v11 + 252);
         v16 = *(_QWORD*)(a1 + 172);
         v18 = *(_QWORD*)(a1 + 104);
@@ -445,9 +462,9 @@ __int64 AdvancedWaveSoundPlayer_27f940(__int64 a1, double a2, float a3)
         v21 = *(_QWORD*)(a1 + 152);
         v22 =
             a3 + vcvts_n_f32_s32(*(unsigned __int8*)(a1 + v11 + 257) - 64, 6u);
-        v37 = *(_QWORD*)(a1 + 164);
-        v38 = v16;
-        LODWORD(v39) = *(_DWORD*)(a1 + 180);
+        v37_.v37 = *(_QWORD*)(a1 + 164);
+        v37_.v38 = v16;
+        LODWORD(v37_.v39) = *(_DWORD*)(a1 + 180);
         v23 = *(_QWORD*)(a1 + 120);
         v24 = *(_QWORD*)(a1 + 128);
         *(_QWORD*)(v14 + 220) = v18;
@@ -459,9 +476,9 @@ __int64 AdvancedWaveSoundPlayer_27f940(__int64 a1, double a2, float a3)
         *(_QWORD*)(v25 + 32) = v19;
         *(_QWORD*)(v25 + 8) = v17;
         *(_QWORD*)(v25 + 16) = v23;
-        v26 = v38;
-        *(_QWORD*)(v25 + 60) = v37;
-        LODWORD(v23) = v39;
+        v26 = v37_.v38;
+        *(_QWORD*)(v25 + 60) = v37_.v37;
+        LODWORD(v23) = v37_.v39;
         *(_QWORD*)(v25 + 68) = v26;
         *(_DWORD*)(v25 + 76) = v23;
         *(_DWORD*)(v25 + 140) = *(_DWORD*)(a1 + 92);
@@ -478,7 +495,6 @@ __int64 AdvancedWaveSoundPlayer_27f940(__int64 a1, double a2, float a3)
     }
   }
   LOBYTE(v4) = 1;
-
 LABEL_27:
   *(_DWORD*)(a1 + 1908) += 5000;
   return v4 & 1;

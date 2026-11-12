@@ -44,6 +44,8 @@ __attribute__((swiftcall)) void CmdBtlCameraCutBase_e82a10(PSEUDO_X8 x8_,
                                                            __int64 unused_int0,
                                                            __n128** a1,
                                                            char a2);
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 void CmdBtlCameraCutBase_e822b0(__int64 a1)
 {
@@ -260,11 +262,11 @@ float CmdBtlCameraCutBase_e82510(__int64 a1, __int64 a2)
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a61b0,
                             memory_order_acquire) &
        1) == 0 &&
-      (unsigned int)__cxa_guard_acquire(&GameData_21a61b0) != 0) {
+      __cxa_guard_acquire_alt1((__int64)&GameData_21a61b0) != 0) {
     v50 = *((_QWORD*)GameData_212c560 + 1);
     *(_QWORD*)&GameData_21a61a0 = *(_QWORD*)GameData_212c560;
     *((_QWORD*)&GameData_21a61a0 + 1) = v50;
-    __cxa_guard_release(&GameData_21a61b0),
+    __cxa_guard_release_alt1((__int64)&GameData_21a61b0),
         result =
             COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
   }
@@ -351,7 +353,7 @@ float CmdBtlCameraCutBase_e82510(__int64 a1, __int64 a2)
        1) == 0) {
     v65_.v66 = 0xB0A090807060504LL;
     v55 = v20;
-    v51 = __cxa_guard_acquire(&GameData_21a6190),
+    v51 = __cxa_guard_acquire_alt1((__int64)&GameData_21a6190),
     result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
     v20 = v55;
     v4 = COERCE_AS(float32x4_t, GameData_1a829d0);
@@ -361,7 +363,7 @@ float CmdBtlCameraCutBase_e82510(__int64 a1, __int64 a2)
       v52 = *((_QWORD*)GameData_212c558 + 1);
       *(_QWORD*)&GameData_21a6180 = *(_QWORD*)GameData_212c558;
       *((_QWORD*)&GameData_21a6180 + 1) = v52;
-      __cxa_guard_release(&GameData_21a6190),
+      __cxa_guard_release_alt1((__int64)&GameData_21a6190),
           result =
               COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
       v20 = v55;
@@ -474,7 +476,7 @@ float CmdBtlCameraCutBase_e82510(__int64 a1, __int64 a2)
     if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6190,
                               memory_order_acquire) &
          1) == 0) {
-      v53 = __cxa_guard_acquire(&GameData_21a6190),
+      v53 = __cxa_guard_acquire_alt1((__int64)&GameData_21a6190),
       result =
           COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
       v24 = v59;
@@ -482,7 +484,7 @@ float CmdBtlCameraCutBase_e82510(__int64 a1, __int64 a2)
         v54 = *((_QWORD*)GameData_212c558 + 1);
         *(_QWORD*)&GameData_21a6180 = *(_QWORD*)GameData_212c558;
         *((_QWORD*)&GameData_21a6180 + 1) = v54;
-        __cxa_guard_release(&GameData_21a6190),
+        __cxa_guard_release_alt1((__int64)&GameData_21a6190),
             result = COERCE_AS(__typeof__(result),
                                PSEUDO_REGISTER(float, "s0", "=w"));
         v24 = v59;

@@ -40,6 +40,8 @@ __int64 ProcGmapCarriageList_168b1e0(__int64 a1);
 __int64* ProcGmapCarriageList_168c5c0(__int64* result, __int64* a2, __int64* a3,
                                       __int64 a4, __int64 a5, __int64* a6,
                                       __int64 a7);
+__int64 BasicMenu_16dd280(_QWORD*);
+void GameHr_167f810(__int64, int, char**, __int64, int, __int64);
 
 __int64 ProcGmapCarriageList_168b1e0(__int64 a1)
 {
@@ -326,17 +328,23 @@ _QWORD* ProcGmapCarriageList_Unknown145(__int64 a1)
   _QWORD* result;
   int v7;
   __int64 v8;
-  _QWORD v9[4];
-  _QWORD* v10;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } v9_;
 
+  v4 = COERCE_AS(__typeof__(v4),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v1 = *(_QWORD*)(a1 + 152);
-  v3 = GameRoutine_16dd280();
-  v9[0] = GameData_20811e0;
-  v9[1] = a1;
-  v10 = v9;
+  v3 = BasicMenu_16dd280((_QWORD*)a1),
+  v4 = COERCE_AS(__typeof__(v4),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9_.v9[0] = GameData_20811e0;
+  v9_.v9[1] = a1;
+  v9_.v10 = v9_.v9;
   if (GameData_225e7a0 != 0) {
     v5 = 32;
-    result = v9;
+    result = v9_.v9;
     return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v5))(result,
                                                                       v4);
   }
@@ -347,14 +355,16 @@ _QWORD* ProcGmapCarriageList_Unknown145(__int64 a1)
   else {
     v8 = a1;
   }
-  GameRoutine_167f810(v8, 6, a1 + 1200, 0, v7, (__int64)v9);
-  result = v10;
-  if (v10 == v9) {
+  GameHr_167f810(v8, 6, (char**)(a1 + 1200), 0, v7, (__int64)v9_.v9),
+      v4 = COERCE_AS(__typeof__(v4),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = v9_.v10;
+  if (v9_.v10 == v9_.v9) {
     v5 = 32;
     return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v5))(result,
                                                                       v4);
   }
-  if (v10 != nullptr) {
+  if (v9_.v10 != nullptr) {
     v5 = 40;
     return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v5))(result,
                                                                       v4);

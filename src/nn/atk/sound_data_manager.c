@@ -28,6 +28,9 @@ __int64 SoundDataManager_27bb30(__int64 a1, unsigned int a2, __int64 a3);
 __int64 SoundDataManager_Unknown4(__int64 a1, unsigned int a2);
 __int64 SoundDataManager_287ff0(__int64 a1);
 __int64 SoundDataManager_Unknown3_27bb80(__int64 a1, unsigned int a2);
+__int64 BaseNx_2a0820(__int64, __int64, __int64);
+__int64 BaseNx_2a0e80(__int64, _QWORD*);
+void* BaseNx_2a1860();
 
 __int64 SoundDataManager_27b710(__int64 a1, __int64 a2)
 {
@@ -40,10 +43,8 @@ bool SoundDataManager_27b740(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
   _DWORD* v8;
   unsigned __int64 v9;
   _DWORD* v10;
-  __int64 v11;
+  void* v11;
   __int64 v12;
-  __int64 v13;
-  __int64 v14;
 
   v7 = ((a3 + 8LL * (unsigned int)GameRoutine_278680(a2) + 11) &
         0xFFFFFFFFFFFFFFF8LL) -
@@ -60,12 +61,12 @@ bool SoundDataManager_27b740(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
         v8 = *(_DWORD**)(a1 + 560);
       } while (v9 < (unsigned int)*v8);
     }
-    v11 = GameRoutine_286260(a1 + 24, a2);
-    v13 = GameRoutine_2a1860(v11, v12);
-    v14 = GameRoutine_2a0820(v13, 32, 8, 1);
-    *(_QWORD*)(v14 + 24) = a1;
-    *(_DWORD*)(v14 + 8) = 68;
-    GameRoutine_2a0e80(v13, v14);
+    GameRoutine_286260(a1 + 24, a2);
+    v11 = BaseNx_2a1860();
+    v12 = BaseNx_2a0820((__int64)v11, 32, 8);
+    *(_QWORD*)(v12 + 24) = a1;
+    *(_DWORD*)(v12 + 8) = 68;
+    BaseNx_2a0e80((__int64)v11, (_QWORD*)v12);
   }
   return v7 < 1;
 }

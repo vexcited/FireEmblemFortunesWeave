@@ -141,6 +141,7 @@ __int64 SpotAttachmentReconstruction_Unknown18(__int64 a1);
 __int16* SpotAttachmentReconstruction_Unknown17(__int16* a1, int a2);
 __int64 SpotAttachmentReconstruction_Unknown33(__int64 a1);
 __int64 SpotAttachmentReconstruction_Unknown36(__int64 a1, __int64 a2);
+__int64 SpotMgr_132ffa0_alt1(unsigned int*) __asm__("SpotMgr_132ffa0");
 
 _QWORD* SpotAttachmentReconstruction_Destructor(_QWORD* result)
 {
@@ -150,11 +151,13 @@ _QWORD* SpotAttachmentReconstruction_Destructor(_QWORD* result)
   __int64 v4;
   __int64* v5;
   __int64 v6;
-  int v7;
+  unsigned int v7;
   __int64 v9;
-  int v10;
-  _DWORD v12[2];
-  char* v13;
+  unsigned int v10;
+  struct {
+    unsigned int v12[2];
+    char* v13;
+  } v12_;
 
   v1 = (_QWORD*)result[4];
   *result = game_gmap_SpotAttachmentReconstruction_vtable;
@@ -173,10 +176,10 @@ _QWORD* SpotAttachmentReconstruction_Destructor(_QWORD* result)
         result = nullptr;
         goto LABEL_12;
       }
-      v13 = &GameData_1a9f09e;
-      v12[0] = v7;
-      v12[1] = 0;
-      result = (_QWORD*)SpotMgr_132ffa0(v12);
+      v12_.v13 = &GameData_1a9f09e;
+      v12_.v12[0] = v7;
+      v12_.v12[1] = 0;
+      result = (_QWORD*)SpotMgr_132ffa0_alt1(v12_.v12);
       if (result == v1) {
         break;
       }
@@ -190,10 +193,10 @@ _QWORD* SpotAttachmentReconstruction_Destructor(_QWORD* result)
   v9 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)v3 + 8LL) + 48LL) + v2;
   v10 = *(_DWORD*)(v9 + 4);
   if (v10 != 0 && *v5 != 0) {
-    v13 = &GameData_1a9f09e;
-    v12[0] = v10;
-    v12[1] = 0;
-    result = (_QWORD*)SpotMgr_132ffa0(v12);
+    v12_.v13 = &GameData_1a9f09e;
+    v12_.v12[0] = v10;
+    v12_.v12[1] = 0;
+    result = (_QWORD*)SpotMgr_132ffa0_alt1(v12_.v12);
     if (result != nullptr) {
       *(_DWORD*)(v9 + 4) = 0;
     }

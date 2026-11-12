@@ -36,7 +36,8 @@ extern __int64* GameData_212ceb0;
 extern __int64* GameData_212e008[9];
 extern __int64* GameData_212e010[8];
 extern __int64* game_g_empty_item_ptr;
-__int64 ShopMenuItem_Sell_Unknown76(__int64 a1);
+__int64 ShopMenuItem_Sell_Unknown76_alt1(__int64 a1) __asm__(
+    "ShopMenuItem_Sell_Unknown76");
 __int64 ShopMenuItem_Sell_Unknown55(_QWORD* a1);
 __int64 ShopMenuItem_Sell_Unknown77(__int64 a1);
 __int64 ShopMenuItem_Sell_1703e20(__int64 a1);
@@ -46,23 +47,41 @@ bool ShopMenuItem_Sell_17051a0(__int64 a1);
 __int64 ObeliskDestinyMenuItem_1a06060(_QWORD, _QWORD, _QWORD);
 extern __int64 GameData_21caa2c;
 __int64 ShopMenuItem_Sell_Unknown4(__int64 a1);
-__int64 game_facility_ShopMenuItem_Sell_OnOpenDialog_lambda0_Invoke(__int64 a1,
-                                                                    __int64* a2,
-                                                                    int* a3);
+__int64 game_facility_ShopMenuItem_Sell_OnOpenDialog_lambda0_Invoke_alt1(
+    __int64 a1, __int64* a2, int* a3) __asm__("game_facility_ShopMenuItem_Sell_"
+                                              "OnOpenDialog_lambda0_Invoke");
+_QWORD* ObeliskDestinyMenuItem_1a06060_alt1(_QWORD* result, int*, char) __asm__(
+    "ObeliskDestinyMenuItem_1a06060");
+__int64 GameRoutine_15de9d0_alt1(__int64, char) __asm__("GameRoutine_15de9d0");
+__int64 GameRoutine_15dea90_alt1(__int64, __int64,
+                                 char) __asm__("GameRoutine_15dea90");
+__int64 GameRoutine_930b90_alt1(__int64, __int64) __asm__("GameRoutine_930b90");
+__int64 game_Unit_RemoveItem_alt1(__int64,
+                                  unsigned int) __asm__("game_Unit_RemoveItem");
+__int64
+game_Unit_Unknown6c4610_alt1(__int64) __asm__("game_Unit_Unknown6c4610");
+void GameRoutine_6e3b50_alt1(__int64, _QWORD*) __asm__("GameRoutine_6e3b50");
+void GameRoutine_89b900_alt1(__int64) __asm__("GameRoutine_89b900");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ShopMenuItem_Sell_Unknown76(__int64 a1);
+void game_facility_ShopMenuItem_Sell_OnOpenDialog_lambda0_Invoke(__int64 a1,
+                                                                 __int64* a2,
+                                                                 int* a3);
 
-__int64 ShopMenuItem_Sell_Unknown76(__int64 a1)
+void ShopMenuItem_Sell_Unknown76(__int64 a1)
 {
-  __int64 result;
-  __int64 v3;
-  __int64* v4;
+  unsigned __int16* v2;
+  __int64* v3;
+  __int64 v4;
   __int64 v5;
-  __int64 v6;
-  int v7;
+  int v6;
+  unsigned int v7;
   unsigned int v8;
-  unsigned int v9;
-  int v10;
-  _BOOL4 v11;
-  unsigned int v12;
+  int v9;
+  _BOOL4 v10;
+  unsigned int v11;
+  __int64 v12;
   __int64 v13;
   int v14;
   __int64 v15;
@@ -76,45 +95,44 @@ __int64 ShopMenuItem_Sell_Unknown76(__int64 a1)
   __int64 v23;
   __int64 v24;
 
-  result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 560LL))(a1);
-  v4 = GameData_212c878[0];
-  v5 = *GameData_212c878[0];
-  v6 = *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) +
-                  8LL * *(unsigned __int16*)result);
-  v7 = *(_DWORD*)(v6 + 80);
-  if (v7 != 0) {
-    v8 = *(unsigned __int8*)(v6 + 87);
-    v9 = (v8 - *(unsigned __int8*)(result + 2)) &
-         ~((int)(v8 - *(unsigned __int8*)(result + 2)) >> 31);
-    if (v9 < v8) {
-      v7 = (int)(v9 * v7) / (int)v8;
+  v2 = (unsigned __int16*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 560LL))(a1);
+  v3 = GameData_212c878[0];
+  v4 = *GameData_212c878[0];
+  v5 = *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *v2);
+  v6 = *(_DWORD*)(v5 + 80);
+  if (v6 != 0) {
+    v7 = *(unsigned __int8*)(v5 + 87);
+    v8 = (v7 - *((unsigned __int8*)v2 + 2)) &
+         ~((int)(v7 - *((unsigned __int8*)v2 + 2)) >> 31);
+    if (v8 < v7) {
+      v6 = (int)(v8 * v6) / (int)v7;
     }
-    if (v7 <= 1) {
-      v7 = 1;
+    if (v6 <= 1) {
+      v6 = 1;
     }
   }
   else {
-    v7 = 1;
+    v6 = 1;
   }
   if (game_GameModeData_instance_ != 0) {
-    v10 = (*(_DWORD*)(game_GameModeData_instance_ + 72) + v7) &
-          ~((*(_DWORD*)(game_GameModeData_instance_ + 72) + v7) >> 31);
-    if (v10 >= 9999999) {
-      v10 = 9999999;
+    v9 = (*(_DWORD*)(game_GameModeData_instance_ + 72) + v6) &
+         ~((*(_DWORD*)(game_GameModeData_instance_ + 72) + v6) >> 31);
+    if (v9 >= 9999999) {
+      v9 = 9999999;
     }
-    *(_DWORD*)(game_GameModeData_instance_ + 72) = v10;
+    *(_DWORD*)(game_GameModeData_instance_ + 72) = v9;
   }
   if (*(_QWORD*)(a1 + 104) != 0) {
-    v11 = (*(_BYTE*)((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 560LL))(a1) + 3) &
+    v10 = (*(_BYTE*)((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 560LL))(a1) + 3) &
            1) != 0 &&
-          *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*v4 + 64) +
+          *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*v3 + 64) +
                                          8LL * *(unsigned __int16*)(*(
                                                    __int64 (**)(__int64))(
                                                    *(_QWORD*)a1 + 560LL))(a1)) +
                               72LL) < 8u;
     v19 = (*(_BYTE*)((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 560LL))(a1) + 3) &
            1) != 0 &&
-          *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*v4 + 64) +
+          *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*v3 + 64) +
                                          8LL * *(unsigned __int16*)(*(
                                                    __int64 (**)(__int64))(
                                                    *(_QWORD*)a1 + 560LL))(a1)) +
@@ -122,11 +140,10 @@ __int64 ShopMenuItem_Sell_Unknown76(__int64 a1)
     v20 =
         (unsigned __int16*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 560LL))(a1);
     v21 = *(_QWORD*)(a1 + 104);
-    v22 = *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*v4 + 64) + 8LL * *v20) +
+    v22 = *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*v3 + 64) + 8LL * *v20) +
                               73LL);
-    result = game_Unit_RemoveItem(v21, *(unsigned int*)(a1 + 40));
-    if ((result & 1) != 0) {
-      result = game_Unit_Unknown6c4610(v21);
+    if ((game_Unit_RemoveItem_alt1(v21, *(_DWORD*)(a1 + 40)) & 1) != 0) {
+      game_Unit_Unknown6c4610_alt1(v21);
       *(_WORD*)(v21 + 20) |= 1u;
       if (GameData_22400f8 != 0 && *(_BYTE*)(GameData_22400f8 + 8) == 1 &&
           (*(_BYTE*)(GameData_22400f8 + 9) & 1) == 0) {
@@ -140,22 +157,22 @@ __int64 ShopMenuItem_Sell_Unknown76(__int64 a1)
         }
       }
     }
-    if (v11) {
-      return GameRoutine_15de9d0(*(_QWORD*)(a1 + 104), 1);
+    if (v10) {
+      GameRoutine_15de9d0_alt1(*(_QWORD*)(a1 + 104), 1);
     }
     else if (v19) {
-      return GameRoutine_15dea90(*(_QWORD*)(a1 + 104), v22, 1);
+      GameRoutine_15dea90_alt1(*(_QWORD*)(a1 + 104), v22, 1);
     }
   }
   else {
-    v12 = *(_DWORD*)(a1 + 40);
-    if ((v12 & 0x80000000) == 0) {
-      result = *(
-          _QWORD*)(*(_QWORD*)game_TransporterConst_List_instance__ptr[0] + 8LL);
-      v13 = *(_QWORD*)(result + 8) + 12LL * v12;
+    v11 = *(_DWORD*)(a1 + 40);
+    if ((v11 & 0x80000000) == 0) {
+      v12 = *(_QWORD*)(*(_QWORD*)game_TransporterConst_List_instance__ptr[0] +
+                       8LL);
+      v13 = *(_QWORD*)(v12 + 8) + 12LL * v11;
       if (*(_WORD*)(v13 + 4) != 0) {
         v14 = *(unsigned __int16*)(v13 + 2);
-        v15 = *(_QWORD*)(*(_QWORD*)(v5 + 64) +
+        v15 = *(_QWORD*)(*(_QWORD*)(v4 + 64) +
                          8LL * *(unsigned __int16*)(v13 + 4));
         if ((((0x10000000000LL << *(_BYTE*)(v15 + 72)) |
               (1LL << *(_BYTE*)(v15 + 73))) &
@@ -173,8 +190,8 @@ __int64 ShopMenuItem_Sell_Unknown76(__int64 a1)
         }
         *(_WORD*)(v13 + 2) = v16;
         if ((_WORD)v16 == 0) {
-          v17 = *(_QWORD*)(result + 8) + 12LL * v12;
-          v18 = *(_QWORD*)(*(_QWORD*)(*v4 + 64) +
+          v17 = *(_QWORD*)(v12 + 8) + 12LL * v11;
+          v18 = *(_QWORD*)(*(_QWORD*)(*v3 + 64) +
                            8LL * *(unsigned __int16*)(v17 + 4));
           if ((((0x10000000000LL << *(_BYTE*)(v18 + 72)) |
                 (1LL << *(_BYTE*)(v18 + 73))) &
@@ -182,12 +199,11 @@ __int64 ShopMenuItem_Sell_Unknown76(__int64 a1)
             *(_QWORD*)(v17 + 4) = 0;
           }
           *(_WORD*)(v17 + 2) = 0;
-          return GameRoutine_89b900(result, v3);
+          GameRoutine_89b900_alt1(v12);
         }
       }
     }
   }
-  return result;
 }
 
 __int64 ShopMenuItem_Sell_Unknown55(_QWORD* a1)
@@ -690,83 +706,87 @@ bool ShopMenuItem_Sell_17051a0(__int64 a1)
          (*(_BYTE*)(v9 + 336) & 4) == 0;
 }
 
-__int64 game_facility_ShopMenuItem_Sell_OnOpenDialog_lambda0_Invoke(__int64 a1,
-                                                                    __int64* a2,
-                                                                    int* a3)
+void game_facility_ShopMenuItem_Sell_OnOpenDialog_lambda0_Invoke(__int64 a1,
+                                                                 __int64* a2,
+                                                                 int* a3)
 {
   int v3;
   __int64 v4;
   __int64 v5;
-  _BYTE* v6;
+  _QWORD* v6;
   __int64 v7;
-  int v9;
+  int v8;
+  __int64 v9;
   __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  int v13;
-  _QWORD* v14;
-  _BYTE* v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  _BYTE* v19;
-  int v20;
-  int v21;
-  int v22;
+  struct {
+    __int64 v11;
+    int v12;
+  } v11_;
+  _QWORD** v13;
+  struct {
+    _QWORD* v14;
+    __int64 v15;
+    __int64 v16;
+    __int64 v17;
+    _BYTE* v18;
+    int v19;
+    int v20;
+    int v21;
+  } v14_;
 
   v3 = *a3;
   v4 = **(_QWORD**)(a1 + 8);
-  v9 = 8;
-  v10 = *a2;
+  v8 = 8;
+  v9 = *a2;
   if ((_BYTE)GameData_21caa2c != 0) {
     v5 = GameData_21caa2c;
   }
   else {
     v5 = 0;
   }
-  v11 = v5;
-  WORD1(v12) = 0;
-  HIDWORD(v12) = 0;
-  v16 = 0;
-  v17 = 0;
-  v18 = 0;
-  v19 = nullptr;
-  v14 = &v15;
-  v15 = nullptr;
-  GameRoutine_930b90(&v12, GameData_212c8b0[0]);
-  v20 = 0;
-  v21 = v3;
-  v22 = -1;
-  ObeliskDestinyMenuItem_1a06060(v4 + 1520, &v9, 0);
-  v13 = 0;
-  v12 = 0;
-  if ((v17 & 1) != 0) {
-    *v19 = 0;
-    v18 = 0;
+  v10 = v5;
+  WORD1(v11_.v11) = 0;
+  HIDWORD(v11_.v11) = 0;
+  v14_.v15 = 0;
+  v14_.v16 = 0;
+  v14_.v17 = 0;
+  v14_.v18 = nullptr;
+  v13 = &v14_.v14;
+  v14_.v14 = nullptr;
+  GameRoutine_930b90_alt1((__int64)&v11_.v11, (__int64)GameData_212c8b0[0]);
+  v14_.v19 = 0;
+  v14_.v20 = v3;
+  v14_.v21 = -1;
+  ObeliskDestinyMenuItem_1a06060_alt1((_QWORD*)(v4 + 1520), &v8, 0);
+  v11_.v12 = 0;
+  v11_.v11 = 0;
+  if ((v14_.v16 & 1) != 0) {
+    *v14_.v18 = 0;
+    v14_.v17 = 0;
   }
   else {
-    LOWORD(v17) = 0;
+    LOWORD(v14_.v16) = 0;
   }
-  GameRoutine_6e3b50(&v14, v15);
-  v15 = nullptr;
-  v16 = 0;
-  v14 = &v15;
-  if ((v17 & 1) != 0) {
-    v6 = v19;
-    if (v19 != nullptr) {
+  GameRoutine_6e3b50_alt1((__int64)&v13, v14_.v14);
+  v14_.v14 = nullptr;
+  v14_.v15 = 0;
+  v13 = &v14_.v14;
+  if ((v14_.v16 & 1) != 0) {
+    v6 = v14_.v18;
+    if (v14_.v18 != nullptr) {
       v7 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v7 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v7,
-                                    v19);
-      v6 = v15;
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, (__int64)v14_.v18);
+      v6 = v14_.v14;
     }
   }
   else {
     v6 = nullptr;
   }
-  return GameRoutine_6e3b50(&v14, v6);
+  GameRoutine_6e3b50_alt1((__int64)&v13, v6);
 }
 
 #pragma GCC visibility pop

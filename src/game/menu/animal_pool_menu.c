@@ -75,6 +75,11 @@ extern __int64 (*GameData_20f0560[])();
 extern __int64 GameData_21f4018[];
 extern __int64 GameData_21f4228;
 __int64 game_menu_AnimalPoolMenu_OnInit(__int64* a1);
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 
 __int64 game_menu_AnimalPoolMenu_OnInit(__int64* a1)
 {
@@ -956,18 +961,21 @@ __int64 AnimalPoolMenu_18626c0(__int64 a1, int a2)
   __int64 v2;
   __int64 v3;
   __int64 result;
-  __int64 v5;
-  _BYTE v6[200];
-  __int64 v7;
-  __int64 v8;
+  _QWORD v5[27];
 
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   if (a2 == 14) {
-    v7 = v2;
-    v8 = v3;
-    snd_Fade_Fade_10c830(v6, 0.0f);
-    snd_play_ff2d0((void*)(&v5), "SE_SYS_NG", "SE_SYS_NG", v6, 0, 65537, 0,
-                   0.0f, 1.0f);
-    return snd_Fade_Destroy_Fade(v6);
+    v5[25] = v2;
+    v5[26] = v3;
+    snd_Fade_Fade_10c830_alt1((__int64)v5, 0x0.0p+0f),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    snd_play_ff2d0_alt1((__int64)"SE_SYS_NG", (__int64)"SE_SYS_NG", (__int64)v5,
+                        0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    return snd_Fade_Destroy_Fade_alt1(v5);
   }
   return result;
 }

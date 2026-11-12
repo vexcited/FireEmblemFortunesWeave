@@ -1,4 +1,5 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern __int64 GameData_212bf68;
@@ -11,6 +12,9 @@ __int64 GameRoutine_639910(char*, _QWORD*);
 __int64 GameRoutine_63d030(__int64);
 __int64 GameRoutine_651b90(_QWORD, _QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_67afd0(_QWORD);
+__int64 GameHr_639910(char*, _QWORD*);
+void __attribute__((noreturn)) fs_639520(__int64);
+__int64 GameHr_642fe0(__int64 a1, __int64* a2);
 
 __int64 GameHr_642fe0(__int64 a1, __int64* a2)
 {
@@ -35,12 +39,12 @@ __int64 GameHr_642fe0(__int64 a1, __int64* a2)
     v4 = *(unsigned __int8***)a1;
     v5 = GameRoutine_638b90((char*)&v9, *(unsigned __int8***)a1, 292);
     if ((unsigned int)BYTE1(v9) - 8 >= 2 && BYTE1(v9) != 0) {
-      GameRoutine_639520((__int64)"a pointer");
+      fs_639520((__int64)"a pointer");
     }
     *v4 = v5;
   }
   v7 = *(__int64**)(a1 + 8);
-  GameRoutine_639910((char*)&v9, v7);
+  GameHr_639910((char*)&v9, v7);
   result = GameRoutine_63d030(v2);
   *v7 = result;
   return result;

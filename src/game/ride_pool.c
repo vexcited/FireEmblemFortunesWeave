@@ -1243,8 +1243,6 @@ __int64 RidePool_93ce60(__int64* a1, __int64 a2, unsigned int a3)
 
 __int64 RidePool_93d1e0(__int64 a1, __int64 a2)
 {
-  __int64 v2;
-  __int64 v3;
   unsigned __int64 v4;
   unsigned __int64 v6;
   unsigned __int64 v7;
@@ -1255,15 +1253,13 @@ __int64 RidePool_93d1e0(__int64 a1, __int64 a2)
   __int64* v12;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
+  _BYTE* v15;
   int v16;
-  __int64 v18;
+  __int64* v18;
   __int64 v19;
   _QWORD* v20;
-  __int64 v21;
+  __int64* v21;
   unsigned __int8 v23[4];
-  __int64 v24;
-  __int64 v25;
 
   if (a2 != 0 && (*(_BYTE*)(a1 + 148) & 1) != 0) {
     v4 = *(_QWORD*)(a1 + 8);
@@ -1279,8 +1275,6 @@ __int64 RidePool_93d1e0(__int64 a1, __int64 a2)
       else {
         v8 = ((_DWORD)v4 - 1) & (unsigned int)v6;
       }
-      v24 = v2;
-      v25 = v3;
       v9 = *(__int64****)(*(_QWORD*)a1 + 8 * v8);
       if (v9 != nullptr) {
         v10 = *v9;
@@ -1311,16 +1305,17 @@ __int64 RidePool_93d1e0(__int64 a1, __int64 a2)
                 if ((v13 & 0x80000000) == 0) {
                   v14 = *(_QWORD*)(a1 + 120) + (v13 << 6);
                   v16 = *(unsigned __int8*)(v14 + 3);
-                  v15 = v14 + 3;
+                  v15 = (_BYTE*)(v14 + 3);
                   if (v16 != 0) {
-                    v18 = game_UnitPool_Get(v15);
-                    if (v18 != 0) {
+                    v18 = game_UnitPool_Get_alt1(v15);
+                    if (v18 != nullptr) {
                       v19 = *(_QWORD*)(a1 + 120) + (v13 << 6);
                       v20 = (_QWORD*)a1;
                       v21 = v18;
                       *(_BYTE*)(v19 + 3) = 0;
-                      UnitHeroes_6d2b90(v18, GameData_212c8b0[0]);
-                      v23[0] = *(_BYTE*)(v21 + 2088);
+                      UnitHeroes_6d2b90_alt1(
+                          (__int64)v18, (unsigned __int8*)GameData_212c8b0[0]);
+                      v23[0] = *((_BYTE*)v21 + 2088);
                       LegionPool_93a920(v20, v23);
                     }
                   }

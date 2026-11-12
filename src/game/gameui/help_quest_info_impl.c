@@ -28,6 +28,8 @@ char* HelpQuestInfo_12568a0(__int64* a1);
 char* HelpQuestInfo_12b3a80(__int64 a1);
 __int64 HelpQuestInfo_15d4830(__int64 a1, __int64 a2);
 __int64 HelpQuestInfo_15d4a40(__int64 result, __int64 a2);
+char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
+                              char) __asm__("GameRoutine_a4dbe0");
 
 char* HelpQuestInfo_1256780(__int64 a1)
 {
@@ -37,23 +39,6 @@ char* HelpQuestInfo_1256780(__int64 a1)
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  _QWORD v9[4];
-  int v10;
-  int v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
 
   v1 = *(_QWORD**)a1;
   if (*(_BYTE*)(a1 + 9) == 4) {
@@ -67,28 +52,8 @@ char* HelpQuestInfo_1256780(__int64 a1)
         }
         v2 = *(_BYTE**)(v3 + 8 * v4 + 80);
       }
-    LABEL_14:
-      v12 = -1;
-      v13 = -1;
-      v14 = -1;
-      v15 = -1;
-      v7 = *msg_MessageManager_instance__ptr[0];
-      v16 = -1;
-      v17 = -1;
-      v18 = -1;
-      v19 = -1;
-      v20 = -1;
-      v21 = -1;
-      v22 = -1;
-      v23 = -1;
-      v9[0] = msg_TagSelector_vtable;
-      v9[1] = 0xFFFF0001FFFF0000LL;
-      v9[2] = 0xFFFF0004FFFF0002LL;
-      v9[3] = 0xFFFF0006FFFF0005LL;
-      v24 = 8;
-      v10 = -65529;
-      v11 = -65528;
-      return (char*)GameRoutine_a4dbe0(v7, v2, 0, v9);
+      return GameRoutine_a4dbe0_alt1(*msg_MessageManager_instance__ptr[0], v2,
+                                     0);
     }
   }
   v2 = (_BYTE*)v1[5];
@@ -101,7 +66,7 @@ char* HelpQuestInfo_1256780(__int64 a1)
       }
       v2 = *(_BYTE**)(v5 + 8 * v6);
     }
-    goto LABEL_14;
+    return GameRoutine_a4dbe0_alt1(*msg_MessageManager_instance__ptr[0], v2, 0);
   }
   return msg_MessageManager_empty_text_;
 }
@@ -114,23 +79,6 @@ char* HelpQuestInfo_12568a0(__int64* a1)
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  _QWORD v9[4];
-  int v10;
-  int v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
 
   v1 = *a1;
   v2 = *(_BYTE**)(*a1 + 48);
@@ -143,28 +91,7 @@ char* HelpQuestInfo_12568a0(__int64* a1)
       }
       v2 = *(_BYTE**)(v3 + 8 * v4 + 80);
     }
-  LABEL_13:
-    v12 = -1;
-    v13 = -1;
-    v14 = -1;
-    v15 = -1;
-    v7 = *msg_MessageManager_instance__ptr[0];
-    v16 = -1;
-    v17 = -1;
-    v18 = -1;
-    v19 = -1;
-    v20 = -1;
-    v21 = -1;
-    v22 = -1;
-    v23 = -1;
-    v9[0] = msg_TagSelector_vtable;
-    v9[1] = 0xFFFF0001FFFF0000LL;
-    v9[2] = 0xFFFF0004FFFF0002LL;
-    v9[3] = 0xFFFF0006FFFF0005LL;
-    v24 = 8;
-    v10 = -65529;
-    v11 = -65528;
-    return (char*)GameRoutine_a4dbe0(v7, v2, 0, v9);
+    return GameRoutine_a4dbe0_alt1(*msg_MessageManager_instance__ptr[0], v2, 0);
   }
   v2 = *(_BYTE**)(v1 + 40);
   if (v2 != nullptr && *v2 != 0) {
@@ -176,7 +103,7 @@ char* HelpQuestInfo_12568a0(__int64* a1)
       }
       v2 = *(_BYTE**)(v5 + 8 * v6);
     }
-    goto LABEL_13;
+    return GameRoutine_a4dbe0_alt1(*msg_MessageManager_instance__ptr[0], v2, 0);
   }
   return msg_MessageManager_empty_text_;
 }
@@ -189,23 +116,6 @@ char* HelpQuestInfo_12b3a80(__int64 a1)
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  _QWORD v9[4];
-  int v10;
-  int v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
 
   v1 = *(_QWORD**)a1;
   if (*(_BYTE*)(a1 + 8) == 4) {
@@ -219,28 +129,8 @@ char* HelpQuestInfo_12b3a80(__int64 a1)
         }
         v2 = *(_BYTE**)(v3 + 8 * v4 + 80);
       }
-    LABEL_14:
-      v12 = -1;
-      v13 = -1;
-      v14 = -1;
-      v15 = -1;
-      v7 = *msg_MessageManager_instance__ptr[0];
-      v16 = -1;
-      v17 = -1;
-      v18 = -1;
-      v19 = -1;
-      v20 = -1;
-      v21 = -1;
-      v22 = -1;
-      v23 = -1;
-      v9[0] = msg_TagSelector_vtable;
-      v9[1] = 0xFFFF0001FFFF0000LL;
-      v9[2] = 0xFFFF0004FFFF0002LL;
-      v9[3] = 0xFFFF0006FFFF0005LL;
-      v24 = 8;
-      v10 = -65529;
-      v11 = -65528;
-      return (char*)GameRoutine_a4dbe0(v7, v2, 0, v9);
+      return GameRoutine_a4dbe0_alt1(*msg_MessageManager_instance__ptr[0], v2,
+                                     0);
     }
   }
   v2 = (_BYTE*)v1[9];
@@ -253,7 +143,7 @@ char* HelpQuestInfo_12b3a80(__int64 a1)
       }
       v2 = *(_BYTE**)(v5 + 8 * v6);
     }
-    goto LABEL_14;
+    return GameRoutine_a4dbe0_alt1(*msg_MessageManager_instance__ptr[0], v2, 0);
   }
   return msg_MessageManager_empty_text_;
 }

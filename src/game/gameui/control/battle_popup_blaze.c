@@ -52,6 +52,21 @@ BattlePopupBlaze_18c12f0(PSEUDO_X8 x8_, __int64 a1, __int64 a2);
 __int64 BattlePopupBlaze_18c2620(__int64 a1, long double a2);
 __int64 BattlePopupBlaze_18c2800(__int64 result);
 __attribute__((swiftcall)) void
+GameRoutine_1573280_alt1(PSEUDO_X8, __int64*,
+                         _QWORD*) __asm__("GameRoutine_1573280");
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 LayoutAccessor_15635a0_alt1(__int64*, __int64,
+                                    char) __asm__("LayoutAccessor_15635a0");
+__int64 LayoutAccessor_15636c0_alt1(__int64 result, __int64, char,
+                                    float) __asm__("LayoutAccessor_15636c0");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_stop_ffc40_alt1(__int64*, __int64) __asm__("snd_stop_ffc40");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+__attribute__((swiftcall)) void
 
 BattlePopupBlaze_18c10b0(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3)
 {
@@ -469,54 +484,48 @@ LABEL_21:
 
 __int64 BattlePopupBlaze_18c2800(__int64 result)
 {
-  __int64 v1;
-  __int64 v2;
   __int64 v3;
-  double v4;
-  long double v5;
-  __int64 v6;
-  __int64 v7;
-  long double v8;
-  _QWORD v9[2];
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
+  __int64 v4;
+  __int64 v5;
+  _QWORD v6[2];
+  struct {
+    __int64 v7;
+    __int64 v8;
+  } v7_;
 
   if (*(_DWORD*)(result + 276) != 7) {
-    v12 = v1;
-    v13 = v2;
     v3 = result;
     *(_DWORD*)(result + 276) = 8;
-    if ((LayoutAccessor_15635a0(result + 80, "Out", 0) & 1) != 0) {
-      LayoutAccessor_15636c0(v3 + 80, "Out", 0, 0.0);
+    if ((LayoutAccessor_15635a0_alt1((__int64*)(result + 80), (__int64)"Out",
+                                     0) &
+         1) != 0) {
+      LayoutAccessor_15636c0_alt1(v3 + 80, (__int64)"Out", 0, 0x0.0p+0f);
     }
-    LODWORD(v4) = 1.0;
-    LayoutAccessor_1562680(v3 + 80, "Out", v4);
-    v9[0] = "L_Gauge";
-    v9[1] = 7;
-    GameRoutine_1573280((void*)(&v10), v3 + 80, v9, v5);
-    result = v11;
-    if (v11 != 0) {
-      v6 = std___1___shared_weak_count_lock(v11);
-      v7 = v10;
-      result = v11;
-      if (v11 != 0) {
-        result = std___1___shared_weak_count___release_weak(v11);
+    GameHr_1562680(v3 + 80, "Out", 0x1.0000000000000p+0f);
+    v6[0] = "L_Gauge";
+    v6[1] = 7;
+    GameRoutine_1573280_alt1((void*)(&v7_.v7), (__int64*)(v3 + 80), v6);
+    result = v7_.v8;
+    if (v7_.v8 != 0) {
+      v4 = std___1___shared_weak_count_lock_alt1(v7_.v8);
+      v5 = v7_.v7;
+      result = v7_.v8;
+      if (v7_.v8 != 0) {
+        result = std___1___shared_weak_count___release_weak_alt1(v7_.v8);
       }
-      if (v6 != 0 && v7 != 0) {
-        *(__n128*)&v8 = snd_Fade_Fade_10c830(&v10, 0.0);
-        snd_stop_ffc40(v7 + 1088, &v10, v8);
-        result = snd_Fade_Destroy_Fade(&v10);
-        *(_BYTE*)(v7 + 1146) = 0;
+      if (v4 != 0 && v5 != 0) {
+        snd_Fade_Fade_10c830_alt1((__int64)&v7_.v7, 0x0.0p+0f);
+        snd_stop_ffc40_alt1((__int64*)(v5 + 1088), (__int64)&v7_.v7);
+        result = snd_Fade_Destroy_Fade_alt1(&v7_.v7);
+        *(_BYTE*)(v5 + 1146) = 0;
       }
-      else if (v6 == 0) {
+      else if (v4 == 0) {
         return result;
       }
-      if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+      if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-        return std___1___shared_weak_count___release_weak(v6);
+        (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+        return std___1___shared_weak_count___release_weak_alt1(v4);
       }
     }
   }

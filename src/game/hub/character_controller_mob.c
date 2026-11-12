@@ -9,31 +9,39 @@ __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_hub_CharacterControllerBase_vtable)();
 extern __int64 (*game_hub_CharacterControllerMob_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 CharacterControllerMob_Destructor(_QWORD* a1);
+__n128 CharacterControllerMob_Destructor_alt1(_QWORD* a1) __asm__(
+    "CharacterControllerMob_Destructor");
 __int64 CharacterControllerMob_DeletingDestructor(_QWORD* a1);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 extern __int64 GameData_21ec7c0;
 void CharacterControllerMob_Unknown2(float32x4_t* a1);
+_QWORD*
+HubCharacterNatives_ceca80_alt1(_QWORD* result, __int64,
+                                char) __asm__("HubCharacterNatives_ceca80");
+__int64 HubCharacterNatives_cea6b0_alt1(__int64 result) __asm__(
+    "HubCharacterNatives_cea6b0");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 CharacterControllerMob_Destructor(_QWORD* a1);
 
-__n128 CharacterControllerMob_Destructor(_QWORD* a1)
+__int64 CharacterControllerMob_Destructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
-  __n128 result;
-  __int64 v5;
+  __int64 result;
 
   *a1 = game_hub_CharacterControllerMob_vtable;
-  HubCharacterNatives_ceca80(*(_QWORD*)(a1[1] + 24LL), 128, 0);
+  HubCharacterNatives_ceca80_alt1(*(_QWORD**)(a1[1] + 24LL), 128, 0);
   v2 = *(_QWORD*)(a1[1] + 24LL);
   v3 = *(_QWORD*)(v2 + 352);
   if (v3 != *(_QWORD*)(v2 + 344)) {
     *(_QWORD*)(v2 + 352) = v3 - 4;
   }
-  HubCharacterNatives_cea6b0(v2);
-  v5 = a1[3];
+  HubCharacterNatives_cea6b0_alt1(v2);
+  result = a1[3];
   *a1 = &game_hub_CharacterControllerBase_vtable;
-  if (v5 != 0) {
-    return std___1___shared_weak_count___release_weak(v5);
+  if (result != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(result);
   }
   return result;
 }

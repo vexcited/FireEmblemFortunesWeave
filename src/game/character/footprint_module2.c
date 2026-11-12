@@ -34,6 +34,11 @@ long double asin(long double, long double);
 long double atan2(double, double);
 __int64 game_character_FootprintModule2_Start_lambda0_Invoke(__int64 a1,
                                                              unsigned int** a2);
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameHr_10e8d40(__int64*);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 void FootprintModule2_Unknown6(__int64 a1)
 {
@@ -130,7 +135,7 @@ __int64 FootprintModule2_Destructor(_QWORD* a1)
 
   *a1 = game_character_FootprintModule2_vtable;
   a1[3] = GameData_2011030;
-  GameRoutine_10e8d40(a1 + 11);
+  GameHr_10e8d40(a1 + 11);
   v2 = a1[8];
   if (v2 != 0) {
     v3 = a1[9];
@@ -151,7 +156,7 @@ __int64 FootprintModule2_Destructor(_QWORD* a1)
           else {
             v8 = 56;
           }
-          nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v8, v7);
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v8, v7);
         }
       }
       v3 = v5;
@@ -165,19 +170,19 @@ __int64 FootprintModule2_Destructor(_QWORD* a1)
       if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
         v10 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v10, v2);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v10, v2);
     }
   }
   result = a1[7];
   a1[3] = kaneko_WPHolder_vtable;
   if (result != 0) {
-    result = std___1___shared_weak_count___release_weak(result);
+    result = std___1___shared_weak_count___release_weak_alt2(result);
   }
   v12 = a1[5];
   if (v12 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-    return std___1___shared_weak_count___release_weak(v12);
+    return std___1___shared_weak_count___release_weak_alt2(v12);
   }
   return result;
 }

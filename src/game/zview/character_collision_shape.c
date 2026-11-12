@@ -7,7 +7,8 @@ __n128 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_zview_CharacterCollisionShape_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 CharacterCollisionShape_Destructor(_QWORD* a1);
+__n128 CharacterCollisionShape_Destructor_alt1(_QWORD* a1) __asm__(
+    "CharacterCollisionShape_Destructor");
 __n128 CharacterCollisionShape_DeletingDestructor(_QWORD* a1);
 __attribute__((swiftcall)) void Shape_f63ef0(PSEUDO_X8, __int128*, __int64, int,
                                              float);
@@ -29,35 +30,41 @@ extern __int64 fw_memory_g_heap_manager;
 void GameRoutine_fffa20_alt1(__int64) __asm__("GameRoutine_fffa20");
 void CharacterCollisionShape_fff0a0(__int64 a1);
 void CharacterCollisionShape_fff7f0(_QWORD* a1);
+__int64 GameRoutine_fffa20_alt2(__int64 result) __asm__("GameRoutine_fffa20");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+_QWORD* CharacterCollisionShape_Destructor(_QWORD* result);
 
-__n128 CharacterCollisionShape_Destructor(_QWORD* a1)
+_QWORD* CharacterCollisionShape_Destructor(_QWORD* result)
 {
-  __n128 result;
+  _QWORD* v1;
+  __int64 v2;
   __int64 v3;
-  __int64 v4;
 
-  *a1 = game_zview_CharacterCollisionShape_vtable;
-  if (a1[2] != 0 &&
-      (GameRoutine_fffa20(a1), v3 = a1[3], a1[2] = 0, a1[3] = 0, v3 != 0) &&
-      atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+  v1 = result;
+  *result = game_zview_CharacterCollisionShape_vtable;
+  if (result[2] != 0 &&
+      (result = (_QWORD*)GameRoutine_fffa20_alt2((__int64)result), v2 = v1[3],
+       v1[2] = 0, v1[3] = 0, v2 != 0) &&
+      atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
-    result = std___1___shared_weak_count___release_weak(v3);
-    v4 = a1[3];
-    if (v4 == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+    result = (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v2);
+    v3 = v1[3];
+    if (v3 == 0) {
       return result;
     }
   }
   else {
-    v4 = a1[3];
-    if (v4 == 0) {
+    v3 = v1[3];
+    if (v3 == 0) {
       return result;
     }
   }
-  if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+  if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-    return std___1___shared_weak_count___release_weak(v4);
+    (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+    return (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v3);
   }
   return result;
 }

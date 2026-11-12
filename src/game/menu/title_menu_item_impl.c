@@ -35,82 +35,62 @@ __int64 TitleMenuItem_16a2560();
 __int64 TitleMenuItem_16a2700();
 __int64 TitleMenuItem_16a2c90();
 __int64 TitleMenuItem_16a2df0();
+__int64 Alignment_56b600_alt1(__int64 result) __asm__("Alignment_56b600");
+__int64 ui_LayoutAccessor_FindAlignment_alt1(__int64*, __int64) __asm__(
+    "ui_LayoutAccessor_FindAlignment");
+__int64 ui_LayoutAccessor_FindTextBox_alt1(__int64*, __int64) __asm__(
+    "ui_LayoutAccessor_FindTextBox");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
+                              char) __asm__("GameRoutine_a4dbe0");
+void GameRoutine_156c5d0_alt1(__int64, __int64,
+                              char) __asm__("GameRoutine_156c5d0");
+void LayoutAccessor_1562060_alt1(__int64*, __int64,
+                                 _BYTE*) __asm__("LayoutAccessor_1562060");
 
 __int64 TitleMenuItem_169ebd0(_QWORD* a1)
 {
   __int64 result;
   __int64 v3;
-  _BOOL8 v4;
-  __int64 v5;
+  char v4;
+  _BYTE* v5;
   __int64 v6;
-  __int64 v7;
-  __int64 v8;
+  _BYTE* v7;
+  char* v8;
   __int64 v9;
   __int64 v10;
-  __int64 v11;
-  _QWORD v12[4];
-  int v13;
-  int v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  __int64 v27;
 
   result = (*(__int64 (**)(_QWORD*))(*a1 + 576LL))(a1);
   if ((result & 1) == 0) {
     v3 = a1[1];
     v4 = (*(__int64 (**)(_QWORD*))(*a1 + 32LL))(a1) != 0;
-    ui_LayoutAccessor_SetPaneVisible(v3 + 848, "L_KeyHelp", v4);
-    v5 = (*(__int64 (**)(_QWORD*))(*a1 + 560LL))(a1);
-    LayoutAccessor_1562060(v3 + 848, "T_Message", v5);
+    ui_LayoutAccessor_SetPaneVisible_alt1(v3 + 848, (__int64)"L_KeyHelp", v4);
+    v5 = (_BYTE*)(*(__int64 (**)(_QWORD*))(*a1 + 560LL))(a1);
+    LayoutAccessor_1562060_alt1((__int64*)(v3 + 848), (__int64)"T_Message", v5);
     v6 = (*(__int64 (**)(_QWORD*))(*a1 + 568LL))(a1);
     if (v6 != 0) {
-      v7 = v6;
-      ui_LayoutAccessor_SetPaneVisible(v3 + 848, "T_Annotation", 1);
-      v15 = -1;
-      v16 = -1;
-      v17 = -1;
-      v18 = -1;
-      v8 = *msg_MessageManager_instance__ptr[0];
-      v19 = -1;
-      v20 = -1;
-      v21 = -1;
-      v22 = -1;
-      v23 = -1;
-      v24 = -1;
-      v25 = -1;
-      v26 = -1;
-      v12[0] = msg_TagSelector_vtable;
-      v12[1] = 0xFFFF0001FFFF0000LL;
-      v12[2] = 0xFFFF0004FFFF0002LL;
-      v12[3] = 0xFFFF0006FFFF0005LL;
-      v27 = 8;
-      v13 = -65529;
-      v14 = -65528;
-      v9 = GameRoutine_a4dbe0(v8, v7, 0, v12);
-      if (v9 != 0) {
-        v10 = v9;
-        v11 = ui_LayoutAccessor_FindTextBox(v3 + 848, "T_Annotation");
-        if (v11 != 0) {
-          GameRoutine_156c5d0(v11, v10, 0);
+      v7 = (_BYTE*)v6;
+      ui_LayoutAccessor_SetPaneVisible_alt1(v3 + 848, (__int64)"T_Annotation",
+                                            1);
+      v8 = GameRoutine_a4dbe0_alt1(*msg_MessageManager_instance__ptr[0], v7, 0);
+      if (v8 != nullptr) {
+        v9 = (__int64)v8;
+        v10 = ui_LayoutAccessor_FindTextBox_alt1((__int64*)(v3 + 848),
+                                                 (__int64)"T_Annotation");
+        if (v10 != 0) {
+          GameRoutine_156c5d0_alt1(v10, v9, 0);
         }
       }
-      result = ui_LayoutAccessor_FindAlignment(v3 + 848, "A_Message");
+      result = ui_LayoutAccessor_FindAlignment_alt1((__int64*)(v3 + 848),
+                                                    (__int64)"A_Message");
       if (result != 0) {
-        return Alignment_56b600();
+        return Alignment_56b600_alt1(result);
       }
     }
     else {
-      return ui_LayoutAccessor_SetPaneVisible(v3 + 848, "T_Annotation", 0);
+      return ui_LayoutAccessor_SetPaneVisible_alt1(v3 + 848,
+                                                   (__int64)"T_Annotation", 0);
     }
   }
   return result;

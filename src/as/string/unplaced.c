@@ -10,6 +10,8 @@ void __attribute__((noreturn)) VariableAssign_62dc60();
 void __attribute__((noreturn)) game_hub_cdcc30();
 __attribute__((swiftcall)) void
 as_string_25f180(PSEUDO_X8 x8_, unsigned __int8* a1, unsigned int a2, int a3);
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+void GameRoutine_6565f0_alt1(__int64) __asm__("GameRoutine_6565f0");
 __attribute__((swiftcall)) void
 
 as_string_25f180(PSEUDO_X8 x8_, unsigned __int8* a1, unsigned int a2, int a3)
@@ -23,12 +25,11 @@ as_string_25f180(PSEUDO_X8 x8_, unsigned __int8* a1, unsigned int a2, int a3)
   unsigned __int8* v10;
   unsigned __int64 v11;
   char* v12;
-  _QWORD* result;
-  __int64 v14;
+  __int64 v13;
   struct {
-    __int64 v15[2];
-    char* v16;
-  } v15_;
+    __int64 v14[2];
+    char* v15;
+  } v14_;
 
   v5 = *a1;
   v6 = *((_QWORD*)a1 + 1);
@@ -58,42 +59,34 @@ as_string_25f180(PSEUDO_X8 x8_, unsigned __int8* a1, unsigned int a2, int a3)
   }
   if (v11 >= 0x17) {
     if ((v11 | 7) == 0x17) {
-      v14 = 26;
+      v13 = 26;
     }
     else {
-      v14 = (v11 | 7) + 1;
+      v13 = (v11 | 7) + 1;
     }
-    v12 = (char*)GameRoutine_6565d0(v14);
-    v15_.v15[1] = v11;
-    v15_.v16 = v12;
-    v15_.v15[0] = v14 | 1;
+    v12 = (char*)GameRoutine_6565d0(v13);
+    v14_.v14[1] = v11;
+    v14_.v15 = v12;
+    v14_.v14[0] = v13 | 1;
   }
   else {
-    LOBYTE(v15_.v15[0]) = 2 * v11;
-    v12 = (char*)v15_.v15 + 1;
+    LOBYTE(v14_.v14[0]) = 2 * v11;
+    v12 = (char*)v14_.v14 + 1;
     if (v11 == 0) {
-      BYTE1(v15_.v15[0]) = 0;
-      result = as_string_string_25ed50(a4, v15_.v15);
-      if ((v15_.v15[0] & 1) == 0) {
-        result;
+      BYTE1(v14_.v14[0]) = 0;
+      as_string_string_25ed50(a4, v14_.v14);
+      if ((v14_.v14[0] & 1) == 0) {
         return;
       }
-      {
-        (_QWORD*)GameRoutine_6565f0((__int64)v15_.v16);
-        return;
-      }
+      goto LABEL_15;
     }
   }
-  memmove(v12, &v10[v7], v11);
+  memmove_alt1((__int64)v12, (__int64)&v10[v7], v11);
   v12[v11] = 0;
-  result = as_string_string_25ed50(a4, v15_.v15);
-  if ((v15_.v15[0] & 1) != 0) {
-    (_QWORD*)GameRoutine_6565f0((__int64)v15_.v16);
-    return;
-  }
-  {
-    result;
-    return;
+  as_string_string_25ed50(a4, v14_.v14);
+  if ((v14_.v14[0] & 1) != 0) {
+  LABEL_15:
+    GameRoutine_6565f0_alt1((__int64)v14_.v15);
   }
 }
 

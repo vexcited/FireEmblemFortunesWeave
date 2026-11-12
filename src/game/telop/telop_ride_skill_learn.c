@@ -10,6 +10,7 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 TelopRideSkillLearn_Unknown56(__int64 a1);
 __int64 TelopRideSkillLearn_Destructor(__int64 a1);
 __int64 TelopRideSkillLearn_DeletingDestructor(__int64 a1);
+__int64 LayoutAccessor_1562cf0(__int64 result, const char*);
 
 __int64 TelopRideSkillLearn_Unknown56(__int64 a1)
 {
@@ -22,7 +23,7 @@ __int64 TelopRideSkillLearn_Unknown56(__int64 a1)
   v1 = *(unsigned __int8*)(a1 + 824);
   v2 = *(_QWORD*)(a1 + 832);
   v7 = 0;
-  v6 = 0u;
+  v6 = (__typeof__(v6)){0};
   if ((v1 & 1) != 0) {
     v4 = v2;
   }
@@ -37,8 +38,8 @@ __int64 TelopRideSkillLearn_Unknown56(__int64 a1)
     DWORD2(v6) = 1717981035;
     *(_QWORD*)((char*)&v6 + 1) = *(_QWORD*)"Pos_TalkOff";
   }
-  GameRoutine_1562cf0(a1 + 168, (char*)&v6 + 1);
-  return GameRoutine_1562cf0(a1 + 168, "Type_TitleOff");
+  LayoutAccessor_1562cf0(a1 + 168, (const char*)&v6 + 1);
+  return LayoutAccessor_1562cf0(a1 + 168, "Type_TitleOff");
 }
 
 __int64 TelopRideSkillLearn_Destructor(__int64 a1)

@@ -19,18 +19,22 @@ __int64 SpineExtensionEx_Unknown5(__int64 a1, __int64 a2);
 __int64 SpineExtensionEx_Unknown6(__int64 a1, __int64 a2, _DWORD* a3);
 _QWORD* SpineExtensionEx_190d360();
 __n128 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__n128 SpineExtensionEx_Unknown3(__int64 a1, __int64 a2);
+__n128
+SpineExtensionEx_Unknown3_alt1(__int64 a1,
+                               __int64 a2) __asm__("SpineExtensionEx_Unknown3");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 SpineExtensionEx_Unknown3(__int64 a1, unsigned __int64 a2);
 
-__n128 SpineExtensionEx_Unknown3(__int64 a1, __int64 a2)
+__int64 SpineExtensionEx_Unknown3(__int64 a1, unsigned __int64 a2)
 {
   __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
 
-  v3 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      a2, 16, 0);
-  return memset(v3, 0, a2, v4, v5, v6);
+  v3 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, a2, 16, 0);
+  return memset_alt1(v3, 0, a2);
 }
 
 __int64 SpineExtensionEx_Unknown4(__int64 a1, __int64 a2, __int64 a3)

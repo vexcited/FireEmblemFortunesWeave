@@ -39,6 +39,8 @@ extern _UNKNOWN GameData_224ae08;
 extern __int64 GameData_224ae20;
 void snd_Fade_Fade_10c830(__int64, float);
 __int64 game_facility_anonymous_ProcReaction_StartCameraWork_closure1_Invoke();
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 _QWORD* game_facility_anonymous_ProcReaction_ResetMotion(__int64 a1)
 {
@@ -454,13 +456,13 @@ __int64 game_facility_anonymous_ProcReaction_StartCameraWork_closure1_Invoke()
                               memory_order_acquire) &
          1) == 0) {
       v9 = result;
-      v10 = __cxa_guard_acquire(&GameData_224ae08);
+      v10 = __cxa_guard_acquire_alt1((__int64)&GameData_224ae08);
       v4 = 0x1.0000000000000p-1f;
       v11 = v10;
       result = v9;
       if (v11 != 0) {
         GameRoutine_2b0();
-        __cxa_guard_release(&GameData_224ae08);
+        __cxa_guard_release_alt1((__int64)&GameData_224ae08);
         v4 = 0x1.0000000000000p-1f;
         result = v9;
       }

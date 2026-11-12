@@ -32,6 +32,10 @@ void GameAlloc_e2920(__int64 a1, __int64 a2);
 __int64 GameAlloc_e5920(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                         __int64 a5, __int64 a6);
 __int64 GameAlloc_e5eb0(__int64 a1);
+__int64 Env_e0b20(__int64, __int64, __int64, __int64);
+float snd_fnd_calcDistanceTo_alt1(float*,
+                                  float*) __asm__("snd_fnd_calcDistanceTo");
+
 __int64 GameAlloc_e1ba0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                         __int64 a5, __int64 a6)
 {
@@ -229,11 +233,8 @@ __int64 GameAlloc_e2400(__int64 a1, __int64 a2, __int64 a3)
 
 void GameAlloc_e2920(__int64 a1, __int64 a2)
 {
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
+
+#pragma clang fp contract(off)
   __int64 v7;
   __int64 v8;
   __int64* v10;
@@ -251,53 +252,47 @@ void GameAlloc_e2920(__int64 a1, __int64 a2)
   __int64* v23;
   __int64* v24;
   __int64 v25;
-  _QWORD v26[2];
-  int v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
+  struct {
+    _QWORD v26[2];
+    int v27;
+  } v26_;
 
   v7 = *(_QWORD*)(a1 + 16);
   if (v7 != *(_QWORD*)(a1 + 8)) {
-    v28 = v6;
-    v29 = v5;
-    v30 = v4;
-    v31 = v2;
-    v32 = v3;
     v8 = *(_QWORD*)(v7 - 8);
     v10 = *(__int64**)(v8 + 32);
     v11 = *(__int64**)(v8 + 40);
     if (v10 == v11) {
-      v15 = 0.0;
-      v12 = 0.0;
+      v15 = 0x0.0p+0f;
+      v12 = 0x0.0p+0f;
       v13 = -1;
     }
     else {
-      v12 = 0.0;
+      v12 = 0x0.0p+0f;
       v13 = -1;
-      v15 = 0.0;
+      v15 = 0x0.0p+0f;
       v16 = GameData_212e2d8 + 16;
       do {
         v18 = *v10;
         if (*(_DWORD*)(*v10 + 32) == 11) {
-          v26[0] = v16;
-          v26[1] = 0;
-          v27 = 0;
-          v19 = GameRoutine_e0b20(a1, v18, (__int64)v26, a2);
-          HIDWORD(v26[1]) = *(_DWORD*)(a2 + 12);
-          v20 = snd_fnd_calcDistanceTo(a1 + 392, v26);
+          v26_.v26[0] = v16;
+          v26_.v26[1] = 0;
+          v26_.v27 = 0;
+          v19 = Env_e0b20(a1, v18, (__int64)v26_.v26, a2);
+          HIDWORD(v26_.v26[1]) = *(_DWORD*)(a2 + 12);
+          v20 =
+              snd_fnd_calcDistanceTo_alt1((float*)(a1 + 392), (float*)v26_.v26);
           v17 = *v10;
-          v21 = 0.0;
+          v21 = 0x0.0p+0f;
           v22 = *(float*)(*v10 + 180);
           if ((v19 & 1) != 0 || (v21 = v20, v20 <= v22)) {
             v13 = *(_DWORD*)(v17 + 156);
-            if ((float)(1.0 - (float)(v21 / v22)) <= 1.0) {
-              v15 = 1.0 - (float)(v21 / v22);
+            if ((float)(0x1.0000000000000p+0f - (float)(v21 / v22)) <=
+                0x1.0000000000000p+0f) {
+              v15 = 0x1.0000000000000p+0f - (float)(v21 / v22);
             }
             else {
-              v15 = 1.0;
+              v15 = 0x1.0000000000000p+0f;
             }
             if (*(_BYTE*)(v17 + 148) == 1) {
               v23 = *(__int64**)(v8 + 32);

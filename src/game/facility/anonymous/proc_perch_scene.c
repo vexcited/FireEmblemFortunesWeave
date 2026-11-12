@@ -107,9 +107,24 @@ void GameRoutine_1488300();
 _QWORD* ProcPerchScene_15edda0(__int64 a1);
 unsigned __int64 ProcPerchScene_15f0160();
 _QWORD* ProcPerchScene_Destructor(__int64 a1);
-__int64 ProcPerchScene_15f0fe0(__int64 a1);
+__int64
+ProcPerchScene_15f0fe0_alt1(__int64 a1) __asm__("ProcPerchScene_15f0fe0");
 _QWORD* ProcPerchScene_15f1480(__int64 a1);
 _QWORD* ProcPerchScene_15f16f0(__int16* a1);
+_BYTE* ProcInst_657a50_alt1(__int64, char) __asm__("ProcInst_657a50");
+__int64 FacilityVariable_1472720(__int64);
+__int64 GameHr_8696e0(int);
+__int64 game_809dc0_alt1(__int64, _QWORD*, __n128) __asm__("game_809dc0");
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 game_HashString_alt2(__int64 result) __asm__("game_HashString");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+void GameRoutine_1958ed0_alt2(__int64, __int64) __asm__("GameRoutine_1958ed0");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+void ProcPerchScene_15f0fe0(__int64 a1);
 
 _QWORD* ProcPerchScene_15edda0(__int64 a1)
 {
@@ -857,33 +872,32 @@ __int64 ProcPerchScene_15efd40(__int64 a1)
 
 __int64 ProcPerchScene_15efd70(__int64 a1)
 {
-  __int64 v1;
+  unsigned __int64 v1;
   __int64 result;
   __int64 v3;
-  __int64 v4;
-  _QWORD v5[2];
+  unsigned __int64 v4[2];
 
   v1 = *(_QWORD*)(a1 + 248);
   if (v1 != 0) {
     v1 = *(_QWORD*)(v1 + 392);
   }
-  v5[0] = v1;
-  result = GameRoutine_1472720(v5);
+  v4[0] = v1;
+  result = FacilityVariable_1472720((__int64)v4);
   if (game_GameModeData_instance_ != 0 &&
       *(_BYTE*)(game_GameModeData_instance_ + 56) == 5) {
-    v5[1] = &GameData_1a856ca;
-    v5[0] = game_HashString(&GameData_1a856ca, v3);
+    v4[1] = (unsigned __int64)&GameData_1a856ca;
+    v4[0] = game_HashString_alt2((__int64)&GameData_1a856ca);
     if (game_GameModeData_instance_ != 0) {
-      v4 = game_GameVariableTable_Find(
-          *(_QWORD*)(game_GameModeData_instance_ + 48), v5);
-      if (v4 != 0) {
-        v4 = *(unsigned int*)(v4 + 32);
+      v3 = game_GameVariableTable_Find_alt1(
+          *(_QWORD**)(game_GameModeData_instance_ + 48), v4);
+      if (v3 != 0) {
+        LODWORD(v3) = *(_DWORD*)(v3 + 32);
       }
     }
     else {
-      v4 = 0;
+      LODWORD(v3) = 0;
     }
-    return GameRoutine_8696e0(v4);
+    return GameHr_8696e0(v3);
   }
   return result;
 }
@@ -900,11 +914,13 @@ unsigned __int64 ProcPerchScene_15f0160()
   __int64 v8;
   __int64 v9;
   __int64 v10;
-  __int64 v11;
-  int v12;
-  _BYTE v13[200];
+  struct {
+    __int64 v11;
+    int v12;
+  } v11_;
+  _QWORD v13[25];
 
-  result = game_HashString_alt1(&GameData_1afe8f0);
+  result = game_HashString_alt2((__int64)&GameData_1afe8f0);
   if (result != 0) {
     v1 = *(_QWORD*)(GameData_21f4010 + 96);
     if (v1 != 0 && *(_QWORD*)(GameData_21f4010 + 112) != 0) {
@@ -948,19 +964,20 @@ unsigned __int64 ProcPerchScene_15f0160()
                 if (v9 != 0) {
                   v10 = *(_QWORD*)(v9 + 32);
                   if (v10 != 0) {
-                    snd_Fade_Fade_10c830(v13, 0.0f);
-                    snd_play_ff2d0((void*)(&v11), v10, v10, v13, 0, 65537, 0,
-                                   0.0f, 1.0f);
-                    snd_Fade_Destroy_Fade(v13);
+                    snd_Fade_Fade_10c830_alt1((__int64)v13, 0x0.0p+0f);
+                    snd_play_ff2d0_alt1(v10, v10, (__int64)v13, 0, 0x10001u, 0,
+                                        0x0.0p+0f, 0x1.0000000000000p+0f);
+                    snd_Fade_Destroy_Fade_alt1(v13);
                   }
                   else {
-                    v11 = 0;
-                    v12 = 0x2000;
+                    v11_.v11 = 0;
+                    v11_.v12 = 0x2000;
                   }
                   result = GameData_224ae20;
                   if (GameData_224ae20 != 0) {
-                    return ((__int64 (*)(__int64, __int64*, __int64))
-                                GameRoutine_1488300)(GameData_224ae20, &v11, 1);
+                    return ((__int64 (*)(__int64, __int64*,
+                                         __int64))GameRoutine_1488300)(
+                        GameData_224ae20, &v11_.v11, 1);
                   }
                 }
                 return result;
@@ -1341,17 +1358,20 @@ void ProcPerchScene_15f0fa0()
   }
 }
 
-__int64 ProcPerchScene_15f0fe0(__int64 a1)
+void ProcPerchScene_15f0fe0(__int64 a1)
 {
-  __int64 result;
+
+#pragma clang fp contract(off)
+  __n128 v2;
   __int64 v3;
   unsigned __int64 v4;
-  unsigned __int64 v5;
-  __int128 v6;
-  __int128* v7;
-  __int128 v8;
+  __n128* v5;
+  __n128* v6;
+  __n128 v7;
 
-  result = GameRoutine_1958ed0_alt1(a1 + 208, a1);
+  v2 = COERCE_AS(__typeof__(v2), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  GameRoutine_1958ed0_alt2(a1 + 208, a1),
+      v2 = COERCE_AS(__typeof__(v2), PSEUDO_REGISTER(__n128, "v0", "=w"));
   if (*(_BYTE*)(a1 + 220) == 1 && (*(_DWORD*)(a1 + 216) & 0x80000000) != 0) {
     v3 = game_ProcFadeView_instance_;
     if (game_ProcFadeView_instance_ != 0) {
@@ -1360,29 +1380,36 @@ __int64 ProcPerchScene_15f0fe0(__int64 a1)
                                                   480)
             << 6);
       if (*(float*)(v4 + 172) == *(float*)(v4 + 168) &&
-          (v5 = v4 + 160,
-           LANES128_OF(((__n128 (*)(unsigned __int64)) *
-                        (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160))
-                   .n128_f32[3] == 1.0f)) {
-        if (*(float*)(v5 + 12) == *(float*)(v5 + 8)) {
-          (*(void (**)(unsigned __int64))(*(_QWORD*)v5 + 16LL))(v5);
+          (v5 = (__n128*)(v4 + 160),
+           LANES128(v2).n128_u64[1] =
+               LANES128_OF(((__n128 (*)(unsigned __int64)) *
+                            (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160))
+                   .n128_u64[1],
+           LANES128(v2).n128_f32[3] == 0x1.0000000000000p+0f)) {
+        if (LANES128(*(v5)).n128_f32[3] == LANES128(*(v5)).n128_f32[2]) {
+          (*(void (**)(__n128*))(LANES128(*(v5)).n128_u64[0] + 16))(v5),
+              v2 = COERCE_AS(__typeof__(v2),
+                             PSEUDO_REGISTER(__n128, "v0", "=w"));
         }
         else {
-          v6 = *(_OWORD*)(v5 + 48);
+          v2 = v5[3];
         }
-        v8 = v6;
-        v7 = &v8;
+        v7 = v2;
+        LANES128(v2).n128_u64[0] = 0;
+        v6 = &v7;
       }
       else {
-        v7 = (__int128*)GameData_212c960;
+        LANES128(v2).n128_u64[0] = 0;
+        v6 = (__n128*)GameData_212c960;
       }
-      result = game_809dc0(v3, v7, 0.0f);
+      game_809dc0_alt1(v3, v6, v2),
+          v2 = COERCE_AS(__typeof__(v2), PSEUDO_REGISTER(__n128, "v0", "=w"));
     }
   }
   if ((*(_WORD*)(a1 + 136) & 1) == 0) {
-    return ProcInst_657a50(a1, 1);
+    ProcInst_657a50_alt1(a1, 1),
+        v2 = COERCE_AS(__typeof__(v2), PSEUDO_REGISTER(__n128, "v0", "=w"));
   }
-  return result;
 }
 
 __int64 ProcPerchScene_Unknown18(__int64 a1, __int64 a2)

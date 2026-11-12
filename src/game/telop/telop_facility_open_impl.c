@@ -4,12 +4,15 @@
 
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 TelopFacilityOpen_fd5700(__int64 result);
+__int64 TelopFacilityOpen_fd5700_alt1(__int64 result) __asm__(
+    "TelopFacilityOpen_fd5700");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TelopFacilityOpen_fd5700(__int64* a1);
 
-__int64 TelopFacilityOpen_fd5700(__int64 result)
+void TelopFacilityOpen_fd5700(__int64* a1)
 {
   __int64 v1;
-  __int64* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
@@ -21,77 +24,89 @@ __int64 TelopFacilityOpen_fd5700(__int64 result)
   __int64 v11;
   __int64 v12;
   __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
 
-  v1 = *(_QWORD*)(result + 24);
-  v2 = (__int64*)result;
+  v1 = a1[3];
   v3 = fw_memory_g_heap_manager_ptr;
   if (v1 != 0) {
-    v4 = *(_QWORD*)(result + 32);
+    v4 = a1[4];
     if (v1 == v4) {
       goto LABEL_12;
     }
     do {
-      if ((*(_BYTE*)(v4 - 24) & 1) != 0 && *(_QWORD*)(v4 - 8) != 0) {
-        if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
-          v5 = 128;
+      if ((*(_BYTE*)(v4 - 24) & 1) != 0) {
+        v5 = *(_QWORD*)(v4 - 8);
+        if (v5 != 0) {
+          if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
+            v6 = 128;
+          }
+          else {
+            v6 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v6, v5);
         }
-        else {
-          v5 = 56;
-        }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5);
       }
       v4 -= 32;
     } while (v4 != v1);
-    v6 = v2[3];
-    v2[4] = v1;
-    if (v6 != 0) {
+    v7 = a1[3];
+    a1[4] = v1;
+    v1 = v7;
+    if (v7 != 0) {
     LABEL_12:
-      v7 = 128;
+      v8 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-        v7 = 56;
+        v8 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v7);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v8, v1);
     }
   }
-  v8 = *v2;
-  if (*v2 != 0) {
-    v9 = v2[1];
-    if (v8 == v9) {
+  v9 = *a1;
+  if (*a1 != 0) {
+    v10 = a1[1];
+    if (v9 == v10) {
       goto LABEL_32;
     }
     do {
-      if ((*(_BYTE*)(v9 - 24) & 1) != 0 && *(_QWORD*)(v9 - 8) != 0) {
-        if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
-          v10 = 128;
+      if ((*(_BYTE*)(v10 - 24) & 1) != 0) {
+        v11 = *(_QWORD*)(v10 - 8);
+        if (v11 != 0) {
+          if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
+            v12 = 128;
+          }
+          else {
+            v12 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v12, v11);
         }
-        else {
-          v10 = 56;
-        }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v10);
       }
-      if ((*(_BYTE*)(v9 - 48) & 1) != 0 && *(_QWORD*)(v9 - 32) != 0) {
-        if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
-          v11 = 128;
+      if ((*(_BYTE*)(v10 - 48) & 1) != 0) {
+        v13 = *(_QWORD*)(v10 - 32);
+        if (v13 != 0) {
+          if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
+            v14 = 128;
+          }
+          else {
+            v14 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v14, v13);
         }
-        else {
-          v11 = 56;
-        }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v11);
       }
-      v9 -= 56;
-    } while (v9 != v8);
-    v12 = *v2;
-    v2[1] = v8;
-    if (v12 != 0) {
+      v10 -= 56;
+    } while (v10 != v9);
+    v15 = *a1;
+    a1[1] = v9;
+    v9 = v15;
+    if (v15 != 0) {
     LABEL_32:
-      v13 = 128;
+      v16 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-        v13 = 56;
+        v16 = 56;
       }
-      return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v13);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v16, v9);
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

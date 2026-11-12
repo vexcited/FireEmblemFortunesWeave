@@ -386,7 +386,7 @@ bool game_gmap_887a40(__int64 a1);
 __int64 game_gmap_888560(__int64 a1);
 float32x4_t* game_gmap_1318260();
 __int64 game_gmap_1319ce0(__int64 result);
-__int64 game_gmap_1319f40(__int64 result);
+__int64 game_gmap_1319f40_alt1(__int64 result) __asm__("game_gmap_1319f40");
 float game_gmap_131a870(float32x4_t* a1, double a2, double a3, long double a4);
 __int64 game_gmap_1327670(float32x4_t* a1, float32x4_t* a2);
 __attribute__((swiftcall)) void game_gmap_13288f0(PSEUDO_X8 x8_, __int64 a1,
@@ -394,7 +394,8 @@ __attribute__((swiftcall)) void game_gmap_13288f0(PSEUDO_X8 x8_, __int64 a1,
 __n128 game_gmap_1329000(__int64 a1, unsigned __int8 a2, __n128 result);
 void game_gmap_1329500(__int64 a1, char* a2, char a3, char a4);
 bool game_gmap_132a430(__int64 a1);
-__int64 game_gmap_133d680(__int64 a1, __int64 a2, __int64 a3);
+__int64 game_gmap_133d680_alt1(__int64 a1, __int64 a2,
+                               __int64 a3) __asm__("game_gmap_133d680");
 __int64 game_gmap_133dba0(__int64 a1, char a2, long double a3, long double a4);
 __int64 game_gmap_133de90(__int64 result, char a2, __n128 a3, long double a4);
 void game_gmap_133f280(__int64 a1);
@@ -431,12 +432,14 @@ __n128 game_gmap_151fdd0(__int64 a1, __int64 a2, char a3);
 _BYTE* game_gmap_1520240(__int64 a1, __int64 a2, char a3);
 __int64 game_gmap_1520ea0(__int64 a1);
 __int64 game_gmap_1522160(__int64 result, long double a2);
-void game_gmap_15230c0(__int64 a1, long double a2);
+void game_gmap_15230c0_alt1(__int64 a1,
+                            long double a2) __asm__("game_gmap_15230c0");
 __int64 game_gmap_1523240(__int64 result);
 __int64 game_gmap_1523320(__int64 result, __n128 a2);
 void game_gmap_1523f70(__int64 a1);
 void game_gmap_1524170();
-__n128 game_gmap_15241d0(float32x4_t** a1, __n128 result);
+__n128 game_gmap_15241d0_alt1(float32x4_t** a1,
+                              __n128 result) __asm__("game_gmap_15241d0");
 void game_gmap_1524f30(__int64 a1);
 __int64 game_gmap_1528ab0(__int64 result);
 void game_gmap_1529760(__int64 a1);
@@ -444,7 +447,7 @@ void game_gmap_152b340(__int64 a1);
 __int64 game_gmap_152b740(__int64 a1);
 __int64 game_gmap_152b970(__int64 a1);
 __int64 game_gmap_152ba90(__int64 result);
-__int64 game_gmap_152bb80(__int64 a1);
+__int64 game_gmap_152bb80_alt1(__int64 a1) __asm__("game_gmap_152bb80");
 __int64 GameRoutine_1522300(_QWORD, _QWORD);
 __int64 GameRoutine_714b20(_QWORD*);
 __int64 GameRoutine_889be0(__int64);
@@ -476,6 +479,62 @@ void GameSideStoryData_12b50c0(__int64, __int64*);
 bool game_gmap_132a900(float32x4_t* a1, __int64 a2);
 void game_gmap_14d5780(__int64 a1);
 __int64 game_gmap_14d60a0(__int64 result);
+_QWORD* GameHr_14a10d0_alt1(_QWORD*, __int64, __int64,
+                            __int64) __asm__("GameHr_14a10d0");
+__int64* Manager_bc6460_alt2(float*, __int64, char) __asm__("Manager_bc6460");
+__int64* Manager_bc6460_alt3(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+__int64 CorpsManager_9726e0_alt1(__int64) __asm__("CorpsManager_9726e0");
+__int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
+__int64 GameHr_16aec40(__int64, __int64, __int64*);
+__int64 GameRoutine_131a9b0_alt1(float32x4_t*,
+                                 float32x4_t*) __asm__("GameRoutine_131a9b0");
+__int64 GameRoutine_131b280_alt1(__int64) __asm__("GameRoutine_131b280");
+__int64
+GameRoutine_1a09ce0_alt1(__int64, const char*,
+                         unsigned __int64) __asm__("GameRoutine_1a09ce0");
+__int64 GmapSound_1530b00(__int64 result, __int64);
+__int64 TroopMgr_1345be0_alt1() __asm__("TroopMgr_1345be0");
+__int64 UnitActor_81aee0_alt1(__int64, float) __asm__("UnitActor_81aee0");
+__int64 fs_609260(__int64, const char*, char);
+__int64 game_14a3920(__int64 result);
+__int64 game_gmap_1326c80_alt1(float32x4_t*, int) __asm__("game_gmap_1326c80");
+__int64 game_gmap_133f780(__int64 result, _DWORD*, char);
+__int64 game_gmap_133fe00_alt2(__int64, unsigned __int8,
+                               float) __asm__("game_gmap_133fe00");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
+                              unsigned int, int, float,
+                              float) __asm__("snd_playAt_ff5f0");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__n64 GameRoutine_a6c440_alt1(float32x4_t*, __int128*,
+                              float32x4_t*) __asm__("GameRoutine_a6c440");
+bool Impl_1328300_alt1(__int64) __asm__("Impl_1328300");
+const char*
+game_HashString32_alt3(const char* result) __asm__("game_HashString32");
+float MapUtil_752d30(int8x16_t*, int8x16_t*);
+float game_gmap_131a870_alt2(float32x4_t*) __asm__("game_gmap_131a870");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+int sscanf_alt1(const char*, const char*, ...) __asm__("sscanf");
+unsigned __int64
+GameRoutine_1130770_alt1(__int64, const char*,
+                         __int64*) __asm__("GameRoutine_1130770");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void GameRoutine_131b050_alt1(__int64,
+                              __int128*) __asm__("GameRoutine_131b050");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void nn_mem_StandardAllocator_Free_alt3(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void snd_Fade_Fade_10c830_alt2(__int64, float) __asm__("snd_Fade_Fade_10c830");
+void game_gmap_1319f40(float32x4_t* a1);
+unsigned __int64 game_gmap_133d680(__int64 a1, __int64 a2, __int64 a3);
+void game_gmap_15230c0(__int64 a1);
+__int64 game_gmap_15241d0(__int64 result);
+__int64 game_gmap_152bb80(__int64 a1, __n128 a2, long double a3);
 
 bool game_gmap_887a40(__int64 a1)
 {
@@ -725,100 +784,106 @@ __int64 game_gmap_888560(__int64 a1)
 
 float32x4_t* game_gmap_1318260()
 {
-  __int64 v0;
-  long double v1;
+
+#pragma clang fp contract(off)
+  unsigned int* v0;
+  __int64 v1;
   __int64 v2;
   __int64 v3;
-  __int64 v4;
-  int v5;
+  int v4;
+  float32x4_t*** v5;
   float32x4_t*** v6;
-  float32x4_t*** v7;
+  float32x4_t** v7;
   float32x4_t** v8;
-  float32x4_t** v9;
   float32x4_t* result;
+  __int64 v10;
   __int64 v11;
-  __int64 v12;
-  _QWORD v13[2];
-  __int64 (**v14)();
-  _QWORD* v15;
-  __int64 (***v16)();
+  int v12;
+  struct {
+    __int64 (**v13)();
+    int* v14;
+    char gap32_[16];
+    unsigned __int64* v15;
+  } v13_;
 
-  v0 = game_gmap_SpotMgr_GetCurrentSpot();
-  v15 = &GameData_1ade186;
-  v14 = (__int64 (**)())game_HashString(&GameData_1ade186);
+  v0 = game_gmap_SpotMgr_GetCurrentSpot_alt1();
+  v13_.v14 = (int*)&GameData_1ade186;
+  v13_.v13 =
+      (__int64 (**)(void))game_HashString_alt1((__int64)&GameData_1ade186);
   if (game_GameModeData_instance_ == 0 ||
-      (v2 = game_GameVariableTable_Find(
-           *(_QWORD*)(game_GameModeData_instance_ + 48), &v14)) == 0 ||
-      *(_DWORD*)(v2 + 32) == 0) {
-    v4 = *(_QWORD*)(GameData_21c96e8 + 8);
-    v5 = *(_DWORD*)(v4 + 56);
-    v6 = *(float32x4_t****)(v4 + 8);
-    v7 = *(float32x4_t****)(v4 + 16);
-    if (v5 < 0) {
-      for (; v6 != v7; ++v6) {
-        v8 = *v6;
-        if ((*v6)[12] == nullptr && v8[69] == nullptr) {
+      (v1 = game_GameVariableTable_Find_alt1(
+           *(_QWORD**)(game_GameModeData_instance_ + 48),
+           (unsigned __int64*)&v13_.v13)) == 0 ||
+      *(_DWORD*)(v1 + 32) == 0) {
+    v3 = *(_QWORD*)(GameData_21c96e8 + 8);
+    v4 = *(_DWORD*)(v3 + 56);
+    v5 = *(float32x4_t****)(v3 + 8);
+    v6 = *(float32x4_t****)(v3 + 16);
+    if (v4 < 0) {
+      for (; v5 != v6; ++v5) {
+        v7 = *v5;
+        if ((*v5)[12] == nullptr && v7[69] == nullptr) {
           goto LABEL_17;
         }
       }
     }
-    else if (v6 != v7) {
+    else if (v5 != v6) {
       while (1) {
-        v9 = *v6++;
-        v8 = v9;
-        if (*((_DWORD*)v9 + 21) == v5) {
+        v8 = *v5++;
+        v7 = v8;
+        if (*((_DWORD*)v8 + 21) == v4) {
           break;
         }
-        if (v6 == v7) {
+        if (v5 == v6) {
           goto LABEL_13;
         }
       }
     LABEL_17:
-      result = *v8;
+      result = *v7;
       goto LABEL_23;
     }
   LABEL_13:
-    result = (float32x4_t*)game_gmap_SpotMgr_GetCurrentSpot();
+    result = (float32x4_t*)game_gmap_SpotMgr_GetCurrentSpot_alt1();
     goto LABEL_23;
   }
-  LODWORD(v13[0]) = 0;
-  v14 = GameData_1fb0cb0;
-  v15 = v13;
-  v16 = &v14;
-  CorpsManager_9726e0(&v14);
-  if (v16 == &v14) {
-    v3 = 4;
+  v12 = 0;
+  v13_.v13 = GameData_1fb0cb0;
+  v13_.v14 = &v12;
+  v13_.v15 = (unsigned __int64*)&v13_.v13;
+  CorpsManager_9726e0_alt1((__int64)&v13_.v13);
+  if (v13_.v15 == (unsigned __int64*)&v13_.v13) {
+    v2 = 32;
   }
   else {
-    if (v16 == nullptr) {
+    if (v13_.v15 == nullptr) {
       goto LABEL_20;
     }
-    v3 = 5;
+    v2 = 40;
   }
-  (*v16)[v3]();
+  (*(void (**)(__int64))(*v13_.v15 + v2))((__int64)v13_.v15);
 LABEL_20:
-  if (((((v13[0] & 2) != 0) + (v13[0] & 1) + ((v13[0] & 4) != 0) +
-        ((v13[0] & 8) != 0) + ((v13[0] & 0x10) != 0) + ((v13[0] & 0x20) != 0) +
-        ((v13[0] & 0x40) != 0) + ((v13[0] & 0x80) != 0)) |
-       ((v13[0] & 0x100) != 0)) != 0) {
-    result = *(float32x4_t**)TroopMgr_1345be0();
+  if (((((v12 & 2) != 0) + (v12 & 1) + ((v12 & 4) != 0) + ((v12 & 8) != 0) +
+        ((v12 & 0x10) != 0) + ((v12 & 0x20) != 0) + ((v12 & 0x40) != 0) +
+        ((v12 & 0x80) != 0)) |
+       ((v12 & 0x100) != 0)) != 0) {
+    result = *(float32x4_t**)TroopMgr_1345be0_alt1();
   }
   else {
     result = (float32x4_t*)v0;
   }
 LABEL_23:
-  v11 = GameData_21f1658;
-  v12 = *(_QWORD*)(GameData_21f1658 + 16);
-  if (result != *(float32x4_t**)(v12 + 96)) {
-    *(_BYTE*)(v12 + 176) = 1;
+  v10 = GameData_21f1658;
+  v11 = *(_QWORD*)(GameData_21f1658 + 16);
+  if (result != *(float32x4_t**)(v11 + 96)) {
+    *(_BYTE*)(v11 + 176) = 1;
     if (result != nullptr) {
-      GameRoutine_1317f10(*(float32x4_t**)(v11 + 16), result + 2);
+      GameRoutine_1317f10(*(float32x4_t**)(v10 + 16), result + 2);
     }
-    *(_QWORD*)&v1 = 0;
-    snd_Fade_Fade_10c830(&v14, v1);
-    snd_play_ff2d0((void*)(v13), "SE_SYS_GMAP_Cancel_Spot",
-                   "SE_SYS_GMAP_Cancel_Spot", &v14, 0, 65537, 0, 0.0, 1.0);
-    return (float32x4_t*)snd_Fade_Destroy_Fade(&v14);
+    snd_Fade_Fade_10c830_alt2((__int64)&v13_.v13, 0x0.0p+0f);
+    snd_play_ff2d0_alt1((__int64)"SE_SYS_GMAP_Cancel_Spot",
+                        (__int64)"SE_SYS_GMAP_Cancel_Spot", (__int64)&v13_.v13,
+                        0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    return (float32x4_t*)snd_Fade_Destroy_Fade_alt1(&v13_.v13);
   }
   return result;
 }
@@ -950,14 +1015,14 @@ LABEL_13:
   return result;
 }
 
-__int64 game_gmap_1319f40(__int64 result)
+void game_gmap_1319f40(float32x4_t* a1)
 {
-  __int64 v1;
+
+#pragma clang fp contract(off)
   _BYTE* v2;
   int16x4_t v3;
   __int64 v4;
   __int64 v5;
-  float32x4_t* v6;
   __int64 v7;
   __int64 v8;
   float32x4_t v9;
@@ -968,7 +1033,7 @@ __int64 game_gmap_1319f40(__int64 result)
   float v14;
   float v15;
   float v16;
-  unsigned __int64 v17;
+  float32x4_t* v17;
   __int64 v18;
   int v19;
   float32x4_t v20;
@@ -979,39 +1044,45 @@ __int64 game_gmap_1319f40(__int64 result)
   int v25;
   int16x4_t v26;
   int v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
+  unsigned __int64 v28;
+  unsigned __int64 v29;
+  unsigned __int64 v30;
   float32x4_t* v31;
   float32x4_t* v32;
   int16x4_t v33;
-  unsigned int v34;
+  int v34;
   __int64 v35;
   __int64 v36;
-  __int64 v37;
+  int v37;
   __int64 v38;
   __int64 v39;
-  __int64 v40;
+  int v40;
   __int64 v41;
   __int64 v42;
   __int64 v43;
   __int64 v44;
-  float32x4_t v45;
-  float32x4_t v46;
-  float32x4_t v47;
-  float32x4_t v48;
-  __int128 v49;
-  __int64 v50;
-  __int64 v51;
+  int v45;
+  __int64 v46;
+  int v47;
+  __int64 v48;
+  float32x4_t v49;
+  float32x4_t v50;
+  float32x4_t v51;
+  __int128 v52;
+  struct {
+    __int128 v53;
+    char gap64_[16];
+    __int64 v54;
+    __int64 v55;
+  } v53_;
 
-  v1 = result;
   v2 = *(_BYTE**)game_g_game_setting_ptr;
   if (*(_BYTE*)(*(_QWORD*)game_g_game_setting_ptr + 807LL) == 1 &&
           ((v2[804] & 1) != 0 ||
            v2[940] == 1 && (v2[805] & 1) != 0 && (v2[806] & 1) != 0) ||
       v2[903] == 1 && ((v2[900] & 1) != 0 ||
                        v2[940] == 1 && (v2[901] & 1) != 0 && v2[902] == 1)) {
-    if ((*(_BYTE*)(result + 170) & 1) == 0) {
+    if ((LANES128(a1[10]).n128_u8[10] & 1) == 0) {
       if (*(_BYTE*)(*(_QWORD*)game_g_game_setting_ptr + 807LL) != 0 &&
           ((v2[804] & 1) != 0 ||
            v2[940] == 1 && (v2[805] & 1) != 0 && (v2[806] & 1) != 0)) {
@@ -1027,7 +1098,7 @@ __int64 game_gmap_1319f40(__int64 result)
         if ((v2[804] & 1) != 0 ||
             v2[940] == 1 && v2[805] == 1 && (v2[806] & 1) != 0) {
           if ((v2[760] & 1) != 0) {
-            return result;
+            return;
           }
           goto LABEL_38;
         }
@@ -1036,44 +1107,44 @@ __int64 game_gmap_1319f40(__int64 result)
           ((v2[900] & 1) != 0 ||
            v2[940] == 1 && v2[901] == 1 && v2[902] == 1) &&
           (v2[856] & 1) != 0) {
-        return result;
+        return;
       }
     }
   LABEL_38:
     if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                               memory_order_acquire) &
          1) == 0 &&
-        (unsigned int)__cxa_guard_acquire(&GameData_21a6130) != 0) {
+        __cxa_guard_acquire_alt1((__int64)&GameData_21a6130) != 0) {
       v4 = *((_QWORD*)GameData_212c540 + 1);
       *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
       *((_QWORD*)&GameData_21a6120 + 1) = v4;
-      __cxa_guard_release(&GameData_21a6130);
+      __cxa_guard_release_alt1((__int64)&GameData_21a6130);
     }
-    v49 = GameData_21a6120;
-    GameRoutine_131b050(v1, &v49);
+    v53_.v53 = GameData_21a6120;
+    GameRoutine_131b050_alt1((__int64)a1, &v53_.v53);
     if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                               memory_order_acquire) &
          1) == 0 &&
-        (unsigned int)__cxa_guard_acquire(&GameData_21a6130) != 0) {
+        __cxa_guard_acquire_alt1((__int64)&GameData_21a6130) != 0) {
       v5 = *((_QWORD*)GameData_212c540 + 1);
       *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
       *((_QWORD*)&GameData_21a6120 + 1) = v5;
-      __cxa_guard_release(&GameData_21a6130);
+      __cxa_guard_release_alt1((__int64)&GameData_21a6130);
     }
     LANES64(v3).n64_u64[0] =
         LANES64_OF(vmovn_s32(vmvnq_s8(
-                       vceqq_f32(COERCE_AS(float32x4_t, v49),
+                       vceqq_f32(COERCE_AS(float32x4_t, v53_.v53),
                                  COERCE_AS(float32x4_t, GameData_21a6120)))))
             .n64_u64[0];
     if ((LANES64(v3).n64_u8[0] & 1) != 0 || (LANES64(v3).n64_u8[2] & 1) != 0 ||
         (LANES64(v3).n64_u8[4] & 1) != 0) {
-      v48 = COERCE_AS(float32x4_t, v49);
-      GameRoutine_131a9b0(v1, &v48);
+      v52 = v53_.v53;
+      GameRoutine_131a9b0_alt1(a1, (float32x4_t*)&v52);
     }
-    return game_gmap_1319ce0(v1);
+    game_gmap_1319ce0((__int64)a1);
+    return;
   }
-  v51 = v50;
-  v6 = (float32x4_t*)result;
+  v53_.v55 = v53_.v54;
   v7 = game_g_game_setting_ptr;
   v8 = *(_QWORD*)game_g_game_setting_ptr;
   if ((*(_BYTE*)(*(_QWORD*)game_g_game_setting_ptr + 807LL) != 1 ||
@@ -1091,7 +1162,7 @@ __int64 game_gmap_1319f40(__int64 result)
         (float)(((v10 & 0x40000) != 0) + (v10 << 14 >> 31));
     LANES128(v9).n128_f32[2] =
         (float)(((v10 & 0x10000) != 0) + ((__int16)v10 >> 15));
-    v49 = (__int128)v9;
+    v53_.v53 = (__int128)v9;
     if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                               memory_order_acquire) &
          1) != 0) {
@@ -1102,34 +1173,34 @@ __int64 game_gmap_1319f40(__int64 result)
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                             memory_order_acquire) &
        1) == 0) {
-    v38 = v7;
-    result = __cxa_guard_acquire(&GameData_21a6130);
-    v7 = v38;
-    if ((_DWORD)result != 0) {
-      v39 = *((_QWORD*)GameData_212c540 + 1);
+    v39 = v7;
+    v40 = __cxa_guard_acquire_alt1((__int64)&GameData_21a6130);
+    v7 = v39;
+    if (v40 != 0) {
+      v41 = *((_QWORD*)GameData_212c540 + 1);
       *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
-      *((_QWORD*)&GameData_21a6120 + 1) = v39;
-      result = __cxa_guard_release(&GameData_21a6130);
-      v7 = v38;
+      *((_QWORD*)&GameData_21a6120 + 1) = v41;
+      __cxa_guard_release_alt1((__int64)&GameData_21a6130);
+      v7 = v39;
     }
   }
-  v49 = GameData_21a6120;
+  v53_.v53 = GameData_21a6120;
   v9 = COERCE_AS(float32x4_t, GameData_21a6120);
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                             memory_order_acquire) &
        1) == 0) {
   LABEL_146:
     v36 = v7;
-    v45 = v9;
-    result = __cxa_guard_acquire(&GameData_21a6130);
-    v9 = v45;
+    v49 = v9;
+    v37 = __cxa_guard_acquire_alt1((__int64)&GameData_21a6130);
+    v9 = v49;
     v7 = v36;
-    if ((_DWORD)result != 0) {
-      v37 = *((_QWORD*)GameData_212c540 + 1);
+    if (v37 != 0) {
+      v38 = *((_QWORD*)GameData_212c540 + 1);
       *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
-      *((_QWORD*)&GameData_21a6120 + 1) = v37;
-      result = __cxa_guard_release(&GameData_21a6130);
-      v9 = v45;
+      *((_QWORD*)&GameData_21a6120 + 1) = v38;
+      __cxa_guard_release_alt1((__int64)&GameData_21a6130);
+      v9 = v49;
       v7 = v36;
     }
   }
@@ -1141,83 +1212,86 @@ LABEL_64:
   if ((LANES64(v11).n64_u8[0] & 1) == 0 && (LANES64(v11).n64_u8[2] & 1) == 0 &&
       (LANES64(v11).n64_u8[4] & 1) == 0) {
     v12 = *(_OWORD*)(*(_QWORD*)v7 + 960LL);
-    v13 = 0.0f;
-    v14 = (float)(*(float*)&v12 + 0.25f) * 0x1.5555560000000p+0f;
-    if (*(float*)&v12 >= -0.25f) {
-      v14 = 0.0f;
+    v13 = 0x0.0p+0f;
+    v14 =
+        (float)(*(float*)&v12 + 0x1.0000000000000p-2f) * 0x1.5555560000000p+0f;
+    if (*(float*)&v12 >= -0x1.0000000000000p-2f) {
+      v14 = 0x0.0p+0f;
     }
-    if (*(float*)&v12 > 0.25f) {
-      v15 = (float)(*(float*)&v12 + -0.25f) * 0x1.5555560000000p+0f;
+    if (*(float*)&v12 > 0x1.0000000000000p-2f) {
+      v15 = (float)(*(float*)&v12 + -0x1.0000000000000p-2f) *
+            0x1.5555560000000p+0f;
     }
     else {
       v15 = v14;
     }
-    if (*((float*)&v12 + 1) <= 0.25f) {
-      if (*((float*)&v12 + 1) >= -0.25f) {
+    if (*((float*)&v12 + 1) <= 0x1.0000000000000p-2f) {
+      if (*((float*)&v12 + 1) >= -0x1.0000000000000p-2f) {
         goto LABEL_99;
       }
-      v16 = *((float*)&v12 + 1) + 0.25f;
+      v16 = *((float*)&v12 + 1) + 0x1.0000000000000p-2f;
     }
     else {
-      v16 = *((float*)&v12 + 1) + -0.25f;
+      v16 = *((float*)&v12 + 1) + -0x1.0000000000000p-2f;
     }
     v13 = v16 * 0x1.5555560000000p+0f;
   LABEL_99:
     LANES128(v21).n128_u64[0] = LODWORD(v15);
     LANES128(v21).n128_u64[1] = COERCE_UNSIGNED_INT(-v13);
-    v49 = (__int128)v21;
-    game_gmap_131a870_alt1(&v49);
+    v53_.v53 = (__int128)v21;
+    game_gmap_131a870_alt2((float32x4_t*)&v53_.v53);
     if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                               memory_order_acquire) &
          1) == 0 &&
-        (unsigned int)__cxa_guard_acquire(&GameData_21a6130) != 0) {
-      v40 = *((_QWORD*)GameData_212c540 + 1);
+        __cxa_guard_acquire_alt1((__int64)&GameData_21a6130) != 0) {
+      v42 = *((_QWORD*)GameData_212c540 + 1);
       *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
-      *((_QWORD*)&GameData_21a6120 + 1) = v40;
-      __cxa_guard_release(&GameData_21a6130);
+      *((_QWORD*)&GameData_21a6120 + 1) = v42;
+      __cxa_guard_release_alt1((__int64)&GameData_21a6130);
     }
     LANES64(v22).n64_u64[0] =
         LANES64_OF(vmovn_s32(vmvnq_s8(
-                       vceqq_f32(COERCE_AS(float32x4_t, v49),
+                       vceqq_f32(COERCE_AS(float32x4_t, v53_.v53),
                                  COERCE_AS(float32x4_t, GameData_21a6120)))))
             .n64_u64[0];
     if ((LANES64(v22).n64_u8[0] & 1) == 0 &&
         (LANES64(v22).n64_u8[2] & 1) == 0 &&
         (LANES64(v22).n64_u8[4] & 1) == 0) {
-      return game_gmap_1319ce0((__int64)v6);
+      goto LABEL_141;
     }
-    v23 = &v47;
-    v47 = COERCE_AS(float32x4_t, v49);
+    v23 = &v51;
+    v51 = COERCE_AS(float32x4_t, v53_.v53);
     goto LABEL_140;
   }
-  v17 = LANES128(v6[6]).n128_u64[0];
-  if (v17 == 0) {
+  v17 = (float32x4_t*)LANES128(a1[6]).n128_u64[0];
+  if (v17 == nullptr) {
   LABEL_135:
-    game_gmap_131a870_alt1(&v49);
+    game_gmap_131a870_alt2((float32x4_t*)&v53_.v53);
     if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                               memory_order_acquire) &
          1) == 0 &&
-        (unsigned int)__cxa_guard_acquire(&GameData_21a6130) != 0) {
-      v41 = *((_QWORD*)GameData_212c540 + 1);
+        __cxa_guard_acquire_alt1((__int64)&GameData_21a6130) != 0) {
+      v43 = *((_QWORD*)GameData_212c540 + 1);
       *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
-      *((_QWORD*)&GameData_21a6120 + 1) = v41;
-      __cxa_guard_release(&GameData_21a6130);
+      *((_QWORD*)&GameData_21a6120 + 1) = v43;
+      __cxa_guard_release_alt1((__int64)&GameData_21a6130);
     }
     LANES64(v33).n64_u64[0] =
         LANES64_OF(vmovn_s32(vmvnq_s8(
-                       vceqq_f32(COERCE_AS(float32x4_t, v49),
+                       vceqq_f32(COERCE_AS(float32x4_t, v53_.v53),
                                  COERCE_AS(float32x4_t, GameData_21a6120)))))
             .n64_u64[0];
-    if ((LANES64(v33).n64_u8[0] & 1) == 0 &&
-        (LANES64(v33).n64_u8[2] & 1) == 0 &&
-        (LANES64(v33).n64_u8[4] & 1) == 0) {
-      return game_gmap_1319ce0((__int64)v6);
+    if ((LANES64(v33).n64_u8[0] & 1) != 0 ||
+        (LANES64(v33).n64_u8[2] & 1) != 0 ||
+        (LANES64(v33).n64_u8[4] & 1) != 0) {
+      v23 = (float32x4_t*)&v52;
+      v52 = v53_.v53;
+    LABEL_140:
+      GameRoutine_131a9b0_alt1(a1, v23);
     }
-    v23 = &v48;
-    v48 = COERCE_AS(float32x4_t, v49);
-  LABEL_140:
-    GameRoutine_131a9b0(v6, v23);
-    return game_gmap_1319ce0((__int64)v6);
+  LABEL_141:
+    game_gmap_1319ce0((__int64)a1);
+    return;
   }
   v18 = *(_QWORD*)v7;
   if (*(_BYTE*)(*(_QWORD*)v7 + 807LL) == 1 &&
@@ -1247,15 +1321,15 @@ LABEL_64:
     if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                               memory_order_acquire) &
          1) == 0) {
-      v42 = v7;
-      result = __cxa_guard_acquire(&GameData_21a6130);
-      v7 = v42;
-      if ((_DWORD)result != 0) {
-        v43 = *((_QWORD*)GameData_212c540 + 1);
+      v44 = v7;
+      v45 = __cxa_guard_acquire_alt1((__int64)&GameData_21a6130);
+      v7 = v44;
+      if (v45 != 0) {
+        v46 = *((_QWORD*)GameData_212c540 + 1);
         *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
-        *((_QWORD*)&GameData_21a6120 + 1) = v43;
-        result = __cxa_guard_release(&GameData_21a6130);
-        v7 = v42;
+        *((_QWORD*)&GameData_21a6120 + 1) = v46;
+        __cxa_guard_release_alt1((__int64)&GameData_21a6130);
+        v7 = v44;
       }
     }
     v18 = *(_QWORD*)v7;
@@ -1297,38 +1371,38 @@ LABEL_114:
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                             memory_order_acquire) &
        1) == 0) {
-    v46 = v20;
-    result = __cxa_guard_acquire(&GameData_21a6130);
-    v20 = v46;
-    if ((_DWORD)result != 0) {
-      v44 = *((_QWORD*)GameData_212c540 + 1);
+    v50 = v20;
+    v47 = __cxa_guard_acquire_alt1((__int64)&GameData_21a6130);
+    v20 = v50;
+    if (v47 != 0) {
+      v48 = *((_QWORD*)GameData_212c540 + 1);
       *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
-      *((_QWORD*)&GameData_21a6120 + 1) = v44;
-      result = __cxa_guard_release(&GameData_21a6130);
-      v20 = v46;
+      *((_QWORD*)&GameData_21a6120 + 1) = v48;
+      __cxa_guard_release_alt1((__int64)&GameData_21a6130);
+      v20 = v50;
     }
   }
   v24 = COERCE_AS(float32x4_t, GameData_21a6120);
 LABEL_120:
-  v17 = LANES128(v6[6]).n128_u64[0];
+  v17 = (float32x4_t*)LANES128(a1[6]).n128_u64[0];
   LANES64(v26).n64_u64[0] =
       LANES64_OF(vmovn_s32(vceqq_f32(v20, v24))).n64_u64[0];
   if ((LANES64(v26).n64_u8[0] & 1) != 0 && (LANES64(v26).n64_u8[2] & 1) != 0 &&
       (LANES64(v26).n64_u8[4] & 1) != 0) {
-    v27 = GameRoutine_131b280(&v6[17]);
-    v28 = *(_QWORD*)(v17 + 48);
-    v29 = *(_QWORD*)(v17 + 56);
+    v27 = GameRoutine_131b280_alt1((__int64)&a1[17]);
+    v28 = LANES128(v17[3]).n128_u64[0];
+    v29 = LANES128(v17[3]).n128_u64[1];
     if (v28 == v29) {
     LABEL_143:
-      v34 = GameRoutine_131b280(&v6[17]);
-      v35 = game_gmap_1326c80(v17, v34);
+      v34 = GameRoutine_131b280_alt1((__int64)&a1[17]);
+      v35 = game_gmap_1326c80_alt1(v17, v34);
       if (v35 == 0) {
-        return game_gmap_1319ce0((__int64)v6);
+        goto LABEL_141;
       }
       v32 = (float32x4_t*)(v35 + 32);
     }
     else {
-      v30 = *(_QWORD*)(v17 + 48);
+      v30 = LANES128(v17[3]).n128_u64[0];
       while (1) {
         if (*(_DWORD*)(*(_QWORD*)v30 + 116LL) == v27) {
           v31 = *(float32x4_t**)(*(_QWORD*)v30 + 8LL);
@@ -1336,7 +1410,7 @@ LABEL_120:
             break;
           }
         }
-        v30 += 8;
+        v30 += 8LL;
         if (v30 == v29) {
           while (1) {
             if (*(_DWORD*)(*(_QWORD*)v28 + 120LL) == v27) {
@@ -1345,7 +1419,7 @@ LABEL_120:
                 goto LABEL_132;
               }
             }
-            v28 += 8;
+            v28 += 8LL;
             if (v28 == v29) {
               goto LABEL_143;
             }
@@ -1355,14 +1429,13 @@ LABEL_120:
     LABEL_132:
       v32 = v31 + 2;
     }
-    GameRoutine_1317f10(v6, v32);
-    return game_gmap_1319ce0((__int64)v6);
+    GameRoutine_1317f10(a1, v32);
+    goto LABEL_141;
   }
 LABEL_133:
-  if (v17 == 0 || LANES128(v6[20]).n128_i32[0] >= 8) {
+  if (v17 == nullptr || LANES128(a1[20]).n128_i32[0] >= 8) {
     goto LABEL_135;
   }
-  return result;
 }
 
 float game_gmap_131a870(float32x4_t* a1, double a2, double a3, long double a4)
@@ -2739,8 +2812,10 @@ bool game_gmap_132a900(float32x4_t* a1, __int64 a2)
   return result;
 }
 
-__int64 game_gmap_133d680(__int64 a1, __int64 a2, __int64 a3)
+unsigned __int64 game_gmap_133d680(__int64 a1, __int64 a2, __int64 a3)
 {
+
+#pragma clang fp contract(off)
   long double v4;
   long double v5;
   int v6;
@@ -2769,7 +2844,7 @@ __int64 game_gmap_133d680(__int64 a1, __int64 a2, __int64 a3)
   __int64 v29;
   int v30;
   __int64 v31;
-  __int64 result;
+  unsigned __int64 result;
   int v33;
   unsigned int v34;
   __int16 v35;
@@ -2778,9 +2853,17 @@ __int64 game_gmap_133d680(__int64 a1, __int64 a2, __int64 a3)
   unsigned int v38;
   long double v39;
   long double v40;
-  _QWORD v41[2];
+  unsigned __int64 v41[2];
 
-  game_gmap_TroopUnitList_CreateReinforce(a1, a2, a3);
+  v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+  v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  game_gmap_TroopUnitList_CreateReinforce(a1, a2, a3),
+      v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
   if ((*(_BYTE*)(a1 + 546) & 0x20) == 0) {
     *(_BYTE*)(a1 + 546) |= 0x20u;
     if (game_ProcGameSkipView_instance_ == 0 ||
@@ -2797,20 +2880,34 @@ __int64 game_gmap_133d680(__int64 a1, __int64 a2, __int64 a3)
                                                   480)
             << 6);
       if (*(float*)(v8 + 172) == *(float*)(v8 + 168)) {
-        (*(void (**)(unsigned __int64))(*(_QWORD*)(v8 + 160) + 16LL))(v8 + 160);
+        (*(void (**)(unsigned __int64))(*(_QWORD*)(v8 + 160) + 16LL))(v8 + 160),
+            v14 =
+                COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
       }
       else {
         v9 = *(_OWORD*)(v8 + 208);
       }
-      if (*((float*)&v9 + 3) != 0x1.0000000000000p+0 ||
+      if (*((float*)&v9 + 3) != 0x1.0000000000000p+0f ||
           (*((_QWORD*)&v4 + 1) =
                LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
                             (_QWORD*)(*(_QWORD*)(v8 + 160) + 16LL))(
                                v8 + 160, *((float*)&v9 + 3)))
                    .n128_u64[1],
-           *((float*)&v4 + 3) != 0x1.0000000000000p+0)) {
+           *((float*)&v4 + 3) != 0x1.0000000000000p+0f)) {
       LABEL_16:
-        UnitActor_81b040(a1 + 112, 0.0);
+        UnitActor_81b040_alt1(a1 + 112, 0x0.0p+0f),
+            v14 =
+                COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
         goto LABEL_21;
       }
     }
@@ -2822,25 +2919,41 @@ __int64 game_gmap_133d680(__int64 a1, __int64 a2, __int64 a3)
     LABEL_19:
       *(_QWORD*)&v5 = 0;
       (*(void (**)(__int64, long double, long double))(v11 + 24))(a1 + 264, v4,
-                                                                  v5);
+                                                                  v5),
+          v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
     LABEL_20:
       *(_QWORD*)(a1 + 272) = 0;
       *(_WORD*)(a1 + 288) = 256;
       *(_WORD*)(a1 + 132) |= 8u;
       goto LABEL_21;
     }
-    if (*(float*)(a1 + 272) > 0.0) {
-      (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+    if (*(float*)(a1 + 272) > 0x0.0p+0f) {
+      (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+          v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
       v11 = *(_QWORD*)(a1 + 264);
       goto LABEL_19;
     }
-    if (((*(__int64 (**)(__int64, _QWORD*, __int64))(
+    if (((*(__int64 (**)(__int64, unsigned __int64*, __int64))(
              *(_QWORD*)(a1 + 264) + 8LL))(a1 + 264, v41, a1 + 296) &
          1) != 0) {
-      (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+      (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+          v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
       LODWORD(v39) = v41[0];
       (*(void (**)(__int64, long double, long double))(
-          *(_QWORD*)(a1 + 264) + 24LL))(a1 + 264, v40, v39);
+          *(_QWORD*)(a1 + 264) + 24LL))(a1 + 264, v40, v39),
+          v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
       goto LABEL_20;
     }
   }
@@ -2853,25 +2966,41 @@ LABEL_21:
   LABEL_25:
     *(_QWORD*)&v5 = 0;
     (*(void (**)(__int64, long double, long double))(v13 + 24))(a1 + 264, v4,
-                                                                v5);
+                                                                v5),
+        v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
   LABEL_26:
     *(_QWORD*)(a1 + 272) = 0;
     *(_WORD*)(a1 + 288) = 256;
     *(_WORD*)(a1 + 132) |= 8u;
     goto LABEL_27;
   }
-  if (*(float*)(a1 + 272) > 0.0) {
-    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+  if (*(float*)(a1 + 272) > 0x0.0p+0f) {
+    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+        v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
     v13 = *(_QWORD*)(a1 + 264);
     goto LABEL_25;
   }
-  if (((*(__int64 (**)(__int64, _QWORD*, __int64))(*(_QWORD*)(a1 + 264) + 8LL))(
-           a1 + 264, v41, a1 + 296) &
+  if (((*(__int64 (**)(__int64, unsigned __int64*, __int64))(
+           *(_QWORD*)(a1 + 264) + 8LL))(a1 + 264, v41, a1 + 296) &
        1) != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+        v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
     LODWORD(v23) = v41[0];
     (*(void (**)(__int64, long double, long double))(*(_QWORD*)(a1 + 264) +
-                                                     24LL))(a1 + 264, v24, v23);
+                                                     24LL))(a1 + 264, v24, v23),
+        v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
     goto LABEL_26;
   }
 LABEL_27:
@@ -2893,17 +3022,32 @@ LABEL_27:
              << 6);
       if (*(float*)(v22 + 172) == *(float*)(v22 + 168)) {
         (*(void (**)(unsigned __int64))(*(_QWORD*)(v22 + 160) + 16LL))(v22 +
-                                                                       160);
+                                                                       160),
+            v14 =
+                COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
       }
       else {
         v14 = *(long double*)(v22 + 208);
       }
-      if (*((float*)&v14 + 3) != 0x1.0000000000000p+0) {
+      if (*((float*)&v14 + 3) != 0x1.0000000000000p+0f) {
         v21 = 0;
         if (v17 != 0) {
         LABEL_43:
           if (v21 == 0) {
-            UnitActor_81b040(a1 + 112, 0.0);
+            UnitActor_81b040_alt1(a1 + 112, 0x0.0p+0f),
+                v14 = COERCE_AS(__typeof__(v14),
+                                PSEUDO_REGISTER(__n128, "v0", "=w")),
+                v24 = COERCE_AS(__typeof__(v24),
+                                PSEUDO_REGISTER(__n128, "v0", "=w")),
+                v4 = COERCE_AS(__typeof__(v4),
+                               PSEUDO_REGISTER(__n128, "v0", "=w")),
+                v40 = COERCE_AS(__typeof__(v40),
+                                PSEUDO_REGISTER(__n128, "v0", "=w"));
             goto LABEL_63;
           }
           goto LABEL_49;
@@ -2912,15 +3056,23 @@ LABEL_27:
       }
       *(__n128*)&v14 = ((__n128 (*)(unsigned __int64, float)) *
                         (_QWORD*)(*(_QWORD*)(v22 + 160) + 16LL))(
-          v22 + 160, *((float*)&v14 + 3));
-      v21 = *((float*)&v14 + 3) == 0x1.0000000000000p+0;
+          v22 + 160, *((float*)&v14 + 3)),
+      v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
+      v21 = *((float*)&v14 + 3) == 0x1.0000000000000p+0f;
     }
     if (v17 != 0) {
       goto LABEL_43;
     }
   LABEL_46:
     if (v21 == 0) {
-      UnitActor_81aee0(a1 + 112, 0.0);
+      UnitActor_81aee0_alt1(a1 + 112, 0x0.0p+0f),
+          v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
       goto LABEL_63;
     }
     goto LABEL_51;
@@ -2937,22 +3089,34 @@ LABEL_27:
       *(_QWORD*)&v15 = 0;
     LABEL_61:
       (*(void (**)(__int64, long double, long double))(v26 + 24))(v27, v14,
-                                                                  v15);
+                                                                  v15),
+          v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
       goto LABEL_62;
     }
-    if (*(float*)(a1 + 272) > 0.0) {
-      (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+    if (*(float*)(a1 + 272) > 0x0.0p+0f) {
+      (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+          v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
       v26 = *(_QWORD*)(a1 + 264);
       v27 = a1 + 264;
       goto LABEL_55;
     }
   LABEL_59:
-    if (((*(__int64 (**)(__int64, _QWORD*, __int64))(
+    if (((*(__int64 (**)(__int64, unsigned __int64*, __int64))(
              *(_QWORD*)(a1 + 264) + 8LL))(a1 + 264, v41, a1 + 296) &
          1) == 0) {
       goto LABEL_63;
     }
-    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+        v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
     v26 = *(_QWORD*)(a1 + 264);
     LODWORD(v15) = v41[0];
     v27 = a1 + 264;
@@ -2962,18 +3126,26 @@ LABEL_51:
   LODWORD(v41[0]) = 1065353216;
   if (*(_BYTE*)(a1 + 288) == 1) {
     v28 = *(_QWORD*)(a1 + 264);
-    LODWORD(v14) = 0x1.0000000000000p+0;
+    LODWORD(v14) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0f));
   }
   else {
-    if (*(float*)(a1 + 272) <= 0.0) {
+    if (*(float*)(a1 + 272) <= 0x0.0p+0f) {
       goto LABEL_59;
     }
-    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+        v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
     v28 = *(_QWORD*)(a1 + 264);
   }
-  LODWORD(v15) = 0x1.0000000000000p+0;
+  LODWORD(v15) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0f));
   (*(void (**)(__int64, long double, long double))(v28 + 24))(a1 + 264, v14,
-                                                              v15);
+                                                              v15),
+      v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
 LABEL_62:
   *(_QWORD*)(a1 + 272) = 0;
   *(_WORD*)(a1 + 288) = 256;
@@ -2987,14 +3159,22 @@ LABEL_63:
   }
   v30 = *(_DWORD*)(v29 + 8);
   v31 = *(_QWORD*)v29;
-  v41[1] = &GameData_1a92617;
+  v41[1] = (unsigned __int64)&GameData_1a92617;
   *(_QWORD*)(a1 + 528) = v31;
   *(_DWORD*)(a1 + 536) = v30;
-  result = game_HashString(&GameData_1a92617);
+  result = game_HashString_alt1((__int64)&GameData_1a92617),
+  v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+  v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v41[0] = result;
   if (game_GameModeData_instance_ != 0) {
-    result = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), v41);
+    result = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48), v41),
+    v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+    v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
     if (result != 0) {
       v33 = *(_DWORD*)(result + 32);
       if (v33 != 0) {
@@ -3011,7 +3191,12 @@ LABEL_63:
         }
         *(_WORD*)(a1 + 534) = v34;
         *(_DWORD*)(a1 + 536) = 0;
-        result = Dir_70d7a0(a1 + 528);
+        result =
+            (unsigned __int64)Dir_70d7a0_alt1((unsigned __int16*)(a1 + 528)),
+        v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v0", "=w"));
       }
     }
   }
@@ -3022,7 +3207,8 @@ LABEL_63:
   if (v37 != 0) {
     v38 = *(unsigned __int8*)(v37 + 128);
     if (v38 <= 2) {
-      return game_gmap_133fe00_alt1(a1, v38 + 1, 0x1.0000000000000p+0);
+      return game_gmap_133fe00_alt2(a1, (unsigned __int8)v38 + 1,
+                                    0x1.0000000000000p+0f);
     }
   }
   return result;
@@ -3030,6 +3216,8 @@ LABEL_63:
 
 __int64 game_gmap_133dba0(__int64 a1, char a2, long double a3, long double a4)
 {
+
+#pragma clang fp contract(off)
   int v4;
   int v6;
   int v7;
@@ -3050,6 +3238,7 @@ __int64 game_gmap_133dba0(__int64 a1, char a2, long double a3, long double a4)
   int v22;
   int v23;
 
+  v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v4 = *(unsigned __int8*)(a1 + 546);
   v6 = (unsigned __int8)(1 << a2);
   if ((v4 & v6) == 0) {
@@ -3072,11 +3261,15 @@ __int64 game_gmap_133dba0(__int64 a1, char a2, long double a3, long double a4)
             *(_QWORD*)&a4 = 0;
           LABEL_36:
             (*(void (**)(__int64, long double, long double))(v13 + 24))(v14, a3,
-                                                                        a4);
+                                                                        a4),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(__n128, "v0", "=w"));
             goto LABEL_37;
           }
-          if (*(float*)(a1 + 272) > 0.0) {
-            (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+          if (*(float*)(a1 + 272) > 0x0.0p+0f) {
+            (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(__n128, "v0", "=w"));
             v13 = *(_QWORD*)(a1 + 264);
             v14 = a1 + 264;
             goto LABEL_27;
@@ -3086,7 +3279,9 @@ __int64 game_gmap_133dba0(__int64 a1, char a2, long double a3, long double a4)
                1) == 0) {
             goto LABEL_38;
           }
-          (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+          (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(__n128, "v0", "=w"));
           LODWORD(a4) = v22;
         LABEL_35:
           v13 = *(_QWORD*)(a1 + 264);
@@ -3097,25 +3292,31 @@ __int64 game_gmap_133dba0(__int64 a1, char a2, long double a3, long double a4)
         v21 = 1065353216;
         if (*(_BYTE*)(a1 + 288) == 1) {
           v15 = *(_QWORD*)(a1 + 264);
-          LODWORD(a3) = 0x1.0000000000000p+0;
+          LODWORD(a3) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0f));
         }
         else {
-          if (*(float*)(a1 + 272) <= 0.0) {
+          if (*(float*)(a1 + 272) <= 0x0.0p+0f) {
             if (((*(__int64 (**)(__int64, int*, __int64))(
                      *(_QWORD*)(a1 + 264) + 8LL))(a1 + 264, &v21, a1 + 296) &
                  1) == 0) {
               goto LABEL_38;
             }
-            (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+            (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(__n128, "v0", "=w"));
             LODWORD(a4) = v21;
             goto LABEL_35;
           }
-          (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+          (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(__n128, "v0", "=w"));
           v15 = *(_QWORD*)(a1 + 264);
         }
-        LODWORD(a4) = 0x1.0000000000000p+0;
+        LODWORD(a4) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0f));
         (*(void (**)(__int64, long double, long double))(v15 + 24))(a1 + 264,
-                                                                    a3, a4);
+                                                                    a3, a4),
+            v20 =
+                COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
       LABEL_37:
         *(_QWORD*)(a1 + 272) = 0;
         *(_WORD*)(a1 + 288) = 256;
@@ -3131,17 +3332,21 @@ __int64 game_gmap_133dba0(__int64 a1, char a2, long double a3, long double a4)
              << 6);
       if (*(float*)(v11 + 172) == *(float*)(v11 + 168)) {
         (*(void (**)(unsigned __int64))(*(_QWORD*)(v11 + 160) + 16LL))(v11 +
-                                                                       160);
+                                                                       160),
+            v20 =
+                COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
       }
       else {
         a3 = *(long double*)(v11 + 208);
       }
-      if (*((float*)&a3 + 3) != 0x1.0000000000000p+0) {
+      if (*((float*)&a3 + 3) != 0x1.0000000000000p+0f) {
         v10 = 0;
         if (v7 != 0) {
         LABEL_15:
           if (v10 == 0) {
-            UnitActor_81b040(a1 + 112, 0.0);
+            UnitActor_81b040_alt1(a1 + 112, 0x0.0p+0f),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(__n128, "v0", "=w"));
             goto LABEL_38;
           }
           goto LABEL_21;
@@ -3150,15 +3355,17 @@ __int64 game_gmap_133dba0(__int64 a1, char a2, long double a3, long double a4)
       }
       *(__n128*)&a3 = ((__n128 (*)(unsigned __int64, float)) *
                        (_QWORD*)(*(_QWORD*)(v11 + 160) + 16LL))(
-          v11 + 160, *((float*)&a3 + 3));
-      v10 = *((float*)&a3 + 3) == 0x1.0000000000000p+0;
+          v11 + 160, *((float*)&a3 + 3)),
+      v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
+      v10 = *((float*)&a3 + 3) == 0x1.0000000000000p+0f;
     }
     if (v7 != 0) {
       goto LABEL_15;
     }
   LABEL_18:
     if (v10 == 0) {
-      UnitActor_81aee0(a1 + 112, 0.0);
+      UnitActor_81aee0_alt1(a1 + 112, 0x0.0p+0f),
+          v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
       goto LABEL_38;
     }
     goto LABEL_23;
@@ -3172,25 +3379,30 @@ LABEL_38:
   LABEL_42:
     *(_QWORD*)&a4 = 0;
     result = (*(__int64 (**)(__int64, long double, long double))(v17 + 24))(
-        a1 + 264, a3, a4);
+        a1 + 264, a3, a4),
+    v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
   LABEL_43:
     *(_QWORD*)(a1 + 272) = 0;
     *(_WORD*)(a1 + 288) = 256;
     *(_WORD*)(a1 + 132) |= 8u;
     return result;
   }
-  if (*(float*)(a1 + 272) > 0.0) {
-    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+  if (*(float*)(a1 + 272) > 0x0.0p+0f) {
+    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+        v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
     v17 = *(_QWORD*)(a1 + 264);
     goto LABEL_42;
   }
   result = (*(__int64 (**)(__int64, int*, __int64))(
-      *(_QWORD*)(a1 + 264) + 8LL))(a1 + 264, &v23, a1 + 296);
+      *(_QWORD*)(a1 + 264) + 8LL))(a1 + 264, &v23, a1 + 296),
+  v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
   if ((result & 1) != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
+    (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264),
+        v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
     LODWORD(v19) = v23;
     result = (*(__int64 (**)(__int64, long double, long double))(
-        *(_QWORD*)(a1 + 264) + 24LL))(a1 + 264, v20, v19);
+        *(_QWORD*)(a1 + 264) + 24LL))(a1 + 264, v20, v19),
+    v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v0", "=w"));
     goto LABEL_43;
   }
   return result;
@@ -4435,8 +4647,8 @@ void game_gmap_1341ac0(__int64 a1)
         (float)(v2 * *(float*)&v4) / 0x1.9000000000000p+6f;
   }
   if (*(_DWORD*)(a1 + 128) != -1080537169 &&
-      (UnitActor_81a540_alt1(a1 + 112, -1080537169, (__int64)GameData_212ceb8) &
-       1) != 0) {
+      (UnitActor_81a540(a1 + 112, 0xBF984FAF, (__int64)GameData_212ceb8) & 1) !=
+          0) {
     v7 = *(_QWORD*)(a1 + 376);
     if (v7 != 0) {
       v8 = *(_QWORD*)(v7 + 392);
@@ -4455,10 +4667,9 @@ void game_gmap_1341ac0(__int64 a1)
         (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9),
             v22 =
                 COERCE_AS(__typeof__(v22), PSEUDO_REGISTER(__n128, "v0", "=w"));
-        *((_QWORD*)&v4 +
-          1) = LANES128_OF(std___1___shared_weak_count___release_weak())
-                   .n128_u64[1],
-          v22 = COERCE_AS(__typeof__(v22), PSEUDO_REGISTER(__n128, "v0", "=w"));
+        std___1___shared_weak_count___release_weak_alt2(v9),
+            v22 =
+                COERCE_AS(__typeof__(v22), PSEUDO_REGISTER(__n128, "v0", "=w"));
       }
       if ((v14 & 1) != 0) {
         CharacterObservable_10cd4e0(*(_QWORD*)(*(_QWORD*)(a1 + 376) + 120LL)),
@@ -5908,7 +6119,7 @@ __int64 game_gmap_14d5d20(__int64 a1)
                   game_gmap_GmapClock_kDefaultTime_ptr);
   v3 = *(_QWORD*)game_gmap_GmapClock_kDefaultTime_ptr;
   v4 = v1;
-  result = GameRoutine_16aec40(a1, &GameData_1a9f09e, &v3);
+  result = GameHr_16aec40(a1, (__int64)&GameData_1a9f09e, &v3);
   *(_BYTE*)(result + 248) = 1;
   return result;
 }
@@ -6572,33 +6783,33 @@ __int64 game_gmap_151e620(__int64 a1, __int64 a2, char a3)
 #pragma clang fp contract(off)
   __int64 v6;
   int v7;
-  __int64 v8;
+  const char* v8;
   float* v9;
   __int64 i;
-  char* v11;
-  __int64 v12;
-  char* v13;
+  const char* v11;
+  unsigned __int64 v12;
+  const char* v13;
   __int64 v14;
-  _BYTE* v15;
+  __int64 v15;
   __int64 v16;
   __int64 v17;
   __int64 result;
   __int128 v19;
   struct {
     _DWORD v20[4];
-    char* v21;
+    const char* v21;
   } v20_;
   unsigned int v22;
   unsigned int v23;
   unsigned int v24;
 
-  v6 = GameRoutine_609260((float*)(a2 + 800), (__int64)"BlinkPattern", 1);
+  v6 = fs_609260(a2 + 800, "BlinkPattern", 1);
   v7 = *(_DWORD*)(a1 + 656);
   v20_.v20[0] = v7;
   if ((a3 & 1) != 0) {
-    v8 = *(_QWORD*)(v6 + 24);
-    if (v8 != 0) {
-      sscanf(v8, "%d", v20_.v20);
+    v8 = *(const char**)(v6 + 24);
+    if (v8 != nullptr) {
+      sscanf_alt1(v8, "%d", v20_.v20);
       v7 = v20_.v20[0];
     }
   }
@@ -6611,23 +6822,23 @@ __int64 game_gmap_151e620(__int64 a1, __int64 a2, char a3)
     v11 = (&GameData_204a2a0)[i];
     LOBYTE(v20_.v20[0]) = 24;
     strcpy((char*)v20_.v20 + 1, "RegionBlink_");
-    v12 = strlen(v11);
-    GameRoutine_1a09ce0(v20_.v20, v11, v12);
+    v12 = strlen_alt1(v11);
+    GameRoutine_1a09ce0_alt1((__int64)v20_.v20, v11, v12);
     if ((v20_.v20[0] & 1) != 0) {
       v13 = v20_.v21;
     }
     else {
       v13 = (char*)v20_.v20 + 1;
     }
-    v14 = GameRoutine_609260((float*)(a2 + 800), (__int64)v13, 1);
+    v14 = fs_609260(a2 + 800, v13, 1);
     if ((a3 & 1) != 0) {
-      v15 = *(_BYTE**)(v14 + 24);
-      if (v15 != nullptr) {
-        if (*v15 == 48 && v15[1] == 120) {
-          sscanf(v15, "%x", v9);
+      v15 = *(_QWORD*)(v14 + 24);
+      if (v15 != 0) {
+        if (*(_BYTE*)v15 == 48 && *(_BYTE*)(v15 + 1) == 120) {
+          sscanf_alt1((const char*)v15, "%x", v9);
         }
         else {
-          sscanf(v15, "%f", v9);
+          sscanf_alt1((const char*)v15, "%f", v9);
         }
         if ((v20_.v20[0] & 1) == 0) {
           goto LABEL_6;
@@ -6651,14 +6862,13 @@ __int64 game_gmap_151e620(__int64 a1, __int64 a2, char a3)
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v16 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt2(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v16);
+      nn_mem_StandardAllocator_Free_alt3(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, (__int64)v20_.v21);
     }
   LABEL_6:
     ++v9;
   }
-  v17 =
-      GameRoutine_609260((float*)(a2 + 800), (__int64)"RegionBlink_Color ", 1);
+  v17 = fs_609260(a2 + 800, "RegionBlink_Color ", 1);
   if ((a3 & 1) == 0) {
     return GameRoutine_609140(v17, (__int64)"%f,%f,%f,%f",
                               COERCE_FLOAT(*(_OWORD*)(a1 + 640)),
@@ -6668,7 +6878,8 @@ __int64 game_gmap_151e620(__int64 a1, __int64 a2, char a3)
   }
   result = *(_QWORD*)(v17 + 24);
   if (result != 0) {
-    result = sscanf(result, "%f,%f,%f,%f", v20_.v20, &v24, &v23, &v22);
+    result = sscanf_alt1((const char*)result, "%f,%f,%f,%f", v20_.v20, &v24,
+                         &v23, &v22);
     *(_QWORD*)&v19 = __PAIR64__(v24, v20_.v20[0]);
     *((_QWORD*)&v19 + 1) = __PAIR64__(v22, v23);
   }
@@ -7032,10 +7243,11 @@ __int64 game_gmap_1520ea0(__int64 a1)
   signed __int64 v8;
   __int64 v9;
   __int128 v10;
-  __int64 v11;
-  _QWORD v12[2];
-  int v13;
-  _BYTE v14[200];
+  struct {
+    _QWORD v11[2];
+    int v12;
+  } v11_;
+  _QWORD v13[25];
 
   v1 = GameData_2241428;
   v3 = *(char**)(GameData_2241428 + 8);
@@ -7091,26 +7303,28 @@ LABEL_18:
   v8 = v2 - (v3 + 8);
   if (v2 != v3 + 8) {
     v9 = a1;
-    memmove(v3, v3 + 8, v2 - (v3 + 8));
+    memmove_alt1((__int64)v3, (__int64)(v3 + 8), v2 - (v3 + 8));
     a1 = v9;
   }
   *(_QWORD*)(v1 + 16) = &v3[v8];
   if (GameData_21f1618 != 0) {
     v10 = *(_OWORD*)(a1 + 32);
-    v12[1] = *(_QWORD*)(a1 + 32);
-    v13 = DWORD2(v10);
-    v12[0] = GameData_212d1e0[0] + 2;
-    snd_Fade_Fade_10c830_alt1(v14, 0.0f);
-    snd_playAt_ff5f0((void*)(&v11), "SE_SYS_GMAP_GoalPin_Remove",
-                     "SE_SYS_GMAP_GoalPin_Remove", v12, v14, 0, 65537, 0, 0.0f,
-                     1.0f);
+    v11_.v11[1] = *(_QWORD*)(a1 + 32);
+    v11_.v12 = DWORD2(v10);
+    v11_.v11[0] = GameData_212d1e0[0] + 2;
+    snd_Fade_Fade_10c830_alt2((__int64)v13, 0x0.0p+0f);
+    snd_playAt_ff5f0_alt1((__int64)"SE_SYS_GMAP_GoalPin_Remove",
+                          (__int64)"SE_SYS_GMAP_GoalPin_Remove",
+                          (__int64)v11_.v11, (__int64)v13, 0, 0x10001u, 0,
+                          0x0.0p+0f, 0x1.0000000000000p+0f);
   }
   else {
-    snd_Fade_Fade_10c830_alt1(v14, 0.0f);
-    snd_play_ff2d0((void*)(v12), "SE_SYS_GMAP_GoalPin_Remove",
-                   "SE_SYS_GMAP_GoalPin_Remove", v14, 0, 65537, 0, 0.0f, 1.0f);
+    snd_Fade_Fade_10c830_alt2((__int64)v13, 0x0.0p+0f);
+    snd_play_ff2d0_alt1((__int64)"SE_SYS_GMAP_GoalPin_Remove",
+                        (__int64)"SE_SYS_GMAP_GoalPin_Remove", (__int64)v13, 0,
+                        0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   }
-  snd_Fade_Destroy_Fade(v14);
+  snd_Fade_Destroy_Fade_alt1(v13);
   result = 1;
   if (*GameData_212d728[0] != 0) {
     *(_BYTE*)(*(_QWORD*)(*GameData_212d728[0] + 8) + 5835LL) = 1;
@@ -7199,60 +7413,80 @@ __int64 game_gmap_1522160(__int64 result, long double a2)
   return result;
 }
 
-void game_gmap_15230c0(__int64 a1, long double a2)
+void game_gmap_15230c0(__int64 a1)
 {
-  __int64 v3;
-  __int128 v4;
-  __int128 v5;
-  float v6;
-  long double v7;
-  int v8;
-  int v9;
-  unsigned __int64 v10;
 
-  GameRoutine_133f780(*(_QWORD*)(a1 + 152), *(_QWORD*)(a1 + 160), 1, a2);
-  v3 = *(_QWORD*)(a1 + 152);
-  v4 = *GameData_212c680;
-  *(_QWORD*)(v3 + 64) = *(_QWORD*)GameData_212c680;
-  v5 = *(_OWORD*)(v3 + 64);
-  *((_QWORD*)&v5 + 1) = DWORD2(v4);
-  *(_OWORD*)(v3 + 64) = v5;
-  game_gmap_133de90_alt1(*(_QWORD*)(a1 + 152), 0);
-  game_gmap_133de90_alt1(*(_QWORD*)(a1 + 152), 4);
-  game_gmap_anonymous_1523820(a1, 1, v6);
+#pragma clang fp contract(off)
+  __int64 v2;
+  __n128 v3;
+  long double v4;
+  __n128 v5;
+  long double v6;
+  int v7;
+  int v8;
+  unsigned __int64 v9;
+  __int128 v10;
+  __int64 v11;
+
+  v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w")),
+  v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  game_gmap_133f780(*(_QWORD*)(a1 + 152), *(_DWORD**)(a1 + 160), 1),
+      v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  v2 = *(_QWORD*)(a1 + 152);
+  v3 = COERCE_AS(__n128, *GameData_212c680);
+  *(_QWORD*)(v2 + 64) = *(_QWORD*)GameData_212c680;
+  v4 = *(long double*)(v2 + 64);
+  *((_QWORD*)&v4 + 1) = LANES128(v3).n128_u32[2];
+  *(long double*)(v2 + 64) = v4;
+  game_gmap_133de90(*(_QWORD*)(a1 + 152), 0, v3, v4),
+      v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  game_gmap_133de90(*(_QWORD*)(a1 + 152), 4, v5, v6),
+      v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  game_gmap_anonymous_1523820_alt1(a1, 1),
+      v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v1", "=w"));
   if (game_GameModeData_instance_ != 0 &&
       (*(_BYTE*)(game_GameModeData_instance_ + 92) & 2) != 0 &&
       (*(_BYTE*)(a1 + 188) & 1) == 0) {
     if (game_ProcGameSkipView_instance_ == 0 ||
         *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) != 3 ||
-        (((v8 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
-             ? (v9 = 2)
-             : (v9 = 3),
-         (v9 & v8) != 0)) {
+        (((v7 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
+             ? (v8 = 2)
+             : (v8 = 3),
+         (v8 & v7) != 0)) {
       if (game_ProcFadeView_instance_ == 0) {
-        goto LABEL_17;
+        goto LABEL_22;
       }
-      v10 = game_ProcFadeView_instance_ +
-            ((unsigned __int64)*(unsigned __int8*)(game_ProcFadeView_instance_ +
-                                                   480)
-             << 6);
-      if (*(float*)(v10 + 172) == *(float*)(v10 + 168)) {
-        (*(void (**)(unsigned __int64))(*(_QWORD*)(v10 + 160) + 16LL))(v10 +
-                                                                       160);
+      v9 = game_ProcFadeView_instance_ +
+           ((unsigned __int64)*(unsigned __int8*)(game_ProcFadeView_instance_ +
+                                                  480)
+            << 6);
+      if (*(float*)(v9 + 172) == *(float*)(v9 + 168)) {
+        (*(void (**)(unsigned __int64))(*(_QWORD*)(v9 + 160) + 16LL))(v9 + 160),
+            v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v1", "=w"));
       }
       else {
-        v7 = *(long double*)(v10 + 208);
+        v10 = *(_OWORD*)(v9 + 208);
       }
-      LODWORD(v7) = HIDWORD(v7);
-      if (*((float*)&v7 + 3) != 1.0 ||
-          (*(__n128*)& v7 = ((__n128 (*)(unsigned __int64, float)) *
-                             (_QWORD*)(*(_QWORD*)(v10 + 160) + 16LL))(
-               v10 + 160, *((float*)&v7 + 3)),
-           LODWORD(v7) = HIDWORD(v7), *((float*)&v7 + 3) != 1.0)) {
-      LABEL_17:
-        if (game_GameModeData_instance_ != 0 && *(_QWORD*)(a1 + 152) != 0 &&
-            *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
-          GameRoutine_1530b00(*(_QWORD*)(GameData_21f1648 + 8), v7);
+      if (*((float*)&v10 + 3) != 0x1.0000000000000p+0f ||
+          LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                       (_QWORD*)(*(_QWORD*)(v9 + 160) + 16LL))(
+                          v9 + 160, *((float*)&v10 + 3)))
+                  .n128_f32[3] != 0x1.0000000000000p+0f) {
+      LABEL_22:
+        if (game_GameModeData_instance_ != 0) {
+          v11 = *(_QWORD*)(a1 + 152);
+          if (v11 != 0 && *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
+            GmapSound_1530b00(*(_QWORD*)(GameData_21f1648 + 8), v11),
+                v5 = COERCE_AS(__typeof__(v5),
+                               PSEUDO_REGISTER(__n128, "v0", "=w")),
+                v6 = COERCE_AS(__typeof__(v6),
+                               PSEUDO_REGISTER(__n128, "v1", "=w"));
+          }
         }
       }
     }
@@ -7279,7 +7513,7 @@ __int64 game_gmap_1523240(__int64 result)
     LANES128(v3).n128_u32[2] = LANES128(v4).n128_u32[2];
     v7 = v3;
     v8 = GameData_1a83090;
-    v6 = GameRoutine_752d30_alt1((int8x16_t*)&v8, &v7);
+    v6 = MapUtil_752d30((int8x16_t*)&v8, &v7);
     return UnitActor_81ab40_alt1(v5 + 112, v6 * 0x1.ca5dc00000000p+5f,
                                  -0x1.0000000000000p+0f);
   }
@@ -7349,7 +7583,7 @@ void game_gmap_1523f70(__int64 a1)
   __int64 v8;
   unsigned int v9;
   __int128 v10;
-  unsigned int* v11;
+  float32x4_t* v11;
   __int64 v12;
   __int64 v13;
   __int64 v14;
@@ -7381,7 +7615,7 @@ void game_gmap_1523f70(__int64 a1)
   v18 = COERCE_AS(__typeof__(v18), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v19 = COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v3", "=w"));
-  GameRoutine_133f780_alt1(v1, v3, 1),
+  game_gmap_133f780(v1, v3, 1),
       v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(__n128, "v1", "=w")),
       v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v2", "=w")),
       v17 = COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(__n128, "v3", "=w")),
@@ -7398,7 +7632,7 @@ void game_gmap_1523f70(__int64 a1)
   v6 = *(_QWORD*)(a1 + 152);
   v27[0] = COERCE_AS(int8x16_t, GameData_1a83090);
   v26[0] = COERCE_AS(int8x16_t, GameData_1a83090);
-  v7 = GameRoutine_752d30_alt1(v27, v26),
+  v7 = MapUtil_752d30(v27, v26),
   v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v17 = COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(__n128, "v3", "=w")),
@@ -7417,11 +7651,11 @@ void game_gmap_1523f70(__int64 a1)
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
                             memory_order_acquire) &
        1) == 0 &&
-      (unsigned int)__cxa_guard_acquire(&GameData_21a6130) != 0) {
+      __cxa_guard_acquire_alt1((__int64)&GameData_21a6130) != 0) {
     v24 = *((_QWORD*)GameData_212c540 + 1);
     *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
     *((_QWORD*)&GameData_21a6120 + 1) = v24;
-    __cxa_guard_release(&GameData_21a6130),
+    __cxa_guard_release_alt1((__int64)&GameData_21a6130),
         v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(__n128, "v1", "=w")),
         v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v2", "=w")),
         v17 = COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(__n128, "v3", "=w")),
@@ -7434,7 +7668,7 @@ void game_gmap_1523f70(__int64 a1)
   v10 = *(_OWORD*)(v8 + 64);
   *((_QWORD*)&v10 + 1) = v9;
   *(_OWORD*)(v8 + 64) = v10;
-  v11 = game_gmap_SpotMgr_GetCurrentSpot_alt1(),
+  v11 = (float32x4_t*)game_gmap_SpotMgr_GetCurrentSpot_alt1(),
   v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v17 = COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(__n128, "v3", "=w")),
@@ -7471,8 +7705,7 @@ void game_gmap_1523f70(__int64 a1)
   v26[2] = v19;
   v26[3] = v20;
   LANES64(v21).n64_u64[0] =
-      LANES64_OF(GameRoutine_a6c440((__int128*)v11 + 2, (__int128*)v27,
-                                    (__int128*)v26))
+      LANES64_OF(GameRoutine_a6c440_alt1(v11 + 2, (__int128*)v27, v26))
           .n64_u64[0],
   v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v2", "=w")),
@@ -7491,7 +7724,7 @@ void game_gmap_1523f70(__int64 a1)
         v18 = COERCE_AS(__typeof__(v18), PSEUDO_REGISTER(__n128, "v1", "=w")),
         v19 = COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(__n128, "v2", "=w")),
         v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(__n128, "v3", "=w"));
-    std___1___shared_weak_count___release_weak(),
+    std___1___shared_weak_count___release_weak_alt2(v13),
         v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(__n128, "v1", "=w")),
         v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v2", "=w")),
         v17 = COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(__n128, "v3", "=w")),
@@ -7530,35 +7763,37 @@ void game_gmap_1524170()
   game_19a0e60(*(_QWORD*)(*v0 + 8) + 32LL);
 }
 
-__n128 game_gmap_15241d0(float32x4_t** a1, __n128 result)
+__int64 game_gmap_15241d0(__int64 result)
 {
 
 #pragma clang fp contract(off)
-  float32x4_t* v2;
+  _DWORD* v1;
+  float32x4_t** v2;
+  float32x4_t* v3;
   float32x4_t* v4;
-  float32x4_t* v5;
-  const char* v6;
-  unsigned __int64 v7;
-  float32x4_t v8;
-  unsigned int v9;
-  float32x4_t v10;
-  int v11;
-  __int64 v12;
-  int v13;
-  bool v14;
-  float32x4_t v15;
-  _QWORD* v16;
-  __int64 v17;
-  __int64* v18;
-  unsigned int v19;
-  unsigned __int64 v20;
-  unsigned __int64 v21;
-  float32x4_t* v22;
-  unsigned __int64 v23;
+  const char* v5;
+  unsigned __int64 v6;
+  float32x4_t v7;
+  unsigned int v8;
+  float32x4_t v9;
+  int v10;
+  __int64 v11;
+  int v12;
+  bool v13;
+  float32x4_t v14;
+  float* v15;
+  __int64 v16;
+  __int64* v17;
+  unsigned int v18;
+  unsigned __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  float32x4_t v23;
   float32x4_t v24;
-  float32x4_t v25;
   struct {
-    float32x4_t v26;
+    __int64 v25;
+    char* v26;
     const char* v27;
     int v28;
     char gap60_[4];
@@ -7566,116 +7801,109 @@ __n128 game_gmap_15241d0(float32x4_t** a1, __n128 result)
     __int128 v30;
     __int64 v31;
     __int64 v32;
-  } v26_;
+  } v25_;
 
-  v19 = COERCE_AS(__typeof__(v19),
+  v18 = COERCE_AS(__typeof__(v18),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  v2 = a1[1];
-  if (LANES128(*(v2)).n128_u64[0] == 0 ||
-      *(_DWORD*)(LANES128(*(v2)).n128_u64[0] + 16) !=
-          LANES128(*(v2)).n128_u32[2]) {
-    v4 = *a1;
-    v25 = (__typeof__(v25)){0};
-    game_gmap_133ffb0(v4, &v25),
-        v19 = COERCE_AS(__typeof__(v19),
+  v1 = *(_DWORD**)(result + 8);
+  v2 = (float32x4_t**)result;
+  if (*(_QWORD*)v1 == 0 || *(_DWORD*)(*(_QWORD*)v1 + 16LL) != v1[2]) {
+    v3 = *(float32x4_t**)result;
+    v24 = (__typeof__(v24)){0};
+    game_gmap_133ffb0(v3, &v24),
+        v18 = COERCE_AS(__typeof__(v18),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    v5 = *a1;
-    v6 = "Gmap_HadesDoor_Barrier_S";
-    v7 = LANES128((*a1)[6]).n128_u64[0];
-    LANES128(v8).n128_u32[0] = *(_DWORD*)(v7 + 120);
-    v9 = *(unsigned __int8*)(v7 + 32) - 3;
-    LANES128(v8).n128_f32[2] = *(float*)(v7 + 124) + 0x1.4000000000000p+2f;
-    v10 = vaddq_f32(vaddq_f32(v25, (*a1)[4]), v8);
-    v25 = v10;
-    if (v9 <= 1) {
-      v11 = *(unsigned __int8*)(v7 + 131);
-      v24 = v10;
-      LANES128(v26_.v26).n128_u64[1] = (unsigned __int64)&GameData_1ada5b4;
-      LANES128(v26_.v26).n128_u64[0] =
-          game_HashString_alt1((__int64)&GameData_1ada5b4),
-      v19 = COERCE_AS(__typeof__(v19),
+    v4 = *v2;
+    v5 = "Gmap_HadesDoor_Barrier_S";
+    v6 = LANES128((*v2)[6]).n128_u64[0];
+    LANES128(v7).n128_u32[0] = *(_DWORD*)(v6 + 120);
+    v8 = *(unsigned __int8*)(v6 + 32) - 3;
+    LANES128(v7).n128_f32[2] = *(float*)(v6 + 124) + 0x1.4000000000000p+2f;
+    v9 = vaddq_f32(vaddq_f32(v24, (*v2)[4]), v7);
+    v24 = v9;
+    if (v8 <= 1) {
+      v10 = *(unsigned __int8*)(v6 + 131);
+      v23 = v9;
+      v25_.v26 = (char*)&GameData_1ada5b4;
+      v25_.v25 = game_HashString_alt1((__int64)&GameData_1ada5b4),
+      v18 = COERCE_AS(__typeof__(v18),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       if (game_GameModeData_instance_ != 0 &&
-          (v12 = game_GameVariableTable_Find_alt1(
+          (v11 = game_GameVariableTable_Find_alt1(
                *(_QWORD**)(game_GameModeData_instance_ + 48),
-               LANES128(v26_.v26).n128_u64)) != 0) {
-        v13 = *(_DWORD*)(v12 + 32) + 1;
+               (unsigned __int64*)&v25_.v25)) != 0) {
+        v12 = *(_DWORD*)(v11 + 32) + 1;
       }
       else {
-        v13 = 1;
+        v12 = 1;
       }
-      v10 = v24;
-      v14 = v13 < v11;
-      v5 = *a1;
-      if (v14) {
-        v6 = "Gmap_HadesDoor_Barrier";
+      v9 = v23;
+      v13 = v12 < v10;
+      v4 = *v2;
+      if (v13) {
+        v5 = "Gmap_HadesDoor_Barrier";
       }
     }
-    v15 = v5[3];
-    v26_.v26 = (__typeof__(v26_.v26)){0};
-    v16 = (_QWORD*)*eft_g_effectSystem_ptr[0];
-    v26_.v28 = 5;
-    v26_.v29 = vaddq_f32(v10, v15);
-    v26_.v30 = GameData_1a837f0;
-    v26_.v27 = v6;
-    v17 = *((_QWORD*)GameData_212c540 + 1);
-    v26_.v31 = *(_QWORD*)GameData_212c540;
-    v26_.v32 = v17;
-    v18 = Manager_bc6460(v16, &v26_.v26, 1),
-    v19 = COERCE_AS(__typeof__(v19),
+    v14 = v4[3];
+    v25_.v25 = 0;
+    v25_.v26 = nullptr;
+    v15 = (float*)*eft_g_effectSystem_ptr[0];
+    v25_.v28 = 5;
+    v25_.v29 = vaddq_f32(v9, v14);
+    v25_.v30 = GameData_1a837f0;
+    v25_.v27 = v5;
+    v16 = *((_QWORD*)GameData_212c540 + 1);
+    v25_.v31 = *(_QWORD*)GameData_212c540;
+    v25_.v32 = v16;
+    v17 = Manager_bc6460_alt2(v15, (__int64)&v25_.v25, 1),
+    v18 = COERCE_AS(__typeof__(v18),
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    result = GameRoutine_14a10d0(&v26_.v26, (__int64)v18, v19,
-                                 (__int64)&GameData_1a9f09e),
-    v19 = COERCE_AS(__typeof__(v19),
+    result = GameHr_14a10d0(&v25_.v25, (__int64)v17, v18,
+                            (__int64)&GameData_1a9f09e),
+    v18 = COERCE_AS(__typeof__(v18),
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    v21 = LANES128(v26_.v26).n128_u64[1];
-    v20 = LANES128(v26_.v26).n128_u64[0];
-    if (LANES128(v26_.v26).n128_u64[1] != 0) {
-      atomic_fetch_add_explicit(
-          (atomic_ullong* volatile)(LANES128(v26_.v26).n128_u64[1] + 8), 1u,
-          memory_order_relaxed);
-    }
-    v22 = a1[2];
-    a1[1] = (float32x4_t*)v20;
-    a1[2] = (float32x4_t*)v21;
-    if (v22 != nullptr) {
-      if (atomic_fetch_add(
-              (atomic_ullong* volatile)&LANES128(*(v22)).n128_i8[8],
-              0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(float32x4_t*, long double))(
-            LANES128(*(v22)).n128_u64[0] + 16))(v22, *(long double*)&result),
-            v19 = COERCE_AS(__typeof__(v19),
-                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-        result = std___1___shared_weak_count___release_weak(),
-        v19 = COERCE_AS(__typeof__(v19),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-      }
-      v21 = (unsigned __int64)a1[2];
-    }
-    if (v21 != 0) {
-      atomic_fetch_add_explicit((atomic_ullong* volatile)(v21 + 8), 1u,
+    v19 = v25_.v25;
+    v20 = (__int64)v25_.v26;
+    if (v25_.v26 != nullptr) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v25_.v26 + 8), 1u,
                                 memory_order_relaxed);
+    }
+    v21 = (__int64)v2[2];
+    v2[1] = (float32x4_t*)v19;
+    v2[2] = (float32x4_t*)v20;
+    if (v21 != 0) {
       if (atomic_fetch_add((atomic_ullong* volatile)(v21 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(unsigned __int64, long double))(*(_QWORD*)v21 + 16LL))(
-            v21, *(long double*)&result),
-            v19 = COERCE_AS(__typeof__(v19),
+        (*(void (**)(__int64))(*(_QWORD*)v21 + 16LL))(v21),
+            v18 = COERCE_AS(__typeof__(v18),
                             PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-        result = std___1___shared_weak_count___release_weak(),
-        v19 = COERCE_AS(__typeof__(v19),
+        result = std___1___shared_weak_count___release_weak_alt2(v21),
+        v18 = COERCE_AS(__typeof__(v18),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      }
+      v20 = (__int64)v2[2];
+    }
+    if (v20 != 0) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v20 + 8), 1u,
+                                memory_order_relaxed);
+      if (atomic_fetch_add((atomic_ullong* volatile)(v20 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v20 + 16LL))(v20),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        result = std___1___shared_weak_count___release_weak_alt2(v20),
+        v18 = COERCE_AS(__typeof__(v18),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       }
     }
-    v23 = LANES128(v26_.v26).n128_u64[1];
-    if (LANES128(v26_.v26).n128_u64[1] != 0 &&
-        atomic_fetch_add(
-            (atomic_ullong* volatile)(LANES128(v26_.v26).n128_u64[1] + 8),
-            0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(unsigned __int64, long double))(*(_QWORD*)v23 + 16LL))(
-          v23, *(long double*)&result),
-          v19 = COERCE_AS(__typeof__(v19),
+    v22 = (__int64)v25_.v26;
+    if (v25_.v26 != nullptr &&
+        atomic_fetch_add((atomic_ullong* volatile)(v25_.v26 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22),
+          v18 = COERCE_AS(__typeof__(v18),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-      return std___1___shared_weak_count___release_weak();
+      return std___1___shared_weak_count___release_weak_alt2(v22);
     }
   }
   return result;
@@ -7740,34 +7968,33 @@ void game_gmap_1524f30(__int64 a1)
 
 __int64 game_gmap_1528ab0(__int64 result)
 {
-  __int64 v1;
+  const char* v1;
   __int64 v3;
   __int64 v4;
   __int64 v5;
-  __int64 v6;
-  _BYTE* v7;
-  char v8;
+  _BYTE* v6;
+  char v7;
 
   if ((*(_BYTE*)(result + 240) & 1) != 0) {
-    v1 = *(_QWORD*)(result + 256);
+    v1 = *(const char**)(result + 256);
   }
   else {
-    v1 = result + 241;
+    v1 = (const char*)(result + 241);
   }
-  if (GameData_21ec7b8 == 0 && v1 != 0) {
+  if (GameData_21ec7b8 == 0 && v1 != nullptr) {
     v3 = result;
-    v4 = fw_memory_HeapManager_Allocate_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 1376, 16, 0);
-    GameRoutine_1130770(v4, v1, 0);
-    v6 = *(_QWORD*)(v3 + 40);
-    if (v6 != 0) {
-      *(_QWORD*)(v6 + 48) = v4;
+    v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                        1376, 16, 0);
+    GameRoutine_1130770_alt1(v4, v1, nullptr);
+    v5 = *(_QWORD*)(v3 + 40);
+    if (v5 != 0) {
+      *(_QWORD*)(v5 + 48) = v4;
       *(_QWORD*)(v4 + 56) = *(_QWORD*)(v3 + 40);
     }
     *(_QWORD*)(v3 + 40) = v4;
     *(_QWORD*)(v4 + 24) = "talk::Seq";
     *(_QWORD*)(v4 + 32) = v3;
-    *(_DWORD*)(v4 + 140) = game_HashString32_alt1("talk::Seq", v5);
+    *(_DWORD*)(v4 + 140) = (unsigned int)game_HashString32_alt3("talk::Seq");
     *(_QWORD*)(v4 + 64) = 0;
     *(_QWORD*)(v4 + 72) = 24;
     *(_QWORD*)(v4 + 80) = 1;
@@ -7778,14 +8005,14 @@ __int64 game_gmap_1528ab0(__int64 result)
     if ((result & 1) != 0 && (*(_WORD*)(v4 + 136) & 0x100) == 0) {
       *(_WORD*)(v4 + 136) |= 0x100u;
     }
-    v7 = *(_BYTE**)(v4 + 32);
-    v8 = v7[138];
-    if (v8 == 0) {
+    v6 = *(_BYTE**)(v4 + 32);
+    v7 = v6[138];
+    if (v7 == 0) {
       result =
-          (*(__int64 (**)(_QWORD))(*(_QWORD*)v7 + 64LL))(*(_QWORD*)(v4 + 32));
-      v8 = v7[138];
+          (*(__int64 (**)(_QWORD))(*(_QWORD*)v6 + 64LL))(*(_QWORD*)(v4 + 32));
+      v7 = v6[138];
     }
-    v7[138] = v8 + 1;
+    v6[138] = v7 + 1;
     *(_WORD*)(v4 + 136) |= 2u;
   }
   return result;
@@ -7898,6 +8125,8 @@ void game_gmap_1529760(__int64 a1)
 
 void game_gmap_152b340(__int64 a1)
 {
+
+#pragma clang fp contract(off)
   int v2;
   int v3;
   unsigned __int64 v4;
@@ -7909,12 +8138,12 @@ void game_gmap_152b340(__int64 a1)
   __int16 v11;
   __int64 v12;
   __int64 v13;
-  char v14;
+  bool v14;
   const char* v15;
   __int64 v16;
   __int64 v17;
   __int64 v18;
-  __int64 v19;
+  __int64* v19;
   unsigned int v20;
   __int64 v21;
   __int64 v22;
@@ -7932,17 +8161,24 @@ void game_gmap_152b340(__int64 a1)
   __int64 v34;
   _BYTE* v35;
   unsigned __int8 v36;
-  __int64 v37;
-  __int64 v38;
-  _QWORD v39[3];
-  int v40;
-  __int64 v41;
-  __int64 v42;
-  __int64 v43;
-  __int64 v44;
-  __int64 v45;
-  __int64 v46;
+  struct {
+    __int64 v37;
+    __int64 v38;
+  } v37_;
+  struct {
+    _QWORD v39[3];
+    int v40;
+    char gap44_[4];
+    __int64 v41;
+    __int64 v42;
+    __int64 v43;
+    __int64 v44;
+    __int64 v45;
+    __int64 v46;
+  } v39_;
 
+  v20 = COERCE_AS(__typeof__(v20),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if (game_ProcGameSkipView_instance_ != 0 &&
       *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) == 3) {
     v2 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156);
@@ -7957,16 +8193,18 @@ void game_gmap_152b340(__int64 a1)
                                                 480)
           << 6);
     if (*(float*)(v4 + 172) == *(float*)(v4 + 168)) {
-      (*(void (**)(unsigned __int64))(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160);
+      (*(void (**)(unsigned __int64))(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160),
+          v20 = COERCE_AS(__typeof__(v20),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
     else {
       v5 = *(_OWORD*)(v4 + 208);
     }
-    if (*((float*)&v5 + 3) == 1.0f &&
+    if (*((float*)&v5 + 3) == 0x1.0000000000000p+0f &&
         LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
                      (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(
                         v4 + 160, *((float*)&v5 + 3)))
-                .n128_f32[3] == 1.0f) {
+                .n128_f32[3] == 0x1.0000000000000p+0f) {
       goto LABEL_15;
     }
   }
@@ -7989,30 +8227,37 @@ void game_gmap_152b340(__int64 a1)
   if (*(_QWORD*)v12 != 0 && *(_DWORD*)(v13 + 16) == *(_DWORD*)(v12 + 8)) {
     goto LABEL_56;
   }
-  v14 = Impl_1328300(*(_QWORD*)(a1 + 176));
+  v14 = Impl_1328300_alt1(*(_QWORD*)(a1 + 176)),
+  v20 = COERCE_AS(__typeof__(v20),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v15 = "Bmap_Summon_Conron_Start";
-  if ((v14 & 1) != 0) {
+  if (v14) {
     v15 = "Gmap_Summon_GodGate_Start";
   }
-  v39[0] = 0;
-  v39[1] = 0;
-  v39[2] = v15;
+  v39_.v39[0] = 0;
+  v39_.v39[1] = 0;
+  v39_.v39[2] = v15;
   v16 = *((_QWORD*)GameData_212c540 + 1);
   v18 = *(_QWORD*)GameData_212c548;
   v17 = *((_QWORD*)GameData_212c548 + 1);
-  v41 = *(_QWORD*)GameData_212c540;
-  v42 = v16;
-  v45 = v41;
-  v46 = v16;
-  v43 = v18;
-  v44 = v17;
-  v40 = 5;
-  v19 = Manager_bc6460_alt1(*eft_g_effectSystem_ptr[0], v39, 0);
-  GameRoutine_14a10d0_alt1(&v37, v19, v20, &GameData_1a9f09e);
-  v21 = v37;
-  v22 = v38;
-  if (v38 != 0) {
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v38 + 8), 1u,
+  v39_.v41 = *(_QWORD*)GameData_212c540;
+  v39_.v42 = v16;
+  v39_.v45 = v39_.v41;
+  v39_.v46 = v16;
+  v39_.v43 = v18;
+  v39_.v44 = v17;
+  v39_.v40 = 5;
+  v19 = Manager_bc6460_alt3(*(_QWORD**)eft_g_effectSystem_ptr[0],
+                            (__int64)v39_.v39, 0),
+  v20 = COERCE_AS(__typeof__(v20),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  GameHr_14a10d0_alt1(&v37_.v37, (__int64)v19, v20, (__int64)&GameData_1a9f09e),
+      v20 = COERCE_AS(__typeof__(v20),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v21 = v37_.v37;
+  v22 = v37_.v38;
+  if (v37_.v38 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v37_.v38 + 8), 1u,
                               memory_order_relaxed);
   }
   v23 = *(_QWORD*)(a1 + 160);
@@ -8021,8 +8266,12 @@ void game_gmap_152b340(__int64 a1)
   if (v23 != 0) {
     if (atomic_fetch_add((atomic_ullong* volatile)(v23 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23);
-      std___1___shared_weak_count___release_weak_alt1(v23);
+      (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23),
+          v20 = COERCE_AS(__typeof__(v20),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      std___1___shared_weak_count___release_weak_alt2(v23),
+          v20 = COERCE_AS(__typeof__(v20),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
     v22 = *(_QWORD*)(a1 + 160);
   }
@@ -8031,15 +8280,23 @@ void game_gmap_152b340(__int64 a1)
                               memory_order_relaxed);
     if (atomic_fetch_add((atomic_ullong* volatile)(v22 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22);
-      std___1___shared_weak_count___release_weak_alt1(v22);
+      (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22),
+          v20 = COERCE_AS(__typeof__(v20),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      std___1___shared_weak_count___release_weak_alt2(v22),
+          v20 = COERCE_AS(__typeof__(v20),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
   }
-  v24 = v38;
-  if (v38 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v38 + 8),
-                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v24 + 16LL))(v24);
-    std___1___shared_weak_count___release_weak_alt1(v24);
+  v24 = v37_.v38;
+  if (v37_.v38 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v37_.v38 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v24 + 16LL))(v24),
+        v20 = COERCE_AS(__typeof__(v20),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    std___1___shared_weak_count___release_weak_alt2(v24),
+        v20 = COERCE_AS(__typeof__(v20),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
   v12 = *(_QWORD*)(a1 + 152);
   v13 = *(_QWORD*)v12;
@@ -8084,7 +8341,9 @@ void game_gmap_152b340(__int64 a1)
         }
       }
     }
-    GameRoutine_14a3920(v12);
+    game_14a3920(v12),
+        v20 = COERCE_AS(__typeof__(v20),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v12 = *(_QWORD*)(a1 + 152);
     v13 = *(_QWORD*)v12;
     if (*(_QWORD*)v12 != 0) {
@@ -8307,202 +8566,295 @@ __int64 game_gmap_152ba90(__int64 result)
   return result;
 }
 
-__int64 game_gmap_152bb80(__int64 a1)
+__int64 game_gmap_152bb80(__int64 a1, __n128 a2, long double a3)
 {
-  int v2;
-  int v3;
-  unsigned __int64 v4;
-  __int128 v5;
+
+#pragma clang fp contract(off)
+  int v4;
+  int v5;
+  unsigned __int64 v6;
   __int64 result;
-  unsigned __int8* v7;
-  unsigned int v8;
-  bool v9;
-  int v10;
-  __int16 v12;
-  char v13;
-  const char* v14;
-  __int64 v15;
+  unsigned __int8* v8;
+  unsigned int v9;
+  bool v10;
+  int v11;
+  __int16 v13;
+  bool v14;
+  const char* v15;
   __int64 v16;
   __int64 v17;
   __int64 v18;
-  unsigned int v19;
-  __int64 v20;
+  __int64* v19;
+  unsigned int v20;
   __int64 v21;
   __int64 v22;
   __int64 v23;
   __int64 v24;
-  unsigned int v25;
+  __int64 v25;
+  unsigned int v26;
   unsigned int i;
-  __int64 v27;
-  unsigned int v28;
+  __int64 v28;
   unsigned int v29;
-  __int128 v30;
-  __int64 v31;
-  __int64* v32;
-  __int64 v33;
-  unsigned __int64 v34;
-  unsigned __int64 j;
+  unsigned int v30;
+  __int128 v31;
+  __int64 v32;
+  __n128 v33;
+  long double v34;
+  __int64* v35;
   __int64 v36;
-  _BYTE* v37;
-  unsigned __int8 v38;
+  unsigned __int64 v37;
+  unsigned __int64 j;
   __int64 v39;
-  __int64 v40;
-  _QWORD v41[3];
-  int v42;
-  __int64 v43;
-  __int64 v44;
-  __int64 v45;
-  __int64 v46;
-  __int64 v47;
-  __int64 v48;
+  _BYTE* v40;
+  unsigned __int8 v41;
+  struct {
+    __int64 v42;
+    __int64 v43;
+  } v42_;
+  struct {
+    _QWORD v44[3];
+    int v45;
+    char gap44_[4];
+    __int64 v46;
+    __int64 v47;
+    __int64 v48;
+    __int64 v49;
+    __int64 v50;
+    __int64 v51;
+  } v44_;
 
+  v20 = COERCE_AS(__typeof__(v20),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v0", "=w")),
+  v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v1", "=w"));
   if (game_ProcGameSkipView_instance_ == 0 ||
       *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) != 3 ||
-      (((v2 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
-           ? (v3 = 2)
-           : (v3 = 3),
-       (v3 & v2) != 0)) {
+      (((v4 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
+           ? (v5 = 2)
+           : (v5 = 3),
+       (v5 & v4) != 0)) {
     if (game_ProcFadeView_instance_ == 0) {
       goto LABEL_14;
     }
-    v4 = game_ProcFadeView_instance_ +
+    v6 = game_ProcFadeView_instance_ +
          ((unsigned __int64)*(unsigned __int8*)(game_ProcFadeView_instance_ +
                                                 480)
           << 6);
-    if (*(float*)(v4 + 172) == *(float*)(v4 + 168)) {
-      (*(void (**)(unsigned __int64))(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160);
+    LODWORD(a3) = *(_DWORD*)(v6 + 168);
+    if (*(float*)(v6 + 172) == *(float*)&a3) {
+      (*(void (**)(unsigned __int64))(*(_QWORD*)(v6 + 160) + 16LL))(v6 + 160),
+          v20 = COERCE_AS(__typeof__(v20),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v1", "=w"));
     }
     else {
-      v5 = *(_OWORD*)(v4 + 208);
+      a2 = *(__n128*)(v6 + 208);
     }
-    if (*((float*)&v5 + 3) != 1.0f ||
-        LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
-                     (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(
-                        v4 + 160, *((float*)&v5 + 3)))
-                .n128_f32[3] != 1.0f) {
+    LANES128(a2).n128_u32[0] = LANES128(a2).n128_u32[3];
+    if (LANES128(a2).n128_f32[3] != 0x1.0000000000000p+0f ||
+        (a2 = ((__n128 (*)(unsigned __int64, float)) *
+               (_QWORD*)(*(_QWORD*)(v6 + 160) + 16LL))(
+             v6 + 160, LANES128(a2).n128_f32[3]),
+         LANES128(a2).n128_u32[0] = LANES128(a2).n128_u32[3],
+         LANES128(a2).n128_f32[3] != 0x1.0000000000000p+0f)) {
     LABEL_14:
       if (*GameData_21309c8[0] == 0 ||
           *(_BYTE*)(*GameData_21309c8[0] + 8) != 2) {
-        v13 = Impl_1328300(*(_QWORD*)(a1 + 176));
-        v14 = "Bmap_Summon_Conron_Hit";
-        if ((v13 & 1) != 0) {
-          v14 = "Gmap_Summon_GodGate_Hit";
+        v14 = Impl_1328300_alt1(*(_QWORD*)(a1 + 176)),
+        v20 = COERCE_AS(__typeof__(v20),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v1", "=w"));
+        v15 = "Bmap_Summon_Conron_Hit";
+        if (v14) {
+          v15 = "Gmap_Summon_GodGate_Hit";
         }
-        v41[0] = 0;
-        v41[1] = 0;
-        v41[2] = v14;
-        v15 = *((_QWORD*)GameData_212c540 + 1);
-        v17 = *(_QWORD*)GameData_212c548;
-        v16 = *((_QWORD*)GameData_212c548 + 1);
-        v43 = *(_QWORD*)GameData_212c540;
-        v44 = v15;
-        v47 = v43;
-        v48 = v15;
-        v45 = v17;
-        v46 = v16;
-        v42 = 5;
-        v18 = Manager_bc6460_alt1(*eft_g_effectSystem_ptr[0], v41, 0);
-        GameRoutine_14a10d0_alt1(&v39, v18, v19, &GameData_1a9f09e);
-        v20 = v39;
-        v21 = v40;
-        if (v40 != 0) {
-          atomic_fetch_add_explicit((atomic_ullong* volatile)(v40 + 8), 1u,
+        v44_.v44[0] = 0;
+        v44_.v44[1] = 0;
+        v44_.v44[2] = v15;
+        v16 = *((_QWORD*)GameData_212c540 + 1);
+        v18 = *(_QWORD*)GameData_212c548;
+        v17 = *((_QWORD*)GameData_212c548 + 1);
+        v44_.v46 = *(_QWORD*)GameData_212c540;
+        v44_.v47 = v16;
+        v44_.v50 = v44_.v46;
+        v44_.v51 = v16;
+        v44_.v48 = v18;
+        v44_.v49 = v17;
+        v44_.v45 = 5;
+        v19 = Manager_bc6460_alt3(*(_QWORD**)eft_g_effectSystem_ptr[0],
+                                  (__int64)v44_.v44, 0),
+        v20 = COERCE_AS(__typeof__(v20),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v0", "=w")),
+        v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v1", "=w"));
+        GameHr_14a10d0_alt1(&v42_.v42, (__int64)v19, v20,
+                            (__int64)&GameData_1a9f09e),
+            v20 = COERCE_AS(__typeof__(v20),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v33 =
+                COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v0", "=w")),
+            v34 =
+                COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v1", "=w"));
+        v21 = v42_.v42;
+        v22 = v42_.v43;
+        if (v42_.v43 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v42_.v43 + 8), 1u,
                                     memory_order_relaxed);
         }
-        v22 = *(_QWORD*)(a1 + 160);
-        *(_QWORD*)(a1 + 152) = v20;
-        *(_QWORD*)(a1 + 160) = v21;
+        v23 = *(_QWORD*)(a1 + 160);
+        *(_QWORD*)(a1 + 152) = v21;
+        *(_QWORD*)(a1 + 160) = v22;
+        if (v23 != 0) {
+          if (atomic_fetch_add((atomic_ullong* volatile)(v23 + 8),
+                               0xFFFFFFFFFFFFFFFFLL) == 0) {
+            (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23),
+                v20 =
+                    COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v33 = COERCE_AS(__typeof__(v33),
+                                PSEUDO_REGISTER(__n128, "v0", "=w")),
+                v34 = COERCE_AS(__typeof__(v34),
+                                PSEUDO_REGISTER(__n128, "v1", "=w"));
+            std___1___shared_weak_count___release_weak_alt2(v23),
+                v20 =
+                    COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v33 = COERCE_AS(__typeof__(v33),
+                                PSEUDO_REGISTER(__n128, "v0", "=w")),
+                v34 = COERCE_AS(__typeof__(v34),
+                                PSEUDO_REGISTER(__n128, "v1", "=w"));
+          }
+          v22 = *(_QWORD*)(a1 + 160);
+        }
         if (v22 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v22 + 8), 1u,
+                                    memory_order_relaxed);
           if (atomic_fetch_add((atomic_ullong* volatile)(v22 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22);
-            std___1___shared_weak_count___release_weak_alt1(v22);
+            (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22),
+                v20 =
+                    COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v33 = COERCE_AS(__typeof__(v33),
+                                PSEUDO_REGISTER(__n128, "v0", "=w")),
+                v34 = COERCE_AS(__typeof__(v34),
+                                PSEUDO_REGISTER(__n128, "v1", "=w"));
+            std___1___shared_weak_count___release_weak_alt2(v22),
+                v20 =
+                    COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v33 = COERCE_AS(__typeof__(v33),
+                                PSEUDO_REGISTER(__n128, "v0", "=w")),
+                v34 = COERCE_AS(__typeof__(v34),
+                                PSEUDO_REGISTER(__n128, "v1", "=w"));
           }
-          v21 = *(_QWORD*)(a1 + 160);
         }
-        if (v21 != 0) {
-          atomic_fetch_add_explicit((atomic_ullong* volatile)(v21 + 8), 1u,
-                                    memory_order_relaxed);
-          if (atomic_fetch_add((atomic_ullong* volatile)(v21 + 8),
-                               0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(__int64))(*(_QWORD*)v21 + 16LL))(v21);
-            std___1___shared_weak_count___release_weak_alt1(v21);
-          }
-        }
-        v23 = v40;
-        if (v40 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v40 + 8),
-                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-          (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23);
-          std___1___shared_weak_count___release_weak_alt1(v23);
+        v24 = v42_.v43;
+        if (v42_.v43 != 0 &&
+            atomic_fetch_add((atomic_ullong* volatile)(v42_.v43 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v24 + 16LL))(v24),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v33 = COERCE_AS(__typeof__(v33),
+                              PSEUDO_REGISTER(__n128, "v0", "=w")),
+              v34 = COERCE_AS(__typeof__(v34),
+                              PSEUDO_REGISTER(__n128, "v1", "=w"));
+          std___1___shared_weak_count___release_weak_alt2(v24),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v33 = COERCE_AS(__typeof__(v33),
+                              PSEUDO_REGISTER(__n128, "v0", "=w")),
+              v34 = COERCE_AS(__typeof__(v34),
+                              PSEUDO_REGISTER(__n128, "v1", "=w"));
         }
         result = *(_QWORD*)(a1 + 152);
-        v24 = *(_QWORD*)result;
+        v25 = *(_QWORD*)result;
         if (*(_QWORD*)result != 0 &&
-            *(_DWORD*)(v24 + 16) == *(_DWORD*)(result + 8)) {
-          v25 = *(_DWORD*)(v24 + 36);
-          if (v25 == 0) {
+            *(_DWORD*)(v25 + 16) == *(_DWORD*)(result + 8)) {
+          v26 = *(_DWORD*)(v25 + 36);
+          if (v26 == 0) {
             goto LABEL_67;
           }
-          for (i = 0; i < v25; ++i) {
-            if ((int)v25 > (int)i) {
-              v27 = *(_QWORD*)(v24 + 40 + 8LL * (int)i);
-              if (v27 != 0) {
-                *(_OWORD*)(v27 + 32) = GameData_1a83390;
-                *(_BYTE*)(v27 + 128) = 1;
-                v25 = *(_DWORD*)(v24 + 36);
+          for (i = 0; i < v26; ++i) {
+            if ((int)v26 > (int)i) {
+              v28 = *(_QWORD*)(v25 + 40 + 8LL * (int)i);
+              if (v28 != 0) {
+                *(_OWORD*)(v28 + 32) = GameData_1a83390;
+                *(_BYTE*)(v28 + 128) = 1;
+                v26 = *(_DWORD*)(v25 + 36);
               }
             }
           }
           result = *(_QWORD*)(a1 + 152);
-          v24 = *(_QWORD*)result;
+          v25 = *(_QWORD*)result;
           if (*(_QWORD*)result != 0) {
           LABEL_67:
-            if (*(_DWORD*)(v24 + 16) == *(_DWORD*)(result + 8)) {
-              v28 = *(_DWORD*)(v24 + 36);
-              if (v28 != 0) {
-                v29 = 0;
-                v30 = *(_OWORD*)(*(_QWORD*)(a1 + 168) + 48LL);
+            if (*(_DWORD*)(v25 + 16) == *(_DWORD*)(result + 8)) {
+              v29 = *(_DWORD*)(v25 + 36);
+              if (v29 != 0) {
+                v30 = 0;
+                v31 = *(_OWORD*)(*(_QWORD*)(a1 + 168) + 48LL);
                 do {
-                  if ((int)v28 > (int)v29) {
-                    v31 = *(_QWORD*)(v24 + 40 + 8LL * (int)v29);
-                    if (v31 != 0) {
-                      *(_OWORD*)(v31 + 16) = v30;
-                      *(_BYTE*)(v31 + 128) = 1;
-                      v28 = *(_DWORD*)(v24 + 36);
+                  if ((int)v29 > (int)v30) {
+                    v32 = *(_QWORD*)(v25 + 40 + 8LL * (int)v30);
+                    if (v32 != 0) {
+                      *(_OWORD*)(v32 + 16) = v31;
+                      *(_BYTE*)(v32 + 128) = 1;
+                      v29 = *(_DWORD*)(v25 + 36);
                     }
                   }
-                  ++v29;
-                } while (v29 < v28);
+                  ++v30;
+                } while (v30 < v29);
               }
             }
           }
-          GameRoutine_14a3920(result);
-          v32 = *(__int64**)(a1 + 152);
-          v33 = *v32;
-          if (*v32 != 0 && *(_DWORD*)(v33 + 16) == *((_DWORD*)v32 + 2)) {
-            v34 = *(unsigned int*)(v33 + 36);
-            if ((_DWORD)v34 != 0) {
-              for (j = 0; j < v34; ++j) {
-                v36 = *(_QWORD*)(v33 + 40 + 8 * j);
-                if (v36 != 0) {
+          game_14a3920(result),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v33 = COERCE_AS(__typeof__(v33),
+                              PSEUDO_REGISTER(__n128, "v0", "=w")),
+              v34 = COERCE_AS(__typeof__(v34),
+                              PSEUDO_REGISTER(__n128, "v1", "=w"));
+          v35 = *(__int64**)(a1 + 152);
+          v36 = *v35;
+          if (*v35 != 0 && *(_DWORD*)(v36 + 16) == *((_DWORD*)v35 + 2)) {
+            v37 = *(unsigned int*)(v36 + 36);
+            if ((_DWORD)v37 != 0) {
+              for (j = 0; j < v37; ++j) {
+                v39 = *(_QWORD*)(v36 + 40 + 8 * j);
+                if (v39 != 0) {
                   result =
-                      (*(__int64 (**)(__int64))(*(_QWORD*)v36 + 96LL))(v36);
+                      (*(__int64 (**)(__int64))(*(_QWORD*)v39 + 96LL))(v39),
+                  v20 = COERCE_AS(
+                      __typeof__(v20),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v33 = COERCE_AS(__typeof__(v33),
+                                  PSEUDO_REGISTER(__n128, "v0", "=w")),
+                  v34 = COERCE_AS(__typeof__(v34),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w"));
                   if ((result & 1) != 0) {
                     return result;
                   }
-                  v34 = *(unsigned int*)(v33 + 36);
+                  v37 = *(unsigned int*)(v36 + 36);
                 }
               }
             }
           }
-          result = game_gmap_133de90_alt1(*(_QWORD*)(a1 + 168), 2);
-          v37 = *(_BYTE**)(a1 + 16);
-          if (v37 != nullptr) {
-            v38 = *v37 - 9;
-            if (v38 <= 7u && ((0xE7u >> v38) & 1) != 0) {
-              v12 = 128;
+          result = game_gmap_133de90(*(_QWORD*)(a1 + 168), 2, v33, v34),
+          v20 = COERCE_AS(__typeof__(v20),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v0", "=w")),
+          v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v1", "=w"));
+          v40 = *(_BYTE**)(a1 + 16);
+          if (v40 != nullptr) {
+            v41 = *v40 - 9;
+            if (v41 <= 7u && ((0xE7u >> v41) & 1) != 0) {
+              v13 = 128;
             LABEL_22:
-              *(_WORD*)(a1 + 136) |= v12;
+              *(_WORD*)(a1 + 136) |= v13;
             }
           }
         }
@@ -8510,17 +8862,21 @@ __int64 game_gmap_152bb80(__int64 a1)
       }
     }
   }
-  result = game_gmap_133de90_alt1(*(_QWORD*)(a1 + 168), 2);
-  v7 = *(unsigned __int8**)(a1 + 16);
-  if (v7 != nullptr) {
-    v8 = *v7;
-    v9 = v8 > 0x10;
-    v10 = (1 << v8) & 0x1CE00;
-    if (!v9 && v10 != 0) {
+  result = game_gmap_133de90(*(_QWORD*)(a1 + 168), 2, a2, a3),
+  v20 = COERCE_AS(__typeof__(v20),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v0", "=w")),
+  v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  v8 = *(unsigned __int8**)(a1 + 16);
+  if (v8 != nullptr) {
+    v9 = *v8;
+    v10 = v9 > 0x10;
+    v11 = (1 << v9) & 0x1CE00;
+    if (!v10 && v11 != 0) {
       *(_WORD*)(a1 + 136) |= 0x80u;
     }
   }
-  v12 = 8;
+  v13 = 8;
   goto LABEL_22;
 }
 

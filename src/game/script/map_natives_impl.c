@@ -20,16 +20,27 @@ extern __int64* GameData_212cfb0[12];
 extern __int64* GameData_21309c8[5];
 extern __int64* as_g_script_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_1174210(void);
-__int64 map_Dispos(__int64 a1, __int16 a2, __int64 a3);
-__int64 map_DisposSingle(__int64 a1, char a2, char a3, __int16 a4, __int64 a5);
+__int64 map_Dispos_alt1(__int64 a1, __int16 a2,
+                        __int64 a3) __asm__("map_Dispos");
+__int64 map_DisposSingle_alt1(__int64 a1, char a2, char a3, __int16 a4,
+                              __int64 a5) __asm__("map_DisposSingle");
 __int64 map_DisposGetDataNum(__int64 a1);
 __int64 map_DisposIsEnable(__int64 a1, int a2);
 __int64 map_DisposGetPosX(__int64 a1, int a2);
 __int64 map_DisposGetPosZ(__int64 a1, int a2);
 _QWORD* map_SetRainEnable(char a1);
+_QWORD* game_script_WaitProc_alt1() __asm__("game_script_WaitProc");
+__int64 GameRoutine_73b790_alt1(__int64, __int64) __asm__("GameRoutine_73b790");
+__int64 as_string_c_str_alt1(__int64) __asm__("as_string_c_str");
+__int64
+game_script_StartWaitProc_alt1(__int64) __asm__("game_script_StartWaitProc");
+_QWORD* map_Dispos(__int64 a1, __int16 a2, __int64 a3);
+_QWORD* map_DisposSingle(__int64 a1, char a2, char a3, __int16 a4, __int64 a5);
 
-__int64 map_Dispos(__int64 a1, __int16 a2, __int64 a3)
+_QWORD* map_Dispos(__int64 a1, __int16 a2, __int64 a3)
 {
+
+#pragma clang fp contract(off)
   __int64* v6;
   __int64 v7;
   __int64 v8;
@@ -48,10 +59,13 @@ __int64 map_Dispos(__int64 a1, __int16 a2, __int64 a3)
   __int64 v22;
   __int64 v23;
   __int64 v24;
-  __int64 v25;
-  __int16 v26;
-  __int16 v27;
-  __int64 v28;
+  struct {
+    __int64 v25;
+    __int16 v26;
+    __int16 v27;
+    char gap20_[4];
+    __int64 v28;
+  } v25_;
 
   v6 = as_g_script_manager_ptr;
   v7 = *as_g_script_manager_ptr;
@@ -64,7 +78,7 @@ __int64 map_Dispos(__int64 a1, __int16 a2, __int64 a3)
   if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(v9 + 24) + 456LL))(
            *(_QWORD*)(v9 + 24)) &
        1) == 0) {
-    return game_script_WaitProc();
+    return game_script_WaitProc_alt1();
   }
   v10 = GameData_212cfb0[0];
   v11 = (_QWORD*)*GameData_212cfb0[0];
@@ -85,12 +99,12 @@ __int64 map_Dispos(__int64 a1, __int16 a2, __int64 a3)
   }
   v13 = 0;
 LABEL_11:
-  v25 = as_string_c_str(a1);
-  v27 = a2;
-  v26 = -1;
-  v28 = as_string_c_str(a3);
-  v15 = GameRoutine_73b790(v13, &v25);
-  game_script_StartWaitProc(v15);
+  v25_.v25 = as_string_c_str_alt1(a1);
+  v25_.v27 = a2;
+  v25_.v26 = -1;
+  v25_.v28 = as_string_c_str_alt1(a3);
+  v15 = GameRoutine_73b790_alt1(v13, (__int64)&v25_.v25);
+  game_script_StartWaitProc_alt1(v15);
   v16 = (_QWORD*)*v10;
   if (*v10 != 0 ||
       (v16 = *(_QWORD**)GameData_212eb20[0],
@@ -118,8 +132,8 @@ LABEL_11:
            : (v20 = 3),
        (v20 & v19) != 0)) {
     v21 = *(float*)(v18 + 144);
-    if (v21 < 1.0) {
-      v21 = 1.0;
+    if (v21 < 0x1.0000000000000p+0f) {
+      v21 = 0x1.0000000000000p+0f;
     }
     *(_WORD*)(v18 + 136) = *(_WORD*)(v18 + 136) & 0xFF97 | 0x20;
     *(float*)(v18 + 144) = v21;
@@ -131,12 +145,14 @@ LABEL_11:
                                                     72LL))(as_g_thread_info) +
                4384);
   v24 = (*(__int64 (**)(__int64))(*(_QWORD*)v23 + 472LL))(v23);
-  return (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(v24 + 24) + 448LL))(
-      *(_QWORD*)(v24 + 24), 0);
+  return (_QWORD*)(*(__int64 (**)(_QWORD, _QWORD))(
+      **(_QWORD**)(v24 + 24) + 448LL))(*(_QWORD*)(v24 + 24), 0);
 }
 
-__int64 map_DisposSingle(__int64 a1, char a2, char a3, __int16 a4, __int64 a5)
+_QWORD* map_DisposSingle(__int64 a1, char a2, char a3, __int16 a4, __int64 a5)
 {
+
+#pragma clang fp contract(off)
   __int64* v10;
   __int64 v11;
   __int64 v12;
@@ -155,11 +171,14 @@ __int64 map_DisposSingle(__int64 a1, char a2, char a3, __int16 a4, __int64 a5)
   __int64 v26;
   __int64 v27;
   __int64 v28;
-  __int64 v29;
-  char v30;
-  char v31;
-  __int16 v32;
-  __int64 v33;
+  struct {
+    __int64 v29;
+    char v30;
+    char v31;
+    __int16 v32;
+    char gap20_[4];
+    __int64 v33;
+  } v29_;
 
   v10 = as_g_script_manager_ptr;
   v11 = *as_g_script_manager_ptr;
@@ -172,7 +191,7 @@ __int64 map_DisposSingle(__int64 a1, char a2, char a3, __int16 a4, __int64 a5)
   if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(v13 + 24) + 456LL))(
            *(_QWORD*)(v13 + 24)) &
        1) == 0) {
-    return game_script_WaitProc();
+    return game_script_WaitProc_alt1();
   }
   v14 = GameData_212cfb0[0];
   v15 = (_QWORD*)*GameData_212cfb0[0];
@@ -193,13 +212,13 @@ __int64 map_DisposSingle(__int64 a1, char a2, char a3, __int16 a4, __int64 a5)
   }
   v17 = 0;
 LABEL_11:
-  v29 = as_string_c_str(a1);
-  v30 = a2;
-  v31 = a3;
-  v32 = a4;
-  v33 = as_string_c_str(a5);
-  v19 = GameRoutine_73b790(v17, &v29);
-  game_script_StartWaitProc(v19);
+  v29_.v29 = as_string_c_str_alt1(a1);
+  v29_.v30 = a2;
+  v29_.v31 = a3;
+  v29_.v32 = a4;
+  v29_.v33 = as_string_c_str_alt1(a5);
+  v19 = GameRoutine_73b790_alt1(v17, (__int64)&v29_.v29);
+  game_script_StartWaitProc_alt1(v19);
   v20 = (_QWORD*)*v14;
   if (*v14 != 0 ||
       (v20 = *(_QWORD**)GameData_212eb20[0],
@@ -227,8 +246,8 @@ LABEL_11:
            : (v24 = 3),
        (v24 & v23) != 0)) {
     v25 = *(float*)(v22 + 144);
-    if (v25 < 1.0) {
-      v25 = 1.0;
+    if (v25 < 0x1.0000000000000p+0f) {
+      v25 = 0x1.0000000000000p+0f;
     }
     *(_WORD*)(v22 + 136) = *(_WORD*)(v22 + 136) & 0xFF97 | 0x20;
     *(float*)(v22 + 144) = v25;
@@ -240,8 +259,8 @@ LABEL_11:
                                                     72LL))(as_g_thread_info) +
                4384);
   v28 = (*(__int64 (**)(__int64))(*(_QWORD*)v27 + 472LL))(v27);
-  return (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(v28 + 24) + 448LL))(
-      *(_QWORD*)(v28 + 24), 0);
+  return (_QWORD*)(*(__int64 (**)(_QWORD, _QWORD))(
+      **(_QWORD**)(v28 + 24) + 448LL))(*(_QWORD*)(v28 + 24), 0);
 }
 
 __int64 map_DisposGetDataNum(__int64 a1)

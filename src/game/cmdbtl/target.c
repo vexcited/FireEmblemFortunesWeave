@@ -26,6 +26,10 @@ __int64 Target_f47270(__int64 a1);
 __int64 Target_f476f0(__int64 a1, __int64 a2);
 __int64 Target_f477e0(__int64 a1, __int64 a2, __int64* a3);
 __int64 game_cmdbtl_Target_CalcLink_lambda0_Invoke(_QWORD* a1, __int64* a2);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 __n128 Target_Destructor(_QWORD* a1)
 {
@@ -118,72 +122,123 @@ unsigned __int8* game_cmdbtl_Target_CalcLink(__int64 a1)
   __int64 v12;
   _QWORD* v13;
   __int64 v14;
-  _QWORD v15[4];
-  _QWORD* v16;
-  __int64 v17;
-  unsigned __int8* v18;
-  __int64 v19;
-  __int64 v20;
+  struct {
+    _QWORD v15[4];
+    _QWORD* v16;
+  } v15_;
+  struct {
+    __int64 v17;
+    unsigned __int8* v18;
+  } v17_;
+  struct {
+    __int64 v19;
+    __int64 v20;
+  } v19_;
   _QWORD* v21;
 
+  v4 = COERCE_AS(__typeof__(v4),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v5 = COERCE_AS(__typeof__(v5),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
+  v6 = COERCE_AS(__typeof__(v6),
+                 PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
   result = *(unsigned __int8**)(a1 + 8);
   if ((unsigned int)result[8] - 7 <= 2) {
     v3 = (_QWORD*)(*(__int64 (**)(unsigned __int8*))(*(_QWORD*)result + 16LL))(
-        result);
+        result),
+    v4 = COERCE_AS(__typeof__(v4),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v5 = COERCE_AS(__typeof__(v5),
+                   PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
+    v6 = COERCE_AS(__typeof__(v6),
+                   PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
     v8 = v3[10];
     v7 = v3[11];
     v21 = v3;
-    v17 = v8;
-    v18 = (unsigned __int8*)v7;
+    v17_.v17 = v8;
+    v17_.v18 = (unsigned __int8*)v7;
     if (v7 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 16), 1u,
                                 memory_order_relaxed);
     }
     v9 = (__int64*)v3[5];
     v10 = (__int64*)v3[6];
-    v15[0] = GameData_1ff4ea8;
-    v15[1] = a1;
-    v15[2] = &v21;
-    v15[3] = &v17;
-    v16 = v15;
+    v15_.v15[0] = GameData_1ff4ea8;
+    v15_.v15[1] = a1;
+    v15_.v15[2] = &v21;
+    v15_.v15[3] = &v17_.v17;
+    v15_.v16 = v15_.v15;
     if (v9 == v10) {
-      v13 = v15;
+      v13 = v15_.v15;
     }
     else {
       do {
-        v19 = *v9;
+        v19_.v19 = *v9;
         v11 = v9[1];
-        v20 = v11;
+        v19_.v20 = v11;
         if (v11 != 0) {
           atomic_fetch_add_explicit((atomic_ullong* volatile)(v11 + 8), 1u,
                                     memory_order_relaxed);
         }
-        if (v16 == nullptr) {
-          GameRoutine_60a310(0, v4, v5);
+        if (v15_.v16 == nullptr) {
+          GameRoutine_60a310_alt1(),
+              v4 = COERCE_AS(__typeof__(v4),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v5 = COERCE_AS(__typeof__(v5),
+                             PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
+              v6 = COERCE_AS(__typeof__(v6),
+                             PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
         }
-        (*(void (**)(_QWORD*, __int64*))(*v16 + 48LL))(v16, &v19);
-        v12 = v20;
-        if (v20 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v20 + 8),
-                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-          (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-          std___1___shared_weak_count___release_weak(v12);
+        (*(void (**)(_QWORD*, __int64*))(*v15_.v16 + 48LL))(v15_.v16,
+                                                            &v19_.v19),
+            v4 = COERCE_AS(__typeof__(v4),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v5 = COERCE_AS(__typeof__(v5),
+                           PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
+            v6 = COERCE_AS(__typeof__(v6),
+                           PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+        v12 = v19_.v20;
+        if (v19_.v20 != 0 &&
+            atomic_fetch_add((atomic_ullong* volatile)(v19_.v20 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12),
+              v4 = COERCE_AS(__typeof__(v4),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v5 = COERCE_AS(__typeof__(v5),
+                             PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
+              v6 = COERCE_AS(__typeof__(v6),
+                             PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+          std___1___shared_weak_count___release_weak_alt1(v12),
+              v4 = COERCE_AS(__typeof__(v4),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v5 = COERCE_AS(__typeof__(v5),
+                             PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
+              v6 = COERCE_AS(__typeof__(v6),
+                             PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
         }
         v9 += 2;
       } while (v9 != v10);
-      v13 = v16;
-      if (v16 != v15) {
-        if (v16 == nullptr) {
+      v13 = v15_.v16;
+      if (v15_.v16 != v15_.v15) {
+        if (v15_.v16 == nullptr) {
           goto LABEL_19;
         }
         v14 = 40;
       LABEL_18:
         (*(void (**)(_QWORD*, __int64, __int64, __int64))(*v13 + v14))(v13, v4,
-                                                                       v5, v6);
+                                                                       v5, v6),
+            v4 = COERCE_AS(__typeof__(v4),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v5 = COERCE_AS(__typeof__(v5),
+                           PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
+            v6 = COERCE_AS(__typeof__(v6),
+                           PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
       LABEL_19:
-        result = v18;
-        if (v18 != nullptr) {
-          return (unsigned __int8*)std___1___shared_weak_count___release_weak(
-              v18);
+        result = v17_.v18;
+        if (v17_.v18 != nullptr) {
+          return (unsigned __int8*)
+              std___1___shared_weak_count___release_weak_alt1(
+                  (__int64)v17_.v18);
         }
         return result;
       }

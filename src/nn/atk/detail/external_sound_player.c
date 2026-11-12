@@ -196,7 +196,7 @@ __int64 ExternalSoundPlayer_282e40(__int64 result, int a2)
       v6 = *(_QWORD*)(v6 + 8);
       ++v5;
     } while (v6 != v2);
-    if (v5 <= *(_DWORD*)(v3 + 24)) {
+    if (v5 <= (signed __int32)*(_DWORD*)(v3 + 24)) {
       break;
     }
     while (1) {

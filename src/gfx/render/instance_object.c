@@ -21,9 +21,10 @@ void __attribute__((noreturn)) GameRoutine_bffec0(void);
 __int64 InstanceObject_bff9e0(__int64 result, int a2, __int64* a3, __int64* a4,
                               __int64* a5, __int64* a6);
 __int64 InstanceObject_bffc20(__int64** a1, __int64 a2);
-__int64* InstanceObject_bffee0(__int64* result, __int64* a2, __int64** a3,
-                               unsigned __int64 a4, __int64* a5,
-                               signed __int64 a6);
+__int64*
+InstanceObject_bffee0_alt1(__int64* result, __int64* a2, __int64** a3,
+                           unsigned __int64 a4, __int64* a5,
+                           signed __int64 a6) __asm__("InstanceObject_bffee0");
 __int64* InstanceObject_c00180(__int64* result, __int64* a2, __int64** a3,
                                unsigned __int64 a4, __int64* a5);
 __int64 gfx_render_InstanceObject_CollectElements_lambda0_Invoke(__int64 result,
@@ -38,6 +39,8 @@ __int64 gfx_render_InstanceObject_CollectElements(__int64 result, __int64 a2,
 __int64 memmove(_QWORD, _QWORD, _QWORD);
 char* InstanceObject_c00420(char* result, char* a2, char* a3, __int64** a4,
                             __int64 a5, __int64 a6, __int64 a7, __int64 a8);
+__int64* InstanceObject_bffee0(__int64* result, __int64* a2, __int64** a3,
+                               unsigned __int64 a4, __int64* a5, __int64 a6);
 
 _QWORD* InstanceObject_Destructor(_QWORD* result)
 {
@@ -616,9 +619,10 @@ __int64 InstanceObject_bffc20(__int64** a1, __int64 a2)
 }
 
 __int64* InstanceObject_bffee0(__int64* result, __int64* a2, __int64** a3,
-                               unsigned __int64 a4, __int64* a5,
-                               signed __int64 a6)
+                               unsigned __int64 a4, __int64* a5, __int64 a6)
 {
+
+#pragma clang fp contract(off)
   __int64 v6;
   __int64 v7;
   __int64* v8;
@@ -631,7 +635,7 @@ __int64* InstanceObject_bffee0(__int64* result, __int64* a2, __int64** a3,
   __int64 v15;
   unsigned __int64 v16;
   unsigned __int64 v18;
-  __int64* v19;
+  char* v19;
   __int64* v23;
   __int64* v26;
   __int64* v27;
@@ -662,10 +666,9 @@ __int64* InstanceObject_bffee0(__int64* result, __int64* a2, __int64** a3,
       if ((__int64)a4 <= a6) {
         v23 = result;
         v26 = a5;
-        ((void (*)(void))InstanceObject_c00180_alt1)();
+        InstanceObject_c00180(result, &result[v16], a3, a4 >> 1, a5);
         v27 = &v26[v16];
-        result =
-            (__int64*)InstanceObject_c00180_alt1(&v23[v16], a2, a3, v18, v27);
+        result = InstanceObject_c00180(&v23[v16], a2, a3, v18, v27);
         v28 = &v26[a4];
         v29 = v27;
         while (v29 != v28) {
@@ -703,11 +706,11 @@ __int64* InstanceObject_bffee0(__int64* result, __int64* a2, __int64** a3,
         }
       }
       else {
-        v19 = result;
+        v19 = (char*)result;
         InstanceObject_bffee0(result, &result[v16], a3, a4 >> 1, a5, a6);
-        InstanceObject_bffee0(&v19[v16], a2, a3, v18, a5, a6);
-        return (__int64*)GameRoutine_c00420(v19, &v19[v16], a2, a3, v16, v18,
-                                            a5, a6);
+        InstanceObject_bffee0((__int64*)&v19[8 * v16], a2, a3, v18, a5, a6);
+        return (__int64*)InstanceObject_c00420(v19, &v19[8 * v16], (char*)a2,
+                                               a3, v16, v18, (__int64)a5, a6);
       }
     }
     else if (result != a2) {
@@ -799,8 +802,9 @@ __int64* InstanceObject_c00180(__int64* result, __int64* a2, __int64** a3,
       v17 = result;
       v22 = &result[a4 >> 1];
       v23 = 8 * (a4 >> 1);
-      InstanceObject_bffee0(result, v22, a3, v16, a5, v16);
-      result = InstanceObject_bffee0(v22, a2, a3, a4 - v16, &a5[v16], a4 - v16);
+      InstanceObject_bffee0_alt1(result, v22, a3, v16, a5, v16);
+      result =
+          InstanceObject_bffee0_alt1(v22, a2, a3, a4 - v16, &a5[v16], a4 - v16);
       if (v23 != 0) {
         v24 = v22;
         v25 = a5;

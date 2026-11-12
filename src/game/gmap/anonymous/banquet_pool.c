@@ -49,6 +49,11 @@ extern __int64 game_TransporterConst_List_instance_;
 __int64 game_gmap_anonymous_BanquetPool_OnInit(__int64* a1);
 bool game_gmap_anonymous_BanquetPool_SortAndFilter_closure_Invoke_1646570(
     __int64 a1, _QWORD* a2, int** a3);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 const char* BanquetPool_Unknown43(__int64 a1, char a2)
 {
@@ -140,14 +145,26 @@ __int64 BanquetPool_Unknown128(__int64 a1)
   __int64 v13;
   __int64 result;
   __int64 v15;
-  _QWORD v16[4];
-  _QWORD* v17;
-  _QWORD v18[4];
-  _QWORD* v19;
+  struct {
+    _QWORD v16[4];
+    _QWORD* v17;
+  } v16_;
+  struct {
+    _QWORD v18[4];
+    _QWORD* v19;
+  } v18_;
   __int64 v20;
 
-  v2 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      88, 16, 0);
+  v3 = COERCE_AS(__typeof__(v3),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v4 = COERCE_AS(__typeof__(v4),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+  v2 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 88, 16, 0),
+  v3 = COERCE_AS(__typeof__(v3),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v4 = COERCE_AS(__typeof__(v4),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   *(_QWORD*)(v2 + 80) = 0;
   v5 = v2;
   *(_QWORD*)(v2 + 16) = 0;
@@ -164,25 +181,33 @@ __int64 BanquetPool_Unknown128(__int64 a1)
   *(_QWORD*)(v2 + 8) = 0;
   v6 = *(_QWORD*)(a1 + 344);
   if (v6 != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v6 + 8LL))(v6);
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 8LL))(v6),
+        v3 = COERCE_AS(__typeof__(v3),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v4 = COERCE_AS(__typeof__(v4),
+                       PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   }
   v7 = *(_QWORD*)(a1 + 1056);
   *(_QWORD*)(v5 + 8) = a1;
   *(_QWORD*)(a1 + 344) = v5;
   if (v7 != 0) {
-    v7 = __dynamic_cast(v7, GameData_21319e8[0], &GameData_20702e8, 0);
+    v7 = __dynamic_cast(v7, GameData_21319e8[0], &GameData_20702e8, 0),
+    v3 = COERCE_AS(__typeof__(v3),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v4 = COERCE_AS(__typeof__(v4),
+                   PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   }
   v20 = v7;
-  v16[0] = GameData_2071bc8;
-  v16[1] = a1;
-  v17 = v16;
-  v8 = v18;
-  v16[2] = &v20;
+  v16_.v16[0] = GameData_2071bc8;
+  v16_.v16[1] = a1;
+  v16_.v17 = v16_.v16;
+  v8 = v18_.v18;
+  v16_.v16[2] = &v20;
   v9 = *(_QWORD*)(*(_QWORD*)game_TransporterConst_List_instance__ptr[0] + 8LL);
-  v18[2] = v16;
-  v19 = v18;
-  v18[0] = GameData_212d7f8[0] + 2;
-  v18[1] = 20;
+  v18_.v18[2] = v16_.v16;
+  v18_.v19 = v18_.v18;
+  v18_.v18[0] = GameData_212d7f8[0] + 2;
+  v18_.v18[1] = 20;
   v10 = *(unsigned int*)(v9 + 80);
   if ((int)v10 < 1) {
     goto LABEL_14;
@@ -192,38 +217,50 @@ __int64 BanquetPool_Unknown128(__int64 a1)
   do {
     v3 = *(_QWORD*)(v9 + 8) + v11;
     if (*(_WORD*)(v3 + 2) != 0) {
-      if (v19 == nullptr) {
-        GameRoutine_60a310(0, v3);
+      if (v18_.v19 == nullptr) {
+        GameRoutine_60a310_alt1(),
+            v3 = COERCE_AS(__typeof__(v3),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v4 = COERCE_AS(__typeof__(v4),
+                           PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
       }
-      (*(void (**)(_QWORD*))(*v19 + 48LL))(v19);
+      (*(void (**)(_QWORD*))(*v18_.v19 + 48LL))(v18_.v19),
+          v3 = COERCE_AS(__typeof__(v3),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v4 = COERCE_AS(__typeof__(v4),
+                         PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
     }
     v11 += 12;
   } while (v12 != v11);
-  v8 = v19;
-  if (v19 == v18) {
+  v8 = v18_.v19;
+  if (v18_.v19 == v18_.v18) {
   LABEL_14:
     v13 = 32;
   }
   else {
-    if (v19 == nullptr) {
+    if (v18_.v19 == nullptr) {
       goto LABEL_16;
     }
     v13 = 40;
   }
-  (*(void (**)(_QWORD*, __int64, __int64))(*v8 + v13))(v8, v3, v4);
-
+  (*(void (**)(_QWORD*, __int64, __int64))(*v8 + v13))(v8, v3, v4),
+      v3 = COERCE_AS(__typeof__(v3),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v4 = COERCE_AS(__typeof__(v4),
+                     PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
 LABEL_16:
-  result = (__int64)v17;
-  if (v17 == v16) {
+  result = (__int64)v16_.v17;
+  if (v16_.v17 == v16_.v16) {
     v15 = 32;
   }
   else {
-    if (v17 == nullptr) {
+    if (v16_.v17 == nullptr) {
       return result;
     }
     v15 = 40;
   }
-  return (*(__int64 (**)(_QWORD*, __int64, __int64))(*v17 + v15))(v17, v3, v4);
+  return (*(__int64 (**)(_QWORD*, __int64, __int64))(*v16_.v17 + v15))(v16_.v17,
+                                                                       v3, v4);
 }
 
 __int64 BanquetPool_Unknown144(__int64 a1, char a2)

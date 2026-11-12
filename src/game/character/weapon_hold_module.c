@@ -17,7 +17,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_21f4d44;
 extern int* GameData_212df08;
 void GameRoutine_109d2e0(__int64, __int64, __int64, __int64, unsigned int);
-__n128 WeaponHoldModule_Destructor(_QWORD* a1);
+__n128 WeaponHoldModule_Destructor_alt1(_QWORD* a1) __asm__(
+    "WeaponHoldModule_Destructor");
 __int64 WeaponHoldModule_DeletingDestructor(_QWORD* a1);
 __int64 game_character_WeaponHoldModule_Start(_QWORD* a1, __int64 a2,
                                               __int64 a3);
@@ -25,17 +26,20 @@ __int64 WeaponHoldModule_112aaa0(__int64 a1);
 float32x4_t game_character_WeaponHoldModule_Start_lambda0_Invoke(__int64 a1,
                                                                  __int64 a2,
                                                                  __int64 a3);
+__int64 GameHr_109d5e0(__int64 result);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 WeaponHoldModule_Destructor(_QWORD* a1);
 
-__n128 WeaponHoldModule_Destructor(_QWORD* a1)
+__int64 WeaponHoldModule_Destructor(_QWORD* a1)
 {
-  __n128 result;
-  __int64 v3;
+  __int64 result;
 
   *a1 = game_character_WeaponHoldModule_vtable;
-  GameRoutine_109d5e0(a1 + 3);
-  v3 = a1[6];
-  if (v3 != 0) {
-    return std___1___shared_weak_count___release_weak(v3);
+  GameHr_109d5e0((__int64)(a1 + 3));
+  result = a1[6];
+  if (result != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(result);
   }
   return result;
 }
@@ -222,6 +226,7 @@ float32x4_t game_character_WeaponHoldModule_Start_lambda0_Invoke(__int64 a1,
   float32x4_t v19;
   float32x4_t result;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v3 = *(_QWORD*)(a1 + 8);
   if (*(_BYTE*)(v3 + 16) == 1) {
     v6 = v3 + 56;

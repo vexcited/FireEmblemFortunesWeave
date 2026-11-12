@@ -13,7 +13,12 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern _UNKNOWN GameData_1acee59;
 extern __int64 GameData_21f4010;
 extern __int64 fw_memory_g_heap_manager_ptr;
-unsigned __int64 ProcDiningScene_StartFade();
+unsigned __int64
+ProcDiningScene_StartFade_alt1() __asm__("ProcDiningScene_StartFade");
+void GameRoutine_14877f0_alt1(__int64, __int64) __asm__("GameRoutine_14877f0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcDiningScene_StartFade();
 
 void ProcDiningScene_92a210()
 {
@@ -23,7 +28,7 @@ void ProcDiningScene_92a210()
   }
 }
 
-unsigned __int64 ProcDiningScene_StartFade()
+void ProcDiningScene_StartFade()
 {
   unsigned __int64 v0;
   unsigned __int64 v1;
@@ -34,12 +39,11 @@ unsigned __int64 ProcDiningScene_StartFade()
   unsigned __int64 v7;
   __int64 v8;
   __int64 v9;
-  unsigned __int64 result;
-  __int64 v11;
-  char v12[16];
-  char v13;
-  unsigned __int64 v14;
-  _BYTE v15[15];
+  __int64 v10;
+  char v11[16];
+  char v12;
+  unsigned __int64 v13;
+  _BYTE v14[15];
 
   v0 = game_HashString((__int64)&GameData_1acee59);
   if (v0 != 0) {
@@ -103,23 +107,20 @@ unsigned __int64 ProcDiningScene_StartFade()
 LABEL_25:
   v8 = 0;
 LABEL_26:
-  GameRoutine_14877f0(v8, 0x13F000000LL);
-  v15[8] = 0;
-  v13 = 32;
-  *(_QWORD*)v15 = 0xA483E3AC82E35F8BLL;
-  v14 = 0xBAE49FA3E95F4553LL;
-  result = X8CALL_X0(
-      unsigned __int64,
-      ForceContinueBGMBinder_1487fc0((void*)((__int64)v12), (__int64)&v13, 0));
-  if ((v13 & 1) != 0 && *(_QWORD*)&v15[7] != 0) {
-    v11 = 128;
+  GameRoutine_14877f0_alt1(v8, 0x13F000000LL);
+  v14[8] = 0;
+  v12 = 32;
+  *(_QWORD*)v14 = 0xA483E3AC82E35F8BLL;
+  v13 = 0xBAE49FA3E95F4553LL;
+  ForceContinueBGMBinder_1487fc0((void*)((__int64)v11), (__int64)&v12, 0);
+  if ((v12 & 1) != 0 && *(_QWORD*)&v14[7] != 0) {
+    v10 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v11 = 56;
+      v10 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, *(_QWORD*)&v15[7]);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v10, *(__int64*)&v14[7]);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

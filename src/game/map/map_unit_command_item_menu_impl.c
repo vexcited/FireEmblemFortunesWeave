@@ -21,6 +21,11 @@ extern __int64* game_g_empty_item_ptr;
 __int64 MapUnitCommandItemMenu_15c0610(_QWORD* a1, __int64 a2);
 __int64 MapUnitCommandItemMenu_15c0710(_QWORD* a1);
 __int64 MapUnitCommandItemMenu_15c0880(_QWORD* a1);
+__int64 game_menu_BasicMenu_Unknown96_alt1(__int64 result) __asm__(
+    "game_menu_BasicMenu_Unknown96");
+void GameRoutine_1566440_alt1(__int64, char) __asm__("GameRoutine_1566440");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 MapUnitCommandItemMenu_15c0610(_QWORD* a1, __int64 a2)
 {
@@ -64,35 +69,37 @@ __int64 MapUnitCommandItemMenu_15c0710(_QWORD* a1)
   __int64* v8;
   __int64 v9;
   char v10;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
+  struct {
+    __int64 v12;
+    __int64 v13;
+    __int64 v14;
+  } v12_;
 
-  game_menu_BasicMenu_Unknown96();
+  game_menu_BasicMenu_Unknown96_alt1((__int64)a1);
   if ((*(unsigned int (**)(_QWORD*))(*a1 + 168LL))(a1)-8 <= 0xFFFFFFF9) {
     (*(void (**)(_QWORD*))(a1[132] + 96LL))(a1 + 132);
   }
   v2 = a1[132];
-  v13 = 0;
-  v14 = 0;
-  v12 = 0;
-  (*(void (**)(_QWORD*, __int64*))(v2 + 80))(a1 + 132, &v12);
-  (*(void (**)(_QWORD*, __int64*))(a1[132] + 88LL))(a1 + 132, &v12);
-  if (v12 == v13) {
+  v12_.v13 = 0;
+  v12_.v14 = 0;
+  v12_.v12 = 0;
+  (*(void (**)(_QWORD*, __int64*))(v2 + 80))(a1 + 132, &v12_.v12);
+  (*(void (**)(_QWORD*, __int64*))(a1[132] + 88LL))(a1 + 132, &v12_.v12);
+  if (v12_.v12 == v12_.v13) {
     v3 = nullptr;
   }
   else {
-    v3 = &v12;
+    v3 = &v12_.v12;
   }
-  GameRoutine_1566440((__int64)v3, 0);
-  if (v12 != 0) {
-    v13 = v12;
+  GameRoutine_1566440_alt1((__int64)v3, 0);
+  if (v12_.v12 != 0) {
+    v12_.v13 = v12_.v12;
     v4 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v4 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4,
-                                  v12);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, v12_.v12);
   }
   v5 = a1[42];
   if (v5 != 0 && (v6 = __dynamic_cast(v5, GameData_212e008[0],

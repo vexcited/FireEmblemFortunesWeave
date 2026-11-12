@@ -40,8 +40,9 @@ void omovie_Manager_SetupGfxResources_lambda0_Invoke(__int64 a1, _WORD* a2);
 _QWORD* Manager_18cff90(_QWORD* result);
 __int64 Manager_18d0010(_QWORD* a1);
 __int64 Manager_18d00b0(__int64 result);
-__int64 omovie_Manager_Main_lambda0_Invoke(__int64 a1, _QWORD* a2, __int64 a3,
-                                           __int64 a4, __int64 a5, __int64* a6);
+__int64 omovie_Manager_Main_lambda0_Invoke_alt1(
+    __int64 a1, _QWORD* a2, __int64 a3, __int64 a4, __int64 a5,
+    __int64* a6) __asm__("omovie_Manager_Main_lambda0_Invoke");
 __int64 GameRoutine_beefc0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                            _QWORD, _QWORD, _QWORD, _QWORD);
 extern __int64 (*GameData_2109008[])();
@@ -49,6 +50,19 @@ extern __int64 (*GameData_2109ae8[])();
 extern __int64 (*GameData_2109b78[])();
 extern __int64 GameData_212c638;
 __int64 Manager_18cf780(__int64 result);
+__int64 gxc_NvnStateCache_BindBlendState_alt1(__int64 result, int) __asm__(
+    "gxc_NvnStateCache_BindBlendState");
+__int64 gxc_NvnStateCache_BindDepthStencilState_alt1(
+    __int64 result, int) __asm__("gxc_NvnStateCache_BindDepthStencilState");
+__int64 gxc_NvnStateCache_BindMultisampleState_alt1(
+    __int64 result, int) __asm__("gxc_NvnStateCache_BindMultisampleState");
+__int64 gxc_NvnStateCache_BindPolygonState_alt1(__int64 result, int) __asm__(
+    "gxc_NvnStateCache_BindPolygonState");
+__int64
+gxc_NvnStateCache_Reset_alt1(__int64 result) __asm__("gxc_NvnStateCache_Reset");
+__int64 omovie_18cd4a0(__int64, __int64);
+__int64 omovie_Manager_Main_lambda0_Invoke(__int64 a1, __int64* a2, __int64 a3,
+                                           __int64 a4, __int64 a5, __int64* a6);
 
 __int64 Manager_18cf680(__int64 a1)
 {
@@ -451,7 +465,7 @@ __int64 Manager_18d00b0(__int64 result)
   return result;
 }
 
-__int64 omovie_Manager_Main_lambda0_Invoke(__int64 a1, _QWORD* a2, __int64 a3,
+__int64 omovie_Manager_Main_lambda0_Invoke(__int64 a1, __int64* a2, __int64 a3,
                                            __int64 a4, __int64 a5, __int64* a6)
 {
   __int64 v6;
@@ -476,63 +490,157 @@ __int64 omovie_Manager_Main_lambda0_Invoke(__int64 a1, _QWORD* a2, __int64 a3,
   __int64 v27;
   _QWORD v28[2];
 
+  v14 = COERCE_AS(__typeof__(v14),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v18 = COERCE_AS(__typeof__(v18),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v6 = *a6;
   v7 = *(_QWORD*)(a1 + 8);
-  result = GameRoutine_18cd4a0(*a6 + 3096, (__int64)a2);
+  result = omovie_18cd4a0(*a6 + 3096, (__int64)a2),
+  v14 = COERCE_AS(__typeof__(v14),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v18 = COERCE_AS(__typeof__(v18),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if ((_DWORD)result == 0) {
     if ((*(_BYTE*)(v6 + 4320) & 1) != 0) {
       if (*(_BYTE*)(v6 + 4865) == 1) {
-        (*(void (**)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))(
+        (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(
             *(_QWORD*)*a2 + 72LL))(*a2, 0, 0, *(unsigned int*)(a5 + 16),
-                                   *(unsigned int*)(a5 + 20));
-        (*(void (**)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))(
+                                   *(unsigned int*)(a5 + 20)),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(
             *(_QWORD*)*a2 + 88LL))(*a2, 0, 0, *(unsigned int*)(a5 + 16),
-                                   *(unsigned int*)(a5 + 20));
-        (*(void (**)(_QWORD, _QWORD, _QWORD))(*(_QWORD*)*a2 + 96LL))(
-            *a2, *(_QWORD*)a5, *(_QWORD*)(a5 + 8));
-        gxc_NvnStateCache_Reset(a2[1]);
-        gxc_NvnStateCache_SetCommandList(a2[1], *a2);
+                                   *(unsigned int*)(a5 + 20)),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(__int64, _QWORD, _QWORD))(*(_QWORD*)*a2 + 96LL))(
+            *a2, *(_QWORD*)a5, *(_QWORD*)(a5 + 8)),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        gxc_NvnStateCache_Reset_alt1(a2[1]),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        gxc_NvnStateCache_SetCommandList(a2[1], *a2),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         v11 = a2[1];
-        gxc_NvnStateCache_BindDepthStencilState(v11,
-                                                (unsigned int)GameData_21fdeb8);
-        gxc_NvnStateCache_BindBlendState(v11, (unsigned int)GameData_21fdee0);
-        gxc_NvnStateCache_BindPolygonState(v11, (unsigned int)GameData_21fdf08);
-        gxc_NvnStateCache_BindMultisampleState(v11,
-                                               (unsigned int)GameData_21fdf14);
-        gxc_NvnStateCache_ClearCommandList(a2[1]);
+        gxc_NvnStateCache_BindDepthStencilState_alt1(v11, GameData_21fdeb8),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        gxc_NvnStateCache_BindBlendState_alt1(v11, GameData_21fdee0),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        gxc_NvnStateCache_BindPolygonState_alt1(v11, GameData_21fdf08),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        gxc_NvnStateCache_BindMultisampleState_alt1(v11, GameData_21fdf14),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        gxc_NvnStateCache_ClearCommandList(a2[1]),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         v12 = *a2;
         v13 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(v6 + 4176) + 40LL))(
-            *(_QWORD*)(v6 + 4176));
+            *(_QWORD*)(v6 + 4176)),
+        v14 = COERCE_AS(__typeof__(v14),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v18 = COERCE_AS(__typeof__(v18),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         (*(void (**)(__int64, __int64, _QWORD, __int64, _QWORD, _QWORD))(
             *(_QWORD*)v12 + 248LL))(v12, 2, 0, v13, v14,
-                                    *(unsigned int*)(v7 + 120));
-        (*(void (**)(_QWORD, __int64, _QWORD))(*(_QWORD*)*a2 + 200LL))(
-            *a2, 3, *(_QWORD*)(*(_QWORD*)(v7 + 128) + 144LL));
-        (*(void (**)(_QWORD, __int64))(*(_QWORD*)*a2 + 264LL))(*a2, 1);
-        return (*(__int64 (**)(_QWORD, __int64, _QWORD))(*(_QWORD*)*a2 +
-                                                         272LL))(*a2, 3, 0);
+                                    *(unsigned int*)(v7 + 120)),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(__int64, __int64, _QWORD))(*(_QWORD*)*a2 + 200LL))(
+            *a2, 3, *(_QWORD*)(*(_QWORD*)(v7 + 128) + 144LL)),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(__int64, __int64))(*(_QWORD*)*a2 + 264LL))(*a2, 1),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        return (*(__int64 (**)(__int64, __int64, _QWORD))(*(_QWORD*)*a2 +
+                                                          272LL))(*a2, 3, 0);
       }
     }
     else {
       result = *(_QWORD*)(v6 + 4176);
       if (result != 0) {
-        v15 = (*(__int64 (**)(__int64))(*(_QWORD*)result + 32LL))(result);
+        v15 = (*(__int64 (**)(__int64))(*(_QWORD*)result + 32LL))(result),
+        v14 = COERCE_AS(__typeof__(v14),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v18 = COERCE_AS(__typeof__(v18),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         v16 = *a2;
         v17 = v15;
         v19 = v18;
-        v20 = (__int64 (**)(__int64))GameData_212e778[0];
-        v21 = (*(__int64 (**)(void))GameData_212e778[0])();
-        v22 = (__int64 (**)(__int64))GameData_212e780;
-        v23 = ((__int64 (*)(__int64))*GameData_212e780)(v17);
+        v20 = (__int64 (**)(__int64))GameData_212e778[0],
+        v14 = COERCE_AS(__typeof__(v14),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v18 = COERCE_AS(__typeof__(v18),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v21 = (*(__int64 (**)(void))GameData_212e778[0])(),
+        v14 = COERCE_AS(__typeof__(v14),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v18 = COERCE_AS(__typeof__(v18),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v22 = (__int64 (**)(__int64))GameData_212e780,
+        v14 = COERCE_AS(__typeof__(v14),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v18 = COERCE_AS(__typeof__(v18),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v23 = ((__int64 (*)(__int64))*GameData_212e780)(v17),
+        v14 = COERCE_AS(__typeof__(v14),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v18 = COERCE_AS(__typeof__(v18),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(
-            *(_QWORD*)v16 + 72LL))(v16, 0, 0, v21, v23);
+            *(_QWORD*)v16 + 72LL))(v16, 0, 0, v21, v23),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         v24 = *a2;
         v25 = (*v20)(v17);
         v26 = (*v22)(v17);
         (*(void (**)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(
-            *(_QWORD*)v24 + 88LL))(v24, 0, 0, v25, v26);
-        (*(void (**)(_QWORD, __int64, __int64))(*(_QWORD*)*a2 + 96LL))(*a2, v17,
-                                                                       v19);
+            *(_QWORD*)v24 + 88LL))(v24, 0, 0, v25, v26),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(__int64, __int64, __int64))(*(_QWORD*)*a2 + 96LL))(
+            *a2, v17, v19),
+            v14 = COERCE_AS(__typeof__(v14),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v18 = COERCE_AS(__typeof__(v18),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         v27 = *a2;
         v28[0] = 0;
         v28[1] = 0;

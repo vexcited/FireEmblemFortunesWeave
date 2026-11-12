@@ -46,6 +46,17 @@ extern __int64* GameData_212c878[6];
 __n128 game_AISupportSkillScope_Update(_BYTE* a1, unsigned int a2,
                                        unsigned int a3);
 bool AISupportSkillScope_11ff100(__int64* a1, int* a2);
+__int64 GameRoutine_747a00_alt1(__int64, __int64, __int64, __int64,
+                                char) __asm__("GameRoutine_747a00");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+void AISupportSkillScope_11ff880_alt1(__int64*, int, int) __asm__(
+    "AISupportSkillScope_11ff880");
+void __attribute__((noreturn))
+GameRoutine_1200020_alt1() __asm__("GameRoutine_1200020");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __n128 game_AISupportSkillScope_Update(_BYTE* a1, unsigned int a2,
                                        unsigned int a3)
@@ -507,16 +518,16 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
   int v14;
   bool v15;
   int v16;
-  unsigned int v17;
+  int v17;
   bool v18;
   int v19;
-  unsigned int v20;
-  __int64 v21;
-  __int64 v22;
+  int v20;
+  int v21;
+  int v22;
   int v23;
   int v24;
   unsigned int* v25;
-  _BOOL4 v26;
+  char v26;
   __int64 v27;
   __int64* v28;
   __int64 v29;
@@ -524,7 +535,7 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
   unsigned int v31;
   unsigned int v32;
   int v33;
-  _BOOL4 v34;
+  char v34;
   __int64* v35;
   __int64 v36;
   unsigned int* v37;
@@ -536,9 +547,11 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
   __int64 v43;
   __int64 v44;
   int v45;
-  __int64 v46;
-  __int64 v47;
-  __int64 v48;
+  struct {
+    unsigned int* v46;
+    __int64 v47;
+    unsigned int* v48;
+  } v46_;
 
   *(_QWORD*)a2 = -1;
   a2[2] = 100;
@@ -552,9 +565,9 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
   if ((_DWORD)v8 != 1) {
     v13 = a1[4];
     v14 = a1[5];
-    v47 = 0;
-    v48 = 0;
-    v46 = 0;
+    v46_.v47 = 0;
+    v46_.v48 = nullptr;
+    v46_.v46 = nullptr;
     v15 = v4 < v13;
     if (v4 <= v13) {
       v16 = -1;
@@ -581,21 +594,21 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
     else {
       v20 = v19;
     }
-    if ((v17 & 0x80000000) != 0) {
-      if ((v20 & 0x80000000) != 0) {
-        v21 = (unsigned int)v4;
-        v22 = (unsigned int)v5;
+    if (v17 < 0) {
+      if (v20 < 0) {
+        v21 = v4;
+        v22 = v5;
         goto LABEL_38;
       }
       if ((_DWORD)v8 != 0) {
         if ((v8 & 0x80000000) == 0) {
           v23 = v4 - v8;
-          v46 = fw_memory_HeapManager_Allocate(
+          v46_.v46 = (unsigned int*)fw_memory_HeapManager_Allocate_alt1(
               *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v8, 16, 0);
-          v47 = v46;
-          v48 = v46 + 8 * v8;
+          v46_.v47 = (__int64)v46_.v46;
+          v46_.v48 = &v46_.v46[2 * v8];
           do {
-            AISupportSkillScope_11ff880(&v46, (unsigned int)++v23, v20);
+            AISupportSkillScope_11ff880_alt1((__int64*)&v46_.v46, ++v23, v20);
           } while (v23 < v4);
           goto LABEL_39;
         }
@@ -607,34 +620,34 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
         v21 = v17;
         v22 = v20;
       LABEL_38:
-        AISupportSkillScope_11ff880(&v46, v21, v22);
+        AISupportSkillScope_11ff880_alt1((__int64*)&v46_.v46, v21, v22);
         goto LABEL_39;
       }
       if ((_DWORD)v8 != 0) {
         if ((v8 & 0x80000000) == 0) {
           v24 = v5 - v8;
-          v46 = fw_memory_HeapManager_Allocate(
+          v46_.v46 = (unsigned int*)fw_memory_HeapManager_Allocate_alt1(
               *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v8, 16, 0);
-          v47 = v46;
-          v48 = v46 + 8 * v8;
+          v46_.v47 = (__int64)v46_.v46;
+          v46_.v48 = &v46_.v46[2 * v8];
           do {
-            AISupportSkillScope_11ff880(&v46, v17, (unsigned int)++v24);
+            AISupportSkillScope_11ff880_alt1((__int64*)&v46_.v46, v17, ++v24);
           } while (v24 < v5);
           goto LABEL_39;
         }
       LABEL_70:
-        GameRoutine_1200020();
+        GameRoutine_1200020_alt1();
       }
     }
   LABEL_39:
-    v25 = (unsigned int*)v47;
-    v44 = v46;
-    if (v46 != v47) {
+    v25 = (unsigned int*)v46_.v47;
+    v44 = (__int64)v46_.v46;
+    if (v46_.v46 != (unsigned int*)v46_.v47) {
       if (v6 < 0) {
         v34 = (v7 & 4) != 0;
         v35 = GameData_212ce98[0];
         v36 = GameData_21306a0[0];
-        v37 = (unsigned int*)v46;
+        v37 = v46_.v46;
         do {
           v38 = *v37;
           if (*(unsigned __int8*)(*v35 + 26) >
@@ -643,8 +656,8 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
             if (*(unsigned __int8*)(*v35 + 27) >
                     (unsigned int)(unsigned __int8)(v39 -
                                                     *(_BYTE*)(*v35 + 25)) &&
-                (GameRoutine_747a00(*(_QWORD*)(*(_QWORD*)v36 + 8LL), v38, v39,
-                                    v3, v34) &
+                (GameRoutine_747a00_alt1(*(_QWORD*)(*(_QWORD*)v36 + 8LL), v38,
+                                         v39, v3, v34) &
                  1) != 0) {
               LODWORD(v40) = v38 + 32 * v39;
               v40 = (unsigned int)v40 >= 0x400 ? 0LL : (unsigned int)v40;
@@ -672,7 +685,7 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
         v43 = v27;
         v28 = GameData_212ce98[0];
         v29 = GameData_21306a0[0];
-        v30 = (unsigned int*)v46;
+        v30 = v46_.v46;
         do {
           v31 = *v30;
           if (*(unsigned __int8*)(*v28 + 26) >
@@ -681,8 +694,8 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
             if (*(unsigned __int8*)(*v28 + 27) >
                     (unsigned int)(unsigned __int8)(v32 -
                                                     *(_BYTE*)(*v28 + 25)) &&
-                (GameRoutine_747a00(*(_QWORD*)(*(_QWORD*)v29 + 8LL), v31, v32,
-                                    v3, v26) &
+                (GameRoutine_747a00_alt1(*(_QWORD*)(*(_QWORD*)v29 + 8LL), v31,
+                                         v32, v3, v26) &
                  1) != 0 &&
                 v31 == v6 && v32 == v45) {
               v33 = *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)v29 + 12880LL) +
@@ -703,16 +716,16 @@ bool AISupportSkillScope_11ff4a0(_DWORD* a1, int* a2)
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v42 = 56;
       }
-      nn_mem_StandardAllocator_Free(
+      nn_mem_StandardAllocator_Free_alt2(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v42, v44);
     }
     v4 = *a2;
     return v4 >= 0;
   }
   v9 = GameData_21306a0[0];
-  if ((GameRoutine_747a00(*(_QWORD*)(*(_QWORD*)GameData_21306a0[0] + 8LL),
-                          (unsigned int)v4, (unsigned int)v5, v3,
-                          (a1[6] & 4) != 0) &
+  if ((GameRoutine_747a00_alt1(*(_QWORD*)(*(_QWORD*)GameData_21306a0[0] + 8LL),
+                               (unsigned int)v4, (unsigned int)v5, v3,
+                               (a1[6] & 4) != 0) &
        1) == 0) {
     return false;
   }

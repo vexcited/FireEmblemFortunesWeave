@@ -55,7 +55,8 @@ __int64 BattleInfo_790800(__int64 a1, __int64 a2, int a3, int a4);
 __int64 BattleInfo_790970(__int64 a1, __int64 a2, int a3, int a4);
 __int64 BattleInfo_790a40(__int64 a1, char a2, char a3);
 __int64 BattleInfo_790b00(__int64 a1, __int64 a2);
-__int64 BattleInfo_795920(__int64 result, _DWORD* a2, __int64 a3, __int64 a4);
+__int64 BattleInfo_795920_alt1(__int64 result, _DWORD* a2, __int64 a3,
+                               __int64 a4) __asm__("BattleInfo_795920");
 _QWORD* BattleInfo_795b40(_QWORD* result, __int64 a2, _WORD* a3, __int64 a4);
 __int64 BattleInfo_795fc0(__int64 a1, __int64 a2, _DWORD* a3);
 __int64 BattleInfo_796a00(__int64 a1);
@@ -168,6 +169,17 @@ __int64 BattleInfo_796f20(__int64 a1, __int64 a2);
 __int64 BattleInfo_7971a0(__int64 a1, __int64 a2, char a3, char a4);
 __int64 game_map_BattleInfo_TryRelianceBind(__int64 a1, __int64 a2, __int64 a3);
 __int64 BattleInfo_798a60(__int64 a1, __int64 a2, __int64 a3, unsigned int a4);
+__int64 BattleInfo_799880(__int64, __int64);
+__int64 GameRoutine_7992e0_alt1(__int64) __asm__("GameRoutine_7992e0");
+__int64 GameRoutine_8e3d20_alt1(__int64 result, unsigned __int64, __int64,
+                                char) __asm__("GameRoutine_8e3d20");
+__n128 BattleArea_8b9d00(__int64);
+void BattleInfo_7960a0_alt1(__int64, unsigned __int8,
+                            unsigned int*) __asm__("BattleInfo_7960a0");
+void game_map_BattleSide_EachMaskSkill(__int64, _DWORD*, char, __int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void BattleInfo_795920(__int64 a1, _DWORD* a2, __int64 a3, __int64 a4);
 
 __int64 BattleInfo_DeletingDestructor(_QWORD* a1)
 {
@@ -567,17 +579,17 @@ __int64 BattleInfo_790a40(__int64 a1, char a2, char a3)
   v9 = -1;
   v7 = 9;
   if (*(_BYTE*)(a1 + 11273) != 0) {
-    GameRoutine_7992e0(a1 + 16);
-    GameRoutine_7992e0(a1 + 776);
-    GameRoutine_7992e0(a1 + 1536);
-    GameRoutine_7992e0(a1 + 2296);
+    GameRoutine_7992e0_alt1(a1 + 16);
+    GameRoutine_7992e0_alt1(a1 + 776);
+    GameRoutine_7992e0_alt1(a1 + 1536);
+    GameRoutine_7992e0_alt1(a1 + 2296);
     *(_DWORD*)(a1 + 11256) = 0;
     *(_WORD*)(v3 + 3080) = 0;
     *(_QWORD*)(a1 + 11276) = 0;
     *(_QWORD*)(a1 + 11282) = 0;
-    GameRoutine_8b9d00(a1 + 11296);
+    BattleArea_8b9d00(a1 + 11296);
   }
-  GameRoutine_799880(a1 + 776, v6);
+  BattleInfo_799880(a1 + 776, (__int64)v6);
   if ((v7 & 0x100) != 0) {
     *(_DWORD*)(a1 + 11276) |= 0x1000u;
   }
@@ -607,142 +619,139 @@ __int64 BattleInfo_790b00(__int64 a1, __int64 a2)
   return a1;
 }
 
-__int64 BattleInfo_795920(__int64 result, _DWORD* a2, __int64 a3, __int64 a4)
+void BattleInfo_795920(__int64 a1, _DWORD* a2, __int64 a3, __int64 a4)
 {
-  __int64 v4;
-  __int64 v5;
   __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  _DWORD* v9;
-  __int64 v10;
-  int v11;
-  int v12;
-  __int64 v13;
-  _DWORD* v14;
+  __int64 (***v8)(_QWORD);
+  __int64 v9;
+  _DWORD* v10;
+  __int64 v11;
+  char v12;
+  int v13;
+  int v14;
   __int64 v15;
-  __int64 v16;
-  unsigned __int8* v17;
-  unsigned __int8* v18;
-  unsigned __int8* v19;
-  unsigned int v20;
-  __int64 v21;
-  unsigned __int8* v22;
-  unsigned __int8* v23;
-  __int64 v24;
-  _QWORD v25[2];
-  char v26;
-  __int64 v27;
-  _QWORD* v28;
-  __int64 v29;
-  __int64 v30;
+  _DWORD* v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  unsigned __int64 v20;
+  unsigned __int8* v21;
+  unsigned __int8 v22;
+  __int64 v23;
+  struct {
+    __int64 v24;
+    unsigned __int64 v25;
+    __int64 v26;
+  } v24_;
+  struct {
+    _QWORD v27[2];
+    char v28;
+    char gap49_[7];
+    __int64 v29;
+    _QWORD* v30;
+  } v27_;
 
-  if ((*(_BYTE*)(result + 11276) & 0x22) != 0) {
-    return result;
+  if ((*(_BYTE*)(a1 + 11276) & 0x22) != 0) {
+    return;
   }
-  v29 = v4;
-  v30 = v5;
   v6 = *(_QWORD*)(a3 + 24);
-  v7 = result;
   if (v6 == 0 || *(_QWORD*)(v6 + 392) == 0) {
     if ((*(_BYTE*)(*(_QWORD*)(a3 + 8) + 11277LL) & 0x80) != 0) {
-      return result;
+      return;
     }
-    result = *(_QWORD*)(a3 + 32);
-    if (result == 0) {
-      return result;
+    v8 = *(__int64 (****)(_QWORD))(a3 + 32);
+    if (v8 == nullptr) {
+      return;
     }
-    v8 = a4;
-    v9 = a2;
-    v10 = a3;
-    result = (**(__int64 (***)(__int64))result)(result);
-    a3 = v10;
-    a2 = v9;
-    a4 = v8;
-    if ((result & 1) == 0) {
-      return result;
+    v9 = a4;
+    v10 = a2;
+    v11 = a3;
+    v12 = (**v8)(v8);
+    a3 = v11;
+    a2 = v10;
+    a4 = v9;
+    if ((v12 & 1) == 0) {
+      return;
     }
   }
-  v11 = *(_DWORD*)(a3 + 604);
-  v12 = *a2;
-  v23 = nullptr;
-  v24 = 0;
-  v22 = nullptr;
-  if ((v12 & v11) != 0) {
-    v13 = a4;
-    v14 = a2;
-    v25[0] = GameData_1fab650;
-    v25[1] = &v22;
-    v27 = a3;
-    v28 = v25;
-    v26 = 1;
-    GameRoutine_7a2a60(a3, a2, 1, v25);
-    result = (__int64)v28;
-    if (v28 == v25) {
-      v15 = 32;
+  v13 = *(_DWORD*)(a3 + 604);
+  v14 = *a2;
+  v24_.v25 = 0;
+  v24_.v26 = 0;
+  v24_.v24 = 0;
+  if ((v14 & v13) != 0) {
+    v15 = a4;
+    v16 = a2;
+    v27_.v27[0] = GameData_1fab650;
+    v27_.v27[1] = &v24_.v24;
+    v27_.v29 = a3;
+    v27_.v30 = v27_.v27;
+    v27_.v28 = 1;
+    game_map_BattleSide_EachMaskSkill(a3, a2, 1, (__int64)v27_.v27);
+    if (v27_.v30 == v27_.v27) {
+      v17 = 32;
     }
     else {
-      if (v28 == nullptr) {
+      if (v27_.v30 == nullptr) {
       LABEL_13:
-        v12 = *v14;
-        a2 = v14;
-        a4 = v13;
+        v14 = *v16;
+        a2 = v16;
+        a4 = v15;
         goto LABEL_14;
       }
-      v15 = 40;
+      v17 = 40;
     }
-    result = (*(__int64 (**)(__int64))(*v28 + v15))((__int64)v28);
+    (*(void (**)(__int64))(*v27_.v30 + v17))((__int64)v27_.v30);
     goto LABEL_13;
   }
-
 LABEL_14:
-  if ((v12 & *(_DWORD*)(a4 + 604)) != 0) {
-    v25[0] = GameData_1fab650;
-    v25[1] = &v22;
-    v27 = a4;
-    v28 = v25;
-    v26 = 2;
-    GameRoutine_7a2a60(a4, a2, 2, v25);
-    result = (__int64)v28;
-    if (v28 == v25) {
-      v16 = 32;
+  if ((v14 & *(_DWORD*)(a4 + 604)) != 0) {
+    v27_.v27[0] = GameData_1fab650;
+    v27_.v27[1] = &v24_.v24;
+    v27_.v29 = a4;
+    v27_.v30 = v27_.v27;
+    v27_.v28 = 2;
+    game_map_BattleSide_EachMaskSkill(a4, a2, 2, (__int64)v27_.v27);
+    if (v27_.v30 == v27_.v27) {
+      v18 = 32;
       goto LABEL_19;
     }
-    if (v28 != nullptr) {
-      v16 = 40;
+    if (v27_.v30 != nullptr) {
+      v18 = 40;
     LABEL_19:
-      result = (*(__int64 (**)(__int64))(*v28 + v16))((__int64)v28);
+      (*(void (**)(__int64))(*v27_.v30 + v18))((__int64)v27_.v30);
     }
   }
-  v17 = v22;
-  v18 = v23;
-  if (v23 != v22) {
-    result = GameRoutine_8e3d20(
-        v22, v23, (2 * __clz(0xAAAAAAAAAAAAAAABLL * ((v23 - v22) >> 2))) ^ 0x7E,
-        1);
-    v17 = v22;
-    v18 = v23;
+  v19 = v24_.v24;
+  v20 = v24_.v25;
+  if (v24_.v25 != v24_.v24) {
+    GameRoutine_8e3d20_alt1(v24_.v24, v24_.v25,
+                            (2 * __clz(0xAAAAAAAAAAAAAAABLL *
+                                       ((__int64)(v24_.v25 - v24_.v24) >> 2))) ^
+                                0x7E,
+                            1);
+    v19 = v24_.v24;
+    v20 = v24_.v25;
   }
-  if (v18 != v17) {
-    v19 = v17;
+  if (v20 != v19) {
+    v21 = (unsigned __int8*)v19;
     do {
-      v20 = *v19;
-      v19 += 12;
-      result = GameRoutine_7960a0(v7, v20, v17 + 4);
-      v17 = v19;
-    } while (v19 != v18);
-    v17 = v22;
+      v22 = *v21;
+      v21 += 12;
+      BattleInfo_7960a0_alt1(a1, v22, (unsigned int*)(v19 + 4));
+      v19 = (__int64)v21;
+    } while (v21 != (unsigned __int8*)v20);
+    v19 = v24_.v24;
   }
-  if (v17 != nullptr) {
-    v23 = v17;
-    v21 = 128;
+  if (v19 != 0) {
+    v24_.v25 = v19;
+    v23 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v21 = 56;
+      v23 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, v17);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v23, v19);
   }
-  return result;
 }
 
 _QWORD* BattleInfo_795b40(_QWORD* result, __int64 a2, _WORD* a3, __int64 a4)

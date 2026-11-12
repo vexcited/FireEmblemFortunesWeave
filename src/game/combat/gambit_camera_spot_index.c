@@ -3,26 +3,36 @@
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_e5a4a0(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 GambitCameraSpotIndex_Dispatch(__int64 a1);
+__int64 GambitCameraSpotIndex_Dispatch_alt1(__int64 a1) __asm__(
+    "GambitCameraSpotIndex_Dispatch");
 __attribute__((swiftcall)) void GambitCameraSpotIndex_Unknown3(PSEUDO_X8 x8_);
+void LegionGambitCamera_e5a4a0(__int64, __int64, __int64, __int64);
+float GambitCameraSpotIndex_Dispatch(__int64 a1);
 
-__int64 GambitCameraSpotIndex_Dispatch(__int64 a1)
+float GambitCameraSpotIndex_Dispatch(__int64 a1)
 {
+
+#pragma clang fp contract(off)
   char v1;
   int v2;
   __int64 v3;
+  float result;
   __int64 v5;
   int v6;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
   v1 = *(_BYTE*)(a1 + 72);
   v2 = *(_DWORD*)(a1 + 68);
   v5 = *(_QWORD*)(a1 + 60);
   v3 = *(_QWORD*)(a1 + 48);
   v6 = v2;
   *(_BYTE*)(*(_QWORD*)(v3 + 96) + 149LL) = v1;
-  return GameRoutine_e5a4a0(*(_QWORD*)(*(_QWORD*)(a1 + 48) + 96LL),
+  LegionGambitCamera_e5a4a0(*(_QWORD*)(*(_QWORD*)(a1 + 48) + 96LL),
                             *(unsigned int*)(*(_QWORD*)(a1 + 48) + 8LL),
-                            *(unsigned int*)(a1 + 56), &v5);
+                            *(unsigned int*)(a1 + 56), (__int64)&v5),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
+  return result;
 }
 
 __attribute__((swiftcall)) void GambitCameraSpotIndex_Unknown3(PSEUDO_X8 x8_)

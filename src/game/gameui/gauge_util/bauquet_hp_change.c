@@ -22,13 +22,27 @@ extern __int64 GameData_212d690;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212d670[3];
 __int64 BauquetHPChange_Destructor(__int64 a1);
-__int64 BauquetHPChange_1752390(_QWORD* a1, __int64* a2, __int64 a3,
-                                unsigned int a4, unsigned int a5);
+__int64 BauquetHPChange_1752390_alt1(
+    _QWORD* a1, __int64* a2, __int64 a3, unsigned int a4,
+    unsigned int a5) __asm__("BauquetHPChange_1752390");
 __int64 BauquetHPChange_Unknown5(__int64 a1);
 _DWORD* BauquetHPChange_1752840(_QWORD* a1);
 __int64 BauquetHPChange_Unknown6(__int64 a1);
 __int64 BauquetHPChange_Unknown3(__int64 a1);
 __int64 BauquetHPChange_Unknown4(__int64 a1);
+__int64*
+RelianceExpChange_174e380_alt1(__int64*, __int64*, __int64*,
+                               __int64*) __asm__("RelianceExpChange_174e380");
+__int64 GaugeUtil_1752580(__int64, int);
+__int64 game_Unit_GetParam_alt1(__int64) __asm__("game_Unit_GetParam");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 BauquetHPChange_1752390(__int64* a1, __int64* a2, __int64 a3,
+                                unsigned int a4, unsigned int a5);
 
 __int64 BauquetHPChange_Destructor(__int64 a1)
 {
@@ -67,7 +81,7 @@ __int64 BauquetHPChange_Destructor(__int64 a1)
   return result;
 }
 
-__int64 BauquetHPChange_1752390(_QWORD* a1, __int64* a2, __int64 a3,
+__int64 BauquetHPChange_1752390(__int64* a1, __int64* a2, __int64 a3,
                                 unsigned int a4, unsigned int a5)
 {
   __int64 result;
@@ -75,76 +89,87 @@ __int64 BauquetHPChange_1752390(_QWORD* a1, __int64* a2, __int64 a3,
   __int64 v12;
   __int64 v13;
   __int64 v14;
-  unsigned int v15;
-  __int64 v16;
+  __int64 v15;
+  unsigned int v16;
   __int64 v17;
   __int64 v18;
   __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  _QWORD v23[2];
-  __int64 v24;
-  _BYTE v25[4];
+  struct {
+    __int64 v20;
+    char gap16_[8];
+    __int64 v21;
+  } v20_;
+  struct {
+    __int64 v22;
+    char gap40_[8];
+    __int64 v23;
+  } v22_;
+  struct {
+    __int64 v24[2];
+    __int64 v25;
+    char gap80_[28];
+    char v26;
+  } v24_;
 
   result = a2[1];
   if (result != 0) {
-    result = std___1___shared_weak_count_lock(result);
+    result = std___1___shared_weak_count_lock_alt1(result);
     if (result != 0) {
       v11 = *a2;
       if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
+        v12 = result;
         (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-        result = std___1___shared_weak_count___release_weak();
+        result = std___1___shared_weak_count___release_weak_alt1(v12);
       }
       if (v11 != 0) {
-        v13 = *a2;
-        v12 = a2[1];
-        if (v12 != 0) {
-          atomic_fetch_add_explicit((atomic_ullong* volatile)(v12 + 16), 1u,
+        v14 = *a2;
+        v13 = a2[1];
+        if (v13 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v13 + 16), 1u,
                                     memory_order_relaxed);
         }
-        v14 = a1[17];
-        a1[16] = v13;
-        a1[17] = v12;
-        if (v14 != 0) {
-          std___1___shared_weak_count___release_weak();
+        v15 = a1[17];
+        a1[16] = v14;
+        a1[17] = v13;
+        if (v15 != 0) {
+          std___1___shared_weak_count___release_weak_alt1(v15);
         }
         a1[18] = a3;
-        v25[0] = 0;
-        v15 = game_Unit_GetParam(a3, v25, 1);
-        (*(void (**)(_QWORD*, _QWORD, _QWORD, _QWORD, _QWORD))(*a1 + 8LL))(
-            a1, a4, a5, 0, v15);
-        LOWORD(v21) = 0;
-        LOWORD(v19) = 0;
-        LOBYTE(v23[0]) = 22;
-        strcpy((char*)v23 + 1, "SE_SYS_Heal");
-        RelianceExpChange_174e380(a1, v23, &v21, &v19);
-        if ((v19 & 1) != 0 && v20 != 0) {
-          v16 = 128;
-          if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-            v16 = 56;
-          }
-          nn_mem_StandardAllocator_Free(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v20);
-        }
-        if ((v21 & 1) != 0 && v22 != 0) {
+        v24_.v26 = 0;
+        v16 = game_Unit_GetParam_alt1(a3);
+        (*(void (**)(__int64*, _QWORD, _QWORD, _QWORD, _QWORD))(*a1 + 8))(
+            a1, a4, a5, 0, v16);
+        LOWORD(v22_.v22) = 0;
+        LOWORD(v20_.v20) = 0;
+        LOBYTE(v24_.v24[0]) = 22;
+        strcpy((char*)v24_.v24 + 1, "SE_SYS_Heal");
+        RelianceExpChange_174e380_alt1(a1, v24_.v24, &v22_.v22, &v20_.v20);
+        if ((v20_.v20 & 1) != 0 && v20_.v21 != 0) {
           v17 = 128;
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v17 = 56;
           }
-          nn_mem_StandardAllocator_Free(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v22);
+          nn_mem_StandardAllocator_Free_alt1(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v20_.v21);
         }
-        if ((v23[0] & 1) != 0 && v24 != 0) {
+        if ((v22_.v22 & 1) != 0 && v22_.v23 != 0) {
           v18 = 128;
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v18 = 56;
           }
-          nn_mem_StandardAllocator_Free(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v18, v24);
+          nn_mem_StandardAllocator_Free_alt1(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v18, v22_.v23);
         }
-        return GameRoutine_1752580(a1, 0);
+        if ((v24_.v24[0] & 1) != 0 && v24_.v25 != 0) {
+          v19 = 128;
+          if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+            v19 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt1(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, v24_.v25);
+        }
+        return GaugeUtil_1752580((__int64)a1, 0);
       }
     }
   }

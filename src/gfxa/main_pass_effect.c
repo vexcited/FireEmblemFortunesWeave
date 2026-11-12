@@ -493,7 +493,7 @@ __int64 gfxa_MainPassEffect_SetupLightingPass_lambda1_Invoke(__int64 a1,
     }
     v26 = *(_QWORD*)(v26 + v31);
   } while (v26 != 0);
-  if (v27 != v24 + 792 && v28 >= *(_DWORD*)(v27 + 32)) {
+  if (v27 != v24 + 792 && v28 >= (signed __int32)*(_DWORD*)(v27 + 32)) {
     v32 = *(_QWORD*)(v27 + 40);
   }
   else {

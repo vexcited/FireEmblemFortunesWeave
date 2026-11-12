@@ -29,6 +29,10 @@ game_anonymous_DepositoryData_Commit_closure_Invoke_8f3020(__int64 a1,
 __int64
 game_anonymous_DepositoryData_Commit_closure_Invoke_8f3160(__int64 a1,
                                                            unsigned __int8* a2);
+bool LegionPool_9374e0_alt1(_QWORD*, __int64) __asm__("LegionPool_9374e0");
+bool RidePool_93cc20_alt1(_QWORD*, __int64) __asm__("RidePool_93cc20");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 __int64 game_anonymous_DepositoryData_Commit(_BYTE* a1, _QWORD* a2)
 {
@@ -38,26 +42,30 @@ __int64 game_anonymous_DepositoryData_Commit(_BYTE* a1, _QWORD* a2)
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
+  _QWORD* v10;
   __int64 v11;
   __int64 v12;
-  __int64 v13;
+  _QWORD* v13;
   __int64 v14;
-  __int64 v15;
   __int64 result;
-  __int64 v17;
-  _QWORD v18[4];
-  _QWORD* v19;
-  _QWORD v20[2];
-  _QWORD* v21;
-  _QWORD* v22;
+  __int64 v16;
+  struct {
+    _QWORD v17[4];
+    _QWORD* v18;
+  } v17_;
+  struct {
+    _QWORD v19[2];
+    _QWORD* v20;
+    char gap72_[8];
+    _QWORD* v21;
+  } v19_;
 
   v2 = a2[1];
   *a1 = 0;
-  v20[0] = GameData_1fac0a0;
-  v20[1] = a1;
-  v5 = v20;
-  v22 = v20;
+  v19_.v19[0] = GameData_1fac0a0;
+  v19_.v19[1] = a1;
+  v5 = v19_.v19;
+  v19_.v21 = v19_.v19;
   v6 = *(unsigned int*)(v2 + 80);
   if ((int)v6 < 1) {
     goto LABEL_10;
@@ -65,90 +73,89 @@ __int64 game_anonymous_DepositoryData_Commit(_BYTE* a1, _QWORD* a2)
   v7 = 0;
   v8 = 12 * v6;
   do {
-    v9 = *(_QWORD*)(v2 + 8) + v7;
-    if (*(_WORD*)(v9 + 2) != 0) {
-      if (v22 == nullptr) {
-        GameRoutine_60a310(0, v9);
+    if (*(_WORD*)(*(_QWORD*)(v2 + 8) + v7 + 2) != 0) {
+      if (v19_.v21 == nullptr) {
+        GameRoutine_60a310_alt1();
       }
-      (*(void (**)(_QWORD*))(*v22 + 48LL))(v22);
+      (*(void (**)(_QWORD*))(*v19_.v21 + 48LL))(v19_.v21);
     }
     v7 += 12;
   } while (v8 != v7);
-  v5 = v22;
-  if (v22 == v20) {
+  v5 = v19_.v21;
+  if (v19_.v21 == v19_.v19) {
   LABEL_10:
-    v10 = 32;
+    v9 = 32;
   }
   else {
-    if (v22 == nullptr) {
+    if (v19_.v21 == nullptr) {
       goto LABEL_12;
     }
-    v10 = 40;
+    v9 = 40;
   }
-  (*(void (**)(__int64))(*v5 + v10))((__int64)v5);
+  (*(void (**)(__int64))(*v5 + v9))((__int64)v5);
 LABEL_12:
-  v11 = a2[3];
-  v18[0] = GameData_1fac120;
-  v18[1] = a1;
-  v19 = v18;
-  v21 = v18;
-  v22 = v20;
-  v20[0] = GameData_212dda8 + 2;
-  v20[1] = v11;
-  RidePool_93cc20(v11, v20);
-  if (v22 == v20) {
+  v10 = (_QWORD*)a2[3];
+  v17_.v17[0] = GameData_1fac120;
+  v17_.v17[1] = a1;
+  v17_.v18 = v17_.v17;
+  v19_.v20 = v17_.v17;
+  v19_.v21 = v19_.v19;
+  v19_.v19[0] = GameData_212dda8 + 2;
+  v19_.v19[1] = v10;
+  RidePool_93cc20_alt1(v10, (__int64)v19_.v19);
+  if (v19_.v21 == v19_.v19) {
+    v11 = 32;
+  }
+  else {
+    if (v19_.v21 == nullptr) {
+      goto LABEL_17;
+    }
+    v11 = 40;
+  }
+  (*(void (**)(__int64))(*v19_.v21 + v11))((__int64)v19_.v21);
+LABEL_17:
+  if (v17_.v18 == v17_.v17) {
     v12 = 32;
   }
   else {
-    if (v22 == nullptr) {
-      goto LABEL_17;
+    if (v17_.v18 == nullptr) {
+      goto LABEL_22;
     }
     v12 = 40;
   }
-  (*(void (**)(__int64))(*v22 + v12))((__int64)v22);
-LABEL_17:
-  if (v19 == v18) {
-    v13 = 32;
-  }
-  else {
-    if (v19 == nullptr) {
-      goto LABEL_22;
-    }
-    v13 = 40;
-  }
-  (*(void (**)(__int64))(*v19 + v13))((__int64)v19);
+  (*(void (**)(__int64))(*v17_.v18 + v12))((__int64)v17_.v18);
 LABEL_22:
-  v14 = a2[5];
-  v18[0] = GameData_1fac1a0;
-  v18[1] = a1;
-  v19 = v18;
-  v21 = v18;
-  v22 = v20;
-  v20[0] = GameData_212dd88[0] + 2;
-  v20[1] = v14;
-  LegionPool_9374e0(v14, v20);
-  if (v22 == v20) {
-    v15 = 32;
+  v13 = (_QWORD*)a2[5];
+  v17_.v17[0] = GameData_1fac1a0;
+  v17_.v17[1] = a1;
+  v17_.v18 = v17_.v17;
+  v19_.v20 = v17_.v17;
+  v19_.v21 = v19_.v19;
+  v19_.v19[0] = GameData_212dd88[0] + 2;
+  v19_.v19[1] = v13;
+  LegionPool_9374e0_alt1(v13, (__int64)v19_.v19);
+  if (v19_.v21 == v19_.v19) {
+    v14 = 32;
   }
   else {
-    if (v22 == nullptr) {
+    if (v19_.v21 == nullptr) {
       goto LABEL_27;
     }
-    v15 = 40;
+    v14 = 40;
   }
-  (*(void (**)(__int64))(*v22 + v15))((__int64)v22);
+  (*(void (**)(__int64))(*v19_.v21 + v14))((__int64)v19_.v21);
 LABEL_27:
-  result = (__int64)v19;
-  if (v19 == v18) {
-    v17 = 32;
+  result = (__int64)v17_.v18;
+  if (v17_.v18 == v17_.v17) {
+    v16 = 32;
   }
   else {
-    if (v19 == nullptr) {
+    if (v17_.v18 == nullptr) {
       return result;
     }
-    v17 = 40;
+    v16 = 40;
   }
-  return (*(__int64 (**)(__int64))(*v19 + v17))((__int64)v19);
+  return (*(__int64 (**)(__int64))(*v17_.v18 + v16))((__int64)v17_.v18);
 }
 
 __int64 game_anonymous_DepositoryData_Commit_closure_Invoke_8f2ee0(__int64 a1,

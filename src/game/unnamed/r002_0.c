@@ -140,6 +140,11 @@ __int64 game_GameVariableTable_Find(_QWORD*, unsigned __int64*);
 __int64 game_HashString(__int64 result);
 extern __int64 game_GameModeData_instance_;
 __int64* GameHr_7eae80(__int64* result, unsigned int a2);
+__int64 GameManager_a2d1c0(__int64 result, __int64, char);
+__int64 snd_Fade_Destroy_Fade(_QWORD*);
+__int64 snd_Fade_Fade_10cb00(__int64, unsigned __int8*);
+extern __int64 game_sound_g_game_sound;
+__int64 GameHr_86fc30();
 
 __int64 GameHr_7bd090(__int64 a1)
 {
@@ -1260,13 +1265,20 @@ __int64 GameHr_86fc30()
 {
   __int64 v0;
   __int64 result;
-  _BYTE v2[200];
+  _QWORD v2[25];
 
-  v0 = GameData_2265ef8;
-  if (GameData_2265ef8 != 0) {
-    GameRoutine_10cb00(v2, "FadeTime_BGM_Prepare_Out");
-    GameRoutine_a2d1c0(v0, v2, (*(_BYTE*)(GameData_2265ef8 + 2848) & 1) == 0);
-    return GameRoutine_10cff0(v2);
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v0 = game_sound_g_game_sound;
+  if (game_sound_g_game_sound != 0) {
+    snd_Fade_Fade_10cb00((__int64)v2, "FadeTime_BGM_Prepare_Out"),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    GameManager_a2d1c0(v0, (__int64)v2,
+                       (*(_BYTE*)(game_sound_g_game_sound + 2848) & 1) == 0),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    return snd_Fade_Destroy_Fade(v2);
   }
   return result;
 }

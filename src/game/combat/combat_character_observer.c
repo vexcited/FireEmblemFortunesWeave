@@ -12,8 +12,17 @@ __n128 GameRoutine_106c820(_QWORD*, __int64, __n128 result);
 extern __int64 (*GameData_200ece8[])();
 extern __int64 GameData_21ec7b0;
 void CharacterSelfie_10a6ac0(__int64);
-void game_combat_CombatCharacterObserver_CombatCharacterObserver_lambda1_Invoke(
-    __int64 a1, __n128 a2);
+void game_combat_CombatCharacterObserver_CombatCharacterObserver_lambda1_Invoke_alt1(
+    __int64 a1, __n128 a2) __asm__("game_combat_CombatCharacterObserver_"
+                                   "CombatCharacterObserver_lambda1_Invoke");
+__int64
+CharacterSelfie_10a6ac0_alt1(__int64 result) __asm__("CharacterSelfie_10a6ac0");
+__int64 GameHr_10f15b0();
+__int64 GameRoutine_106c820_alt1(_QWORD*,
+                                 __int64) __asm__("GameRoutine_106c820");
+__int64
+game_combat_CombatCharacterObserver_CombatCharacterObserver_lambda1_Invoke(
+    __int64 result);
 
 __int64 CombatCharacterObserver_DeletingDestructor(_QWORD* a1)
 {
@@ -33,52 +42,51 @@ __int64 CombatCharacterObserver_DeletingDestructor(_QWORD* a1)
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, a1);
 }
 
-void game_combat_CombatCharacterObserver_CombatCharacterObserver_lambda1_Invoke(
-    __int64 a1, __n128 a2)
-{
+__int64
 
-#pragma clang fp contract(off)
+game_combat_CombatCharacterObserver_CombatCharacterObserver_lambda1_Invoke(
+    __int64 result)
+{
+  __int64 v1;
   __int64 v2;
   __int64 v3;
   __int64 v4;
-  __int64 v5;
-  long double v7;
-  __int64 v8;
+  __int64 v6;
   struct {
-    _QWORD v9[4];
-    _QWORD* v10;
-  } v9_;
+    _QWORD v7[4];
+    _QWORD* v8;
+  } v7_;
 
-  v2 = *(_QWORD*)(a1 + 8);
-  if (*(_BYTE*)(v2 + 40) != 0) {
-    v3 = *(_QWORD*)(v2 + 8);
-    v4 = *(_QWORD*)(v3 + 80);
-    if (v4 != 0) {
-      v5 = *(_QWORD*)(v3 + 88);
-      if (*(_QWORD*)(v4 + 8) != -1 && v5 != 0) {
+  v1 = *(_QWORD*)(result + 8);
+  if (*(_BYTE*)(v1 + 40) != 0) {
+    v2 = *(_QWORD*)(v1 + 8);
+    v3 = *(_QWORD*)(v2 + 80);
+    if (v3 != 0) {
+      v4 = *(_QWORD*)(v2 + 88);
+      if (*(_QWORD*)(v3 + 8) != -1 && v4 != 0) {
         if (GameData_21ec7b0 != 0) {
-          v9_.v9[0] = GameData_200ece8;
-          v9_.v9[1] = v5;
-          v9_.v10 = v9_.v9;
-          v9_.v9[2] = 1;
-          *(__n128*)&v7 = GameRoutine_106c820((_QWORD*)GameData_21ec7b0,
-                                              (__int64)v9_.v9, a2);
-          if (v9_.v10 == v9_.v9) {
-            v8 = 32;
+          v7_.v7[0] = GameData_200ece8;
+          v7_.v7[1] = v4;
+          v7_.v8 = v7_.v7;
+          v7_.v7[2] = 1;
+          GameRoutine_106c820_alt1((_QWORD*)GameData_21ec7b0, (__int64)v7_.v7);
+          if (v7_.v8 == v7_.v7) {
+            v6 = 32;
             goto LABEL_12;
           }
-          if (v9_.v10 != nullptr) {
-            v8 = 40;
+          if (v7_.v8 != nullptr) {
+            v6 = 40;
           LABEL_12:
-            (*(void (**)(void*))(*v9_.v10 + v8))(v9_.v10);
+            (*(void (**)(__int64))(*v7_.v8 + v6))((__int64)v7_.v8);
           }
         }
-        GameRoutine_10f15b0();
-        CharacterSelfie_10a6ac0(*(_QWORD*)(v5 + 128));
-        *(_BYTE*)(v2 + 40) = 0;
+        GameHr_10f15b0();
+        result = CharacterSelfie_10a6ac0_alt1(*(_QWORD*)(v4 + 128));
+        *(_BYTE*)(v1 + 40) = 0;
       }
     }
   }
+  return result;
 }
 
 #pragma GCC visibility pop

@@ -13,6 +13,12 @@ extern __int128 GameData_1a82ea0;
 extern __int128 GameData_1a82f20;
 __int64 gfx_flow_b6be20(__int64 a1, __int64 a2);
 __int64 gfx_flow_b6bf20(__int64 a1, __int64 a2);
+__attribute__((swiftcall)) void gfx_shader_Archive_CreateShader_alt1(
+    PSEUDO_X8, __int64*, __int64, unsigned __int64, __int64,
+    unsigned __int64) __asm__("gfx_shader_Archive_CreateShader");
+__int64 GameHr_ad5280(_QWORD*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 gfx_flow_b6be20(__int64 a1, __int64 a2)
 {
@@ -35,9 +41,9 @@ __int64 gfx_flow_b6be20(__int64 a1, __int64 a2)
   *(_QWORD*)(a1 + 24) = 0;
   *(_QWORD*)(a1 + 32) = 0;
   *(_DWORD*)(a1 + 40) = 0;
-  gfx_shader_Archive_CreateShader((void*)(&v8_.v8), *(_QWORD*)(a2 + 13408),
-                                  (__int64)"Lighting", 8u,
-                                  (__int64)"ClusteredCulling", 0x10u);
+  gfx_shader_Archive_CreateShader_alt1(
+      (void*)(&v8_.v8), *(__int64**)(a2 + 13408), (__int64)"Lighting", 8u,
+      (__int64)"ClusteredCulling", 0x10u);
   v3 = v8_.v8;
   v4 = v8_.v9;
   v5 = *(_QWORD*)(a1 + 16);
@@ -48,15 +54,15 @@ __int64 gfx_flow_b6be20(__int64 a1, __int64 a2)
   if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-    std___1___shared_weak_count___release_weak(v5);
+    std___1___shared_weak_count___release_weak_alt1(v5);
   }
   v6 = v8_.v9;
   if (v8_.v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8_.v9 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-    std___1___shared_weak_count___release_weak(v6);
+    std___1___shared_weak_count___release_weak_alt1(v6);
   }
-  GameRoutine_ad5280(*(_QWORD*)(a1 + 8));
+  GameHr_ad5280(*(_QWORD**)(a1 + 8));
   return DecalObject_a91100(
       (__int64*)(a1 + 24), *(_QWORD*)(*(_QWORD*)a1 + 312LL),
       *(_QWORD*)(*(_QWORD*)(*(_QWORD*)a1 + 552LL) + 16LL), 356);

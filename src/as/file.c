@@ -18,10 +18,17 @@ extern __int64* snd_g_fileIndex_ptr[2];
 __int64 File_Destructor(_QWORD* a1);
 __int64 File_DeletingDestructor(_QWORD* a1);
 __int64 File_Unknown3(__int64 a1);
-__int64 File_Unknown4(__int64 a1);
+__int64 File_Unknown4_alt1(__int64 a1) __asm__("File_Unknown4");
 bool File_Unknown5(__int64 a1);
 __int64 File_Unknown6(__int64 a1);
 __int64 File_Unknown7(__int64 a1);
+_DWORD* GameRoutine_6544c0_alt1(__int64, __int64) __asm__("GameRoutine_6544c0");
+__int64 fs_Manager_createFileAsync_fs_File(__int64, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+extern __int64 (***GameData_212c3c8_alt1)() __asm__("GameData_212c3c8");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+_DWORD* File_Unknown4(__int64 a1);
 
 __int64 File_Destructor(_QWORD* a1)
 {
@@ -52,39 +59,44 @@ __int64 File_Unknown3(__int64 a1)
 {
   __int64 v2;
   __int64 result;
-  _QWORD v4[3];
-  __int64 v5;
-  __int64 (**v6)();
-  int v7;
+  struct {
+    _QWORD v4[3];
+    __int64 v5;
+    __int64 (***v6)();
+    int v7;
+  } v4_;
 
-  v4[0] = a1 + 8;
+  v4_.v4[0] = a1 + 8;
   v2 = *snd_g_fileIndex_ptr[0];
-  v4[1] = strlen(a1 + 8);
-  v4[2] = 0;
-  v5 = 0;
-  v6 = GameData_212c3c8;
-  v7 = 1;
-  *(_QWORD*)(a1 + 136) = GameRoutine_6542d0(v2, v4);
-  result = v5;
-  if (v5 != 0) {
-    return std___1___shared_weak_count___release_weak(v5);
+  v4_.v4[1] = strlen_alt1((const char*)(a1 + 8));
+  v4_.v4[2] = 0;
+  v4_.v5 = 0;
+  v4_.v6 = GameData_212c3c8_alt1;
+  v4_.v7 = 1;
+  *(_QWORD*)(a1 + 136) =
+      fs_Manager_createFileAsync_fs_File(v2, (__int64)v4_.v4);
+  result = v4_.v5;
+  if (v4_.v5 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v4_.v5);
   }
   return result;
 }
 
-__int64 File_Unknown4(__int64 a1)
+_DWORD* File_Unknown4(__int64 a1)
 {
   __int64 v2;
-  __int64 result;
-  _QWORD v4[3];
-  int v5;
+  _DWORD* result;
+  struct {
+    _QWORD v4[3];
+    int v5;
+  } v4_;
 
-  v4[0] = a1 + 8;
+  v4_.v4[0] = a1 + 8;
   v2 = *snd_g_fileIndex_ptr[0];
-  v4[1] = strlen(a1 + 8);
-  v4[2] = GameData_212c3c8;
-  v5 = 1;
-  result = GameRoutine_6544c0(v2, v4);
+  v4_.v4[1] = strlen_alt1((const char*)(a1 + 8));
+  v4_.v4[2] = GameData_212c3c8_alt1;
+  v4_.v5 = 1;
+  result = GameRoutine_6544c0_alt1(v2, (__int64)v4_.v4);
   *(_QWORD*)(a1 + 136) = result;
   return result;
 }

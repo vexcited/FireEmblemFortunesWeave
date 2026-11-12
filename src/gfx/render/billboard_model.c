@@ -43,6 +43,22 @@ __int64 Material_add560(__int64 result);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 extern _UNKNOWN* GameData_212c2a0;
 __int64 BillboardModel_Unknown2(__int64 a1);
+_QWORD* GameRoutine_604020_alt1(_QWORD* result) __asm__("GameRoutine_604020");
+__int64* GameRoutine_a67640_alt1(_QWORD*,
+                                 __int64*) __asm__("GameRoutine_a67640");
+__int64* GameRoutine_a677e0_alt1(_QWORD*,
+                                 __int64*) __asm__("GameRoutine_a677e0");
+__int64* GameRoutine_a67980_alt1(_QWORD*,
+                                 const char*) __asm__("GameRoutine_a67980");
+__int64 GameRoutine_5fc230_alt1(__int64 result) __asm__("GameRoutine_5fc230");
+__int64 GameRoutine_604060_alt1(__int64, __int64*,
+                                __int64) __asm__("GameRoutine_604060");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_615760(__int64, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
                                                  unsigned __int64 a3,
@@ -56,12 +72,12 @@ __int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
   __int64 v15;
   __int64* v16;
   __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
+  __int64* v18;
+  __int64* v19;
+  __int64* v20;
   __int64 v21;
-  __int64 v22;
-  __int64 v23;
+  __int64* v22;
+  __int64* v23;
   _QWORD* v24;
   __int64 v25;
   unsigned __int64 v26;
@@ -70,12 +86,16 @@ __int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
   __int64 v29;
   __int64 result;
   __int64 v31;
-  _QWORD v32[4];
-  _QWORD* v33;
-  __int64 v34;
-  unsigned __int64 v35;
-  __int64 v36;
-  __int64 v37;
+  struct {
+    __int64 v32[4];
+    __int64* v33;
+  } v32_;
+  struct {
+    __int64 v34;
+    unsigned __int64 v35;
+    __int64 v36;
+    __int64 v37;
+  } v34_;
 
   *(_QWORD*)(a1 + 128) = 0;
   v6 = (__int64*)(a1 + 128);
@@ -107,7 +127,7 @@ __int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
   *(_QWORD*)(a1 + 184) = 0;
   *(_QWORD*)(a1 + 192) = 0;
   *(_BYTE*)(a1 + 200) = 0;
-  GameRoutine_604020(a1 + 248);
+  GameRoutine_604020_alt1((_QWORD*)(a1 + 248));
   v6[30] = -1;
   v14 = *a6;
   v13 = a6[1];
@@ -119,30 +139,34 @@ __int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
   *(_QWORD*)(a1 + 112) = v14;
   *(_QWORD*)(a1 + 120) = v13;
   if (v15 != 0) {
-    std___1___shared_weak_count___release_weak(v15);
+    std___1___shared_weak_count___release_weak_alt1(v15);
   }
   v16 = game_g_frame_clock_ptr[0];
-  v34 = a4;
-  v35 = a5;
-  v32[0] = a2;
-  v32[1] = a3;
+  v34_.v34 = a4;
+  v34_.v35 = a5;
+  v32_.v32[0] = a2;
+  v32_.v32[1] = a3;
   v17 = *game_g_frame_clock_ptr[0];
-  v18 = GameRoutine_a67640(*(_QWORD*)(*game_g_frame_clock_ptr[0] + 13416), v32);
-  if (v18 != 0 &&
-      (v19 = v18, (v20 = GameRoutine_a677e0(v18 + 40, &v34)) != 0) &&
-      (v21 = v20 + 40, (v22 = GameRoutine_a67980(
-                            v19 + 80, *(_QWORD*)(v20 + 40) + 32LL)) != 0)) {
+  v18 = GameRoutine_a67640_alt1(*(_QWORD**)(*game_g_frame_clock_ptr[0] + 13416),
+                                v32_.v32);
+  if (v18 != nullptr &&
+      (v19 = v18,
+       (v20 = GameRoutine_a677e0_alt1(v18 + 5, &v34_.v34)) != nullptr) &&
+      (v21 = (__int64)(v20 + 5),
+       (v22 = GameRoutine_a67980_alt1(v19 + 10, (const char*)(v20[5] + 32))) !=
+           nullptr)) {
     v23 = v22;
-    v24 = (_QWORD*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, 440,
-                                                  16, 0);
-    v25 = v34;
-    v26 = v35;
+    v24 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                       440, 16, 0);
+    v25 = v34_.v34;
+    v26 = v34_.v35;
     v27 = v24 + 3;
     v28 = v24;
     v24[1] = 0;
     v24[2] = 0;
     *v24 = GameData_1fd17c0;
-    GameRoutine_adc200((__int64)(v24 + 3), v23 + 40, 0, a2, a3, v25, v26, v21);
+    GameRoutine_adc200((__int64)(v24 + 3), (__int64)(v23 + 5), 0, a2, a3, v25,
+                       v26, v21);
   }
   else {
     v27 = nullptr;
@@ -154,33 +178,35 @@ __int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
   if (v29 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v29 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v29 + 16LL))(v29);
-    std___1___shared_weak_count___release_weak(v29);
+    std___1___shared_weak_count___release_weak_alt1(v29);
   }
   DecalObject_a91100(v6, *(_QWORD*)(v17 + 312),
                      *(_QWORD*)(*(_QWORD*)(v17 + 552) + 16LL), 48);
-  v36 = 0;
-  v37 = 0;
-  v34 = 0;
-  v35 = 0;
-  v32[0] = GameData_1fd1810;
-  v33 = v32;
-  GameRoutine_5fc230(&v34);
-  if (v33 != nullptr) {
-    (*(void (**)(_QWORD*, __int64*))(*v33 + 48LL))(v33, &v34);
+  v34_.v36 = 0;
+  v34_.v37 = 0;
+  v34_.v34 = 0;
+  v34_.v35 = 0;
+  v32_.v32[0] = (__int64)GameData_1fd1810;
+  v32_.v33 = v32_.v32;
+  GameRoutine_5fc230_alt1((__int64)&v34_.v34);
+  if (v32_.v33 != nullptr) {
+    (*(void (**)(__int64*, __int64*))(*v32_.v33 + 48))(v32_.v33, &v34_.v34);
   }
-  GameRoutine_604060(v6 + 15, *v16 + 568, &v34);
-  *(_QWORD*)(a1 + 368) = GameRoutine_615760(*(_QWORD*)(*v16 + 552), v6 + 15);
-  result = (__int64)v33;
-  if (v33 == v32) {
+  GameRoutine_604060_alt1((__int64)(v6 + 15), (__int64*)(*v16 + 568),
+                          (__int64)&v34_.v34);
+  *(_QWORD*)(a1 + 368) =
+      game_615760(*(_QWORD*)(*v16 + 552), (__int64)(v6 + 15));
+  result = (__int64)v32_.v33;
+  if (v32_.v33 == v32_.v32) {
     v31 = 32;
   }
   else {
-    if (v33 == nullptr) {
+    if (v32_.v33 == nullptr) {
       return result;
     }
     v31 = 40;
   }
-  return (*(__int64 (**)(_QWORD*))(*v33 + v31))(v33);
+  return (*(__int64 (**)(__int64*))(*v32_.v33 + v31))(v32_.v33);
 }
 
 __int64 BillboardModel_Destructor(__int64 a1)

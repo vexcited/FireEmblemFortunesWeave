@@ -27,6 +27,10 @@ extern __int64 (*GameData_20772e0[])();
 extern char* GameData_1fa6240;
 __int64 ObeliskHeroStartMenuItem_1663bb0(__int64 a1);
 __int64 game_facility_ObeliskHeroStartMenuItem_ACall(__int64 a1);
+__int64 GameRoutine_f8a870_alt1(__int64 result,
+                                __int64*) __asm__("GameRoutine_f8a870");
+bool game_879ce0_alt1(__int64, __int64*, __int64) __asm__("game_879ce0");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 
 __int64 ObeliskHeroStartMenuItem_1663bb0(__int64 a1)
 {
@@ -41,7 +45,7 @@ __int64 ObeliskHeroStartMenuItem_1663bb0(__int64 a1)
     _QWORD v10[4];
     _QWORD* v11;
   } v10_;
-  _QWORD v12[4];
+  __int64 v12[4];
 
   if (*(_DWORD*)(a1 + 84) != 2) {
     return 0;
@@ -52,17 +56,17 @@ __int64 ObeliskHeroStartMenuItem_1663bb0(__int64 a1)
                         (&GameData_1fa6240)[*(unsigned __int8*)(a1 + 83)], 2);
   v5 = game_util_Format("%s/%s", "000", v4);
   v6 = *(_QWORD*)(a1 + 8);
-  v12[0] = v5;
+  v12[0] = (__int64)v5;
   if (*(_QWORD*)(v6 + 152) != 0) {
     v7 = *(_QWORD*)(v6 + 152);
   }
   else {
     v7 = v6;
   }
-  v12[1] = strlen(v5);
+  v12[1] = strlen_alt1(v5);
   v10_.v10[0] = GameData_2001310;
   v10_.v11 = v10_.v10;
-  game_879ce0(v7, v12, (__int64)v10_.v10);
+  game_879ce0_alt1(v7, v12, (__int64)v10_.v10);
   if (v10_.v11 == v10_.v10) {
     v8 = 32;
     goto LABEL_10;
@@ -175,23 +179,22 @@ game_facility_ObeliskHeroStartMenuItem_CreateConfirmDialog_lambda0_Invoke(
   __int64 v2;
   __int64 v3;
   char v4;
-  int v6;
-  char v7;
+  __int64 v6;
+  int v7;
   int v8;
-  int v9;
-  char v10;
+  char v9;
 
   v2 = *(_QWORD*)GameData_212efc0;
   if (*(_QWORD*)GameData_212efc0 != 0) {
     v3 = *(_QWORD*)(a1 + 8);
-    v6 = 0;
+    LODWORD(v6) = 0;
     v4 = *(_BYTE*)(v3 + 83);
     LODWORD(v3) = *(_DWORD*)(v3 + 84);
-    v7 = v4;
-    v8 = v3;
+    BYTE4(v6) = v4;
+    v7 = v3;
+    v8 = 1;
     v9 = 1;
-    v10 = 1;
-    GameRoutine_f8a870(v2, &v6);
+    GameRoutine_f8a870_alt1(v2, &v6);
   }
   return 4;
 }

@@ -21,68 +21,97 @@ __int64 nn_os_SleepThread(_QWORD);
 extern _UNKNOWN* GameData_2135058;
 extern char* GameData_2135060;
 unsigned __int64 SoundArchivePlayer_27dc10();
-__int64 SequenceSoundRuntime_291e40(__int64 a1, int a2, int a3, _BYTE* a4,
-                                    __int64 a5);
+__int64 SequenceSoundRuntime_291e40_alt1(
+    __int64 a1, int a2, int a3, _BYTE* a4,
+    __int64 a5) __asm__("SequenceSoundRuntime_291e40");
 __int64 SequenceSoundRuntime_2922e0(_QWORD* a1);
 __int64 SequenceSoundRuntime_292c10(__int64 a1, __int64 a2, __int64 a3,
                                     __int64 a4, __int64 a5, unsigned int* a6,
                                     __int64* a7);
+__int64 SequenceNoteOnCallback_292160_alt1(
+    _QWORD*, __int64,
+    unsigned __int64) __asm__("SequenceNoteOnCallback_292160");
+__int64 SoundThread_2a1ee0_alt1(__int64, _QWORD*) __asm__("SoundThread_2a1ee0");
+unsigned __int64 SequenceNoteOnCallback_291fa0_alt1(
+    __int64, __int64, unsigned __int64,
+    unsigned int*) __asm__("SequenceNoteOnCallback_291fa0");
+void* BaseNx_2a1b90_alt1() __asm__("BaseNx_2a1b90");
+__int64 SequenceSoundRuntime_291e40(_QWORD* a1, int a2, int a3, _BYTE* a4,
+                                    __int64 a5);
 
-__int64 SequenceSoundRuntime_291e40(__int64 a1, int a2, int a3, _BYTE* a4,
+__int64 SequenceSoundRuntime_291e40(_QWORD* a1, int a2, int a3, _BYTE* a4,
                                     __int64 a5)
 {
-  __int64 v5;
-  __int64 v6;
   int v13;
   __int64 v14;
   __int64 v15;
   bool v16;
   int v17;
   __int64 v18;
-  unsigned __int64 v19;
+  __int64 v19;
   unsigned __int64 v20;
   __int64 v21;
+  unsigned __int64 v22;
+  unsigned __int64 v23;
   __int64 i;
-  __int64 v23;
-  unsigned __int64 v24;
-  int v25;
-  __int64 v26;
-  __int64 v27;
+  void* v25;
+  struct {
+    unsigned __int64 v26;
+    int v27;
+  } v26_;
 
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if ((*a4 & 0x3F) != 0) {
     return 0;
   }
-  v26 = v5;
-  v27 = v6;
-  v24 = SoundArchivePlayer_27dc10();
-  v25 = v13;
-  v14 = BaseNx_2832c0((unsigned int*)&v24, 1);
-  v15 = v14 + BaseNx_2832c0((unsigned int*)&v24, 0);
+  v26_.v26 = SoundArchivePlayer_27dc10(),
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v26_.v27 = v13;
+  v14 = BaseNx_2832c0((unsigned int*)&v26_.v26, 1),
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v15 = v14 + BaseNx_2832c0((unsigned int*)&v26_.v26, 0),
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v16 = v14 == 0;
   v17 = a2;
-  v18 = v15 + 1624;
+  v18 = *(_QWORD*)a4;
+  v19 = v15 + 1624;
   if (v16) {
-    v18 = 1528;
+    v19 = 1528;
   }
-  v19 = *(_QWORD*)a4 + ((v18 * a2 + 63) & 0xFFFFFFFFFFFFFFC0LL);
-  if ((__int64)(v19 - a5) >= 1) {
+  v20 = (v19 * a2 + 63) & 0xFFFFFFFFFFFFFFC0LL;
+  v21 = v18 + v20;
+  if ((__int64)(v18 + v20 - a5) >= 1) {
     return 0;
   }
-  SequenceNoteOnCallback_291fa0(a1);
-  *(_QWORD*)a4 = v19;
-  v20 = v19 + ((1200LL * v17 + 63) & 0xFFFFFFFFFFFFFFC0LL);
-  if ((__int64)(v20 - a5) > 0) {
+  SequenceNoteOnCallback_291fa0_alt1((__int64)a1, v18, v20,
+                                     (unsigned int*)&v26_.v26),
+      v13 = COERCE_AS(__typeof__(v13),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  *(_QWORD*)a4 = v21;
+  v22 = (1200LL * v17 + 63) & 0xFFFFFFFFFFFFFFC0LL;
+  v23 = v21 + v22;
+  if ((__int64)(v21 + v22 - a5) > 0) {
     return 0;
   }
-  v21 = SequenceNoteOnCallback_292160(a1 + 64, v19);
-  *(_QWORD*)a4 = v20;
-  for (i = *(_QWORD*)(a1 + 56); i != a1 + 48; i = *(_QWORD*)(i + 8)) {
-    *(_QWORD*)(i + 856) = a1 + 64;
+  SequenceNoteOnCallback_292160_alt1(a1 + 8, v21, v22),
+      v13 = COERCE_AS(__typeof__(v13),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  *(_QWORD*)a4 = v23;
+  for (i = a1[7]; (_QWORD*)i != a1 + 6; i = *(_QWORD*)(i + 8)) {
+    *(_QWORD*)(i + 856) = a1 + 8;
     *(_DWORD*)(i + 300) = a3;
   }
-  v23 = BaseNx_2a1b90(v21);
-  SoundThread_2a1ee0(v23, a1 + 64);
-  *(_QWORD*)(a1 + 136) = a1 + 144;
+  v25 = BaseNx_2a1b90_alt1(),
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  SoundThread_2a1ee0_alt1((__int64)v25, a1 + 8),
+      v13 = COERCE_AS(__typeof__(v13),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  a1[17] = a1 + 18;
   return 1;
 }
 

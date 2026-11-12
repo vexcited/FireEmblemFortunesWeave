@@ -28,6 +28,11 @@ extern __int64 GameData_2232000;
 __int64 game_menu_anonymous_GiftTransportMenu_ACall_closure_Invoke(__int64 a1);
 __int64 game_menu_anonymous_GiftTransportMenu_AddItemList_closure_Invoke(
     __int64 result, unsigned __int16* a2);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 __int64 GiftTransportMenu_Unknown85(__int64 a1)
 {
@@ -128,11 +133,17 @@ _QWORD* GiftTransportMenu_Unknown128(__int64 a1)
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  _QWORD v12[4];
-  _QWORD* v13;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
 
-  v2 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      96, 16, 0);
+  v3 = COERCE_AS(__typeof__(v3),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v2 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 96, 16, 0),
+  v3 = COERCE_AS(__typeof__(v3),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   *(_WORD*)(v2 + 16) = 0;
   *(_QWORD*)(v2 + 48) = 0;
   *(_QWORD*)(v2 + 56) = 0;
@@ -146,14 +157,16 @@ _QWORD* GiftTransportMenu_Unknown128(__int64 a1)
   *(_QWORD*)v2 = game_menu_EmptyTransportMenuItem_vtable;
   v5 = *(_QWORD*)(a1 + 344);
   if (v5 != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v5 + 8LL))(v5);
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 8LL))(v5),
+        v3 = COERCE_AS(__typeof__(v3),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
-  result = v12;
+  result = v12_.v12;
   *(_QWORD*)(v4 + 8) = a1;
   *(_QWORD*)(a1 + 344) = v4;
-  v12[0] = GameData_1fff858;
-  v12[1] = a1;
-  v13 = v12;
+  v12_.v12[0] = GameData_1fff858;
+  v12_.v12[1] = a1;
+  v12_.v13 = v12_.v12;
   v7 = *(_QWORD*)(game_TransporterConst_List_instance_ + 8);
   v8 = *(unsigned int*)(v7 + 80);
   if ((int)v8 < 1) {
@@ -164,20 +177,24 @@ _QWORD* GiftTransportMenu_Unknown128(__int64 a1)
   do {
     v3 = *(_QWORD*)(v7 + 8) + v9;
     if (*(_WORD*)(v3 + 2) != 0) {
-      if (v13 == nullptr) {
-        GameRoutine_60a310(0, v3);
+      if (v12_.v13 == nullptr) {
+        GameRoutine_60a310_alt1(),
+            v3 = COERCE_AS(__typeof__(v3),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       }
-      (*(void (**)(_QWORD*))(*v13 + 48LL))(v13);
+      (*(void (**)(_QWORD*))(*v12_.v13 + 48LL))(v12_.v13),
+          v3 = COERCE_AS(__typeof__(v3),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
     v9 += 12;
   } while (v10 != v9);
-  result = v13;
-  if (v13 == v12) {
+  result = v12_.v13;
+  if (v12_.v13 == v12_.v12) {
   LABEL_12:
     v11 = 32;
   }
   else {
-    if (v13 == nullptr) {
+    if (v12_.v13 == nullptr) {
       return result;
     }
     v11 = 40;

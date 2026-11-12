@@ -70,6 +70,24 @@ unsigned __int8* Window_5b11a0(unsigned __int8* result, __int64 a2, __int64 a3,
                                __int64 a4, float* a5, unsigned int a6);
 unsigned __int8* Window_5b1a80(unsigned __int8* result, __int64 a2, __int64 a3,
                                __int64 a4, float* a5, unsigned int a6);
+__int64 DrawInfo_576a40_alt1(__int64, __int64,
+                             unsigned __int16) __asm__("DrawInfo_576a40");
+__int64 DynamicRenderingTexture_576440_alt1(__int64, __int64, __int64) __asm__(
+    "DynamicRenderingTexture_576440");
+__int64 GameRoutine_5764b0_alt1(__int64, __int64) __asm__("GameRoutine_5764b0");
+__int64 GameRoutine_576a20_alt1(__int64 result,
+                                __int64) __asm__("GameRoutine_576a20");
+__int64 GameRoutine_58c810_alt1(__int64, __int64) __asm__("GameRoutine_58c810");
+__int64 GameRoutine_5fcd30_alt1(__int64, unsigned int, unsigned int, _QWORD*,
+                                unsigned int,
+                                unsigned int) __asm__("GameRoutine_5fcd30");
+__int64 GameRoutine_5fe120_alt1(__int64, unsigned int, unsigned int, _QWORD*,
+                                __int64) __asm__("GameRoutine_5fe120");
+__int64 Window_58aa70(__int64 result, __int64, __int64);
+__int64 Window_58c380(__int64, __int64, __int64);
+__int64 Window_58c400(__int64 result, __int64, __int64);
+__int64 Window_58c480(__int64 result, __int64, __int64);
+__int64 Window_58c720(__int64, __int64, __int64);
 
 __int64 Window_Destructor(_QWORD* a1)
 {
@@ -435,46 +453,46 @@ __int64 Window_5afc20(__int64 result, __int64 a2, __int64 a3)
   __int64 v13;
   __int64 v14;
   __int64 v15;
-  __int64 v16;
-  __int64 v17;
+  struct {
+    __int64 v16;
+    __int64 v17;
+  } v16_;
 
   v5 = result;
   v6 = *(_QWORD*)(*(_QWORD*)(result + 272) + 8LL);
   if ((*(_BYTE*)(v6 + 20) & 3) != 0) {
-    if ((DrawInfo_576a40(a2, *(_QWORD*)(v6 + 32),
-                         *(unsigned __int16*)(v6 + 74)) &
+    if ((DrawInfo_576a40_alt1(a2, *(_QWORD*)(v6 + 32), *(_WORD*)(v6 + 74)) &
          1) != 0) {
-      GameRoutine_58c810(v6, a3);
+      GameRoutine_58c810_alt1(v6, a3);
     }
-    GameRoutine_576a20(a2, a3);
-    GameRoutine_58c480(v6, a3, a2);
-    result = GameRoutine_58c720(v6, a3, a2);
+    GameRoutine_576a20_alt1(a2, a3);
+    Window_58c480(v6, a3, a2);
+    result = Window_58c720(v6, a3, a2);
     if ((*(_BYTE*)(v5 + 98) & 2) != 0) {
       result = Pane_590280(v5, a3, a2);
     }
     if (*(_DWORD*)(v5 + 296) != 0) {
-      GameRoutine_58aa70(v6, a2, a3);
-      GameRoutine_58c380(v6, a3, a2);
-      GameRoutine_58c400(v6, a3, a2);
-      result = GameRoutine_5764b0(a3, a2);
+      Window_58aa70(v6, a2, a3);
+      Window_58c380(v6, a3, a2);
+      Window_58c400(v6, a3, a2);
+      result = GameRoutine_5764b0_alt1(a3, a2);
       if (*(_DWORD*)(v5 + 296) != 0) {
         v7 = *(_QWORD*)(a2 + 184);
         v8 = 0;
         do {
           v9 = *(_QWORD*)(a2 + 200);
-          v16 = 0;
-          v17 = 0;
+          v16_.v16 = 0;
+          v16_.v17 = 0;
           v10 = *(_QWORD*)(*(_QWORD*)(v9 + 16) + 16LL * *(int*)(v9 + 48) + 8);
-          v16 = *(_QWORD*)(*(_QWORD*)(v9 + 16) + 16LL * *(int*)(v9 + 48));
-          v17 = v10;
+          v16_.v16 = *(_QWORD*)(*(_QWORD*)(v9 + 16) + 16LL * *(int*)(v9 + 48));
+          v16_.v17 = v10;
           v11 = *(unsigned __int16*)(v6 + 74);
-          v16 += *(unsigned int*)(*(_QWORD*)(v5 + 288) + 4 * v8);
-          GameRoutine_5fe120(
-              a3,
-              *(unsigned int*)(*(_QWORD*)(*(_QWORD*)(v6 + 32) + 24LL) +
-                               4 * v11),
-              0, &v16, 560);
-          result = GameRoutine_5fcd30(a3, 3, 1, v7 + 584, 6, 0);
+          v16_.v16 += *(unsigned int*)(*(_QWORD*)(v5 + 288) + 4 * v8);
+          GameRoutine_5fe120_alt1(
+              a3, *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v6 + 32) + 24LL) + 4 * v11),
+              0, &v16_.v16, 560);
+          result =
+              GameRoutine_5fcd30_alt1(a3, 3u, 1u, (_QWORD*)(v7 + 584), 6u, 0);
           ++v8;
         } while (v8 < *(unsigned int*)(v5 + 296));
       }
@@ -488,10 +506,10 @@ __int64 Window_5afc20(__int64 result, __int64 a2, __int64 a3)
           v15 = *(_QWORD*)(v5 + 272);
           result = *(_QWORD*)(v15 + v13);
           if ((*(_BYTE*)(result + 20) & 3) != 0) {
-            GameRoutine_58aa70(result, a2, a3);
-            GameRoutine_58c380(*(_QWORD*)(v15 + v13), a3, a2);
-            GameRoutine_58c400(*(_QWORD*)(v15 + v13), a3, a2);
-            result = GameRoutine_5764b0(a3, a2);
+            Window_58aa70(result, a2, a3);
+            Window_58c380(*(_QWORD*)(v15 + v13), a3, a2);
+            Window_58c400(*(_QWORD*)(v15 + v13), a3, a2);
+            result = GameRoutine_5764b0_alt1(a3, a2);
             LOBYTE(v12) = *(_BYTE*)(v5 + 265);
           }
           ++v14;
@@ -502,21 +520,21 @@ __int64 Window_5afc20(__int64 result, __int64 a2, __int64 a3)
   }
   if ((*(_BYTE*)(v5 + 266) & 4) == 0) {
     if (*(_BYTE*)(v5 + 264) == 1) {
-      GameRoutine_58aa70(*(_QWORD*)(v5 + 280), a2, a3);
-      GameRoutine_58c380(*(_QWORD*)(v5 + 280), a3, a2);
-      GameRoutine_58c400(*(_QWORD*)(v5 + 280), a3, a2);
+      Window_58aa70(*(_QWORD*)(v5 + 280), a2, a3);
+      Window_58c380(*(_QWORD*)(v5 + 280), a3, a2);
+      Window_58c400(*(_QWORD*)(v5 + 280), a3, a2);
     }
     else {
       if (*(_BYTE*)(v5 + 264) != 0) {
         return result;
       }
-      DynamicRenderingTexture_576440(a3, a2, *(_QWORD*)(v5 + 280));
-      GameRoutine_58aa70(*(_QWORD*)(v5 + 280), a2, a3);
+      DynamicRenderingTexture_576440_alt1(a3, a2, *(_QWORD*)(v5 + 280));
+      Window_58aa70(*(_QWORD*)(v5 + 280), a2, a3);
       if ((*(_BYTE*)(v5 + 98) & 2) != 0) {
         Pane_590280(v5, a3, a2);
       }
     }
-    return GameRoutine_5764b0(a3, a2);
+    return GameRoutine_5764b0_alt1(a3, a2);
   }
   return result;
 }

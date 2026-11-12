@@ -9,7 +9,8 @@ extern __int64 (*game_combat_GambitMotion_vtable[])();
 extern __int64 (*game_combat_IGambitKey_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 game_combat_GambitMotion_Run(__int64 a1);
-__n128 GambitMotion_Destructor(__int64 a1);
+__n128
+GambitMotion_Destructor_alt1(__int64 a1) __asm__("GambitMotion_Destructor");
 __n128 GambitMotion_DeletingDestructor(__int64 a1);
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
@@ -21,6 +22,9 @@ extern __int64* GameData_212f3d8[4];
 __attribute__((swiftcall)) void GambitMotion_Unknown3(PSEUDO_X8 x8_);
 void game_combat_GambitMotion_Run_lambda0_Invoke(__int64 a1, __int64* a2,
                                                  int* a3);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void GambitMotion_Destructor(__int64 a1);
 
 __int64 game_combat_GambitMotion_Run(__int64 a1)
 {
@@ -46,16 +50,15 @@ __int64 game_combat_GambitMotion_Run(__int64 a1)
   return (*(__int64 (**)(__int64))(*v4 + v2))((__int64)v4);
 }
 
-__n128 GambitMotion_Destructor(__int64 a1)
+void GambitMotion_Destructor(__int64 a1)
 {
   _QWORD* v2;
   _QWORD* v3;
   __int64 v4;
-  __n128 result;
-  _QWORD* v6;
+  _QWORD* v5;
+  __int64 v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
 
   *(_QWORD*)a1 = game_combat_GambitMotion_vtable;
   v2 = (_QWORD*)(a1 + 144);
@@ -71,29 +74,28 @@ __n128 GambitMotion_Destructor(__int64 a1)
   }
   (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
 LABEL_6:
-  v6 = *(_QWORD**)(a1 + 128);
-  if (v6 == (_QWORD*)(a1 + 96)) {
-    v7 = 32;
+  v5 = *(_QWORD**)(a1 + 128);
+  if (v5 == (_QWORD*)(a1 + 96)) {
+    v6 = 32;
     goto LABEL_10;
   }
-  if (v6 != nullptr) {
-    v7 = 40;
+  if (v5 != nullptr) {
+    v6 = 40;
   LABEL_10:
-    (*(void (**)(__int64))(*v6 + v7))((__int64)v6);
+    (*(void (**)(__int64))(*v5 + v6))((__int64)v5);
   }
   *(_QWORD*)a1 = &game_combat_IGambitKey_vtable;
   if ((*(_BYTE*)(a1 + 24) & 1) != 0) {
-    v8 = *(_QWORD*)(a1 + 40);
-    if (v8 != 0) {
-      v9 = 128;
+    v7 = *(_QWORD*)(a1 + 40);
+    if (v7 != 0) {
+      v8 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v9 = 56;
+        v8 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, v8);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v7);
     }
   }
-  return result;
 }
 
 __n128 GambitMotion_DeletingDestructor(__int64 a1)

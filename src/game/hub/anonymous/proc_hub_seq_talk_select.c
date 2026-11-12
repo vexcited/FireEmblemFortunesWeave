@@ -10,7 +10,9 @@ extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 (*game_hub_anonymous_ProcHubSeqTalkSelect_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcHubSeqTalkSelect_Destructor(__int64 a1, long double a2);
-__int64 ProcHubSeqTalkSelect_DeletingDestructor(__int64 a1, long double a2);
+__int64 ProcHubSeqTalkSelect_DeletingDestructor_alt1(
+    __int64 a1,
+    long double a2) __asm__("ProcHubSeqTalkSelect_DeletingDestructor");
 __int64 GameRoutine_cb18f0(_QWORD, _QWORD);
 __int64 GameRoutine_d5da40(_QWORD, _QWORD);
 __int64 GameRoutine_efa9a0(_QWORD, _QWORD);
@@ -24,6 +26,14 @@ __int64 game_hub_anonymous_ProcHubSeqTalkSelect_MainSeq_closure_Invoke_10466d0(
     __int64 a1, __int64* a2);
 __int64 game_hub_anonymous_ProcHubSeqTalkSelect_MainSeq_closure_Invoke_10468d0(
     __int64 a1);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcHubSeqTalkSelect_DeletingDestructor(__int64 a1);
 
 __int64 ProcHubSeqTalkSelect_10464e0(__int64 a1)
 {
@@ -147,43 +157,42 @@ __int64 ProcHubSeqTalkSelect_Destructor(__int64 a1, long double a2)
   return GameRoutine_658c00(a1 + 88);
 }
 
-__int64 ProcHubSeqTalkSelect_DeletingDestructor(__int64 a1, long double a2)
+void ProcHubSeqTalkSelect_DeletingDestructor(__int64 a1)
 {
-  __int64 v2;
+  __int64 v1;
+  __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  long double v8;
-  __int64 v9;
 
-  v2 = *(_QWORD*)(a1 + 168);
+  v1 = *(_QWORD*)(a1 + 168);
   *(_QWORD*)a1 = game_hub_anonymous_ProcHubSeqTalkSelect_vtable;
-  v4 = fw_memory_g_heap_manager_ptr;
-  if (v2 != 0) {
-    v5 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
-    *(_QWORD*)(a1 + 176) = v2;
-    v6 = 128;
-    if (*(_QWORD*)(v5 + 200) == 0) {
-      v6 = 56;
+  v3 = fw_memory_g_heap_manager_ptr;
+  if (v1 != 0) {
+    v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
+    *(_QWORD*)(a1 + 176) = v1;
+    v5 = 128;
+    if (*(_QWORD*)(v4 + 200) == 0) {
+      v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v5 + v6, a2);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
-  v7 = *(_QWORD*)(a1 + 160);
-  if (v7 != 0) {
-    std___1___shared_weak_count___release_weak(v7);
+  v6 = *(_QWORD*)(a1 + 160);
+  if (v6 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v6);
   }
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
-  v9 = 128;
-  if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
-    v9 = 56;
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
+  v7 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+    v7 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v9, v8);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v7, a1);
 }
 
 #pragma GCC visibility pop

@@ -28,6 +28,10 @@ __int64 WaveReader_188ee0(__int64 a1);
 __int64 WaveReader_1897c0(_QWORD* a1, unsigned int a2);
 __int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
 __int64 WaveReader_Unknown14(__int64 a1, int a2);
+__int64 GameRoutine_190260_alt1(unsigned __int8*, unsigned __int8*,
+                                unsigned __int64) __asm__("GameRoutine_190260");
+unsigned __int64
+GameRoutine_190020_alt1(__int64*, const char*) __asm__("GameRoutine_190020");
 
 __int64 WaveReader_Destructor(__int64 a1)
 {
@@ -258,23 +262,21 @@ __int64 WaveReader_188ee0(__int64 a1)
   __int64 v2;
   __int64 result;
   unsigned int v5;
-  _BYTE v6[16];
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
+  __int64 v6[5];
 
   if (*(_QWORD*)(a1 + 160) != 0) {
     return 1;
   }
-  v8 = v1;
-  v9 = v2;
-  GameRoutine_190020(v6, ".opus");
-  result = GameRoutine_190260(a1 + 16, v6, 0) != -1;
+  v6[3] = v1;
+  v6[4] = v2;
+  GameRoutine_190020_alt1(v6, ".opus");
+  result = GameRoutine_190260_alt1((unsigned __int8*)(a1 + 16),
+                                   (unsigned __int8*)v6, 0) != -1;
   if ((v6[0] & 1) != 0) {
     v5 = result;
     (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64))(
         **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(
-        (void*)*(_QWORD**)snd_g_memory_ptr[0], *snd_g_memory_ptr[0], v7);
+        (void*)(*(_QWORD**)snd_g_memory_ptr[0]), *snd_g_memory_ptr[0], v6[2]);
     return v5;
   }
   return result;

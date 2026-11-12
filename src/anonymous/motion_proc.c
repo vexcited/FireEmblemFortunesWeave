@@ -12,8 +12,9 @@ extern __int64 (*anonymous_MotionProc_vtable[])();
 extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcGameSkipView_instance_;
-__int64 MotionProc_Destructor(__int64 a1);
-__int64 MotionProc_DeletingDestructor(__int64 a1);
+__int64 MotionProc_Destructor_alt1(__int64 a1) __asm__("MotionProc_Destructor");
+__int64 MotionProc_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "MotionProc_DeletingDestructor");
 __int64 MotionProc_Unknown2(__int64 result);
 __int64 GameRoutine_d2b5f0(_QWORD);
 __int64 __cxa_guard_acquire(_QWORD);
@@ -24,6 +25,15 @@ extern __int64 (*eft_ClampCurve_ptr)();
 extern int GameData_220f854;
 bool MotionProc_118a440(_BOOL8 result);
 __int64 anonymous_MotionProc_Create_closure_Invoke(__int64 result, __int64* a2);
+__int64 UnitActor_819f40(__int64);
+__int64 UnitActor_81a540(__int64, unsigned int, __int64);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void MotionProc_Destructor(__int64 a1);
+void MotionProc_DeletingDestructor(__int64 a1);
 
 __int64 anonymous_MotionProc_Create_closure_Invoke(__int64 result, __int64* a2)
 {
@@ -37,64 +47,68 @@ __int64 anonymous_MotionProc_Create_closure_Invoke(__int64 result, __int64* a2)
   return result;
 }
 
-__int64 MotionProc_Destructor(__int64 a1)
+void MotionProc_Destructor(__int64 a1)
 {
   __int64 v2;
   unsigned int v3;
-  unsigned __int64 v5;
-  int v6;
-  char v7;
+  struct {
+    unsigned __int64 v4;
+    int v5;
+    char v6;
+  } v4_;
 
   *(_QWORD*)a1 = anonymous_MotionProc_vtable;
   if (*(_BYTE*)(a1 + 160) == 1) {
     v2 = *(_QWORD*)(a1 + 152);
-    v7 = 0;
-    v5 = 0xBF800000BF800000LL;
-    v6 = 1065353216;
-    v3 = GameRoutine_819f40(*(_QWORD*)(v2 + 8));
+    v4_.v6 = 0;
+    v4_.v4 = 0xBF800000BF800000LL;
+    v4_.v5 = 1065353216;
+    v3 = UnitActor_819f40(*(_QWORD*)(v2 + 8));
     if (v3 != *(_DWORD*)(v2 + 16)) {
-      GameRoutine_81a540(v2, v3, &v5);
+      UnitActor_81a540(v2, v3, (__int64)&v4_.v4);
     }
   }
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
-__int64 MotionProc_DeletingDestructor(__int64 a1)
+void MotionProc_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   unsigned int v3;
   __int64 v4;
-  unsigned __int64 v6;
-  int v7;
-  char v8;
+  struct {
+    unsigned __int64 v5;
+    int v6;
+    char v7;
+  } v5_;
 
   *(_QWORD*)a1 = anonymous_MotionProc_vtable;
   if (*(_BYTE*)(a1 + 160) == 1) {
     v2 = *(_QWORD*)(a1 + 152);
-    v8 = 0;
-    v6 = 0xBF800000BF800000LL;
-    v7 = 1065353216;
-    v3 = GameRoutine_819f40(*(_QWORD*)(v2 + 8));
+    v5_.v7 = 0;
+    v5_.v5 = 0xBF800000BF800000LL;
+    v5_.v6 = 1065353216;
+    v3 = UnitActor_819f40(*(_QWORD*)(v2 + 8));
     if (v3 != *(_DWORD*)(v2 + 16)) {
-      GameRoutine_81a540(v2, v3, &v6);
+      UnitActor_81a540(v2, v3, (__int64)&v5_.v5);
     }
   }
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
   v4 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v4 = 56;
   }
-  return nn_mem_StandardAllocator_Free(
+  nn_mem_StandardAllocator_Free_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, a1);
 }
 

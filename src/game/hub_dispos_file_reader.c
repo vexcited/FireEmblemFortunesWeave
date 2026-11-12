@@ -66,6 +66,13 @@ __attribute__((swiftcall)) void HubDisposFileReader_c9bf60(PSEUDO_X8 x8_,
                                                            __int64 result,
                                                            int a2, __int64** a3,
                                                            long double a5);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void nn_mem_StandardAllocator_Free_alt3(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 HubDisposFileReader_Destructor(_QWORD* a1)
 {
@@ -434,7 +441,7 @@ __attribute__((swiftcall)) void HubDisposFileReader_c98880(PSEUDO_X8 x8_,
   unsigned __int64 v18;
   __int64 v19;
   unsigned __int64 v20;
-  char* v21;
+  unsigned __int64 v21;
   __int64 v22;
   __int64 v23;
   __int64 v24;
@@ -445,7 +452,7 @@ __attribute__((swiftcall)) void HubDisposFileReader_c98880(PSEUDO_X8 x8_,
   a2[2] = 0;
   *a2 = 0;
   if (result != 0) {
-    result = std___1___shared_weak_count_lock(result);
+    result = std___1___shared_weak_count_lock_alt1(result);
     if (result != 0) {
       v5 = a1[1];
       if (v5 != 0) {
@@ -497,11 +504,11 @@ __attribute__((swiftcall)) void HubDisposFileReader_c98880(PSEUDO_X8 x8_,
                   v19 = 0;
                 }
                 v20 = v19 + 8 * v18;
-                v21 = &v8[-v9];
+                v21 = (unsigned __int64)&v8[-v9];
                 v22 = (__int64)&v14[v19 + -8 * v15];
                 *(_QWORD*)&v14[v19] = v12;
                 v8 = &v14[v19 + 8];
-                memcpy(v22, v9, v21);
+                memcpy_alt1(v22, v9, v21);
                 a2[1] = (__int64)v8;
                 a2[2] = v20;
                 if (v9 != 0) {
@@ -510,8 +517,8 @@ __attribute__((swiftcall)) void HubDisposFileReader_c98880(PSEUDO_X8 x8_,
                                  200LL) == 0) {
                     v23 = 56;
                   }
-                  nn_mem_StandardAllocator_Free(
-                      *(_QWORD*)fw_memory_g_heap_manager_ptr + v23);
+                  nn_mem_StandardAllocator_Free_alt3(
+                      *(_QWORD*)fw_memory_g_heap_manager_ptr + v23, v9);
                 }
                 v9 = v22;
               }
@@ -528,7 +535,7 @@ __attribute__((swiftcall)) void HubDisposFileReader_c98880(PSEUDO_X8 x8_,
         v24 = result;
         (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
         {
-          std___1___shared_weak_count___release_weak(v24);
+          std___1___shared_weak_count___release_weak_alt1(v24);
           return;
         }
       }

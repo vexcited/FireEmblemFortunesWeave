@@ -26,6 +26,16 @@ extern __int64 (*game_telop_TelopStill_vtable[])();
 extern __int64 GameData_2130f40[2];
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 TelopStill_Destructor(__int64 a1);
+_QWORD* ui_LayoutAccessor_Setup_155dda0_alt1(_QWORD*, _QWORD*) __asm__(
+    "ui_LayoutAccessor_Setup_155dda0");
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 nn_os_AcquireReadLock_alt1(__int64) __asm__("nn_os_AcquireReadLock");
+__int64 nn_os_ReleaseReadLock_alt1(__int64) __asm__("nn_os_ReleaseReadLock");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 ui_LayoutAccessor_SetPriority_alt1(__int64 result, int) __asm__(
+    "ui_LayoutAccessor_SetPriority");
 
 __int64 TelopStill_Destructor(__int64 a1)
 {
@@ -144,77 +154,76 @@ __int64 TelopStill_Unknown31(__int64 result)
   _QWORD* v3;
   int v4;
   __int64 v5;
-  long double v6;
+  const char* v6;
   __int64 v7;
-  __int64 v8;
-  unsigned __int8* v9;
-  unsigned int v10;
-  __int16 v11;
-  _QWORD v12[2];
+  unsigned __int8* v8;
+  unsigned int v9;
+  __int16 v10;
+  _QWORD v11[2];
 
   v1 = *(_QWORD*)(result + 152);
   if (*(_BYTE*)(v1 + 24) == 1) {
     v2 = *(_QWORD*)(result + 880);
     v3 = (_QWORD*)result;
     if (v2 != 0) {
-      nn_os_AcquireReadLock(v2 + 696);
+      nn_os_AcquireReadLock_alt1(v2 + 696);
       v4 = *(_DWORD*)(v2 + 656);
-      result = nn_os_ReleaseReadLock(v2 + 696);
+      result = nn_os_ReleaseReadLock_alt1(v2 + 696);
       if ((v4 & 8) == 0) {
         return result;
       }
       v1 = v3[19];
     }
     v5 = v3[20];
-    v12[0] = v1;
-    v12[1] = v5;
+    v11[0] = v1;
+    v11[1] = v5;
     if (v5 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 8), 1u,
                                 memory_order_relaxed);
-      ui_LayoutAccessor_Setup_155dda0(v3 + 21, v12);
+      ui_LayoutAccessor_Setup_155dda0_alt1(v3 + 21, v11);
       if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-        std___1___shared_weak_count___release_weak(v5);
+        std___1___shared_weak_count___release_weak_alt1(v5);
       }
     }
     else {
-      ui_LayoutAccessor_Setup_155dda0(v3 + 21, v12);
+      ui_LayoutAccessor_Setup_155dda0_alt1(v3 + 21, v11);
     }
-    GameRoutine_155e830(v3 + 21, 1);
-    ui_LayoutAccessor_SetPriority(v3 + 21, 0xFFFFFFFFLL, v6);
+    LayoutAccessor_155e830((__int64)(v3 + 21), 1);
+    ui_LayoutAccessor_SetPriority_alt1((__int64)(v3 + 21), -1);
     result = (*(__int64 (**)(_QWORD*))(*v3 + 264LL))(v3);
     if (*((_BYTE*)v3 + 824) == 1) {
-      v7 = (*(__int64 (**)(_QWORD*))(*v3 + 224LL))(v3);
-      result = GameRoutine_1562680(v3 + 21, v7, 1.0);
-      v8 = v3[1];
-      if (v8 != 0) {
+      v6 = (const char*)(*(__int64 (**)(_QWORD*))(*v3 + 224LL))(v3);
+      result = GameHr_1562680((__int64)(v3 + 21), v6, 0x1.0000000000000p+0f);
+      v7 = v3[1];
+      if (v7 != 0) {
         while (1) {
-          if (*(_BYTE*)v8 == 2) {
-            if (*(_DWORD*)(v8 + 32) == 3) {
-              v3[2] = v8;
-              v11 = v3[17] & 0xFF7F;
+          if (*(_BYTE*)v7 == 2) {
+            if (*(_DWORD*)(v7 + 32) == 3) {
+              v3[2] = v7;
+              v10 = v3[17] & 0xFF7F;
               goto LABEL_23;
             }
           }
-          else if (*(_BYTE*)v8 == 0) {
+          else if (*(_BYTE*)v7 == 0) {
             return result;
           }
-          v8 += 64;
+          v7 += 64;
         }
       }
     }
     else {
-      v9 = (unsigned __int8*)v3[2];
-      if (v9 != nullptr) {
-        v10 = *v9;
-        if (v10 <= 0x10 && ((1 << v10) & 0x1CE00) != 0) {
+      v8 = (unsigned __int8*)v3[2];
+      if (v8 != nullptr) {
+        v9 = *v8;
+        if (v9 <= 0x10 && ((1 << v9) & 0x1CE00) != 0) {
           *((_WORD*)v3 + 68) |= 0x80u;
         }
       }
-      v11 = *((_WORD*)v3 + 68) | 8;
+      v10 = *((_WORD*)v3 + 68) | 8;
     LABEL_23:
-      *((_WORD*)v3 + 68) = v11;
+      *((_WORD*)v3 + 68) = v10;
     }
   }
   return result;

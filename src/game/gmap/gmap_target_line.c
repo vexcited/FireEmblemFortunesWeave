@@ -11,13 +11,17 @@ extern __int64* GameData_212c790;
 _QWORD* GmapTargetLine_Destructor(_QWORD* result);
 bool GmapTargetLine_Unknown2(__int64 a1);
 __int64 GmapTargetLine_Unknown5(__int64 result);
-__int64 GmapTargetLine_Unknown6(__int64 result);
+__int64
+GmapTargetLine_Unknown6_alt1(__int64 result) __asm__("GmapTargetLine_Unknown6");
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_19b0930(void);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 __int64 game_gmap_GmapTargetLine_Impl_TryAdd_closure_Invoke(__int64 result,
                                                             _QWORD* a2);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void GmapTargetLine_Unknown6(__int64 a1);
 
 _QWORD* GmapTargetLine_Destructor(_QWORD* result)
 {
@@ -122,18 +126,18 @@ __int64 GmapTargetLine_Unknown5(__int64 result)
   return result;
 }
 
-__int64 GmapTargetLine_Unknown6(__int64 result)
+void GmapTargetLine_Unknown6(__int64 a1)
 {
-  __int64 v1;
-  _QWORD* v2;
-  _QWORD* v3;
+  __int64** v1;
+  __int64* v2;
+  __int64* v3;
   __int64 v4;
   __int64 v5;
 
-  v1 = *(_QWORD*)(result + 8);
-  v2 = *(_QWORD**)v1;
-  v3 = *(_QWORD**)(v1 + 8);
-  if (*(_QWORD**)v1 != v3) {
+  v1 = *(__int64***)(a1 + 8);
+  v2 = *v1;
+  v3 = v1[1];
+  if (*v1 != v3) {
     v4 = fw_memory_g_heap_manager_ptr;
     do {
       if (*v2 != 0) {
@@ -143,14 +147,13 @@ __int64 GmapTargetLine_Unknown6(__int64 result)
         else {
           v5 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v5);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v5, *v2);
       }
       ++v2;
     } while (v2 != v3);
-    v2 = *(_QWORD**)v1;
+    v2 = *v1;
   }
-  *(_QWORD*)(v1 + 8) = v2;
-  return result;
+  v1[1] = v2;
 }
 
 __int64 game_gmap_GmapTargetLine_Impl_TryAdd_closure_Invoke(__int64 result,

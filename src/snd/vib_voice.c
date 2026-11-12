@@ -94,6 +94,13 @@ __int64 VibVoice_Destructor(__int64 a1);
 __int64 VibVoice_Unknown16(__int64 result);
 float VibVoice_Unknown67(__int64 a1);
 __int64 VibVoice_1420e0(__int64 result);
+__int64 GameRoutine_a2af20_alt1(__int64, __int64, __int64,
+                                ...) __asm__("GameRoutine_a2af20");
+const char*
+snd_fnd_calcCrc32Reverse_alt1(const char* result,
+                              int) __asm__("snd_fnd_calcCrc32Reverse");
+unsigned __int64
+GameRoutine_190020_alt1(__int64*, const char*) __asm__("GameRoutine_190020");
 
 void VibVoice_13f5c0(__int64 a1, __int64 a2)
 {
@@ -967,7 +974,7 @@ __int64 VibVoice_140690(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   *(_QWORD*)(a1 + 40) = v20 + 103;
   *(_DWORD*)(a1 + 6112) = 0x2000;
   v50_.v50 = (unsigned int)snd_fnd_calcCrc32(a5, 0);
-  v21 = (unsigned int)snd_fnd_calcCrc32Reverse(a5, 0);
+  v21 = (unsigned int)snd_fnd_calcCrc32Reverse_alt1((const char*)a5, 0);
   v22 = *(_QWORD*)(a1 + 32);
   v50_.v51 = v21;
   *(_QWORD*)(a1 + 6088) = GameRoutine_140190(v22 + 3000);
@@ -1070,7 +1077,7 @@ LABEL_4:
     }
   }
   else {
-    GameRoutine_190020(&v47_.v47, (char*)a5);
+    GameRoutine_190020_alt1(&v47_.v47, (const char*)a5);
     v33 = *(_BYTE*)(v25 + 1640);
     v34 = (__int64*)(v25 + 1640);
     if ((__int64*)(v25 + 1640) != &v47_.v47) {
@@ -1992,7 +1999,8 @@ __int64 VibVoice_Unknown16(__int64 result)
         (v7 = GameRoutine_119020(*(_QWORD*)(v4 + 32)),
          v8 = (unsigned __int8*)GameRoutine_190240(*(_QWORD*)(v4 + 6088) + 8LL),
          v14[0] = (unsigned int)snd_fnd_calcCrc32(v8, 0),
-         v14[1] = (unsigned int)snd_fnd_calcCrc32Reverse(v8, 0),
+         v14[1] =
+             (unsigned int)snd_fnd_calcCrc32Reverse_alt1((const char*)v8, 0),
          ((result = GameRoutine_13ec80(v7, v14, (_QWORD*)(v4 + 6120),
                                        (_DWORD*)(v4 + 6128))) &
           1) != 0)) {
@@ -2002,7 +2010,8 @@ __int64 VibVoice_Unknown16(__int64 result)
       v9 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)snd_g_proxy +
                                                   152LL))(snd_g_proxy);
       v10 = (const char*)GameRoutine_190240(*(_QWORD*)(v4 + 6088) + 8LL);
-      GameRoutine_a2af20((__int64)v14, 256, "%s%s.bnvib.bin", v9, v10);
+      GameRoutine_a2af20_alt1((__int64)v14, 256, (__int64)"%s%s.bnvib.bin", v9,
+                              v10);
       v11 = GameRoutine_118ff0(*(_QWORD*)(v4 + 32));
       FileManager_10df70((void*)((__int64)v13), v11, (__int64)v14, 0x20u);
       GameRoutine_112180(v4 + 6104, (__int64)v13);

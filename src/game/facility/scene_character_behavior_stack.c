@@ -8,17 +8,22 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_facility_SceneCharacterBehaviorStack_vtable[])();
 extern __int64 fw_memory_g_heap_manager;
 extern __int64 fw_memory_g_heap_manager_ptr;
-_QWORD* SceneCharacterBehaviorStack_Destructor(_QWORD* result);
+_QWORD* SceneCharacterBehaviorStack_Destructor_alt1(_QWORD* result) __asm__(
+    "SceneCharacterBehaviorStack_Destructor");
 __int64 SceneCharacterBehaviorStack_Unknown3(__int64 result);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void SceneCharacterBehaviorStack_Destructor(_QWORD* a1);
 
-_QWORD* SceneCharacterBehaviorStack_Destructor(_QWORD* result)
+void SceneCharacterBehaviorStack_Destructor(_QWORD* a1)
 {
-  _QWORD* v1;
-  _QWORD* v2;
-  _QWORD* v3;
+  __int64* v1;
+  __int64* v2;
   _QWORD* v4;
   unsigned __int64 v5;
-  _QWORD* v6;
+  __int64* v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
@@ -31,29 +36,29 @@ _QWORD* SceneCharacterBehaviorStack_Destructor(_QWORD* result)
   __int64 v16;
   __int64 v17;
   __int64 v18;
+  __int64 v19;
 
-  v1 = (_QWORD*)result[3];
-  v2 = (_QWORD*)result[4];
-  v3 = result;
-  *result = game_facility_SceneCharacterBehaviorStack_vtable;
+  v1 = (__int64*)a1[3];
+  v2 = (__int64*)a1[4];
+  *a1 = game_facility_SceneCharacterBehaviorStack_vtable;
   if (v2 == v1) {
-    v4 = result + 7;
+    v4 = a1 + 7;
     v2 = v1;
   }
   else {
-    v4 = result + 7;
-    v5 = result[6];
+    v4 = a1 + 7;
+    v5 = a1[6];
     v6 = &v1[v5 >> 8];
     v7 = *v6 + 16LL * (unsigned __int8)v5;
-    v8 = v1[(result[7] + v5) >> 8] +
-         16LL * (unsigned __int8)(*((_BYTE*)result + 56) + v5);
+    v8 = v1[(a1[7] + v5) >> 8] +
+         16LL * (unsigned __int8)(*((_BYTE*)a1 + 56) + v5);
     if (v7 != v8) {
       do {
         v9 = *(_QWORD*)(v7 + 8);
         if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-          result = (_QWORD*)std___1___shared_weak_count___release_weak(v9);
+          std___1___shared_weak_count___release_weak_alt1(v9);
         }
         v7 += 16;
         if (v7 - *v6 == 4096) {
@@ -62,8 +67,8 @@ _QWORD* SceneCharacterBehaviorStack_Destructor(_QWORD* result)
           v7 = v10;
         }
       } while (v7 != v8);
-      v1 = (_QWORD*)v3[3];
-      v2 = (_QWORD*)v3[4];
+      v1 = (__int64*)a1[3];
+      v2 = (__int64*)a1[4];
     }
   }
   *v4 = 0;
@@ -78,11 +83,11 @@ _QWORD* SceneCharacterBehaviorStack_Destructor(_QWORD* result)
         else {
           v13 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v12 + v13);
-        v1 = (_QWORD*)v3[3];
-        v2 = (_QWORD*)v3[4];
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v12 + v13, *v1);
+        v1 = (__int64*)a1[3];
+        v2 = (__int64*)a1[4];
       }
-      v3[3] = ++v1;
+      a1[3] = ++v1;
       v11 = v2 - v1;
     } while (v11 > 2);
   }
@@ -95,8 +100,7 @@ _QWORD* SceneCharacterBehaviorStack_Destructor(_QWORD* result)
     }
     v14 = 256;
   }
-  v3[6] = v14;
-
+  a1[6] = v14;
 LABEL_25:
   if (v1 != v2) {
     do {
@@ -107,26 +111,24 @@ LABEL_25:
         else {
           v15 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(
-            fw_memory_g_heap_manager + v15);
+        nn_mem_StandardAllocator_Free_alt1(fw_memory_g_heap_manager + v15, *v1);
       }
       ++v1;
     } while (v1 != v2);
-    v16 = v3[4];
-    v17 = v3[3] - v16;
+    v16 = a1[4];
+    v17 = a1[3] - v16;
     if (v17 != 0) {
-      v3[4] = v16 + ((v17 + 7) & 0xFFFFFFFFFFFFFFF8LL);
+      a1[4] = v16 + ((v17 + 7) & 0xFFFFFFFFFFFFFFF8LL);
     }
   }
-  if (v3[2] != 0) {
-    v18 = 128;
+  v18 = a1[2];
+  if (v18 != 0) {
+    v19 = 128;
     if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
-      v18 = 56;
+      v19 = 56;
     }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager +
-                                                  v18);
+    nn_mem_StandardAllocator_Free_alt1(fw_memory_g_heap_manager + v19, v18);
   }
-  return result;
 }
 
 __int64 SceneCharacterBehaviorStack_Unknown3(__int64 result)

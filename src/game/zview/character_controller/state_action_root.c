@@ -16,6 +16,13 @@ __int64 snd_fnd_WeakHandle_get(_QWORD);
 __int64 snd_fnd_WeakHandle_isValid(_QWORD);
 struct PseudoSret GameRoutine_d56a60(_QWORD, _QWORD, _QWORD, float);
 __int64 StateActionRoot_d3e100(__int64 result, char a2);
+__attribute__((swiftcall)) void game_zview_d56a60(PSEUDO_X8, __int64, __int64,
+                                                  float);
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
+__int64
+snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
+void snd_Fade_Fade_10c910_alt1(__int64, int) __asm__("snd_Fade_Fade_10c910");
 
 float StateActionRoot_Unknown3(__int64 a1)
 {
@@ -60,6 +67,8 @@ __int64 StateActionRoot_Unknown5(__int64 a1)
 
 __int64 StateActionRoot_d3e100(__int64 result, char a2)
 {
+
+#pragma clang fp contract(off)
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -77,20 +86,22 @@ __int64 StateActionRoot_d3e100(__int64 result, char a2)
     v5 = result;
     v6 = *(_QWORD*)(*(_QWORD*)(v4 + 8) + 40LL);
     if ((a2 & 1) != 0) {
-      return (__int64)(*(struct PseudoSret*)(v8) = GameRoutine_d56a60(
-                           v6, "SE_FS_Add_Orhel_Sprint_Start", 28, 1.0),
-                       (void*)(v8));
+      return X8CALL_X0(
+          __int64, game_zview_d56a60((void*)((__int64)v8), v6,
+                                     (__int64)"SE_FS_Add_Orhel_Sprint_Start",
+                                     0x1.0000000000000p+0f));
     }
     else {
-      *(struct PseudoSret*)(v8) =
-          GameRoutine_d56a60(v6, "SE_FS_Add_Orhel_Sprint_Stop", 27, 1.0);
-      result = snd_fnd_WeakHandle_isValid(v5 + 56);
+      game_zview_d56a60((void*)((__int64)v8), v6,
+                        (__int64)"SE_FS_Add_Orhel_Sprint_Stop",
+                        0x1.0000000000000p+0f);
+      result = snd_fnd_WeakHandle_isValid_alt1((__int64*)(v5 + 56));
       if ((result & 1) != 0) {
-        v7 = snd_fnd_WeakHandle_get(v5 + 56);
-        snd_Fade_Fade_10c910(v8, 300);
+        v7 = snd_fnd_WeakHandle_get_alt1(v5 + 56);
+        snd_Fade_Fade_10c910_alt1((__int64)v8, 300);
         (*(void (**)(__int64, _QWORD*, _QWORD, double))(
-            *(_QWORD*)(v7 - 5592) + 248LL))(v7 - 5592, v8, 0, 0.0);
-        return snd_Fade_Destroy_Fade(v8);
+            *(_QWORD*)(v7 - 5592) + 248LL))(v7 - 5592, v8, 0, 0x0.0p+0);
+        return snd_Fade_Destroy_Fade_alt1(v8);
       }
     }
   }

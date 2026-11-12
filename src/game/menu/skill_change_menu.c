@@ -39,7 +39,21 @@ extern __int64 GameData_20503c0;
 extern __int64 GameData_20517d0;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 game_menu_SkillChangeMenu_CreateLeftMenu(__int64 a1);
-__int64 SkillChangeMenu_Unknown48(__int64* a1, __int64 a2);
+__int64
+SkillChangeMenu_Unknown48_alt1(__int64* a1,
+                               __int64 a2) __asm__("SkillChangeMenu_Unknown48");
+_QWORD* GameRoutine_1787ce0_alt1(_QWORD* result,
+                                 __int64) __asm__("GameRoutine_1787ce0");
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64 LayoutAccessor_15740c0_alt1(__int64*, __int64, char, _BYTE*,
+                                    char) __asm__("LayoutAccessor_15740c0");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64 SkillChangeMenu_Unknown48(_QWORD* a1, __int64 a2);
 
 const char* SkillChangeMenu_Unknown49(__int64 a1)
 {
@@ -350,7 +364,7 @@ LABEL_12:
   return v7;
 }
 
-__int64 SkillChangeMenu_Unknown48(__int64* a1, __int64 a2)
+__int64 SkillChangeMenu_Unknown48(_QWORD* a1, __int64 a2)
 {
   __int64 v3;
   __int64 v4;
@@ -361,28 +375,30 @@ __int64 SkillChangeMenu_Unknown48(__int64* a1, __int64 a2)
   __int64 v9;
   __int64 v10;
   __int64 result;
-  __int64 v12;
-  __int64 v13;
+  struct {
+    __int64* v12;
+    __int64 v13;
+  } v12_;
 
   a1[45] = a2;
-  GameRoutine_1787ce0();
-  LayoutAccessor_1560070((void*)(&v12), a1 + 25, (__int64)"L_UnitInfo");
-  if (v13 != 0) {
+  GameRoutine_1787ce0_alt1(a1, a2);
+  LayoutAccessor_1560070_alt1((void*)(&v12_.v12), a1 + 25, "L_UnitInfo");
+  if (v12_.v13 != 0) {
     v3 = a1[45];
-    v4 = std___1___shared_weak_count_lock(v13);
+    v4 = std___1___shared_weak_count_lock_alt1(v12_.v13);
     if (v4 != 0) {
       v5 = v4;
-      if (v12 != 0) {
-        LayoutAccessor_15740c0(v12, v3, 0, 0, 0);
+      if (v12_.v12 != nullptr) {
+        LayoutAccessor_15740c0_alt1(v12_.v12, v3, 0, nullptr, 0);
       }
       if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-        std___1___shared_weak_count___release_weak(v5);
+        std___1___shared_weak_count___release_weak_alt1(v5);
       }
     }
-    if (v13 != 0) {
-      std___1___shared_weak_count___release_weak(v13);
+    if (v12_.v13 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v12_.v13);
     }
   }
   v6 = GameData_21319f0[0];

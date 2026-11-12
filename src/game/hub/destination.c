@@ -16,6 +16,9 @@ extern int GameData_22265dc;
 void Destination_Destructor(__int64 a1);
 __int64 game_hub_Destination_GetFindInfoPopupFlag_lambda0_Invoke(__int64 result,
                                                                  _QWORD* a2);
+__int64 GameHr_f7dc20(__int64*, __int64*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 void Destination_Destructor(__int64 a1)
 {
@@ -318,16 +321,26 @@ __int64 game_hub_Destination_GetFindInfoPopupFlag_lambda0_Invoke(__int64 result,
   __int64 v6;
   __int64* v7;
   unsigned __int64 v8;
-  __int64 v9;
-  char v10;
-  char v11;
-  char v12;
-  int v13;
-  char v14;
-  char v15;
-  char v16;
-  char v17;
-  __int64 v18;
+  struct {
+    __int64 v9;
+    char v10;
+    char gap9_[7];
+    char v11;
+    char gap17_[47];
+    char v12;
+    char gap65_[7];
+    int v13;
+    char gap76_[4];
+    char v14;
+    char gap81_[31];
+    char v15;
+    char gap113_[7];
+    char v16;
+    char gap121_[23];
+    char v17;
+    char gap145_[7];
+    __int64 v18;
+  } v9_;
 
   v2 = (_QWORD*)*a2;
   v3 = a2[1];
@@ -344,29 +357,29 @@ __int64 game_hub_Destination_GetFindInfoPopupFlag_lambda0_Invoke(__int64 result,
   if (v4 != 0 && *(_BYTE*)(v4 + 100) == 1) {
     v6 = v2[22];
     v7 = *(__int64**)(result + 8);
-    v10 = 0;
-    v11 = 0;
-    v12 = 0;
-    v14 = 0;
-    v15 = 0;
-    v16 = 0;
-    v17 = 0;
-    v18 = 0;
-    v9 = v6;
-    v13 = *(_DWORD*)(v4 + 96);
+    v9_.v10 = 0;
+    v9_.v11 = 0;
+    v9_.v12 = 0;
+    v9_.v14 = 0;
+    v9_.v15 = 0;
+    v9_.v16 = 0;
+    v9_.v17 = 0;
+    v9_.v18 = 0;
+    v9_.v9 = v6;
+    v9_.v13 = *(_DWORD*)(v4 + 96);
     v8 = v7[1];
     if (v8 >= v7[2]) {
-      result = GameRoutine_f7dc20(v7, (__int64)&v9);
+      result = GameHr_f7dc20(v7, &v9_.v9);
     }
     else {
-      result = GameRoutine_f7de90(v8, &v9) + 160;
+      result = GameRoutine_f7de90(v8, &v9_.v9) + 160;
     }
     v7[1] = result;
   }
   if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-    result = std___1___shared_weak_count___release_weak(v5);
+    result = std___1___shared_weak_count___release_weak_alt1(v5);
     if (v3 == 0) {
       return result;
     }
@@ -377,7 +390,7 @@ __int64 game_hub_Destination_GetFindInfoPopupFlag_lambda0_Invoke(__int64 result,
   if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
-    return std___1___shared_weak_count___release_weak(v3);
+    return std___1___shared_weak_count___release_weak_alt1(v3);
   }
   return result;
 }

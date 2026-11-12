@@ -206,13 +206,6 @@ void Cursor_730cb0(__int64 a1, char* a2)
 
 void Cursor_730e40(__int64 a1, __int64 a2)
 {
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
   __int64 v9;
   int v10;
   __int128 v12;
@@ -228,48 +221,46 @@ void Cursor_730e40(__int64 a1, __int64 a2)
   __int64 v23;
   __int128 v24;
   __int128 v25;
-  _QWORD v26[9];
+  __int128 v26;
 
   if (a2 != 0) {
     v9 = *(_QWORD*)(a2 + 440);
     if (v9 != 0 && *(unsigned __int8*)(v9 + 16) <= 3u) {
-      v26[2] = v8;
-      v26[3] = v7;
-      v26[4] = v6;
-      v26[5] = v5;
-      v26[6] = v4;
-      v26[7] = v2;
-      v26[8] = v3;
       v10 = *(char*)(a2 + 585);
       DWORD1(v12) = 0;
       HIDWORD(v12) = 0;
       *(float*)&v12 =
           (float)((float)((float)(unsigned int)(*(char*)(a2 + 584) + 256) *
-                          5.0f) +
-                  2.5f) +
-          -1280.0f;
-      v13 = (float)(*(float*)&v12 + 1280.0f) * 0.2f;
+                          0x1.4000000000000p+2f) +
+                  0x1.4000000000000p+1f) +
+          -0x1.4000000000000p+10f;
+      v13 = (float)(*(float*)&v12 + 0x1.4000000000000p+10f) *
+            0x1.99999a0000000p-3f;
       v14 = (float)((float)((float)((float)((float)(unsigned int)(v10 + 256) *
-                                            5.0f) +
-                                    2.5f) +
-                            -1280.0f) +
-                    1280.0f) *
-            0.2f;
-      *((float*)&v12 + 2) =
-          (float)((float)((float)(unsigned int)(v10 + 256) * 5.0f) + 2.5f) +
-          -1280.0f;
+                                            0x1.4000000000000p+2f) +
+                                    0x1.4000000000000p+1f) +
+                            -0x1.4000000000000p+10f) +
+                    0x1.4000000000000p+10f) *
+            0x1.99999a0000000p-3f;
+      *((float*)&v12 + 2) = (float)((float)((float)(unsigned int)(v10 + 256) *
+                                            0x1.4000000000000p+2f) +
+                                    0x1.4000000000000p+1f) +
+                            -0x1.4000000000000p+10f;
       v25 = v12;
       *(_DWORD*)(a1 + 8) = (int)v13 - 256;
       *(_DWORD*)(a1 + 12) = (int)v14 - 256;
-      GameRoutine_734a80(a1 + 16, &v25);
+      Cursor_734a80(a1 + 16, (__int64*)&v25);
       DWORD1(v15) = 0;
       HIDWORD(v15) = 0;
-      *(float*)&v15 =
-          (float)((float)((float)(int)v13 * 5.0f) + 2.5f) + -1280.0f;
+      *(float*)&v15 = (float)((float)((float)(int)v13 * 0x1.4000000000000p+2f) +
+                              0x1.4000000000000p+1f) +
+                      -0x1.4000000000000p+10f;
       *((float*)&v15 + 2) =
-          (float)((float)((float)(int)v14 * 5.0f) + 2.5f) + -1280.0f;
+          (float)((float)((float)(int)v14 * 0x1.4000000000000p+2f) +
+                  0x1.4000000000000p+1f) +
+          -0x1.4000000000000p+10f;
       v24 = v15;
-      GameRoutine_734a80(a1 + 80, &v24);
+      Cursor_734a80(a1 + 80, (__int64*)&v24);
       *(_DWORD*)(a1 + 172) = 0;
       *(_QWORD*)(a1 + 176) = 0;
       v16 = GameData_21cd0f0;
@@ -287,13 +278,13 @@ void Cursor_730e40(__int64 a1, __int64 a2)
           v21 = 1;
         }
         *(_BYTE*)(v16 + 80) = v21;
-        GameRoutine_fe96c0(v16);
+        game_map_fe96c0_alt1(v16);
         if (GameData_21cd140 != 0) {
           v22 = *(_QWORD*)(v16 + 24);
           v23 = *(_QWORD*)(GameData_21cd140 + 432);
-          v26[0] = *(_QWORD*)(v16 + 16);
-          v26[1] = v22;
-          GameRoutine_7bfc60(v23, v26);
+          *(_QWORD*)&v26 = *(_QWORD*)(v16 + 16);
+          *((_QWORD*)&v26 + 1) = v22;
+          Camera_7bfc60_alt1(v23, &v26);
         }
       }
     }

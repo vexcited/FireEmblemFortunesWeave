@@ -64,6 +64,8 @@ long double
 
 game_character_CharacterDamageFalldown_OnEnable_lambda0_Invoke(__int64 a1)
 {
+
+#pragma clang fp contract(off)
   __int64 v1;
   __int64 v2;
   __int64 v3;
@@ -71,6 +73,7 @@ game_character_CharacterDamageFalldown_OnEnable_lambda0_Invoke(__int64 a1)
   bool v5;
   long double result;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v1 = *(_QWORD*)(a1 + 8);
   v2 = *(_QWORD*)(v1 + 32);
   if (v2 != 0) {

@@ -34,6 +34,14 @@ extern __int64 game_GameModeData_instance_;
 extern char* GameData_2131b68[4];
 extern int* GameData_2131b58[2];
 __int64 IndividualMenuItem_ACall(_QWORD* a1);
+__int64 GameRoutine_159e7c0_alt1(__int64, char) __asm__("GameRoutine_159e7c0");
+__int64
+game_VariableManager_SetFlag_alt1(__int64 result,
+                                  int) __asm__("game_VariableManager_SetFlag");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
 
 bool IndividualMenuItem_IsDecidable()
 {
@@ -260,12 +268,11 @@ __int64 IndividualMenuItem_UpCall(__int64 a1, char a2)
   int v7;
   int v8;
   __int64 v9;
-  long double v10;
-  double v11;
+  __int64 v10;
+  __int64 v11;
   __int64 v12;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
 
   v2 = *(int*)(a1 + 40);
   v4 = GameData_212dcd0;
@@ -289,31 +296,32 @@ __int64 IndividualMenuItem_UpCall(__int64 a1, char a2)
   *(_BYTE*)(a1 + 112) = v8;
   v9 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v5 + 48) + 8 * v2) + 392LL);
   if (v9 != 0) {
-    game_VariableManager_SetFlag(*(_QWORD*)(v9 + 24) + 1352LL,
-                                 (unsigned __int8)v8);
+    game_VariableManager_SetFlag_alt1(*(_QWORD*)(v9 + 24) + 1352LL,
+                                      (unsigned __int8)v8);
     v5 = *v4;
     v2 = *(int*)(a1 + 40);
   }
   *(_DWORD*)(*(_QWORD*)(v5 + 72) + 4 * v2) = v8;
   (*(void (**)(__int64))(*(_QWORD*)a1 + 440LL))(a1);
-  v12 = *(_QWORD*)(a1 + 104);
-  if (v12 != 0) {
-    v13 = *(_QWORD*)(a1 + 96);
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v12 + 16), 1u,
+  v10 = *(_QWORD*)(a1 + 104);
+  if (v10 != 0) {
+    v11 = *(_QWORD*)(a1 + 96);
+    v12 = *(_QWORD*)(a1 + 104);
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v10 + 16), 1u,
                               memory_order_relaxed);
-    v14 = std___1___shared_weak_count_lock(v10, v11);
-    if (v14 != 0) {
-      v15 = v14;
-      if (v13 != 0) {
-        GameRoutine_159e7c0(v13, 0);
+    v13 = std___1___shared_weak_count_lock_alt1(v12);
+    if (v13 != 0) {
+      v14 = v13;
+      if (v11 != 0) {
+        GameRoutine_159e7c0_alt1(v11, 0);
       }
-      if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
+      if (atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
-        std___1___shared_weak_count___release_weak(v15);
+        (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
+        std___1___shared_weak_count___release_weak_alt1(v14);
       }
     }
-    std___1___shared_weak_count___release_weak(v12);
+    std___1___shared_weak_count___release_weak_alt1(v10);
   }
   return 1;
 }

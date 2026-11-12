@@ -15,7 +15,8 @@ __int64 game_combat_CombatCamera_SubscribeSignals_lambda1_Invoke(__int64 a1,
                                                                  __int64* a2);
 __int64 CombatCamera_10985a0(__int64* a1, __int64 a2, __int64 a3);
 __int64 CombatCamera_1098760(__int64 a1, __int64 a2);
-void CombatCamera_1098ae0(__int64* a1, _QWORD* a2);
+void CombatCamera_1098ae0_alt2(__int64* a1,
+                               _QWORD* a2) __asm__("CombatCamera_1098ae0");
 __int64
 game_combat_CombatCamera_SubscribeSignals_lambda2_Invoke(__int64 result);
 __int64 CombatCamera_1098ae0_alt1(_QWORD, _QWORD,
@@ -54,6 +55,9 @@ __n128 CombatCamera_Destructor(_QWORD* a1);
 __int64 CombatCamera_1097a60(__int64 result, float a2);
 void game_combat_CombatCamera_SubscribeSignals_lambda0_Invoke(__int64 a1,
                                                               __int64* a2);
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64* CombatCamera_1098ae0(__int64* result, _QWORD* a2);
 
 __n128 CombatCamera_Destructor(_QWORD* a1)
 {
@@ -1055,54 +1059,56 @@ LABEL_19:
   return v22;
 }
 
-void CombatCamera_1098ae0(__int64* a1, _QWORD* a2)
+__int64* CombatCamera_1098ae0(__int64* result, _QWORD* a2)
 {
   _QWORD* v2;
-  _QWORD* v3;
+  __int64 v3;
+  __int64* v5;
   __int64 v6;
   __int64 v7;
-  _QWORD* v8;
+  __int64 v8;
   __int64 v9;
-  _QWORD* v10;
+  __int64 v10;
   _QWORD* v11;
   _QWORD* v12;
   _QWORD* v13;
   __int64 v14;
   __int64 v15;
-  _QWORD* v16;
+  __int64 v16;
   __int64 v17;
-  __int64 v18;
 
-  v3 = (_QWORD*)*a1;
-  v2 = (_QWORD*)a1[1];
-  v6 = a2[1] + *a1 - (_QWORD)v2;
-  if (v2 != (_QWORD*)*a1) {
+  v3 = *result;
+  v2 = (_QWORD*)result[1];
+  v5 = result;
+  v6 = a2[1] + *result - (_QWORD)v2;
+  if (v2 != (_QWORD*)*result) {
     v7 = 0;
     do {
-      v8 = &v3[v7];
-      v9 = v6 + v7 * 8;
-      *(_DWORD*)v9 = v3[v7];
-      *(_QWORD*)(v9 + 8) = v3[v7 + 1];
-      *(_QWORD*)(v9 + 16) = v3[v7 + 2];
-      v8[1] = 0;
-      v8[2] = 0;
-      v10 = (_QWORD*)v3[v7 + 8];
-      if (v10 != nullptr) {
-        if (v8 + 4 == v10) {
+      v8 = v3 + v7;
+      v9 = v6 + v7;
+      *(_DWORD*)v9 = *(_DWORD*)(v3 + v7);
+      *(_QWORD*)(v9 + 8) = *(_QWORD*)(v3 + v7 + 8);
+      *(_QWORD*)(v9 + 16) = *(_QWORD*)(v3 + v7 + 16);
+      *(_QWORD*)(v8 + 8) = 0;
+      *(_QWORD*)(v8 + 16) = 0;
+      v10 = *(_QWORD*)(v3 + v7 + 64);
+      if (v10 != 0) {
+        if (v8 + 32 == v10) {
           *(_QWORD*)(v9 + 64) = v9 + 32;
-          (*(void (**)(_QWORD))(*(_QWORD*)v8[8] + 24LL))(v8[8]);
+          (*(void (**)(_QWORD))(**(_QWORD**)(v8 + 64) + 24LL))(
+              *(_QWORD*)(v8 + 64));
         }
         else {
           *(_QWORD*)(v9 + 64) = v10;
-          v8[8] = 0;
+          *(_QWORD*)(v8 + 64) = 0;
         }
       }
       else {
         *(_QWORD*)(v9 + 64) = 0;
       }
-      v7 += 10;
-    } while (&v3[v7] != v2);
-    v11 = v3 + 4;
+      v7 += 80;
+    } while ((_QWORD*)(v3 + v7) != v2);
+    v11 = (_QWORD*)(v3 + 32);
     while (1) {
       v13 = (_QWORD*)v11[4];
       if (v11 == v13) {
@@ -1113,9 +1119,10 @@ void CombatCamera_1098ae0(__int64* a1, _QWORD* a2)
       LABEL_15:
         (*(void (**)(__int64))(*v13 + v14))((__int64)v13);
       }
-      v15 = *(v11 - 2);
-      if (v15 != 0) {
-        std___1___shared_weak_count___release_weak(v15);
+      result = (__int64*)*(v11 - 2);
+      if (result != nullptr) {
+        result = (__int64*)std___1___shared_weak_count___release_weak_alt2(
+            (__int64)result);
       }
       v12 = v11 + 6;
       v11 += 10;
@@ -1128,17 +1135,18 @@ void CombatCamera_1098ae0(__int64* a1, _QWORD* a2)
   }
 LABEL_18:
   a2[1] = v6;
-  v16 = (_QWORD*)*a1;
-  a1[1] = *a1;
-  *a1 = a2[1];
-  a2[1] = v16;
-  v17 = a1[1];
-  a1[1] = a2[2];
-  a2[2] = v17;
-  v18 = a1[2];
-  a1[2] = a2[3];
-  a2[3] = v18;
+  v15 = *v5;
+  v5[1] = *v5;
+  *v5 = a2[1];
+  a2[1] = v15;
+  v16 = v5[1];
+  v5[1] = a2[2];
+  a2[2] = v16;
+  v17 = v5[2];
+  v5[2] = a2[3];
+  a2[3] = v17;
   *a2 = a2[1];
+  return result;
 }
 
 __int64 game_combat_CombatCamera_SubscribeSignals_lambda2_Invoke(__int64 result)

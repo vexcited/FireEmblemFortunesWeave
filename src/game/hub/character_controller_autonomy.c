@@ -47,6 +47,7 @@ game_hub_CharacterControllerAutonomy_CharacterControllerAutonomy(__int64 a1,
 __n128 CharacterControllerAutonomy_Destructor(__int64 a1);
 __n128 CharacterControllerAutonomy_StateFollow_Unknown3(__int64 a1,
                                                         __n128 result);
+__int64 CharacterInputPlayer_da9a80(__int64 result, __int64);
 __n128
 
 game_hub_CharacterControllerAutonomy_CharacterControllerAutonomy(__int64 a1,
@@ -639,22 +640,27 @@ __int64 CharacterControllerAutonomy_Unknown2(__int64 a1)
 {
   __int64 v1;
   __int64 v3;
-  _QWORD v5[2];
-  char v6;
-  char v7;
-  char v8;
-  char v9;
+  struct {
+    _QWORD v5[2];
+    char v6;
+    char gap17_[63];
+    char v7;
+    char gap81_[15];
+    char v8;
+    char gap97_[15];
+    char v9;
+  } v5_;
 
   v1 = *(_QWORD*)(a1 + 8);
-  v7 = 0;
-  v8 = 0;
-  v9 = 0;
+  v5_.v7 = 0;
+  v5_.v8 = 0;
+  v5_.v9 = 0;
   v3 = *(_QWORD*)(v1 + 24);
-  v5[0] = 0;
-  v5[1] = 0;
-  v6 = 0;
-  GameRoutine_da9a80(*(_QWORD*)(v3 + 32), v5);
-  return GameRoutine_e165f0(a1 + 32);
+  v5_.v5[0] = 0;
+  v5_.v5[1] = 0;
+  v5_.v6 = 0;
+  CharacterInputPlayer_da9a80(*(_QWORD*)(v3 + 32), (__int64)v5_.v5);
+  return CharacterControllerAutonomy_e165f0(a1 + 32);
 }
 
 __int64 CharacterControllerAutonomy_e165f0(__int64 a1)

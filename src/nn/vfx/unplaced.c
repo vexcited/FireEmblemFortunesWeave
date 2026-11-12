@@ -943,7 +943,7 @@ __int64 nn_vfx_5d3080(__int64 result, int a2, __int64 a3, int a4,
       result = GameRoutine_5d3fc0(
           *(_QWORD*)(v37 + 2504), (_QWORD*)(*(_QWORD*)(v37 + 2504) + 16 * v38),
           (__int64)&v51_.v51, (2 * __clz(v38)) ^ 0x7E, 1);
-      if (a2 >= *(_DWORD*)(v39 + 8)) {
+      if (a2 >= (signed __int32)*(_DWORD*)(v39 + 8)) {
         v48 = 0;
         if (*(int*)(v37 + 2512) < 1) {
         LABEL_37:
@@ -988,7 +988,7 @@ __int64 nn_vfx_5d3080(__int64 result, int a2, __int64 a3, int a4,
       } while (v50 < *(int*)(v37 + 2512));
       goto LABEL_37;
     }
-    if (a2 >= *(_DWORD*)(result + 8)) {
+    if (a2 >= (signed __int32)*(_DWORD*)(result + 8)) {
       v27 = 0;
       v22 = a2;
     }

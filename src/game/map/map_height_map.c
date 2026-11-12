@@ -35,12 +35,17 @@ void __attribute__((noreturn)) GameRoutine_74e1f0(_QWORD);
 __int64 MapHeightMap_f0f740(__int64 a1);
 __int64 game_map_MapHeightMap_TryRefreshBmap_lambda0_Invoke_f10200(__int64 a1,
                                                                    __int64* a2);
-__int64 game_map_MapHeightMap_TryRefreshBmap_lambda0_Invoke_f10370(__int64 a1,
-                                                                   _DWORD* a2,
-                                                                   _DWORD* a3);
+__int64 game_map_MapHeightMap_TryRefreshBmap_lambda0_Invoke_f10370_alt1(
+    __int64 a1, _DWORD* a2,
+    _DWORD* a3) __asm__("game_map_MapHeightMap_TryRefreshBmap_lambda0_Invoke_"
+                        "f10370");
 __int64 game_map_MapHeightMap_TryRefreshBmap_lambda1_Invoke(__int64 result,
                                                             __int64 a2,
                                                             atomic_uint* a3);
+_BYTE* GameRoutine_74e080_alt1(__int64*, __int64) __asm__("GameRoutine_74e080");
+_BYTE* game_map_MapHeightMap_TryRefreshBmap_lambda0_Invoke_f10370(__int64 a1,
+                                                                  _DWORD* a2,
+                                                                  _DWORD* a3);
 
 _QWORD* MapHeightMap_Destructor(_QWORD* result)
 {
@@ -782,21 +787,23 @@ __int64 game_map_MapHeightMap_TryRefreshBmap_lambda0_Invoke_f10200(__int64 a1,
   return (*(__int64 (**)(__int64))(*v7 + v5))((__int64)v7);
 }
 
-__int64 game_map_MapHeightMap_TryRefreshBmap_lambda0_Invoke_f10370(__int64 a1,
-                                                                   _DWORD* a2,
-                                                                   _DWORD* a3)
+_BYTE* game_map_MapHeightMap_TryRefreshBmap_lambda0_Invoke_f10370(__int64 a1,
+                                                                  _DWORD* a2,
+                                                                  _DWORD* a3)
 {
   char v3;
   __int64 v4;
-  _BYTE v6[2];
-  __int16 v7;
+  struct {
+    _BYTE v6[2];
+    __int16 v7;
+  } v6_;
 
   v3 = *a2;
   v4 = *(_QWORD*)(a1 + 8);
-  v7 = 0;
-  v6[0] = v3;
-  v6[1] = *a3;
-  return GameRoutine_74e080(v4 + 256, v6);
+  v6_.v7 = 0;
+  v6_.v6[0] = v3;
+  v6_.v6[1] = *a3;
+  return GameRoutine_74e080_alt1((__int64*)(v4 + 256), (__int64)v6_.v6);
 }
 
 __int64 game_map_MapHeightMap_TryRefreshBmap_lambda1_Invoke(__int64 result,

@@ -2,12 +2,6 @@
 
 #pragma GCC visibility push(hidden)
 
-void __attribute__((noreturn))
-
-GameSaveConst_GlobalSerializer_DeletingDestructor()
-{
-  __udf(0x8002u);
-};
 __int64 GameConst_7f97f0(_QWORD);
 __int64 GameRoutine_82e5c0(_QWORD);
 __int64 GameRoutine_9a28e0(_QWORD);
@@ -34,6 +28,15 @@ __int64 game_GameSaveConst_Header_Commit_lambda0_Invoke(__int64 a1,
                                                         unsigned __int8* a2);
 void __attribute__((noreturn))
 GameSaveConst_GlobalSerializer_DeletingDestructor();
+_QWORD*
+game_UnitPool_Find_6ead60_alt1(__int64*,
+                               _DWORD*) __asm__("game_UnitPool_Find_6ead60");
+__int64* game_9a28e0(int);
+__int64 GameConst_7f97f0_alt1(__int64) __asm__("GameConst_7f97f0");
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 game_GetHero_alt1(unsigned __int8) __asm__("game_GetHero");
+__int64 game_UnitPool_CountAll_alt1(int*) __asm__("game_UnitPool_CountAll");
 
 __int64 game_GameSaveConst_Header_Commit(__int64 a1)
 {
@@ -57,12 +60,12 @@ __int64 game_GameSaveConst_Header_Commit(__int64 a1)
   __int64 v19;
   char v20;
   __int64 v21;
-  __int64 v22;
+  _QWORD* v22;
   __int64 v23;
-  __int64 v24;
+  __int64* v24;
   int v25;
   __int64 v26;
-  __int64 v27;
+  __int64* v27;
   int v28;
   __int64 v29;
   unsigned int v30;
@@ -70,8 +73,10 @@ __int64 game_GameSaveConst_Header_Commit(__int64 a1)
   int v32;
   __int64 result;
   __int64 v34;
-  _QWORD v35[4];
-  _QWORD* v36;
+  struct {
+    __int64 v35[4];
+    __int64* v36;
+  } v35_;
   unsigned __int16 v37;
   unsigned __int8 v38;
   unsigned int v39;
@@ -134,7 +139,7 @@ __int64 game_GameSaveConst_Header_Commit(__int64 a1)
   *(_DWORD*)(a1 + 56) = *v8;
   *(_DWORD*)(a1 + 60) = v9;
   if ((unsigned int)nn_time_StandardUserSystemClock_GetCurrentTime(&v40) != 0 ||
-      (unsigned int)nn_time_ToCalendarTime(&v37, v35, &v40) != 0) {
+      (unsigned int)nn_time_ToCalendarTime(&v37, v35_.v35, &v40) != 0) {
     v10 = 0;
   }
   else {
@@ -183,7 +188,7 @@ __int64 game_GameSaveConst_Header_Commit(__int64 a1)
   }
 LABEL_26:
   *(_QWORD*)(a1 + 32) = v13;
-  v20 = game_UnitPool_CountAll(GameData_212ce68);
+  v20 = game_UnitPool_CountAll_alt1((int*)GameData_212ce68);
   v21 = game_GameModeData_instance_;
   *(_BYTE*)(a1 + 76) = v20;
   *(_DWORD*)(a1 + 84) = *(_DWORD*)(v21 + 2716);
@@ -191,16 +196,16 @@ LABEL_26:
   if (*GameData_212ce90[0] != 0) {
     *v1 = *(_WORD*)(*GameData_212ce90[0] + 26);
   }
-  v35[0] = game_GetHero(9);
+  v35_.v35[0] = game_GetHero_alt1(9u);
   v40 = 241;
-  v22 = game_UnitPool_Find_6ead60(v35, &v40);
-  if (v22 != 0) {
-    *(_QWORD*)(a1 + 96) = *(_QWORD*)(v22 + 400);
-    v23 = *(_QWORD*)(v22 + 392);
+  v22 = game_UnitPool_Find_6ead60_alt1(v35_.v35, &v40);
+  if (v22 != nullptr) {
+    *(_QWORD*)(a1 + 96) = v22[50];
+    v23 = v22[49];
     if (v23 != 0) {
       LODWORD(v23) = *(unsigned __int8*)(v23 + 441);
       if ((_DWORD)v23 == 3) {
-        LODWORD(v23) = *(unsigned __int8*)(v22 + 2136);
+        LODWORD(v23) = *((unsigned __int8*)v22 + 2136);
         if ((unsigned int)v23 <= 1) {
           LOBYTE(v23) = 1;
         }
@@ -208,11 +213,11 @@ LABEL_26:
     }
     *(_BYTE*)(a1 + 104) = v23;
   }
-  v24 = GameRoutine_9a28e0(45);
+  v24 = game_9a28e0(45);
   v25 = game_GameModeData_instance_;
   if (game_GameModeData_instance_ != 0) {
-    v26 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), v24);
+    v26 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48), (unsigned __int64*)v24);
     if (v26 != 0) {
       if (*(_DWORD*)(v26 + 32) != 0) {
         v25 = 0x8000000;
@@ -226,11 +231,11 @@ LABEL_26:
     }
   }
   *v4 = *v4 & 0xF7FFFFFF | v25;
-  v27 = GameRoutine_9a28e0(46);
+  v27 = game_9a28e0(46);
   v28 = game_GameModeData_instance_;
   if (game_GameModeData_instance_ != 0) {
-    v29 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), v27);
+    v29 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48), (unsigned __int64*)v27);
     if (v29 != 0) {
       if (*(_DWORD*)(v29 + 32) != 0) {
         v28 = 0x10000000;
@@ -253,21 +258,21 @@ LABEL_26:
     v32 = 0;
   }
   *(_DWORD*)(a1 + 56) = v32 | v31;
-  v35[0] = GameData_1fa66d0;
-  v35[1] = a1;
-  v36 = v35;
-  GameConst_7f97f0(v35);
-  result = (__int64)v36;
-  if (v36 == v35) {
+  v35_.v35[0] = (__int64)GameData_1fa66d0;
+  v35_.v35[1] = a1;
+  v35_.v36 = v35_.v35;
+  GameConst_7f97f0_alt1((__int64)v35_.v35);
+  result = (__int64)v35_.v36;
+  if (v35_.v36 == v35_.v35) {
     v34 = 32;
   }
   else {
-    if (v36 == nullptr) {
+    if (v35_.v36 == nullptr) {
       return result;
     }
     v34 = 40;
   }
-  return (*(__int64 (**)(__int64))(*v36 + v34))((__int64)v36);
+  return (*(__int64 (**)(__int64))(*v35_.v36 + v34))((__int64)v35_.v36);
 }
 
 __int64 game_GameSaveConst_Header_Commit_lambda0_Invoke(__int64 a1,
@@ -304,6 +309,13 @@ __int64 game_GameSaveConst_Header_Commit_lambda0_Invoke(__int64 a1,
     }
   }
   return result;
+}
+
+void __attribute__((noreturn))
+
+GameSaveConst_GlobalSerializer_DeletingDestructor()
+{
+  __udf(0x8002u);
 }
 
 #pragma GCC visibility pop

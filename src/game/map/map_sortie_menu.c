@@ -28,7 +28,7 @@ extern __int64* GameData_212ce90[3];
 extern char GameData_1a9f09e;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
-__int64 MapSortieMenu_872680(_BYTE* a1);
+__int64 MapSortieMenu_872680_alt1(_BYTE* a1) __asm__("MapSortieMenu_872680");
 __int64 MapSortieMenu_8728a0(__int64 a1);
 __int64 MapSortieMenu_872a70_alt1(_QWORD* a1) __asm__("MapSortieMenu_872a70");
 __int64 MapSortieMenu_Unknown143(__int64 a1, __int64* a2);
@@ -95,6 +95,12 @@ __int64 ui_LayoutAccessor_FindTextBox_alt1(__int64*, __int64) __asm__(
 void GameRoutine_156c5d0_alt1(__int64, __int64,
                               char) __asm__("GameRoutine_156c5d0");
 __int64 MapSortieMenu_872a70(__int64* a1);
+__int64* LayoutAccessor_155fbe0(__int64*, const char*);
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 GameRoutine_1593d90_alt1(__int64,
+                                 __int64) __asm__("GameRoutine_1593d90");
+void GameRoutine_130dae0_alt1(__int64, __int64) __asm__("GameRoutine_130dae0");
+__int64 MapSortieMenu_872680(__int64 a1);
 
 __int64 game_map_MapSortieMenu_CreateBattleStartDialog(__int64 a1, __int64 a2)
 {
@@ -715,38 +721,42 @@ __int64 MapSortieMenu_871d10(__int64 a1, __int64* a2)
   return result;
 }
 
-__int64 MapSortieMenu_872680(_BYTE* a1)
+__int64 MapSortieMenu_872680(__int64 a1)
 {
-  __int64 v2;
+  __int64* v2;
   int v3;
   const char* v4;
-  _QWORD v6[2];
-  char v7;
-  int v8;
-  int v9;
-  char v10;
-  __int64 v11;
+  struct {
+    _QWORD v6[2];
+    char v7;
+    char gap25_[3];
+    int v8;
+    int v9;
+    char v10;
+    char gap37_[3];
+    __int64 v11;
+  } v6_;
 
-  if ((a1[1296] & 1) != 0) {
-    GameRoutine_1562680(a1 + 848, "Sortie_HintOn", 1.0);
-    v2 = GameRoutine_155fbe0(a1 + 848, "L_KeyHelp");
-    v3 = (*(__int64 (**)(_BYTE*))(*(_QWORD*)a1 + 192LL))(a1);
+  if ((*(_BYTE*)(a1 + 1296) & 1) != 0) {
+    GameHr_1562680(a1 + 848, "Sortie_HintOn", 0x1.0000000000000p+0f);
+    v2 = LayoutAccessor_155fbe0((__int64*)(a1 + 848), "L_KeyHelp");
+    v3 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
     v4 = "MID_KeyHelp_BattleRule";
   }
   else {
-    GameRoutine_1562680(a1 + 848, "Sortie_RuleOn", 1.0);
-    v2 = GameRoutine_155fbe0(a1 + 848, "L_KeyHelp");
-    v3 = (*(__int64 (**)(_BYTE*))(*(_QWORD*)a1 + 192LL))(a1);
+    GameHr_1562680(a1 + 848, "Sortie_RuleOn", 0x1.0000000000000p+0f);
+    v2 = LayoutAccessor_155fbe0((__int64*)(a1 + 848), "L_KeyHelp");
+    v3 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
     v4 = "MID_KeyHelp_BattleHint";
   }
-  v6[0] = &GameData_1a9f09e;
-  v6[1] = v4;
-  v10 = 0;
-  v11 = 0;
-  v7 = 1;
-  v8 = 6;
-  v9 = v3;
-  return GameRoutine_1593d90(v2, v6);
+  v6_.v6[0] = &GameData_1a9f09e;
+  v6_.v6[1] = v4;
+  v6_.v10 = 0;
+  v6_.v11 = 0;
+  v6_.v7 = 1;
+  v6_.v8 = 6;
+  v6_.v9 = v3;
+  return GameRoutine_1593d90_alt1((__int64)v2, (__int64)v6_.v6);
 }
 
 char* MapSortieMenu_872770(__int64 a1)
@@ -1312,17 +1322,20 @@ LABEL_6:
 
 __int64 game_map_MapSortieMenu_CreateBattleStartDialog_lambda1_Invoke()
 {
-  int v1;
-  __int16 v2;
-  char v3;
-  __int64 v4;
+  struct {
+    int v1;
+    __int16 v2;
+    char v3;
+    char gap7_[1];
+    __int64 v4;
+  } v1_;
 
   if (GameData_2240f10 != 0) {
-    v4 = 0;
-    v1 = 1;
-    v2 = 13;
-    v3 = 1;
-    GameRoutine_130dae0(GameData_2240f10, &v1);
+    v1_.v4 = 0;
+    v1_.v1 = 1;
+    v1_.v2 = 13;
+    v1_.v3 = 1;
+    GameRoutine_130dae0_alt1(GameData_2240f10, (__int64)&v1_.v1);
   }
   if (GameData_21eea38 != 0) {
     *(_DWORD*)(GameData_21eea38 + 152) = 4;

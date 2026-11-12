@@ -8,11 +8,15 @@ extern __int64 (*gfx_light_Instance_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 float RectangleLight_Unknown2(__int64 a1);
 __int64 GameHr_c76f00(__int64 a1, __int64 a2);
-_QWORD* RectangleLight_c541a0(_QWORD* result);
+_QWORD*
+RectangleLight_c541a0_alt1(_QWORD* result) __asm__("RectangleLight_c541a0");
 extern __int128 GameData_1b80320;
 long double RectangleLight_c53f10();
 extern __int128 GameData_1a82f20;
 float32x4_t RectangleLight_c53f20(__int64 a1, float32x4_t* a2);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void RectangleLight_c541a0(_QWORD* a1);
 
 float RectangleLight_Unknown2(__int64 a1)
 {
@@ -247,10 +251,9 @@ float32x4_t RectangleLight_c53f20(__int64 a1, float32x4_t* a2)
                 v30));
 }
 
-_QWORD* RectangleLight_c541a0(_QWORD* result)
+void RectangleLight_c541a0(_QWORD* a1)
 {
   __int64 v1;
-  _QWORD* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
@@ -264,22 +267,21 @@ _QWORD* RectangleLight_c541a0(_QWORD* result)
   __int64 v13;
   __int64 v14;
 
-  v1 = result[20];
-  v2 = result;
-  *result = gfx_light_Instance_vtable;
+  v1 = a1[20];
+  *a1 = gfx_light_Instance_vtable;
   v3 = fw_memory_g_heap_manager_ptr;
   if (v1 != 0) {
     v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
-    result[21] = v1;
+    a1[21] = v1;
     v5 = 128;
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
-  v6 = v2[17];
+  v6 = a1[17];
   if (v6 != 0) {
-    v7 = v2[18];
+    v7 = a1[18];
     if (v6 == v7) {
       goto LABEL_15;
     }
@@ -293,32 +295,32 @@ _QWORD* RectangleLight_c541a0(_QWORD* result)
         else {
           v9 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, v8);
       }
       v7 -= 48;
     } while (v7 != v6);
-    v10 = v2[17];
-    v2[18] = v6;
+    v10 = a1[17];
+    a1[18] = v6;
+    v6 = v10;
     if (v10 != 0) {
     LABEL_15:
       v11 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v11 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v11);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v11, v6);
     }
   }
-  v12 = v2[14];
+  v12 = a1[14];
   if (v12 != 0) {
     v13 = *(_QWORD*)v3;
-    v2[15] = v12;
+    a1[15] = v12;
     v14 = 128;
     if (*(_QWORD*)(v13 + 200) == 0) {
       v14 = 56;
     }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(v13 + v14);
+    nn_mem_StandardAllocator_Free_alt1(v13 + v14, v12);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

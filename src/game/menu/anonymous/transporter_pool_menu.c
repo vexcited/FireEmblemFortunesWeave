@@ -40,8 +40,10 @@ game_menu_anonymous_TransporterPoolMenu_AddItemList_closure_Invoke(__int64 a1,
 bool game_menu_anonymous_TransporterPoolMenu_SortAndFilter_closure_Invoke_15d18d0(
     __int64 a1, __int64* a2);
 __int64
-game_menu_anonymous_TransporterPoolMenu_SortAndFilter_closure_Invoke_15d1a60(
-    __int64 a1, __int64* a2, __int64* a3);
+game_menu_anonymous_TransporterPoolMenu_SortAndFilter_closure_Invoke_15d1a60_alt1(
+    __int64 a1, __int64* a2,
+    __int64* a3) __asm__("game_menu_anonymous_TransporterPoolMenu_"
+                         "SortAndFilter_closure_Invoke_15d1a60");
 _QWORD*
 BasicMenuCursor_16e0c00_alt1(_QWORD* result,
                              __int64) __asm__("BasicMenuCursor_16e0c00");
@@ -84,6 +86,21 @@ __int64 game_menu_anonymous_TransporterPoolMenu_OnInit(__int64* a1);
 __n128 TransporterPoolMenu_Unknown96(__int64 a1);
 __int64 TransporterPoolMenu_Unknown102(__int64 a1);
 __int64 game_menu_anonymous_TransporterPoolMenu_AddItemList(__int64 a1);
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64
+game_menu_PageTab_SetupImage_alt1(int*, __int64, __int64, int, int,
+                                  int) __asm__("game_menu_PageTab_SetupImage");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+bool GameRoutine_19ef8e0_alt1(_QWORD*, _QWORD*) __asm__("GameRoutine_19ef8e0");
+bool game_menu_anonymous_TransporterPoolMenu_SortAndFilter_closure_Invoke_15d1a60(
+    __int64 a1, __int64* a2, __int64* a3);
 
 __int64 TransporterPoolMenu_Unknown75(__int64 a1, int a2)
 {
@@ -111,80 +128,87 @@ __int64 TransporterPoolMenu_Unknown75(__int64 a1, int a2)
 __int64 game_menu_anonymous_TransporterPoolMenu_OnInit(__int64* a1)
 {
   __int64 v2;
-  unsigned int v3;
+  int v3;
   __int64 v4;
   __int64 v5;
-  _BOOL8 v6;
+  char v6;
   __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  _QWORD v11[4];
-  _QWORD* v12;
+  struct {
+    __int64 v9;
+    __int64 v10;
+  } v9_;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
   __int64 v13;
 
-  LayoutAccessor_1560070((void*)(&v9), a1 + 119, (__int64)"L_PageTab");
-  v11[0] = GameData_2059fd8;
+  LayoutAccessor_1560070_alt1((void*)(&v9_.v9), a1 + 119, "L_PageTab");
+  v11_.v11[0] = GameData_2059fd8;
   v2 = *a1;
-  v12 = v11;
+  v11_.v12 = v11_.v11;
   v3 = (*(__int64 (**)(__int64*))(v2 + 192))(a1);
-  game_menu_PageTab_SetupImage(a1 + 82, &v9, v11, v3, 14, 15);
-  if (v12 == v11) {
+  game_menu_PageTab_SetupImage_alt1((int*)a1 + 164, (__int64)&v9_.v9,
+                                    (__int64)v11_.v11, v3, 14, 15);
+  if (v11_.v12 == v11_.v11) {
     v4 = 32;
   }
   else {
-    if (v12 == nullptr) {
+    if (v11_.v12 == nullptr) {
       goto LABEL_6;
     }
     v4 = 40;
   }
-  (*(void (**)(__int64))(*v12 + v4))((__int64)v12);
+  (*(void (**)(__int64))(*v11_.v12 + v4))((__int64)v11_.v12);
 LABEL_6:
-  if (v10 != 0) {
-    std___1___shared_weak_count___release_weak(v10);
+  if (v9_.v10 != 0) {
+    std___1___shared_weak_count___release_weak_alt2(v9_.v10);
   }
   if (GameData_21f3d10 == 0 || *(_BYTE*)(GameData_21f3d10 + 9) != 1 ||
       *(_DWORD*)(GameData_21f3d10 + 136) != 1) {
     goto LABEL_17;
   }
   v13 = 0;
-  v12 = v11;
-  v11[0] = GameData_2131908[0] + 16;
-  v11[1] = &v13;
-  GameRoutine_15b59e0(v11);
-  if (v12 == v11) {
+  v11_.v12 = v11_.v11;
+  v11_.v11[0] = GameData_2131908[0] + 16;
+  v11_.v11[1] = &v13;
+  GameRoutine_15b59e0_alt1((__int64)v11_.v11);
+  if (v11_.v12 == v11_.v11) {
     v5 = 32;
   }
   else {
-    if (v12 == nullptr) {
+    if (v11_.v12 == nullptr) {
       goto LABEL_16;
     }
     v5 = 40;
   }
-  (*(void (**)(__int64))(*v12 + v5))((__int64)v12);
+  (*(void (**)(__int64))(*v11_.v12 + v5))((__int64)v11_.v12);
 LABEL_16:
   if (v13 == 0) {
     v13 = 0;
-    v12 = v11;
-    v11[0] = GameData_2131910[0] + 16;
-    v11[1] = &v13;
-    GameRoutine_15b5f20(v11);
-    if (v12 == v11) {
+    v11_.v12 = v11_.v11;
+    v11_.v11[0] = GameData_2131910[0] + 16;
+    v11_.v11[1] = &v13;
+    GameRoutine_15b5f20_alt1((__int64)v11_.v11);
+    if (v11_.v12 == v11_.v11) {
       v8 = 32;
     }
     else {
-      if (v12 == nullptr) {
+      if (v11_.v12 == nullptr) {
       LABEL_24:
         v6 = v13 != 0;
-        return ui_LayoutAccessor_SetPaneVisible(a1 + 119, "L_Num", v6);
+        return ui_LayoutAccessor_SetPaneVisible_alt1((__int64)(a1 + 119),
+                                                     (__int64)"L_Num", v6);
       }
       v8 = 40;
     }
-    (*(void (**)(__int64))(*v12 + v8))((__int64)v12);
+    (*(void (**)(__int64))(*v11_.v12 + v8))((__int64)v11_.v12);
     goto LABEL_24;
   }
 LABEL_17:
-  v6 = true;
-  return ui_LayoutAccessor_SetPaneVisible(a1 + 119, "L_Num", v6);
+  v6 = 1;
+  return ui_LayoutAccessor_SetPaneVisible_alt1((__int64)(a1 + 119),
+                                               (__int64)"L_Num", v6);
 }
 
 __int64 TransporterPoolMenu_Unknown88(__int64 a1)
@@ -371,20 +395,20 @@ __n128 TransporterPoolMenu_Unknown96(__int64 a1)
 __int64 TransporterPoolMenu_Unknown102(__int64 a1)
 {
   __int64 v1;
-  __int64 v2;
+  _WORD* v2;
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
+  struct {
+    __int64* v7;
+    __int64 v8;
+  } v7_;
 
   v1 = *(_QWORD*)(a1 + 1056);
   if (v1 != 0) {
     v1 = __dynamic_cast(v1, GameData_21319e8[0], &GameData_2057ec8, 0);
   }
-  v2 = v1 + 380;
+  v2 = (_WORD*)(v1 + 380);
   if (*(_QWORD*)(v1 + 380) == *game_g_empty_item_ptr) {
     return 14;
   }
@@ -393,31 +417,24 @@ __int64 TransporterPoolMenu_Unknown102(__int64 a1)
   if (*(unsigned __int8*)(v4 + 72) >= 8u && *(_BYTE*)(v4 + 73) != 16) {
     return 14;
   }
-  v5 = v1;
   *(_BYTE*)(v1 + 389) ^= 1u;
-  LayoutAccessor_1560070((void*)(&v9), (__int64*)(v1 + 200),
-                         (__int64)"L_ItemDetail");
-  if (*(_BYTE*)(v5 + 389) != 0) {
-    v6 = *(_QWORD*)(v5 + 360);
-  }
-  else {
-    v6 = 0;
-  }
-  if (v10 != 0) {
-    v7 = std___1___shared_weak_count_lock(v10);
-    if (v7 != 0) {
-      v8 = v7;
-      if (v9 != 0) {
-        game_gameui_anonymous_15d2540_alt1(v9, v2, v6);
+  LayoutAccessor_1560070_alt1((void*)(&v7_.v7), (__int64*)(v1 + 200),
+                              "L_ItemDetail");
+  if (v7_.v8 != 0) {
+    v5 = std___1___shared_weak_count_lock_alt1(v7_.v8);
+    if (v5 != 0) {
+      v6 = v5;
+      if (v7_.v7 != nullptr) {
+        game_gameui_anonymous_15d2540(v7_.v7, v2);
       }
-      if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+      if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-        std___1___shared_weak_count___release_weak(v8);
+        (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+        std___1___shared_weak_count___release_weak_alt2(v6);
       }
     }
-    if (v10 != 0) {
-      std___1___shared_weak_count___release_weak(v10);
+    if (v7_.v8 != 0) {
+      std___1___shared_weak_count___release_weak_alt2(v7_.v8);
     }
   }
   return 13;
@@ -985,13 +1002,9 @@ bool game_menu_anonymous_TransporterPoolMenu_SortAndFilter_closure_Invoke_15d18d
   }
 }
 
-__int64
-
-game_menu_anonymous_TransporterPoolMenu_SortAndFilter_closure_Invoke_15d1a60(
+bool game_menu_anonymous_TransporterPoolMenu_SortAndFilter_closure_Invoke_15d1a60(
     __int64 a1, __int64* a2, __int64* a3)
 {
-  __int64 v3;
-  __int64 v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
@@ -1002,16 +1015,18 @@ game_menu_anonymous_TransporterPoolMenu_SortAndFilter_closure_Invoke_15d1a60(
   __int64 v12;
   int v13;
   int v14;
-  _QWORD v16[2];
-  int v17;
-  int v18;
-  char v19;
-  _QWORD v20[2];
-  int v21;
-  int v22;
-  char v23;
-  __int64 v24;
-  __int64 v25;
+  struct {
+    _QWORD v16[2];
+    int v17;
+    int v18;
+    char v19;
+  } v16_;
+  struct {
+    _QWORD v20[2];
+    int v21;
+    int v22;
+    char v23;
+  } v20_;
 
   v5 = *a2;
   v6 = *a3;
@@ -1040,21 +1055,19 @@ game_menu_anonymous_TransporterPoolMenu_SortAndFilter_closure_Invoke_15d1a60(
                    8LL) +
         12LL * (int)v11 + 4;
   }
-  v24 = v3;
-  v25 = v4;
   v13 = *(_DWORD*)(v5 + 112);
   v14 = *(_DWORD*)(v6 + 112);
-  v20[0] = v9;
-  v20[1] = v7;
-  v23 = 0;
-  v16[0] = v12;
-  v16[1] = v10;
-  v19 = 0;
-  v21 = v13;
-  v22 = 0;
-  v17 = v14;
-  v18 = 0;
-  return GameRoutine_19ef8e0(v20, v16) & 1;
+  v20_.v20[0] = v9;
+  v20_.v20[1] = v7;
+  v20_.v23 = 0;
+  v16_.v16[0] = v12;
+  v16_.v16[1] = v10;
+  v16_.v19 = 0;
+  v20_.v21 = v13;
+  v20_.v22 = 0;
+  v16_.v17 = v14;
+  v16_.v18 = 0;
+  return GameRoutine_19ef8e0_alt1(v20_.v20, v16_.v16);
 }
 
 #pragma GCC visibility pop

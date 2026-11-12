@@ -9,6 +9,14 @@ extern __int64 (*GameData_1fa0500[])();
 extern __int64* GameData_212c880[5];
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 game_UnitSkill_GetEquipSortKey(_DWORD* a1, __int64 a2);
+_WORD*
+game_UnitItemList_EachItem_alt1(_WORD* result,
+                                __int64) __asm__("game_UnitItemList_EachItem");
+__int64 GameRoutine_6fc510_alt1(__int64) __asm__("GameRoutine_6fc510");
+__int64 game_Unit_SkillList_CountActive_alt1(__int64, _QWORD*) __asm__(
+    "game_Unit_SkillList_CountActive");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 __int64 game_UnitSkill_GetEquipSortKey(_DWORD* a1, __int64 a2)
 {
@@ -20,22 +28,23 @@ __int64 game_UnitSkill_GetEquipSortKey(_DWORD* a1, __int64 a2)
   __int64 v9;
   int v10;
   __int64 v11;
-  __int64 v12;
-  _WORD* v13;
+  _WORD* v12;
   __int64 i;
+  __int64 v14;
   __int64 v15;
-  __int64 v16;
+  int v16;
   int v17;
   int v18;
-  int v19;
+  __int64 v19;
   __int64 v20;
   __int64 v21;
-  __int64 v22;
+  __int64 v23;
   __int64 v24;
-  __int64 v25;
-  _QWORD v26[4];
-  _QWORD* v27;
-  char v28;
+  struct {
+    _QWORD v25[4];
+    _QWORD* v26;
+  } v25_;
+  char v27;
 
   if (a2 == 0) {
     return 0;
@@ -74,78 +83,80 @@ __int64 game_UnitSkill_GetEquipSortKey(_DWORD* a1, __int64 a2)
        (1 << v7)) != 0) {
     v10 |= 0x4000000u;
   }
-  if ((*a1 & 0xFFF) != 0 && (GameRoutine_6fc510(v4) & 1) == 0) {
+  if ((*a1 & 0xFFF) != 0 && (GameRoutine_6fc510_alt1(v4) & 1) == 0) {
     if (*(_BYTE*)(v4 + 273) == 0 ||
-        ((v16 = *(_QWORD*)(*(_QWORD*)(*v3 + 64) + 8 * (*a1 & 0xFFFLL)),
-          v17 = *(unsigned __int8*)(v16 + 104),
-          v18 = *(unsigned __int8*)(v16 + 273), (unsigned int)(v17 - 5) >= 2)
-             ? (v19 = 0)
-             : (v19 = (*a1 >> 19) & 0x1F),
-         v19 - ((*a1 >> 12) & 0x7F) + v18 >= 1)) {
-      v20 = *(_QWORD*)(v4 + 24);
-      if (*(_BYTE*)(v20 + 1122) != 1) {
+        ((v15 = *(_QWORD*)(*(_QWORD*)(*v3 + 64) + 8 * (*a1 & 0xFFFLL)),
+          v16 = *(unsigned __int8*)(v15 + 104),
+          v17 = *(unsigned __int8*)(v15 + 273), (unsigned int)(v16 - 5) >= 2)
+             ? (v18 = 0)
+             : (v18 = (*a1 >> 19) & 0x1F),
+         v18 - ((*a1 >> 12) & 0x7F) + v17 >= 1)) {
+      v19 = *(_QWORD*)(v4 + 24);
+      if (*(_BYTE*)(v19 + 1122) != 1) {
         goto LABEL_40;
       }
-      v21 = *(_QWORD*)(v20 + 896);
-      v22 = *(_QWORD*)(v20 + 904);
-      if (v22 != v21) {
-        while ((unsigned int)game_Unit_SkillList_CountActive(v21, a2 + 1744) !=
-               (unsigned int)((*(_QWORD*)(v21 + 40) - *(_QWORD*)(v21 + 32)) >>
+      v20 = *(_QWORD*)(v19 + 896);
+      v21 = *(_QWORD*)(v19 + 904);
+      if (v21 != v20) {
+        while ((unsigned int)game_Unit_SkillList_CountActive_alt1(
+                   v20, (_QWORD*)(a2 + 1744)) !=
+               (unsigned int)((*(_QWORD*)(v20 + 40) - *(_QWORD*)(v20 + 32)) >>
                               2)) {
-          v21 += 96;
-          if (v21 == v22) {
+          v20 += 96;
+          if (v20 == v21) {
             goto LABEL_13;
           }
         }
       }
-      v24 = *(_QWORD*)(v20 + 920);
-      v25 = *(_QWORD*)(v20 + 928);
-      if (v25 == v24) {
+      v23 = *(_QWORD*)(v19 + 920);
+      v24 = *(_QWORD*)(v19 + 928);
+      if (v24 == v23) {
       LABEL_40:
         v10 |= 0x2000000u;
         return v10 | *(unsigned __int16*)(v4 + 16) |
                (*(unsigned __int8*)(v4 + 111) << 16);
       }
       while (
-          (unsigned int)game_Unit_SkillList_CountActive(v24, a2 + 1744) !=
-          (unsigned int)((*(_QWORD*)(v24 + 40) - *(_QWORD*)(v24 + 32)) >> 2)) {
-        v24 += 96;
-        if (v24 == v25) {
+          (unsigned int)game_Unit_SkillList_CountActive_alt1(
+              v23, (_QWORD*)(a2 + 1744)) !=
+          (unsigned int)((*(_QWORD*)(v23 + 40) - *(_QWORD*)(v23 + 32)) >> 2)) {
+        v23 += 96;
+        if (v23 == v24) {
           goto LABEL_40;
         }
       }
     }
   }
 LABEL_13:
-  v28 = 0;
-  v26[0] = GameData_1fa0500;
-  v26[1] = a1;
-  v26[2] = a2;
-  v26[3] = &v28;
-  v27 = v26;
-  game_UnitItemList_EachItem(a2 + 828, v26);
-  v13 = (_WORD*)(a2 + 876);
+  v27 = 0;
+  v25_.v25[0] = GameData_1fa0500;
+  v25_.v25[1] = a1;
+  v25_.v25[2] = a2;
+  v25_.v25[3] = &v27;
+  v25_.v26 = v25_.v25;
+  game_UnitItemList_EachItem_alt1((_WORD*)(a2 + 828), (__int64)v25_.v25);
+  v12 = (_WORD*)(a2 + 876);
   for (i = 24; i != 0; --i) {
-    if (*v13 != 0) {
-      if (v27 == nullptr) {
-        GameRoutine_60a310(0, v12);
+    if (*v12 != 0) {
+      if (v25_.v26 == nullptr) {
+        GameRoutine_60a310_alt1();
       }
-      (*(void (**)(_QWORD*, _WORD*))(*v27 + 48LL))(v27, v13);
+      (*(void (**)(_QWORD*, _WORD*))(*v25_.v26 + 48LL))(v25_.v26, v12);
     }
-    v13 += 4;
+    v12 += 4;
   }
-  if (v27 == v26) {
-    v15 = 32;
+  if (v25_.v26 == v25_.v25) {
+    v14 = 32;
   }
   else {
-    if (v27 == nullptr) {
+    if (v25_.v26 == nullptr) {
       goto LABEL_33;
     }
-    v15 = 40;
+    v14 = 40;
   }
-  (*(void (**)(__int64))(*v27 + v15))((__int64)v27);
+  (*(void (**)(__int64))(*v25_.v26 + v14))((__int64)v25_.v26);
 LABEL_33:
-  if ((v28 & 1) == 0) {
+  if ((v27 & 1) == 0) {
     if (v10 != 0) {
       return v10 | *(unsigned __int16*)(v4 + 16) |
              (*(unsigned __int8*)(v4 + 111) << 16);

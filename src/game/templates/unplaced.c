@@ -66,6 +66,8 @@ __attribute__((swiftcall)) void game_templates_17e9620(PSEUDO_X8 x8_);
 __attribute__((swiftcall)) void game_templates_17e9850(PSEUDO_X8 x8_);
 __attribute__((swiftcall)) void game_templates_17e9d20(PSEUDO_X8 x8_);
 __attribute__((swiftcall)) void game_templates_17e9e30(PSEUDO_X8 x8_);
+__int64* Manager_bc6460_alt1(float*, __int64, char) __asm__("Manager_bc6460");
+__int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 
 __int64 game_templates_a93ea0(__int64 a1, unsigned __int8* a2, __int64 a3,
                               __int64** a4)
@@ -314,37 +316,38 @@ __attribute__((swiftcall)) void game_templates_14a4be0(PSEUDO_X8 x8_,
   __int64* v9;
   unsigned int v10;
   struct {
-    float32x4_t v12;
-    __int64 v13;
-    int v14;
+    _QWORD v12[3];
+    int v13;
     char gap28_[4];
+    __int64 v14;
     __int64 v15;
     __int64 v16;
     __int64 v17;
     __int64 v18;
     __int64 v19;
-    __int64 v20;
   } v12_;
 
   v10 = COERCE_AS(__typeof__(v10),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  v12_.v12 = (__typeof__(v12_.v12)){0};
-  v12_.v14 = a1;
-  v12_.v13 = a2;
+  v12_.v12[0] = 0;
+  v12_.v12[1] = 0;
+  v12_.v13 = a1;
+  v12_.v12[2] = a2;
   v6 = *((_QWORD*)GameData_212c540 + 1);
   v8 = *(_QWORD*)GameData_212c548;
   v7 = *((_QWORD*)GameData_212c548 + 1);
-  v12_.v15 = *(_QWORD*)GameData_212c540;
-  v12_.v16 = v6;
-  v12_.v17 = v8;
-  v12_.v18 = v7;
-  v12_.v19 = v12_.v15;
-  v12_.v20 = v6;
-  v9 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], &v12_.v12, 0),
+  v12_.v14 = *(_QWORD*)GameData_212c540;
+  v12_.v15 = v6;
+  v12_.v16 = v8;
+  v12_.v17 = v7;
+  v12_.v18 = v12_.v14;
+  v12_.v19 = v6;
+  v9 = Manager_bc6460_alt1(*(float**)eft_g_effectSystem_ptr[0],
+                           (__int64)v12_.v12, 0),
   v10 = COERCE_AS(__typeof__(v10),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   {
-    GameRoutine_14a10d0(a4, (__int64)v9, v10, a3),
+    GameHr_14a10d0(a4, (__int64)v9, v10, a3),
         v10 = COERCE_AS(__typeof__(v10),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     return;

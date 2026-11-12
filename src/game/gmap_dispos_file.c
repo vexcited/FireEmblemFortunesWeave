@@ -23,6 +23,19 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_af2ab0(void);
 __attribute__((swiftcall)) void GmapDisposFile_ae35a0(PSEUDO_X8 x8_,
                                                       __int64 result);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 strchr_alt1(const char*, int) __asm__("strchr");
+extern char GameData_1aedbbd_alt1[] __asm__("GameData_1aedbbd");
+int strcmp_alt1(const char*, const char*) __asm__("strcmp");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_af2ab0_alt1() __asm__("GameRoutine_af2ab0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 void GmapDisposFile_Unknown4(long double a1)
 {
@@ -602,17 +615,15 @@ void GmapDisposFile_Unknown4(long double a1)
   }
 }
 
-__attribute__((swiftcall)) void GmapDisposFile_ae35a0(PSEUDO_X8 x8_,
-                                                      __int64 result)
+__attribute__((swiftcall)) void GmapDisposFile_ae35a0(PSEUDO_X8 x8_, __int64 a1)
 {
   __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64* v3;
   __int64* v4;
-  __int64 v5;
   char* v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
+  const char* v9;
   __int64 v10;
   __int64** v11;
   __int64* v12;
@@ -628,12 +639,11 @@ __attribute__((swiftcall)) void GmapDisposFile_ae35a0(PSEUDO_X8 x8_,
   unsigned __int64 v23;
   __int64 v24;
   unsigned __int64 v25;
-  char* v26;
+  unsigned __int64 v26;
   __int64 v27;
-  long double v28;
-  __int64 v29;
+  __int64 v28;
+  __int64* v29;
   __int64* v30;
-  __int64* v31;
 
   a2[1] = 0;
   a2[2] = 0;
@@ -641,29 +651,27 @@ __attribute__((swiftcall)) void GmapDisposFile_ae35a0(PSEUDO_X8 x8_,
   v3 = *(__int64**)(GameData_21c9e50 + 64);
   v4 = *(__int64**)(GameData_21c9e50 + 72);
   if (v3 != v4) {
-    v5 = result;
     v6 = nullptr;
     v7 = 0;
-    v30 = *(__int64**)(GameData_21c9e50 + 72);
+    v29 = *(__int64**)(GameData_21c9e50 + 72);
     do {
       v8 = *v3;
-      v9 = *(_QWORD*)(*v3 + 8);
-      if (v9 != 0) {
-        v10 = strchr(*(_QWORD*)(*v3 + 8), 95);
+      v9 = *(const char**)(*v3 + 8);
+      if (v9 != nullptr) {
+        v10 = strchr_alt1(*(const char**)(*v3 + 8), 95);
         if (v10 != 0) {
-          v9 = v10 + 1;
+          v9 = (const char*)(v10 + 1);
         }
       }
-      result = strcmp(v9, &GameData_1aedbbd);
-      if ((_DWORD)result == 0) {
+      if (strcmp_alt1(v9, GameData_1aedbbd_alt1) == 0) {
         v11 = *(__int64***)(v8 + 40);
-        v31 = v3;
+        v30 = v3;
         v13 = *v11;
         v12 = v11[1];
         while (v13 != v12) {
           v14 = *v13;
           v15 = *(_QWORD*)(*v13 + 64);
-          if (v15 != 0 && v15 == v5) {
+          if (v15 != 0 && v15 == a1) {
             v17 = a2[2];
             if ((unsigned __int64)v6 < v17) {
               *(_QWORD*)v6 = v14;
@@ -675,10 +683,10 @@ __attribute__((swiftcall)) void GmapDisposFile_ae35a0(PSEUDO_X8 x8_,
               v20 = v19 + 1;
               if ((unsigned __int64)(v19 + 1) >> 61 != 0) {
                 *a2 = v7;
-                GameRoutine_af2ab0();
+                GameRoutine_af2ab0_alt1();
               }
               v21 = v17 - v7;
-              v22 = v5;
+              v22 = a1;
               if (v21 >> 2 > v20) {
                 v20 = v21 >> 2;
               }
@@ -691,48 +699,44 @@ __attribute__((swiftcall)) void GmapDisposFile_ae35a0(PSEUDO_X8 x8_,
               if (v23 != 0) {
                 if (v23 >> 61 != 0) {
                   *a2 = v7;
-                  GameRoutine_60a210(result);
+                  GameRoutine_60a210_alt1();
                 }
-                v24 = fw_memory_HeapManager_Allocate(
+                v24 = fw_memory_HeapManager_Allocate_alt1(
                     *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v23, 16, 0);
               }
               else {
                 v24 = 0;
               }
               v25 = v24 + 8 * v23;
-              v26 = &v6[-v7];
+              v26 = (unsigned __int64)&v6[-v7];
               v27 = (__int64)&v18[v24 + -8 * v19];
               *(_QWORD*)&v18[v24] = v14;
               v6 = &v18[v24 + 8];
-              result = memcpy(v27, v7, v26);
+              memcpy_alt1(v27, v7, v26);
               a2[1] = (__int64)v6;
               a2[2] = v25;
               if (v7 != 0) {
-                v29 = 128;
+                v28 = 128;
                 if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr +
                                200LL) == 0) {
-                  v29 = 56;
+                  v28 = 56;
                 }
-                result = nn_mem_StandardAllocator_Free(
-                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v29, v28);
+                nn_mem_StandardAllocator_Free_alt1(
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v28, v7);
               }
               v7 = v27;
-              v5 = v22;
+              a1 = v22;
             }
             a2[1] = (__int64)v6;
           }
           ++v13;
         }
-        v4 = v30;
-        v3 = v31;
+        v4 = v29;
+        v3 = v30;
         *a2 = v7;
       }
       ++v3;
     } while (v3 != v4);
-  }
-  {
-    result;
-    return;
   }
 }
 

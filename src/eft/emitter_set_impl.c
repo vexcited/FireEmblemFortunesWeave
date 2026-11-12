@@ -7,15 +7,25 @@ __int64 GameRoutine_5d3790(_QWORD, _QWORD);
 __int64 EmitterSet_5b5ec0(__int64 result, __int64 a2, char a3, __int64 a4,
                           int a5, char a6, __int64 a7, __int64 a8,
                           __int64 (*a9)(_QWORD*), __int64 (*a10)(_QWORD*));
-__int64 EmitterSet_5b60e0(__int64 a1, __int64 a2, __int64 a3, int a4, char a5,
-                          __int64 a6, __int64 a7, __int64 (*a8)(_QWORD*),
-                          __int64 (*a9)(_QWORD*));
+__int64
+EmitterSet_5b60e0_alt1(__int64 a1, __int64 a2, __int64 a3, int a4, char a5,
+                       __int64 a6, __int64 a7, __int64 (*a8)(_QWORD*),
+                       __int64 (*a9)(_QWORD*)) __asm__("EmitterSet_5b60e0");
 __int64 EmitterSet_5b6440(__int64 result, __int64 a2);
 __int64 EmitterSet_5b66c0(__int64 a1, int a2);
+_BYTE* GameRoutine_5d35c0_alt1(_BYTE* result, __int64, _QWORD*, __int64,
+                               __int64, __int64) __asm__("GameRoutine_5d35c0");
+__int64 GameRoutine_5d3790_alt1(__int64, __int64) __asm__("GameRoutine_5d3790");
+_BYTE* EmitterSet_5b60e0(__int64 a1, __int64 a2, __int64 a3, int a4, char a5,
+                         __int64 a6, __int64 a7, __int64 (*a8)(_QWORD*),
+                         __int64 (*a9)(_QWORD*));
+
 __int64 EmitterSet_5b5ec0(__int64 result, __int64 a2, char a3, __int64 a4,
                           int a5, char a6, __int64 a7, __int64 a8,
                           __int64 (*a9)(_QWORD*), __int64 (*a10)(_QWORD*))
 {
+
+#pragma clang fp contract(off)
   __int64 v10;
   int v11;
   __int64 v14;
@@ -29,17 +39,19 @@ __int64 EmitterSet_5b5ec0(__int64 result, __int64 a2, char a3, __int64 a4,
   __int64 v22;
   int v23;
   int v24;
-  __int64 v28;
+  _BYTE* v28;
   int v29;
   int v30;
   int v31;
   __int64 v33;
   char v35;
-  _QWORD v38[4];
-  __int64 v39;
-  __int64 v40;
-  __int64 v41;
-  __int64 v42;
+  struct {
+    _QWORD v38[4];
+    __int64 v39;
+    __int64 v40;
+    __int64 v41;
+    __int64 v42;
+  } v38_;
 
   v10 = *(_QWORD*)(a4 + 568);
   if (*(int*)(v10 + 136) >= 1) {
@@ -60,7 +72,7 @@ __int64 EmitterSet_5b5ec0(__int64 result, __int64 a2, char a3, __int64 a4,
             v18 = *(_BYTE*)(*(_QWORD*)(v16 + 160) + 1872LL) == 0 ||
                   *(_BYTE*)(v16 + 2) == 0;
             v20 = false;
-            if (!v18 && *(float*)(v16 + 112) > 0.0) {
+            if (!v18 && *(float*)(v16 + 112) > 0x0.0p+0f) {
               v19 = *(_DWORD*)(v16 + 40);
               if (v19 > 0 ||
                   v19 == 0 &&
@@ -74,31 +86,32 @@ __int64 EmitterSet_5b5ec0(__int64 result, __int64 a2, char a3, __int64 a4,
             v22 = *(_QWORD*)(v17 + 152);
             v23 = 1 << *(_DWORD*)(v17 + 1024);
             v24 = v23 & a5;
-            result = GameRoutine_5d3790(*(_QWORD*)(v14 + 32), v23);
+            result = GameRoutine_5d3790_alt1(*(_QWORD*)(v14 + 32), v23);
             *(_QWORD*)(v17 + 1016) = result;
             if (v22 != 0 && v20 && v21 != 0 && v24 != 0) {
-              if (a9 == nullptr ||
-                  (v38[0] = v17, v38[1] = a7, ((result = a9(v38)) & 1) != 0)) {
-                v28 = *(_QWORD*)(v14 + 32);
+              if (a9 == nullptr || (v38_.v38[0] = v17, v38_.v38[1] = a7,
+                                    ((result = a9(v38_.v38)) & 1) != 0)) {
+                v28 = *(_BYTE**)(v14 + 32);
                 if (a10 != nullptr) {
                   v29 = *(_DWORD*)(a8 + 20);
-                  v38[2] = 0;
-                  v38[3] = v17;
-                  v42 = a8;
-                  v40 = 0;
-                  v41 = 0;
-                  v39 = 0;
+                  v38_.v38[2] = 0;
+                  v38_.v38[3] = v17;
+                  v38_.v42 = a8;
+                  v38_.v40 = 0;
+                  v38_.v41 = 0;
+                  v38_.v39 = 0;
                   v30 = *(_DWORD*)(v14 + 48);
-                  HIDWORD(v39) = v29;
-                  v38[0] = a2;
-                  v38[1] = v28;
-                  LODWORD(v41) = v30;
-                  BYTE4(v41) = v35;
-                  v40 = a7;
-                  result = a10(v38);
+                  HIDWORD(v38_.v39) = v29;
+                  v38_.v38[0] = a2;
+                  v38_.v38[1] = v28;
+                  LODWORD(v38_.v41) = v30;
+                  BYTE4(v38_.v41) = v35;
+                  v38_.v40 = a7;
+                  result = a10(v38_.v38);
                 }
                 else {
-                  result = GameRoutine_5d35c0(v28, a2, v17, a6 & 1, a7, a8);
+                  result = (__int64)GameRoutine_5d35c0_alt1(
+                      v28, a2, (_QWORD*)v17, a6 & 1, a7, a8);
                 }
               }
             }
@@ -113,10 +126,12 @@ __int64 EmitterSet_5b5ec0(__int64 result, __int64 a2, char a3, __int64 a4,
   return result;
 }
 
-__int64 EmitterSet_5b60e0(__int64 a1, __int64 a2, __int64 a3, int a4, char a5,
-                          __int64 a6, __int64 a7, __int64 (*a8)(_QWORD*),
-                          __int64 (*a9)(_QWORD*))
+_BYTE* EmitterSet_5b60e0(__int64 a1, __int64 a2, __int64 a3, int a4, char a5,
+                         __int64 a6, __int64 a7, __int64 (*a8)(_QWORD*),
+                         __int64 (*a9)(_QWORD*))
 {
+
+#pragma clang fp contract(off)
   __int64 v9;
   bool v16;
   int v17;
@@ -124,22 +139,24 @@ __int64 EmitterSet_5b60e0(__int64 a1, __int64 a2, __int64 a3, int a4, char a5,
   int v19;
   int v20;
   int v21;
-  __int64 result;
-  __int64 v26;
+  _BYTE* result;
+  _BYTE* v26;
   int v27;
   int v28;
-  _QWORD v30[4];
-  int v31;
-  int v32;
-  __int64 v33;
-  int v34;
-  int v35;
-  __int64 v36;
+  struct {
+    _QWORD v30[4];
+    int v31;
+    int v32;
+    __int64 v33;
+    int v34;
+    int v35;
+    __int64 v36;
+  } v30_;
 
   v9 = *(_QWORD*)(a3 + 152);
   v16 = *(_BYTE*)(*(_QWORD*)(a3 + 160) + 1872LL) == 0 || *(_BYTE*)(a3 + 2) == 0;
   v18 = false;
-  if (!v16 && *(float*)(a3 + 112) > 0.0) {
+  if (!v16 && *(float*)(a3 + 112) > 0x0.0p+0f) {
     v17 = *(_DWORD*)(a3 + 40);
     if (v17 > 0 ||
         v17 == 0 &&
@@ -150,29 +167,30 @@ __int64 EmitterSet_5b60e0(__int64 a1, __int64 a2, __int64 a3, int a4, char a5,
   v19 = *(_DWORD*)(a7 + 16) & *(_DWORD*)(a3 + 64);
   v20 = 1 << *(_DWORD*)(a3 + 1024);
   v21 = v20 & a4;
-  result = GameRoutine_5d3790(*(_QWORD*)(a1 + 32), v20);
+  result = (_BYTE*)GameRoutine_5d3790_alt1(*(_QWORD*)(a1 + 32), v20);
   *(_QWORD*)(a3 + 1016) = result;
   if (v9 != 0 && v18 && v19 != 0 && v21 != 0) {
     if (a8 == nullptr ||
-        (v30[0] = a3, v30[1] = a6, ((result = a8(v30)) & 1) != 0)) {
-      v26 = *(_QWORD*)(a1 + 32);
+        (v30_.v30[0] = a3, v30_.v30[1] = a6,
+         ((unsigned __int8)(result = (_BYTE*)a8(v30_.v30)) & 1) != 0)) {
+      v26 = *(_BYTE**)(a1 + 32);
       if (a9 != nullptr) {
         v27 = *(_DWORD*)(a7 + 20);
         v28 = *(_DWORD*)(a1 + 48);
-        v30[3] = a3;
-        v31 = 0;
-        v33 = a6;
-        v30[2] = 0;
-        v36 = a7;
-        v35 = a5 & 1;
-        v30[0] = a2;
-        v30[1] = v26;
-        v32 = v27;
-        v34 = v28;
-        return a9(v30);
+        v30_.v30[3] = a3;
+        v30_.v31 = 0;
+        v30_.v33 = a6;
+        v30_.v30[2] = 0;
+        v30_.v36 = a7;
+        v30_.v35 = a5 & 1;
+        v30_.v30[0] = a2;
+        v30_.v30[1] = v26;
+        v30_.v32 = v27;
+        v30_.v34 = v28;
+        return (_BYTE*)a9(v30_.v30);
       }
       else {
-        return GameRoutine_5d35c0(v26, a2, a3, a5 & 1, a6, a7);
+        return GameRoutine_5d35c0_alt1(v26, a2, (_QWORD*)a3, a5 & 1, a6, a7);
       }
     }
   }

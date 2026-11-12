@@ -9,6 +9,7 @@ extern __int64 (*game_telop_TelopTrainingResult_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 TelopTrainingResult_Destructor(_QWORD* a1);
 __int64 TelopTrainingResult_Unknown43(__int64 a1);
+__int64 GaugeUtil_1750310(__int64, int);
 
 __int64 TelopTrainingResult_Destructor(_QWORD* a1)
 {
@@ -161,7 +162,7 @@ __int64 TelopTrainingResult_Unknown43(__int64 a1)
         v8 = 0;
         v9 = 0;
         do {
-          v10 = GameRoutine_1750310(v7 + v8, 1);
+          v10 = GaugeUtil_1750310(v7 + v8, 1);
           ++v9;
           v8 += 160;
           v2 &= v10 ^ 1;

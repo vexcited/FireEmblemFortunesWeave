@@ -36,6 +36,14 @@ __attribute__((swiftcall)) void ProcSideStorySeq_Unknown19(PSEUDO_X8 x8_,
                                                            __int64 a1);
 _QWORD* ProcSideStorySeq_Unknown20(__int64 a1, __int64 a2, __int64 a3,
                                    __int64 a4);
+__int64 GameRoutine_60a020_alt1(__int64,
+                                const char*) __asm__("GameRoutine_60a020");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+char* GameRoutine_a4dbe0_alt1(__int64, const char*,
+                              char) __asm__("GameRoutine_a4dbe0");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 _QWORD* ProcSideStorySeq_Destructor(__int64 a1)
 {
@@ -149,27 +157,27 @@ __attribute__((swiftcall)) void ProcSideStorySeq_Unknown19(PSEUDO_X8 x8_,
                                                            __int64 a1)
 {
   __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
-  char* v4;
-  _BYTE* v5;
+  const char* v4;
+  const char* v5;
   __int64* v6;
   __int64* v7;
-  __int64* v8;
+  const char** v8;
   __int64 v9;
   char* v10;
-  __int64 v11;
-  __int64 v12;
+  const char* v11;
+  const char* v12;
   __int64 v13;
   char* v14;
-  unsigned __int64 result;
+  unsigned __int64 v15;
   unsigned __int64 v16;
-  char* v17;
+  __int64 v17;
   __int64 v18;
   __int64 v19;
   char v20;
   __int64 v21;
   struct {
     __int64 v22[2];
-    char* v23;
+    const char* v23;
     __int64* v24;
     unsigned __int64 v25;
     unsigned __int64 v26;
@@ -198,10 +206,10 @@ __attribute__((swiftcall)) void ProcSideStorySeq_Unknown19(PSEUDO_X8 x8_,
   else {
     v4 = (char*)v22_.v22 + 1;
   }
-  v5 = *(_BYTE**)(**(_QWORD**)(a1 + 256) + 64LL);
+  v5 = *(const char**)(**(_QWORD**)(a1 + 256) + 64LL);
   v6 = msg_MessageManager_instance__ptr[0];
   v7 = GameData_212e348;
-  v8 = (__int64*)msg_MessageManager_empty_text__ptr;
+  v8 = (const char**)msg_MessageManager_empty_text__ptr;
   if (v5 != nullptr && *v5 != 0) {
     v9 = *msg_MessageManager_instance__ptr[0];
     v22_.v30 = -1;
@@ -223,25 +231,25 @@ __attribute__((swiftcall)) void ProcSideStorySeq_Unknown19(PSEUDO_X8 x8_,
     v22_.v42 = 8;
     v22_.v28 = -65529;
     v22_.v29 = -65528;
-    v10 = GameRoutine_a4dbe0(v9, v5, 0);
+    v10 = GameRoutine_a4dbe0_alt1(v9, v5, 0);
   }
   else {
     v10 = *msg_MessageManager_empty_text__ptr;
   }
   if (v4 != nullptr) {
-    v11 = (__int64)v4;
+    v11 = v4;
   }
   else {
     v11 = *v8;
   }
-  GameRoutine_60a020(*v6 + 14704, v11);
+  GameRoutine_60a020_alt1(*v6 + 14704, v11);
   if (v10 != nullptr) {
-    v12 = (__int64)v10;
+    v12 = v10;
   }
   else {
     v12 = *v8;
   }
-  GameRoutine_60a020(*v6 + 14728, v12);
+  GameRoutine_60a020_alt1(*v6 + 14728, v12);
   v13 = *v6;
   v22_.v30 = -1;
   v22_.v31 = -1;
@@ -262,51 +270,44 @@ __attribute__((swiftcall)) void ProcSideStorySeq_Unknown19(PSEUDO_X8 x8_,
   v22_.v42 = 8;
   v22_.v28 = -65529;
   v22_.v29 = -65528;
-  v14 = GameRoutine_a4dbe0(v13, "MID_NextSelect_SideStory", 0);
-  result = strlen(v14);
-  if (result >= 0xFFFFFFFFFFFFFFF7LL) {
+  v14 = GameRoutine_a4dbe0_alt1(v13, "MID_NextSelect_SideStory", 0);
+  v15 = strlen_alt1(v14);
+  if (v15 >= 0xFFFFFFFFFFFFFFF7LL) {
     String_60a1d0();
   }
-  v16 = result;
-  if (result >= 0x17) {
-    if ((result | 7) == 0x17) {
+  v16 = v15;
+  if (v15 >= 0x17) {
+    if ((v15 | 7) == 0x17) {
       v18 = 26;
     }
     else {
-      v18 = (result | 7) + 1;
+      v18 = (v15 | 7) + 1;
     }
     v19 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
                                          v18, 16, 0);
     a2[1] = v16;
     a2[2] = v19;
     *a2 = v18 | 1;
-    v17 = (char*)v19;
+    v17 = v19;
   }
   else {
-    *(_BYTE*)a2 = 2 * result;
-    v17 = (char*)a2 + 1;
-    if (result == 0) {
+    *(_BYTE*)a2 = 2 * v15;
+    v17 = (__int64)a2 + 1;
+    if (v15 == 0) {
       goto LABEL_23;
     }
   }
-  result = memmove(v17, v14, v16);
+  memmove_alt1(v17, (__int64)v14, v16);
 LABEL_23:
   v20 = v22_.v22[0];
-  v17[v16] = 0;
+  *(_BYTE*)(v17 + v16) = 0;
   if ((v20 & 1) != 0 && v22_.v23 != nullptr) {
     v21 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v21 = 56;
     }
-    {
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v21);
-      return;
-    }
-  }
-  {
-    result;
-    return;
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, (__int64)v22_.v23);
   }
 }
 

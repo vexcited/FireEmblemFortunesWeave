@@ -18,12 +18,18 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure3_Invoke_alt1(
     __int64 result, int* a2,
     unsigned __int16* a3) __asm__("game_anonymous_ItemCandidatesForAll_Prepare_"
                                   "closure3_Invoke");
-__int64 game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
-    __int64 result, int* a2, unsigned __int16* a3);
-__int64 game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
-    __int64 result, int* a2, unsigned __int16* a3);
-__int64 game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
-    __int64 result, int* a2, unsigned __int16* a3);
+__int64 game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke_alt1(
+    __int64 result, int* a2,
+    unsigned __int16* a3) __asm__("game_anonymous_ItemCandidatesForAll_Prepare_"
+                                  "closure4_Invoke");
+__int64 game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke_alt1(
+    __int64 result, int* a2,
+    unsigned __int16* a3) __asm__("game_anonymous_ItemCandidatesForAll_Prepare_"
+                                  "closure5_Invoke");
+__int64 game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke_alt1(
+    __int64 result, int* a2,
+    unsigned __int16* a3) __asm__("game_anonymous_ItemCandidatesForAll_Prepare_"
+                                  "closure6_Invoke");
 bool game_anonymous_ItemCandidatesForAll_CheckWeaponRange_closure_Invoke(
     __int64 a1, __int64 a2);
 __attribute__((swiftcall)) void
@@ -101,6 +107,12 @@ extern __int64 GameData_212cd90_alt1[21] __asm__("GameData_212cd90");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void game_anonymous_ItemCandidatesForAll_Prepare_closure3_Invoke(
+    __int64 a1, int* a2, unsigned __int16* a3);
+void game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
+    __int64 a1, int* a2, unsigned __int16* a3);
+void game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
+    __int64 a1, int* a2, unsigned __int16* a3);
+void game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
     __int64 a1, int* a2, unsigned __int16* a3);
 
 __n128 ItemCandidatesForAll_12eff40()
@@ -2245,8 +2257,8 @@ LABEL_17:
   v3[4] = v17;
 }
 
-__int64 game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
-    __int64 result, int* a2, unsigned __int16* a3)
+void game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
+    __int64 a1, int* a2, unsigned __int16* a3)
 {
   _QWORD* v3;
   int v4;
@@ -2258,19 +2270,19 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
   unsigned __int64 v10;
   __int64 v11;
   __int64 v12;
-  __int64 v13;
+  unsigned __int64 v13;
   __int64 v14;
   unsigned __int64 v15;
   __int64 v16;
   __int64 v17;
   unsigned __int64 v18;
   __int64 v19;
-  __int64 v20;
+  unsigned __int64 v20;
   unsigned __int64 v21;
   __int64 v22;
   __int64 v23;
 
-  v3 = *(_QWORD**)(result + 8);
+  v3 = *(_QWORD**)(a1 + 8);
   v4 = *a2;
   v5 = *a3;
   v6 = *(unsigned __int8**)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8 * v5);
@@ -2286,7 +2298,7 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
     v14 = (__int64)(v9 - v12) >> 3;
     v15 = v14 + 1;
     if ((unsigned __int64)(v14 + 1) >> 61 != 0) {
-      GameRoutine_12f2f50();
+      GameRoutine_12f2f50_alt1();
     }
     v16 = v10 - v12;
     v17 = fw_memory_g_heap_manager_ptr;
@@ -2301,9 +2313,9 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
     }
     if (v18 != 0) {
       if (v18 >> 61 != 0) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v19 = fw_memory_HeapManager_Allocate(
+      v19 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v18, 16, 0);
     }
     else {
@@ -2318,7 +2330,7 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
     *(_BYTE*)(v20 + 6) = v8;
     v11 = v19 + v13 + 8;
     *(_BYTE*)(v20 + 7) = 0;
-    result = memcpy(v22, v12, v13);
+    memcpy_alt1(v22, v12, v13);
     v3[6] = v22;
     v3[7] = v11;
     v3[8] = v21;
@@ -2327,7 +2339,7 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
       if (*(_QWORD*)(*(_QWORD*)v17 + 200LL) == 0) {
         v23 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v17 + v23);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v17 + v23, v12);
     }
   }
   else {
@@ -2339,11 +2351,10 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure4_Invoke(
     *(_BYTE*)(v9 + 7) = 0;
   }
   v3[7] = v11;
-  return result;
 }
 
-__int64 game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
-    __int64 result, int* a2, unsigned __int16* a3)
+void game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
+    __int64 a1, int* a2, unsigned __int16* a3)
 {
   _QWORD* v3;
   int v4;
@@ -2354,16 +2365,16 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
   unsigned __int64 v9;
   __int64 v10;
   __int64 v11;
-  __int64 v12;
+  unsigned __int64 v12;
   unsigned __int64 v13;
   __int64 v14;
   unsigned __int64 v15;
   unsigned __int64 v16;
   __int64 v17;
-  __int64 v18;
+  unsigned __int64 v18;
   __int64 v19;
 
-  v3 = *(_QWORD**)(result + 8);
+  v3 = *(_QWORD**)(a1 + 8);
   v4 = *a2;
   v5 = *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *a3);
   v6 = *(unsigned __int8*)(v5 + 88);
@@ -2377,7 +2388,7 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
     v12 = v9 - v11;
     v13 = 1 - 0x5555555555555555LL * ((__int64)(v9 - v11) >> 1);
     if (v13 > 0x2AAAAAAAAAAAAAAALL) {
-      GameRoutine_12f2f70();
+      GameRoutine_12f2f70_alt1();
     }
     v14 = fw_memory_g_heap_manager_ptr;
     v15 = 0xAAAAAAAAAAAAAAABLL * ((__int64)(v8 - v11) >> 1);
@@ -2392,9 +2403,9 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
     }
     if (v16 != 0) {
       if (v16 > 0x2AAAAAAAAAAAAAAALL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v17 = fw_memory_HeapManager_Allocate(
+      v17 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 6 * v16, 16, 0);
     }
     else {
@@ -2405,7 +2416,7 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
     *(_WORD*)(v18 + 2) = v4;
     *(_WORD*)(v18 + 4) = v7;
     v10 = v17 + v12 + 6;
-    result = memcpy(v17, v11, v12);
+    memcpy_alt1(v17, v11, v12);
     v3[9] = v17;
     v3[10] = v10;
     v3[11] = v17 + 6 * v16;
@@ -2414,7 +2425,7 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
       if (*(_QWORD*)(*(_QWORD*)v14 + 200LL) == 0) {
         v19 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v14 + v19);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v14 + v19, v11);
     }
   }
   else {
@@ -2424,11 +2435,10 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure5_Invoke(
     *(_WORD*)(v9 + 4) = v7;
   }
   v3[10] = v10;
-  return result;
 }
 
-__int64 game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
-    __int64 result, int* a2, unsigned __int16* a3)
+void game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
+    __int64 a1, int* a2, unsigned __int16* a3)
 {
   _QWORD* v3;
   int v4;
@@ -2439,19 +2449,19 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
   unsigned __int64 v9;
   __int64 v10;
   __int64 v11;
-  __int64 v12;
+  unsigned __int64 v12;
   __int64 v13;
   unsigned __int64 v14;
   __int64 v15;
   __int64 v16;
   unsigned __int64 v17;
   __int64 v18;
-  __int64 v19;
+  unsigned __int64 v19;
   unsigned __int64 v20;
   __int64 v21;
   __int64 v22;
 
-  v3 = *(_QWORD**)(result + 8);
+  v3 = *(_QWORD**)(a1 + 8);
   v4 = *a2;
   v5 = *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *a3);
   v6 = *(_DWORD*)(v5 + 76);
@@ -2466,7 +2476,7 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
     v13 = (__int64)(v8 - v11) >> 3;
     v14 = v13 + 1;
     if ((unsigned __int64)(v13 + 1) >> 61 != 0) {
-      GameRoutine_12f2f90();
+      GameRoutine_12f2f90_alt1();
     }
     v15 = v9 - v11;
     v16 = fw_memory_g_heap_manager_ptr;
@@ -2481,9 +2491,9 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
     }
     if (v17 != 0) {
       if (v17 >> 61 != 0) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v18 = fw_memory_HeapManager_Allocate(
+      v18 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v17, 16, 0);
     }
     else {
@@ -2496,7 +2506,7 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
     *(_BYTE*)v19 = 0;
     *(_DWORD*)(v19 + 4) = v7;
     v10 = v18 + v12 + 8;
-    result = memcpy(v21, v11, v12);
+    memcpy_alt1(v21, v11, v12);
     v3[12] = v21;
     v3[13] = v10;
     v3[14] = v20;
@@ -2505,7 +2515,7 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
       if (*(_QWORD*)(*(_QWORD*)v16 + 200LL) == 0) {
         v22 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v16 + v22);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v16 + v22, v11);
     }
   }
   else {
@@ -2515,7 +2525,6 @@ __int64 game_anonymous_ItemCandidatesForAll_Prepare_closure6_Invoke(
     *(_DWORD*)(v8 + 4) = v7;
   }
   v3[13] = v10;
-  return result;
 }
 
 bool game_anonymous_ItemCandidatesForAll_CheckWeaponRange_closure_Invoke(

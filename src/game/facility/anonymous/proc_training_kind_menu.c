@@ -52,6 +52,14 @@ game_facility_anonymous_ProcTrainingKindMenu_ACall_closure_Invoke_197e0f0(
 __int64
 game_facility_anonymous_ProcTrainingKindMenu_ACall_closure_Invoke_197e330(
     __int64 a1);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
 
 __int64 ProcTrainingKindMenu_Unknown84(__int64 a1)
 {
@@ -267,45 +275,45 @@ game_facility_anonymous_ProcTrainingKindMenu_OnUpdateCursor_closure_Invoke(
     __int64 a1, unsigned __int8* a2, _DWORD* a3)
 {
   __int64 v3;
-  __int64 v5;
-  __int64 v6;
-  long double v7;
-  double v8;
+  __int64* v5;
+  char* v6;
   __int64 result;
-  __int64 v10;
-  __int64 v11;
-  const char* v12;
-  __int64 v13;
-  __int64 v14;
+  __int64 v8;
+  __int64 v9;
+  const char* v10;
+  struct {
+    __int64 v11;
+    __int64 v12;
+  } v11_;
 
   v3 = *a2;
-  v5 = **(_QWORD**)(a1 + 8);
-  v6 = game_util_Format("L_MasteryInfoItem%02d", *a3);
-  GameRoutine_1560070((void*)&v13, v5, v6);
-  result = v14;
-  if (v14 != 0) {
-    v10 = std___1___shared_weak_count_lock(v7, v8);
-    v11 = v13;
-    result = v14;
-    if (v14 != 0) {
-      result = std___1___shared_weak_count___release_weak(v14);
+  v5 = **(__int64***)(a1 + 8);
+  v6 = game_util_Format_alt1("L_MasteryInfoItem%02d", *a3);
+  LayoutAccessor_1560070((void*)(&v11_.v11), v5, v6);
+  result = v11_.v12;
+  if (v11_.v12 != 0) {
+    v8 = std___1___shared_weak_count_lock_alt1(v11_.v12);
+    v9 = v11_.v11;
+    result = v11_.v12;
+    if (v11_.v12 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v11_.v12);
     }
-    if (v10 != 0 && v11 != 0) {
+    if (v8 != 0 && v9 != 0) {
       if (*(char*)(*(_QWORD*)(**(_QWORD**)(a1 + 16) + 88LL) + v3 + 90) <= 0) {
-        v12 = "Accent_Off";
+        v10 = "Accent_Off";
       }
       else {
-        v12 = "Accent_On";
+        v10 = "Accent_On";
       }
-      result = LayoutAccessor_1562680(v11, v12, 1.0);
+      result = GameHr_1562680(v9, v10, 0x1.0000000000000p+0f);
     }
-    else if (v10 == 0) {
+    else if (v8 == 0) {
       return result;
     }
-    if (atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
+    if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-      return std___1___shared_weak_count___release_weak(v10);
+      (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+      return std___1___shared_weak_count___release_weak_alt1(v8);
     }
   }
   return result;

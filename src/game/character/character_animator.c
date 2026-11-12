@@ -27,7 +27,9 @@ void CharacterAnimator_1079fe0(__int64 a1);
 __int64 CharacterAnimator_107a6f0(__int64 a1);
 __int64 CharacterAnimator_107a7e0(__int64 a1);
 __int64 CharacterAnimator_107a870(__int64 a1, float a2);
-float* CharacterAnimator_107a920(float* result, float a2);
+float*
+CharacterAnimator_107a920_alt1(float* result,
+                               float a2) __asm__("CharacterAnimator_107a920");
 bool CharacterAnimator_107aaa0(__int64 a1, int a2);
 __attribute__((swiftcall)) void BlendLayer_d2b700(PSEUDO_X8, __int64*);
 __int64* CharacterModel_1070c00_alt1(__int64,
@@ -51,6 +53,13 @@ float CharacterAnimator_1079580(__int64 a1, int a2, long double a3, float a4,
                                 float a5);
 float CharacterAnimator_107a200(__int64 a1, long double a2);
 __n128 CharacterAnimator_Destructor(__int64 a1);
+__attribute__((swiftcall)) void
+BlendLayer_d2b700_alt1(PSEUDO_X8, _QWORD* result) __asm__("BlendLayer_d2b700");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CharacterAnimator_107a920(__int64 a1, float a2);
 
 __int64 CharacterAnimator_Unknown8(__int64 a1)
 {
@@ -973,87 +982,84 @@ __int64 CharacterAnimator_107a870(__int64 a1, float a2)
   return result;
 }
 
-float* CharacterAnimator_107a920(float* result, float a2)
+void CharacterAnimator_107a920(__int64 a1, float a2)
 {
+
+#pragma clang fp contract(off)
   __int64 v2;
-  float* v4;
   __int64 v5;
-  long double v6;
+  int* v6;
   int* v7;
-  int* v8;
-  int v9;
+  int v8;
+  __int64 v9;
   __int64 v10;
   __int64 v11;
-  __int64 v12;
-  long double v13;
-  int* v14;
-  int* v15;
-  int v16;
-  __int64 v17;
-  int* v18;
-  int* v19;
+  int* v12;
+  int* v13;
+  int v14;
+  __int64 v15;
+  struct {
+    int* v16;
+    int* v17;
+  } v16_;
 
-  v2 = *((_QWORD*)result + 12);
-  v4 = result;
+  v2 = *(_QWORD*)(a1 + 96);
   if (v2 != 0) {
     v5 = *(_QWORD*)(v2 + 32);
     if (*(_BYTE*)(v5 + 124) == 1) {
-      result = (float*)X8CALL_X0(
-          _QWORD*,
-          GameRoutine_d2b700((void*)&v18,
-                             *(_QWORD*)(v5 + 96) + 56LL * *(int*)(v5 + 120)));
-      v7 = v18;
-      v8 = v19;
-      if (v18 != v19) {
+      BlendLayer_d2b700_alt1(
+          (void*)(&v16_.v16),
+          (_QWORD*)(*(_QWORD*)(v5 + 96) + 56LL * *(int*)(v5 + 120)));
+      v6 = v16_.v16;
+      v7 = v16_.v17;
+      if (v16_.v16 != v16_.v17) {
         do {
-          v9 = *v7++;
-          *(float*)(*(_QWORD*)(*(_QWORD*)(v2 + 24) + 72LL) + 104LL * v9 + 8) =
+          v8 = *v6++;
+          *(float*)(*(_QWORD*)(*(_QWORD*)(v2 + 24) + 72LL) + 104LL * v8 + 8) =
               a2;
-        } while (v7 != v8);
-        v7 = v18;
+        } while (v6 != v7);
+        v6 = v16_.v16;
       }
-      if (v7 != nullptr) {
-        v19 = v7;
-        v10 = 128;
+      if (v6 != nullptr) {
+        v16_.v17 = v6;
+        v9 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v10 = 56;
+          v9 = 56;
         }
-        result = (float*)nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v10, v6);
+        nn_mem_StandardAllocator_Free_alt2(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, (__int64)v6);
       }
     }
   }
-  v11 = *((_QWORD*)v4 + 13);
-  if (v11 != 0) {
-    v12 = *(_QWORD*)(v11 + 32);
-    if (*(_BYTE*)(v12 + 124) == 1) {
-      result = (float*)X8CALL_X0(
-          _QWORD*,
-          GameRoutine_d2b700((void*)&v18,
-                             *(_QWORD*)(v12 + 96) + 56LL * *(int*)(v12 + 120)));
-      v14 = v18;
-      v15 = v19;
-      if (v18 != v19) {
+  v10 = *(_QWORD*)(a1 + 104);
+  if (v10 != 0) {
+    v11 = *(_QWORD*)(v10 + 32);
+    if (*(_BYTE*)(v11 + 124) == 1) {
+      BlendLayer_d2b700_alt1(
+          (void*)(&v16_.v16),
+          (_QWORD*)(*(_QWORD*)(v11 + 96) + 56LL * *(int*)(v11 + 120)));
+      v12 = v16_.v16;
+      v13 = v16_.v17;
+      if (v16_.v16 != v16_.v17) {
         do {
-          v16 = *v14++;
-          *(float*)(*(_QWORD*)(*(_QWORD*)(v11 + 24) + 72LL) + 104LL * v16 + 8) =
+          v14 = *v12++;
+          *(float*)(*(_QWORD*)(*(_QWORD*)(v10 + 24) + 72LL) + 104LL * v14 + 8) =
               a2;
-        } while (v14 != v15);
-        v14 = v18;
+        } while (v12 != v13);
+        v12 = v16_.v16;
       }
-      if (v14 != nullptr) {
-        v19 = v14;
-        v17 = 128;
+      if (v12 != nullptr) {
+        v16_.v17 = v12;
+        v15 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v17 = 56;
+          v15 = 56;
         }
-        result = (float*)nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v13);
+        nn_mem_StandardAllocator_Free_alt2(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v15, (__int64)v12);
       }
     }
   }
-  v4[37] = a2;
-  return result;
+  *(float*)(a1 + 148) = a2;
 }
 
 bool CharacterAnimator_107aaa0(__int64 a1, int a2)
@@ -1080,7 +1086,7 @@ bool CharacterAnimator_107aaa0(__int64 a1, int a2)
     if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-      std___1___shared_weak_count___release_weak(v5);
+      std___1___shared_weak_count___release_weak_alt1(v5);
     }
   }
   else {

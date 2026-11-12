@@ -21,6 +21,8 @@ extern int game_g_shared_system_skills;
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
 bool SubDeployMenuItem_159ede0(_BOOL8 result);
 __int64 SubDeployMenuItem_185cd60(_QWORD* a1);
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 bool SubDeployMenuItem_159ede0(_BOOL8 result)
 {
@@ -202,20 +204,26 @@ __int64 SubDeployMenuItem_185cd60(_QWORD* a1)
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  _QWORD v12[4];
-  _QWORD* v13;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
   __int64 v14;
 
-  result = (*(__int64 (**)(_QWORD*))(*a1 + 1168LL))(a1);
+  v3 = COERCE_AS(__typeof__(v3),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = (*(__int64 (**)(_QWORD*))(*a1 + 1168LL))(a1),
+  v3 = COERCE_AS(__typeof__(v3),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if ((result & 1) != 0 || a1[133] == 0) {
     return result;
   }
   v5 = a1[29];
   v4 = a1[30];
-  result = (__int64)v12;
-  v12[0] = GameData_20ee150;
-  v12[1] = a1;
-  v13 = v12;
+  result = (__int64)v12_.v12;
+  v12_.v12[0] = GameData_20ee150;
+  v12_.v12[1] = a1;
+  v12_.v13 = v12_.v12;
   if (v4 == v5) {
     goto LABEL_14;
   }
@@ -225,16 +233,21 @@ __int64 SubDeployMenuItem_185cd60(_QWORD* a1)
   do {
     v9 = *(_QWORD*)(v5 + 8 * v6);
     if (v9 != 0) {
-      v10 = __dynamic_cast(v9, v7, v8, 0);
+      v10 = __dynamic_cast(v9, v7, v8, 0),
+      v3 = COERCE_AS(__typeof__(v3),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       if (v10 == 0) {
         goto LABEL_5;
       }
       v14 = v10;
-      if (v13 == nullptr) {
-        GameRoutine_60a310(0);
+      if (v12_.v13 == nullptr) {
+        GameRoutine_60a310_alt1(),
+            v3 = COERCE_AS(__typeof__(v3),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       }
-      if (((*(__int64 (**)(_QWORD*, __int64*))(*v13 + 48LL))(v13, &v14) & 1) !=
-          0) {
+      if (((*(__int64 (**)(_QWORD*, __int64*))(*v12_.v13 + 48LL))(v12_.v13,
+                                                                  &v14) &
+           1) != 0) {
         break;
       }
       v5 = a1[29];
@@ -243,16 +256,15 @@ __int64 SubDeployMenuItem_185cd60(_QWORD* a1)
   LABEL_5:
     ++v6;
   } while (v6 < (v4 - v5) >> 3);
-  result = (__int64)v13;
-  if (v13 != v12) {
-    if (v13 != nullptr) {
+  result = (__int64)v12_.v13;
+  if (v12_.v13 != v12_.v12) {
+    if (v12_.v13 != nullptr) {
       v11 = 40;
       return (*(__int64 (**)(__int64, __int64))(*(_QWORD*)result + v11))(result,
                                                                          v3);
     }
     return result;
   }
-
 LABEL_14:
   v11 = 32;
   return (*(__int64 (**)(__int64, __int64))(*(_QWORD*)result + v11))(result,

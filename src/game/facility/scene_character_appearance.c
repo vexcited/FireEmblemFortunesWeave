@@ -76,12 +76,12 @@ __attribute__((swiftcall)) void SceneCharacterAppearance_140f650(PSEUDO_X8 x8_,
                                                                  __int64* a1,
                                                                  _QWORD* a2,
                                                                  __int64 a3);
-__attribute__((swiftcall)) void
-SceneCharacterAppearance_140f750(PSEUDO_X8 x8_, unsigned __int8* result,
-                                 _QWORD* a2);
-__attribute__((swiftcall)) void
-SceneCharacterAppearance_140f8e0(PSEUDO_X8 x8_, unsigned __int8* result,
-                                 __int64* a2);
+__attribute__((swiftcall)) void SceneCharacterAppearance_140f750_alt1(
+    PSEUDO_X8 x8_, unsigned __int8* result,
+    _QWORD* a2) __asm__("SceneCharacterAppearance_140f750");
+__attribute__((swiftcall)) void SceneCharacterAppearance_140f8e0_alt1(
+    PSEUDO_X8 x8_, unsigned __int8* result,
+    __int64* a2) __asm__("SceneCharacterAppearance_140f8e0");
 __attribute__((swiftcall)) void
 SceneCharacterAppearance_140fb60(PSEUDO_X8 x8_, unsigned __int8* result,
                                  __int64 a2);
@@ -91,6 +91,20 @@ __attribute__((swiftcall)) void SceneCharacterAppearance_14100c0(PSEUDO_X8 x8_,
                                                                  __int64* a1,
                                                                  _QWORD* a2,
                                                                  __int64 a3);
+__int64* GameRoutine_6d36d0_alt1(_QWORD*) __asm__("GameRoutine_6d36d0");
+__int64 GameRoutine_6c2b50_alt1(__int64) __asm__("GameRoutine_6c2b50");
+__int64 GameRoutine_930b90_alt1(__int64, __int64) __asm__("GameRoutine_930b90");
+__int64 GameRoutine_95f500_alt1(char, __int64, __int64,
+                                __int64) __asm__("GameRoutine_95f500");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__attribute__((swiftcall)) void
+SceneCharacterAppearance_140f750(PSEUDO_X8 x8_, __int64 result, __int64* a2);
+__attribute__((swiftcall)) void
+SceneCharacterAppearance_140f8e0(PSEUDO_X8 x8_, __int64* a1, __int64* a2);
 
 _QWORD* SceneCharacterAppearance_140e910(_QWORD* result, char a2)
 {
@@ -748,15 +762,17 @@ __attribute__((swiftcall)) void SceneCharacterAppearance_140f650(PSEUDO_X8 x8_,
   __int64 v9;
   __int64 v10;
   __int64* v11;
-  unsigned __int8* result;
-  _QWORD v13[7];
-  char v14;
+  __int64 result;
+  struct {
+    _QWORD v13[7];
+    char v14;
+  } v13_;
 
-  memset(&v13[4], 0, 24);
-  v14 = 1;
-  v13[0] = *a2;
-  v7 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      88, 16, 0);
+  memset(&v13_.v13[4], 0, 24);
+  v13_.v14 = 1;
+  v13_.v13[0] = *a2;
+  v7 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 88, 16, 0);
   *(_QWORD*)(v7 + 16) = 0;
   *(_QWORD*)(v7 + 8) = 0;
   v8 = (atomic_ullong*)(v7 + 8);
@@ -772,16 +788,16 @@ __attribute__((swiftcall)) void SceneCharacterAppearance_140f650(PSEUDO_X8 x8_,
   *(_QWORD*)v7 = v11 + 2;
   *(_QWORD*)(v7 + 48) = 0;
   *(_QWORD*)(v7 + 40) = v7 + 48;
-  GameRoutine_930b90(v7 + 24, GameData_212c8b0[0]);
-  v13[1] = v9;
-  v13[2] = v10;
-  v13[3] = a3;
-  result = X8CALL_X0(unsigned __int8*, SceneCharacterAppearance_140ebb0(
-                                           (void*)(a4), a1, (__int64)v13));
+  GameRoutine_930b90_alt1(v7 + 24, (__int64)GameData_212c8b0[0]);
+  v13_.v13[1] = v9;
+  v13_.v13[2] = v10;
+  v13_.v13[3] = a3;
+  result = X8CALL_X0(__int64, SceneCharacterAppearance_140ebb0(
+                                  (void*)(a4), a1, (__int64)v13_.v13));
   if (atomic_fetch_add(v8, 0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
     {
-      (unsigned __int8*)std___1___shared_weak_count___release_weak(v10);
+      std___1___shared_weak_count___release_weak_alt1(v10);
       return;
     }
   }
@@ -793,15 +809,14 @@ __attribute__((swiftcall)) void SceneCharacterAppearance_140f650(PSEUDO_X8 x8_,
 
 __attribute__((swiftcall)) void
 
-SceneCharacterAppearance_140f750(PSEUDO_X8 x8_, unsigned __int8* result,
-                                 _QWORD* a2)
+SceneCharacterAppearance_140f750(PSEUDO_X8 x8_, __int64 result, __int64* a2)
 {
   __int64* a3 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64 v3;
-  unsigned __int8* v6;
-  _QWORD* v7;
+  __int64 v6;
+  __int64* v7;
   __int64* v8;
-  __int64 v9;
+  __int64* v9;
   __int64 v10;
   atomic_ullong* v11;
   __int64 v12;
@@ -809,28 +824,30 @@ SceneCharacterAppearance_140f750(PSEUDO_X8 x8_, unsigned __int8* result,
   __int64* v14;
   __int64 v15;
   __int64 v16;
-  _QWORD v17[3];
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  char v22;
+  struct {
+    _QWORD v17[3];
+    __int64 v18;
+    __int64 v19;
+    __int64 v20;
+    __int64 v21;
+    char v22;
+  } v17_;
 
-  if (result != nullptr && (v3 = *a2, *a2 != 0)) {
-    v20 = 0;
-    v21 = 0;
-    v18 = 0;
-    v19 = 0;
+  if (result != 0 && (v3 = *a2, *a2 != 0)) {
+    v17_.v20 = 0;
+    v17_.v21 = 0;
+    v17_.v18 = 0;
+    v17_.v19 = 0;
     v6 = result;
-    v17[0] = v3;
-    v22 = 1;
-    v7 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-    v8 = (__int64*)fw_memory_HeapManager_Allocate(
+    v17_.v17[0] = v3;
+    v17_.v22 = 1;
+    v7 = (__int64*)fw_memory_g_heap_manager_ptr;
+    v8 = (__int64*)fw_memory_HeapManager_Allocate_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr, 2224, 16, 0);
-    GameRoutine_6c2b50(v8);
-    GameRoutine_95f500(0, v8, v6, *a2);
-    v9 = GameRoutine_6d36d0(v8);
-    v10 = fw_memory_HeapManager_Allocate(*v7, 88, 16, 0);
+    GameRoutine_6c2b50_alt1((__int64)v8);
+    GameRoutine_95f500_alt1(0, (__int64)v8, v6, *a2);
+    v9 = GameRoutine_6d36d0_alt1(v8);
+    v10 = fw_memory_HeapManager_Allocate_alt1(*v7, 88, 16, 0);
     *(_QWORD*)(v10 + 8) = 0;
     v11 = (atomic_ullong*)(v10 + 8);
     *(_QWORD*)(v10 + 16) = 0;
@@ -846,21 +863,21 @@ SceneCharacterAppearance_140f750(PSEUDO_X8 x8_, unsigned __int8* result,
     *(_QWORD*)v10 = v14 + 2;
     *(_QWORD*)(v10 + 48) = 0;
     *(_QWORD*)(v10 + 40) = v10 + 48;
-    GameRoutine_930b90(v10 + 24, v9);
+    GameRoutine_930b90_alt1(v10 + 24, (__int64)v9);
     v15 = *v8;
-    v17[1] = v12;
-    v17[2] = v13;
+    v17_.v17[1] = v12;
+    v17_.v17[2] = v13;
     (*(void (**)(__int64*))(v15 + 8))(v8);
-    if (*(_QWORD*)(*a2 + 528LL) != 0) {
-      v18 = *(_QWORD*)(*a2 + 528LL);
+    if (*(_QWORD*)(*a2 + 528) != 0) {
+      v17_.v18 = *(_QWORD*)(*a2 + 528);
     }
-    v16 = *((_QWORD*)v6 + 49);
-    result = X8CALL_X0(unsigned __int8*, SceneCharacterAppearance_140ebb0(
-                                             (void*)(a3), &v16, (__int64)v17));
+    v16 = *(_QWORD*)(v6 + 392);
+    result = X8CALL_X0(__int64, SceneCharacterAppearance_140ebb0(
+                                    (void*)(a3), &v16, (__int64)v17_.v17));
     if (atomic_fetch_add(v11, 0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
       {
-        (unsigned __int8*)std___1___shared_weak_count___release_weak(v13);
+        std___1___shared_weak_count___release_weak_alt1(v13);
         return;
       }
     }
@@ -877,11 +894,9 @@ SceneCharacterAppearance_140f750(PSEUDO_X8 x8_, unsigned __int8* result,
 
 __attribute__((swiftcall)) void
 
-SceneCharacterAppearance_140f8e0(PSEUDO_X8 x8_, unsigned __int8* result,
-                                 __int64* a2)
+SceneCharacterAppearance_140f8e0(PSEUDO_X8 x8_, __int64* a1, __int64* a2)
 {
   __int64* a3 = (__int64*)PSEUDO_X8_VALUE(x8_);
-  __int64* v5;
   __int64* v6;
   __int64 v7;
   atomic_ullong* v8;
@@ -901,28 +916,28 @@ SceneCharacterAppearance_140f8e0(PSEUDO_X8 x8_, unsigned __int8* result,
   __int64 v23;
   __int64 v24;
   __int64 v25;
-  _QWORD v26[3];
-  __int64 v27;
-  _QWORD v28[3];
-  char v29;
+  struct {
+    _QWORD v26[3];
+    __int64 v27;
+  } v26_;
+  struct {
+    _QWORD v28[3];
+    char v29;
+  } v28_;
   __int64 v30[3];
 
-  if (*(_QWORD*)result == 0 || *a2 == 0) {
+  if (*a1 == 0 || *a2 == 0) {
     *a3 = 0;
     a3[1] = 0;
-    {
-      result;
-      return;
-    }
+    return;
   }
-  v27 = 0;
-  memset(v28, 0, sizeof(v28));
-  v5 = (__int64*)result;
-  v29 = 1;
-  v26[0] = GameData_21c9988;
+  v26_.v27 = 0;
+  memset(v28_.v28, 0, sizeof(v28_.v28));
+  v28_.v29 = 1;
+  v26_.v26[0] = GameData_21c9988;
   v6 = (__int64*)fw_memory_g_heap_manager_ptr;
-  v7 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      88, 16, 0);
+  v7 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 88, 16, 0);
   *(_QWORD*)(v7 + 8) = 0;
   v8 = (atomic_ullong*)(v7 + 8);
   *(_QWORD*)(v7 + 16) = 0;
@@ -938,15 +953,15 @@ SceneCharacterAppearance_140f8e0(PSEUDO_X8 x8_, unsigned __int8* result,
   *(_QWORD*)v7 = v11 + 2;
   *(_QWORD*)(v7 + 48) = 0;
   *(_QWORD*)(v7 + 40) = v7 + 48;
-  GameRoutine_930b90(v7 + 24, GameData_212c8b0[0]);
+  GameRoutine_930b90_alt1(v7 + 24, (__int64)GameData_212c8b0[0]);
   v12 = *a2;
-  v26[1] = v9;
-  v26[2] = v10;
+  v26_.v26[1] = v9;
+  v26_.v26[2] = v10;
   v13 = *(_QWORD*)(v12 + 528);
   if (v13 != 0) {
-    v27 = v13;
+    v26_.v27 = v13;
   }
-  v14 = game_HashString(&GameData_1a8ec7c);
+  v14 = game_HashString_alt1((__int64)&GameData_1a8ec7c);
   if (v14 == 0) {
     goto LABEL_36;
   }
@@ -1012,35 +1027,26 @@ SceneCharacterAppearance_140f8e0(PSEUDO_X8 x8_, unsigned __int8* result,
 LABEL_31:
   if (v20[3] == 0) {
   LABEL_36:
-    result = X8CALL_X0(unsigned __int8*, SceneCharacterAppearance_140ebb0(
-                                             (void*)(a3), v5, (__int64)v26));
+    SceneCharacterAppearance_140ebb0((void*)(a3), a1, (__int64)v26_.v26);
     goto LABEL_37;
   }
   game_1391af0((void*)(v30), v20[3]);
   v23 = v30[0];
-  qmemcpy(v28, v30, sizeof(v28));
-  result = X8CALL_X0(unsigned __int8*, SceneCharacterAppearance_140ebb0(
-                                           (void*)(a3), v5, (__int64)v26));
+  qmemcpy(v28_.v28, v30, sizeof(v28_.v28));
+  SceneCharacterAppearance_140ebb0((void*)(a3), a1, (__int64)v26_.v26);
   if (v23 != 0) {
     v24 = *v6;
-    v28[1] = v23;
+    v28_.v28[1] = v23;
     v25 = 128;
     if (*(_QWORD*)(v24 + 200) == 0) {
       v25 = 56;
     }
-    result = (unsigned __int8*)nn_mem_StandardAllocator_Free(v24 + v25);
+    nn_mem_StandardAllocator_Free_alt1(v24 + v25, v23);
   }
 LABEL_37:
   if (atomic_fetch_add(v8, 0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-    {
-      (unsigned __int8*)std___1___shared_weak_count___release_weak(v10);
-      return;
-    }
-  }
-  {
-    result;
-    return;
+    std___1___shared_weak_count___release_weak_alt1(v10);
   }
 }
 
@@ -1403,15 +1409,17 @@ __attribute__((swiftcall)) void SceneCharacterAppearance_14100c0(PSEUDO_X8 x8_,
   __int64 v9;
   __int64 v10;
   __int64* v11;
-  unsigned __int8* result;
-  _QWORD v13[7];
-  char v14;
+  __int64 result;
+  struct {
+    _QWORD v13[7];
+    char v14;
+  } v13_;
 
-  memset(&v13[4], 0, 24);
-  v14 = 1;
-  v13[0] = *a2;
-  v7 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      88, 16, 0);
+  memset(&v13_.v13[4], 0, 24);
+  v13_.v14 = 1;
+  v13_.v13[0] = *a2;
+  v7 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 88, 16, 0);
   *(_QWORD*)(v7 + 16) = 0;
   *(_QWORD*)(v7 + 8) = 0;
   v8 = (atomic_ullong*)(v7 + 8);
@@ -1427,16 +1435,16 @@ __attribute__((swiftcall)) void SceneCharacterAppearance_14100c0(PSEUDO_X8 x8_,
   *(_QWORD*)v7 = v11 + 2;
   *(_QWORD*)(v7 + 48) = 0;
   *(_QWORD*)(v7 + 40) = v7 + 48;
-  GameRoutine_930b90(v7 + 24, GameData_212c8b0[0]);
-  v13[1] = v9;
-  v13[2] = v10;
-  v13[3] = a3;
-  result = X8CALL_X0(unsigned __int8*, SceneCharacterAppearance_140ebb0(
-                                           (void*)(a4), a1, (__int64)v13));
+  GameRoutine_930b90_alt1(v7 + 24, (__int64)GameData_212c8b0[0]);
+  v13_.v13[1] = v9;
+  v13_.v13[2] = v10;
+  v13_.v13[3] = a3;
+  result = X8CALL_X0(__int64, SceneCharacterAppearance_140ebb0(
+                                  (void*)(a4), a1, (__int64)v13_.v13));
   if (atomic_fetch_add(v8, 0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
     {
-      (unsigned __int8*)std___1___shared_weak_count___release_weak(v10);
+      std___1___shared_weak_count___release_weak_alt1(v10);
       return;
     }
   }

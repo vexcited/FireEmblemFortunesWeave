@@ -16,8 +16,9 @@ extern __int64 GameData_212d270;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212d448[9];
 __int64 MagicInst_Destructor(__int64 a1, __n128 a2);
-void game_combat_MagicInst_MagicInst_lambda0_Invoke(__int64 a1, long double a2,
-                                                    long double a3);
+void game_combat_MagicInst_MagicInst_lambda0_Invoke_alt1(
+    __int64 a1, long double a2,
+    long double a3) __asm__("game_combat_MagicInst_MagicInst_lambda0_Invoke");
 _BYTE* game_character_1077790(_BYTE* result);
 _QWORD* GameRoutine_18c4dd0(_QWORD* result, __int64, int, int);
 _QWORD* Signal_d30dc0(__int64, __int64, __int64, int);
@@ -77,6 +78,14 @@ __attribute__((swiftcall)) void MagicInst_10a4bf0(PSEUDO_X8 x8_, int8x16_t* a1,
                                                   int32x4_t a3);
 void MagicInst_10a4d70(unsigned int* a1);
 __n128 MagicInst_10a4fe0(__int64 a1, int a2);
+_QWORD* GameHr_e5d5a0(__int64*, _QWORD*);
+__attribute__((swiftcall)) void game_10ea2a0(PSEUDO_X8, _QWORD* result, int,
+                                             __int64, float);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_combat_MagicInst_MagicInst_lambda0_Invoke(__int64 a1);
 
 void game_combat_MagicInst_MagicInst(__int64 a1, __int64 a2)
 {
@@ -1587,82 +1596,94 @@ __int64 MagicInst_Destructor(__int64 a1, __n128 a2)
   return GameRoutine_658c00(a1 + 88);
 }
 
-void game_combat_MagicInst_MagicInst_lambda0_Invoke(__int64 a1, long double a2,
-                                                    long double a3)
+void game_combat_MagicInst_MagicInst_lambda0_Invoke(__int64 a1)
 {
+
+#pragma clang fp contract(off)
+  __int64 v1;
+  __int64 v2;
   __int64 v3;
   _QWORD* v4;
-  __int64 v5;
-  __int64 v7;
+  __int64 v6;
+  float v7;
   _QWORD* v8;
   _QWORD* v9;
-  __int64 v10;
-  _QWORD* v11;
-  __int64 v12;
+  _QWORD* v10;
+  __int64 v11;
+  _QWORD* v12;
   __int64 v13;
-  _QWORD* v14;
-  _QWORD* v15;
+  __int64 v14;
+  struct {
+    _QWORD* v15;
+    _QWORD* v16;
+  } v15_;
 
-  v4 = *(_QWORD**)(a1 + 8);
-  v5 = v4[22];
-  if (v5 != 0 && *(_QWORD*)(v5 + 8) != -1 && v4[23] != 0) {
-    v7 = *GameData_212d448[0];
-    if (*GameData_212d448[0] != 0) {
-      v3 = *(_QWORD*)(v7 + 8);
-      if (v3 != 0) {
-        LODWORD(v3) = *(unsigned __int8*)(v3 + 113) >> 7;
-      }
-    }
-    LODWORD(a3) = -1.0;
-    *(float*)&a2 = -*(float*)(*(_QWORD*)GameData_212d270 + 464LL);
-    if (((v7 != 0) & (unsigned __int8)v3) == 0) {
-      *(float*)&a2 = -1.0;
-    }
-    GameRoutine_10ea2a0(a2, a3);
-    v8 = v14;
-    if (v14 != v15) {
-      v9 = (_QWORD*)v4[35];
-      do {
-        if ((unsigned __int64)v9 >= v4[36]) {
-          v9 = (_QWORD*)GameRoutine_e5d5a0(v4 + 34, v8);
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *(_QWORD*)(v2 + 176);
+  if (v3 != 0) {
+    v4 = *(_QWORD**)(v2 + 184);
+    if (*(_QWORD*)(v3 + 8) != -1 && v4 != nullptr) {
+      v6 = *GameData_212d448[0];
+      if (*GameData_212d448[0] != 0) {
+        v1 = *(_QWORD*)(v6 + 8);
+        if (v1 != 0) {
+          LODWORD(v1) = *(unsigned __int8*)(v1 + 113) >> 7;
         }
-        else {
-          *v9 = *v8;
-          v10 = v8[1];
-          v9[1] = v10;
-          if (v10 != 0) {
-            atomic_fetch_add_explicit((atomic_ullong* volatile)(v10 + 8), 1u,
-                                      memory_order_relaxed);
+      }
+      v7 = -*(float*)(*(_QWORD*)GameData_212d270 + 464LL);
+      if (((v6 != 0) & (unsigned __int8)v1) == 0) {
+        v7 = -0x1.0000000000000p+0f;
+      }
+      game_10ea2a0((void*)(&v15_.v15), v4, *(_DWORD*)(v2 + 160),
+                   *(_QWORD*)(v2 + 224), v7);
+      v8 = v15_.v15;
+      v9 = v15_.v16;
+      if (v15_.v15 != v15_.v16) {
+        v10 = *(_QWORD**)(v2 + 280);
+        do {
+          if ((unsigned __int64)v10 >= *(_QWORD*)(v2 + 288)) {
+            v10 = GameHr_e5d5a0((__int64*)(v2 + 272), v8);
           }
-          v9 += 2;
-        }
-        v8 += 2;
-        v4[35] = v9;
-      } while (v8 != v15);
-      v8 = v14;
-    }
-    if (v8 != nullptr) {
-      v11 = v15;
-      if (v8 == v15) {
-        goto LABEL_28;
+          else {
+            *v10 = *v8;
+            v11 = v8[1];
+            v10[1] = v11;
+            if (v11 != 0) {
+              atomic_fetch_add_explicit((atomic_ullong* volatile)(v11 + 8), 1u,
+                                        memory_order_relaxed);
+            }
+            v10 += 2;
+          }
+          v8 += 2;
+          *(_QWORD*)(v2 + 280) = v10;
+        } while (v8 != v9);
+        v8 = v15_.v15;
       }
-      do {
-        v12 = *(v11 - 1);
-        if (v12 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
-                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-          (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-          std___1___shared_weak_count___release_weak(v12);
+      if (v8 != nullptr) {
+        v12 = v15_.v16;
+        if (v8 == v15_.v16) {
+          goto LABEL_28;
         }
-        v11 -= 2;
-      } while (v11 != v8);
-      if (v14 != nullptr) {
-      LABEL_28:
-        v13 = 128;
-        if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v13 = 56;
+        do {
+          v13 = *(v12 - 1);
+          if (v13 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
+                                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+            (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
+            std___1___shared_weak_count___release_weak_alt1(v13);
+          }
+          v12 -= 2;
+        } while (v12 != v8);
+        v15_.v16 = v8;
+        v8 = v15_.v15;
+        if (v15_.v15 != nullptr) {
+        LABEL_28:
+          v14 = 128;
+          if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+            v14 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt1(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v8);
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v13);
       }
     }
   }
@@ -1940,6 +1961,8 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
                                                   float32x4_t* a3, int a4,
                                                   float a6, float a7)
 {
+
+#pragma clang fp contract(off)
   float32x4_t* a5 = (float32x4_t*)PSEUDO_X8_VALUE(x8_);
   float32x4_t v7;
   float32x4_t v8;
@@ -2100,7 +2123,7 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
       }
     }
     v62 = vsubq_f32(v8, v7);
-    v63 = 1.0f / v22;
+    v63 = 0x1.0000000000000p+0f / v22;
     goto LABEL_99;
   case 3:
     LANES128(v26).n128_u64[0] = 0x3F0000003F000000LL;
@@ -2151,7 +2174,7 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
         }
       }
       v62 = vsubq_f32(v8, v28);
-      v63 = 1.0f / v65;
+      v63 = 0x1.0000000000000p+0f / v65;
     LABEL_99:
       v73 = vmulq_n_f32(vmulq_n_f32(v62, v23), v63);
       LANES128(v73).n128_u32[3] = 0;
@@ -2201,7 +2224,7 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
         }
       }
       v72 = vsubq_f32(v28, v7);
-      v10 = 1.0f / v29;
+      v10 = 0x1.0000000000000p+0f / v29;
       v9 = vmulq_n_f32(v72, v30);
     LABEL_85:
       v68 = vmulq_n_f32(v9, v10);
@@ -2262,7 +2285,8 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
           v58 = v12 * v58;
         }
       }
-      v71 = vmulq_n_f32(vmulq_n_f32(vsubq_f32(v8, v13), v59), 1.0f / v58);
+      v71 = vmulq_n_f32(vmulq_n_f32(vsubq_f32(v8, v13), v59),
+                        0x1.0000000000000p+0f / v58);
       LANES128(v71).n128_u32[3] = 0;
       result = vaddq_f32(v13, v71);
       *a5 = result;
@@ -2310,7 +2334,8 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
           v15 = v12 * v15;
         }
       }
-      v70 = vmulq_n_f32(vmulq_n_f32(vsubq_f32(v13, v7), v16), 1.0f / v15);
+      v70 = vmulq_n_f32(vmulq_n_f32(vsubq_f32(v13, v7), v16),
+                        0x1.0000000000000p+0f / v15);
       LANES128(v70).n128_u32[3] = 0;
       result = vsubq_f32(v13, v70);
       *a5 = result;
@@ -2362,8 +2387,8 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
         v42 = a7 * v42;
       }
     }
-    v55 = (float)(a6 / a7) + 0.0f;
-    v56 = 1.0f - (float)(v43 / v42);
+    v55 = (float)(a6 / a7) + 0x0.0p+0f;
+    v56 = 0x1.0000000000000p+0f - (float)(v43 / v42);
     goto LABEL_88;
   case 6:
     v46 = a6;
@@ -2405,9 +2430,9 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
         v47 = a7 * v47;
       }
     }
-    v50 = (float)((float)(a6 / a7) + 0.0f) +
-          (float)((float)(a6 * (float)((float)((float)(v46 / v47) + 0.0f) -
-                                       (float)((float)(a6 / a7) + 0.0f))) /
+    v50 = (float)((float)(a6 / a7) + 0x0.0p+0f) +
+          (float)((float)(a6 * (float)((float)((float)(v46 / v47) + 0x0.0p+0f) -
+                                       (float)((float)(a6 / a7) + 0x0.0p+0f))) /
                   a7);
     goto LABEL_89;
   case 7:
@@ -2453,8 +2478,8 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
         v34 = a7 * v34;
       }
     }
-    v55 = 1.0f - (float)(v35 / v34);
-    v56 = (float)(a6 / a7) + 0.0f;
+    v55 = 0x1.0000000000000p+0f - (float)(v35 / v34);
+    v56 = (float)(a6 / a7) + 0x0.0p+0f;
     goto LABEL_88;
   case 8:
     v51 = a6;
@@ -2496,8 +2521,8 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
         v52 = a7 * v52;
       }
     }
-    v55 = (float)(v51 / v52) + 0.0f;
-    v56 = (float)(a6 / a7) + 0.0f;
+    v55 = (float)(v51 / v52) + 0x0.0p+0f;
+    v56 = (float)(a6 / a7) + 0x0.0p+0f;
   LABEL_88:
     v50 = v55 + (float)((float)(a6 * (float)(v56 - v55)) / a7);
   LABEL_89:
@@ -2511,11 +2536,11 @@ __attribute__((swiftcall)) void MagicInst_10a43c0(PSEUDO_X8 x8_, int a1,
     }
     v9 = vmulq_n_f32(vsubq_f32(v8, v7), a6);
   LABEL_84:
-    v10 = 1.0f / v19;
+    v10 = 0x1.0000000000000p+0f / v19;
     goto LABEL_85;
   default:
     v9 = vmulq_n_f32(vsubq_f32(v8, v7), a6);
-    v10 = 1.0f / a7;
+    v10 = 0x1.0000000000000p+0f / a7;
     goto LABEL_85;
   }
 }

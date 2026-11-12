@@ -43,7 +43,8 @@ __int64 GameGmapData_1360000(__int64 result, __int64 a2, char a3);
 void GameGmapData_13601b0(long double a1, long double a2);
 __int64 GameGmapData_Unknown6(__int64 a1);
 __int64 GameGmapData_1360570(__int64 a1);
-__int64 GameGmapData_Unknown8(__int64 a1, __int64 a2);
+__int64 GameGmapData_Unknown8_alt1(__int64 a1,
+                                   __int64 a2) __asm__("GameGmapData_Unknown8");
 __int64 GameGmapData_Unknown9(__int64 result, __int64 a2, unsigned int a3);
 __int64 Impl_13261c0(__int64);
 __int64 SpotMgr_13339e0();
@@ -59,6 +60,16 @@ extern __int64* GameData_212c780;
 void __attribute__((noreturn)) GameRoutine_60a210();
 void __attribute__((noreturn)) GameRoutine_892740();
 __n128 GameGmapData_13602c0(__int64 a1, __n128 a2);
+_DWORD* MiasmaManager_14aa1a0_alt1(_DWORD* result,
+                                   __int64) __asm__("MiasmaManager_14aa1a0");
+__int64 GameRoutine_65f240_alt1(__int64 result,
+                                __int64) __asm__("GameRoutine_65f240");
+__int64 GmapSituation_14dc560_alt1(__int64 result,
+                                   __int64) __asm__("GmapSituation_14dc560");
+unsigned __int64
+GameRoutine_65f300_alt1(unsigned __int64 result,
+                        const char*) __asm__("GameRoutine_65f300");
+unsigned __int64 GameGmapData_Unknown8(__int64 a1, unsigned __int64 a2);
 
 __int64 GameGmapData_Destructor(_QWORD* a1)
 {
@@ -419,7 +430,7 @@ __int64 GameGmapData_1360570(__int64 a1)
   return result;
 }
 
-__int64 GameGmapData_Unknown8(__int64 a1, __int64 a2)
+unsigned __int64 GameGmapData_Unknown8(__int64 a1, unsigned __int64 a2)
 {
   __int64 v2;
   __int64 v5;
@@ -441,14 +452,14 @@ __int64 GameGmapData_Unknown8(__int64 a1, __int64 a2)
   __int64 v21;
   __int64* v22;
   __int64 v23;
-  __int64 result;
+  unsigned __int64 result;
   __int64* v25;
   __int64 v26;
   __int64 v27;
   __int64 v28;
   __int64 v29;
   __int64 v30;
-  __int64 v31;
+  const char* v31;
   __int64 v32;
   char v33;
   __int64 v34;
@@ -456,7 +467,7 @@ __int64 GameGmapData_Unknown8(__int64 a1, __int64 a2)
   v2 = *(int*)(a2 + 20);
   *(_DWORD*)(a2 + 20) = v2 + 1;
   *(_BYTE*)(*(_QWORD*)(a2 + 8) + v2) = 1;
-  MiasmaManager_14aa1a0(*(_QWORD*)(GameData_22416b0 + 8));
+  MiasmaManager_14aa1a0_alt1(*(_DWORD**)(GameData_22416b0 + 8), a2);
   v5 = *(int*)(a2 + 20);
   v6 = *(_BYTE*)(*(_QWORD*)(a1 + 16) + 129LL);
   *(_DWORD*)(a2 + 20) = v5 + 1;
@@ -474,7 +485,7 @@ __int64 GameGmapData_Unknown8(__int64 a1, __int64 a2)
   v11 = *(int*)(a2 + 20);
   *(_DWORD*)(a2 + 20) = v11 + 1;
   *(_BYTE*)(*(_QWORD*)(a2 + 8) + v11) = HIBYTE(v8);
-  GmapSituation_14dc560(GameData_22416c0, a2);
+  GmapSituation_14dc560_alt1(GameData_22416c0, a2);
   v12 = *(int*)(a2 + 20);
   v13 = GameData_2241428;
   *(_DWORD*)(a2 + 20) = v12 + 1;
@@ -488,7 +499,7 @@ __int64 GameGmapData_Unknown8(__int64 a1, __int64 a2)
   v16 = *(__int64**)(v13 + 16);
   while (v15 != v16) {
     v17 = *v15++;
-    GameRoutine_65f240(a2, *(_QWORD*)(v17 + 96));
+    GameRoutine_65f240_alt1(a2, *(_QWORD*)(v17 + 96));
   }
   v18 = *(int*)(a2 + 20);
   v19 = *(_QWORD*)(GameData_21f1620 + 8);
@@ -509,7 +520,7 @@ __int64 GameGmapData_Unknown8(__int64 a1, __int64 a2)
   else {
     v23 = 0;
   }
-  result = GameRoutine_65f240(a2, v23);
+  result = GameRoutine_65f240_alt1(a2, v23);
   v25 = *(__int64**)(*(_QWORD*)GameData_212d740[0] + 8LL);
   v26 = *(int*)(a2 + 20);
   *(_DWORD*)(a2 + 20) = v26 + 1;
@@ -528,12 +539,12 @@ __int64 GameGmapData_Unknown8(__int64 a1, __int64 a2)
   if (*v25 != v30) {
     do {
       if ((*(_BYTE*)v29 & 1) != 0) {
-        v31 = *(_QWORD*)(v29 + 16);
+        v31 = *(const char**)(v29 + 16);
       }
       else {
-        v31 = v29 + 1;
+        v31 = (const char*)(v29 + 1);
       }
-      result = GameRoutine_65f300(a2, v31);
+      result = GameRoutine_65f300_alt1(a2, v31);
       v29 += 24;
     } while (v29 != v30);
   }

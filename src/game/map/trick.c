@@ -36,7 +36,8 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_7d18f0(_QWORD);
 __int64 Trick_Destructor(_QWORD* a1);
 __int64 Trick_DeletingDestructor(_QWORD* a1);
-__int64 game_map_Trick_Impl_EachDanger(__int64 a1, __int64 a2);
+__int64 game_map_Trick_Impl_EachDanger_alt1(__int64 a1, __int64 a2) __asm__(
+    "game_map_Trick_Impl_EachDanger");
 __int64 Trick_7cb0c0(__int64 a1);
 __int64 Trick_Unknown3(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                        __int64 a5, __int64 a6);
@@ -44,7 +45,8 @@ __int64 Trick_Unknown6(__int64 result, __int64 a2);
 __int64 Trick_Unknown2(__int64 result, __int64 a2);
 __int64 game_map_Trick_Impl_CanPut_closure_Invoke(__int64 a1, unsigned int* a2,
                                                   unsigned int* a3);
-__int64 Trick_7d2180(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4);
+__int64 Trick_7d2180_alt2(__int64 a1, unsigned int a2, unsigned int a3,
+                          __int64 a4) __asm__("Trick_7d2180");
 __int64 game_map_Trick_Impl_TryDelete_closure_Invoke(__int64 result, _DWORD* a2,
                                                      _DWORD* a3);
 __int64 game_map_Trick_Impl_UpdateMap_closure_Invoke_7d2990(__int64 a1,
@@ -95,6 +97,17 @@ GameRoutine_60a310_alt1(_QWORD, _QWORD) __asm__("GameRoutine_60a310");
 void __attribute__((noreturn)) GameRoutine_74e1f0(_QWORD);
 __int64 Trick_7ca860(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
                      __int64 a6);
+__int64 MapUtil_753570_alt1(int, int) __asm__("MapUtil_753570");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+bool GameRoutine_68e5e0_alt1(__int64, __int64) __asm__("GameRoutine_68e5e0");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt2() __asm__("GameRoutine_60a310");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_map_Trick_Impl_EachDanger(__int64 a1, __int64 a2);
+__int64 Trick_7d2180(__int64 a1, int a2, int a3, __int64 a4);
 
 __int64 Trick_Destructor(_QWORD* a1)
 {
@@ -140,89 +153,101 @@ __int64 Trick_DeletingDestructor(_QWORD* a1)
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, a1);
 }
 
-__int64 game_map_Trick_Impl_EachDanger(__int64 a1, __int64 a2)
+void game_map_Trick_Impl_EachDanger(__int64 a1, __int64 a2)
 {
   __int64 v4;
   _WORD* v5;
   __int64 v6;
-  __int64 v7;
-  __int64* v8;
-  _WORD* v9;
-  __int64* v10;
-  __int64 v11;
-  _QWORD* v12;
-  unsigned int v13;
-  __int64 v14;
-  __int64* v15;
-  __int64* v16;
+  __int64* v7;
+  __int64 v8;
+  __int64* v9;
+  __int64 v10;
+  unsigned int v11;
+  __int64 v12;
+  __int64* v13;
+  __int64* v14;
+  __int64 v15;
+  __int64 v16;
   __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  _QWORD v21[4];
-  _QWORD* v22;
-  __int64 v23;
+  struct {
+    _QWORD v18[4];
+    _QWORD* v19;
+  } v18_;
+  __int64 v20;
 
+  v6 = COERCE_AS(__typeof__(v6),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v4 = fw_memory_g_heap_manager_ptr;
-  v5 = (_WORD*)fw_memory_HeapManager_Allocate(
-      *(_QWORD*)fw_memory_g_heap_manager_ptr, 2, 16, 0);
-  v8 = *(__int64**)(a1 + 18848);
-  v9 = v5;
+  v5 = (_WORD*)fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 2, 16, 0),
+  v6 = COERCE_AS(__typeof__(v6),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = *(__int64**)(a1 + 18848);
+  v8 = (__int64)v5;
   *v5 = 1549;
-  v21[0] = GameData_1f9b728;
-  v21[1] = a2;
-  v10 = *(__int64**)(a1 + 18856);
-  v22 = v21;
-  if (v10 == v8) {
-    v13 = 6;
+  v18_.v18[0] = GameData_1f9b728;
+  v18_.v18[1] = a2;
+  v9 = *(__int64**)(a1 + 18856);
+  v18_.v19 = v18_.v18;
+  if (v9 == v7) {
+    v11 = 6;
   }
   else {
     do {
-      v11 = *v8++;
-      v12 = v22;
-      v23 = v11;
-      if (v22 == nullptr) {
+      v10 = *v7++;
+      v20 = v10;
+      if (v18_.v19 == nullptr) {
         goto LABEL_17;
       }
-      (*(void (**)(_QWORD*, __int64*))(*v22 + 48LL))(v22, &v23);
-    } while (v8 != v10);
-    v13 = *((unsigned __int8*)v9 + 1);
+      (*(void (**)(_QWORD*, __int64*))(*v18_.v19 + 48LL))(v18_.v19, &v20),
+          v6 = COERCE_AS(__typeof__(v6),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    } while (v7 != v9);
+    v11 = *(unsigned __int8*)(v8 + 1);
   }
-  v14 = a1 + 18536 + 24LL * v13;
-  v16 = *(__int64**)v14;
-  v15 = *(__int64**)(v14 + 8);
-  if (v15 != *(__int64**)v14) {
+  v12 = a1 + 18536 + 24LL * v11;
+  v14 = *(__int64**)v12;
+  v13 = *(__int64**)(v12 + 8);
+  if (v13 != *(__int64**)v12) {
     while (1) {
-      v17 = *v16++;
-      v12 = v22;
-      v23 = v17;
-      if (v22 == nullptr) {
+      v15 = *v14++;
+      v20 = v15;
+      if (v18_.v19 == nullptr) {
         break;
       }
-      (*(void (**)(_QWORD*, __int64*))(*v22 + 48LL))(v22, &v23);
-      if (v16 == v15) {
+      (*(void (**)(_QWORD*, __int64*))(*v18_.v19 + 48LL))(v18_.v19, &v20),
+          v6 = COERCE_AS(__typeof__(v6),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      if (v14 == v13) {
         goto LABEL_9;
       }
     }
   LABEL_17:
-    GameRoutine_60a310(v12, v6, v7);
+    GameRoutine_60a310_alt2(),
+        v6 = COERCE_AS(__typeof__(v6),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
 LABEL_9:
-  if (v22 == v21) {
-    v18 = 32;
+  if (v18_.v19 == v18_.v18) {
+    v16 = 32;
   }
   else {
-    if (v22 == nullptr) {
+    if (v18_.v19 == nullptr) {
       goto LABEL_14;
     }
-    v18 = 40;
+    v16 = 40;
   }
-  (*(void (**)(_QWORD*, __int64))(*v22 + v18))(v22, v6);
+  (*(void (**)(_QWORD*, __int64))(*v18_.v19 + v16))(v18_.v19, v6),
+      v6 = COERCE_AS(__typeof__(v6),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
 LABEL_14:
-  v19 = 128;
+  v17 = 128;
   if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
-    v19 = 56;
+    v17 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v19, v9);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v17, v8),
+      v6 = COERCE_AS(__typeof__(v6),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
 }
 
 __int64 Trick_7ca860(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
@@ -1026,7 +1051,7 @@ __int64 game_map_Trick_Impl_CanPut_closure_Invoke(__int64 a1, unsigned int* a2,
   return result;
 }
 
-__int64 Trick_7d2180(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4)
+__int64 Trick_7d2180(__int64 a1, int a2, int a3, __int64 a4)
 {
   __int64 v4;
   unsigned int v5;
@@ -1043,7 +1068,7 @@ __int64 Trick_7d2180(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4)
   unsigned __int8 v16;
   __int64 v17;
   __int64 v18;
-  unsigned int v19;
+  int v19;
   __int64* v20;
   char v21;
   unsigned int v23;
@@ -1080,8 +1105,8 @@ __int64 Trick_7d2180(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4)
   __int64 v55;
   __int64 v56;
   __int64 v57;
-  unsigned int v58;
-  unsigned int v59;
+  int v58;
+  int v59;
   char v60;
   __int64 v61;
   char v62;
@@ -1375,7 +1400,7 @@ __int64 Trick_7d2180(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4)
     }
     if (((1LL << v13) & 0x405) != 0) {
       v61 = a4;
-      v62 = MapUtil_753570(a2, a3);
+      v62 = MapUtil_753570_alt1(a2, a3);
       a4 = v61;
       if ((v62 & 1) == 0) {
         return 0;
@@ -1394,7 +1419,7 @@ __int64 Trick_7d2180(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4)
   v69 = v20;
   v70 = a4;
   v71 = (*(__int64 (**)(__int64*))(v68 + 224))(v69);
-  return (GameRoutine_68e5e0(v70, v71) & 1) != 0;
+  return GameRoutine_68e5e0_alt1(v70, v71);
 }
 
 __int64 game_map_Trick_Impl_TryDelete_closure_Invoke(__int64 result, _DWORD* a2,
@@ -1597,19 +1622,17 @@ __int64 game_map_Trick_Impl_EachBreakable_closure_Invoke(__int64 a1, _QWORD* a2)
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
-  __int64 v9;
 
   v2 = *a2;
   result = (*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 272LL))(*a2);
   if ((result & 1) != 0) {
-    v7 = *(_QWORD*)(a1 + 8);
-    v9 = v2;
-    v8 = *(_QWORD*)(v7 + 32);
-    if (v8 == 0) {
-      GameRoutine_60a310(0, v5, v6);
+    v5 = *(_QWORD*)(a1 + 8);
+    v7 = v2;
+    v6 = *(_QWORD*)(v5 + 32);
+    if (v6 == 0) {
+      GameRoutine_60a310_alt2();
     }
-    return (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v8 + 48LL))(v8, &v9);
+    return (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v6 + 48LL))(v6, &v7);
   }
   return result;
 }
@@ -1621,19 +1644,17 @@ __int64 game_map_Trick_Impl_EachDanger_closure_Invoke(__int64 a1, _QWORD* a2)
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
-  __int64 v9;
 
   v2 = *a2;
   result = (*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 520LL))(*a2);
   if ((result & 1) != 0) {
-    v7 = *(_QWORD*)(a1 + 8);
-    v9 = v2;
-    v8 = *(_QWORD*)(v7 + 32);
-    if (v8 == 0) {
-      GameRoutine_60a310(0, v5, v6);
+    v5 = *(_QWORD*)(a1 + 8);
+    v7 = v2;
+    v6 = *(_QWORD*)(v5 + 32);
+    if (v6 == 0) {
+      GameRoutine_60a310_alt2();
     }
-    return (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v8 + 48LL))(v8, &v9);
+    return (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v6 + 48LL))(v6, &v7);
   }
   return result;
 }
@@ -1704,10 +1725,11 @@ _QWORD* game_map_Trick_Impl_UpdateLink(_QWORD* a1, __int64 a2)
   _QWORD* result;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
-  _QWORD v16[4];
-  _QWORD* v17;
-  __int64 v18;
+  struct {
+    _QWORD v15[4];
+    _QWORD* v16;
+  } v15_;
+  __int64 v17;
 
   v2 = a1[2320];
   v3 = (_QWORD*)a1[4];
@@ -1736,36 +1758,36 @@ _QWORD* game_map_Trick_Impl_UpdateLink(_QWORD* a1, __int64 a2)
   a1[2360] = a1[2359];
   a1[2363] = a1[2362];
   a1[2366] = a1[2365];
-  v16[0] = GameData_1f9ba28;
-  v16[1] = a1;
-  result = v16;
-  v17 = v16;
+  v15_.v15[0] = GameData_1f9ba28;
+  v15_.v15[1] = a1;
+  result = v15_.v15;
+  v15_.v16 = v15_.v15;
   if (v3 == v4) {
     goto LABEL_10;
   }
   do {
     v13 = *v3;
     if (((*(__int64 (**)(_QWORD))(*(_QWORD*)*v3 + 504LL))(*v3) & 1) == 0) {
-      v18 = v13;
-      if (v17 == nullptr) {
-        GameRoutine_60a310(0, a2, v14);
+      v17 = v13;
+      if (v15_.v16 == nullptr) {
+        GameRoutine_60a310_alt2();
       }
-      (*(void (**)(_QWORD*, __int64*))(*v17 + 48LL))(v17, &v18);
+      (*(void (**)(_QWORD*, __int64*))(*v15_.v16 + 48LL))(v15_.v16, &v17);
     }
     ++v3;
   } while (v3 != v4);
-  result = v17;
-  if (v17 == v16) {
+  result = v15_.v16;
+  if (v15_.v16 == v15_.v15) {
   LABEL_10:
-    v15 = 32;
+    v14 = 32;
   }
   else {
-    if (v17 == nullptr) {
+    if (v15_.v16 == nullptr) {
       return result;
     }
-    v15 = 40;
+    v14 = 40;
   }
-  return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v15))(result,
+  return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v14))(result,
                                                                      a2);
 }
 

@@ -31,8 +31,10 @@ extern int GameData_21f9698;
 __int64 ProcJobIntroScene_Destructor(__int64 a1);
 __int64 ProcJobIntroScene_a0eec0();
 void ProcJobIntroScene_a0eef0();
-__int64 ProcJobIntroScene_Unknown18(__int64 a1);
-__int64 ProcJobIntroScene_Unknown2(__int64 a1);
+__int64 ProcJobIntroScene_Unknown18_alt1(__int64 a1) __asm__(
+    "ProcJobIntroScene_Unknown18");
+__int64 ProcJobIntroScene_Unknown2_alt1(__int64 a1) __asm__(
+    "ProcJobIntroScene_Unknown2");
 _BYTE* ProcInst_657a50(__int64, char);
 __int16* GameRoutine_1958ed0_alt1(__int16* result,
                                   __int64) __asm__("GameRoutine_1958ed0");
@@ -45,6 +47,11 @@ extern __int64 game_ProcFadeView_instance_;
 _BYTE* ProcJobIntroScene_a0ef30(__int64 a1);
 __int64 ProcJobIntroScene_Unknown20(__int64 a1);
 __int64 ProcJobIntroScene_Unknown4(__int64 a1);
+__int64 ForceContinueBGMBinder_1487e00(__int64, __int64, __int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcJobIntroScene_Unknown18(__int64 a1);
+void ProcJobIntroScene_Unknown2(__int64 a1);
 
 __int64 ProcJobIntroScene_Destructor(__int64 a1)
 {
@@ -185,26 +192,26 @@ _BYTE* ProcJobIntroScene_a0ef30(__int64 a1)
   return result;
 }
 
-__int64 ProcJobIntroScene_Unknown18(__int64 a1)
+void ProcJobIntroScene_Unknown18(__int64 a1)
 {
   __int64 v1;
-  __int64 result;
-  __int64 v3;
-  _WORD v4[8];
-  __int64 v5;
+  __int64 v2;
+  struct {
+    _WORD v3[8];
+    __int64 v4;
+  } v3_;
 
   v1 = ***(_QWORD***)(*(_QWORD*)(a1 + 192) + 40LL);
-  v4[0] = 0;
-  result = GameRoutine_1487e00(*(_QWORD*)(v1 + 120), v4, 0);
-  if ((v4[0] & 1) != 0 && v5 != 0) {
-    v3 = 128;
+  v3_.v3[0] = 0;
+  ForceContinueBGMBinder_1487e00(*(_QWORD*)(v1 + 120), (__int64)v3_.v3, 0);
+  if ((v3_.v3[0] & 1) != 0 && v3_.v4 != 0) {
+    v2 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v3 = 56;
+      v2 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v3_.v4);
   }
-  return result;
 }
 
 __int64 ProcJobIntroScene_Unknown20(__int64 a1)
@@ -240,26 +247,26 @@ __int64 ProcJobIntroScene_Unknown20(__int64 a1)
   return (*(__int64 (**)(_QWORD*))(*v3_.v4 + v2))(v3_.v4);
 }
 
-__int64 ProcJobIntroScene_Unknown2(__int64 a1)
+void ProcJobIntroScene_Unknown2(__int64 a1)
 {
   __int64 v1;
-  __int64 result;
-  __int64 v3;
-  _WORD v4[8];
-  __int64 v5;
+  __int64 v2;
+  struct {
+    _WORD v3[8];
+    __int64 v4;
+  } v3_;
 
   v1 = ***(_QWORD***)(*(_QWORD*)(a1 + 40) + 40LL);
-  v4[0] = 0;
-  result = GameRoutine_1487e00(*(_QWORD*)(v1 + 120), v4, 0);
-  if ((v4[0] & 1) != 0 && v5 != 0) {
-    v3 = 128;
+  v3_.v3[0] = 0;
+  ForceContinueBGMBinder_1487e00(*(_QWORD*)(v1 + 120), (__int64)v3_.v3, 0);
+  if ((v3_.v3[0] & 1) != 0 && v3_.v4 != 0) {
+    v2 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v3 = 56;
+      v2 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v3_.v4);
   }
-  return result;
 }
 
 __int64 ProcJobIntroScene_Unknown4(__int64 a1)

@@ -10,8 +10,11 @@ extern __int64 as_g_script_manager;
 extern __int64 as_g_thread_info;
 extern __int64* as_g_script_manager_ptr;
 _QWORD* snd_se_WaitPrepared();
-_QWORD* snd_se_SetPos(__int64 a1, __int128* a2);
+_QWORD* snd_se_SetPos_alt1(__int64 a1, __int128* a2) __asm__("snd_se_SetPos");
 _QWORD* snd_se_GetPos(__int64 a1, _QWORD* a2);
+__int64 snd_setPosition_100510_alt1(__int64*,
+                                    __int64) __asm__("snd_setPosition_100510");
+_QWORD* snd_se_SetPos(__int64* a1, __int128* a2);
 
 _QWORD* snd_se_WaitPrepared()
 {
@@ -55,7 +58,7 @@ _QWORD* snd_se_WaitPrepared()
   return (_QWORD*)(*(__int64 (**)(__int64))(*result + v6))((__int64)result);
 }
 
-_QWORD* snd_se_SetPos(__int64 a1, __int128* a2)
+_QWORD* snd_se_SetPos(__int64* a1, __int128* a2)
 {
   __int128 v2;
   __int64 v3;
@@ -63,14 +66,16 @@ _QWORD* snd_se_SetPos(__int64 a1, __int128* a2)
   __int64 v5;
   _QWORD* result;
   __int64 v7;
-  _QWORD v8[2];
-  int v9;
+  struct {
+    _QWORD v8[2];
+    int v9;
+  } v8_;
 
   v2 = *a2;
-  v8[1] = *(_QWORD*)a2;
-  v8[0] = GameData_212e2d8 + 16;
-  v9 = DWORD2(v2);
-  snd_setPosition_100510(a1, v8);
+  v8_.v8[1] = *(_QWORD*)a2;
+  v8_.v8[0] = GameData_212e2d8 + 16;
+  v8_.v9 = DWORD2(v2);
+  snd_setPosition_100510_alt1(a1, (__int64)v8_.v8);
   v3 = as_g_script_manager;
   v4 = *(
       _QWORD*)(v3 +

@@ -40,6 +40,11 @@ __int64 MultiJointAOVModule_c34a20(__int64 a1, __int64 a2, int a3, __int64 a4,
 void MultiJointAOVModule_Unknown7(__int64 a1);
 extern __int128 GameData_1a837f0;
 __int64 MultiJointAOVModule_Unknown6(__int64 result);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 MultiJointAovModule_a71220(__int64 result, _QWORD* a2)
 {
@@ -77,7 +82,7 @@ __int64 MultiJointAovModule_a71220(__int64 result, _QWORD* a2)
         if (v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
                                          0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-          result = std___1___shared_weak_count___release_weak(v10);
+          result = std___1___shared_weak_count___release_weak_alt1(v10);
         }
         v2 += 2;
       }
@@ -91,7 +96,7 @@ __int64 MultiJointAovModule_a71220(__int64 result, _QWORD* a2)
       if (v11 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-        result = std___1___shared_weak_count___release_weak(v11);
+        result = std___1___shared_weak_count___release_weak_alt1(v11);
       }
       v3 -= 2;
     } while (v3 != v2);
@@ -1059,12 +1064,12 @@ void MultiJointAOVModule_Unknown7(__int64 a1)
   float32x4_t v16;
   float32x4_t v17;
   float v18;
-  char* v19;
+  unsigned __int64 v19;
   __int64 v20;
   unsigned __int64 v21;
   unsigned __int64 v22;
   __int64 v23;
-  char* v24;
+  unsigned __int64 v24;
   __int64 v25;
   __int64 v26;
   float* v27;
@@ -1133,7 +1138,7 @@ void MultiJointAOVModule_Unknown7(__int64 a1)
           v10 += 2;
         }
         else {
-          v19 = (char*)v10 - v9;
+          v19 = (unsigned __int64)v10 - v9;
           v20 = ((__int64)v10 - v9) >> 3;
           v21 = v20 + 1;
           if ((unsigned __int64)(v20 + 1) >> 61 != 0) {
@@ -1164,13 +1169,13 @@ void MultiJointAOVModule_Unknown7(__int64 a1)
           else {
             v23 = 0;
           }
-          v24 = &v19[v23];
+          v24 = v23 + v19;
           v11 = v23 + 8 * v22;
-          v25 = (__int64)&v19[v23 + -8 * v20];
+          v25 = v23 + v19 - 8 * v20;
           *(_DWORD*)v24 = v8;
-          *((float*)v24 + 1) = v18;
-          v10 = (float*)&v19[v23 + 8];
-          memcpy(v25, v9, v19),
+          *(float*)(v24 + 4) = v18;
+          v10 = (float*)(v23 + v19 + 8);
+          memcpy_alt1(v25, v9, v19),
               v17 = COERCE_AS(__typeof__(v17),
                               PSEUDO_REGISTER(__n128, "v1", "=w"));
           if (v9 != 0) {
@@ -1179,8 +1184,8 @@ void MultiJointAOVModule_Unknown7(__int64 a1)
                 0) {
               v26 = 56;
             }
-            nn_mem_StandardAllocator_Free(
-                *(_QWORD*)fw_memory_g_heap_manager_ptr + v26),
+            nn_mem_StandardAllocator_Free_alt1(
+                *(_QWORD*)fw_memory_g_heap_manager_ptr + v26, v9),
                 v17 = COERCE_AS(__typeof__(v17),
                                 PSEUDO_REGISTER(__n128, "v1", "=w"));
           }
@@ -1216,8 +1221,8 @@ void MultiJointAOVModule_Unknown7(__int64 a1)
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v34 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v34),
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v34, v9),
             v17 =
                 COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(__n128, "v1", "=w"));
       }

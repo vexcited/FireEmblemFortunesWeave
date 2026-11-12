@@ -9,43 +9,53 @@ __int64 GameRoutine_1794c0(_QWORD, _QWORD);
 __int64 GameRoutine_179540(_QWORD, _QWORD);
 __int64 snd_fnd_WeakHandle_get(_QWORD, float);
 __int64 snd_fnd_WeakHandle_isValid(_QWORD);
-__int64 FxMultiBridgeNX_Unknown24(__int64 a1, __int64 a2);
+__int64
+FxMultiBridgeNX_Unknown24_alt1(__int64 a1,
+                               __int64 a2) __asm__("FxMultiBridgeNX_Unknown24");
 __int64 FxMultiBridgeNX_Unknown25(__int64 a1, __int64 a2);
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
 __int64 FxMultiBridgeNx_1794c0(__int64 a1, __int64 a2);
 __int64 FxMultiBridgeNx_179540(__int64 a1, __int64 a2);
+__int64
+FxMultiBridge_Unknown24_alt1(_QWORD*,
+                             __int64) __asm__("FxMultiBridge_Unknown24");
+__int64 GameRoutine_112180_alt1(__int64, __int64) __asm__("GameRoutine_112180");
+__int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
+__int64
+snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
+__int64 FxMultiBridgeNX_Unknown24(_QWORD* a1, __int64* a2);
 
-__int64 FxMultiBridgeNX_Unknown24(__int64 a1, __int64 a2)
+__int64 FxMultiBridgeNX_Unknown24(_QWORD* a1, __int64* a2)
 {
-  float v4;
+  __int64 v4;
   __int64 v5;
-  float v6;
+  __int64 v6;
   __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v11;
-  int v12;
+  struct {
+    __int64 v9;
+    int v10;
+  } v9_;
 
-  if ((snd_fnd_WeakHandle_isValid(a2) & 1) == 0) {
+  if ((snd_fnd_WeakHandle_isValid_alt1(a2) & 1) == 0) {
     return 0;
   }
-  v5 = snd_fnd_WeakHandle_get(a2, v4);
-  if (*(_QWORD*)((*(__int64 (**)(__int64))(*(_QWORD*)(v5 - 5592) + 144LL))(
-                     v5 - 5592) +
+  v4 = snd_fnd_WeakHandle_get_alt1((__int64)a2);
+  if (*(_QWORD*)((*(__int64 (**)(__int64))(*(_QWORD*)(v4 - 5592) + 144LL))(
+                     v4 - 5592) +
                  8) != 0) {
     return 0;
   }
-  v11 = 0;
-  v12 = 0x2000;
-  GameRoutine_112180(&v11, a2);
-  if ((FxMultiBridge_Unknown24(a1, &v11) & 1) == 0) {
+  v9_.v9 = 0;
+  v9_.v10 = 0x2000;
+  GameRoutine_112180_alt1((__int64)&v9_.v9, (__int64)a2);
+  if ((FxMultiBridge_Unknown24_alt1(a1, (__int64)&v9_.v9) & 1) == 0) {
     return 0;
   }
-  v7 = *(_QWORD*)(*(_QWORD*)(a1 + 5624) + 16LL);
-  v8 = snd_fnd_WeakHandle_get(a2, v6);
-  v9 = (*(__int64 (**)(__int64))(*(_QWORD*)(v8 - 5592) + 144LL))(v8 - 5592);
-  return GameRoutine_1794c0(v7, *(_QWORD*)(v9 + 16)) & 1;
+  v5 = *(_QWORD*)(a1[703] + 16LL);
+  v6 = snd_fnd_WeakHandle_get_alt1((__int64)a2);
+  v7 = (*(__int64 (**)(__int64))(*(_QWORD*)(v6 - 5592) + 144LL))(v6 - 5592);
+  return FxMultiBridgeNx_1794c0(v5, *(_QWORD*)(v7 + 16)) & 1;
 }
 
 __int64 FxMultiBridgeNX_Unknown25(__int64 a1, __int64 a2)

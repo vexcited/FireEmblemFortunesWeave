@@ -11,7 +11,8 @@ extern __int64 GameData_21f3d10;
 extern __int64 fw_memory_g_heap_manager;
 extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
-unsigned __int64 FastTravelManager_ee0380(__int64 a1);
+unsigned __int64
+FastTravelManager_ee0380_alt1(__int64 a1) __asm__("FastTravelManager_ee0380");
 __attribute__((swiftcall)) void
     FastTravelManager_ee05e0_alt1(PSEUDO_X8, _QWORD, _QWORD, _QWORD, _QWORD,
                                   _QWORD, _QWORD,
@@ -88,8 +89,13 @@ FastTravelManager_ee05e0(PSEUDO_X8 x8_, __int64 unused_int0, float32x4_t* a1,
                          __int64 a2, int a3, int a4, __int64 a5, int a6);
 __n128 game_hub_FastTravelManager_RefreshTravelList(__int64 a1);
 __int64 FastTravelManager_ee24d0(__int64 a1, __int64 a2);
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void FastTravelManager_ee0380(__int64 a1);
 
-unsigned __int64 FastTravelManager_ee0380(__int64 a1)
+void FastTravelManager_ee0380(__int64 a1)
 {
   unsigned __int64 v1;
   bool v2;
@@ -104,7 +110,7 @@ unsigned __int64 FastTravelManager_ee0380(__int64 a1)
   char* v12;
   char* v13;
   char* v14;
-  unsigned __int64 result;
+  unsigned __int64 v15;
   unsigned __int64 v16;
   unsigned __int64 v18;
   unsigned __int64 v19;
@@ -114,9 +120,11 @@ unsigned __int64 FastTravelManager_ee0380(__int64 a1)
   __int64 v23;
   __int64 v24;
   __int64 v25;
-  __int64 v26;
-  unsigned __int64 v27;
-  char* v28;
+  struct {
+    __int64 v26;
+    unsigned __int64 v27;
+    char* v28;
+  } v26_;
 
   v1 = *(unsigned __int8*)(GameData_21f3d10 + 40);
   v2 = (v1 & 1) == 0;
@@ -135,7 +143,7 @@ unsigned __int64 FastTravelManager_ee0380(__int64 a1)
   }
   v6 = v4 + 3;
   if (v4 + 3 >= 0xFFFFFFFFFFFFFFF7LL) {
-    String_60a1d0(a1);
+    String_60a1d0_alt1();
   }
   if (v6 > 0x16) {
     if ((v6 | 7) == 0x17) {
@@ -144,57 +152,58 @@ unsigned __int64 FastTravelManager_ee0380(__int64 a1)
     else {
       v10 = (v6 | 7) + 1;
     }
-    v9 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v10, 16, 0);
-    v27 = v4 + 3;
-    v28 = (char*)v9;
-    v26 = v10 | 1;
+    v9 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager, v10, 16,
+                                             0);
+    v26_.v27 = v4 + 3;
+    v26_.v28 = (char*)v9;
+    v26_.v26 = v10 | 1;
     v8 = v10 | 1;
   }
   else {
     v8 = 2 * v6;
     v9 = 0;
-    v27 = 0;
-    v28 = nullptr;
-    v26 = (unsigned __int8)(2 * v6);
+    v26_.v27 = 0;
+    v26_.v28 = nullptr;
+    v26_.v26 = (unsigned __int8)(2 * v6);
   }
   v11 = (v8 & 1) == 0;
   if ((v8 & 1) != 0) {
     v12 = (char*)v9;
   }
   else {
-    v12 = (char*)&v26 + 1;
+    v12 = (char*)&v26_.v26 + 1;
   }
   v12[2] = 95;
   *(_WORD*)v12 = 21574;
   if (v11) {
-    v13 = (char*)&v26 + 4;
+    v13 = (char*)&v26_.v26 + 4;
   }
   else {
     v13 = (char*)(v9 + 3);
   }
   if (v4 != 0) {
-    memmove(v13, v5, v4);
+    memmove_alt1((__int64)v13, v5, v4);
   }
   v13[v4] = 0;
-  if ((v26 & 1) != 0) {
-    v14 = v28;
+  if ((v26_.v26 & 1) != 0) {
+    v14 = v26_.v28;
   }
   else {
-    v14 = (char*)&v26 + 1;
+    v14 = (char*)&v26_.v26 + 1;
   }
-  result = game_HashString(v14);
-  if (result != 0) {
+  v15 = game_HashString_alt1((__int64)v14);
+  if (v15 != 0) {
     v16 = *(_QWORD*)(GameData_21c9f20 + 96);
     if (v16 != 0 && *(_QWORD*)(GameData_21c9f20 + 112) != 0) {
       v18 = v16 - 1;
       if ((v16 & (v16 - 1)) != 0) {
-        v19 = result;
-        if (result >= v16) {
-          v19 = result % v16;
+        v19 = v15;
+        if (v15 >= v16) {
+          v19 = v15 % v16;
         }
       }
       else {
-        v19 = v18 & result;
+        v19 = v18 & v15;
       }
       v20 = *(_QWORD**)(*(_QWORD*)(GameData_21c9f20 + 88) + 8 * v19);
       if (v20 != nullptr) {
@@ -203,8 +212,8 @@ unsigned __int64 FastTravelManager_ee0380(__int64 a1)
           if ((v16 & v18) == 0) {
             while (1) {
               v24 = v21[1];
-              if (v24 == result) {
-                if (v21[2] == result) {
+              if (v24 == v15) {
+                if (v21[2] == v15) {
                   goto LABEL_56;
                 }
               }
@@ -220,8 +229,8 @@ unsigned __int64 FastTravelManager_ee0380(__int64 a1)
           }
           do {
             v22 = v21[1];
-            if (v22 == result) {
-              if (v21[2] == result) {
+            if (v22 == v15) {
+              if (v21[2] == v15) {
               LABEL_56:
                 v23 = v21[3];
                 goto LABEL_50;
@@ -245,15 +254,14 @@ LABEL_49:
   v23 = 0;
 LABEL_50:
   *(_QWORD*)(a1 + 8) = v23;
-  if ((v26 & 1) != 0 && v28 != nullptr) {
+  if ((v26_.v26 & 1) != 0 && v26_.v28 != nullptr) {
     v25 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v25 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v25, v28);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v25, (__int64)v26_.v28);
   }
-  return result;
 }
 
 __attribute__((swiftcall)) void

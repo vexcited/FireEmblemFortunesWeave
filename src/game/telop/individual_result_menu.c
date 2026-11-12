@@ -10,16 +10,20 @@ extern __int64 GameData_20bb360;
 extern __int64 game_ProcGameSkipView_instance_;
 extern __int64* GameData_212e008[9];
 _DWORD* IndividualResultMenu_Unknown138(__int64 a1, char a2);
+__int64 GameHr_7fa250(__int64, __int64*, __int64);
+bool GameRoutine_8c4ee0_alt1(__int64) __asm__("GameRoutine_8c4ee0");
 
 _DWORD* IndividualResultMenu_Unknown138(__int64 a1, char a2)
 {
   __int64 v2;
   __int64 v3;
-  char v4;
+  bool v4;
   int v5;
   int v6;
-  __int16 v8;
-  char v9;
+  struct {
+    __int16 v8;
+    char v9;
+  } v8_;
 
   if ((a2 & 1) == 0) {
     return ListResultMenuBase_1754800(a1);
@@ -34,9 +38,9 @@ _DWORD* IndividualResultMenu_Unknown138(__int64 a1, char a2)
   if (v3 == 0) {
     return ListResultMenuBase_1754800(a1);
   }
-  v4 = GameRoutine_8c4ee0(v3 + 416);
+  v4 = GameRoutine_8c4ee0_alt1(v3 + 416);
   a1 = v2;
-  if ((v4 & 1) == 0) {
+  if (!v4) {
     return ListResultMenuBase_1754800(a1);
   }
   if (game_ProcGameSkipView_instance_ != 0 &&
@@ -54,9 +58,9 @@ _DWORD* IndividualResultMenu_Unknown138(__int64 a1, char a2)
       *(_BYTE*)(v3 + 506) = 3;
     }
   }
-  v9 = 0;
-  v8 = 257;
-  return (_DWORD*)GameRoutine_7fa250(v2, v3 + 416, &v8);
+  v8_.v9 = 0;
+  v8_.v8 = 257;
+  return (_DWORD*)GameHr_7fa250(v2, (__int64*)(v3 + 416), (__int64)&v8_.v8);
 }
 
 #pragma GCC visibility pop

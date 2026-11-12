@@ -27,65 +27,83 @@ extern __int64 msg_MessageManager_instance_;
 extern __int64* GameData_212e348;
 extern char GameData_1a9f09e;
 void __attribute__((noreturn)) GameRoutine_1288b50(void);
-__int64 UnitHeroes_6828a0(__int64 a1);
+__int64 UnitHeroes_6828a0_alt1(__int64 a1) __asm__("UnitHeroes_6828a0");
 __int64 UnitHeroes_6d2b90(__int64 a1, unsigned __int8* a2);
 bool UnitHeroes_6d2c90(__int64 a1, __int64* a2);
 unsigned __int64 UnitHeroes_6d3800(__int64 a1, int a2, int a3, char a4);
 __int64 UnitHeroes_6d46e0(__int64 a1, unsigned __int8* a2);
+_QWORD*
+game_UnitPool_Find_6ead60_alt1(__int64*,
+                               _DWORD*) __asm__("game_UnitPool_Find_6ead60");
+__int64 GameRoutine_975940_alt1(__int64) __asm__("GameRoutine_975940");
+__int64 game_GetHero_alt1(unsigned __int8) __asm__("game_GetHero");
+char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
+                              char) __asm__("GameRoutine_a4dbe0");
+void* game_97b2f0(__int64);
+char* UnitHeroes_6828a0(unsigned __int8 a1);
 
-__int64 UnitHeroes_6828a0(__int64 a1)
+char* UnitHeroes_6828a0(unsigned __int8 a1)
 {
-  __int64 result;
-  _QWORD* v2;
-  __int64 i;
-  __int64 v4;
+  char* result;
+  char* v2;
+  char* i;
+  char* v4;
   __int64 v5;
-  __int64 v6;
+  _QWORD* v6;
   __int64* v7;
   __int64 v8;
   __int64 v9;
   __int64 v10;
-  char* v11;
-  __int64 v12;
-  int v13;
-  _QWORD v14[4];
-  int v15;
-  int v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
-  int v29;
-  int v30;
+  __int64 v11;
+  char* v12;
+  __int64 v13;
+  int v14;
+  struct {
+    __int64 v15[4];
+    int v16;
+    int v17;
+    __int64 v18;
+    __int64 v19;
+    __int64 v20;
+    __int64 v21;
+    __int64 v22;
+    __int64 v23;
+    __int64 v24;
+    __int64 v25;
+    __int64 v26;
+    __int64 v27;
+    __int64 v28;
+    __int64 v29;
+    int v30;
+    int v31;
+  } v15_;
 
-  result = game_GetHero(a1);
-  if (result == 0) {
+  v4 = COERCE_AS(__typeof__(v4),
+                 PSEUDO_REGISTER(unsigned long long, "x8", "=r"));
+  result = (char*)game_GetHero_alt1(a1),
+  v4 = COERCE_AS(__typeof__(v4),
+                 PSEUDO_REGISTER(unsigned long long, "x8", "=r"));
+  if (result == nullptr) {
     return result;
   }
-  v2 = (_QWORD*)result;
-  for (i = result; i != 0; i = *(_QWORD*)(i + 624)) {
+  v2 = result;
+  for (i = result; i != nullptr; i = *((char**)i + 78)) {
     v4 = i;
   }
-  if (*(_BYTE*)(v4 + 441) != 3) {
+  if (v4[441] != 3) {
     goto LABEL_11;
   }
-  v5 = *(_QWORD*)(result + 624);
+  v5 = *((_QWORD*)result + 78);
   if (v5 == 0) {
-    v5 = result;
+    v5 = (__int64)result;
   }
-  v14[0] = v5;
-  v13 = 241;
-  v6 = game_UnitPool_Find_6ead60(v14, &v13);
-  if (v6 != 0) {
-    v7 = (__int64*)(v6 + 2104);
+  v15_.v15[0] = v5;
+  v14 = 241;
+  v6 = game_UnitPool_Find_6ead60_alt1(v15_.v15, &v14),
+  v4 = COERCE_AS(__typeof__(v4),
+                 PSEUDO_REGISTER(unsigned long long, "x8", "=r"));
+  if (v6 != nullptr) {
+    v7 = v6 + 263;
     goto LABEL_12;
   }
   v8 = *(_QWORD*)(game_GameModeData_instance_ + 176);
@@ -96,46 +114,46 @@ __int64 UnitHeroes_6828a0(__int64 a1)
   LABEL_11:
     v7 = &GameData_21f49b8;
   }
-
 LABEL_12:
   if (*((_BYTE*)v7 + 32) != 0) {
-    return GameRoutine_97b2f0();
+    return (char*)game_97b2f0((__int64)v7);
   }
-  v9 = msg_MessageManager_instance_;
-  if (v2[36] == 0 || (v10 = GameRoutine_975940()) == 0 ||
-      (v11 = *(char**)(v10 + 72)) == nullptr) {
-    v11 = (char*)v2[4];
-    if (v11 == nullptr) {
-      v12 = v2[8];
-      if (v12 != 0) {
-        v11 = *(char**)(v12 + 32);
+  v9 = *((_QWORD*)v2 + 36);
+  v10 = msg_MessageManager_instance_;
+  if (v9 == 0 || (v11 = GameRoutine_975940_alt1(v9)) == 0 ||
+      (v12 = *(char**)(v11 + 72)) == nullptr) {
+    v12 = *((char**)v2 + 4);
+    if (v12 == nullptr) {
+      v13 = *((_QWORD*)v2 + 8);
+      if (v13 != 0) {
+        v12 = *(char**)(v13 + 32);
       }
       else {
-        v11 = &GameData_1a9f09e;
+        v12 = &GameData_1a9f09e;
       }
     }
   }
-  v17 = -1;
-  v18 = -1;
-  v19 = -1;
-  v20 = -1;
-  v21 = -1;
-  v22 = -1;
-  v23 = -1;
-  v24 = -1;
-  v25 = -1;
-  v26 = -1;
-  v27 = -1;
-  v28 = -1;
-  v14[0] = GameData_212e348 + 2;
-  v14[1] = 0xFFFF0001FFFF0000LL;
-  v14[2] = 0xFFFF0004FFFF0002LL;
-  v14[3] = 0xFFFF0006FFFF0005LL;
-  v29 = 8;
-  v30 = 0;
-  v15 = -65529;
-  v16 = -65528;
-  return GameRoutine_a4dbe0(v9, v11, 0, v14);
+  v15_.v18 = -1;
+  v15_.v19 = -1;
+  v15_.v20 = -1;
+  v15_.v21 = -1;
+  v15_.v22 = -1;
+  v15_.v23 = -1;
+  v15_.v24 = -1;
+  v15_.v25 = -1;
+  v15_.v26 = -1;
+  v15_.v27 = -1;
+  v15_.v28 = -1;
+  v15_.v29 = -1;
+  v15_.v15[0] = (__int64)(GameData_212e348 + 2);
+  v15_.v15[1] = 0xFFFF0001FFFF0000LL;
+  v15_.v15[2] = 0xFFFF0004FFFF0002LL;
+  v15_.v15[3] = 0xFFFF0006FFFF0005LL;
+  v15_.v30 = 8;
+  v15_.v31 = 0;
+  v15_.v16 = -65529;
+  v15_.v17 = -65528;
+  return GameRoutine_a4dbe0_alt1(v10, v12, 0);
 }
 
 __int64 UnitHeroes_6d2b90(__int64 a1, unsigned __int8* a2)

@@ -11,7 +11,13 @@ __int64 snd_fnd_WeakHandle_get(_QWORD, float);
 __int64 snd_fx_FxMS_registry(_QWORD);
 extern _UNKNOWN* GameData_2134a70;
 extern __int64* GameData_2134a78;
-__int64* FxMsCtrlNx_166160(__int64 a1, float a2);
+__int64* FxMsCtrlNx_166160_alt1(__int64 a1,
+                                float a2) __asm__("FxMsCtrlNx_166160");
+__int64* snd_fx_FxMS_registry_alt1() __asm__("snd_fx_FxMS_registry");
+__int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+__int64* FxMsCtrlNx_166160(__int64 a1);
 
 void FxMSCtrlNX_updateFx(__int64 a1)
 {
@@ -39,49 +45,47 @@ void FxMSCtrlNX_updateFx(__int64 a1)
   }
 }
 
-__int64* FxMsCtrlNx_166160(__int64 a1, float a2)
+__int64* FxMsCtrlNx_166160(__int64 a1)
 {
   __int64* result;
-  float v4;
-  __int64 v5;
-  float v6;
+  __int64 v3;
   unsigned __int8 explicit;
-  __int64* v8;
-  __int64 v10;
-  int v11;
-  __int64* v12;
+  __int64* v5;
+  __int64 v7;
+  int v8;
+  __int64* v9;
 
-  result = (__int64*)snd_fnd_WeakHandle_get(a1, a2);
+  result = (__int64*)snd_fnd_WeakHandle_get_alt1(a1);
   if (result != nullptr) {
-    v5 = snd_fnd_WeakHandle_get(a1, v4);
-    result = (__int64*)(*(__int64 (**)(__int64))(*(_QWORD*)(v5 - 5592) + 64LL))(
-        v5 - 5592);
+    v3 = snd_fnd_WeakHandle_get_alt1(a1);
+    result = (__int64*)(*(__int64 (**)(__int64))(*(_QWORD*)(v3 - 5592) + 64LL))(
+        v3 - 5592);
     explicit = atomic_load_explicit((atomic_uchar* volatile)GameData_2134a70,
                                     memory_order_acquire);
-    v8 = GameData_2134a78;
+    v5 = GameData_2134a78;
     if ((explicit & 1) == 0) {
-      v12 = result;
-      v11 = __cxa_guard_acquire(GameData_2134a70);
-      v8 = GameData_2134a78;
-      result = v12;
-      if (v11 != 0) {
-        *GameData_2134a78 = snd_fx_FxMS_registry(v12);
-        __cxa_guard_release(GameData_2134a70);
-        v8 = GameData_2134a78;
-        result = v12;
+      v9 = result;
+      v8 = __cxa_guard_acquire_alt1((__int64)GameData_2134a70);
+      v5 = GameData_2134a78;
+      result = v9;
+      if (v8 != 0) {
+        *GameData_2134a78 = (__int64)snd_fx_FxMS_registry_alt1();
+        __cxa_guard_release_alt1((__int64)GameData_2134a70);
+        v5 = GameData_2134a78;
+        result = v9;
       }
     }
-    if (result == v8) {
+    if (result == v5) {
       goto LABEL_10;
     }
     do {
       result = (__int64*)*result;
-    } while (result != v8 && result != nullptr);
+    } while (result != v5 && result != nullptr);
     if (result != nullptr) {
     LABEL_10:
-      v10 = snd_fnd_WeakHandle_get(a1, v6);
-      if (v10 != 0) {
-        return (__int64*)(v10 - 5592);
+      v7 = snd_fnd_WeakHandle_get_alt1(a1);
+      if (v7 != 0) {
+        return (__int64*)(v7 - 5592);
       }
       else {
         return nullptr;

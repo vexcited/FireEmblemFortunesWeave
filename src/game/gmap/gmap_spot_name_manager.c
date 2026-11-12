@@ -25,7 +25,9 @@ extern __int64 game_gameui_Footer_instance_;
 extern __int64 game_hub_ProgressEventView_instance_;
 extern __int64 game_hub_ProgressEventView_instance__ptr[6];
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
-__int64 game_gmap_GmapSpotNameManager_ShowOnlyDagsionHp(__int64 a1, char a2);
+__int64 game_gmap_GmapSpotNameManager_ShowOnlyDagsionHp_alt1(
+    __int64 a1,
+    char a2) __asm__("game_gmap_GmapSpotNameManager_ShowOnlyDagsionHp");
 __int64 GmapSpotNameManager_199f590(__int64 a1, __int64 a2, __int64 a3,
                                     __int64 a4);
 __int64 GmapSpotNameManager_199f810(__int64 a1, __int64 a2, __int64 a3,
@@ -48,8 +50,14 @@ struct PseudoSret Pane_58dfa0(void);
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1(_QWORD) __asm__("GameRoutine_60a310");
 void game_gmap_GmapSpotNameManager_Update(__int64 a1, _BYTE* a2);
+__int64 LayoutAccessor_1567000_alt1(__int64,
+                                    char) __asm__("LayoutAccessor_1567000");
+void GameRoutine_17bd0e0_alt1(__int64) __asm__("GameRoutine_17bd0e0");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt2() __asm__("GameRoutine_60a310");
+void game_gmap_GmapSpotNameManager_ShowOnlyDagsionHp(__int64 a1, char a2);
 
-__int64 game_gmap_GmapSpotNameManager_ShowOnlyDagsionHp(__int64 a1, char a2)
+void game_gmap_GmapSpotNameManager_ShowOnlyDagsionHp(__int64 a1, char a2)
 {
   _QWORD* v4;
   __int64 v5;
@@ -58,41 +66,50 @@ __int64 game_gmap_GmapSpotNameManager_ShowOnlyDagsionHp(__int64 a1, char a2)
   __int64 v8;
   __int64 v9;
   unsigned int v10;
-  __int64 result;
-  int v12;
-  __int64 v13;
-  _QWORD v14[4];
-  _QWORD* v15;
-  char v16;
+  int v11;
+  __int64 v12;
+  struct {
+    _QWORD v13[4];
+    _QWORD* v14;
+  } v13_;
+  char v15;
 
-  v16 = a2;
+  v7 = COERCE_AS(__typeof__(v7),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v15 = a2;
   *(_BYTE*)(a1 + 5833) = a2;
-  v4 = v14;
-  v14[0] = GameData_211eaf8;
-  v14[1] = &v16;
+  v4 = v13_.v13;
+  v13_.v13[0] = GameData_211eaf8;
+  v13_.v13[1] = &v15;
   v5 = 11880;
-  v15 = v14;
+  v13_.v14 = v13_.v13;
   for (i = GameData_2265728 + 24;; i += 120) {
-    (*(void (**)(_QWORD*, __int64))(*v4 + 48LL))(v4, i);
+    (*(void (**)(_QWORD*, __int64))(*v4 + 48LL))(v4, i),
+        v7 = COERCE_AS(__typeof__(v7),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     if (v5 == 0) {
       break;
     }
-    v4 = v15;
+    v4 = v13_.v14;
     v5 -= 120;
-    if (v15 == nullptr) {
-      GameRoutine_60a310(0, v7);
+    if (v13_.v14 == nullptr) {
+      GameRoutine_60a310_alt2(),
+          v7 = COERCE_AS(__typeof__(v7),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
   }
-  if (v15 == v14) {
+  if (v13_.v14 == v13_.v13) {
     v8 = 32;
   }
   else {
-    if (v15 == nullptr) {
+    if (v13_.v14 == nullptr) {
       goto LABEL_10;
     }
     v8 = 40;
   }
-  (*(void (**)(_QWORD*, __int64))(*v15 + v8))(v15, v7);
+  (*(void (**)(_QWORD*, __int64))(*v13_.v14 + v8))(v13_.v14, v7),
+      v7 = COERCE_AS(__typeof__(v7),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
 LABEL_10:
   if ((a2 & 1) != 0) {
     v9 = game_gameui_Footer_instance_;
@@ -100,39 +117,48 @@ LABEL_10:
     v10 = 1;
     *(_DWORD*)(a1 + 5856) = 1;
     if (v9 != 0) {
-      LayoutAccessor_1567000(v9, 0);
+      LayoutAccessor_1567000_alt1(v9, 0),
+          v7 = COERCE_AS(__typeof__(v7),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       v10 = *(_DWORD*)(a1 + 5856) & 0xFFFDFFFF;
     }
     *(_DWORD*)(a1 + 5856) = v10;
-    result = game_hub_ProgressEventView_instance_;
     if (game_hub_ProgressEventView_instance_ != 0) {
-      return GameRoutine_17b8f40(game_hub_ProgressEventView_instance_, 1);
+      GameRoutine_17b8f40(game_hub_ProgressEventView_instance_, 1),
+          v7 = COERCE_AS(__typeof__(v7),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
   }
   else {
-    v12 = *(_DWORD*)(a1 + 5864);
-    *(_DWORD*)(a1 + 5856) = v12;
-    v13 = *(_QWORD*)game_hub_ProgressEventView_instance__ptr[0];
-    if ((v12 & 0x10000) != 0) {
-      if (v13 != 0) {
-        GameRoutine_17b8e80(v13, 1);
+    v11 = *(_DWORD*)(a1 + 5864);
+    *(_DWORD*)(a1 + 5856) = v11;
+    v12 = *(_QWORD*)game_hub_ProgressEventView_instance__ptr[0];
+    if ((v11 & 0x10000) != 0) {
+      if (v12 != 0) {
+        GameRoutine_17b8e80(v12, 1),
+            v7 = COERCE_AS(__typeof__(v7),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       }
     }
-    else if (v13 != 0) {
-      GameRoutine_17b8f40(v13, 1);
+    else if (v12 != 0) {
+      GameRoutine_17b8f40(v12, 1),
+          v7 = COERCE_AS(__typeof__(v7),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
-    if ((v12 & 0x20000) != 0) {
-      return GameRoutine_17bd0e0(a1);
+    if ((v11 & 0x20000) != 0) {
+      GameRoutine_17bd0e0_alt1(a1),
+          v7 = COERCE_AS(__typeof__(v7),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
     else {
-      result = game_gameui_Footer_instance_;
       if (game_gameui_Footer_instance_ != 0) {
-        result = LayoutAccessor_1567000(game_gameui_Footer_instance_, 0);
+        LayoutAccessor_1567000_alt1(game_gameui_Footer_instance_, 0),
+            v7 = COERCE_AS(__typeof__(v7),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       }
       *(_DWORD*)(a1 + 5856) &= ~0x20000u;
     }
   }
-  return result;
 }
 
 __int64 GmapSpotNameManager_Destructor(_QWORD* a1)

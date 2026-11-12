@@ -106,6 +106,8 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 gfxa_MainPassImageProcess_SetupHeightFogPass(__int64 result, __int64 a2,
                                                      _QWORD* a3, _QWORD* a4);
+__int64 GameRoutine_b60f30_alt1(__int64, const char*,
+                                __int64*) __asm__("GameRoutine_b60f30");
 
 __int64 gfxa_MainPassImageProcess_SetupFogPass(__int64 a1, __int64 a2,
                                                _QWORD* a3, __int64* a4)
@@ -2675,18 +2677,21 @@ __int64 gfxa_MainPassImageProcess_SetupDLSSPass_lambda1_Invoke(__int64 a1,
   __int64 v17;
   __int64* v18;
   __int64 result;
-  __int64 v20;
-  int v21;
-  int v22;
-  __int64 v23;
-  __int64 v24;
-  char v25;
-  char v26;
-  int v27;
+  struct {
+    __int64 v20;
+    int v21;
+    int v22;
+    __int64 v23;
+    __int64 v24;
+    char v25;
+    char v26;
+    char gap42_[2];
+    int v27;
+  } v20_;
 
   v3 = *(_QWORD**)(a1 + 8);
   v4 = *(_QWORD*)(a2 + 24);
-  v26 = 0;
+  v20_.v26 = 0;
   *(_BYTE*)(*v3 + 16700LL) = 0;
   v7 = *v3;
   v8 = v3[7];
@@ -2695,24 +2700,24 @@ __int64 gfxa_MainPassImageProcess_SetupDLSSPass_lambda1_Invoke(__int64 a1,
   v11 = *(_QWORD**)(a2 + 8);
   v12 = *(_DWORD*)(*v3 + 13312LL);
   v13 = *(_DWORD*)(*v3 + 13316LL);
-  v25 = *(_BYTE*)(v4 + 120);
+  v20_.v25 = *(_BYTE*)(v4 + 120);
   LODWORD(v4) = *(unsigned __int8*)(v7 + 16700);
   v14 = *(_QWORD*)(v8 + 1220);
-  v21 = v12;
-  v22 = v13;
+  v20_.v21 = v12;
+  v20_.v22 = v13;
   v15 = (_DWORD)v4 == 0;
   v16 = (__int64*)(v7 + 13304);
   v17 = *(_QWORD*)(v7 + 16672);
   v18 = (__int64*)(v17 + 24);
-  v20 = v17;
+  v20_.v20 = v17;
   if (v15) {
     v18 = v16;
   }
-  v23 = *v18;
-  v24 = v14;
-  v27 = 1065353216;
+  v20_.v23 = *v18;
+  v20_.v24 = v14;
+  v20_.v27 = 1065353216;
   ((void (*)(__int64, __int64))*GameData_212e738)(*a3 + 8, 49);
-  result = ResourceBuilder_b5a9c0(v9, v10, v11, a3, (int*)&v20);
+  result = ResourceBuilder_b5a9c0(v9, v10, v11, a3, (int*)&v20_.v20);
   *(_BYTE*)(*v3 + 16700LL) = 1;
   **(_BYTE**)(a1 + 16) = 1;
   return result;
@@ -2724,23 +2729,26 @@ __int64 gfxa_MainPassImageProcess_SetupDepthUpscalePass_lambda0_Invoke(
   __int64 v3;
   int v6;
   __int64 result;
-  __int64 v8;
-  int v9;
-  int v10;
-  __int64 v11;
-  char v12;
-  int v13;
+  struct {
+    __int64 v8;
+    int v9;
+    int v10;
+    __int64 v11;
+    char v12;
+    char gap25_[3];
+    int v13;
+  } v8_;
 
   v3 = *(_QWORD*)(a1 + 16);
   **a2 = ResourceBuilder_b5a4b0(a3, *(_QWORD*)(**(_QWORD**)(a1 + 8) + 8LL));
-  v11 = 0x100000001LL;
-  v13 = 0;
-  v8 = 0x1500000000LL;
-  v12 = 1;
+  v8_.v11 = 0x100000001LL;
+  v8_.v13 = 0;
+  v8_.v8 = 0x1500000000LL;
+  v8_.v12 = 1;
   v6 = *(_DWORD*)(*(_QWORD*)v3 + 13316LL);
-  v9 = *(_DWORD*)(*(_QWORD*)v3 + 13312LL);
-  v10 = v6;
-  result = GameRoutine_b60f30(a3, "FullDepth", &v8);
+  v8_.v9 = *(_DWORD*)(*(_QWORD*)v3 + 13312LL);
+  v8_.v10 = v6;
+  result = GameRoutine_b60f30_alt1(a3, "FullDepth", &v8_.v8);
   *a2[1] = result;
   return result;
 }

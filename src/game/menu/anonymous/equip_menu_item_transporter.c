@@ -55,6 +55,17 @@ game_menu_anonymous_EquipMenuItem_Transporter_ACall_closure1_Invoke(__int64 a1,
 __int64
 game_menu_anonymous_EquipMenuItem_Transporter_ACall_closure3_Invoke_15d15c0(
     __int64 a1, _QWORD* a2);
+_QWORD*
+BasicMenuCursor_16ddbe0_alt1(_QWORD* result) __asm__("BasicMenuCursor_16ddbe0");
+__int64
+MultiMenuSequence_17871c0_alt1(__int64 result, unsigned int,
+                               int) __asm__("MultiMenuSequence_17871c0");
+__int64 ProcInst_657850_alt1(__int64, __int64, const char*, char,
+                             __int64) __asm__("ProcInst_657850");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_ProcInst_Register_alt1(__int64) __asm__("game_ProcInst_Register");
 
 __n128 EquipMenuItem_Transporter_Unknown55(__int64 a1)
 {
@@ -941,8 +952,8 @@ game_menu_anonymous_EquipMenuItem_Transporter_ACall_closure2_Invoke(__int64 a1,
     else {
       v11 = *(_QWORD*)(v3 + 8);
     }
-    v12 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         392, 16, 0);
+    v12 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 392, 16, 0);
     v13 = GameData_212c608[0];
     *(_QWORD*)(v12 + 96) = 0;
     *(_QWORD*)(v12 + 104) = 0;
@@ -964,7 +975,7 @@ game_menu_anonymous_EquipMenuItem_Transporter_ACall_closure2_Invoke(__int64 a1,
     *(_QWORD*)(v12 + 88) = 0;
     *(_QWORD*)v12 = v13 + 16;
     *(_QWORD*)(v12 + 8) = 0;
-    game_ProcInst_Register();
+    game_ProcInst_Register_alt1(v12);
     *(_QWORD*)(v12 + 232) = 0;
     *(_QWORD*)(v12 + 224) = v12 + 232;
     v14 = GameData_2130240[0];
@@ -1000,15 +1011,16 @@ game_menu_anonymous_EquipMenuItem_Transporter_ACall_closure2_Invoke(__int64 a1,
     *(_QWORD*)(v12 + 184) = 0;
     *(_QWORD*)v12 = v15 + 2;
     *(_DWORD*)(v12 + 376) = 1;
-    ProcInst_657850(v12, GameData_21319e0, "ExchangeMenu", 1, v11);
-    BasicMenuCursor_16ddbe0(*(_QWORD*)(v3 + 8));
+    ProcInst_657850_alt1(v12, (__int64)GameData_21319e0, "ExchangeMenu", 1,
+                         v11);
+    BasicMenuCursor_16ddbe0_alt1(*(_QWORD**)(v3 + 8));
   }
   else {
     v17 = *(_QWORD*)(v4 + 304);
     *(_DWORD*)(v4 + 356) = v5 | 1;
     (*(void (**)(__int64, _QWORD))(*(_QWORD*)v17 + 240LL))(v17, 0);
     (*(void (**)(__int64, _QWORD))(*(_QWORD*)v17 + 248LL))(v17, 0);
-    MultiMenuSequence_17871c0(*(_QWORD*)(v3 + 96), 0, 0);
+    MultiMenuSequence_17871c0_alt1(*(_QWORD*)(v3 + 96), 0, 0);
   }
   return 2;
 }

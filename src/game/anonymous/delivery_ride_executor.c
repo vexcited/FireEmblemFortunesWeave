@@ -14,6 +14,9 @@ __int64 RidePool_93d820(_QWORD);
 __int64 UnitHeroes_6d2b90(_QWORD, _QWORD);
 extern __int64* GameData_212c8b0[11];
 __int64 DeliveryRideExecutor_Unknown5(__int64 result);
+__int64 RidePool_93d820_alt1(__int64 result) __asm__("RidePool_93d820");
+__int64 UnitHeroes_6d2b90_alt1(__int64,
+                               unsigned __int8*) __asm__("UnitHeroes_6d2b90");
 
 bool DeliveryRideExecutor_Unknown2(__int64 a1, __int64 a2, int a3)
 {
@@ -47,9 +50,9 @@ __int64 DeliveryRideExecutor_Unknown5(__int64 result)
 {
   int v1;
   _QWORD* v2;
-  __int64* v3;
-  _QWORD* v4;
-  _QWORD* i;
+  unsigned __int8* v3;
+  __int64* v4;
+  __int64* i;
   __int64 v6;
   __int64 v7;
   __int64 v8;
@@ -61,14 +64,14 @@ __int64 DeliveryRideExecutor_Unknown5(__int64 result)
 
   v1 = *(_DWORD*)(result + 48);
   v2 = (_QWORD*)(result + 24);
-  v3 = GameData_212c8b0[0];
+  v3 = (unsigned __int8*)GameData_212c8b0[0];
   do {
     v2 = (_QWORD*)*v2;
     if (v2 == nullptr) {
       break;
     }
-    v4 = (_QWORD*)v2[4];
-    for (i = (_QWORD*)v2[5]; v4 != i; v4 += 4) {
+    v4 = (__int64*)v2[4];
+    for (i = (__int64*)v2[5]; v4 != i; v4 += 4) {
       v6 = v4[1];
       v7 = v4[2];
       if (*v4 != 0) {
@@ -78,10 +81,10 @@ __int64 DeliveryRideExecutor_Unknown5(__int64 result)
           do {
             v10 = *(unsigned int*)(v8 - 4);
             if ((v10 & 0x80000000) != 0) {
-              result = UnitHeroes_6d2b90(*v4, v3);
+              result = UnitHeroes_6d2b90_alt1(*v4, v3);
             }
             else {
-              result = RidePool_93d820(v10);
+              result = RidePool_93d820_alt1(v10);
             }
             v1 = v9 - 1;
             if (v9 < 2) {
@@ -96,7 +99,7 @@ __int64 DeliveryRideExecutor_Unknown5(__int64 result)
       else if (v6 != v7) {
         v12 = v6 + 4;
         do {
-          result = RidePool_93d820(*(unsigned int*)(v12 - 4));
+          result = RidePool_93d820_alt1(*(unsigned int*)(v12 - 4));
           v13 = __OFSUB__(v1--, 1);
           if ((v1 < 0) ^ v13 | (v1 == 0)) {
             break;

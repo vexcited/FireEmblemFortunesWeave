@@ -29,6 +29,12 @@ extern int GameData_21759f0;
 float snd_BGM_getFirstPlayerVolume(_QWORD);
 __int64 CustomBGM_update(__int64 a1);
 __int64 CustomBGM_stop(__int64 a1, __int64 a2, char a3);
+__int64 GameManager_a360a0_alt1(__int64 result,
+                                __int64) __asm__("GameManager_a360a0");
+__int64 snd_BGM_isStoppingNow_alt1(__int64) __asm__("snd_BGM_isStoppingNow");
+__int64 snd_BGM_start_alt1(__int64 result, __int64, __int64, __int64,
+                           unsigned int, long double,
+                           long double) __asm__("snd_BGM_start");
 
 __int64 CustomBGM_update(__int64 a1)
 {
@@ -300,17 +306,25 @@ __int64 CustomBGM_update(__int64 a1)
 __int64 CustomBGM_requestPlay(__int64 a1, __int64 a2, __int64 a3,
                               unsigned int a4, float a5, float a6)
 {
-  __int64 result;
-  _QWORD v13[7];
-  int v14;
 
-  result = snd_BGM_isStoppingNow();
+#pragma clang fp contract(off)
+  __int64 result;
+  long double v13;
+  long double v14;
+  struct {
+    _QWORD v15[7];
+    int v16;
+  } v15_;
+
+  result = snd_BGM_isStoppingNow_alt1(a1);
   if ((result & 1) == 0) {
-    memset(&v13[1], 0, 48);
-    v13[0] = a2;
-    v14 = 1;
-    snd_BGM_start(a1, v13, a3, a4, 0xFFFFFFFFLL, a5, a6);
-    return GameManager_a360a0(*game_sound_g_game_sound_ptr[0], a2);
+    *(float*)&v13 = a5;
+    *(float*)&v14 = a6;
+    memset(&v15_.v15[1], 0, 48);
+    v15_.v15[0] = a2;
+    v15_.v16 = 1;
+    snd_BGM_start_alt1(a1, (__int64)v15_.v15, a3, a4, 0xFFFFFFFF, v13, v14);
+    return GameManager_a360a0_alt1(*game_sound_g_game_sound_ptr[0], a2);
   }
   return result;
 }

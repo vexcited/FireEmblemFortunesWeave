@@ -171,6 +171,8 @@ __int64 game_cmdbtl_10422e0(__int64 result);
 __int64 game_cmdbtl_1042560(__int64 a1);
 __int64 game_cmdbtl_1042a60(__int64 result);
 __int64 game_cmdbtl_18f9360(__int64 a1);
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 void game_cmdbtl_e62ed0()
 {
@@ -1439,7 +1441,7 @@ game_cmdbtl_ed9ba0(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, __int64 a2)
   int v7;
   int v8;
   __int64* v9;
-  __int64 v10;
+  _QWORD* v10;
   __int64 result;
   __int64 v12;
   bool v13;
@@ -1448,14 +1450,22 @@ game_cmdbtl_ed9ba0(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, __int64 a2)
   __int64 v16;
   __int64 v17;
   __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  _QWORD v21[4];
-  _QWORD* v22;
+  struct {
+    __int64 v19;
+    __int64 v20;
+  } v19_;
+  struct {
+    _QWORD v21[4];
+    _QWORD* v22;
+  } v21_;
   __int64 v23;
 
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   if ((GameData_2216858 & 1) == 0) {
-    GameRoutine_8123d0_alt1();
+    GameRoutine_8123d0(),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   }
   v6 = GameData_2216820;
   v7 = *(unsigned __int8*)(*GameData_212dec0[0] + 12);
@@ -1469,28 +1479,30 @@ game_cmdbtl_ed9ba0(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, __int64 a2)
     goto LABEL_22;
   }
   v9 = GameData_212ea58;
-  v21[0] = GameData_1fec818;
-  v21[1] = &v23;
+  v21_.v21[0] = GameData_1fec818;
+  v21_.v21[1] = &v23;
   v23 = a2;
-  v19 = 0;
-  v20 = 0;
-  v22 = v21;
-  v10 = *GameData_212ea58;
-  v21[2] = &v19;
-  CmdbtlPartyNatives_e9a800(v10, v21);
-  result = (__int64)v22;
-  if (v22 == v21) {
+  v19_.v19 = 0;
+  v19_.v20 = 0;
+  v21_.v22 = v21_.v21;
+  v10 = (_QWORD*)*GameData_212ea58;
+  v21_.v21[2] = &v19_.v19;
+  CmdbtlPartyNatives_e9a800_alt1(v10, (__int64)v21_.v21),
+      result = COERCE_AS(__typeof__(result),
+                         PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  result = (__int64)v21_.v22;
+  if (v21_.v22 == v21_.v21) {
     v12 = 32;
     goto LABEL_9;
   }
-  if (v22 != nullptr) {
+  if (v21_.v22 != nullptr) {
     v12 = 40;
   LABEL_9:
-    result = (*(__int64 (**)(__int64))(*v22 + v12))((__int64)v22);
+    result = (*(__int64 (**)(__int64))(*v21_.v22 + v12))((__int64)v21_.v22);
   }
   v13 = (v6 & 0x40) != 0;
-  if (v19 != 0) {
-    v14 = *(_QWORD*)(*(_QWORD*)(v19 + 16) + 440LL);
+  if (v19_.v19 != 0) {
+    v14 = *(_QWORD*)(*(_QWORD*)(v19_.v19 + 16) + 440LL);
     if (v14 != 0 &&
         (unsigned __int64)(v15 = *(unsigned __int8*)(v14 + 16)) <= 3) {
       v16 = GameData_1b018e8[v15];
@@ -1502,11 +1514,13 @@ game_cmdbtl_ed9ba0(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, __int64 a2)
       v13 = true;
     }
   }
-  v17 = v20;
-  if (v20 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v20 + 8),
-                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
-    result = std___1___shared_weak_count___release_weak_alt1(v17);
+  v17 = v19_.v20;
+  if (v19_.v20 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v19_.v20 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17),
+        result = COERCE_AS(__typeof__(result),
+                           PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    result = std___1___shared_weak_count___release_weak_alt2(v17);
   }
   if (v13) {
     goto LABEL_21;

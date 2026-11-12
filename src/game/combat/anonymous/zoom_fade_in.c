@@ -14,8 +14,9 @@ extern __int64 GameData_21ec7b0;
 extern __int64 game_ProcFadeView_instance_;
 extern int GameData_21d92e0;
 __int64 game_combat_anonymous_ZoomFadeIn_Schedule_closure0_Invoke(__int64 a1);
-__n128
-game_combat_anonymous_ZoomFadeIn_Schedule_closure1_Invoke(long double a1);
+__n128 game_combat_anonymous_ZoomFadeIn_Schedule_closure1_Invoke_alt1(
+    long double a1) __asm__("game_combat_anonymous_ZoomFadeIn_Schedule_"
+                            "closure1_Invoke");
 void game_combat_anonymous_ZoomFadeIn_Schedule_closure2_Invoke();
 __int64 game_combat_anonymous_ZoomFadeIn_Schedule_closure3_Invoke(__int64 a1);
 __int64 CmdBtlZoomIn_10a04e0(__int64*, float*, float*, __int64);
@@ -31,6 +32,12 @@ void BattleUtil_7a96a0(float);
 __int64 game_combat_anonymous_ZoomFadeIn_Schedule(__int64* a1, __int64 a2);
 __int64 game_combat_anonymous_ZoomFadeIn_Schedule_closure_Invoke(__int64 a1,
                                                                  float* a2);
+__int64 CombatLegionManager_e2cca0_alt1() __asm__("CombatLegionManager_e2cca0");
+__int64 GameHr_106e1a0(__int64 result);
+__int64 game_809ba0(__int64);
+__int64 game_GameView_Update_alt1() __asm__("game_GameView_Update");
+void GameRoutine_10ecb60_alt1() __asm__("GameRoutine_10ecb60");
+__int64 game_combat_anonymous_ZoomFadeIn_Schedule_closure1_Invoke();
 
 __int64 game_combat_anonymous_ZoomFadeIn_Schedule(__int64* a1, __int64 a2)
 {
@@ -289,28 +296,26 @@ __int64 game_combat_anonymous_ZoomFadeIn_Schedule_closure0_Invoke(__int64 a1)
   return result;
 }
 
-__n128 game_combat_anonymous_ZoomFadeIn_Schedule_closure1_Invoke(long double a1)
+__int64 game_combat_anonymous_ZoomFadeIn_Schedule_closure1_Invoke()
 {
-  __int64 v1;
-  __int64 v2;
-  int v3;
-  __int64 v4;
+  __int64 v0;
+  int v1;
 
-  v1 = GameRoutine_10ecb60(a1);
+  GameRoutine_10ecb60_alt1();
   if (GameData_21d92e0 != 3) {
     GameData_21d92e0 = 3;
-    game_GameView_Update(v1);
+    game_GameView_Update_alt1();
     if (GameData_21cd0d0 != 0) {
-      v2 = *(_QWORD*)(GameData_21cd0d0 + 8);
-      v3 = *(_DWORD*)(v2 + 8);
-      *(_DWORD*)(v2 + 8) = v3 + 1;
-      if (v3 == 0) {
-        (**(void (***)(__int64))v2)(v2);
+      v0 = *(_QWORD*)(GameData_21cd0d0 + 8);
+      v1 = *(_DWORD*)(v0 + 8);
+      *(_DWORD*)(v0 + 8) = v1 + 1;
+      if (v1 == 0) {
+        (**(void (***)(__int64))v0)(v0);
       }
     }
   }
-  GameRoutine_106e1a0(GameData_21ec7b0);
-  return CombatLegionManager_e2cca0(v4);
+  GameHr_106e1a0(GameData_21ec7b0);
+  return CombatLegionManager_e2cca0_alt1();
 }
 
 void game_combat_anonymous_ZoomFadeIn_Schedule_closure2_Invoke()
@@ -330,13 +335,12 @@ void game_combat_anonymous_ZoomFadeIn_Schedule_closure2_Invoke()
 
 __int64 game_combat_anonymous_ZoomFadeIn_Schedule_closure3_Invoke(__int64 a1)
 {
-  float v1;
   __int64 result;
 
   (*(void (**)(_QWORD))(**(_QWORD**)(a1 + 8) + 152LL))(*(_QWORD*)(a1 + 8));
   result = game_ProcFadeView_instance_;
   if (game_ProcFadeView_instance_ != 0) {
-    return GameRoutine_809ba0(v1);
+    return game_809ba0(game_ProcFadeView_instance_);
   }
   return result;
 }

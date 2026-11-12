@@ -7,20 +7,26 @@ __int64 game_telop_TelopResult_Destroy_TelopResult(_QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*game_telop_TelopGetItemResult_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 TelopCaptureFailAfterGetItemResult_Unknown56(__int64 a1);
+__int64 TelopCaptureFailAfterGetItemResult_Unknown56_alt1(__int64 a1) __asm__(
+    "TelopCaptureFailAfterGetItemResult_Unknown56");
 __int64 TelopCaptureFailAfterGetItemResult_DeletingDestructor(_QWORD* a1);
+__int64 LayoutAccessor_1562cf0(__int64 result, const char*);
+void TelopCaptureFailAfterGetItemResult_Unknown56(__int64 a1);
 
-__int64 TelopCaptureFailAfterGetItemResult_Unknown56(__int64 a1)
+void TelopCaptureFailAfterGetItemResult_Unknown56(__int64 a1)
 {
-  char v3[15];
-  __int64 v4;
+  struct {
+    char gap8_[1];
+    char v2[15];
+    __int64 v3;
+  } v2_;
 
-  GameRoutine_1562cf0(a1 + 168, "Type_TitleOff");
-  strcpy(&v3[8], "On");
-  *(_DWORD*)&v3[11] = 0;
-  v4 = 0;
-  strcpy(v3, "Pos_Tal");
-  return GameRoutine_1562cf0(a1 + 168, v3);
+  LayoutAccessor_1562cf0(a1 + 168, "Type_TitleOff");
+  strcpy(&v2_.v2[8], "On");
+  *(_DWORD*)&v2_.v2[11] = 0;
+  v2_.v3 = 0;
+  strcpy(v2_.v2, "Pos_Tal");
+  LayoutAccessor_1562cf0(a1 + 168, v2_.v2);
 }
 
 __int64 TelopCaptureFailAfterGetItemResult_DeletingDestructor(_QWORD* a1)

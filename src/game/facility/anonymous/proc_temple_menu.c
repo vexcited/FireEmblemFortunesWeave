@@ -16,39 +16,44 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 ProcTempleMenu_Unknown102(__int64 a1);
 _BYTE* ProcTempleMenu_Unknown145(_BYTE* result, __int64* a2);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+const char*
+game_HashString32_alt1(const char* result) __asm__("game_HashString32");
+void BasicInfo_15e5b50(__int64, __int64*, __int64);
 
 __int64 ProcTempleMenu_Unknown102(__int64 a1)
 {
-  __int64 v1;
-  __int64 v2;
   __int64 v3;
   __int64 v5;
   __int64 v6;
   __int64 v7;
   _BYTE* v8;
   char v9;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
+  struct {
+    __int64 v11;
+    __int64 v12;
+  } v11_;
 
   if (*(_BYTE*)(a1 + 1072) != 1) {
     return 0;
   }
-  v13 = v1;
-  v14 = v2;
   v3 = *(_QWORD*)(a1 + 1064);
   if (v3 != 0) {
-    v5 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                        216, 16, 0);
-    v11 = 0;
-    v12 = 0;
-    GameRoutine_15e5b50(v5, &v11, 0);
-    v6 = v12;
-    if (v12 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
-                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+    v5 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 216, 16, 0);
+    v11_.v11 = 0;
+    v11_.v12 = 0;
+    BasicInfo_15e5b50(v5, &v11_.v11, 0);
+    v6 = v11_.v12;
+    if (v11_.v12 != 0 &&
+        atomic_fetch_add((atomic_ullong* volatile)(v11_.v12 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-      std___1___shared_weak_count___release_weak(v6);
+      std___1___shared_weak_count___release_weak_alt1(v6);
     }
     *(_QWORD*)(v5 + 208) = v3;
     *(_QWORD*)v5 = game_facility_anonymous_ProcVolunteerInfo_vtable;
@@ -60,7 +65,8 @@ __int64 ProcTempleMenu_Unknown102(__int64 a1)
     *(_QWORD*)(a1 + 40) = v5;
     *(_QWORD*)(v5 + 24) = "ProcVolunteerInfo";
     *(_QWORD*)(v5 + 32) = a1;
-    *(_DWORD*)(v5 + 140) = game_HashString32();
+    *(_DWORD*)(v5 + 140) =
+        (unsigned int)game_HashString32_alt1("ProcVolunteerInfo");
     *(_QWORD*)(v5 + 64) = 0;
     *(_QWORD*)(v5 + 72) = 24;
     *(_QWORD*)(v5 + 80) = 1;

@@ -28,7 +28,24 @@ extern __int64 game_gameui_MenuAnimator_instance_;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874500(void);
 __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2);
-__int64 MapTradeTargetInfo_Unknown84(__int64 a1);
+__int64 MapTradeTargetInfo_Unknown84_alt1(__int64 a1) __asm__(
+    "MapTradeTargetInfo_Unknown84");
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64 GameRoutine_1572370_alt1(__int64, char) __asm__("GameRoutine_1572370");
+__int64
+LayoutAccessor_1562cf0_alt1(__int64 result,
+                            const char*) __asm__("LayoutAccessor_1562cf0");
+__int64 LayoutAccessor_1571860(__int64*, __int64, char, char, char, char);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64
+ui_LayoutAccessor_FindPane_alt1(__int64*,
+                                __int64) __asm__("ui_LayoutAccessor_FindPane");
+__int64 MapTradeTargetInfo_Unknown84(__int64* a1);
 
 __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2)
 {
@@ -119,7 +136,7 @@ __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2)
   return snd_Fade_Destroy_Fade(v21);
 }
 
-__int64 MapTradeTargetInfo_Unknown84(__int64 a1)
+__int64 MapTradeTargetInfo_Unknown84(__int64* a1)
 {
   __int64 v2;
   __int64 i;
@@ -133,66 +150,67 @@ __int64 MapTradeTargetInfo_Unknown84(__int64 a1)
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  __int64* v14;
-  __int64 v15;
+  struct {
+    __int64* v14;
+    __int64 v15;
+  } v14_;
 
-  v2 = ui_LayoutAccessor_FindPane(a1 + 952, "MenuItemTemp");
+  v2 = ui_LayoutAccessor_FindPane_alt1(a1 + 119, (__int64)"MenuItemTemp");
   if (v2 != 0) {
     for (i = *(_QWORD*)(v2 + 40); i != v2 + 32; i = *(_QWORD*)(i + 8)) {
       *(_BYTE*)(i + 80) &= ~1u;
     }
   }
-  LayoutAccessor_1560070((void*)(&v14), (__int64*)(a1 + 848),
-                         (__int64)"L_UnitInfo");
-  result = v15;
-  if (v15 != 0) {
-    v5 = std___1___shared_weak_count_lock(v15);
-    v6 = v14;
-    result = v15;
-    if (v15 != 0) {
-      result = std___1___shared_weak_count___release_weak(v15);
+  LayoutAccessor_1560070_alt1((void*)(&v14_.v14), a1 + 106, "L_UnitInfo");
+  result = v14_.v15;
+  if (v14_.v15 != 0) {
+    v5 = std___1___shared_weak_count_lock_alt1(v14_.v15);
+    v6 = v14_.v14;
+    result = v14_.v15;
+    if (v14_.v15 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v14_.v15);
     }
     if (v5 != 0 && v6 != nullptr) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 16), 1u,
                                 memory_order_relaxed);
-      v7 = *(_QWORD*)(a1 + 1072);
-      v8 = std___1___shared_weak_count_lock(v5);
+      v7 = a1[134];
+      v8 = std___1___shared_weak_count_lock_alt1(v5);
       if (v8 != 0) {
         v9 = v8;
-        GameRoutine_1571860(v6, v7, 1, 0, 0, 0);
+        LayoutAccessor_1571860(v6, v7, 1, 0, 0, 0);
         if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-          std___1___shared_weak_count___release_weak(v9);
+          std___1___shared_weak_count___release_weak_alt1(v9);
         }
       }
-      std___1___shared_weak_count___release_weak(v5);
+      std___1___shared_weak_count___release_weak_alt1(v5);
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 16), 1u,
                                 memory_order_relaxed);
-      v10 = std___1___shared_weak_count_lock(v5);
+      v10 = std___1___shared_weak_count_lock_alt1(v5);
       if (v10 != 0) {
         v11 = v10;
-        GameRoutine_1572370(v6, 0);
+        GameRoutine_1572370_alt1((__int64)v6, 0);
         if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-          std___1___shared_weak_count___release_weak(v11);
+          std___1___shared_weak_count___release_weak_alt1(v11);
         }
       }
-      std___1___shared_weak_count___release_weak(v5);
+      std___1___shared_weak_count___release_weak_alt1(v5);
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 16), 1u,
                                 memory_order_relaxed);
-      v12 = std___1___shared_weak_count_lock(v5);
+      v12 = std___1___shared_weak_count_lock_alt1(v5);
       if (v12 != 0) {
         v13 = v12;
-        LayoutAccessor_1562cf0(v6, "Info00");
+        LayoutAccessor_1562cf0_alt1((__int64)v6, "Info00");
         if (atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
-          std___1___shared_weak_count___release_weak(v13);
+          std___1___shared_weak_count___release_weak_alt1(v13);
         }
       }
-      result = std___1___shared_weak_count___release_weak(v5);
+      result = std___1___shared_weak_count___release_weak_alt1(v5);
     }
     else if (v5 == 0) {
       return result;
@@ -200,7 +218,7 @@ __int64 MapTradeTargetInfo_Unknown84(__int64 a1)
     if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-      return std___1___shared_weak_count___release_weak(v5);
+      return std___1___shared_weak_count___release_weak_alt1(v5);
     }
   }
   return result;

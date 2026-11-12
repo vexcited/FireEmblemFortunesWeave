@@ -17,6 +17,8 @@ extern __int64 GameData_220f8a8;
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* HitboxModule_Destructor(_QWORD* result);
 __int64 HitboxModule_d4e240(__int64 a1, __int64 a2);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 _QWORD* HitboxModule_Destructor(_QWORD* result)
 {
@@ -475,7 +477,7 @@ __int64 HitboxModule_d4e080(__int64 result, _QWORD* a2)
         if (v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
                                          0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-          result = std___1___shared_weak_count___release_weak(v10);
+          result = std___1___shared_weak_count___release_weak_alt1(v10);
         }
         v2 += 2;
       }
@@ -489,7 +491,7 @@ __int64 HitboxModule_d4e080(__int64 result, _QWORD* a2)
       if (v11 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-        result = std___1___shared_weak_count___release_weak(v11);
+        result = std___1___shared_weak_count___release_weak_alt1(v11);
       }
       v3 -= 2;
     } while (v3 != v2);

@@ -8,7 +8,8 @@ extern _UNKNOWN GameData_21d41b8;
 extern __int64 (*GameData_1f98c80[])();
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD,
                                                   _QWORD);
-void* BattleScenes_7a7840(__int64 a1, __int64 a2, _BYTE* a3, _BYTE* a4);
+void* BattleScenes_7a7840_alt1(__int64 a1, __int64 a2, _BYTE* a3,
+                               _BYTE* a4) __asm__("BattleScenes_7a7840");
 __int64 BattleScenes_7a7a20_alt1(__int64 a1, unsigned __int8* a2, __int64 a3,
                                  __int64 a4) __asm__("BattleScenes_7a7a20");
 __int64 game_map_BattleScenes_GetCurrentCount_lambda0_Invoke(__int64 result,
@@ -18,8 +19,11 @@ __int64 game_map_BattleScenes_GetReverseCount_lambda0_Invoke(__int64 result,
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 __int64 BattleScenes_7a7a20(__int64 a1, unsigned __int8* a2, __int64 a3);
+__int64 BattleInfo_7a3000_alt1() __asm__("BattleInfo_7a3000");
+__int64 BattleInfo_7a3110_alt1() __asm__("BattleInfo_7a3110");
+void* BattleScenes_7a7840(__int64 a1, char a2, _BYTE* a3, _BYTE* a4);
 
-void* BattleScenes_7a7840(__int64 a1, __int64 a2, _BYTE* a3, _BYTE* a4)
+void* BattleScenes_7a7840(__int64 a1, char a2, _BYTE* a3, _BYTE* a4)
 {
   __int64 v4;
   __int64 v5;
@@ -27,26 +31,18 @@ void* BattleScenes_7a7840(__int64 a1, __int64 a2, _BYTE* a3, _BYTE* a4)
   __int16 v8;
   __int64 v9;
   __int64 v10;
-  _QWORD* v11;
-  __int64 v12;
-  __int16* v13;
-  int v14;
-  __int64 v15;
-  __int64 v16;
-  __int16* v17;
-  int v18;
-  __int64 v19;
+  __int64 v11;
+  __int16* v12;
+  int v13;
+  __int64 v14;
+  __int16* v15;
+  int v16;
+  __int64 v17;
+  __int16* v18;
+  int v19;
   __int64 v20;
-  __int64 v21;
-  __int16* v22;
-  int v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  __int16* v27;
-  int v28;
-  __int64 v29;
-  __int64 v30;
+  __int16* v21;
+  int v22;
 
   v4 = *(int*)(a1 + 8200);
   if ((int)v4 > 127) {
@@ -71,49 +67,48 @@ void* BattleScenes_7a7840(__int64 a1, __int64 a2, _BYTE* a3, _BYTE* a4)
   *(_BYTE*)(v7 + 2) = *a3;
   *(_BYTE*)(v7 + 3) = *a4;
   v10 = *(_QWORD*)(a1 + 8208);
-  v11 = (_QWORD*)(v10 + 16);
   if (*a3 == 4) {
-    v12 = v10 + 16;
+    v11 = v10 + 16;
   }
   else {
-    v12 = v10 + 16 + 760LL * (unsigned __int8)*a3;
+    v11 = v10 + 16 + 760LL * (unsigned __int8)*a3;
   }
-  *(_BYTE*)(v7 + 6) = *(_QWORD*)(v12 + 168);
-  v13 = (__int16*)(v9 + 12LL * *(unsigned __int8*)(v10 + 32));
-  v14 = *v13;
-  v13[1] = 0;
-  v13[2] = v14 & (v14 >> 31);
-  *v13 = *(_DWORD*)(v10 + 112);
-  v13[3] = *(_DWORD*)(v10 + 120);
-  v13[4] = BattleInfo_7a3000((_QWORD*)(v10 + 16), a2);
-  v13[5] = BattleInfo_7a3110(v11, v15);
-  v16 = *(_QWORD*)(a1 + 8208);
-  v17 = (__int16*)(v9 + 12LL * *(unsigned __int8*)(v16 + 792));
-  v18 = *v17;
-  v17[1] = 0;
-  v17[2] = v18 & (v18 >> 31);
-  *v17 = *(_DWORD*)(v16 + 872);
-  v17[3] = *(_DWORD*)(v16 + 880);
-  v17[4] = BattleInfo_7a3000((_QWORD*)(v16 + 776), v19);
-  v17[5] = BattleInfo_7a3110((_QWORD*)(v16 + 776), v20);
-  v21 = *(_QWORD*)(a1 + 8208);
-  v22 = (__int16*)(v9 + 12LL * *(unsigned __int8*)(v21 + 1552));
-  v23 = *v22;
-  v22[1] = 0;
-  v22[2] = v23 & (v23 >> 31);
-  *v22 = *(_DWORD*)(v21 + 1632);
-  v22[3] = *(_DWORD*)(v21 + 1640);
-  v22[4] = BattleInfo_7a3000((_QWORD*)(v21 + 1536), v24);
-  v22[5] = BattleInfo_7a3110((_QWORD*)(v21 + 1536), v25);
-  v26 = *(_QWORD*)(a1 + 8208);
-  v27 = (__int16*)(v9 + 12LL * *(unsigned __int8*)(v26 + 2312));
-  v28 = *v27;
-  v27[1] = 0;
-  v27[2] = v28 & (v28 >> 31);
-  *v27 = *(_DWORD*)(v26 + 2392);
-  v27[3] = *(_DWORD*)(v26 + 2400);
-  v27[4] = BattleInfo_7a3000((_QWORD*)(v26 + 2296), v29);
-  v27[5] = BattleInfo_7a3110((_QWORD*)(v26 + 2296), v30);
+  *(_BYTE*)(v7 + 6) = *(_QWORD*)(v11 + 168);
+  v12 = (__int16*)(v9 + 12LL * *(unsigned __int8*)(v10 + 32));
+  v13 = *v12;
+  v12[1] = 0;
+  v12[2] = v13 & (v13 >> 31);
+  *v12 = *(_DWORD*)(v10 + 112);
+  v12[3] = *(_DWORD*)(v10 + 120);
+  v12[4] = BattleInfo_7a3000_alt1();
+  v12[5] = BattleInfo_7a3110_alt1();
+  v14 = *(_QWORD*)(a1 + 8208);
+  v15 = (__int16*)(v9 + 12LL * *(unsigned __int8*)(v14 + 792));
+  v16 = *v15;
+  v15[1] = 0;
+  v15[2] = v16 & (v16 >> 31);
+  *v15 = *(_DWORD*)(v14 + 872);
+  v15[3] = *(_DWORD*)(v14 + 880);
+  v15[4] = BattleInfo_7a3000_alt1();
+  v15[5] = BattleInfo_7a3110_alt1();
+  v17 = *(_QWORD*)(a1 + 8208);
+  v18 = (__int16*)(v9 + 12LL * *(unsigned __int8*)(v17 + 1552));
+  v19 = *v18;
+  v18[1] = 0;
+  v18[2] = v19 & (v19 >> 31);
+  *v18 = *(_DWORD*)(v17 + 1632);
+  v18[3] = *(_DWORD*)(v17 + 1640);
+  v18[4] = BattleInfo_7a3000_alt1();
+  v18[5] = BattleInfo_7a3110_alt1();
+  v20 = *(_QWORD*)(a1 + 8208);
+  v21 = (__int16*)(v9 + 12LL * *(unsigned __int8*)(v20 + 2312));
+  v22 = *v21;
+  v21[1] = 0;
+  v21[2] = v22 & (v22 >> 31);
+  *v21 = *(_DWORD*)(v20 + 2392);
+  v21[3] = *(_DWORD*)(v20 + 2400);
+  v21[4] = BattleInfo_7a3000_alt1();
+  v21[5] = BattleInfo_7a3110_alt1();
   return (void*)v7;
 }
 

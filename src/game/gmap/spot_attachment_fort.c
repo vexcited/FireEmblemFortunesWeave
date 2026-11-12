@@ -15,7 +15,8 @@ extern char GameData_1a9f09e;
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 SpotAttachmentFort_Unknown30(__int64 a1);
 _QWORD* SpotAttachmentFort_Unknown16(__int64 a1, __int64 a2);
-__int64 SpotAttachmentFort_DeletingDestructor(_QWORD* a1);
+__int64 SpotAttachmentFort_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "SpotAttachmentFort_DeletingDestructor");
 __int64 game_HashString(_QWORD);
 extern _UNKNOWN GameData_1a9a50c;
 extern __int64 GameData_21c9ed0;
@@ -54,6 +55,10 @@ void GameRoutine_151cae0(__int64*, unsigned __int64);
 _QWORD* game_gmap_SpotAttachmentFort_OnStartPhase(__int64 a1, __int64 a2);
 __int64 SpotAttachmentFort_151c7c0(__int64 a1, __int64* a2, __int64 a3,
                                    __int64** a4);
+__int64 SpotMgr_132ffa0_alt1(unsigned int*) __asm__("SpotMgr_132ffa0");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void SpotAttachmentFort_DeletingDestructor(_QWORD* a1);
 
 __int64 SpotAttachmentFort_151b980()
 {
@@ -399,7 +404,7 @@ _QWORD* SpotAttachmentFort_Unknown16(__int64 a1, __int64 a2)
   return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v7))(result, a2);
 }
 
-__int64 SpotAttachmentFort_DeletingDestructor(_QWORD* a1)
+void SpotAttachmentFort_DeletingDestructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
@@ -407,16 +412,18 @@ __int64 SpotAttachmentFort_DeletingDestructor(_QWORD* a1)
   __int64 v5;
   __int64* v6;
   __int64 v7;
-  int v8;
+  unsigned int v8;
   __int64 v10;
-  int v11;
+  unsigned int v11;
   __int64 v13;
   __int64 v14;
   __int64 v15;
   __int64 v16;
   __int64 v17;
-  _DWORD v19[2];
-  char* v20;
+  struct {
+    unsigned int v18[2];
+    char* v19;
+  } v18_;
 
   v1 = a1[4];
   *a1 = &game_gmap_SpotAttachmentDispatch_vtable;
@@ -430,10 +437,10 @@ __int64 SpotAttachmentFort_DeletingDestructor(_QWORD* a1)
       if (*(_BYTE*)(v7 + v3) != 0) {
         v8 = *(_DWORD*)(v7 + v3 + 4);
         if (v8 != 0 && *v6 != 0) {
-          v20 = &GameData_1a9f09e;
-          v19[0] = v8;
-          v19[1] = 0;
-          if (SpotMgr_132ffa0(v19) == v1) {
+          v18_.v19 = &GameData_1a9f09e;
+          v18_.v18[0] = v8;
+          v18_.v18[1] = 0;
+          if (SpotMgr_132ffa0_alt1(v18_.v18) == v1) {
             break;
           }
         }
@@ -446,15 +453,14 @@ __int64 SpotAttachmentFort_DeletingDestructor(_QWORD* a1)
     v10 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)v4 + 8LL) + 48LL) + v3;
     v11 = *(_DWORD*)(v10 + 4);
     if (v11 != 0 && *v6 != 0) {
-      v20 = &GameData_1a9f09e;
-      v19[0] = v11;
-      v19[1] = 0;
-      if (SpotMgr_132ffa0(v19) != 0) {
+      v18_.v19 = &GameData_1a9f09e;
+      v18_.v18[0] = v11;
+      v18_.v18[1] = 0;
+      if (SpotMgr_132ffa0_alt1(v18_.v18) != 0) {
         *(_DWORD*)(v10 + 4) = 0;
       }
     }
   }
-
 LABEL_19:
   v13 = a1[6];
   v14 = fw_memory_g_heap_manager_ptr;
@@ -465,13 +471,13 @@ LABEL_19:
     if (*(_QWORD*)(v15 + 200) == 0) {
       v16 = 56;
     }
-    nn_mem_StandardAllocator_Free(v15 + v16, v13);
+    nn_mem_StandardAllocator_Free_alt2(v15 + v16, v13);
   }
   v17 = 128;
   if (*(_QWORD*)(*(_QWORD*)v14 + 200LL) == 0) {
     v17 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v14 + v17, a1);
+  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v14 + v17, (__int64)a1);
 }
 
 __int64 SpotAttachmentFort_151c7c0(__int64 a1, __int64* a2, __int64 a3,

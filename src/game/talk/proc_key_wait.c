@@ -37,23 +37,29 @@ extern __int64 game_g_game_setting_ptr;
 void ProcTalkLogMenu_17cf3a0(__int64, char);
 void Seq_11351f0();
 void ProcKeyWait_Unknown2(__int64 a1);
+__attribute__((swiftcall)) void
+snd_findSlot_100a50_alt1(PSEUDO_X8, int*) __asm__("snd_findSlot_100a50");
+__int64 Slot_135980_alt1(_QWORD*, __int64) __asm__("Slot_135980");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
+__int64
+snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 
 __int64 ProcKeyWait_Unknown5()
 {
   __int64 result;
-  long double v1;
-  __int64 v2;
-  long double v3;
-  _BYTE v4[200];
-  _QWORD v5[2];
+  __int64 v1;
+  _QWORD v2[25];
+  __int64 v3[2];
 
-  *(struct PseudoSret*)(v5) = snd_findSlot_100a50(&GameData_21ec578);
-  result = snd_fnd_WeakHandle_isValid(v5);
+  snd_findSlot_100a50_alt1((void*)(v3), &GameData_21ec578);
+  result = snd_fnd_WeakHandle_isValid_alt1(v3);
   if ((result & 1) != 0) {
-    v2 = snd_fnd_WeakHandle_get(v5, v1);
-    *(__n128*)&v3 = snd_Fade_Fade_10c830(v4, 0.0);
-    Slot_135980(v2 - 5592, v4, v3);
-    return snd_Fade_Destroy_Fade(v4);
+    v1 = snd_fnd_WeakHandle_get_alt1((__int64)v3);
+    snd_Fade_Fade_10c830_alt1((__int64)v2, 0x0.0p+0f);
+    Slot_135980_alt1((_QWORD*)(v1 - 5592), (__int64)v2);
+    return snd_Fade_Destroy_Fade_alt1(v2);
   }
   return result;
 }

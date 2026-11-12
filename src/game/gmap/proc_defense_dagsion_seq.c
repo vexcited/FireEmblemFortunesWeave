@@ -26,6 +26,14 @@ extern __int64 game_GameModeData_instance_;
 __int64 ProcDefenseDagsionSeq_1521b80(__int64 a1);
 __int64 ProcDefenseDagsionSeq_1521ce0(__int64 result);
 __int64 ProcDefenseDagsionSeq_1521e50(__int64 result);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+const char*
+game_HashString32_alt2(const char* result) __asm__("game_HashString32");
+unsigned __int64
+GameRoutine_1130770_alt1(__int64, const char*,
+                         __int64*) __asm__("GameRoutine_1130770");
 
 __int64 ProcDefenseDagsionSeq_1521b80(__int64 a1)
 {
@@ -132,44 +140,43 @@ __int64 ProcDefenseDagsionSeq_1521e50(__int64 result)
   __int64 v2;
   __int64 v3;
   __int64 v4;
-  __int64 v5;
-  void* v6;
-  _BYTE* v7;
-  char v8;
+  void* v5;
+  _BYTE* v6;
+  char v7;
 
   if (*(_DWORD*)(*GameData_2130e70 + 48) == 0 && *GameData_212d460[0] == 0) {
     v2 = result;
-    v3 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                        1376, 16, 0);
-    GameRoutine_1130770(v3, "MID_DefenseBattle_e11", 0);
-    v5 = *(_QWORD*)(v2 + 40);
-    if (v5 != 0) {
-      *(_QWORD*)(v5 + 48) = v3;
+    v3 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 1376, 16, 0);
+    GameRoutine_1130770_alt1(v3, "MID_DefenseBattle_e11", nullptr);
+    v4 = *(_QWORD*)(v2 + 40);
+    if (v4 != 0) {
+      *(_QWORD*)(v4 + 48) = v3;
       *(_QWORD*)(v3 + 56) = *(_QWORD*)(v2 + 40);
     }
     *(_QWORD*)(v2 + 40) = v3;
     *(_QWORD*)(v3 + 24) = "talk::Seq";
     *(_QWORD*)(v3 + 32) = v2;
-    *(_DWORD*)(v3 + 140) = game_HashString32_alt1("talk::Seq", v4);
+    *(_DWORD*)(v3 + 140) = (unsigned int)game_HashString32_alt2("talk::Seq");
     *(_QWORD*)(v3 + 64) = 0;
     *(_QWORD*)(v3 + 72) = 24;
     *(_QWORD*)(v3 + 80) = 1;
-    v6 = GameData_2130228;
+    v5 = GameData_2130228;
     *(_QWORD*)(v3 + 8) = GameData_2130228;
-    *(_QWORD*)(v3 + 16) = v6;
+    *(_QWORD*)(v3 + 16) = v5;
     (*(void (**)(__int64))(*(_QWORD*)v3 + 32LL))(v3);
     result = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 136LL))(v3);
     if ((result & 1) != 0 && (*(_WORD*)(v3 + 136) & 0x100) == 0) {
       *(_WORD*)(v3 + 136) |= 0x100u;
     }
-    v7 = *(_BYTE**)(v3 + 32);
-    v8 = v7[138];
-    if (v8 == 0) {
+    v6 = *(_BYTE**)(v3 + 32);
+    v7 = v6[138];
+    if (v7 == 0) {
       result =
-          (*(__int64 (**)(_QWORD))(*(_QWORD*)v7 + 64LL))(*(_QWORD*)(v3 + 32));
-      v8 = v7[138];
+          (*(__int64 (**)(_QWORD))(*(_QWORD*)v6 + 64LL))(*(_QWORD*)(v3 + 32));
+      v7 = v6[138];
     }
-    v7[138] = v8 + 1;
+    v6[138] = v7 + 1;
     *(_WORD*)(v3 + 136) |= 2u;
   }
   return result;

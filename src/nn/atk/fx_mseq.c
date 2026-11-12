@@ -14,6 +14,8 @@ void FxMSEQ_Unknown5(__int64 a1, __int64 a2, int* a3);
 __int64 snd_coef_BiQuadCoef_BiQuadCoef(void);
 extern __int64 GameData_2134760[15];
 __int64 FxMSEQ_16e750(_QWORD* a1);
+__int64 snd_coef_BiQuadCoef_BiQuadCoef_alt1(__int64) __asm__(
+    "snd_coef_BiQuadCoef_BiQuadCoef");
 
 __int64 FxMSEQ_Destructor(_QWORD* a1)
 {
@@ -271,7 +273,7 @@ __int64 FxMSEQ_16e750(_QWORD* a1)
   v3 = snd_g_memory_ptr[0];
   v4 = (*(__int64 (**)(_QWORD, __int64, __int64))(
       **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(*snd_g_memory_ptr[0], 248, 32);
-  snd_coef_BiQuadCoef_BiQuadCoef();
+  snd_coef_BiQuadCoef_BiQuadCoef_alt1(v4);
   v5 = (void (***)(_QWORD))a1[1];
   a1[1] = v4;
   if (v5 != nullptr) {
@@ -280,7 +282,7 @@ __int64 FxMSEQ_16e750(_QWORD* a1)
   }
   v6 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v3 + 16LL))(
       *v3, 248, 32);
-  snd_coef_BiQuadCoef_BiQuadCoef();
+  snd_coef_BiQuadCoef_BiQuadCoef_alt1(v6);
   v7 = (void (***)(_QWORD))a1[2];
   a1[2] = v6;
   if (v7 != nullptr) {
@@ -289,7 +291,7 @@ __int64 FxMSEQ_16e750(_QWORD* a1)
   }
   v8 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v3 + 16LL))(
       *v3, 248, 32);
-  snd_coef_BiQuadCoef_BiQuadCoef();
+  snd_coef_BiQuadCoef_BiQuadCoef_alt1(v8);
   v9 = (void (***)(_QWORD))a1[3];
   a1[3] = v8;
   if (v9 != nullptr) {
@@ -298,7 +300,7 @@ __int64 FxMSEQ_16e750(_QWORD* a1)
   }
   v10 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v3 + 16LL))(
       *v3, 248, 32);
-  snd_coef_BiQuadCoef_BiQuadCoef();
+  snd_coef_BiQuadCoef_BiQuadCoef_alt1(v10);
   v11 = (void (***)(_QWORD))a1[4];
   a1[4] = v10;
   if (v11 != nullptr) {

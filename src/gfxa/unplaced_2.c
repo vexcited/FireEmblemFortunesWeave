@@ -91,82 +91,127 @@ __int64 gfxa_b60140(__int64 a1, _QWORD* a2, __int64* a3, _QWORD* a4,
                     __int64 a5);
 __int64 gfxa_b711f0(__int64 a1, __int64 a2);
 __int64 gfxa_b791d0(__int64 a1, __int64 a2);
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+void GameRoutine_18dcae0_alt1(__int64) __asm__("GameRoutine_18dcae0");
+void fw_graphics_ConstructAO_alt1(__int64) __asm__("fw_graphics_ConstructAO");
+void fw_graphics_ConstructBaseShadow_alt1(__int64) __asm__(
+    "fw_graphics_ConstructBaseShadow");
+void fw_graphics_ConstructCharaScene_alt1(__int64) __asm__(
+    "fw_graphics_ConstructCharaScene");
+void fw_graphics_ConstructCharaSilhouette_alt1(__int64) __asm__(
+    "fw_graphics_ConstructCharaSilhouette");
+void fw_graphics_ConstructChara_alt1(__int64) __asm__(
+    "fw_graphics_ConstructChara");
+void fw_graphics_ConstructCloud_alt1(__int64) __asm__(
+    "fw_graphics_ConstructCloud");
+void fw_graphics_ConstructColorGrading_alt1(__int64) __asm__(
+    "fw_graphics_ConstructColorGrading");
+void fw_graphics_ConstructContactShadow_alt1(__int64) __asm__(
+    "fw_graphics_ConstructContactShadow");
+void fw_graphics_ConstructFog_alt1(__int64) __asm__("fw_graphics_ConstructFog");
+void fw_graphics_ConstructGradationFilter_alt1(__int64) __asm__(
+    "fw_graphics_ConstructGradationFilter");
+void fw_graphics_ConstructHeightFog_alt1(__int64) __asm__(
+    "fw_graphics_ConstructHeightFog");
+void fw_graphics_ConstructMirage_alt1(__int64) __asm__(
+    "fw_graphics_ConstructMirage");
+void fw_graphics_ConstructPainting_alt1(__int64) __asm__(
+    "fw_graphics_ConstructPainting");
+void fw_graphics_ConstructSSR_alt1(__int64) __asm__("fw_graphics_ConstructSSR");
+void fw_graphics_ConstructSceneExposure_alt1(__int64) __asm__(
+    "fw_graphics_ConstructSceneExposure");
+void fw_graphics_ConstructSceneLight_alt1(__int64) __asm__(
+    "fw_graphics_ConstructSceneLight");
+void fw_graphics_ConstructSceneShadow_alt1(__int64) __asm__(
+    "fw_graphics_ConstructSceneShadow");
+void fw_graphics_ConstructShadowColorCorrection_alt1(__int64) __asm__(
+    "fw_graphics_ConstructShadowColorCorrection");
+void fw_graphics_ConstructSkyBlur_alt1(__int64) __asm__(
+    "fw_graphics_ConstructSkyBlur");
+void fw_graphics_ConstructTimeSlip_alt1(__int64) __asm__(
+    "fw_graphics_ConstructTimeSlip");
+void fw_graphics_ConstructTranslucency_alt1(__int64) __asm__(
+    "fw_graphics_ConstructTranslucency");
+void fw_graphics_ConstructVignette_alt1(__int64) __asm__(
+    "fw_graphics_ConstructVignette");
+void fw_graphics_RegisterProperty_alt1(_QWORD*, __int64) __asm__(
+    "fw_graphics_RegisterProperty");
 
 __int64 gfxa_ab4070(__int64 result)
 {
   int v1;
   _QWORD* v2;
   __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
   __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
   __int64 v14;
   __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
   __int64 v19;
   __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
   __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
   __int64 v28;
   __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
   __int64 v33;
+  __int64 v34;
+  __int64 v35;
+  __int64 v36;
   __int64 v37;
   __int64 v38;
-  __int64 v39;
+  __int64* v39;
+  __int64 v40;
+  __int64 v41;
+  char* v42;
   __int64 v43;
   __int64 v44;
   __int64 v45;
+  __int64 v46;
+  __int64 v47;
+  __int64 v48;
   __int64 v49;
-  __int64 v50;
+  _QWORD* v50;
+  __int64 v51;
+  __int64 v52;
+  __int64 v53;
   __int64 v54;
   __int64 v55;
+  __int64 v56;
+  __int64 v57;
+  __int64 v58;
   __int64 v59;
+  __int64 v60;
+  __int64 v61;
+  __int64 v62;
   __int64 v63;
   __int64 v64;
-  __int64 v68;
-  __int64 v72;
+  __int64 v65;
+  __int64 v66;
+  __int64 v67;
+  __int64* v68;
+  __int64 v69;
+  __int64 v70;
+  __int64 v71;
+  char* v72;
   __int64 v73;
-  __int64 v74;
-  __int64 v78;
-  __int64 v79;
-  __int64 v83;
-  __int64 v87;
-  __int64 v88;
-  __int64 v92;
-  __int64* v93;
-  __int64 v94;
-  __int64 v98;
-  char* v99;
-  __int64 v100;
-  __int64 v104;
-  __int64 v105;
-  __int64 v109;
-  __int64 v110;
-  __int64 v114;
-  __int64 v115;
-  _QWORD* v116;
-  __int64 v117;
-  __int64 v121;
-  __int64 v125;
-  __int64 v129;
-  __int64 v130;
-  __int64 v134;
-  __int64 v138;
-  __int64 v142;
-  __int64 v146;
-  __int64 v150;
-  __int64 v154;
-  __int64 v158;
-  __int64 v162;
-  __int64 v166;
-  __int64 v170;
-  __int64 v174;
-  __int64 v178;
-  __int64* v182;
-  __int64 v183;
-  __int64 v187;
-  __int64 v188;
-  char* v189;
-  __int64 v190;
 
   v1 = *(_DWORD*)(result + 40);
   v2 = (_QWORD*)result;
@@ -178,31 +223,31 @@ __int64 gfxa_ab4070(__int64 result)
       if (*(_QWORD*)(result + 48) == 0) {
         v3 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 376, 16, 0);
-        memset(v3, 0, 376);
+        memset_alt1(v3, 0, 0x178u);
         *(_QWORD*)v3 = gfxa_EnvSetting_vtable;
-        v7 = GameData_212e530[0];
+        v4 = GameData_212e530[0];
         *(_BYTE*)(v3 + 64) = 12;
         *(_DWORD*)(v3 + 65) = 1400070472;
         *(_BYTE*)(v3 + 88) = 1;
-        v8 = v7 + 16;
-        *(_QWORD*)(v3 + 56) = v7 + 16;
+        v5 = v4 + 16;
+        *(_QWORD*)(v3 + 56) = v4 + 16;
         *(_WORD*)(v3 + 69) = 28277;
-        fw_graphics_RegisterProperty((_QWORD*)v3, v3 + 56);
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v3, v3 + 56);
         *(_BYTE*)(v3 + 92) = 0;
         *(_BYTE*)(v3 + 96) = 0;
         *(_QWORD*)(v3 + 104) = 0;
         *(_QWORD*)(v3 + 112) = 0;
         *(_QWORD*)(v3 + 120) = 0;
-        v9 = GameData_212e520[0] + 16;
+        v6 = GameData_212e520[0] + 16;
         *(_DWORD*)(v3 + 128) = 1065353216;
         *(_BYTE*)(v3 + 144) = 12;
         strcpy((char*)(v3 + 145), "HasSky");
         *(_BYTE*)(v3 + 168) = 1;
-        *(_QWORD*)(v3 + 56) = v9;
-        *(_QWORD*)(v3 + 136) = v8;
-        fw_graphics_RegisterProperty((_QWORD*)v3, v3 + 136);
-        *(_QWORD*)(v3 + 136) = v9;
-        *(_QWORD*)(v3 + 216) = v8;
+        *(_QWORD*)(v3 + 56) = v6;
+        *(_QWORD*)(v3 + 136) = v5;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v3, v3 + 136);
+        *(_QWORD*)(v3 + 136) = v6;
+        *(_QWORD*)(v3 + 216) = v5;
         *(_BYTE*)(v3 + 224) = 30;
         *(_BYTE*)(v3 + 172) = 0;
         *(_BYTE*)(v3 + 176) = 0;
@@ -212,26 +257,26 @@ __int64 gfxa_ab4070(__int64 result)
         *(_DWORD*)(v3 + 208) = 1065353216;
         *(_BYTE*)(v3 + 248) = 1;
         strcpy((char*)(v3 + 225), "HasRenderingSky");
-        fw_graphics_RegisterProperty((_QWORD*)v3, v3 + 216);
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v3, v3 + 216);
         *(_BYTE*)(v3 + 252) = 0;
         *(_BYTE*)(v3 + 256) = 0;
         *(_BYTE*)(v3 + 304) = 14;
         *(_QWORD*)(v3 + 264) = 0;
         *(_QWORD*)(v3 + 272) = 0;
         *(_QWORD*)(v3 + 280) = 0;
-        *(_QWORD*)(v3 + 216) = v9;
+        *(_QWORD*)(v3 + 216) = v6;
         *(_DWORD*)(v3 + 288) = 1065353216;
-        *(_QWORD*)(v3 + 296) = v8;
+        *(_QWORD*)(v3 + 296) = v5;
         *(_BYTE*)(v3 + 328) = 1;
         strcpy((char*)(v3 + 305), "Outside");
-        fw_graphics_RegisterProperty((_QWORD*)v3, v3 + 296);
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v3, v3 + 296);
         result = v2[6];
         *(_BYTE*)(v3 + 332) = 0;
         *(_BYTE*)(v3 + 336) = 0;
         *(_QWORD*)(v3 + 344) = 0;
         *(_QWORD*)(v3 + 352) = 0;
         *(_QWORD*)(v3 + 360) = 0;
-        *(_QWORD*)(v3 + 296) = v9;
+        *(_QWORD*)(v3 + 296) = v6;
         *(_DWORD*)(v3 + 368) = 1065353216;
         v2[6] = v3;
         if (result != 0) {
@@ -239,1312 +284,1312 @@ __int64 gfxa_ab4070(__int64 result)
         }
       }
       if (v2[7] == 0) {
-        v10 = fw_memory_HeapManager_Allocate(
+        v7 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 456, 16, 0);
-        memset(v10, 0, 456);
-        *(_QWORD*)v10 = gfxa_BaseExposureSetting_vtable;
-        *(_BYTE*)(v10 + 88) = 1;
-        *(_BYTE*)(v10 + 64) = 8;
-        *(_QWORD*)(v10 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_DWORD*)(v10 + 65) = 1701869908;
-        fw_graphics_RegisterProperty((_QWORD*)v10, v10 + 56);
-        *(_BYTE*)(v10 + 92) = 0;
-        *(_BYTE*)(v10 + 96) = 0;
-        *(_QWORD*)(v10 + 104) = 0;
-        *(_QWORD*)(v10 + 112) = 0;
-        *(_QWORD*)(v10 + 120) = 0;
-        *(_DWORD*)(v10 + 128) = 0;
-        *(_BYTE*)(v10 + 168) = 1;
-        *(_BYTE*)(v10 + 144) = 18;
-        *(_QWORD*)(v10 + 56) = gfx_settings_Int_vtable;
-        *(_QWORD*)(v10 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v10 + 145), "A_SpeedUp");
-        fw_graphics_RegisterProperty((_QWORD*)v10, v10 + 136);
-        *(_BYTE*)(v10 + 172) = 0;
-        *(_BYTE*)(v10 + 176) = 0;
-        *(_QWORD*)(v10 + 184) = 0;
-        *(_QWORD*)(v10 + 192) = 0;
-        *(_QWORD*)(v10 + 200) = 0;
-        v14 = GameData_212e520[0] + 16;
-        *(_DWORD*)(v10 + 208) = 1077936128;
-        *(_QWORD*)(v10 + 216) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v10 + 248) = 1;
-        *(_BYTE*)(v10 + 224) = 22;
-        *(_QWORD*)(v10 + 136) = v14;
-        strcpy((char*)(v10 + 225), "A_SpeedDown");
-        fw_graphics_RegisterProperty((_QWORD*)v10, v10 + 216);
-        *(_BYTE*)(v10 + 252) = 0;
-        *(_BYTE*)(v10 + 256) = 0;
-        *(_QWORD*)(v10 + 264) = 0;
-        *(_QWORD*)(v10 + 272) = 0;
-        *(_BYTE*)(v10 + 304) = 30;
-        *(_QWORD*)(v10 + 280) = 0;
-        *(_QWORD*)(v10 + 216) = v14;
-        *(_DWORD*)(v10 + 288) = 1065353216;
-        *(_QWORD*)(v10 + 296) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v10 + 328) = 1;
-        strcpy((char*)(v10 + 305), "SL_PositionType");
-        fw_graphics_RegisterProperty((_QWORD*)v10, v10 + 296);
-        *(_BYTE*)(v10 + 332) = 0;
-        *(_BYTE*)(v10 + 336) = 0;
-        *(_QWORD*)(v10 + 344) = 0;
-        *(_QWORD*)(v10 + 352) = 0;
-        *(_BYTE*)(v10 + 384) = 26;
-        *(_QWORD*)(v10 + 360) = 0;
-        *(_QWORD*)(v10 + 296) = gfx_settings_Int_vtable;
-        *(_DWORD*)(v10 + 368) = 0;
-        *(_QWORD*)(v10 + 376) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v10 + 408) = 1;
-        strcpy((char*)(v10 + 385), "ContrastScale");
-        fw_graphics_RegisterProperty((_QWORD*)v10, v10 + 376);
+        memset_alt1(v7, 0, 0x1C8u);
+        *(_QWORD*)v7 = gfxa_BaseExposureSetting_vtable;
+        *(_BYTE*)(v7 + 88) = 1;
+        *(_BYTE*)(v7 + 64) = 8;
+        *(_QWORD*)(v7 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        *(_DWORD*)(v7 + 65) = 1701869908;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v7, v7 + 56);
+        *(_BYTE*)(v7 + 92) = 0;
+        *(_BYTE*)(v7 + 96) = 0;
+        *(_QWORD*)(v7 + 104) = 0;
+        *(_QWORD*)(v7 + 112) = 0;
+        *(_QWORD*)(v7 + 120) = 0;
+        *(_DWORD*)(v7 + 128) = 0;
+        *(_BYTE*)(v7 + 168) = 1;
+        *(_BYTE*)(v7 + 144) = 18;
+        *(_QWORD*)(v7 + 56) = gfx_settings_Int_vtable;
+        *(_QWORD*)(v7 + 136) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v7 + 145), "A_SpeedUp");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v7, v7 + 136);
+        *(_BYTE*)(v7 + 172) = 0;
+        *(_BYTE*)(v7 + 176) = 0;
+        *(_QWORD*)(v7 + 184) = 0;
+        *(_QWORD*)(v7 + 192) = 0;
+        *(_QWORD*)(v7 + 200) = 0;
+        v8 = GameData_212e520[0] + 16;
+        *(_DWORD*)(v7 + 208) = 1077936128;
+        *(_QWORD*)(v7 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v7 + 248) = 1;
+        *(_BYTE*)(v7 + 224) = 22;
+        *(_QWORD*)(v7 + 136) = v8;
+        strcpy((char*)(v7 + 225), "A_SpeedDown");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v7, v7 + 216);
+        *(_BYTE*)(v7 + 252) = 0;
+        *(_BYTE*)(v7 + 256) = 0;
+        *(_QWORD*)(v7 + 264) = 0;
+        *(_QWORD*)(v7 + 272) = 0;
+        *(_BYTE*)(v7 + 304) = 30;
+        *(_QWORD*)(v7 + 280) = 0;
+        *(_QWORD*)(v7 + 216) = v8;
+        *(_DWORD*)(v7 + 288) = 1065353216;
+        *(_QWORD*)(v7 + 296) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v7 + 328) = 1;
+        strcpy((char*)(v7 + 305), "SL_PositionType");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v7, v7 + 296);
+        *(_BYTE*)(v7 + 332) = 0;
+        *(_BYTE*)(v7 + 336) = 0;
+        *(_QWORD*)(v7 + 344) = 0;
+        *(_QWORD*)(v7 + 352) = 0;
+        *(_BYTE*)(v7 + 384) = 26;
+        *(_QWORD*)(v7 + 360) = 0;
+        *(_QWORD*)(v7 + 296) = gfx_settings_Int_vtable;
+        *(_DWORD*)(v7 + 368) = 0;
+        *(_QWORD*)(v7 + 376) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v7 + 408) = 1;
+        strcpy((char*)(v7 + 385), "ContrastScale");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v7, v7 + 376);
         result = v2[7];
-        *(_BYTE*)(v10 + 412) = 0;
-        *(_BYTE*)(v10 + 416) = 0;
-        *(_QWORD*)(v10 + 424) = 0;
-        *(_QWORD*)(v10 + 432) = 0;
-        *(_QWORD*)(v10 + 440) = 0;
-        *(_QWORD*)(v10 + 376) = v14;
-        *(_DWORD*)(v10 + 448) = 1065353216;
-        v2[7] = v10;
+        *(_BYTE*)(v7 + 412) = 0;
+        *(_BYTE*)(v7 + 416) = 0;
+        *(_QWORD*)(v7 + 424) = 0;
+        *(_QWORD*)(v7 + 432) = 0;
+        *(_QWORD*)(v7 + 440) = 0;
+        *(_QWORD*)(v7 + 376) = v8;
+        *(_DWORD*)(v7 + 448) = 1065353216;
+        v2[7] = v7;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[9] == 0) {
-        v15 = fw_memory_HeapManager_Allocate(
+        v9 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 296, 16, 0);
-        memset(v15, 0, 296);
-        *(_QWORD*)v15 = gfxa_AppExposureSetting_vtable;
-        qmemcpy((void*)(v15 + 64), " Ch0_Compensation", 17);
+        memset_alt1(v9, 0, 0x128u);
+        *(_QWORD*)v9 = gfxa_AppExposureSetting_vtable;
+        qmemcpy((void*)(v9 + 64), " Ch0_Compensation", 17);
+        *(_BYTE*)(v9 + 88) = 1;
+        *(_QWORD*)(v9 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v9, v9 + 56);
+        *(_BYTE*)(v9 + 92) = 0;
+        *(_BYTE*)(v9 + 96) = 0;
+        *(_QWORD*)(v9 + 104) = 0;
+        *(_QWORD*)(v9 + 112) = 0;
+        *(_QWORD*)(v9 + 120) = 0;
+        v10 = GameData_212e520[0] + 16;
+        *(_DWORD*)(v9 + 128) = 0;
+        strcpy((char*)(v9 + 144), " Ch1_Compensation");
+        *(_BYTE*)(v9 + 168) = 1;
+        *(_QWORD*)(v9 + 56) = v10;
+        *(_QWORD*)(v9 + 136) = &gfx_settings_BaseParamInstance_vtable;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v9, v9 + 136);
+        *(_QWORD*)(v9 + 136) = v10;
+        *(_QWORD*)(v9 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v9 + 172) = 0;
+        *(_BYTE*)(v9 + 176) = 0;
+        *(_QWORD*)(v9 + 184) = 0;
+        *(_QWORD*)(v9 + 192) = 0;
+        *(_QWORD*)(v9 + 200) = 0;
+        *(_DWORD*)(v9 + 208) = 0;
+        strcpy((char*)(v9 + 224), " Ch2_Compensation");
+        *(_BYTE*)(v9 + 248) = 1;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v9, v9 + 216);
+        result = v2[9];
+        *(_BYTE*)(v9 + 252) = 0;
+        *(_BYTE*)(v9 + 256) = 0;
+        *(_QWORD*)(v9 + 264) = 0;
+        *(_QWORD*)(v9 + 272) = 0;
+        *(_QWORD*)(v9 + 280) = 0;
+        *(_QWORD*)(v9 + 216) = v10;
+        *(_DWORD*)(v9 + 288) = 0;
+        v2[9] = v9;
+        if (result != 0) {
+          result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
+        }
+      }
+      if (v2[10] == 0) {
+        v11 = fw_memory_HeapManager_Allocate(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 1088, 16, 0);
+        memset_alt1(v11, 0, 0x440u);
+        fw_graphics_ConstructBaseShadow_alt1(v11);
+        result = v2[10];
+        v2[10] = v11;
+        if (result != 0) {
+          result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
+        }
+      }
+      if (v2[15] == 0) {
+        v12 = fw_memory_HeapManager_Allocate(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 376, 16, 0);
+        memset_alt1(v12, 0, 0x178u);
+        *(_QWORD*)v12 = gfxa_BloomSetting_vtable;
+        *(_BYTE*)(v12 + 88) = 1;
+        *(_BYTE*)(v12 + 64) = 10;
+        *(_QWORD*)(v12 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        *(_DWORD*)(v12 + 65) = 1752198209;
+        *(_BYTE*)(v12 + 69) = 97;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v12, v12 + 56);
+        *(_BYTE*)(v12 + 92) = 0;
+        *(_BYTE*)(v12 + 96) = 0;
+        *(_QWORD*)(v12 + 104) = 0;
+        *(_QWORD*)(v12 + 112) = 0;
+        *(_QWORD*)(v12 + 120) = 0;
+        v13 = GameData_212e520[0] + 16;
+        *(_DWORD*)(v12 + 128) = 1065353216;
+        *(_BYTE*)(v12 + 168) = 1;
+        *(_BYTE*)(v12 + 144) = 18;
+        *(_QWORD*)(v12 + 56) = v13;
+        *(_QWORD*)(v12 + 136) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v12 + 145), "Threshold");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v12, v12 + 136);
+        *(_QWORD*)(v12 + 136) = v13;
+        *(_QWORD*)(v12 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v12 + 224) = 26;
+        *(_BYTE*)(v12 + 172) = 0;
+        *(_BYTE*)(v12 + 176) = 0;
+        *(_QWORD*)(v12 + 184) = 0;
+        *(_QWORD*)(v12 + 192) = 0;
+        *(_QWORD*)(v12 + 200) = 0;
+        *(_DWORD*)(v12 + 208) = 1065353216;
+        *(_BYTE*)(v12 + 248) = 1;
+        strcpy((char*)(v12 + 225), "SoftThreshold");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v12, v12 + 216);
+        *(_BYTE*)(v12 + 252) = 0;
+        *(_BYTE*)(v12 + 256) = 0;
+        *(_QWORD*)(v12 + 264) = 0;
+        *(_QWORD*)(v12 + 272) = 0;
+        *(_DWORD*)(v12 + 288) = 1048576000;
+        *(_QWORD*)(v12 + 280) = 0;
+        *(_QWORD*)(v12 + 216) = v13;
+        *(_QWORD*)(v12 + 296) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v12 + 328) = 1;
+        *(_BYTE*)(v12 + 304) = 28;
+        strcpy((char*)(v12 + 305), "IntensityLevel");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v12, v12 + 296);
+        result = v2[15];
+        *(_BYTE*)(v12 + 332) = 0;
+        *(_BYTE*)(v12 + 336) = 0;
+        *(_QWORD*)(v12 + 344) = 0;
+        *(_QWORD*)(v12 + 352) = 0;
+        *(_QWORD*)(v12 + 360) = 0;
+        *(_QWORD*)(v12 + 296) = v13;
+        *(_DWORD*)(v12 + 368) = 0;
+        v2[15] = v12;
+        if (result != 0) {
+          result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
+        }
+      }
+      if (v2[17] == 0) {
+        v14 = fw_memory_HeapManager_Allocate(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 1000, 16, 0);
+        memset_alt1(v14, 0, 0x3E8u);
+        fw_graphics_ConstructChara_alt1(v14);
+        result = v2[17];
+        v2[17] = v14;
+        if (result != 0) {
+          result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
+        }
+      }
+      if (v2[21] == 0) {
+        v15 = fw_memory_HeapManager_Allocate(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 288, 16, 0);
+        memset_alt1(v15, 0, 0x120u);
+        *(_QWORD*)v15 = gfxa_DiffusionSetting_vtable;
+        *(_BYTE*)(v15 + 64) = 16;
         *(_BYTE*)(v15 + 88) = 1;
         *(_QWORD*)(v15 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        fw_graphics_RegisterProperty((_QWORD*)v15, v15 + 56);
+        *(_QWORD*)(v15 + 65) = 0x74736172746E6F43LL;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v15, v15 + 56);
         *(_BYTE*)(v15 + 92) = 0;
+        v16 = GameData_212e520[0];
         *(_BYTE*)(v15 + 96) = 0;
         *(_QWORD*)(v15 + 104) = 0;
         *(_QWORD*)(v15 + 112) = 0;
         *(_QWORD*)(v15 + 120) = 0;
-        v19 = GameData_212e520[0] + 16;
-        *(_DWORD*)(v15 + 128) = 0;
-        strcpy((char*)(v15 + 144), " Ch1_Compensation");
+        v17 = v16 + 16;
         *(_BYTE*)(v15 + 168) = 1;
-        *(_QWORD*)(v15 + 56) = v19;
+        *(_DWORD*)(v15 + 128) = 1065353216;
+        *(_QWORD*)(v15 + 56) = v16 + 16;
         *(_QWORD*)(v15 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        fw_graphics_RegisterProperty((_QWORD*)v15, v15 + 136);
-        *(_QWORD*)(v15 + 136) = v19;
+        strcpy((char*)(v15 + 144), "\nAlpha");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v15, v15 + 136);
+        *(_QWORD*)(v15 + 136) = v17;
         *(_QWORD*)(v15 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v15 + 224) = 18;
         *(_BYTE*)(v15 + 172) = 0;
         *(_BYTE*)(v15 + 176) = 0;
         *(_QWORD*)(v15 + 184) = 0;
         *(_QWORD*)(v15 + 192) = 0;
         *(_QWORD*)(v15 + 200) = 0;
         *(_DWORD*)(v15 + 208) = 0;
-        strcpy((char*)(v15 + 224), " Ch2_Compensation");
         *(_BYTE*)(v15 + 248) = 1;
-        fw_graphics_RegisterProperty((_QWORD*)v15, v15 + 216);
-        result = v2[9];
-        *(_BYTE*)(v15 + 252) = 0;
-        *(_BYTE*)(v15 + 256) = 0;
+        strcpy((char*)(v15 + 225), "DebugDraw");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v15, v15 + 216);
+        result = v2[21];
+        *(_WORD*)(v15 + 249) = 0;
+        *(_QWORD*)(v15 + 256) = 0;
         *(_QWORD*)(v15 + 264) = 0;
         *(_QWORD*)(v15 + 272) = 0;
-        *(_QWORD*)(v15 + 280) = 0;
-        *(_QWORD*)(v15 + 216) = v19;
-        *(_DWORD*)(v15 + 288) = 0;
-        v2[9] = v15;
-        if (result != 0) {
-          result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
-        }
-      }
-      if (v2[10] == 0) {
-        v20 = fw_memory_HeapManager_Allocate(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr, 1088, 16, 0);
-        memset(v20, 0, 1088);
-        fw_graphics_ConstructBaseShadow(v20);
-        result = v2[10];
-        v2[10] = v20;
-        if (result != 0) {
-          result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
-        }
-      }
-      if (v2[15] == 0) {
-        v24 = fw_memory_HeapManager_Allocate(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr, 376, 16, 0);
-        memset(v24, 0, 376);
-        *(_QWORD*)v24 = gfxa_BloomSetting_vtable;
-        *(_BYTE*)(v24 + 88) = 1;
-        *(_BYTE*)(v24 + 64) = 10;
-        *(_QWORD*)(v24 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_DWORD*)(v24 + 65) = 1752198209;
-        *(_BYTE*)(v24 + 69) = 97;
-        fw_graphics_RegisterProperty((_QWORD*)v24, v24 + 56);
-        *(_BYTE*)(v24 + 92) = 0;
-        *(_BYTE*)(v24 + 96) = 0;
-        *(_QWORD*)(v24 + 104) = 0;
-        *(_QWORD*)(v24 + 112) = 0;
-        *(_QWORD*)(v24 + 120) = 0;
-        v28 = GameData_212e520[0] + 16;
-        *(_DWORD*)(v24 + 128) = 1065353216;
-        *(_BYTE*)(v24 + 168) = 1;
-        *(_BYTE*)(v24 + 144) = 18;
-        *(_QWORD*)(v24 + 56) = v28;
-        *(_QWORD*)(v24 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v24 + 145), "Threshold");
-        fw_graphics_RegisterProperty((_QWORD*)v24, v24 + 136);
-        *(_QWORD*)(v24 + 136) = v28;
-        *(_QWORD*)(v24 + 216) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v24 + 224) = 26;
-        *(_BYTE*)(v24 + 172) = 0;
-        *(_BYTE*)(v24 + 176) = 0;
-        *(_QWORD*)(v24 + 184) = 0;
-        *(_QWORD*)(v24 + 192) = 0;
-        *(_QWORD*)(v24 + 200) = 0;
-        *(_DWORD*)(v24 + 208) = 1065353216;
-        *(_BYTE*)(v24 + 248) = 1;
-        strcpy((char*)(v24 + 225), "SoftThreshold");
-        fw_graphics_RegisterProperty((_QWORD*)v24, v24 + 216);
-        *(_BYTE*)(v24 + 252) = 0;
-        *(_BYTE*)(v24 + 256) = 0;
-        *(_QWORD*)(v24 + 264) = 0;
-        *(_QWORD*)(v24 + 272) = 0;
-        *(_DWORD*)(v24 + 288) = 1048576000;
-        *(_QWORD*)(v24 + 280) = 0;
-        *(_QWORD*)(v24 + 216) = v28;
-        *(_QWORD*)(v24 + 296) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v24 + 328) = 1;
-        *(_BYTE*)(v24 + 304) = 28;
-        strcpy((char*)(v24 + 305), "IntensityLevel");
-        fw_graphics_RegisterProperty((_QWORD*)v24, v24 + 296);
-        result = v2[15];
-        *(_BYTE*)(v24 + 332) = 0;
-        *(_BYTE*)(v24 + 336) = 0;
-        *(_QWORD*)(v24 + 344) = 0;
-        *(_QWORD*)(v24 + 352) = 0;
-        *(_QWORD*)(v24 + 360) = 0;
-        *(_QWORD*)(v24 + 296) = v28;
-        *(_DWORD*)(v24 + 368) = 0;
-        v2[15] = v24;
-        if (result != 0) {
-          result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
-        }
-      }
-      if (v2[17] == 0) {
-        v29 = fw_memory_HeapManager_Allocate(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr, 1000, 16, 0);
-        memset(v29, 0, 1000);
-        fw_graphics_ConstructChara(v29);
-        result = v2[17];
-        v2[17] = v29;
-        if (result != 0) {
-          result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
-        }
-      }
-      if (v2[21] == 0) {
-        v33 = fw_memory_HeapManager_Allocate(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr, 288, 16, 0);
-        memset(v33, 0, 288);
-        *(_QWORD*)v33 = gfxa_DiffusionSetting_vtable;
-        *(_BYTE*)(v33 + 64) = 16;
-        *(_BYTE*)(v33 + 88) = 1;
-        *(_QWORD*)(v33 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_QWORD*)(v33 + 65) = 0x74736172746E6F43LL;
-        fw_graphics_RegisterProperty((_QWORD*)v33, v33 + 56);
-        *(_BYTE*)(v33 + 92) = 0;
-        v37 = GameData_212e520[0];
-        *(_BYTE*)(v33 + 96) = 0;
-        *(_QWORD*)(v33 + 104) = 0;
-        *(_QWORD*)(v33 + 112) = 0;
-        *(_QWORD*)(v33 + 120) = 0;
-        v38 = v37 + 16;
-        *(_BYTE*)(v33 + 168) = 1;
-        *(_DWORD*)(v33 + 128) = 1065353216;
-        *(_QWORD*)(v33 + 56) = v37 + 16;
-        *(_QWORD*)(v33 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v33 + 144), "\nAlpha");
-        fw_graphics_RegisterProperty((_QWORD*)v33, v33 + 136);
-        *(_QWORD*)(v33 + 136) = v38;
-        *(_QWORD*)(v33 + 216) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v33 + 224) = 18;
-        *(_BYTE*)(v33 + 172) = 0;
-        *(_BYTE*)(v33 + 176) = 0;
-        *(_QWORD*)(v33 + 184) = 0;
-        *(_QWORD*)(v33 + 192) = 0;
-        *(_QWORD*)(v33 + 200) = 0;
-        *(_DWORD*)(v33 + 208) = 0;
-        *(_BYTE*)(v33 + 248) = 1;
-        strcpy((char*)(v33 + 225), "DebugDraw");
-        fw_graphics_RegisterProperty((_QWORD*)v33, v33 + 216);
-        result = v2[21];
-        *(_WORD*)(v33 + 249) = 0;
-        *(_QWORD*)(v33 + 256) = 0;
-        *(_QWORD*)(v33 + 264) = 0;
-        *(_QWORD*)(v33 + 272) = 0;
-        *(_BYTE*)(v33 + 280) = 0;
-        v2[21] = v33;
-        *(_QWORD*)(v33 + 216) = gfx_settings_Bool_vtable;
+        *(_BYTE*)(v15 + 280) = 0;
+        v2[21] = v15;
+        *(_QWORD*)(v15 + 216) = gfx_settings_Bool_vtable;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[22] == 0) {
-        v39 = fw_memory_HeapManager_Allocate(
+        v18 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 288, 16, 0);
-        memset(v39, 0, 288);
-        *(_QWORD*)v39 = gfxa_CharaDiffusionSetting_vtable;
-        *(_BYTE*)(v39 + 64) = 16;
-        *(_BYTE*)(v39 + 88) = 1;
-        *(_QWORD*)(v39 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_QWORD*)(v39 + 65) = 0x74736172746E6F43LL;
-        fw_graphics_RegisterProperty((_QWORD*)v39, v39 + 56);
-        *(_BYTE*)(v39 + 92) = 0;
-        v43 = GameData_212e520[0];
-        *(_BYTE*)(v39 + 96) = 0;
-        *(_QWORD*)(v39 + 104) = 0;
-        *(_QWORD*)(v39 + 112) = 0;
-        *(_QWORD*)(v39 + 120) = 0;
-        v44 = v43 + 16;
-        *(_BYTE*)(v39 + 168) = 1;
-        *(_DWORD*)(v39 + 128) = 1065353216;
-        *(_QWORD*)(v39 + 56) = v43 + 16;
-        *(_QWORD*)(v39 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v39 + 144), "\nAlpha");
-        fw_graphics_RegisterProperty((_QWORD*)v39, v39 + 136);
-        *(_QWORD*)(v39 + 136) = v44;
-        *(_QWORD*)(v39 + 216) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v39 + 224) = 18;
-        *(_BYTE*)(v39 + 172) = 0;
-        *(_BYTE*)(v39 + 176) = 0;
-        *(_QWORD*)(v39 + 184) = 0;
-        *(_QWORD*)(v39 + 192) = 0;
-        *(_QWORD*)(v39 + 200) = 0;
-        *(_DWORD*)(v39 + 208) = 0;
-        *(_BYTE*)(v39 + 248) = 1;
-        strcpy((char*)(v39 + 225), "DebugDraw");
-        fw_graphics_RegisterProperty((_QWORD*)v39, v39 + 216);
+        memset_alt1(v18, 0, 0x120u);
+        *(_QWORD*)v18 = gfxa_CharaDiffusionSetting_vtable;
+        *(_BYTE*)(v18 + 64) = 16;
+        *(_BYTE*)(v18 + 88) = 1;
+        *(_QWORD*)(v18 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        *(_QWORD*)(v18 + 65) = 0x74736172746E6F43LL;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v18, v18 + 56);
+        *(_BYTE*)(v18 + 92) = 0;
+        v19 = GameData_212e520[0];
+        *(_BYTE*)(v18 + 96) = 0;
+        *(_QWORD*)(v18 + 104) = 0;
+        *(_QWORD*)(v18 + 112) = 0;
+        *(_QWORD*)(v18 + 120) = 0;
+        v20 = v19 + 16;
+        *(_BYTE*)(v18 + 168) = 1;
+        *(_DWORD*)(v18 + 128) = 1065353216;
+        *(_QWORD*)(v18 + 56) = v19 + 16;
+        *(_QWORD*)(v18 + 136) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v18 + 144), "\nAlpha");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v18, v18 + 136);
+        *(_QWORD*)(v18 + 136) = v20;
+        *(_QWORD*)(v18 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v18 + 224) = 18;
+        *(_BYTE*)(v18 + 172) = 0;
+        *(_BYTE*)(v18 + 176) = 0;
+        *(_QWORD*)(v18 + 184) = 0;
+        *(_QWORD*)(v18 + 192) = 0;
+        *(_QWORD*)(v18 + 200) = 0;
+        *(_DWORD*)(v18 + 208) = 0;
+        *(_BYTE*)(v18 + 248) = 1;
+        strcpy((char*)(v18 + 225), "DebugDraw");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v18, v18 + 216);
         result = v2[22];
-        *(_WORD*)(v39 + 249) = 0;
-        *(_QWORD*)(v39 + 256) = 0;
-        *(_QWORD*)(v39 + 264) = 0;
-        *(_QWORD*)(v39 + 272) = 0;
-        *(_BYTE*)(v39 + 280) = 0;
-        v2[22] = v39;
-        *(_QWORD*)(v39 + 216) = gfx_settings_Bool_vtable;
+        *(_WORD*)(v18 + 249) = 0;
+        *(_QWORD*)(v18 + 256) = 0;
+        *(_QWORD*)(v18 + 264) = 0;
+        *(_QWORD*)(v18 + 272) = 0;
+        *(_BYTE*)(v18 + 280) = 0;
+        v2[22] = v18;
+        *(_QWORD*)(v18 + 216) = gfx_settings_Bool_vtable;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[23] == 0) {
-        v45 = fw_memory_HeapManager_Allocate(
+        v21 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 376, 16, 0);
-        memset(v45, 0, 376);
-        *(_QWORD*)v45 = gfxa_RadialBlurSetting_vtable;
-        *(_BYTE*)(v45 + 64) = 16;
-        *(_BYTE*)(v45 + 88) = 1;
-        *(_QWORD*)(v45 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_QWORD*)(v45 + 65) = 0x6874676E65727453LL;
-        fw_graphics_RegisterProperty((_QWORD*)v45, v45 + 56);
-        *(_BYTE*)(v45 + 92) = 0;
-        *(_BYTE*)(v45 + 96) = 0;
-        *(_QWORD*)(v45 + 104) = 0;
-        *(_QWORD*)(v45 + 112) = 0;
-        *(_QWORD*)(v45 + 120) = 0;
-        v49 = GameData_212e520[0] + 16;
-        *(_QWORD*)(v45 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        *(_DWORD*)(v45 + 128) = 0;
-        *(_BYTE*)(v45 + 168) = 1;
-        *(_BYTE*)(v45 + 144) = 26;
-        *(_QWORD*)(v45 + 56) = v49;
-        strcpy((char*)(v45 + 145), "SamplingCount");
-        fw_graphics_RegisterProperty((_QWORD*)v45, v45 + 136);
-        *(_BYTE*)(v45 + 172) = 0;
-        *(_BYTE*)(v45 + 176) = 0;
-        *(_QWORD*)(v45 + 184) = 0;
-        *(_QWORD*)(v45 + 192) = 0;
-        *(_QWORD*)(v45 + 136) = gfx_settings_Int_vtable;
-        *(_QWORD*)(v45 + 216) = &gfx_settings_BaseParamInstance_vtable;
-        *(_QWORD*)(v45 + 200) = 0;
-        *(_DWORD*)(v45 + 208) = 8;
-        *(_BYTE*)(v45 + 224) = 14;
-        strcpy((char*)(v45 + 225), "CenterX");
-        *(_BYTE*)(v45 + 248) = 1;
-        fw_graphics_RegisterProperty((_QWORD*)v45, v45 + 216);
-        *(_QWORD*)(v45 + 216) = v49;
-        *(_BYTE*)(v45 + 252) = 0;
-        *(_BYTE*)(v45 + 256) = 0;
-        *(_QWORD*)(v45 + 264) = 0;
-        *(_QWORD*)(v45 + 272) = 0;
-        *(_QWORD*)(v45 + 280) = 0;
-        *(_QWORD*)(v45 + 296) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v45 + 304) = 14;
-        strcpy((char*)(v45 + 305), "CenterY");
-        *(_DWORD*)(v45 + 288) = 1056964608;
-        *(_BYTE*)(v45 + 328) = 1;
-        fw_graphics_RegisterProperty((_QWORD*)v45, v45 + 296);
+        memset_alt1(v21, 0, 0x178u);
+        *(_QWORD*)v21 = gfxa_RadialBlurSetting_vtable;
+        *(_BYTE*)(v21 + 64) = 16;
+        *(_BYTE*)(v21 + 88) = 1;
+        *(_QWORD*)(v21 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        *(_QWORD*)(v21 + 65) = 0x6874676E65727453LL;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v21, v21 + 56);
+        *(_BYTE*)(v21 + 92) = 0;
+        *(_BYTE*)(v21 + 96) = 0;
+        *(_QWORD*)(v21 + 104) = 0;
+        *(_QWORD*)(v21 + 112) = 0;
+        *(_QWORD*)(v21 + 120) = 0;
+        v22 = GameData_212e520[0] + 16;
+        *(_QWORD*)(v21 + 136) = &gfx_settings_BaseParamInstance_vtable;
+        *(_DWORD*)(v21 + 128) = 0;
+        *(_BYTE*)(v21 + 168) = 1;
+        *(_BYTE*)(v21 + 144) = 26;
+        *(_QWORD*)(v21 + 56) = v22;
+        strcpy((char*)(v21 + 145), "SamplingCount");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v21, v21 + 136);
+        *(_BYTE*)(v21 + 172) = 0;
+        *(_BYTE*)(v21 + 176) = 0;
+        *(_QWORD*)(v21 + 184) = 0;
+        *(_QWORD*)(v21 + 192) = 0;
+        *(_QWORD*)(v21 + 136) = gfx_settings_Int_vtable;
+        *(_QWORD*)(v21 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        *(_QWORD*)(v21 + 200) = 0;
+        *(_DWORD*)(v21 + 208) = 8;
+        *(_BYTE*)(v21 + 224) = 14;
+        strcpy((char*)(v21 + 225), "CenterX");
+        *(_BYTE*)(v21 + 248) = 1;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v21, v21 + 216);
+        *(_QWORD*)(v21 + 216) = v22;
+        *(_BYTE*)(v21 + 252) = 0;
+        *(_BYTE*)(v21 + 256) = 0;
+        *(_QWORD*)(v21 + 264) = 0;
+        *(_QWORD*)(v21 + 272) = 0;
+        *(_QWORD*)(v21 + 280) = 0;
+        *(_QWORD*)(v21 + 296) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v21 + 304) = 14;
+        strcpy((char*)(v21 + 305), "CenterY");
+        *(_DWORD*)(v21 + 288) = 1056964608;
+        *(_BYTE*)(v21 + 328) = 1;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v21, v21 + 296);
         result = v2[23];
-        *(_BYTE*)(v45 + 332) = 0;
-        *(_BYTE*)(v45 + 336) = 0;
-        *(_QWORD*)(v45 + 344) = 0;
-        *(_QWORD*)(v45 + 352) = 0;
-        *(_QWORD*)(v45 + 360) = 0;
-        *(_QWORD*)(v45 + 296) = v49;
-        *(_DWORD*)(v45 + 368) = 1056964608;
-        v2[23] = v45;
+        *(_BYTE*)(v21 + 332) = 0;
+        *(_BYTE*)(v21 + 336) = 0;
+        *(_QWORD*)(v21 + 344) = 0;
+        *(_QWORD*)(v21 + 352) = 0;
+        *(_QWORD*)(v21 + 360) = 0;
+        *(_QWORD*)(v21 + 296) = v22;
+        *(_DWORD*)(v21 + 368) = 1056964608;
+        v2[23] = v21;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[24] == 0) {
-        v50 = fw_memory_HeapManager_Allocate(
+        v23 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 440, 16, 0);
-        memset(v50, 0, 440);
-        *(_QWORD*)v50 = gfxa_DoFSetting_vtable;
-        *(_BYTE*)(v50 + 88) = 1;
-        *(_BYTE*)(v50 + 64) = 8;
-        *(_QWORD*)(v50 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_DWORD*)(v50 + 65) = 1701080909;
-        fw_graphics_RegisterProperty((_QWORD*)v50, v50 + 56);
-        *(_BYTE*)(v50 + 92) = 0;
-        *(_BYTE*)(v50 + 96) = 0;
-        *(_QWORD*)(v50 + 104) = 0;
-        *(_QWORD*)(v50 + 112) = 0;
-        *(_QWORD*)(v50 + 120) = 0;
-        *(_DWORD*)(v50 + 128) = 0;
-        *(_BYTE*)(v50 + 144) = 16;
-        *(_BYTE*)(v50 + 168) = 1;
-        *(_QWORD*)(v50 + 56) = gfx_settings_Int_vtable;
-        *(_QWORD*)(v50 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v50 + 145), "F_Number");
-        fw_graphics_RegisterProperty((_QWORD*)v50, v50 + 136);
-        *(_BYTE*)(v50 + 172) = 0;
-        *(_BYTE*)(v50 + 176) = 0;
-        *(_QWORD*)(v50 + 184) = 0;
-        *(_QWORD*)(v50 + 192) = 0;
-        *(_QWORD*)(v50 + 200) = 0;
-        v54 = GameData_212e520[0] + 16;
-        *(_DWORD*)(v50 + 208) = 1067030938;
-        *(_QWORD*)(v50 + 216) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v50 + 248) = 1;
-        *(_BYTE*)(v50 + 224) = 26;
-        *(_QWORD*)(v50 + 136) = v54;
-        strcpy((char*)(v50 + 225), "FocusDistance");
-        fw_graphics_RegisterProperty((_QWORD*)v50, v50 + 216);
-        *(_BYTE*)(v50 + 252) = 0;
-        *(_BYTE*)(v50 + 256) = 0;
-        *(_QWORD*)(v50 + 264) = 0;
-        *(_QWORD*)(v50 + 272) = 0;
-        *(_QWORD*)(v50 + 280) = 0;
-        *(_QWORD*)(v50 + 216) = v54;
-        *(_QWORD*)(v50 + 296) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v50 + 328) = 1;
-        *(_DWORD*)(v50 + 288) = 1084227584;
-        *(_BYTE*)(v50 + 304) = 18;
-        strcpy((char*)(v50 + 305), "NearBokeh");
-        fw_graphics_RegisterProperty((_QWORD*)v50, v50 + 296);
-        *(_QWORD*)(v50 + 336) = 0;
-        *(_QWORD*)(v50 + 344) = 0;
-        *(_QWORD*)(v50 + 352) = 0;
-        *(_BYTE*)(v50 + 360) = 0;
-        *(_WORD*)(v50 + 329) = 0;
-        *(_QWORD*)(v50 + 296) = gfx_settings_Bool_vtable;
-        *(_QWORD*)(v50 + 368) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v50 + 400) = 1;
-        *(_BYTE*)(v50 + 376) = 28;
-        strcpy((char*)(v50 + 377), "TemporalFilter");
-        fw_graphics_RegisterProperty((_QWORD*)v50, v50 + 368);
+        memset_alt1(v23, 0, 0x1B8u);
+        *(_QWORD*)v23 = gfxa_DoFSetting_vtable;
+        *(_BYTE*)(v23 + 88) = 1;
+        *(_BYTE*)(v23 + 64) = 8;
+        *(_QWORD*)(v23 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        *(_DWORD*)(v23 + 65) = 1701080909;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v23, v23 + 56);
+        *(_BYTE*)(v23 + 92) = 0;
+        *(_BYTE*)(v23 + 96) = 0;
+        *(_QWORD*)(v23 + 104) = 0;
+        *(_QWORD*)(v23 + 112) = 0;
+        *(_QWORD*)(v23 + 120) = 0;
+        *(_DWORD*)(v23 + 128) = 0;
+        *(_BYTE*)(v23 + 144) = 16;
+        *(_BYTE*)(v23 + 168) = 1;
+        *(_QWORD*)(v23 + 56) = gfx_settings_Int_vtable;
+        *(_QWORD*)(v23 + 136) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v23 + 145), "F_Number");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v23, v23 + 136);
+        *(_BYTE*)(v23 + 172) = 0;
+        *(_BYTE*)(v23 + 176) = 0;
+        *(_QWORD*)(v23 + 184) = 0;
+        *(_QWORD*)(v23 + 192) = 0;
+        *(_QWORD*)(v23 + 200) = 0;
+        v24 = GameData_212e520[0] + 16;
+        *(_DWORD*)(v23 + 208) = 1067030938;
+        *(_QWORD*)(v23 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v23 + 248) = 1;
+        *(_BYTE*)(v23 + 224) = 26;
+        *(_QWORD*)(v23 + 136) = v24;
+        strcpy((char*)(v23 + 225), "FocusDistance");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v23, v23 + 216);
+        *(_BYTE*)(v23 + 252) = 0;
+        *(_BYTE*)(v23 + 256) = 0;
+        *(_QWORD*)(v23 + 264) = 0;
+        *(_QWORD*)(v23 + 272) = 0;
+        *(_QWORD*)(v23 + 280) = 0;
+        *(_QWORD*)(v23 + 216) = v24;
+        *(_QWORD*)(v23 + 296) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v23 + 328) = 1;
+        *(_DWORD*)(v23 + 288) = 1084227584;
+        *(_BYTE*)(v23 + 304) = 18;
+        strcpy((char*)(v23 + 305), "NearBokeh");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v23, v23 + 296);
+        *(_QWORD*)(v23 + 336) = 0;
+        *(_QWORD*)(v23 + 344) = 0;
+        *(_QWORD*)(v23 + 352) = 0;
+        *(_BYTE*)(v23 + 360) = 0;
+        *(_WORD*)(v23 + 329) = 0;
+        *(_QWORD*)(v23 + 296) = gfx_settings_Bool_vtable;
+        *(_QWORD*)(v23 + 368) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v23 + 400) = 1;
+        *(_BYTE*)(v23 + 376) = 28;
+        strcpy((char*)(v23 + 377), "TemporalFilter");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v23, v23 + 368);
         result = v2[24];
-        *(_QWORD*)(v50 + 408) = 0;
-        *(_QWORD*)(v50 + 416) = 0;
-        *(_QWORD*)(v50 + 424) = 0;
-        *(_QWORD*)(v50 + 368) = gfx_settings_Bool_vtable;
-        *(_BYTE*)(v50 + 432) = 1;
-        v2[24] = v50;
-        *(_WORD*)(v50 + 401) = 0;
+        *(_QWORD*)(v23 + 408) = 0;
+        *(_QWORD*)(v23 + 416) = 0;
+        *(_QWORD*)(v23 + 424) = 0;
+        *(_QWORD*)(v23 + 368) = gfx_settings_Bool_vtable;
+        *(_BYTE*)(v23 + 432) = 1;
+        v2[24] = v23;
+        *(_WORD*)(v23 + 401) = 0;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[25] == 0) {
-        v55 = fw_memory_HeapManager_Allocate(
+        v25 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 2384, 16, 0);
-        memset(v55, 0, 2384);
-        fw_graphics_ConstructCharaSilhouette(v55);
+        memset_alt1(v25, 0, 0x950u);
+        fw_graphics_ConstructCharaSilhouette_alt1(v25);
         result = v2[25];
-        v2[25] = v55;
+        v2[25] = v25;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[26] == 0) {
-        v59 = fw_memory_HeapManager_Allocate(
+        v26 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 440, 16, 0);
-        memset(v59, 0, 440);
-        *(_QWORD*)v59 = gfxa_CharaSelfShadowSetting_vtable;
-        *(_BYTE*)(v59 + 64) = 14;
-        *(_BYTE*)(v59 + 88) = 1;
-        *(_QWORD*)(v59 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_DWORD*)(v59 + 65) = 1650552389;
-        *(_DWORD*)(v59 + 68) = 1684368482;
-        fw_graphics_RegisterProperty((_QWORD*)v59, v59 + 56);
-        *(_WORD*)(v59 + 89) = 0;
-        *(_QWORD*)(v59 + 96) = 0;
-        *(_QWORD*)(v59 + 104) = 0;
-        *(_QWORD*)(v59 + 112) = 0;
-        *(_BYTE*)(v59 + 120) = 1;
-        *(_BYTE*)(v59 + 160) = 1;
-        *(_BYTE*)(v59 + 136) = 24;
-        *(_QWORD*)(v59 + 56) = gfx_settings_Bool_vtable;
-        *(_QWORD*)(v59 + 128) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v59 + 137), "ToCameraRate");
-        fw_graphics_RegisterProperty((_QWORD*)v59, v59 + 128);
-        *(_BYTE*)(v59 + 164) = 0;
-        *(_BYTE*)(v59 + 168) = 0;
-        *(_QWORD*)(v59 + 176) = 0;
-        *(_QWORD*)(v59 + 184) = 0;
-        *(_QWORD*)(v59 + 192) = 0;
-        v63 = GameData_212e520[0] + 16;
-        *(_DWORD*)(v59 + 200) = 0;
-        *(_BYTE*)(v59 + 240) = 1;
-        *(_BYTE*)(v59 + 216) = 18;
-        *(_QWORD*)(v59 + 128) = v63;
-        *(_QWORD*)(v59 + 208) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v59 + 217), "FadeStart");
-        fw_graphics_RegisterProperty((_QWORD*)v59, v59 + 208);
-        *(_BYTE*)(v59 + 244) = 0;
-        *(_BYTE*)(v59 + 248) = 0;
-        *(_DWORD*)(v59 + 280) = 1092616192;
-        *(_QWORD*)(v59 + 256) = 0;
-        *(_QWORD*)(v59 + 264) = 0;
-        *(_QWORD*)(v59 + 272) = 0;
-        *(_QWORD*)(v59 + 208) = v63;
-        *(_QWORD*)(v59 + 288) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v59 + 296) = 14;
-        *(_BYTE*)(v59 + 320) = 1;
-        strcpy((char*)(v59 + 297), "FadeEnd");
-        fw_graphics_RegisterProperty((_QWORD*)v59, v59 + 288);
-        *(_BYTE*)(v59 + 324) = 0;
-        *(_BYTE*)(v59 + 328) = 0;
-        *(_QWORD*)(v59 + 336) = 0;
-        *(_QWORD*)(v59 + 344) = 0;
-        *(_DWORD*)(v59 + 360) = 1101004800;
-        *(_QWORD*)(v59 + 352) = 0;
-        *(_QWORD*)(v59 + 288) = v63;
-        *(_QWORD*)(v59 + 368) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v59 + 400) = 1;
-        *(_BYTE*)(v59 + 376) = 30;
-        strcpy((char*)(v59 + 377), "DebugVolumeShow");
-        fw_graphics_RegisterProperty((_QWORD*)v59, v59 + 368);
+        memset_alt1(v26, 0, 0x1B8u);
+        *(_QWORD*)v26 = gfxa_CharaSelfShadowSetting_vtable;
+        *(_BYTE*)(v26 + 64) = 14;
+        *(_BYTE*)(v26 + 88) = 1;
+        *(_QWORD*)(v26 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        *(_DWORD*)(v26 + 65) = 1650552389;
+        *(_DWORD*)(v26 + 68) = 1684368482;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v26, v26 + 56);
+        *(_WORD*)(v26 + 89) = 0;
+        *(_QWORD*)(v26 + 96) = 0;
+        *(_QWORD*)(v26 + 104) = 0;
+        *(_QWORD*)(v26 + 112) = 0;
+        *(_BYTE*)(v26 + 120) = 1;
+        *(_BYTE*)(v26 + 160) = 1;
+        *(_BYTE*)(v26 + 136) = 24;
+        *(_QWORD*)(v26 + 56) = gfx_settings_Bool_vtable;
+        *(_QWORD*)(v26 + 128) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v26 + 137), "ToCameraRate");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v26, v26 + 128);
+        *(_BYTE*)(v26 + 164) = 0;
+        *(_BYTE*)(v26 + 168) = 0;
+        *(_QWORD*)(v26 + 176) = 0;
+        *(_QWORD*)(v26 + 184) = 0;
+        *(_QWORD*)(v26 + 192) = 0;
+        v27 = GameData_212e520[0] + 16;
+        *(_DWORD*)(v26 + 200) = 0;
+        *(_BYTE*)(v26 + 240) = 1;
+        *(_BYTE*)(v26 + 216) = 18;
+        *(_QWORD*)(v26 + 128) = v27;
+        *(_QWORD*)(v26 + 208) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v26 + 217), "FadeStart");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v26, v26 + 208);
+        *(_BYTE*)(v26 + 244) = 0;
+        *(_BYTE*)(v26 + 248) = 0;
+        *(_DWORD*)(v26 + 280) = 1092616192;
+        *(_QWORD*)(v26 + 256) = 0;
+        *(_QWORD*)(v26 + 264) = 0;
+        *(_QWORD*)(v26 + 272) = 0;
+        *(_QWORD*)(v26 + 208) = v27;
+        *(_QWORD*)(v26 + 288) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v26 + 296) = 14;
+        *(_BYTE*)(v26 + 320) = 1;
+        strcpy((char*)(v26 + 297), "FadeEnd");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v26, v26 + 288);
+        *(_BYTE*)(v26 + 324) = 0;
+        *(_BYTE*)(v26 + 328) = 0;
+        *(_QWORD*)(v26 + 336) = 0;
+        *(_QWORD*)(v26 + 344) = 0;
+        *(_DWORD*)(v26 + 360) = 1101004800;
+        *(_QWORD*)(v26 + 352) = 0;
+        *(_QWORD*)(v26 + 288) = v27;
+        *(_QWORD*)(v26 + 368) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v26 + 400) = 1;
+        *(_BYTE*)(v26 + 376) = 30;
+        strcpy((char*)(v26 + 377), "DebugVolumeShow");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v26, v26 + 368);
         result = v2[26];
-        *(_QWORD*)(v59 + 408) = 0;
-        *(_QWORD*)(v59 + 416) = 0;
-        *(_QWORD*)(v59 + 424) = 0;
-        *(_QWORD*)(v59 + 368) = gfx_settings_Bool_vtable;
-        *(_BYTE*)(v59 + 432) = 0;
-        v2[26] = v59;
-        *(_WORD*)(v59 + 401) = 0;
+        *(_QWORD*)(v26 + 408) = 0;
+        *(_QWORD*)(v26 + 416) = 0;
+        *(_QWORD*)(v26 + 424) = 0;
+        *(_QWORD*)(v26 + 368) = gfx_settings_Bool_vtable;
+        *(_BYTE*)(v26 + 432) = 0;
+        v2[26] = v26;
+        *(_WORD*)(v26 + 401) = 0;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[29] == 0) {
-        v64 = fw_memory_HeapManager_Allocate(
+        v28 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 736, 16, 0);
-        memset(v64, 0, 736);
-        fw_graphics_ConstructVignette(v64);
+        memset_alt1(v28, 0, 0x2E0u);
+        fw_graphics_ConstructVignette_alt1(v28);
         result = v2[29];
-        v2[29] = v64;
+        v2[29] = v28;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[31] == 0) {
-        v68 = fw_memory_HeapManager_Allocate(
+        v29 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 288, 16, 0);
-        memset(v68, 0, 288);
-        *(_QWORD*)v68 = gfxa_NegaPosiReverseSetting_vtable;
-        *(_BYTE*)(v68 + 88) = 1;
-        *(_BYTE*)(v68 + 64) = 14;
-        *(_QWORD*)(v68 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_DWORD*)(v68 + 65) = 1650552389;
-        *(_DWORD*)(v68 + 68) = 1684368482;
-        fw_graphics_RegisterProperty((_QWORD*)v68, v68 + 56);
-        *(_WORD*)(v68 + 89) = 0;
-        *(_QWORD*)(v68 + 96) = 0;
-        *(_QWORD*)(v68 + 104) = 0;
-        *(_QWORD*)(v68 + 112) = 0;
-        *(_BYTE*)(v68 + 120) = 0;
-        *(_BYTE*)(v68 + 160) = 1;
-        *(_QWORD*)(v68 + 56) = gfx_settings_Bool_vtable;
-        *(_QWORD*)(v68 + 128) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v68 + 136), "\nGamma");
-        fw_graphics_RegisterProperty((_QWORD*)v68, v68 + 128);
-        *(_BYTE*)(v68 + 164) = 0;
-        *(_BYTE*)(v68 + 168) = 0;
-        *(_QWORD*)(v68 + 176) = 0;
-        *(_QWORD*)(v68 + 184) = 0;
-        *(_QWORD*)(v68 + 192) = 0;
-        v72 = GameData_212e520[0] + 16;
-        strcpy((char*)(v68 + 216), "\nAlpha");
-        *(_BYTE*)(v68 + 240) = 1;
-        *(_QWORD*)(v68 + 128) = v72;
-        *(_QWORD*)(v68 + 208) = &gfx_settings_BaseParamInstance_vtable;
-        *(_DWORD*)(v68 + 200) = 1074580685;
-        fw_graphics_RegisterProperty((_QWORD*)v68, v68 + 208);
+        memset_alt1(v29, 0, 0x120u);
+        *(_QWORD*)v29 = gfxa_NegaPosiReverseSetting_vtable;
+        *(_BYTE*)(v29 + 88) = 1;
+        *(_BYTE*)(v29 + 64) = 14;
+        *(_QWORD*)(v29 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        *(_DWORD*)(v29 + 65) = 1650552389;
+        *(_DWORD*)(v29 + 68) = 1684368482;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v29, v29 + 56);
+        *(_WORD*)(v29 + 89) = 0;
+        *(_QWORD*)(v29 + 96) = 0;
+        *(_QWORD*)(v29 + 104) = 0;
+        *(_QWORD*)(v29 + 112) = 0;
+        *(_BYTE*)(v29 + 120) = 0;
+        *(_BYTE*)(v29 + 160) = 1;
+        *(_QWORD*)(v29 + 56) = gfx_settings_Bool_vtable;
+        *(_QWORD*)(v29 + 128) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v29 + 136), "\nGamma");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v29, v29 + 128);
+        *(_BYTE*)(v29 + 164) = 0;
+        *(_BYTE*)(v29 + 168) = 0;
+        *(_QWORD*)(v29 + 176) = 0;
+        *(_QWORD*)(v29 + 184) = 0;
+        *(_QWORD*)(v29 + 192) = 0;
+        v30 = GameData_212e520[0] + 16;
+        strcpy((char*)(v29 + 216), "\nAlpha");
+        *(_BYTE*)(v29 + 240) = 1;
+        *(_QWORD*)(v29 + 128) = v30;
+        *(_QWORD*)(v29 + 208) = &gfx_settings_BaseParamInstance_vtable;
+        *(_DWORD*)(v29 + 200) = 1074580685;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v29, v29 + 208);
         result = v2[31];
-        *(_BYTE*)(v68 + 244) = 0;
-        *(_BYTE*)(v68 + 248) = 0;
-        *(_QWORD*)(v68 + 256) = 0;
-        *(_QWORD*)(v68 + 264) = 0;
-        *(_QWORD*)(v68 + 272) = 0;
-        *(_QWORD*)(v68 + 208) = v72;
-        v2[31] = v68;
-        *(_DWORD*)(v68 + 280) = 1065353216;
+        *(_BYTE*)(v29 + 244) = 0;
+        *(_BYTE*)(v29 + 248) = 0;
+        *(_QWORD*)(v29 + 256) = 0;
+        *(_QWORD*)(v29 + 264) = 0;
+        *(_QWORD*)(v29 + 272) = 0;
+        *(_QWORD*)(v29 + 208) = v30;
+        v2[31] = v29;
+        *(_DWORD*)(v29 + 280) = 1065353216;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[32] == 0) {
-        v73 = fw_memory_HeapManager_Allocate(
+        v31 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 448, 16, 0);
-        GameRoutine_18dcae0(v73);
+        GameRoutine_18dcae0_alt1(v31);
         result = v2[32];
-        v2[32] = v73;
+        v2[32] = v31;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[34] == 0) {
-        v74 = fw_memory_HeapManager_Allocate(
+        v32 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 576, 16, 0);
-        memset(v74, 0, 576);
-        *(_QWORD*)v74 = gfxa_SepiaSetting_vtable;
-        *(_BYTE*)(v74 + 88) = 1;
-        *(_BYTE*)(v74 + 64) = 14;
-        *(_QWORD*)(v74 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_DWORD*)(v74 + 65) = 1650552389;
-        *(_DWORD*)(v74 + 68) = 1684368482;
-        fw_graphics_RegisterProperty((_QWORD*)v74, v74 + 56);
-        *(_WORD*)(v74 + 89) = 0;
-        *(_QWORD*)(v74 + 96) = 0;
-        *(_QWORD*)(v74 + 104) = 0;
-        *(_QWORD*)(v74 + 112) = 0;
-        *(_BYTE*)(v74 + 120) = 0;
-        *(_BYTE*)(v74 + 160) = 1;
-        *(_QWORD*)(v74 + 56) = gfx_settings_Bool_vtable;
-        *(_QWORD*)(v74 + 128) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v74 + 136) = 4;
-        strcpy((char*)(v74 + 137), "Cb");
-        fw_graphics_RegisterProperty((_QWORD*)v74, v74 + 128);
-        *(_BYTE*)(v74 + 164) = 0;
-        *(_BYTE*)(v74 + 168) = 0;
-        *(_QWORD*)(v74 + 176) = 0;
-        *(_QWORD*)(v74 + 184) = 0;
-        *(_QWORD*)(v74 + 192) = 0;
-        v78 = GameData_212e520[0] + 16;
-        *(_BYTE*)(v74 + 216) = 4;
-        *(_BYTE*)(v74 + 240) = 1;
-        *(_QWORD*)(v74 + 128) = v78;
-        *(_QWORD*)(v74 + 208) = &gfx_settings_BaseParamInstance_vtable;
-        *(_DWORD*)(v74 + 200) = -1110651699;
-        strcpy((char*)(v74 + 217), "Cr");
-        fw_graphics_RegisterProperty((_QWORD*)v74, v74 + 208);
-        *(_QWORD*)(v74 + 208) = v78;
-        *(_BYTE*)(v74 + 244) = 0;
-        *(_BYTE*)(v74 + 248) = 0;
-        *(_QWORD*)(v74 + 256) = 0;
-        *(_QWORD*)(v74 + 264) = 0;
-        *(_QWORD*)(v74 + 272) = 0;
-        *(_QWORD*)(v74 + 288) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v74 + 296) = 30;
-        *(_BYTE*)(v74 + 320) = 1;
-        *(_DWORD*)(v74 + 280) = 1028443341;
-        strcpy((char*)(v74 + 297), "MonotoneOpacity");
-        fw_graphics_RegisterProperty((_QWORD*)v74, v74 + 288);
-        *(_BYTE*)(v74 + 324) = 0;
-        *(_BYTE*)(v74 + 328) = 0;
-        *(_QWORD*)(v74 + 336) = 0;
-        *(_QWORD*)(v74 + 344) = 0;
-        *(_QWORD*)(v74 + 352) = 0;
-        *(_QWORD*)(v74 + 288) = v78;
-        *(_QWORD*)(v74 + 368) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v74 + 400) = 1;
-        *(_DWORD*)(v74 + 360) = 1061997773;
-        *(_BYTE*)(v74 + 376) = 26;
-        strcpy((char*)(v74 + 377), "MultiplyColor");
-        fw_graphics_RegisterProperty((_QWORD*)v74, v74 + 368);
-        *(_BYTE*)(v74 + 416) = 0;
-        *(_BYTE*)(v74 + 432) = 0;
-        *(_QWORD*)(v74 + 448) = 0;
-        *(_QWORD*)(v74 + 456) = 0;
-        *(_QWORD*)(v74 + 368) = gfx_settings_Float3_vtable;
-        *(_QWORD*)(v74 + 464) = 0;
-        *(_QWORD*)(v74 + 496) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v74 + 504) = 30;
-        *(_BYTE*)(v74 + 528) = 1;
-        strcpy((char*)(v74 + 505), "MultiplyOpacity");
-        *(_OWORD*)(v74 + 480) = GameData_1a82950;
-        fw_graphics_RegisterProperty((_QWORD*)v74, v74 + 496);
+        memset_alt1(v32, 0, 0x240u);
+        *(_QWORD*)v32 = gfxa_SepiaSetting_vtable;
+        *(_BYTE*)(v32 + 88) = 1;
+        *(_BYTE*)(v32 + 64) = 14;
+        *(_QWORD*)(v32 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        *(_DWORD*)(v32 + 65) = 1650552389;
+        *(_DWORD*)(v32 + 68) = 1684368482;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v32, v32 + 56);
+        *(_WORD*)(v32 + 89) = 0;
+        *(_QWORD*)(v32 + 96) = 0;
+        *(_QWORD*)(v32 + 104) = 0;
+        *(_QWORD*)(v32 + 112) = 0;
+        *(_BYTE*)(v32 + 120) = 0;
+        *(_BYTE*)(v32 + 160) = 1;
+        *(_QWORD*)(v32 + 56) = gfx_settings_Bool_vtable;
+        *(_QWORD*)(v32 + 128) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v32 + 136) = 4;
+        strcpy((char*)(v32 + 137), "Cb");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v32, v32 + 128);
+        *(_BYTE*)(v32 + 164) = 0;
+        *(_BYTE*)(v32 + 168) = 0;
+        *(_QWORD*)(v32 + 176) = 0;
+        *(_QWORD*)(v32 + 184) = 0;
+        *(_QWORD*)(v32 + 192) = 0;
+        v33 = GameData_212e520[0] + 16;
+        *(_BYTE*)(v32 + 216) = 4;
+        *(_BYTE*)(v32 + 240) = 1;
+        *(_QWORD*)(v32 + 128) = v33;
+        *(_QWORD*)(v32 + 208) = &gfx_settings_BaseParamInstance_vtable;
+        *(_DWORD*)(v32 + 200) = -1110651699;
+        strcpy((char*)(v32 + 217), "Cr");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v32, v32 + 208);
+        *(_QWORD*)(v32 + 208) = v33;
+        *(_BYTE*)(v32 + 244) = 0;
+        *(_BYTE*)(v32 + 248) = 0;
+        *(_QWORD*)(v32 + 256) = 0;
+        *(_QWORD*)(v32 + 264) = 0;
+        *(_QWORD*)(v32 + 272) = 0;
+        *(_QWORD*)(v32 + 288) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v32 + 296) = 30;
+        *(_BYTE*)(v32 + 320) = 1;
+        *(_DWORD*)(v32 + 280) = 1028443341;
+        strcpy((char*)(v32 + 297), "MonotoneOpacity");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v32, v32 + 288);
+        *(_BYTE*)(v32 + 324) = 0;
+        *(_BYTE*)(v32 + 328) = 0;
+        *(_QWORD*)(v32 + 336) = 0;
+        *(_QWORD*)(v32 + 344) = 0;
+        *(_QWORD*)(v32 + 352) = 0;
+        *(_QWORD*)(v32 + 288) = v33;
+        *(_QWORD*)(v32 + 368) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v32 + 400) = 1;
+        *(_DWORD*)(v32 + 360) = 1061997773;
+        *(_BYTE*)(v32 + 376) = 26;
+        strcpy((char*)(v32 + 377), "MultiplyColor");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v32, v32 + 368);
+        *(_BYTE*)(v32 + 416) = 0;
+        *(_BYTE*)(v32 + 432) = 0;
+        *(_QWORD*)(v32 + 448) = 0;
+        *(_QWORD*)(v32 + 456) = 0;
+        *(_QWORD*)(v32 + 368) = gfx_settings_Float3_vtable;
+        *(_QWORD*)(v32 + 464) = 0;
+        *(_QWORD*)(v32 + 496) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v32 + 504) = 30;
+        *(_BYTE*)(v32 + 528) = 1;
+        strcpy((char*)(v32 + 505), "MultiplyOpacity");
+        *(_OWORD*)(v32 + 480) = GameData_1a82950;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v32, v32 + 496);
         result = v2[34];
-        *(_BYTE*)(v74 + 532) = 0;
-        *(_BYTE*)(v74 + 536) = 0;
-        *(_QWORD*)(v74 + 544) = 0;
-        *(_QWORD*)(v74 + 552) = 0;
-        *(_QWORD*)(v74 + 560) = 0;
-        *(_QWORD*)(v74 + 496) = v78;
-        v2[34] = v74;
-        *(_DWORD*)(v74 + 568) = 1053609165;
+        *(_BYTE*)(v32 + 532) = 0;
+        *(_BYTE*)(v32 + 536) = 0;
+        *(_QWORD*)(v32 + 544) = 0;
+        *(_QWORD*)(v32 + 552) = 0;
+        *(_QWORD*)(v32 + 560) = 0;
+        *(_QWORD*)(v32 + 496) = v33;
+        v2[34] = v32;
+        *(_DWORD*)(v32 + 568) = 1053609165;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[36] == 0) {
-        v79 = fw_memory_HeapManager_Allocate(
+        v34 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 1152, 16, 0);
-        memset(v79, 0, 1152);
-        fw_graphics_ConstructTimeSlip(v79);
+        memset_alt1(v34, 0, 0x480u);
+        fw_graphics_ConstructTimeSlip_alt1(v34);
         result = v2[36];
-        v2[36] = v79;
+        v2[36] = v34;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[38] == 0) {
-        v83 = fw_memory_HeapManager_Allocate(
+        v35 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 288, 16, 0);
-        memset(v83, 0, 288);
-        *(_QWORD*)v83 = gfxa_GaussianBlurSetting_vtable;
-        *(_BYTE*)(v83 + 88) = 1;
-        *(_BYTE*)(v83 + 64) = 26;
-        *(_QWORD*)(v83 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        qmemcpy((void*)(v83 + 65), "SamplingCount", 13);
-        fw_graphics_RegisterProperty((_QWORD*)v83, v83 + 56);
-        *(_BYTE*)(v83 + 92) = 0;
-        *(_BYTE*)(v83 + 96) = 0;
-        *(_QWORD*)(v83 + 104) = 0;
-        *(_QWORD*)(v83 + 112) = 0;
-        *(_QWORD*)(v83 + 120) = 0;
-        *(_BYTE*)(v83 + 168) = 1;
-        *(_QWORD*)(v83 + 56) = gfx_settings_Int_vtable;
-        *(_DWORD*)(v83 + 128) = 2;
-        *(_QWORD*)(v83 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v83 + 144), "\nAlpha");
-        fw_graphics_RegisterProperty((_QWORD*)v83, v83 + 136);
-        *(_BYTE*)(v83 + 172) = 0;
-        v87 = GameData_212e520[0];
-        *(_BYTE*)(v83 + 176) = 0;
-        *(_QWORD*)(v83 + 184) = 0;
-        *(_QWORD*)(v83 + 192) = 0;
-        *(_QWORD*)(v83 + 200) = 0;
-        *(_DWORD*)(v83 + 208) = 0;
-        *(_BYTE*)(v83 + 248) = 1;
-        *(_QWORD*)(v83 + 136) = v87 + 16;
-        *(_QWORD*)(v83 + 216) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v83 + 224) = 14;
-        strcpy((char*)(v83 + 225), "Capture");
-        fw_graphics_RegisterProperty((_QWORD*)v83, v83 + 216);
+        memset_alt1(v35, 0, 0x120u);
+        *(_QWORD*)v35 = gfxa_GaussianBlurSetting_vtable;
+        *(_BYTE*)(v35 + 88) = 1;
+        *(_BYTE*)(v35 + 64) = 26;
+        *(_QWORD*)(v35 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        qmemcpy((void*)(v35 + 65), "SamplingCount", 13);
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v35, v35 + 56);
+        *(_BYTE*)(v35 + 92) = 0;
+        *(_BYTE*)(v35 + 96) = 0;
+        *(_QWORD*)(v35 + 104) = 0;
+        *(_QWORD*)(v35 + 112) = 0;
+        *(_QWORD*)(v35 + 120) = 0;
+        *(_BYTE*)(v35 + 168) = 1;
+        *(_QWORD*)(v35 + 56) = gfx_settings_Int_vtable;
+        *(_DWORD*)(v35 + 128) = 2;
+        *(_QWORD*)(v35 + 136) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v35 + 144), "\nAlpha");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v35, v35 + 136);
+        *(_BYTE*)(v35 + 172) = 0;
+        v36 = GameData_212e520[0];
+        *(_BYTE*)(v35 + 176) = 0;
+        *(_QWORD*)(v35 + 184) = 0;
+        *(_QWORD*)(v35 + 192) = 0;
+        *(_QWORD*)(v35 + 200) = 0;
+        *(_DWORD*)(v35 + 208) = 0;
+        *(_BYTE*)(v35 + 248) = 1;
+        *(_QWORD*)(v35 + 136) = v36 + 16;
+        *(_QWORD*)(v35 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v35 + 224) = 14;
+        strcpy((char*)(v35 + 225), "Capture");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v35, v35 + 216);
         result = v2[38];
-        *(_WORD*)(v83 + 249) = 0;
-        *(_QWORD*)(v83 + 256) = 0;
-        *(_QWORD*)(v83 + 264) = 0;
-        *(_QWORD*)(v83 + 272) = 0;
-        *(_BYTE*)(v83 + 280) = 0;
-        v2[38] = v83;
-        *(_QWORD*)(v83 + 216) = gfx_settings_Bool_vtable;
+        *(_WORD*)(v35 + 249) = 0;
+        *(_QWORD*)(v35 + 256) = 0;
+        *(_QWORD*)(v35 + 264) = 0;
+        *(_QWORD*)(v35 + 272) = 0;
+        *(_BYTE*)(v35 + 280) = 0;
+        v2[38] = v35;
+        *(_QWORD*)(v35 + 216) = gfx_settings_Bool_vtable;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[30] == 0) {
-        v88 = fw_memory_HeapManager_Allocate(
+        v37 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 656, 16, 0);
-        memset(v88, 0, 656);
-        *(_QWORD*)v88 = gfxa_SightMapRenderSetting_vtable;
-        *(_BYTE*)(v88 + 88) = 1;
-        *(_BYTE*)(v88 + 64) = 30;
-        *(_QWORD*)(v88 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        qmemcpy((void*)(v88 + 65), "EnabledEditMode", 15);
-        fw_graphics_RegisterProperty((_QWORD*)v88, v88 + 56);
-        *(_WORD*)(v88 + 89) = 0;
-        *(_QWORD*)(v88 + 96) = 0;
-        *(_QWORD*)(v88 + 104) = 0;
-        *(_QWORD*)(v88 + 112) = 0;
-        *(_BYTE*)(v88 + 120) = 0;
-        *(_BYTE*)(v88 + 160) = 1;
-        *(_QWORD*)(v88 + 56) = gfx_settings_Bool_vtable;
-        *(_QWORD*)(v88 + 128) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v88 + 136) = 20;
-        strcpy((char*)(v88 + 137), "NoiseScale");
-        fw_graphics_RegisterProperty((_QWORD*)v88, v88 + 128);
-        *(_BYTE*)(v88 + 164) = 0;
-        *(_BYTE*)(v88 + 168) = 0;
-        *(_QWORD*)(v88 + 176) = 0;
-        *(_QWORD*)(v88 + 184) = 0;
-        *(_QWORD*)(v88 + 192) = 0;
-        v92 = GameData_212e520[0] + 16;
-        *(_DWORD*)(v88 + 200) = 1069547520;
-        *(_QWORD*)(v88 + 208) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v88 + 240) = 1;
-        strcpy((char*)(v88 + 216), " NoiseScrollSpeed");
-        *(_QWORD*)(v88 + 128) = v92;
-        fw_graphics_RegisterProperty((_QWORD*)v88, v88 + 208);
-        *(_BYTE*)(v88 + 244) = 0;
-        *(_BYTE*)(v88 + 248) = 0;
-        *(_QWORD*)(v88 + 256) = 0;
-        *(_QWORD*)(v88 + 264) = 0;
-        *(_DWORD*)(v88 + 280) = 0x40000000;
-        *(_QWORD*)(v88 + 272) = 0;
-        *(_QWORD*)(v88 + 208) = v92;
-        *(_QWORD*)(v88 + 288) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v88 + 296), "\nColor");
-        *(_BYTE*)(v88 + 320) = 1;
-        fw_graphics_RegisterProperty((_QWORD*)v88, v88 + 288);
-        *(_BYTE*)(v88 + 336) = 0;
-        *(_BYTE*)(v88 + 352) = 0;
-        *(_QWORD*)(v88 + 368) = 0;
-        *(_QWORD*)(v88 + 376) = 0;
-        *(_QWORD*)(v88 + 288) = gfx_settings_Float3_vtable;
-        *(_QWORD*)(v88 + 384) = 0;
-        *(_QWORD*)(v88 + 400) = 0;
-        *(_QWORD*)(v88 + 408) = 0;
-        *(_QWORD*)(v88 + 416) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v88 + 424), "\nAlpha");
-        *(_BYTE*)(v88 + 448) = 1;
-        fw_graphics_RegisterProperty((_QWORD*)v88, v88 + 416);
-        *(_BYTE*)(v88 + 452) = 0;
-        *(_BYTE*)(v88 + 456) = 0;
-        *(_QWORD*)(v88 + 464) = 0;
-        *(_QWORD*)(v88 + 472) = 0;
-        *(_QWORD*)(v88 + 480) = 0;
-        *(_QWORD*)(v88 + 416) = v92;
-        *(_QWORD*)(v88 + 496) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v88 + 504) = 28;
-        *(_BYTE*)(v88 + 528) = 1;
-        *(_DWORD*)(v88 + 488) = 1063675494;
-        strcpy((char*)(v88 + 505), "MinWorldHeight");
-        fw_graphics_RegisterProperty((_QWORD*)v88, v88 + 496);
-        *(_BYTE*)(v88 + 532) = 0;
-        *(_BYTE*)(v88 + 536) = 0;
-        *(_QWORD*)(v88 + 544) = 0;
-        *(_QWORD*)(v88 + 552) = 0;
-        *(_QWORD*)(v88 + 560) = 0;
-        *(_QWORD*)(v88 + 496) = v92;
-        *(_DWORD*)(v88 + 568) = 0;
-        *(_QWORD*)(v88 + 576) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v88 + 584) = 28;
-        *(_BYTE*)(v88 + 608) = 1;
-        strcpy((char*)(v88 + 585), "MaxWorldHeight");
-        fw_graphics_RegisterProperty((_QWORD*)v88, v88 + 576);
+        memset_alt1(v37, 0, 0x290u);
+        *(_QWORD*)v37 = gfxa_SightMapRenderSetting_vtable;
+        *(_BYTE*)(v37 + 88) = 1;
+        *(_BYTE*)(v37 + 64) = 30;
+        *(_QWORD*)(v37 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        qmemcpy((void*)(v37 + 65), "EnabledEditMode", 15);
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v37, v37 + 56);
+        *(_WORD*)(v37 + 89) = 0;
+        *(_QWORD*)(v37 + 96) = 0;
+        *(_QWORD*)(v37 + 104) = 0;
+        *(_QWORD*)(v37 + 112) = 0;
+        *(_BYTE*)(v37 + 120) = 0;
+        *(_BYTE*)(v37 + 160) = 1;
+        *(_QWORD*)(v37 + 56) = gfx_settings_Bool_vtable;
+        *(_QWORD*)(v37 + 128) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v37 + 136) = 20;
+        strcpy((char*)(v37 + 137), "NoiseScale");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v37, v37 + 128);
+        *(_BYTE*)(v37 + 164) = 0;
+        *(_BYTE*)(v37 + 168) = 0;
+        *(_QWORD*)(v37 + 176) = 0;
+        *(_QWORD*)(v37 + 184) = 0;
+        *(_QWORD*)(v37 + 192) = 0;
+        v38 = GameData_212e520[0] + 16;
+        *(_DWORD*)(v37 + 200) = 1069547520;
+        *(_QWORD*)(v37 + 208) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v37 + 240) = 1;
+        strcpy((char*)(v37 + 216), " NoiseScrollSpeed");
+        *(_QWORD*)(v37 + 128) = v38;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v37, v37 + 208);
+        *(_BYTE*)(v37 + 244) = 0;
+        *(_BYTE*)(v37 + 248) = 0;
+        *(_QWORD*)(v37 + 256) = 0;
+        *(_QWORD*)(v37 + 264) = 0;
+        *(_DWORD*)(v37 + 280) = 0x40000000;
+        *(_QWORD*)(v37 + 272) = 0;
+        *(_QWORD*)(v37 + 208) = v38;
+        *(_QWORD*)(v37 + 288) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v37 + 296), "\nColor");
+        *(_BYTE*)(v37 + 320) = 1;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v37, v37 + 288);
+        *(_BYTE*)(v37 + 336) = 0;
+        *(_BYTE*)(v37 + 352) = 0;
+        *(_QWORD*)(v37 + 368) = 0;
+        *(_QWORD*)(v37 + 376) = 0;
+        *(_QWORD*)(v37 + 288) = gfx_settings_Float3_vtable;
+        *(_QWORD*)(v37 + 384) = 0;
+        *(_QWORD*)(v37 + 400) = 0;
+        *(_QWORD*)(v37 + 408) = 0;
+        *(_QWORD*)(v37 + 416) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v37 + 424), "\nAlpha");
+        *(_BYTE*)(v37 + 448) = 1;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v37, v37 + 416);
+        *(_BYTE*)(v37 + 452) = 0;
+        *(_BYTE*)(v37 + 456) = 0;
+        *(_QWORD*)(v37 + 464) = 0;
+        *(_QWORD*)(v37 + 472) = 0;
+        *(_QWORD*)(v37 + 480) = 0;
+        *(_QWORD*)(v37 + 416) = v38;
+        *(_QWORD*)(v37 + 496) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v37 + 504) = 28;
+        *(_BYTE*)(v37 + 528) = 1;
+        *(_DWORD*)(v37 + 488) = 1063675494;
+        strcpy((char*)(v37 + 505), "MinWorldHeight");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v37, v37 + 496);
+        *(_BYTE*)(v37 + 532) = 0;
+        *(_BYTE*)(v37 + 536) = 0;
+        *(_QWORD*)(v37 + 544) = 0;
+        *(_QWORD*)(v37 + 552) = 0;
+        *(_QWORD*)(v37 + 560) = 0;
+        *(_QWORD*)(v37 + 496) = v38;
+        *(_DWORD*)(v37 + 568) = 0;
+        *(_QWORD*)(v37 + 576) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v37 + 584) = 28;
+        *(_BYTE*)(v37 + 608) = 1;
+        strcpy((char*)(v37 + 585), "MaxWorldHeight");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v37, v37 + 576);
         result = v2[30];
-        *(_BYTE*)(v88 + 612) = 0;
-        *(_BYTE*)(v88 + 616) = 0;
-        *(_QWORD*)(v88 + 624) = 0;
-        *(_QWORD*)(v88 + 632) = 0;
-        *(_QWORD*)(v88 + 640) = 0;
-        *(_QWORD*)(v88 + 576) = v92;
-        v2[30] = v88;
-        *(_DWORD*)(v88 + 648) = 1103626240;
+        *(_BYTE*)(v37 + 612) = 0;
+        *(_BYTE*)(v37 + 616) = 0;
+        *(_QWORD*)(v37 + 624) = 0;
+        *(_QWORD*)(v37 + 632) = 0;
+        *(_QWORD*)(v37 + 640) = 0;
+        *(_QWORD*)(v37 + 576) = v38;
+        v2[30] = v37;
+        *(_DWORD*)(v37 + 648) = 1103626240;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[33] == 0) {
-        v93 = (__int64*)fw_memory_g_heap_manager_ptr;
-        v94 = fw_memory_HeapManager_Allocate(
+        v39 = (__int64*)fw_memory_g_heap_manager_ptr;
+        v40 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 448, 16, 0);
-        memset(v94, 0, 448);
-        *(_QWORD*)v94 = gfxa_LensFlareSystemSetting_vtable;
-        v98 = *v93;
-        *(_QWORD*)(v94 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        v99 = (char*)fw_memory_HeapManager_Allocate(v98, 32, 16, 0);
-        *(_QWORD*)(v94 + 64) = 33;
-        *(_QWORD*)(v94 + 72) = 27;
-        *(_QWORD*)(v94 + 80) = v99;
-        *(_BYTE*)(v94 + 88) = 1;
-        strcpy(v99, "LensFlareAttenuationEnabled");
-        fw_graphics_RegisterProperty((_QWORD*)v94, v94 + 56);
-        *(_WORD*)(v94 + 89) = 0;
-        *(_QWORD*)(v94 + 96) = 0;
-        *(_QWORD*)(v94 + 104) = 0;
-        *(_QWORD*)(v94 + 112) = 0;
-        *(_BYTE*)(v94 + 120) = 1;
-        *(_BYTE*)(v94 + 160) = 1;
-        *(_QWORD*)(v94 + 56) = gfx_settings_Bool_vtable;
-        *(_QWORD*)(v94 + 128) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v94 + 136), "\"LensFlareMaxScale");
-        fw_graphics_RegisterProperty((_QWORD*)v94, v94 + 128);
-        *(_BYTE*)(v94 + 164) = 0;
-        *(_BYTE*)(v94 + 168) = 0;
-        *(_QWORD*)(v94 + 176) = 0;
-        *(_QWORD*)(v94 + 184) = 0;
-        *(_QWORD*)(v94 + 192) = 0;
-        *(_DWORD*)(v94 + 200) = 1112014848;
-        strcpy((char*)(v94 + 216), "\"LensFlareMinScale");
-        *(_BYTE*)(v94 + 240) = 1;
-        *(_QWORD*)(v94 + 128) = gfx_settings_Float_vtable;
-        *(_QWORD*)(v94 + 208) = &gfx_settings_BaseParamInstance_vtable;
-        fw_graphics_RegisterProperty((_QWORD*)v94, v94 + 208);
-        *(_BYTE*)(v94 + 244) = 0;
-        *(_BYTE*)(v94 + 248) = 0;
-        *(_QWORD*)(v94 + 256) = 0;
-        *(_QWORD*)(v94 + 264) = 0;
-        *(_QWORD*)(v94 + 272) = 0;
-        *(_QWORD*)(v94 + 208) = gfx_settings_Float_vtable;
-        *(_QWORD*)(v94 + 288) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v94 + 320) = 1;
-        *(_DWORD*)(v94 + 280) = 1097859072;
-        *(_BYTE*)(v94 + 296) = 20;
-        strcpy((char*)(v94 + 297), "SensorSize");
-        fw_graphics_RegisterProperty((_QWORD*)v94, v94 + 288);
-        *(_BYTE*)(v94 + 324) = 0;
-        *(_BYTE*)(v94 + 328) = 0;
-        *(_QWORD*)(v94 + 336) = 0;
-        *(_QWORD*)(v94 + 344) = 0;
-        *(_DWORD*)(v94 + 360) = 24;
-        *(_QWORD*)(v94 + 352) = 0;
-        *(_QWORD*)(v94 + 288) = gfx_settings_Int_vtable;
-        *(_QWORD*)(v94 + 368) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v94 + 400) = 1;
-        *(_BYTE*)(v94 + 376) = 28;
-        strcpy((char*)(v94 + 377), "MoonSensorSize");
-        fw_graphics_RegisterProperty((_QWORD*)v94, v94 + 368);
+        memset_alt1(v40, 0, 0x1C0u);
+        *(_QWORD*)v40 = gfxa_LensFlareSystemSetting_vtable;
+        v41 = *v39;
+        *(_QWORD*)(v40 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        v42 = (char*)fw_memory_HeapManager_Allocate(v41, 32, 16, 0);
+        *(_QWORD*)(v40 + 64) = 33;
+        *(_QWORD*)(v40 + 72) = 27;
+        *(_QWORD*)(v40 + 80) = v42;
+        *(_BYTE*)(v40 + 88) = 1;
+        strcpy(v42, "LensFlareAttenuationEnabled");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v40, v40 + 56);
+        *(_WORD*)(v40 + 89) = 0;
+        *(_QWORD*)(v40 + 96) = 0;
+        *(_QWORD*)(v40 + 104) = 0;
+        *(_QWORD*)(v40 + 112) = 0;
+        *(_BYTE*)(v40 + 120) = 1;
+        *(_BYTE*)(v40 + 160) = 1;
+        *(_QWORD*)(v40 + 56) = gfx_settings_Bool_vtable;
+        *(_QWORD*)(v40 + 128) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v40 + 136), "\"LensFlareMaxScale");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v40, v40 + 128);
+        *(_BYTE*)(v40 + 164) = 0;
+        *(_BYTE*)(v40 + 168) = 0;
+        *(_QWORD*)(v40 + 176) = 0;
+        *(_QWORD*)(v40 + 184) = 0;
+        *(_QWORD*)(v40 + 192) = 0;
+        *(_DWORD*)(v40 + 200) = 1112014848;
+        strcpy((char*)(v40 + 216), "\"LensFlareMinScale");
+        *(_BYTE*)(v40 + 240) = 1;
+        *(_QWORD*)(v40 + 128) = gfx_settings_Float_vtable;
+        *(_QWORD*)(v40 + 208) = &gfx_settings_BaseParamInstance_vtable;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v40, v40 + 208);
+        *(_BYTE*)(v40 + 244) = 0;
+        *(_BYTE*)(v40 + 248) = 0;
+        *(_QWORD*)(v40 + 256) = 0;
+        *(_QWORD*)(v40 + 264) = 0;
+        *(_QWORD*)(v40 + 272) = 0;
+        *(_QWORD*)(v40 + 208) = gfx_settings_Float_vtable;
+        *(_QWORD*)(v40 + 288) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v40 + 320) = 1;
+        *(_DWORD*)(v40 + 280) = 1097859072;
+        *(_BYTE*)(v40 + 296) = 20;
+        strcpy((char*)(v40 + 297), "SensorSize");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v40, v40 + 288);
+        *(_BYTE*)(v40 + 324) = 0;
+        *(_BYTE*)(v40 + 328) = 0;
+        *(_QWORD*)(v40 + 336) = 0;
+        *(_QWORD*)(v40 + 344) = 0;
+        *(_DWORD*)(v40 + 360) = 24;
+        *(_QWORD*)(v40 + 352) = 0;
+        *(_QWORD*)(v40 + 288) = gfx_settings_Int_vtable;
+        *(_QWORD*)(v40 + 368) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v40 + 400) = 1;
+        *(_BYTE*)(v40 + 376) = 28;
+        strcpy((char*)(v40 + 377), "MoonSensorSize");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v40, v40 + 368);
         result = v2[33];
-        *(_BYTE*)(v94 + 404) = 0;
-        *(_BYTE*)(v94 + 408) = 0;
-        *(_QWORD*)(v94 + 416) = 0;
-        *(_QWORD*)(v94 + 424) = 0;
-        *(_QWORD*)(v94 + 432) = 0;
-        *(_QWORD*)(v94 + 368) = gfx_settings_Int_vtable;
-        v2[33] = v94;
-        *(_DWORD*)(v94 + 440) = 84;
+        *(_BYTE*)(v40 + 404) = 0;
+        *(_BYTE*)(v40 + 408) = 0;
+        *(_QWORD*)(v40 + 416) = 0;
+        *(_QWORD*)(v40 + 424) = 0;
+        *(_QWORD*)(v40 + 432) = 0;
+        *(_QWORD*)(v40 + 368) = gfx_settings_Int_vtable;
+        v2[33] = v40;
+        *(_DWORD*)(v40 + 440) = 84;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[39] == 0) {
-        v100 = fw_memory_HeapManager_Allocate(
+        v43 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 296, 16, 0);
-        memset(v100, 0, 296);
-        *(_QWORD*)v100 = gfxa_MotionBlurSetting_vtable;
-        *(_BYTE*)(v100 + 88) = 1;
-        *(_BYTE*)(v100 + 64) = 26;
-        *(_QWORD*)(v100 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        qmemcpy((void*)(v100 + 65), "SamplingCount", 13);
-        fw_graphics_RegisterProperty((_QWORD*)v100, v100 + 56);
-        *(_BYTE*)(v100 + 92) = 0;
-        *(_BYTE*)(v100 + 96) = 0;
-        *(_QWORD*)(v100 + 104) = 0;
-        *(_QWORD*)(v100 + 112) = 0;
-        *(_QWORD*)(v100 + 120) = 0;
-        *(_BYTE*)(v100 + 168) = 1;
-        *(_QWORD*)(v100 + 56) = gfx_settings_Int_vtable;
-        *(_DWORD*)(v100 + 128) = 8;
-        *(_QWORD*)(v100 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v100 + 144), "\nAlpha");
-        fw_graphics_RegisterProperty((_QWORD*)v100, v100 + 136);
-        *(_BYTE*)(v100 + 172) = 0;
-        *(_BYTE*)(v100 + 176) = 0;
-        *(_QWORD*)(v100 + 184) = 0;
-        *(_QWORD*)(v100 + 192) = 0;
-        *(_QWORD*)(v100 + 200) = 0;
-        v104 = GameData_212e520[0] + 16;
-        *(_DWORD*)(v100 + 208) = 0;
-        *(_BYTE*)(v100 + 248) = 1;
-        *(_BYTE*)(v100 + 224) = 24;
-        *(_QWORD*)(v100 + 136) = v104;
-        *(_QWORD*)(v100 + 216) = &gfx_settings_BaseParamInstance_vtable;
-        strcpy((char*)(v100 + 225), "ShutterSpeed");
-        fw_graphics_RegisterProperty((_QWORD*)v100, v100 + 216);
+        memset_alt1(v43, 0, 0x128u);
+        *(_QWORD*)v43 = gfxa_MotionBlurSetting_vtable;
+        *(_BYTE*)(v43 + 88) = 1;
+        *(_BYTE*)(v43 + 64) = 26;
+        *(_QWORD*)(v43 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        qmemcpy((void*)(v43 + 65), "SamplingCount", 13);
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v43, v43 + 56);
+        *(_BYTE*)(v43 + 92) = 0;
+        *(_BYTE*)(v43 + 96) = 0;
+        *(_QWORD*)(v43 + 104) = 0;
+        *(_QWORD*)(v43 + 112) = 0;
+        *(_QWORD*)(v43 + 120) = 0;
+        *(_BYTE*)(v43 + 168) = 1;
+        *(_QWORD*)(v43 + 56) = gfx_settings_Int_vtable;
+        *(_DWORD*)(v43 + 128) = 8;
+        *(_QWORD*)(v43 + 136) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v43 + 144), "\nAlpha");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v43, v43 + 136);
+        *(_BYTE*)(v43 + 172) = 0;
+        *(_BYTE*)(v43 + 176) = 0;
+        *(_QWORD*)(v43 + 184) = 0;
+        *(_QWORD*)(v43 + 192) = 0;
+        *(_QWORD*)(v43 + 200) = 0;
+        v44 = GameData_212e520[0] + 16;
+        *(_DWORD*)(v43 + 208) = 0;
+        *(_BYTE*)(v43 + 248) = 1;
+        *(_BYTE*)(v43 + 224) = 24;
+        *(_QWORD*)(v43 + 136) = v44;
+        *(_QWORD*)(v43 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        strcpy((char*)(v43 + 225), "ShutterSpeed");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v43, v43 + 216);
         result = v2[39];
-        *(_BYTE*)(v100 + 252) = 0;
-        *(_BYTE*)(v100 + 256) = 0;
-        *(_QWORD*)(v100 + 264) = 0;
-        *(_QWORD*)(v100 + 272) = 0;
-        *(_QWORD*)(v100 + 280) = 0;
-        *(_QWORD*)(v100 + 216) = v104;
-        v2[39] = v100;
-        *(_DWORD*)(v100 + 288) = 1114636288;
+        *(_BYTE*)(v43 + 252) = 0;
+        *(_BYTE*)(v43 + 256) = 0;
+        *(_QWORD*)(v43 + 264) = 0;
+        *(_QWORD*)(v43 + 272) = 0;
+        *(_QWORD*)(v43 + 280) = 0;
+        *(_QWORD*)(v43 + 216) = v44;
+        v2[39] = v43;
+        *(_DWORD*)(v43 + 288) = 1114636288;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[45] == 0) {
-        v105 = fw_memory_HeapManager_Allocate(
+        v45 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 296, 16, 0);
-        memset(v105, 0, 296);
-        *(_QWORD*)v105 = gfxa_GlobalVarsSetting_vtable;
-        *(_BYTE*)(v105 + 88) = 1;
-        *(_BYTE*)(v105 + 64) = 20;
-        *(_QWORD*)(v105 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        *(_WORD*)(v105 + 73) = 28015;
-        *(_QWORD*)(v105 + 65) = *(_QWORD*)"BmapToZoom";
-        fw_graphics_RegisterProperty((_QWORD*)v105, v105 + 56);
-        *(_BYTE*)(v105 + 92) = 0;
-        *(_BYTE*)(v105 + 96) = 0;
-        *(_QWORD*)(v105 + 104) = 0;
-        *(_QWORD*)(v105 + 112) = 0;
-        *(_QWORD*)(v105 + 120) = 0;
-        v109 = GameData_212e520[0] + 16;
-        *(_DWORD*)(v105 + 128) = 1065353216;
-        *(_QWORD*)(v105 + 136) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v105 + 168) = 1;
-        strcpy((char*)(v105 + 144), "(DitherAlphaBeginDist");
-        *(_QWORD*)(v105 + 56) = v109;
-        fw_graphics_RegisterProperty((_QWORD*)v105, v105 + 136);
-        *(_QWORD*)(v105 + 216) = &gfx_settings_BaseParamInstance_vtable;
-        *(_BYTE*)(v105 + 172) = 0;
-        *(_DWORD*)(v105 + 208) = 1082130432;
-        *(_BYTE*)(v105 + 176) = 0;
-        *(_QWORD*)(v105 + 184) = 0;
-        *(_QWORD*)(v105 + 192) = 0;
-        *(_QWORD*)(v105 + 200) = 0;
-        *(_QWORD*)(v105 + 136) = v109;
-        *(_BYTE*)(v105 + 248) = 1;
-        strcpy((char*)(v105 + 224), "$DitherAlphaEndDist");
-        fw_graphics_RegisterProperty((_QWORD*)v105, v105 + 216);
+        memset_alt1(v45, 0, 0x128u);
+        *(_QWORD*)v45 = gfxa_GlobalVarsSetting_vtable;
+        *(_BYTE*)(v45 + 88) = 1;
+        *(_BYTE*)(v45 + 64) = 20;
+        *(_QWORD*)(v45 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        *(_WORD*)(v45 + 73) = 28015;
+        *(_QWORD*)(v45 + 65) = *(_QWORD*)"BmapToZoom";
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v45, v45 + 56);
+        *(_BYTE*)(v45 + 92) = 0;
+        *(_BYTE*)(v45 + 96) = 0;
+        *(_QWORD*)(v45 + 104) = 0;
+        *(_QWORD*)(v45 + 112) = 0;
+        *(_QWORD*)(v45 + 120) = 0;
+        v46 = GameData_212e520[0] + 16;
+        *(_DWORD*)(v45 + 128) = 1065353216;
+        *(_QWORD*)(v45 + 136) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v45 + 168) = 1;
+        strcpy((char*)(v45 + 144), "(DitherAlphaBeginDist");
+        *(_QWORD*)(v45 + 56) = v46;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v45, v45 + 136);
+        *(_QWORD*)(v45 + 216) = &gfx_settings_BaseParamInstance_vtable;
+        *(_BYTE*)(v45 + 172) = 0;
+        *(_DWORD*)(v45 + 208) = 1082130432;
+        *(_BYTE*)(v45 + 176) = 0;
+        *(_QWORD*)(v45 + 184) = 0;
+        *(_QWORD*)(v45 + 192) = 0;
+        *(_QWORD*)(v45 + 200) = 0;
+        *(_QWORD*)(v45 + 136) = v46;
+        *(_BYTE*)(v45 + 248) = 1;
+        strcpy((char*)(v45 + 224), "$DitherAlphaEndDist");
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v45, v45 + 216);
         result = v2[45];
-        *(_BYTE*)(v105 + 252) = 0;
-        *(_BYTE*)(v105 + 256) = 0;
-        *(_QWORD*)(v105 + 264) = 0;
-        *(_QWORD*)(v105 + 272) = 0;
-        *(_QWORD*)(v105 + 280) = 0;
-        *(_QWORD*)(v105 + 216) = v109;
-        v2[45] = v105;
-        *(_DWORD*)(v105 + 288) = 1077936128;
+        *(_BYTE*)(v45 + 252) = 0;
+        *(_BYTE*)(v45 + 256) = 0;
+        *(_QWORD*)(v45 + 264) = 0;
+        *(_QWORD*)(v45 + 272) = 0;
+        *(_QWORD*)(v45 + 280) = 0;
+        *(_QWORD*)(v45 + 216) = v46;
+        v2[45] = v45;
+        *(_DWORD*)(v45 + 288) = 1077936128;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[42] == 0) {
-        v110 = fw_memory_HeapManager_Allocate(
+        v47 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 1136, 16, 0);
-        memset(v110, 0, 1136);
-        fw_graphics_ConstructPainting(v110);
+        memset_alt1(v47, 0, 0x470u);
+        fw_graphics_ConstructPainting_alt1(v47);
         result = v2[42];
-        v2[42] = v110;
+        v2[42] = v47;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
       if (v2[14] == 0) {
-        v114 = fw_memory_HeapManager_Allocate(
+        v48 = fw_memory_HeapManager_Allocate(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 128, 16, 0);
-        *(_QWORD*)(v114 + 16) = 0;
-        *(_QWORD*)(v114 + 24) = 0;
-        *(_QWORD*)(v114 + 32) = 0;
-        *(_QWORD*)(v114 + 40) = 0;
-        v115 = v114;
-        *(_QWORD*)(v114 + 48) = 0;
-        *(_QWORD*)(v114 + 64) = 0;
-        *(_QWORD*)(v114 + 72) = 0;
-        *(_QWORD*)(v114 + 80) = 0;
-        *(_QWORD*)(v114 + 88) = 0;
-        *(_QWORD*)(v114 + 96) = 0;
-        *(_QWORD*)(v114 + 104) = 0;
-        *(_QWORD*)(v114 + 112) = 0;
-        *(_QWORD*)(v114 + 120) = 0;
-        *(_QWORD*)v114 = gfxa_CapsuleAOSetting_vtable;
-        *(_QWORD*)(v114 + 8) = 0;
-        *(_BYTE*)(v114 + 88) = 1;
-        *(_QWORD*)(v114 + 56) = &gfx_settings_BaseParamInstance_vtable;
-        v116 = (_QWORD*)(v114 + 56);
-        *(_BYTE*)(v114 + 64) = 14;
-        *(_DWORD*)(v114 + 68) = 1684368482;
-        *(_DWORD*)(v114 + 65) = 1650552389;
-        fw_graphics_RegisterProperty((_QWORD*)v114, v114 + 56);
+        *(_QWORD*)(v48 + 16) = 0;
+        *(_QWORD*)(v48 + 24) = 0;
+        *(_QWORD*)(v48 + 32) = 0;
+        *(_QWORD*)(v48 + 40) = 0;
+        v49 = v48;
+        *(_QWORD*)(v48 + 48) = 0;
+        *(_QWORD*)(v48 + 64) = 0;
+        *(_QWORD*)(v48 + 72) = 0;
+        *(_QWORD*)(v48 + 80) = 0;
+        *(_QWORD*)(v48 + 88) = 0;
+        *(_QWORD*)(v48 + 96) = 0;
+        *(_QWORD*)(v48 + 104) = 0;
+        *(_QWORD*)(v48 + 112) = 0;
+        *(_QWORD*)(v48 + 120) = 0;
+        *(_QWORD*)v48 = gfxa_CapsuleAOSetting_vtable;
+        *(_QWORD*)(v48 + 8) = 0;
+        *(_BYTE*)(v48 + 88) = 1;
+        *(_QWORD*)(v48 + 56) = &gfx_settings_BaseParamInstance_vtable;
+        v50 = (_QWORD*)(v48 + 56);
+        *(_BYTE*)(v48 + 64) = 14;
+        *(_DWORD*)(v48 + 68) = 1684368482;
+        *(_DWORD*)(v48 + 65) = 1650552389;
+        fw_graphics_RegisterProperty_alt1((_QWORD*)v48, v48 + 56);
         result = v2[14];
-        *(_WORD*)(v115 + 89) = 0;
-        *(_QWORD*)(v115 + 96) = 0;
-        *(_QWORD*)(v115 + 104) = 0;
-        *(_QWORD*)(v115 + 112) = 0;
-        *(_BYTE*)(v115 + 120) = 1;
-        v2[14] = v115;
-        *v116 = gfx_settings_Bool_vtable;
+        *(_WORD*)(v49 + 89) = 0;
+        *(_QWORD*)(v49 + 96) = 0;
+        *(_QWORD*)(v49 + 104) = 0;
+        *(_QWORD*)(v49 + 112) = 0;
+        *(_BYTE*)(v49 + 120) = 1;
+        v2[14] = v49;
+        *v50 = gfx_settings_Bool_vtable;
         if (result != 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
         }
       }
     }
     if (v2[11] == 0) {
-      v117 = fw_memory_HeapManager_Allocate(
+      v51 = fw_memory_HeapManager_Allocate(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 1152, 16, 0);
-      memset(v117, 0, 1152);
-      fw_graphics_ConstructSceneShadow(v117);
+      memset_alt1(v51, 0, 0x480u);
+      fw_graphics_ConstructSceneShadow_alt1(v51);
       result = v2[11];
-      v2[11] = v117;
+      v2[11] = v51;
       if (result != 0) {
         result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
       }
     }
     if (v2[12] == 0) {
-      v121 = fw_memory_HeapManager_Allocate(
+      v52 = fw_memory_HeapManager_Allocate(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 608, 16, 0);
-      memset(v121, 0, 608);
-      fw_graphics_ConstructAO(v121);
+      memset_alt1(v52, 0, 0x260u);
+      fw_graphics_ConstructAO_alt1(v52);
       result = v2[12];
-      v2[12] = v121;
+      v2[12] = v52;
       if (result != 0) {
         result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
       }
     }
     if (v2[13] == 0) {
-      v125 = fw_memory_HeapManager_Allocate(
+      v53 = fw_memory_HeapManager_Allocate(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 376, 16, 0);
-      memset(v125, 0, 376);
-      *(_QWORD*)v125 = gfxa_WorldAOSetting_vtable;
-      *(_BYTE*)(v125 + 88) = 1;
-      qmemcpy((void*)(v125 + 64), " WorldAO_XZOffset", 17);
-      *(_QWORD*)(v125 + 56) = &gfx_settings_BaseParamInstance_vtable;
-      fw_graphics_RegisterProperty((_QWORD*)v125, v125 + 56);
-      *(_BYTE*)(v125 + 92) = 0;
-      *(_BYTE*)(v125 + 96) = 0;
-      *(_QWORD*)(v125 + 104) = 0;
-      *(_QWORD*)(v125 + 112) = 0;
-      *(_QWORD*)(v125 + 120) = 0;
-      v129 = GameData_212e520[0] + 16;
-      *(_DWORD*)(v125 + 128) = 1036831949;
-      *(_QWORD*)(v125 + 136) = &gfx_settings_BaseParamInstance_vtable;
-      *(_BYTE*)(v125 + 144) = 26;
-      *(_BYTE*)(v125 + 168) = 1;
-      *(_QWORD*)(v125 + 56) = v129;
-      strcpy((char*)(v125 + 145), "WorldAO_YBias");
-      fw_graphics_RegisterProperty((_QWORD*)v125, v125 + 136);
-      *(_QWORD*)(v125 + 216) = &gfx_settings_BaseParamInstance_vtable;
-      *(_BYTE*)(v125 + 172) = 0;
-      *(_BYTE*)(v125 + 176) = 0;
-      *(_QWORD*)(v125 + 184) = 0;
-      *(_QWORD*)(v125 + 192) = 0;
-      *(_QWORD*)(v125 + 200) = 0;
-      *(_QWORD*)(v125 + 136) = v129;
-      *(_BYTE*)(v125 + 248) = 1;
-      *(_DWORD*)(v125 + 208) = 1008981770;
-      *(_BYTE*)(v125 + 224) = 22;
-      strcpy((char*)(v125 + 225), "WorldAO_Pow");
-      fw_graphics_RegisterProperty((_QWORD*)v125, v125 + 216);
-      *(_BYTE*)(v125 + 252) = 0;
-      *(_BYTE*)(v125 + 256) = 0;
-      *(_QWORD*)(v125 + 264) = 0;
-      *(_QWORD*)(v125 + 272) = 0;
-      *(_DWORD*)(v125 + 288) = 0x40000000;
-      *(_QWORD*)(v125 + 280) = 0;
-      *(_QWORD*)(v125 + 216) = v129;
-      *(_QWORD*)(v125 + 296) = &gfx_settings_BaseParamInstance_vtable;
-      *(_BYTE*)(v125 + 304) = 26;
-      *(_BYTE*)(v125 + 328) = 1;
-      strcpy((char*)(v125 + 305), "WorldAO_MinAO");
-      fw_graphics_RegisterProperty((_QWORD*)v125, v125 + 296);
+      memset_alt1(v53, 0, 0x178u);
+      *(_QWORD*)v53 = gfxa_WorldAOSetting_vtable;
+      *(_BYTE*)(v53 + 88) = 1;
+      qmemcpy((void*)(v53 + 64), " WorldAO_XZOffset", 17);
+      *(_QWORD*)(v53 + 56) = &gfx_settings_BaseParamInstance_vtable;
+      fw_graphics_RegisterProperty_alt1((_QWORD*)v53, v53 + 56);
+      *(_BYTE*)(v53 + 92) = 0;
+      *(_BYTE*)(v53 + 96) = 0;
+      *(_QWORD*)(v53 + 104) = 0;
+      *(_QWORD*)(v53 + 112) = 0;
+      *(_QWORD*)(v53 + 120) = 0;
+      v54 = GameData_212e520[0] + 16;
+      *(_DWORD*)(v53 + 128) = 1036831949;
+      *(_QWORD*)(v53 + 136) = &gfx_settings_BaseParamInstance_vtable;
+      *(_BYTE*)(v53 + 144) = 26;
+      *(_BYTE*)(v53 + 168) = 1;
+      *(_QWORD*)(v53 + 56) = v54;
+      strcpy((char*)(v53 + 145), "WorldAO_YBias");
+      fw_graphics_RegisterProperty_alt1((_QWORD*)v53, v53 + 136);
+      *(_QWORD*)(v53 + 216) = &gfx_settings_BaseParamInstance_vtable;
+      *(_BYTE*)(v53 + 172) = 0;
+      *(_BYTE*)(v53 + 176) = 0;
+      *(_QWORD*)(v53 + 184) = 0;
+      *(_QWORD*)(v53 + 192) = 0;
+      *(_QWORD*)(v53 + 200) = 0;
+      *(_QWORD*)(v53 + 136) = v54;
+      *(_BYTE*)(v53 + 248) = 1;
+      *(_DWORD*)(v53 + 208) = 1008981770;
+      *(_BYTE*)(v53 + 224) = 22;
+      strcpy((char*)(v53 + 225), "WorldAO_Pow");
+      fw_graphics_RegisterProperty_alt1((_QWORD*)v53, v53 + 216);
+      *(_BYTE*)(v53 + 252) = 0;
+      *(_BYTE*)(v53 + 256) = 0;
+      *(_QWORD*)(v53 + 264) = 0;
+      *(_QWORD*)(v53 + 272) = 0;
+      *(_DWORD*)(v53 + 288) = 0x40000000;
+      *(_QWORD*)(v53 + 280) = 0;
+      *(_QWORD*)(v53 + 216) = v54;
+      *(_QWORD*)(v53 + 296) = &gfx_settings_BaseParamInstance_vtable;
+      *(_BYTE*)(v53 + 304) = 26;
+      *(_BYTE*)(v53 + 328) = 1;
+      strcpy((char*)(v53 + 305), "WorldAO_MinAO");
+      fw_graphics_RegisterProperty_alt1((_QWORD*)v53, v53 + 296);
       result = v2[13];
-      *(_BYTE*)(v125 + 332) = 0;
-      *(_BYTE*)(v125 + 336) = 0;
-      *(_QWORD*)(v125 + 344) = 0;
-      *(_QWORD*)(v125 + 352) = 0;
-      *(_QWORD*)(v125 + 360) = 0;
-      *(_QWORD*)(v125 + 296) = v129;
-      *(_DWORD*)(v125 + 368) = 0;
-      v2[13] = v125;
+      *(_BYTE*)(v53 + 332) = 0;
+      *(_BYTE*)(v53 + 336) = 0;
+      *(_QWORD*)(v53 + 344) = 0;
+      *(_QWORD*)(v53 + 352) = 0;
+      *(_QWORD*)(v53 + 360) = 0;
+      *(_QWORD*)(v53 + 296) = v54;
+      *(_DWORD*)(v53 + 368) = 0;
+      v2[13] = v53;
       if (result != 0) {
         result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
       }
     }
     if (v2[43] == 0) {
-      v130 = fw_memory_HeapManager_Allocate(
+      v55 = fw_memory_HeapManager_Allocate(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 1448, 16, 0);
-      memset(v130, 0, 1448);
-      fw_graphics_ConstructSSR(v130);
+      memset_alt1(v55, 0, 0x5A8u);
+      fw_graphics_ConstructSSR_alt1(v55);
       result = v2[43];
-      v2[43] = v130;
+      v2[43] = v55;
       if (result != 0) {
         result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
       }
     }
     if (v2[47] == 0) {
-      v134 = fw_memory_HeapManager_Allocate(
+      v56 = fw_memory_HeapManager_Allocate(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 920, 16, 0);
-      memset(v134, 0, 920);
-      fw_graphics_ConstructContactShadow(v134);
+      memset_alt1(v56, 0, 0x398u);
+      fw_graphics_ConstructContactShadow_alt1(v56);
       result = v2[47];
-      v2[47] = v134;
+      v2[47] = v56;
       if (result != 0) {
         result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
       }
     }
   }
   if (v2[8] == 0) {
-    v138 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 976, 16, 0);
-    memset(v138, 0, 976);
-    fw_graphics_ConstructSceneExposure(v138);
+    v57 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         976, 16, 0);
+    memset_alt1(v57, 0, 0x3D0u);
+    fw_graphics_ConstructSceneExposure_alt1(v57);
     result = v2[8];
-    v2[8] = v138;
+    v2[8] = v57;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[16] == 0) {
-    v142 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 1600, 16, 0);
-    memset(v142, 0, 1600);
-    fw_graphics_ConstructColorGrading(v142);
+    v58 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         1600, 16, 0);
+    memset_alt1(v58, 0, 0x640u);
+    fw_graphics_ConstructColorGrading_alt1(v58);
     result = v2[16];
-    v2[16] = v142;
+    v2[16] = v58;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[18] == 0) {
-    v146 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 3024, 16, 0);
-    memset(v146, 0, 3024);
-    fw_graphics_ConstructCharaScene(v146);
+    v59 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         3024, 16, 0);
+    memset_alt1(v59, 0, 0xBD0u);
+    fw_graphics_ConstructCharaScene_alt1(v59);
     result = v2[18];
-    v2[18] = v146;
+    v2[18] = v59;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[19] == 0) {
-    v150 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 2112, 16, 0);
-    memset(v150, 0, 2112);
-    fw_graphics_ConstructFog(v150);
+    v60 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         2112, 16, 0);
+    memset_alt1(v60, 0, 0x840u);
+    fw_graphics_ConstructFog_alt1(v60);
     result = v2[19];
-    v2[19] = v150;
+    v2[19] = v60;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[40] == 0) {
-    v154 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 1600, 16, 0);
-    memset(v154, 0, 1600);
-    fw_graphics_ConstructHeightFog(v154);
+    v61 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         1600, 16, 0);
+    memset_alt1(v61, 0, 0x640u);
+    fw_graphics_ConstructHeightFog_alt1(v61);
     result = v2[40];
-    v2[40] = v154;
+    v2[40] = v61;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[20] == 0) {
-    v158 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 816, 16, 0);
-    memset(v158, 0, 816);
-    fw_graphics_ConstructGradationFilter(v158);
+    v62 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         816, 16, 0);
+    memset_alt1(v62, 0, 0x330u);
+    fw_graphics_ConstructGradationFilter_alt1(v62);
     result = v2[20];
-    v2[20] = v158;
+    v2[20] = v62;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[27] == 0) {
-    v162 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 1440, 16, 0);
-    memset(v162, 0, 1440);
-    fw_graphics_ConstructSceneLight(v162);
+    v63 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         1440, 16, 0);
+    memset_alt1(v63, 0, 0x5A0u);
+    fw_graphics_ConstructSceneLight_alt1(v63);
     result = v2[27];
-    v2[27] = v162;
+    v2[27] = v63;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[35] == 0) {
-    v166 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 1104, 16, 0);
-    memset(v166, 0, 1104);
-    fw_graphics_ConstructShadowColorCorrection(v166);
+    v64 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         1104, 16, 0);
+    memset_alt1(v64, 0, 0x450u);
+    fw_graphics_ConstructShadowColorCorrection_alt1(v64);
     result = v2[35];
-    v2[35] = v166;
+    v2[35] = v64;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[28] == 0) {
-    v170 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 2288, 16, 0);
-    memset(v170, 0, 2288);
-    fw_graphics_ConstructCloud(v170);
+    v65 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         2288, 16, 0);
+    memset_alt1(v65, 0, 0x8F0u);
+    fw_graphics_ConstructCloud_alt1(v65);
     result = v2[28];
-    v2[28] = v170;
+    v2[28] = v65;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[37] == 0) {
-    v174 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 840, 16, 0);
-    memset(v174, 0, 840);
-    fw_graphics_ConstructSkyBlur(v174);
+    v66 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         840, 16, 0);
+    memset_alt1(v66, 0, 0x348u);
+    fw_graphics_ConstructSkyBlur_alt1(v66);
     result = v2[37];
-    v2[37] = v174;
+    v2[37] = v66;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[41] == 0) {
-    v178 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 680, 16, 0);
-    memset(v178, 0, 680);
-    fw_graphics_ConstructMirage(v178);
+    v67 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         680, 16, 0);
+    memset_alt1(v67, 0, 0x2A8u);
+    fw_graphics_ConstructMirage_alt1(v67);
     result = v2[41];
-    v2[41] = v178;
+    v2[41] = v67;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[44] == 0) {
-    v182 = (__int64*)fw_memory_g_heap_manager_ptr;
-    v183 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 352, 16, 0);
-    memset(v183, 0, 352);
-    *(_QWORD*)v183 = gfxa_VFXSetting_vtable;
-    *(_BYTE*)(v183 + 88) = 1;
-    qmemcpy((void*)(v183 + 64), " StarrySkyOpacity", 17);
-    *(_QWORD*)(v183 + 56) = &gfx_settings_BaseParamInstance_vtable;
-    fw_graphics_RegisterProperty((_QWORD*)v183, v183 + 56);
-    *(_BYTE*)(v183 + 92) = 0;
-    *(_BYTE*)(v183 + 96) = 0;
-    *(_QWORD*)(v183 + 104) = 0;
-    *(_QWORD*)(v183 + 112) = 0;
-    *(_QWORD*)(v183 + 120) = 0;
-    v187 = *v182;
-    v188 = GameData_212e520[0] + 16;
-    *(_DWORD*)(v183 + 128) = 1065353216;
-    *(_QWORD*)(v183 + 56) = v188;
-    *(_QWORD*)(v183 + 144) = &gfx_settings_BaseParamInstance_vtable;
-    v189 = (char*)fw_memory_HeapManager_Allocate(v187, 32, 16, 0);
-    *(_BYTE*)(v183 + 176) = 1;
-    *(_QWORD*)(v183 + 152) = 33;
-    *(_QWORD*)(v183 + 160) = 25;
-    *(_QWORD*)(v183 + 168) = v189;
-    strcpy(v189, "LightShaftColorMultiplier");
-    fw_graphics_RegisterProperty((_QWORD*)v183, v183 + 144);
-    *(_BYTE*)(v183 + 192) = 0;
-    *(_BYTE*)(v183 + 208) = 0;
-    *(_QWORD*)(v183 + 224) = 0;
-    *(_QWORD*)(v183 + 232) = 0;
-    *(_QWORD*)(v183 + 144) = gfx_settings_Float3_vtable;
-    *(_QWORD*)(v183 + 240) = 0;
-    *(_QWORD*)(v183 + 272) = &gfx_settings_BaseParamInstance_vtable;
-    *(_BYTE*)(v183 + 304) = 1;
-    strcpy((char*)(v183 + 280), "&LightShaftIntensity");
-    *(_OWORD*)(v183 + 256) = GameData_1a837f0;
-    fw_graphics_RegisterProperty((_QWORD*)v183, v183 + 272);
+    v68 = (__int64*)fw_memory_g_heap_manager_ptr;
+    v69 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         352, 16, 0);
+    memset_alt1(v69, 0, 0x160u);
+    *(_QWORD*)v69 = gfxa_VFXSetting_vtable;
+    *(_BYTE*)(v69 + 88) = 1;
+    qmemcpy((void*)(v69 + 64), " StarrySkyOpacity", 17);
+    *(_QWORD*)(v69 + 56) = &gfx_settings_BaseParamInstance_vtable;
+    fw_graphics_RegisterProperty_alt1((_QWORD*)v69, v69 + 56);
+    *(_BYTE*)(v69 + 92) = 0;
+    *(_BYTE*)(v69 + 96) = 0;
+    *(_QWORD*)(v69 + 104) = 0;
+    *(_QWORD*)(v69 + 112) = 0;
+    *(_QWORD*)(v69 + 120) = 0;
+    v70 = *v68;
+    v71 = GameData_212e520[0] + 16;
+    *(_DWORD*)(v69 + 128) = 1065353216;
+    *(_QWORD*)(v69 + 56) = v71;
+    *(_QWORD*)(v69 + 144) = &gfx_settings_BaseParamInstance_vtable;
+    v72 = (char*)fw_memory_HeapManager_Allocate(v70, 32, 16, 0);
+    *(_BYTE*)(v69 + 176) = 1;
+    *(_QWORD*)(v69 + 152) = 33;
+    *(_QWORD*)(v69 + 160) = 25;
+    *(_QWORD*)(v69 + 168) = v72;
+    strcpy(v72, "LightShaftColorMultiplier");
+    fw_graphics_RegisterProperty_alt1((_QWORD*)v69, v69 + 144);
+    *(_BYTE*)(v69 + 192) = 0;
+    *(_BYTE*)(v69 + 208) = 0;
+    *(_QWORD*)(v69 + 224) = 0;
+    *(_QWORD*)(v69 + 232) = 0;
+    *(_QWORD*)(v69 + 144) = gfx_settings_Float3_vtable;
+    *(_QWORD*)(v69 + 240) = 0;
+    *(_QWORD*)(v69 + 272) = &gfx_settings_BaseParamInstance_vtable;
+    *(_BYTE*)(v69 + 304) = 1;
+    strcpy((char*)(v69 + 280), "&LightShaftIntensity");
+    *(_OWORD*)(v69 + 256) = GameData_1a837f0;
+    fw_graphics_RegisterProperty_alt1((_QWORD*)v69, v69 + 272);
     result = v2[44];
-    *(_BYTE*)(v183 + 308) = 0;
-    *(_BYTE*)(v183 + 312) = 0;
-    *(_QWORD*)(v183 + 320) = 0;
-    *(_QWORD*)(v183 + 328) = 0;
-    *(_QWORD*)(v183 + 336) = 0;
-    *(_QWORD*)(v183 + 272) = v188;
-    *(_DWORD*)(v183 + 344) = 1065353216;
-    v2[44] = v183;
+    *(_BYTE*)(v69 + 308) = 0;
+    *(_BYTE*)(v69 + 312) = 0;
+    *(_QWORD*)(v69 + 320) = 0;
+    *(_QWORD*)(v69 + 328) = 0;
+    *(_QWORD*)(v69 + 336) = 0;
+    *(_QWORD*)(v69 + 272) = v71;
+    *(_DWORD*)(v69 + 344) = 1065353216;
+    v2[44] = v69;
     if (result != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }
   }
   if (v2[46] == 0) {
-    v190 = fw_memory_HeapManager_Allocate(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, 616, 16, 0);
-    memset(v190, 0, 616);
-    fw_graphics_ConstructTranslucency(v190);
+    v73 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         616, 16, 0);
+    memset_alt1(v73, 0, 0x268u);
+    fw_graphics_ConstructTranslucency_alt1(v73);
     result = v2[46];
-    v2[46] = v190;
+    v2[46] = v73;
     if (result != 0) {
       return (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
     }

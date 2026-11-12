@@ -52,7 +52,8 @@ extern char* GameData_2075d18[4];
 void __attribute__((noreturn)) GameRoutine_1654e20(void);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 bool game_gmap_GmapUIDef_SetQuestIcon(__int64 a1, __int64 a2, char a3);
-bool GmapUIDef_1653b80(__int64* a1, int a2, float a3);
+bool GmapUIDef_1653b80_alt1(__int64* a1, int a2,
+                            float a3) __asm__("GmapUIDef_1653b80");
 __int64 game_gmap_GmapUIDef_SetQuestIcon_lambda2_Invoke(__int64 a1, _QWORD* a2);
 __int64 game_gmap_GmapUIDef_SetQuestIcon_lambda3_Invoke(__int64 a1, _QWORD* a2);
 __int64 game_gmap_GmapUIDef_SetQuestIcon_lambda4_Invoke(__int64 a1, _QWORD* a2);
@@ -107,6 +108,15 @@ GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 void game_gameui_1596b00(__int64);
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 GameRoutine_174d580_alt1(__int64*, const char*,
+                                 __int64) __asm__("GameRoutine_174d580");
+__int64
+LayoutAccessor_1562cf0_alt1(__int64 result,
+                            const char*) __asm__("LayoutAccessor_1562cf0");
+__int64 LayoutAccessor_15635a0_alt1(__int64*, const char*,
+                                    char) __asm__("LayoutAccessor_15635a0");
+bool GmapUIDef_1653b80(__int64 a1, int a2, float a3);
 
 bool game_gmap_GmapUIDef_SetQuestIcon(__int64 a1, __int64 a2, char a3)
 {
@@ -1453,17 +1463,19 @@ LABEL_356:
   return v217 > 0;
 }
 
-bool GmapUIDef_1653b80(__int64* a1, int a2, float a3)
+bool GmapUIDef_1653b80(__int64 a1, int a2, float a3)
 {
+
+#pragma clang fp contract(off)
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v10;
-  __int64 v11;
+  __int64* v11;
   __int64 v12;
   _BOOL4 v13;
-  char* v14;
-  _QWORD v15[6];
+  const char* v14;
+  __int64 v15[6];
 
   if (a2 == 8) {
     return false;
@@ -1471,34 +1483,35 @@ bool GmapUIDef_1653b80(__int64* a1, int a2, float a3)
   v15[2] = v5;
   v15[4] = v3;
   v15[5] = v4;
-  if (a1[1] != 0 && (v10 = std___1___shared_weak_count_lock(a1[1])) != 0) {
-    v11 = *a1;
+  if (*(_QWORD*)(a1 + 8) != 0 &&
+      (v10 = std___1___shared_weak_count_lock_alt1(*(_QWORD*)(a1 + 8))) != 0) {
+    v11 = *(__int64**)a1;
     v12 = v10;
-    v13 = v11 == 0;
-    if (v11 != 0) {
+    v13 = v11 == nullptr;
+    if (v11 != nullptr) {
       v14 = GameData_2075cb8[a2];
-      LayoutAccessor_155e830(v11, 1);
-      if ((LayoutAccessor_15635a0(v11, v14, 1) & 1) == 0) {
-        LayoutAccessor_1562cf0(v11, v14);
+      LayoutAccessor_155e830_alt1((__int64)v11, 1);
+      if ((LayoutAccessor_15635a0_alt1(v11, v14, 1) & 1) == 0) {
+        LayoutAccessor_1562cf0_alt1((__int64)v11, v14);
       }
-      if (a3 >= 1.0) {
-        if ((LayoutAccessor_15635a0(v11, "GaugeMax", 1) & 1) == 0) {
-          LayoutAccessor_1562680(v11, "GaugeMax", 1.0);
+      if (a3 >= 0x1.0000000000000p+0f) {
+        if ((LayoutAccessor_15635a0_alt1(v11, "GaugeMax", 1) & 1) == 0) {
+          GameHr_1562680((__int64)v11, "GaugeMax", 0x1.0000000000000p+0f);
         }
       }
       else {
-        v15[0] = v11;
+        v15[0] = (__int64)v11;
         v15[1] = v12;
         atomic_fetch_add_explicit((atomic_ullong* volatile)(v12 + 16), 1u,
                                   memory_order_relaxed);
-        GameRoutine_174d580(v15, "GaugeUp", 7, a3);
-        std___1___shared_weak_count___release_weak(v12);
+        GameRoutine_174d580_alt1(v15, "GaugeUp", 7);
+        std___1___shared_weak_count___release_weak_alt1(v12);
       }
     }
     if (atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-      std___1___shared_weak_count___release_weak(v12);
+      std___1___shared_weak_count___release_weak_alt1(v12);
     }
   }
   else {

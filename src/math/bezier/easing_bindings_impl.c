@@ -9,6 +9,10 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 float GameRoutine_619100(__int64, long double, float);
 float EasingBindings_619bc0(__int64 a1, float a2, float a3);
 __int64 EasingBindings_b2db40(__int64 result);
+__int64
+CScriptArray_At_1971f0_alt1(__int64,
+                            unsigned int) __asm__("CScriptArray_At_1971f0");
+__int64 CScriptArray_GetSize_alt1(__int64) __asm__("CScriptArray_GetSize");
 
 float EasingBindings_619bc0(__int64 a1, float a2, float a3)
 {
@@ -33,41 +37,41 @@ float EasingBindings_619bc0(__int64 a1, float a2, float a3)
   __int64 v23;
   __int64 v24;
   float v25;
-  long double v26;
-  __int64 v27;
+  __int64 v26;
+  long double v27;
 
-  v4 = 0.0;
-  if (a3 > 0.0) {
-    v5 = 0.0;
+  v4 = 0x0.0p+0f;
+  if (a3 > 0x0.0p+0f) {
+    v5 = 0x0.0p+0f;
     if (a2 > a3) {
       v7 = a3;
     }
     else {
       v7 = a2;
     }
-    if (a2 >= 0.0) {
+    if (a2 >= 0x0.0p+0f) {
       v8 = v7;
     }
     else {
-      v8 = 0.0;
+      v8 = 0x0.0p+0f;
     }
-    v9 = ((__int64 (*)(void))CScriptArray_GetSize)();
-    v10 = CScriptArray_GetSize(a1);
-    v11 = 0.0;
+    v9 = CScriptArray_GetSize_alt1(a1);
+    v10 = CScriptArray_GetSize_alt1(a1);
+    v11 = 0x0.0p+0f;
     if (v10 != 0) {
       v12 = v10;
       for (i = 0; i != v12; ++i) {
-        v14 = ((__int64 (*)(__int64, _QWORD))CScriptArray_At_1971f0)(a1, i);
+        v14 = CScriptArray_At_1971f0_alt1(a1, i);
         v11 = v11 + *(float*)(v14 + 20);
       }
     }
     v15 = v8 / a3;
-    v16 = 0.0;
+    v16 = 0x0.0p+0f;
     v17 = 0;
     if (v9 != 0) {
-      v5 = 0.0;
+      v5 = 0x0.0p+0f;
       while (1) {
-        v20 = ((__int64 (*)(__int64, _QWORD))CScriptArray_At_1971f0)(a1, v17);
+        v20 = CScriptArray_At_1971f0_alt1(a1, v17);
         v21 = *(float*)(v20 + 20);
         v22 = v5 + v21;
         if ((float)((float)(v5 + v21) / v11) >= v15) {
@@ -77,19 +81,17 @@ float EasingBindings_619bc0(__int64 a1, float a2, float a3)
         v24 = *(_QWORD*)(v20 + 24);
         v18 = v21;
         if (v24 != 0) {
-          if ((unsigned int)CScriptArray_GetSize(v24) > 1) {
+          if ((unsigned int)CScriptArray_GetSize_alt1(v24) > 1) {
             v25 =
-                *(float*)((__int64 (*)(_QWORD, __int64))CScriptArray_At_1971f0)(
-                    *(_QWORD*)(v23 + 24), 1);
-            v19 = (float)(v25 - *(float*)((__int64 (*)(
-                                    _QWORD, _QWORD))CScriptArray_At_1971f0)(
+                *(float*)CScriptArray_At_1971f0_alt1(*(_QWORD*)(v23 + 24), 1u);
+            v19 = (float)(v25 - *(float*)CScriptArray_At_1971f0_alt1(
                                     *(_QWORD*)(v23 + 24), 0)) /
                   *(float*)(v23 + 20);
             goto LABEL_15;
           }
           v18 = *(float*)(v23 + 20);
         }
-        v19 = 1.0 / v18;
+        v19 = 0x1.0000000000000p+0f / v18;
       LABEL_15:
         v16 = v16 + (float)(v19 * v21);
         v5 = v22;
@@ -100,11 +102,11 @@ float EasingBindings_619bc0(__int64 a1, float a2, float a3)
         }
       }
     }
-    v21 = 0.0;
+    v21 = 0x0.0p+0f;
   LABEL_22:
-    *(__n128*)&v26 = CScriptArray_At_1971f0(a1, v17);
-    *(float*)&v26 = -(float)(v5 - (float)(v11 * v15));
-    return (float)(v16 + (float)(GameRoutine_619100(v27, v26, v21) * v21)) /
+    v26 = CScriptArray_At_1971f0_alt1(a1, v17);
+    *(float*)&v27 = -(float)(v5 - (float)(v11 * v15));
+    return (float)(v16 + (float)(GameRoutine_619100(v26, v27, v21) * v21)) /
            v11;
   }
   return v4;

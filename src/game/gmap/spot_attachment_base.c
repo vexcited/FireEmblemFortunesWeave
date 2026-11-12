@@ -83,9 +83,14 @@ bool SpotAttachmentBase_14d4740(__int64 a1);
 __int64 SpotAttachmentBase_14d4820(__int64 a1, __int64 a2);
 __int64 SpotAttachmentBase_14d4a20(__int64 a1, __int64 a2);
 __int64 SpotAttachmentBase_14d4c90(__int64 result, __int64 a2, int a3);
-__int64 SpotAttachmentBase_14d4e10(__int64 a1);
+__int64 SpotAttachmentBase_14d4e10_alt1(__int64 a1) __asm__(
+    "SpotAttachmentBase_14d4e10");
 __int64 Dir_70df40(_QWORD);
 __int64 SpotAttachmentBase_14d44d0(__int16* a1);
+__int16* Dir_70dd80_alt1(__int16* result, __int16*) __asm__("Dir_70dd80");
+unsigned __int16*
+Dir_70d7a0_alt1(unsigned __int16* result) __asm__("Dir_70d7a0");
+void* SpotAttachmentBase_14d4e10(__int64 a1);
 
 __int64 SpotAttachmentBase_14d44d0(__int16* a1)
 {
@@ -501,10 +506,10 @@ __int64 SpotAttachmentBase_14d4c90(__int64 result, __int64 a2, int a3)
   return result;
 }
 
-__int64 SpotAttachmentBase_14d4e10(__int64 a1)
+void* SpotAttachmentBase_14d4e10(__int64 a1)
 {
   __int16 v1;
-  __int64 v2;
+  __int16* v2;
   __int16 v4;
   __int16 v5;
   __int16 v6;
@@ -512,7 +517,7 @@ __int64 SpotAttachmentBase_14d4e10(__int64 a1)
   __int16 v8;
   __int16 v9;
   __int16 v10;
-  __int64 result;
+  void* result;
   __int16 v12;
   __int16 v13;
   __int16 v14;
@@ -528,19 +533,19 @@ __int64 SpotAttachmentBase_14d4e10(__int64 a1)
   __int16 v24;
   int v25;
 
-  v2 = a1 + 20;
+  v2 = (__int16*)(a1 + 20);
   v1 = *(_WORD*)(a1 + 20);
   v21 = 0;
   v18 = v1;
   v19 = *(_DWORD*)(a1 + 22);
   v20 = *(_WORD*)(a1 + 26) - 6;
-  Dir_70d7a0(&v18);
+  Dir_70d7a0_alt1((unsigned __int16*)&v18);
   if ((__int16)v19 * v18 * SHIWORD(v19) != 0) {
     v25 = 0;
     v23 = v19;
     v22 = v18;
     v24 = 6 * game_script_hub_schedule_kHourCycles[v20 % 24] % 0x18u;
-    Dir_70dd80(&v22, v2);
+    Dir_70dd80_alt1(&v22, v2);
     v4 = v22;
     v5 = v23;
     v6 = HIWORD(v23);
@@ -567,13 +572,13 @@ __int64 SpotAttachmentBase_14d4e10(__int64 a1)
   v18 = v10;
   v19 = *(_DWORD*)(a1 + 10);
   v20 = *(_WORD*)(a1 + 14) - 6;
-  result = Dir_70d7a0(&v18);
+  result = Dir_70d7a0_alt1((unsigned __int16*)&v18);
   if ((__int16)v19 * v18 * SHIWORD(v19) != 0) {
     v25 = 0;
     v23 = v19;
     v22 = v18;
     v24 = 6 * game_script_hub_schedule_kHourCycles[v20 % 24] % 0x18u;
-    result = Dir_70dd80(&v22, a1 + 8);
+    result = Dir_70dd80_alt1(&v22, (__int16*)(a1 + 8));
     v12 = v22;
     v13 = v23;
     v14 = HIWORD(v23);

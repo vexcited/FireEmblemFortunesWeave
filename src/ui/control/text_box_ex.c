@@ -15,7 +15,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern char GameData_1a9f09e;
-__int64 TextBoxEx_188ab20(__int64 result, __int64 a2);
+__int64 TextBoxEx_188ab20_alt1(__int64 result,
+                               __int64 a2) __asm__("TextBoxEx_188ab20");
 __int64 TextBoxEx_188ac20(__int64 result, __int64 a2, unsigned __int16* a3);
 __int64 TextBoxEx_188aec0(__int64 result);
 __int64 GameRoutine_188a3a0(_QWORD);
@@ -44,6 +45,13 @@ __attribute__((swiftcall)) void TextBoxEx_188a7e0(PSEUDO_X8 x8_, __int64 a1,
                                                   __int64 a2);
 __attribute__((swiftcall)) void TextBoxEx_188aa00(PSEUDO_X8 x8_,
                                                   __int64* result, int a2);
+__int64 Registration_a4da40_alt1(__int64,
+                                 __int64) __asm__("Registration_a4da40");
+char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
+                              char) __asm__("GameRoutine_a4dbe0");
+void GameRoutine_156c5d0_alt1(__int64, __int64,
+                              char) __asm__("GameRoutine_156c5d0");
+void TextBoxEx_188ab20(__int64 a1, _BYTE* a2);
 
 __attribute__((swiftcall)) void TextBoxEx_188a640(PSEUDO_X8 x8_, __int64 a1,
                                                   __int64 a2, __int64 a3)
@@ -264,68 +272,26 @@ __attribute__((swiftcall)) void TextBoxEx_188aa00(PSEUDO_X8 x8_,
   }
 }
 
-__int64 TextBoxEx_188ab20(__int64 result, __int64 a2)
+void TextBoxEx_188ab20(__int64 a1, _BYTE* a2)
 {
-  __int64 v2;
   __int64* v4;
   char v5;
   __int64 v6;
-  __int64 v7;
-  char* v8;
-  _QWORD v9[5];
-  int v10;
-  int v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  int v23;
-  int v24;
+  char* v7;
 
-  if (a2 != 0) {
-    v2 = result;
-    if (*(_QWORD*)(result + 80) != 0) {
-      v4 = msg_MessageManager_instance__ptr[0];
-      v5 = Registration_a4da40(*msg_MessageManager_instance__ptr[0]);
-      v6 = *(_QWORD*)(v2 + 80);
-      if ((v5 & 1) != 0) {
-        v7 = *v4;
-        v12 = -1;
-        v13 = -1;
-        v14 = -1;
-        v15 = -1;
-        v16 = -1;
-        v17 = -1;
-        v18 = -1;
-        v19 = -1;
-        v20 = -1;
-        v21 = -1;
-        v22 = -1;
-        v9[0] = GameData_212e348 + 2;
-        v9[1] = 0xFFFF0001FFFF0000LL;
-        v9[2] = 0xFFFF0004FFFF0002LL;
-        v9[3] = 0xFFFF0006FFFF0005LL;
-        v9[4] = 0xFFFF0008FFFF0007LL;
-        v11 = -1;
-        v23 = 9;
-        v24 = 0;
-        v10 = 3;
-        v8 = (char*)GameRoutine_a4dbe0(v7, a2, 0, v9);
-      }
-      else {
-        v8 = &GameData_1a9f09e;
-      }
-      return GameRoutine_156c5d0(v6, v8, 0);
+  if (a2 != nullptr && *(_QWORD*)(a1 + 80) != 0) {
+    v4 = msg_MessageManager_instance__ptr[0];
+    v5 = Registration_a4da40_alt1(*msg_MessageManager_instance__ptr[0],
+                                  (__int64)a2);
+    v6 = *(_QWORD*)(a1 + 80);
+    if ((v5 & 1) != 0) {
+      v7 = GameRoutine_a4dbe0_alt1(*v4, a2, 0);
     }
+    else {
+      v7 = &GameData_1a9f09e;
+    }
+    GameRoutine_156c5d0_alt1(v6, (__int64)v7, 0);
   }
-  return result;
 }
 
 __int64 TextBoxEx_188ac20(__int64 result, __int64 a2, unsigned __int16* a3)

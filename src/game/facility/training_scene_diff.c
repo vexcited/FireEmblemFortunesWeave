@@ -47,7 +47,23 @@ void __attribute__((noreturn))
 String_60a1d0_alt1(_QWORD) __asm__("String_60a1d0");
 __n128 game_facility_TrainingSceneDiff_Initialize(unsigned __int64 a1,
                                                   __int64 a2);
-__int64 TrainingSceneDiff_14299d0(__int64 result, unsigned int a2, __int64 a3);
+__int64
+TrainingSceneDiff_14299d0_alt1(__int64 result, unsigned int a2,
+                               __int64 a3) __asm__("TrainingSceneDiff_14299d0");
+__int64 GameRoutine_60a020_alt1(__int64,
+                                const char*) __asm__("GameRoutine_60a020");
+__int64 SceneManager_138a920(__int64, __int64);
+__int64 SceneManager_138c000_alt1(_QWORD*, unsigned __int8*, __int64,
+                                  __int64) __asm__("SceneManager_138c000");
+__int64 TrainingArgs_14261c0_alt1(__int64, __int64,
+                                  int) __asm__("TrainingArgs_14261c0");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void GameRoutine_a0d9a0_alt1(__int64) __asm__("GameRoutine_a0d9a0");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TrainingSceneDiff_14299d0(__int64 a1, unsigned int a2, const char* a3);
 
 __n128 game_facility_TrainingSceneDiff_Initialize(unsigned __int64 a1,
                                                   __int64 a2)
@@ -466,47 +482,53 @@ LABEL_94:
   return result;
 }
 
-__int64 TrainingSceneDiff_14299d0(__int64 result, unsigned int a2, __int64 a3)
+void TrainingSceneDiff_14299d0(__int64 a1, unsigned int a2, const char* a3)
 {
   __int64 v3;
-  __int64 v6;
-  __int64 v7;
+  _QWORD* v6;
+  char* v7;
   unsigned __int64 v8;
   unsigned __int64 v9;
   char* v10;
   __int64 v11;
   __int64 v12;
-  __int64 v13;
-  unsigned __int64 v14;
-  char* v15;
+  struct {
+    __int64 v13;
+    unsigned __int64 v14;
+    char* v15;
+  } v13_;
   _QWORD v16[2];
   char v17;
   __int64 v18;
-  char v19[151];
-  char v20;
-  __int64 v21;
+  struct {
+    char gap56_[1];
+    char v19[151];
+    char v20;
+    char gap209_[47];
+    __int64 v21;
+  } v19_;
 
-  v3 = *(_QWORD*)(*(_QWORD*)(result + 16) + 8LL * a2);
+  v3 = *(_QWORD*)(*(_QWORD*)(a1 + 16) + 8LL * a2);
   if (v3 == 0) {
-    return result;
+    return;
   }
-  v19[23] = 0;
-  v19[135] = 0;
-  v20 = 0;
-  v21 = 0;
+  v19_.v19[23] = 0;
+  v19_.v19[135] = 0;
+  v19_.v20 = 0;
+  v19_.v21 = 0;
   v17 = 20;
-  strcpy(v19, "_D");
+  strcpy(v19_.v19, "_D");
   v18 = 0x335FAC9CE6BA9FE5LL;
-  TrainingArgs_14261c0((void*)(&v13), result, v3, a2);
-  v16[0] = v13;
-  v16[1] = v14;
-  GameRoutine_60a020(&v17, a3);
-  v20 |= 2u;
-  v6 = GameData_21f4000;
-  v7 = game_util_Format(GameData_1aa5e95, a2);
-  v8 = strlen(v7);
+  TrainingArgs_14261c0_alt1(a1, v3, a2);
+  v16[0] = v13_.v13;
+  v16[1] = v13_.v14;
+  GameRoutine_60a020_alt1((__int64)&v17, a3);
+  v19_.v20 |= 2u;
+  v6 = (_QWORD*)GameData_21f4000;
+  v7 = game_util_Format_alt1(GameData_1aa5e95, a2);
+  v8 = strlen_alt1(v7);
   if (v8 >= 0xFFFFFFFFFFFFFFF7LL) {
-    String_60a1d0_alt1(v8);
+    String_60a1d0();
   }
   v9 = v8;
   if (v8 >= 0x17) {
@@ -516,30 +538,30 @@ __int64 TrainingSceneDiff_14299d0(__int64 result, unsigned int a2, __int64 a3)
     else {
       v11 = (v8 | 7) + 1;
     }
-    v10 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
-                                                     v11, 16, 0);
-    v14 = v9;
-    v15 = v10;
-    v13 = v11 | 1;
+    v10 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v11,
+                                                16, 0);
+    v13_.v14 = v9;
+    v13_.v15 = v10;
+    v13_.v13 = v11 | 1;
     goto LABEL_10;
   }
-  LOBYTE(v13) = 2 * v8;
-  v10 = (char*)&v13 + 1;
+  LOBYTE(v13_.v13) = 2 * v8;
+  v10 = (char*)&v13_.v13 + 1;
   if (v8 != 0) {
   LABEL_10:
-    memmove(v10, v7, v9);
+    memmove_alt1((__int64)v10, (__int64)v7, v9);
   }
   v10[v9] = 0;
-  SceneManager_138c000(v6, &v13, v3, v16);
-  if ((v13 & 1) != 0 && v15 != nullptr) {
+  SceneManager_138c000_alt1(v6, (unsigned __int8*)&v13_.v13, v3, (__int64)v16);
+  if ((v13_.v13 & 1) != 0 && v13_.v15 != nullptr) {
     v12 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v12 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v12);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, (__int64)v13_.v15);
   }
-  return GameRoutine_a0d9a0(v16);
+  GameRoutine_a0d9a0_alt1((__int64)v16);
 }
 
 __int64 game_facility_TrainingSceneDiff_Initialize_lambda0_Invoke(__int64 a1)
@@ -549,31 +571,39 @@ __int64 game_facility_TrainingSceneDiff_Initialize_lambda0_Invoke(__int64 a1)
   char v3;
   __int64 v4;
   __int64 v5;
-  __int64 v6;
-  __int64 v7;
+  char* v6;
+  unsigned __int64 v7;
   __int64 v8;
   __int64 v9;
   __int64 v10;
   __int64 v11;
   __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
   __int64 result;
-  __int64 v18;
-  _QWORD v19[6];
-  _QWORD* v20;
-  __int64 v21;
-  __int64 v22;
+  __int64 v14;
+  struct {
+    _QWORD v15[6];
+    _QWORD* v16;
+    __int64 v17;
+    __int64 v18;
+  } v15_;
 
-  v20 = nullptr;
-  v21 = 0;
+  v10 = COERCE_AS(__typeof__(v10),
+                  PSEUDO_REGISTER(unsigned long long, "x3", "=r")),
+  v11 = COERCE_AS(__typeof__(v11),
+                  PSEUDO_REGISTER(unsigned long long, "x4", "=r")),
+  v12 = COERCE_AS(__typeof__(v12),
+                  PSEUDO_REGISTER(unsigned long long, "x5", "=r")),
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+  v15_.v16 = nullptr;
+  v15_.v17 = 0;
   v1 = *(_QWORD*)(a1 + 8);
-  v22 = 0;
+  v15_.v18 = 0;
   v2 = *(_QWORD*)(v1 + 48);
-  v19[0] = game_facility_SceneManager_FacilityMapArgs_vtable;
-  memset(&v19[1], 0, 40);
+  v15_.v15[0] = game_facility_SceneManager_FacilityMapArgs_vtable;
+  memset(&v15_.v15[1], 0, 40);
   v3 = *(_BYTE*)(v1 + 32);
   v4 = v1 + 33;
   if ((v3 & 1) != 0) {
@@ -582,24 +612,63 @@ __int64 game_facility_TrainingSceneDiff_Initialize_lambda0_Invoke(__int64 a1)
   else {
     v5 = v4;
   }
-  v6 = game_util_Format(GameData_1ab9754, v5);
-  v7 = strlen(v6);
-  GameRoutine_1389160((__int64)v19, v6, v7);
-  GameRoutine_138a920(*(_QWORD*)GameData_212dce8, (__int64)v19, v8, v9, v10,
-                      v11);
-  result = (__int64)v20;
-  v19[0] = &game_facility_SceneManager_IMapArgs_vtable;
-  if (v20 == &v19[2]) {
-    v18 = 32;
+  v6 = game_util_Format_alt1(GameData_1ab9754, v5),
+  v10 = COERCE_AS(__typeof__(v10),
+                  PSEUDO_REGISTER(unsigned long long, "x3", "=r")),
+  v11 = COERCE_AS(__typeof__(v11),
+                  PSEUDO_REGISTER(unsigned long long, "x4", "=r")),
+  v12 = COERCE_AS(__typeof__(v12),
+                  PSEUDO_REGISTER(unsigned long long, "x5", "=r")),
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+  v7 = strlen_alt1(v6),
+  v10 = COERCE_AS(__typeof__(v10),
+                  PSEUDO_REGISTER(unsigned long long, "x3", "=r")),
+  v11 = COERCE_AS(__typeof__(v11),
+                  PSEUDO_REGISTER(unsigned long long, "x4", "=r")),
+  v12 = COERCE_AS(__typeof__(v12),
+                  PSEUDO_REGISTER(unsigned long long, "x5", "=r")),
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+  GameRoutine_1389160((__int64)v15_.v15, (__int64)v6, v7),
+      v10 = COERCE_AS(__typeof__(v10),
+                      PSEUDO_REGISTER(unsigned long long, "x3", "=r")),
+      v11 = COERCE_AS(__typeof__(v11),
+                      PSEUDO_REGISTER(unsigned long long, "x4", "=r")),
+      v12 = COERCE_AS(__typeof__(v12),
+                      PSEUDO_REGISTER(unsigned long long, "x5", "=r")),
+      v8 = COERCE_AS(__typeof__(v8),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v9 = COERCE_AS(__typeof__(v9),
+                     PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+  SceneManager_138a920(*(_QWORD*)GameData_212dce8, (__int64)v15_.v15),
+      v10 = COERCE_AS(__typeof__(v10),
+                      PSEUDO_REGISTER(unsigned long long, "x3", "=r")),
+      v11 = COERCE_AS(__typeof__(v11),
+                      PSEUDO_REGISTER(unsigned long long, "x4", "=r")),
+      v12 = COERCE_AS(__typeof__(v12),
+                      PSEUDO_REGISTER(unsigned long long, "x5", "=r")),
+      v8 = COERCE_AS(__typeof__(v8),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v9 = COERCE_AS(__typeof__(v9),
+                     PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+  result = (__int64)v15_.v16;
+  v15_.v15[0] = &game_facility_SceneManager_IMapArgs_vtable;
+  if (v15_.v16 == &v15_.v15[2]) {
+    v14 = 32;
   }
   else {
-    if (v20 == nullptr) {
+    if (v15_.v16 == nullptr) {
       return result;
     }
-    v18 = 40;
+    v14 = 40;
   }
   return (*(__int64 (**)(_QWORD*, __int64, __int64, __int64, __int64, __int64))(
-      *v20 + v18))(v20, v12, v13, v14, v15, v16);
+      *v15_.v16 + v14))(v15_.v16, v8, v9, v10, v11, v12);
 }
 
 __int64 game_facility_TrainingSceneDiff_Initialize_lambda1_Invoke(__int64 a1)

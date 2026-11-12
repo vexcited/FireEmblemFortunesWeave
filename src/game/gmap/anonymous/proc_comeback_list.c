@@ -19,8 +19,10 @@ extern __int64 GameData_212cf80[5];
 extern __int64* GameData_212c780;
 extern __int64* GameData_212ceb0;
 extern char GameData_1a9f09e;
-_QWORD* game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke(
-    _QWORD* result, unsigned int* a2);
+_QWORD* game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke_alt1(
+    _QWORD* result,
+    unsigned int* a2) __asm__("game_gmap_anonymous_ProcComebackList_"
+                              "AddItemList_closure_Invoke");
 __int64 game_gmap_anonymous_ProcComebackList_SortAndFilter_closure_Invoke(
     __int64 a1, unsigned __int8** a2);
 _QWORD* game_16f1350(_QWORD*, __int64, char);
@@ -31,6 +33,15 @@ extern __int64 GameData_225e7a0;
 extern __int64 game_gameui_MenuAnimator_instance_;
 __int64 ProcComebackList_Unknown124(_QWORD* a1);
 __int64 ProcComebackList_Unknown128(_QWORD* a1);
+__int64 GameHr_16f0e40(__int64, __int64);
+__int64 SpotMgr_132ffa0_alt1(unsigned int*) __asm__("SpotMgr_132ffa0");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+void BasicMenuCursor_16e0c00_alt1(_QWORD*,
+                                  __int64) __asm__("BasicMenuCursor_16e0c00");
+void game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke(
+    __int64 a1, unsigned int* a2);
 
 __int64 ProcComebackList_Destructor(_QWORD* a1)
 {
@@ -194,25 +205,26 @@ __int64 ProcComebackList_Unknown128(_QWORD* a1)
   return (*(__int64 (**)(__int64))(*v4_.v5 + v3))((__int64)v4_.v5);
 }
 
-_QWORD* game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke(
-    _QWORD* result, unsigned int* a2)
+void game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke(
+    __int64 a1, unsigned int* a2)
 {
   __int64 v2;
   __int64 v3;
   __int64* v4;
   __int64* v5;
-  int v6;
+  unsigned int v6;
   __int64* v7;
   _QWORD* v9;
-  _QWORD* v10;
   __int64 v11;
   __int64 v12;
   int v13;
   __int64 v14;
   __int64 v15;
-  int v16;
-  _DWORD v18[2];
-  char* v19;
+  unsigned int v16;
+  struct {
+    unsigned int v18[2];
+    char* v19;
+  } v18_;
 
   v2 = *a2;
   v3 = GameData_212cf80[0];
@@ -226,17 +238,15 @@ _QWORD* game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke(
   v6 = *((_DWORD*)v5 + 1);
   v7 = GameData_212c780;
   if (v6 != 0 && *GameData_212c780 != 0) {
-    v9 = (_QWORD*)result[1];
-    v10 = result;
-    v18[0] = v6;
-    v18[1] = 0;
-    v19 = &GameData_1a9f09e;
-    result = (_QWORD*)SpotMgr_132ffa0(v18);
-    if (result != nullptr) {
-      v11 = fw_memory_HeapManager_Allocate(
+    v9 = *(_QWORD**)(a1 + 8);
+    v18_.v18[0] = v6;
+    v18_.v18[1] = 0;
+    v18_.v19 = &GameData_1a9f09e;
+    if (SpotMgr_132ffa0_alt1(v18_.v18) != 0) {
+      v11 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 96, 16, 0);
       v12 = 0;
-      v13 = *(_DWORD*)v10[2];
+      v13 = **(_DWORD**)(a1 + 16);
       *(_DWORD*)(v11 + 80) = 16843009;
       *(_WORD*)(v11 + 16) = 0;
       *(_QWORD*)(v11 + 48) = 0;
@@ -257,17 +267,16 @@ _QWORD* game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke(
       }
       v16 = *(_DWORD*)(v15 + 4);
       if (v16 != 0 && v14 != 0) {
-        v19 = &GameData_1a9f09e;
-        v18[0] = v16;
-        v18[1] = 0;
-        v12 = SpotMgr_132ffa0(v18);
+        v18_.v19 = &GameData_1a9f09e;
+        v18_.v18[0] = v16;
+        v18_.v18[1] = 0;
+        v12 = SpotMgr_132ffa0_alt1(v18_.v18);
       }
-      *(_BYTE*)(v11 + 83) = GameRoutine_16f0e40(v15, v12);
-      result = BasicMenuCursor_16e0c00(v9, v11);
-      ++*(_DWORD*)v10[2];
+      *(_BYTE*)(v11 + 83) = GameHr_16f0e40(v15, v12);
+      BasicMenuCursor_16e0c00_alt1(v9, v11);
+      ++**(_DWORD**)(a1 + 16);
     }
   }
-  return result;
 }
 
 __int64 game_gmap_anonymous_ProcComebackList_SortAndFilter_closure_Invoke(

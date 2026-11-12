@@ -16,7 +16,19 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD, long double);
 extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_ad5a30(void);
-_QWORD* gfx_ad57c0(_QWORD* result, unsigned __int64 a2, _QWORD* a3);
+_QWORD* gfx_ad57c0_alt1(_QWORD* result, unsigned __int64 a2,
+                        _QWORD* a3) __asm__("gfx_ad57c0");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_ad5a30_alt1() __asm__("GameRoutine_ad5a30");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void gfx_ad57c0(__int64* a1, unsigned __int64 a2, _QWORD* a3);
 
 __attribute__((swiftcall)) void gfx_ad5600(PSEUDO_X8 x8_,
                                            unsigned __int64 result)
@@ -121,11 +133,10 @@ __attribute__((swiftcall)) void gfx_ad5600(PSEUDO_X8 x8_,
   }
 }
 
-_QWORD* gfx_ad57c0(_QWORD* result, unsigned __int64 a2, _QWORD* a3)
+void gfx_ad57c0(__int64* a1, unsigned __int64 a2, _QWORD* a3)
 {
   __int64 v3;
   _QWORD* v4;
-  _QWORD* v5;
   __int64 v6;
   unsigned __int64 v7;
   __int64 v8;
@@ -145,14 +156,12 @@ _QWORD* gfx_ad57c0(_QWORD* result, unsigned __int64 a2, _QWORD* a3)
   __int64 v22;
   unsigned __int64 v23;
   __int64 v24;
-  char* v25;
+  unsigned __int64 v25;
   __int64 v26;
-  long double v27;
-  __int64 v28;
+  __int64 v27;
 
-  v4 = (_QWORD*)result[1];
-  v3 = result[2];
-  v5 = result;
+  v4 = (_QWORD*)a1[1];
+  v3 = a1[2];
   if (a2 <= (v3 - (__int64)v4) >> 3) {
     if (a2 != 0) {
       v14 = &v4[a2];
@@ -179,15 +188,15 @@ _QWORD* gfx_ad57c0(_QWORD* result, unsigned __int64 a2, _QWORD* a3)
       }
       v4 = v14;
     }
-    result[1] = v4;
+    a1[1] = (__int64)v4;
   }
   else {
-    v6 = (__int64)v4 - *result;
+    v6 = (__int64)v4 - *a1;
     v7 = a2 + (v6 >> 3);
     if (v7 >> 61 != 0) {
-      GameRoutine_ad5a30();
+      GameRoutine_ad5a30_alt1();
     }
-    v8 = v3 - *result;
+    v8 = v3 - *a1;
     v9 = fw_memory_g_heap_manager_ptr;
     if (v8 >> 2 > v7) {
       v7 = v8 >> 2;
@@ -200,11 +209,11 @@ _QWORD* gfx_ad57c0(_QWORD* result, unsigned __int64 a2, _QWORD* a3)
     }
     if (v10 != 0) {
       if (v10 >> 61 != 0) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
       v11 = a2;
       v12 = a3;
-      v13 = fw_memory_HeapManager_Allocate(
+      v13 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v10, 16, 0);
       a3 = v12;
       a2 = v11;
@@ -240,22 +249,21 @@ _QWORD* gfx_ad57c0(_QWORD* result, unsigned __int64 a2, _QWORD* a3)
       } while (v21 != (_QWORD*)v20);
     }
     v23 = v13 + 8 * v10;
-    v24 = *v5;
-    v25 = (char*)v4 - *v5;
-    v26 = (char*)v18 - v25;
-    result = (_QWORD*)memcpy((char*)v18 - v25, *v5, v25);
-    *v5 = v26;
-    v5[1] = v20;
-    v5[2] = v23;
+    v24 = *a1;
+    v25 = (unsigned __int64)v4 - *a1;
+    v26 = (__int64)v18 - v25;
+    memcpy_alt1((__int64)v18 - v25, *a1, v25);
+    *a1 = v26;
+    a1[1] = v20;
+    a1[2] = v23;
     if (v24 != 0) {
-      v28 = 128;
+      v27 = 128;
       if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) == 0) {
-        v28 = 56;
+        v27 = 56;
       }
-      return (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v28, v27);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v9 + v27, v24);
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

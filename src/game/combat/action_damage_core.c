@@ -13,6 +13,8 @@ extern __int64 GameData_2235738;
 void game_combat_ActionDamageCore_DoDie(__int64* a1);
 __int64 game_combat_ActionDamageCore_DoDie_lambda0_Invoke(__int64 a1,
                                                           float* a2);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 void game_combat_ActionDamageCore_DoDie(__int64* a1)
 {
@@ -186,10 +188,10 @@ __int64 game_combat_ActionDamageCore_DoDie_lambda0_Invoke(__int64 a1, float* a2)
       (*(_QWORD*)(v11 + 8) != -1 ? (v12 = *(_QWORD*)(v9 + 88) == 0)
                                  : (v12 = true),
        v12 || *(_QWORD*)(v8 + 8) == -1)) {
-    std___1___shared_weak_count___release_weak(v8);
+    std___1___shared_weak_count___release_weak_alt1(v8);
     return 1;
   }
-  std___1___shared_weak_count___release_weak(v8);
+  std___1___shared_weak_count___release_weak_alt1(v8);
   v14 = *(_QWORD*)(v9 + 80);
   if (v14 != 0) {
     v13 = *(_QWORD*)(v14 + 8);

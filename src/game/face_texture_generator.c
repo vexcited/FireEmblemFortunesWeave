@@ -11,6 +11,13 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 FaceTextureGenerator_111a720(__int64 a1);
 extern __int64 (*game_UnitEdit_vtable[])();
 __int64 FaceTextureGenerator_111a240(__int64 a1);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void DGame_1920490(__int64);
+void DGame_1920be0(_QWORD*);
+void SpineCaptureProcessor_1921e00(__int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 FaceTextureGenerator_111a240(__int64 a1)
 {
@@ -138,7 +145,7 @@ __int64 FaceTextureGenerator_111a720(__int64 a1)
   if (v3 != nullptr) {
     v4 = (_QWORD*)v3[6];
     for (i = v3 + 5; v4 != i; v4 = (_QWORD*)v4[1]) {
-      GameRoutine_1920be0(v4 + 2);
+      DGame_1920be0(v4 + 2);
     }
     if (v3[7] != 0) {
       v6 = (_QWORD*)v3[6];
@@ -150,14 +157,14 @@ __int64 FaceTextureGenerator_111a720(__int64 a1)
         v8 = fw_memory_g_heap_manager_ptr;
         do {
           v9 = (_QWORD*)v6[1];
-          GameRoutine_1921e00(v6 + 2);
+          SpineCaptureProcessor_1921e00((__int64)(v6 + 2));
           if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) != 0) {
             v10 = 128;
           }
           else {
             v10 = 56;
           }
-          nn_mem_StandardAllocator_Free(*(_QWORD*)v8 + v10, v6);
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v8 + v10, (__int64)v6);
           v6 = v9;
         } while (v9 != i);
       }
@@ -178,14 +185,14 @@ __int64 FaceTextureGenerator_111a720(__int64 a1)
       v14 = fw_memory_g_heap_manager_ptr;
       do {
         v15 = (_QWORD*)v12[1];
-        GameRoutine_1920490(v12 + 2);
+        DGame_1920490((__int64)(v12 + 2));
         if (*(_QWORD*)(*(_QWORD*)v14 + 200LL) != 0) {
           v16 = 128;
         }
         else {
           v16 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v14 + v16, v12);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v14 + v16, (__int64)v12);
         v12 = v15;
       } while (v15 != v1 + 3);
     }
@@ -255,7 +262,7 @@ __int64 FaceTextureGenerator_111a720(__int64 a1)
     if (v27 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v27 + 8),
                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v27 + 16LL))(v27);
-      std___1___shared_weak_count___release_weak(v27);
+      std___1___shared_weak_count___release_weak_alt1(v27);
     }
     result = *(_QWORD*)(v26 + 144);
     *(_QWORD*)(v26 + 144) = 0;

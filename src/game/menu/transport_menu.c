@@ -14,9 +14,10 @@ extern __int64* GameData_212e008[9];
 __int64 TransportMenu_170b5f0(__int64 a1);
 bool game_menu_TransportMenu_SortAndFilter_lambda0_Invoke(__int64 a1,
                                                           _QWORD* a2);
-__int64 game_menu_TransportMenu_SortAndFilter_lambda1_Invoke(__int64 a1,
-                                                             _QWORD* a2,
-                                                             _QWORD** a3);
+__int64 game_menu_TransportMenu_SortAndFilter_lambda1_Invoke_alt1(
+    __int64 a1, _QWORD* a2,
+    _QWORD**
+        a3) __asm__("game_menu_TransportMenu_SortAndFilter_lambda1_Invoke");
 __int64* LayoutAccessor_155fbe0(__int64*, __int64);
 __int64 GameRoutine_15724c0(__int64*);
 __int64 ui_LayoutAccessor_FindTextBox(__int64*, __int64);
@@ -25,6 +26,17 @@ extern __int64* msg_MessageManager_instance__ptr[2];
 extern char* GameData_20aa298[7];
 void GameRoutine_156c5d0(__int64, __int64, char);
 __int64 TransportMenu_170b4c0(__int64 a1);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 game_gameui_anonymous_15d2540(__int64*, _WORD*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+bool GameRoutine_19ef8e0_alt1(_QWORD*, _QWORD*) __asm__("GameRoutine_19ef8e0");
+bool game_menu_TransportMenu_SortAndFilter_lambda1_Invoke(__int64 a1,
+                                                          _QWORD* a2,
+                                                          _QWORD** a3);
 
 __int64 TransportMenu_170b4c0(__int64 a1)
 {
@@ -66,36 +78,39 @@ __int64 TransportMenu_170b5f0(__int64 a1)
 {
   __int64 result;
   __int64 v3;
-  __int64 v4;
+  _WORD* v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  __int64 v8;
+  struct {
+    __int64* v7;
+    __int64 v8;
+  } v7_;
 
   result = *(_QWORD*)(a1 + 336);
   if (result != 0) {
     result = __dynamic_cast(result, GameData_212e008[0], &GameData_20aa0d0, 0);
     if (result != 0) {
       v3 = result;
-      GameRoutine_1560070((void*)&v7, a1 + 848, "L_ItemDetail");
-      v4 = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 560LL))(v3);
-      result = v8;
-      if (v8 != 0) {
-        v5 = std___1___shared_weak_count_lock(v8);
+      LayoutAccessor_1560070((void*)(&v7_.v7), (__int64*)(a1 + 848),
+                             "L_ItemDetail");
+      v4 = (_WORD*)(*(__int64 (**)(__int64))(*(_QWORD*)v3 + 560LL))(v3);
+      result = v7_.v8;
+      if (v7_.v8 != 0) {
+        v5 = std___1___shared_weak_count_lock_alt1(v7_.v8);
         if (v5 != 0) {
           v6 = v5;
-          if (v7 != 0) {
-            GameRoutine_15d2540(v7, v4, 0);
+          if (v7_.v7 != nullptr) {
+            game_gameui_anonymous_15d2540(v7_.v7, v4);
           }
           if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-            std___1___shared_weak_count___release_weak(v6);
+            std___1___shared_weak_count___release_weak_alt1(v6);
           }
         }
-        result = v8;
-        if (v8 != 0) {
-          return std___1___shared_weak_count___release_weak(v8);
+        result = v7_.v8;
+        if (v7_.v8 != 0) {
+          return std___1___shared_weak_count___release_weak_alt1(v7_.v8);
         }
       }
     }
@@ -123,9 +138,9 @@ bool game_menu_TransportMenu_SortAndFilter_lambda0_Invoke(__int64 a1,
   }
 }
 
-__int64 game_menu_TransportMenu_SortAndFilter_lambda1_Invoke(__int64 a1,
-                                                             _QWORD* a2,
-                                                             _QWORD** a3)
+bool game_menu_TransportMenu_SortAndFilter_lambda1_Invoke(__int64 a1,
+                                                          _QWORD* a2,
+                                                          _QWORD** a3)
 {
   __int64 v3;
   _QWORD* v4;
@@ -133,26 +148,30 @@ __int64 game_menu_TransportMenu_SortAndFilter_lambda1_Invoke(__int64 a1,
   __int64 v6;
   __int64 v7;
   __int64 v8;
-  _QWORD v10[3];
-  char v11;
-  _QWORD v12[3];
-  char v13;
+  struct {
+    _QWORD v10[3];
+    char v11;
+  } v10_;
+  struct {
+    _QWORD v12[3];
+    char v13;
+  } v12_;
 
   v3 = *a2;
   v4 = *a3;
   v5 = (*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 560LL))(*a2);
   v6 = (*(__int64 (**)(_QWORD*))(*v4 + 560LL))(v4);
   v7 = *(_QWORD*)(v3 + 88);
-  v12[2] = 0;
-  v13 = 0;
-  v10[2] = 0;
-  v11 = 0;
-  v12[0] = v5;
-  v12[1] = v7;
+  v12_.v12[2] = 0;
+  v12_.v13 = 0;
+  v10_.v10[2] = 0;
+  v10_.v11 = 0;
+  v12_.v12[0] = v5;
+  v12_.v12[1] = v7;
   v8 = v4[11];
-  v10[0] = v6;
-  v10[1] = v8;
-  return GameRoutine_19ef8e0(v12, v10) & 1;
+  v10_.v10[0] = v6;
+  v10_.v10[1] = v8;
+  return GameRoutine_19ef8e0_alt1(v12_.v12, v10_.v10);
 }
 
 #pragma GCC visibility pop

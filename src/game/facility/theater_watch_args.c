@@ -18,6 +18,15 @@ __attribute__((swiftcall)) void TheaterWatchArgs_Destructor(PSEUDO_X8 x8_,
                                                             __int64 result,
                                                             __int64 a2,
                                                             unsigned int a3);
+__int64* Registration_a4da40_alt1(__int64,
+                                  const char*) __asm__("Registration_a4da40");
+__int64 Manager_a51640_alt1(__int64, const char*,
+                            _DWORD*) __asm__("Manager_a51640");
+void SceneTalk_1497180_alt1(unsigned __int8*, __int64, unsigned __int64,
+                            __int64, __int64, unsigned __int64,
+                            int) __asm__("SceneTalk_1497180");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __attribute__((swiftcall)) void TheaterWatchArgs_13db060(PSEUDO_X8 x8_,
                                                          __int64 a1, int a2)
@@ -26,32 +35,30 @@ __attribute__((swiftcall)) void TheaterWatchArgs_13db060(PSEUDO_X8 x8_,
   __int64 v4;
   unsigned int v5;
   const char* v6;
-  char* v7;
-  __n128 result;
-  char* v9;
-  unsigned __int64 v10;
+  const char* v7;
+  char* v8;
+  unsigned __int64 v9;
+  __int64 v10;
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  __int64 v14;
   struct {
-    __int64 v15;
-    unsigned __int64 v16;
-    char* v17;
+    __int64 v14;
+    unsigned __int64 v15;
+    char* v16;
     char gap32_[8];
-    char v18;
+    char v17;
     char gap41_[15];
-    __int64 v19;
+    __int64 v18;
     char gap64_[8];
-    char v20;
+    char v19;
     char gap73_[15];
-    __int64 v21;
-    char v22;
+    __int64 v20;
+    char v21;
     char gap97_[15];
-    __int64 v23;
-  } v15_;
+    __int64 v22;
+  } v14_;
 
-  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v4 = 40;
   if (a2 != 0) {
     v4 = 41;
@@ -63,89 +70,75 @@ __attribute__((swiftcall)) void TheaterWatchArgs_13db060(PSEUDO_X8 x8_,
   else {
     v6 = (const char*)*(&GameData_2035bb0 + (unsigned __int8)v5);
   }
-  SceneTalk_1497180(
-      &v15_.v15, (__int64)"StageWatch", 0xAu,
+  SceneTalk_1497180_alt1(
+      (unsigned __int8*)&v14_.v14, (__int64)"StageWatch", 0xAu,
       *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL * a2) + 392LL),
-      (__int64)v6, 3u, 1u),
-      result =
-          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  if ((v15_.v15 & 1) != 0) {
-    v7 = v15_.v17;
+      (__int64)v6, 3u, 1);
+  if ((v14_.v14 & 1) != 0) {
+    v7 = v14_.v16;
   }
   else {
-    v7 = (char*)&v15_.v15 + 1;
+    v7 = (char*)&v14_.v14 + 1;
   }
-  if (((unsigned int)Registration_a4da40(msg_MessageManager_instance_,
-                                         (__int64)v7) &
+  if (((unsigned int)Registration_a4da40_alt1(msg_MessageManager_instance_,
+                                              v7) &
        1) != 0 &&
-      ((v15_.v15 & 1) != 0 ? (v9 = v15_.v17) : (v9 = (char*)&v15_.v15 + 1),
-       (Manager_a51640(msg_MessageManager_instance_, (__int64)v9, v9) & 1) !=
-           0)) {
-    if ((v15_.v15 & 1) != 0) {
-      fw_text_String_CopyTerminated(a3, (__int64)v15_.v17, v15_.v16),
-          result = COERCE_AS(__typeof__(result),
-                             PSEUDO_REGISTER(__n128, "v0", "=w"));
-      if ((v15_.v22 & 1) == 0) {
+      ((v14_.v14 & 1) != 0 ? (v8 = v14_.v16) : (v8 = (char*)&v14_.v14 + 1),
+       (Manager_a51640_alt1(msg_MessageManager_instance_, v8, v8) & 1) != 0)) {
+    if ((v14_.v14 & 1) != 0) {
+      fw_text_String_CopyTerminated(a3, (__int64)v14_.v16, v14_.v15);
+      if ((v14_.v21 & 1) == 0) {
         goto LABEL_22;
       }
     }
     else {
-      v10 = v15_.v16;
-      *a3 = v15_.v15;
-      a3[1] = v10;
-      a3[2] = (__int64)v15_.v17;
-      if ((v15_.v22 & 1) == 0) {
+      v9 = v14_.v15;
+      *a3 = v14_.v14;
+      a3[1] = v9;
+      a3[2] = (__int64)v14_.v16;
+      if ((v14_.v21 & 1) == 0) {
         goto LABEL_22;
       }
     }
   }
   else {
     *(_WORD*)a3 = 0;
-    if ((v15_.v22 & 1) == 0) {
+    if ((v14_.v21 & 1) == 0) {
       goto LABEL_22;
     }
   }
-  if (v15_.v23 != 0) {
+  if (v14_.v22 != 0) {
+    v10 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v10 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v10, v14_.v22);
+  }
+LABEL_22:
+  if ((v14_.v19 & 1) != 0 && v14_.v20 != 0) {
     v11 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v11 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, v14_.v20);
   }
-LABEL_22:
-  if ((v15_.v20 & 1) != 0 && v15_.v21 != 0) {
+  if ((v14_.v17 & 1) != 0 && v14_.v18 != 0) {
     v12 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v12 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v12);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v14_.v18);
   }
-  if ((v15_.v18 & 1) != 0 && v15_.v19 != 0) {
+  if ((v14_.v14 & 1) != 0 && v14_.v16 != nullptr) {
     v13 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v13 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13);
-  }
-  if ((v15_.v15 & 1) != 0 && v15_.v17 != nullptr) {
-    v14 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v14 = 56;
-    }
-    {
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v14),
-          result = COERCE_AS(__typeof__(result),
-                             PSEUDO_REGISTER(__n128, "v0", "=w"));
-      return;
-    }
-  }
-  {
-    result;
-    return;
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, (__int64)v14_.v16);
   }
 }
 

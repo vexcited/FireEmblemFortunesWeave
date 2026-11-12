@@ -22,9 +22,9 @@ __int64 ProcGmapTalkSeq_14d12d0(__int64 result);
 __int64 ProcGmapTalkSeq_14d1360();
 __int64 ProcGmapTalkSeq_14d13e0(__int64 result);
 __int64 ProcGmapTalkSeq_14d14c0(__int64 a1);
-__int64
-game_gmap_ProcGmapTalkSeq_SetCursorAtOpenSpot_closure_Invoke(__int64 a1,
-                                                             _QWORD* a2);
+__int64 game_gmap_ProcGmapTalkSeq_SetCursorAtOpenSpot_closure_Invoke_alt1(
+    __int64 a1, _QWORD* a2) __asm__("game_gmap_ProcGmapTalkSeq_"
+                                    "SetCursorAtOpenSpot_closure_Invoke");
 __attribute__((swiftcall)) void game_112eec0(PSEUDO_X8, __int64 result,
                                              unsigned int, unsigned int);
 __int64 GameRoutine_ae3f80(__int64, int);
@@ -53,6 +53,11 @@ void ProcGmapTalkSeq_14d0630(__int64 a1);
 __int64 game_gmap_ProcGmapTalkSeq_OpenSpots();
 __n128 ProcGmapTalkSeq_Destructor(__int64 a1);
 void ProcGmapTalkSeq_14d1c70(__int64 a1, __int64 a2, __int64 a3);
+__int64 GameRoutine_1317f10_alt1(float32x4_t*,
+                                 float32x4_t*) __asm__("GameRoutine_1317f10");
+__int64
+game_gmap_ProcGmapTalkSeq_SetCursorAtOpenSpot_closure_Invoke(__int64 a1,
+                                                             float32x4_t** a2);
 
 void ProcGmapTalkSeq_14d0630(__int64 a1)
 {
@@ -239,44 +244,51 @@ __int64 ProcGmapTalkSeq_14d12d0(__int64 result)
 
 __int64 ProcGmapTalkSeq_14d1360()
 {
+
+#pragma clang fp contract(off)
   __int64 v0;
   int v1;
-  __int64* v2;
-  __int64* v3;
-  __int64 v4;
-  __int64 v5;
+  float32x4_t** v2;
+  float32x4_t** v3;
+  float32x4_t* v4;
+  float32x4_t* v5;
   __int64 result;
 
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   v0 = *(_QWORD*)(GameData_21c96e8 + 8);
   v1 = *(_DWORD*)(v0 + 56);
-  v2 = *(__int64**)(v0 + 8);
-  v3 = *(__int64**)(v0 + 16);
+  v2 = *(float32x4_t***)(v0 + 8);
+  v3 = *(float32x4_t***)(v0 + 16);
   if (v1 < 0) {
     if (v2 != v3) {
       while (1) {
         v4 = *v2;
-        if (*(_QWORD*)(*v2 + 96) == 0 && *(_QWORD*)(v4 + 552) == 0) {
+        if (LANES128((*v2)[6]).n128_u64[0] == 0 &&
+            LANES128(v4[34]).n128_u64[1] == 0) {
           break;
         }
         if (++v2 == v3) {
           return result;
         }
       }
-      return GameRoutine_1317f10(*(_QWORD*)(*GameData_212d708 + 16), v4 + 48);
+      return GameRoutine_1317f10_alt1(*(float32x4_t**)(*GameData_212d708 + 16),
+                                      v4 + 3);
     }
   }
   else if (v2 != v3) {
     while (1) {
       v5 = *v2++;
       v4 = v5;
-      if (*(_DWORD*)(v5 + 84) == v1) {
+      if (LANES128(v5[5]).n128_u32[1] == v1) {
         break;
       }
       if (v2 == v3) {
         return result;
       }
     }
-    return GameRoutine_1317f10(*(_QWORD*)(*GameData_212d708 + 16), v4 + 48);
+    return GameRoutine_1317f10_alt1(*(float32x4_t**)(*GameData_212d708 + 16),
+                                    v4 + 3);
   }
   return result;
 }
@@ -424,13 +436,20 @@ __int64 ProcGmapTalkSeq_14d14c0(__int64 a1)
   return 0;
 }
 
-__int64 game_gmap_ProcGmapTalkSeq_SetCursorAtOpenSpot_closure_Invoke(__int64 a1,
-                                                                     _QWORD* a2)
+__int64
+
+game_gmap_ProcGmapTalkSeq_SetCursorAtOpenSpot_closure_Invoke(__int64 a1,
+                                                             float32x4_t** a2)
 {
+
+#pragma clang fp contract(off)
   __int64 result;
 
-  if (*a2 != 0) {
-    return GameRoutine_1317f10(*(_QWORD*)(*GameData_212d708 + 16), *a2 + 32LL);
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (*a2 != nullptr) {
+    return GameRoutine_1317f10_alt1(*(float32x4_t**)(*GameData_212d708 + 16),
+                                    *a2 + 2);
   }
   return result;
 }

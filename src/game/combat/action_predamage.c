@@ -20,9 +20,17 @@ extern __int64 game_script_hub_g_frame_counter;
 float CharacterAnimator_1079580(__int64, int, float, float, float);
 float CharacterAnimator_107a200(__int64, long double);
 void ActionPredamage_Unknown6(__int64 a1);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+float CharacterAnimator_107a200_alt1(__int64) __asm__(
+    "CharacterAnimator_107a200");
+unsigned __int64
+game_combat_109acb0_alt1(__int64, __int64) __asm__("game_combat_109acb0");
 
 void ActionPredamage_Unknown6(__int64 a1)
 {
+
+#pragma clang fp contract(off)
   __int64 v1;
   __int64* v3;
   unsigned int v4;
@@ -46,7 +54,6 @@ void ActionPredamage_Unknown6(__int64 a1)
   float v22;
   __int64 v23;
   __int64 v24;
-  long double v25;
   int v26;
   float v27;
   __int64 v28;
@@ -54,6 +61,7 @@ void ActionPredamage_Unknown6(__int64 a1)
   int v30;
   int v32;
 
+  v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s0", "=w"));
   v1 = *(_QWORD*)(a1 + 24);
   v3 = GameData_212d448[0];
   if (*GameData_212d448[0] != 0 && (v4 = *(_DWORD*)(v1 + 8)) <= 3 &&
@@ -75,7 +83,8 @@ void ActionPredamage_Unknown6(__int64 a1)
     else {
       v11 = v7;
     }
-    std___1___shared_weak_count___release_weak(v6);
+    std___1___shared_weak_count___release_weak_alt1(v6),
+        v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s0", "=w"));
     v12 = *(_QWORD*)(v11 + 136);
     if (v12 == 0) {
       goto LABEL_20;
@@ -95,8 +104,9 @@ void ActionPredamage_Unknown6(__int64 a1)
 LABEL_20:
   v13 = 0;
 LABEL_21:
-  game_combat_109acb0(v11 + 560, v13);
-  if (v14 > 0.0) {
+  game_combat_109acb0_alt1(v11 + 560, v13),
+      v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s0", "=w"));
+  if (v14 > 0x0.0p+0f) {
     *(float*)(v1 + 20) = v14;
     *(_BYTE*)(v1 + 24) = 1;
   }
@@ -109,14 +119,16 @@ LABEL_21:
     v17 = nn_os_ConvertToTimeSpan(
               *(_QWORD*)(game_script_hub_g_frame_counter + 344)) /
               1000 -
-          *(_QWORD*)(v16 + 136);
-    *(float*)&v18 = 0x1.e848000000000p+19;
+          *(_QWORD*)(v16 + 136),
+    v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s0", "=w"));
+    *(float*)&v18 = 0x1.e848000000000p+19f;
   }
   else {
     v17 = nn_os_ConvertToTimeSpan(
               *(_QWORD*)(game_script_hub_g_frame_counter + 344)) /
-          1000000;
-    *(float*)&v18 = 0x1.f400000000000p+9;
+          1000000,
+    v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s0", "=w"));
+    *(float*)&v18 = 0x1.f400000000000p+9f;
   }
   v19 = *(float*)&v18;
   v21 = *(_QWORD*)(a1 + 72);
@@ -142,12 +154,16 @@ LABEL_21:
       v26 = *(_DWORD*)(v24 + 120);
       v23 = v24;
       if (v26 == 501870813) {
-        v27 = CharacterAnimator_107a200(v24, v25);
+        v27 = CharacterAnimator_107a200_alt1(v24),
+        v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s0", "=w"));
         v23 = v24;
-        if (v27 <= 0x1.2aaaaa0000000p+0) {
+        if (v27 <= 0x1.2aaaaa0000000p+0f) {
         LABEL_33:
-          CharacterAnimator_1079580(v23, *(_DWORD*)(v21 + 4), -1.0,
-                                    *(float*)(v21 + 8), 1.0);
+          CharacterAnimator_1079580(v23, *(_DWORD*)(v21 + 4),
+                                    -0x1.0000000000000p+0f, *(float*)(v21 + 8),
+                                    0x1.0000000000000p+0f),
+              v14 = COERCE_AS(__typeof__(v14),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
         }
       }
       else if (v26 != 1817091785 || *(_QWORD*)(v1 + 48) == 0) {

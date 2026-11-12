@@ -95,6 +95,16 @@ __attribute__((swiftcall)) void game_character_10f6aa0(PSEUDO_X8 x8_,
 void game_character_10fd340(unsigned __int64* a1, float32x4_t* a2);
 __attribute__((swiftcall)) void
 game_character_111a1c0(PSEUDO_X8 x8_, __int64 a1, int8x16_t* a2);
+__attribute__((swiftcall)) void
+CharacterSound_1095750_alt1(PSEUDO_X8, __int64, char*, const char*,
+                            float) __asm__("CharacterSound_1095750");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+bool GameRoutine_109ec70_alt2(const char*,
+                              const char*) __asm__("GameRoutine_109ec70");
+int strcmp_alt1(const char*, const char*) __asm__("strcmp");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __attribute__((swiftcall)) void game_character_d03230(PSEUDO_X8 x8_)
 {
@@ -1740,7 +1750,7 @@ __attribute__((swiftcall)) void game_character_10b4c40(PSEUDO_X8 x8_,
     if (*(_QWORD*)(v5 + 8) != -1 && v4 != 0 && v6 != 0) {
       if (*a2 == 62) {
         v10 = a2 + 1;
-        if ((unsigned int)strcmp(a2 + 1, "Loc_C_Center") == 0) {
+        if (strcmp_alt1(a2 + 1, "Loc_C_Center") == 0) {
           v25 = *(unsigned __int8*)(a1 + 48);
           v26 = *(_QWORD*)(v6 + 392);
           v27 = *(_QWORD*)(v6 + 400);
@@ -1763,7 +1773,7 @@ __attribute__((swiftcall)) void game_character_10b4c40(PSEUDO_X8 x8_,
               (*(void (**)(__int64))(*(_QWORD*)v27 + 16LL))(v27),
                   result = COERCE_AS(__typeof__(result),
                                      PSEUDO_REGISTER(__n128, "v0", "=w"));
-              std___1___shared_weak_count___release_weak(v27),
+              std___1___shared_weak_count___release_weak_alt1(v27),
                   result = COERCE_AS(__typeof__(result),
                                      PSEUDO_REGISTER(__n128, "v0", "=w"));
             }
@@ -1785,7 +1795,7 @@ __attribute__((swiftcall)) void game_character_10b4c40(PSEUDO_X8 x8_,
         if (GameData_21ec7b0 != 0) {
           v12 = *(_QWORD*)(GameData_21ec7b0 + 8);
           if (v12 != 0 && (*(_BYTE*)(v12 + 113) & 0x80) != 0 &&
-              GameRoutine_109ec70_alt1((__int64)v10, (__int64)"Loc_Reserve")) {
+              GameRoutine_109ec70_alt2(v10, "Loc_Reserve")) {
             v10 = "Loc_C_Trans";
           }
         }
@@ -1869,14 +1879,12 @@ __attribute__((swiftcall)) void game_character_10f6aa0(PSEUDO_X8 x8_,
   __int64 v10;
   unsigned __int64 v11;
   char* v12;
-  __n128 result;
-  __int64 v14;
+  __int64 v13;
   struct {
-    __int64 v15[2];
-    char* v16;
-  } v15_;
+    __int64 v14[2];
+    char* v15;
+  } v14_;
 
-  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v4 = *(unsigned __int8*)(a2 + 32);
   v5 = *(_QWORD*)(a2 + 40);
   v7 = (v4 & 1) == 0;
@@ -1894,34 +1902,22 @@ __attribute__((swiftcall)) void game_character_10f6aa0(PSEUDO_X8 x8_,
   else {
     v11 = v5;
   }
-  CharacterSound_10962d0((void*)(v15_.v15), v8, v10, v11),
-      result =
-          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  if ((v15_.v15[0] & 1) != 0) {
-    v12 = v15_.v16;
+  CharacterSound_10962d0((void*)(v14_.v14), v8, v10, v11);
+  if ((v14_.v14[0] & 1) != 0) {
+    v12 = v14_.v15;
   }
   else {
-    v12 = (char*)v15_.v15 + 1;
+    v12 = (char*)v14_.v14 + 1;
   }
-  CharacterSound_1095750((void*)(a3), v8, (__int64)v12, 0, *(float*)(a2 + 56)),
-      result =
-          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  if ((v15_.v15[0] & 1) != 0 && v15_.v16 != nullptr) {
-    v14 = 128;
+  CharacterSound_1095750_alt1((void*)(a3), v8, v12, nullptr,
+                              *(float*)(a2 + 56));
+  if ((v14_.v14[0] & 1) != 0 && v14_.v15 != nullptr) {
+    v13 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v14 = 56;
+      v13 = 56;
     }
-    {
-      nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v14),
-          result = COERCE_AS(__typeof__(result),
-                             PSEUDO_REGISTER(__n128, "v0", "=w"));
-      return;
-    }
-  }
-  {
-    result;
-    return;
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, (__int64)v14_.v15);
   }
 }
 

@@ -33,6 +33,9 @@ void __attribute__((noreturn)) GameRoutine_f0170();
 void __attribute__((noreturn)) GameRoutine_f0190();
 __int64 snd_data_ed5a0(__int64 result, char a2);
 __int64 snd_data_ef600(__int64 result, char a2);
+__int64 GameRoutine_a2af20_alt1(__int64, __int64, __int64,
+                                ...) __asm__("GameRoutine_a2af20");
+__int64 strstr_alt1(const char*, const char*) __asm__("strstr");
 
 __int64 snd_data_ed5a0(__int64 result, char a2)
 {
@@ -800,7 +803,7 @@ __int64 snd_data_ef600(__int64 result, char a2)
   __int64 v148;
   const char* v149;
   _BYTE v150[16];
-  _BYTE v151[264];
+  char v151[264];
 
   v2 = snd_data_s_groupDataList_ptr[0];
   if (*snd_data_s_groupDataList_ptr[0] == 0) {
@@ -841,15 +844,20 @@ __int64 snd_data_ef600(__int64 result, char a2)
         v14 = 0;
         v15 = (unsigned int)v13;
         do {
-          if (strstr(v11 + (v14 << 8), "data_sndDisposEnv") == 0 &&
-              strstr(v11 + (v14 << 8), "data_sndDisposEnvBgm") == 0 &&
-              strstr(v11 + (v14 << 8), "data_sndDisposMove") == 0 &&
-              strstr(v11 + (v14 << 8), "data_sndDisposWind") == 0 &&
-              strstr(v11 + (v14 << 8), "data_sndDispos") != 0) {
+          if (strstr_alt1((const char*)(v11 + (v14 << 8)),
+                          "data_sndDisposEnv") == 0 &&
+              strstr_alt1((const char*)(v11 + (v14 << 8)),
+                          "data_sndDisposEnvBgm") == 0 &&
+              strstr_alt1((const char*)(v11 + (v14 << 8)),
+                          "data_sndDisposMove") == 0 &&
+              strstr_alt1((const char*)(v11 + (v14 << 8)),
+                          "data_sndDisposWind") == 0 &&
+              strstr_alt1((const char*)(v11 + (v14 << 8)), "data_sndDispos") !=
+                  0) {
             v149 = v3;
-            GameRoutine_a2af20((__int64)v151, 256, "%s/%s", v3,
-                               (const char*)(v11 + (v14 << 8)));
-            v81 = (_BYTE*)strstr(v151, ".zst");
+            GameRoutine_a2af20_alt1((__int64)v151, 256, (__int64)"%s/%s", v3,
+                                    (const char*)(v11 + (v14 << 8)));
+            v81 = (_BYTE*)strstr_alt1(v151, ".zst");
             if (v81 != nullptr) {
               *v81 = 0;
             }

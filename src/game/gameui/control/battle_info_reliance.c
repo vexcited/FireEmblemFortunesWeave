@@ -13,38 +13,53 @@ extern __int64 (***GameData_212dae8)();
 extern __int64* GameData_212d670[3];
 extern __int64* GameData_212d678[2];
 extern __int64 game_GameModeData_instance_;
-__int64 BattleInfoReliance_18b5f90(_QWORD* a1, __int64 a2, __int64 a3);
+__int64 BattleInfoReliance_18b5f90_alt1(
+    _QWORD* a1, __int64 a2, __int64 a3) __asm__("BattleInfoReliance_18b5f90");
+__int64 GameHr_1840740(__int64, unsigned int, __int64, unsigned __int8, char);
+__int64 GameReliance_8e17a0_alt1(_QWORD*, __int64,
+                                 __int64) __asm__("GameReliance_8e17a0");
+__int64 GameRoutine_1842b90_alt1(__int64, int) __asm__("GameRoutine_1842b90");
+__int64 GameRoutine_8ca0c0_alt1(__int64, __int64) __asm__("GameRoutine_8ca0c0");
+__int64
+ui_LayoutAccessor_FindPane_alt1(__int64*,
+                                __int64) __asm__("ui_LayoutAccessor_FindPane");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+__int64 BattleInfoReliance_18b5f90(__int64* a1, __int64 a2, __int64 a3);
 
-__int64 BattleInfoReliance_18b5f90(_QWORD* a1, __int64 a2, __int64 a3)
+__int64 BattleInfoReliance_18b5f90(__int64* a1, __int64 a2, __int64 a3)
 {
   __int64 v4;
   __int64* v5;
   __int64 v6;
   __int64 v7;
-  long double v8;
+  __int64 v8;
   __int64 v9;
   __int64 v10;
-  __int64 v11;
-  bool v12;
+  bool v11;
+  __int64 v12;
   __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  unsigned int v16;
-  __int64 (***v17)();
+  _QWORD* v14;
+  unsigned int v15;
+  __int64 (***v16)();
+  __int64 v17;
   __int64 v18;
   __int64 v19;
   __int64 v20;
-  _QWORD* v21;
-  _BOOL8 v22;
+  char v21;
+  __int64 v22;
   __int64 v23;
   __int64 v24;
   __int64 v25;
-  __int64 v26;
-  _QWORD v28[2];
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
+  struct {
+    _QWORD v27[2];
+    __int64 v28;
+  } v27_;
+  struct {
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+  } v29_;
 
   a1[135] = a2;
   a1[136] = a3;
@@ -55,108 +70,109 @@ __int64 BattleInfoReliance_18b5f90(_QWORD* a1, __int64 a2, __int64 a3)
     v4 = 0;
   }
   v5 = a1 + 135;
-  v30 = v4;
+  v29_.v29 = v4;
   if (a3 != 0) {
     v6 = *(_QWORD*)(a3 + 392);
   }
   else {
     v6 = 0;
   }
-  v28[0] = v6;
-  v7 = GameRoutine_8ca0c0(&v30, v28);
-  v9 = *v5;
-  v10 = v7;
-  v32 = 0;
-  v30 = v9;
-  v31 = 0;
-  if (v9 != 0) {
-    v11 = *(_QWORD*)(v9 + 392);
-    v31 = v11;
-    if (v11 != 0) {
-      v11 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v11 + 24) + 1784LL) + 272LL);
+  v27_.v27[0] = v6;
+  v7 = GameRoutine_8ca0c0_alt1((__int64)&v29_.v29, (__int64)v27_.v27);
+  v8 = *v5;
+  v9 = v7;
+  v29_.v31 = 0;
+  v29_.v29 = v8;
+  v29_.v30 = 0;
+  if (v8 != 0) {
+    v10 = *(_QWORD*)(v8 + 392);
+    v29_.v30 = v10;
+    if (v10 != 0) {
+      v10 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v10 + 24) + 1784LL) + 272LL);
     }
-    v32 = v11;
-    v12 = v11 == 0;
+    v29_.v31 = v10;
+    v11 = v10 == 0;
   }
   else {
-    v12 = true;
+    v11 = true;
   }
-  v13 = a1[136];
-  v28[0] = v13;
-  if (v13 != 0) {
-    v14 = *(_QWORD*)(v13 + 392);
-    v28[1] = v14;
-    if (v14 != 0) {
-      v29 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v14 + 24) + 1784LL) + 272LL);
-      if (v29 == 0) {
-        v12 = true;
+  v12 = a1[136];
+  v27_.v27[0] = v12;
+  if (v12 != 0) {
+    v13 = *(_QWORD*)(v12 + 392);
+    v27_.v27[1] = v13;
+    if (v13 != 0) {
+      v27_.v28 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v13 + 24) + 1784LL) + 272LL);
+      if (v27_.v28 == 0) {
+        v11 = true;
       }
-      if (!v12) {
-        v15 = *(_QWORD*)(game_GameModeData_instance_ + 128);
-        v16 = GameReliance_8e17a0(v15, &v30, v28);
-        if ((v16 & 0x80000000) == 0) {
-          v17 = (__int64 (***)())(*(_QWORD*)(v15 + 8) + 56LL * v16);
-          if (*((_BYTE*)v17 + 10) != 0) {
+      if (!v11) {
+        v14 = *(_QWORD**)(game_GameModeData_instance_ + 128);
+        v15 = GameReliance_8e17a0_alt1(v14, (__int64)&v29_.v29,
+                                       (__int64)v27_.v27);
+        if ((v15 & 0x80000000) == 0) {
+          v16 = (__int64 (***)(void))(v14[1] + 56LL * v15);
+          if (*((_BYTE*)v16 + 10) != 0) {
             goto LABEL_27;
           }
         LABEL_19:
-          if (v10 == 0) {
-            v26 = 0;
+          if (v9 == 0) {
+            v25 = 0;
             *v5 = 0;
             a1[136] = 0;
-            return (*(__int64 (**)(_QWORD*, __int64, long double))(*a1 + 40LL))(
-                a1, v26, v8);
+            return (*(__int64 (**)(__int64*, __int64))(*a1 + 40))(a1, v25);
           }
-          v18 = ui_LayoutAccessor_FindPane(a1 + 11, "Face");
-          if (v18 != 0) {
-            v19 = __dynamic_cast(v18, GameData_212d670[0], GameData_212d678[0],
+          v17 = ui_LayoutAccessor_FindPane_alt1(a1 + 11, (__int64)"Face");
+          if (v17 != 0) {
+            v18 = __dynamic_cast(v17, GameData_212d670[0], GameData_212d678[0],
                                  0);
-            if (v19 != 0) {
-              *(_BYTE*)(v19 + 88) =
-                  *(_BYTE*)(v19 + 88) & 0xFE |
-                  GameRoutine_1840740(v19, 0, a1[136], 6, 1) & 1;
+            if (v18 != 0) {
+              *(_BYTE*)(v18 + 88) = *(_BYTE*)(v18 + 88) & 0xFE |
+                                    GameHr_1840740(v18, 0, a1[136], 6u, 1) & 1;
             }
           }
-          ui_LayoutAccessor_SetPaneVisible(a1 + 11, "IconReliance", 1);
-          v20 = ui_LayoutAccessor_FindPane(a1 + 11, "IconReliance");
-          if (v20 != 0) {
-            v20 = __dynamic_cast(v20, GameData_212d670[0], GameData_212d678[0],
+          ui_LayoutAccessor_SetPaneVisible_alt1((__int64)(a1 + 11),
+                                                (__int64)"IconReliance", 1);
+          v19 =
+              ui_LayoutAccessor_FindPane_alt1(a1 + 11, (__int64)"IconReliance");
+          if (v19 != 0) {
+            v19 = __dynamic_cast(v19, GameData_212d670[0], GameData_212d678[0],
                                  0);
           }
-          GameRoutine_1842b90(v20, 1);
-          v21 = a1 + 11;
-          v22 = true;
+          GameRoutine_1842b90_alt1(v19, 1);
+          v20 = (__int64)(a1 + 11);
+          v21 = 1;
         LABEL_33:
-          *(__n128*)&v8 =
-              ui_LayoutAccessor_SetPaneVisible(v21, "SpecialReliance", v22);
-          v26 = 1;
-          return (*(__int64 (**)(_QWORD*, __int64, long double))(*a1 + 40LL))(
-              a1, v26, v8);
+          ui_LayoutAccessor_SetPaneVisible_alt1(v20, (__int64)"SpecialReliance",
+                                                v21);
+          v25 = 1;
+          return (*(__int64 (**)(__int64*, __int64))(*a1 + 40))(a1, v25);
         }
       }
     }
   }
-  v17 = GameData_212dae8;
+  v16 = GameData_212dae8;
   if (*((_BYTE*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212dae8 + 2) == 0) {
     goto LABEL_19;
   }
 LABEL_27:
-  v23 = ui_LayoutAccessor_FindPane(a1 + 11, "Face");
-  if (v23 != 0) {
-    v24 = __dynamic_cast(v23, GameData_212d670[0], GameData_212d678[0], 0);
-    if (v24 != 0) {
-      *(_BYTE*)(v24 + 88) = *(_BYTE*)(v24 + 88) & 0xFE |
-                            GameRoutine_1840740(v24, 0, a1[136], 6, 1) & 1;
+  v22 = ui_LayoutAccessor_FindPane_alt1(a1 + 11, (__int64)"Face");
+  if (v22 != 0) {
+    v23 = __dynamic_cast(v22, GameData_212d670[0], GameData_212d678[0], 0);
+    if (v23 != 0) {
+      *(_BYTE*)(v23 + 88) = *(_BYTE*)(v23 + 88) & 0xFE |
+                            GameHr_1840740(v23, 0, a1[136], 6u, 1) & 1;
     }
   }
-  ui_LayoutAccessor_SetPaneVisible(a1 + 11, "IconReliance", 1);
-  v25 = ui_LayoutAccessor_FindPane(a1 + 11, "IconReliance");
-  if (v25 != 0) {
-    v25 = __dynamic_cast(v25, GameData_212d670[0], GameData_212d678[0], 0);
+  ui_LayoutAccessor_SetPaneVisible_alt1((__int64)(a1 + 11),
+                                        (__int64)"IconReliance", 1);
+  v24 = ui_LayoutAccessor_FindPane_alt1(a1 + 11, (__int64)"IconReliance");
+  if (v24 != 0) {
+    v24 = __dynamic_cast(v24, GameData_212d670[0], GameData_212d678[0], 0);
   }
-  GameRoutine_1842b90(v25, *((unsigned __int8*)v17 + 11));
-  v21 = a1 + 11;
-  v22 = v10 != 0;
+  GameRoutine_1842b90_alt1(v24, *((unsigned __int8*)v16 + 11));
+  v20 = (__int64)(a1 + 11);
+  v21 = v9 != 0;
   goto LABEL_33;
 }
 

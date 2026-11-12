@@ -32,7 +32,18 @@ unsigned __int64 GameRoutine_190020(__int64*, char*);
 void __attribute__((noreturn)) GameRoutine_13efd0();
 void __attribute__((noreturn)) snd_a36650();
 __n128 VibrationGroup_13e780(__int64 a1, char* a2);
-__n128 VibrationGroup_13e9d0(__int64 a1, const char* a2);
+__n128
+VibrationGroup_13e9d0_alt1(__int64 a1,
+                           const char* a2) __asm__("VibrationGroup_13e9d0");
+__int64* VibrationGroup_13eb00_alt1(__int64*) __asm__("VibrationGroup_13eb00");
+__int64 GameRoutine_13f240_alt1(__int64*,
+                                __int64) __asm__("GameRoutine_13f240");
+__int64 GameRoutine_a2af20_alt1(__int64, __int64, __int64,
+                                ...) __asm__("GameRoutine_a2af20");
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+__int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
+__int64 VibrationGroup_13e9d0(__int64 a1, const char* a2);
 
 __int64 VibrationGroup_Destructor(__int64 result)
 {
@@ -237,52 +248,57 @@ __n128 VibrationGroup_13e780(__int64 a1, char* a2)
   }
 }
 
-__n128 VibrationGroup_13e9d0(__int64 a1, const char* a2)
+__int64 VibrationGroup_13e9d0(__int64 a1, const char* a2)
 {
-  __int64 v4;
+  __int64* v4;
   const char* v5;
   __int64 v6;
-  float v7;
-  __int64 v8;
-  unsigned __int64 v9;
-  __int64 v10;
-  __int64 v12;
-  int v13;
-  __int64 v14;
-  int v15;
-  int v16;
-  _BYTE v17[16];
-  _BYTE v18[256];
+  __int64 v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  struct {
+    __int64 v11;
+    int v12;
+  } v11_;
+  struct {
+    __int64 v13;
+    int v14;
+    char gap36_[4];
+    int v15;
+  } v13_;
+  _BYTE v16[16];
+  _BYTE v17[256];
 
-  nn_os_LockMutex(GameData_2134698[0]);
-  v4 = VibrationGroup_13eb00(a1 + 8);
+  nn_os_LockMutex_alt1((__int64)GameData_2134698[0]);
+  v4 = VibrationGroup_13eb00_alt1((__int64*)(a1 + 8));
   v5 = (const char*)(*(__int64 (**)(_QWORD))(
       **(_QWORD**)snd_g_proxy_ptr[0] + 152LL))(*(_QWORD*)snd_g_proxy_ptr[0]);
-  GameRoutine_a2af20(v18, 256, "%s%s.bnvib.group.bin", v5, a2);
+  GameRoutine_a2af20_alt1((__int64)v17, 256, (__int64)"%s%s.bnvib.group.bin",
+                          v5, a2);
   v6 = GameRoutine_118ff0(*(_QWORD*)(a1 + 56));
-  FileManager_10df70((void*)((__int64)v17), v6, (__int64)v18, 0x20u);
-  v8 = snd_fnd_WeakHandle_get(v17, v7);
-  (*(void (**)(__int64))(*(_QWORD*)v8 + 40LL))(v8);
-  v12 = 0;
-  v13 = 0x2000;
-  GameRoutine_112180_alt1(&v12, v17);
-  v14 = 0;
-  v15 = 0x2000;
-  GameRoutine_112180_alt1(&v14, &v12);
-  v16 = 1;
-  v9 = *(_QWORD*)(v4 + 32);
-  if (v9 >= *(_QWORD*)(v4 + 40)) {
-    v10 = GameRoutine_13f240(v4 + 24, &v14);
+  FileManager_10df70((void*)((__int64)v16), v6, (__int64)v17, 0x20u);
+  v7 = snd_fnd_WeakHandle_get_alt1((__int64)v16);
+  (*(void (**)(__int64))(*(_QWORD*)v7 + 40LL))(v7);
+  v11_.v11 = 0;
+  v11_.v12 = 0x2000;
+  GameRoutine_112180((__int64)&v11_.v11, (__int64)v16);
+  v13_.v13 = 0;
+  v13_.v14 = 0x2000;
+  GameRoutine_112180((__int64)&v13_.v13, (__int64)&v11_.v11);
+  v13_.v15 = 1;
+  v8 = v4[4];
+  if (v8 >= v4[5]) {
+    v9 = GameRoutine_13f240_alt1(v4 + 3, (__int64)&v13_.v13);
   }
   else {
-    *(_QWORD*)v9 = 0;
-    *(_DWORD*)(v9 + 8) = 0x2000;
-    GameRoutine_112180_alt1(v9, &v14);
-    v10 = v9 + 24;
-    *(_DWORD*)(v9 + 16) = v16;
+    *(_QWORD*)v8 = 0;
+    *(_DWORD*)(v8 + 8) = 0x2000;
+    GameRoutine_112180(v8, (__int64)&v13_.v13);
+    v9 = v8 + 24;
+    *(_DWORD*)(v8 + 16) = v13_.v15;
   }
-  *(_QWORD*)(v4 + 32) = v10;
-  return nn_os_UnlockMutex(&GameData_2199008);
+  v4[4] = v9;
+  return nn_os_UnlockMutex_alt1((__int64)&GameData_2199008);
 }
 
 #pragma GCC visibility pop

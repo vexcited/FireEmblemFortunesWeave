@@ -10,7 +10,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212f768[4];
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_ebdb90(void);
-__int64 CmdbtlRecordNatives_ebd760(__int64 result);
+__int64 CmdbtlRecordNatives_ebd760_alt2(__int64 result) __asm__(
+    "CmdbtlRecordNatives_ebd760");
 __int64 CmdbtlRecordNatives_ebd9a0(__int64* a1, __int64 a2);
 __int64 CmdBtlRecord_ebccc0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 CmdBtlRecord_ebd060(_QWORD);
@@ -23,39 +24,45 @@ extern __int64 as_g_thread_info;
 extern __int64* as_g_script_manager_ptr;
 unsigned __int64 cmdbtl_record_NewBtlInfoArts(unsigned int a1, __int64 a2);
 unsigned __int64 cmdbtl_record_NewViewerArts(unsigned int a1, __int64 a2);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64* CmdbtlRecordNatives_ebd760(__int64* result);
 
-__int64 CmdbtlRecordNatives_ebd760(__int64 result)
+__int64* CmdbtlRecordNatives_ebd760(__int64* result)
 {
   unsigned __int64 v1;
   unsigned __int64 v2;
-  __int64 v3;
+  __int64* v3;
   __int64 v4;
   __int64 v5;
-  __int64 (**v6)();
-  int v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
+  struct {
+    __int64 (**v6)();
+    int v7;
+    char gap12_[4];
+    __int64 v8;
+    __int64 v9;
+    __int64 v10;
+    __int64 v11;
+  } v6_;
 
-  v7 = 0;
-  v8 = 0;
-  v9 = 0;
-  v10 = 0;
-  v11 = 0;
-  v1 = *(_QWORD*)(result + 16);
-  v2 = *(_QWORD*)(result + 24);
-  v6 = game_cmdbtl_CmdBtlRecord_vtable;
+  v6_.v7 = 0;
+  v6_.v8 = 0;
+  v6_.v9 = 0;
+  v6_.v10 = 0;
+  v6_.v11 = 0;
+  v1 = result[2];
+  v2 = result[3];
+  v6_.v6 = game_cmdbtl_CmdBtlRecord_vtable;
   if (v1 >= v2) {
     v3 = result;
-    result = CmdbtlRecordNatives_ebd9a0(result + 8, &v6);
-    v4 = v11;
-    *(_QWORD*)(v3 + 16) = result;
-    v6 = game_cmdbtl_CmdBtlRecord_vtable;
+    result = (__int64*)CmdbtlRecordNatives_ebd9a0(result + 1, (__int64)&v6_.v6);
+    v4 = v6_.v11;
+    v3[2] = (__int64)result;
+    v6_.v6 = game_cmdbtl_CmdBtlRecord_vtable;
     if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-      result = std___1___shared_weak_count___release_weak(v4);
+      result = (__int64*)std___1___shared_weak_count___release_weak_alt1(v4);
     }
   }
   else {
@@ -65,14 +72,14 @@ __int64 CmdbtlRecordNatives_ebd760(__int64 result)
     *(_QWORD*)(v1 + 24) = 0;
     *(_QWORD*)(v1 + 32) = 0;
     *(_QWORD*)(v1 + 40) = 0;
-    v6 = game_cmdbtl_CmdBtlRecord_vtable;
-    *(_QWORD*)(result + 16) = v1 + 48;
+    v6_.v6 = game_cmdbtl_CmdBtlRecord_vtable;
+    result[2] = v1 + 48;
   }
-  v5 = v9;
-  if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
-                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+  v5 = v6_.v9;
+  if (v6_.v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6_.v9 + 8),
+                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-    return std___1___shared_weak_count___release_weak(v5);
+    return (__int64*)std___1___shared_weak_count___release_weak_alt1(v5);
   }
   return result;
 }

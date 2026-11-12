@@ -51,6 +51,10 @@ __int64 save_Task_Write_lambda0_Invoke(_QWORD* a1);
 __int64 save_Task_Delete_lambda0_Invoke(__int64 a1);
 __int64 save_Task_DeleteNoCommit_lambda0_Invoke(__int64 a1);
 __int64 save_Task_Func_lambda0_Invoke(__int64 result);
+__int64 nn_fs_DeleteFile_alt1(const char*) __asm__("nn_fs_DeleteFile");
+__int64 strcat_alt1(__int64, const char*) __asm__("strcat");
+__int64 strcpy_alt1(__int64, const char*) __asm__("strcpy");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 
 __int64 Task_Unknown2(__int64 a1)
 {
@@ -533,23 +537,23 @@ __int64 save_Task_DeleteNoCommit_lambda0_Invoke(__int64 a1)
 {
   __int64 v1;
   char v2;
-  __int64 v3;
+  const char* v3;
   __int64 v4;
   int v5;
-  __int64 v6;
+  const char* v6;
   unsigned __int64 v7;
   unsigned __int64 v8;
   bool v9;
   unsigned __int64 v10;
-  char* v11;
-  char* v12;
-  char* v13;
+  const char* v11;
+  const char* v12;
+  const char* v13;
   __int64 result;
   _QWORD v15[32];
 
   v1 = *(_QWORD*)(a1 + 8);
   v2 = *(_BYTE*)(a1 + 16);
-  v3 = *(_QWORD*)(a1 + 32);
+  v3 = *(const char**)(a1 + 32);
   v4 = *(_QWORD*)(v1 + 792);
   v5 = atomic_load((unsigned __int8*)(v4 + 81));
   if (v5 == 1) {
@@ -558,15 +562,15 @@ __int64 save_Task_DeleteNoCommit_lambda0_Invoke(__int64 a1)
       v6 = v3;
     }
     else {
-      v6 = a1 + 17;
+      v6 = (const char*)(a1 + 17);
     }
     memset(&v15[6], 0, 176);
     v7 = *(unsigned __int8*)(v4 + 56);
     v8 = v7 >> 1;
     v9 = (v7 & 1) == 0;
     v10 = *(_QWORD*)(v4 + 64);
-    v11 = *(char**)(v4 + 72);
-    v12 = (char*)(v4 + 57);
+    v11 = *(const char**)(v4 + 72);
+    v12 = (const char*)(v4 + 57);
     if (v9) {
       v10 = v8;
     }
@@ -580,10 +584,10 @@ __int64 save_Task_DeleteNoCommit_lambda0_Invoke(__int64 a1)
     else {
       v13 = &GameData_1a9f09e;
     }
-    strcpy(v15, v13);
-    strcpy((char*)v15 + strlen(v15), ":/");
-    strcat(v15, v6);
-    result = nn_fs_DeleteFile(v15);
+    strcpy_alt1((__int64)v15, v13);
+    __builtin_strcpy((char*)v15 + strlen_alt1((const char*)v15), ":/");
+    strcat_alt1((__int64)v15, v6);
+    result = nn_fs_DeleteFile_alt1((const char*)v15);
   }
   else {
     result = 514;

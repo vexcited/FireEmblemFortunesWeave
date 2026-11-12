@@ -9,11 +9,15 @@ extern __int64 (*game_combat_GambitSetDirection_vtable[])();
 extern __int64 (*game_combat_IGambitKey_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 game_combat_GambitSetDirection_Run(__int64 a1);
-__n128 GambitSetDirection_Destructor(__int64 a1);
+__n128 GambitSetDirection_Destructor_alt1(__int64 a1) __asm__(
+    "GambitSetDirection_Destructor");
 __n128 GambitSetDirection_DeletingDestructor(__int64 a1);
 _QWORD* game_combat_GambitSetDirection_Run_lambda0_Invoke(__int64 a1,
                                                           __int64* a2, int* a3);
 __attribute__((swiftcall)) void GambitSetDirection_Unknown3(PSEUDO_X8 x8_);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void GambitSetDirection_Destructor(__int64 a1);
 
 __int64 game_combat_GambitSetDirection_Run(__int64 a1)
 {
@@ -39,14 +43,13 @@ __int64 game_combat_GambitSetDirection_Run(__int64 a1)
   return (*(__int64 (**)(__int64))(*v4 + v2))((__int64)v4);
 }
 
-__n128 GambitSetDirection_Destructor(__int64 a1)
+void GambitSetDirection_Destructor(__int64 a1)
 {
   _QWORD* v2;
   _QWORD* v3;
   __int64 v4;
-  __n128 result;
+  __int64 v5;
   __int64 v6;
-  __int64 v7;
 
   *(_QWORD*)a1 = game_combat_GambitSetDirection_vtable;
   v2 = (_QWORD*)(a1 + 64);
@@ -62,17 +65,16 @@ __n128 GambitSetDirection_Destructor(__int64 a1)
   }
   *(_QWORD*)a1 = &game_combat_IGambitKey_vtable;
   if ((*(_BYTE*)(a1 + 24) & 1) != 0) {
-    v6 = *(_QWORD*)(a1 + 40);
-    if (v6 != 0) {
-      v7 = 128;
+    v5 = *(_QWORD*)(a1 + 40);
+    if (v5 != 0) {
+      v6 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v7 = 56;
+        v6 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, v6);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v5);
     }
   }
-  return result;
 }
 
 __n128 GambitSetDirection_DeletingDestructor(__int64 a1)

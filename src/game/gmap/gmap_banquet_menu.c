@@ -76,6 +76,9 @@ const char* GmapBanquetMenu_Unknown46();
 const char* GmapBanquetMenu_Unknown3();
 const char* GmapBanquetMenu_Unknown47();
 const char* GmapBanquetMenu_Unknown5();
+__int64 GmapBanquetMenu_96a120(__int64, int);
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 const char* GmapBanquetMenu_Unknown46()
 {
@@ -250,7 +253,7 @@ __int64 GmapBanquetMenu_Unknown41(__int64 result)
 
 __int64 GmapBanquetMenu_16415a0(__int64 result, __int64 a2)
 {
-  unsigned int v2;
+  int v2;
   __int64 v3;
   int v4;
   __int64 v5;
@@ -262,9 +265,12 @@ __int64 GmapBanquetMenu_16415a0(__int64 result, __int64 a2)
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  __int64 (**v14)();
-  unsigned int v15;
-  __int64 (***v16)();
+  struct {
+    __int64 (**v14)();
+    int v15;
+    char gap12_[20];
+    __int64 (***v16)();
+  } v14_;
   __int64 v17;
 
   v2 = *(_DWORD*)(*(_QWORD*)(result + 360) + 4LL * (int)a2);
@@ -279,10 +285,10 @@ __int64 GmapBanquetMenu_16415a0(__int64 result, __int64 a2)
   }
   v7 = *(_QWORD*)(v3 + 256);
   v6 = *(_QWORD*)(v3 + 264);
-  v8 = &v14;
-  v15 = v2;
-  v14 = GameData_2072818;
-  v16 = &v14;
+  v8 = &v14_.v14;
+  v14_.v15 = v2;
+  v14_.v14 = GameData_2072818;
+  v14_.v16 = &v14_.v14;
   if (v6 == v7) {
     goto LABEL_14;
   }
@@ -296,10 +302,11 @@ __int64 GmapBanquetMenu_16415a0(__int64 result, __int64 a2)
         goto LABEL_5;
       }
       v17 = v12;
-      if (v16 == nullptr) {
-        GameRoutine_60a310(0, a2);
+      if (v14_.v16 == nullptr) {
+        GameRoutine_60a310_alt1();
       }
-      if ((((__int64 (*)(__int64 (***)(), __int64*))(*v16)[6])(v16, &v17) &
+      if ((((__int64 (*)(__int64 (***)(void), __int64*))(*v14_.v16)[6])(
+               v14_.v16, &v17) &
            1) != 0) {
         break;
       }
@@ -309,23 +316,20 @@ __int64 GmapBanquetMenu_16415a0(__int64 result, __int64 a2)
   LABEL_5:
     ++v9;
   } while (v9 < (v6 - v7) >> 3);
-  v8 = v16;
-  if (v16 != &v14) {
-    if (v16 != nullptr) {
+  v8 = v14_.v16;
+  if (v14_.v16 != &v14_.v14) {
+    if (v14_.v16 != nullptr) {
       v13 = 5;
       goto LABEL_15;
     }
     goto LABEL_16;
   }
-
 LABEL_14:
   v13 = 4;
-
 LABEL_15:
-  ((void (*)(__int64 (***)(), __int64))(*v8)[v13])(v8, a2);
-
+  ((void (*)(__int64 (***)(void), __int64))(*v8)[v13])(v8, a2);
 LABEL_16:
-  result = GameRoutine_96a120(v5 + 384, v2);
+  result = GmapBanquetMenu_96a120(v5 + 384, v2);
   *(_DWORD*)(*(_QWORD*)(v5 + 360) + 4LL * v4) = -1;
   return result;
 }

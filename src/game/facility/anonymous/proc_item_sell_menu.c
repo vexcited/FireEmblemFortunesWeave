@@ -16,7 +16,8 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 ProcItemSellMenu_Destructor(__int64 a1);
 __int64 ProcItemSellMenu_DeletingDestructor(__int64 a1);
-__int64 ProcItemSellMenu_Unknown154(_QWORD* a1, __int64 a2);
+__int64 ProcItemSellMenu_Unknown154_alt1(_QWORD* a1, __int64 a2) __asm__(
+    "ProcItemSellMenu_Unknown154");
 __int64 ProcItemSellMenu_Unknown160(__int64 a1, __int64* a2);
 _QWORD* BasicMenuCursor_16e0c00(_QWORD* result, __int64);
 extern __int64 (*GameData_20a6b78[])();
@@ -52,6 +53,15 @@ void GameRoutine_157cff0(__int64*, __int64, int, char);
 _QWORD* game_facility_anonymous_ProcItemSellMenu_AddItemList(_QWORD* a1);
 void ProcItemSellMenu_Unknown141(__int64* a1);
 _QWORD* game_facility_anonymous_ProcItemSellMenu_UpdateInfo(__int64 a1);
+_QWORD* game_facility_SellController_Clear(__int64*);
+__int64 GameRoutine_1873720_alt1(__int64, __int64,
+                                 char) __asm__("GameRoutine_1873720");
+__int64 game_menu_BasicMenu_Unknown16defa0_alt1(float*) __asm__(
+    "game_menu_BasicMenu_Unknown16defa0");
+void GameRoutine_1566440_alt1(__int64, char) __asm__("GameRoutine_1566440");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcItemSellMenu_Unknown154(__int64 a1, __int64 a2, char a3);
 
 __int64 ProcItemSellMenu_Destructor(__int64 a1)
 {
@@ -442,43 +452,46 @@ void ProcItemSellMenu_Unknown141(__int64* a1)
   }
 }
 
-__int64 ProcItemSellMenu_Unknown154(_QWORD* a1, __int64 a2)
+void ProcItemSellMenu_Unknown154(__int64 a1, __int64 a2, char a3)
 {
-  __int64 v3;
-  __int64* v4;
-  __int64 result;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
 
-  a1[133] = a2;
-  GameRoutine_1873720();
-  GameRoutine_17048e0(a1 + 136);
-  game_menu_BasicMenu_Unknown16defa0(a1);
-  v3 = a1[132];
-  v8 = 0;
-  v9 = 0;
-  v7 = 0;
-  (*(void (**)(_QWORD*, __int64*))(v3 + 80))(a1 + 132, &v7);
-  (*(void (**)(_QWORD*, __int64*))(a1[132] + 88LL))(a1 + 132, &v7);
-  if (v7 == v8) {
-    v4 = nullptr;
+#pragma clang fp contract(off)
+  __int64 v4;
+  __int64* v5;
+  __int64 v6;
+  struct {
+    __int64 v7;
+    __int64 v8;
+    __int64 v9;
+  } v7_;
+
+  *(_QWORD*)(a1 + 1064) = a2;
+  GameRoutine_1873720_alt1(a1, a2, a3);
+  game_facility_SellController_Clear((__int64*)(a1 + 1088));
+  game_menu_BasicMenu_Unknown16defa0_alt1((float*)a1);
+  v4 = *(_QWORD*)(a1 + 1056);
+  v7_.v8 = 0;
+  v7_.v9 = 0;
+  v7_.v7 = 0;
+  (*(void (**)(__int64, __int64*))(v4 + 80))(a1 + 1056, &v7_.v7);
+  (*(void (**)(__int64, __int64*))(*(_QWORD*)(a1 + 1056) + 88LL))(a1 + 1056,
+                                                                  &v7_.v7);
+  if (v7_.v7 == v7_.v8) {
+    v5 = nullptr;
   }
   else {
-    v4 = &v7;
+    v5 = &v7_.v7;
   }
-  result = GameRoutine_1566440(v4, 0);
-  if (v7 != 0) {
-    v8 = v7;
+  GameRoutine_1566440_alt1((__int64)v5, 0);
+  if (v7_.v7 != 0) {
+    v7_.v8 = v7_.v7;
     v6 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v6 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v7);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v7_.v7);
   }
-  return result;
 }
 
 __int64 ProcItemSellMenu_Unknown160(__int64 a1, __int64* a2)

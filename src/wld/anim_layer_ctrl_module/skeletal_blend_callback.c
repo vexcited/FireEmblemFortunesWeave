@@ -28,7 +28,8 @@ __int64 SkeletalBlendCallback_ce3be0_alt1(
     __int64 result, _QWORD* a2, __int64 a3, unsigned int a4, int a5,
     float a6) __asm__("SkeletalBlendCallback_ce3be0");
 __int64 SkeletalBlendCallback_ce45a0(__int64 a1, __int64 a2);
-_QWORD* SkeletalBlendCallback_ce4aa0(_QWORD* result, int a2, float a3);
+_QWORD* SkeletalBlendCallback_ce4aa0_alt1(
+    _QWORD* result, int a2, float a3) __asm__("SkeletalBlendCallback_ce4aa0");
 void SkeletalBlendCallback_ce4b70(__int64 a1, int a2, long double a3);
 float SkeletalBlendCallback_ce4ca0(__int64 a1, int a2, long double a3);
 float SkeletalBlendCallback_ce4db0(__int64 a1, int a2, long double a3);
@@ -56,6 +57,8 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void SkeletalBlendCallback_ce3be0(_QWORD* a1, const char** a2, __int64 a3,
                                   unsigned int a4, int a5, float a6);
+__attribute__((swiftcall)) void BlendLayer_d2b700(PSEUDO_X8, _QWORD* result);
+void SkeletalBlendCallback_ce4aa0(__int64 a1, int a2, float a3);
 
 __int64 SkeletalBlendCallback_Unknown2(__int64 result, __int64 a2)
 {
@@ -671,43 +674,43 @@ LABEL_29:
   return a2;
 }
 
-_QWORD* SkeletalBlendCallback_ce4aa0(_QWORD* result, int a2, float a3)
+void SkeletalBlendCallback_ce4aa0(__int64 a1, int a2, float a3)
 {
+
+#pragma clang fp contract(off)
   __int64 v3;
-  _QWORD* v4;
   int* v6;
   int* v7;
   int v8;
   __int64 v9;
-  int* v10;
-  int* v11;
+  struct {
+    int* v10;
+    int* v11;
+  } v10_;
 
-  v3 = result[4] + 72LL * a2;
+  v3 = *(_QWORD*)(a1 + 32) + 72LL * a2;
   if (*(_BYTE*)(v3 + 52) == 1) {
-    v4 = result;
-    result = X8CALL_X0(
-        _QWORD*, GameRoutine_d2b700((void*)&v10, *(_QWORD*)(v3 + 24) +
-                                                     56LL * *(int*)(v3 + 48)));
-    v6 = v10;
-    v7 = v11;
-    if (v10 != v11) {
+    BlendLayer_d2b700((void*)(&v10_.v10),
+                      (_QWORD*)(*(_QWORD*)(v3 + 24) + 56LL * *(int*)(v3 + 48)));
+    v6 = v10_.v10;
+    v7 = v10_.v11;
+    if (v10_.v10 != v10_.v11) {
       do {
         v8 = *v6++;
-        *(float*)(*(_QWORD*)(v4[3] + 72LL) + 104LL * v8 + 8) = a3;
+        *(float*)(*(_QWORD*)(*(_QWORD*)(a1 + 24) + 72LL) + 104LL * v8 + 8) = a3;
       } while (v6 != v7);
-      v6 = v10;
+      v6 = v10_.v10;
     }
     if (v6 != nullptr) {
-      v11 = v6;
+      v10_.v11 = v6;
       v9 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v9 = 56;
       }
-      return (_QWORD*)nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v9);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, (__int64)v6);
     }
   }
-  return result;
 }
 
 void SkeletalBlendCallback_ce4b70(__int64 a1, int a2, long double a3)

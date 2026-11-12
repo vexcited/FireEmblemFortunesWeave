@@ -28,14 +28,24 @@ __int64 ProcBanquetScene_Destructor(__int64 a1);
 __int64 ProcBanquetScene_DeletingDestructor(__int64 a1);
 __int64 ProcBanquetScene_194ebe0();
 void ProcBanquetScene_194ec10();
-__int64 ProcBanquetScene_Unknown18();
+__int64 ProcBanquetScene_Unknown18_alt1() __asm__("ProcBanquetScene_Unknown18");
 __int64 ProcBanquetScene_Destructor_194eee0(_QWORD* a1);
-__int64 ProcBanquetScene_Unknown2();
+__int64 ProcBanquetScene_Unknown2_alt1() __asm__("ProcBanquetScene_Unknown2");
 __int64 ProcInst_657a50(_QWORD, _QWORD);
 __int64 game_809dc0(_QWORD, _QWORD, float);
 extern _UNKNOWN* GameData_212c960;
 extern __int64 game_ProcFadeView_instance_;
-__int64 ProcBanquetScene_194ec50(__int64 a1);
+__int64
+ProcBanquetScene_194ec50_alt1(__int64 a1) __asm__("ProcBanquetScene_194ec50");
+_BYTE* ProcInst_657a50_alt1(__int64, char) __asm__("ProcInst_657a50");
+__int64 game_809dc0_alt1(__int64, _QWORD*, __n128) __asm__("game_809dc0");
+void GameRoutine_1487cc0_alt1(__int64, __int64) __asm__("GameRoutine_1487cc0");
+void GameRoutine_1958ed0_alt1(__int64, __int64) __asm__("GameRoutine_1958ed0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcBanquetScene_194ec50(__int64 a1);
+void ProcBanquetScene_Unknown18();
+void ProcBanquetScene_Unknown2();
 
 __int64 ProcBanquetScene_Destructor(__int64 a1)
 {
@@ -163,17 +173,20 @@ void ProcBanquetScene_194ec10()
   }
 }
 
-__int64 ProcBanquetScene_194ec50(__int64 a1)
+void ProcBanquetScene_194ec50(__int64 a1)
 {
-  __int64 result;
+
+#pragma clang fp contract(off)
+  __n128 v2;
   __int64 v3;
   unsigned __int64 v4;
-  unsigned __int64 v5;
-  __int128 v6;
-  __int128* v7;
-  __int128 v8;
+  __n128* v5;
+  __n128* v6;
+  __n128 v7;
 
-  result = GameRoutine_1958ed0(a1 + 152, a1);
+  v2 = COERCE_AS(__typeof__(v2), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  GameRoutine_1958ed0_alt1(a1 + 152, a1),
+      v2 = COERCE_AS(__typeof__(v2), PSEUDO_REGISTER(__n128, "v0", "=w"));
   if (*(_BYTE*)(a1 + 164) == 1 && (*(_DWORD*)(a1 + 160) & 0x80000000) != 0) {
     v3 = game_ProcFadeView_instance_;
     if (game_ProcFadeView_instance_ != 0) {
@@ -182,55 +195,60 @@ __int64 ProcBanquetScene_194ec50(__int64 a1)
                                                   480)
             << 6);
       if (*(float*)(v4 + 172) == *(float*)(v4 + 168) &&
-          (v5 = v4 + 160,
-           LANES128_OF(((__n128 (*)(unsigned __int64)) *
-                        (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160))
-                   .n128_f32[3] == 1.0f)) {
-        if (*(float*)(v5 + 12) == *(float*)(v5 + 8)) {
-          (*(void (**)(unsigned __int64))(*(_QWORD*)v5 + 16LL))(v5);
+          (v5 = (__n128*)(v4 + 160),
+           LANES128(v2).n128_u64[1] =
+               LANES128_OF(((__n128 (*)(unsigned __int64)) *
+                            (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160))
+                   .n128_u64[1],
+           LANES128(v2).n128_f32[3] == 0x1.0000000000000p+0f)) {
+        if (LANES128(*(v5)).n128_f32[3] == LANES128(*(v5)).n128_f32[2]) {
+          (*(void (**)(__n128*))(LANES128(*(v5)).n128_u64[0] + 16))(v5),
+              v2 = COERCE_AS(__typeof__(v2),
+                             PSEUDO_REGISTER(__n128, "v0", "=w"));
         }
         else {
-          v6 = *(_OWORD*)(v5 + 48);
+          v2 = v5[3];
         }
-        v8 = v6;
-        v7 = &v8;
+        v7 = v2;
+        LANES128(v2).n128_u64[0] = 0;
+        v6 = &v7;
       }
       else {
-        v7 = (__int128*)GameData_212c960;
+        LANES128(v2).n128_u64[0] = 0;
+        v6 = (__n128*)GameData_212c960;
       }
-      result = game_809dc0(v3, v7, 0.0f);
+      game_809dc0_alt1(v3, v6, v2),
+          v2 = COERCE_AS(__typeof__(v2), PSEUDO_REGISTER(__n128, "v0", "=w"));
     }
   }
   if ((*(_WORD*)(a1 + 136) & 1) == 0) {
-    return ProcInst_657a50(a1, 1);
+    ProcInst_657a50_alt1(a1, 1),
+        v2 = COERCE_AS(__typeof__(v2), PSEUDO_REGISTER(__n128, "v0", "=w"));
   }
-  return result;
 }
 
-__int64 ProcBanquetScene_Unknown18()
+void ProcBanquetScene_Unknown18()
 {
-  __int64 result;
-  __int64 v1;
-  char v2;
-  unsigned __int64 v3;
-  __int16 v4;
-  char v5;
-  __int64 v6;
+  __int64 v0;
+  char v1;
+  unsigned __int64 v2;
+  __int16 v3;
+  char v4;
+  __int64 v5;
 
-  v5 = 0;
-  v2 = 20;
-  v4 = -19282;
-  v3 = 0xE597A5E95F4D4742LL;
-  result = GameRoutine_1487cc0(&v2, 0x13F000000LL);
-  if ((v2 & 1) != 0 && v6 != 0) {
-    v1 = 128;
+  v4 = 0;
+  v1 = 20;
+  v3 = -19282;
+  v2 = 0xE597A5E95F4D4742LL;
+  GameRoutine_1487cc0_alt1((__int64)&v1, 0x13F000000LL);
+  if ((v1 & 1) != 0 && v5 != 0) {
+    v0 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v1 = 56;
+      v0 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v1);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v0, v5);
   }
-  return result;
 }
 
 __int64 ProcBanquetScene_Destructor_194eee0(_QWORD* a1)
@@ -283,30 +301,28 @@ __int64 ProcBanquetScene_Destructor_194eee0(_QWORD* a1)
   return GameRoutine_658c00(a1 - 8);
 }
 
-__int64 ProcBanquetScene_Unknown2()
+void ProcBanquetScene_Unknown2()
 {
-  __int64 result;
-  __int64 v1;
-  char v2;
-  unsigned __int64 v3;
-  __int16 v4;
-  char v5;
-  __int64 v6;
+  __int64 v0;
+  char v1;
+  unsigned __int64 v2;
+  __int16 v3;
+  char v4;
+  __int64 v5;
 
-  v5 = 0;
-  v2 = 20;
-  v4 = -19282;
-  v3 = 0xE597A5E95F4D4742LL;
-  result = GameRoutine_1487cc0(&v2, 0x13F000000LL);
-  if ((v2 & 1) != 0 && v6 != 0) {
-    v1 = 128;
+  v4 = 0;
+  v1 = 20;
+  v3 = -19282;
+  v2 = 0xE597A5E95F4D4742LL;
+  GameRoutine_1487cc0_alt1((__int64)&v1, 0x13F000000LL);
+  if ((v1 & 1) != 0 && v5 != 0) {
+    v0 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v1 = 56;
+      v0 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v1);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v0, v5);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

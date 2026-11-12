@@ -46,6 +46,11 @@ unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 void GameRoutine_1196940_alt1(_QWORD*) __asm__("GameRoutine_1196940");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64
+GameRoutine_12274e0_alt1(__int64 result,
+                         unsigned __int64*) __asm__("GameRoutine_12274e0");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 unsigned __int64 MapEventObject_c8c4c0(__int64 a1, __int64* a2)
 {
@@ -616,7 +621,7 @@ unsigned __int64 MapEventObject_c8c9e0(unsigned __int64 result)
 {
   unsigned __int64 v1;
   unsigned __int64 v2;
-  unsigned __int64 v3;
+  __int64 v3;
   unsigned __int64 v4;
   __int64 v5;
   __int64 v6;
@@ -628,7 +633,7 @@ unsigned __int64 MapEventObject_c8c9e0(unsigned __int64 result)
   _QWORD* v13;
   unsigned __int64 v14;
   __int64 v15;
-  unsigned __int64 v16;
+  __int64 v16;
   __int64 v17;
   __int64 v18;
   int v19;
@@ -636,12 +641,11 @@ unsigned __int64 MapEventObject_c8c9e0(unsigned __int64 result)
   int v21;
   __int64 v22;
   __int64 v23;
-  __int64 v24;
   __int64 i;
+  __int64 v25;
   __int64 v26;
-  __int64 v27;
-  _QWORD v28[2];
-  __int64 v29;
+  unsigned __int64 v27[2];
+  __int64 v28;
 
   v1 = *(unsigned __int8*)(result + 32);
   v2 = *(_QWORD*)(result + 40);
@@ -653,7 +657,7 @@ unsigned __int64 MapEventObject_c8c9e0(unsigned __int64 result)
     v4 = result;
     v5 = game_GameModeData_instance_;
     v6 = (v1 & 1) != 0 ? *(_QWORD*)(result + 48) : result + 33;
-    result = game_HashString(v6);
+    result = game_HashString_alt1(v6);
     if (result != 0) {
       v7 = *(_QWORD**)(v5 + 48);
       v8 = v7[2];
@@ -700,37 +704,38 @@ unsigned __int64 MapEventObject_c8c9e0(unsigned __int64 result)
                   else {
                     v16 = v3;
                   }
-                  v28[1] = v16;
-                  v17 = game_HashString(v16);
+                  v27[1] = v16;
+                  v17 = game_HashString_alt1(v16);
                   v18 = *(_QWORD*)v4;
-                  v28[0] = v17;
+                  v27[0] = v17;
                   v19 = (*(__int64 (**)(unsigned __int64))(v18 + 80))(v4);
                   v20 = *(_QWORD*)(v5 + 48);
                   v21 = v19;
-                  v22 = game_GameVariableTable_Find(v20, v28);
+                  v22 = game_GameVariableTable_Find_alt1((_QWORD*)v20, v27);
                   if (v22 != 0) {
-                    v24 = v22;
+                    v23 = v22;
                     if (*(_DWORD*)(v22 + 32) != v21) {
                       *(_DWORD*)(v22 + 32) = v21;
                       if ((*(_BYTE*)(v20 + 3932768) & 0xAE) == 0 &&
                           GameData_22400f8 != 0) {
-                        GameRoutine_12274e0(GameData_22400f8, v22);
+                        GameRoutine_12274e0_alt1(GameData_22400f8,
+                                                 (unsigned __int64*)v22);
                       }
-                      v26 = *(_QWORD*)(v24 + 88);
-                      for (i = *(_QWORD*)(v24 + 96); v26 != i; v26 += 48) {
-                        v29 = v24;
-                        v27 = *(_QWORD*)(v26 + 32);
-                        if (v27 == 0) {
-                          GameRoutine_60a310(0, v23);
+                      v25 = *(_QWORD*)(v23 + 88);
+                      for (i = *(_QWORD*)(v23 + 96); v25 != i; v25 += 48) {
+                        v28 = v23;
+                        v26 = *(_QWORD*)(v25 + 32);
+                        if (v26 == 0) {
+                          GameRoutine_60a310_alt1();
                         }
-                        (*(void (**)(__int64, __int64*))(*(_QWORD*)v27 + 48LL))(
-                            v27, &v29);
+                        (*(void (**)(__int64, __int64*))(*(_QWORD*)v26 + 48LL))(
+                            v26, &v28);
                       }
                     }
                   }
                   result = GameData_22400f8;
                   if (GameData_22400f8 != 0) {
-                    return GameRoutine_12274e0(GameData_22400f8, v28);
+                    return GameRoutine_12274e0_alt1(GameData_22400f8, v27);
                   }
                   return result;
                 }

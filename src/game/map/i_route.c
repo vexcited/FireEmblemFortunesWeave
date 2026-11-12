@@ -1942,10 +1942,11 @@ __int64 IRoute_751080(unsigned int* a1, __int64 a2)
   unsigned __int8* v33;
   __int64 v34;
   unsigned int v35;
-  int v36;
+  unsigned int v36;
   unsigned int v37;
 
-  if ((game_map_IRoute_TryGetEncountPos_alt1(a1, &v37, &v36, a2) & 1) != 0) {
+  if ((game_map_IRoute_TryGetEncountPos((__int64)a1, &v37, &v36, a2) & 1) !=
+      0) {
     result = v37;
     v4 = a1[37];
     v5 = a1[38];

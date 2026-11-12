@@ -16,12 +16,16 @@ extern __int128 GameData_1a83610;
 extern __int64 (*GameData_1fc7990[])();
 extern __int64* game_g_frame_clock_ptr[3];
 __int64 gfxa_TaskSkyCloud_Updater_Updater(__int64* a1, __int64 a2);
+__int64 GameHr_ad5280(_QWORD*);
+__int64 game_615760(__int64, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 gfxa_TaskSkyCloud_Updater_Updater(__int64* a1, __int64 a2)
 {
-  __int64** v3;
+  __int64* v3;
   __int64 v4;
-  __int64* v5;
+  __int64 (**v5)();
   __int64 v6;
   __int64 v7;
   __int64 v8;
@@ -38,7 +42,7 @@ __int64 gfxa_TaskSkyCloud_Updater_Updater(__int64* a1, __int64 a2)
   *a1 = a2;
   a1[2] = 0;
   a1[1] = 0;
-  v3 = (__int64**)(a1 + 1);
+  v3 = a1 + 1;
   GameRoutine_604020(a1 + 3);
   a1[19] = 0;
   a1[20] = 0;
@@ -55,25 +59,25 @@ __int64 gfxa_TaskSkyCloud_Updater_Updater(__int64* a1, __int64 a2)
   gfx_shader_Archive_CreateShader((void*)(&v12_.v12), *(__int64**)(v4 + 13408),
                                   (__int64)"Lighting", 8u,
                                   (__int64)"RenderCloud", 0xBu);
-  v5 = (__int64*)v12_.v12;
+  v5 = v12_.v12;
   v6 = v12_.v13;
   v7 = a1[2];
   v12_.v12 = nullptr;
   v12_.v13 = 0;
-  *v3 = v5;
+  *v3 = (__int64)v5;
   a1[2] = v6;
   if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-    std___1___shared_weak_count___release_weak(v7);
+    std___1___shared_weak_count___release_weak_alt1(v7);
   }
   v8 = v12_.v13;
   if (v12_.v13 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v12_.v13 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-    std___1___shared_weak_count___release_weak(v8);
+    std___1___shared_weak_count___release_weak_alt1(v8);
   }
-  GameRoutine_ad5280(*v3);
+  GameHr_ad5280((_QWORD*)*v3);
   memset(v15, 0, sizeof(v15));
   v12_.v12 = GameData_1fc7990;
   v12_.v14 = &v12_.v12;
@@ -85,7 +89,7 @@ __int64 gfxa_TaskSkyCloud_Updater_Updater(__int64* a1, __int64 a2)
   GameRoutine_604060((__int64)(a1 + 3),
                      (__int64*)(*game_g_frame_clock_ptr[0] + 568),
                      (__int64)v15);
-  a1[18] = GameRoutine_615760(*(_QWORD*)(*v9 + 552), (__int64)(a1 + 3));
+  a1[18] = game_615760(*(_QWORD*)(*v9 + 552), (__int64)(a1 + 3));
   if (v12_.v14 == &v12_.v12) {
     v10 = 4;
     goto LABEL_13;

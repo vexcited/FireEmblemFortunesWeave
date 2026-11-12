@@ -17,6 +17,15 @@ __attribute__((swiftcall)) void Element_1885dc0(PSEUDO_X8 x8_, __int64 result,
                                                 _QWORD* a2);
 __attribute__((swiftcall)) void Element_1886020(PSEUDO_X8 x8_, _QWORD* result,
                                                 __int64 a2);
+__attribute__((swiftcall)) void
+GameRoutine_16d1510_alt1(PSEUDO_X8, __int64,
+                         __int64) __asm__("GameRoutine_16d1510");
+__int64* nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt1() __asm__(
+    "nn_ui2d_Pane_GetRuntimeTypeInfoStatic");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __attribute__((swiftcall)) void Element_1885a60(PSEUDO_X8 x8_, _QWORD* result)
 {
@@ -29,9 +38,11 @@ __attribute__((swiftcall)) void Element_1885a60(PSEUDO_X8 x8_, _QWORD* result)
   _QWORD* v7;
   __int64* v8;
   __int64 v10;
-  _QWORD* v11;
-  __int64 v12;
-  _QWORD* v13;
+  __int64 v11;
+  struct {
+    __int64 v12;
+    _QWORD* v13;
+  } v12_;
 
   v2 = result[38];
   v3 = result;
@@ -59,9 +70,9 @@ __attribute__((swiftcall)) void Element_1885a60(PSEUDO_X8 x8_, _QWORD* result)
     if ((atomic_load_explicit((atomic_uchar* volatile)GameData_212dfd0,
                               memory_order_acquire) &
          1) == 0 &&
-        (unsigned int)__cxa_guard_acquire(&GameData_21f8028) != 0) {
-      GameData_21f8020 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
-      __cxa_guard_release(&GameData_21f8028);
+        __cxa_guard_acquire_alt1((__int64)&GameData_21f8028) != 0) {
+      GameData_21f8020 = (__int64)nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt1();
+      __cxa_guard_release_alt1((__int64)&GameData_21f8028);
     }
     if (v6 == 0) {
       goto LABEL_18;
@@ -76,19 +87,20 @@ __attribute__((swiftcall)) void Element_1885a60(PSEUDO_X8 x8_, _QWORD* result)
         v6 = 0;
       }
     }
-    GameRoutine_16d1510((void*)(&v12), v4, v6);
-    v10 = v12;
-    v11 = v13;
+    GameRoutine_16d1510_alt1((void*)(&v12_.v12), v4, v6);
+    v10 = v12_.v12;
+    v11 = (__int64)v12_.v13;
     result = (_QWORD*)v3[38];
-    v12 = 0;
-    v13 = nullptr;
+    v12_.v12 = 0;
+    v12_.v13 = nullptr;
     v3[37] = v10;
     v3[38] = v11;
     if (result != nullptr) {
-      std___1___shared_weak_count___release_weak(result);
-      result = v13;
-      if (v13 != nullptr) {
-        result = (_QWORD*)std___1___shared_weak_count___release_weak(v13);
+      std___1___shared_weak_count___release_weak_alt1((__int64)result);
+      result = v12_.v13;
+      if (v12_.v13 != nullptr) {
+        result = (_QWORD*)std___1___shared_weak_count___release_weak_alt1(
+            (__int64)v12_.v13);
       }
     }
     v2 = v3[38];

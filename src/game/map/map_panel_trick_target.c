@@ -9,12 +9,14 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 MapPanelTrickTarget_Destructor(_QWORD* a1);
 __int64 MapPanelTrickTarget_DeletingDestructor(_QWORD* a1);
 __int64 GameRoutine_74e080(_QWORD, _QWORD);
-__int64 game_map_MapPanelTrickTarget_UpdateTarget_lambda0_Invoke(__int64 a1,
-                                                                 _DWORD* a2,
-                                                                 _DWORD* a3);
-__int64 game_map_MapPanelTrickTarget_UpdateTarget_lambda1_Invoke(__int64 a1,
-                                                                 _DWORD* a2,
-                                                                 _DWORD* a3);
+__int64 game_map_MapPanelTrickTarget_UpdateTarget_lambda0_Invoke_alt1(
+    __int64 a1, _DWORD* a2,
+    _DWORD*
+        a3) __asm__("game_map_MapPanelTrickTarget_UpdateTarget_lambda0_Invoke");
+__int64 game_map_MapPanelTrickTarget_UpdateTarget_lambda1_Invoke_alt1(
+    __int64 a1, _DWORD* a2,
+    _DWORD*
+        a3) __asm__("game_map_MapPanelTrickTarget_UpdateTarget_lambda1_Invoke");
 bool game_map_MapPanelTrickTarget_UpdateTarget_lambda2_Invoke(__int64 a1,
                                                               _DWORD* a2,
                                                               _DWORD* a3);
@@ -69,6 +71,13 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_74e1f0(_QWORD);
 void __attribute__((noreturn)) String_60a250(_QWORD);
 void game_map_MapPanelTrickTarget_UpdateTarget(__int64 a1);
+_BYTE* GameRoutine_74e080_alt1(__int64*, __int64) __asm__("GameRoutine_74e080");
+_BYTE* game_map_MapPanelTrickTarget_UpdateTarget_lambda0_Invoke(__int64 a1,
+                                                                _DWORD* a2,
+                                                                _DWORD* a3);
+_BYTE* game_map_MapPanelTrickTarget_UpdateTarget_lambda1_Invoke(__int64 a1,
+                                                                _DWORD* a2,
+                                                                _DWORD* a3);
 
 void game_map_MapPanelTrickTarget_UpdateTarget(__int64 a1)
 {
@@ -1474,38 +1483,42 @@ __int64 MapPanelTrickTarget_DeletingDestructor(_QWORD* a1)
                                        v1);
 }
 
-__int64 game_map_MapPanelTrickTarget_UpdateTarget_lambda0_Invoke(__int64 a1,
-                                                                 _DWORD* a2,
-                                                                 _DWORD* a3)
+_BYTE* game_map_MapPanelTrickTarget_UpdateTarget_lambda0_Invoke(__int64 a1,
+                                                                _DWORD* a2,
+                                                                _DWORD* a3)
 {
   char v3;
-  __int64 v4;
-  _BYTE v6[2];
-  __int16 v7;
+  __int64* v4;
+  struct {
+    _BYTE v6[2];
+    __int16 v7;
+  } v6_;
 
   v3 = *a2;
-  v4 = *(_QWORD*)(a1 + 8);
-  v7 = 0;
-  v6[0] = v3;
-  v6[1] = *a3;
-  return GameRoutine_74e080(v4, v6);
+  v4 = *(__int64**)(a1 + 8);
+  v6_.v7 = 0;
+  v6_.v6[0] = v3;
+  v6_.v6[1] = *a3;
+  return GameRoutine_74e080_alt1(v4, (__int64)v6_.v6);
 }
 
-__int64 game_map_MapPanelTrickTarget_UpdateTarget_lambda1_Invoke(__int64 a1,
-                                                                 _DWORD* a2,
-                                                                 _DWORD* a3)
+_BYTE* game_map_MapPanelTrickTarget_UpdateTarget_lambda1_Invoke(__int64 a1,
+                                                                _DWORD* a2,
+                                                                _DWORD* a3)
 {
   char v3;
-  __int64 v4;
-  _BYTE v6[2];
-  __int16 v7;
+  __int64* v4;
+  struct {
+    _BYTE v6[2];
+    __int16 v7;
+  } v6_;
 
   v3 = *a2;
-  v4 = *(_QWORD*)(a1 + 8);
-  v7 = 0;
-  v6[0] = v3;
-  v6[1] = *a3;
-  return GameRoutine_74e080(v4, v6);
+  v4 = *(__int64**)(a1 + 8);
+  v6_.v7 = 0;
+  v6_.v6[0] = v3;
+  v6_.v6[1] = *a3;
+  return GameRoutine_74e080_alt1(v4, (__int64)v6_.v6);
 }
 
 bool game_map_MapPanelTrickTarget_UpdateTarget_lambda2_Invoke(__int64 a1,

@@ -103,6 +103,13 @@ __int64 UnitUtil_1211f60(__int64 result, __int64 a2, __int64 a3, int a4);
 __int64 UnitUtil_1212be0(__int64 a1, __int64 a2, __int64 a3);
 unsigned __int64* game_UnitUtil_EachFlagUnit(unsigned __int64* result,
                                              __int64 a2);
+__int64 GameReliance_8e17a0_alt1(_QWORD*, __int64,
+                                 __int64) __asm__("GameReliance_8e17a0");
+__int64 game_1373e60_alt1(__int64 result, __int64, unsigned int, char,
+                          char) __asm__("game_1373e60");
+__int64 game_telop_TelopRelianceLvUp_CreateBind_alt1(
+    __int64, __int64, __int64, char,
+    unsigned __int8) __asm__("game_telop_TelopRelianceLvUp_CreateBind");
 __attribute__((swiftcall)) void
 
 game_UnitUtil_UniqueMap_Commit_89abc0(PSEUDO_X8 x8_, __int64 result,
@@ -835,37 +842,38 @@ __int64 UnitUtil_1211f60(__int64 result, __int64 a2, __int64 a3, int a4)
   __int64 v9;
   __int64 v10;
   __int64 (***v11)();
-  __int64 v12;
+  _QWORD* v12;
   int v13;
   int v14;
-  unsigned int v15;
+  int v15;
   int v16;
-  _QWORD v17[3];
-  _QWORD v18[5];
+  int v17;
+  _QWORD v18[3];
+  _QWORD v19[5];
 
   if (a4 < 1) {
     return result;
   }
-  v18[3] = v4;
-  v18[4] = v5;
+  v19[3] = v4;
+  v19[4] = v5;
   v8 = result;
-  v18[0] = 0;
-  v18[1] = a2;
+  v19[0] = 0;
+  v19[1] = a2;
   if (a2 != 0) {
     v9 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a2 + 24) + 1784LL) + 272LL);
   }
   else {
     v9 = 0;
   }
-  v18[2] = v9;
-  v17[0] = 0;
-  v17[1] = a3;
+  v19[2] = v9;
+  v18[0] = 0;
+  v18[1] = a3;
   if (a3 == 0) {
     v11 = &game_GameReliance_Impl_Data_vtable_ptr;
     goto LABEL_11;
   }
   v10 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a3 + 24) + 1784LL) + 272LL);
-  v17[2] = v10;
+  v18[2] = v10;
   v11 = GameData_212dae8;
   if (v9 == 0 || v10 == 0) {
   LABEL_11:
@@ -874,35 +882,36 @@ __int64 UnitUtil_1211f60(__int64 result, __int64 a2, __int64 a3, int a4)
     }
     goto LABEL_15;
   }
-  v12 = *(_QWORD*)(game_GameModeData_instance_ + 128);
+  v12 = *(_QWORD**)(game_GameModeData_instance_ + 128);
   v13 = a4;
-  result = GameReliance_8e17a0(v12, v18, v17);
+  result = GameReliance_8e17a0_alt1(v12, (__int64)v19, (__int64)v18);
   if ((result & 0x80000000) != 0) {
     v11 = &game_GameReliance_Impl_Data_vtable_ptr;
   }
   else {
-    v11 = (__int64 (***)())(*(_QWORD*)(v12 + 8) + 56LL * (unsigned int)result);
+    v11 = (__int64 (***)(void))(v12[1] + 56LL * (unsigned int)result);
   }
   a4 = v13;
   if (*((_BYTE*)v11 + 10) != 0) {
   LABEL_15:
     v14 = *((unsigned __int16*)v11 + 6);
     v15 = *((unsigned __int8*)v11 + 11);
-    ((void (*)(__int64 (***)(), _QWORD, __int64))(*v11)[2])(
+    ((void (*)(__int64 (***)(void), _QWORD, __int64))(*v11)[2])(
         v11, (unsigned int)a4, 1);
-    if (v15 == *((unsigned __int8*)v11 + 11)) {
+    v16 = *((unsigned __int8*)v11 + 11);
+    if (v15 == v16) {
       if (*((_BYTE*)v11 + 10) != 0) {
-        v16 = 5;
+        v17 = 5;
       }
       else {
-        v16 = 0;
+        v17 = 0;
       }
-      return game_1373e60(a2, a3,
-                          (unsigned int)*((unsigned __int16*)v11 + 6) - v14, 0,
-                          v15 == v16);
+      return game_1373e60_alt1(
+          a2, a3, (unsigned int)*((unsigned __int16*)v11 + 6) - v14, 0,
+          v15 == v17);
     }
     else {
-      return game_telop_TelopRelianceLvUp_CreateBind(v8, a2, a3, v15);
+      return game_telop_TelopRelianceLvUp_CreateBind_alt1(v8, a2, a3, v15, v16);
     }
   }
   return result;

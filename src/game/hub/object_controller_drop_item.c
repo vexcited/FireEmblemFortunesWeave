@@ -42,9 +42,9 @@ extern __int64 (*GameData_1fdce28[8])();
 extern __int64 (*GameData_1fe1ff0[])();
 extern unsigned __int8 GameData_1ac799d[];
 __int64 ObjectControllerDropItem_db1bc0(char* a1, __int64 a2, int* a3);
-__int64 ObjectControllerDropItem_dfca40(__int64 a1, __int64 a2, __int64 a3,
-                                        __int64 a4, __int64 a5, __int64 a6,
-                                        long double a7, long double a8);
+__int64 ObjectControllerDropItem_dfca40_alt1(
+    __int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6,
+    long double a7, long double a8) __asm__("ObjectControllerDropItem_dfca40");
 __int64 GameRoutine_14a3920(__int64 result);
 extern __int128 GameData_1a82cb0;
 extern __int64 GameData_21ec7c0;
@@ -57,6 +57,20 @@ extern _UNKNOWN game_g_random_mutex;
 extern __int64* game_map_MapRandom_instance__ptr[3];
 void game_hub_ObjectControllerDropItem_InitializeImpl_lambda0_Invoke(
     __int64 a1);
+__int64*
+HandlePtr_Unknown24_d5bee0_alt1(__int64* result,
+                                __int64) __asm__("HandlePtr_Unknown24_d5bee0");
+__int64 HubEventNatives_d5bb40_alt1(__int64*,
+                                    __int64) __asm__("HubEventNatives_d5bb40");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_hub_dfc300(__int64, int, float);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64 ObjectControllerDropItem_dfca40(__int64 a1, __int64 a2, float a3);
 
 void ObjectControllerDropItem_ccc840(__int64 a1, __int64** a2)
 {
@@ -169,117 +183,124 @@ __int64 ObjectControllerDropItem_db1bc0(char* a1, __int64 a2, int* a3)
   return v10;
 }
 
-__int64 ObjectControllerDropItem_dfca40(__int64 a1, __int64 a2, __int64 a3,
-                                        __int64 a4, __int64 a5, __int64 a6,
-                                        long double a7, long double a8)
+__int64 ObjectControllerDropItem_dfca40(__int64 a1, __int64 a2, float a3)
 {
-  __int64 result;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  _BYTE* v14;
-  _QWORD* v15;
-  __int64 (**v16)();
-  __int64 (***v17)();
-  _QWORD* v18;
-  __int64 v19;
-  unsigned __int64 v20;
-  unsigned __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  _BYTE v25[32];
-  _BYTE* v26;
-  _BYTE v27[32];
-  __int64 v28;
-  unsigned int v29;
-  unsigned __int64 v30;
 
-  GameRoutine_dfc300(a1, 0, a7, a8, a3, a4, a5, a6);
+#pragma clang fp contract(off)
+  __int64 result;
+  __int64* v6;
+  __int64 v7;
+  __int64 v8;
+  _BYTE* v9;
+  _QWORD* v10;
+  __int64 (**v11)();
+  __int64 (***v12)();
+  _QWORD* v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  struct {
+    _BYTE v20[32];
+    _BYTE* v21;
+  } v20_;
+  struct {
+    _BYTE v22[32];
+    __int64 v23;
+    char gap88_[8];
+    unsigned int v24;
+  } v22_;
+  unsigned __int64 v25;
+
+  game_hub_dfc300(a1, 0, a3);
   result = *(_QWORD*)(a1 + 712);
   if (result != 0) {
-    result = std___1___shared_weak_count_lock(result);
+    result = std___1___shared_weak_count_lock_alt1(result);
     if (result != 0) {
-      v11 = *(_QWORD*)(a1 + 704);
-      v12 = result;
-      if (v11 == 0) {
+      v6 = *(__int64**)(a1 + 704);
+      v7 = result;
+      if (v6 == nullptr) {
         goto LABEL_24;
       }
-      v13 = *(_QWORD*)(a2 + 32);
-      if (v13 != 0) {
-        if (v13 == a2) {
-          v26 = v25;
-          (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v13 + 24LL))(v13, v25);
-          v14 = v26;
+      v8 = *(_QWORD*)(a2 + 32);
+      if (v8 != 0) {
+        if (v8 == a2) {
+          v20_.v21 = v20_.v20;
+          (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v8 + 24LL))(v8, v20_.v20);
+          v9 = v20_.v21;
         }
         else {
-          v14 = (_BYTE*)(*(__int64 (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
-          v26 = v14;
+          v9 = (_BYTE*)(*(__int64 (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+          v20_.v21 = v9;
         }
       }
       else {
-        v14 = nullptr;
-        v26 = nullptr;
+        v9 = nullptr;
+        v20_.v21 = nullptr;
       }
-      v15 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      v10 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 64, 16, 0);
-      v16 = GameData_1fe1ff0;
-      v17 = (__int64 (***)())v15;
-      *v15 = GameData_1fe1ff0;
-      v18 = v15 + 2;
-      if (v14 != nullptr) {
-        if (v14 == v25) {
-          v15[6] = v18;
-          (*(void (**)(_BYTE*))(*(_QWORD*)v14 + 24LL))(v14);
-          v16 = *v17;
+      v11 = GameData_1fe1ff0;
+      v12 = (__int64 (***)(void))v10;
+      *v10 = GameData_1fe1ff0;
+      v13 = v10 + 2;
+      if (v9 != nullptr) {
+        if (v9 == v20_.v20) {
+          v10[6] = v13;
+          (*(void (**)(_BYTE*))(*(_QWORD*)v9 + 24LL))(v9);
+          v11 = *v12;
         }
         else {
-          v16 = GameData_1fe1ff0;
-          v15[6] = v14;
-          v26 = nullptr;
+          v11 = GameData_1fe1ff0;
+          v10[6] = v9;
+          v20_.v21 = nullptr;
         }
       }
       else {
-        v15[6] = 0;
+        v10[6] = 0;
       }
-      v19 = ((__int64 (*)(__int64 (***)(), _QWORD*))v16[2])(v17, v18);
-      v20 = *(_QWORD*)(v11 + 1312);
-      v21 = *(_QWORD*)(v11 + 1320);
-      v28 = v19;
-      v29 = 1;
-      if (v20 >= v21) {
-        v22 = HubEventNatives_d5bb40(v11 + 1304, v27);
-      }
-      else {
-        *(_BYTE*)v20 = 0;
-        v30 = v20;
-        *(_DWORD*)(v20 + 48) = -1;
-        HandlePtr_Unknown24_d5bee0(&v30, v27);
-        *(_DWORD*)(v20 + 48) = 1;
-        v22 = v20 + 64;
-      }
-      v23 = v29;
-      *(_QWORD*)(v11 + 1312) = v22;
-      if ((_DWORD)v23 != -1) {
-        ((void (*)(unsigned __int64*, _BYTE*))GameData_1fdce28[v23])(&v30, v27);
-      }
-      ((void (*)(__int64 (***)()))(*v17)[5])(v17);
-      result = (__int64)v26;
-      if (v26 == v25) {
-        v24 = 32;
+      v14 = ((__int64 (*)(__int64 (***)(void), _QWORD*))v11[2])(v12, v13);
+      v15 = v6[164];
+      v16 = v6[165];
+      v22_.v23 = v14;
+      v22_.v24 = 1;
+      if (v15 >= v16) {
+        v17 = HubEventNatives_d5bb40_alt1(v6 + 163, (__int64)v22_.v22);
       }
       else {
-        if (v26 == nullptr) {
+        *(_BYTE*)v15 = 0;
+        v25 = v15;
+        *(_DWORD*)(v15 + 48) = -1;
+        HandlePtr_Unknown24_d5bee0_alt1((__int64*)&v25, (__int64)v22_.v22);
+        *(_DWORD*)(v15 + 48) = 1;
+        v17 = v15 + 64;
+      }
+      v18 = v22_.v24;
+      v6[164] = v17;
+      if ((_DWORD)v18 != -1) {
+        ((void (*)(unsigned __int64*, _BYTE*))GameData_1fdce28[v18])(&v25,
+                                                                     v22_.v22);
+      }
+      ((void (*)(__int64 (***)(void)))(*v12)[5])(v12);
+      result = (__int64)v20_.v21;
+      if (v20_.v21 == v20_.v20) {
+        v19 = 32;
+      }
+      else {
+        if (v20_.v21 == nullptr) {
           goto LABEL_24;
         }
-        v24 = 40;
+        v19 = 40;
       }
-      result = (*(__int64 (**)(void*))(*(_QWORD*)v26 + v24))((void*)v26);
+      result = (*(__int64 (**)(__int64))(*(_QWORD*)v20_.v21 + v19))(
+          (__int64)v20_.v21);
     LABEL_24:
-      if (atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
+      if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-        return std___1___shared_weak_count___release_weak(v12);
+        (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+        return std___1___shared_weak_count___release_weak_alt1(v7);
       }
     }
   }

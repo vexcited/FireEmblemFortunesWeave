@@ -24,6 +24,8 @@ __int64 memset(_QWORD, _QWORD, _QWORD);
 __int64 strlen(_QWORD);
 __int64 CalculateAllocatedSizeHeap_5c6e20(__int64 a1, __int64 a2, __int64* a3);
 __int64 CalculateAllocatedSizeHeap_5c78c0(__int64 a1, __int64 a2);
+__int64 CalculateAllocatedSizeHeap_5b93c0(__int64 result, __int64);
+long double CalculateAllocatedSizeHeap_5b6970(__int64);
 
 __int64 CalculateAllocatedSizeHeap_5c6e20(__int64 a1, __int64 a2, __int64* a3)
 {
@@ -288,7 +290,7 @@ void CalculateAllocatedSizeHeap_5c7400(__int64 a1, __int64 a2, __int64* a3)
     v17 = v14;
     v18 = 992 * v16;
     do {
-      GameRoutine_5b6970(v17);
+      CalculateAllocatedSizeHeap_5b6970(v17);
       v17 += 992;
       v18 -= 992;
     } while (v18 != 0);
@@ -316,7 +318,7 @@ void CalculateAllocatedSizeHeap_5c7400(__int64 a1, __int64 a2, __int64* a3)
       v26 = (char*)v21 + (unsigned int)v21[5];
       *(_QWORD*)(v25 + 16) = v26;
       *(_QWORD*)(v25 + 24) = v26 + 80;
-      GameRoutine_5b93c0(v25, (__int64)v21);
+      CalculateAllocatedSizeHeap_5b93c0(v25, (__int64)v21);
       v27 = a3[1];
       v28 = -v27;
       v29 = ((v27 + 1871) & -v27) + *a3;
@@ -374,7 +376,7 @@ void CalculateAllocatedSizeHeap_5c7400(__int64 a1, __int64 a2, __int64* a3)
           v41 = v34 + *(unsigned int*)(v34 + 20);
           *(_QWORD*)(v40 + 16) = v41;
           *(_QWORD*)(v40 + 24) = v41 + 80;
-          GameRoutine_5b93c0(v39 + v33, v34);
+          CalculateAllocatedSizeHeap_5b93c0(v39 + v33, v34);
           v42 = a3[1];
           v43 = -v42;
           v44 = ((v42 + 1871) & -v42) + *a3;
@@ -453,7 +455,6 @@ void CalculateAllocatedSizeHeap_5c7400(__int64 a1, __int64 a2, __int64* a3)
     *(_BYTE*)(a2 + 41) = 1;
     goto LABEL_28;
   }
-
 LABEL_15:
   *(_WORD*)(a2 + 41) = 0;
 }

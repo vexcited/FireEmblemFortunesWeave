@@ -6,7 +6,7 @@ __int64 GameRoutine_d29060(_QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*wld_animctrl_Graph_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 Graph_Destructor(_QWORD* a1);
+__int64 Graph_Destructor_alt1(_QWORD* a1) __asm__("Graph_Destructor");
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
@@ -14,17 +14,21 @@ void __attribute__((noreturn)) GameRoutine_d29ca0(void);
 void __attribute__((noreturn)) GameRoutine_d29cc0(long double, long double);
 _QWORD* Graph_d29060(_QWORD* result, long double a2, double a3, double a4,
                      double a5, long double a6);
+void Graph_d29060_alt1(_QWORD*, long double, double, double, double,
+                       long double) __asm__("Graph_d29060");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void Graph_Destructor(_QWORD* a1, long double a2, double a3, double a4,
+                      double a5, long double a6);
 
-__int64 Graph_Destructor(_QWORD* a1)
+void Graph_Destructor(_QWORD* a1, long double a2, double a3, double a4,
+                      double a5, long double a6)
 {
-  __int64 v1;
-  __int64 v2;
-  __int64 i;
-  __int64 v5;
+
+#pragma clang fp contract(off)
   __int64 v6;
   __int64 v7;
-  __int64 result;
-  __int64 v9;
+  __int64 i;
   __int64 v10;
   __int64 v11;
   __int64 v12;
@@ -36,82 +40,85 @@ __int64 Graph_Destructor(_QWORD* a1)
   __int64 v18;
   __int64 v19;
   __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
 
-  v1 = a1[2];
-  v2 = a1[3];
+  v6 = a1[2];
+  v7 = a1[3];
   *a1 = wld_animctrl_Graph_vtable;
-  for (i = fw_memory_g_heap_manager_ptr; v2 != v1; v2 -= 48) {
-    if ((*(_BYTE*)(v2 - 24) & 1) != 0) {
-      v5 = *(_QWORD*)(v2 - 8);
-      if (v5 != 0) {
+  for (i = fw_memory_g_heap_manager_ptr; v7 != v6; v7 -= 48) {
+    if ((*(_BYTE*)(v7 - 24) & 1) != 0) {
+      v10 = *(_QWORD*)(v7 - 8);
+      if (v10 != 0) {
         if (*(_QWORD*)(*(_QWORD*)i + 200LL) != 0) {
-          v6 = 128;
+          v11 = 128;
         }
         else {
-          v6 = 56;
+          v11 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)i + v6, v5);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)i + v11, v10);
       }
     }
   }
-  v7 = a1[8];
-  a1[3] = v1;
-  a1[9] = v7;
-  result = GameRoutine_d29060(a1);
-  v9 = a1[8];
-  if (v9 != 0) {
-    v10 = *(_QWORD*)i;
-    a1[9] = v9;
-    v11 = 128;
-    if (*(_QWORD*)(v10 + 200) == 0) {
-      v11 = 56;
+  v12 = a1[8];
+  a1[3] = v6;
+  a1[9] = v12;
+  Graph_d29060_alt1(a1, a2, a3, a4, a5, a6);
+  v13 = a1[8];
+  if (v13 != 0) {
+    v14 = *(_QWORD*)i;
+    a1[9] = v13;
+    v15 = 128;
+    if (*(_QWORD*)(v14 + 200) == 0) {
+      v15 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(v10 + v11, v9);
+    nn_mem_StandardAllocator_Free_alt1(v14 + v15, v13);
   }
-  v12 = a1[5];
-  if (v12 != 0) {
-    v13 = *(_QWORD*)i;
-    a1[6] = v12;
-    v14 = 128;
-    if (*(_QWORD*)(v13 + 200) == 0) {
-      v14 = 56;
+  v16 = a1[5];
+  if (v16 != 0) {
+    v17 = *(_QWORD*)i;
+    a1[6] = v16;
+    v18 = 128;
+    if (*(_QWORD*)(v17 + 200) == 0) {
+      v18 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(v13 + v14, v12);
+    nn_mem_StandardAllocator_Free_alt1(v17 + v18, v16);
   }
-  v15 = a1[2];
-  if (v15 != 0) {
-    v16 = a1[3];
-    if (v15 == v16) {
+  v19 = a1[2];
+  if (v19 != 0) {
+    v20 = a1[3];
+    if (v19 == v20) {
       goto LABEL_29;
     }
     do {
-      if ((*(_BYTE*)(v16 - 24) & 1) != 0) {
-        v17 = *(_QWORD*)(v16 - 8);
-        if (v17 != 0) {
+      if ((*(_BYTE*)(v20 - 24) & 1) != 0) {
+        v21 = *(_QWORD*)(v20 - 8);
+        if (v21 != 0) {
           if (*(_QWORD*)(*(_QWORD*)i + 200LL) != 0) {
-            v18 = 128;
+            v22 = 128;
           }
           else {
-            v18 = 56;
+            v22 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*(_QWORD*)i + v18, v17);
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)i + v22, v21);
         }
       }
-      v16 -= 48;
-    } while (v16 != v15);
-    v19 = a1[2];
-    a1[3] = v15;
-    v15 = v19;
-    if (v19 != 0) {
+      v20 -= 48;
+    } while (v20 != v19);
+    v23 = a1[2];
+    a1[3] = v19;
+    v19 = v23;
+    if (v23 != 0) {
     LABEL_29:
-      v20 = 128;
+      v24 = 128;
       if (*(_QWORD*)(*(_QWORD*)i + 200LL) == 0) {
-        v20 = 56;
+        v24 = 56;
       }
-      return nn_mem_StandardAllocator_Free(*(_QWORD*)i + v20, v15);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)i + v24, v19);
     }
   }
-  return result;
 }
 
 _QWORD* Graph_d29060(_QWORD* result, long double a2, double a3, double a4,

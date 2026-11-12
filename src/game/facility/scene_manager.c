@@ -57,7 +57,7 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
 void __attribute__((noreturn)) SceneManager_IMapArgs_DeletingDestructor();
 _QWORD* SceneManager_Destructor(__int64 a1);
-__int64 SceneManager_138a380(_QWORD* a1);
+__int64 SceneManager_138a380_alt1(_QWORD* a1) __asm__("SceneManager_138a380");
 _QWORD* SceneManager_138a5a0_alt1(_QWORD* a1) __asm__("SceneManager_138a5a0");
 __int64 SceneManager_138a760(__int64 result);
 __int64 SceneManager_138b7a0(__int64 a1, __int64 a2);
@@ -184,6 +184,8 @@ void SceneObject_13fc4d0(__int64);
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void SceneManager_138a5a0(_QWORD* a1);
+void GameHr_1389860(__int64);
+void SceneManager_138a380(_QWORD* a1);
 
 void __attribute__((noreturn)) SceneManager_IMapArgs_DeletingDestructor()
 {
@@ -531,7 +533,7 @@ LABEL_100:
   return result;
 }
 
-__int64 SceneManager_138a380(_QWORD* a1)
+void SceneManager_138a380(_QWORD* a1)
 {
   _QWORD* v1;
   _QWORD* v2;
@@ -539,18 +541,17 @@ __int64 SceneManager_138a380(_QWORD* a1)
   _QWORD* v5;
   _QWORD* v6;
   _QWORD* v7;
-  __int64 result;
-  _QWORD* v9;
+  _QWORD* v8;
+  __int64 v9;
   __int64 v10;
-  __int64 v11;
-  _QWORD* v12;
-  __int64 v13;
+  _QWORD* v11;
+  __int64 v12;
+  unsigned __int64 v13;
   unsigned __int64 v14;
-  unsigned __int64 v15;
-  __int64 v16;
-  unsigned __int64 v17;
+  __int64 v15;
+  unsigned __int64 v16;
+  __int64 v17;
   __int64 v18;
-  __int64 v19;
 
   v1 = (_QWORD*)a1[20];
   v2 = (_QWORD*)a1[21];
@@ -589,62 +590,61 @@ __int64 SceneManager_138a380(_QWORD* a1)
     v6 = (_QWORD*)a1[29];
   }
   a1[30] = v6;
-  result = SceneManager_1389860((__int64)a1);
+  GameHr_1389860((__int64)a1);
   if (a1[37] != 0) {
-    v9 = (_QWORD*)a1[36];
-    if (v9 != nullptr) {
-      v10 = fw_memory_g_heap_manager_ptr;
+    v8 = (_QWORD*)a1[36];
+    if (v8 != nullptr) {
+      v9 = fw_memory_g_heap_manager_ptr;
       do {
-        v12 = (_QWORD*)*v9;
-        v13 = v9[4];
-        if (v13 != 0) {
-          std___1___shared_weak_count___release_weak(v13);
+        v11 = (_QWORD*)*v8;
+        v12 = v8[4];
+        if (v12 != 0) {
+          std___1___shared_weak_count___release_weak_alt2(v12);
         }
-        if (*(_QWORD*)(*(_QWORD*)v10 + 200LL) != 0) {
-          v11 = 128;
+        if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) != 0) {
+          v10 = 128;
         }
         else {
-          v11 = 56;
+          v10 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v10 + v11);
-        v9 = v12;
-      } while (v12 != nullptr);
+        nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v9 + v10, (__int64)v8);
+        v8 = v11;
+      } while (v11 != nullptr);
     }
-    v14 = a1[35];
+    v13 = a1[35];
     a1[36] = 0;
-    if (v14 != 0) {
-      v15 = v14 & 7;
-      if (v14 >= 8) {
-        v17 = v14 & 0xFFFFFFFFFFFFFFF8LL;
-        v16 = 0;
+    if (v13 != 0) {
+      v14 = v13 & 7;
+      if (v13 >= 8) {
+        v16 = v13 & 0xFFFFFFFFFFFFFFF8LL;
+        v15 = 0;
         do {
-          *(_QWORD*)(a1[34] + 8 * v16) = 0;
-          *(_QWORD*)(a1[34] + 8 * v16 + 8) = 0;
-          *(_QWORD*)(a1[34] + 8 * v16 + 16) = 0;
-          *(_QWORD*)(a1[34] + 8 * v16 + 24) = 0;
-          *(_QWORD*)(a1[34] + 8 * v16 + 32) = 0;
-          *(_QWORD*)(a1[34] + 8 * v16 + 40) = 0;
-          *(_QWORD*)(a1[34] + 8 * v16 + 48) = 0;
-          v18 = a1[34] + 8 * v16;
-          v16 += 8;
-          *(_QWORD*)(v18 + 56) = 0;
-        } while (v17 != v16);
+          *(_QWORD*)(a1[34] + 8 * v15) = 0;
+          *(_QWORD*)(a1[34] + 8 * v15 + 8) = 0;
+          *(_QWORD*)(a1[34] + 8 * v15 + 16) = 0;
+          *(_QWORD*)(a1[34] + 8 * v15 + 24) = 0;
+          *(_QWORD*)(a1[34] + 8 * v15 + 32) = 0;
+          *(_QWORD*)(a1[34] + 8 * v15 + 40) = 0;
+          *(_QWORD*)(a1[34] + 8 * v15 + 48) = 0;
+          v17 = a1[34] + 8 * v15;
+          v15 += 8;
+          *(_QWORD*)(v17 + 56) = 0;
+        } while (v16 != v15);
       }
       else {
-        v16 = 0;
+        v15 = 0;
       }
-      if (v15 != 0) {
-        v19 = 8 * v16;
+      if (v14 != 0) {
+        v18 = 8 * v15;
         do {
-          --v15;
-          *(_QWORD*)(a1[34] + v19) = 0;
-          v19 += 8;
-        } while (v15 != 0);
+          --v14;
+          *(_QWORD*)(a1[34] + v18) = 0;
+          v18 += 8;
+        } while (v14 != 0);
       }
     }
     a1[37] = 0;
   }
-  return result;
 }
 
 void SceneManager_138a5a0(_QWORD* a1)

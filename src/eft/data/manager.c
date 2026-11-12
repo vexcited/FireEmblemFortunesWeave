@@ -13,6 +13,12 @@ extern __int64* snd_g_fileIndex_ptr[2];
 __int64 eft_data_Manager_LoadAsync(_QWORD* a1);
 __int64 ElfFile_631220(__int64*, __int64);
 int* eft_data_Manager_LoadAsync_lambda0_Invoke(__int64 a1, __int64* a2);
+__int64 fs_Manager_createFileAsync_fs_ElfFile(__int64, __int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 eft_data_Manager_LoadAsync(_QWORD* a1)
 {
@@ -22,12 +28,14 @@ __int64 eft_data_Manager_LoadAsync(_QWORD* a1)
   __int64 v5;
   __int64 v6;
   __int64 result;
-  _QWORD v8[3];
-  __int64 v9;
-  __int64 v10;
-  int v11;
+  struct {
+    _QWORD v8[3];
+    __int64 v9;
+    __int64 v10;
+    int v11;
+  } v8_;
 
-  v2 = (_QWORD*)fw_memory_HeapManager_Allocate(
+  v2 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0);
   v2[2] = 0;
   v3 = GameData_212e340[0];
@@ -42,24 +50,24 @@ __int64 eft_data_Manager_LoadAsync(_QWORD* a1)
   if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-    std___1___shared_weak_count___release_weak(v4);
+    std___1___shared_weak_count___release_weak_alt1(v4);
   }
   v5 = *snd_g_fileIndex_ptr[0];
-  v8[0] = "Effect/Data/data_effect.elf";
-  v8[1] = 27;
+  v8_.v8[0] = "Effect/Data/data_effect.elf";
+  v8_.v8[1] = 27;
   v6 = a1[1];
-  v8[2] = *a1;
-  v9 = v6;
+  v8_.v8[2] = *a1;
+  v8_.v9 = v6;
   if (v6 != 0) {
     atomic_fetch_add_explicit((atomic_ullong* volatile)(v6 + 16), 1u,
                               memory_order_relaxed);
   }
-  v10 = GameData_2203100;
-  v11 = 1;
-  a1[2] = GameRoutine_bc9020(v5, v8);
-  result = v9;
-  if (v9 != 0) {
-    return std___1___shared_weak_count___release_weak(v9);
+  v8_.v10 = GameData_2203100;
+  v8_.v11 = 1;
+  a1[2] = fs_Manager_createFileAsync_fs_ElfFile(v5, (__int64)v8_.v8);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v8_.v9);
   }
   return result;
 }

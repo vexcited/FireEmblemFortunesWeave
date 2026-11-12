@@ -13,6 +13,8 @@ char* GameRoutine_cf5da0(__int64);
 void __attribute__((noreturn)) GameRoutine_8123d0(_QWORD, long double);
 __int64 WaitRelease_cfa2a0(__int64 result, long double a2);
 __int64 WaitRelease_cfb010(__int64 a1, __int64* a2);
+__int64 WaitRelease_cfa2a0_alt1(__int64 result) __asm__("WaitRelease_cfa2a0");
+char* CharacterModel_cf5da0(__int64);
 
 __int64 WaitRelease_Unknown4(__int64 a1)
 {
@@ -77,22 +79,21 @@ __int64 WaitRelease_cfb010(__int64 a1, __int64* a2)
   __int64 v2;
   __int64 v3;
   __int64 result;
-  long double v5;
-  int v6;
+  int v5;
 
   v2 = *(_QWORD*)(a1 + 8);
   v3 = *a2;
   result = HubCharacterNatives_cf7940(v2);
   if (v3 == result) {
-    GameRoutine_cf5da0(v2);
+    CharacterModel_cf5da0(v2);
     result = CharacterModel_cf4780(v2);
-    v6 = *(_DWORD*)(v2 + 8);
-    if (*(_BYTE*)(v2 + 44) != 1 || *(_DWORD*)(v2 + 40) != v6) {
-      *(_DWORD*)(v2 + 48) = v6;
+    v5 = *(_DWORD*)(v2 + 8);
+    if (*(_BYTE*)(v2 + 44) != 1 || *(_DWORD*)(v2 + 40) != v5) {
+      *(_DWORD*)(v2 + 48) = v5;
       *(_BYTE*)(v2 + 52) = 1;
     }
     if ((*(_BYTE*)(v2 + 128) & 1) == 0 && (*(_BYTE*)(v2 + 129) & 1) != 0) {
-      return WaitRelease_cfa2a0(v2 + 32, v5);
+      return WaitRelease_cfa2a0_alt1(v2 + 32);
     }
   }
   return result;

@@ -31,6 +31,16 @@ struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                                  double, float);
 __int64 FuncUnitMenuItem_e96b70(__int64 a1);
 __int64 FuncUnitMenuItem_e96c50(__int64 a1);
+__int64 GameRoutine_112180_alt1(__int64, __int64) __asm__("GameRoutine_112180");
+__int64
+game_sound_PlayCursorLeftSe_alt1() __asm__("game_sound_PlayCursorLeftSe");
+__int64
+game_sound_PlayCursorRightSe_alt1() __asm__("game_sound_PlayCursorRightSe");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 
 __int64 FuncUnitMenuItem_Unknown3(__int64 a1)
 {
@@ -67,31 +77,32 @@ __int64 FuncUnitMenuItem_e96b70(__int64 a1)
   __int64 v1;
   __int64 v2;
   __int64 result;
-  __int64 v4;
-  int v5;
-  _QWORD v6[2];
-  _BYTE v7[200];
-  __int64 v8;
-  __int64 v9;
+  struct {
+    __int64 v4;
+    int v5;
+  } v4_;
+  _BYTE v6[16];
+  _QWORD v7[27];
 
   if (*(_BYTE*)(a1 + 83) != 1) {
-    return game_sound_PlayCursorLeftSe();
+    return game_sound_PlayCursorLeftSe_alt1();
   }
-  v8 = v1;
-  v9 = v2;
-  snd_Fade_Fade_10c830(v7, 0.0f);
-  *(struct PseudoSret*)(v6) =
-      snd_play_ff2d0("SE_SYS_Cursor_Left_EX", "SE_SYS_Cursor_Left_EX", v7, 0,
-                     65537, 0, 0.0f, 1.0f);
-  result = snd_Fade_Destroy_Fade(v7);
-  v4 = 0;
-  v5 = 0x2000;
+  v7[25] = v1;
+  v7[26] = v2;
+  snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
+  snd_play_ff2d0_alt1((__int64)"SE_SYS_Cursor_Left_EX",
+                      (__int64)"SE_SYS_Cursor_Left_EX", (__int64)v7, 0,
+                      0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+  result = snd_Fade_Destroy_Fade_alt1(v7);
+  v4_.v4 = 0;
+  v4_.v5 = 0x2000;
   if (game_sound_g_vibration_enabled == 1) {
-    snd_Fade_Fade_10c830(v7, 0.0f);
-    *(struct PseudoSret*)(v6) = snd_play_ff2d0("VIB_Page_Back", "VIB_Page_Back",
-                                               v7, 0, 65537, 0, 0.0f, 1.0f);
-    snd_Fade_Destroy_Fade(v7);
-    return GameRoutine_112180(&v4, v6);
+    snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
+    snd_play_ff2d0_alt1((__int64)"VIB_Page_Back", (__int64)"VIB_Page_Back",
+                        (__int64)v7, 0, 0x10001u, 0, 0x0.0p+0f,
+                        0x1.0000000000000p+0f);
+    snd_Fade_Destroy_Fade_alt1(v7);
+    return GameRoutine_112180_alt1((__int64)&v4_.v4, (__int64)v6);
   }
   return result;
 }
@@ -101,31 +112,32 @@ __int64 FuncUnitMenuItem_e96c50(__int64 a1)
   __int64 v1;
   __int64 v2;
   __int64 result;
-  __int64 v4;
-  int v5;
-  _QWORD v6[2];
-  _BYTE v7[200];
-  __int64 v8;
-  __int64 v9;
+  struct {
+    __int64 v4;
+    int v5;
+  } v4_;
+  _BYTE v6[16];
+  _QWORD v7[27];
 
   if (*(_BYTE*)(a1 + 83) != 1) {
-    return game_sound_PlayCursorRightSe();
+    return game_sound_PlayCursorRightSe_alt1();
   }
-  v8 = v1;
-  v9 = v2;
-  snd_Fade_Fade_10c830(v7, 0.0f);
-  *(struct PseudoSret*)(v6) =
-      snd_play_ff2d0("SE_SYS_Cursor_Right_EX", "SE_SYS_Cursor_Right_EX", v7, 0,
-                     65537, 0, 0.0f, 1.0f);
-  result = snd_Fade_Destroy_Fade(v7);
-  v4 = 0;
-  v5 = 0x2000;
+  v7[25] = v1;
+  v7[26] = v2;
+  snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
+  snd_play_ff2d0_alt1((__int64)"SE_SYS_Cursor_Right_EX",
+                      (__int64)"SE_SYS_Cursor_Right_EX", (__int64)v7, 0,
+                      0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+  result = snd_Fade_Destroy_Fade_alt1(v7);
+  v4_.v4 = 0;
+  v4_.v5 = 0x2000;
   if (game_sound_g_vibration_enabled == 1) {
-    snd_Fade_Fade_10c830(v7, 0.0f);
-    *(struct PseudoSret*)(v6) = snd_play_ff2d0("VIB_Page_Send", "VIB_Page_Send",
-                                               v7, 0, 65537, 0, 0.0f, 1.0f);
-    snd_Fade_Destroy_Fade(v7);
-    return GameRoutine_112180(&v4, v6);
+    snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
+    snd_play_ff2d0_alt1((__int64)"VIB_Page_Send", (__int64)"VIB_Page_Send",
+                        (__int64)v7, 0, 0x10001u, 0, 0x0.0p+0f,
+                        0x1.0000000000000p+0f);
+    snd_Fade_Destroy_Fade_alt1(v7);
+    return GameRoutine_112180_alt1((__int64)&v4_.v4, (__int64)v6);
   }
   return result;
 }

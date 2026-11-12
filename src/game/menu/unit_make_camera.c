@@ -36,8 +36,16 @@ extern __int128 GameData_1a82a90;
 extern __int128 GameData_1a835f0;
 extern __int64 GameData_225d4e8;
 __int64 UnitMakeCamera_179b570(__int64 a1, int8x16_t a2, int8x16_t a3);
-void UnitMakeCamera_179ba60(__int64 a1);
+void UnitMakeCamera_179ba60_alt1(__int64 a1) __asm__("UnitMakeCamera_179ba60");
 void UnitMakeCamera_179bb70(__int64 a1);
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+__int64 UnitMakeCamera_179ba60(__int64 result);
 
 __int64 UnitMakeCamera_179b570(__int64 a1, int8x16_t a2, int8x16_t a3)
 {
@@ -387,48 +395,51 @@ LABEL_14:
   return GameRoutine_b3aee0(*(_QWORD*)(a1 + 152));
 }
 
-void UnitMakeCamera_179ba60(__int64 a1)
+__int64 UnitMakeCamera_179ba60(__int64 result)
 {
   __int64 v1;
   __int64 v2;
+  __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
   __int64 v7[2];
-  __int64 v8;
-  _BYTE v9[200];
-  __int64 v10;
-  __int64 v11;
+  _QWORD v8[27];
 
-  if (*(_BYTE*)(a1 + 208) == 1) {
-    v10 = v1;
-    v11 = v2;
-    snd_Fade_Fade_10c830(v9, 0.0f);
-    snd_play_ff2d0((void*)(&v8), "SE_SYS_ZoomIn_CharaMake",
-                   "SE_SYS_ZoomIn_CharaMake", v9, 0, 65537, 0, 0.0f, 1.0f);
-    snd_Fade_Destroy_Fade(v9);
-    v4 = *(_QWORD*)(a1 + 32);
-    v5 = *(_QWORD*)(a1 + 152);
-    v6 = *(_QWORD*)(a1 + 160);
-    *(_BYTE*)(a1 + 208) = 0;
+  if (*(_BYTE*)(result + 208) == 1) {
+    v8[25] = v1;
+    v8[26] = v2;
+    v3 = result;
+    snd_Fade_Fade_10c830_alt1((__int64)v8, 0x0.0p+0f);
+    snd_play_ff2d0_alt1((__int64)"SE_SYS_ZoomIn_CharaMake",
+                        (__int64)"SE_SYS_ZoomIn_CharaMake", (__int64)v8, 0,
+                        0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_Fade_Destroy_Fade_alt1(v8);
+    v4 = *(_QWORD*)(v3 + 32);
+    v5 = *(_QWORD*)(v3 + 152);
+    v6 = *(_QWORD*)(v3 + 160);
+    *(_BYTE*)(v3 + 208) = 0;
     v7[0] = v5;
     v7[1] = v6;
     if (v6 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v6 + 8), 1u,
                                 memory_order_relaxed);
-      *(_QWORD*)(a1 + 176) =
+      result =
           GameRoutine_1797af0(v4, v7, *(_BYTE*)(GameData_225d4e8 + 276) == 1);
+      *(_QWORD*)(v3 + 176) = result;
       if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-        std___1___shared_weak_count___release_weak_alt1();
+        return std___1___shared_weak_count___release_weak_alt2(v6);
       }
     }
     else {
-      *(_QWORD*)(a1 + 176) = GameRoutine_1797af0(
-          v4, v7, *(_BYTE*)(*GameData_2131a88[0] + 276) == 1);
+      result = GameRoutine_1797af0(v4, v7,
+                                   *(_BYTE*)(*GameData_2131a88[0] + 276) == 1);
+      *(_QWORD*)(v3 + 176) = result;
     }
   }
+  return result;
 }
 
 void UnitMakeCamera_179bb70(__int64 a1)

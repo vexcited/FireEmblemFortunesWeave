@@ -15,6 +15,7 @@ __int64 EscapeMenuItem_752b40(int a1, int a2, int a3, int a4, int a5, int a6,
 __int64 EscapeMenuItem_752f80(__int64 a1, __int64 a2);
 __int64 EscapeMenuItem_19f6a70(__int64 a1, __int64 a2);
 __int64 EscapeMenuItem_19fb200(__int64 a1, _DWORD* a2);
+
 __int64 EscapeMenuItem_752b40(int a1, int a2, int a3, int a4, int a5, int a6,
                               int a7, int a8)
 {

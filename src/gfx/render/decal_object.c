@@ -24,6 +24,9 @@ void gfx_render_DecalObject_DecalObject_lambda0_Invoke(__int64 a1, _WORD* a2);
 __int64 gfx_render_DecalObject_CollectElements_lambda0_Invoke(__int64 a1,
                                                               _QWORD* a2);
 __int64 DecalObject_Unknown2(__int64 a1);
+__attribute__((swiftcall)) void
+GameRoutine_53bd0_alt1(PSEUDO_X8, __int64) __asm__("GameRoutine_53bd0");
+__int64 GameRoutine_5de60_alt1(_QWORD*, __int64) __asm__("GameRoutine_5de60");
 
 __int64 DecalObject_a91100(__int64* a1, __int64 a2, __int64 a3, __int64 a4)
 {
@@ -37,48 +40,91 @@ __int64 DecalObject_a91100(__int64* a1, __int64 a2, __int64 a3, __int64 a4)
   __int64 v13;
   __int64 v14;
   __int64 v15;
-  int v17;
-  __int64 v18;
-  __int64 v19;
+  struct {
+    int v17;
+    char gap4_[4];
+    __int64 v18;
+    __int64 v19;
+  } v17_;
   __int64 v20;
 
-  v18 = a4;
-  v19 = a2;
-  v17 = 3;
-  *(struct PseudoSret*)(&v20) = GameRoutine_53bd0(&v17);
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v15 = COERCE_AS(__typeof__(v15),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v17_.v18 = a4;
+  v17_.v19 = a2;
+  v17_.v17 = 3;
+  GameRoutine_53bd0_alt1((void*)(&v20), (__int64)&v17_.v17),
+      v13 = COERCE_AS(__typeof__(v13),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v15 = COERCE_AS(__typeof__(v15),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v6 = v20;
   v7 = *a1;
   v20 = 0;
   *a1 = v6;
   if (v7 != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v7 + 8LL))(v7);
+    (*(void (**)(__int64))(*(_QWORD*)v7 + 8LL))(v7),
+        v13 = COERCE_AS(__typeof__(v13),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v15 = COERCE_AS(__typeof__(v15),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v8 = v20;
     v20 = 0;
     if (v8 != 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v8 + 8LL))(v8);
+      (*(void (**)(__int64))(*(_QWORD*)v8 + 8LL))(v8),
+          v13 = COERCE_AS(__typeof__(v13),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v15 = COERCE_AS(__typeof__(v15),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
   }
-  *(struct PseudoSret*)(&v20) = GameRoutine_53bd0(&v17);
+  GameRoutine_53bd0_alt1((void*)(&v20), (__int64)&v17_.v17),
+      v13 = COERCE_AS(__typeof__(v13),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v15 = COERCE_AS(__typeof__(v15),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v9 = v20;
   v10 = a1[1];
   v20 = 0;
   a1[1] = v9;
   if (v10 != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v10 + 8LL))(v10);
+    (*(void (**)(__int64))(*(_QWORD*)v10 + 8LL))(v10),
+        v13 = COERCE_AS(__typeof__(v13),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v15 = COERCE_AS(__typeof__(v15),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v11 = v20;
     v20 = 0;
     if (v11 != 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v11 + 8LL))(v11);
+      (*(void (**)(__int64))(*(_QWORD*)v11 + 8LL))(v11),
+          v13 = COERCE_AS(__typeof__(v13),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v15 = COERCE_AS(__typeof__(v15),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
   }
-  v12 = (*(__int64 (**)(__int64))(*(_QWORD*)a3 + 80LL))(a3);
+  v12 = (*(__int64 (**)(__int64))(*(_QWORD*)a3 + 80LL))(a3),
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v15 = COERCE_AS(__typeof__(v15),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   a1[4] = v13;
   v14 = *a1;
   a1[3] = v12;
-  GameRoutine_5de60(a1 + 3, v14);
-  a1[5] = (*(__int64 (**)(__int64))(*(_QWORD*)a3 + 80LL))(a3);
+  GameRoutine_5de60_alt1(a1 + 3, v14),
+      v13 = COERCE_AS(__typeof__(v13),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v15 = COERCE_AS(__typeof__(v15),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  a1[5] = (*(__int64 (**)(__int64))(*(_QWORD*)a3 + 80LL))(a3),
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v15 = COERCE_AS(__typeof__(v15),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   a1[6] = v15;
-  return GameRoutine_5de60(a1 + 5, a1[1]);
+  return GameRoutine_5de60_alt1(a1 + 5, a1[1]);
 }
 
 __int64 DecalObject_Destructor(__int64 a1)

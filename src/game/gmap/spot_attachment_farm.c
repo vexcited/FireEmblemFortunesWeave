@@ -70,8 +70,17 @@ extern __int64 game_TransporterConst_List_instance__ptr[6];
 void snd_Fade_Fade_10c830(__int64, float);
 __int64 SpotAttachmentFarm_1515d80();
 void SpotAttachmentFarm_Unknown9(__int64 a1);
-_QWORD* SpotAttachmentFarm_Unknown10(_QWORD* result);
+_QWORD* SpotAttachmentFarm_Unknown10_alt1(_QWORD* result) __asm__(
+    "SpotAttachmentFarm_Unknown10");
 __int64 SpotAttachmentFarm_Unknown15(__int64 result);
+__attribute__((swiftcall)) void
+TransporterConst_89b3d0_alt1(PSEUDO_X8, _QWORD*, _QWORD*,
+                             int) __asm__("TransporterConst_89b3d0");
+__int64 GameHr_17cc7d0(__int64, const char*, const char*, char, const char*,
+                       char);
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt2(__int64) __asm__("nn_os_UnlockMutex");
+void SpotAttachmentFarm_Unknown10(__int64 a1);
 
 __int64 SpotAttachmentFarm_1515d80()
 {
@@ -406,12 +415,11 @@ LABEL_33:
   }
 }
 
-_QWORD* SpotAttachmentFarm_Unknown10(_QWORD* result)
+void SpotAttachmentFarm_Unknown10(__int64 a1)
 {
   __int64 v1;
   __int64 v2;
   __int64* v3;
-  int* v4;
   __int64 v5;
   __int64 v6;
   __int64* v7;
@@ -422,12 +430,11 @@ _QWORD* SpotAttachmentFarm_Unknown10(_QWORD* result)
   __int64 v12;
   _QWORD v13[3];
 
-  if (*((_BYTE*)result + 42) == 1) {
+  if (*(_BYTE*)(a1 + 42) == 1) {
     v13[1] = v1;
     v13[2] = v2;
-    v3 = (__int64*)result[7];
-    *((_BYTE*)result + 42) = 0;
-    v4 = (int*)result;
+    v3 = *(__int64**)(a1 + 56);
+    *(_BYTE*)(a1 + 42) = 0;
     v5 = *v3;
     v13[0] = 0;
     if (v5 != 0) {
@@ -436,7 +443,7 @@ _QWORD* SpotAttachmentFarm_Unknown10(_QWORD* result)
       LOWORD(v13[0]) = v6;
       if (*(_BYTE*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8 * v6) +
                     73LL) == 17) {
-        nn_os_LockMutex(&game_g_random_mutex);
+        nn_os_LockMutex_alt1((__int64)&game_g_random_mutex);
         v7 = game_map_MapRandom_instance__ptr[0];
         v8 = *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
                         (unsigned __int64)((_UNKNOWN**)0x8LL));
@@ -450,7 +457,7 @@ _QWORD* SpotAttachmentFarm_Unknown10(_QWORD* result)
         v11 = (v10 >> 8) ^ (v9 >> 19) ^ v10 ^ v9;
         *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v7) = v9;
         *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v7 + 4) = v11;
-        nn_os_UnlockMutex(&game_g_random_mutex);
+        nn_os_UnlockMutex_alt2((__int64)&game_g_random_mutex);
         HIDWORD(v13[0]) =
             (16 * ((_WORD)v11 -
                    1000 * (unsigned __int16)((v11 & 0x7FFFFFFFu) / 0x3E8)) +
@@ -459,23 +466,16 @@ _QWORD* SpotAttachmentFarm_Unknown10(_QWORD* result)
             1;
       }
     }
-    result = X8CALL_X0(
-        void*,
-        TransporterConst_89b3d0(
-            (void*)(&v12),
-            *(_QWORD*)(*(_QWORD*)game_TransporterConst_List_instance__ptr[0] +
-                       8LL),
-            v13, (unsigned int)v4[12]));
-    if (v4[12] >= 1) {
-      result = (_QWORD*)GameData_2241720;
-      if (GameData_2241720 != 0) {
-        return (_QWORD*)TelopParts_17cc7d0(
-            GameData_2241720, (__int64)"MID_Sys_InfoTelop_GetCancel", 0, 0, 0,
-            0);
-      }
+    TransporterConst_89b3d0_alt1(
+        (void*)((__int64)&v12),
+        *(_QWORD**)(*(_QWORD*)game_TransporterConst_List_instance__ptr[0] +
+                    8LL),
+        v13, *(_DWORD*)(a1 + 48));
+    if (*(int*)(a1 + 48) >= 1 && GameData_2241720 != 0) {
+      GameHr_17cc7d0(GameData_2241720, "MID_Sys_InfoTelop_GetCancel", nullptr,
+                     0, nullptr, 0);
     }
   }
-  return result;
 }
 
 __int64 SpotAttachmentFarm_Unknown11(__int64 result)

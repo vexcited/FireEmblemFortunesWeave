@@ -54,6 +54,10 @@ void CombatSettings_Footprint_t_Destructor(float* a1, __int64 a2);
 void CombatSettings_LookAt_t_Destructor(float* a1, __int64 a2);
 void CombatSettings_Illusion_t_Destructor(__int64 a1, __int64 a2);
 void CombatSettings_Physics_t_Destructor(float* a1, __int64 a2);
+__int64 GameRoutine_10aa280_alt1(__int64, __int64, __int64,
+                                 float) __asm__("GameRoutine_10aa280");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 game_combat_CombatSettings_CombatSettings(_QWORD* a1)
 {
@@ -394,6 +398,8 @@ __int64 CombatSettings_RadialBlur_t_Destructor(__int64 a1, __int64 a2)
 
 __int64 game_combat_CombatSettings_RadialBlur_t_Play(__int64 a1, float a2)
 {
+
+#pragma clang fp contract(off)
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -408,11 +414,16 @@ __int64 game_combat_CombatSettings_RadialBlur_t_Play(__int64 a1, float a2)
   __int64 v13;
   __int64 result;
   __int64 v15;
-  _BYTE v16[32];
-  _BYTE* v17;
-  _QWORD v18[2];
-  int v19;
-  _QWORD* v20;
+  struct {
+    _BYTE v16[32];
+    _BYTE* v17;
+  } v16_;
+  struct {
+    _QWORD v18[2];
+    int v19;
+    char gap68_[12];
+    _QWORD* v20;
+  } v18_;
 
   v2 = *(_QWORD*)(game_g_frame_clock + 13224);
   v3 = *(_QWORD*)(v2 + 48);
@@ -426,7 +437,7 @@ __int64 game_combat_CombatSettings_RadialBlur_t_Play(__int64 a1, float a2)
       v6 = a1;
       v7 = a2;
       (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-      std___1___shared_weak_count___release_weak(v4);
+      std___1___shared_weak_count___release_weak_alt1(v4);
       a2 = v7;
       a1 = v6;
     }
@@ -442,34 +453,35 @@ __int64 game_combat_CombatSettings_RadialBlur_t_Play(__int64 a1, float a2)
   }
   v11 = *(_DWORD*)(a1 + 12);
   v12 = *(unsigned int*)(v5 + v10);
-  v17 = nullptr;
-  v19 = v11;
-  v18[0] = GameData_20089d0;
-  v18[1] = v12 | ((unsigned __int64)LODWORD(v8) << 32);
-  v20 = v18;
-  GameRoutine_10aa280(0, v18, v16, (float)v9 / 60.0f);
-  if (v17 == v16) {
+  v16_.v17 = nullptr;
+  v18_.v19 = v11;
+  v18_.v18[0] = GameData_20089d0;
+  v18_.v18[1] = v12 | ((unsigned __int64)LODWORD(v8) << 32);
+  v18_.v20 = v18_.v18;
+  GameRoutine_10aa280_alt1(0, (__int64)v18_.v18, (__int64)v16_.v16,
+                           (float)v9 / 0x1.e000000000000p+5f);
+  if (v16_.v17 == v16_.v16) {
     v13 = 32;
   }
   else {
-    if (v17 == nullptr) {
+    if (v16_.v17 == nullptr) {
       goto LABEL_12;
     }
     v13 = 40;
   }
-  (*(void (**)(__int64))(*(_QWORD*)v17 + v13))((__int64)v17);
+  (*(void (**)(__int64))(*(_QWORD*)v16_.v17 + v13))((__int64)v16_.v17);
 LABEL_12:
-  result = (__int64)v20;
-  if (v20 == v18) {
+  result = (__int64)v18_.v20;
+  if (v18_.v20 == v18_.v18) {
     v15 = 32;
   }
   else {
-    if (v20 == nullptr) {
+    if (v18_.v20 == nullptr) {
       return result;
     }
     v15 = 40;
   }
-  return (*(__int64 (**)(__int64))(*v20 + v15))((__int64)v20);
+  return (*(__int64 (**)(__int64))(*v18_.v20 + v15))((__int64)v18_.v20);
 }
 
 void CombatSettings_Onbt_t_Destructor(float* a1, __int64 a2)

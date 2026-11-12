@@ -20,53 +20,72 @@ extern __int64 GameData_21f3ff8;
 extern __int64 game_facility_FacilityView_instance_;
 __int64 ClassChangeJobMenuItem_16b3c70(__int64 a1);
 bool ClassChangeJobMenuItem_IsActive(__int64 a1);
+__attribute__((swiftcall)) void
+GameRoutine_1587740_alt1(PSEUDO_X8, __int64*,
+                         __int64*) __asm__("GameRoutine_1587740");
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 GameRoutine_157ac20_alt1(__int64*, __int64, char,
+                                 char) __asm__("GameRoutine_157ac20");
+__int64 JobIcon_19a9be0(__int64, __int64, __int64);
+__int64 LayoutAccessor_1562cf0(__int64 result, const char*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+void game_menu_GameMenuItem_DrawText_alt1(_QWORD*) __asm__(
+    "game_menu_GameMenuItem_DrawText");
 
 __int64 ClassChangeJobMenuItem_DrawText(_QWORD* a1)
 {
   __int64 result;
-  __int64 v3;
+  __int64* v3;
   __int64 v4;
-  _BOOL4 v5;
+  char v5;
   char v6;
   __int64 v7;
   __int64 v8;
   char v9;
-  _QWORD v10[2];
-  __int64 v11;
-  __int64 v12;
+  __int64 v10[2];
+  struct {
+    __int64 v11;
+    __int64 v12;
+  } v11_;
 
-  game_menu_GameMenuItem_DrawText();
+  game_menu_GameMenuItem_DrawText_alt1(a1);
   result = a1[7];
   if (result != 0) {
-    result = std___1___shared_weak_count_lock(result);
+    result = std___1___shared_weak_count_lock_alt1(result);
     if (result != 0) {
-      v3 = a1[6];
+      v3 = (__int64*)a1[6];
       v4 = result;
-      if (v3 != 0) {
-        GameRoutine_1562cf0(a1[6], "All_Off");
-        GameRoutine_95eaa0((void*)&v11, a1[11], a1[12]);
-        v5 = (v11 & 2) != 0;
+      if (v3 != nullptr) {
+        LayoutAccessor_1562cf0(a1[6], "All_Off");
+        game_95eaa0((void*)((__int64)&v11_.v11), a1[11], a1[12]);
+        v5 = (v11_.v11 & 2) != 0;
         v6 = (*(__int64 (**)(_QWORD*))(*a1 + 464LL))(a1);
-        GameRoutine_157ac20(v3, "IconEquip", v5, v6 & 1);
-        ui_LayoutAccessor_SetPaneVisible(v3, "BgEquip", v5);
-        v10[0] = "L_JobIcon";
+        GameRoutine_157ac20_alt1(v3, (__int64)"IconEquip", v5, v6 & 1);
+        ui_LayoutAccessor_SetPaneVisible_alt1((__int64)v3, (__int64)"BgEquip",
+                                              v5);
+        v10[0] = (__int64)"L_JobIcon";
         v10[1] = 9;
-        GameRoutine_1587740((void*)&v11, v3, v10);
-        result = v12;
-        if (v12 != 0) {
-          v7 = std___1___shared_weak_count_lock(v12);
-          v8 = v11;
-          result = v12;
-          if (v12 != 0) {
-            result = std___1___shared_weak_count___release_weak(v12);
+        GameRoutine_1587740_alt1((void*)(&v11_.v11), v3, v10);
+        result = v11_.v12;
+        if (v11_.v12 != 0) {
+          v7 = std___1___shared_weak_count_lock_alt1(v11_.v12);
+          v8 = v11_.v11;
+          result = v11_.v12;
+          if (v11_.v12 != 0) {
+            result = std___1___shared_weak_count___release_weak_alt1(v11_.v12);
           }
           if (v7 != 0 && v8 != 0) {
             v9 = (*(__int64 (**)(_QWORD*))(*a1 + 464LL))(a1);
             *(_BYTE*)(v8 + 1105) = 0;
             *(_WORD*)(v8 + 1106) = 1;
             *(_BYTE*)(v8 + 1109) = (v9 & 1) == 0;
-            GameRoutine_1562680(v8 + 88, "Icon_On", 1.0);
-            result = GameRoutine_19a9be0(v8, a1[11], a1[12]);
+            GameHr_1562680(v8 + 88, "Icon_On", 0x1.0000000000000p+0f);
+            result = JobIcon_19a9be0(v8, a1[11], a1[12]);
             goto LABEL_11;
           }
           if (v7 != 0) {
@@ -74,7 +93,7 @@ __int64 ClassChangeJobMenuItem_DrawText(_QWORD* a1)
             if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
               (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-              result = std___1___shared_weak_count___release_weak(v7);
+              result = std___1___shared_weak_count___release_weak_alt1(v7);
             }
           }
         }
@@ -82,7 +101,7 @@ __int64 ClassChangeJobMenuItem_DrawText(_QWORD* a1)
       if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-        return std___1___shared_weak_count___release_weak(v4);
+        return std___1___shared_weak_count___release_weak_alt1(v4);
       }
     }
   }

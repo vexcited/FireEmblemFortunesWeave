@@ -63,6 +63,8 @@ float game_map_anonymous_ProcMapSeqTargetSelect_UpdateFocus_closure_Invoke(
 __int64 ProcMapSeqTargetSelect_78e3c0(__int64 a1, unsigned __int8 a2);
 __int64 ProcMapSeqTargetSelect_78ece0(__int64 a1, long double a2);
 __int64 ProcMapSeqTargetSelect_78f500(__int64 a1);
+__int64 GameRoutine_78d280_alt1(__int64, _BYTE*) __asm__("GameRoutine_78d280");
+float fmodf_alt1(float, float) __asm__("fmodf");
 
 float game_map_anonymous_ProcMapSeqTargetSelect_UpdateFocus_closure_Invoke(
     __int64 a1, _DWORD* a2, long double a3)
@@ -106,6 +108,8 @@ float game_map_anonymous_ProcMapSeqTargetSelect_UpdateFocus_closure_Invoke(
 
 __int64 ProcMapSeqTargetSelect_78e3c0(__int64 a1, unsigned __int8 a2)
 {
+
+#pragma clang fp contract(off)
   __int64* v3;
   __int64 v4;
   _QWORD* v5;
@@ -125,7 +129,7 @@ __int64 ProcMapSeqTargetSelect_78e3c0(__int64 a1, unsigned __int8 a2)
   unsigned int v20;
   __int64 v21;
   __int64 v22;
-  void* v23;
+  _BYTE* v23;
 
   v3 = GameData_212cff0[0];
   v4 = *GameData_212cff0[0];
@@ -138,17 +142,17 @@ __int64 ProcMapSeqTargetSelect_78e3c0(__int64 a1, unsigned __int8 a2)
   v5 += 2;
   v8 = (*(float (**)(_QWORD*))(v7 + 16))(v5);
   v9 = (*(float (**)(_QWORD*))(*v5 + 16LL))(v5);
-  fmodf(v9, 360.0);
-  if (v8 < 0.0) {
-    v10 = v10 + 360.0;
+  v10 = fmodf_alt1(v9, 0x1.6800000000000p+8f);
+  if (v8 < 0x0.0p+0f) {
+    v10 = v10 + 0x1.6800000000000p+8f;
   }
-  if (v10 >= 45.0) {
-    if (v10 >= 135.0) {
+  if (v10 >= 0x1.6800000000000p+5f) {
+    if (v10 >= 0x1.0e00000000000p+7f) {
       a2 = v6;
-      if (v10 < 225.0) {
+      if (v10 < 0x1.c200000000000p+7f) {
         goto LABEL_20;
       }
-      if (v10 >= 315.0) {
+      if (v10 >= 0x1.3b00000000000p+8f) {
         v12 = 1;
         v11 = 0;
       }
@@ -213,9 +217,9 @@ LABEL_20:
   else {
     v22 = 12408;
   }
-  v23 = (void*)(v21 + v22 + 12LL * v20 + 4);
+  v23 = (_BYTE*)(v21 + v22 + 12LL * v20 + 4);
 LABEL_34:
-  GameRoutine_78d280(a1, (__int64)v23);
+  GameRoutine_78d280_alt1(a1, v23);
   return 1;
 }
 

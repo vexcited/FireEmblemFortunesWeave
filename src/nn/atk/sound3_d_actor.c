@@ -15,14 +15,25 @@ __int64 SoundActor_Unknown7(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                             _QWORD);
 extern __int64* GameData_2135018[6];
 __int64 Sound3DActor_Destructor(__int64 a1);
-__int64 Sound3DActor_Unknown5(__int64 a1, __int64* a2, unsigned int a3,
-                              __int64 a4, __int64 a5);
+__int64 Sound3DActor_Unknown5_alt1(__int64 a1, __int64* a2, unsigned int a3,
+                                   __int64 a4,
+                                   __int64 a5) __asm__("Sound3DActor_Unknown5");
 __int64 Sound3DActor_2771d0(__int64 result, __int64 a2);
 __int64 Sound3DActor_Unknown2(__int64 result, __int64 a2);
 __int64* SoundArchivePlayer_27bd30(__int64* result);
 __int64 GameRoutine_27bd80(_QWORD*, __int64);
 __int64 Sound3DActor_276ce0(_QWORD* a1, __int64 a2, char a3);
 float32x4_t* Sound3DActor_277160(float32x4_t* result, float32x4_t* a2);
+__int64 BaseNx_278790(__int64, unsigned int);
+__int64 BaseNx_278ce0(__int64, __int64, unsigned int);
+__int64 BasicSound_282750_alt1(__int64, __int64) __asm__("BasicSound_282750");
+__int64
+Sound3DManager_278080_alt1(__int64 result) __asm__("Sound3DManager_278080");
+__int64
+SoundActor_Unknown7_alt1(__int64, __int64, __int64, __int64, __int64, __int64,
+                         unsigned __int8*) __asm__("SoundActor_Unknown7");
+__int64 Sound3DActor_Unknown5(__int64 a1, __int64* a2, unsigned int a3,
+                              __int64 a4, unsigned __int8* a5);
 
 __int64 Sound3DActor_Destructor(__int64 a1)
 {
@@ -188,7 +199,7 @@ __int64 Sound3DActor_276ce0(_QWORD* a1, __int64 a2, char a3)
 }
 
 __int64 Sound3DActor_Unknown5(__int64 a1, __int64* a2, unsigned int a3,
-                              __int64 a4, __int64 a5)
+                              __int64 a4, unsigned __int8* a5)
 {
   __int64 v10;
   __int64 v11;
@@ -200,77 +211,82 @@ __int64 Sound3DActor_Unknown5(__int64 a1, __int64* a2, unsigned int a3,
   __int64 v17;
   __int64 v18;
   unsigned int v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  _QWORD* v23;
-  __int64 v24;
-  _QWORD v25[2];
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
+  struct {
+    __int64 v20;
+    __int64 v21;
+    __int64 v22;
+    _QWORD* v23;
+    __int64 v24;
+  } v20_;
+  struct {
+    _QWORD v25[2];
+    __int64 v26;
+    __int64 v27;
+    __int64 v28;
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+  } v25_;
 
   if (*(_BYTE*)(a1 + 273) == 0) {
     return 17;
   }
-  v30 = 0;
-  v31 = 0;
-  v28 = 0;
-  v29 = 0;
-  v26 = 0;
-  v27 = 0;
-  v25[0] = 0;
-  v25[1] = 0;
-  Sound3DManager_278080(v25);
+  v25_.v30 = 0;
+  v25_.v31 = 0;
+  v25_.v28 = 0;
+  v25_.v29 = 0;
+  v25_.v26 = 0;
+  v25_.v27 = 0;
+  v25_.v25[0] = 0;
+  v25_.v25[1] = 0;
+  Sound3DManager_278080_alt1((__int64)v25_.v25);
   v10 = *(_QWORD*)(a1 + 248);
   v11 = *(_QWORD*)(a1 + 224);
-  v25[0] = *(_QWORD*)(a1 + 240);
-  v25[1] = v10;
+  v25_.v25[0] = *(_QWORD*)(a1 + 240);
+  v25_.v25[1] = v10;
   v12 = *(_QWORD*)(a1 + 264);
-  v26 = *(_QWORD*)(a1 + 256);
-  v27 = v12;
-  HIDWORD(v28) = *(_DWORD*)(a1 + 232);
+  v25_.v26 = *(_QWORD*)(a1 + 256);
+  v25_.v27 = v12;
+  HIDWORD(v25_.v28) = *(_DWORD*)(a1 + 232);
   if (v11 != 0) {
     v14 = GameRoutine_27a290();
     v15 = v14;
-    LODWORD(v21) = 0;
-    v20 = 0;
-    if ((GameRoutine_278ce0(v14, &v20, a3) & 1) != 0) {
-      HIDWORD(v29) = HIDWORD(v20);
-      LODWORD(v28) = v20;
-      BYTE1(v30) = BYTE1(v21);
-      if ((unsigned __int8)v21 == 2) {
+    LODWORD(v20_.v21) = 0;
+    v20_.v20 = 0;
+    if ((BaseNx_278ce0(v14, (__int64)&v20_.v20, a3) & 1) != 0) {
+      HIDWORD(v25_.v29) = HIDWORD(v20_.v20);
+      LODWORD(v25_.v28) = v20_.v20;
+      BYTE1(v25_.v30) = BYTE1(v20_.v21);
+      if ((unsigned __int8)v20_.v21 == 2) {
         v16 = 2;
       }
       else {
         v16 = 1;
       }
-      LOBYTE(v30) = v16;
+      LOBYTE(v25_.v30) = v16;
     }
-    LODWORD(v29) = GameRoutine_278790(v15, a3);
+    LODWORD(v25_.v29) = BaseNx_278790(v15, a3);
     if (a4 != 0 && (*(_BYTE*)(a4 + 2) & 8) != 0) {
-      HIDWORD(v30) = *(_DWORD*)(a4 + 364);
+      HIDWORD(v25_.v30) = *(_DWORD*)(a4 + 364);
     }
   }
-  v20 = *(_QWORD*)(a1 + 216);
-  v21 = a1 + 208;
-  if (v20 != 0) {
-    v17 = v20 + 8;
+  v20_.v20 = *(_QWORD*)(a1 + 216);
+  v20_.v21 = a1 + 208;
+  if (v20_.v20 != 0) {
+    v17 = v20_.v20 + 8;
   }
   else {
     v17 = 0;
   }
-  v22 = v17;
-  v23 = v25;
-  v24 = 64;
-  result = SoundActor_Unknown7(a1, a2, a3, 0, a4, &v20, a5);
+  v20_.v22 = v17;
+  v20_.v23 = v25_.v25;
+  v20_.v24 = 64;
+  result = SoundActor_Unknown7_alt1(a1, (__int64)a2, a3, 0, a4,
+                                    (__int64)&v20_.v20, a5);
   v18 = *a2;
   if (*a2 != 0) {
     v19 = result;
-    BasicSound_282750(v18, 3);
+    BasicSound_282750_alt1(v18, 3);
     return v19;
   }
   return result;

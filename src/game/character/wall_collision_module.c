@@ -21,6 +21,10 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern int* GameData_212fea8;
 int32x2_t* WallCollisionModule_1105be0(_QWORD* a1, float a2);
 void WallCollisionModule_1106aa0(float* a1, float a2, float a3, float a4);
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 int32x2_t* WallCollisionModule_1105be0(_QWORD* a1, float a2)
 {
@@ -131,7 +135,7 @@ void WallCollisionModule_1106aa0(float* a1, float a2, float a3, float a4)
 #pragma clang fp contract(off)
   int v6;
   __int128 v7;
-  int* v8;
+  __int64 v8;
   int* v9;
   int* v10;
   char v11;
@@ -159,8 +163,8 @@ void WallCollisionModule_1106aa0(float* a1, float a2, float a3, float a4)
     float v32;
   } v31_;
   struct {
-    int* v33;
-    int* v34;
+    __int64 v33;
+    __int64 v34;
     char gap64_[8];
     char v35;
   } v33_;
@@ -182,9 +186,9 @@ void WallCollisionModule_1106aa0(float* a1, float a2, float a3, float a4)
       break;
     }
     v8 = v33_.v33;
-    v9 = v33_.v34;
+    v9 = (int*)v33_.v34;
     if (v33_.v33 != v33_.v34) {
-      v10 = v33_.v33 + 4;
+      v10 = (int*)(v33_.v33 + 16);
       v11 = 0;
       do {
         v13 = *(_QWORD*)a1;
@@ -201,7 +205,7 @@ void WallCollisionModule_1106aa0(float* a1, float a2, float a3, float a4)
           if ((atomic_load_explicit((atomic_uchar* volatile)GameData_212c840,
                                     memory_order_acquire) &
                1) == 0 &&
-              (unsigned int)__cxa_guard_acquire(GameData_212c840) != 0) {
+              __cxa_guard_acquire_alt1((__int64)GameData_212c840) != 0) {
             v24 = GameData_212c838;
             *(_QWORD*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c838) =
                 0;
@@ -216,7 +220,7 @@ void WallCollisionModule_1106aa0(float* a1, float a2, float a3, float a4)
             *((_BYTE*)((_UNKNOWN*)0x44LL) + (_QWORD)v24) = 0;
             GameRoutine_14a0820(v24);
             GameRoutine_2b0();
-            __cxa_guard_release(GameData_212c840);
+            __cxa_guard_release_alt1((__int64)GameData_212c840);
           }
           v15 = *(_QWORD**)(*GameData_212c838 + 32);
           (*(void (**)(_QWORD, _QWORD, _QWORD))(*(_QWORD*)*v15 + 936LL))(*v15,
@@ -247,7 +251,7 @@ void WallCollisionModule_1106aa0(float* a1, float a2, float a3, float a4)
         goto LABEL_23;
       }
       v8 = v33_.v33;
-      if (v33_.v33 == nullptr) {
+      if (v33_.v33 == 0) {
         goto LABEL_23;
       }
     LABEL_20:
@@ -256,12 +260,12 @@ void WallCollisionModule_1106aa0(float* a1, float a2, float a3, float a4)
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v25 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v25);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v25, v8);
       goto LABEL_23;
     }
     v11 = 0;
-    if (v33_.v33 != nullptr) {
+    if (v33_.v33 != 0) {
       goto LABEL_20;
     }
   LABEL_23:

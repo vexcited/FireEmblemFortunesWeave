@@ -18,12 +18,12 @@ extern __int64 GameData_21d9970;
 __int64 StatusLV_18a2a20(__int64 a1, __int64* a2);
 _QWORD* StatusLV_18a2d70(__int64 a1, int a2, int a3, int a4);
 _QWORD* StatusLV_18a2e20(__int64 a1, int a2, int a3, int a4);
-_QWORD* StatusLV_18a2ed0(_QWORD* a1, int a2, int a3, int a4, int a5, float a6,
-                         float a7);
+_QWORD* StatusLV_18a2ed0_alt1(_QWORD* a1, int a2, int a3, int a4, int a5,
+                              float a6, float a7) __asm__("StatusLV_18a2ed0");
 __int64 StatusLV_18a3070(__int64 result, char a2, unsigned __int8 a3);
 __int64 StatusLV_18a30a0(__int64 result, __int64 a2);
 _QWORD* StatusLV_18a3250(_QWORD* result, __int64 a2, int a3);
-_QWORD* StatusLV_18a34f0(_QWORD* a1);
+_QWORD* StatusLV_18a34f0_alt1(_QWORD* a1) __asm__("StatusLV_18a34f0");
 __int64* GameRoutine_18a2880(_QWORD*);
 __int64 GameRoutine_1888c80(__int64, __int64, __int64);
 __int64 GameRoutine_18b26a0(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -46,6 +46,21 @@ extern char* GameData_2103d08;
 extern char* GameData_2103d18;
 __attribute__((swiftcall)) void StatusLV_18a2ab0(PSEUDO_X8 x8_, __int64 a1,
                                                  __int64 a2, __int64 a3);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 GameRoutine_174d670_alt1(__int64 result) __asm__("GameRoutine_174d670");
+__int64 StatusNum_1890080_alt1(__int64) __asm__("StatusNum_1890080");
+__int64 StatusNum_1890220(__int64, unsigned int, unsigned int, unsigned int,
+                          char, char, int);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void GameRoutine_174d800_alt1(__int64*, float,
+                              float) __asm__("GameRoutine_174d800");
+__int64 StatusLV_18a2ed0(__int64* a1, unsigned int a2, unsigned int a3, int a4,
+                         int a5, float a6, float a7);
+__int64 StatusLV_18a34f0(__int64* a1);
 
 __int64 StatusLV_18a2a20(__int64 a1, __int64* a2)
 {
@@ -192,11 +207,13 @@ _QWORD* StatusLV_18a2e20(__int64 a1, int a2, int a3, int a4)
   return result;
 }
 
-_QWORD* StatusLV_18a2ed0(_QWORD* a1, int a2, int a3, int a4, int a5, float a6,
-                         float a7)
+__int64 StatusLV_18a2ed0(__int64* a1, unsigned int a2, unsigned int a3, int a4,
+                         int a5, float a6, float a7)
 {
-  _QWORD* result;
-  _QWORD* v15;
+
+#pragma clang fp contract(off)
+  __int64 result;
+  __int64 v15;
   __int64 v16;
   float v17;
   float v18;
@@ -208,39 +225,42 @@ _QWORD* StatusLV_18a2ed0(_QWORD* a1, int a2, int a3, int a4, int a5, float a6,
   float v24;
   __int64 v25;
   __int64 v26;
-  __int64 v27;
-  _QWORD* v28;
+  struct {
+    __int64* v27;
+    __int64 v28;
+  } v27_;
 
-  result = (_QWORD*)a1[136];
-  if (result != nullptr) {
-    result = (_QWORD*)std___1___shared_weak_count_lock(result);
-    if (result != nullptr) {
+  result = a1[136];
+  if (result != 0) {
+    result = std___1___shared_weak_count_lock_alt1(result);
+    if (result != 0) {
       v15 = result;
-      result = (_QWORD*)a1[135];
-      if (result != nullptr) {
-        result = GameRoutine_1890220((__int64)result, a2, a2, a3, 1, 0, -1);
+      result = a1[135];
+      if (result != 0) {
+        result = StatusNum_1890220(result, a2, a2, a3, 1, 0, -1);
       }
-      if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 1),
+      if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(_QWORD*))(*v15 + 16LL))(v15);
-        result = (_QWORD*)std___1___shared_weak_count___release_weak(v15);
+        (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
+        result = std___1___shared_weak_count___release_weak_alt1(v15);
       }
     }
   }
   v16 = a1[137];
   if (v16 != 0) {
-    GameRoutine_1560070((void*)&v27, a1 + 11, v16 + 176);
-    v17 = 1.0;
+    LayoutAccessor_1560070((void*)(&v27_.v27), a1 + 11,
+                           (const char*)(v16 + 176));
+    v17 = 0x1.0000000000000p+0f;
     if (a5 < 1) {
-      v19 = 1.0;
-      result = v28;
-      if (v28 == nullptr) {
+      v19 = 0x1.0000000000000p+0f;
+      result = v27_.v28;
+      if (v27_.v28 == 0) {
         return result;
       }
       goto LABEL_22;
     }
     v18 = (float)a4;
-    v19 = 1.0;
+    v19 = 0x1.0000000000000p+0f;
     if ((float)a4 != (float)a5) {
       v20 = (float)a5 - v18;
       if (a7 >= v18) {
@@ -266,24 +286,24 @@ _QWORD* StatusLV_18a2ed0(_QWORD* a1, int a2, int a3, int a4, int a5, float a6,
       }
       v19 = v24 / v20;
     }
-    result = v28;
-    if (v28 != nullptr) {
+    result = v27_.v28;
+    if (v27_.v28 != 0) {
     LABEL_22:
-      v25 = std___1___shared_weak_count_lock(result);
+      v25 = std___1___shared_weak_count_lock_alt1(result);
       if (v25 != 0) {
         v26 = v25;
-        if (v27 != 0) {
-          GameRoutine_174d800(v17, v19);
+        if (v27_.v27 != nullptr) {
+          GameRoutine_174d800_alt1(v27_.v27, v17, v19);
         }
         if (atomic_fetch_add((atomic_ullong* volatile)(v26 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v26 + 16LL))(v26);
-          std___1___shared_weak_count___release_weak(v26);
+          std___1___shared_weak_count___release_weak_alt1(v26);
         }
       }
-      result = v28;
-      if (v28 != nullptr) {
-        return (_QWORD*)std___1___shared_weak_count___release_weak(v28);
+      result = v27_.v28;
+      if (v27_.v28 != 0) {
+        return std___1___shared_weak_count___release_weak_alt1(v27_.v28);
       }
     }
   }
@@ -590,35 +610,37 @@ LABEL_58:
   return result;
 }
 
-_QWORD* StatusLV_18a34f0(_QWORD* a1)
+__int64 StatusLV_18a34f0(__int64* a1)
 {
   __int64 v1;
-  _QWORD* result;
-  _QWORD* v4;
-  __int64 v5;
-  __int64 v6;
+  __int64 result;
+  __int64 v4;
+  struct {
+    __int64 v5;
+    __int64 v6;
+  } v5_;
 
   v1 = a1[137];
   if (v1 != 0) {
-    GameRoutine_1560070((void*)&v5, a1 + 11, v1 + 176);
-    GameRoutine_174d670(&v5);
-    if (v6 != 0) {
-      std___1___shared_weak_count___release_weak(v6);
+    LayoutAccessor_1560070((void*)(&v5_.v5), a1 + 11, (const char*)(v1 + 176));
+    GameRoutine_174d670_alt1((__int64)&v5_.v5);
+    if (v5_.v6 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v5_.v6);
     }
   }
-  result = (_QWORD*)a1[136];
-  if (result != nullptr) {
-    result = (_QWORD*)std___1___shared_weak_count_lock(result);
-    if (result != nullptr) {
+  result = a1[136];
+  if (result != 0) {
+    result = std___1___shared_weak_count_lock_alt1(result);
+    if (result != 0) {
       v4 = result;
-      result = (_QWORD*)a1[135];
-      if (result != nullptr) {
-        result = StatusNum_1890080((__int64)result);
+      result = a1[135];
+      if (result != 0) {
+        result = StatusNum_1890080_alt1(result);
       }
-      if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 1),
+      if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(_QWORD*))(*v4 + 16LL))(v4);
-        return (_QWORD*)std___1___shared_weak_count___release_weak(v4);
+        (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+        return std___1___shared_weak_count___release_weak_alt1(v4);
       }
     }
   }

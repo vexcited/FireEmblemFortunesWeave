@@ -16,24 +16,33 @@ extern __int64 (*game_facility_anonymous_EducateSkillMenuItem_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 game_facility_anonymous_ProcEducateSkillMenu_AddItemList_closure_Invoke(
     __int64 a1, _DWORD* a2);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 GameHr_15d2f60(__int64, unsigned int*, __int64, int);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 ProcEducateSkillMenu_Unknown88(__int64 a1)
 {
   __int64 result;
   __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  struct {
+    __int64 v4;
+    __int64 v5;
+  } v4_;
 
   result = *(_QWORD*)(a1 + 336);
   if (result != 0) {
     result = __dynamic_cast(result, GameData_212e008[0], &GameData_209b890, 0);
     if (result != 0) {
       v3 = result;
-      GameRoutine_1560070((void*)&v4, a1 + 848, "L_InfoDetail_Before");
-      GameRoutine_15d2f60(&v4, v3 + 96, *(_QWORD*)(v3 + 88), 0);
-      result = v5;
-      if (v5 != 0) {
-        return std___1___shared_weak_count___release_weak(v5);
+      LayoutAccessor_1560070((void*)(&v4_.v4), (__int64*)(a1 + 848),
+                             "L_InfoDetail_Before");
+      GameHr_15d2f60((__int64)&v4_.v4, (unsigned int*)(v3 + 96),
+                     *(_QWORD*)(v3 + 88), 0);
+      result = v4_.v5;
+      if (v4_.v5 != 0) {
+        return std___1___shared_weak_count___release_weak_alt1(v4_.v5);
       }
     }
   }

@@ -22,9 +22,9 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_6c1f60(_QWORD);
 __int64 ProcGmapFixedEventSeq_14c3f50(__int64 result);
 __int64 ProcGmapFixedEventSeq_14c4140();
-__int64
-game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 result,
-                                                           __int64* a2);
+__int64 game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke_alt1(
+    __int64 result, __int64* a2) __asm__("game_gmap_ProcGmapFixedEventSeq_"
+                                         "LotteryUnit_closure_Invoke");
 __int64 GameRoutine_1130770(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_14ba0f0_alt1(_QWORD) __asm__("GameRoutine_14ba0f0");
 __int64 GameRoutine_60a020(_QWORD, _QWORD);
@@ -48,6 +48,20 @@ void __attribute__((noreturn)) GameRoutine_14c2010(void);
 bool ProcGmapFixedEventSeq_14c3670();
 __int64 game_gmap_ProcGmapFixedEventSeq_LotteryUnit(__int64 a1);
 __int64 ProcGmapFixedEventSeq_14c3ff0(__int64 result);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+unsigned int* game_gmap_SpotMgr_GetCurrentSpot_alt1() __asm__(
+    "game_gmap_SpotMgr_GetCurrentSpot");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_6c1f60_alt1() __asm__("GameRoutine_6c1f60");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 a1,
+                                                                __int64* a2);
 
 bool ProcGmapFixedEventSeq_14c3670()
 {
@@ -760,14 +774,11 @@ __int64 ProcGmapFixedEventSeq_14c4140()
   return result;
 }
 
-__int64
-
-game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 result,
-                                                           __int64* a2)
+void game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 a1,
+                                                                __int64* a2)
 {
   __int64 v2;
-  __int64 v3;
-  __int64 v4;
+  _QWORD* v4;
   __int64** v5;
   __int64* v6;
   __int64* v7;
@@ -777,11 +788,11 @@ game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 result,
   __int64 v11;
   __int64 v12;
   int v13;
-  __int64** v14;
-  __int64** v15;
-  __int64* v16;
-  __int64* v17;
-  __int64 v18;
+  __int64* v14;
+  __int64* v15;
+  __int64 v16;
+  __int64 v17;
+  unsigned int* v18;
   char* v19;
   unsigned __int64 v20;
   __int64 v21;
@@ -791,7 +802,7 @@ game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 result,
   __int64* v25;
   __int64 v26;
   __int64 v27;
-  __int64 v28;
+  signed __int64 v28;
   unsigned __int64 v29;
   __int64 v30;
   __int64 v31;
@@ -803,18 +814,17 @@ game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 result,
 
   v2 = *a2;
   if (*a2 == 0) {
-    return result;
+    return;
   }
-  v3 = result;
-  result = (__int64)GameRoutine_14ba0f0(*(_QWORD*)(v2 + 392));
-  if (result == 0) {
-    return result;
+  v4 = GameRoutine_14ba0f0(*(_QWORD*)(v2 + 392));
+  if (v4 == nullptr) {
+    return;
   }
-  v5 = *(__int64***)(result + 40);
+  v5 = (__int64**)v4[5];
   v6 = *v5;
   v7 = v5[1];
   if (*v5 == v7) {
-    return result;
+    return;
   }
   v8 = GameData_212c790;
   v9 = GameData_2130e70;
@@ -822,18 +832,18 @@ game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 result,
     v11 = *v6;
     v12 = *(_QWORD*)(*v8 + 8);
     v13 = *(_DWORD*)(v12 + 56);
-    v14 = *(__int64***)(v12 + 8);
-    v15 = *(__int64***)(v12 + 16);
+    v14 = *(__int64**)(v12 + 8);
+    v15 = *(__int64**)(v12 + 16);
     if (v13 < 0) {
       while (v14 != v15) {
         v16 = *v14;
-        if ((*v14)[12] == 0 && v16[69] == 0) {
+        if (*(_QWORD*)(*v14 + 96) == 0 && *(_QWORD*)(v16 + 552) == 0) {
           goto LABEL_17;
         }
         ++v14;
       }
     LABEL_12:
-      v18 = game_gmap_SpotMgr_GetCurrentSpot(result, v4);
+      v18 = game_gmap_SpotMgr_GetCurrentSpot_alt1();
       goto LABEL_18;
     }
     if (v14 == v15) {
@@ -842,7 +852,7 @@ game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 result,
     while (1) {
       v17 = *v14++;
       v16 = v17;
-      if (*((_DWORD*)v17 + 21) == v13) {
+      if (*(_DWORD*)(v17 + 84) == v13) {
         break;
       }
       if (v14 == v15) {
@@ -850,10 +860,9 @@ game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 result,
       }
     }
   LABEL_17:
-    v18 = *v16;
+    v18 = *(unsigned int**)v16;
   LABEL_18:
-    result = GameRoutine_14b9400(v11, v18, v2);
-    if ((result & 1) != 0) {
+    if ((GameRoutine_14b9400(v11, (__int64)v18, v2) & 1) != 0) {
       v10 = *(char**)(*v9 + 8);
       v19 = *(char**)(*v9 + 16);
       if (v10 != v19) {
@@ -865,7 +874,7 @@ game_gmap_ProcGmapFixedEventSeq_LotteryUnit_closure_Invoke(__int64 result,
       }
     }
     if (++v6 == v7) {
-      return result;
+      return;
     }
   }
   v20 = v19 - v10 - 8;
@@ -907,15 +916,15 @@ LABEL_24:
     goto LABEL_6;
   }
 LABEL_34:
-  v23 = *(__int64**)(v3 + 8);
+  v23 = *(__int64**)(a1 + 8);
   v25 = (__int64*)v23[1];
   v24 = v23[2];
   if ((unsigned __int64)v25 >= v24) {
     v27 = *v23;
-    v28 = (__int64)v25 - *v23;
+    v28 = (signed __int64)v25 - *v23;
     v29 = (v28 >> 3) + 1;
     if (v29 >> 61 != 0) {
-      GameRoutine_6c1f60(result);
+      GameRoutine_6c1f60_alt1();
     }
     v30 = v24 - v27;
     v31 = fw_memory_g_heap_manager_ptr;
@@ -930,9 +939,9 @@ LABEL_34:
     }
     if (v32 != 0) {
       if (v32 >> 61 != 0) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v33 = fw_memory_HeapManager_Allocate(
+      v33 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v32, 16, 0);
     }
     else {
@@ -942,7 +951,7 @@ LABEL_34:
     v35 = v33 + v28 - 8 * (v28 >> 3);
     *(_QWORD*)(v33 + v28) = v2;
     v26 = v33 + v28 + 8;
-    result = memcpy(v35, v27, v28);
+    memcpy_alt1(v35, v27, v28);
     *v23 = v35;
     v23[1] = v26;
     v23[2] = v34;
@@ -951,7 +960,7 @@ LABEL_34:
       if (*(_QWORD*)(*(_QWORD*)v31 + 200LL) == 0) {
         v36 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v31 + v36, v27);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v31 + v36, v27);
     }
   }
   else {
@@ -959,7 +968,6 @@ LABEL_34:
     v26 = (__int64)(v25 + 1);
   }
   v23[1] = v26;
-  return result;
 }
 
 #pragma GCC visibility pop

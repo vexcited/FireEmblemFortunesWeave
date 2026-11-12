@@ -338,6 +338,98 @@ char* GameRoutine_7404e0_alt1(char* result, char*, char*, __int64, __int64,
                               __int64, __int64) __asm__("GameRoutine_7404e0");
 char* GameHr_740080(char* result, char* a2, unsigned __int64 a3, __int64* a4,
                     __int64 a5);
+_QWORD* GameRoutine_74d660_alt1(__int64, int, char,
+                                char) __asm__("GameRoutine_74d660");
+_QWORD* Image_72b6c0(_QWORD*);
+__int64* Mind_745a40(__int64);
+__int64* Mind_745e80(__int64);
+__int64* Mind_747060(__int64);
+__int64* Mind_747180(__int64);
+__int64* game_9a28e0(int);
+__int64* game_UnitPool_Get(_BYTE*);
+__int64
+GameRoutine_12274e0_alt1(__int64 result,
+                         unsigned __int64*) __asm__("GameRoutine_12274e0");
+__int64 GameRoutine_122f8e0_alt1(__int64) __asm__("GameRoutine_122f8e0");
+__int64 GameRoutine_739d40_alt1() __asm__("GameRoutine_739d40");
+__int64 GameRoutine_73bf60_alt1(__int64, __int64) __asm__("GameRoutine_73bf60");
+__int64 GameRoutine_777be0_alt1(__int64) __asm__("GameRoutine_777be0");
+__int64 GameRoutine_89b540_alt1(__int64) __asm__("GameRoutine_89b540");
+__int64 GameVariable_827b00(__int64, unsigned __int64*);
+__int64 GameVariable_8288e0(__int64 result, unsigned __int8);
+__int64 GameVariable_829dc0(__int64);
+__int64 IDeploy_748f80(__int64, __int64, unsigned int, unsigned int, int,
+                       unsigned int*);
+__int64 Image_72b4a0(__int64);
+__int64 MapDrawer_808760(__int64, __int64, _DWORD*);
+__int64 MapUnitInfo_1828ef0(__int64 result, __int64);
+__int64 MapUtil_757430(__int64 result);
+__int64 MapUtil_757590(__int64 result);
+__int64 Situation_765b20(__int64);
+__int64 game_821840();
+__int64 game_90d5a0(__int64 result);
+__int64 game_GameVariableTable_Find(_QWORD*, unsigned __int64*);
+__int64 game_HashString(__int64 result);
+__int64 game_Unit_SkillList_FindCategory(_QWORD*, unsigned __int8);
+__int64 game_VariableManager_SetFlag(__int64 result, int);
+__int64 game_map_758760(__int64);
+__int64 memmove(__int64, __int64, unsigned __int64);
+__int64 memset(__int64, int, unsigned __int64);
+__int64 nn_oe_GetProgramTotalActiveTime();
+__int64 nn_os_ConvertToTick(_QWORD);
+bool Mind_743d50(__int64);
+bool Mind_745050(__int64);
+bool game_Unit_CanSwitchMount(__int64);
+bool game_Unit_Unknown6c9450(__int64);
+bool game_map_75a760(__int64*, __int64*, __int64*);
+char* GameRoutine_6bea40_alt1(char*, char*,
+                              char*) __asm__("GameRoutine_6bea40");
+char* GameRoutine_6c29c0_alt1(char*, char*,
+                              char*) __asm__("GameRoutine_6c29c0");
+extern __int64 fw_memory_g_heap_manager_ptr;
+extern __int64 game_GameModeData_instance_;
+extern __int64 game_g_start_tick;
+extern __int64 game_gmap_GmapClock_instance_;
+extern int game_map_g_unit_menu_index;
+unsigned __int64 GameHr_82dfe0(__int64, unsigned int);
+void Cursor_730e40(__int64, __int64);
+void GameHr_90cd80(__int64);
+void GameRecord_99d540(__int64);
+void GameReliance_8e0880(_QWORD*);
+void GameRoutine_7bc1a0_alt1() __asm__("GameRoutine_7bc1a0");
+void GameRoutine_7bc2c0_alt1() __asm__("GameRoutine_7bc2c0");
+void GameRoutine_7c0910_alt1(__int64, __int64) __asm__("GameRoutine_7c0910");
+void GameRoutine_8eab40_alt1(_QWORD*) __asm__("GameRoutine_8eab40");
+void GameVariable_827c00(__int64);
+void Image_72a260(__int64);
+void Image_72b080(__int64);
+void RidePool_93bb80(__int64);
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+void game_map_75a370(__int64*, __int64*, __int64*, __int64*);
+void game_map_75a4e0(__int64*, __int64*, __int64*, __int64*, __int64*);
+void game_map_75a5f0(__int64*, __int64*, __int64*, __int64*, __int64*,
+                     __int64*);
+void nn_mem_StandardAllocator_Free(__int64, __int64);
+__int64 GameHr_6d5d00(__int64 a1, unsigned __int8* a2, __int64 a3, __int64 a4,
+                      char a5);
+__int64 GameHr_716760(__int64 a1);
+__int64 GameHr_717fc0(unsigned __int64* a1, int a2);
+__int64 GameHr_71e760(__int64 a1);
+__int64 GameHr_7369b0();
+__int64 GameHr_737e40();
+__int64 GameHr_73bd40(int a1, __int64 a2);
+__int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
+                      __int64 a5, __int64 a6, __int64 a7);
+__int64 GameHr_73f640(__int64 a1, char a2, char a3, int a4, char a5);
+void GameHr_73f960(_DWORD* a1, char a2, char a3, int a4);
+char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
+                    __int64 a6, __int64 a7);
+__int64 GameHr_74aa60(__int64 result, char** a2, __int64 a3,
+                      unsigned __int64 a4, int a5);
+void GameHr_759860(__int64* a1, __int64* a2, __int64* a3, __int64 a4, char a5);
+__int64 GameHr_75fdc0();
+void GameHr_760880(__int64 a1);
 
 __int64 GameHr_6d5d00(__int64 a1, unsigned __int8* a2, __int64 a3, __int64 a4,
                       char a5)
@@ -373,10 +465,13 @@ __int64 GameHr_6d5d00(__int64 a1, unsigned __int8* a2, __int64 a3, __int64 a4,
   int v36;
   int v38;
   int v39;
-  _QWORD v40[2];
-  char v41;
-  int* v42;
-  _QWORD* v43;
+  struct {
+    _QWORD v40[2];
+    char v41;
+    char gap17_[7];
+    int* v42;
+    _QWORD* v43;
+  } v40_;
   int v44;
 
   v5 = *a2;
@@ -389,20 +484,20 @@ __int64 GameHr_6d5d00(__int64 a1, unsigned __int8* a2, __int64 a3, __int64 a4,
   if ((a5 & 1) == 0) {
     return v9 & (unsigned int)~(v9 >> 31);
   }
-  v41 = v5;
-  v10 = v40;
-  v42 = &v44;
-  v43 = v40;
+  v40_.v41 = v5;
+  v10 = v40_.v40;
+  v40_.v42 = &v44;
+  v40_.v43 = v40_.v40;
   v11 = *(_BYTE*)(a1 + 1828);
-  v40[0] = GameData_1f91ce8;
-  v40[1] = a1;
+  v40_.v40[0] = GameData_1f91ce8;
+  v40_.v40[1] = a1;
   if ((v11 & 4) == 0) {
     goto LABEL_16;
   }
   v12 = *(_QWORD*)(a1 + 1784);
   v13 = *(_QWORD*)(a1 + 1776);
   if ((int)((unsigned __int64)(v12 - v13) >> 2) < 1) {
-    v10 = v40;
+    v10 = v40_.v40;
   LABEL_16:
     v18 = 32;
     goto LABEL_17;
@@ -415,10 +510,10 @@ __int64 GameHr_6d5d00(__int64 a1, unsigned __int8* a2, __int64 a3, __int64 a4,
     if (*(_BYTE*)(*(_QWORD*)(*(_QWORD*)(v17 + 64) +
                              8LL * (*(_DWORD*)(v13 + v14) & 0xFFF)) +
                   115LL) == 2) {
-      if (v43 == nullptr) {
-        GameRoutine_60a310(0, a2, a3, a4);
+      if (v40_.v43 == nullptr) {
+        GameRoutine_60a310_alt1();
       }
-      (*(void (**)(_QWORD*, __int64))(*v43 + 48LL))(v43, v13 + v14);
+      (*(void (**)(_QWORD*, __int64))(*v40_.v43 + 48LL))(v40_.v43, v13 + v14);
       v17 = *v16;
       v12 = *(_QWORD*)(a1 + 1784);
       v13 = *(_QWORD*)(a1 + 1776);
@@ -426,11 +521,11 @@ __int64 GameHr_6d5d00(__int64 a1, unsigned __int8* a2, __int64 a3, __int64 a4,
     ++v15;
     v14 += 4;
   } while (v15 < (int)((unsigned __int64)(v12 - v13) >> 2));
-  v10 = v43;
-  if (v43 == v40) {
+  v10 = v40_.v43;
+  if (v40_.v43 == v40_.v40) {
     goto LABEL_16;
   }
-  if (v43 != nullptr) {
+  if (v40_.v43 != nullptr) {
     v18 = 40;
   LABEL_17:
     (*(void (**)(_QWORD*, unsigned __int8*, __int64, __int64))(*v10 + v18))(
@@ -484,7 +579,7 @@ __int64 GameHr_6d5d00(__int64 a1, unsigned __int8* a2, __int64 a3, __int64 a4,
         if (v33 >= v30) {
           v33 = v30;
         }
-        if (v30 >= *(_DWORD*)GameData_21d9988) {
+        if (v30 >= (signed __int32)*(_DWORD*)GameData_21d9988) {
           v34 = v33;
         }
         else {
@@ -1322,21 +1417,17 @@ __int64 GameHr_716760(__int64 a1)
   __int64 v43;
   __int64 v44;
   __int64 v45;
-  __int64 v46;
-  __int64 v47;
-  __int64 v48;
   __int64 i;
+  __int64 v47;
+  _QWORD* v48;
+  _QWORD* v49;
   __int64 v50;
-  _QWORD* v51;
-  _QWORD* v52;
+  unsigned __int64 v51;
+  unsigned __int64 v52;
   __int64 v53;
   unsigned __int64 v54;
-  unsigned __int64 v55;
+  __int64 v55;
   __int64 v56;
-  unsigned __int64 v57;
-  __int64 v58;
-  __int64 v59;
-  __int64 v60;
 
   *(_WORD*)(a1 + 56) = 0;
   *(_QWORD*)(a1 + 16) = 0;
@@ -1351,23 +1442,23 @@ __int64 GameHr_716760(__int64 a1)
   *(_DWORD*)(a1 + 12) = 196608;
   *(_QWORD*)(a1 + 60) = 0x100000001LL;
   *(_DWORD*)(a1 + 68) = 1;
-  ProgramTotalActiveTimeEv = GameRoutine_1a0a6f0();
-  v3 = GameRoutine_1a0a700(ProgramTotalActiveTimeEv);
+  ProgramTotalActiveTimeEv = nn_oe_GetProgramTotalActiveTime();
+  v3 = nn_os_ConvertToTick(ProgramTotalActiveTimeEv);
   *(_QWORD*)(a1 + 2704) = 0;
   *(_QWORD*)(a1 + 2712) = 0;
-  v4 = GameData_21d87f0;
+  v4 = game_g_start_tick;
   *(_WORD*)(a1 + 2720) = 0;
   v5 = v3 - v4;
   v6 = *(_QWORD*)(a1 + 48);
   *(_DWORD*)(a1 + 8) = v5;
-  GameRoutine_827c00(v6);
+  GameVariable_827c00(v6);
   *(_BYTE*)(*(_QWORD*)(a1 + 48) + 3932768LL) |= 1u;
-  GameRoutine_829dc0(a1 + 40);
+  GameVariable_829dc0(a1 + 40);
   *(_BYTE*)(*(_QWORD*)(a1 + 48) + 3932768LL) &= ~1u;
-  GameRoutine_8e0880(*(_QWORD*)(a1 + 128));
-  GameRoutine_90cd80(*(_QWORD*)(a1 + 160));
-  GameRoutine_90d5a0(*(_QWORD*)(a1 + 160));
-  GameRoutine_8eab40(*(_QWORD*)(a1 + 176));
+  GameReliance_8e0880(*(_QWORD**)(a1 + 128));
+  GameHr_90cd80(*(_QWORD*)(a1 + 160));
+  game_90d5a0(*(_QWORD*)(a1 + 160));
+  GameRoutine_8eab40_alt1(*(_QWORD**)(a1 + 176));
   v7 = *(__int64**)(a1 + 192);
   v8 = *v7;
   *((_DWORD*)v7 + 6) = 0;
@@ -1375,7 +1466,7 @@ __int64 GameHr_716760(__int64 a1)
   v7[11] = 0;
   v7[1] = v8;
   v7[5] = v7[4];
-  v9 = GameData_212bf68;
+  v9 = fw_memory_g_heap_manager_ptr;
   if (v7[15] != 0) {
     v10 = (_QWORD*)v7[14];
     if (v10 != nullptr) {
@@ -1387,7 +1478,7 @@ __int64 GameHr_716760(__int64 a1)
         else {
           v12 = 56;
         }
-        GameRoutine_1a0a4e0(*(_QWORD*)v9 + v12, v10);
+        nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v12, (__int64)v10);
         v10 = v11;
       } while (v11 != nullptr);
     }
@@ -1425,7 +1516,7 @@ __int64 GameHr_716760(__int64 a1)
     }
     v7[15] = 0;
   }
-  GameRoutine_99d540(a1 + 104);
+  GameRecord_99d540(a1 + 104);
   v20 = *(_QWORD*)(a1 + 216);
   v19 = *(_QWORD*)(a1 + 224);
   *(_BYTE*)(a1 + 200) = 0;
@@ -1444,7 +1535,7 @@ __int64 GameHr_716760(__int64 a1)
           else {
             v24 = 56;
           }
-          GameRoutine_1a0a4e0(*(_QWORD*)v9 + v24, v23);
+          nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v24, v23);
         }
       }
       v19 = v21;
@@ -1488,7 +1579,7 @@ __int64 GameHr_716760(__int64 a1)
         else {
           v35 = 56;
         }
-        GameRoutine_1a0a4e0(*(_QWORD*)v9 + v35, v34);
+        nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v35, v34);
         v27 = *(_QWORD*)(a1 + 280);
         v31 = *(_QWORD*)(a1 + 304);
       }
@@ -1498,7 +1589,7 @@ __int64 GameHr_716760(__int64 a1)
     v26 = v31;
   } while (v31 != 0);
 LABEL_40:
-  GameRoutine_82dfe0(a1 + 40, 0xFFFFFFFFLL);
+  GameHr_82dfe0(a1 + 40, 0xFFFFFFFF);
   *(_BYTE*)(a1 + 328) = 0;
   *(_QWORD*)(a1 + 330) = 0;
   *(_QWORD*)(a1 + 338) = 0;
@@ -1509,122 +1600,122 @@ LABEL_40:
   *(_QWORD*)(a1 + 378) = 0;
   *(_QWORD*)(a1 + 386) = 0;
   *(_QWORD*)(a1 + 394) = 0;
-  GameRoutine_1a0ba50(a1 + 404, 0, 2248, v36, v37, v38);
-  v39 = *(_QWORD*)(a1 + 2696);
-  if (v39 != 0) {
-    v40 = *(_QWORD*)(a1 + 2672);
+  memset(a1 + 404, 0, 0x8C8u);
+  v36 = *(_QWORD*)(a1 + 2696);
+  if (v36 != 0) {
+    v37 = *(_QWORD*)(a1 + 2672);
     do {
-      v41 = *(_QWORD*)(a1 + 2664);
-      v42 = v40 - v41;
-      v30 = v40 == v41;
-      v43 = v39 - 1;
-      v44 = v39 + *(_QWORD*)(a1 + 2688);
-      *(_QWORD*)(a1 + 2696) = v43;
-      v45 = (v42 << 9) - 1;
+      v38 = *(_QWORD*)(a1 + 2664);
+      v39 = v37 - v38;
+      v30 = v37 == v38;
+      v40 = v36 - 1;
+      v41 = v36 + *(_QWORD*)(a1 + 2688);
+      *(_QWORD*)(a1 + 2696) = v40;
+      v42 = (v39 << 9) - 1;
       if (v30) {
-        v45 = 0;
+        v42 = 0;
       }
-      if ((unsigned __int64)(v45 - v44 + 1) >= 0x2000) {
-        v46 = *(_QWORD*)(v40 - 8);
-        if (v46 != 0) {
+      if ((unsigned __int64)(v42 - v41 + 1) >= 0x2000) {
+        v43 = *(_QWORD*)(v37 - 8);
+        if (v43 != 0) {
           if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) != 0) {
-            v47 = 128;
+            v44 = 128;
           }
           else {
-            v47 = 56;
+            v44 = 56;
           }
-          GameRoutine_1a0a4e0(*(_QWORD*)v9 + v47, v46);
-          v40 = *(_QWORD*)(a1 + 2672);
-          v43 = *(_QWORD*)(a1 + 2696);
+          nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v44, v43);
+          v37 = *(_QWORD*)(a1 + 2672);
+          v40 = *(_QWORD*)(a1 + 2696);
         }
-        v40 -= 8;
-        *(_QWORD*)(a1 + 2672) = v40;
+        v37 -= 8;
+        *(_QWORD*)(a1 + 2672) = v37;
       }
-      v39 = v43;
-    } while (v43 != 0);
+      v36 = v40;
+    } while (v40 != 0);
   }
-  GameRoutine_89b540(*(_QWORD*)(a1 + 2736));
-  v48 = *(_QWORD*)(a1 + 2752);
+  GameRoutine_89b540_alt1(*(_QWORD*)(a1 + 2736));
+  v45 = *(_QWORD*)(a1 + 2752);
   for (i = -2400; i != 0; i += 160) {
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2400) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2408) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2416) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2424) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2432) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2440) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2448) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2456) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2464) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2472) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2480) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2488) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2496) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2504) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2512) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2520) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2528) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2536) = 0;
-    *(_QWORD*)(*(_QWORD*)(v48 + 48) + i + 2544) = 0;
-    v50 = *(_QWORD*)(v48 + 48) + i;
-    *(_QWORD*)(v50 + 2552) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2400) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2408) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2416) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2424) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2432) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2440) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2448) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2456) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2464) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2472) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2480) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2488) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2496) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2504) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2512) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2520) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2528) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2536) = 0;
+    *(_QWORD*)(*(_QWORD*)(v45 + 48) + i + 2544) = 0;
+    v47 = *(_QWORD*)(v45 + 48) + i;
+    *(_QWORD*)(v47 + 2552) = 0;
   }
-  if (*(_QWORD*)(v48 + 32) != 0) {
-    v51 = *(_QWORD**)(v48 + 24);
-    if (v51 != nullptr) {
+  if (*(_QWORD*)(v45 + 32) != 0) {
+    v48 = *(_QWORD**)(v45 + 24);
+    if (v48 != nullptr) {
       do {
-        v52 = (_QWORD*)*v51;
+        v49 = (_QWORD*)*v48;
         if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) != 0) {
-          v53 = 128;
+          v50 = 128;
         }
         else {
-          v53 = 56;
+          v50 = 56;
         }
-        GameRoutine_1a0a4e0(*(_QWORD*)v9 + v53, v51);
-        v51 = v52;
-      } while (v52 != nullptr);
+        nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v50, (__int64)v48);
+        v48 = v49;
+      } while (v49 != nullptr);
     }
-    v54 = *(_QWORD*)(v48 + 16);
-    *(_QWORD*)(v48 + 24) = 0;
-    if (v54 != 0) {
-      v55 = v54 & 7;
-      if (v54 >= 8) {
-        v57 = v54 & 0xFFFFFFFFFFFFFFF8LL;
-        v56 = 0;
+    v51 = *(_QWORD*)(v45 + 16);
+    *(_QWORD*)(v45 + 24) = 0;
+    if (v51 != 0) {
+      v52 = v51 & 7;
+      if (v51 >= 8) {
+        v54 = v51 & 0xFFFFFFFFFFFFFFF8LL;
+        v53 = 0;
         do {
-          *(_QWORD*)(*(_QWORD*)(v48 + 8) + 8 * v56) = 0;
-          *(_QWORD*)(*(_QWORD*)(v48 + 8) + 8 * v56 + 8) = 0;
-          *(_QWORD*)(*(_QWORD*)(v48 + 8) + 8 * v56 + 16) = 0;
-          *(_QWORD*)(*(_QWORD*)(v48 + 8) + 8 * v56 + 24) = 0;
-          *(_QWORD*)(*(_QWORD*)(v48 + 8) + 8 * v56 + 32) = 0;
-          *(_QWORD*)(*(_QWORD*)(v48 + 8) + 8 * v56 + 40) = 0;
-          *(_QWORD*)(*(_QWORD*)(v48 + 8) + 8 * v56 + 48) = 0;
-          v58 = *(_QWORD*)(v48 + 8) + 8 * v56;
-          v56 += 8;
-          *(_QWORD*)(v58 + 56) = 0;
-        } while (v57 != v56);
+          *(_QWORD*)(*(_QWORD*)(v45 + 8) + 8 * v53) = 0;
+          *(_QWORD*)(*(_QWORD*)(v45 + 8) + 8 * v53 + 8) = 0;
+          *(_QWORD*)(*(_QWORD*)(v45 + 8) + 8 * v53 + 16) = 0;
+          *(_QWORD*)(*(_QWORD*)(v45 + 8) + 8 * v53 + 24) = 0;
+          *(_QWORD*)(*(_QWORD*)(v45 + 8) + 8 * v53 + 32) = 0;
+          *(_QWORD*)(*(_QWORD*)(v45 + 8) + 8 * v53 + 40) = 0;
+          *(_QWORD*)(*(_QWORD*)(v45 + 8) + 8 * v53 + 48) = 0;
+          v55 = *(_QWORD*)(v45 + 8) + 8 * v53;
+          v53 += 8;
+          *(_QWORD*)(v55 + 56) = 0;
+        } while (v54 != v53);
       }
       else {
-        v56 = 0;
+        v53 = 0;
       }
-      if (v55 != 0) {
-        v59 = 8 * v56;
+      if (v52 != 0) {
+        v56 = 8 * v53;
         do {
-          --v55;
-          *(_QWORD*)(*(_QWORD*)(v48 + 8) + v59) = 0;
-          v59 += 8;
-        } while (v55 != 0);
+          --v52;
+          *(_QWORD*)(*(_QWORD*)(v45 + 8) + v56) = 0;
+          v56 += 8;
+        } while (v52 != 0);
       }
     }
-    *(_QWORD*)(v48 + 32) = 0;
+    *(_QWORD*)(v45 + 32) = 0;
   }
-  *(_DWORD*)(v48 + 72) = 0;
-  v60 = GameRoutine_93bb80(*(_QWORD*)(a1 + 2768));
+  *(_DWORD*)(v45 + 72) = 0;
+  RidePool_93bb80(*(_QWORD*)(a1 + 2768));
   *(_DWORD*)(a1 + 2832) = 0;
   *(_QWORD*)(a1 + 2824) = 0;
-  return GameRoutine_821840(v60);
+  return game_821840();
 }
 
-__int64 GameHr_717fc0(__int64 a1, int a2)
+__int64 GameHr_717fc0(unsigned __int64* a1, int a2)
 {
   int v4;
   __int64 v5;
@@ -1636,17 +1727,15 @@ __int64 GameHr_717fc0(__int64 a1, int a2)
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
 
-  if (GameData_21caab0 == 0 ||
-      (GameRoutine_827b00(GameData_21caab0 + 40, a1) & 1) == 0) {
+  if (game_GameModeData_instance_ == 0 ||
+      (GameVariable_827b00(game_GameModeData_instance_ + 40, a1) & 1) == 0) {
     return 0;
   }
-  v4 = GameData_21caab0;
-  if (GameData_21caab0 != 0) {
-    v5 = GameRoutine_65c580(*(_QWORD*)(GameData_21caab0 + 48), a1);
+  v4 = game_GameModeData_instance_;
+  if (game_GameModeData_instance_ != 0) {
+    v5 = game_GameVariableTable_Find(
+        *(_QWORD**)(game_GameModeData_instance_ + 48), a1);
     if (v5 == 0) {
       if (a2 == 0) {
         return 0;
@@ -1659,37 +1748,37 @@ __int64 GameHr_717fc0(__int64 a1, int a2)
     return 0;
   }
 LABEL_10:
-  if (GameData_21caab0 == 0) {
+  if (game_GameModeData_instance_ == 0) {
     return 1;
   }
-  v7 = *(_QWORD*)(GameData_21caab0 + 48);
-  v8 = GameRoutine_65c580(v7, a1);
+  v7 = *(_QWORD*)(game_GameModeData_instance_ + 48);
+  v8 = game_GameVariableTable_Find((_QWORD*)v7, a1);
   if (v8 == 0) {
     return 1;
   }
-  v12 = v8;
+  v9 = v8;
   if (*(_DWORD*)(v8 + 32) == a2) {
     return 1;
   }
   *(_DWORD*)(v8 + 32) = a2;
   if ((*(_BYTE*)(v7 + 3932768) & 0xAE) == 0 && GameData_22400f8 != 0) {
-    GameRoutine_12274e0(GameData_22400f8, v8);
+    GameRoutine_12274e0_alt1(GameData_22400f8, (unsigned __int64*)v8);
   }
-  v14 = *(_QWORD*)(v12 + 88);
-  v13 = *(_QWORD*)(v12 + 96);
-  if (v13 == v14) {
+  v11 = *(_QWORD*)(v9 + 88);
+  v10 = *(_QWORD*)(v9 + 96);
+  if (v10 == v11) {
     return 1;
   }
   do {
-    v16 = v12;
-    v15 = *(_QWORD*)(v14 + 32);
-    if (v15 == 0) {
-      GameRoutine_60a310(0, v9, v10, v11);
+    v13 = v9;
+    v12 = *(_QWORD*)(v11 + 32);
+    if (v12 == 0) {
+      GameRoutine_60a310_alt1();
     }
-    (*(void (**)(__int64, __int64*))(*(_QWORD*)v15 + 48LL))(v15, &v16);
-    v14 += 48;
+    (*(void (**)(__int64, __int64*))(*(_QWORD*)v12 + 48LL))(v12, &v13);
+    v11 += 48;
     result = 1;
-  } while (v14 != v13);
+  } while (v11 != v10);
   return result;
 }
 
@@ -1702,48 +1791,48 @@ __int64 GameHr_71e760(__int64 a1)
   __int64 v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
+  __int64 i;
   __int64 v10;
   __int64 v11;
-  __int64 i;
-  __int64 v13;
-  __int64 v14;
-  _BOOL4 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
+  int v14;
+  __int64* v15;
+  __int64* v16;
+  struct {
+    __int64 v18;
+    __int64 v19;
+  } v18_;
+  __int64 v20;
 
-  GameRoutine_8288e0(a1 + 40, 3);
+  GameVariable_8288e0(a1 + 40, 3u);
   v2 = *(_QWORD*)(a1 + 24);
   if (v2 != 0) {
     v3 = *(unsigned __int16*)(v2 + 72);
     if (*(_WORD*)(v2 + 72) != 0) {
       v4 = 0;
       do {
-        v22 = *(_QWORD*)(*(_QWORD*)(v2 + 80) + 8 * v4);
-        v5 = GameRoutine_7a86e0(v22);
+        v18_.v19 = *(_QWORD*)(*(_QWORD*)(v2 + 80) + 8 * v4);
+        v5 = game_HashString(v18_.v19);
         v6 = *(_QWORD*)(a1 + 48);
-        v21 = v5;
-        v7 = GameRoutine_65c580(v6, &v21);
+        v18_.v18 = v5;
+        v7 = game_GameVariableTable_Find((_QWORD*)v6,
+                                         (unsigned __int64*)&v18_.v18);
         if (v7 != 0) {
-          v11 = v7;
+          v8 = v7;
           if (*(_DWORD*)(v7 + 32) != 1) {
             *(_DWORD*)(v7 + 32) = 1;
             if ((*(_BYTE*)(v6 + 3932768) & 0xAE) == 0 &&
                 GameData_22400f8 != 0) {
-              GameRoutine_12274e0(GameData_22400f8, v7);
+              GameRoutine_12274e0_alt1(GameData_22400f8, (unsigned __int64*)v7);
             }
-            v13 = *(_QWORD*)(v11 + 88);
-            for (i = *(_QWORD*)(v11 + 96); v13 != i; v13 += 48) {
-              v23 = v11;
-              v14 = *(_QWORD*)(v13 + 32);
-              if (v14 == 0) {
-                GameRoutine_60a310(0, v8, v9, v10);
+            v10 = *(_QWORD*)(v8 + 88);
+            for (i = *(_QWORD*)(v8 + 96); v10 != i; v10 += 48) {
+              v20 = v8;
+              v11 = *(_QWORD*)(v10 + 32);
+              if (v11 == 0) {
+                GameRoutine_60a310_alt1();
               }
-              (*(void (**)(__int64, __int64*))(*(_QWORD*)v14 + 48LL))(v14,
-                                                                      &v23);
+              (*(void (**)(__int64, __int64*))(*(_QWORD*)v11 + 48LL))(v11,
+                                                                      &v20);
             }
           }
         }
@@ -1751,13 +1840,14 @@ __int64 GameHr_71e760(__int64 a1)
       } while (v4 != v3);
     }
   }
-  v17 = GameData_21ee260 != 0 && *(_WORD*)(GameData_21ee260 + 22) != 0 &&
-        *(_WORD*)(GameData_21ee260 + 20) != 0 &&
-        *(_WORD*)(GameData_21ee260 + 24) != 0;
-  v18 = GameRoutine_9a28e0(15);
-  GameRoutine_716d80(v18, v17);
-  v19 = GameRoutine_9a28e0(16);
-  return GameRoutine_716d80(v19, !v17);
+  v14 = game_gmap_GmapClock_instance_ != 0 &&
+        *(_WORD*)(game_gmap_GmapClock_instance_ + 22) != 0 &&
+        *(_WORD*)(game_gmap_GmapClock_instance_ + 20) != 0 &&
+        *(_WORD*)(game_gmap_GmapClock_instance_ + 24) != 0;
+  v15 = game_9a28e0(15);
+  game_VariableManager_SetFlag((__int64)v15, v14);
+  v16 = game_9a28e0(16);
+  return game_VariableManager_SetFlag((__int64)v16, v14 ^ 1u);
 }
 
 __int64 GameHr_72dc70(__int64 a1)
@@ -1910,42 +2000,37 @@ __int64 GameHr_7368c0()
   return result;
 }
 
-__int64 GameHr_7369b0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                      __int64 a5, __int64 a6)
+__int64 GameHr_7369b0()
 {
-  __int64 v6;
-  _QWORD* v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
+  __int64 v0;
+  _QWORD* v1;
+  __int64 v2;
+  __int64 v3;
   __int64 result;
-  int v17;
+  int v5;
+  __int64 v6;
 
-  v6 = GameData_21ca300;
-  v7 = *(_QWORD**)(GameData_21ca300 + 96);
-  GameRoutine_72b4a0((__int64)v7, a2, a3, a4, a5, a6);
-  GameRoutine_72b6c0(v7);
-  v13 = GameRoutine_72a260(*(_QWORD*)(v6 + 152), v8, v9, v10, v11, v12);
-  v14 = *GameData_212cfc0[0];
-  v15 = *(_QWORD*)(*GameData_212cfc0[0] + 48);
-  *(_BYTE*)(v14 + 24) = 1;
-  *(_BYTE*)(v15 + 240) = 1;
-  *(_QWORD*)(*(_QWORD*)(v14 + 48) + 184LL) = 0x100000001LL;
-  GameData_21762a8 = -1;
+  v0 = GameData_21ca300;
+  v1 = *(_QWORD**)(GameData_21ca300 + 96);
+  Image_72b4a0((__int64)v1);
+  Image_72b6c0(v1);
+  Image_72a260(*(_QWORD*)(v0 + 152));
+  v2 = *GameData_212cfc0[0];
+  v3 = *(_QWORD*)(*GameData_212cfc0[0] + 48);
+  *(_BYTE*)(v2 + 24) = 1;
+  *(_BYTE*)(v3 + 240) = 1;
+  *(_QWORD*)(*(_QWORD*)(v2 + 48) + 184LL) = 0x100000001LL;
+  game_map_g_unit_menu_index = -1;
   GameData_22736e0 = 0;
-  GameRoutine_739d40(v13);
+  GameRoutine_739d40_alt1();
   result = GameData_21cf840;
   if (GameData_21cf840 != 0) {
-    v17 = *(_DWORD*)(GameData_21cf840 + 16);
+    v5 = *(_DWORD*)(GameData_21cf840 + 16);
     *(_BYTE*)(GameData_21cf840 + 363) = 0;
-    if (v17 <= 0) {
+    if (v5 <= 0) {
+      v6 = *(_QWORD*)(result + 160);
       *(_BYTE*)(result + 360) = 1;
-      return GameRoutine_1828ef0();
+      return MapUnitInfo_1828ef0(result, v6);
     }
   }
   return result;
@@ -1975,143 +2060,180 @@ __int64 GameHr_737c80()
 __int64 GameHr_737e40()
 {
   __int64* v0;
-  __int64 v1;
+  __int64* v1;
   __int64 v2;
   __int64 v3;
   __int64 v4;
-  __int64 v5;
-  __int64* v6;
+  __int64* v5;
+  int v6;
   int v7;
-  int v8;
+  char* v8;
   char* v9;
-  char* v10;
-  _QWORD* v11;
-  __int64 v12;
-  int v13;
-  __int64 v14;
-  __int64 v15;
+  _QWORD* v10;
+  __int64 v11;
+  int v12;
+  __int64 v13;
+  int v14;
+  int v15;
   __int64 v16;
-  int v17;
-  int v18;
-  __int64 v19;
-  __int64 v20;
-  char v21;
+  __int64 v17;
+  char v18;
+  int v19;
+  __int64* v20;
+  __int64 v21;
   int v22;
-  __int64* v23;
-  __int64 v24;
-  int v25;
+  __int64 v23;
+  unsigned int v24;
+  unsigned int v25;
   __int64 v26;
-  __int64 v27;
-  __int64 v28;
+  int v27;
+  int v28;
   __int64 v29;
-  __int64 v30;
+  __int64 result;
   int v31;
   __int64 v32;
-  __int64 result;
-  int v34;
-  _QWORD v35[4];
-  _QWORD* v36;
-  int v37;
-  int v38;
+  struct {
+    _QWORD v33[4];
+    _QWORD* v34;
+  } v33_;
+  int v35;
+  int v36;
 
+  v2 = COERCE_AS(__typeof__(v2),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v3 = COERCE_AS(__typeof__(v3),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   v0 = GameData_212cfd0[0];
-  v1 = *GameData_212cfd0[0] + 8;
-  if (*(_BYTE*)v1 != 0) {
-    v1 = GameRoutine_6ea8c0(v1);
-    if (v1 != 0) {
-      v5 = v1;
-      v6 = GameData_212ce98[0];
-      v7 = *(char*)(v1 + 584);
-      v8 = *(char*)(v1 + 585);
-      v9 = *(char**)(v1 + 600);
-      v10 = *(char**)(v1 + 608);
-      v11 = v35;
-      v35[2] = v5;
-      v36 = v35;
-      v12 = *(_QWORD*)(*GameData_212ce98[0] + 96);
-      v35[0] = GameData_1f94290;
-      v35[1] = v12;
-      if (v9 == v10) {
+  if (*(_BYTE*)(*GameData_212cfd0[0] + 8) != 0) {
+    v1 = game_UnitPool_Get((_BYTE*)(*GameData_212cfd0[0] + 8)),
+    v2 = COERCE_AS(__typeof__(v2),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v3 = COERCE_AS(__typeof__(v3),
+                   PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+    if (v1 != nullptr) {
+      v4 = (__int64)v1;
+      v5 = GameData_212ce98[0];
+      v6 = *((char*)v1 + 584);
+      v7 = *((char*)v1 + 585);
+      v8 = (char*)v1[75];
+      v9 = (char*)v1[76];
+      v10 = v33_.v33;
+      v33_.v33[2] = v4;
+      v33_.v34 = v33_.v33;
+      v11 = *(_QWORD*)(*GameData_212ce98[0] + 96);
+      v33_.v33[0] = GameData_1f94290;
+      v33_.v33[1] = v11;
+      if (v8 == v9) {
         goto LABEL_9;
       }
       do {
-        v13 = *v9 + v7;
-        v37 = v9[1] + v8;
-        v38 = v13;
-        if (v36 == nullptr) {
-          GameRoutine_60a310(0, v2, v3, v4);
+        v12 = *v8 + v6;
+        v35 = v8[1] + v7;
+        v36 = v12;
+        if (v33_.v34 == nullptr) {
+          GameRoutine_60a310_alt1(),
+              v2 = COERCE_AS(__typeof__(v2),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v3 = COERCE_AS(__typeof__(v3),
+                             PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
         }
-        (*(void (**)(_QWORD*, int*, int*))(*v36 + 48LL))(v36, &v38, &v37);
-        v9 += 4;
-      } while (v9 != v10);
-      v11 = v36;
-      if (v36 == v35) {
+        (*(void (**)(_QWORD*, int*, int*))(*v33_.v34 + 48LL))(v33_.v34, &v36,
+                                                              &v35),
+            v2 = COERCE_AS(__typeof__(v2),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v3 = COERCE_AS(__typeof__(v3),
+                           PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+        v8 += 4;
+      } while (v8 != v9);
+      v10 = v33_.v34;
+      if (v33_.v34 == v33_.v33) {
       LABEL_9:
-        v16 = 32;
+        v13 = 32;
       }
       else {
-        if (v36 == nullptr) {
+        if (v33_.v34 == nullptr) {
         LABEL_11:
-          GameRoutine_72a260(*(_QWORD*)(*v6 + 152), v2, v3, v4, v14, v15);
-          v17 = *(char*)(v5 + 584);
-          v18 = *(char*)(v5 + 585);
-          v19 = *(_QWORD*)(v5 + 440);
-          v20 = *GameData_212cfd8[0];
-          if (v19 != 0) {
-            v21 = *(_BYTE*)(v19 + 16);
+          Image_72a260(*(_QWORD*)(*v5 + 152)),
+              v2 = COERCE_AS(__typeof__(v2),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v3 = COERCE_AS(__typeof__(v3),
+                             PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+          v14 = *(char*)(v4 + 584);
+          v15 = *(char*)(v4 + 585);
+          v16 = *(_QWORD*)(v4 + 440);
+          v17 = *GameData_212cfd8[0];
+          if (v16 != 0) {
+            v18 = *(_BYTE*)(v16 + 16);
           }
           else {
-            v21 = 9;
+            v18 = 9;
           }
-          v22 = *(_DWORD*)(v5 + 592);
-          *(_BYTE*)(v20 + 200) = 0;
-          *(_DWORD*)(v20 + 192) = v18;
-          *(_DWORD*)(v20 + 196) = 0;
-          *(_DWORD*)(v20 + 184) = v18;
-          *(_DWORD*)(v20 + 188) = v17;
-          *(_DWORD*)(v20 + 176) = v18;
-          *(_DWORD*)(v20 + 180) = v17;
-          *(_BYTE*)(v20 + 164) = v21;
-          *(_DWORD*)(v20 + 160) = 0;
-          *(_DWORD*)(v20 + 168) = v22;
-          *(_DWORD*)(v20 + 172) = v17;
-          v23 = GameData_212cfc0[0];
-          GameRoutine_730e40(*(_QWORD*)(*GameData_212cfc0[0] + 48), v5);
-          v24 = *v23;
-          v25 = *(_DWORD*)(v5 + 592);
-          v26 = *(_QWORD*)(*v23 + 48);
-          *(_DWORD*)(v26 + 184) = v25;
-          *(_DWORD*)(v26 + 188) = v25;
-          *(_BYTE*)(v24 + 24) = 1;
-          v27 = (unsigned int)*(char*)(v5 + 584);
-          v28 = (unsigned int)*(char*)(v5 + 585);
-          v29 = *GameData_212ce88[0];
-          v30 = *(unsigned int*)(*v0 + 52);
-          LODWORD(v35[0]) = 3215362;
-          v1 = GameRoutine_748f80(v29, v5, v27, v28, v30, v35);
-          v31 = *(_DWORD*)(v5 + 592);
-          v32 = *(_QWORD*)(*v23 + 48);
-          *(_DWORD*)(v32 + 184) = v31;
-          *(_DWORD*)(v32 + 188) = v31;
+          v19 = *(_DWORD*)(v4 + 592);
+          *(_BYTE*)(v17 + 200) = 0;
+          *(_DWORD*)(v17 + 192) = v15;
+          *(_DWORD*)(v17 + 196) = 0;
+          *(_DWORD*)(v17 + 184) = v15;
+          *(_DWORD*)(v17 + 188) = v14;
+          *(_DWORD*)(v17 + 176) = v15;
+          *(_DWORD*)(v17 + 180) = v14;
+          *(_BYTE*)(v17 + 164) = v18;
+          *(_DWORD*)(v17 + 160) = 0;
+          *(_DWORD*)(v17 + 168) = v19;
+          *(_DWORD*)(v17 + 172) = v14;
+          v20 = GameData_212cfc0[0];
+          Cursor_730e40(*(_QWORD*)(*GameData_212cfc0[0] + 48), v4),
+              v2 = COERCE_AS(__typeof__(v2),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v3 = COERCE_AS(__typeof__(v3),
+                             PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+          v21 = *v20;
+          v22 = *(_DWORD*)(v4 + 592);
+          v23 = *(_QWORD*)(*v20 + 48);
+          *(_DWORD*)(v23 + 184) = v22;
+          *(_DWORD*)(v23 + 188) = v22;
+          *(_BYTE*)(v21 + 24) = 1;
+          v24 = *(char*)(v4 + 584);
+          v25 = *(char*)(v4 + 585);
+          v26 = *GameData_212ce88[0];
+          v27 = *(_DWORD*)(*v0 + 52);
+          LODWORD(v33_.v33[0]) = 3215362;
+          IDeploy_748f80(v26, v4, v24, v25, v27, (unsigned int*)v33_.v33),
+              v2 = COERCE_AS(__typeof__(v2),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v3 = COERCE_AS(__typeof__(v3),
+                             PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+          v28 = *(_DWORD*)(v4 + 592);
+          v29 = *(_QWORD*)(*v20 + 48);
+          *(_DWORD*)(v29 + 184) = v28;
+          *(_DWORD*)(v29 + 188) = v28;
           goto LABEL_15;
         }
-        v16 = 40;
+        v13 = 40;
       }
-      (*(void (**)(_QWORD*, __int64, __int64))(*v11 + v16))(v11, v2, v3);
+      (*(void (**)(_QWORD*, __int64, __int64))(*v10 + v13))(v10, v2, v3),
+          v2 = COERCE_AS(__typeof__(v2),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v3 = COERCE_AS(__typeof__(v3),
+                         PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
       goto LABEL_11;
     }
   }
 LABEL_15:
-  GameData_21762a8 = -1;
+  game_map_g_unit_menu_index = -1;
   GameData_22736e0 = 0;
-  GameRoutine_739d40(v1);
+  GameRoutine_739d40_alt1(),
+      v2 = COERCE_AS(__typeof__(v2),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v3 = COERCE_AS(__typeof__(v3),
+                     PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   result = *(_QWORD*)GameData_212d0d0[0];
   if (*(_QWORD*)GameData_212d0d0[0] != 0) {
-    v34 = *(_DWORD*)(result + 16);
+    v31 = *(_DWORD*)(result + 16);
     *(_BYTE*)(result + 363) = 1;
-    if (v34 <= 0) {
+    if (v31 <= 0) {
+      v32 = *(_QWORD*)(result + 160);
       *(_BYTE*)(result + 360) = 1;
-      return GameRoutine_1828ef0();
+      return MapUnitInfo_1828ef0(result, v32);
     }
   }
   return result;
@@ -3275,8 +3397,6 @@ __int64 GameHr_73bb40(__int64 a1)
 
 __int64 GameHr_73bd40(int a1, __int64 a2)
 {
-  __int64 v2;
-  __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
@@ -3303,18 +3423,16 @@ __int64 GameHr_73bd40(int a1, __int64 a2)
   char v31;
   int v32;
   int v33;
-  _DWORD v34[8];
-  __int64 v35;
+  struct {
+    _DWORD v34[8];
+    __int64 v35;
+  } v34_;
   int v36;
   int v37;
-  __int64 v38;
-  __int64 v39;
 
   if (a1 < 1) {
     return 0;
   }
-  v38 = v2;
-  v39 = v3;
   v4 = GameData_21ca240;
   v5 = GameData_21ca248;
   if (GameData_21ca240 == GameData_21ca248) {
@@ -3341,12 +3459,12 @@ __int64 GameHr_73bd40(int a1, __int64 a2)
            v17 || *(_QWORD*)(v16 - 1832) == 0)) {
         v18 = *(_QWORD*)(a2 + 32);
         if (v18 != 0) {
-          v34[0] = v12;
+          v34_.v34[0] = v12;
           v36 = v10;
           v37 = v13;
         LABEL_21:
           (*(void (**)(__int64, _DWORD*, int*, int*))(*(_QWORD*)v18 + 48LL))(
-              v18, v34, &v37, &v36);
+              v18, v34_.v34, &v37, &v36);
           return 1;
         }
         return 1;
@@ -3364,7 +3482,7 @@ __int64 GameHr_73bd40(int a1, __int64 a2)
       if (v21 > 3 || v21 == 1) {
         LODWORD(v23) = *(char*)(v20 + 54) + 32 * *(char*)(v20 + 55);
         v24 = *(_QWORD*)(*v7 + 96);
-        v35 = 0;
+        v34_.v35 = 0;
         v23 = (unsigned int)v23 >= 0x400 ? 0LL : (unsigned int)v23;
         v25 = v24 + v23;
         if (*(_BYTE*)(v25 + 8) != 0) {
@@ -3374,7 +3492,7 @@ __int64 GameHr_73bd40(int a1, __int64 a2)
               *(_QWORD*)(v26 - 1832) != 0) {
             v28 = a2;
             v29 = a1;
-            v30 = GameRoutine_73bf60(v26 - 2224, v34);
+            v30 = GameRoutine_73bf60_alt1(v26 - 2224, (__int64)v34_.v34);
             a2 = v28;
             v31 = v30;
             a1 = v29;
@@ -3394,7 +3512,7 @@ __int64 GameHr_73bd40(int a1, __int64 a2)
   if (v18 != 0) {
     v32 = *(char*)(v20 + 55);
     v33 = *(unsigned __int8*)(v20 + 56);
-    v34[0] = *(char*)(v20 + 54);
+    v34_.v34[0] = *(char*)(v20 + 54);
     v36 = v33;
     v37 = v32;
     goto LABEL_21;
@@ -3856,10 +3974,10 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
   __int64 v21;
   __int64 v22;
   int v24;
-  __int64* v25;
+  char* v25;
   __int64 v26;
   __int64* v27;
-  __int64* v28;
+  char* v28;
   unsigned __int64 v29;
   __int64 v30;
   __int64* v31;
@@ -3885,7 +4003,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
   __int64 v54;
   __int64 v55;
   int v57;
-  __int64 v58;
+  __int64* v58;
   __int64* v59;
   __int64* v60;
   __int64 v61;
@@ -3906,7 +4024,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
   __int64 v77;
   int v79;
   __int64 v80;
-  _QWORD* v81;
+  __int64* v81;
   __int64* v82;
   __int64 v83;
   __int64* v84;
@@ -3933,7 +4051,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
   __int64 v107;
   __int64 v108;
   __int64* v109;
-  _QWORD* v110;
+  __int64 v110;
   __int64* v111;
 
   if (a5 != 0) {
@@ -3948,7 +4066,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
         v13 = *a2;
         v14 = *v12;
         v15 = *(_DWORD*)(*a2 + 592);
-        if ((GameRoutine_6c8830(*a2) & 1) != 0) {
+        if (game_Unit_CanSwitchMount(*a2)) {
           v16 = *(_QWORD*)(v13 + 400);
           v17 = *(_QWORD*)(v16 + 88);
           if ((*(_BYTE*)(v13 + 418) & 4) == 0) {
@@ -3962,7 +4080,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           }
         }
         v20 = *(_DWORD*)(v14 + 592);
-        result = GameRoutine_6c8830(v14);
+        result = game_Unit_CanSwitchMount(v14);
         if ((result & 1) != 0) {
           v21 = *(_QWORD*)(v14 + 400);
           v22 = *(_QWORD*)(v21 + 88);
@@ -3985,8 +4103,8 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           return result;
         }
       }
-      v25 = v111;
-      v110 = (_QWORD*)a6;
+      v25 = (char*)v111;
+      v110 = a6;
       if (a4 >= v9) {
         if (a4 == 1) {
           v101 = *v12;
@@ -3995,7 +4113,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           return result;
         }
         v43 = a4 / 2;
-        v28 = &v12[a4 / 2];
+        v28 = (char*)&v12[a4 / 2];
         if (a3 == v111) {
           v27 = a3;
         }
@@ -4006,11 +4124,11 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           v106 = v9;
           v27 = v111;
           do {
-            v45 = *v28;
+            v45 = *(_QWORD*)v28;
             v46 = &v27[v44 >> 1];
             v47 = *v46;
             v48 = *(_DWORD*)(*v46 + 592);
-            if ((GameRoutine_6c8830(*v46) & 1) != 0) {
+            if (game_Unit_CanSwitchMount(*v46)) {
               v49 = *(_QWORD*)(v47 + 400);
               v50 = *(_QWORD*)(v49 + 88);
               if ((*(_BYTE*)(v47 + 418) & 4) == 0) {
@@ -4024,7 +4142,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
               }
             }
             v53 = *(_DWORD*)(v45 + 592);
-            if ((GameRoutine_6c8830(v45) & 1) != 0) {
+            if (game_Unit_CanSwitchMount(v45)) {
               v54 = *(_QWORD*)(v45 + 400);
               v55 = *(_QWORD*)(v54 + 88);
               if ((*(_BYTE*)(v45 + 418) & 4) == 0) {
@@ -4047,30 +4165,30 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           } while (v44 != 0);
           a7 = v108;
           a3 = v109;
-          v25 = v111;
+          v25 = (char*)v111;
           v43 = a4 / 2;
           v9 = v106;
         }
-        v26 = v27 - v25;
+        v26 = ((char*)v27 - v25) >> 3;
       }
       else {
         v26 = v9 / 2;
         v27 = &v111[v9 / 2];
         if (v12 == v111) {
-          v28 = v111;
+          v28 = (char*)v111;
         }
         else {
           v107 = a7;
           v104 = v9 / 2;
           v105 = v9;
-          v28 = v12;
+          v28 = (char*)v12;
           v29 = v111 - v12;
           do {
             v30 = *v27;
-            v31 = &v28[v29 >> 1];
+            v31 = (__int64*)&v28[8 * (v29 >> 1)];
             v32 = *v31;
             v33 = *(_DWORD*)(*v27 + 592);
-            if ((GameRoutine_6c8830(*v27) & 1) != 0) {
+            if (game_Unit_CanSwitchMount(*v27)) {
               v34 = *(_QWORD*)(v30 + 400);
               v35 = *(_QWORD*)(v34 + 88);
               if ((*(_BYTE*)(v30 + 418) & 4) == 0) {
@@ -4084,7 +4202,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
               }
             }
             v38 = *(_DWORD*)(v32 + 592);
-            if ((GameRoutine_6c8830(v32) & 1) != 0) {
+            if (game_Unit_CanSwitchMount(v32)) {
               v39 = *(_QWORD*)(v32 + 400);
               v40 = *(_QWORD*)(v39 + 88);
               if ((*(_BYTE*)(v32 + 418) & 4) == 0) {
@@ -4101,27 +4219,27 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
               v29 >>= 1;
             }
             else {
-              v28 = v31 + 1;
+              v28 = (char*)(v31 + 1);
               v29 += ~(v29 >> 1);
             }
           } while (v29 != 0);
           a7 = v107;
-          v25 = v111;
+          v25 = (char*)v111;
           v26 = v104;
           v9 = v105;
         }
-        v43 = v28 - v12;
+        v43 = (v28 - (char*)v12) >> 3;
       }
       a4 -= v43;
       v9 -= v26;
-      v58 = GameRoutine_6c29c0(v28, v25, v27);
-      v59 = (__int64*)v58;
+      v58 = (__int64*)GameRoutine_6c29c0_alt1(v28, v25, (char*)v27);
+      v59 = v58;
       if (v43 + v26 >= a4 + v9) {
         v61 = v9;
         v9 = v26;
-        result = GameHr_73dc80(v58, v27, a3, a4, v61, v110, a7);
-        v62 = v28;
-        a6 = (__int64)v110;
+        result = GameHr_73dc80((__int64)v58, v27, a3, a4, v61, v110, a7);
+        v62 = (__int64*)v28;
+        a6 = v110;
         a4 = v43;
         a3 = v59;
         a2 = v62;
@@ -4130,9 +4248,9 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
         }
       }
       else {
-        v60 = v28;
-        a6 = (__int64)v110;
-        result = GameHr_73dc80(v12, v60, v58, v43, v26, v110, a7);
+        v60 = (__int64*)v28;
+        a6 = v110;
+        result = GameHr_73dc80((__int64)v12, v60, v58, v43, v26, v110, a7);
         v12 = v59;
         a2 = v27;
         if (v9 == 0) {
@@ -4143,7 +4261,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
     if (a4 <= v9) {
       if (v12 != a2) {
         v80 = -a6;
-        v81 = (_QWORD*)a6;
+        v81 = (__int64*)a6;
         v82 = v12;
         do {
           v83 = *v82++;
@@ -4155,7 +4273,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           v89 = *(_QWORD*)a6;
           v90 = a2;
           v91 = *(_DWORD*)(*a2 + 592);
-          if ((GameRoutine_6c8830(*a2) & 1) != 0) {
+          if (game_Unit_CanSwitchMount(*a2)) {
             v92 = *(_QWORD*)(v88 + 400);
             v93 = *(_QWORD*)(v92 + 88);
             if ((*(_BYTE*)(v88 + 418) & 4) == 0) {
@@ -4169,7 +4287,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
             }
           }
           v96 = *(_DWORD*)(v89 + 592);
-          result = GameRoutine_6c8830(v89);
+          result = game_Unit_CanSwitchMount(v89);
           if ((result & 1) != 0) {
             v97 = *(_QWORD*)(v89 + 400);
             v98 = *(_QWORD*)(v97 + 88);
@@ -4200,11 +4318,11 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           }
           a6 += v87;
           *v12++ = v86;
-          if (v81 == (_QWORD*)a6) {
+          if (v81 == (__int64*)a6) {
             return result;
           }
         }
-        return GameRoutine_1a0b940(v12, a6, -(a6 + v80));
+        return memmove((__int64)v12, a6, -(a6 + v80));
       }
     }
     else if (a2 != a3) {
@@ -4220,7 +4338,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
         v67 = *(a2 - 1);
         v69 = a2;
         v70 = *(_DWORD*)(v66 + 592);
-        if ((GameRoutine_6c8830(v66) & 1) != 0) {
+        if (game_Unit_CanSwitchMount(v66)) {
           v71 = *(_QWORD*)(v66 + 400);
           v72 = *(_QWORD*)(v71 + 88);
           if ((*(_BYTE*)(v66 + 418) & 4) == 0) {
@@ -4234,7 +4352,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           }
         }
         v75 = *(_DWORD*)(v67 + 592);
-        result = GameRoutine_6c8830(v67);
+        result = game_Unit_CanSwitchMount(v67);
         if ((result & 1) != 0) {
           v76 = *(_QWORD*)(v67 + 400);
           v77 = *(_QWORD*)(v76 + 88);
@@ -4280,8 +4398,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
   return result;
 }
 
-__int64 GameHr_73f640(__int64 a1, unsigned int a2, unsigned int a3,
-                      unsigned int a4, char a5)
+__int64 GameHr_73f640(__int64 a1, char a2, char a3, int a4, char a5)
 {
   char* v7;
   char* v8;
@@ -4312,21 +4429,24 @@ __int64 GameHr_73f640(__int64 a1, unsigned int a2, unsigned int a3,
   __int64 v33;
   __int64 v34;
   __int64 v35;
-  int v37;
-  char* v38;
-  char* v39;
-  __int64 v40;
+  struct {
+    int v37;
+    char gap4_[4];
+    char* v38;
+    char* v39;
+    __int64 v40;
+  } v37_;
 
-  v37 = 0;
-  v38 = nullptr;
-  v39 = nullptr;
-  v40 = 0;
-  GameRoutine_74d660(&v37, a4, a2, a3);
-  v7 = v38;
-  v8 = v39;
-  if (v38 == v39) {
+  v37_.v37 = 0;
+  v37_.v38 = nullptr;
+  v37_.v39 = nullptr;
+  v37_.v40 = 0;
+  GameRoutine_74d660_alt1((__int64)&v37_.v37, a4, a2, a3);
+  v7 = v37_.v38;
+  v8 = v37_.v39;
+  if (v37_.v38 == v37_.v39) {
     v17 = 1;
-    if (v38 == nullptr) {
+    if (v37_.v38 == nullptr) {
       return v17;
     }
     goto LABEL_43;
@@ -4429,8 +4549,8 @@ __int64 GameHr_73f640(__int64 a1, unsigned int a2, unsigned int a3,
       LABEL_41:
         v17 = 1;
       LABEL_42:
-        v7 = v38;
-        if (v38 == nullptr) {
+        v7 = v37_.v38;
+        if (v37_.v38 == nullptr) {
           return v17;
         }
         goto LABEL_43;
@@ -4438,87 +4558,89 @@ __int64 GameHr_73f640(__int64 a1, unsigned int a2, unsigned int a3,
     }
   }
   v17 = 0;
-  v7 = v38;
-  if (v38 != nullptr) {
+  v7 = v37_.v38;
+  if (v37_.v38 != nullptr) {
   LABEL_43:
-    v39 = v7;
+    v37_.v39 = v7;
     v35 = 128;
-    if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v35 = 56;
     }
-    GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v35, v7);
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v35,
+                                  (__int64)v7);
   }
   return v17;
 }
 
-__int64 GameHr_73f960(_DWORD* a1, unsigned int a2, unsigned int a3,
-                      unsigned int a4)
+void GameHr_73f960(_DWORD* a1, char a2, char a3, int a4)
 {
-  __int64 result;
+  __int64 v5;
   char* v6;
-  char* v7;
-  int v8;
-  char* v9;
+  int v7;
+  char* v8;
+  __int64 v9;
   __int64 v10;
-  __int64 v11;
-  char v12;
+  char v11;
+  unsigned int v12;
   unsigned int v13;
-  unsigned int v14;
-  __int64 v15;
-  bool v16;
+  __int64 v14;
+  bool v15;
+  __int64 v16;
   __int64 v17;
-  __int64 v18;
-  int v19;
-  char* v20;
-  char* v21;
-  __int64 v22;
+  struct {
+    int v18;
+    char gap4_[4];
+    char* v19;
+    __int64 v20;
+    __int64 v21;
+  } v18_;
 
   *a1 = 0;
-  v19 = 0;
-  v20 = nullptr;
-  v21 = nullptr;
-  v22 = 0;
-  result = GameRoutine_74d660(&v19, a4, a2, a3);
-  v6 = v20;
-  v7 = v21;
-  if (v20 != v21) {
-    v8 = 0;
-    v9 = v20;
-    v10 = GameData_21ca310;
-    v11 = *(_QWORD*)(*GameData_212ce98[0] + 96) + 8LL;
+  v18_.v18 = 0;
+  v18_.v19 = nullptr;
+  v18_.v20 = 0;
+  v18_.v21 = 0;
+  GameRoutine_74d660_alt1((__int64)&v18_.v18, a4, a2, a3);
+  v5 = (__int64)v18_.v19;
+  v6 = (char*)v18_.v20;
+  if (v18_.v19 != (char*)v18_.v20) {
+    v7 = 0;
+    v8 = v18_.v19;
+    v9 = GameData_21ca310;
+    v10 = *(_QWORD*)(*GameData_212ce98[0] + 96) + 8LL;
     do {
-      v13 = *v9 + 32 * v9[1];
-      if (v13 >= 0x400) {
-        v13 = 0;
+      v12 = *v8 + 32 * v8[1];
+      if (v12 >= 0x400) {
+        v12 = 0;
       }
-      v14 = *(unsigned __int8*)(v11 + v13);
-      if (*(_BYTE*)(v11 + v13) != 0) {
-        v15 = *(_QWORD*)(v10 + 56) + 2224LL * *(unsigned __int8*)(v11 + v13);
-        v16 = v14 > 0xFA || v15 == 2224;
-        if (!v16 && *(_QWORD*)(v15 - 1832) != 0) {
-          v17 = *(_QWORD*)(v15 - 1784);
-          if (v17 != 0) {
-            v12 = *(_BYTE*)(v17 + 16);
+      v13 = *(unsigned __int8*)(v10 + v12);
+      if (*(_BYTE*)(v10 + v12) != 0) {
+        v14 = *(_QWORD*)(v9 + 56) + 2224LL * *(unsigned __int8*)(v10 + v12);
+        v15 = v13 > 0xFA || v14 == 2224;
+        if (!v15 && *(_QWORD*)(v14 - 1832) != 0) {
+          v16 = *(_QWORD*)(v14 - 1784);
+          if (v16 != 0) {
+            v11 = *(_BYTE*)(v16 + 16);
           }
           else {
-            v12 = 9;
+            v11 = 9;
           }
-          v8 |= 1 << v12;
-          *a1 = v8;
+          v7 |= 1 << v11;
+          *a1 = v7;
         }
       }
-      v9 += 4;
-    } while (v9 != v7);
+      v8 += 4;
+    } while (v8 != v6);
   }
-  if (v6 != nullptr) {
-    v21 = v6;
-    v18 = 128;
-    if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
-      v18 = 56;
+  if (v5 != 0) {
+    v18_.v20 = v5;
+    v17 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v17 = 56;
     }
-    return GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v18, v6);
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v17,
+                                  v5);
   }
-  return result;
 }
 
 __int64 GameHr_73fb50(__int64 result, __int64 a2)
@@ -4882,7 +5004,7 @@ __int64 GameHr_7402a0(__int64 result, __int64* a2, unsigned __int64 a3,
 char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
                     __int64 a6, __int64 a7)
 {
-  unsigned __int64 v9;
+  __int64 v9;
   __int64 v10;
   __int64 v11;
   __int64 v12;
@@ -4891,7 +5013,7 @@ char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
   char* v15;
   unsigned __int64 v16;
   unsigned __int64 v17;
-  __int64* v18;
+  char* v18;
   char* v19;
   __int64 v20;
   char* v21;
@@ -4907,10 +5029,10 @@ char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
   __int64 v31;
   __int64 v32;
   __int64 v33;
-  __int64 v34;
+  char* v34;
   char* v35;
   __int64 v36;
-  _QWORD* v37;
+  __int64 v37;
   __int64 v38;
   __int64 v39;
   _QWORD* v40;
@@ -4926,7 +5048,7 @@ char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
   char* v50;
   __int64 v51;
   char* v52;
-  _QWORD* v53;
+  __int64 v53;
 
   if (a5 != 0) {
     while (a4 > a7 && a5 > a7) {
@@ -4942,13 +5064,13 @@ char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
           break;
         }
         ++v10;
-        v9 -= 8LL;
+        v9 -= 8;
         if (a4 == v10) {
           return result;
         }
       }
       v12 = a4 - v10;
-      v53 = (_QWORD*)a6;
+      v53 = a6;
       v51 = a7;
       v52 = a3;
       v50 = &result[-v9];
@@ -4996,12 +5118,12 @@ char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
         }
         else {
           v15 = &result[-v9];
-          v16 = (__int64)(a2 - result + v9) >> 3;
+          v16 = (a2 - result + v9) >> 3;
           do {
             v17 = v16 >> 1;
-            v18 = (__int64*)&v15[8 * (v16 >> 1)];
-            v20 = *v18;
-            v19 = (char*)(v18 + 1);
+            v18 = &v15[8 * (v16 >> 1)];
+            v20 = *(_QWORD*)v18;
+            v19 = v18 + 8;
             v16 += ~(v16 >> 1);
             if (*(unsigned __int8*)(*(_QWORD*)v14 + 56LL) >
                 (unsigned int)*(unsigned __int8*)(v20 + 56)) {
@@ -5019,11 +5141,11 @@ char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
       v31 = a4;
       v32 = a5;
       v33 = a4 - v22 - v10;
-      v34 = GameRoutine_6bea40(v15);
-      v35 = (char*)v34;
+      v34 = GameRoutine_6bea40_alt1(v15, a2, v14);
+      v35 = v34;
       if (v22 + v13 >= v32 + v31 - (v22 + v13) - v10) {
         a7 = v51;
-        a6 = (__int64)v53;
+        a6 = v53;
         GameHr_7404e0(v34, v14, v52, v33, v30, v53, v51);
         result = v50;
         v14 = v15;
@@ -5033,7 +5155,7 @@ char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
       }
       else {
         a7 = v51;
-        a6 = (__int64)v53;
+        a6 = v53;
         GameHr_7404e0(v50, v15, v34, v22, v13, v53, v51);
         a3 = v52;
         result = v35;
@@ -5081,7 +5203,7 @@ char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
             return result;
           }
         }
-        return (char*)GameRoutine_1a0b940(result, a6, -(a6 + v39));
+        return (char*)memmove((__int64)result, a6, -(a6 + v39));
       }
     }
     else if (a2 != a3) {
@@ -5090,29 +5212,31 @@ char* GameHr_7404e0(char* result, char* a2, char* a3, __int64 a4, __int64 a5,
         *(_QWORD*)(a6 + v36) = *(_QWORD*)&a2[v36];
         v36 += 8;
       } while (&a2[v36] != a3);
-      v37 = (_QWORD*)(a6 + v36);
+      v37 = a6 + v36;
       while (a2 != result) {
         v38 = *((_QWORD*)a2 - 1);
-        if (*(unsigned __int8*)(*(v37 - 1) + 56LL) >
+        if (*(unsigned __int8*)(*(_QWORD*)(v37 - 8) + 56LL) >
             (unsigned int)*(unsigned __int8*)(v38 + 56)) {
           a2 -= 8;
         }
         else {
-          v38 = *--v37;
+          v38 = *(_QWORD*)(v37 - 8);
+          v37 -= 8;
         }
         *((_QWORD*)a3 - 1) = v38;
         a3 -= 8;
-        if (v37 == (_QWORD*)a6) {
+        if (v37 == a6) {
           return result;
         }
       }
-      if ((_QWORD*)a6 != v37) {
+      if (a6 != v37) {
         v48 = -8;
         do {
-          v49 = *--v37;
+          v49 = *(_QWORD*)(v37 - 8);
+          v37 -= 8;
           *(_QWORD*)&a3[v48] = v49;
           v48 -= 8;
-        } while (v37 != (_QWORD*)a6);
+        } while (v37 != a6);
       }
     }
   }
@@ -7013,7 +7137,7 @@ __int64 GameHr_7570a0(__int64 result, _QWORD* a2, __int64 a3, __int64 a4,
       v8 = a4 + a3;
       v9 = a3;
       v10 = (int)a2;
-      memset(v58, 0, sizeof(v58));
+      __builtin_memset(v58, 0, sizeof(v58));
       v11 = (int)a2 - 1 <= v6 ? v6 : (_DWORD)a2 - 1;
       v12 = (int)a3 - 1 <= *(unsigned __int8*)(GameData_21ca300 + 29)
                 ? *(unsigned __int8*)(GameData_21ca300 + 29)
@@ -7302,10 +7426,10 @@ __int64 GameHr_7595d0()
   return result;
 }
 
-__int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
-                      char a5)
+void GameHr_759860(__int64* a1, __int64* a2, __int64* a3, __int64 a4, char a5)
 {
-  __int64* v9;
+
+#pragma clang fp contract(off)
   __int64* v10;
   __int64 v11;
   __int64* v12;
@@ -7342,7 +7466,7 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
   float v43;
   __int64* v44;
   bool v45;
-  char v46;
+  bool v46;
   __int64 v47;
   __int64 v48;
   float v49;
@@ -7464,45 +7588,574 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
   signed __int64 v166;
   __int64 v167;
 
-  v9 = (__int64*)result;
+  v104 = COERCE_AS(__typeof__(v104), PSEUDO_REGISTER(float, "s0", "=w")),
+  v106 = COERCE_AS(__typeof__(v106), PSEUDO_REGISTER(float, "s0", "=w")),
+  v109 = COERCE_AS(__typeof__(v109), PSEUDO_REGISTER(float, "s0", "=w")),
+  v111 = COERCE_AS(__typeof__(v111), PSEUDO_REGISTER(float, "s0", "=w")),
+  v113 = COERCE_AS(__typeof__(v113), PSEUDO_REGISTER(float, "s0", "=w")),
+  v115 = COERCE_AS(__typeof__(v115), PSEUDO_REGISTER(float, "s0", "=w")),
+  v119 = COERCE_AS(__typeof__(v119), PSEUDO_REGISTER(float, "s0", "=w")),
+  v121 = COERCE_AS(__typeof__(v121), PSEUDO_REGISTER(float, "s0", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(float, "s0", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(float, "s0", "=w")),
+  v140 = COERCE_AS(__typeof__(v140), PSEUDO_REGISTER(float, "s0", "=w")),
+  v142 = COERCE_AS(__typeof__(v142), PSEUDO_REGISTER(float, "s0", "=w")),
+  v145 = COERCE_AS(__typeof__(v145), PSEUDO_REGISTER(float, "s0", "=w")),
+  v147 = COERCE_AS(__typeof__(v147), PSEUDO_REGISTER(float, "s0", "=w")),
+  v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+  v150 = COERCE_AS(__typeof__(v150), PSEUDO_REGISTER(float, "s0", "=w")),
+  v152 = COERCE_AS(__typeof__(v152), PSEUDO_REGISTER(float, "s0", "=w")),
+  v158 = COERCE_AS(__typeof__(v158), PSEUDO_REGISTER(float, "s0", "=w")),
+  v160 = COERCE_AS(__typeof__(v160), PSEUDO_REGISTER(float, "s0", "=w")),
+  v17 = COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(float, "s0", "=w")),
+  v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(float, "s0", "=w")),
+  v22 = COERCE_AS(__typeof__(v22), PSEUDO_REGISTER(float, "s0", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(float, "s0", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(float, "s0", "=w")),
+  v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(float, "s0", "=w")),
+  v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s0", "=w")),
+  v39 = COERCE_AS(__typeof__(v39), PSEUDO_REGISTER(float, "s0", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(float, "s0", "=w")),
+  v43 = COERCE_AS(__typeof__(v43), PSEUDO_REGISTER(float, "s0", "=w")),
+  v49 = COERCE_AS(__typeof__(v49), PSEUDO_REGISTER(float, "s0", "=w")),
+  v51 = COERCE_AS(__typeof__(v51), PSEUDO_REGISTER(float, "s0", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(float, "s0", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s0", "=w")),
+  v60 = COERCE_AS(__typeof__(v60), PSEUDO_REGISTER(float, "s0", "=w")),
+  v63 = COERCE_AS(__typeof__(v63), PSEUDO_REGISTER(float, "s0", "=w")),
+  v65 = COERCE_AS(__typeof__(v65), PSEUDO_REGISTER(float, "s0", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(float, "s0", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v72 = COERCE_AS(__typeof__(v72), PSEUDO_REGISTER(float, "s0", "=w")),
+  v74 = COERCE_AS(__typeof__(v74), PSEUDO_REGISTER(float, "s0", "=w")),
+  v77 = COERCE_AS(__typeof__(v77), PSEUDO_REGISTER(float, "s0", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(float, "s0", "=w")),
+  v89 = COERCE_AS(__typeof__(v89), PSEUDO_REGISTER(float, "s0", "=w")),
+  v91 = COERCE_AS(__typeof__(v91), PSEUDO_REGISTER(float, "s0", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v98 = COERCE_AS(__typeof__(v98), PSEUDO_REGISTER(float, "s0", "=w"));
   while (2) {
-    v10 = v9;
+    v10 = a1;
     v165 = a2 - 1;
     v161 = a2 - 3;
     v162 = a2 - 2;
     while (1) {
       while (1) {
         while (1) {
-          v9 = v10;
+          a1 = v10;
           v11 = a2 - v10;
           if (v11 > 2) {
             switch (v11) {
             case 3LL:
-              return GameRoutine_75a370(v10, v10 + 1, v165, a3);
+              game_map_75a370(v10, v10 + 1, v165, a3),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
+              return;
             case 4LL:
-              return GameRoutine_75a4e0(v10, v10 + 1, v10 + 2, v165, a3);
+              game_map_75a4e0(v10, v10 + 1, v10 + 2, v165, a3),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
+              return;
             case 5LL:
-              return GameRoutine_75a5f0(v10, v10 + 1, v10 + 2, v10 + 3, v165,
-                                        a3);
+              game_map_75a5f0(v10, v10 + 1, v10 + 2, v10 + 3, v165, a3),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
+              return;
             default:
               break;
             }
           }
           else {
             if ((unsigned __int64)v11 < 2) {
-              return result;
+              return;
             }
             if (v11 == 2) {
               v76 = *v10;
-              GameRoutine_7c0910(*a3, *(a2 - 1), 1);
+              GameRoutine_7c0910_alt1(*a3, *(a2 - 1)),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
               v78 = v77;
-              result = GameRoutine_7c0910(*a3, v76, 1);
+              GameRoutine_7c0910_alt1(*a3, v76),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
               if (v78 > v79) {
                 v80 = *v10;
                 *v10 = *(a2 - 1);
                 *(a2 - 1) = v80;
               }
-              return result;
+              return;
             }
           }
           if (v11 <= 23) {
@@ -7516,9 +8169,201 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
                   v88 = *v85;
                   v87 = v85[1];
                   v85 = v81;
-                  GameRoutine_7c0910(*a3, v87, 1);
+                  GameRoutine_7c0910_alt1(*a3, v87),
+                      v104 = COERCE_AS(__typeof__(v104),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v106 = COERCE_AS(__typeof__(v106),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v109 = COERCE_AS(__typeof__(v109),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v111 = COERCE_AS(__typeof__(v111),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v113 = COERCE_AS(__typeof__(v113),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v115 = COERCE_AS(__typeof__(v115),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v119 = COERCE_AS(__typeof__(v119),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v121 = COERCE_AS(__typeof__(v121),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v131 = COERCE_AS(__typeof__(v131),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v133 = COERCE_AS(__typeof__(v133),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v140 = COERCE_AS(__typeof__(v140),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v142 = COERCE_AS(__typeof__(v142),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v145 = COERCE_AS(__typeof__(v145),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v147 = COERCE_AS(__typeof__(v147),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v15 = COERCE_AS(__typeof__(v15),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v150 = COERCE_AS(__typeof__(v150),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v152 = COERCE_AS(__typeof__(v152),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v158 = COERCE_AS(__typeof__(v158),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v160 = COERCE_AS(__typeof__(v160),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v17 = COERCE_AS(__typeof__(v17),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v20 = COERCE_AS(__typeof__(v20),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v22 = COERCE_AS(__typeof__(v22),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v26 = COERCE_AS(__typeof__(v26),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v28 = COERCE_AS(__typeof__(v28),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v30 = COERCE_AS(__typeof__(v30),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v32 = COERCE_AS(__typeof__(v32),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v37 = COERCE_AS(__typeof__(v37),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v39 = COERCE_AS(__typeof__(v39),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v41 = COERCE_AS(__typeof__(v41),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v43 = COERCE_AS(__typeof__(v43),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v49 = COERCE_AS(__typeof__(v49),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v51 = COERCE_AS(__typeof__(v51),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v53 = COERCE_AS(__typeof__(v53),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v55 = COERCE_AS(__typeof__(v55),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v58 = COERCE_AS(__typeof__(v58),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v60 = COERCE_AS(__typeof__(v60),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v63 = COERCE_AS(__typeof__(v63),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v65 = COERCE_AS(__typeof__(v65),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v68 = COERCE_AS(__typeof__(v68),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v70 = COERCE_AS(__typeof__(v70),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v72 = COERCE_AS(__typeof__(v72),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v74 = COERCE_AS(__typeof__(v74),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v77 = COERCE_AS(__typeof__(v77),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v79 = COERCE_AS(__typeof__(v79),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v89 = COERCE_AS(__typeof__(v89),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v91 = COERCE_AS(__typeof__(v91),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v96 = COERCE_AS(__typeof__(v96),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v98 = COERCE_AS(__typeof__(v98),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
                   v90 = v89;
-                  result = GameRoutine_7c0910(*a3, v88, 1);
+                  GameRoutine_7c0910_alt1(*a3, v88),
+                      v104 = COERCE_AS(__typeof__(v104),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v106 = COERCE_AS(__typeof__(v106),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v109 = COERCE_AS(__typeof__(v109),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v111 = COERCE_AS(__typeof__(v111),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v113 = COERCE_AS(__typeof__(v113),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v115 = COERCE_AS(__typeof__(v115),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v119 = COERCE_AS(__typeof__(v119),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v121 = COERCE_AS(__typeof__(v121),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v131 = COERCE_AS(__typeof__(v131),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v133 = COERCE_AS(__typeof__(v133),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v140 = COERCE_AS(__typeof__(v140),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v142 = COERCE_AS(__typeof__(v142),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v145 = COERCE_AS(__typeof__(v145),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v147 = COERCE_AS(__typeof__(v147),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v15 = COERCE_AS(__typeof__(v15),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v150 = COERCE_AS(__typeof__(v150),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v152 = COERCE_AS(__typeof__(v152),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v158 = COERCE_AS(__typeof__(v158),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v160 = COERCE_AS(__typeof__(v160),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v17 = COERCE_AS(__typeof__(v17),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v20 = COERCE_AS(__typeof__(v20),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v22 = COERCE_AS(__typeof__(v22),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v26 = COERCE_AS(__typeof__(v26),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v28 = COERCE_AS(__typeof__(v28),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v30 = COERCE_AS(__typeof__(v30),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v32 = COERCE_AS(__typeof__(v32),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v37 = COERCE_AS(__typeof__(v37),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v39 = COERCE_AS(__typeof__(v39),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v41 = COERCE_AS(__typeof__(v41),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v43 = COERCE_AS(__typeof__(v43),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v49 = COERCE_AS(__typeof__(v49),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v51 = COERCE_AS(__typeof__(v51),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v53 = COERCE_AS(__typeof__(v53),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v55 = COERCE_AS(__typeof__(v55),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v58 = COERCE_AS(__typeof__(v58),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v60 = COERCE_AS(__typeof__(v60),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v63 = COERCE_AS(__typeof__(v63),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v65 = COERCE_AS(__typeof__(v65),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v68 = COERCE_AS(__typeof__(v68),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v70 = COERCE_AS(__typeof__(v70),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v72 = COERCE_AS(__typeof__(v72),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v74 = COERCE_AS(__typeof__(v74),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v77 = COERCE_AS(__typeof__(v77),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v79 = COERCE_AS(__typeof__(v79),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v89 = COERCE_AS(__typeof__(v89),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v91 = COERCE_AS(__typeof__(v91),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v96 = COERCE_AS(__typeof__(v96),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v98 = COERCE_AS(__typeof__(v98),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
                   if (v90 > v91) {
                     v92 = *v85;
                     v93 = a2;
@@ -7528,16 +8373,208 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
                           *(__int64*)((char*)v10 + v94);
                       if (v94 == 0) {
                         v86 = v10;
-                        goto LABEL_74;
+                        goto LABEL_73;
                       }
                       v95 = *(__int64*)((char*)v10 + v94 - 8);
-                      GameRoutine_7c0910(*a3, v92, 1);
+                      GameRoutine_7c0910_alt1(*a3, v92),
+                          v104 = COERCE_AS(__typeof__(v104),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v106 = COERCE_AS(__typeof__(v106),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v109 = COERCE_AS(__typeof__(v109),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v111 = COERCE_AS(__typeof__(v111),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v113 = COERCE_AS(__typeof__(v113),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v115 = COERCE_AS(__typeof__(v115),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v119 = COERCE_AS(__typeof__(v119),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v121 = COERCE_AS(__typeof__(v121),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v131 = COERCE_AS(__typeof__(v131),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v133 = COERCE_AS(__typeof__(v133),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v140 = COERCE_AS(__typeof__(v140),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v142 = COERCE_AS(__typeof__(v142),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v145 = COERCE_AS(__typeof__(v145),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v147 = COERCE_AS(__typeof__(v147),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v15 = COERCE_AS(__typeof__(v15),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v150 = COERCE_AS(__typeof__(v150),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v152 = COERCE_AS(__typeof__(v152),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v158 = COERCE_AS(__typeof__(v158),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v160 = COERCE_AS(__typeof__(v160),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v17 = COERCE_AS(__typeof__(v17),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v20 = COERCE_AS(__typeof__(v20),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v22 = COERCE_AS(__typeof__(v22),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v26 = COERCE_AS(__typeof__(v26),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v28 = COERCE_AS(__typeof__(v28),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v30 = COERCE_AS(__typeof__(v30),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v32 = COERCE_AS(__typeof__(v32),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v37 = COERCE_AS(__typeof__(v37),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v39 = COERCE_AS(__typeof__(v39),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v41 = COERCE_AS(__typeof__(v41),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v43 = COERCE_AS(__typeof__(v43),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v49 = COERCE_AS(__typeof__(v49),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v51 = COERCE_AS(__typeof__(v51),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v53 = COERCE_AS(__typeof__(v53),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v55 = COERCE_AS(__typeof__(v55),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v58 = COERCE_AS(__typeof__(v58),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v60 = COERCE_AS(__typeof__(v60),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v63 = COERCE_AS(__typeof__(v63),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v65 = COERCE_AS(__typeof__(v65),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v68 = COERCE_AS(__typeof__(v68),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v70 = COERCE_AS(__typeof__(v70),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v72 = COERCE_AS(__typeof__(v72),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v74 = COERCE_AS(__typeof__(v74),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v77 = COERCE_AS(__typeof__(v77),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v79 = COERCE_AS(__typeof__(v79),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v89 = COERCE_AS(__typeof__(v89),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v91 = COERCE_AS(__typeof__(v91),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v96 = COERCE_AS(__typeof__(v96),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v98 = COERCE_AS(__typeof__(v98),
+                                          PSEUDO_REGISTER(float, "s0", "=w"));
                       v97 = v96;
-                      result = GameRoutine_7c0910(*a3, v95, 1);
+                      GameRoutine_7c0910_alt1(*a3, v95),
+                          v104 = COERCE_AS(__typeof__(v104),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v106 = COERCE_AS(__typeof__(v106),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v109 = COERCE_AS(__typeof__(v109),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v111 = COERCE_AS(__typeof__(v111),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v113 = COERCE_AS(__typeof__(v113),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v115 = COERCE_AS(__typeof__(v115),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v119 = COERCE_AS(__typeof__(v119),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v121 = COERCE_AS(__typeof__(v121),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v131 = COERCE_AS(__typeof__(v131),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v133 = COERCE_AS(__typeof__(v133),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v140 = COERCE_AS(__typeof__(v140),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v142 = COERCE_AS(__typeof__(v142),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v145 = COERCE_AS(__typeof__(v145),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v147 = COERCE_AS(__typeof__(v147),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v15 = COERCE_AS(__typeof__(v15),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v150 = COERCE_AS(__typeof__(v150),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v152 = COERCE_AS(__typeof__(v152),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v158 = COERCE_AS(__typeof__(v158),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v160 = COERCE_AS(__typeof__(v160),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v17 = COERCE_AS(__typeof__(v17),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v20 = COERCE_AS(__typeof__(v20),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v22 = COERCE_AS(__typeof__(v22),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v26 = COERCE_AS(__typeof__(v26),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v28 = COERCE_AS(__typeof__(v28),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v30 = COERCE_AS(__typeof__(v30),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v32 = COERCE_AS(__typeof__(v32),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v37 = COERCE_AS(__typeof__(v37),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v39 = COERCE_AS(__typeof__(v39),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v41 = COERCE_AS(__typeof__(v41),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v43 = COERCE_AS(__typeof__(v43),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v49 = COERCE_AS(__typeof__(v49),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v51 = COERCE_AS(__typeof__(v51),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v53 = COERCE_AS(__typeof__(v53),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v55 = COERCE_AS(__typeof__(v55),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v58 = COERCE_AS(__typeof__(v58),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v60 = COERCE_AS(__typeof__(v60),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v63 = COERCE_AS(__typeof__(v63),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v65 = COERCE_AS(__typeof__(v65),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v68 = COERCE_AS(__typeof__(v68),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v70 = COERCE_AS(__typeof__(v70),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v72 = COERCE_AS(__typeof__(v72),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v74 = COERCE_AS(__typeof__(v74),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v77 = COERCE_AS(__typeof__(v77),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v79 = COERCE_AS(__typeof__(v79),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v89 = COERCE_AS(__typeof__(v89),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v91 = COERCE_AS(__typeof__(v91),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v96 = COERCE_AS(__typeof__(v96),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v98 = COERCE_AS(__typeof__(v98),
+                                          PSEUDO_REGISTER(float, "s0", "=w"));
                       v94 -= 8;
                     } while (v97 > v98);
                     v86 = (__int64*)((char*)v10 + v94 + 8);
-                  LABEL_74:
+                  LABEL_73:
                     *v86 = v92;
                     a2 = v93;
                   }
@@ -7548,30 +8585,414 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
             }
             else if (!v83) {
               do {
-                v149 = *v9;
-                v148 = v9[1];
-                v9 = v81;
-                GameRoutine_7c0910(*a3, v148, 1);
+                v149 = *a1;
+                v148 = a1[1];
+                a1 = v81;
+                GameRoutine_7c0910_alt1(*a3, v148),
+                    v104 = COERCE_AS(__typeof__(v104),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v106 = COERCE_AS(__typeof__(v106),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v109 = COERCE_AS(__typeof__(v109),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v111 = COERCE_AS(__typeof__(v111),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v113 = COERCE_AS(__typeof__(v113),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v115 = COERCE_AS(__typeof__(v115),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v119 = COERCE_AS(__typeof__(v119),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v121 = COERCE_AS(__typeof__(v121),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v131 = COERCE_AS(__typeof__(v131),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v133 = COERCE_AS(__typeof__(v133),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v140 = COERCE_AS(__typeof__(v140),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v142 = COERCE_AS(__typeof__(v142),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v145 = COERCE_AS(__typeof__(v145),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v147 = COERCE_AS(__typeof__(v147),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v15 = COERCE_AS(__typeof__(v15),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v150 = COERCE_AS(__typeof__(v150),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v152 = COERCE_AS(__typeof__(v152),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v158 = COERCE_AS(__typeof__(v158),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v160 = COERCE_AS(__typeof__(v160),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v17 = COERCE_AS(__typeof__(v17),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v20 = COERCE_AS(__typeof__(v20),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v22 = COERCE_AS(__typeof__(v22),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v26 = COERCE_AS(__typeof__(v26),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v28 = COERCE_AS(__typeof__(v28),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v30 = COERCE_AS(__typeof__(v30),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v32 = COERCE_AS(__typeof__(v32),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v37 = COERCE_AS(__typeof__(v37),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v39 = COERCE_AS(__typeof__(v39),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v41 = COERCE_AS(__typeof__(v41),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v43 = COERCE_AS(__typeof__(v43),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v49 = COERCE_AS(__typeof__(v49),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v51 = COERCE_AS(__typeof__(v51),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v53 = COERCE_AS(__typeof__(v53),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v55 = COERCE_AS(__typeof__(v55),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v58 = COERCE_AS(__typeof__(v58),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v60 = COERCE_AS(__typeof__(v60),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v63 = COERCE_AS(__typeof__(v63),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v65 = COERCE_AS(__typeof__(v65),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v68 = COERCE_AS(__typeof__(v68),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v70 = COERCE_AS(__typeof__(v70),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v72 = COERCE_AS(__typeof__(v72),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v74 = COERCE_AS(__typeof__(v74),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v77 = COERCE_AS(__typeof__(v77),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v79 = COERCE_AS(__typeof__(v79),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v89 = COERCE_AS(__typeof__(v89),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v91 = COERCE_AS(__typeof__(v91),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v96 = COERCE_AS(__typeof__(v96),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v98 = COERCE_AS(__typeof__(v98),
+                                    PSEUDO_REGISTER(float, "s0", "=w"));
                 v151 = v150;
-                result = GameRoutine_7c0910(*a3, v149, 1);
+                GameRoutine_7c0910_alt1(*a3, v149),
+                    v104 = COERCE_AS(__typeof__(v104),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v106 = COERCE_AS(__typeof__(v106),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v109 = COERCE_AS(__typeof__(v109),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v111 = COERCE_AS(__typeof__(v111),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v113 = COERCE_AS(__typeof__(v113),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v115 = COERCE_AS(__typeof__(v115),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v119 = COERCE_AS(__typeof__(v119),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v121 = COERCE_AS(__typeof__(v121),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v131 = COERCE_AS(__typeof__(v131),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v133 = COERCE_AS(__typeof__(v133),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v140 = COERCE_AS(__typeof__(v140),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v142 = COERCE_AS(__typeof__(v142),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v145 = COERCE_AS(__typeof__(v145),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v147 = COERCE_AS(__typeof__(v147),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v15 = COERCE_AS(__typeof__(v15),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v150 = COERCE_AS(__typeof__(v150),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v152 = COERCE_AS(__typeof__(v152),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v158 = COERCE_AS(__typeof__(v158),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v160 = COERCE_AS(__typeof__(v160),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v17 = COERCE_AS(__typeof__(v17),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v20 = COERCE_AS(__typeof__(v20),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v22 = COERCE_AS(__typeof__(v22),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v26 = COERCE_AS(__typeof__(v26),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v28 = COERCE_AS(__typeof__(v28),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v30 = COERCE_AS(__typeof__(v30),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v32 = COERCE_AS(__typeof__(v32),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v37 = COERCE_AS(__typeof__(v37),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v39 = COERCE_AS(__typeof__(v39),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v41 = COERCE_AS(__typeof__(v41),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v43 = COERCE_AS(__typeof__(v43),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v49 = COERCE_AS(__typeof__(v49),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v51 = COERCE_AS(__typeof__(v51),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v53 = COERCE_AS(__typeof__(v53),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v55 = COERCE_AS(__typeof__(v55),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v58 = COERCE_AS(__typeof__(v58),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v60 = COERCE_AS(__typeof__(v60),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v63 = COERCE_AS(__typeof__(v63),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v65 = COERCE_AS(__typeof__(v65),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v68 = COERCE_AS(__typeof__(v68),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v70 = COERCE_AS(__typeof__(v70),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v72 = COERCE_AS(__typeof__(v72),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v74 = COERCE_AS(__typeof__(v74),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v77 = COERCE_AS(__typeof__(v77),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v79 = COERCE_AS(__typeof__(v79),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v89 = COERCE_AS(__typeof__(v89),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v91 = COERCE_AS(__typeof__(v91),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v96 = COERCE_AS(__typeof__(v96),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v98 = COERCE_AS(__typeof__(v98),
+                                    PSEUDO_REGISTER(float, "s0", "=w"));
                 if (v151 > v152) {
-                  v153 = *v9;
-                  v154 = v9;
+                  v153 = *a1;
+                  v154 = a1;
                   do {
                     v155 = v154;
                     v156 = *--v154;
                     v157 = *(v155 - 2);
                     *v155 = v156;
-                    GameRoutine_7c0910(*a3, v153, 1);
+                    GameRoutine_7c0910_alt1(*a3, v153),
+                        v104 = COERCE_AS(__typeof__(v104),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v106 = COERCE_AS(__typeof__(v106),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v109 = COERCE_AS(__typeof__(v109),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v111 = COERCE_AS(__typeof__(v111),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v113 = COERCE_AS(__typeof__(v113),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v115 = COERCE_AS(__typeof__(v115),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v119 = COERCE_AS(__typeof__(v119),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v121 = COERCE_AS(__typeof__(v121),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v131 = COERCE_AS(__typeof__(v131),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v133 = COERCE_AS(__typeof__(v133),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v140 = COERCE_AS(__typeof__(v140),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v142 = COERCE_AS(__typeof__(v142),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v145 = COERCE_AS(__typeof__(v145),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v147 = COERCE_AS(__typeof__(v147),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v15 = COERCE_AS(__typeof__(v15),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v150 = COERCE_AS(__typeof__(v150),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v152 = COERCE_AS(__typeof__(v152),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v158 = COERCE_AS(__typeof__(v158),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v160 = COERCE_AS(__typeof__(v160),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v17 = COERCE_AS(__typeof__(v17),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v20 = COERCE_AS(__typeof__(v20),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v22 = COERCE_AS(__typeof__(v22),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v26 = COERCE_AS(__typeof__(v26),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v28 = COERCE_AS(__typeof__(v28),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v30 = COERCE_AS(__typeof__(v30),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v32 = COERCE_AS(__typeof__(v32),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v37 = COERCE_AS(__typeof__(v37),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v39 = COERCE_AS(__typeof__(v39),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v41 = COERCE_AS(__typeof__(v41),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v43 = COERCE_AS(__typeof__(v43),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v49 = COERCE_AS(__typeof__(v49),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v51 = COERCE_AS(__typeof__(v51),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v53 = COERCE_AS(__typeof__(v53),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v55 = COERCE_AS(__typeof__(v55),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v58 = COERCE_AS(__typeof__(v58),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v60 = COERCE_AS(__typeof__(v60),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v63 = COERCE_AS(__typeof__(v63),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v65 = COERCE_AS(__typeof__(v65),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v68 = COERCE_AS(__typeof__(v68),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v70 = COERCE_AS(__typeof__(v70),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v72 = COERCE_AS(__typeof__(v72),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v74 = COERCE_AS(__typeof__(v74),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v77 = COERCE_AS(__typeof__(v77),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v79 = COERCE_AS(__typeof__(v79),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v89 = COERCE_AS(__typeof__(v89),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v91 = COERCE_AS(__typeof__(v91),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v96 = COERCE_AS(__typeof__(v96),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v98 = COERCE_AS(__typeof__(v98),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
                     v159 = v158;
-                    result = GameRoutine_7c0910(*a3, v157, 1);
+                    GameRoutine_7c0910_alt1(*a3, v157),
+                        v104 = COERCE_AS(__typeof__(v104),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v106 = COERCE_AS(__typeof__(v106),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v109 = COERCE_AS(__typeof__(v109),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v111 = COERCE_AS(__typeof__(v111),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v113 = COERCE_AS(__typeof__(v113),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v115 = COERCE_AS(__typeof__(v115),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v119 = COERCE_AS(__typeof__(v119),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v121 = COERCE_AS(__typeof__(v121),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v131 = COERCE_AS(__typeof__(v131),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v133 = COERCE_AS(__typeof__(v133),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v140 = COERCE_AS(__typeof__(v140),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v142 = COERCE_AS(__typeof__(v142),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v145 = COERCE_AS(__typeof__(v145),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v147 = COERCE_AS(__typeof__(v147),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v15 = COERCE_AS(__typeof__(v15),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v150 = COERCE_AS(__typeof__(v150),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v152 = COERCE_AS(__typeof__(v152),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v158 = COERCE_AS(__typeof__(v158),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v160 = COERCE_AS(__typeof__(v160),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v17 = COERCE_AS(__typeof__(v17),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v20 = COERCE_AS(__typeof__(v20),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v22 = COERCE_AS(__typeof__(v22),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v26 = COERCE_AS(__typeof__(v26),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v28 = COERCE_AS(__typeof__(v28),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v30 = COERCE_AS(__typeof__(v30),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v32 = COERCE_AS(__typeof__(v32),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v37 = COERCE_AS(__typeof__(v37),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v39 = COERCE_AS(__typeof__(v39),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v41 = COERCE_AS(__typeof__(v41),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v43 = COERCE_AS(__typeof__(v43),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v49 = COERCE_AS(__typeof__(v49),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v51 = COERCE_AS(__typeof__(v51),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v53 = COERCE_AS(__typeof__(v53),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v55 = COERCE_AS(__typeof__(v55),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v58 = COERCE_AS(__typeof__(v58),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v60 = COERCE_AS(__typeof__(v60),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v63 = COERCE_AS(__typeof__(v63),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v65 = COERCE_AS(__typeof__(v65),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v68 = COERCE_AS(__typeof__(v68),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v70 = COERCE_AS(__typeof__(v70),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v72 = COERCE_AS(__typeof__(v72),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v74 = COERCE_AS(__typeof__(v74),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v77 = COERCE_AS(__typeof__(v77),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v79 = COERCE_AS(__typeof__(v79),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v89 = COERCE_AS(__typeof__(v89),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v91 = COERCE_AS(__typeof__(v91),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v96 = COERCE_AS(__typeof__(v96),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v98 = COERCE_AS(__typeof__(v98),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
                   } while (v159 > v160);
                   *v154 = v153;
                 }
-                v81 = v9 + 1;
-              } while (v9 + 1 != a2);
+                v81 = a1 + 1;
+              } while (a1 + 1 != a2);
             }
-            return result;
+            return;
           }
           if (a4 == 0) {
             if (v10 != a2) {
@@ -7582,22 +9003,406 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
                 v100 = v99;
                 if (v166 >= v99) {
                   v101 = (2 * (v99 & 0x3FFFFFFFFFFFFFFFLL)) | 1;
-                  v102 = &v9[v101];
+                  v102 = &a1[v101];
                   if (2 * v99 + 2 < v11) {
                     v103 = v102[1];
-                    GameRoutine_7c0910(*a3, *v102, 1);
+                    GameRoutine_7c0910_alt1(*a3, *v102),
+                        v104 = COERCE_AS(__typeof__(v104),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v106 = COERCE_AS(__typeof__(v106),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v109 = COERCE_AS(__typeof__(v109),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v111 = COERCE_AS(__typeof__(v111),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v113 = COERCE_AS(__typeof__(v113),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v115 = COERCE_AS(__typeof__(v115),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v119 = COERCE_AS(__typeof__(v119),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v121 = COERCE_AS(__typeof__(v121),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v131 = COERCE_AS(__typeof__(v131),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v133 = COERCE_AS(__typeof__(v133),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v140 = COERCE_AS(__typeof__(v140),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v142 = COERCE_AS(__typeof__(v142),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v145 = COERCE_AS(__typeof__(v145),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v147 = COERCE_AS(__typeof__(v147),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v15 = COERCE_AS(__typeof__(v15),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v150 = COERCE_AS(__typeof__(v150),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v152 = COERCE_AS(__typeof__(v152),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v158 = COERCE_AS(__typeof__(v158),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v160 = COERCE_AS(__typeof__(v160),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v17 = COERCE_AS(__typeof__(v17),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v20 = COERCE_AS(__typeof__(v20),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v22 = COERCE_AS(__typeof__(v22),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v26 = COERCE_AS(__typeof__(v26),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v28 = COERCE_AS(__typeof__(v28),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v30 = COERCE_AS(__typeof__(v30),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v32 = COERCE_AS(__typeof__(v32),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v37 = COERCE_AS(__typeof__(v37),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v39 = COERCE_AS(__typeof__(v39),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v41 = COERCE_AS(__typeof__(v41),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v43 = COERCE_AS(__typeof__(v43),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v49 = COERCE_AS(__typeof__(v49),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v51 = COERCE_AS(__typeof__(v51),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v53 = COERCE_AS(__typeof__(v53),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v55 = COERCE_AS(__typeof__(v55),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v58 = COERCE_AS(__typeof__(v58),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v60 = COERCE_AS(__typeof__(v60),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v63 = COERCE_AS(__typeof__(v63),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v65 = COERCE_AS(__typeof__(v65),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v68 = COERCE_AS(__typeof__(v68),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v70 = COERCE_AS(__typeof__(v70),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v72 = COERCE_AS(__typeof__(v72),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v74 = COERCE_AS(__typeof__(v74),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v77 = COERCE_AS(__typeof__(v77),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v79 = COERCE_AS(__typeof__(v79),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v89 = COERCE_AS(__typeof__(v89),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v91 = COERCE_AS(__typeof__(v91),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v96 = COERCE_AS(__typeof__(v96),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v98 = COERCE_AS(__typeof__(v98),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
                     v105 = v104;
-                    GameRoutine_7c0910(*a3, v103, 1);
+                    GameRoutine_7c0910_alt1(*a3, v103),
+                        v104 = COERCE_AS(__typeof__(v104),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v106 = COERCE_AS(__typeof__(v106),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v109 = COERCE_AS(__typeof__(v109),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v111 = COERCE_AS(__typeof__(v111),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v113 = COERCE_AS(__typeof__(v113),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v115 = COERCE_AS(__typeof__(v115),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v119 = COERCE_AS(__typeof__(v119),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v121 = COERCE_AS(__typeof__(v121),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v131 = COERCE_AS(__typeof__(v131),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v133 = COERCE_AS(__typeof__(v133),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v140 = COERCE_AS(__typeof__(v140),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v142 = COERCE_AS(__typeof__(v142),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v145 = COERCE_AS(__typeof__(v145),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v147 = COERCE_AS(__typeof__(v147),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v15 = COERCE_AS(__typeof__(v15),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v150 = COERCE_AS(__typeof__(v150),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v152 = COERCE_AS(__typeof__(v152),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v158 = COERCE_AS(__typeof__(v158),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v160 = COERCE_AS(__typeof__(v160),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v17 = COERCE_AS(__typeof__(v17),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v20 = COERCE_AS(__typeof__(v20),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v22 = COERCE_AS(__typeof__(v22),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v26 = COERCE_AS(__typeof__(v26),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v28 = COERCE_AS(__typeof__(v28),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v30 = COERCE_AS(__typeof__(v30),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v32 = COERCE_AS(__typeof__(v32),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v37 = COERCE_AS(__typeof__(v37),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v39 = COERCE_AS(__typeof__(v39),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v41 = COERCE_AS(__typeof__(v41),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v43 = COERCE_AS(__typeof__(v43),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v49 = COERCE_AS(__typeof__(v49),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v51 = COERCE_AS(__typeof__(v51),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v53 = COERCE_AS(__typeof__(v53),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v55 = COERCE_AS(__typeof__(v55),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v58 = COERCE_AS(__typeof__(v58),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v60 = COERCE_AS(__typeof__(v60),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v63 = COERCE_AS(__typeof__(v63),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v65 = COERCE_AS(__typeof__(v65),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v68 = COERCE_AS(__typeof__(v68),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v70 = COERCE_AS(__typeof__(v70),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v72 = COERCE_AS(__typeof__(v72),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v74 = COERCE_AS(__typeof__(v74),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v77 = COERCE_AS(__typeof__(v77),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v79 = COERCE_AS(__typeof__(v79),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v89 = COERCE_AS(__typeof__(v89),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v91 = COERCE_AS(__typeof__(v91),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v96 = COERCE_AS(__typeof__(v96),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v98 = COERCE_AS(__typeof__(v98),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
                     if (v105 > v106) {
                       ++v102;
                       v101 = 2 * v100 + 2;
                     }
                   }
-                  v107 = &v9[v100];
+                  v107 = &a1[v100];
                   v108 = *v107;
-                  GameRoutine_7c0910(*a3, *v102, 1);
+                  GameRoutine_7c0910_alt1(*a3, *v102),
+                      v104 = COERCE_AS(__typeof__(v104),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v106 = COERCE_AS(__typeof__(v106),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v109 = COERCE_AS(__typeof__(v109),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v111 = COERCE_AS(__typeof__(v111),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v113 = COERCE_AS(__typeof__(v113),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v115 = COERCE_AS(__typeof__(v115),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v119 = COERCE_AS(__typeof__(v119),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v121 = COERCE_AS(__typeof__(v121),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v131 = COERCE_AS(__typeof__(v131),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v133 = COERCE_AS(__typeof__(v133),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v140 = COERCE_AS(__typeof__(v140),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v142 = COERCE_AS(__typeof__(v142),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v145 = COERCE_AS(__typeof__(v145),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v147 = COERCE_AS(__typeof__(v147),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v15 = COERCE_AS(__typeof__(v15),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v150 = COERCE_AS(__typeof__(v150),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v152 = COERCE_AS(__typeof__(v152),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v158 = COERCE_AS(__typeof__(v158),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v160 = COERCE_AS(__typeof__(v160),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v17 = COERCE_AS(__typeof__(v17),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v20 = COERCE_AS(__typeof__(v20),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v22 = COERCE_AS(__typeof__(v22),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v26 = COERCE_AS(__typeof__(v26),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v28 = COERCE_AS(__typeof__(v28),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v30 = COERCE_AS(__typeof__(v30),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v32 = COERCE_AS(__typeof__(v32),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v37 = COERCE_AS(__typeof__(v37),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v39 = COERCE_AS(__typeof__(v39),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v41 = COERCE_AS(__typeof__(v41),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v43 = COERCE_AS(__typeof__(v43),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v49 = COERCE_AS(__typeof__(v49),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v51 = COERCE_AS(__typeof__(v51),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v53 = COERCE_AS(__typeof__(v53),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v55 = COERCE_AS(__typeof__(v55),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v58 = COERCE_AS(__typeof__(v58),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v60 = COERCE_AS(__typeof__(v60),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v63 = COERCE_AS(__typeof__(v63),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v65 = COERCE_AS(__typeof__(v65),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v68 = COERCE_AS(__typeof__(v68),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v70 = COERCE_AS(__typeof__(v70),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v72 = COERCE_AS(__typeof__(v72),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v74 = COERCE_AS(__typeof__(v74),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v77 = COERCE_AS(__typeof__(v77),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v79 = COERCE_AS(__typeof__(v79),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v89 = COERCE_AS(__typeof__(v89),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v91 = COERCE_AS(__typeof__(v91),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v96 = COERCE_AS(__typeof__(v96),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v98 = COERCE_AS(__typeof__(v98),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
                   v110 = v109;
-                  result = GameRoutine_7c0910(*a3, v108, 1);
+                  GameRoutine_7c0910_alt1(*a3, v108),
+                      v104 = COERCE_AS(__typeof__(v104),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v106 = COERCE_AS(__typeof__(v106),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v109 = COERCE_AS(__typeof__(v109),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v111 = COERCE_AS(__typeof__(v111),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v113 = COERCE_AS(__typeof__(v113),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v115 = COERCE_AS(__typeof__(v115),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v119 = COERCE_AS(__typeof__(v119),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v121 = COERCE_AS(__typeof__(v121),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v131 = COERCE_AS(__typeof__(v131),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v133 = COERCE_AS(__typeof__(v133),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v140 = COERCE_AS(__typeof__(v140),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v142 = COERCE_AS(__typeof__(v142),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v145 = COERCE_AS(__typeof__(v145),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v147 = COERCE_AS(__typeof__(v147),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v15 = COERCE_AS(__typeof__(v15),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v150 = COERCE_AS(__typeof__(v150),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v152 = COERCE_AS(__typeof__(v152),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v158 = COERCE_AS(__typeof__(v158),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v160 = COERCE_AS(__typeof__(v160),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v17 = COERCE_AS(__typeof__(v17),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v20 = COERCE_AS(__typeof__(v20),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v22 = COERCE_AS(__typeof__(v22),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v26 = COERCE_AS(__typeof__(v26),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v28 = COERCE_AS(__typeof__(v28),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v30 = COERCE_AS(__typeof__(v30),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v32 = COERCE_AS(__typeof__(v32),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v37 = COERCE_AS(__typeof__(v37),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v39 = COERCE_AS(__typeof__(v39),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v41 = COERCE_AS(__typeof__(v41),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v43 = COERCE_AS(__typeof__(v43),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v49 = COERCE_AS(__typeof__(v49),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v51 = COERCE_AS(__typeof__(v51),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v53 = COERCE_AS(__typeof__(v53),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v55 = COERCE_AS(__typeof__(v55),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v58 = COERCE_AS(__typeof__(v58),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v60 = COERCE_AS(__typeof__(v60),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v63 = COERCE_AS(__typeof__(v63),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v65 = COERCE_AS(__typeof__(v65),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v68 = COERCE_AS(__typeof__(v68),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v70 = COERCE_AS(__typeof__(v70),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v72 = COERCE_AS(__typeof__(v72),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v74 = COERCE_AS(__typeof__(v74),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v77 = COERCE_AS(__typeof__(v77),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v79 = COERCE_AS(__typeof__(v79),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v89 = COERCE_AS(__typeof__(v89),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v91 = COERCE_AS(__typeof__(v91),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v96 = COERCE_AS(__typeof__(v96),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v98 = COERCE_AS(__typeof__(v98),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
                   if (v110 <= v111) {
                     v112 = *v107;
                     do {
@@ -7607,21 +9412,441 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
                         break;
                       }
                       v117 = 2 * v101 + 2;
-                      v102 = &v9[(2 * v101) | 1];
+                      v102 = &a1[(2 * v101) | 1];
                       v101 = (2 * v101) | 1;
                       if (v117 < v11) {
                         v118 = v102[1];
-                        GameRoutine_7c0910(*a3, *v102, 1);
+                        GameRoutine_7c0910_alt1(*a3, *v102),
+                            v104 =
+                                COERCE_AS(__typeof__(v104),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v106 =
+                                COERCE_AS(__typeof__(v106),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v109 =
+                                COERCE_AS(__typeof__(v109),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v111 =
+                                COERCE_AS(__typeof__(v111),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v113 =
+                                COERCE_AS(__typeof__(v113),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v115 =
+                                COERCE_AS(__typeof__(v115),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v119 =
+                                COERCE_AS(__typeof__(v119),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v121 =
+                                COERCE_AS(__typeof__(v121),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v131 =
+                                COERCE_AS(__typeof__(v131),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v133 =
+                                COERCE_AS(__typeof__(v133),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v140 =
+                                COERCE_AS(__typeof__(v140),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v142 =
+                                COERCE_AS(__typeof__(v142),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v145 =
+                                COERCE_AS(__typeof__(v145),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v147 =
+                                COERCE_AS(__typeof__(v147),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v15 = COERCE_AS(__typeof__(v15),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v150 =
+                                COERCE_AS(__typeof__(v150),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v152 =
+                                COERCE_AS(__typeof__(v152),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v158 =
+                                COERCE_AS(__typeof__(v158),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v160 =
+                                COERCE_AS(__typeof__(v160),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v17 = COERCE_AS(__typeof__(v17),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v20 = COERCE_AS(__typeof__(v20),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v22 = COERCE_AS(__typeof__(v22),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v26 = COERCE_AS(__typeof__(v26),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v28 = COERCE_AS(__typeof__(v28),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v30 = COERCE_AS(__typeof__(v30),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v32 = COERCE_AS(__typeof__(v32),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v37 = COERCE_AS(__typeof__(v37),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v39 = COERCE_AS(__typeof__(v39),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v41 = COERCE_AS(__typeof__(v41),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v43 = COERCE_AS(__typeof__(v43),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v49 = COERCE_AS(__typeof__(v49),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v51 = COERCE_AS(__typeof__(v51),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v53 = COERCE_AS(__typeof__(v53),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v55 = COERCE_AS(__typeof__(v55),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v58 = COERCE_AS(__typeof__(v58),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v60 = COERCE_AS(__typeof__(v60),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v63 = COERCE_AS(__typeof__(v63),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v65 = COERCE_AS(__typeof__(v65),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v68 = COERCE_AS(__typeof__(v68),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v70 = COERCE_AS(__typeof__(v70),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v72 = COERCE_AS(__typeof__(v72),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v74 = COERCE_AS(__typeof__(v74),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v77 = COERCE_AS(__typeof__(v77),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v79 = COERCE_AS(__typeof__(v79),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v89 = COERCE_AS(__typeof__(v89),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v91 = COERCE_AS(__typeof__(v91),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v96 = COERCE_AS(__typeof__(v96),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v98 = COERCE_AS(__typeof__(v98),
+                                            PSEUDO_REGISTER(float, "s0", "=w"));
                         v120 = v119;
-                        GameRoutine_7c0910(*a3, v118, 1);
+                        GameRoutine_7c0910_alt1(*a3, v118),
+                            v104 =
+                                COERCE_AS(__typeof__(v104),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v106 =
+                                COERCE_AS(__typeof__(v106),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v109 =
+                                COERCE_AS(__typeof__(v109),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v111 =
+                                COERCE_AS(__typeof__(v111),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v113 =
+                                COERCE_AS(__typeof__(v113),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v115 =
+                                COERCE_AS(__typeof__(v115),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v119 =
+                                COERCE_AS(__typeof__(v119),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v121 =
+                                COERCE_AS(__typeof__(v121),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v131 =
+                                COERCE_AS(__typeof__(v131),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v133 =
+                                COERCE_AS(__typeof__(v133),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v140 =
+                                COERCE_AS(__typeof__(v140),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v142 =
+                                COERCE_AS(__typeof__(v142),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v145 =
+                                COERCE_AS(__typeof__(v145),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v147 =
+                                COERCE_AS(__typeof__(v147),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v15 = COERCE_AS(__typeof__(v15),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v150 =
+                                COERCE_AS(__typeof__(v150),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v152 =
+                                COERCE_AS(__typeof__(v152),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v158 =
+                                COERCE_AS(__typeof__(v158),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v160 =
+                                COERCE_AS(__typeof__(v160),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v17 = COERCE_AS(__typeof__(v17),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v20 = COERCE_AS(__typeof__(v20),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v22 = COERCE_AS(__typeof__(v22),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v26 = COERCE_AS(__typeof__(v26),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v28 = COERCE_AS(__typeof__(v28),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v30 = COERCE_AS(__typeof__(v30),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v32 = COERCE_AS(__typeof__(v32),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v37 = COERCE_AS(__typeof__(v37),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v39 = COERCE_AS(__typeof__(v39),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v41 = COERCE_AS(__typeof__(v41),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v43 = COERCE_AS(__typeof__(v43),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v49 = COERCE_AS(__typeof__(v49),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v51 = COERCE_AS(__typeof__(v51),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v53 = COERCE_AS(__typeof__(v53),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v55 = COERCE_AS(__typeof__(v55),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v58 = COERCE_AS(__typeof__(v58),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v60 = COERCE_AS(__typeof__(v60),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v63 = COERCE_AS(__typeof__(v63),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v65 = COERCE_AS(__typeof__(v65),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v68 = COERCE_AS(__typeof__(v68),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v70 = COERCE_AS(__typeof__(v70),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v72 = COERCE_AS(__typeof__(v72),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v74 = COERCE_AS(__typeof__(v74),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v77 = COERCE_AS(__typeof__(v77),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v79 = COERCE_AS(__typeof__(v79),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v89 = COERCE_AS(__typeof__(v89),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v91 = COERCE_AS(__typeof__(v91),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v96 = COERCE_AS(__typeof__(v96),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v98 = COERCE_AS(__typeof__(v98),
+                                            PSEUDO_REGISTER(float, "s0", "=w"));
                         if (v120 > v121) {
                           ++v102;
                           v101 = v117;
                         }
                       }
-                      GameRoutine_7c0910(*a3, *v102, 1);
+                      GameRoutine_7c0910_alt1(*a3, *v102),
+                          v104 = COERCE_AS(__typeof__(v104),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v106 = COERCE_AS(__typeof__(v106),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v109 = COERCE_AS(__typeof__(v109),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v111 = COERCE_AS(__typeof__(v111),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v113 = COERCE_AS(__typeof__(v113),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v115 = COERCE_AS(__typeof__(v115),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v119 = COERCE_AS(__typeof__(v119),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v121 = COERCE_AS(__typeof__(v121),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v131 = COERCE_AS(__typeof__(v131),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v133 = COERCE_AS(__typeof__(v133),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v140 = COERCE_AS(__typeof__(v140),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v142 = COERCE_AS(__typeof__(v142),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v145 = COERCE_AS(__typeof__(v145),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v147 = COERCE_AS(__typeof__(v147),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v15 = COERCE_AS(__typeof__(v15),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v150 = COERCE_AS(__typeof__(v150),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v152 = COERCE_AS(__typeof__(v152),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v158 = COERCE_AS(__typeof__(v158),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v160 = COERCE_AS(__typeof__(v160),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v17 = COERCE_AS(__typeof__(v17),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v20 = COERCE_AS(__typeof__(v20),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v22 = COERCE_AS(__typeof__(v22),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v26 = COERCE_AS(__typeof__(v26),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v28 = COERCE_AS(__typeof__(v28),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v30 = COERCE_AS(__typeof__(v30),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v32 = COERCE_AS(__typeof__(v32),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v37 = COERCE_AS(__typeof__(v37),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v39 = COERCE_AS(__typeof__(v39),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v41 = COERCE_AS(__typeof__(v41),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v43 = COERCE_AS(__typeof__(v43),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v49 = COERCE_AS(__typeof__(v49),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v51 = COERCE_AS(__typeof__(v51),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v53 = COERCE_AS(__typeof__(v53),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v55 = COERCE_AS(__typeof__(v55),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v58 = COERCE_AS(__typeof__(v58),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v60 = COERCE_AS(__typeof__(v60),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v63 = COERCE_AS(__typeof__(v63),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v65 = COERCE_AS(__typeof__(v65),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v68 = COERCE_AS(__typeof__(v68),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v70 = COERCE_AS(__typeof__(v70),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v72 = COERCE_AS(__typeof__(v72),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v74 = COERCE_AS(__typeof__(v74),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v77 = COERCE_AS(__typeof__(v77),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v79 = COERCE_AS(__typeof__(v79),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v89 = COERCE_AS(__typeof__(v89),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v91 = COERCE_AS(__typeof__(v91),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v96 = COERCE_AS(__typeof__(v96),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v98 = COERCE_AS(__typeof__(v98),
+                                          PSEUDO_REGISTER(float, "s0", "=w"));
                       v114 = v113;
-                      result = GameRoutine_7c0910(*a3, v112, 1);
+                      GameRoutine_7c0910_alt1(*a3, v112),
+                          v104 = COERCE_AS(__typeof__(v104),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v106 = COERCE_AS(__typeof__(v106),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v109 = COERCE_AS(__typeof__(v109),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v111 = COERCE_AS(__typeof__(v111),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v113 = COERCE_AS(__typeof__(v113),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v115 = COERCE_AS(__typeof__(v115),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v119 = COERCE_AS(__typeof__(v119),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v121 = COERCE_AS(__typeof__(v121),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v131 = COERCE_AS(__typeof__(v131),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v133 = COERCE_AS(__typeof__(v133),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v140 = COERCE_AS(__typeof__(v140),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v142 = COERCE_AS(__typeof__(v142),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v145 = COERCE_AS(__typeof__(v145),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v147 = COERCE_AS(__typeof__(v147),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v15 = COERCE_AS(__typeof__(v15),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v150 = COERCE_AS(__typeof__(v150),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v152 = COERCE_AS(__typeof__(v152),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v158 = COERCE_AS(__typeof__(v158),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v160 = COERCE_AS(__typeof__(v160),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v17 = COERCE_AS(__typeof__(v17),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v20 = COERCE_AS(__typeof__(v20),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v22 = COERCE_AS(__typeof__(v22),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v26 = COERCE_AS(__typeof__(v26),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v28 = COERCE_AS(__typeof__(v28),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v30 = COERCE_AS(__typeof__(v30),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v32 = COERCE_AS(__typeof__(v32),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v37 = COERCE_AS(__typeof__(v37),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v39 = COERCE_AS(__typeof__(v39),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v41 = COERCE_AS(__typeof__(v41),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v43 = COERCE_AS(__typeof__(v43),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v49 = COERCE_AS(__typeof__(v49),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v51 = COERCE_AS(__typeof__(v51),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v53 = COERCE_AS(__typeof__(v53),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v55 = COERCE_AS(__typeof__(v55),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v58 = COERCE_AS(__typeof__(v58),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v60 = COERCE_AS(__typeof__(v60),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v63 = COERCE_AS(__typeof__(v63),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v65 = COERCE_AS(__typeof__(v65),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v68 = COERCE_AS(__typeof__(v68),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v70 = COERCE_AS(__typeof__(v70),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v72 = COERCE_AS(__typeof__(v72),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v74 = COERCE_AS(__typeof__(v74),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v77 = COERCE_AS(__typeof__(v77),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v79 = COERCE_AS(__typeof__(v79),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v89 = COERCE_AS(__typeof__(v89),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v91 = COERCE_AS(__typeof__(v91),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v96 = COERCE_AS(__typeof__(v96),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v98 = COERCE_AS(__typeof__(v98),
+                                          PSEUDO_REGISTER(float, "s0", "=w"));
                       v107 = v116;
                     } while (v114 <= v115);
                     *v116 = v112;
@@ -7633,8 +9858,8 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
               do {
                 v164 = v122;
                 v124 = 0;
-                v125 = v9;
-                v167 = *v9;
+                v125 = a1;
+                v167 = *a1;
                 do {
                   v126 = &v125[v124];
                   v127 = v125;
@@ -7644,9 +9869,201 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
                   if (v128 < v11) {
                     v130 = v126[2];
                     v129 = v126 + 2;
-                    GameRoutine_7c0910(*a3, *(v129 - 1), 1);
+                    GameRoutine_7c0910_alt1(*a3, *(v129 - 1)),
+                        v104 = COERCE_AS(__typeof__(v104),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v106 = COERCE_AS(__typeof__(v106),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v109 = COERCE_AS(__typeof__(v109),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v111 = COERCE_AS(__typeof__(v111),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v113 = COERCE_AS(__typeof__(v113),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v115 = COERCE_AS(__typeof__(v115),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v119 = COERCE_AS(__typeof__(v119),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v121 = COERCE_AS(__typeof__(v121),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v131 = COERCE_AS(__typeof__(v131),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v133 = COERCE_AS(__typeof__(v133),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v140 = COERCE_AS(__typeof__(v140),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v142 = COERCE_AS(__typeof__(v142),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v145 = COERCE_AS(__typeof__(v145),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v147 = COERCE_AS(__typeof__(v147),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v15 = COERCE_AS(__typeof__(v15),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v150 = COERCE_AS(__typeof__(v150),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v152 = COERCE_AS(__typeof__(v152),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v158 = COERCE_AS(__typeof__(v158),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v160 = COERCE_AS(__typeof__(v160),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v17 = COERCE_AS(__typeof__(v17),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v20 = COERCE_AS(__typeof__(v20),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v22 = COERCE_AS(__typeof__(v22),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v26 = COERCE_AS(__typeof__(v26),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v28 = COERCE_AS(__typeof__(v28),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v30 = COERCE_AS(__typeof__(v30),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v32 = COERCE_AS(__typeof__(v32),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v37 = COERCE_AS(__typeof__(v37),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v39 = COERCE_AS(__typeof__(v39),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v41 = COERCE_AS(__typeof__(v41),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v43 = COERCE_AS(__typeof__(v43),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v49 = COERCE_AS(__typeof__(v49),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v51 = COERCE_AS(__typeof__(v51),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v53 = COERCE_AS(__typeof__(v53),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v55 = COERCE_AS(__typeof__(v55),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v58 = COERCE_AS(__typeof__(v58),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v60 = COERCE_AS(__typeof__(v60),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v63 = COERCE_AS(__typeof__(v63),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v65 = COERCE_AS(__typeof__(v65),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v68 = COERCE_AS(__typeof__(v68),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v70 = COERCE_AS(__typeof__(v70),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v72 = COERCE_AS(__typeof__(v72),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v74 = COERCE_AS(__typeof__(v74),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v77 = COERCE_AS(__typeof__(v77),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v79 = COERCE_AS(__typeof__(v79),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v89 = COERCE_AS(__typeof__(v89),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v91 = COERCE_AS(__typeof__(v91),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v96 = COERCE_AS(__typeof__(v96),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v98 = COERCE_AS(__typeof__(v98),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
                     v132 = v131;
-                    result = GameRoutine_7c0910(*a3, v130, 1);
+                    GameRoutine_7c0910_alt1(*a3, v130),
+                        v104 = COERCE_AS(__typeof__(v104),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v106 = COERCE_AS(__typeof__(v106),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v109 = COERCE_AS(__typeof__(v109),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v111 = COERCE_AS(__typeof__(v111),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v113 = COERCE_AS(__typeof__(v113),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v115 = COERCE_AS(__typeof__(v115),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v119 = COERCE_AS(__typeof__(v119),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v121 = COERCE_AS(__typeof__(v121),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v131 = COERCE_AS(__typeof__(v131),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v133 = COERCE_AS(__typeof__(v133),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v140 = COERCE_AS(__typeof__(v140),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v142 = COERCE_AS(__typeof__(v142),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v145 = COERCE_AS(__typeof__(v145),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v147 = COERCE_AS(__typeof__(v147),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v15 = COERCE_AS(__typeof__(v15),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v150 = COERCE_AS(__typeof__(v150),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v152 = COERCE_AS(__typeof__(v152),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v158 = COERCE_AS(__typeof__(v158),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v160 = COERCE_AS(__typeof__(v160),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v17 = COERCE_AS(__typeof__(v17),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v20 = COERCE_AS(__typeof__(v20),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v22 = COERCE_AS(__typeof__(v22),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v26 = COERCE_AS(__typeof__(v26),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v28 = COERCE_AS(__typeof__(v28),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v30 = COERCE_AS(__typeof__(v30),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v32 = COERCE_AS(__typeof__(v32),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v37 = COERCE_AS(__typeof__(v37),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v39 = COERCE_AS(__typeof__(v39),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v41 = COERCE_AS(__typeof__(v41),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v43 = COERCE_AS(__typeof__(v43),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v49 = COERCE_AS(__typeof__(v49),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v51 = COERCE_AS(__typeof__(v51),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v53 = COERCE_AS(__typeof__(v53),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v55 = COERCE_AS(__typeof__(v55),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v58 = COERCE_AS(__typeof__(v58),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v60 = COERCE_AS(__typeof__(v60),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v63 = COERCE_AS(__typeof__(v63),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v65 = COERCE_AS(__typeof__(v65),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v68 = COERCE_AS(__typeof__(v68),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v70 = COERCE_AS(__typeof__(v70),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v72 = COERCE_AS(__typeof__(v72),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v74 = COERCE_AS(__typeof__(v74),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v77 = COERCE_AS(__typeof__(v77),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v79 = COERCE_AS(__typeof__(v79),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v89 = COERCE_AS(__typeof__(v89),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v91 = COERCE_AS(__typeof__(v91),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v96 = COERCE_AS(__typeof__(v96),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v98 = COERCE_AS(__typeof__(v98),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
                     if (v132 > v133) {
                       v125 = v129;
                       v124 = v128;
@@ -7663,16 +10080,208 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
                   v122 = v164 - 1;
                   *v125 = *v134;
                   *v134 = v167;
-                  v135 = ((char*)v125 - (char*)v9 + 8) >> 3;
+                  v135 = ((char*)v125 - (char*)a1 + 8) >> 3;
                   v123 = v135 < 2;
                   v136 = v135 - 2;
                   if (!v123) {
                     v137 = v136 >> 1;
                     v138 = *v125;
-                    v139 = &v9[v136 >> 1];
-                    GameRoutine_7c0910(*a3, *v139, 1);
+                    v139 = &a1[v136 >> 1];
+                    GameRoutine_7c0910_alt1(*a3, *v139),
+                        v104 = COERCE_AS(__typeof__(v104),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v106 = COERCE_AS(__typeof__(v106),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v109 = COERCE_AS(__typeof__(v109),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v111 = COERCE_AS(__typeof__(v111),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v113 = COERCE_AS(__typeof__(v113),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v115 = COERCE_AS(__typeof__(v115),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v119 = COERCE_AS(__typeof__(v119),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v121 = COERCE_AS(__typeof__(v121),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v131 = COERCE_AS(__typeof__(v131),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v133 = COERCE_AS(__typeof__(v133),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v140 = COERCE_AS(__typeof__(v140),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v142 = COERCE_AS(__typeof__(v142),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v145 = COERCE_AS(__typeof__(v145),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v147 = COERCE_AS(__typeof__(v147),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v15 = COERCE_AS(__typeof__(v15),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v150 = COERCE_AS(__typeof__(v150),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v152 = COERCE_AS(__typeof__(v152),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v158 = COERCE_AS(__typeof__(v158),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v160 = COERCE_AS(__typeof__(v160),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v17 = COERCE_AS(__typeof__(v17),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v20 = COERCE_AS(__typeof__(v20),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v22 = COERCE_AS(__typeof__(v22),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v26 = COERCE_AS(__typeof__(v26),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v28 = COERCE_AS(__typeof__(v28),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v30 = COERCE_AS(__typeof__(v30),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v32 = COERCE_AS(__typeof__(v32),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v37 = COERCE_AS(__typeof__(v37),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v39 = COERCE_AS(__typeof__(v39),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v41 = COERCE_AS(__typeof__(v41),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v43 = COERCE_AS(__typeof__(v43),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v49 = COERCE_AS(__typeof__(v49),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v51 = COERCE_AS(__typeof__(v51),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v53 = COERCE_AS(__typeof__(v53),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v55 = COERCE_AS(__typeof__(v55),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v58 = COERCE_AS(__typeof__(v58),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v60 = COERCE_AS(__typeof__(v60),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v63 = COERCE_AS(__typeof__(v63),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v65 = COERCE_AS(__typeof__(v65),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v68 = COERCE_AS(__typeof__(v68),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v70 = COERCE_AS(__typeof__(v70),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v72 = COERCE_AS(__typeof__(v72),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v74 = COERCE_AS(__typeof__(v74),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v77 = COERCE_AS(__typeof__(v77),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v79 = COERCE_AS(__typeof__(v79),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v89 = COERCE_AS(__typeof__(v89),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v91 = COERCE_AS(__typeof__(v91),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v96 = COERCE_AS(__typeof__(v96),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v98 = COERCE_AS(__typeof__(v98),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
                     v141 = v140;
-                    result = GameRoutine_7c0910(*a3, v138, 1);
+                    GameRoutine_7c0910_alt1(*a3, v138),
+                        v104 = COERCE_AS(__typeof__(v104),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v106 = COERCE_AS(__typeof__(v106),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v109 = COERCE_AS(__typeof__(v109),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v111 = COERCE_AS(__typeof__(v111),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v113 = COERCE_AS(__typeof__(v113),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v115 = COERCE_AS(__typeof__(v115),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v119 = COERCE_AS(__typeof__(v119),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v121 = COERCE_AS(__typeof__(v121),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v131 = COERCE_AS(__typeof__(v131),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v133 = COERCE_AS(__typeof__(v133),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v140 = COERCE_AS(__typeof__(v140),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v142 = COERCE_AS(__typeof__(v142),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v145 = COERCE_AS(__typeof__(v145),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v147 = COERCE_AS(__typeof__(v147),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v15 = COERCE_AS(__typeof__(v15),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v150 = COERCE_AS(__typeof__(v150),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v152 = COERCE_AS(__typeof__(v152),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v158 = COERCE_AS(__typeof__(v158),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v160 = COERCE_AS(__typeof__(v160),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v17 = COERCE_AS(__typeof__(v17),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v20 = COERCE_AS(__typeof__(v20),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v22 = COERCE_AS(__typeof__(v22),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v26 = COERCE_AS(__typeof__(v26),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v28 = COERCE_AS(__typeof__(v28),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v30 = COERCE_AS(__typeof__(v30),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v32 = COERCE_AS(__typeof__(v32),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v37 = COERCE_AS(__typeof__(v37),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v39 = COERCE_AS(__typeof__(v39),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v41 = COERCE_AS(__typeof__(v41),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v43 = COERCE_AS(__typeof__(v43),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v49 = COERCE_AS(__typeof__(v49),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v51 = COERCE_AS(__typeof__(v51),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v53 = COERCE_AS(__typeof__(v53),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v55 = COERCE_AS(__typeof__(v55),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v58 = COERCE_AS(__typeof__(v58),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v60 = COERCE_AS(__typeof__(v60),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v63 = COERCE_AS(__typeof__(v63),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v65 = COERCE_AS(__typeof__(v65),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v68 = COERCE_AS(__typeof__(v68),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v70 = COERCE_AS(__typeof__(v70),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v72 = COERCE_AS(__typeof__(v72),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v74 = COERCE_AS(__typeof__(v74),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v77 = COERCE_AS(__typeof__(v77),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v79 = COERCE_AS(__typeof__(v79),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v89 = COERCE_AS(__typeof__(v89),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v91 = COERCE_AS(__typeof__(v91),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v96 = COERCE_AS(__typeof__(v96),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v98 = COERCE_AS(__typeof__(v98),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
                     if (v141 > v142) {
                       v143 = *v125;
                       do {
@@ -7682,10 +10291,238 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
                           break;
                         }
                         v137 = (v137 - 1) >> 1;
-                        v139 = &v9[v137];
-                        GameRoutine_7c0910(*a3, *v139, 1);
+                        v139 = &a1[v137];
+                        GameRoutine_7c0910_alt1(*a3, *v139),
+                            v104 =
+                                COERCE_AS(__typeof__(v104),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v106 =
+                                COERCE_AS(__typeof__(v106),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v109 =
+                                COERCE_AS(__typeof__(v109),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v111 =
+                                COERCE_AS(__typeof__(v111),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v113 =
+                                COERCE_AS(__typeof__(v113),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v115 =
+                                COERCE_AS(__typeof__(v115),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v119 =
+                                COERCE_AS(__typeof__(v119),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v121 =
+                                COERCE_AS(__typeof__(v121),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v131 =
+                                COERCE_AS(__typeof__(v131),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v133 =
+                                COERCE_AS(__typeof__(v133),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v140 =
+                                COERCE_AS(__typeof__(v140),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v142 =
+                                COERCE_AS(__typeof__(v142),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v145 =
+                                COERCE_AS(__typeof__(v145),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v147 =
+                                COERCE_AS(__typeof__(v147),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v15 = COERCE_AS(__typeof__(v15),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v150 =
+                                COERCE_AS(__typeof__(v150),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v152 =
+                                COERCE_AS(__typeof__(v152),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v158 =
+                                COERCE_AS(__typeof__(v158),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v160 =
+                                COERCE_AS(__typeof__(v160),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v17 = COERCE_AS(__typeof__(v17),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v20 = COERCE_AS(__typeof__(v20),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v22 = COERCE_AS(__typeof__(v22),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v26 = COERCE_AS(__typeof__(v26),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v28 = COERCE_AS(__typeof__(v28),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v30 = COERCE_AS(__typeof__(v30),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v32 = COERCE_AS(__typeof__(v32),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v37 = COERCE_AS(__typeof__(v37),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v39 = COERCE_AS(__typeof__(v39),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v41 = COERCE_AS(__typeof__(v41),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v43 = COERCE_AS(__typeof__(v43),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v49 = COERCE_AS(__typeof__(v49),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v51 = COERCE_AS(__typeof__(v51),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v53 = COERCE_AS(__typeof__(v53),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v55 = COERCE_AS(__typeof__(v55),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v58 = COERCE_AS(__typeof__(v58),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v60 = COERCE_AS(__typeof__(v60),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v63 = COERCE_AS(__typeof__(v63),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v65 = COERCE_AS(__typeof__(v65),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v68 = COERCE_AS(__typeof__(v68),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v70 = COERCE_AS(__typeof__(v70),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v72 = COERCE_AS(__typeof__(v72),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v74 = COERCE_AS(__typeof__(v74),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v77 = COERCE_AS(__typeof__(v77),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v79 = COERCE_AS(__typeof__(v79),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v89 = COERCE_AS(__typeof__(v89),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v91 = COERCE_AS(__typeof__(v91),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v96 = COERCE_AS(__typeof__(v96),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v98 = COERCE_AS(__typeof__(v98),
+                                            PSEUDO_REGISTER(float, "s0", "=w"));
                         v146 = v145;
-                        result = GameRoutine_7c0910(*a3, v143, 1);
+                        GameRoutine_7c0910_alt1(*a3, v143),
+                            v104 =
+                                COERCE_AS(__typeof__(v104),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v106 =
+                                COERCE_AS(__typeof__(v106),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v109 =
+                                COERCE_AS(__typeof__(v109),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v111 =
+                                COERCE_AS(__typeof__(v111),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v113 =
+                                COERCE_AS(__typeof__(v113),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v115 =
+                                COERCE_AS(__typeof__(v115),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v119 =
+                                COERCE_AS(__typeof__(v119),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v121 =
+                                COERCE_AS(__typeof__(v121),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v131 =
+                                COERCE_AS(__typeof__(v131),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v133 =
+                                COERCE_AS(__typeof__(v133),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v140 =
+                                COERCE_AS(__typeof__(v140),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v142 =
+                                COERCE_AS(__typeof__(v142),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v145 =
+                                COERCE_AS(__typeof__(v145),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v147 =
+                                COERCE_AS(__typeof__(v147),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v15 = COERCE_AS(__typeof__(v15),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v150 =
+                                COERCE_AS(__typeof__(v150),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v152 =
+                                COERCE_AS(__typeof__(v152),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v158 =
+                                COERCE_AS(__typeof__(v158),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v160 =
+                                COERCE_AS(__typeof__(v160),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v17 = COERCE_AS(__typeof__(v17),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v20 = COERCE_AS(__typeof__(v20),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v22 = COERCE_AS(__typeof__(v22),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v26 = COERCE_AS(__typeof__(v26),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v28 = COERCE_AS(__typeof__(v28),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v30 = COERCE_AS(__typeof__(v30),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v32 = COERCE_AS(__typeof__(v32),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v37 = COERCE_AS(__typeof__(v37),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v39 = COERCE_AS(__typeof__(v39),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v41 = COERCE_AS(__typeof__(v41),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v43 = COERCE_AS(__typeof__(v43),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v49 = COERCE_AS(__typeof__(v49),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v51 = COERCE_AS(__typeof__(v51),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v53 = COERCE_AS(__typeof__(v53),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v55 = COERCE_AS(__typeof__(v55),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v58 = COERCE_AS(__typeof__(v58),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v60 = COERCE_AS(__typeof__(v60),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v63 = COERCE_AS(__typeof__(v63),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v65 = COERCE_AS(__typeof__(v65),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v68 = COERCE_AS(__typeof__(v68),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v70 = COERCE_AS(__typeof__(v70),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v72 = COERCE_AS(__typeof__(v72),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v74 = COERCE_AS(__typeof__(v74),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v77 = COERCE_AS(__typeof__(v77),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v79 = COERCE_AS(__typeof__(v79),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v89 = COERCE_AS(__typeof__(v89),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v91 = COERCE_AS(__typeof__(v91),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v96 = COERCE_AS(__typeof__(v96),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v98 = COERCE_AS(__typeof__(v98),
+                                            PSEUDO_REGISTER(float, "s0", "=w"));
                         v125 = v144;
                       } while (v146 > v147);
                       *v144 = v143;
@@ -7695,39 +10532,807 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
                 v123 = v11-- <= 2;
               } while (!v123);
             }
-            return result;
+            return;
           }
           v12 = &v10[(unsigned __int64)v11 >> 1];
           if ((unsigned __int64)v11 < 0x81) {
             break;
           }
-          GameRoutine_75a370(v9, &v9[(unsigned __int64)v11 >> 1], v165, a3);
-          GameRoutine_75a370(v9 + 1, v12 - 1, v162, a3);
-          GameRoutine_75a370(v9 + 2, v12 + 1, v161, a3);
-          GameRoutine_75a370(v12 - 1, &v9[(unsigned __int64)v11 >> 1], v12 + 1,
-                             a3);
-          v13 = *v9;
-          *v9 = *v12;
+          game_map_75a370(a1, &a1[(unsigned __int64)v11 >> 1], v165, a3),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
+          game_map_75a370(a1 + 1, v12 - 1, v162, a3),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
+          game_map_75a370(a1 + 2, v12 + 1, v161, a3),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
+          game_map_75a370(v12 - 1, &a1[(unsigned __int64)v11 >> 1], v12 + 1,
+                          a3),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
+          v13 = *a1;
+          *a1 = *v12;
           *v12 = v13;
           --a4;
           if ((a5 & 1) != 0) {
-            goto LABEL_17;
+            goto LABEL_16;
           }
-        LABEL_16:
-          v14 = *v9;
-          GameRoutine_7c0910(*a3, *(v9 - 1), 1);
+        LABEL_15:
+          v14 = *a1;
+          GameRoutine_7c0910_alt1(*a3, *(a1 - 1)),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
           v16 = v15;
-          GameRoutine_7c0910(*a3, v14, 1);
+          GameRoutine_7c0910_alt1(*a3, v14),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
           if (v16 > v17) {
-            goto LABEL_17;
+            goto LABEL_16;
           }
-          v47 = *v9;
+          v47 = *a1;
           v48 = *v165;
-          GameRoutine_7c0910(*a3, *v9, 1);
+          GameRoutine_7c0910_alt1(*a3, *a1),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
           v50 = v49;
-          result = GameRoutine_7c0910(*a3, v48, 1);
+          GameRoutine_7c0910_alt1(*a3, v48),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
           if (v50 <= v51) {
-            v56 = v9 + 1;
+            v56 = a1 + 1;
             do {
               v10 = v56;
               if (v56 >= a2) {
@@ -7735,19 +11340,403 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
               }
               ++v56;
               v57 = *v10;
-              GameRoutine_7c0910(*a3, v47, 1);
+              GameRoutine_7c0910_alt1(*a3, v47),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
               v59 = v58;
-              result = GameRoutine_7c0910(*a3, v57, 1);
+              GameRoutine_7c0910_alt1(*a3, v57),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
             } while (v59 <= v60);
           }
           else {
-            v10 = v9;
+            v10 = a1;
             do {
               v52 = v10[1];
               ++v10;
-              GameRoutine_7c0910(*a3, v47, 1);
+              GameRoutine_7c0910_alt1(*a3, v47),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
               v54 = v53;
-              result = GameRoutine_7c0910(*a3, v52, 1);
+              GameRoutine_7c0910_alt1(*a3, v52),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
             } while (v54 <= v55);
           }
           v61 = a2;
@@ -7755,9 +11744,201 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
             v61 = a2;
             do {
               v62 = *--v61;
-              GameRoutine_7c0910(*a3, v47, 1);
+              GameRoutine_7c0910_alt1(*a3, v47),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
               v64 = v63;
-              result = GameRoutine_7c0910(*a3, v62, 1);
+              GameRoutine_7c0910_alt1(*a3, v62),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
             } while (v64 > v65);
           }
           while (v10 < v61) {
@@ -7767,39 +11948,711 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
             do {
               v67 = v10[1];
               ++v10;
-              GameRoutine_7c0910(*a3, v47, 1);
+              GameRoutine_7c0910_alt1(*a3, v47),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
               v69 = v68;
-              GameRoutine_7c0910(*a3, v67, 1);
+              GameRoutine_7c0910_alt1(*a3, v67),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
             } while (v69 <= v70);
             do {
               v71 = *--v61;
-              GameRoutine_7c0910(*a3, v47, 1);
+              GameRoutine_7c0910_alt1(*a3, v47),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
               v73 = v72;
-              result = GameRoutine_7c0910(*a3, v71, 1);
+              GameRoutine_7c0910_alt1(*a3, v71),
+                  v104 = COERCE_AS(__typeof__(v104),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v106 = COERCE_AS(__typeof__(v106),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v109 = COERCE_AS(__typeof__(v109),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v111 = COERCE_AS(__typeof__(v111),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v113 = COERCE_AS(__typeof__(v113),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v115 = COERCE_AS(__typeof__(v115),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v119 = COERCE_AS(__typeof__(v119),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v121 = COERCE_AS(__typeof__(v121),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v140 = COERCE_AS(__typeof__(v140),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v142 = COERCE_AS(__typeof__(v142),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v145 = COERCE_AS(__typeof__(v145),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v147 = COERCE_AS(__typeof__(v147),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v15 = COERCE_AS(__typeof__(v15),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v150 = COERCE_AS(__typeof__(v150),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v152 = COERCE_AS(__typeof__(v152),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v158 = COERCE_AS(__typeof__(v158),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v160 = COERCE_AS(__typeof__(v160),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v17 = COERCE_AS(__typeof__(v17),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v20 = COERCE_AS(__typeof__(v20),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v22 = COERCE_AS(__typeof__(v22),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v30 = COERCE_AS(__typeof__(v30),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v32 = COERCE_AS(__typeof__(v32),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v37 = COERCE_AS(__typeof__(v37),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v39 = COERCE_AS(__typeof__(v39),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v43 = COERCE_AS(__typeof__(v43),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v49 = COERCE_AS(__typeof__(v49),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v51 = COERCE_AS(__typeof__(v51),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v60 = COERCE_AS(__typeof__(v60),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v63 = COERCE_AS(__typeof__(v63),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v65 = COERCE_AS(__typeof__(v65),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v72 = COERCE_AS(__typeof__(v72),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v74 = COERCE_AS(__typeof__(v74),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v77 = COERCE_AS(__typeof__(v77),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v89 = COERCE_AS(__typeof__(v89),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v91 = COERCE_AS(__typeof__(v91),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v98 = COERCE_AS(__typeof__(v98),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
             } while (v73 > v74);
           }
           v75 = v10 - 1;
-          if (v9 != v10 - 1) {
-            *v9 = *v75;
+          if (a1 != v10 - 1) {
+            *a1 = *v75;
           }
           a5 = 0;
           *v75 = v47;
         }
-        GameRoutine_75a370(&v9[(unsigned __int64)v11 >> 1], v9, v165, a3);
+        game_map_75a370(&a1[(unsigned __int64)v11 >> 1], a1, v165, a3),
+            v104 =
+                COERCE_AS(__typeof__(v104), PSEUDO_REGISTER(float, "s0", "=w")),
+            v106 =
+                COERCE_AS(__typeof__(v106), PSEUDO_REGISTER(float, "s0", "=w")),
+            v109 =
+                COERCE_AS(__typeof__(v109), PSEUDO_REGISTER(float, "s0", "=w")),
+            v111 =
+                COERCE_AS(__typeof__(v111), PSEUDO_REGISTER(float, "s0", "=w")),
+            v113 =
+                COERCE_AS(__typeof__(v113), PSEUDO_REGISTER(float, "s0", "=w")),
+            v115 =
+                COERCE_AS(__typeof__(v115), PSEUDO_REGISTER(float, "s0", "=w")),
+            v119 =
+                COERCE_AS(__typeof__(v119), PSEUDO_REGISTER(float, "s0", "=w")),
+            v121 =
+                COERCE_AS(__typeof__(v121), PSEUDO_REGISTER(float, "s0", "=w")),
+            v131 =
+                COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(float, "s0", "=w")),
+            v133 =
+                COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(float, "s0", "=w")),
+            v140 =
+                COERCE_AS(__typeof__(v140), PSEUDO_REGISTER(float, "s0", "=w")),
+            v142 =
+                COERCE_AS(__typeof__(v142), PSEUDO_REGISTER(float, "s0", "=w")),
+            v145 =
+                COERCE_AS(__typeof__(v145), PSEUDO_REGISTER(float, "s0", "=w")),
+            v147 =
+                COERCE_AS(__typeof__(v147), PSEUDO_REGISTER(float, "s0", "=w")),
+            v15 =
+                COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+            v150 =
+                COERCE_AS(__typeof__(v150), PSEUDO_REGISTER(float, "s0", "=w")),
+            v152 =
+                COERCE_AS(__typeof__(v152), PSEUDO_REGISTER(float, "s0", "=w")),
+            v158 =
+                COERCE_AS(__typeof__(v158), PSEUDO_REGISTER(float, "s0", "=w")),
+            v160 =
+                COERCE_AS(__typeof__(v160), PSEUDO_REGISTER(float, "s0", "=w")),
+            v17 =
+                COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(float, "s0", "=w")),
+            v20 =
+                COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(float, "s0", "=w")),
+            v22 =
+                COERCE_AS(__typeof__(v22), PSEUDO_REGISTER(float, "s0", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(float, "s0", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v30 =
+                COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(float, "s0", "=w")),
+            v32 =
+                COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(float, "s0", "=w")),
+            v37 =
+                COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s0", "=w")),
+            v39 =
+                COERCE_AS(__typeof__(v39), PSEUDO_REGISTER(float, "s0", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(float, "s0", "=w")),
+            v43 =
+                COERCE_AS(__typeof__(v43), PSEUDO_REGISTER(float, "s0", "=w")),
+            v49 =
+                COERCE_AS(__typeof__(v49), PSEUDO_REGISTER(float, "s0", "=w")),
+            v51 =
+                COERCE_AS(__typeof__(v51), PSEUDO_REGISTER(float, "s0", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(float, "s0", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s0", "=w")),
+            v60 =
+                COERCE_AS(__typeof__(v60), PSEUDO_REGISTER(float, "s0", "=w")),
+            v63 =
+                COERCE_AS(__typeof__(v63), PSEUDO_REGISTER(float, "s0", "=w")),
+            v65 =
+                COERCE_AS(__typeof__(v65), PSEUDO_REGISTER(float, "s0", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(float, "s0", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v72 =
+                COERCE_AS(__typeof__(v72), PSEUDO_REGISTER(float, "s0", "=w")),
+            v74 =
+                COERCE_AS(__typeof__(v74), PSEUDO_REGISTER(float, "s0", "=w")),
+            v77 =
+                COERCE_AS(__typeof__(v77), PSEUDO_REGISTER(float, "s0", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(float, "s0", "=w")),
+            v89 =
+                COERCE_AS(__typeof__(v89), PSEUDO_REGISTER(float, "s0", "=w")),
+            v91 =
+                COERCE_AS(__typeof__(v91), PSEUDO_REGISTER(float, "s0", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v98 =
+                COERCE_AS(__typeof__(v98), PSEUDO_REGISTER(float, "s0", "=w"));
         --a4;
         if ((a5 & 1) == 0) {
-          goto LABEL_16;
+          goto LABEL_15;
         }
-      LABEL_17:
-        v18 = *v9;
+      LABEL_16:
+        v18 = *a1;
         v19 = 0;
         do {
-          GameRoutine_7c0910(*a3, v9[v19 + 1], 1);
+          GameRoutine_7c0910_alt1(*a3, a1[v19 + 1]),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
           v21 = v20;
-          GameRoutine_7c0910(*a3, v18, 1);
+          GameRoutine_7c0910_alt1(*a3, v18),
+              v104 = COERCE_AS(__typeof__(v104),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v106 = COERCE_AS(__typeof__(v106),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v109 = COERCE_AS(__typeof__(v109),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v111 = COERCE_AS(__typeof__(v111),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v113 = COERCE_AS(__typeof__(v113),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v115 = COERCE_AS(__typeof__(v115),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v119 = COERCE_AS(__typeof__(v119),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v121 = COERCE_AS(__typeof__(v121),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v140 = COERCE_AS(__typeof__(v140),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v142 = COERCE_AS(__typeof__(v142),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v145 = COERCE_AS(__typeof__(v145),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v147 = COERCE_AS(__typeof__(v147),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v150 = COERCE_AS(__typeof__(v150),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v152 = COERCE_AS(__typeof__(v152),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v158 = COERCE_AS(__typeof__(v158),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v160 = COERCE_AS(__typeof__(v160),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v17 = COERCE_AS(__typeof__(v17),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v20 = COERCE_AS(__typeof__(v20),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v22 = COERCE_AS(__typeof__(v22),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v30 = COERCE_AS(__typeof__(v30),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v32 = COERCE_AS(__typeof__(v32),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v39 = COERCE_AS(__typeof__(v39),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v43 = COERCE_AS(__typeof__(v43),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v49 = COERCE_AS(__typeof__(v49),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v51 = COERCE_AS(__typeof__(v51),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v60 = COERCE_AS(__typeof__(v60),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v63 = COERCE_AS(__typeof__(v63),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v65 = COERCE_AS(__typeof__(v65),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v72 = COERCE_AS(__typeof__(v72),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v74 = COERCE_AS(__typeof__(v74),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v77 = COERCE_AS(__typeof__(v77),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v89 = COERCE_AS(__typeof__(v89),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v91 = COERCE_AS(__typeof__(v91),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v98 = COERCE_AS(__typeof__(v98),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
           ++v19;
         } while (v21 > v22);
-        v23 = &v9[v19];
+        v23 = &a1[v19];
         v24 = a2;
         if (v19 == 1) {
           do {
@@ -7807,29 +12660,413 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
               break;
             }
             v29 = *--a2;
-            GameRoutine_7c0910(*a3, v29, 1);
+            GameRoutine_7c0910_alt1(*a3, v29),
+                v104 = COERCE_AS(__typeof__(v104),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v106 = COERCE_AS(__typeof__(v106),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v109 = COERCE_AS(__typeof__(v109),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v111 = COERCE_AS(__typeof__(v111),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v113 = COERCE_AS(__typeof__(v113),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v115 = COERCE_AS(__typeof__(v115),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v119 = COERCE_AS(__typeof__(v119),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v121 = COERCE_AS(__typeof__(v121),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v140 = COERCE_AS(__typeof__(v140),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v142 = COERCE_AS(__typeof__(v142),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v145 = COERCE_AS(__typeof__(v145),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v147 = COERCE_AS(__typeof__(v147),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v15 = COERCE_AS(__typeof__(v15),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v150 = COERCE_AS(__typeof__(v150),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v152 = COERCE_AS(__typeof__(v152),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v158 = COERCE_AS(__typeof__(v158),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v160 = COERCE_AS(__typeof__(v160),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v17 = COERCE_AS(__typeof__(v17),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v22 = COERCE_AS(__typeof__(v22),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v30 = COERCE_AS(__typeof__(v30),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v37 = COERCE_AS(__typeof__(v37),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v39 = COERCE_AS(__typeof__(v39),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v43 = COERCE_AS(__typeof__(v43),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v49 = COERCE_AS(__typeof__(v49),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v51 = COERCE_AS(__typeof__(v51),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v60 = COERCE_AS(__typeof__(v60),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v63 = COERCE_AS(__typeof__(v63),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v65 = COERCE_AS(__typeof__(v65),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v72 = COERCE_AS(__typeof__(v72),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v74 = COERCE_AS(__typeof__(v74),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v77 = COERCE_AS(__typeof__(v77),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v89 = COERCE_AS(__typeof__(v89),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v91 = COERCE_AS(__typeof__(v91),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v98 = COERCE_AS(__typeof__(v98),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
             v31 = v30;
-            GameRoutine_7c0910(*a3, v18, 1);
+            GameRoutine_7c0910_alt1(*a3, v18),
+                v104 = COERCE_AS(__typeof__(v104),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v106 = COERCE_AS(__typeof__(v106),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v109 = COERCE_AS(__typeof__(v109),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v111 = COERCE_AS(__typeof__(v111),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v113 = COERCE_AS(__typeof__(v113),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v115 = COERCE_AS(__typeof__(v115),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v119 = COERCE_AS(__typeof__(v119),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v121 = COERCE_AS(__typeof__(v121),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v140 = COERCE_AS(__typeof__(v140),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v142 = COERCE_AS(__typeof__(v142),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v145 = COERCE_AS(__typeof__(v145),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v147 = COERCE_AS(__typeof__(v147),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v15 = COERCE_AS(__typeof__(v15),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v150 = COERCE_AS(__typeof__(v150),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v152 = COERCE_AS(__typeof__(v152),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v158 = COERCE_AS(__typeof__(v158),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v160 = COERCE_AS(__typeof__(v160),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v17 = COERCE_AS(__typeof__(v17),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v22 = COERCE_AS(__typeof__(v22),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v30 = COERCE_AS(__typeof__(v30),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v37 = COERCE_AS(__typeof__(v37),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v39 = COERCE_AS(__typeof__(v39),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v43 = COERCE_AS(__typeof__(v43),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v49 = COERCE_AS(__typeof__(v49),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v51 = COERCE_AS(__typeof__(v51),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v60 = COERCE_AS(__typeof__(v60),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v63 = COERCE_AS(__typeof__(v63),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v65 = COERCE_AS(__typeof__(v65),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v72 = COERCE_AS(__typeof__(v72),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v74 = COERCE_AS(__typeof__(v74),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v77 = COERCE_AS(__typeof__(v77),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v89 = COERCE_AS(__typeof__(v89),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v91 = COERCE_AS(__typeof__(v91),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v98 = COERCE_AS(__typeof__(v98),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
           } while (v31 <= v32);
         }
         else {
           do {
             v25 = *--a2;
-            GameRoutine_7c0910(*a3, v25, 1);
+            GameRoutine_7c0910_alt1(*a3, v25),
+                v104 = COERCE_AS(__typeof__(v104),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v106 = COERCE_AS(__typeof__(v106),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v109 = COERCE_AS(__typeof__(v109),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v111 = COERCE_AS(__typeof__(v111),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v113 = COERCE_AS(__typeof__(v113),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v115 = COERCE_AS(__typeof__(v115),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v119 = COERCE_AS(__typeof__(v119),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v121 = COERCE_AS(__typeof__(v121),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v140 = COERCE_AS(__typeof__(v140),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v142 = COERCE_AS(__typeof__(v142),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v145 = COERCE_AS(__typeof__(v145),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v147 = COERCE_AS(__typeof__(v147),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v15 = COERCE_AS(__typeof__(v15),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v150 = COERCE_AS(__typeof__(v150),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v152 = COERCE_AS(__typeof__(v152),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v158 = COERCE_AS(__typeof__(v158),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v160 = COERCE_AS(__typeof__(v160),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v17 = COERCE_AS(__typeof__(v17),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v22 = COERCE_AS(__typeof__(v22),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v30 = COERCE_AS(__typeof__(v30),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v37 = COERCE_AS(__typeof__(v37),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v39 = COERCE_AS(__typeof__(v39),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v43 = COERCE_AS(__typeof__(v43),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v49 = COERCE_AS(__typeof__(v49),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v51 = COERCE_AS(__typeof__(v51),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v60 = COERCE_AS(__typeof__(v60),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v63 = COERCE_AS(__typeof__(v63),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v65 = COERCE_AS(__typeof__(v65),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v72 = COERCE_AS(__typeof__(v72),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v74 = COERCE_AS(__typeof__(v74),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v77 = COERCE_AS(__typeof__(v77),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v89 = COERCE_AS(__typeof__(v89),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v91 = COERCE_AS(__typeof__(v91),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v98 = COERCE_AS(__typeof__(v98),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
             v27 = v26;
-            GameRoutine_7c0910(*a3, v18, 1);
+            GameRoutine_7c0910_alt1(*a3, v18),
+                v104 = COERCE_AS(__typeof__(v104),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v106 = COERCE_AS(__typeof__(v106),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v109 = COERCE_AS(__typeof__(v109),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v111 = COERCE_AS(__typeof__(v111),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v113 = COERCE_AS(__typeof__(v113),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v115 = COERCE_AS(__typeof__(v115),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v119 = COERCE_AS(__typeof__(v119),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v121 = COERCE_AS(__typeof__(v121),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v140 = COERCE_AS(__typeof__(v140),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v142 = COERCE_AS(__typeof__(v142),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v145 = COERCE_AS(__typeof__(v145),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v147 = COERCE_AS(__typeof__(v147),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v15 = COERCE_AS(__typeof__(v15),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v150 = COERCE_AS(__typeof__(v150),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v152 = COERCE_AS(__typeof__(v152),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v158 = COERCE_AS(__typeof__(v158),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v160 = COERCE_AS(__typeof__(v160),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v17 = COERCE_AS(__typeof__(v17),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v22 = COERCE_AS(__typeof__(v22),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v30 = COERCE_AS(__typeof__(v30),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v37 = COERCE_AS(__typeof__(v37),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v39 = COERCE_AS(__typeof__(v39),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v43 = COERCE_AS(__typeof__(v43),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v49 = COERCE_AS(__typeof__(v49),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v51 = COERCE_AS(__typeof__(v51),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v60 = COERCE_AS(__typeof__(v60),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v63 = COERCE_AS(__typeof__(v63),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v65 = COERCE_AS(__typeof__(v65),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v72 = COERCE_AS(__typeof__(v72),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v74 = COERCE_AS(__typeof__(v74),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v77 = COERCE_AS(__typeof__(v77),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v89 = COERCE_AS(__typeof__(v89),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v91 = COERCE_AS(__typeof__(v91),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v98 = COERCE_AS(__typeof__(v98),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
           } while (v27 <= v28);
         }
         if (v23 >= a2) {
           v44 = v23 - 1;
-          if (v9 == v23 - 1) {
-            goto LABEL_34;
+          if (a1 == v23 - 1) {
+            goto LABEL_33;
           }
-        LABEL_33:
-          *v9 = *v44;
-          goto LABEL_34;
+        LABEL_32:
+          *a1 = *v44;
+          goto LABEL_33;
         }
-        v33 = &v9[v19];
+        v33 = &a1[v19];
         v34 = a2;
         do {
           v35 = *v33;
@@ -7838,48 +13075,575 @@ __int64 GameHr_759860(__int64 result, __int64* a2, _QWORD* a3, __int64 a4,
           do {
             v36 = v33[1];
             ++v33;
-            GameRoutine_7c0910(*a3, v36, 1);
+            GameRoutine_7c0910_alt1(*a3, v36),
+                v104 = COERCE_AS(__typeof__(v104),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v106 = COERCE_AS(__typeof__(v106),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v109 = COERCE_AS(__typeof__(v109),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v111 = COERCE_AS(__typeof__(v111),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v113 = COERCE_AS(__typeof__(v113),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v115 = COERCE_AS(__typeof__(v115),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v119 = COERCE_AS(__typeof__(v119),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v121 = COERCE_AS(__typeof__(v121),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v140 = COERCE_AS(__typeof__(v140),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v142 = COERCE_AS(__typeof__(v142),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v145 = COERCE_AS(__typeof__(v145),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v147 = COERCE_AS(__typeof__(v147),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v15 = COERCE_AS(__typeof__(v15),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v150 = COERCE_AS(__typeof__(v150),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v152 = COERCE_AS(__typeof__(v152),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v158 = COERCE_AS(__typeof__(v158),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v160 = COERCE_AS(__typeof__(v160),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v17 = COERCE_AS(__typeof__(v17),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v22 = COERCE_AS(__typeof__(v22),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v30 = COERCE_AS(__typeof__(v30),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v37 = COERCE_AS(__typeof__(v37),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v39 = COERCE_AS(__typeof__(v39),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v43 = COERCE_AS(__typeof__(v43),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v49 = COERCE_AS(__typeof__(v49),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v51 = COERCE_AS(__typeof__(v51),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v60 = COERCE_AS(__typeof__(v60),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v63 = COERCE_AS(__typeof__(v63),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v65 = COERCE_AS(__typeof__(v65),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v72 = COERCE_AS(__typeof__(v72),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v74 = COERCE_AS(__typeof__(v74),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v77 = COERCE_AS(__typeof__(v77),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v89 = COERCE_AS(__typeof__(v89),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v91 = COERCE_AS(__typeof__(v91),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v98 = COERCE_AS(__typeof__(v98),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
             v38 = v37;
-            GameRoutine_7c0910(*a3, v18, 1);
+            GameRoutine_7c0910_alt1(*a3, v18),
+                v104 = COERCE_AS(__typeof__(v104),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v106 = COERCE_AS(__typeof__(v106),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v109 = COERCE_AS(__typeof__(v109),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v111 = COERCE_AS(__typeof__(v111),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v113 = COERCE_AS(__typeof__(v113),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v115 = COERCE_AS(__typeof__(v115),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v119 = COERCE_AS(__typeof__(v119),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v121 = COERCE_AS(__typeof__(v121),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v140 = COERCE_AS(__typeof__(v140),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v142 = COERCE_AS(__typeof__(v142),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v145 = COERCE_AS(__typeof__(v145),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v147 = COERCE_AS(__typeof__(v147),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v15 = COERCE_AS(__typeof__(v15),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v150 = COERCE_AS(__typeof__(v150),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v152 = COERCE_AS(__typeof__(v152),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v158 = COERCE_AS(__typeof__(v158),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v160 = COERCE_AS(__typeof__(v160),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v17 = COERCE_AS(__typeof__(v17),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v22 = COERCE_AS(__typeof__(v22),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v30 = COERCE_AS(__typeof__(v30),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v37 = COERCE_AS(__typeof__(v37),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v39 = COERCE_AS(__typeof__(v39),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v43 = COERCE_AS(__typeof__(v43),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v49 = COERCE_AS(__typeof__(v49),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v51 = COERCE_AS(__typeof__(v51),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v60 = COERCE_AS(__typeof__(v60),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v63 = COERCE_AS(__typeof__(v63),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v65 = COERCE_AS(__typeof__(v65),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v72 = COERCE_AS(__typeof__(v72),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v74 = COERCE_AS(__typeof__(v74),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v77 = COERCE_AS(__typeof__(v77),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v89 = COERCE_AS(__typeof__(v89),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v91 = COERCE_AS(__typeof__(v91),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v98 = COERCE_AS(__typeof__(v98),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
           } while (v38 > v39);
           do {
             v40 = *--v34;
-            GameRoutine_7c0910(*a3, v40, 1);
+            GameRoutine_7c0910_alt1(*a3, v40),
+                v104 = COERCE_AS(__typeof__(v104),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v106 = COERCE_AS(__typeof__(v106),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v109 = COERCE_AS(__typeof__(v109),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v111 = COERCE_AS(__typeof__(v111),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v113 = COERCE_AS(__typeof__(v113),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v115 = COERCE_AS(__typeof__(v115),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v119 = COERCE_AS(__typeof__(v119),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v121 = COERCE_AS(__typeof__(v121),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v140 = COERCE_AS(__typeof__(v140),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v142 = COERCE_AS(__typeof__(v142),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v145 = COERCE_AS(__typeof__(v145),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v147 = COERCE_AS(__typeof__(v147),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v15 = COERCE_AS(__typeof__(v15),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v150 = COERCE_AS(__typeof__(v150),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v152 = COERCE_AS(__typeof__(v152),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v158 = COERCE_AS(__typeof__(v158),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v160 = COERCE_AS(__typeof__(v160),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v17 = COERCE_AS(__typeof__(v17),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v22 = COERCE_AS(__typeof__(v22),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v30 = COERCE_AS(__typeof__(v30),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v37 = COERCE_AS(__typeof__(v37),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v39 = COERCE_AS(__typeof__(v39),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v43 = COERCE_AS(__typeof__(v43),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v49 = COERCE_AS(__typeof__(v49),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v51 = COERCE_AS(__typeof__(v51),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v60 = COERCE_AS(__typeof__(v60),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v63 = COERCE_AS(__typeof__(v63),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v65 = COERCE_AS(__typeof__(v65),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v72 = COERCE_AS(__typeof__(v72),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v74 = COERCE_AS(__typeof__(v74),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v77 = COERCE_AS(__typeof__(v77),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v89 = COERCE_AS(__typeof__(v89),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v91 = COERCE_AS(__typeof__(v91),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v98 = COERCE_AS(__typeof__(v98),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
             v42 = v41;
-            GameRoutine_7c0910(*a3, v18, 1);
+            GameRoutine_7c0910_alt1(*a3, v18),
+                v104 = COERCE_AS(__typeof__(v104),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v106 = COERCE_AS(__typeof__(v106),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v109 = COERCE_AS(__typeof__(v109),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v111 = COERCE_AS(__typeof__(v111),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v113 = COERCE_AS(__typeof__(v113),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v115 = COERCE_AS(__typeof__(v115),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v119 = COERCE_AS(__typeof__(v119),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v121 = COERCE_AS(__typeof__(v121),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v140 = COERCE_AS(__typeof__(v140),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v142 = COERCE_AS(__typeof__(v142),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v145 = COERCE_AS(__typeof__(v145),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v147 = COERCE_AS(__typeof__(v147),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v15 = COERCE_AS(__typeof__(v15),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v150 = COERCE_AS(__typeof__(v150),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v152 = COERCE_AS(__typeof__(v152),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v158 = COERCE_AS(__typeof__(v158),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v160 = COERCE_AS(__typeof__(v160),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v17 = COERCE_AS(__typeof__(v17),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v20 = COERCE_AS(__typeof__(v20),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v22 = COERCE_AS(__typeof__(v22),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v30 = COERCE_AS(__typeof__(v30),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v32 = COERCE_AS(__typeof__(v32),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v37 = COERCE_AS(__typeof__(v37),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v39 = COERCE_AS(__typeof__(v39),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v43 = COERCE_AS(__typeof__(v43),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v49 = COERCE_AS(__typeof__(v49),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v51 = COERCE_AS(__typeof__(v51),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v60 = COERCE_AS(__typeof__(v60),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v63 = COERCE_AS(__typeof__(v63),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v65 = COERCE_AS(__typeof__(v65),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v72 = COERCE_AS(__typeof__(v72),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v74 = COERCE_AS(__typeof__(v74),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v77 = COERCE_AS(__typeof__(v77),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v89 = COERCE_AS(__typeof__(v89),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v91 = COERCE_AS(__typeof__(v91),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v98 = COERCE_AS(__typeof__(v98),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
           } while (v42 <= v43);
         } while (v33 < v34);
         v44 = v33 - 1;
-        if (v9 != v44) {
-          goto LABEL_33;
+        if (a1 != v44) {
+          goto LABEL_32;
         }
-      LABEL_34:
+      LABEL_33:
         *v44 = v18;
         v45 = v23 >= a2;
         a2 = v24;
         if (v45) {
           break;
         }
-      LABEL_38:
-        result = GameHr_759860(v9, v44, a3, a4, a5 & 1);
+      LABEL_37:
+        GameHr_759860(a1, v44, a3, a4, a5 & 1),
+            v104 =
+                COERCE_AS(__typeof__(v104), PSEUDO_REGISTER(float, "s0", "=w")),
+            v106 =
+                COERCE_AS(__typeof__(v106), PSEUDO_REGISTER(float, "s0", "=w")),
+            v109 =
+                COERCE_AS(__typeof__(v109), PSEUDO_REGISTER(float, "s0", "=w")),
+            v111 =
+                COERCE_AS(__typeof__(v111), PSEUDO_REGISTER(float, "s0", "=w")),
+            v113 =
+                COERCE_AS(__typeof__(v113), PSEUDO_REGISTER(float, "s0", "=w")),
+            v115 =
+                COERCE_AS(__typeof__(v115), PSEUDO_REGISTER(float, "s0", "=w")),
+            v119 =
+                COERCE_AS(__typeof__(v119), PSEUDO_REGISTER(float, "s0", "=w")),
+            v121 =
+                COERCE_AS(__typeof__(v121), PSEUDO_REGISTER(float, "s0", "=w")),
+            v131 =
+                COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(float, "s0", "=w")),
+            v133 =
+                COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(float, "s0", "=w")),
+            v140 =
+                COERCE_AS(__typeof__(v140), PSEUDO_REGISTER(float, "s0", "=w")),
+            v142 =
+                COERCE_AS(__typeof__(v142), PSEUDO_REGISTER(float, "s0", "=w")),
+            v145 =
+                COERCE_AS(__typeof__(v145), PSEUDO_REGISTER(float, "s0", "=w")),
+            v147 =
+                COERCE_AS(__typeof__(v147), PSEUDO_REGISTER(float, "s0", "=w")),
+            v15 =
+                COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+            v150 =
+                COERCE_AS(__typeof__(v150), PSEUDO_REGISTER(float, "s0", "=w")),
+            v152 =
+                COERCE_AS(__typeof__(v152), PSEUDO_REGISTER(float, "s0", "=w")),
+            v158 =
+                COERCE_AS(__typeof__(v158), PSEUDO_REGISTER(float, "s0", "=w")),
+            v160 =
+                COERCE_AS(__typeof__(v160), PSEUDO_REGISTER(float, "s0", "=w")),
+            v17 =
+                COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(float, "s0", "=w")),
+            v20 =
+                COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(float, "s0", "=w")),
+            v22 =
+                COERCE_AS(__typeof__(v22), PSEUDO_REGISTER(float, "s0", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(float, "s0", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v30 =
+                COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(float, "s0", "=w")),
+            v32 =
+                COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(float, "s0", "=w")),
+            v37 =
+                COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s0", "=w")),
+            v39 =
+                COERCE_AS(__typeof__(v39), PSEUDO_REGISTER(float, "s0", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(float, "s0", "=w")),
+            v43 =
+                COERCE_AS(__typeof__(v43), PSEUDO_REGISTER(float, "s0", "=w")),
+            v49 =
+                COERCE_AS(__typeof__(v49), PSEUDO_REGISTER(float, "s0", "=w")),
+            v51 =
+                COERCE_AS(__typeof__(v51), PSEUDO_REGISTER(float, "s0", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(float, "s0", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s0", "=w")),
+            v60 =
+                COERCE_AS(__typeof__(v60), PSEUDO_REGISTER(float, "s0", "=w")),
+            v63 =
+                COERCE_AS(__typeof__(v63), PSEUDO_REGISTER(float, "s0", "=w")),
+            v65 =
+                COERCE_AS(__typeof__(v65), PSEUDO_REGISTER(float, "s0", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(float, "s0", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v72 =
+                COERCE_AS(__typeof__(v72), PSEUDO_REGISTER(float, "s0", "=w")),
+            v74 =
+                COERCE_AS(__typeof__(v74), PSEUDO_REGISTER(float, "s0", "=w")),
+            v77 =
+                COERCE_AS(__typeof__(v77), PSEUDO_REGISTER(float, "s0", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(float, "s0", "=w")),
+            v89 =
+                COERCE_AS(__typeof__(v89), PSEUDO_REGISTER(float, "s0", "=w")),
+            v91 =
+                COERCE_AS(__typeof__(v91), PSEUDO_REGISTER(float, "s0", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v98 =
+                COERCE_AS(__typeof__(v98), PSEUDO_REGISTER(float, "s0", "=w"));
         a5 = 0;
         v10 = v44 + 1;
       }
       v10 = v44 + 1;
-      v46 = GameRoutine_75a760(v9, v44, a3);
-      result = GameRoutine_75a760(v44 + 1, v24, a3);
-      if ((result & 1) != 0) {
+      v46 = game_map_75a760(a1, v44, a3),
+      v104 = COERCE_AS(__typeof__(v104), PSEUDO_REGISTER(float, "s0", "=w")),
+      v106 = COERCE_AS(__typeof__(v106), PSEUDO_REGISTER(float, "s0", "=w")),
+      v109 = COERCE_AS(__typeof__(v109), PSEUDO_REGISTER(float, "s0", "=w")),
+      v111 = COERCE_AS(__typeof__(v111), PSEUDO_REGISTER(float, "s0", "=w")),
+      v113 = COERCE_AS(__typeof__(v113), PSEUDO_REGISTER(float, "s0", "=w")),
+      v115 = COERCE_AS(__typeof__(v115), PSEUDO_REGISTER(float, "s0", "=w")),
+      v119 = COERCE_AS(__typeof__(v119), PSEUDO_REGISTER(float, "s0", "=w")),
+      v121 = COERCE_AS(__typeof__(v121), PSEUDO_REGISTER(float, "s0", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(float, "s0", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(float, "s0", "=w")),
+      v140 = COERCE_AS(__typeof__(v140), PSEUDO_REGISTER(float, "s0", "=w")),
+      v142 = COERCE_AS(__typeof__(v142), PSEUDO_REGISTER(float, "s0", "=w")),
+      v145 = COERCE_AS(__typeof__(v145), PSEUDO_REGISTER(float, "s0", "=w")),
+      v147 = COERCE_AS(__typeof__(v147), PSEUDO_REGISTER(float, "s0", "=w")),
+      v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+      v150 = COERCE_AS(__typeof__(v150), PSEUDO_REGISTER(float, "s0", "=w")),
+      v152 = COERCE_AS(__typeof__(v152), PSEUDO_REGISTER(float, "s0", "=w")),
+      v158 = COERCE_AS(__typeof__(v158), PSEUDO_REGISTER(float, "s0", "=w")),
+      v160 = COERCE_AS(__typeof__(v160), PSEUDO_REGISTER(float, "s0", "=w")),
+      v17 = COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(float, "s0", "=w")),
+      v20 = COERCE_AS(__typeof__(v20), PSEUDO_REGISTER(float, "s0", "=w")),
+      v22 = COERCE_AS(__typeof__(v22), PSEUDO_REGISTER(float, "s0", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(float, "s0", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(float, "s0", "=w")),
+      v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(float, "s0", "=w")),
+      v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s0", "=w")),
+      v39 = COERCE_AS(__typeof__(v39), PSEUDO_REGISTER(float, "s0", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(float, "s0", "=w")),
+      v43 = COERCE_AS(__typeof__(v43), PSEUDO_REGISTER(float, "s0", "=w")),
+      v49 = COERCE_AS(__typeof__(v49), PSEUDO_REGISTER(float, "s0", "=w")),
+      v51 = COERCE_AS(__typeof__(v51), PSEUDO_REGISTER(float, "s0", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(float, "s0", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s0", "=w")),
+      v60 = COERCE_AS(__typeof__(v60), PSEUDO_REGISTER(float, "s0", "=w")),
+      v63 = COERCE_AS(__typeof__(v63), PSEUDO_REGISTER(float, "s0", "=w")),
+      v65 = COERCE_AS(__typeof__(v65), PSEUDO_REGISTER(float, "s0", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(float, "s0", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v72 = COERCE_AS(__typeof__(v72), PSEUDO_REGISTER(float, "s0", "=w")),
+      v74 = COERCE_AS(__typeof__(v74), PSEUDO_REGISTER(float, "s0", "=w")),
+      v77 = COERCE_AS(__typeof__(v77), PSEUDO_REGISTER(float, "s0", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(float, "s0", "=w")),
+      v89 = COERCE_AS(__typeof__(v89), PSEUDO_REGISTER(float, "s0", "=w")),
+      v91 = COERCE_AS(__typeof__(v91), PSEUDO_REGISTER(float, "s0", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v98 = COERCE_AS(__typeof__(v98), PSEUDO_REGISTER(float, "s0", "=w"));
+      if (game_map_75a760(v44 + 1, v24, a3)) {
         break;
       }
-      if ((v46 & 1) == 0) {
-        goto LABEL_38;
+      if (!v46) {
+        goto LABEL_37;
       }
     }
     a2 = v44;
-    if ((v46 & 1) == 0) {
+    if (!v46) {
       continue;
     }
-    return result;
+    break;
   }
 }
 
@@ -8993,36 +14757,30 @@ __int64 GameHr_75fce0(__int64 a1)
   return result;
 }
 
-__int64 GameHr_75fdc0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                      __int64 a5, __int64 a6)
+__int64 GameHr_75fdc0()
 {
-  __int64 v6;
-  __int64 v7;
-  int v8;
-  __int64 v9;
-  _QWORD* v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
+  __int64 v0;
+  __int64* v1;
+  int v2;
+  __int64 v3;
+  _QWORD* v4;
   __int64 result;
 
-  v6 = GameData_21cd108;
+  v0 = GameData_21cd108;
   if (*(_BYTE*)(GameData_21cd108 + 8) != 0) {
-    v7 = GameRoutine_6ea8c0(GameData_21cd108 + 8);
-    if (v7 != 0 && *(_QWORD*)(v7 + 392) != 0) {
-      v8 = *(char*)(v7 + 585);
-      *(_DWORD*)(v6 + 12) = *(char*)(v7 + 584);
-      *(_DWORD*)(v6 + 16) = v8;
+    v1 = game_UnitPool_Get((_BYTE*)(GameData_21cd108 + 8));
+    if (v1 != nullptr && v1[49] != 0) {
+      v2 = *((char*)v1 + 585);
+      *(_DWORD*)(v0 + 12) = *((char*)v1 + 584);
+      *(_DWORD*)(v0 + 16) = v2;
     }
   }
-  v9 = GameData_21ca300;
-  v10 = *(_QWORD**)(GameData_21ca300 + 96);
-  GameRoutine_72b4a0((__int64)v10, a2, a3, a4, a5, a6);
-  GameRoutine_72b6c0(v10);
-  GameRoutine_72a260(*(_QWORD*)(v9 + 152), v11, v12, v13, v14, v15);
-  result = GameRoutine_777be0(GameData_21cd0e8 + 8);
+  v3 = GameData_21ca300;
+  v4 = *(_QWORD**)(GameData_21ca300 + 96);
+  Image_72b4a0((__int64)v4);
+  Image_72b6c0(v4);
+  Image_72a260(*(_QWORD*)(v3 + 152));
+  result = GameRoutine_777be0_alt1(GameData_21cd0e8 + 8);
   *(_BYTE*)(GameData_21ed0a0 + 224) = 0;
   return result;
 }
@@ -9335,66 +15093,54 @@ __int64 GameHr_760470(__int64 result)
   return result;
 }
 
-__int64 GameHr_760880(__int64 a1)
+void GameHr_760880(__int64 a1)
 {
   __int64* v2;
-  __int64 result;
+  __int64* v3;
   __int64 v4;
   int v5;
   __int64* v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
-  __int64 v11;
+  unsigned int v10;
+  __int64* v11;
   __int64 v12;
   __int64 v13;
-  __int64 v14;
+  unsigned int v14;
   __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  unsigned int v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  unsigned int v24;
-  __int64 v25;
-  int v26;
-  int v27;
-  __int64 v28;
-  int v29;
-  int v30;
-  __int64 v31;
-  int v32;
-  int v33;
-  void* v34;
+  int v16;
+  int v17;
+  int v18;
+  int v19;
+  __int64 v20;
+  int v21;
+  int v22;
+  _DWORD* v23;
 
   v2 = GameData_21309c8[0];
   if (*GameData_21309c8[0] != 0) {
     *(_BYTE*)(*GameData_21309c8[0] + 16) = 0;
   }
-  result = GameData_21cd108 + 8;
   if (*(_BYTE*)(GameData_21cd108 + 8) == 0) {
-    return result;
+    return;
   }
-  result = GameRoutine_6ea8c0(result);
-  if (result == 0) {
-    return result;
+  v3 = game_UnitPool_Get((_BYTE*)(GameData_21cd108 + 8));
+  if (v3 == nullptr) {
+    return;
   }
-  v4 = result;
-  if (*(_QWORD*)(result + 392) == 0) {
-    return result;
+  v4 = (__int64)v3;
+  if (v3[49] == 0) {
+    return;
   }
-  v5 = *(_DWORD*)(result + 416);
+  v5 = *((_DWORD*)v3 + 104);
   v6 = GameData_212ce98[0];
   if ((v5 & 0x20) != 0) {
-    v13 = *v2;
-    if (*v2 != 0 && *(_BYTE*)(v13 + 16) == 0) {
-      *(_BYTE*)(v13 + 16) = GameRoutine_122f8e0(result);
+    v8 = *v2;
+    if (*v2 != 0 && *(_BYTE*)(v8 + 16) == 0) {
+      *(_BYTE*)(v8 + 16) = GameRoutine_122f8e0_alt1((__int64)v3);
     }
-    GameRoutine_757430(v4);
+    MapUtil_757430(v4);
   }
   else {
     if ((v5 & 0x10) == 0) {
@@ -9404,71 +15150,69 @@ __int64 GameHr_760880(__int64 a1)
     if (*v2 != 0 && *(_BYTE*)(v7 + 16) == 0) {
       *(_BYTE*)(v7 + 16) = 3;
     }
-    GameRoutine_757590(result);
+    MapUtil_757590((__int64)v3);
   }
-  GameRoutine_72b080(*v6, v8, v9, v10, v11, v12);
+  Image_72b080(*v6);
 LABEL_17:
-  if ((GameRoutine_758760(a1) & 1) != 0) {
-    GameRoutine_72b080(*v6, v14, v15, v16, v17, v18);
+  if ((game_map_758760(a1) & 1) != 0) {
+    Image_72b080(*v6);
   }
-  result = GameRoutine_765b20(GameData_21ca2f8);
-  if ((result & 1) == 0) {
-    v19 = *(_QWORD*)(v4 + 440);
-    if (v19 != 0) {
-      v20 = *(unsigned __int8*)(v19 + 16);
-      if (v20 <= 3 && v20 == *(unsigned __int8*)(GameData_21ca2f8 + 24)) {
+  if ((Situation_765b20(GameData_21ca2f8) & 1) == 0) {
+    v9 = *(_QWORD*)(v4 + 440);
+    if (v9 != 0) {
+      v10 = *(unsigned __int8*)(v9 + 16);
+      if (v10 <= 3 && v10 == *(unsigned __int8*)(GameData_21ca2f8 + 24)) {
         if (*(_BYTE*)(GameData_21cd108 + 8) != 0) {
-          v21 = GameRoutine_6ea8c0(GameData_21cd108 + 8);
-          if (v21 != 0) {
-            v22 = v21;
-            if (*(_QWORD*)(v21 + 392) != 0) {
-              v23 = GameData_21cd108;
-              result = GameRoutine_745e80(GameData_21cd108);
-              v24 = *(unsigned __int8*)(v23 + 20);
-              if (v24 <= 0x1C) {
-                if (((1 << v24) & 0x8070378) != 0) {
-                  result = GameRoutine_743d50(v23);
-                  if ((result & 1) == 0) {
+          v11 = game_UnitPool_Get((_BYTE*)(GameData_21cd108 + 8));
+          if (v11 != nullptr) {
+            v12 = (__int64)v11;
+            if (v11[49] != 0) {
+              v13 = GameData_21cd108;
+              Mind_745e80(GameData_21cd108);
+              v14 = *(unsigned __int8*)(v13 + 20);
+              if (v14 <= 0x1C) {
+                if (((1 << v14) & 0x8070378) != 0) {
+                  if (!Mind_743d50(v13)) {
                     goto LABEL_33;
                   }
-                  v25 = GameData_21ca2f8;
-                  v26 =
+                  v15 = GameData_21ca2f8;
+                  v16 =
                       *(unsigned __int8*)(GameData_21ca2f8 +
                                           *(unsigned __int8*)(GameData_21ca2f8 +
                                                               24) +
                                           16);
-                  if (v26 == 2) {
-                    return GameRoutine_7bc1a0();
+                  if (v16 == 2) {
+                    goto LABEL_44;
                   }
-                  if (v26 != 1) {
+                  if (v16 != 1) {
                   LABEL_33:
-                    result = GameRoutine_745050(v23);
-                    if ((result & 1) == 0) {
+                    if (!Mind_745050(v13)) {
                       goto LABEL_38;
                     }
-                    v25 = GameData_21ca2f8;
-                    v27 = *(
+                    v15 = GameData_21ca2f8;
+                    v17 = *(
                         unsigned __int8*)(GameData_21ca2f8 +
                                           *(unsigned __int8*)(GameData_21ca2f8 +
                                                               24) +
                                           16);
-                    if (v27 == 2) {
-                      return GameRoutine_7bc1a0();
+                    if (v17 == 2) {
+                      goto LABEL_44;
                     }
-                    if (v27 != 1) {
+                    if (v17 != 1) {
                     LABEL_38:
-                      if ((GameRoutine_6c9450(v22) & 1) != 0 &&
-                          (GameRoutine_747060(GameData_21cd108) & 1) != 0) {
-                        v28 = GameRoutine_777be0(GameData_21cd0e8 + 8);
-                        v29 = *(
+                      if (game_Unit_Unknown6c9450(v12) &&
+                          ((unsigned __int8)Mind_747060(GameData_21cd108) &
+                           1) != 0) {
+                        GameRoutine_777be0_alt1(GameData_21cd0e8 + 8);
+                        v18 = *(
                             unsigned __int8*)(GameData_21ca2f8 +
                                               *(unsigned __int8*)(GameData_21ca2f8 +
                                                                   24) +
                                               16);
-                        if (v29 == 2) {
+                        if (v18 == 2) {
                           goto LABEL_59;
                         }
-                        if (v29 == 1) {
+                        if (v18 == 1) {
                           if ((*(_BYTE*)(GameData_21ca2f8 + 23) & 0x40) == 0) {
                             if (GameData_21cf830 != 0) {
                               *(_DWORD*)(GameData_21cf830 + 152) = 4;
@@ -9476,52 +15220,58 @@ LABEL_17:
                             goto LABEL_60;
                           }
                         LABEL_59:
-                          GameRoutine_7bc2c0(v28);
+                          GameRoutine_7bc2c0_alt1();
                         LABEL_60:
-                          v33 = GameRoutine_84eb60(v22 + 1744, 32);
-                          if (v33 <= -1) {
-                            v34 = GameData_212c8a8;
+                          v22 = game_Unit_SkillList_FindCategory(
+                              (_QWORD*)(v12 + 1744), 0x20u);
+                          if (v22 <= -1) {
+                            v23 = GameData_212c8a8;
                           }
                           else {
-                            v34 = (void*)(*(_QWORD*)(v22 + 1776) +
-                                          4LL * (unsigned int)v33);
+                            v23 = (_DWORD*)(*(_QWORD*)(v12 + 1776) +
+                                            4LL * (unsigned int)v22);
                           }
-                          return GameRoutine_808760(0, v22, v34);
+                          MapDrawer_808760(0, v12, v23);
+                          return;
                         }
                       }
                       goto LABEL_53;
                     }
                   }
-                  if ((*(_BYTE*)(v25 + 23) & 0x40) == 0) {
+                  if ((*(_BYTE*)(v15 + 23) & 0x40) == 0) {
                     if (GameData_21cf830 != 0) {
                       *(_DWORD*)(GameData_21cf830 + 152) = 13;
                     }
-                    return result;
+                    return;
                   }
-                  return GameRoutine_7bc1a0();
+                LABEL_44:
+                  GameRoutine_7bc1a0_alt1();
+                  return;
                 }
-                if (v24 == 2) {
-                  return result;
+                if (v14 == 2) {
+                  return;
                 }
-                if (v24 == 28 &&
-                    (GameRoutine_747180(GameData_21cd108) & 1) != 0) {
-                  result = GameRoutine_777be0(GameData_21cd0e8 + 8);
-                  v30 =
+                if (v14 == 28 &&
+                    ((unsigned __int8)Mind_747180(GameData_21cd108) & 1) != 0) {
+                  GameRoutine_777be0_alt1(GameData_21cd0e8 + 8);
+                  v19 =
                       *(unsigned __int8*)(GameData_21ca2f8 +
                                           *(unsigned __int8*)(GameData_21ca2f8 +
                                                               24) +
                                           16);
-                  if (v30 == 2) {
-                    return GameRoutine_7bc2c0(result);
+                  if (v19 == 2) {
+                    goto LABEL_64;
                   }
-                  if (v30 == 1) {
+                  if (v19 == 1) {
                     if ((*(_BYTE*)(GameData_21ca2f8 + 23) & 0x40) == 0) {
                       if (GameData_21cf830 != 0) {
                         *(_DWORD*)(GameData_21cf830 + 152) = 4;
                       }
-                      return result;
+                      return;
                     }
-                    return GameRoutine_7bc2c0(result);
+                  LABEL_64:
+                    GameRoutine_7bc2c0_alt1();
+                    return;
                   }
                 }
               }
@@ -9529,20 +15279,19 @@ LABEL_17:
           }
         }
       LABEL_53:
-        v31 = *v2;
-        if (*v2 != 0 && *(_BYTE*)(v31 + 16) == 0) {
-          *(_BYTE*)(v31 + 16) = GameRoutine_122f8e0(v4);
+        v20 = *v2;
+        if (*v2 != 0 && *(_BYTE*)(v20 + 16) == 0) {
+          *(_BYTE*)(v20 + 16) = GameRoutine_122f8e0_alt1(v4);
         }
-        result = GameRoutine_745a40(GameData_21cd108);
-        v32 = *(_DWORD*)(v4 + 416);
-        if ((v32 & 1) == 0) {
-          *(_DWORD*)(v4 + 416) = v32 & 0xFFFEFFFE | 1;
+        Mind_745a40(GameData_21cd108);
+        v21 = *(_DWORD*)(v4 + 416);
+        if ((v21 & 1) == 0) {
+          *(_DWORD*)(v4 + 416) = v21 & 0xFFFEFFFE | 1;
           *(_WORD*)(v4 + 20) |= 4u;
         }
       }
     }
   }
-  return result;
 }
 
 __int64 GameHr_760c10(__int64 result)

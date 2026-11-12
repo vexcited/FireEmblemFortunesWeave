@@ -22,8 +22,20 @@ __int64 GameRecommendData_130cd90(_QWORD* a1);
 __int64 GameRecommendData_130cec0(__int64 result);
 __int64 GameRecommendData_Unknown8(__int64 result, __int64 a2);
 __int64 GameRecommendData_130d040(__int64 result, __int64 a2);
-_QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2);
+_QWORD* GameRecommendData_Unknown9_alt1(_QWORD* result, __int64 a2) __asm__(
+    "GameRecommendData_Unknown9");
 __int64 GameRecommendData_Unknown6(__int64 result);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_13033d0_alt1() __asm__("GameRoutine_13033d0");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void GameRecommendData_Unknown9(_QWORD* a1, __int64 a2);
 
 __int64 GameRecommendData_Destructor(_QWORD* a1)
 {
@@ -301,18 +313,17 @@ __int64 GameRecommendData_130d040(__int64 result, __int64 a2)
   return result;
 }
 
-_QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2)
+void GameRecommendData_Unknown9(_QWORD* a1, __int64 a2)
 {
   __int64 v2;
   __int64 v3;
-  _QWORD* v5;
   int v6;
   int v7;
   int v8;
   __int64 v9;
   unsigned __int64 v10;
   __int64 v11;
-  __int64 v12;
+  unsigned __int64 v12;
   __int64 v13;
   __int64 v14;
   int v15;
@@ -342,14 +353,13 @@ _QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2)
   unsigned __int64 v40;
   __int64 v41;
   unsigned __int64 v42;
-  char* v43;
+  unsigned __int64 v43;
   __int64 v44;
   __int64 v45;
   unsigned __int64 v46;
 
   v2 = *(int*)(a2 + 20);
   v3 = *(_QWORD*)(a2 + 8);
-  v5 = result;
   *(_DWORD*)(a2 + 20) = v2 + 1;
   v6 = *(unsigned __int8*)(v3 + v2);
   *(_DWORD*)(a2 + 20) = v2 + 2;
@@ -357,23 +367,23 @@ _QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2)
   *(_DWORD*)(a2 + 20) = v2 + 3;
   v8 = *(unsigned __int8*)(v3 + v2 + 2);
   *(_DWORD*)(a2 + 20) = v2 + 4;
-  v9 = result[2];
+  v9 = a1[2];
   v10 = v7 | (v8 << 16) | (*(unsigned __int8*)(v3 + v2 + 3) << 24);
   v11 = fw_memory_g_heap_manager_ptr;
-  if (v10 > (result[4] - v9) >> 3) {
-    v12 = result[3] - v9;
-    v13 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         8 * v10, 16, 0);
-    result = (_QWORD*)memcpy(v13, v9, v12);
-    v5[2] = v13;
-    v5[3] = v13 + v12;
-    v5[4] = v13 + 8 * v10;
+  if (v10 > (a1[4] - v9) >> 3) {
+    v12 = a1[3] - v9;
+    v13 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v10, 16, 0);
+    memcpy_alt1(v13, v9, v12);
+    a1[2] = v13;
+    a1[3] = v13 + v12;
+    a1[4] = v13 + 8 * v10;
     if (v9 != 0) {
       v14 = 128;
       if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
         v14 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v14);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v11 + v14, v9);
     }
   }
   if ((_DWORD)v10 != 0) {
@@ -431,19 +441,19 @@ _QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2)
                   LABEL_36:
                     v32 = v29[3];
                     if (v32 != 0) {
-                      v34 = (_QWORD*)v5[3];
-                      v33 = v5[4];
+                      v34 = (_QWORD*)a1[3];
+                      v33 = a1[4];
                       if ((unsigned __int64)v34 < v33) {
                         *v34 = v32;
                         v17 = (__int64)(v34 + 1);
                       }
                       else {
-                        v35 = v5[2];
+                        v35 = a1[2];
                         v36 = (char*)v34 - v35;
                         v37 = ((__int64)v34 - v35) >> 3;
                         v38 = v37 + 1;
                         if ((unsigned __int64)(v37 + 1) >> 61 != 0) {
-                          GameRoutine_13033d0(result);
+                          GameRoutine_13033d0_alt1();
                         }
                         v39 = v33 - v35;
                         if (v39 >> 2 > v38) {
@@ -457,9 +467,9 @@ _QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2)
                         }
                         if (v40 != 0) {
                           if (v40 >> 61 != 0) {
-                            GameRoutine_60a210(result);
+                            GameRoutine_60a210_alt1();
                           }
-                          v41 = fw_memory_HeapManager_Allocate(
+                          v41 = fw_memory_HeapManager_Allocate_alt1(
                               *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v40,
                               16, 0);
                           v37 = ((__int64)v34 - v35) >> 3;
@@ -468,15 +478,15 @@ _QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2)
                           v41 = 0;
                         }
                         v42 = v41 + 8 * v40;
-                        v43 = (char*)v34 - v35;
+                        v43 = (unsigned __int64)v34 - v35;
                         v44 = (__int64)&v36[v41 + -8 * v37];
                         v46 = v42;
                         *(_QWORD*)&v36[v41] = v32;
                         v17 = (__int64)&v36[v41 + 8];
-                        result = (_QWORD*)memcpy(v44, v35, v43);
-                        v5[2] = v44;
-                        v5[3] = v17;
-                        v5[4] = v46;
+                        memcpy_alt1(v44, v35, v43);
+                        a1[2] = v44;
+                        a1[3] = v17;
+                        a1[4] = v46;
                         if (v35 != 0) {
                           v45 = 128;
                           if (*(_QWORD*)(*(_QWORD*)
@@ -484,11 +494,12 @@ _QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2)
                                          200LL) == 0) {
                             v45 = 56;
                           }
-                          result = (_QWORD*)nn_mem_StandardAllocator_Free(
-                              *(_QWORD*)fw_memory_g_heap_manager_ptr + v45);
+                          nn_mem_StandardAllocator_Free_alt1(
+                              *(_QWORD*)fw_memory_g_heap_manager_ptr + v45,
+                              v35);
                         }
                       }
-                      v5[3] = v17;
+                      a1[3] = v17;
                     }
                     break;
                   }
@@ -511,7 +522,6 @@ _QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2)
       ++v15;
     } while (v15 != (_DWORD)v10);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

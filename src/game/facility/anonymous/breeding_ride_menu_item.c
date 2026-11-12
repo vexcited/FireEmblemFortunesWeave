@@ -19,11 +19,20 @@ __int64 game_gameui_anonymous_ProcGameUIFade_In(_QWORD, _QWORD, _QWORD, _QWORD,
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 GameData_2259540;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64
-game_facility_anonymous_BreedingRideMenuItem_ACall_closure_Invoke(__int64 a1,
-                                                                  __int64* a2);
+__int64 game_facility_anonymous_BreedingRideMenuItem_ACall_closure_Invoke_alt1(
+    __int64 a1,
+    __int64* a2) __asm__("game_facility_anonymous_BreedingRideMenuItem_ACall_"
+                         "closure_Invoke");
 __int64 game_facility_anonymous_BreedingRideMenuItem_ACall_closure0_Invoke(
     __int64 result);
+__int64* GameRoutine_1953c40_alt1(__int64) __asm__("GameRoutine_1953c40");
+__int64 GameRoutine_1954030_alt1(__int64,
+                                 __int64) __asm__("GameRoutine_1954030");
+void GameRoutine_6e3b50_alt1(__int64, _QWORD*) __asm__("GameRoutine_6e3b50");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_facility_anonymous_BreedingRideMenuItem_ACall_closure_Invoke(
+    __int64 a1, __int64* a2);
 
 __int64 BreedingRideMenuItem_Unknown55(_QWORD* a1)
 {
@@ -85,74 +94,78 @@ bool BreedingRideMenuItem_Unknown58(__int64 a1)
   return *(_DWORD*)(v1 + 8) != 10000 * *v2 + 100 * v2[1] + v2[2];
 }
 
-__int64
-
-game_facility_anonymous_BreedingRideMenuItem_ACall_closure_Invoke(__int64 a1,
-                                                                  __int64* a2)
+void game_facility_anonymous_BreedingRideMenuItem_ACall_closure_Invoke(
+    __int64 a1, __int64* a2)
 {
   __int64 v2;
-  _BYTE* v3;
+  _QWORD* v3;
   __int64 v4;
-  _QWORD v6[2];
-  int v7;
-  __int64 v8;
-  int v9;
-  _QWORD* v10;
-  _BYTE* v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  _BYTE* v15;
-  int v16;
-  __int64 v17;
-  int v18;
+  struct {
+    _QWORD v5[2];
+    int v6;
+    char gap20_[4];
+    __int64 v7;
+    int v8;
+  } v5_;
+  _QWORD** v9;
+  struct {
+    _QWORD* v10;
+    __int64 v11;
+    __int64 v12;
+    __int64 v13;
+    _BYTE* v14;
+    int v15;
+    char gap92_[4];
+    __int64 v16;
+    int v17;
+  } v10_;
 
   v2 = *a2;
-  v6[0] = 0;
-  v6[1] = 0;
-  v8 = 0;
-  v7 = -1;
-  v9 = 0;
-  v12 = 0;
-  v13 = 0;
-  v14 = 0;
-  v15 = nullptr;
-  v16 = -1;
-  v17 = 0;
-  v18 = 0;
-  v10 = &v11;
-  v11 = nullptr;
-  GameRoutine_1953c40(v6);
-  GameRoutine_1954030(v2, v6);
-  v9 = 0;
-  v8 = 0;
-  if ((v13 & 1) != 0) {
-    *v15 = 0;
-    v14 = 0;
+  v5_.v5[0] = 0;
+  v5_.v5[1] = 0;
+  v5_.v7 = 0;
+  v5_.v6 = -1;
+  v5_.v8 = 0;
+  v10_.v11 = 0;
+  v10_.v12 = 0;
+  v10_.v13 = 0;
+  v10_.v14 = nullptr;
+  v10_.v15 = -1;
+  v10_.v16 = 0;
+  v10_.v17 = 0;
+  v9 = &v10_.v10;
+  v10_.v10 = nullptr;
+  GameRoutine_1953c40_alt1((__int64)v5_.v5);
+  GameRoutine_1954030_alt1(v2, (__int64)v5_.v5);
+  v5_.v8 = 0;
+  v5_.v7 = 0;
+  if ((v10_.v12 & 1) != 0) {
+    *v10_.v14 = 0;
+    v10_.v13 = 0;
   }
   else {
-    LOWORD(v13) = 0;
+    LOWORD(v10_.v12) = 0;
   }
-  GameRoutine_6e3b50(&v10, v11);
-  v11 = nullptr;
-  v12 = 0;
-  v10 = &v11;
-  if ((v13 & 1) != 0) {
-    v3 = v15;
-    if (v15 != nullptr) {
+  GameRoutine_6e3b50_alt1((__int64)&v9, v10_.v10);
+  v10_.v10 = nullptr;
+  v10_.v11 = 0;
+  v9 = &v10_.v10;
+  if ((v10_.v12 & 1) != 0) {
+    v3 = v10_.v14;
+    if (v10_.v14 != nullptr) {
       v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v4 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4,
-                                    v15);
-      v3 = v11;
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, (__int64)v10_.v14);
+      v3 = v10_.v10;
     }
   }
   else {
     v3 = nullptr;
   }
-  return GameRoutine_6e3b50(&v10, v3);
+  GameRoutine_6e3b50_alt1((__int64)&v9, v3);
 }
 
 __int64 game_facility_anonymous_BreedingRideMenuItem_ACall_closure0_Invoke(

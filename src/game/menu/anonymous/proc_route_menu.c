@@ -20,25 +20,45 @@ extern __int64 ui_Manager_instance_;
 extern __int64* GameData_212d670[3];
 extern __int64* GameData_212d678[2];
 extern __int64* GameData_212e008[9];
-__int64 ProcRouteMenu_Unknown84(__int64 a1);
+__int64
+ProcRouteMenu_Unknown84_alt1(__int64 a1) __asm__("ProcRouteMenu_Unknown84");
 __int64 ProcRouteMenu_Unknown88(_QWORD* a1);
+__attribute__((swiftcall)) void
+GameRoutine_1572980_alt1(PSEUDO_X8, __int64*,
+                         __int64*) __asm__("GameRoutine_1572980");
+__int64 GameRoutine_16cd870_alt1(_DWORD*) __asm__("GameRoutine_16cd870");
+__int64 Manager_136a920(__int64, __int64, int, unsigned int, _BYTE*);
+__int64 Manager_136afb0(__int64, unsigned int, _BYTE*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64
+ui_LayoutAccessor_FindPane_alt1(__int64*,
+                                __int64) __asm__("ui_LayoutAccessor_FindPane");
+bool GameRoutine_974b60_alt1(__int64**) __asm__("GameRoutine_974b60");
+void AsyncLoadThumbImage_18ba690_alt1(__int64, __int64) __asm__(
+    "AsyncLoadThumbImage_18ba690");
+__int64 ProcRouteMenu_Unknown84(_DWORD* a1);
 
-__int64 ProcRouteMenu_Unknown84(__int64 a1)
+__int64 ProcRouteMenu_Unknown84(_DWORD* a1)
 {
   __int64 result;
   __int64 v3;
-  _QWORD* v4;
-  __int64 v5;
+  __int64 v4;
+  __int64* v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
+  __int64* v8;
   _BYTE* v9;
   __int64 v10;
-  _QWORD v11[2];
-  __int64 v12;
-  __int64 v13;
+  __int64 v11[2];
+  struct {
+    __int64 v12;
+    __int64 v13;
+  } v12_;
 
-  result = GameRoutine_16cd870();
+  result = GameRoutine_16cd870_alt1(a1);
   if (game_GameModeData_instance_ == 0) {
     return result;
   }
@@ -46,25 +66,26 @@ __int64 ProcRouteMenu_Unknown84(__int64 a1)
   if (v3 == 0) {
     return result;
   }
-  v4 = *(_QWORD**)(v3 + 336);
-  if (v4 == nullptr) {
+  v4 = *(_QWORD*)(v3 + 336);
+  if (v4 == 0) {
     return result;
   }
-  while (v4[10] != 0 && (GameRoutine_974b60(v4[3]) & 1) != 0) {
-    v4 = (_QWORD*)v4[10];
+  while (*(_QWORD*)(v4 + 80) != 0 &&
+         GameRoutine_974b60_alt1(*(__int64***)(v4 + 24))) {
+    v4 = *(_QWORD*)(v4 + 80);
   }
-  v5 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 1152LL))(a1);
-  v11[0] = "L_Clan";
+  v5 = (__int64*)(*(__int64 (**)(_DWORD*))(*(_QWORD*)a1 + 1152LL))(a1);
+  v11[0] = (__int64)"L_Clan";
   v11[1] = 6;
-  GameRoutine_1572980((void*)&v12, v5, v11);
-  if (v13 != 0) {
-    v6 = std___1___shared_weak_count_lock(v13);
-    v7 = v12;
-    if (v13 != 0) {
-      std___1___shared_weak_count___release_weak(v13);
+  GameRoutine_1572980_alt1((void*)(&v12_.v12), v5, v11);
+  if (v12_.v13 != 0) {
+    v6 = std___1___shared_weak_count_lock_alt1(v12_.v13);
+    v7 = v12_.v12;
+    if (v12_.v13 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v12_.v13);
     }
     if (v6 != 0 && v7 != 0) {
-      AsyncLoadThumbImage_18ba690(v7, v4);
+      AsyncLoadThumbImage_18ba690_alt1(v7, v4);
       goto LABEL_14;
     }
     if (v6 != 0) {
@@ -72,23 +93,23 @@ __int64 ProcRouteMenu_Unknown84(__int64 a1)
       if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-        std___1___shared_weak_count___release_weak(v6);
+        std___1___shared_weak_count___release_weak_alt1(v6);
       }
     }
   }
-  v8 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 1152LL))(a1);
-  result = ui_LayoutAccessor_FindPane(v8, "IconClan");
+  v8 = (__int64*)(*(__int64 (**)(_DWORD*))(*(_QWORD*)a1 + 1152LL))(a1);
+  result = ui_LayoutAccessor_FindPane_alt1(v8, (__int64)"IconClan");
   if (result != 0) {
     result =
         __dynamic_cast(result, GameData_212d670[0], GameData_212d678[0], 0);
     if (result != 0) {
-      v9 = (_BYTE*)v4[6];
+      v9 = *(_BYTE**)(v4 + 48);
       if (v9 != nullptr && *v9 != 0) {
         v10 = result;
-        result = GameRoutine_136afb0(ui_Manager_instance_ + 1264, 5);
+        result = Manager_136afb0(ui_Manager_instance_ + 1264, 5u, v9);
         if ((result & 1) != 0) {
-          return GameRoutine_136a920(ui_Manager_instance_ + 1264, v10, 0, 5,
-                                     v4[6]);
+          return Manager_136a920(ui_Manager_instance_ + 1264, v10, 0, 5u,
+                                 *(_BYTE**)(v4 + 48));
         }
       }
     }

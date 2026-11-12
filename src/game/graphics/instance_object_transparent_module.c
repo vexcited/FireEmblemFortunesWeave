@@ -16,9 +16,22 @@ __n128 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_fb8eb0(void);
-__n128 InstanceObjectTransparentModule_fb8ac0(_QWORD* a1, unsigned __int64 a2);
+__n128 InstanceObjectTransparentModule_fb8ac0_alt1(
+    _QWORD* a1,
+    unsigned __int64 a2) __asm__("InstanceObjectTransparentModule_fb8ac0");
 __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_fb8eb0_alt1() __asm__("GameRoutine_fb8eb0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void InstanceObjectTransparentModule_fb8ac0(__int64* a1, unsigned __int64 a2);
 
 __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
 {
@@ -504,7 +517,7 @@ __int64 InstanceObjectTransparentModule_Unknown10(__int64 result, float a2)
   return result;
 }
 
-__n128 InstanceObjectTransparentModule_fb8ac0(_QWORD* a1, unsigned __int64 a2)
+void InstanceObjectTransparentModule_fb8ac0(__int64* a1, unsigned __int64 a2)
 {
   __int64 v2;
   __int64 v3;
@@ -526,10 +539,9 @@ __n128 InstanceObjectTransparentModule_fb8ac0(_QWORD* a1, unsigned __int64 a2)
   __int64 v20;
   unsigned __int64 v21;
   __int64 v22;
-  __int64 v23;
+  unsigned __int64 v23;
   __int64 v24;
-  __n128 result;
-  __int64 v26;
+  __int64 v25;
 
   v2 = a1[1];
   v3 = a1[2];
@@ -611,7 +623,7 @@ __n128 InstanceObjectTransparentModule_fb8ac0(_QWORD* a1, unsigned __int64 a2)
     v5 = v2 - *a1;
     v6 = a2 + 0x6DB6DB6DB6DB6DB7LL * (v5 >> 2);
     if (v6 > 0x924924924924924LL) {
-      GameRoutine_fb8eb0();
+      GameRoutine_fb8eb0_alt1();
     }
     v7 = fw_memory_g_heap_manager_ptr;
     v8 = 0x6DB6DB6DB6DB6DB7LL * ((v3 - *a1) >> 2);
@@ -626,10 +638,10 @@ __n128 InstanceObjectTransparentModule_fb8ac0(_QWORD* a1, unsigned __int64 a2)
     }
     if (v9 != 0) {
       if (v9 > 0x924924924924924LL) {
-        GameRoutine_60a210(a1);
+        GameRoutine_60a210_alt1();
       }
       v10 = a2;
-      v11 = fw_memory_HeapManager_Allocate(
+      v11 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 28 * v9, 16, 0);
       a2 = v10;
     }
@@ -713,19 +725,18 @@ __n128 InstanceObjectTransparentModule_fb8ac0(_QWORD* a1, unsigned __int64 a2)
     v22 = *a1;
     v23 = a1[1] - *a1;
     v24 = v16 - v23;
-    memcpy(v16 - v23, *a1, v23);
+    memcpy_alt1(v16 - v23, *a1, v23);
     *a1 = v24;
     a1[1] = v18;
     a1[2] = v21;
     if (v22 != 0) {
-      v26 = 128;
+      v25 = 128;
       if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) == 0) {
-        v26 = 56;
+        v25 = 56;
       }
-      return nn_mem_StandardAllocator_Free(*(_QWORD*)v7 + v26);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v7 + v25, v22);
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

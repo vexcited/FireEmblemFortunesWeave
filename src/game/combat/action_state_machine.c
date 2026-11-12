@@ -6,7 +6,8 @@ __int64 GameRoutine_1000();
 __int64 nn_mem_StandardAllocator_Free(_QWORD, long double);
 extern __int64 fw_memory_g_heap_manager;
 extern __int64 fw_memory_g_heap_manager_ptr;
-_QWORD* ActionStateMachine_1066c00(_QWORD* result, long double a2);
+_QWORD* ActionStateMachine_1066c00_alt2(_QWORD* result, long double a2) __asm__(
+    "ActionStateMachine_1066c00");
 __int64 ActionStateMachine_1066c00_alt1(_QWORD) __asm__(
     "ActionStateMachine_1066c00");
 __int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
@@ -15,6 +16,9 @@ __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_combat_ActionStateMachine_vtable[])();
 extern __int64 (*game_combat_CombatCharacterSubsystem_vtable[])();
 __n128 ActionStateMachine_Destructor(_QWORD* a1);
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ActionStateMachine_1066c00(__int64* a1);
 
 __n128 ActionStateMachine_Destructor(_QWORD* a1)
 {
@@ -89,17 +93,17 @@ __n128 ActionStateMachine_Destructor(_QWORD* a1)
   return result;
 }
 
-_QWORD* ActionStateMachine_1066c00(_QWORD* result, long double a2)
+void ActionStateMachine_1066c00(__int64* a1)
 {
-  _QWORD* v2;
-  _QWORD* v3;
+  __int64* v1;
+  __int64* v2;
   _QWORD* v4;
-  _QWORD* v5;
-  unsigned __int64 v6;
-  _QWORD* v7;
-  _QWORD** v8;
+  unsigned __int64 v5;
+  __int64* v6;
+  __int64* v7;
+  __int64 v8;
   __int64 v9;
-  _QWORD** v10;
+  __int64* v10;
   unsigned __int64 v11;
   __int64 v12;
   __int64 v13;
@@ -109,55 +113,53 @@ _QWORD* ActionStateMachine_1066c00(_QWORD* result, long double a2)
   __int64 v17;
   __int64 v18;
 
-  v2 = (_QWORD*)result[1];
-  v3 = (_QWORD*)result[2];
-  v4 = result;
-  if (v3 == v2) {
-    v5 = result + 5;
-    v3 = (_QWORD*)result[1];
+  v1 = (__int64*)a1[1];
+  v2 = (__int64*)a1[2];
+  if (v2 == v1) {
+    v4 = a1 + 5;
+    v2 = (__int64*)a1[1];
   }
   else {
-    v5 = result + 5;
-    v6 = result[4];
-    v7 = &v2[v6 >> 9];
-    v8 = (_QWORD**)(*v7 + 8 * (v6 & 0x1FF));
-    v9 = v2[(result[5] + v6) >> 9] + 8 * ((result[5] + v6) & 0x1FF);
-    if (v8 != (_QWORD**)v9) {
+    v4 = a1 + 5;
+    v5 = a1[4];
+    v6 = &v1[v5 >> 9];
+    v7 = (__int64*)(*v6 + 8 * (v5 & 0x1FF));
+    v8 = v1[(a1[5] + v5) >> 9] + 8 * ((a1[5] + v5) & 0x1FF);
+    if (v7 != (__int64*)v8) {
       do {
-        result = *v8;
-        *v8 = nullptr;
-        if (result != nullptr) {
-          result = (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + 16LL))(result);
+        v9 = *v7;
+        *v7 = 0;
+        if (v9 != 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
         }
-        if ((char*)++v8 - *v7 == (char*)GameRoutine_1000) {
-          v10 = (_QWORD**)v7[1];
-          ++v7;
-          v8 = v10;
+        if ((char*)((char*)++v7 - *v6) == (char*)((char*)0x1000LL)) {
+          v10 = (__int64*)v6[1];
+          ++v6;
+          v7 = v10;
         }
-      } while (v8 != (_QWORD**)v9);
-      v2 = (_QWORD*)v4[1];
-      v3 = (_QWORD*)v4[2];
+      } while (v7 != (__int64*)v8);
+      v1 = (__int64*)a1[1];
+      v2 = (__int64*)a1[2];
     }
   }
-  *v5 = 0;
-  v11 = v3 - v2;
+  *v4 = 0;
+  v11 = v2 - v1;
   if (v11 >= 3) {
     v12 = fw_memory_g_heap_manager_ptr;
     do {
-      if (*v2 != 0) {
+      if (*v1 != 0) {
         if (*(_QWORD*)(*(_QWORD*)v12 + 200LL) != 0) {
           v13 = 128;
         }
         else {
           v13 = 56;
         }
-        result =
-            (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v12 + v13, a2);
-        v2 = (_QWORD*)v4[1];
-        v3 = (_QWORD*)v4[2];
+        nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v12 + v13, *v1);
+        v1 = (__int64*)a1[1];
+        v2 = (__int64*)a1[2];
       }
-      v4[1] = ++v2;
-      v11 = v3 - v2;
+      a1[1] = (__int64)++v1;
+      v11 = v2 - v1;
     } while (v11 > 2);
   }
   if (v11 == 1) {
@@ -169,38 +171,34 @@ _QWORD* ActionStateMachine_1066c00(_QWORD* result, long double a2)
     }
     v14 = 512;
   }
-  v4[4] = v14;
-
+  a1[4] = v14;
 LABEL_24:
-  if (v2 != v3) {
+  if (v1 != v2) {
     do {
-      if (*v2 != 0) {
+      if (*v1 != 0) {
         if (*(_QWORD*)(fw_memory_g_heap_manager + 200) != 0) {
           v15 = 128;
         }
         else {
           v15 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(
-            fw_memory_g_heap_manager + v15, a2);
+        nn_mem_StandardAllocator_Free_alt2(fw_memory_g_heap_manager + v15, *v1);
       }
-      ++v2;
-    } while (v2 != v3);
-    v16 = v4[2];
-    v17 = v4[1] - v16;
+      ++v1;
+    } while (v1 != v2);
+    v16 = a1[2];
+    v17 = a1[1] - v16;
     if (v17 != 0) {
-      v4[2] = v16 + ((v17 + 7) & 0xFFFFFFFFFFFFFFF8LL);
+      a1[2] = v16 + ((v17 + 7) & 0xFFFFFFFFFFFFFFF8LL);
     }
   }
-  if (*v4 != 0) {
+  if (*a1 != 0) {
     v18 = 128;
     if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
       v18 = 56;
     }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(
-        fw_memory_g_heap_manager + v18, a2);
+    nn_mem_StandardAllocator_Free_alt2(fw_memory_g_heap_manager + v18, *a1);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

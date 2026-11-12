@@ -19,8 +19,8 @@ extern __int64 GameData_2135490[4];
 void GameRoutine_651250(void*, unsigned __int64);
 __int64 WaveSound_Unknown3(__int64 a1);
 __int64 WaveSound_Unknown4(__int64 result, __int64 a2);
-__int64 WaveSound_2ac1a0(__int64 a1, __int64 a2, __int64 a3, __int64* a4,
-                         unsigned int a5);
+__int64 WaveSound_2ac1a0_alt1(__int64 a1, __int64 a2, __int64 a3, __int64* a4,
+                              unsigned int a5) __asm__("WaveSound_2ac1a0");
 __int64 WaveSound_2ac2d0(__int64 a1, _QWORD* a2, __int64 a3);
 __int64 WaveSound_2ac390(__int64 a1, char a2);
 __int64 WaveSound_2ac400(__int64 a1, char a2, char a3);
@@ -35,6 +35,13 @@ __int64 nn_os_FinalizeEvent(_QWORD);
 extern __int64 GameData_21354a8;
 extern __int64* GameData_2135250;
 __int64 WaveSound_2acf30(_QWORD* a1);
+_DWORD* BaseNx_288cb0(__int64, __int64, char);
+__int64 BaseNx_288da0(_QWORD*, __int64);
+__int64 BaseNx_2a0820(__int64, __int64, __int64);
+__int64 BaseNx_2a0e80(__int64, _QWORD*);
+void* BaseNx_2a1860();
+__int64 WaveSound_2ac1a0(__int64 a1, __int64 a2, __int64 a3, __int64* a4,
+                         char a5);
 
 __int64 WaveSound_Unknown3(__int64 a1)
 {
@@ -90,9 +97,9 @@ __int64 WaveSound_Unknown4(__int64 result, __int64 a2)
 }
 
 __int64 WaveSound_2ac1a0(__int64 a1, __int64 a2, __int64 a3, __int64* a4,
-                         unsigned int a5)
+                         char a5)
 {
-  __int64 v10;
+  void* v10;
   __int64 v11;
   __int64 v12;
   __int64 v13;
@@ -102,30 +109,32 @@ __int64 WaveSound_2ac1a0(__int64 a1, __int64 a2, __int64 a3, __int64* a4,
   int v17;
   __int64 result;
   int v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  __int64 v33;
-  __int64 v34;
-  __int64 v35;
-  __int64 v36;
-  __int64 v37;
-  __int64 v38;
-  __int64 v39;
+  struct {
+    __int64 v20;
+    __int64 v21;
+    __int64 v22;
+    __int64 v23;
+    __int64 v24;
+    __int64 v25;
+    __int64 v26;
+    __int64 v27;
+    __int64 v28;
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+    __int64 v32;
+    __int64 v33;
+    __int64 v34;
+    __int64 v35;
+    __int64 v36;
+    __int64 v37;
+    __int64 v38;
+    __int64 v39;
+  } v20_;
   _QWORD v40[5];
 
-  v10 = GameRoutine_2a1860();
-  v11 = GameRoutine_2a0820(v10, 112, 8, 1);
+  v10 = BaseNx_2a1860();
+  v11 = BaseNx_2a0820((__int64)v10, 112, 8);
   *(_DWORD*)(v11 + 8) = 46;
   *(_QWORD*)(v11 + 24) = a1 + 592;
   v12 = *a4;
@@ -144,36 +153,36 @@ __int64 WaveSound_2ac1a0(__int64 a1, __int64 a2, __int64 a3, __int64* a4,
   *(_QWORD*)(v11 + 64) = v15;
   *(_QWORD*)(v11 + 72) = v16;
   *(_QWORD*)(v11 + 56) = v14;
-  GameRoutine_2a0e80(v10, v11);
+  BaseNx_2a0e80((__int64)v10, (_QWORD*)v11);
   *(_BYTE*)(a1 + 584) = a5;
   *(_QWORD*)(a1 + 576) = a3;
   *(_BYTE*)(a1 + 586) = 1;
   memset(v40, 0, sizeof(v40));
-  GameRoutine_288cb0(v40, a3, a5);
-  v38 = 0;
-  v39 = 0;
-  v36 = 0;
-  v37 = 0;
-  v34 = 0;
-  v35 = 0;
-  v32 = 0;
-  v33 = 0;
-  v30 = 0;
-  v31 = 0;
-  v28 = 0;
-  v29 = 0;
-  v26 = 0;
-  v27 = 0;
-  v24 = 0;
-  v25 = 0;
-  v22 = 0;
-  v23 = 0;
-  v20 = 0;
-  v21 = 0;
-  result = GameRoutine_288da0(v40, &v20, 0);
+  BaseNx_288cb0((__int64)v40, a3, a5);
+  v20_.v38 = 0;
+  v20_.v39 = 0;
+  v20_.v36 = 0;
+  v20_.v37 = 0;
+  v20_.v34 = 0;
+  v20_.v35 = 0;
+  v20_.v32 = 0;
+  v20_.v33 = 0;
+  v20_.v30 = 0;
+  v20_.v31 = 0;
+  v20_.v28 = 0;
+  v20_.v29 = 0;
+  v20_.v26 = 0;
+  v20_.v27 = 0;
+  v20_.v24 = 0;
+  v20_.v25 = 0;
+  v20_.v22 = 0;
+  v20_.v23 = 0;
+  v20_.v20 = 0;
+  v20_.v21 = 0;
+  result = BaseNx_288da0(v40, (__int64)&v20_.v20);
   if ((result & 1) != 0) {
-    v19 = v21;
-    if ((int)v21 >= 2) {
+    v19 = v20_.v21;
+    if ((int)v20_.v21 >= 2) {
       v19 = 2;
     }
     *(_DWORD*)(a1 + 588) = v19;
@@ -308,29 +317,29 @@ __int64 WaveSound_2ac560(__int64 a1, __int64 a2)
   __int64 v13;
   __int64 v14;
   int v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  __int64 v33;
-  __int64 v34;
-  __int64 v35;
-  _BYTE v36[40];
-  __int64 v37;
-  __int64 v38;
+  struct {
+    __int64 v16;
+    __int64 v17;
+    __int64 v18;
+    __int64 v19;
+    __int64 v20;
+    __int64 v21;
+    __int64 v22;
+    __int64 v23;
+    __int64 v24;
+    __int64 v25;
+    __int64 v26;
+    __int64 v27;
+    __int64 v28;
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+    __int64 v32;
+    __int64 v33;
+    __int64 v34;
+    __int64 v35;
+  } v16_;
+  _QWORD v36[7];
 
   v5 = *(_QWORD*)(a1 + 576);
   if (v5 == 0) {
@@ -343,42 +352,41 @@ __int64 WaveSound_2ac560(__int64 a1, __int64 a2)
   if (*(_BYTE*)(a1 + 584) != 0) {
     return 0;
   }
-
 LABEL_10:
-  v37 = v2;
-  v38 = v3;
+  v36[5] = v2;
+  v36[6] = v3;
   v8 = a2;
-  memset(v36, 0, sizeof(v36));
-  GameRoutine_288cb0(v36, v5, 0);
-  v34 = 0;
-  v35 = 0;
-  v32 = 0;
-  v33 = 0;
-  v30 = 0;
-  v31 = 0;
-  v28 = 0;
-  v29 = 0;
-  v26 = 0;
-  v27 = 0;
-  v24 = 0;
-  v25 = 0;
-  v22 = 0;
-  v23 = 0;
-  v20 = 0;
-  v21 = 0;
-  v18 = 0;
-  v19 = 0;
-  v16 = 0;
-  v17 = 0;
-  v9 = GameRoutine_288da0(v36, &v16, 0);
+  memset(v36, 0, 40);
+  BaseNx_288cb0((__int64)v36, v5, 0);
+  v16_.v34 = 0;
+  v16_.v35 = 0;
+  v16_.v32 = 0;
+  v16_.v33 = 0;
+  v16_.v30 = 0;
+  v16_.v31 = 0;
+  v16_.v28 = 0;
+  v16_.v29 = 0;
+  v16_.v26 = 0;
+  v16_.v27 = 0;
+  v16_.v24 = 0;
+  v16_.v25 = 0;
+  v16_.v22 = 0;
+  v16_.v23 = 0;
+  v16_.v20 = 0;
+  v16_.v21 = 0;
+  v16_.v18 = 0;
+  v16_.v19 = 0;
+  v16_.v16 = 0;
+  v16_.v17 = 0;
+  v9 = BaseNx_288da0(v36, (__int64)&v16_.v16);
   if ((v9 & 1) != 0) {
-    v10 = v18;
-    *(_BYTE*)v8 = BYTE4(v16);
-    v11 = v17;
-    *(_DWORD*)(v8 + 4) = HIDWORD(v17);
-    v13 = v19;
-    v12 = v20;
-    v14 = v19 + v20;
+    v10 = v16_.v18;
+    *(_BYTE*)v8 = BYTE4(v16_.v16);
+    v11 = v16_.v17;
+    *(_DWORD*)(v8 + 4) = HIDWORD(v16_.v17);
+    v13 = v16_.v19;
+    v12 = v16_.v20;
+    v14 = v16_.v19 + v16_.v20;
     *(_QWORD*)(v8 + 24) = v10;
     *(_QWORD*)(v8 + 32) = v13;
     *(_QWORD*)(v8 + 8) = v12;

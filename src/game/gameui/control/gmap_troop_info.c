@@ -68,6 +68,15 @@ __int64 game_gameui_control_GmapTroopInfo_SetInfoPlayerOther(__int64 a1,
 float game_gameui_control_GmapTroopInfo_SetInfoEnemy_lambda0_Invoke(
     __int64 a1, unsigned int* a2, __int64* a3, __int64 a4, __int64 a5,
     __int64 a6, __int64 a7, __int64 a8);
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 LayoutAccessor_1563030_alt1(__int64 result, __int64,
+                                    char) __asm__("LayoutAccessor_1563030");
+__int64 LayoutAccessor_1563280_alt1(__int64*, __int64,
+                                    char) __asm__("LayoutAccessor_1563280");
+__int64 LayoutAccessor_15636c0_alt1(__int64 result, __int64, char,
+                                    float) __asm__("LayoutAccessor_15636c0");
+float LayoutAccessor_15637c0_alt1(__int64*, __int64,
+                                  char) __asm__("LayoutAccessor_15637c0");
 
 __int64 game_gameui_control_GmapTroopInfo_SetInfoPlayerOther(__int64 a1,
                                                              __int64 a2,
@@ -337,6 +346,8 @@ __int64 game_gameui_control_GmapTroopInfo_SetInfoPlayerOther(__int64 a1,
 _QWORD* game_gameui_control_GmapTroopInfo_SetInfoEnemy(__int64 a1, __int64 a2,
                                                        char a3)
 {
+
+#pragma clang fp contract(off)
   float v5;
   char v6;
   __int64 v7;
@@ -350,21 +361,47 @@ _QWORD* game_gameui_control_GmapTroopInfo_SetInfoEnemy(__int64 a1, __int64 a2,
   __int64 v15;
   __int64 v16;
   char v17;
-  _QWORD v18[4];
-  _QWORD* v19;
+  struct {
+    _QWORD v18[4];
+    _QWORD* v19;
+  } v18_;
   __int64 v20;
   char v21;
   int v22;
 
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   v21 = a3;
-  LayoutAccessor_1562680(a1 + 88, "Enemy", 1.0);
-  v5 = 0.0;
-  v6 = LayoutAccessor_1563280(a1 + 88, "In", 1);
+  GameHr_1562680(a1 + 88, "Enemy", 0x1.0000000000000p+0f),
+      v8 = COERCE_AS(__typeof__(v8),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v9 = COERCE_AS(__typeof__(v9),
+                     PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+  v5 = 0x0.0p+0f;
+  v6 = LayoutAccessor_1563280_alt1((__int64*)(a1 + 88), (__int64)"In", 1),
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   if ((v6 & 1) != 0) {
-    v5 = LayoutAccessor_15637c0(a1 + 88, "In", 1);
-    LayoutAccessor_1563030(a1 + 88, "In", 1);
+    v5 = LayoutAccessor_15637c0_alt1((__int64*)(a1 + 88), (__int64)"In", 1),
+    v8 = COERCE_AS(__typeof__(v8),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v9 = COERCE_AS(__typeof__(v9),
+                   PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+    LayoutAccessor_1563030_alt1(a1 + 88, (__int64)"In", 1),
+        v8 = COERCE_AS(__typeof__(v8),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   }
-  v7 = ui_LayoutAccessor_FindPane(a1 + 88, "N_Type");
+  v7 = ui_LayoutAccessor_FindPane_alt1((__int64*)(a1 + 88), (__int64)"N_Type"),
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   v10 = v7;
   if (v7 != 0) {
     v11 = *(_BYTE*)(v7 + 89);
@@ -376,11 +413,11 @@ _QWORD* game_gameui_control_GmapTroopInfo_SetInfoEnemy(__int64 a1, __int64 a2,
     v11 = 0;
     v12 = 0;
   }
-  result = v18;
-  v18[0] = GameData_2001710;
-  v18[1] = a1;
-  v19 = v18;
-  v18[2] = &v21;
+  result = v18_.v18;
+  v18_.v18[0] = GameData_2001710;
+  v18_.v18[1] = a1;
+  v18_.v19 = v18_.v18;
+  v18_.v18[2] = &v21;
   if (*(int*)(a2 + 96) < 1) {
     goto LABEL_13;
   }
@@ -389,30 +426,52 @@ _QWORD* game_gameui_control_GmapTroopInfo_SetInfoEnemy(__int64 a1, __int64 a2,
   do {
     v22 = v14;
     v20 = v15;
-    if (v19 == nullptr) {
-      GameRoutine_60a310(0, v8);
+    if (v18_.v19 == nullptr) {
+      GameRoutine_60a310_alt1(),
+          v8 = COERCE_AS(__typeof__(v8),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v9 = COERCE_AS(__typeof__(v9),
+                         PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
     }
-    (*(void (**)(_QWORD*, int*, __int64*))(*v19 + 48LL))(v19, &v22, &v20);
+    (*(void (**)(_QWORD*, int*, __int64*))(*v18_.v19 + 48LL))(v18_.v19, &v22,
+                                                              &v20),
+        v8 = COERCE_AS(__typeof__(v8),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
     ++v14;
     v15 += 16;
   } while (v14 < *(int*)(a2 + 96));
-  result = v19;
-  if (v19 == v18) {
+  result = v18_.v19;
+  if (v18_.v19 == v18_.v18) {
   LABEL_13:
     v16 = 32;
   }
   else {
-    if (v19 == nullptr) {
+    if (v18_.v19 == nullptr) {
       goto LABEL_15;
     }
     v16 = 40;
   }
   result = (_QWORD*)(*(__int64 (**)(_QWORD*, __int64, __int64))(*result + v16))(
-      result, v8, v9);
+      result, v8, v9),
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
 LABEL_15:
   if ((v6 & 1) != 0) {
-    LayoutAccessor_1562680(a1 + 88, "In", 1.0);
-    result = (_QWORD*)LayoutAccessor_15636c0(a1 + 88, "In", 1, v5);
+    GameHr_1562680(a1 + 88, "In", 0x1.0000000000000p+0f),
+        v8 = COERCE_AS(__typeof__(v8),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
+    result =
+        (_QWORD*)LayoutAccessor_15636c0_alt1(a1 + 88, (__int64)"In", 1, v5),
+    v8 = COERCE_AS(__typeof__(v8),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v9 = COERCE_AS(__typeof__(v9),
+                   PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   }
   if (v10 != 0) {
     v17 = *(_BYTE*)(v10 + 88);

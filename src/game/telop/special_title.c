@@ -25,6 +25,10 @@ __int64 SpecialTitle_Destructor_17962a0(__int64 a1);
 __int64 SpecialTitle_DeletingDestructor_1796380(__int64 a1);
 __int64 SpecialTitle_Destructor_1796470(__int64 a1);
 __int64 SpecialTitle_DeletingDestructor_1796550(__int64 a1);
+__int64 GameRoutine_14a1390_alt1(__int64*, char) __asm__("GameRoutine_14a1390");
+__int64 GameRoutine_14a1520_alt1(__int64*, char) __asm__("GameRoutine_14a1520");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 SpecialTitle_Unknown41(__int64 a1)
 {
@@ -54,45 +58,41 @@ __int64 SpecialTitle_Unknown33(__int64 a1)
 
 __int64 SpecialTitle_Unknown34(__int64 result)
 {
-  __int64 v1;
-  __int64 v2;
   _DWORD* v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  _DWORD* v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
+  struct {
+    _DWORD* v7;
+    __int64 v8;
+  } v7_;
 
   v3 = *(_DWORD**)(result + 864);
   if (*(_QWORD*)v3 != 0 && *(_DWORD*)(*(_QWORD*)v3 + 16LL) == v3[2]) {
-    v9 = v1;
-    v10 = v2;
     v4 = *(_QWORD*)(result + 872);
     v5 = result;
     if (v4 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 8), 1u,
                                 memory_order_relaxed);
-      v8 = v4;
+      v7_.v8 = v4;
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 8), 1u,
                                 memory_order_relaxed);
     }
     else {
-      v8 = 0;
+      v7_.v8 = 0;
     }
-    v7 = v3;
-    result = GameRoutine_14a1390(&v7, 1);
-    v6 = v8;
-    if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
-                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
+    v7_.v7 = v3;
+    result = GameRoutine_14a1390_alt1((__int64*)&v7_.v7, 1);
+    v6 = v7_.v8;
+    if (v7_.v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7_.v8 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-      result = std___1___shared_weak_count___release_weak();
+      result = std___1___shared_weak_count___release_weak_alt1(v6);
     }
     if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-      result = std___1___shared_weak_count___release_weak();
+      result = std___1___shared_weak_count___release_weak_alt1(v4);
     }
     **(_QWORD**)(v5 + 864) = 0;
   }
@@ -101,45 +101,41 @@ __int64 SpecialTitle_Unknown34(__int64 result)
 
 __int64 SpecialTitle_Unknown39(__int64 result)
 {
-  __int64 v1;
-  __int64 v2;
   _DWORD* v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  _DWORD* v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
+  struct {
+    _DWORD* v7;
+    __int64 v8;
+  } v7_;
 
   v3 = *(_DWORD**)(result + 864);
   if (*(_QWORD*)v3 != 0 && *(_DWORD*)(*(_QWORD*)v3 + 16LL) == v3[2]) {
-    v9 = v1;
-    v10 = v2;
     v4 = *(_QWORD*)(result + 872);
     v5 = result;
     if (v4 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 8), 1u,
                                 memory_order_relaxed);
-      v8 = v4;
+      v7_.v8 = v4;
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 8), 1u,
                                 memory_order_relaxed);
     }
     else {
-      v8 = 0;
+      v7_.v8 = 0;
     }
-    v7 = v3;
-    result = GameRoutine_14a1520(&v7, 1);
-    v6 = v8;
-    if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
-                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
+    v7_.v7 = v3;
+    result = GameRoutine_14a1520_alt1((__int64*)&v7_.v7, 1);
+    v6 = v7_.v8;
+    if (v7_.v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7_.v8 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-      result = std___1___shared_weak_count___release_weak();
+      result = std___1___shared_weak_count___release_weak_alt1(v6);
     }
     if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-      result = std___1___shared_weak_count___release_weak();
+      result = std___1___shared_weak_count___release_weak_alt1(v4);
     }
     **(_QWORD**)(v5 + 864) = 0;
   }

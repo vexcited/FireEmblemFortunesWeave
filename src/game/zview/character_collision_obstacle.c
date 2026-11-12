@@ -7,37 +7,44 @@ __n128 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_zview_CharacterCollisionObstacle_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 CharacterCollisionObstacle_Destructor(_QWORD* a1);
+__n128 CharacterCollisionObstacle_Destructor_alt1(_QWORD* a1) __asm__(
+    "CharacterCollisionObstacle_Destructor");
 __n128 CharacterCollisionObstacle_DeletingDestructor(_QWORD* a1);
+__int64 GameRoutine_ffed80_alt1(__int64) __asm__("GameRoutine_ffed80");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+_QWORD* CharacterCollisionObstacle_Destructor(_QWORD* result);
 
-__n128 CharacterCollisionObstacle_Destructor(_QWORD* a1)
+_QWORD* CharacterCollisionObstacle_Destructor(_QWORD* result)
 {
-  __n128 result;
+  _QWORD* v1;
+  __int64 v2;
   __int64 v3;
-  __int64 v4;
 
-  *a1 = game_zview_CharacterCollisionObstacle_vtable;
-  if (a1[2] != 0 &&
-      (GameRoutine_ffed80(a1), v3 = a1[3], a1[2] = 0, a1[3] = 0, v3 != 0) &&
-      atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+  v1 = result;
+  *result = game_zview_CharacterCollisionObstacle_vtable;
+  if (result[2] != 0 &&
+      (result = (_QWORD*)GameRoutine_ffed80_alt1((__int64)result), v2 = v1[3],
+       v1[2] = 0, v1[3] = 0, v2 != 0) &&
+      atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
-    result = std___1___shared_weak_count___release_weak(v3);
-    v4 = a1[3];
-    if (v4 == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+    result = (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v2);
+    v3 = v1[3];
+    if (v3 == 0) {
       return result;
     }
   }
   else {
-    v4 = a1[3];
-    if (v4 == 0) {
+    v3 = v1[3];
+    if (v3 == 0) {
       return result;
     }
   }
-  if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+  if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-    return std___1___shared_weak_count___release_weak(v4);
+    (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+    return (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v3);
   }
   return result;
 }

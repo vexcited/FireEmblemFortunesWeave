@@ -377,8 +377,8 @@ _DWORD* SightMapsImpl_Unknown4(_DWORD* result)
           v24 = game_68e930(v23, v8);
           if (v24 != 0 && *(int*)(v8 + 592) <= 1) {
             v25 = v24;
-            v73 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x80LL) +
-                             game_g_shared_system_skills_ptr) &
+            v73 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x7CLL) +
+                             game_g_shared_system_skills_ptr + 4) &
                   0xFFF;
             if ((game_HasSkill((_QWORD*)(v8 + 1744), (unsigned int*)&v73) &
                  1) == 0 &&

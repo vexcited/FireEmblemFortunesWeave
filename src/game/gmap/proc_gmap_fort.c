@@ -22,6 +22,7 @@ extern __int64 (*GameData_204c648[])();
 float GameRoutine_135bea0();
 _QWORD* game_gmap_ProcGmapFort_TryFocus(__int64 a1);
 void game_gmap_ProcGmapFort_WaitMotion_closure_Invoke(__int64 a1, __int64* a2);
+__int64 UnitActor_81a540(__int64, unsigned int, __int64);
 
 _QWORD* game_gmap_ProcGmapFort_TryFocus(__int64 a1)
 {
@@ -144,18 +145,20 @@ void game_gmap_ProcGmapFort_PlayMotion_closure_Invoke(__int64 a1, __int64* a2)
 {
   __int64 v2;
   __int64 v3;
-  unsigned __int64 v4;
-  int v5;
-  char v6;
+  struct {
+    unsigned __int64 v4;
+    int v5;
+    char v6;
+  } v4_;
 
   v2 = *a2;
   v3 = *(_QWORD*)(*a2 + 96);
   if (v3 != 0 && *(_BYTE*)(v3 + 32) == 1 && *(_BYTE*)(v2 + 512) != 2) {
-    v4 = 0xBF800000BF800000LL;
-    v5 = 1065353216;
-    v6 = 1;
-    if ((GameRoutine_81a540(v2 + 112, 2017201876, &v4) & 1) == 0) {
-      GameRoutine_81a540(v2 + 112, 3101391519LL, &v4);
+    v4_.v4 = 0xBF800000BF800000LL;
+    v4_.v5 = 1065353216;
+    v4_.v6 = 1;
+    if ((UnitActor_81a540(v2 + 112, 0x783C0ED4u, (__int64)&v4_.v4) & 1) == 0) {
+      UnitActor_81a540(v2 + 112, 0xB8DB7A9F, (__int64)&v4_.v4);
     }
   }
 }

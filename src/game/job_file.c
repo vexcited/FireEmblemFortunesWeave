@@ -14,7 +14,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 struct PseudoSret GameRoutine_677000(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_67afd0(void);
-__int64* JobFile_676c00(__int64* result, __int64 a2);
+__int64* JobFile_676c00_alt1(__int64* result,
+                             __int64 a2) __asm__("JobFile_676c00");
 __int64 JobFile_676ef0(__int64* a1);
 unsigned __int64 JobFile_6774a0(_QWORD* a1, __int64 a2);
 __int64 game_JobFile_GetFromClassChangeCondition_lambda0_Invoke(__int64 result,
@@ -74,6 +75,10 @@ __attribute__((swiftcall)) void
 game_JobFile_GetFromClassChangeCondition(PSEUDO_X8 x8_, __int64** result);
 __attribute__((swiftcall)) void JobFile_6772e0(PSEUDO_X8 x8_,
                                                unsigned __int16* a1);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void JobFile_676c00(__int64* a1, __int64 a2);
 
 __int64 JobFile_6763c0(__int64 a1, unsigned __int8* a2, __int64 a3)
 {
@@ -234,14 +239,14 @@ unsigned __int64 JobFile_Unknown4(_QWORD* a1)
         if (v13 != v11) {
           v14 = v11[9];
           if (v14 != 0) {
-            JobFile_676c00((__int64*)(*(_QWORD*)(v14 + 24) + 984LL), *v9);
-            JobFile_676c00((__int64*)(v11[3] + 960LL), v11[9]);
+            JobFile_676c00_alt1((__int64*)(*(_QWORD*)(v14 + 24) + 984LL), *v9);
+            JobFile_676c00_alt1((__int64*)(v11[3] + 960LL), v11[9]);
           }
           v15 = v11[10];
           if (v15 != 0) {
-            JobFile_676c00((__int64*)(*(_QWORD*)(v15 + 24) + 960LL),
-                           (__int64)v11);
-            JobFile_676c00((__int64*)(v11[3] + 984LL), v11[10]);
+            JobFile_676c00_alt1((__int64*)(*(_QWORD*)(v15 + 24) + 960LL),
+                                (__int64)v11);
+            JobFile_676c00_alt1((__int64*)(v11[3] + 984LL), v11[10]);
           }
         }
         ++v9;
@@ -566,18 +571,17 @@ LABEL_110:
   return result;
 }
 
-__int64* JobFile_676c00(__int64* result, __int64 a2)
+void JobFile_676c00(__int64* a1, __int64 a2)
 {
   __int64 v2;
   __int64* v3;
-  __int64* v4;
   unsigned __int64 v5;
   __int64* v6;
   __int64 v7;
   __int64 v8;
   unsigned __int64 v9;
   __int64 v10;
-  char* v11;
+  unsigned __int64 v11;
   __int64 v12;
   unsigned __int64 v13;
   __int64 v14;
@@ -589,14 +593,13 @@ __int64* JobFile_676c00(__int64* result, __int64 a2)
   __int64 v20;
   __int64 v21;
 
-  v2 = *result;
-  v3 = (__int64*)result[1];
-  v4 = result;
-  if ((__int64*)*result == v3) {
+  v2 = *a1;
+  v3 = (__int64*)a1[1];
+  if ((__int64*)*a1 == v3) {
     goto LABEL_7;
   }
   v5 = (unsigned __int64)v3 - v2 - 8;
-  v6 = (__int64*)*result;
+  v6 = (__int64*)*a1;
   if ((~(_BYTE)v5 & 0x18) == 0) {
   LABEL_6:
     if (v5 >= 0x18) {
@@ -606,16 +609,16 @@ __int64* JobFile_676c00(__int64* result, __int64 a2)
           goto LABEL_7;
         }
       }
-      return result;
+      return;
     }
   LABEL_7:
-    v9 = result[2];
+    v9 = a1[2];
     if ((unsigned __int64)v3 >= v9) {
-      v11 = (char*)v3 - v2;
+      v11 = (unsigned __int64)v3 - v2;
       v12 = ((__int64)v3 - v2) >> 3;
       v13 = v12 + 1;
       if ((unsigned __int64)(v12 + 1) >> 61 != 0) {
-        GameRoutine_67afd0();
+        GameRoutine_67afd0_alt1();
       }
       v14 = v9 - v2;
       v15 = fw_memory_g_heap_manager_ptr;
@@ -630,10 +633,10 @@ __int64* JobFile_676c00(__int64* result, __int64 a2)
       }
       if (v16 != 0) {
         if (v16 >> 61 != 0) {
-          GameRoutine_60a210(result);
+          GameRoutine_60a210_alt1();
         }
         v17 = a2;
-        v18 = fw_memory_HeapManager_Allocate(
+        v18 = fw_memory_HeapManager_Allocate_alt1(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v16, 16, 0);
         a2 = v17;
       }
@@ -641,35 +644,34 @@ __int64* JobFile_676c00(__int64* result, __int64 a2)
         v18 = 0;
       }
       v19 = v18 + 8 * v16;
-      v20 = (__int64)&v11[v18 + -8 * v12];
-      *(_QWORD*)&v11[v18] = a2;
-      v10 = (__int64)&v11[v18 + 8];
-      result = (__int64*)memcpy(v20, v2, v11);
-      *v4 = v20;
-      v4[1] = v10;
-      v4[2] = v19;
+      v20 = v18 + v11 - 8 * v12;
+      *(_QWORD*)(v18 + v11) = a2;
+      v10 = v18 + v11 + 8;
+      memcpy_alt1(v20, v2, v11);
+      *a1 = v20;
+      a1[1] = v10;
+      a1[2] = v19;
       if (v2 != 0) {
         v21 = 128;
         if (*(_QWORD*)(*(_QWORD*)v15 + 200LL) == 0) {
           v21 = 56;
         }
-        result =
-            (__int64*)nn_mem_StandardAllocator_Free(*(_QWORD*)v15 + v21, v2);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v15 + v21, v2);
       }
     }
     else {
       *v3 = a2;
       v10 = (__int64)(v3 + 1);
     }
-    v4[1] = v10;
-    return result;
+    a1[1] = v10;
+    return;
   }
   v7 = ((unsigned __int8)((unsigned int)v5 >> 3) + 1) & 3;
-  v6 = (__int64*)*result;
+  v6 = (__int64*)*a1;
   while (1) {
     v8 = *v6++;
     if (v8 == a2) {
-      return result;
+      break;
     }
     if (--v7 == 0) {
       goto LABEL_6;

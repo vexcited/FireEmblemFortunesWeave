@@ -20,6 +20,19 @@ void __attribute__((noreturn)) GameRoutine_8875e0(_QWORD);
 __int64 Impl_Destructor_1337380(_QWORD* a1);
 __int64 Impl_Unknown7_1337600(__int64 result, __int64 a2);
 _QWORD* Impl_Unknown8_13378e0(_QWORD* result, __int64 a2, int a3);
+__int64 Spot_132b480(__int64, __int64*, int);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+void __attribute__((noreturn))
+GameRoutine_8875e0_alt1() __asm__("GameRoutine_8875e0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 Impl_Destructor_1337380(_QWORD* a1)
 {
@@ -356,7 +369,7 @@ _QWORD* Impl_Unknown8_13378e0(_QWORD* result, __int64 a2, int a3)
   unsigned __int64 v78;
   __int64 v79;
   unsigned __int64 v80;
-  char* v81;
+  unsigned __int64 v81;
   __int64 v82;
   __int64 v83;
   int v84;
@@ -389,7 +402,7 @@ _QWORD* Impl_Unknown8_13378e0(_QWORD* result, __int64 a2, int a3)
   unsigned __int64 v112;
   __int64 v113;
   unsigned __int64 v114;
-  char* v115;
+  unsigned __int64 v115;
   __int64 v116;
   __int64 v117;
   __int64 v118;
@@ -398,8 +411,10 @@ _QWORD* Impl_Unknown8_13378e0(_QWORD* result, __int64 a2, int a3)
   __int64 v121;
   __int64 v122;
   __int64 v123;
-  _QWORD v124[4];
-  _QWORD* v125;
+  struct {
+    _QWORD v124[4];
+    _QWORD* v125;
+  } v124_;
   int v126;
   __int64 v127;
 
@@ -494,15 +509,14 @@ _QWORD* Impl_Unknown8_13378e0(_QWORD* result, __int64 a2, int a3)
     LABEL_30:
       v28 = v25[3];
       if (v28 != 0) {
-        result = (_QWORD*)GameRoutine_132b480(v28, (__int64*)a2, a3);
+        Spot_132b480(v28, (__int64*)a2, a3);
         goto LABEL_33;
       }
     LABEL_32:
       v29 = *(_QWORD*)a2;
-      LODWORD(v124[0]) = 0;
-      (*(void (**)(__int64, _QWORD*))(v29 + 16))(a2, v124);
-      result = (_QWORD*)(*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)a2 + 24LL))(
-          a2, 0);
+      LODWORD(v124_.v124[0]) = 0;
+      (*(void (**)(__int64, _QWORD*))(v29 + 16))(a2, v124_.v124);
+      (*(void (**)(__int64, _QWORD))(*(_QWORD*)a2 + 24LL))(a2, 0);
     LABEL_33:
       if (++v12 == v11) {
         v10 = *(_DWORD*)(a2 + 20);
@@ -586,7 +600,6 @@ _QWORD* Impl_Unknown8_13378e0(_QWORD* result, __int64 a2, int a3)
       }
     }
   }
-
 LABEL_60:
   if (a3 == 9) {
     goto LABEL_154;
@@ -708,17 +721,17 @@ LABEL_60:
       }
       if (v78 >> 61 != 0) {
       LABEL_171:
-        GameRoutine_60a210();
+        GameRoutine_60a210_alt1();
       }
-      v79 = fw_memory_HeapManager_Allocate(
+      v79 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v78, 16, 0);
     LABEL_102:
       v80 = v79 + 8 * v78;
-      v81 = (char*)v72 - v73;
+      v81 = (unsigned __int64)v72 - v73;
       v82 = (__int64)&v74[v79 + -8 * v75];
       *(_QWORD*)&v74[v79] = v70;
       v53 = (__int64)&v74[v79 + 8];
-      result = (_QWORD*)memcpy(v82, v73, v81);
+      memcpy_alt1(v82, v73, v81);
       v7[18] = v82;
       v7[19] = v53;
       v7[20] = v80;
@@ -727,8 +740,8 @@ LABEL_60:
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v83 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v83);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v83, v73);
       }
     LABEL_64:
       v7[19] = v53;
@@ -852,15 +865,15 @@ LABEL_60:
           if (v112 >> 61 != 0) {
             goto LABEL_171;
           }
-          v113 = fw_memory_HeapManager_Allocate(
+          v113 = fw_memory_HeapManager_Allocate_alt1(
               *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v112, 16, 0);
         LABEL_149:
           v114 = v113 + 8 * v112;
-          v115 = (char*)v106 - v107;
+          v115 = (unsigned __int64)v106 - v107;
           v116 = (__int64)&v108[v113 + -8 * v109];
           *(_QWORD*)&v108[v113] = v104;
           v87 = (__int64)&v108[v113 + 8];
-          result = (_QWORD*)memcpy(v116, v107, v115);
+          memcpy_alt1(v116, v107, v115);
           v7[21] = v116;
           v7[22] = v87;
           v7[23] = v114;
@@ -870,8 +883,8 @@ LABEL_60:
                 0) {
               v117 = 56;
             }
-            result = (_QWORD*)nn_mem_StandardAllocator_Free(
-                *(_QWORD*)fw_memory_g_heap_manager_ptr + v117);
+            nn_mem_StandardAllocator_Free_alt1(
+                *(_QWORD*)fw_memory_g_heap_manager_ptr + v117, v107);
           }
         LABEL_111:
           v7[22] = v87;
@@ -880,11 +893,11 @@ LABEL_60:
             continue;
           }
         LABEL_154:
-          result = v124;
+          result = v124_.v124;
           v126 = 0;
-          v124[0] = GameData_202c2e8;
-          v124[1] = &v126;
-          v125 = v124;
+          v124_.v124[0] = GameData_202c2e8;
+          v124_.v124[1] = &v126;
+          v124_.v125 = v124_.v124;
           v118 = *(_QWORD*)(GameData_21c9700 + 8);
           v119 = *(__int64**)(v118 + 48);
           v120 = *(__int64**)(v118 + 56);
@@ -902,21 +915,22 @@ LABEL_60:
                   1) == 0) &&
                 *(_QWORD*)(v121 + 280) != 0) {
               v127 = v121;
-              if (v125 == nullptr) {
-                GameRoutine_60a310(0, a2);
+              if (v124_.v125 == nullptr) {
+                GameRoutine_60a310_alt1();
               }
-              (*(void (**)(_QWORD*, __int64*))(*v125 + 48LL))(v125, &v127);
+              (*(void (**)(_QWORD*, __int64*))(*v124_.v125 + 48LL))(v124_.v125,
+                                                                    &v127);
             }
             ++v119;
           } while (v119 != v120);
-          result = v125;
-          if (v125 == v124) {
+          result = v124_.v125;
+          if (v124_.v125 == v124_.v124) {
           LABEL_167:
             v123 = 32;
             return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v123))(
                 result, a2);
           }
-          else if (v125 != nullptr) {
+          else if (v124_.v125 != nullptr) {
             v123 = 40;
             return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v123))(
                 result, a2);
@@ -928,7 +942,7 @@ LABEL_60:
     }
     break;
   }
-  GameRoutine_8875e0(result);
+  GameRoutine_8875e0_alt1();
 }
 
 #pragma GCC visibility pop

@@ -19,6 +19,17 @@ extern __int64 GameData_21f4018[];
 extern __int64 GameData_21f4228;
 __attribute__((swiftcall)) void
 MenuItemAnimalSkill_Unknown2(PSEUDO_X8 x8_, __int64 result, __int64 a2);
+_DWORD* GameRoutine_932460_alt1(unsigned __int8*,
+                                __int64*) __asm__("GameRoutine_932460");
+__int64 GameRoutine_18a7ae0_alt1(__int64, unsigned int*, __int64, char, int,
+                                 const char*,
+                                 char) __asm__("GameRoutine_18a7ae0");
+__int64 GameRoutine_932360_alt1(unsigned __int8*,
+                                __int64*) __asm__("GameRoutine_932360");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
 
 __int64 MenuItemAnimalSkill_1893870(_QWORD* a1)
 {
@@ -75,14 +86,14 @@ MenuItemAnimalSkill_Unknown2(PSEUDO_X8 x8_, __int64 result, __int64 a2)
   __int64 v8;
   _DWORD* v9;
   __int64 v10;
-  _QWORD* v11;
+  __int64 v11;
   __int64 v12;
   int v13;
-  __int64* v15;
+  unsigned __int8* v15;
   __int64 v16;
   __int64 v17;
-  int v18;
-  _QWORD v19[4];
+  unsigned int v18;
+  __int64 v19[4];
 
   if (*(_DWORD*)(a2 + 8) == 45 && GameData_21f1e08 != 0) {
     v19[2] = v3;
@@ -95,39 +106,42 @@ MenuItemAnimalSkill_Unknown2(PSEUDO_X8 x8_, __int64 result, __int64 a2)
       v9 = a3;
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 16), 1u,
                                 memory_order_relaxed);
-      v10 = std___1___shared_weak_count_lock(v8);
-      result = std___1___shared_weak_count___release_weak(v5);
+      v10 = std___1___shared_weak_count_lock_alt1(v8);
+      result = std___1___shared_weak_count___release_weak_alt1(v5);
       a3 = v9;
       if (v10 != 0) {
         if (v6 != 0) {
-          v11 = *(_QWORD**)(v7 + 24);
-          if (v11 != nullptr) {
-            v12 = v11[50];
-            v13 = *((unsigned __int8*)v11 + 1880);
+          v11 = *(_QWORD*)(v7 + 24);
+          if (v11 != 0) {
+            v12 = *(_QWORD*)(v11 + 400);
+            v13 = *(unsigned __int8*)(v11 + 1880);
             if (*(_BYTE*)(v12 + 96) == 2 && v13 == 0) {
               v16 = *(_QWORD*)(v12 + 112);
-              v15 = v16 != 0
-                        ? &GameData_21f4018[8 * (unsigned __int64)*(
+              v15 =
+                  (unsigned __int8*)(v16 != 0
+                                         ? &GameData_21f4018
+                                               [8 *
+                                                (unsigned __int64)*(
                                                     unsigned __int8*)(v16 + 32)]
-                        : &GameData_21f4228;
-              v13 = *(unsigned __int8*)v15;
+                                         : &GameData_21f4228);
+              v13 = *v15;
             }
             else {
-              v15 = v11 + 235;
+              v15 = (unsigned __int8*)(v11 + 1880);
             }
             if (v13 != 0) {
-              v17 = v11[49];
+              v17 = *(_QWORD*)(v11 + 392);
               v18 = 0;
               v19[0] = v17;
               v19[1] = v11;
-              v18 = *(_DWORD*)GameRoutine_932360(v15, v19);
+              v18 = *(_DWORD*)GameRoutine_932360_alt1(v15, v19);
               if ((v18 & 0xFFF) == 0) {
-                v19[0] = v11[49];
+                v19[0] = *(_QWORD*)(v11 + 392);
                 v19[1] = v11;
-                v18 = *(_DWORD*)GameRoutine_932460(v15, v19);
+                v18 = *GameRoutine_932460_alt1(v15, v19);
               }
-              result = GameRoutine_18a7ae0(v6, &v18, *(_QWORD*)(v7 + 24), 0, 0,
-                                           0, 0);
+              result = GameRoutine_18a7ae0_alt1(v6, &v18, *(_QWORD*)(v7 + 24),
+                                                0, 0, nullptr, 0);
               a3 = v9;
             }
           }
@@ -135,7 +149,7 @@ MenuItemAnimalSkill_Unknown2(PSEUDO_X8 x8_, __int64 result, __int64 a2)
         if (atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-          result = std___1___shared_weak_count___release_weak(v10);
+          result = std___1___shared_weak_count___release_weak_alt1(v10);
           a3 = v9;
         }
       }

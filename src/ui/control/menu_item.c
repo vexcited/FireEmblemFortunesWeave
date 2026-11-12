@@ -13,6 +13,13 @@ extern __int64 GameData_220b680;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __attribute__((swiftcall)) void MenuItem_188b680(PSEUDO_X8 x8_, _QWORD* a1,
                                                  __int64 a2);
+__int64 game_c8b000_alt1(__int64, __int64*, char) __asm__("game_c8b000");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __attribute__((swiftcall)) void MenuItem_188b680(PSEUDO_X8 x8_, _QWORD* a1,
                                                  __int64 a2)
@@ -28,8 +35,10 @@ __attribute__((swiftcall)) void MenuItem_188b680(PSEUDO_X8 x8_, _QWORD* a1,
   __int64 v12;
   _QWORD* v13;
   __int64 v14;
-  __int64 v15;
-  __int64 v16;
+  struct {
+    __int64 v15;
+    __int64 v16;
+  } v15_;
 
   result = X8CALL_X0(_QWORD*, Element_1886020((void*)(a3), a1, a2));
   v6 = *(_DWORD*)(a2 + 8);
@@ -57,7 +66,8 @@ __attribute__((swiftcall)) void MenuItem_188b680(PSEUDO_X8 x8_, _QWORD* a1,
             else {
               v14 = 56;
             }
-            nn_mem_StandardAllocator_Free(*(_QWORD*)v12 + v14);
+            nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v12 + v14,
+                                               (__int64)v10);
             v10 = v13;
           } while (v13 != a1 + 130);
         }
@@ -71,35 +81,35 @@ __attribute__((swiftcall)) void MenuItem_188b680(PSEUDO_X8 x8_, _QWORD* a1,
   else {
     switch (v6) {
     case '%':
-      Element_1885a60((void*)(&v15), a1);
-      if (v16 != 0) {
-        v7 = std___1___shared_weak_count_lock(v16);
+      Element_1885a60((void*)(&v15_.v15), a1);
+      if (v15_.v16 != 0) {
+        v7 = std___1___shared_weak_count_lock_alt1(v15_.v16);
         if (v7 != 0) {
-          v8 = v15;
+          v8 = v15_.v15;
         }
         else {
           v8 = 0;
         }
-        if (v16 != 0) {
-          std___1___shared_weak_count___release_weak(v16);
+        if (v15_.v16 != 0) {
+          std___1___shared_weak_count___release_weak_alt1(v15_.v16);
         }
         if (v8 != 0) {
-          v15 = v8;
-          v16 = v7;
+          v15_.v15 = v8;
+          v15_.v16 = v7;
           v9 = GameData_220b680;
           if (v7 != 0) {
             atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 16), 1u,
                                       memory_order_relaxed);
           }
-          game_c8b000(v9, &v15, 0);
-          if (v16 != 0) {
-            std___1___shared_weak_count___release_weak(v16);
+          game_c8b000_alt1(v9, &v15_.v15, 0);
+          if (v15_.v16 != 0) {
+            std___1___shared_weak_count___release_weak_alt1(v15_.v16);
           }
         }
         if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-          std___1___shared_weak_count___release_weak(v7);
+          std___1___shared_weak_count___release_weak_alt1(v7);
         }
       }
       {

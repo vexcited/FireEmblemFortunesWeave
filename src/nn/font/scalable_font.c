@@ -22,16 +22,22 @@ __int64 ScalableFont_Unknown23(__int64 a1, __int64 a2, __int64 a3);
 __int64 ScalableFont_Unknown35(__int64 a1);
 __int64 ScalableFont_Unknown36(__int64 a1, __int64 a2, unsigned int a3);
 __int64 ScalableFont_Unknown7(__int64 a1);
+__int64 ScalableFont_564920(__int64, unsigned int, unsigned int,
+                            unsigned __int16);
+__int64 ScalableFont_564b00(__int64, unsigned __int16);
+bool ScalableFont_5634c0(__int64, unsigned int, unsigned int, __int16, int,
+                         unsigned __int8);
 
 __int64 ScalableFont_5603e0(__int64 a1, __int64 a2)
 {
   __int64 result;
-  float* v5;
-  unsigned int v6;
-  int v7;
+  unsigned __int16 v5;
+  float* v6;
+  unsigned int v7;
   int v8;
   int v9;
   int v10;
+  int v11;
   __int64 vars10;
   __int64 _18;
 
@@ -39,51 +45,50 @@ __int64 ScalableFont_5603e0(__int64 a1, __int64 a2)
   if (*(_QWORD*)a2 != 0) {
     *(_QWORD*)(a1 + 16) = result;
     *(_DWORD*)(a1 + 24) = *(_DWORD*)(a2 + 8);
-    *(_WORD*)(a1 + 50) = *(_WORD*)(a2 + 12);
-    v5 = (float*)GameRoutine_564b00();
-    v6 = *(_DWORD*)(a1 + 24);
-    *(_DWORD*)(a1 + 32) = (int)(float)((float)(*v5 * (float)v6) + 0.5);
-    v7 = (int)(float)((float)(v5[1] * (float)v6) + 0.5);
-    *(_DWORD*)(a1 + 28) = v7;
-    *(_DWORD*)(a1 + 36) = (int)(float)((float)(v5[2] * (float)v6) + 0.5);
-    v8 = *(_DWORD*)(a2 + 20);
+    v5 = *(_WORD*)(a2 + 12);
+    *(_WORD*)(a1 + 50) = v5;
+    v6 = (float*)ScalableFont_564b00(result, v5);
+    v7 = *(_DWORD*)(a1 + 24);
+    *(_DWORD*)(a1 + 32) =
+        (int)(float)((float)(*v6 * (float)v7) + 0x1.0000000000000p-1f);
+    v8 = (int)(float)((float)(v6[1] * (float)v7) + 0x1.0000000000000p-1f);
+    *(_DWORD*)(a1 + 28) = v8;
+    *(_DWORD*)(a1 + 36) =
+        (int)(float)((float)(v6[2] * (float)v7) + 0x1.0000000000000p-1f);
+    v9 = *(_DWORD*)(a2 + 20);
     *(_BYTE*)(a1 + 44) = 0;
-    *(_BYTE*)(a1 + 45) = v6;
-    *(_BYTE*)(a1 + 46) = v6;
-    *(_DWORD*)(a1 + 40) = v8 + v7;
+    *(_BYTE*)(a1 + 45) = v7;
+    *(_BYTE*)(a1 + 46) = v7;
+    *(_DWORD*)(a1 + 40) = v9 + v8;
     if (*(_BYTE*)(a2 + 14) == 1) {
       *(_BYTE*)(a1 + 47) = 0;
-      v9 = 32;
+      v10 = 32;
     }
     else {
-      v10 = *(unsigned __int8*)(a2 + 15);
-      if (v10 != 1) {
-        LOBYTE(v10) = 2;
+      v11 = *(unsigned __int8*)(a2 + 15);
+      if (v11 != 1) {
+        LOBYTE(v11) = 2;
       }
-      *(_BYTE*)(a1 + 47) = v10;
-      v9 = *(_DWORD*)(a2 + 16);
+      *(_BYTE*)(a1 + 47) = v11;
+      v10 = *(_DWORD*)(a2 + 16);
     }
-    *(_DWORD*)(a1 + 52) = v9;
+    *(_DWORD*)(a1 + 52) = v10;
     *(_BYTE*)(a1 + 48) = *(_BYTE*)(a2 + 24);
     vars10 = _18;
-    GameRoutine_5634c0(*(_QWORD*)(a1 + 16), *(unsigned int*)(a1 + 52),
-                       *(unsigned int*)(a1 + 24), *(unsigned __int16*)(a1 + 50),
-                       0xFFFFFFFFLL, *(unsigned __int8*)(a1 + 48));
-    result = GameRoutine_564920(*(_QWORD*)(a1 + 16), *(unsigned int*)(a1 + 52),
-                                *(unsigned int*)(a1 + 24),
-                                *(unsigned __int16*)(a1 + 50));
+    ScalableFont_5634c0(*(_QWORD*)(a1 + 16), *(_DWORD*)(a1 + 52),
+                        *(_DWORD*)(a1 + 24), *(_WORD*)(a1 + 50), -1,
+                        *(_BYTE*)(a1 + 48));
+    result = ScalableFont_564920(*(_QWORD*)(a1 + 16), *(_DWORD*)(a1 + 52),
+                                 *(_DWORD*)(a1 + 24), *(_WORD*)(a1 + 50));
     *(_BYTE*)(result + 56) |= 0x20u;
     if (*(_BYTE*)(a1 + 47) == 1) {
-      GameRoutine_5634c0(*(_QWORD*)(a1 + 16), 32, *(unsigned int*)(a1 + 24),
-                         *(unsigned __int16*)(a1 + 50), 0xFFFFFFFFLL,
-                         *(unsigned __int8*)(a1 + 48));
-      result =
-          GameRoutine_564920(*(_QWORD*)(a1 + 16), 32, *(unsigned int*)(a1 + 24),
-                             *(unsigned __int16*)(a1 + 50));
+      ScalableFont_5634c0(*(_QWORD*)(a1 + 16), 0x20u, *(_DWORD*)(a1 + 24),
+                          *(_WORD*)(a1 + 50), -1, *(_BYTE*)(a1 + 48));
+      result = ScalableFont_564920(*(_QWORD*)(a1 + 16), 0x20u,
+                                   *(_DWORD*)(a1 + 24), *(_WORD*)(a1 + 50));
       if (result != 0) {
-        result = GameRoutine_564920(*(_QWORD*)(a1 + 16), 32,
-                                    *(unsigned int*)(a1 + 24),
-                                    *(unsigned __int16*)(a1 + 50));
+        result = ScalableFont_564920(*(_QWORD*)(a1 + 16), 0x20u,
+                                     *(_DWORD*)(a1 + 24), *(_WORD*)(a1 + 50));
         *(_BYTE*)(result + 56) |= 0x20u;
       }
     }

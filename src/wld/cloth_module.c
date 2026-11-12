@@ -13,7 +13,8 @@ extern __int64 (*wld_ClothModule_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int* GameData_212df08;
 void __attribute__((noreturn)) GameRoutine_8123d0(void);
-__int64 ClothModule_Destructor(__int64 result);
+__int64
+ClothModule_Destructor_alt1(__int64 result) __asm__("ClothModule_Destructor");
 __int64 ClothModule_DeletingDestructor(__int64 a1);
 __int64 CharacterBuilder_a577c0(__int64 result, __int64, int, __int64, __int64,
                                 __int64);
@@ -23,41 +24,54 @@ extern __int64 as_g_base_frame_counter;
 unsigned __int64 CharacterBuilder_a585e0(unsigned __int64 result, __int64);
 void GameRoutine_a58fe0(__int64, __int64, float32x4_t*, char, float32x4_t _Q0,
                         double, double, double, double, long double);
-_QWORD* wld_ClothModule_ClothModule(__int64 a1, __int64 a2, __int64 a3,
-                                    __int64 a4, __int64 a5, __int64 a6);
+_QWORD* wld_ClothModule_ClothModule_alt1(
+    __int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
+    __int64 a6) __asm__("wld_ClothModule_ClothModule");
 void wld_ClothModule_ClothModule_lambda0_Invoke(__int64 a1, float32x4_t a2,
                                                 double a3, double a4, double a5,
                                                 double a6, long double a7);
+__int64* Model_a66d00_alt1(__int64* result, int) __asm__("Model_a66d00");
+__int64 Model_a66980_alt1(__int64, __int64, int) __asm__("Model_a66980");
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void CharacterBuilder_a585e0_alt1(__int64*,
+                                  __int64) __asm__("CharacterBuilder_a585e0");
+void CharacterBuilder_a59790(__int64);
+void GameHr_a577c0(__int64, __int64, int, char);
+void __attribute__((noreturn))
+GameRoutine_8123d0_alt1() __asm__("GameRoutine_8123d0");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void wld_ClothModule_ClothModule(__int64 a1, __int64 a2, __int64 a3,
+                                 __int64 a4);
+void ClothModule_Destructor(__int64 a1);
 
-_QWORD* wld_ClothModule_ClothModule(__int64 a1, __int64 a2, __int64 a3,
-                                    __int64 a4, __int64 a5, __int64 a6)
+void wld_ClothModule_ClothModule(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
 {
-  unsigned __int64 v6;
-  atomic_uchar* v9;
+  __int64* v4;
+  atomic_uchar* v7;
   unsigned __int8 explicit;
-  int* v11;
-  __int64 v12;
+  int* v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
   __int64 v13;
-  int v14;
+  __int64 v14;
   __int64 v15;
-  _QWORD* result;
+  int v16;
   __int64 v17;
-  __int64 v18;
-  int v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  _QWORD v28[4];
-  _QWORD* v29;
+  _QWORD* v18;
+  __int64 v19;
+  struct {
+    _QWORD v20[4];
+    _QWORD* v21;
+  } v20_;
 
   *(_BYTE*)(a1 + 16) = 0;
   *(_QWORD*)(a1 + 24) = 0;
-  v6 = a1 + 24;
+  v4 = (__int64*)(a1 + 24);
   *(_QWORD*)(a1 + 32) = 0;
   *(_QWORD*)(a1 + 40) = 0;
   *(_QWORD*)(a1 + 52) = 0;
@@ -70,63 +84,61 @@ _QWORD* wld_ClothModule_ClothModule(__int64 a1, __int64 a2, __int64 a3,
   *(_QWORD*)(a1 + 64) = 0;
   *(_QWORD*)(a1 + 72) = a3 + 24;
   *(_QWORD*)(a1 + 80) = a4 + 32;
-  v9 = (atomic_uchar*)GameData_212df10;
+  v7 = (atomic_uchar*)GameData_212df10;
   *(_BYTE*)(a1 + 92) = 0;
   *(_BYTE*)(a1 + 96) = 0;
-  explicit = atomic_load_explicit(v9, memory_order_acquire);
-  v11 = GameData_212df08;
+  explicit = atomic_load_explicit(v7, memory_order_acquire);
+  v9 = GameData_212df08;
   if ((explicit & 1) == 0 &&
-      (unsigned int)__cxa_guard_acquire(GameData_212df10) != 0) {
-    *v11 = wld_Crc32(0, "ModelModule", 11);
-    __cxa_guard_release(GameData_212df10, v22, v23, v24);
+      __cxa_guard_acquire_alt1((__int64)GameData_212df10) != 0) {
+    *v9 = wld_Crc32_alt1(0, "ModelModule", 0xBu);
+    __cxa_guard_release_alt1((__int64)GameData_212df10);
   }
-  v12 = *(_QWORD*)(a2 + 512);
-  v13 = v12;
+  v10 = *(_QWORD*)(a2 + 512);
+  v11 = v10;
   do {
-    v14 = *(_DWORD*)(v13 - 16);
-    v13 -= 16;
-    v12 -= 16;
-  } while (v14 != *v11);
-  v15 = *(_QWORD*)(*(_QWORD*)(v12 + 8) + 24LL);
-  CharacterBuilder_a577c0(*(_QWORD*)(a1 + 72), v15, 0, 0, a5, a6);
-  result = (_QWORD*)CharacterBuilder_a585e0(v6, v15);
+    v12 = *(_DWORD*)(v11 - 16);
+    v11 -= 16;
+    v10 -= 16;
+  } while (v12 != *v9);
+  v13 = *(_QWORD*)(*(_QWORD*)(v10 + 8) + 24LL);
+  GameHr_a577c0(*(_QWORD*)(a1 + 72), v13, 0, 0);
+  CharacterBuilder_a585e0_alt1(v4, v13);
   if (*(_QWORD*)(a1 + 24) != *(_QWORD*)(a1 + 32)) {
-    if ((atomic_load_explicit(v9, memory_order_acquire) & 1) == 0 &&
-        (unsigned int)__cxa_guard_acquire(GameData_212df10) != 0) {
-      *v11 = wld_Crc32(0, "ModelModule", 11);
-      __cxa_guard_release(GameData_212df10, v25, v26, v27);
+    if ((atomic_load_explicit(v7, memory_order_acquire) & 1) == 0 &&
+        __cxa_guard_acquire_alt1((__int64)GameData_212df10) != 0) {
+      *v9 = wld_Crc32_alt1(0, "ModelModule", 0xBu);
+      __cxa_guard_release_alt1((__int64)GameData_212df10);
     }
-    v17 = *(_QWORD*)(a2 + 512);
-    v18 = v17;
+    v14 = *(_QWORD*)(a2 + 512);
+    v15 = v14;
     do {
-      v19 = *(_DWORD*)(v18 - 16);
-      v18 -= 16;
-      v17 -= 16;
-    } while (v19 != *v11);
-    v20 = *(_QWORD*)(*(_QWORD*)(v17 + 8) + 24LL);
-    v29 = v28;
-    v28[0] = GameData_1fbfd68;
-    v28[1] = a1;
-    *(_DWORD*)(a1 + 88) = Model_a66980(v20, v28, 2);
-    result = v29;
+      v16 = *(_DWORD*)(v15 - 16);
+      v15 -= 16;
+      v14 -= 16;
+    } while (v16 != *v9);
+    v17 = *(_QWORD*)(*(_QWORD*)(v14 + 8) + 24LL);
+    v20_.v21 = v20_.v20;
+    v20_.v20[0] = GameData_1fbfd68;
+    v20_.v20[1] = a1;
+    *(_DWORD*)(a1 + 88) = Model_a66980_alt1(v17, (__int64)v20_.v20, 2);
+    v18 = v20_.v21;
     *(_BYTE*)(a1 + 92) = 1;
-    if (result == v28) {
-      v21 = 32;
+    if (v18 == v20_.v20) {
+      v19 = 32;
     }
     else {
-      if (result == nullptr) {
-        return result;
+      if (v18 == nullptr) {
+        return;
       }
-      v21 = 40;
+      v19 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void*))(*result + v21))(result);
+    (*(void (**)(__int64))(*v18 + v19))((__int64)v18);
   }
-  return result;
 }
 
-__int64 ClothModule_Destructor(__int64 result)
+void ClothModule_Destructor(__int64 a1)
 {
-  __int64 v1;
   __int64 v2;
   unsigned __int8 explicit;
   int* v4;
@@ -138,23 +150,17 @@ __int64 ClothModule_Destructor(__int64 result)
   __int64 v10;
   __int64 v11;
   __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
 
-  v1 = result;
-  *(_QWORD*)result = wld_ClothModule_vtable;
-  if (*(_BYTE*)(result + 92) == 1) {
-    v2 = *(_QWORD*)(result + 8);
+  *(_QWORD*)a1 = wld_ClothModule_vtable;
+  if (*(_BYTE*)(a1 + 92) == 1) {
+    v2 = *(_QWORD*)(a1 + 8);
     explicit = atomic_load_explicit((atomic_uchar* volatile)GameData_212df10,
                                     memory_order_acquire);
     v4 = GameData_212df08;
-    if ((explicit & 1) == 0) {
-      result = __cxa_guard_acquire(GameData_212df10);
-      if ((_DWORD)result != 0) {
-        *v4 = wld_Crc32(0, "ModelModule", 11);
-        result = __cxa_guard_release(GameData_212df10, v13, v14, v15);
-      }
+    if ((explicit & 1) == 0 &&
+        __cxa_guard_acquire_alt1((__int64)GameData_212df10) != 0) {
+      *v4 = wld_Crc32_alt1(0, "ModelModule", 0xBu);
+      __cxa_guard_release_alt1((__int64)GameData_212df10);
     }
     v5 = *(_QWORD*)(v2 + 512);
     v6 = v5;
@@ -166,47 +172,46 @@ __int64 ClothModule_Destructor(__int64 result)
         if (*(_QWORD*)(v2 + 512) != v5) {
           v8 = *(_QWORD*)(v5 + 8);
           if (v8 != 0) {
-            if ((*(_BYTE*)(v1 + 92) & 1) == 0) {
-              GameRoutine_8123d0();
+            if ((*(_BYTE*)(a1 + 92) & 1) == 0) {
+              GameRoutine_8123d0_alt1();
             }
-            result =
-                Model_a66d00(*(_QWORD*)(v8 + 24), *(unsigned int*)(v1 + 88));
+            Model_a66d00_alt1(*(__int64**)(v8 + 24), *(_DWORD*)(a1 + 88));
           }
         }
         break;
       }
     }
   }
-  v9 = *(_QWORD*)(v1 + 24);
+  v9 = *(_QWORD*)(a1 + 24);
   if (v9 != 0) {
-    v10 = *(_QWORD*)(v1 + 32);
+    v10 = *(_QWORD*)(a1 + 32);
     if (v9 == v10) {
       goto LABEL_14;
     }
     do {
       v10 -= 176;
-      result = GameRoutine_a59790(v10);
+      CharacterBuilder_a59790(v10);
     } while (v10 != v9);
-    v11 = *(_QWORD*)(v1 + 24);
-    *(_QWORD*)(v1 + 32) = v9;
+    v11 = *(_QWORD*)(a1 + 24);
+    *(_QWORD*)(a1 + 32) = v9;
+    v9 = v11;
     if (v11 != 0) {
     LABEL_14:
       v12 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v12 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v12);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v9);
     }
   }
-  return result;
 }
 
 __int64 ClothModule_DeletingDestructor(__int64 a1)
 {
   __int64 v1;
 
-  ClothModule_Destructor(a1);
+  ClothModule_Destructor_alt1(a1);
   v1 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v1 = 56;

@@ -6,75 +6,90 @@ _QWORD* SubObjectCullingJob_Unknown3(_QWORD* result);
 __int64 Scene_a70700(long double);
 __n128 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
-void SubObjectCullingJob_Unknown2(__int64 a1, int a2);
+void SubObjectCullingJob_Unknown2_alt1(__int64 a1, int a2) __asm__(
+    "SubObjectCullingJob_Unknown2");
+__int64 Scene_a70700_alt1(_QWORD*, unsigned int, __int64*, int,
+                          int) __asm__("Scene_a70700");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+__int64 SubObjectCullingJob_Unknown2(__int64 a1, int a2);
 
-void SubObjectCullingJob_Unknown2(__int64 a1, int a2)
+__int64 SubObjectCullingJob_Unknown2(__int64 a1, int a2)
 {
   unsigned __int64 v2;
-  __int64 v5;
+  __int64 result;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
-  long double v9;
-  __int64 v10;
-  __int64 v11;
-  atomic_uint* v12;
-  _QWORD* v13;
-  signed int v14;
+  atomic_uint* v8;
+  _QWORD* v9;
+  signed int v10;
   signed int add;
-  int* v16;
-  __int64 v17;
-  int v18;
-  __int64 v19;
-  bool v20;
-  __int64 v21;
+  int* v12;
+  __int64 v13;
+  int v14;
+  __int64 v15;
+  bool v16;
+  bool v17;
+  __int64 v18;
+  int v19;
 
   v2 = *(_QWORD*)(a1 + 40);
   if (v2 >> 62 != 0) {
-    GameRoutine_60a210(a1);
+    GameRoutine_60a210_alt1();
   }
-  v5 = (*(__int64 (**)(_QWORD, unsigned __int64, __int64))(
+  result = (*(__int64 (**)(_QWORD, unsigned __int64, __int64))(
       **(_QWORD**)(*(_QWORD*)(a1 + 8) + 2112LL) + 16LL))(
       *(_QWORD*)(*(_QWORD*)(a1 + 8) + 2112LL), 4 * v2, 4);
-  v10 = v5;
+  v6 = result;
   if (v2 != 0) {
-    *(__n128*)&v9 = memset(v5, 0, 4 * v2, v6, v7, v8);
+    result = memset_alt1(result, 0, 4 * v2);
   }
-  v11 = a1 + 16LL * a2;
-  v12 = (atomic_uint*)(a1 + 20);
-  *(_QWORD*)(v11 + 64) = v10;
-  *(_QWORD*)(v11 + 72) = v2;
-  v13 = (_QWORD*)(v11 + 64);
-  v14 = *(_DWORD*)(a1 + 56);
+  v7 = a1 + 16LL * a2;
+  v8 = (atomic_uint*)(a1 + 20);
+  *(_QWORD*)(v7 + 64) = v6;
+  *(_QWORD*)(v7 + 72) = v2;
+  v9 = (_QWORD*)(v7 + 64);
+  v10 = *(_DWORD*)(a1 + 56);
   while (1) {
-    add = atomic_fetch_add(v12, 1u);
-    if (add >= v14) {
+    add = atomic_fetch_add(v8, 1u);
+    if (add >= v10) {
       break;
     }
-    v16 = (int*)(*(_QWORD*)(a1 + 48) + 16LL * add);
-    v17 = *v16;
-    v18 = v16[2];
-    if ((_DWORD)v17 == v18) {
-      *(_DWORD*)(*v13 + 4 * v17) += Scene_a70700(v9);
-      v12 = (atomic_uint*)(a1 + 20);
+    v12 = (int*)(*(_QWORD*)(a1 + 48) + 16LL * add);
+    v13 = *v12;
+    v14 = v12[2];
+    if ((_DWORD)v13 == v14) {
+      result = Scene_a70700_alt1(*(_QWORD**)(a1 + 24), v13,
+                                 (__int64*)(*(_QWORD*)(a1 + 32) + 16 * v13),
+                                 v12[1], v12[3]);
+      *(_DWORD*)(*v9 + 4 * v13) += result;
+      v8 = (atomic_uint*)(a1 + 20);
     }
     else {
-      if ((int)v17 <= v18) {
-        v19 = 16 * v17;
+      if ((int)v13 <= v14) {
+        v15 = 16 * v13;
         do {
-          v21 =
-              *(_QWORD*)(*(_QWORD*)(a1 + 24) + 16LL) + 32LL * (unsigned int)v17;
-          if (*(_DWORD*)(v21 + 16) - *(_DWORD*)(v21 + 8) >= 1) {
-            *(_DWORD*)(*v13 + 4 * v17) += Scene_a70700(v9);
-            v18 = v16[2];
+          result = *(_QWORD*)(a1 + 24);
+          v18 = *(_QWORD*)(result + 16) + 32LL * (unsigned int)v13;
+          v19 = *(_DWORD*)(v18 + 16) - *(_DWORD*)(v18 + 8);
+          if (v19 >= 1) {
+            result = Scene_a70700_alt1((_QWORD*)result, v13,
+                                       (__int64*)(*(_QWORD*)(a1 + 32) + v15), 0,
+                                       v19);
+            *(_DWORD*)(*v9 + 4 * v13) += result;
+            v14 = v12[2];
           }
-          v20 = v17++ < v18;
-          v19 += 16;
-        } while (v20);
+          v17 = __OFSUB__(v13, v14);
+          v16 = v13 - v14 < 0;
+          ++v13;
+          v15 += 16;
+        } while (v16 != v17);
       }
-      v12 = (atomic_uint*)(a1 + 20);
+      v8 = (atomic_uint*)(a1 + 20);
     }
   }
+  return result;
 }
 
 _QWORD* SubObjectCullingJob_Unknown3(_QWORD* result)

@@ -7,7 +7,9 @@ __int64 GameRoutine_930b90(_QWORD, _QWORD);
 __int64 RidePool_93c4f0(_QWORD, _QWORD, _QWORD);
 __int64 UnitVariables_930e20(_QWORD);
 extern __int64 GameData_21f42d0;
-__int64 game_CarryMap_RideMap_Restore_closure_Invoke(__int64 result, int* a2);
+__int64 game_CarryMap_RideMap_Restore_closure_Invoke_alt1(
+    __int64 result,
+    int* a2) __asm__("game_CarryMap_RideMap_Restore_closure_Invoke");
 _QWORD* GameRoutine_6e36c0_alt1(_QWORD* result, _QWORD*,
                                 _QWORD*) __asm__("GameRoutine_6e36c0");
 __int64* fw_containers_BalanceAfterInsert(__int64* result, __int64*);
@@ -19,6 +21,13 @@ extern __int64 GameData_212cf88[4];
 extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_60a210();
 __int64 game_CarryMap_RideMap_Store_closure_Invoke(__int64 result, int* a2);
+__int64 GameRoutine_930b90_alt1(__int64, __int64) __asm__("GameRoutine_930b90");
+__int64 RidePool_93c4f0_alt1(__int64 result, unsigned int,
+                             unsigned __int8*) __asm__("RidePool_93c4f0");
+void GameRoutine_6e36c0_alt2(__int64, _QWORD*,
+                             _QWORD*) __asm__("GameRoutine_6e36c0");
+void UnitVariables_930e20_alt1(__int64) __asm__("UnitVariables_930e20");
+void game_CarryMap_RideMap_Restore_closure_Invoke(__int64 a1, int* a2);
 
 __int64 game_CarryMap_RideMap_Store_closure_Invoke(__int64 result, int* a2)
 {
@@ -487,7 +496,7 @@ LABEL_121:
   return GameRoutine_6e3b50((__int64)&v66, v67[0]);
 }
 
-__int64 game_CarryMap_RideMap_Restore_closure_Invoke(__int64 result, int* a2)
+void game_CarryMap_RideMap_Restore_closure_Invoke(__int64 a1, int* a2)
 {
   _QWORD* v2;
   unsigned __int64 v3;
@@ -507,19 +516,27 @@ __int64 game_CarryMap_RideMap_Restore_closure_Invoke(__int64 result, int* a2)
   unsigned __int8* v18;
   _QWORD* v19;
   _QWORD* v20;
-  _QWORD v21[3];
-  _QWORD v22[5];
-  _BYTE v23[2];
-  __int16 v24;
-  int v25;
-  _QWORD* v26;
-  _QWORD v27[5];
+  struct {
+    unsigned __int8 v21[2];
+    __int16 v22;
+    int v23;
+    char gap8_[8];
+    _QWORD* v24;
+  } v21_;
+  _QWORD v25[5];
+  struct {
+    _BYTE v26[2];
+    __int16 v27;
+    int v28;
+  } v26_;
+  _QWORD* v29;
+  _QWORD v30[5];
 
-  v2 = *(_QWORD**)(result + 8);
+  v2 = *(_QWORD**)(a1 + 8);
   v3 = v2[1];
   v4 = v3 == 0 || v2[3] == 0;
   if (v4) {
-    return result;
+    return;
   }
   v5 = *a2;
   v6 = v3 - 1;
@@ -534,11 +551,11 @@ __int64 game_CarryMap_RideMap_Restore_closure_Invoke(__int64 result, int* a2)
   }
   v8 = *(__int64***)(*v2 + 8 * v7);
   if (v8 == nullptr) {
-    return result;
+    return;
   }
   v9 = *v8;
   if (*v8 == nullptr) {
-    return result;
+    return;
   }
   if ((v3 & v6) == 0) {
     while (1) {
@@ -549,11 +566,11 @@ __int64 game_CarryMap_RideMap_Restore_closure_Invoke(__int64 result, int* a2)
         }
       }
       else if ((v11 & v6) != v7) {
-        return result;
+        return;
       }
       v9 = (__int64*)*v9;
       if (v9 == nullptr) {
-        return result;
+        return;
       }
     }
   }
@@ -566,12 +583,12 @@ __int64 game_CarryMap_RideMap_Restore_closure_Invoke(__int64 result, int* a2)
       v10 %= v3;
     }
     if (v10 != v7) {
-      return result;
+      return;
     }
   LABEL_14:
     v9 = (__int64*)*v9;
     if (v9 == nullptr) {
-      return result;
+      return;
     }
   }
   if (*((_DWORD*)v9 + 4) != (_DWORD)v5) {
@@ -623,29 +640,28 @@ LABEL_25:
         }
         v15 = v20;
         if (v14 == v12 + 24) {
-          return result;
+          return;
         }
       }
     LABEL_48:
-      v24 = 0;
-      v25 = 0;
-      v26 = v27;
-      memset(v27, 0, sizeof(v27));
-      GameRoutine_930b90(v23, v12);
-      if (&v26 != v13) {
-        GameRoutine_6e36c0(&v26, v9[4], v9 + 5);
+      v26_.v27 = 0;
+      v26_.v28 = 0;
+      v29 = v30;
+      memset(v30, 0, sizeof(v30));
+      GameRoutine_930b90_alt1((__int64)v26_.v26, (__int64)v12);
+      if (&v29 != v13) {
+        GameRoutine_6e36c0_alt2((__int64)&v29, (_QWORD*)v9[4], v9 + 5);
       }
-      WORD1(v21[0]) = 0;
-      HIDWORD(v21[0]) = 0;
-      v21[2] = v22;
-      memset(v22, 0, sizeof(v22));
-      GameRoutine_930b90(v21, v12);
-      UnitVariables_930e20(v23);
-      RidePool_93c4f0(*(_QWORD*)(GameData_21f42d0 + 8), (unsigned int)v5, v21);
-      return UnitVariables_930e20(v21);
+      v21_.v22 = 0;
+      v21_.v23 = 0;
+      v21_.v24 = v25;
+      memset(v25, 0, sizeof(v25));
+      GameRoutine_930b90_alt1((__int64)v21_.v21, (__int64)v12);
+      UnitVariables_930e20_alt1((__int64)v26_.v26);
+      RidePool_93c4f0_alt1(*(_QWORD*)(GameData_21f42d0 + 8), v5, v21_.v21);
+      UnitVariables_930e20_alt1((__int64)v21_.v21);
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

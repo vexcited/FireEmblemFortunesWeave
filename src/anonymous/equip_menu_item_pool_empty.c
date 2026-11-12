@@ -19,6 +19,13 @@ extern __int64* GameData_212ceb0;
 __int64 EquipMenuItem_PoolEmpty_185e990(__int64 a1);
 __int64 EquipMenuItem_PoolEmpty_Unknown55_185eaa0(__int64 a1);
 __int64 EquipMenuItem_PoolEmpty_Unknown55_1863f90(__int64 a1);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 game_gameui_Help_SetLegion(__int64*, unsigned __int8*, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
 
 __int64 EquipMenuItem_PoolEmpty_185e990(__int64 a1)
 {
@@ -26,47 +33,50 @@ __int64 EquipMenuItem_PoolEmpty_185e990(__int64 a1)
   __int64 result;
   __int64 v4;
   __int64 v5;
-  __int64* v6;
+  unsigned __int8* v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
-  __int64 v11;
+  struct {
+    __int64* v10;
+    __int64 v11;
+  } v10_;
 
   v2 = 512;
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  result = (*(__int64 (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
+  result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + v2))((__int64)a1);
   v4 = *(_QWORD*)(a1 + 8);
   if (v4 != 0) {
     v5 = *(unsigned int*)(a1 + 40);
-    v6 = &GameData_21caa2c;
+    v6 = (unsigned __int8*)&GameData_21caa2c;
     if ((int)v5 >= 0) {
-      v6 = (__int64*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf80[0] +
-                                            8LL) +
-                                 48LL) +
-                      8 * v5);
+      v6 = (unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                                        GameData_212cf80[0] +
+                                                    8LL) +
+                                         48LL) +
+                              8 * v5);
     }
-    GameRoutine_1560070((void*)&v10, v4 + 848, "L_Help");
-    result = v11;
-    if (v11 != 0) {
+    LayoutAccessor_1560070((void*)(&v10_.v10), (__int64*)(v4 + 848), "L_Help");
+    result = v10_.v11;
+    if (v10_.v11 != 0) {
       v7 = *(_QWORD*)(v4 + 1064);
-      v8 = std___1___shared_weak_count_lock(v11);
+      v8 = std___1___shared_weak_count_lock_alt1(v10_.v11);
       if (v8 != 0) {
         v9 = v8;
-        if (v10 != 0) {
-          GameRoutine_15d32c0(v10, v6, v7);
+        if (v10_.v10 != nullptr) {
+          game_gameui_Help_SetLegion(v10_.v10, v6, v7);
         }
         if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-          std___1___shared_weak_count___release_weak(v9);
+          std___1___shared_weak_count___release_weak_alt1(v9);
         }
       }
-      result = v11;
-      if (v11 != 0) {
-        return std___1___shared_weak_count___release_weak(v11);
+      result = v10_.v11;
+      if (v10_.v11 != 0) {
+        return std___1___shared_weak_count___release_weak_alt1(v10_.v11);
       }
     }
   }

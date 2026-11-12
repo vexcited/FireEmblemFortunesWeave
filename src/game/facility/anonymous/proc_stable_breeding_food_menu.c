@@ -59,13 +59,22 @@ extern __int64 game_TransporterConst_List_instance__ptr[6];
 unsigned __int16* ProcStableBreedingFoodMenu_16bfbb0_alt1(
     __int64, int,
     unsigned __int8*) __asm__("ProcStableBreedingFoodMenu_16bfbb0");
-__int64
-game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList(_QWORD* a1);
+__int64 game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList_alt1(
+    _QWORD* a1) __asm__("game_facility_anonymous_ProcStableBreedingFoodMenu_"
+                        "AddItemList");
 unsigned __int16* ProcStableBreedingFoodMenu_16bfbb0(__int64 a1, int a2,
                                                      unsigned __int8* a3,
                                                      long double a4);
 bool game_facility_anonymous_ProcStableBreedingFoodMenu_SortAndFilter_closure_Invoke_16c0740(
     __int64 a1, _QWORD* a2, _BYTE** a3);
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+void BasicMenuCursor_16e0c00_alt2(_QWORD*,
+                                  __int64) __asm__("BasicMenuCursor_16e0c00");
+void GameRoutine_6e3b50_alt1(__int64, _QWORD*) __asm__("GameRoutine_6e3b50");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList(_QWORD* a1);
 
 __int64 ProcStableBreedingFoodMenu_Unknown88(__int64 a1)
 {
@@ -137,9 +146,7 @@ __int64 ProcStableBreedingFoodMenu_Unknown101(_QWORD* a1)
   return result;
 }
 
-__int64
-
-game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList(_QWORD* a1)
+void game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -162,35 +169,35 @@ game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList(_QWORD* a1)
   _QWORD* v21;
   __int64 v22;
   struct {
-    _QWORD v24[4];
-    _QWORD* v25;
-  } v24_;
+    _QWORD v23[4];
+    _QWORD* v24;
+  } v23_;
   struct {
-    __int64 v26;
-    int v27;
-  } v26_;
-  _QWORD** v28;
+    __int64 v25;
+    int v26;
+  } v25_;
+  _QWORD** v27;
   struct {
-    _QWORD* v29;
+    _QWORD* v28;
+    __int64 v29;
     __int64 v30;
     __int64 v31;
-    __int64 v32;
-    _BYTE* v33;
-  } v29_;
-  char v34;
-  int v35;
+    _BYTE* v32;
+  } v28_;
+  char v33;
+  int v34;
 
   v2 = *(int*)(*GameData_212dcd0 + 16);
-  WORD1(v26_.v26) = 0;
-  HIDWORD(v26_.v26) = 0;
+  WORD1(v25_.v25) = 0;
+  HIDWORD(v25_.v25) = 0;
   v3 = *(_QWORD*)(*(_QWORD*)GameData_212cf88[0] + 8LL);
-  v28 = &v29_.v29;
-  v29_.v29 = nullptr;
-  v29_.v30 = 0;
-  v29_.v31 = 0;
-  v29_.v32 = 0;
-  v29_.v33 = nullptr;
-  GameRoutine_930b90((__int64)&v26_.v26, *(_QWORD*)(v3 + 120) + (v2 << 6));
+  v27 = &v28_.v28;
+  v28_.v28 = nullptr;
+  v28_.v29 = 0;
+  v28_.v30 = 0;
+  v28_.v31 = 0;
+  v28_.v32 = nullptr;
+  GameRoutine_930b90((__int64)&v25_.v25, *(_QWORD*)(v3 + 120) + (v2 << 6));
   v4 = (__int64*)fw_memory_g_heap_manager_ptr;
   v5 = fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 88, 16, 0);
@@ -209,16 +216,16 @@ game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList(_QWORD* a1)
   *(_QWORD*)(v5 + 8) = a1;
   a1[43] = v5;
   v7 = GameRoutine_92b980(*(_QWORD*)(*(_QWORD*)(*GameData_212c8a0 + 64) +
-                                     8LL * (unsigned __int8)v26_.v26),
-                          BYTE1(v26_.v26));
-  v24_.v24[0] = 0;
+                                     8LL * (unsigned __int8)v25_.v25),
+                          BYTE1(v25_.v25));
+  v23_.v23[0] = 0;
   if (v7 != 0) {
     v8 = *(unsigned __int16*)(v7 + 16);
-    HIDWORD(v24_.v24[0]) = 1;
-    LOWORD(v24_.v24[0]) = v8;
+    HIDWORD(v23_.v23[0]) = 1;
+    LOWORD(v23_.v23[0]) = v8;
     if (*(_BYTE*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8 * v8) +
                   73LL) == 17) {
-      nn_os_LockMutex(&game_g_random_mutex);
+      nn_os_LockMutex_alt1((__int64)&game_g_random_mutex);
       v9 = game_map_MapRandom_instance__ptr[0];
       v10 = *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
                        (unsigned __int64)((_UNKNOWN**)0x8LL));
@@ -232,8 +239,8 @@ game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList(_QWORD* a1)
       v13 = (v12 >> 8) ^ (v11 >> 19) ^ v12 ^ v11;
       *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v9) = v11;
       *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v9 + 4) = v13;
-      nn_os_UnlockMutex(&game_g_random_mutex);
-      HIDWORD(v24_.v24[0]) =
+      nn_os_UnlockMutex_alt1((__int64)&game_g_random_mutex);
+      HIDWORD(v23_.v23[0]) =
           (16 * ((_WORD)v13 -
                  1000 * (unsigned __int16)((v13 & 0x7FFFFFFFu) / 0x3E8)) +
            16) &
@@ -241,29 +248,29 @@ game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList(_QWORD* a1)
           1;
     }
   }
-  v35 = GameRoutine_89aac0(
+  v34 = GameRoutine_89aac0(
       *(_QWORD**)(*(_QWORD*)game_TransporterConst_List_instance__ptr[0] + 8LL),
-      v24_.v24);
+      v23_.v23);
   v14 = *v4;
-  v34 = 0;
+  v33 = 0;
   v15 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v14, 40, 16, 0);
-  v24_.v25 = v15;
+  v23_.v24 = v15;
   *v15 = GameData_208fcd8;
   v15[1] = a1;
-  v15[2] = &v26_.v26;
-  v15[3] = &v35;
-  v15[4] = &v34;
-  GameRoutine_94b860((__int64)v24_.v24);
-  if (v24_.v25 == v24_.v24) {
+  v15[2] = &v25_.v25;
+  v15[3] = &v34;
+  v15[4] = &v33;
+  GameRoutine_94b860((__int64)v23_.v23);
+  if (v23_.v24 == v23_.v23) {
     v17 = 32;
   }
   else {
-    if (v24_.v25 == nullptr) {
+    if (v23_.v24 == nullptr) {
       goto LABEL_11;
     }
     v17 = 40;
   }
-  (*(void (**)(_QWORD*))(*v24_.v25 + v17))(v24_.v25);
+  (*(void (**)(_QWORD*))(*v23_.v24 + v17))(v23_.v24);
 LABEL_11:
   v18 = game_GameModeData_instance_;
   if (game_GameModeData_instance_ == 0) {
@@ -279,41 +286,41 @@ LABEL_11:
       goto LABEL_17;
     }
   }
-  if ((v34 & 1) == 0) {
+  if ((v33 & 1) == 0) {
     v20 = fw_memory_HeapManager_Allocate_alt1(*v4, 88, 16, 0);
-    ProcStableBreedingFoodMenu_16bfbb0_alt1(v20, v35,
-                                            (unsigned __int8*)&v26_.v26);
-    BasicMenuCursor_16e0c00_alt1(a1, v20);
+    ProcStableBreedingFoodMenu_16bfbb0_alt1(v20, v34,
+                                            (unsigned __int8*)&v25_.v25);
+    BasicMenuCursor_16e0c00_alt2(a1, v20);
   }
 LABEL_17:
-  v26_.v26 = 0;
-  v26_.v27 = 0;
-  if ((v29_.v31 & 1) != 0) {
-    *v29_.v33 = 0;
-    v29_.v32 = 0;
+  v25_.v25 = 0;
+  v25_.v26 = 0;
+  if ((v28_.v30 & 1) != 0) {
+    *v28_.v32 = 0;
+    v28_.v31 = 0;
   }
   else {
-    LOWORD(v29_.v31) = 0;
+    LOWORD(v28_.v30) = 0;
   }
-  GameRoutine_6e3b50((__int64)&v28, v29_.v29);
-  v29_.v29 = nullptr;
-  v29_.v30 = 0;
-  v28 = &v29_.v29;
-  if ((v29_.v31 & 1) != 0) {
-    v21 = v29_.v33;
-    if (v29_.v33 != nullptr) {
+  GameRoutine_6e3b50_alt1((__int64)&v27, v28_.v28);
+  v28_.v28 = nullptr;
+  v28_.v29 = 0;
+  v27 = &v28_.v28;
+  if ((v28_.v30 & 1) != 0) {
+    v21 = v28_.v32;
+    if (v28_.v32 != nullptr) {
       v22 = 128;
       if (*(_QWORD*)(*v4 + 200) == 0) {
         v22 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v4 + v22);
-      v21 = v29_.v29;
+      nn_mem_StandardAllocator_Free_alt1(*v4 + v22, (__int64)v28_.v32);
+      v21 = v28_.v28;
     }
   }
   else {
     v21 = nullptr;
   }
-  return GameRoutine_6e3b50((__int64)&v28, v21);
+  GameRoutine_6e3b50_alt1((__int64)&v27, v21);
 }
 
 unsigned __int16* ProcStableBreedingFoodMenu_16bfbb0(__int64 a1, int a2,
