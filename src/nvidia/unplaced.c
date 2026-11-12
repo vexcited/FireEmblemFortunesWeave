@@ -238,6 +238,7 @@ __int64 nvidia_5feb10();
 __int64 nvidia_5ff970(__int64 a1, unsigned int a2);
 __int64 nvidia_5ffab0(__int64 a1);
 __int64 nvidia_5ffc20(__int64 a1, _QWORD* a2, char a3);
+__int64 unplaced_5fb440(__int64 a1);
 
 __int64 nvidia_5f0d40(_BYTE* a1, unsigned int a2)
 {
@@ -1022,6 +1023,42 @@ __int64 nvidia_5fb220(__int64 a1, _QWORD* a2)
 LABEL_22:
   nn_os_SdkMutexType_Unlock_plt(&SdkData_103f150);
   return v4;
+}
+
+__int64 unplaced_5fb440(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64* v4;
+
+  nn_os_SdkMutexType_Lock_plt(&SdkData_103f150);
+  v2 = SdkData_103f158;
+  if (SdkData_103f158 != 0) {
+    if (SdkData_103f158 == a1) {
+      v4 = &SdkData_103f158;
+    LABEL_7:
+      *v4 = *(_QWORD*)(v2 + 24);
+      *(_QWORD*)(v2 + 24) = 0;
+    }
+    else {
+      while (1) {
+        v3 = v2;
+        v2 = *(_QWORD*)(v2 + 24);
+        if (v2 == 0) {
+          break;
+        }
+        if (v2 == a1) {
+          v4 = (__int64*)(v3 + 24);
+          goto LABEL_7;
+        }
+      }
+    }
+  }
+  nn_os_SdkMutexType_Unlock_plt(&SdkData_103f150);
+  if (*(_QWORD*)(a1 + 16) != 0) {
+    (*(void (**)(void*))(*(_QWORD*)(a1 + 8) + 24LL))(*(void**)(a1 + 16));
+  }
+  return NvOsFree_plt(a1);
 }
 
 __int64 nvidia_5fb4f0(_DWORD* a1, int a2)

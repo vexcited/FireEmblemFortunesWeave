@@ -120,6 +120,10 @@ void SdkRoutine_8584f0(void*, void*);
 _QWORD* std_logic_error_logic_error(_QWORD* result, __int64 a2);
 __int64 unplaced_7dbdb0(__int64 result, void* a2);
 __int64 std_runtime_error_runtime_error(_QWORD* a1, __int64 a2);
+__int64 std_runtime_error_runtime_error_7dbea0_alt1(_QWORD) __asm__(
+    "std_runtime_error_runtime_error_7dbea0");
+__int64 unplaced_7dbe8c(__int64 a1);
+__int64 std_runtime_error_runtime_error_7dbea0(_QWORD* a1, __int64 a2);
 
 __int64 llvmlibcxx_libcxx_7cd640(__int64 a1, unsigned __int64 a2, __int64 a3,
                                  unsigned __int8 a4)
@@ -4661,6 +4665,34 @@ __int64 llvmlibcxx_libcxx_7dbe8c(__int64 a1)
   std_exception_Destroy_exception_plt_87c890();
   v3 = _Unwind_Resume_plt(a1);
   return SdkRoutine_7dbea0(v3);
+}
+
+__int64 unplaced_7dbe8c(__int64 a1)
+{
+  __int64 v3;
+
+  std_exception_Destroy_exception_plt_87c890();
+  v3 = _Unwind_Resume_plt(a1);
+  return std_runtime_error_runtime_error_7dbea0_alt1(v3);
+}
+
+__int64 std_runtime_error_runtime_error_7dbea0(_QWORD* a1, __int64 a2)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 result;
+
+  *a1 = SdkData_e893a0 + 16;
+  v4 = strlen_plt(a2);
+  v5 = SdkRoutine_85e050(v4 + 25);
+  v6 = v5 + 24;
+  *(_QWORD*)v5 = v4;
+  *(_QWORD*)(v5 + 8) = v4;
+  *(_DWORD*)(v5 + 16) = 0;
+  result = memcpy_plt(v5 + 24, a2, v4 + 1);
+  a1[1] = v6;
+  return result;
 }
 
 void __attribute__((noreturn)) llvmlibcxx_libcxx_7dbf10(__int64 a1)

@@ -1,16 +1,27 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 CudaDriverRoutine_114150(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_1bbf50(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_1bc430(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_5f050(_QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_98340(_QWORD);
+
 __int64 CudaDriverRoutine_b4790(_QWORD);
+
 __int64 CudaDriverRoutine_f7de0(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_fa5c0(_QWORD);
+
 __int64 CudaDriverRoutine_fa660(_QWORD);
+
 __int64 CudaDriverRoutine_fcf00(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_fcf10(_QWORD);
 
 __int64 CudaDriverHr_1d7600(__int64 a1, __int64 a2, __int64 a3, __int64 a4)

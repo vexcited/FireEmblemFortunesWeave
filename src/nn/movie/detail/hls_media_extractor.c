@@ -217,6 +217,8 @@ void nandroid_sp_report_race_plt_alt1(__int64) __asm__(
 void nn_movie_detail_FreeMemory_alt1(__int64, _DWORD*) __asm__(
     "nn_movie_detail_FreeMemory");
 __int64 nn_movie_detail_HlsMediaExtractor_Finalize(void* this_);
+__int64 nn_os_WaitConditionVariable_plt(_QWORD, _QWORD);
+__int64 nn_movie_detail_HlsMediaExtractor_DoSetMedia(void* this_);
 
 __int64 nn_movie_detail_HlsMediaExtractor_TrackInfo_TrackInfo(__int64 this_)
 {
@@ -1184,6 +1186,111 @@ void nn_movie_detail_HlsMediaExtractor_GetCacheThreshold(void* this_,
     }
     *a3 = v4;
   }
+}
+
+__int64 nn_movie_detail_HlsMediaExtractor_DoSetMedia(void* this_)
+{
+  int v2;
+  __int64 result;
+  __int64 v4;
+  _QWORD* v5;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+
+  if (*((_QWORD*)this_ + 176) == 0) {
+    return 518912;
+  }
+  nn_os_LockMutex_plt((char*)this_ + 1528);
+  nn_os_WaitConditionVariable_plt((char*)this_ + 1592, (char*)this_ + 1528);
+  nn_os_UnlockMutex_plt((char*)this_ + 1528);
+  v2 = *((_DWORD*)this_ + 400);
+  result = 524032;
+  if (v2 > -1006) {
+    if (v2 <= -1004) {
+      if (v2 == -1005) {
+        return 523008;
+      }
+    }
+    else if (v2 == -1003 || v2 == -1001) {
+      return 521984;
+    }
+    else {
+      result = 517376;
+      if (v2 == 0) {
+        v4 = *((_QWORD*)this_ + 176);
+        v11 = 0;
+        v5 = X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                    PSEUDO_X8, __int64, _QWORD))(
+                                    *(_QWORD*)v4 + 128LL))((void*)&v10, v4, 0));
+        v6 = v11;
+        if (v11 != 0) {
+          v5 = (_QWORD*)nandroid_RefBase_decStrong_plt(v11, &v11);
+        }
+        if (v6 != v11) {
+          nandroid_sp_report_race_plt(v5);
+        }
+        v11 = v10;
+        if (v10 != 0) {
+          *((_BYTE*)this_ + 1448) = 1;
+          ++*((_QWORD*)this_ + 183);
+        }
+        v7 = X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                    PSEUDO_X8, _QWORD, __int64))(
+                                    **((_QWORD**)this_ + 176) + 128LL))(
+                                    (void*)&v10, *((_QWORD*)this_ + 176), 1));
+        v8 = v11;
+        if (v11 != 0) {
+          v7 = (_QWORD*)nandroid_RefBase_decStrong_plt(v11, &v11);
+        }
+        if (v8 != v11) {
+          nandroid_sp_report_race_plt(v7);
+        }
+        v11 = v10;
+        if (v10 != 0) {
+          *((_BYTE*)this_ + 1449) = 1;
+          v9 = *((_QWORD*)this_ + 183) + 1LL;
+          *((_QWORD*)this_ + 183) = v9;
+        }
+        else {
+          v9 = *((_QWORD*)this_ + 183);
+        }
+        *((_DWORD*)this_ + 340) =
+            (*(__int64 (**)(_QWORD))(**((_QWORD**)this_ + 176) + 168LL))(
+                *((_QWORD*)this_ + 176)) +
+            v9;
+        nn_movie_detail_MediaState_SetState_plt((char*)this_ + 48, 3);
+        if (v11 != 0) {
+          nandroid_RefBase_decStrong_plt(v11, &v11);
+        }
+        return 0;
+      }
+    }
+  }
+  else if (v2 <= -1010) {
+    if (v2 != -1011) {
+      result = 517376;
+      if (v2 == -1010) {
+        return 525056;
+      }
+    }
+  }
+  else if (v2 == -1009) {
+    return 262912;
+  }
+  else if (v2 == -1008) {
+    return 261376;
+  }
+  else {
+    result = 517376;
+    if (v2 == -1007) {
+      return 264448;
+    }
+  }
+  return result;
 }
 
 __int64 nn_movie_detail_HlsMediaExtractor_SetInMemoryMedia(void* this_,

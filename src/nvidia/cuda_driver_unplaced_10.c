@@ -302,6 +302,15 @@ __int64 cuda_driver_1fcd50(__int64 result);
 __int64 cuda_driver_1fcd90();
 __int64 cuda_driver_1fce20(_QWORD* a1, unsigned int a2, int a3);
 __int64 cuda_driver_1fd6c0(__int64 result, __int64* a2);
+__int64 CudaDriverStub_122310(__int64);
+__int64 CudaDriverStub_122320(__int64);
+__int64 CudaDriverStub_122340(__int64);
+__int64 CudaDriverStub_122350(__int64);
+__int64 memcpy_plt(__int64, __int64, unsigned __int64);
+bool CudaDriverRoutine_9aa30(__int64);
+extern _DWORD CudaDriverData_135e0a0[5];
+__int64 cuda_driver_unplaced_10_1e29b0(__int64 a1, int a2, __int64 a3);
+__int64 cuda_driver_unplaced_10_1e3920(__int64 a1, _DWORD* a2, _DWORD* a3);
 
 __int64 cuda_driver_1e1e60(__int64 a1)
 {
@@ -468,6 +477,132 @@ __int64 cuda_driver_1e2550(__int64 a1)
   return result;
 }
 
+__int64 cuda_driver_unplaced_10_1e29b0(__int64 a1, int a2, __int64 a3)
+{
+  __int64 v3;
+  __int64 v5;
+  int v6;
+  __int64 v7;
+  bool v9;
+  __int64 v10;
+  __int64* v11;
+  __int64 v12;
+  __int64 v13;
+  unsigned int v14;
+  int v15;
+  __int64 v16;
+  unsigned int v17;
+  int v18;
+  __int64 v19;
+  struct {
+    char gap0_[4];
+    int v20;
+    __int64 v21;
+    int v22;
+    int v23;
+    __int64 v24;
+  } v20_;
+
+  v3 = *(_QWORD*)a1;
+  v5 = *(_QWORD*)(**(_QWORD**)a1 + 8LL);
+  if ((*(_BYTE*)(v5 + 1952) & 4) != 0) {
+    v6 = *(_DWORD*)(a1 + 8);
+    a1 = 0;
+    if (v6 > 2) {
+      switch (v6) {
+      case 3:
+        v7 = a3;
+        a1 = CudaDriverStub_122340(*(_QWORD*)(*(_QWORD*)(v5 + 64) + 16864LL));
+        break;
+      case 4:
+        v7 = a3;
+        a1 = CudaDriverStub_122320(*(_QWORD*)(*(_QWORD*)(v5 + 64) + 16864LL));
+        break;
+      case 5:
+        v7 = a3;
+        a1 = CudaDriverStub_122350(*(_QWORD*)(*(_QWORD*)(v5 + 64) + 16864LL));
+        break;
+      default:
+        goto LABEL_13;
+      }
+      goto LABEL_12;
+    }
+    if (v6 == 1) {
+      v9 = *(_DWORD*)(v3 + 32) == 0;
+      v10 = 33760;
+      if (v9) {
+        v10 = 33160;
+      }
+      a1 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v5 + 64) +
+                                                       16864LL) +
+                                            72LL) +
+                                 v10) +
+                      216LL);
+      if (**(_DWORD**)(a1 + 48) == a2) {
+        return 0;
+      }
+      goto LABEL_18;
+    }
+    if (v6 == 2) {
+      v7 = a3;
+      a1 = CudaDriverStub_122310(*(_QWORD*)(*(_QWORD*)(v5 + 64) + 16864LL));
+    LABEL_12:
+      a3 = v7;
+    }
+  }
+LABEL_13:
+  if (**(_DWORD**)(a1 + 48) == a2) {
+    return 0;
+  }
+LABEL_18:
+  v11 = *(__int64**)(*(_QWORD*)(*(_QWORD*)a1 + 200LL) + 88LL);
+  if (v11 == nullptr || (v12 = *v11) == 0 ||
+      *(_BYTE*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v5 + 64) + 19824LL) + 96LL) +
+                19LL) != 1) {
+    v16 = *(_QWORD*)(*(_QWORD*)a1 + 8LL);
+    v20_.v22 = a2;
+    v13 = a1;
+    v20_.v20 = 28;
+    v20_.v21 = *(_QWORD*)(*(_QWORD*)(v16 + 33864) + 32LL);
+    v17 = *(_DWORD*)(a1 + 8) - 1;
+    if (v17 > 4) {
+      v18 = -1;
+    }
+    else {
+      v18 = CudaDriverData_135e0a0[v17];
+    }
+    v20_.v23 = v18;
+    v20_.v24 = a3;
+    v19 = (*(__int64 (**)(int*))((char*)((_UNKNOWN*)0x14CLL) +
+                                 CudaDriverData_1422bb0 + 4))(&v20_.v20);
+    if ((_DWORD)v19 == 0) {
+      goto LABEL_30;
+    }
+    return CudaDriverRoutine_1e9390(v19);
+  }
+  v20_.v21 = v12;
+  v20_.v22 = a2;
+  v13 = a1;
+  v20_.v20 = 28;
+  v14 = *(_DWORD*)(a1 + 8) - 1;
+  if (v14 > 4) {
+    v15 = -1;
+  }
+  else {
+    v15 = CudaDriverData_135e0a0[v14];
+  }
+  v20_.v23 = v15;
+  v20_.v24 = a3;
+  v19 = (*(__int64 (**)(int*))((char*)((_UNKNOWN*)0x148LL) +
+                               CudaDriverData_1422bb0))(&v20_.v20);
+  if ((_DWORD)v19 != 0) {
+    return CudaDriverRoutine_1e9390(v19);
+  }
+LABEL_30:
+  **(_DWORD**)(v13 + 48) = a2;
+  return 0;
+}
+
 __int64 cuda_driver_1e37a0(__int64 a1)
 {
   __int64 v1;
@@ -556,6 +691,192 @@ __int64 cuda_driver_1e37a0(__int64 a1)
     *(_QWORD*)(a1 + 19824) = 0;
   }
   return 0;
+}
+
+__int64 cuda_driver_unplaced_10_1e3920(__int64 a1, _DWORD* a2, _DWORD* a3)
+{
+
+#pragma clang fp contract(off)
+  __int64 v6;
+  __int64 v7;
+  __int16 v8;
+  double v9;
+  int v10;
+  unsigned int v11;
+  unsigned int v12;
+  unsigned int v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  __int64 result;
+  __int64 v20;
+  int v21;
+  int v22;
+  __int64 v23;
+  unsigned int v24;
+  double v25;
+  __int16 v26;
+  char v27;
+  char v28;
+  unsigned int v29;
+  __int16 v30;
+  __int64 v31;
+  bool v32;
+  __int16 v33;
+  __int64 v34;
+  __int64 v35;
+  int v36;
+  __int128 v37;
+
+  v6 = a1 + 14824;
+  v7 = *(_QWORD*)(a1 + 19824);
+  v8 = *(_WORD*)(a1 + 16848) & 0xDFFF;
+  v9 = *(float*)(a1 + 17124);
+  v10 = *(_DWORD*)(*(_QWORD*)(v7 + 96) + 120LL);
+  *(_DWORD*)(a1 + 14736) = 0;
+  if (v10 == 1) {
+    v11 = 0x2000;
+  }
+  else {
+    v11 = 0;
+  }
+  *(_WORD*)(a1 + 16848) = v8 | v11;
+  v12 = v11 >> 13;
+  *(_BYTE*)(a1 + 3360) = *(_BYTE*)(a1 + 3360) & 0xFE | v12;
+  *(_DWORD*)(a1 + 4112) = *(_DWORD*)(*(_QWORD*)(v7 + 96) + 124LL);
+  *(_DWORD*)(a1 + 4128) = 1;
+  v13 = *(_DWORD*)(*(_QWORD*)(v7 + 96) + 128LL);
+  *(_DWORD*)(a1 + 4116) = v13;
+  *(_DWORD*)(a1 + 4120) =
+      (unsigned int)((double)v13 * v9 / 0x1.9000000000000p+6);
+  v14 = *(_QWORD*)(*(_QWORD*)(v7 + 96) + 132LL);
+  *(_DWORD*)(a1 + 14820) = v12;
+  *(_DWORD*)(a1 + 4124) = v14;
+  *(_DWORD*)(a1 + 14816) = 7;
+  v15 = *(_QWORD*)(*(_QWORD*)(v7 + 96) + 104LL);
+  *(_DWORD*)(a1 + 3472) = v15;
+  v16 = CudaDriverStub_12e330(4LL * (unsigned int)v15);
+  *(_QWORD*)(a1 + 3464) = v16;
+  if (v16 == 0) {
+    return 2;
+  }
+  memcpy_plt(v16, *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 19824) + 96LL) + 112LL),
+             4LL * *(unsigned int*)(a1 + 3472));
+  if ((*(_WORD*)(v6 + 2024) & 0x2000) != 0) {
+    *(_DWORD*)(a1 + 3168) = 8;
+    v18 = *(_QWORD*)(a1 + 19824);
+  }
+  else {
+    *(_DWORD*)(a1 + 3168) = 3;
+    *(_QWORD*)(a1 + 3204) = 0x200000002LL;
+    *(_DWORD*)(a1 + 3216) = 4;
+    *(_DWORD*)(a1 + 3224) = 4;
+    v18 = *(_QWORD*)(a1 + 19824);
+    *(_DWORD*)(a1 + 3176) = *(
+        unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v18 + 96) + 284LL) +
+                                     4LL) +
+                          6LL);
+    *(_DWORD*)(a1 + 3180) =
+        *(_BYTE*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v18 + 96) + 284LL) + 4LL) +
+                  7LL) &
+        0x1F;
+    *(_DWORD*)(a1 + 3184) = *(
+        unsigned __int16*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v18 + 96) + 284LL) +
+                                      4LL) +
+                           4LL);
+    *(_DWORD*)(a1 + 3188) = *(
+        unsigned __int16*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v18 + 96) + 292LL) +
+                                      4LL) +
+                           4LL);
+    *(_DWORD*)(a1 + 3192) = *(
+        unsigned __int16*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v18 + 96) + 292LL) +
+                                      4LL) +
+                           6LL);
+    *(_DWORD*)(a1 + 3196) = *(
+        unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v18 + 96) + 292LL) +
+                                     4LL) +
+                          8LL);
+  }
+  *a2 = *(_DWORD*)(*(_QWORD*)(v18 + 96) + 140LL);
+  *a3 = *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 19824) + 96LL) + 144LL);
+  v20 = *(_QWORD*)(a1 + 19824);
+  *(_DWORD*)(a1 + 3160) = *(_DWORD*)(*(_QWORD*)(v20 + 96) + 148LL) >> 8;
+  *(_DWORD*)(a1 + 3164) = *(unsigned __int8*)(*(_QWORD*)(v20 + 96) + 148LL);
+  v21 = *(_DWORD*)(*(_QWORD*)(v20 + 96) + 152LL) >> 8;
+  *(_DWORD*)(a1 + 3152) = v21;
+  v22 = *(unsigned __int8*)(*(_QWORD*)(v20 + 96) + 152LL);
+  *(_DWORD*)(a1 + 3156) = v22;
+  if (v21 == 10 && v22 == 4) {
+    *(_QWORD*)(a1 + 3152) = 0x10000000CLL;
+  }
+  v23 = *(_QWORD*)(v20 + 96);
+  v24 = *(_DWORD*)(v23 + 160);
+  if (v24 != 0) {
+    LODWORD(v17) = *(_DWORD*)(v23 + 156);
+    v25 = (double)v17 / (double)v24;
+    if (v25 > 0x0.0p+0) {
+      *(double*)(a1 + 14808) = v25;
+    }
+  }
+  v26 = *(_WORD*)(v6 + 2024);
+  *(_DWORD*)(a1 + 3200) = 0;
+  v27 = 0;
+  v28 = *(_BYTE*)(a1 + 3360) & 0xF9;
+  *(_WORD*)(v6 + 2024) = v26 & 0xF1FF;
+  *(_DWORD*)(v6 + 2152) &= ~0x20000u;
+  *(_BYTE*)(v6 + 2026) = 1;
+  *(_BYTE*)v6 = *(_BYTE*)(*(_QWORD*)(v20 + 96) + 164LL);
+  v29 = *(_DWORD*)(*(_QWORD*)(v20 + 96) + 168LL) - 1;
+  if (v29 >= 3) {
+    v29 = -1;
+  }
+  *(_DWORD*)(v6 + 2036) = v29;
+  *(_BYTE*)(a1 + 3360) = v28 | (2 * *(_BYTE*)(*(_QWORD*)(v20 + 96) + 172LL));
+  *(_BYTE*)(v20 + 124) = *(_BYTE*)(*(_QWORD*)(v20 + 96) + 173LL) ^ 1;
+  if ((*((_BYTE*)((_UNKNOWN*)0x1D88LL) + (_QWORD)CudaDriverData_1422118) & 4) !=
+      0) {
+    if (CudaDriverRoutine_9aa30(a1)) {
+      v27 = 4;
+    }
+    else {
+      v27 = 0;
+    }
+  }
+  v30 = *(_WORD*)(v6 + 2024) & 0xFF7F;
+  *(_BYTE*)(v6 + 2164) = *(_BYTE*)(v6 + 2164) & 0xFB | v27;
+  v31 = *(_QWORD*)(a1 + 19824);
+  v32 = *(_DWORD*)(*(_QWORD*)(v31 + 96) + 324LL) == 2;
+  if (*(_DWORD*)(*(_QWORD*)(v31 + 96) + 324LL) == 2) {
+    v33 = 128;
+  }
+  else {
+    v33 = 0;
+  }
+  *(_WORD*)(v6 + 2024) = v30 | v33;
+  if (v32) {
+    *(_OWORD*)(a1 + 3111) =
+        *(_OWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v31 + 96) + 292LL) + 12LL) +
+                   4LL);
+  }
+  v34 = *(_QWORD*)(*(_QWORD*)(v31 + 96) + 80LL);
+  if (v34 != 0) {
+    result = 0;
+  LABEL_29:
+    *(_QWORD*)(a1 + 14832) = v34;
+    return result;
+  }
+  v36 = 1;
+  v37 = (__typeof__(v37)){0};
+  v35 = 0x20000001CLL;
+  result = (*(__int64 (**)(__int64*))((char*)((_UNKNOWN*)0x2E8LL) +
+                                      CudaDriverData_1422bb0))(&v35);
+  if ((_DWORD)result == 0) {
+    v34 = v37;
+    goto LABEL_29;
+  }
+  return CudaDriverRoutine_1e9390(result);
 }
 
 __int64 cuda_driver_1e3d40(__int64 a1)

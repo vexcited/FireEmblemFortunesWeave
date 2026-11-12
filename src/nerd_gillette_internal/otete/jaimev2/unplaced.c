@@ -78,6 +78,7 @@ bool nerd_gillette_internal_otete_jaimev2_DecodeFullSilhouetteROK(
 bool nerd_gillette_internal_otete_jaimev2_DecodeFullSilhouetteImplROK(
     _QWORD* a1, __int64* a2, unsigned __int8* a3,
     __attribute__((swiftcall)) void (*a4)(PSEUDO_X8, __int16*));
+__attribute__((swiftcall)) void unplaced_7477f0(PSEUDO_X8 x8_, __int16* a1);
 _DWORD*
 
 nerd_gillette_internal_otete_jaimev2_GetTanHalfFieldOfView(_DWORD* this_,
@@ -1148,6 +1149,24 @@ __int64 nerd_gillette_internal_otete_jaimev2_DecodeSilhouetteROK(
   *a2 = v11;
   *a6 = v14;
   return result;
+}
+
+__attribute__((swiftcall)) void unplaced_7477f0(PSEUDO_X8 x8_, __int16* a1)
+{
+
+#pragma clang fp contract(off)
+  float* a2 = (float*)PSEUDO_X8_VALUE(x8_);
+  float result;
+  float v3;
+
+  result = (float)(*a1 - 320) * 0x1.1111120000000p-8f;
+  v3 = (float)(a1[1] - 240) * 0x1.1111120000000p-8f;
+  *a2 = result;
+  a2[1] = v3;
+  {
+    result;
+    return;
+  }
 }
 
 __int64 nerd_gillette_internal_otete_jaimev2_DecodeShapeAndSilhouetteROK(

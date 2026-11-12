@@ -47,6 +47,9 @@ __int64 nn_chat_detail_ShowAppletForCameraSharingGuide(void* this_);
 __int64 nn_chat_detail_ShowAppletForCameraConfiguration(__int64 a1);
 __int64 nn_chat_detail_ShowAppletForFullScreen(void* this_);
 unsigned int* nn_chat_6b5990(unsigned int* result);
+__int64 fw_rtld_RegisterCrtDestructor();
+extern void (*SdkData_e88ff0[86])();
+__int64 unplaced_6b11f0();
 __int64
 
 nn_chat_detail_InitializeUserLayoutCustomizationShimScopedObject(void* this_)
@@ -93,6 +96,18 @@ nn_chat_detail_InitializeUserLayoutCustomizationShimScopedObject(void* this_)
                                                 (unsigned int)v7, BYTE4(v7), 0);
   }
   return _runlock_0_0((void*)SdkData_e88fe8);
+}
+
+__int64 unplaced_6b11f0()
+{
+  fw_rtld_RegisterCrtDestructor();
+  fw_rtld_RegisterCrtDestructor();
+  fw_rtld_RegisterCrtDestructor();
+  fw_rtld_RegisterCrtDestructor();
+  *((_BYTE*)SdkData_e88ff0[0] + (unsigned __int64)((__int64*)0x28LL)) = 0;
+  fw_rtld_RegisterCrtDestructor();
+  *((_BYTE*)SdkData_e89030[0] + (unsigned __int64)((__int64*)0x28LL)) = 0;
+  return fw_rtld_RegisterCrtDestructor();
 }
 
 __int64 nn_chat_detail_DestroyUserServiceByHipc(void* this_)

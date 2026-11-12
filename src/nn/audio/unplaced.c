@@ -204,6 +204,9 @@ __int64 nn_audio_karaoke_GetKaraokeInputDeviceStatusImpl(_QWORD* a1,
 __int64 nn_audio_karaoke_SetKaraokeInputDeviceGainImpl(__int64 a1, float a2);
 float nn_audio_karaoke_GetKaraokeInputDeviceGainImpl(__int64 a1);
 __int64 nn_audio_2af670();
+extern _UNKNOWN SdkData_f05de0;
+extern __int64 SdkData_f05dd8;
+__int64 (***unplaced_1e6c20(_QWORD* a1))(_QWORD);
 
 __int64 nn_audio_ListAudioIns(__int64 a1, int a2)
 {
@@ -230,6 +233,40 @@ __int64 nn_audio_ListAudioIns(__int64 a1, int a2)
     (*(void (**)(__int64))(*(_QWORD*)v2 + 8LL))(v2);
   }
   return 0;
+}
+
+__int64 (***unplaced_1e6c20(_QWORD* a1))(_QWORD)
+{
+  __int64 (***result)(_QWORD);
+  __int64* v3;
+  __int64* v4;
+
+  if ((atomic_load_explicit((atomic_uchar* volatile)&SdkData_f05de0,
+                            memory_order_acquire) &
+       1) == 0 &&
+      (unsigned int)__cxa_guard_acquire_plt(&SdkData_f05de0) != 0) {
+    fw_rtld_RegisterCrtDestructor();
+    __cxa_guard_release_plt(&SdkData_f05de0);
+  }
+  result = (__int64 (***)(_QWORD))SdkData_f05dd8;
+  if (SdkData_f05dd8 != 0) {
+    *a1 = SdkData_f05dd8;
+    return (__int64 (***)(_QWORD))(**result)(result);
+  }
+  nn_audio_CreateUserClientSessionByHipc_plt((void*)(&v4));
+  v3 = v4;
+  v4 = &SdkData_f05dd8;
+  LODWORD(v4) = (*(__int64 (**)(__int64*, __int64**))(*v3 + 32))(v3, &v4);
+  if ((_DWORD)v4 != 0) {
+    nn_diag_detail_AbortImpl_plt_858db0(&v4);
+  }
+  (*(void (**)(__int64*))(*v3 + 8))(v3);
+  result = (__int64 (***)(_QWORD))SdkData_f05dd8;
+  *a1 = SdkData_f05dd8;
+  if (result != nullptr) {
+    return (__int64 (***)(_QWORD))(**result)(result);
+  }
+  return result;
 }
 
 __int64 nn_audio_OpenAudioIn_1e6d20(__int64 a1, __int64 a2, __int64* a3)

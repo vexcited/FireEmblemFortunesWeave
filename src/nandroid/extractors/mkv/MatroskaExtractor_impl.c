@@ -19,7 +19,7 @@ __int64 AMediaFormat_setInt64_plt(_QWORD, _QWORD, _QWORD);
 __int64 AMediaFormat_setString_plt(_QWORD, _QWORD, _QWORD);
 __int64 MatroskaExtractor_4e61f0_alt1(void*, unsigned __int64) __asm__(
     "MatroskaExtractor_4e61f0");
-__int64 MatroskaExtractor_4e6840();
+__int64 MatroskaExtractor_4e6840_alt1() __asm__("MatroskaExtractor_4e6840");
 __int64
     MatroskaExtractor_4e6aa0_alt1(_QWORD, _QWORD,
                                   _QWORD) __asm__("MatroskaExtractor_4e6aa0");
@@ -215,6 +215,17 @@ __int64 MatroskaExtractor_4e6ca0(__int64* a1, _QWORD* a2, unsigned int a3,
 __int64 MatroskaExtractor_4e6d60(_QWORD* a1);
 __int64 MatroskaExtractor_4e6df0(_QWORD* a1);
 __int64 MatroskaExtractor_4e7290(_QWORD* a1);
+__int64 MatroskaExtractor_4e6990_alt1() __asm__("MatroskaExtractor_4e6990");
+__int64 MatroskaExtractor_4e69c0();
+__int64 MovieMalloc_plt(_QWORD);
+__int64 SdkRoutine_4e69b0();
+__int64 SdkRoutine_4e6d10();
+__int64 SdkRoutine_4e6d20();
+__int64 SdkRoutine_4e6d30();
+__int64 SdkRoutine_4e6d40();
+__int64 SdkRoutine_4e6d50();
+__int64 nandroid_MatroskaExtractor_MatroskaExtractor_plt(_QWORD, _QWORD);
+__int64* MatroskaExtractor_4e6840(__int64 a1);
 
 __int64 MatroskaExtractor_4e0680(_QWORD* a1)
 {
@@ -2620,7 +2631,7 @@ __int64 (*nandroid_MatroskaExtractor_Sniff(__int64 a1, _DWORD* a2))()
   }
   else {
     *a2 = 1058642330;
-    v3 = MatroskaExtractor_4e6840;
+    v3 = MatroskaExtractor_4e6840_alt1;
   }
   mkvparser_EBMLHeader_Destroy_EBMLHeader_plt(v6);
   return v3;
@@ -2808,6 +2819,53 @@ __int64 MatroskaExtractor_4e6830(__int64 a1)
 {
   return (*(__int64 (**)(_QWORD))(*(_QWORD*)(a1 + 8) + 16LL))(
       *(_QWORD*)(*(_QWORD*)(a1 + 8) + 32LL));
+}
+
+__int64* MatroskaExtractor_4e6840(__int64 a1)
+{
+  atomic_uchar* v2;
+  unsigned __int8 explicit;
+  void(__attribute__((noreturn)) * v4)();
+  _QWORD** v5;
+  __int64 v6;
+  _QWORD** v7;
+  _QWORD* v8;
+  __int64* result;
+
+  v2 = (atomic_uchar*)SdkData_e88330;
+  explicit = atomic_load_explicit((atomic_uchar* volatile)SdkData_e88330,
+                                  memory_order_acquire);
+  v4 = SdkData_e88338[0];
+  if ((explicit & 1) == 0 &&
+      (unsigned int)__cxa_guard_acquire_plt(SdkData_e88330) != 0) {
+    *(_DWORD*)v4 = 0;
+    *((_BYTE*)((__int64*)0x4LL) + (_QWORD)v4) = 1;
+    __cxa_guard_release_plt(SdkData_e88330);
+  }
+  v5 = (_QWORD**)nn_os_GetTlsValue_plt(*(unsigned int*)v4);
+  v6 = SdkRoutine_4c3860(16, 128, v5);
+  if ((atomic_load_explicit(v2, memory_order_acquire) & 1) == 0 &&
+      (unsigned int)__cxa_guard_acquire_plt(SdkData_e88330) != 0) {
+    *(_DWORD*)v4 = 0;
+    *((_BYTE*)((__int64*)0x4LL) + (_QWORD)v4) = 1;
+    __cxa_guard_release_plt(SdkData_e88330);
+  }
+  v7 = (_QWORD**)nn_os_GetTlsValue_plt(*(unsigned int*)v4);
+  v8 = (_QWORD*)SdkRoutine_4c3860(16, 16, v7);
+  *v8 = SdkData_e88720 + 16;
+  v8[1] = a1;
+  nandroid_MatroskaExtractor_MatroskaExtractor_plt(v6, v8);
+  result = (__int64*)MovieMalloc_plt(72);
+  *result = v6;
+  result[1] = (__int64)MatroskaExtractor_4e6990_alt1;
+  result[2] = (__int64)SdkRoutine_4e69b0;
+  result[3] = (__int64)MatroskaExtractor_4e69c0;
+  result[4] = (__int64)SdkRoutine_4e6d10;
+  result[5] = (__int64)SdkRoutine_4e6d20;
+  result[6] = (__int64)SdkRoutine_4e6d30;
+  result[7] = (__int64)SdkRoutine_4e6d40;
+  result[8] = (__int64)SdkRoutine_4e6d50;
+  return result;
 }
 
 __int64 MatroskaExtractor_4e6990(__int64 result)

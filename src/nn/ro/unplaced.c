@@ -56,6 +56,7 @@ void unplaced_1774c0(_QWORD* a1, __int64 a2);
 __int64 unplaced_177880(_QWORD* a1, __int64* a2, _BYTE* a3, __int64 a4,
                         unsigned __int64 a5, unsigned __int64 a6);
 __int64 unplaced_177a00();
+_QWORD* unplaced_176ee0(_QWORD* result, void (*a2)(const char*));
 
 __int64 nn_ro_Finalize(void* this_)
 {
@@ -528,6 +529,213 @@ __int64 unplaced_176b20(__int64 result, __int64 a2, __int64 a3, __int64* a4,
       goto LABEL_3;
     }
   }
+}
+
+_QWORD* unplaced_176ee0(_QWORD* result, void (*a2)(const char*))
+{
+  __int64 v2;
+  unsigned __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  _QWORD* v10;
+  unsigned __int64 v11;
+  unsigned __int64* v12;
+  unsigned __int64* v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  unsigned __int64 v22;
+  unsigned __int64 v23;
+  unsigned __int64 v24;
+  unsigned __int64 v25;
+  unsigned __int64 v26;
+  unsigned __int64 v27;
+  unsigned __int64 v28;
+  unsigned __int64 v29;
+
+  if (result[18] != 0) {
+    a2("RoModule::FixRelativeRel is called");
+    __udf(0);
+  }
+  v2 = result[5];
+  v3 = result[19];
+  if (v3 == 0) {
+    goto LABEL_23;
+  }
+  v4 = result[3];
+  v5 = result[19] & 3LL;
+  if (v3 >= 4) {
+    v7 = v4 + 48;
+    v8 = 0;
+    v9 = -(__int64)(v3 & 0xFFFFFFFFFFFFFFFCLL);
+    while (1) {
+      if (*(_DWORD*)(v7 - 40) == 1027) {
+        *(_QWORD*)(*(_QWORD*)(v7 - 48) + v2) = *(_QWORD*)(v7 - 32) + v2;
+        if (*(_DWORD*)(v7 - 16) != 1027) {
+        LABEL_10:
+          if (*(_DWORD*)(v7 + 8) != 1027) {
+            goto LABEL_11;
+          }
+          goto LABEL_15;
+        }
+      }
+      else if (*(_DWORD*)(v7 - 16) != 1027) {
+        goto LABEL_10;
+      }
+      *(_QWORD*)(*(_QWORD*)(v7 - 24) + v2) = *(_QWORD*)(v7 - 8) + v2;
+      if (*(_DWORD*)(v7 + 8) != 1027) {
+      LABEL_11:
+        if (*(_DWORD*)(v7 + 32) == 1027) {
+          goto LABEL_16;
+        }
+        goto LABEL_7;
+      }
+    LABEL_15:
+      *(_QWORD*)(*(_QWORD*)v7 + v2) = *(_QWORD*)(v7 + 16) + v2;
+      if (*(_DWORD*)(v7 + 32) == 1027) {
+      LABEL_16:
+        *(_QWORD*)(*(_QWORD*)(v7 + 24) + v2) = *(_QWORD*)(v7 + 40) + v2;
+      }
+    LABEL_7:
+      v8 -= 4;
+      v7 += 96;
+      if (v9 == v8) {
+        v6 = -v8;
+        if (v5 != 0) {
+          goto LABEL_18;
+        }
+        goto LABEL_22;
+      }
+    }
+  }
+  v6 = 0;
+  if ((v3 & 3) != 0) {
+  LABEL_18:
+    v10 = (_QWORD*)(v4 + 24 * v6 + 16);
+    do {
+      if (*((_DWORD*)v10 - 2) == 1027) {
+        *(_QWORD*)(*(v10 - 2) + v2) = *v10 + v2;
+      }
+      v10 += 3;
+      --v5;
+    } while (v5 != 0);
+  }
+LABEL_22:
+  v2 = result[5];
+LABEL_23:
+  v11 = 0;
+  v12 = nullptr;
+  v13 = (unsigned __int64*)(result[6] + 8LL);
+  v14 = *(_QWORD*)result[6];
+  if (v14 != 35) {
+    goto LABEL_27;
+  }
+LABEL_26:
+  v11 = *v13;
+  do {
+    v13 += 2;
+    v14 = *(v13 - 1);
+    if (v14 == 35) {
+      goto LABEL_26;
+    }
+  LABEL_27:
+    while (v14 == 36) {
+      v15 = *v13;
+      v13 += 2;
+      v12 = (unsigned __int64*)(v15 + v2);
+      v14 = *(v13 - 1);
+      if (v14 == 35) {
+        goto LABEL_26;
+      }
+    }
+  } while (v14 != 0);
+  if (v12 != nullptr && v11 >= 8) {
+    if (v11 >> 3 == 1) {
+      v16 = 0;
+    LABEL_48:
+      if ((v11 & 8) != 0) {
+        v27 = *v12;
+        if ((v27 & 1) != 0) {
+          if (v27 >= 2) {
+            v28 = v27 >> 1;
+            do {
+              v29 = __clz(__rbit64(v28));
+              *(_QWORD*)(v16 + 8 * v29) += v2;
+              v28 &= ~(1LL << v29);
+            } while (v28 != 0);
+          }
+        }
+        else {
+          *(_QWORD*)(v27 + v2) += v2;
+        }
+      }
+      return result;
+    }
+    v17 = v2 + 8;
+    v18 = (v11 >> 3) & 0x1FFFFFFFFFFFFFFELL;
+    v16 = 0;
+    v19 = 0;
+    while (1) {
+      while (1) {
+        v20 = *v12;
+        if ((*v12 & 1) == 0) {
+          break;
+        }
+        if (v20 >= 2) {
+          v23 = v20 >> 1;
+          do {
+            v24 = __clz(__rbit64(v23));
+            *(_QWORD*)(v16 + 8 * v24) += v2;
+            v23 &= ~(1LL << v24);
+          } while (v23 != 0);
+        }
+        v21 = v16 + 504;
+        v22 = v12[1];
+        if ((v22 & 1) != 0) {
+          goto LABEL_44;
+        }
+      LABEL_36:
+        *(_QWORD*)(v22 + v2) += v2;
+        v16 = v22 + v17;
+        v12 += 2;
+        v19 += 2;
+        if (v19 == v18) {
+          goto LABEL_48;
+        }
+      }
+      *(_QWORD*)(v20 + v2) += v2;
+      v21 = v20 + v17;
+      v22 = v12[1];
+      if ((v22 & 1) == 0) {
+        goto LABEL_36;
+      }
+    LABEL_44:
+      if (v22 >= 2) {
+        v25 = v22 >> 1;
+        do {
+          v26 = __clz(__rbit64(v25));
+          *(_QWORD*)(v21 + 8 * v26) += v2;
+          v25 &= ~(1LL << v26);
+        } while (v25 != 0);
+      }
+      v16 = v21 + 504;
+      v12 += 2;
+      v19 += 2;
+      if (v19 == v18) {
+        goto LABEL_48;
+      }
+    }
+  }
+  return result;
 }
 
 __int64 unplaced_177220(int* a1)

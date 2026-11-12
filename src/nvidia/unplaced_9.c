@@ -212,6 +212,7 @@ _QWORD* nvidia_64e860(_QWORD* result, __int64 a2, unsigned __int64 a3,
 __int64 nvidia_64ea10(__int64 a1, __int64 a2, __int64 a3, __int128* a4, int a5,
                       __int64 a6, unsigned int a7, unsigned int a8);
 _QWORD* nvidia_64ea80(_QWORD* result, __int64 a2);
+__int64 unplaced_9_6499c0(_QWORD* a1);
 
 __int64 nvidia_647010(__int64 a1, int a2)
 {
@@ -2719,6 +2720,26 @@ __int64 nvidia_649850(__int64 a1, char a2, char a3)
     goto LABEL_13;
   }
   return 0;
+}
+
+__int64 unplaced_9_6499c0(_QWORD* a1)
+{
+  __int128 v2;
+  __int64 result;
+
+  if (a1[957] != 0) {
+    (*(void (**)(void*))(a1[956] + 64LL))(*(void**)((char*)&a1[956] + 8));
+  }
+  v2 = (__typeof__(v2)){0};
+  result = a1[960];
+  *((_OWORD*)a1 + 478) = (__typeof__(*((_OWORD*)a1 + 478))){0};
+  if (result != 0) {
+    result = (*(__int64 (**)(void*))(a1[959] + 16LL))(
+        *(void**)((char*)&a1[959] + 8));
+    v2 = (__typeof__(v2)){0};
+  }
+  *(_OWORD*)(a1 + 959) = v2;
+  return result;
 }
 
 __int64 nvidia_649a20(_QWORD* a1)

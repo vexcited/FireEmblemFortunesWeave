@@ -1,85 +1,147 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
-extern _UNKNOWN CudaDriverData_1132d00;
 extern unsigned int CudaDriverData_11337d4[7];
+
 extern _UNKNOWN* CudaDriverData_14225e0;
+
 extern __int64 (*CudaDriverData_14324a0)(_QWORD*);
+
 extern __int64 (*CudaDriverData_1432ce8)(_QWORD, __int64);
+
 extern __int64 (*CudaDriverData_1432cf0)(_QWORD);
+
 extern __int64 (*CudaDriverData_1432d08)(__int64);
+
 extern __int64 (*CudaDriverData_1432d10)(__int64, unsigned int*);
+
 extern __int64 (*CudaDriverData_1432d18)(__int64);
+
 extern __int64 (*CudaDriverData_1432d20)(_QWORD, __int64, unsigned int*);
+
 extern __int64 (*CudaDriverData_1432d28)(_QWORD, _QWORD, __int64,
                                          unsigned int*);
+
 extern __int64 (*CudaDriverData_1432d40)(_QWORD, _QWORD, __int64, _QWORD,
                                          _QWORD, _QWORD, _QWORD, _QWORD, int,
                                          unsigned int, unsigned int, __int64);
+
 extern __int64 (*CudaDriverData_1432d60)(__int64, _QWORD);
+
 extern __int64 (*CudaDriverData_1432d80)(__int64);
+
 extern __int64 (*CudaDriverData_1432d90)(__int64, unsigned int*);
+
 extern __int64 (*CudaDriverData_1432d98)(__int64, __int64, __int64);
+
 extern __int64 (*CudaDriverData_1432da0)(__int64, _QWORD, _QWORD, _QWORD,
                                          _QWORD, _QWORD, _QWORD, _QWORD,
                                          __int64);
+
 extern __int64 (*CudaDriverData_1432da8)(__int64, __int64, __int64, _QWORD,
                                          _QWORD);
+
 extern __int64 (*CudaDriverData_1432db0)(__int64);
+
 extern __int64 (*CudaDriverData_1432db8)(__int64);
+
 extern __int64 (*CudaDriverData_1432dc0)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                                          _QWORD, _QWORD, _QWORD, int, int);
+
 extern __int64 (*CudaDriverData_1432dc8)(__int64);
+
 extern __int64 (*CudaDriverData_1432dd0)(__int64, unsigned int*);
+
 __int64 CudaDriverRoutine_105dd0(_QWORD);
+
 __int64 CudaDriverRoutine_107f90(_QWORD*);
+
 __int64 CudaDriverRoutine_108070(_QWORD*);
+
 __int64 CudaDriverRoutine_12e330(_QWORD);
+
 __int64 CudaDriverRoutine_12e340(_QWORD);
+
 __int64 CudaDriverRoutine_1a2800(_QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_1a2900(_QWORD);
+
 __int64 CudaDriverRoutine_1a2910(_QWORD);
+
 __int64 CudaDriverRoutine_1a2b00(_QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_1ba520(_QWORD);
+
 __int64 CudaDriverRoutine_1bbf50(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_1db190(_QWORD);
+
 __int64 CudaDriverRoutine_1db9f0(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_202960(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                                  _QWORD);
+
 __int64 CudaDriverRoutine_205fa0(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_206060(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_20b420(_QWORD, _QWORD, _QWORD);
-__int64 CudaDriverRoutine_25cf10(_QWORD, _QWORD, _QWORD);
-__int64 CudaDriverRoutine_25cf30(_QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_56260(_QWORD);
+
 __int64 CudaDriverRoutine_91460(__int64);
+
 __int64 CudaDriverRoutine_92db0(__int64);
+
 __int64 CudaDriverRoutine_95230(__int64*, __int64);
+
 __int64 CudaDriverRoutine_958e0(_QWORD);
+
 __int64 CudaDriverRoutine_98190(_QWORD, _QWORD, _QWORD);
-__int64 CudaDriverRoutine_985a0(_QWORD);
+
 unsigned __int64 CudaDriverRoutine_a79c0(__int64, __int64, unsigned int);
+
 __int64 CudaDriverRoutine_a7c60(_QWORD);
+
 __int64 CudaDriverRoutine_a7cc0(_QWORD);
+
 __int64 CudaDriverRoutine_a7d20(_QWORD);
+
 __int64 CudaDriverRoutine_acfe0(__int64);
+
 __int64 CudaDriverRoutine_ada30(__int64, __int64, __int64);
+
 __int64 CudaDriverRoutine_adc90(__int64, __int64, __int64);
+
 __int64 CudaDriverRoutine_adf50(__int64);
+
 void CudaDriverRoutine_ae180(__int64, __int64, _DWORD*);
+
 __int64 CudaDriverRoutine_ae3f0(__int64, __int64, _QWORD*, bool*);
+
 __int64 CudaDriverRoutine_ae6a0(__int64 result, __int64, __int64);
+
 __int64 CudaDriverRoutine_ae7f0(__int64, __int64, __int64);
+
 __int64 CudaDriverRoutine_b9090(_QWORD);
+
 __int64 CudaDriverRoutine_b9310(_QWORD);
+
 __int64 CudaDriverRoutine_b9350(_QWORD);
+
 __int64 CudaDriverRoutine_b9380(_QWORD, _QWORD);
-__int64 CudaDriverRoutine_bfee0(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_c2f40(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_e6700(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_e6730(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_e7a20(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_ee330(_QWORD);
+
 __int64 CudaDriverRoutine_f6360(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                                 _QWORD, _QWORD);
 
@@ -766,228 +828,6 @@ LABEL_6:
                                    *(_QWORD*)(a1 + 104), a3, 1, 0);
   if ((_DWORD)result == 0) {
     goto LABEL_2;
-  }
-  return result;
-}
-
-double CudaDriverHr_bf9f0(__int64 a1, _QWORD* a2)
-{
-  char v4;
-  __int64 v5;
-  char v6;
-  char v7;
-  __int64* v8;
-  __int64 v9;
-  double result;
-  char* v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int128 v15;
-  __int128 v16;
-  int v17;
-  __int64 v18;
-  int v19;
-  int v20;
-  int v21;
-  unsigned int v22;
-  int v23;
-  int v24;
-  int v25;
-  unsigned int v26;
-  __int64 v27;
-  int v28;
-  __int64 v29;
-  int v30;
-  __int64 v31;
-  int v32;
-  __int64 v33;
-  int v34;
-  int v35;
-  int v36;
-  int v37;
-  int v38;
-  __int64 v39;
-  int v40;
-  int v41;
-  __int128 v42;
-  __int128 v43;
-  __int64 v44;
-  _QWORD v45[2];
-  int v46;
-  __int64* v47;
-
-  CudaDriverRoutine_25cf10(&v30, 0, 744);
-  v4 = CudaDriverRoutine_985a0(*a2);
-  v5 = *(_QWORD*)(a1 + 12);
-  if (v4 != 0) {
-    v6 = 8;
-  }
-  else {
-    v6 = 0;
-  }
-  *(_BYTE*)(a1 + 32) = *(_BYTE*)(a1 + 32) & 0xF7 | v6;
-  v7 = *(_BYTE*)(a1 + 20);
-  v29 = v5;
-  if ((v7 & 4) != 0) {
-    v30 = 1;
-  }
-  v46 = 2;
-  v8 = (__int64*)a2[8];
-  v45[0] = 0x800000011LL;
-  v9 = *v8;
-  v47 = &v29;
-  v45[1] = v9;
-  CudaDriverData_14324a0(v45);
-  if (HIDWORD(v45[0]) == 0 && v31 != 0) {
-    *(_QWORD*)(a1 + 40) = v31;
-    if ((v35 | v41) != 0) {
-      goto LABEL_35;
-    }
-    if ((*(_BYTE*)(a1 + 32) & 8) != 0) {
-      v11 = (char*)&CudaDriverData_1132d00;
-      v13 = 76;
-      while (*((_DWORD*)v11 - 15) != v40 || (*(v11 - 40) & 4) == 0) {
-        if (*((_DWORD*)v11 - 6) == v40 && (*(v11 - 4) & 4) != 0) {
-        LABEL_37:
-          v11 -= 36;
-          goto LABEL_38;
-        }
-        if (*((_DWORD*)v11 + 3) == v40 && (v11[32] & 4) != 0) {
-          goto LABEL_38;
-        }
-        if (v13 == 0) {
-          goto LABEL_35;
-        }
-        if (*((_DWORD*)v11 + 12) == v40 && (v11[68] & 4) != 0) {
-        LABEL_34:
-          v11 += 36;
-          goto LABEL_38;
-        }
-        v13 -= 4;
-        v11 += 144;
-      }
-    }
-    else {
-      v11 = (char*)&CudaDriverData_1132d00;
-      v12 = 76;
-      while (*((_DWORD*)v11 - 15) != v40 || (*(v11 - 40) & 1) == 0) {
-        if (*((_DWORD*)v11 - 6) == v40 && (*(v11 - 4) & 1) != 0) {
-          goto LABEL_37;
-        }
-        if (*((_DWORD*)v11 + 3) == v40 && (v11[32] & 1) != 0) {
-          goto LABEL_38;
-        }
-        if (v12 == 0) {
-          goto LABEL_35;
-        }
-        if (*((_DWORD*)v11 + 12) == v40 && (v11[68] & 1) != 0) {
-          goto LABEL_34;
-        }
-        v12 -= 4;
-        v11 += 144;
-      }
-    }
-    v11 -= 72;
-  LABEL_38:
-    v14 = (int)v33;
-    v15 = v42;
-    v16 = v43;
-    v17 = v32;
-    *(_DWORD*)(a1 + 160) = *((_DWORD*)v11 + 4);
-    *(_DWORD*)(a1 + 172) = *((_DWORD*)v11 + 6);
-    *(_DWORD*)(a1 + 164) = *((_DWORD*)v11 + 5);
-    v18 = v44;
-    v19 = *((_DWORD*)v11 + 7);
-    *(_OWORD*)(a1 + 48) = v15;
-    *(_OWORD*)(a1 + 64) = v16;
-    *(_QWORD*)&v15 = v33;
-    *(_DWORD*)(a1 + 28) = v17;
-    *(_QWORD*)(a1 + 80) = v18;
-    *(_DWORD*)(a1 + 168) = v19;
-    LODWORD(v18) = v37;
-    v20 = v38;
-    *(_QWORD*)(a1 + 104) = v15;
-    *(_DWORD*)(a1 + 136) = v20;
-    v21 = v36;
-    *(_DWORD*)(a1 + 116) = 0;
-    *(_DWORD*)(a1 + 120) = v21;
-    v22 = v18 - v21 + 1;
-    *(_DWORD*)(a1 + 124) = v18;
-    *(_DWORD*)(a1 + 128) = v22;
-    CudaDriverRoutine_25cf30(a1 + 176, &v39, 40LL * v22);
-    v23 = *(_DWORD*)(a1 + 16);
-    if (v23 <= 35863) {
-      if (v23 > 34036) {
-        if (v23 != 34037) {
-          if (v23 != 34067) {
-            return result;
-          }
-          *(_DWORD*)(a1 + 112) = 6;
-          v24 = 5;
-          goto LABEL_53;
-        }
-      }
-      else if ((unsigned int)(v23 - 3552) >= 2) {
-        if (v23 != 32879) {
-          return result;
-        }
-        v24 = 0;
-        *(_DWORD*)(a1 + 112) = v34;
-        goto LABEL_53;
-      }
-    LABEL_54:
-      *(_DWORD*)(a1 + 112) = 0;
-      *(_DWORD*)(a1 + 132) = 0;
-    LABEL_55:
-      if ((unsigned int)CudaDriverRoutine_bfee0(a1, a2) != 0) {
-        return result;
-      }
-      v26 = *(_DWORD*)(a1 + 128) + *(_DWORD*)(a1 + 128) * *(_DWORD*)(a1 + 132);
-      *(_DWORD*)(a1 + 824) = v26;
-      v27 = CudaDriverRoutine_12e330(8LL * v26);
-      *(_QWORD*)(a1 + 832) = v27;
-      if (v27 != 0) {
-        CudaDriverRoutine_25cf10(v27, 0, 8LL * *(unsigned int*)(a1 + 824));
-        if ((*(unsigned int (**)(__int64, _QWORD*))(*(_QWORD*)a1 + 88LL))(
-                a1, a2) != 0) {
-          return result;
-        }
-        goto LABEL_58;
-      }
-    LABEL_35:
-      (*(void (**)(__int64, _QWORD*))(*(_QWORD*)a1 + 32LL))(a1, a2);
-      return result;
-    }
-    if (v23 > 35881) {
-      if (v23 != 36161) {
-        if (v23 != 35882) {
-          return result;
-        }
-        *(_QWORD*)(a1 + 840) = v14;
-        *(_DWORD*)(a1 + 112) = 0;
-        *(_DWORD*)(a1 + 132) = 0;
-      LABEL_58:
-        if ((*(unsigned int (**)(__int64, _QWORD*))(*(_QWORD*)a1 + 80LL))(
-                a1, a2) == 0) {
-          result = *(double*)(a1 + 120);
-          v28 = *(_DWORD*)(a1 + 132);
-          *(_DWORD*)(a1 + 148) = 0;
-          *(_DWORD*)(a1 + 152) = v28;
-          *(double*)(a1 + 140) = result;
-        }
-        return result;
-      }
-      goto LABEL_54;
-    }
-    if (v23 == 35864 || v23 == 35866) {
-      v25 = v34;
-      *(_DWORD*)(a1 + 112) = v34;
-      v24 = v25 - 1;
-    LABEL_53:
-      *(_DWORD*)(a1 + 132) = v24;
-      goto LABEL_55;
-    }
   }
   return result;
 }

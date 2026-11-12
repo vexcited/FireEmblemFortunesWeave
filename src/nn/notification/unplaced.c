@@ -40,6 +40,18 @@ __int64 nn_os_AttachReadableHandleToSystemEvent_plt(_QWORD, _QWORD, _QWORD,
 extern char SdkData_f65328;
 __int64 unplaced_592e50(__int64 a1);
 __int64 unplaced_593ae0(_WORD* a1, __int64 a2, __int64 a3);
+__int64 SdkRoutine_592fc0(__int64*, _QWORD**);
+__int64 SdkRoutine_593a00();
+__int64 memset_plt(void* this_, void*, int, unsigned __int64);
+__int64 nn_os_SdkMutexType_Lock_plt(_QWORD);
+__int64 nn_os_SdkMutexType_Unlock_plt(_QWORD);
+extern _UNKNOWN SdkData_f65330;
+extern _UNKNOWN SdkData_f65578;
+extern __int64 SdkData_f65580;
+extern __int64 SdkData_f65588;
+extern int SdkData_f6557c;
+__int64 unplaced_592cb0(__int64 a1, __int64 a2, __int64 a3,
+                        unsigned __int64 a4);
 __attribute__((swiftcall)) void
 
 nn_notification_GetNotificationServicesCommon(PSEUDO_X8 x8_)
@@ -62,6 +74,53 @@ nn_notification_GetNotificationServicesCommon(PSEUDO_X8 x8_)
     (**(void (***)(__int64))SdkData_f65570)(SdkData_f65570);
   }
   *a1 = v2;
+}
+
+__int64 unplaced_592cb0(__int64 a1, __int64 a2, __int64 a3, unsigned __int64 a4)
+{
+  int v4;
+  __int64 result;
+  int v6;
+  __int64 v7[3];
+  _QWORD* v8;
+
+  memset_plt((void*)&SdkData_f65330, nullptr, 608, a4);
+  v7[2] = 0;
+  v7[0] = (__int64)&SdkData_f65330;
+  v7[1] = (__int64)"notif:a";
+  nn_os_SdkMutexType_Lock_plt(&SdkData_f65578);
+  if (SdkData_f6557c != 0) {
+    if (SdkData_f65580 == 0) {
+      SdkData_f65588 = (__int64)&SdkData_f65330;
+      SdkData_f65580 = (__int64)SdkRoutine_593a00;
+    }
+    ++SdkData_f6557c;
+  }
+  else {
+    v8 = nullptr;
+    v4 = SdkRoutine_592fc0(v7, &v8);
+    if (v4 != 0) {
+      v6 = v4;
+      if (v8 != nullptr) {
+        (*(void (**)(_QWORD*))(*v8 + 8LL))(v8);
+      }
+      nn_os_SdkMutexType_Unlock_plt(&SdkData_f65578);
+      LODWORD(v7[0]) = v6;
+      nn_diag_detail_AbortImpl_plt_858db0(v7);
+    }
+    SdkData_f65588 = (__int64)&SdkData_f65330;
+    SdkData_f6557c = 1;
+    SdkData_f65570 = (__int64)v8;
+    SdkData_f65580 = (__int64)SdkRoutine_593a00;
+  }
+  nn_os_SdkMutexType_Unlock_plt(&SdkData_f65578);
+  result = (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)SdkData_f65570 + 72LL))(
+      SdkData_f65570, 0);
+  LODWORD(v7[0]) = result;
+  if ((_DWORD)result != 0) {
+    nn_diag_detail_AbortImpl_plt_858db0(v7);
+  }
+  return result;
 }
 
 void* nn_notification_GetNotificationSystemEvent()

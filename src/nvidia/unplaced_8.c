@@ -195,6 +195,34 @@ __int64 nvidia_646b60(__int64 a1);
 __int64 nvidia_646b70(__int64 a1, __int64 a2, void* a3, _QWORD* a4);
 __int64 nvidia_646e90(__int64 a1, __int64 a2);
 __int64 nvidia_646f80(__int64 a1, __int64* a2);
+__int64 NvRmSurfaceWrite_plt(_QWORD, _QWORD, _QWORD);
+__int64 memset_plt_alt1(void* this_, void*, int,
+                        unsigned __int64) __asm__("memset_plt");
+__int64 nvidia_6467d0_alt1() __asm__("nvidia_6467d0");
+__int64 unplaced_8_6463a0(_QWORD* a1, __int64 a2, __int64 a3, _QWORD* a4);
+__int64 unplaced_8_6464f0(__int64 a1);
+__int64 unplaced_8_646500(__int64 a1);
+__int64 unplaced_8_646510(__int64 a1);
+__int64 unplaced_8_646520(__int64 a1);
+__int64 unplaced_8_646530(__int64 a1);
+__int64 unplaced_8_646540(__int64 a1);
+__int64 unplaced_8_646550(__int64 a1);
+__int64 unplaced_8_646560(__int64 a1);
+__int64 unplaced_8_646570(__int64 a1);
+__int64 unplaced_8_646580(__int64 a1);
+__int64 unplaced_8_646590(__int64 a1);
+__int64 unplaced_8_6465a0(__int64 a1);
+__int64 unplaced_8_6465b0(__int64 a1);
+__int64 unplaced_8_6465c0(__int64 a1);
+__int64 unplaced_8_6465d0(__int64 a1);
+__int64 unplaced_8_6465e0(__int64 a1);
+__int64 unplaced_8_6465f0(__int64 a1);
+__int64 unplaced_8_646600(__int64 a1);
+__int64 unplaced_8_646780(__int64 a1);
+__int64 unplaced_8_646790(__int64 a1);
+__int64 unplaced_8_6467a0(__int64 a1);
+__int64 unplaced_8_6467b0(__int64 a1);
+__int64 unplaced_8_6467c0(__int64 a1);
 
 __int64 nvidia_63dce0(__int64 a1, _DWORD* a2)
 {
@@ -3595,6 +3623,183 @@ __int64 nvidia_645e00(__int64 a1, unsigned int a2)
   return result;
 }
 
+__int64 unplaced_8_6463a0(_QWORD* a1, __int64 a2, __int64 a3, _QWORD* a4)
+{
+  unsigned __int64 v8;
+  __int64 v9;
+  __int64 result;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  int v14;
+  _BYTE v15[280];
+  struct {
+    _BYTE v16[280];
+    __int64 v17;
+  } v16_;
+
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+  memset_plt_alt1((void*)v16_.v16, nullptr, 280, (unsigned __int64)a4),
+      v8 = COERCE_AS(__typeof__(v8),
+                     PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+  memset_plt_alt1((void*)v15, nullptr, 280, v8),
+      v8 = COERCE_AS(__typeof__(v8),
+                     PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+  v9 = a1[46];
+  *a4 = 0;
+  result = (*(__int64 (**)(void*))(v9 + 64))(*(void**)&a1[46]),
+  v8 = COERCE_AS(__typeof__(v8),
+                 PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+  if ((_DWORD)result == 0) {
+    a1[9] = nvidia_6467d0_alt1;
+    *a4 = v16_.v17;
+    memcpy_plt(a2, v16_.v16, 280),
+        v8 = COERCE_AS(__typeof__(v8),
+                       PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+    if (a3 != 0) {
+      memcpy_plt(a3, v15, 280),
+          v8 = COERCE_AS(__typeof__(v8),
+                         PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+    }
+    memcpy_plt(a1 + 48, v16_.v16, 280),
+        v8 = COERCE_AS(__typeof__(v8),
+                       PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+    result = 0;
+    if (*(_BYTE*)(a1[45] + 72LL) != 0) {
+      v11 = NvOsAlloc_plt(
+          4LL * (unsigned int)(*(_DWORD*)(a2 + 12) * *(_DWORD*)(a2 + 8))),
+      v8 = COERCE_AS(__typeof__(v8),
+                     PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+      v12 = v11;
+      if (*(_DWORD*)(a2 + 12) * *(_DWORD*)(a2 + 8) != 0) {
+        v13 = 0;
+        v14 = *(_DWORD*)(a1[45] + 76LL);
+        do {
+          *(_DWORD*)(v11 + 4 * v13++) = v14;
+        } while (v13 <
+                 (unsigned int)(*(_DWORD*)(a2 + 12) * *(_DWORD*)(a2 + 8)));
+      }
+      NvRmSurfaceWrite_plt(a2 + 8, 0, 0),
+          v8 = COERCE_AS(__typeof__(v8),
+                         PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+      NvOsFree_plt(v12),
+          v8 = COERCE_AS(__typeof__(v8),
+                         PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
+      return 0;
+    }
+  }
+  return result;
+}
+
+__int64 unplaced_8_6464f0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 80LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646500(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 88LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646510(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 120LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646520(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 128LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646530(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 96LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646540(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 144LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646550(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 104LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646560(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 112LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646570(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 136LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646580(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 24LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646590(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 40LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_6465a0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 152LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_6465b0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 160LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_6465c0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 168LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_6465d0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 176LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_6465e0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 184LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_6465f0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 192LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646600(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 200LL))(
+      *(void**)(a1 + 368));
+}
+
 __int64 nvidia_646610(__int64 a1) { return *(_QWORD*)(a1 + 368) >> 3; }
 
 __int64 nvidia_646620(__int64 a1, __int64 a2, void** a3)
@@ -3633,6 +3838,36 @@ __int64 nvidia_646620(__int64 a1, __int64 a2, void** a3)
   *((_QWORD*)v8 + 46) = a2;
   *a3 = v8;
   return 0;
+}
+
+__int64 unplaced_8_646780(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 8LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_646790(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 16LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_6467a0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 32LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_6467b0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 344LL))(
+      *(void**)(a1 + 368));
+}
+
+__int64 unplaced_8_6467c0(__int64 a1)
+{
+  return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 368) + 352LL))(
+      *(void**)(a1 + 368));
 }
 
 __int64 nvidia_6467d0(__int64 a1, __int64 a2)

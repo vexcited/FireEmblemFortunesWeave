@@ -211,6 +211,10 @@ __int64 nn_fs_1020b0(_QWORD* a1);
 __int64 nn_fs_102110(_QWORD* a1);
 __int64 nn_fs_102170(_QWORD* a1);
 __int64* std___1___tree___emplace_unique_impl(__int64** a1, __int64* a2);
+__int64* std___1___tree___emplace_unique_impl_dc000(__int64** a1, int* a2);
+void __attribute__((noreturn)) unplaced_dc4d0();
+void __attribute__((noreturn)) unplaced_dc820();
+__int64 std___1___tree_find(__int64 a1, unsigned __int8* a2);
 
 __int64 nn_fs_Commit(void* this_, const char* const* a2)
 {
@@ -3727,6 +3731,71 @@ __int64 nn_fs_dbe80(__int64* a1, __int64 a2, __int64 a3)
   return 0;
 }
 
+__int64* std___1___tree___emplace_unique_impl_dc000(__int64** a1, int* a2)
+{
+  __int64* v4;
+  __int64 v5;
+  __int64* v6;
+  __int64** v7;
+  __int64* v8;
+  __int64** v9;
+  __int64 v10;
+  __int64* v11;
+  __int64* v12;
+
+  v4 = (__int64*)(*(__int64 (**)(__int64*, __int64, __int64))(*a1[2] + 16))(
+      a1[2], 48, 16);
+  if (v4 == nullptr) {
+    nn_diag_detail_AbortImpl_plt_856170(0);
+  }
+  v5 = *a2;
+  v6 = v4;
+  v4[4] = v5;
+  v4[5] = *((_QWORD*)a2 + 1);
+  v7 = a1 + 1;
+  v8 = a1[1];
+  if (v8 != nullptr) {
+    do {
+      while (1) {
+        v10 = v8[4];
+        v9 = (__int64**)v8;
+        if (v10 <= v5) {
+          break;
+        }
+        v8 = (__int64*)*v8;
+        v7 = v9;
+        if (*v9 == nullptr) {
+          goto LABEL_10;
+        }
+      }
+      if (v10 >= v5) {
+        (*(void (**)(__int64*, __int64*, __int64, __int64))(*a1[2] + 24))(
+            a1[2], v4, 48, 16);
+        return (__int64*)v9;
+      }
+      v8 = (__int64*)v8[1];
+    } while (v8 != nullptr);
+    v7 = v9 + 1;
+  }
+  else {
+    v9 = a1 + 1;
+  }
+LABEL_10:
+  *v4 = 0;
+  v4[1] = 0;
+  v4[2] = (__int64)v9;
+  v11 = v4;
+  *v7 = v4;
+  v12 = (__int64*)**a1;
+  if (v12 != nullptr) {
+    *a1 = v12;
+    v11 = *v7;
+  }
+  nn_fs_dc120(a1[1], v11);
+  a1[3] = (__int64*)((char*)a1[3] + 1);
+  return v6;
+}
+
 __int64* nn_fs_dc120(__int64* result, __int64* a2)
 {
   __int64* v2;
@@ -3986,6 +4055,8 @@ void __attribute__((noreturn)) nn_fs_dc4d0()
   nn_fs_dc4f0_alt1("basic_string");
 }
 
+void __attribute__((noreturn)) unplaced_dc4d0() { nn_fs_dc4f0("basic_string"); }
+
 void __attribute__((noreturn)) nn_fs_dc4f0(const char* a1)
 {
   std___1___libcpp_verbose_abort_plt(
@@ -4213,6 +4284,8 @@ void __attribute__((noreturn)) nn_fs_dc820()
   nn_fs_dc840_alt1("basic_string");
 }
 
+void __attribute__((noreturn)) unplaced_dc820() { nn_fs_dc840("basic_string"); }
+
 void __attribute__((noreturn)) nn_fs_dc840(const char* a1)
 {
   std___1___libcpp_verbose_abort_plt(
@@ -4428,6 +4501,136 @@ LABEL_15:
     }
   }
   return (unsigned __int8*)v18;
+}
+
+__int64 std___1___tree_find(__int64 a1, unsigned __int8* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  unsigned __int64 v4;
+  __int64 v5;
+  bool v6;
+  unsigned __int64 v7;
+  unsigned __int8* v8;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  bool v11;
+  unsigned __int64 v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  int v16;
+  int v17;
+  bool v18;
+  __int64 v19;
+  unsigned __int64 v20;
+  bool v21;
+  unsigned __int64 v22;
+  unsigned __int64 v23;
+  __int64 v24;
+  unsigned __int64 v25;
+  int v26;
+
+  v2 = a1 + 8;
+  v3 = *(_QWORD*)(a1 + 8);
+  if (v3 != 0) {
+    v4 = *a2;
+    v5 = a1 + 8;
+    v6 = (v4 & 1) == 0;
+    v7 = v4 >> 1;
+    if (v6) {
+      v8 = a2 + 1;
+    }
+    else {
+      v8 = *((unsigned __int8**)a2 + 2);
+    }
+    if (v6) {
+      v9 = v7;
+    }
+    else {
+      v9 = *((_QWORD*)a2 + 1);
+    }
+    do {
+      v10 = *(unsigned __int8*)(v3 + 32);
+      v11 = (v10 & 1) == 0;
+      v12 = v10 >> 1;
+      if (v11) {
+        v13 = v12;
+      }
+      else {
+        v13 = *(_QWORD*)(v3 + 40);
+      }
+      if (v11) {
+        v14 = v3 + 33;
+      }
+      else {
+        v14 = *(_QWORD*)(v3 + 48);
+      }
+      if (v9 >= v13) {
+        v15 = v13;
+      }
+      else {
+        v15 = v9;
+      }
+      v16 = memcmp_plt(v14, v8, v15);
+      if (v13 < v9) {
+        v17 = -1;
+      }
+      else {
+        v17 = 1;
+      }
+      if (v13 == v9) {
+        v17 = 0;
+      }
+      if (v16 != 0) {
+        v17 = v16;
+      }
+      v18 = v17 < 0;
+      if (v17 >= 0) {
+        v19 = 0;
+      }
+      else {
+        v19 = 8;
+      }
+      if (!v18) {
+        v5 = v3;
+      }
+      v3 = *(_QWORD*)(v3 + v19);
+    } while (v3 != 0);
+    if (v5 != v2) {
+      v20 = *(unsigned __int8*)(v5 + 32);
+      v21 = (v20 & 1) == 0;
+      v22 = v20 >> 1;
+      if (v21) {
+        v23 = v22;
+      }
+      else {
+        v23 = *(_QWORD*)(v5 + 40);
+      }
+      if (v21) {
+        v24 = v5 + 33;
+      }
+      else {
+        v24 = *(_QWORD*)(v5 + 48);
+      }
+      if (v23 >= v9) {
+        v25 = v9;
+      }
+      else {
+        v25 = v23;
+      }
+      v26 = memcmp_plt(v8, v24, v25);
+      if (v26 != 0) {
+        if (v26 >= 0) {
+          return v5;
+        }
+      }
+      else if (v9 >= v23) {
+        return v5;
+      }
+    }
+  }
+  return v2;
 }
 
 __int64 nn_fs_dcab0(__int64* a1, __int64 a2, unsigned __int64 a3)
