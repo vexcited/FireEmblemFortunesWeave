@@ -69,7 +69,6 @@ extern __int64 (*GameData_21136f0[])();
 extern __int64 (*GameData_2113a18[])();
 extern __int64 (*game_ProcInst_Unknown04_1929bd0_ptr[])();
 extern __int64 (*game_facility_anonymous_ProcTheaterCastingUnitMenu_vtable[])();
-extern __int64 (*game_menu_GameMenuImpl_ImplUnknown00_ptr[])();
 extern __int64* GameData_212cc40[63];
 extern __int64* GameData_212dcd0;
 extern __int64* GameData_212e008[9];
@@ -203,7 +202,8 @@ game_facility_anonymous_ProcTheaterCastingUnitMenu_CreateBind(__int64 a1)
   }
   *(_QWORD*)(v7 + 1216) = v4;
   *(_QWORD*)v7 = game_facility_anonymous_ProcTheaterCastingUnitMenu_vtable;
-  *(_QWORD*)(v7 + 1056) = game_menu_GameMenuImpl_ImplUnknown00_ptr;
+  *(_QWORD*)(v7 + 1056) =
+      game_facility_anonymous_ProcTheaterCastingUnitMenu_vtable + 189;
   v15 = *v2;
   *(_QWORD*)(v7 + 176) = GameData_21136f0;
   *(_QWORD*)(v15 + 56) = *(_QWORD*)(v15 + 48);

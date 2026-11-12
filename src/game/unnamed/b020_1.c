@@ -757,6 +757,13 @@ __int64 strlen(_QWORD);
 bool UnitItem_6e8bc0(unsigned __int16*, __int64);
 
 char* GameRoutine_60a020_alt1(char*, __int64) __asm__("GameRoutine_60a020");
+__int64 GameRoutine_1570b30_alt1(__int64*,
+                                 void*) __asm__("GameRoutine_1570b30");
+__attribute__((swiftcall)) void
+GameRoutine_134b980_alt1(PSEUDO_X8,
+                         __int64 (*)()) __asm__("GameRoutine_134b980");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 
 extern __int64* game_g_frame_clock_ptr[3];
 

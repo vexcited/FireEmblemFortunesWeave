@@ -4165,7 +4165,7 @@ __int64 UnitActor_81d880(__int64 a1, long double a2, long double a3)
         }
       }
       if (*(_QWORD*)(a1 + 264) != 0) {
-        CharacterBuilder_1084780();
+        CharacterBuilder_1084780_alt1(*(_QWORD*)(a1 + 264));
       }
     }
     v15 = *(_QWORD*)(a1 + 8);

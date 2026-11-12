@@ -34,7 +34,9 @@ extern __int64 (*game_gameui_DelayImageLoader_vtable[])();
 extern __int64 (*game_gameui_ImageLoader_vtable[])();
 extern __int64 (*game_menu_MenuInput_InputUnknown00_ptr[])();
 extern __int64 (*game_menu_anonymous_GuideMenuItem_vtable[])();
-extern __int64 (*game_menu_anonymous_MarginMenuItem_vtable[])();
+// The MarginMenuItem of this unit, the shared name maps another unit's one.
+extern __int64 (*game_menu_anonymous_MarginMenuItem_vtable[])()
+    __asm__("GameData_20ae420");
 extern __int64 (*game_menu_anonymous_ProcGuideMenu_vtable[])();
 extern __int64 GameData_212c610;
 extern __int64 GameData_212c7c8[8];
@@ -2060,7 +2062,7 @@ _QWORD* ProcGuideMenu_Unknown128(__int64 a1, __int64 a2)
       v7 = 5;
     }
   }
-  (*v6)[v7]();
+  ((void (*)(__int64 (***)()))(*v6)[v7])(v6);
 
 LABEL_10:
   LODWORD(v59[0]) = 0;

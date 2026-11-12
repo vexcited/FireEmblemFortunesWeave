@@ -333,6 +333,9 @@ void TextTagProcessor_1909c50(__int64, unsigned int, __int64);
 
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+__int64 GameRoutine_190a960_alt1(void*, __int64) __asm__("GameRoutine_190a960");
+__int64* GameRoutine_1939d80_alt1(__int64*, __int64*, __int64*, __int64*,
+                                  __int64) __asm__("GameRoutine_1939d80");
 
 void cspine_SpineModel_AsyncArgument_Destroy_AsyncArgument(__int64);
 

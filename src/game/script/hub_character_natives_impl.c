@@ -4781,7 +4781,7 @@ __int64 hub_character_PostTalkEvent(__int64 result)
   __int64 v21;
   __int64 v22;
   __int64 v23;
-  void (*v24)(void);
+  __int64 (*v24)(__int64, __int64);
   __int64 v25;
   __int64 v26;
   struct {
@@ -4860,8 +4860,8 @@ __int64 hub_character_PostTalkEvent(__int64 result)
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v19 = 56;
         }
-        nn_mem_StandardAllocator_Free_alt2(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v19);
+        nn_mem_StandardAllocator_Free_alt3(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, v27_.v28);
       }
     }
   }
@@ -4880,9 +4880,9 @@ __int64 hub_character_PostTalkEvent(__int64 result)
   else {
     v23 = 0;
   }
-  v24 = *(void (**)(void))(**(_QWORD**)(v23 + 24) + 448LL);
+  v24 = *(__int64 (**)(__int64, __int64))(**(_QWORD**)(v23 + 24) + 448LL);
   if ((v20 & 1) == 0) {
-    v24();
+    v24(*(_QWORD*)(v23 + 24), 1);
     result = *(_QWORD*)(v23 + 2240);
     *(_QWORD*)(v23 + 2240) = 0;
     if (result == v23 + 2208) {
@@ -4898,15 +4898,15 @@ __int64 hub_character_PostTalkEvent(__int64 result)
         (*(__int64 (**)(__int64))(*(_QWORD*)result + v25))((__int64)result);
     goto LABEL_37;
   }
-  result = ((__int64 (*)(void))v24)();
+  result = v24(*(_QWORD*)(v23 + 24), 0);
 LABEL_37:
   if ((v27_.v27[0] & 1) != 0 && v27_.v28 != 0) {
     v26 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v26 = 56;
     }
-    return nn_mem_StandardAllocator_Free_alt2(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v26);
+    return nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v26, v27_.v28);
   }
   return result;
 }

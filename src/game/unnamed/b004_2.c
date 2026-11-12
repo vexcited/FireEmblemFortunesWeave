@@ -3729,7 +3729,7 @@ char* GameHr_67ee90(_QWORD* a1)
   char* result;
   __int64 v4;
 
-  if (a1[36] == 0 || (v2 = GameRoutine_975940()) == 0 ||
+  if (a1[36] == 0 || (v2 = GameRoutine_975940_alt1(a1[36])) == 0 ||
       (result = *(char**)(v2 + 72)) == nullptr) {
     result = (char*)a1[4];
     if (result == nullptr) {

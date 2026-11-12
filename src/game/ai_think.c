@@ -267,8 +267,8 @@ __int64 game_AIThink_IsEnemyInsideAttackArea_lambda3_Invoke(__int64 result,
                                                             _DWORD* a2,
                                                             _DWORD* a3);
 bool game_AIThink_GetAttackResult(int* a1, _QWORD* a2);
-__int64 game_AIThink_GetAttackResult_lambda0_Invoke(__int64 a1, int* a2,
-                                                    int* a3);
+void game_AIThink_GetAttackResult_lambda0_Invoke(__int64 a1, int* a2,
+                                                 int* a3);
 __int64 AIThink_1200be0(__int64 a1, unsigned int a2, unsigned int a3, int a4,
                         __int64 a5);
 __int64 AIThink_1201580(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
@@ -766,7 +766,7 @@ _QWORD* AIThink_129b0a0(_QWORD* a1);
 __int64 AIThink_129b920(__int64 result, __int64 a2, __int64 a3);
 unsigned __int64 AIThink_129d360(unsigned __int64 result, unsigned __int8* a2,
                                  char* a3, _DWORD* a4);
-__int64 AIThink_129d780(_QWORD* a1, __int64 a2);
+void AIThink_129d780(_QWORD* a1, __int64 a2);
 __int64 AIThink_129e880(__int64 result, __int64 a2, int a3, __int64 a4, int a5,
                         int a6);
 __int64 game_AIThink_EntrustSpecialTo_lambda1_Invoke(__int64 a1, int* a2);
@@ -5380,8 +5380,8 @@ __int64 AIThink_11fdab0(unsigned int a1, __int64 a2, __int64 a3, __int64 a4,
   }
 }
 
-__int64 game_AIThink_GetAttackResult_lambda0_Invoke(__int64 a1, int* a2,
-                                                    int* a3)
+void game_AIThink_GetAttackResult_lambda0_Invoke(__int64 a1, int* a2,
+                                                 int* a3)
 {
   int v4;
   int v5;
@@ -5465,7 +5465,6 @@ __int64 game_AIThink_GetAttackResult_lambda0_Invoke(__int64 a1, int* a2,
       }
     }
   }
-  return result;
 }
 
 __int64 game_AIThink_ActionMoveNearestFriend(__int64 a1)
@@ -21519,7 +21518,7 @@ __int64 game_AIThink_EntrustMindGimmick_lambda0_Invoke(__int64 a1, __int64 a2,
   unsigned int v16;
   _DWORD* v17;
   unsigned int v18;
-  bool v19;
+  unsigned int v20;
 
   v6 = *a3;
   v7 = *a4;
@@ -21546,10 +21545,9 @@ __int64 game_AIThink_EntrustMindGimmick_lambda0_Invoke(__int64 a1, __int64 a2,
     }
     v18 = **(_DWORD**)(a1 + 16);
     if (v18 < v16 || (*v17 & 0x80000000) != 0 ||
-        (v18 <= v16 ? (v19 = (*v17 | (**(_DWORD**)(a1 + 32) << 16)) <=
-                             (v8 | (v10 << 16)))
-                    : (v19 = true),
-         !v19)) {
+        (v20 = **(_DWORD**)(a1 + 32),
+         (v18 <= v16) &
+             ((int)(*v17 | (v20 << 16)) > (int)(v8 | (v10 << 16))))) {
       *v17 = v8;
       **(_DWORD**)(a1 + 32) = v10;
       **(_DWORD**)(a1 + 40) = v6;
@@ -21577,7 +21575,7 @@ __int64 game_AIThink_EntrustMindTreasure_lambda0_Invoke(__int64 a1, __int64 a2,
   unsigned int v16;
   _DWORD* v17;
   unsigned int v18;
-  bool v19;
+  unsigned int v20;
 
   v6 = *a3;
   v7 = *a4;
@@ -21604,10 +21602,9 @@ __int64 game_AIThink_EntrustMindTreasure_lambda0_Invoke(__int64 a1, __int64 a2,
     }
     v18 = **(_DWORD**)(a1 + 16);
     if (v18 < v16 || (*v17 & 0x80000000) != 0 ||
-        (v18 <= v16 ? (v19 = (*v17 | (**(_DWORD**)(a1 + 32) << 16)) <=
-                             (v8 | (v10 << 16)))
-                    : (v19 = true),
-         !v19)) {
+        (v20 = **(_DWORD**)(a1 + 32),
+         (v18 <= v16) &
+             ((int)(*v17 | (v20 << 16)) > (int)(v8 | (v10 << 16))))) {
       *v17 = v8;
       **(_DWORD**)(a1 + 32) = v10;
       **(_DWORD**)(a1 + 40) = v6;
@@ -31696,7 +31693,7 @@ LABEL_22:
   return result;
 }
 
-__int64 AIThink_129d780(_QWORD* a1, __int64 a2)
+void AIThink_129d780(_QWORD* a1, __int64 a2)
 {
   __int64 v2;
   _BYTE* v3;
@@ -31982,7 +31979,7 @@ LABEL_16:
         else {
           v8 = 56;
         }
-        nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v6 + v8);
+        nn_mem_StandardAllocator_Free_alt3(*(_QWORD*)v6 + v8, (__int64)v5);
         v5 = v7;
       } while (v7 != nullptr);
     }
@@ -32080,8 +32077,8 @@ LABEL_16:
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v38 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt2(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v38);
+      nn_mem_StandardAllocator_Free_alt3(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v38, *(_QWORD*)(v31 - 8));
       v31 = v27[1344];
     }
     v27[1344] = v31 - 8;
@@ -32108,8 +32105,8 @@ LABEL_16:
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v49 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt2(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v49);
+      nn_mem_StandardAllocator_Free_alt3(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v49, *(_QWORD*)(v42 - 8));
       v42 = v27[2618];
     }
     v27[2618] = v42 - 8;
@@ -32582,7 +32579,7 @@ LABEL_210:
     v160 = v227;
     v159 = v228;
     if ((result & 1) != 0) {
-      return result;
+      return;
     }
   }
   else {
@@ -32780,7 +32777,7 @@ LABEL_210:
       v80 = v165++ < v235;
     } while (v80);
   }
-  return result;
+  return;
 }
 
 __int64 AIThink_129e880(__int64 result, __int64 a2, int a3, __int64 a4, int a5,

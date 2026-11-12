@@ -1180,9 +1180,8 @@ __int64 hub_IsAlreadyRead(unsigned __int8* a1)
   __int64 v14;
   __int64 v15;
   unsigned __int64 v17[2];
-  char v18;
   struct {
-    char gap24_[1];
+    char v18;
     _BYTE v19[7];
     char gap32_[8];
     _DWORD* v20;
@@ -1230,8 +1229,8 @@ LABEL_9:
   else {
     v11 = *((_QWORD*)a1 + 1);
   }
-  game_db1620((void*)((__int64)&v18), v10, v11);
-  if ((v18 & 1) != 0) {
+  game_db1620((void*)((__int64)&v19_), v10, v11);
+  if ((v19_.v18 & 1) != 0) {
     v12 = v19_.v20;
   }
   else {
@@ -1253,13 +1252,13 @@ LABEL_9:
         v14 = game_GameVariableTable_Find(*(_QWORD**)(v13 + 48), v17);
         if (v14 != 0) {
           LOBYTE(v12) = *(_DWORD*)(v14 + 32) != 0;
-          if ((v18 & 1) == 0) {
+          if ((v19_.v18 & 1) == 0) {
             return (v13 != 0) & (unsigned __int8)v12;
           }
         }
         else {
           LOBYTE(v12) = 0;
-          if ((v18 & 1) == 0) {
+          if ((v19_.v18 & 1) == 0) {
             return (v13 != 0) & (unsigned __int8)v12;
           }
         }
@@ -1267,12 +1266,12 @@ LABEL_9:
       }
       LOBYTE(v12) = 0;
     }
-    if ((v18 & 1) == 0) {
+    if ((v19_.v18 & 1) == 0) {
       return (v13 != 0) & (unsigned __int8)v12;
     }
     goto LABEL_29;
   }
-  if ((v18 & 1) == 0) {
+  if ((v19_.v18 & 1) == 0) {
     return (v13 != 0) & (unsigned __int8)v12;
   }
 LABEL_29:
@@ -1281,7 +1280,8 @@ LABEL_29:
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v15 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v15);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v15, (__int64)v19_.v20);
   }
   return (v13 != 0) & (unsigned __int8)v12;
 }

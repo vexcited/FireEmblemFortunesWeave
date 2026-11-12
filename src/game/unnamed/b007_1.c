@@ -4729,7 +4729,7 @@ char* GameHr_8e3900(char* result, char* a2, int* a3, __int64 a4, __int64 a5,
       v33 = a5;
       v34 = a6;
       v52 = a5 - v25 - v11;
-      v35 = GameRoutine_6e7840(v18);
+      v35 = (__int64)GameRoutine_6e7840_alt1(v18, a2, (char*)v17);
       v36 = (int*)v35;
       if (v25 + v16 >= v34 + v33 - (v25 + v16) - v11) {
         a7 = v57;

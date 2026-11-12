@@ -2860,7 +2860,7 @@ LABEL_22:
     if (*(_QWORD*)(*v19 + 200) == 0) {
       v22 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v19 + v22);
+    nn_mem_StandardAllocator_Free_alt2(*v19 + v22, (__int64)v94_.v95);
   }
   if ((v96_.v96[0] & 1) != 0) {
     v23 = v96_.v97;
@@ -2928,7 +2928,7 @@ LABEL_22:
       if (*(_QWORD*)(*v19 + 200) == 0) {
         v43 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v19 + v43);
+      nn_mem_StandardAllocator_Free_alt2(*v19 + v43, (__int64)v40);
     }
   }
   else {
@@ -2947,7 +2947,7 @@ LABEL_22:
     if (*(_QWORD*)(*v19 + 200) == 0) {
       v44 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v19 + v44);
+    nn_mem_StandardAllocator_Free_alt2(*v19 + v44, (__int64)v96_.v97);
   }
   result = HubNatives_ccbf80_alt1((__int64)v47_.v47);
   if ((v92_.v92[0] & 1) != 0 && v92_.v93 != nullptr) {
@@ -2956,7 +2956,7 @@ LABEL_22:
       v46 = 56;
     }
     {
-      nn_mem_StandardAllocator_Free(*v19 + v46);
+      nn_mem_StandardAllocator_Free_alt2(*v19 + v46, (__int64)v92_.v93);
       return;
     }
   }

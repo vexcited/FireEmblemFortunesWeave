@@ -2746,7 +2746,7 @@ LABEL_19:
       v11 = 3;
     }
     *(_DWORD*)(v10 + 232) = v11;
-    GameRoutine_f482e0();
+    GameRoutine_f482e0_alt1(v10);
     result = *(_QWORD**)(v1 + 192);
     v13 = (_QWORD*)(v1 + 160);
     v14 = 1;
@@ -2980,7 +2980,7 @@ __int64 game_hub_anonymous_ProcHubSeqEnter_RunReloadAll_closure_Invoke()
     v1 = 3;
   }
   *(_DWORD*)(v0 + 232) = v1;
-  return GameRoutine_f482e0();
+  return GameRoutine_f482e0_alt1(v0);
 }
 
 void ProcHubSeqEnter_918b10()
@@ -3266,7 +3266,7 @@ __int64 game_hub_anonymous_ProcHubSeqEnter_RunConvergeResult_closure_Invoke()
     v1 = 1;
   }
   *(_DWORD*)(v0 + 232) = v1;
-  return GameRoutine_f482e0();
+  return GameRoutine_f482e0_alt1(v0);
 }
 
 __int64

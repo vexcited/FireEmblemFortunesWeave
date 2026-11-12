@@ -1614,7 +1614,7 @@ __int64 game_map_anonymous_73fba0(int* a1, char a2)
         }
       }
       if (*(_QWORD*)(v7 + 264) != 0) {
-        CharacterBuilder_1084780();
+        CharacterBuilder_1084780_alt1(*(_QWORD*)(v7 + 264));
       }
     }
     v27 = *(_DWORD*)(v7 + 416);
@@ -1697,7 +1697,7 @@ __int64 game_map_anonymous_76e470(__int64 result)
         }
       }
       if (*(_QWORD*)(v1 + 264) != 0) {
-        CharacterBuilder_1084780();
+        CharacterBuilder_1084780_alt1(*(_QWORD*)(v1 + 264));
       }
     }
     v14 = GameData_21ca300;
@@ -1919,7 +1919,7 @@ __int64 game_map_anonymous_770a30(__int64 a1)
       }
     }
     if (*(_QWORD*)(v2 + 264) != 0) {
-      CharacterBuilder_1084780();
+      CharacterBuilder_1084780_alt1(*(_QWORD*)(v2 + 264));
     }
   }
   GameRoutine_76a120(a1, *(_QWORD*)(a1 + 152));

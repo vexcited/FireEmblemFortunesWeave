@@ -3541,7 +3541,7 @@ __attribute__((swiftcall)) void CmdBtlUnit_e7de70(PSEUDO_X8 x8_, __int64 a1,
   __int64 v6;
   __int64 result;
   __int64 v8;
-  __int64 v9;
+  _QWORD v9[2];
 
   *(_QWORD*)a3 = 0;
   *(_DWORD*)(a3 + 8) = 0x2000;
@@ -3553,8 +3553,8 @@ __attribute__((swiftcall)) void CmdBtlUnit_e7de70(PSEUDO_X8 x8_, __int64 a1,
     else {
       v6 = a2 + 1;
     }
-    CharacterSound_1095750(v5, v6, 0, 1.0f);
-    GameRoutine_112180(a3, &v9);
+    CharacterSound_1095750_alt1((void*)v9, v5, (const char*)v6, 0, 1.0f);
+    GameRoutine_112180(a3, (__int64)v9);
   }
   result = snd_fnd_WeakHandle_isValid(a3);
   if ((result & 1) != 0) {

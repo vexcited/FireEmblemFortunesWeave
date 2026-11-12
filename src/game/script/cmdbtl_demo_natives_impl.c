@@ -123,7 +123,7 @@ __int64 CmdbtlDemoNatives_f636a0(__int64 result)
   }
   v11 = v9[171];
   v12 = *(_DWORD*)(v6 + 160);
-  if (v9[173] + v9[172] <= 1) {
+  if ((int)(v9[173] + v9[172]) <= 1) {
     v13 = 1;
   }
   else {

@@ -20,7 +20,6 @@ extern _UNKNOWN* GameData_212c730;
 extern __int64 (*GameData_20382c8[])();
 extern __int64 (*GameData_2038448[])();
 extern __int64 (*game_facility_anonymous_ProcDiningUnitMenu_vtable[])();
-extern __int64 (*game_menu_GameMenuImpl_ImplUnknown00_ptr[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_GameModeData_instance_;
 extern __int64 game_UnitListSet_instance_;
@@ -90,7 +89,8 @@ _QWORD* DiningMenuItem_13fb2e0(__int64 a1)
   }
   *(_QWORD*)v2 = game_facility_anonymous_ProcDiningUnitMenu_vtable;
   *(_QWORD*)(v2 + 176) = GameData_20382c8;
-  *(_QWORD*)(v2 + 1056) = game_menu_GameMenuImpl_ImplUnknown00_ptr;
+  *(_QWORD*)(v2 + 1056) =
+      game_facility_anonymous_ProcDiningUnitMenu_vtable + 189;
   *(_DWORD*)(*GameData_212dcd0 + 8) = -1;
   GameRoutine_657850(v2, GameData_212c730, "ProcDiningUnitMenu", 1, a1);
   v20 = v2;

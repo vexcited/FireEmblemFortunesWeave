@@ -306,6 +306,10 @@ _QWORD* GameRoutine_64df20_alt1(_QWORD*, __int64,
                                 unsigned __int64) __asm__("GameRoutine_64df20");
 
 _QWORD* GameRoutine_93eed0_alt1(_QWORD* result) __asm__("GameRoutine_93eed0");
+__attribute__((swiftcall)) void
+GameRoutine_16d1510_alt1(PSEUDO_X8, __int64,
+                         __int64) __asm__("GameRoutine_16d1510");
+void GameRoutine_18855c0_alt1(_QWORD*, _QWORD*) __asm__("GameRoutine_18855c0");
 
 __int64* SpineModel_64dde0(__int64*, __int64, unsigned __int64);
 

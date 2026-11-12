@@ -11816,7 +11816,7 @@ LABEL_18:
           if (v33 != 0) {
             v34 = v33;
             if (*a1 != 0) {
-              ControlCreator_13633c0_alt1();
+              ControlCreator_13633c0_alt2(*a1);
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(v34 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -11882,7 +11882,7 @@ LABEL_18:
             if (v47 != 0) {
               v48 = v47;
               if (*a1 != 0) {
-                ControlCreator_13633c0_alt1();
+                ControlCreator_13633c0_alt2(*a1);
               }
               if (atomic_fetch_add((atomic_ullong* volatile)(v48 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {

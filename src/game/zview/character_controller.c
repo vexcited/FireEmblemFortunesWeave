@@ -7280,15 +7280,14 @@ _QWORD* CharacterController_d48b40(_QWORD* a1, __int64 a2, long double a3,
                        *(float*)&v11 / (float)(unsigned int)v17);
     }
   }
-  v21 =
-      sqrtf((float)(PSEUDO_UNFUSED(*((float*)&v11 + 1) * *((float*)&v11 + 1))) +
-            (float)(*(float*)&v11 * *(float*)&v11));
+  v21 = sqrtf(__builtin_fmaf(*(float*)&v11, *(float*)&v11,
+                             *((float*)&v11 + 1) * *((float*)&v11 + 1)));
   if (*(float*)&v11 != 0x0.0p+0f || *((float*)&v11 + 1) != 0x0.0p+0f) {
     v11 = __PAIR64__(*((float*)&v11 + 1) / v21, *(float*)&v11 / v21);
   }
   v22 = 0x0.0p+0f;
   v23 = *(float*)&a3 == 0x0.0p+0f;
-  v24 = (float)(PSEUDO_UNFUSED(a4 * a4)) + (float)(*(float*)&a3 * *(float*)&a3);
+  v24 = __builtin_fmaf(*(float*)&a3, *(float*)&a3, a4 * a4);
   if (a4 != 0x0.0p+0f) {
     v23 = false;
   }
@@ -7307,11 +7306,9 @@ _QWORD* CharacterController_d48b40(_QWORD* a1, __int64 a2, long double a3,
   else {
     v29 = v26;
   }
-  v30 = (float)(PSEUDO_UNFUSED(*((float*)&v11 + 1) * v28)) +
-        (float)(*(float*)&v11 * v29);
+  v30 = __builtin_fmaf(*(float*)&v11, v29, *((float*)&v11 + 1) * v28);
   if (v30 <= 0x1.0000000000000p+0f) {
-    v31 = (float)(PSEUDO_UNFUSED(*((float*)&v11 + 1) * v28)) +
-          (float)(*(float*)&v11 * v29);
+    v31 = v30;
   }
   else {
     v31 = 0x1.0000000000000p+0f;

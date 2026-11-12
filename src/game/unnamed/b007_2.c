@@ -1086,6 +1086,8 @@ unsigned __int64 FacilityVariable_1472560(unsigned __int64 result);
 unsigned __int64 strlen(const char*);
 void __attribute__((noreturn))
 GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_910ed0_alt1() __asm__("GameRoutine_910ed0");
 void nn_mem_StandardAllocator_Free(__int64, __int64);
 __int64 GameHr_8786f0(__int64* a1);
 __int64 GameHr_87a140();

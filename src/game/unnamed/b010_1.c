@@ -9846,7 +9846,7 @@ __int64 GameHr_c38230(__int64 a1)
   v4 = *(_QWORD*)(a1 + 184);
   if (v4 != 0) {
   LABEL_3:
-    result = GameRoutine_634d80(*(_QWORD*)(v4 + 8));
+    result = GameRoutine_634d80_alt1(*(_QWORD*)(v4 + 8), v4);
     *(_QWORD*)(a1 + 184) = 0;
   }
 LABEL_4:

@@ -4106,7 +4106,7 @@ _QWORD* GameHr_a7e300(_QWORD* result, __int64** a2)
   v4 = result;
   v5 = result[2] - v2;
   v6 = (v5 >> 3) + a2[1] - *a2;
-  if (v6 > (result[3] - v2) >> 3) {
+  if (v6 > (unsigned __int64)((__int64)(result[3] - v2) >> 3)) {
     if (v6 >> 61 != 0) {
       GameRoutine_a7f560();
     }

@@ -48,8 +48,10 @@ __int64 GameRoutine_140cae0(_QWORD, _QWORD, _QWORD, double);
 __int64 GameRoutine_142b870();
 __int64 GameRoutine_143d0a0(__int64, __int16*);
 __int64 GameRoutine_143d0a0_alt1(_QWORD, _QWORD) __asm__("GameRoutine_143d0a0");
-__int64 GameRoutine_144fca0(_QWORD, _QWORD);
-__int64 GameRoutine_1450260(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_144fca0(PSEUDO_X8, __int64,
+                                                    __int64);
+__attribute__((swiftcall)) void GameRoutine_1450260(PSEUDO_X8, __int64,
+                                                    __int64);
 __int64 GameRoutine_14516c0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1469c40(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_148b140(_QWORD, _QWORD, _QWORD, float);
@@ -94,7 +96,6 @@ __int64 game_HashString(_QWORD, _QWORD);
 __int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
 __int64 game_HashString_alt2(_QWORD) __asm__("game_HashString");
 __int64 game_Unit_EachEducateTargetSkill(__int64, __int64);
-__int64 game_facility_1450640_alt1(_QWORD) __asm__("game_facility_1450640");
 __int64 game_facility_148cc30(_QWORD, _QWORD, _QWORD);
 __int64 game_facility_SellController_Clear(void);
 __int64 game_facility_SellController_Clear_alt1(_QWORD) __asm__(
@@ -5124,7 +5125,7 @@ LABEL_29:
   v19 = *(unsigned __int8*)(v18 + 32);
   if (v19 > 1) {
     if (v19 == 2) {
-      game_facility_1450640_alt1(a1);
+      game_facility_1450640((void*)a4, a1);
       return;
     }
     if (v19 == 3) {
@@ -5138,12 +5139,12 @@ LABEL_29:
     goto LABEL_36;
   }
   if (v19 != 0) {
-    GameRoutine_1450260(a1, a3);
+    GameRoutine_1450260((void*)a4, a1, a3);
     return;
   }
   v21 = SceneManager_138e200(*(_QWORD*)GameData_212dce8, a2);
   {
-    GameRoutine_144fca0(a1, v21);
+    GameRoutine_144fca0((void*)a4, a1, v21);
     return;
   }
 }

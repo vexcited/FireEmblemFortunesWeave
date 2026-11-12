@@ -63,7 +63,7 @@ _QWORD* game_map_Trick_Impl_EachCoveredCharacter_closure_Clone(__int64 a1);
 __int64 game_map_Trick_Impl_EachCoveredCharacter_closure_Invoke(__int64 result,
                                                                 __int64 a2,
                                                                 __int64 a3);
-_QWORD* game_map_Trick_Impl_UpdateLink(_QWORD* a1, __int64 a2);
+_QWORD* game_map_Trick_Impl_UpdateLink(_QWORD* a1);
 __int64 game_map_Trick_Impl_UpdateMap_closure_Invoke_7d4d10(__int64 a1,
                                                             _QWORD** a2);
 __int64 game_map_Trick_Impl_UpdateMap_closure_Invoke_7d4e80(__int64 a1, int* a2,
@@ -1707,7 +1707,7 @@ __int64 game_map_Trick_Impl_EachCoveredCharacter_closure_Invoke(__int64 result,
   return result;
 }
 
-_QWORD* game_map_Trick_Impl_UpdateLink(_QWORD* a1, __int64 a2)
+_QWORD* game_map_Trick_Impl_UpdateLink(_QWORD* a1)
 {
   __int64 v2;
   _QWORD* v3;
@@ -1784,8 +1784,7 @@ _QWORD* game_map_Trick_Impl_UpdateLink(_QWORD* a1, __int64 a2)
     }
     v14 = 40;
   }
-  return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v14))(result,
-                                                                     a2);
+  return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v14))(result);
 }
 
 __int64 game_map_Trick_Impl_UpdateMap_closure_Invoke_7d4d10(__int64 a1,

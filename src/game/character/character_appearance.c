@@ -1867,7 +1867,7 @@ __int64 game_character_CharacterAppearance_LoadAsync(__int64 a1)
     if (*(_QWORD*)(*v2 + 200LL) == 0) {
       v25 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v2 + v25);
+    nn_mem_StandardAllocator_Free_alt3(*v2 + v25, (__int64)v28);
     goto LABEL_33;
   }
   do {

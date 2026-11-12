@@ -7,7 +7,7 @@ __int64 GameRoutine_1045ac0(_QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, long double);
 extern __int64 (*game_map_MapPanelDeployMove_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 MapPanelDeployMove_Destructor(_QWORD* a1, long double a2);
+__int64 MapPanelDeployMove_Destructor(_QWORD* a1);
 __int64 MapPanelDeployMove_DeletingDestructor_alt1(
     _QWORD* a1,
     long double a2) __asm__("MapPanelDeployMove_DeletingDestructor");
@@ -1510,7 +1510,7 @@ LABEL_32:
   return result;
 }
 
-__int64 MapPanelDeployMove_Destructor(_QWORD* a1, long double a2)
+__int64 MapPanelDeployMove_Destructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v4;
@@ -1523,8 +1523,8 @@ __int64 MapPanelDeployMove_Destructor(_QWORD* a1, long double a2)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v4 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4,
-                                  a2);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, v2);
   }
   GameRoutine_1045980(a1[9]);
   GameRoutine_1045ac0(a1[6]);

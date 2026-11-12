@@ -7,8 +7,6 @@ __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 fw_text_String_CopyTerminated(_QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, long double) __asm__(
-    "nn_mem_StandardAllocator_Free");
 extern __int64 (*GameData_1fc23d8[])();
 extern __int64 (*gfx_settings_BaseParamInstance_vtable)();
 extern __int64 GameData_1fc14b0;
@@ -205,7 +203,6 @@ __int64 Bool_aba0c0(__int64* a1, __int64 a2, __int64 a3, _QWORD* a4, _QWORD* a5,
   __int64 v52;
   int* v53;
   char v54;
-  long double v55;
   int v56;
   char v57;
   char v58;
@@ -217,7 +214,6 @@ __int64 Bool_aba0c0(__int64* a1, __int64 a2, __int64 a3, _QWORD* a4, _QWORD* a5,
   __int64 v64;
   __int64 v65;
   __int64 v66;
-  long double v67;
   int v68;
   __int64 v69;
   __int64 v70;
@@ -233,7 +229,6 @@ __int64 Bool_aba0c0(__int64* a1, __int64 a2, __int64 a3, _QWORD* a4, _QWORD* a5,
   __int64 v80;
   __int64 v81;
   char v82;
-  long double v83;
   char v84;
   __int64 v85;
   __int64 v86;
@@ -251,7 +246,6 @@ __int64 Bool_aba0c0(__int64* a1, __int64 a2, __int64 a3, _QWORD* a4, _QWORD* a5,
   __int64 v98;
   __int64 v99;
   char v100;
-  long double v101;
   __int64 v102;
   __int64 v103;
   __int64 v104;
@@ -390,8 +384,8 @@ __int64 Bool_aba0c0(__int64* a1, __int64 a2, __int64 a3, _QWORD* a4, _QWORD* a5,
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v59 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v59, v55);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v59, (__int64)v114);
     }
     v109 = &gfx_settings_BaseParamInstance_vtable;
     if ((v110[0] & 1) != 0 && v111 != 0) {
@@ -399,8 +393,8 @@ __int64 Bool_aba0c0(__int64* a1, __int64 a2, __int64 a3, _QWORD* a4, _QWORD* a5,
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v60 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v60, v55);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v60, (__int64)v111);
     }
     result = (*(__int64 (**)(__int64*, _QWORD, _QWORD, float))(*v145 + 80))(
         v145, v45 & 1, v58 & 1, a6);
@@ -513,8 +507,8 @@ LABEL_24:
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v69 = 56;
       }
-      v14 = nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v69, v67);
+      v14 = nn_mem_StandardAllocator_Free(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v69, v141);
     }
     v136 = (__int64 (**)())(v38 + 2);
     if ((v137[0] & 1) != 0 && v138 != 0) {
@@ -522,8 +516,8 @@ LABEL_24:
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v70 = 56;
       }
-      v14 = nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v70, v67);
+      v14 = nn_mem_StandardAllocator_Free(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v70, v138);
     }
     v71 = a5[5];
     v72 = *(_BYTE*)v40;
@@ -579,8 +573,8 @@ LABEL_24:
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v85 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v85, v83);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v85, (__int64)v132);
     }
     v127 = (__int64 (**)())(v38 + 2);
     if ((v128[0] & 1) != 0 && v129 != 0) {
@@ -588,8 +582,8 @@ LABEL_24:
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v86 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v86, v83);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v86, (__int64)v129);
     }
     v87 = (*(__int64 (**)(__int64*, __int64, _QWORD, float))(*a1 + 80))(
         a1, (unsigned __int8)v145 & 1, v84 & 1, v36);
@@ -653,7 +647,7 @@ LABEL_24:
       if (*(_QWORD*)(v103 + 200) == 0) {
         v104 = 56;
       }
-      result = nn_mem_StandardAllocator_Free_alt1(v103 + v104, v101);
+      result = nn_mem_StandardAllocator_Free(v103 + v104, v102);
     }
     v118 = (__int64 (**)())(v88 + 2);
     if ((v119[0] & 1) != 0 && v120 != 0) {
@@ -661,7 +655,7 @@ LABEL_24:
       if (*(_QWORD*)(*(_QWORD*)v96 + 200LL) == 0) {
         v105 = 56;
       }
-      return nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v96 + v105, v101);
+      return nn_mem_StandardAllocator_Free(*(_QWORD*)v96 + v105, v120);
     }
   }
   return result;

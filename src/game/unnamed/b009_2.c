@@ -168,6 +168,16 @@ void LODModule_a991b0(__int64*, unsigned __int64);
 
 void __attribute__((noreturn))
 GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_b32fb0_alt1() __asm__("GameRoutine_b32fb0");
+void __attribute__((noreturn))
+GameRoutine_b32f50_alt1() __asm__("GameRoutine_b32f50");
+__int64 GameRoutine_b509c0_alt1(__int64, const char*,
+                                __int64*) __asm__("GameRoutine_b509c0");
+__int64
+GameRoutine_1a09ce0_alt1(__int64, const char*,
+                         unsigned __int64) __asm__("GameRoutine_1a09ce0");
+__int64 GameRoutine_b869a0_alt1(__int64) __asm__("GameRoutine_b869a0");
 
 __int64 GameHr_a988a0(__int64 result, __int64 a2, __int64* a3);
 

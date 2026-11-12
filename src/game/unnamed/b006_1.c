@@ -7535,10 +7535,10 @@ __int64 GameHr_82d270(__int64 result, __int16* a2)
           *(_BYTE*)(v2 + 3932768) |= 8u;
           v8 = *(unsigned __int8*)(v7 + 73);
           if (v8 == 2) {
-            result = GameRoutine_8309a0(v2);
+            result = GameRoutine_8309a0_alt1(v2, v7, (__int64)a2);
           }
           else if (v8 == 1) {
-            result = GameRoutine_8308a0(v2);
+            result = GameRoutine_8308a0_alt1(v2, v7, (__int64)a2);
           }
           *(_BYTE*)(v2 + 3932768) &= ~8u;
         }

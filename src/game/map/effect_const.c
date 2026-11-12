@@ -69,6 +69,9 @@ __int64 EffectConst_961260(__int64 a1, _BYTE** a2, __int64 a3, __n128 a4);
 __int64 EffectConst_961520_alt1(__int64* a1, __int64 a2, __int64* a3, int a4,
                                 char a5, int32x2_t a6,
                                 float a7) __asm__("EffectConst_961520");
+__int64 EffectConst_961520_alt2(__int64* a1, __int64 a2, __int64* a3, int a4,
+                                char a5, float a6,
+                                float a7) __asm__("EffectConst_961520");
 void EffectConst_961740_alt1(__int64 a1, _BYTE** a2, __int64 a3,
                              char a4) __asm__("EffectConst_961740");
 void EffectConst_9619a0_alt1(__int64 a1, _BYTE** a2, __int64 a3,
@@ -1818,8 +1821,8 @@ __int64 EffectConst_963740(__int64 a1, __int64* a2, int a3, int a4)
                   COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0f)));
               *((_QWORD*)&v36 + 1) = LODWORD(v34);
               v69 = v36;
-              EffectConst_961520_alt1(&v70_.v70, v28, (__int64*)&v69, 5, 0, v35,
-                                      0x0.0p+0f),
+              EffectConst_961520_alt2(&v70_.v70, v28, (__int64*)&v69, 5, 0,
+                                      LANES64(v35).n64_f32[0], 0x0.0p+0f),
                   v11 = COERCE_AS(
                       __typeof__(v11),
                       PSEUDO_REGISTER(unsigned long long, "x3", "=r")),
@@ -1989,8 +1992,8 @@ __int64 EffectConst_963740(__int64 a1, __int64* a2, int a3, int a4)
                         COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0f)));
       *((_QWORD*)&v54 + 1) = LODWORD(v51);
       v68 = v54;
-      EffectConst_961520_alt1((__int64*)&v69, v45, (__int64*)&v68, 5, 0, v52,
-                              0x0.0p+0f),
+      EffectConst_961520_alt2((__int64*)&v69, v45, (__int64*)&v68, 5, 0,
+                              LANES64(v52).n64_f32[0], 0x0.0p+0f),
           v11 = COERCE_AS(__typeof__(v11),
                           PSEUDO_REGISTER(unsigned long long, "x3", "=r")),
           v12 = COERCE_AS(__typeof__(v12),
@@ -2355,7 +2358,6 @@ void EffectConst_964320(char** a1, unsigned __int8** a2, char** a3, __int64* a4)
   unsigned int v39;
   unsigned int v40;
   int v41;
-  int32x2_t v42;
   __int64 v43;
   struct {
     __int64 v44;
@@ -2518,11 +2520,8 @@ void EffectConst_964320(char** a1, unsigned __int8** a2, char** a3, __int64* a4)
                     return;
                   }
                 }
-                PSEUDO_LOW_LANE64(
-                    v42, n64_u32,
-                    COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0f)));
-                EffectConst_961520_alt1(&v44_.v44, (__int64)GameData_21f48c8,
-                                        a4, 5, 0, v42, 0x0.0p+0f);
+                EffectConst_961520_alt2(&v44_.v44, (__int64)GameData_21f48c8,
+                                        a4, 5, 0, 1.0f, 0x0.0p+0f);
                 v43 = v44_.v45;
                 if (v44_.v45 != 0 &&
                     atomic_fetch_add((atomic_ullong* volatile)(v44_.v45 + 8),

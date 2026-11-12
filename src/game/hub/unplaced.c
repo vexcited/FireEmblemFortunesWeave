@@ -5768,9 +5768,7 @@ LABEL_32:
         v52 = GameData_212df08;
         if ((explicit & 1) == 0) {
           v94 = result;
-          v95 = (unsigned int)(__cxa_guard_acquire_alt1(
-                                   (void*)(GameData_212df10), GameData_212df10),
-                               (void*)(GameData_212df10));
+          v95 = __cxa_guard_acquire_alt2((__int64)GameData_212df10);
           result = v94;
           if (v95 != 0) {
             *v52 = wld_Crc32(0, "ModelModule", 11);

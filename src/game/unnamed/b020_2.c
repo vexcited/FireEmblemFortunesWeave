@@ -762,6 +762,9 @@ __int64 GameRoutine_15a4580_alt1(__int64 result, __int64, unsigned __int16*,
 __int64 GameRoutine_1842180_alt1(__int64, int) __asm__("GameRoutine_1842180");
 __int64 GameRoutine_60a020_alt1(__int64,
                                 const char*) __asm__("GameRoutine_60a020");
+extern char GameData_1aa609f_alt1[] __asm__("GameData_1aa609f");
+extern char GameData_1ad4651_alt1[] __asm__("GameData_1ad4651");
+extern char GameData_1ad80e1_alt1[] __asm__("GameData_1ad80e1");
 __int64 GameRoutine_777be0_alt1(__int64) __asm__("GameRoutine_777be0");
 __int64 GameRoutine_f09ca0_alt1(_QWORD*, __int64) __asm__("GameRoutine_f09ca0");
 __int64 Impl_13261c0(__int64);
@@ -3761,12 +3764,20 @@ __int64 GameHr_159b400(__int64 a1, __int64 a2, char a3)
   __int64 v15;
   __int64 v16;
   unsigned int v17;
+  const char* v18;
 
   if ((*(_BYTE*)(a2 + 178) & 4) != 0 && GameData_21caab0 != 0 &&
-          *(_DWORD*)(GameData_21caab0 + 60) == 3 ||
-      (unsigned __int8)(v5 = GameRoutine_13261c0(a2)) == 9 ||
-      (unsigned __int8)v5 == 8 || (unsigned __int8)v5 == 5) {
-    v5 = GameRoutine_60a020(a1 + 8);
+      *(_DWORD*)(GameData_21caab0 + 60) == 3) {
+    v18 = GameData_1aa609f_alt1;
+    goto LABEL_6;
+  }
+  v5 = GameRoutine_13261c0(a2);
+  if ((unsigned __int8)v5 == 9 || (unsigned __int8)v5 == 5 ||
+      (unsigned __int8)v5 == 8) {
+    v18 = (unsigned __int8)v5 == 8 ? GameData_1ad4651_alt1
+                                   : GameData_1ad80e1_alt1;
+  LABEL_6:
+    v5 = GameRoutine_60a020_alt1(a1 + 8, v18);
     if ((a3 & 1) == 0) {
       return 1;
     }

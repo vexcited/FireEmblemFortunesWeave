@@ -3121,7 +3121,7 @@ LABEL_42:
         goto LABEL_68;
       }
     }
-    else if (GameData_1bee1cc[8 * *(int*)(a1 + 184) + 4] == 1 &&
+    else if (GameData_1bee1cc[8 * (__int64)*(int*)(a1 + 184) + 4] == 1 &&
              (unsigned __int8)Impl_13261c0_alt1(a2) == 2 && Impl_1328300(a2) &&
              (Impl_1328460(a2) & 1) == 0) {
       goto LABEL_62;

@@ -575,6 +575,8 @@ __int64 game_combat_CombatSettings_CombatSettings_lambda0_Invoke(__int64 a1,
 bool game_combat_CombatSettings_RadialBlur_t_Play_lambda0_Invoke(__int64 a1,
                                                                  float* a2)
 {
+
+#pragma clang fp contract(off)
   float v2;
   int v3;
   float v4;
@@ -587,9 +589,8 @@ bool game_combat_CombatSettings_RadialBlur_t_Play_lambda0_Invoke(__int64 a1,
   v2 = *a2;
   v3 = *(_DWORD*)(a1 + 16);
   v4 = (float)(1.0f - *a2) * (float)(1.0f - *a2);
-  v5 = *(float*)(a1 + 8) +
-       (float)((float)(*(float*)(a1 + 12) - *(float*)(a1 + 8)) *
-               (float)(1.0f - (float)(v4 * v4)));
+  v5 = __builtin_fmaf(*(float*)(a1 + 12) - *(float*)(a1 + 8),
+                      (float)(1.0f - (float)(v4 * v4)), *(float*)(a1 + 8));
   v6 = *(_QWORD*)(*game_g_frame_clock_ptr[0] + 13224);
   v7 = *(_QWORD*)(v6 + 48);
   v8 = *(_QWORD*)(v6 + 56);
@@ -602,13 +603,13 @@ bool game_combat_CombatSettings_RadialBlur_t_Play_lambda0_Invoke(__int64 a1,
       (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
       std___1___shared_weak_count___release_weak(v8);
     }
-    if (v5 > 0.0f) {
+    if (!(v5 <= 0.0f)) {
       goto LABEL_5;
     }
   }
   else {
     v9 = *(_QWORD*)(*(_QWORD*)(v7 + 8) + 168LL);
-    if (v5 > 0.0f) {
+    if (!(v5 <= 0.0f)) {
     LABEL_5:
       *(float*)(v9 + 92) = v5;
       *(_BYTE*)(v9 + 96) = 1;
