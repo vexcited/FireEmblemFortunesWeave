@@ -784,6 +784,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 52610,420,verified,src/opus/silk/unplaced_2.c,opus_silk_52610
 527c0,16,verified,src/opus/silk/enc_API.c,silk_Get_Encoder_Size
 527d0,268,verified,src/opus/silk/enc_API.c,silk_InitEncoder
+528e0,420,verified,src/opus/silk/unplaced_5.c,opus_silk_528e0
 54020,968,verified,src/opus/silk/encode_indices.c,silk_encode_indices
 55b60,408,verified,src/opus/silk/gain_quant.c,silk_gains_quant
 55d00,228,verified,src/opus/silk/gain_quant.c,silk_gains_dequant
@@ -831,6 +832,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 5f240,668,verified,src/opus/silk/fixed/find_LTP_FIX.c,silk_find_LTP_FIX
 5f5e0,888,verified,src/opus/silk/fixed/unplaced_2.c,opus_silk_fixed_5f5e0
 5fa60,1112,verified,src/opus/silk/fixed/unplaced_2.c,opus_silk_fixed_5fa60
+5ff80,452,verified,src/opus/silk/fixed/unplaced_5.c,opus_silk_fixed_5ff80
 60180,592,verified,src/opus/silk/fixed/unplaced_2.c,opus_silk_fixed_60180
 61860,2088,verified,src/opus/silk/fixed/pitch_analysis_core_FIX_impl2.c,silk_pitch_analysis_core
 63520,980,verified,src/opus/silk/fixed/pitch_analysis_core_FIX_impl2.c,silk_P_Ana_calc_corr_st3

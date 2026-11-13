@@ -18,13 +18,9 @@ __int64 NgxRoutine_be660(_QWORD);
 
 __int64 NgxRoutine_be820(_QWORD);
 
-__int64 NgxRoutine_bf010(_QWORD);
-
 __int64 NgxRoutine_db240(_QWORD);
 
 __int64 NgxRoutine_dfc20(_QWORD);
-
-__int64 NgxRoutine_e36d0(_QWORD);
 
 __int64 NgxRoutine_e3720(_QWORD);
 
@@ -399,16 +395,6 @@ __int64 NgxHr_be80c(__int64 a1)
 }
 
 const char* NgxHr_be9e0() { return "generic"; }
-
-__int64 NgxHr_beffc(__int64 a1)
-{
-  __int64 v1;
-  __int64 v3;
-
-  NgxRoutine_e36d0(v1);
-  v3 = NgxRoutine_e3720(a1);
-  return NgxRoutine_bf010(v3);
-}
 
 void __attribute__((noreturn)) NgxHr_bf6fc(__int64 a1) { NgxRoutine_baf40(a1); }
 

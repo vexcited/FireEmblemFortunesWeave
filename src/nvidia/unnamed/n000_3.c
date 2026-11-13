@@ -161,8 +161,6 @@ __int64 NgxRoutine_e3690(_QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 NgxRoutine_e36a0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
-__int64 NgxRoutine_e36d0(_QWORD);
-
 __int64 NgxRoutine_e3720(_QWORD);
 
 __int64 NgxRoutine_e37b0(_QWORD, _QWORD);
@@ -2050,15 +2048,6 @@ __int64 NgxHr_beef0(_QWORD* a1, __int64 a2)
   result = NgxRoutine_e3100(v5 + 24, a2, v4 + 1);
   a1[1] = v6;
   return result;
-}
-
-void __attribute__((noreturn)) NgxHr_bef60(__int64 a1)
-{
-  __int64 v1;
-
-  NgxRoutine_e36d0(v1);
-  NgxRoutine_e3720(a1);
-  __udf(0);
 }
 
 #pragma GCC visibility pop

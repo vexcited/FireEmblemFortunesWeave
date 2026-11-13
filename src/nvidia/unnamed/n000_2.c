@@ -1275,21 +1275,6 @@ __int64 NgxHr_bbe20(__int64 a1, __int64 a2, __int64 a3)
   return result;
 }
 
-void __attribute__((noreturn)) NgxHr_bbecc(__int64 a1, __int64 a2, __int64 a3,
-                                           __int64 a4, __int64 a5, __int64 a6,
-                                           __int64 a7, __int64 a8, __int64 a9,
-                                           char a10)
-{
-  _QWORD* v10;
-  __int64 v11;
-
-  NgxRoutine_db240(&a10);
-  *v10 = v11;
-  NgxRoutine_db240(v10 + 1);
-  NgxRoutine_e3720(a1);
-  __udf(0);
-}
-
 __int64 NgxHr_bbef0(_QWORD* a1)
 {
   *a1 = NgxData_951118 + 2;
@@ -1562,21 +1547,6 @@ __int64 NgxHr_bc630(__int64 a1, __int64 a2, __int64 a3)
   result = (*(__int64 (**)(__int64*))(v7 + 56))(v6);
   *(_BYTE*)(a1 + 88) = result & 1;
   return result;
-}
-
-void __attribute__((noreturn)) NgxHr_bc6dc(__int64 a1, __int64 a2, __int64 a3,
-                                           __int64 a4, __int64 a5, __int64 a6,
-                                           __int64 a7, __int64 a8, __int64 a9,
-                                           char a10)
-{
-  _QWORD* v10;
-  __int64 v11;
-
-  NgxRoutine_db240(&a10);
-  *v10 = v11;
-  NgxRoutine_db240(v10 + 1);
-  NgxRoutine_e3720(a1);
-  __udf(0);
 }
 
 __int64 NgxHr_bc700(_QWORD* a1)
