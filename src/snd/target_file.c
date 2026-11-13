@@ -62,6 +62,9 @@ __int64 nn_os_ReleaseWriteLock_alt1(__int64) __asm__("nn_os_ReleaseWriteLock");
 __int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
+__int64 GameRoutine_190200(__int64, char*);
+__int64 vsnprintf(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 TargetFile_a392e0(__int64 a1, __int64 a2, ...);
 
 __int64 TargetFile_Destructor(__int64 a1)
 {
@@ -108,8 +111,8 @@ __int64 TargetFile_DeletingDestructor(__int64 a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3, (_QWORD)(a1));
+  return nn_mem_StandardAllocator_Free(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (_QWORD)(a1));
 }
 
 __int64 TargetFile_Unknown5(__int64 a1)
@@ -185,6 +188,20 @@ __int64 TargetFile_Unknown5(__int64 a1)
                                                   v12_.v13);
   }
   return result;
+}
+
+__int64 TargetFile_a392e0(__int64 a1, __int64 a2, ...)
+{
+  unsigned int v3;
+  __builtin_va_list va;
+  __builtin_va_list va1;
+  char v7[1024];
+
+  __builtin_va_start(va, a2);
+  __builtin_va_start(va1, a2);
+  v3 = vsnprintf(v7, 1024, a2, (__int64)&va);
+  GameRoutine_190200(a1, v7);
+  return v3;
 }
 
 __int64 TargetFile_Unknown6(_QWORD* a1)

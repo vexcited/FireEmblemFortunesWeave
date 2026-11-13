@@ -38,6 +38,15 @@ void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void EmbeddedImage_188a200(__int64 a1);
+__int64 LayoutEx_579160_alt1(__int64, __int64) __asm__("LayoutEx_579160");
+extern _UNKNOWN* GameData_2131900;
+extern _UNKNOWN GameData_2259378;
+extern __int64 GameData_2259370;
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void ui_ILayoutControl_UpdatePath_alt1(__int64) __asm__(
+    "ui_ILayoutControl_UpdatePath");
+__attribute__((swiftcall)) void EmbeddedImage_18897a0(PSEUDO_X8 x8_, __int64 a1,
+                                                      __int64 a2);
 
 __attribute__((swiftcall)) void EmbeddedImage_18895c0(PSEUDO_X8 x8_, __int64 a1,
                                                       __int64 a2, __int64 a3)
@@ -105,6 +114,93 @@ __attribute__((swiftcall)) void EmbeddedImage_18895c0(PSEUDO_X8 x8_, __int64 a1,
   *a4 = v10;
   a4[1] = v9;
   v9[3] = EmbeddedImage_188a200_ptr;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void EmbeddedImage_18897a0(PSEUDO_X8 x8_, __int64 a1,
+                                                      __int64 a2)
+{
+  __int64 (****a3)() = (__int64 (****)())PSEUDO_X8_VALUE(x8_);
+  _QWORD* v6;
+  _QWORD* v7;
+  __int64 (***v8)();
+  char* v9;
+  unsigned __int64 v10;
+  char* v11;
+  unsigned __int64 v12;
+  __int64 (**v13)();
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64* v17;
+  __int64 result;
+
+  v6 = (_QWORD*)LayoutEx_579160_alt1(136, 8);
+  v6[1] = 0;
+  v6[2] = 0;
+  v7 = v6;
+  *v6 = GameData_20ff378;
+  v6[4] = a2;
+  v6[5] = 0;
+  v6[6] = 0;
+  v6[7] = 0;
+  v6[8] = 0;
+  v6[9] = 0;
+  v6[10] = 0;
+  v6[11] = 0;
+  v6[3] = &ui_ILayoutControl_vtable;
+  v8 = (__int64 (***)(void))(v6 + 3);
+  v9 = (const char*)(*(_QWORD*)(a2 + 24) + 176LL);
+  v10 = strlen_alt1(v9);
+  v7[5] = v9;
+  v7[6] = v10;
+  v11 = *(const char**)(a2 + 48);
+  v12 = strlen_alt1(v11);
+  v7[7] = v11;
+  v7[8] = v12;
+  ui_ILayoutControl_UpdatePath_alt1((__int64)v8);
+  v13 = ui_control_EmbeddedImage_vtable;
+  *v8 = ui_control_EmbeddedImage_vtable;
+  v14 = *(_QWORD*)(a1 + 72);
+  v7[13] = 0;
+  v7[14] = 0;
+  v7[12] = v14;
+  *((_DWORD*)v7 + 30) = *(_DWORD*)(a1 + 96);
+  *(_QWORD*)((char*)v7 + 124) = *(_QWORD*)(a1 + 100);
+  v15 = *(_QWORD*)(v7[4] + 24LL);
+  if (v15 != 0) {
+    v16 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)v15 + 120LL))(
+        v15, *(_QWORD*)(a1 + 80) + 176LL, 1);
+    if ((atomic_load_explicit((atomic_uchar* volatile)GameData_2131900,
+                              memory_order_acquire) &
+         1) == 0 &&
+        __cxa_guard_acquire_alt1((__int64)&GameData_2259378) != 0) {
+      GameData_2259370 = (__int64)nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt1();
+      __cxa_guard_release_alt1((__int64)&GameData_2259378);
+    }
+    if (v16 == 0) {
+      goto LABEL_11;
+    }
+    v17 = (__int64*)(*(__int64 (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
+    if (v17 != &GameData_2259370) {
+      do {
+        v17 = (__int64*)*v17;
+      } while (v17 != &GameData_2259370 && v17 != nullptr);
+      if (v17 == nullptr) {
+      LABEL_11:
+        v16 = 0;
+      }
+    }
+    v13 = *v8;
+    v7[13] = v16;
+  }
+  result = ((__int64 (*)(__int64 (***)(void), _QWORD))v13[5])(v8, 0);
+  *a3 = v8;
+  a3[1] = (__int64 (***)(void))v7;
+  v7[3] = EmbeddedImage_188a200_ptr;
   {
     result;
     return;

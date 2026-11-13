@@ -260,6 +260,12 @@ extern __int64 game_TransporterConst_List_instance_;
 void Manager_130fb60(__int64 a1);
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64 game_HasSkill_alt1(_QWORD*, unsigned int*) __asm__("game_HasSkill");
+__int64 nn_util_VSNPrintf(_QWORD, _QWORD, const char*, ...);
+extern _DWORD* game_g_shared_system_skills_ptr_alt1 __asm__(
+    "game_g_shared_system_skills_ptr");
+__int64 Manager_130de40(__int64 a1);
+__int64 Manager_130f910(__int64 a1, __int64 a2, ...);
 
 __int64 Manager_Destructor_130d940(_QWORD* a1)
 {
@@ -331,6 +337,32 @@ __int64 Manager_Destructor_130d940(_QWORD* a1)
     GameData_2240f20 = 0;
   }
   return result;
+}
+
+__int64 Manager_130de40(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  char v4;
+  char v5;
+  struct {
+    int v7;
+    int v8;
+  } v7_;
+
+  v2 = game_g_shared_system_skills_ptr_alt1;
+  v7_.v7 = *game_g_shared_system_skills_ptr_alt1 & 0xFFF;
+  if ((game_HasSkill_alt1((_QWORD*)(a1 + 1744), (unsigned int*)&v7_.v7) & 1) !=
+          0 &&
+      ((v3 = *(_QWORD*)(a1 + 440)) == 0 ? (v4 = 9) : (v4 = *(_BYTE*)(v3 + 16)),
+       ((1 << v4) & 0xF1) != 0)) {
+    v5 = 0;
+  }
+  else {
+    v7_.v8 = *(_DWORD*)((_BYTE*)((_UNKNOWN**)0x8LL) + v2) & 0xFFF;
+    v5 = game_HasSkill_alt1((_QWORD*)(a1 + 1744), (unsigned int*)&v7_.v8) ^ 1;
+  }
+  return v5 & 1;
 }
 
 __int64 Manager_130dee0()
@@ -1737,6 +1769,18 @@ __int64 Manager_130f220(__int64 a1)
     return nn_prepo_PlayReport_Add_1a0ae00(a1, "FirstRoute", v57);
   }
   return result;
+}
+
+__int64 Manager_130f910(__int64 a1, __int64 a2, ...)
+{
+  __builtin_va_list va;
+  __builtin_va_list va1;
+
+  __builtin_va_start(va, a2);
+  __builtin_va_start(va1, a2);
+  nn_util_VSNPrintf(a1, 256, "SS_%s_Clear", (const char*)(__int64)&va);
+  *(_QWORD*)(a1 + 256) = a1;
+  return a1;
 }
 
 __int64 Manager_130f9a0(__int64 a1)

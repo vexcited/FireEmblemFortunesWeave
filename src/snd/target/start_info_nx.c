@@ -30,6 +30,12 @@ void GameRoutine_651250_alt1(void*) __asm__("GameRoutine_651250");
 void __attribute__((noreturn)) String_60a1d0();
 __int64 StartInfoNX_Unknown16(__int64* a1);
 __int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
+__int64 BaseNx_278a40(__int64, __int64, unsigned int);
+int memcmp(__int64, __int64, unsigned __int64);
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void __attribute__((noreturn)) snd_a36650();
+__int64 StartInfoNX_Unknown10(__int64 a1, __int64 a2, char a3);
+__int64 StartInfoNX_14ba80(__int64 a1, int a2, char* a3);
 
 __int64 StartInfoNX_Unknown3(__int64 result, int a2)
 {
@@ -57,6 +63,130 @@ __int64 StartInfoNX_Unknown8(__int64 a1)
 }
 
 __int64 StartInfoNX_14b920() { return snd_target_s_platform; }
+
+__int64 StartInfoNX_Unknown10(__int64 a1, __int64 a2, char a3)
+{
+  int v3;
+  char* v4;
+  __int64 v8;
+  __int64 v9;
+  _QWORD* v10;
+  __int64* v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 result;
+  int v22;
+
+  v3 = *(_DWORD*)(a2 + 5772);
+  v4 = *(const char**)(a2 + 5776);
+  v8 = snd_target_s_platform;
+  if (v4 == nullptr ||
+      (v9 = snd_target_s_platform + 4088LL * v3, v10 = *(_QWORD**)(v9 + 4056),
+       v11 = *(__int64**)(v9 + 4048), v10 == v11)) {
+  LABEL_15:
+    v20 = 32;
+    if (*(_BYTE*)(v8 + 4088LL * v3 + 4136) != 0) {
+      v20 = 1584;
+    }
+    v19 = v8 + 4088LL * v3 + 56 + v20;
+  }
+  else {
+    v12 = v10 - (__typeof__(v10))v11;
+    while (1) {
+      v14 = *v11++;
+      v13 = v14;
+      if (*(_BYTE*)(v14 + 1440) == 1) {
+        v15 = strlen_alt1(v4);
+        v16 = *(_BYTE*)v13 >> 1;
+        if ((*(_BYTE*)v13 & 1) != 0) {
+          v16 = *(_QWORD*)(v13 + 8);
+        }
+        if (v15 == v16) {
+          v17 = v15;
+          if (v15 == -1) {
+            snd_a36650();
+          }
+          v18 = (*(_BYTE*)v13 & 1) != 0 ? *(_QWORD*)(v13 + 16) : v13 + 1;
+          if (memcmp(v18, (__int64)v4, v17) == 0) {
+            break;
+          }
+        }
+      }
+      if (--v12 == 0) {
+        goto LABEL_15;
+      }
+    }
+    v19 = v13 + 32;
+  }
+  result = BaseNx_278a40(v19, a1 + 136, *(_DWORD*)(a2 + 5768));
+  if ((a3 & 1) != 0) {
+    v22 = 2;
+  }
+  else {
+    v22 = 1;
+  }
+  *(_DWORD*)(a1 + 264) = v22;
+  return result;
+}
+
+__int64 StartInfoNX_14ba80(__int64 a1, int a2, char* a3)
+{
+  __int64 v5;
+  _QWORD* v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  __int64 v17;
+
+  if (a3 == nullptr || (v5 = a1 + 4088LL * a2, v6 = *(_QWORD**)(v5 + 4056),
+                        v7 = *(__int64**)(v5 + 4048), v6 == v7)) {
+  LABEL_15:
+    v17 = 32;
+    if (*(_BYTE*)(a1 + 4088LL * a2 + 4136) != 0) {
+      v17 = 1584;
+    }
+    return a1 + 4088LL * a2 + 56 + v17;
+  }
+  else {
+    v8 = v6 - (__typeof__(v6))v7;
+    while (1) {
+      v11 = *v7++;
+      v10 = v11;
+      if (*(_BYTE*)(v11 + 1440) == 1) {
+        v12 = strlen_alt1(a3);
+        v13 = *(_BYTE*)v10 >> 1;
+        if ((*(_BYTE*)v10 & 1) != 0) {
+          v13 = *(_QWORD*)(v10 + 8);
+        }
+        if (v12 == v13) {
+          v14 = v12;
+          if (v12 == -1) {
+            snd_a36650();
+          }
+          v15 = (*(_BYTE*)v10 & 1) != 0 ? *(_QWORD*)(v10 + 16) : v10 + 1;
+          if (memcmp(v15, (__int64)a3, v14) == 0) {
+            return v10 + 32;
+          }
+        }
+      }
+      if (--v8 == 0) {
+        goto LABEL_15;
+      }
+    }
+  }
+}
 
 __int64 StartInfoNX_Unknown11(__int64 a1, __int64 a2)
 {

@@ -245,6 +245,10 @@ __int64 GameHr_10e8690(_QWORD*);
 __int64 GameHr_a867a0(__int64 result);
 __int64 GameHr_d31080(__int64 result);
 __int64 CharacterBuilder_Unknown5(__int64 a1);
+__int64 GameRoutine_1085a10(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64
+game_character_CharacterBuilder_PickGroundWide_lambda0_Invoke(__int64 a1,
+                                                              int8x16_t* a2);
 
 __int64 CharacterBuilder_Destructor(_QWORD* a1)
 {
@@ -6392,6 +6396,31 @@ float game_character_CharacterBuilder_SetDitherAlpha_lambda1_Invoke(__int64 a1,
     }
   }
   return result;
+}
+
+__int64
+
+game_character_CharacterBuilder_PickGroundWide_lambda0_Invoke(__int64 a1,
+                                                              int8x16_t* a2)
+{
+  int8x16_t v2;
+  __int64 v3;
+  __int64 v4;
+  __int128 v5;
+  int8x16_t v7;
+  __int128 v8;
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(a1 + 16);
+  v4 = *(_QWORD*)(a1 + 8) + 160LL;
+  LODWORD(v5) = *(_DWORD*)&(*a2);
+  DWORD1(v5) = 1128792064;
+  *((_QWORD*)&v5 + 1) = LANES128_OF(vextq_s8(v2, v2, 8u)).n128_u32[0];
+  v8 = v5;
+  LANES128(v2).n128_u32[1] = -1027080192;
+  LANES128(v2).n128_u64[1] = *((_QWORD*)&v5 + 1);
+  v7 = v2;
+  return GameRoutine_1085a10(v4, &v8, &v7, v3);
 }
 
 #pragma GCC visibility pop
