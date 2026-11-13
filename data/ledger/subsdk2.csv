@@ -606,6 +606,8 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 1bbf0,128,verified,src/movie/detail/movie_task_queue_manager.cpp,_ZN5movie6detail16TaskQueueManager8FinalizeEv
 1bc70,136,verified,src/movie/detail/movie_task_queue_manager.cpp,_ZN5movie6detail16TaskQueueManager12SetAllocatorEPNS_10IAllocatorE
 1bd10,164,verified,src/movie/detail/movie_task_queue_manager.cpp,_ZN5movie6detail16TaskQueueManager12GetTaskQueueEPPNS_10ITaskQueueE
+1bdc0,4,verified,src/movie/detail/unplaced_4.c,movie_detail_1bdc0
+1bdd0,4,verified,src/movie/detail/unplaced_4.c,movie_detail_1bdd0
 1bde0,12,verified,src/movie/detail/movie_stop_watch.cpp,_ZN5movie6detail9StopWatchC2Ev
 1bdf0,64,verified,src/movie/detail/movie_stop_watch.cpp,_ZN5movie6detail9StopWatch5StartEv
 1be30,76,verified,src/movie/detail/movie_stop_watch.cpp,_ZN5movie6detail9StopWatch5PauseEv
@@ -688,6 +690,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 2b1e0,820,verified,src/opus/celt/celt_encoder_impl2.c,celt_encoder_2b1e0
 2b560,296,verified,src/opus/celt/celt_encoder_impl2.c,celt_encode_with_ec
 2f940,1092,verified,src/opus/celt/celt_encoder_impl2.c,run_prefilter
+2ffe0,1136,verified,src/opus/celt/unplaced_4.c,opus_celt_2ffe0
 30a20,944,verified,src/opus/celt/celt_encoder.c,compute_mdcts
 333a0,2116,verified,src/opus/celt/celt_encoder_impl2.c,tf_analysis
 34060,1376,verified,src/opus/celt/celt_encoder.c,alloc_trim_analysis
@@ -865,6 +868,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 68dc0,868,verified,src/opus/src/opus_encoder_impl2.c,opus_encoder_68dc0
 69160,64,verified,src/opus/src/opus_encoder.c,frame_size_select
 69260,616,verified,src/opus/src/opus_encoder.c,compute_stereo_width
+694e0,1292,verified,src/opus/src/unplaced_6.c,opus_src_694e0
 6c310,112,verified,src/opus/src/opus_encoder.c,user_bitrate_to_bitrate
 6c380,120,verified,src/opus/src/opus_encoder.c,gen_toc
 6c400,800,verified,src/opus/src/unplaced_3.c,opus_src_6c400
@@ -892,6 +896,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 70140,548,verified,src/opus/src/unplaced_2.c,opus_70140
 73380,464,verified,src/opus/src/unplaced_2.c,opus_73380
 738c0,1616,verified,src/opus/src/unplaced_2.c,opus_738c0
+73f80,140,verified,src/opus/src/unplaced_6.c,opus_src_73f80
 750e0,72,verified,src/opus/src/opus_multistream.c,validate_layout
 75140,76,verified,src/opus/src/opus_multistream_impl.c,opus_multistream_75140
 751a0,80,verified,src/opus/src/opus_multistream.c,get_right_channel

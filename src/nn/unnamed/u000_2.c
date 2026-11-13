@@ -24,13 +24,7 @@ __int64 SdkRoutine_7e62a0(_QWORD);
 
 void __attribute__((noreturn)) SdkRoutine_84c1f0(_QWORD);
 
-__int64 SdkRoutine_857cc0(_QWORD, _QWORD);
-
-__int64 SdkRoutine_859cb0(void);
-
 __int64 SdkRoutine_85cc20(_QWORD, _QWORD);
-
-__int64 SdkRoutine_85d220(_QWORD, _QWORD);
 
 __int64 SdkRoutine_86ee50(_QWORD);
 
@@ -483,25 +477,6 @@ __int64 SdkHr_7786a0(__int64 a1)
 {
   *(_QWORD*)(a1 + 64) = SdkRoutine_7786e0;
   return SdkRoutine_7786e0();
-}
-
-__int64 SdkHr_7bc520()
-{
-  __int64 v0;
-  __int64 v1;
-  _QWORD* v2;
-
-  v0 = SdkRoutine_859cb0();
-  if (v0 != 0) {
-    v2 = (_QWORD*)v0;
-    SdkRoutine_85d220(0, 1);
-    *v2 = 0;
-    return 0;
-  }
-  else {
-    *(_DWORD*)SdkRoutine_857cc0(0, v1) = 22;
-    return 0xFFFFFFFFLL;
-  }
 }
 
 __int64 SdkHr_7d3320(__int64* a1, __int64* a2)
