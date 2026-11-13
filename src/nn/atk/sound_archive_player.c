@@ -254,6 +254,10 @@ __int64 SoundArchivePlayer_27a2c0(__int64 a1, __int64 a2, __int64 a3,
 __int64 SoundArchivePlayer_27a400(__int64 a1, __int64* a2, unsigned int a3,
                                   __int64* a4, __int64 a5, char a6, __int64 a7,
                                   __int64 a8);
+__int64 BasicSound_282360(__int64 result, float);
+__int64 BasicSound_2826d0(__int64, char);
+__int64 BasicSound_282750(__int64, char);
+__int64 SoundArchivePlayer_27b070(float a1, __int64 a2, __int64 a3, __int64 a4);
 
 _BYTE* SoundArchivePlayer_279260(__int64 a1, _BYTE* a2, _BYTE* a3,
                                  unsigned __int64 a4)
@@ -1694,6 +1698,20 @@ LABEL_20:
     return 4;
   }
   return 0;
+}
+
+__int64 SoundArchivePlayer_27b070(float a1, __int64 a2, __int64 a3, __int64 a4)
+{
+
+#pragma clang fp contract(off)
+  {
+    __typeof__(a1) z_ = (__typeof__(a1)){0};
+    LOBYTE(z_) = *(_BYTE*)(a4 + 10);
+    a1 = z_;
+  }
+  BasicSound_282360(a3, (float)LODWORD(a1) / 0x1.fc00000000000p+6f);
+  BasicSound_2826d0(a3, *(_DWORD*)(a4 + 12));
+  return BasicSound_282750(a3, *(_DWORD*)(a4 + 16));
 }
 
 __int64 SoundArchivePlayer_27b0d0(__int64 a1, __int64 a2, unsigned int* a3,

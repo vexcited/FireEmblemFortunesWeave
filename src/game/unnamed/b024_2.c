@@ -78,8 +78,6 @@ extern __int64 (*GameData_20e5800[])();
 
 extern __int64 (*GameData_20e58d0[])();
 
-extern __int64 (*GameData_20e5980[])();
-
 extern __int64 GameData_212bf68;
 
 extern _UNKNOWN* GameData_212c730;
@@ -196,8 +194,6 @@ __int64 GameRoutine_136afb0(_QWORD, _QWORD);
 
 __int64 GameRoutine_155dbf0(_QWORD);
 
-__int64 GameRoutine_155e830(_QWORD, _QWORD);
-
 __int64 GameRoutine_155ea30(_QWORD);
 
 __int64 GameRoutine_155f480(_QWORD, _QWORD);
@@ -216,15 +212,11 @@ __int64 GameRoutine_156c910(_QWORD, const char*, ...);
 
 __attribute__((swiftcall)) void GameRoutine_1573280(PSEUDO_X8, _QWORD, _QWORD);
 
-__int64 GameRoutine_1593d90(_QWORD, _QWORD);
-
 __int64 GameRoutine_16986e0(_QWORD, _QWORD);
 
 __int64 GameRoutine_16dcd30(_QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_16dd8b0(_QWORD, _QWORD, _QWORD);
-
-__int64 GameRoutine_16e6ca0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_1828ef0(__int64 result, __int64);
 
@@ -4703,93 +4695,6 @@ bool GameHr_1848170(__int64 a1)
 {
   return (*(_BYTE*)(*(_QWORD*)(a1 + 152) + 9LL) & 0xFE) != 4 &&
          (unsigned int)(*(_DWORD*)(a1 + 96) - 1) < 2;
-}
-
-__int64 GameHr_1848370(const char* a1)
-{
-  __int64 v2;
-  __int64 v3;
-  unsigned int v4;
-  __int64 v5;
-  __int64 v6;
-  const char* v7;
-  __int64 v8;
-  int v9;
-  __int64 result;
-  const char* v11;
-  const char* v12;
-  char v13;
-  int v14;
-  int v15;
-  char v16;
-  const char** v17;
-  _QWORD v18[2];
-  __int64 v19;
-  __int64 v20;
-
-  GameRoutine_1560070((void*)&v19, a1 + 848, "L_PageTab");
-  v2 = v20;
-  v18[0] = v19;
-  v18[1] = v20;
-  if (v20 != 0) {
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v20 + 16), 1u,
-                              memory_order_relaxed);
-  }
-  v11 = (const char*)GameData_20e5980;
-  v12 = a1;
-  v3 = *(_QWORD*)a1;
-  v17 = &v11;
-  v4 = (*(__int64 (**)(const char*))(v3 + 192))(a1);
-  GameRoutine_16e6ca0(a1 + 656, v18, &v11, v4, 14, 15);
-  if (v17 == &v11) {
-    v5 = 32;
-  }
-  else {
-    if (v17 == nullptr) {
-      goto LABEL_8;
-    }
-    v5 = 40;
-  }
-  (*(void (**)(void*)) & (*v17)[v5])(v17);
-LABEL_8:
-  if (v2 != 0) {
-    GameRoutine_1a09c50(v2);
-  }
-  GameRoutine_1560070((void*)&v11, a1 + 848, "L_Info/L_KeyHelp00");
-  if (v12 != nullptr) {
-    v6 = GameRoutine_1a0a0c0(v12);
-    v7 = v11;
-    if (v12 != nullptr) {
-      GameRoutine_1a09c50(v12);
-    }
-    if (v6 != 0 && v7 != nullptr) {
-      GameRoutine_155e830(v7, 0);
-    }
-    else if (v6 == 0) {
-      goto LABEL_19;
-    }
-    if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
-                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-      GameRoutine_1a09c50(v6);
-    }
-  }
-LABEL_19:
-  v8 = GameRoutine_155fbe0(a1 + 848, "L_Info/L_KeyHelp01");
-  v9 = (*(__int64 (**)(const char*))(*(_QWORD*)a1 + 192LL))(a1);
-  v16 = 0;
-  v17 = nullptr;
-  v11 = "StatusChange";
-  v12 = "MID_KeyHelp_StatusChange";
-  v13 = 1;
-  v14 = 2;
-  v15 = v9;
-  GameRoutine_1593d90(v8, &v11);
-  result = v20;
-  if (v20 != 0) {
-    return GameRoutine_1a09c50(v20);
-  }
-  return result;
 }
 
 __int64 GameHr_1848600(__int64* a1)

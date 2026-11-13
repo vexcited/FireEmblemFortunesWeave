@@ -1068,6 +1068,10 @@ __int64 game_AIThink_EntrustMoveTreasure_lambda0_Invoke(__int64 result,
                                                         __int64 a4, int* a5,
                                                         int* a6);
 bool game_AIThink_RageCore_lambda0_Invoke(__int64 a1, _DWORD* a2);
+__int64 game_AIThink_UpdateTargetOne_lambda0_Invoke(__int64 result, _DWORD* a2,
+                                                    _DWORD* a3);
+__int64 game_AIThink_IsEnemyInsideInterferenceArea_lambda0_Invoke(
+    __int64 result, _DWORD* a2, _DWORD* a3);
 
 __int64 AIThink_11eed80(__int64 a1)
 {
@@ -3279,6 +3283,17 @@ __int64 game_AIThink_IsUnitInCells_lambda0_Invoke(__int64 result, _DWORD* a2,
   return result;
 }
 
+__int64 game_AIThink_UpdateTargetOne_lambda0_Invoke(__int64 result, _DWORD* a2,
+                                                    _DWORD* a3)
+{
+  **(_BYTE**)(result + 8) |=
+      (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)GameData_21306a0[0] + 8LL) +
+                  4LL * ((*(int*)a2 + 32 * *(int*)a3) >> 5) + 2120) >>
+       *(_DWORD*)a2) &
+      1;
+  return result;
+}
+
 bool game_AIThink_IsUsableMagicInterference_lambda0_Invoke(__int64 a1,
                                                            __int64 a2)
 {
@@ -4465,6 +4480,18 @@ __int64 game_AIThink_IsEnemyInsideAttackArea_lambda3_Invoke(__int64 result,
     LABEL_6:
       **(_BYTE**)(result + 24) = 1;
     }
+  }
+  return result;
+}
+
+__int64 game_AIThink_IsEnemyInsideInterferenceArea_lambda0_Invoke(
+    __int64 result, _DWORD* a2, _DWORD* a3)
+{
+  if (((*(_DWORD*)(*(_QWORD*)(*(_QWORD*)GameData_21306a0[0] + 8LL) +
+                   4LL * ((*(int*)a2 + 32 * *(int*)a3) >> 5) + 2248) >>
+        *(_DWORD*)a2) &
+       1) != 0) {
+    **(_BYTE**)(result + 8) = 1;
   }
   return result;
 }

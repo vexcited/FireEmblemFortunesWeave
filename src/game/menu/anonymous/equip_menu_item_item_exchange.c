@@ -89,6 +89,7 @@ __int64 ui_LayoutAccessor_SetPaneVisible_alt1(
     __int64 result, const char*,
     char) __asm__("ui_LayoutAccessor_SetPaneVisible");
 __int64 EquipMenuItem_ItemExchange_Unknown55(__int64 a1);
+__int64 EquipMenuItem_ItemExchange_Unknown7(__int64 result, char a2);
 
 __int64 EquipMenuItem_ItemExchange_Unknown5(__int64 a1)
 {
@@ -151,6 +152,26 @@ __int64 EquipMenuItem_ItemExchange_Unknown5(__int64 a1)
   else {
     return 0;
   }
+}
+
+__int64 EquipMenuItem_ItemExchange_Unknown7(__int64 result, char a2)
+{
+  __int64 (**v2)(void);
+
+  if ((*(_BYTE*)(*(_QWORD*)(result + 96) + 356LL) & 1) == 0) {
+    *(_BYTE*)(result + 79) = a2 & 1;
+    if ((a2 & 1) != 0) {
+      return (*(__int64 (**)(__int64))(*(_QWORD*)result + 520LL))(result);
+    }
+    else {
+      v2 = (__int64 (**)(void))(*(_QWORD*)result + 504LL);
+      if (*(_QWORD*)(*(_QWORD*)(result + 8) + 336LL) == result) {
+        v2 = (__int64 (**)(void))(*(_QWORD*)result + 512LL);
+      }
+      return ((__typeof__((*v2)()) (*)())(*v2))(result);
+    }
+  }
+  return result;
 }
 
 __int64 game_menu_anonymous_EquipMenuItem_ItemExchange_ACall(__int64 a1)

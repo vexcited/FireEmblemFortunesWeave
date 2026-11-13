@@ -60,6 +60,106 @@ __int64 game_menu_anonymous_ProcQuestBoard_ShowMap_closure_Invoke(__int64 a1,
                                                                   _BYTE* a2,
                                                                   __int64 a3,
                                                                   _DWORD* a4);
+__int64* LayoutAccessor_155fbe0(__int64*, const char*);
+__int64 game_gameui_1593d90(__int64*, __int64);
+__int64 game_menu_PageTab_SetupLabel(__int64, __int64*, __int64, unsigned int,
+                                     unsigned int, unsigned int);
+extern __int64 (*GameData_20e5980[])();
+__int64 game_menu_anonymous_ProcQuestBoard_OnInit(__int64* a1);
+
+__int64 game_menu_anonymous_ProcQuestBoard_OnInit(__int64* a1)
+{
+  __int64 v2;
+  __int64 v3;
+  unsigned int v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64* v8;
+  int v9;
+  __int64 result;
+  struct {
+    char* v11;
+    char* v12;
+    char v13;
+    char gap17_[3];
+    int v14;
+    int v15;
+    char v16;
+    char gap29_[3];
+    char** v17;
+  } v11_;
+  __int64 v18[2];
+  struct {
+    __int64 v19;
+    __int64 v20;
+  } v19_;
+
+  LayoutAccessor_1560070((void*)(&v19_.v19), a1 + 106, "L_PageTab");
+  v2 = v19_.v20;
+  v18[0] = v19_.v19;
+  v18[1] = v19_.v20;
+  if (v19_.v20 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v19_.v20 + 16), 1u,
+                              memory_order_relaxed);
+  }
+  v11_.v11 = (const char*)GameData_20e5980;
+  v11_.v12 = (const char*)a1;
+  v3 = *a1;
+  v11_.v17 = &v11_.v11;
+  v4 = (*(__int64 (**)(__int64*))(v3 + 192))(a1);
+  game_menu_PageTab_SetupLabel((__int64)(a1 + 82), v18, (__int64)&v11_.v11, v4,
+                               0xEu, 0xFu);
+  if (v11_.v17 == &v11_.v11) {
+    v5 = 32;
+  }
+  else {
+    if (v11_.v17 == nullptr) {
+      goto LABEL_8;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(void*)) & (*v11_.v17)[v5])((void*)v11_.v17);
+LABEL_8:
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak(v2);
+  }
+  LayoutAccessor_1560070((void*)(&v11_.v11), a1 + 106, "L_Info/L_KeyHelp00");
+  if (v11_.v12 != nullptr) {
+    v6 = std___1___shared_weak_count_lock((__int64)v11_.v12);
+    v7 = (__int64)v11_.v11;
+    if (v11_.v12 != nullptr) {
+      std___1___shared_weak_count___release_weak((__int64)v11_.v12);
+    }
+    if (v6 != 0 && v7 != 0) {
+      LayoutAccessor_155e830(v7, 0);
+    }
+    else if (v6 == 0) {
+      goto LABEL_19;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+      std___1___shared_weak_count___release_weak(v6);
+    }
+  }
+LABEL_19:
+  v8 = LayoutAccessor_155fbe0(a1 + 106, "L_Info/L_KeyHelp01");
+  v9 = (*(__int64 (**)(__int64*))(*a1 + 192))(a1);
+  v11_.v16 = 0;
+  v11_.v17 = nullptr;
+  v11_.v11 = "StatusChange";
+  v11_.v12 = "MID_KeyHelp_StatusChange";
+  v11_.v13 = 1;
+  v11_.v14 = 2;
+  v11_.v15 = v9;
+  game_gameui_1593d90(v8, (__int64)&v11_.v11);
+  result = v19_.v20;
+  if (v19_.v20 != 0) {
+    return std___1___shared_weak_count___release_weak(v19_.v20);
+  }
+  return result;
+}
 
 __int64 ProcQuestBoard_1848520(__int64 a1)
 {

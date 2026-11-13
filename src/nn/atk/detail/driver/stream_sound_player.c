@@ -155,6 +155,10 @@ __int64 BaseNx_2a9930_alt1(__int64, int, __int64) __asm__("BaseNx_2a9930");
 __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 void nn_detail_UnexpectedDefaultImpl_alt1() __asm__(
     "nn_detail_UnexpectedDefaultImpl");
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt2(__int64) __asm__("nn_os_UnlockMutex");
+extern __int16 GameData_219d138;
+__int64 StreamSoundPlayer_298260(__int64 a1, __int64 a2);
 
 __int64 StreamSoundPlayer_Destructor(_QWORD* a1)
 {
@@ -771,6 +775,73 @@ __int64 StreamSoundPlayer_2981e0(__int64 result)
     }
   }
   return result;
+}
+
+__int64 StreamSoundPlayer_298260(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  __int16 v5;
+  unsigned int v6;
+  unsigned int v7;
+  unsigned int v8;
+  unsigned int v9;
+
+  nn_os_LockMutex_alt1(a1 + 72216);
+  v4 = *(_QWORD*)(a1 + 256);
+  if (v4 != 0) {
+    *(_BYTE*)(a1 + 310) = *(_BYTE*)(a2 + 14);
+    *(_BYTE*)(a1 + 311) = *(_BYTE*)(a2 + 164);
+    *(_DWORD*)(a1 + 312) = *(_DWORD*)(a2 + 160);
+    *(_BYTE*)(a1 + 316) = *(_BYTE*)(a2 + 15);
+    *(_BYTE*)(a1 + 317) = *(_BYTE*)(a2 + 16);
+    *(_QWORD*)(a1 + 544) = *(_QWORD*)(a2 + 136);
+    *(_QWORD*)(a1 + 552) = *(_QWORD*)(a2 + 144);
+    v5 = GameData_219d138;
+    *(_WORD*)(a1 + 308) = GameData_219d138;
+    *(_WORD*)(v4 + 84) = v5;
+    v6 = *(_DWORD*)(a2 + 152);
+    GameData_219d138 = v5 + 1;
+    *(_DWORD*)(a1 + 560) = v6;
+    {
+      __typeof__(v6) z_ = (__typeof__(v6)){0};
+      LOBYTE(z_) = *(_BYTE*)(a2 + 156);
+      v6 = z_;
+    }
+    *(float*)&v7 =
+        (float)((float)v6 / 0x1.fc00000000000p+6f) + -0x1.0000000000000p+0f;
+    *(float*)(a1 + 564) = *(float*)&v7;
+    {
+      __typeof__(v7) z_ = (__typeof__(v7)){0};
+      LOBYTE(z_) = *(_BYTE*)(a2 + 157);
+      v7 = z_;
+    }
+    *(float*)&v8 = (float)v7 / 0x1.fc00000000000p+6f;
+    *(float*)(a1 + 568) = *(float*)&v8;
+    {
+      __typeof__(v8) z_ = (__typeof__(v8)){0};
+      LOBYTE(z_) = *(_BYTE*)(a2 + 158);
+      v8 = z_;
+    }
+    *(float*)&v9 = (float)v8 / 0x1.fc00000000000p+6f;
+    *(float*)(a1 + 572) = *(float*)&v9;
+    {
+      __typeof__(v9) z_ = (__typeof__(v9)){0};
+      LOBYTE(z_) = *(_BYTE*)(a2 + 159);
+      v9 = z_;
+    }
+    *(float*)(a1 + 576) = (float)v9 / 0x1.fc00000000000p+6f;
+    if ((StreamSoundPlayer_2983c0(a1, a2) & 1) != 0) {
+      *(_QWORD*)(a1 + 264) = *(_QWORD*)a2;
+      *(_BYTE*)(a1 + 224) = 1;
+    }
+    return nn_os_UnlockMutex_alt2(a1 + 72216);
+  }
+  else {
+    memcpy_alt1(a1 + 72032, a2, 0xA8u);
+    return nn_os_UnlockMutex_alt2(a1 + 72216);
+  }
 }
 
 __int64 StreamSoundPlayer_2983c0(__int64 a1, __int64 a2)

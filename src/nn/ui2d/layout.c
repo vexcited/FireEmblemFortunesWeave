@@ -89,6 +89,7 @@ void __cxa_guard_release_alt2(__int64) __asm__("__cxa_guard_release");
 void Layout_57b280(_QWORD* a1, __int64 a2, _QWORD* a3, __int64 a4, _BYTE* a5,
                    __int64 a6);
 void Layout_57ce20(__int64 a1, __int64 a2);
+__int64 Layout_57dd70(__int64 a1, int a2);
 
 _BYTE* Layout_579280(_QWORD* a1, __int64 a2)
 {
@@ -1463,6 +1464,11 @@ __int64 Layout_57dd50(_QWORD* a1, int a2) { return *(_QWORD*)(*a1 + 8LL * a2); }
 __int64 Layout_57dd60(__int64 a1)
 {
   return (unsigned int)(*(_DWORD*)(a1 + 8) - 1);
+}
+
+__int64 Layout_57dd70(__int64 a1, int a2)
+{
+  return *(_QWORD*)(*(_QWORD*)a1 + 8LL * (*(int*)(a1 + 8) + ~a2));
 }
 
 __int64* Layout_Destructor()

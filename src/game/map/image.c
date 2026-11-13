@@ -119,6 +119,8 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
 __int64 Image_729f40(_QWORD* a1);
 void Image_72a260(__int64 a1);
 __int64 Image_72b4a0(__int64 a1);
+__int64 game_map_Image_SightMap_CanSee_lambda0_Invoke(__int64 result,
+                                                      _DWORD* a2, _DWORD* a3);
 
 __int64 Image_Destructor(_QWORD* a1)
 {
@@ -3555,6 +3557,18 @@ __int64 game_map_Image_UnitMap_Remove_lambda0_Invoke(__int64 result, _DWORD* a2,
         *(unsigned __int8*)(v4 + v3)) {
       *(_BYTE*)(v4 + v3) = 0;
     }
+  }
+  return result;
+}
+
+__int64 game_map_Image_SightMap_CanSee_lambda0_Invoke(__int64 result,
+                                                      _DWORD* a2, _DWORD* a3)
+{
+  if (((*(_DWORD*)(*(_QWORD*)(result + 8) +
+                   4LL * ((*(int*)a2 + 32 * *(int*)a3) >> 5)) >>
+        *(_DWORD*)a2) &
+       1) != 0) {
+    **(_BYTE**)(result + 16) = 1;
   }
   return result;
 }

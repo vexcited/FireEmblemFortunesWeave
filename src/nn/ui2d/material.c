@@ -45,6 +45,13 @@ __int64* nn_ui2d_TextureInfo_GetRuntimeTypeInfoStatic_alt1() __asm__(
 __int64 LayoutEx_5791a0(__int64);
 int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+__int64 GameRoutine_5ae110(__int64 result, float);
+__int64 Material_5892e0_alt2(__int64 result, __int64, __int64,
+                             __int64) __asm__("Material_5892e0");
+float nn_ui2d_589760(__int64, __int64, float, float);
+long double DrawInfo_576b20(__int64, __int64);
+void Material_Unknown4(__int64 a1, __int64 a2, unsigned __int8 a3, int a4,
+                       char a5, __int64 a6, __int64 a7);
 
 bool Material_586ee0(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -776,6 +783,188 @@ LABEL_5:
   v14 = *v10;
   return GameRoutine_5779f0(a2, a3, (unsigned __int8*)&v15,
                             (unsigned __int8*)&v14);
+}
+
+void Material_Unknown4(__int64 a1, __int64 a2, unsigned __int8 a3, int a4,
+                       char a5, __int64 a6, __int64 a7)
+{
+
+#pragma clang fp contract(off)
+  char v7;
+  int v13;
+  __int64 v14;
+  float v15;
+  float v16;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  unsigned int v26;
+  unsigned int v27;
+  int v28;
+  unsigned int v29;
+  _QWORD* v30;
+  __int64 v31;
+  unsigned int v32;
+  __int64 v33;
+  unsigned int v34;
+  __int64 v35;
+  unsigned int v36;
+  __int64 var4;
+
+  v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w"));
+  v7 = *(_BYTE*)(a1 + 73);
+  if ((v7 & 2) == 0) {
+    *(_BYTE*)(a2 + 403) = *(_BYTE*)(a1 + 20) & 3;
+  }
+  *(_BYTE*)(a2 + 404) &= ~0x20u;
+  v13 = *(unsigned __int8*)(a1 + 72) >> 4;
+  if (v13 == 15) {
+    *(_WORD*)(a1 + 74) = a4 + *(_WORD*)(a1 + 74) - *(_WORD*)(a1 + 74) % 3u;
+    if (*(_QWORD*)(a1 + 32) != 0) {
+      goto LABEL_8;
+    }
+  }
+  else {
+    *(_WORD*)(a1 + 74) = v13 + 14 * a4;
+    if (*(_QWORD*)(a1 + 32) != 0) {
+      goto LABEL_8;
+    }
+  }
+  *(_QWORD*)(a1 + 32) = *(_QWORD*)(a2 + 184);
+LABEL_8:
+  v14 = *(_QWORD*)(*(_QWORD*)(a2 + 200) + 56LL) + *(unsigned int*)(a1 + 48);
+  if (a4 == 1) {
+    *(_QWORD*)(v14 + 464) = 0x437F0000437F0000LL;
+    *(_QWORD*)(v14 + 472) = 0x437F0000437F0000LL;
+    *(_QWORD*)(v14 + 480) = 0x437F0000437F0000LL;
+    *(_QWORD*)(v14 + 488) = 0x437F0000437F0000LL;
+    *(_QWORD*)(v14 + 496) = 0x437F0000437F0000LL;
+    *(_QWORD*)(v14 + 504) = 0x437F0000437F0000LL;
+    *(_QWORD*)(v14 + 512) = 0x437F0000437F0000LL;
+    *(_QWORD*)(v14 + 520) = 0x437F0000437F0000LL;
+  }
+  *(_QWORD*)(v14 + 208) = 0x3B8080813B808081LL;
+  *(_DWORD*)(v14 + 216) = 998277249;
+  *(float*)(v14 + 220) = (float)a3 * 0x1.0203060000000p-16f;
+  DrawInfo_576b20(a2, v14),
+      v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+      v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w"));
+  if ((a5 & 1) != 0) {
+    *(_DWORD*)(v14 + 556) = 0;
+  }
+  Material_5892e0_alt2(a1, a2, a6, a7),
+      v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+      v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w"));
+  if ((*(_BYTE*)(a1 + 20) & 3) != 0 && *(char*)(a2 + 403) >= 1) {
+    v22 = *(_QWORD*)(*(_QWORD*)(a1 + 24) + 8LL);
+    if (v22 != 0) {
+      v23 = *(_QWORD*)(a2 + 200);
+      v24 = *(unsigned int*)(a1 + 48);
+      LODWORD(var4) = 0;
+      v25 = *(_QWORD*)(v23 + 56) + v24;
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+          *(_QWORD*)v22 + 32LL))((void*)(&var4), (__int64)v22),
+          v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w"));
+      {
+        __typeof__(v26) z_ = (__typeof__(v26)){0};
+        LOWORD(z_) = var4;
+        v26 = z_;
+      }
+      v16 = 0x1.0000000000000p+0f;
+      *(_QWORD*)(v25 + 456) = 0;
+      *(float*)&v27 = 0x1.0000000000000p+0f / (float)v26;
+      *(float*)(v25 + 448) = *(float*)&v27;
+      {
+        __typeof__(v27) z_ = (__typeof__(v27)){0};
+        LOWORD(z_) = WORD1(var4);
+        v27 = z_;
+      }
+      v15 = 0x1.0000000000000p+0f / (float)v27;
+      *(float*)(v25 + 452) = v15;
+    }
+  }
+  if ((v7 & 2) == 0) {
+    nn_ui2d_589760(a1, a2, v15, v16),
+        v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+        v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  v28 = *(_DWORD*)(a1 + 20);
+  if ((v28 & 0xC0000) != 0) {
+    v29 = *(_DWORD*)(a1 + 16);
+    v30 = (_QWORD*)(*(_QWORD*)(a1 + 24) +
+                    ((16 * (v29 & 3) + (v29 & 0x30)) | (v29 >> 6) & 8) +
+                    ((v29 >> 8) & 0xC) + ((v29 >> 4) & 0x1C) +
+                    ((v29 >> 12) & 8) + (((int)(v29 << 19) >> 31) & 0xC) +
+                    (((int)(v29 << 15) >> 31) & 0x1C) +
+                    ((v29 >> 12) & 0x10) * ((v29 >> 6) & 7) +
+                    (((int)(v29 << 14) >> 31) & 0x74) +
+                    20 * (((v29 >> 13) & 3) + ((v29 >> 2) & 3)));
+    v31 = v30[3];
+    if (v31 != 0) {
+      v32 = *(_DWORD*)(a1 + 16);
+      GameRoutine_5ae110(
+          v31, *(float*)(*(_QWORD*)(a1 + 24) +
+                         ((16 * (v32 & 3) + (v32 & 0x30)) | (v32 >> 6) & 8) +
+                         ((v32 >> 8) & 0xC) + ((v32 >> 4) & 0x1C) +
+                         ((v32 >> 12) & 8) + (((int)(v32 << 19) >> 31) & 0xC) +
+                         (((int)(v32 << 15) >> 31) & 0x1C) +
+                         ((v32 >> 12) & 0x10) * ((v32 >> 6) & 7) +
+                         (((int)(v32 << 14) >> 31) & 0x74) +
+                         (unsigned __int64)(20 * (((v32 >> 13) & 3) +
+                                                  ((v32 >> 2) & 3))))),
+          v15 = COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w"));
+      *(_BYTE*)(v30[3] + 344LL) |= 2u;
+      v28 = *(_DWORD*)(a1 + 20);
+    }
+    if ((v28 & 0x80000) != 0) {
+      v33 = v30[7];
+      if (v33 != 0) {
+        v34 = *(_DWORD*)(a1 + 16);
+        GameRoutine_5ae110(
+            v33,
+            *(float*)(*(_QWORD*)(a1 + 24) +
+                      ((16 * (v34 & 3) + (v34 & 0x30)) | (v34 >> 6) & 8) +
+                      ((v34 >> 8) & 0xC) + ((v34 >> 4) & 0x1C) +
+                      ((v34 >> 12) & 8) + (((int)(v34 << 19) >> 31) & 0xC) +
+                      (((int)(v34 << 15) >> 31) & 0x1C) +
+                      ((v34 >> 12) & 0x10) * ((v34 >> 6) & 7) +
+                      (((int)(v34 << 14) >> 31) & 0x74) +
+                      20 * (((v34 >> 13) & 3) + ((v34 >> 2) & 3)) + 32LL)),
+            v15 =
+                COERCE_AS(__typeof__(v15), PSEUDO_REGISTER(float, "s0", "=w")),
+            v16 =
+                COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w"));
+        *(_BYTE*)(v30[7] + 344LL) |= 2u;
+        v28 = *(_DWORD*)(a1 + 20);
+      }
+      if ((~v28 & 0xC0000) == 0) {
+        v35 = v30[11];
+        if (v35 != 0) {
+          v36 = *(_DWORD*)(a1 + 16);
+          GameRoutine_5ae110(
+              v35,
+              *(float*)(*(_QWORD*)(a1 + 24) +
+                        ((16 * (v36 & 3) + (v36 & 0x30)) | (v36 >> 6) & 8) +
+                        ((v36 >> 8) & 0xC) + ((v36 >> 4) & 0x1C) +
+                        ((v36 >> 12) & 8) + (((int)(v36 << 19) >> 31) & 0xC) +
+                        (((int)(v36 << 15) >> 31) & 0x1C) +
+                        ((v36 >> 12) & 0x10) * ((v36 >> 6) & 7) +
+                        (((int)(v36 << 14) >> 31) & 0x74) +
+                        20 * (((v36 >> 13) & 3) + ((v36 >> 2) & 3)) + 64LL)),
+              v15 = COERCE_AS(__typeof__(v15),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v16 = COERCE_AS(__typeof__(v16),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+          *(_BYTE*)(v30[11] + 344LL) |= 2u;
+        }
+      }
+    }
+  }
+  *(_BYTE*)(a1 + 72) = *(_BYTE*)(a1 + 72) & 0xF0 | *(_BYTE*)(a2 + 403) & 0xF;
 }
 
 __int64 Material_5892e0(__int64 result, __int64 a2, float32x4_t* a3, float* a4)

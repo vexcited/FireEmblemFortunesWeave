@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 MassMeshData_f44c80(__int64 result);
@@ -96,6 +98,7 @@ String_60a250_alt1(const char*) __asm__("String_60a250");
 void MassMeshData_Destructor(_QWORD* a1);
 __int64 MassMeshData_f449c0(__int64** a1, __int64 a2);
 void MassMeshData_f44f60(__int64 a1);
+__int64 MassMeshData_Unknown4(__int64 a1);
 
 void MassMeshData_Destructor(_QWORD* a1)
 {
@@ -180,6 +183,93 @@ void MassMeshData_Destructor(_QWORD* a1)
       nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v8 + v18, v11);
     }
   }
+}
+
+__int64 MassMeshData_Unknown4(__int64 a1)
+{
+  unsigned __int64 v1;
+  unsigned __int64 v2;
+  unsigned __int64 v3;
+  float32x2_t* v4;
+  __int64 v5;
+  __int64 v6;
+  float32x2_t* v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  unsigned int v12;
+  float32x2_t v13;
+  unsigned __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  unsigned __int64 v18;
+  __int64 v19;
+  unsigned __int64 v20;
+
+  v1 = (*(unsigned int*)(a1 + 176) + 0x1FB68949BF00A3D6LL) ^
+       0x9E3779B97F4A7C18LL;
+  v2 = (*(unsigned int*)(a1 + 180) + (v1 << 12) + (v1 >> 4) -
+        0x61C8864680B583EBLL) ^
+       v1;
+  v3 = (*(unsigned int*)(a1 + 184) + (v2 << 12) + (v2 >> 4) -
+        0x61C8864680B583EBLL) ^
+       v2;
+  v4 = *(float32x2_t**)(a1 + 96);
+  v5 = *(_QWORD*)(a1 + 104) - (_QWORD)v4;
+  if (v5 != 0) {
+    v6 = v5 >> 6;
+    v7 = v4 + 3;
+    do {
+      --v6;
+      v8 = ((v3 << 12) - 0x61C8864680B583EBLL + (v3 >> 4) + 5) ^ v3;
+      v9 = LANES64(*(v7)).n64_u32[0] - 0x61C8864680B583EBLL;
+      v10 = (LANES64(v7[-1]).n64_u32[0] - 0x61C8864680B583EBLL + (v8 << 12) +
+             (v8 >> 4)) ^
+            v8;
+      v11 = LANES64(v7[-1]).n64_u32[1] - 0x61C8864680B583EBLL + (v10 << 12) +
+            (v10 >> 4);
+      *(float*)&v12 =
+          (float)((float)(vmuls_lane_f32(0x1.6000000000000p+3f, v7[3], 1) +
+                          (float)(COERCE_FLOAT(
+                                      *(_OWORD*)LANES64(v7[3]).n64_u64) *
+                                  0x1.a000000000000p+3f)) +
+                  (float)(0x1.c000000000000p+2f *
+                          COERCE_FLOAT(LANES64(v7[4]).n64_u64[0]))) +
+          (float)(0x1.8000000000000p+1f *
+                  COERCE_FLOAT(HIDWORD(*(_OWORD*)LANES64(v7[3]).n64_u64)));
+      PSEUDO_LOW_LANE64(v13, n64_u64, LANES64(v7[1]).n64_u64[0]);
+      v7 += 8;
+      v14 = (v9 + ((v11 ^ v10) << 12) + ((v11 ^ v10) >> 4)) ^ v11 ^ v10;
+      v15 = (v12 - 0x61C8864680B583EBLL + (v14 << 12) + (v14 >> 4)) ^ v14;
+      v3 = (COERCE_UNSIGNED_INT(
+                vmuls_lane_f32(0x1.8000000000000p+1f, v13, 1) +
+                (float)(LANES64(v13).n64_f32[0] * 0x1.c000000000000p+2f)) -
+            0x61C8864680B583EBLL + (v15 << 12) + (v15 >> 4)) ^
+           v15;
+    } while (v6 != 0);
+  }
+  v16 = 0x9E3779B97F4BBB5ELL;
+  if (*(_BYTE*)(a1 + 245) != 0) {
+    v17 = 0x9E3779B97F4B6254LL;
+  }
+  else {
+    v17 = 0x9E3779B97F4BBB5ELL;
+  }
+  v18 = (*(unsigned int*)(a1 + 320) - 0x61C8864680B583EBLL +
+         ((((v3 >> 4) + (v3 << 12) + v17) ^ v3) << 12) +
+         ((((v3 >> 4) + (v3 << 12) + v17) ^ v3) >> 4)) ^
+        ((v3 >> 4) + (v3 << 12) + v17) ^ v3;
+  if (*(_BYTE*)(a1 + 328) != 0) {
+    v16 = 0x9E3779B97F4B6254LL;
+  }
+  v19 = 0x9E3779B97F4A7C21LL;
+  v20 = (v16 + (v18 << 12) + (v18 >> 4)) ^ v18;
+  if (*(_BYTE*)(a1 + 328) != 0) {
+    v19 = *(unsigned int*)(a1 + 324) - 0x61C8864680B583EBLL;
+  }
+  return (v19 + (v20 << 12) + (v20 >> 4)) ^ v20;
 }
 
 __int64 MassMeshData_f445e0(__int64 a1, int a2, unsigned int a3,

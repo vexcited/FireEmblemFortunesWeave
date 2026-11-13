@@ -310,33 +310,43 @@ unsigned __int64 RestMenuItem_Unknown70(unsigned __int64 result)
 
 __int64 RestMenuItem_Unknown72(__int64 a1, long double a2)
 {
+
+#pragma clang fp contract(off)
   __int64 result;
   __int64 v4;
+  __int64 v5;
+  __int64 v6;
 
   result = *(_QWORD*)(a1 + 240);
   if (result != 0) {
-    result = std___1___shared_weak_count_lock(result);
+    result = std___1___shared_weak_count_lock_alt1(result);
     if (result != 0) {
       if (*(_QWORD*)(a1 + 232) != 0) {
         v4 = *(_QWORD*)(a1 + 248);
         if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
+          v5 = result;
           (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-          result = std___1___shared_weak_count___release_weak();
+          result = std___1___shared_weak_count___release_weak_alt1(v5);
         }
-        if (v4 != 0 && *(float*)(a1 + 120) != 0.0) {
-          return GameRoutine_1752580(a1 + 104, 1);
+        if (v4 != 0 && *(float*)(a1 + 120) != 0x0.0p+0f) {
+          return GaugeUtil_1752580(a1 + 104, 1);
         }
       }
       else if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
                                 0xFFFFFFFFFFFFFFFFLL) == 0) {
+        v6 = result;
         (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-        result = std___1___shared_weak_count___release_weak();
+        result = std___1___shared_weak_count___release_weak_alt1(v6);
       }
     }
   }
-  LODWORD(a2) = *(_DWORD*)(a1 + 88);
-  if (*(_DWORD*)(a1 + 84) != 2 && *(float*)&a2 >= 8.0) {
+  {
+    __typeof__(a2) z_ = (__typeof__(a2)){0};
+    LODWORD(z_) = *(_DWORD*)(a1 + 88);
+    a2 = z_;
+  }
+  if (*(_DWORD*)(a1 + 84) != 2 && *(float*)&a2 >= 0x1.0000000000000p+3f) {
     result =
         (*(__int64 (**)(__int64, long double))(*(_QWORD*)a1 + 584LL))(a1, a2);
     if ((result & 1) != 0) {

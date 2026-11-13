@@ -31,6 +31,14 @@ __attribute__((swiftcall)) void collision_6725f0(PSEUDO_X8, float32x4_t* result,
                                                  float32x4_t*, __int64, float);
 void WallCollisionModule_1106720(float* a1, float* a2, float* a3, float a4,
                                  float a5, float a6);
+__int64 GameRoutine_1085a10(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64
+WallCollisionModule_1106720_alt1(float*, float*, float*, double, double,
+                                 float) __asm__("WallCollisionModule_1106720");
+__int64 game_109f1e0(__int64, const char*);
+extern _UNKNOWN* GameData_212deb8;
+extern int* GameData_212deb0;
+float WallCollisionModule_Unknown5(__int64 a1, double a2, double a3);
 
 int32x2_t* WallCollisionModule_1105be0(_QWORD* a1, float a2)
 {
@@ -133,6 +141,286 @@ __int64 WallCollisionModule_Unknown8(__int64 result)
   *(_QWORD*)(result + 32) = 0;
   *(_QWORD*)(result + 40) = 0;
   return result;
+}
+
+float WallCollisionModule_Unknown5(__int64 a1, double a2, double a3)
+{
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  int8x16_t v5;
+  __int64 v6;
+  double v7;
+  _BOOL4 v8;
+  _BOOL4 v9;
+  float v10;
+  float v11;
+  float* v13;
+  float32x4_t v14;
+  unsigned int v15;
+  unsigned int v16;
+  unsigned __int32 v18;
+  char v19;
+  float32x4_t* v20;
+  float32x4_t v21;
+  float32x4_t v22;
+  float32x4_t v23;
+  float32x4_t v24;
+  float32x4_t v25;
+  int8x16_t v26;
+  float32x4_t v27;
+  _QWORD* v28;
+  __int64 v29;
+  atomic_uchar* v30;
+  int* v31;
+  __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v35;
+  int v36;
+  __int64 v37;
+  int v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  int v43;
+  __int64 v44;
+  __int128 v45;
+  int v46;
+  int v47;
+  __int64 v49;
+  unsigned __int32 v50;
+  unsigned int v51;
+  unsigned int v52;
+  unsigned int v53;
+  unsigned int v54;
+  unsigned int v55;
+  unsigned int v56;
+  float v57;
+  _QWORD* v58;
+  _QWORD* v59;
+  int8x16_t v60;
+  int8x16_t v61;
+  unsigned __int32 v62;
+  double v63;
+  __int128 v64;
+  __int128 v65;
+  double v66;
+
+  v4 = *(_QWORD*)(a1 + 8);
+  v5 = *(int8x16_t*)(v4 + 304);
+  if (*(_QWORD*)(v4 + 736) != 0) {
+    v60 = *(int8x16_t*)(v4 + 304);
+    v6 = game_109f1e0(v4, "Loc_C_Center");
+    v5 = v60;
+    if (v6 != 0) {
+      v5 = *(int8x16_t*)(v6 + 48);
+      LANES128(v5).n128_u32[3] = 0;
+    }
+  }
+  v7 = LANES64_OF(
+           vzip1_s32(COERCE_AS(int32x2_t, LANES128(v5).n128_u64[0]),
+                     COERCE_AS(int32x2_t,
+                               LANES128_OF(vextq_s8(v5, v5, 8u)).n128_u64[0])))
+           .n64_f64[0];
+  v66 = v7;
+  {
+    __typeof__(v7) z_ = (__typeof__(v7)){0};
+    LODWORD(z_) = *(_DWORD*)(a1 + 56);
+    v7 = z_;
+  }
+  {
+    __typeof__(a3) z_ = (__typeof__(a3)){0};
+    LODWORD(z_) = *(_DWORD*)(a1 + 60);
+    a3 = z_;
+  }
+  v8 = fabsf(*(float*)&v7) < 0x1.0000000000000p-23f;
+  v9 = fabsf(*(float*)&a3) < 0x1.0000000000000p-23f;
+  if (v8 && v9) {
+    __typeof__(v7) z_ = (__typeof__(v7)){0};
+    LODWORD(z_) = *(_OWORD*)(a1 + 32);
+    v7 = z_;
+  }
+  v10 = fabsf(*(float*)&v7);
+  if (v8 && v9) {
+    __typeof__(a3) z_ = (__typeof__(a3)){0};
+    LODWORD(z_) = *(_QWORD*)(a1 + 40);
+    a3 = z_;
+  }
+  v11 = fabsf(*(float*)&a3);
+  if (v10 < 0x1.0000000000000p-23f && v11 < 0x1.0000000000000p-23f) {
+    LANES128(v24).n128_u32[0] = LANES128(v5).n128_u32[2];
+    LANES128(v5).n128_u64[1] = LANES128(v5).n128_u32[2];
+    *(int8x16_t*)(a1 + 32) = v5;
+  }
+  else {
+    v57 = LANES128(v5).n128_f32[2];
+    v61 = v5;
+    if (*(_BYTE*)(a1 + 64) != 0) {
+      v13 = (float*)(a1 + 68);
+    }
+    else {
+      v13 = nullptr;
+    }
+    WallCollisionModule_1106720_alt1((float*)&v63, (float*)&v66, v13, v7, a3,
+                                     *(float*)(a1 + 48));
+    v14 = v61;
+    v15 = HIDWORD(v63);
+    v16 = LODWORD(v63);
+    if (*(float*)&v63 == LANES128(v61).n128_f32[0] &&
+        *((float*)&v63 + 1) == v57) {
+      LANES128(v24).n128_f32[0] = v57;
+      LANES128(v14).n128_u64[1] = LODWORD(v57);
+      *(float32x4_t*)(a1 + 32) = v14;
+    }
+    else {
+      v18 = LANES128(v61).n128_u32[1];
+      v19 = *(_BYTE*)(a1 + 52);
+      v66 = v63;
+      if ((v19 & 1) == 0) {
+        v28 = *(_QWORD**)(a1 + 8);
+        v29 = v28[92];
+        v30 = (atomic_uchar*)GameData_212deb8;
+        v31 = GameData_212deb0;
+        if (v29 != 0) {
+          if ((atomic_load_explicit((atomic_uchar* volatile)GameData_212deb8,
+                                    memory_order_acquire) &
+               1) == 0) {
+            v59 = v28;
+            v49 = v29;
+            v53 = v16;
+            v56 = v15;
+            v47 = __cxa_guard_acquire_alt1((__int64)GameData_212deb8);
+            v18 = LANES128(v61).n128_u32[1];
+            v16 = v53;
+            v15 = v56;
+            v14 = v61;
+            v29 = v49;
+            v30 = (atomic_uchar*)GameData_212deb8;
+            v31 = GameData_212deb0;
+            v28 = v59;
+            if (v47 != 0) {
+              *GameData_212deb0 = wld_Crc32(0, "CharacterBuilder", 0x10u);
+              __cxa_guard_release_alt1((__int64)GameData_212deb8);
+              v18 = LANES128(v61).n128_u32[1];
+              v16 = v53;
+              v15 = v56;
+              v14 = v61;
+              v29 = v49;
+              v30 = (atomic_uchar*)GameData_212deb8;
+              v31 = GameData_212deb0;
+              v28 = v59;
+            }
+          }
+          v33 = *(_QWORD*)(v29 + 504);
+          v32 = *(_QWORD*)(v29 + 512);
+          v34 = v32;
+          v35 = v32;
+          while (v35 != v33) {
+            v36 = *(_DWORD*)(v35 - 16);
+            v35 -= 16;
+            v34 -= 16;
+            if (v36 == *v31) {
+              if (v32 != v34) {
+                v37 = *(_QWORD*)(v34 + 8);
+                if (v37 != 0) {
+                LABEL_38:
+                  v51 = v16;
+                  v54 = v15;
+                  v44 = v15;
+                  *(_QWORD*)&v45 = v16 | 0x4348000000000000LL;
+                  *((_QWORD*)&v45 + 1) = v44;
+                  v65 = v45;
+                  *(_QWORD*)&v45 = v16 | 0xC2C8000000000000LL;
+                  *((_QWORD*)&v45 + 1) = v44;
+                  v64 = v45;
+                  GameRoutine_1085a10(v37 + 160, &v65, &v64, 0);
+                  v16 = v51;
+                  v15 = v54;
+                  v14 = v61;
+                  v18 = v62;
+                  goto LABEL_20;
+                }
+              }
+              break;
+            }
+          }
+        }
+        if ((atomic_load_explicit(v30, memory_order_acquire) & 1) == 0) {
+          v58 = v28;
+          v52 = v16;
+          v55 = v15;
+          v50 = v18;
+          v46 = __cxa_guard_acquire_alt1((__int64)GameData_212deb8);
+          v18 = v50;
+          v16 = v52;
+          v15 = v55;
+          v14 = v61;
+          v31 = GameData_212deb0;
+          v28 = v58;
+          if (v46 != 0) {
+            *GameData_212deb0 = wld_Crc32(0, "CharacterBuilder", 0x10u);
+            __cxa_guard_release_alt1((__int64)GameData_212deb8);
+            v18 = v50;
+            v16 = v52;
+            v15 = v55;
+            v14 = v61;
+            v31 = GameData_212deb0;
+            v28 = v58;
+          }
+        }
+        v38 = *v31;
+        v40 = v28[63];
+        v39 = v28[64];
+        v41 = v39;
+        v42 = v39;
+        while (v42 != v40) {
+          v43 = *(_DWORD*)(v42 - 16);
+          v42 -= 16;
+          v41 -= 16;
+          if (v43 == v38) {
+            if (v39 == v41) {
+              break;
+            }
+            v37 = *(_QWORD*)(v41 + 8);
+            if (v37 == 0) {
+              break;
+            }
+            goto LABEL_38;
+          }
+        }
+      }
+    LABEL_20:
+      v20 = *(float32x4_t**)(a1 + 8);
+      LANES128(v21).n128_u64[0] = __PAIR64__(v18, v16);
+      LANES128(v21).n128_u64[1] = v15;
+      *(float32x4_t*)(a1 + 32) = v21;
+      v22 = vsubq_f32(v21, v14);
+      v23 = v20[19];
+      v24 = vaddq_f32(v22, v23);
+      v25 = vsubq_f32(v23, v24);
+      v26 = vmulq_f32(v25, v25);
+      LANES128(v26).n128_u64[0] =
+          LANES64_OF(
+              vadd_f32(
+                  COERCE_AS(float32x2_t,
+                            LANES128_OF(vextq_s8(v26, v26, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0])))
+              .n64_u64[0];
+      if (LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0])))
+              .n64_f32[0] != 0x0.0p+0f) {
+        LANES128(v20[19]).n128_u64[0] = LANES128(v24).n128_u64[0];
+        v27 = v20[19];
+        LANES128(v20[18]).n128_u32[2] |= 1u;
+        LANES128(v27).n128_u64[1] = LANES128(v24).n128_u32[2];
+        v20[19] = v27;
+      }
+    }
+  }
+  return LANES128(v24).n128_f32[0];
 }
 
 void WallCollisionModule_1106720(float* a1, float* a2, float* a3, float a4,

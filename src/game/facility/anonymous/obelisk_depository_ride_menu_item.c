@@ -45,6 +45,13 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 void GameRoutine_6e3b50(__int64, _QWORD*);
 void nn_mem_StandardAllocator_Free(__int64, __int64);
 __int64 game_facility_anonymous_ObeliskDepositoryRideMenuItem_ACall(_QWORD* a1);
+_BYTE* game_facility_anonymous_9d0bc0(_BYTE*);
+__attribute__((swiftcall)) void
+RidePool_93c6a0(PSEUDO_X8, __int64, unsigned __int8*, __int64, char);
+extern __int64 GameData_212cd68_alt1[26] __asm__("GameData_212cd68");
+__int64
+game_facility_anonymous_ObeliskDepositoryRideMenuItem_ACall_closure_Invoke(
+    __int64 a1);
 
 __int64 game_facility_anonymous_ObeliskDepositoryRideMenuItem_ACall(_QWORD* a1)
 {
@@ -442,6 +449,57 @@ LABEL_6:
   }
   return GameHr_16eb610(a1, 3u, "L_Cost", (__int64)"Icon", (__int64)"T_Num",
                         v11, v12 < (int)v13);
+}
+
+__int64
+
+game_facility_anonymous_ObeliskDepositoryRideMenuItem_ACall_closure_Invoke(
+    __int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  unsigned __int8* v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  _BYTE v9[8];
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v2 = *game_map_history_g_ride_pool_ptr[0];
+  v3 = (unsigned __int8*)(*(__int64 (**)(__int64))(*(_QWORD*)v1 + 560LL))(v1);
+  RidePool_93c6a0((void*)((__int64)v9), *(_QWORD*)(v2 + 16), v3, 0, 1);
+  v4 = *(
+      _QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cd68_alt1[0] + 64LL) +
+               8LL *
+                   *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c8a0 +
+                                                             64) +
+                                                  8LL * *(unsigned __int8*)(*(
+                                                            __int64 (**)(
+                                                                __int64))(
+                                                            *(_QWORD*)v1 +
+                                                            560LL))(v1)) +
+                                       110LL));
+  if (v4 != 0) {
+    LODWORD(v4) = *(unsigned __int16*)(v4 + 32);
+  }
+  if (game_GameModeData_instance_ != 0) {
+    v5 = (*(int*)(game_GameModeData_instance_ + 80) - v4) &
+         ~((*(int*)(game_GameModeData_instance_ + 80) - (int)v4) >> 31);
+    if (v5 >= 99999) {
+      v5 = 99999;
+    }
+    *(_DWORD*)(game_GameModeData_instance_ + 80) = v5;
+  }
+  game_facility_anonymous_9d0bc0((_BYTE*)v1);
+  v6 = *(_QWORD*)(v1 + 8);
+  if (v6 != 0) {
+    v7 = __dynamic_cast(v6, GameData_212e030[0], GameData_212e090[0], 0);
+    if (v7 != 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v7 + 1112LL))(v7);
+    }
+  }
+  return 2;
 }
 
 #pragma GCC visibility pop

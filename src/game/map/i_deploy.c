@@ -14,6 +14,10 @@ extern __int64* GameData_212cfb8[11];
 extern __int64 GameData_21c9bd0;
 __int64 IDeploy_7480e0(__int64 a1, int a2, int a3, int* a4, __int64 a5,
                        __int64 a6);
+__int64 game_map_IDeploy_FillCannon_lambda0_Invoke(__int64 result, _DWORD* a2,
+                                                   _DWORD* a3);
+__int64 game_map_IDeploy_FillRegion_lambda0_Invoke(__int64 result, _DWORD* a2,
+                                                   _DWORD* a3);
 
 __int64 IDeploy_7480e0(__int64 a1, int a2, int a3, int* a4, __int64 a5,
                        __int64 a6)
@@ -279,6 +283,16 @@ LABEL_18:
   return v40 & 1;
 }
 
+__int64 game_map_IDeploy_FillCannon_lambda0_Invoke(__int64 result, _DWORD* a2,
+                                                   _DWORD* a3)
+{
+  int v3;
+
+  v3 = (*(int*)a2 + 32 * *(int*)a3) >> 5;
+  *(_DWORD*)(*(_QWORD*)(result + 8) + 4LL * v3) |= 1 << *(_DWORD*)a2;
+  return result;
+}
+
 __int64 game_map_IDeploy_FillSkill_lambda0_Invoke(__int64 result, __int64 a2)
 {
   __int64 v2;
@@ -305,6 +319,22 @@ __int64 game_map_IDeploy_FillSkill_lambda1_Invoke(__int64 result, __int64 a2)
   v3 = *(_QWORD*)(*(_QWORD*)(result + 8) + 8LL) +
        4LL * ((v2 + 32 * *(char*)(a2 + 2)) >> 5);
   *(_DWORD*)(v3 + 2120) |= 1 << v2;
+  return result;
+}
+
+__int64 game_map_IDeploy_FillRegion_lambda0_Invoke(__int64 result, _DWORD* a2,
+                                                   _DWORD* a3)
+{
+  __int64 v3;
+
+  v3 = *(_QWORD*)(result + 16);
+  if ((signed __int32)*(_DWORD*)(v3 + 2672) >
+          (int)(unsigned __int8)(*(int*)a2 - *(_BYTE*)(v3 + 2664)) &&
+      (signed __int32)*(_DWORD*)(v3 + 2676) >
+          (int)(unsigned __int8)(*(int*)a3 - *(int*)(v3 + 2668))) {
+    *(_DWORD*)(*(_QWORD*)(result + 8) +
+               4LL * ((*(int*)a2 + 32 * *(int*)a3) >> 5)) |= 1 << *(_DWORD*)a2;
+  }
   return result;
 }
 

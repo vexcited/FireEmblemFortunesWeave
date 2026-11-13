@@ -51,6 +51,18 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
 void LegionGambitCamera_e59e90(__int64 a1);
 void LegionGambitCamera_e5a4a0(float32x4_t* a1, __int64 a2, __int64 a3,
                                __int64 a4);
+__int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
+__int64 memcpy(__int64, __int64, unsigned __int64);
+__int64 memmove(__int64, __int64, unsigned __int64);
+extern __int64 fw_memory_g_heap_manager;
+extern char** GameData_212f2d8;
+extern char** GameData_212f408;
+int sprintf(__int64, const char*, ...);
+unsigned __int64 strlen(const char*);
+void __attribute__((noreturn)) String_60a1d0();
+__attribute__((swiftcall)) void
+LegionGambitCamera_e59fd0(PSEUDO_X8 x8_, __int64 unused_int0, unsigned int a1,
+                          int a2, unsigned int a3);
 
 void LegionGambitCamera_e59e90(__int64 a1)
 {
@@ -110,6 +122,124 @@ void LegionGambitCamera_e59e90(__int64 a1)
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
     std___1___shared_weak_count___release_weak_alt1(v8);
+  }
+}
+
+__attribute__((swiftcall)) void
+
+LegionGambitCamera_e59fd0(PSEUDO_X8 x8_, __int64 unused_int0, unsigned int a1,
+                          int a2, unsigned int a3)
+{
+  __int64* a4 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  char* v6;
+  char* v7;
+  unsigned __int64 v8;
+  unsigned __int64 v9;
+  char* v10;
+  char* v11;
+  __int64 v12;
+  __int64 v13;
+  unsigned __int64 result;
+  unsigned __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  struct {
+    _QWORD v19[2];
+    char* v20;
+  } v19_;
+  char v21[256];
+
+  if (a1 <= 6) {
+    v6 = GameData_212f408[2 * a1];
+    if (a3 != 0) {
+      goto LABEL_3;
+    }
+  LABEL_8:
+    LOWORD(v19_.v19[0]) = 0;
+    v11 = (char*)v19_.v19 + 1;
+    goto LABEL_17;
+  }
+  v6 = nullptr;
+  if (a3 == 0) {
+    goto LABEL_8;
+  }
+LABEL_3:
+  v7 = GameData_212f2d8[2 * a3];
+  v8 = strlen(v7);
+  if (v8 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_32;
+  }
+  v9 = v8;
+  if (v8 >= 0x17) {
+    if ((v8 | 7) == 0x17) {
+      v12 = 26;
+    }
+    else {
+      v12 = (v8 | 7) + 1;
+    }
+    v10 = (const char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager,
+                                                      v12, 16, 0);
+    v19_.v19[1] = v9;
+    v19_.v20 = v10;
+    v19_.v19[0] = v12 | 1;
+    goto LABEL_13;
+  }
+  LOBYTE(v19_.v19[0]) = 2 * v8;
+  v10 = (char*)v19_.v19 + 1;
+  if (v8 != 0) {
+  LABEL_13:
+    memmove((__int64)v10, (__int64)v7, v9);
+  }
+  v10[v9] = 0;
+  if ((v19_.v19[0] & 1) != 0) {
+    v11 = v19_.v20;
+  }
+  else {
+    v11 = (char*)v19_.v19 + 1;
+  }
+LABEL_17:
+  sprintf((__int64)v21, "Gambit%s%d%s", v6, a2, v11);
+  if ((v19_.v19[0] & 1) != 0 && v19_.v20 != nullptr) {
+    v13 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v13 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, (__int64)v19_.v20);
+  }
+  result = strlen(v21);
+  if (result >= 0xFFFFFFFFFFFFFFF7LL) {
+  LABEL_32:
+    String_60a1d0();
+  }
+  v15 = result;
+  if (result >= 0x17) {
+    if ((result | 7) == 0x17) {
+      v17 = 26;
+    }
+    else {
+      v17 = (result | 7) + 1;
+    }
+    v18 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v17, 16, 0);
+    a4[1] = v15;
+    a4[2] = v18;
+    *a4 = v17 | 1;
+    v16 = v18;
+  }
+  else {
+    *(_BYTE*)a4 = 2 * result;
+    v16 = (__int64)a4 + 1;
+    if (result == 0) {
+      goto LABEL_31;
+    }
+  }
+  result = memcpy(v16, (__int64)v21, v15);
+LABEL_31:
+  *(_BYTE*)(v16 + v15) = 0;
+  {
+    result;
+    return;
   }
 }
 

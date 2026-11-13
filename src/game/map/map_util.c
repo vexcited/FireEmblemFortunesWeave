@@ -176,6 +176,12 @@ __int64 MapUtil_75f320(__int64 a1, long double a2);
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 MapUtil_753260(__int64 a1, unsigned int a2, int a3, __int64 a4);
+__int64 game_map_MapUtil_IsAttackRange_lambda0_Invoke_75c9d0(__int64 result,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3);
+__int64 game_map_MapUtil_IsAttackRange_lambda0_Invoke_75cb00(__int64 result,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3);
 
 _QWORD* game_map_MapUtil_GetCheerUnit(__int64 a1)
 {
@@ -3637,6 +3643,32 @@ __int64 game_map_MapUtil_GetCheerUnit_lambda0_Invoke(__int64 result,
       }
       v7[1] = v10;
     }
+  }
+  return result;
+}
+
+__int64 game_map_MapUtil_IsAttackRange_lambda0_Invoke_75c9d0(__int64 result,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3)
+{
+  if (((*(_DWORD*)(*(_QWORD*)(*GameData_212ce88[0] + 8) +
+                   4LL * ((*(int*)a2 + 32 * *(int*)a3) >> 5) + 2120) >>
+        *(_DWORD*)a2) &
+       1) != 0) {
+    **(_BYTE**)(result + 8) = 1;
+  }
+  return result;
+}
+
+__int64 game_map_MapUtil_IsAttackRange_lambda0_Invoke_75cb00(__int64 result,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3)
+{
+  if (((*(_DWORD*)(*(_QWORD*)(*GameData_212ce88[0] + 8) +
+                   4LL * ((*(int*)a2 + 32 * *(int*)a3) >> 5) + 2120) >>
+        *(_DWORD*)a2) &
+       1) != 0) {
+    **(_BYTE**)(result + 8) = 1;
   }
   return result;
 }

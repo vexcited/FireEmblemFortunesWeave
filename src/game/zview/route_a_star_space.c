@@ -84,6 +84,8 @@ __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 void game_zview_RouteAStarSpace_ConnectNodes_lambda0_Invoke(__int64 a1,
                                                             __int64 a2,
                                                             atomic_uint* a3);
+void __attribute__((noreturn)) GameRoutine_cdcc10();
+void RouteAStarSpace_d737a0(char** a1, char* a2, char* a3);
 
 __int64 RouteAStarSpace_Unknown5(_QWORD* a1)
 {
@@ -1126,6 +1128,175 @@ LABEL_4:
 LABEL_37:
   nn_os_UnlockMutex(a1 + 168);
   return v9;
+}
+
+void RouteAStarSpace_d737a0(char** a1, char* a2, char* a3)
+{
+  char* v3;
+  unsigned __int64 v4;
+  char* v8;
+  __int64 v9;
+  char* v10;
+  int v11;
+  __int128 v12;
+  __int64 v13;
+  char* v15;
+  __int128 v16;
+  char* v17;
+  unsigned __int64 v18;
+  __int64 v19;
+  __int64* v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  _QWORD* v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  char* v28;
+  char* v29;
+  _QWORD* v30;
+  __int64 v31;
+  char* v32;
+  char* v33;
+  __int64 v34;
+  char* v35;
+  _QWORD* v36;
+  __int64 v37;
+  __int64 v38;
+
+  v3 = a1[1];
+  v4 = (unsigned __int64)a1[2];
+  if ((unsigned __int64)v3 >= v4) {
+    v17 = *a1;
+    v18 = ((v3 - *a1) >> 4) + 1;
+    if (v18 >> 60 != 0) {
+      GameRoutine_cdcc10();
+    }
+    v19 = v4 - (_QWORD)v17;
+    v20 = (__int64*)fw_memory_g_heap_manager_ptr;
+    if (v19 >> 3 > v18) {
+      v18 = v19 >> 3;
+    }
+    if ((unsigned __int64)v19 >= 0x7FFFFFFFFFFFFFF0LL) {
+      v18 = 0xFFFFFFFFFFFFFFFLL;
+    }
+    if (v18 != 0) {
+      if (v18 >> 60 != 0) {
+        GameRoutine_60a210_alt1();
+      }
+      v21 = 16 * v18;
+      v22 = fw_memory_HeapManager_Allocate_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v18, 16, 0);
+    }
+    else {
+      v21 = 0;
+      v22 = 0;
+    }
+    v23 = v22 + v21;
+    v24 = (_QWORD*)(v22 + a2 - v17);
+    if (a2 - v17 == v21) {
+      if (a2 == v17) {
+        v25 = fw_memory_HeapManager_Allocate_alt1(*v20, 16, 16, 0);
+        v23 = v25 + 16;
+        v24 = (_QWORD*)v25;
+        if (v22 != 0) {
+          v26 = 128;
+          if (*(_QWORD*)(*v20 + 200) == 0) {
+            v26 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt2(*v20 + v26, v22);
+        }
+      }
+      else {
+        v24 -= 2 * ((((a2 - v17) >> 4) + 1 +
+                     ((unsigned __int64)(((a2 - v17) >> 4) + 1) >> 63)) >>
+                    1);
+      }
+    }
+    v27 = *((_QWORD*)a3 + 1);
+    *v24 = *(_QWORD*)a3;
+    v24[1] = v27;
+    v28 = a1[1];
+    if (a2 == v28) {
+      v32 = a2;
+    }
+    else {
+      v29 = a2;
+      v30 = v24 + 2;
+      do {
+        v30[1] = *((_QWORD*)v29 + 1);
+        v31 = *(_QWORD*)v29;
+        v29 += 16;
+        *v30 = v31;
+        v30 += 2;
+      } while (v29 != v28);
+      v32 = a1[1];
+    }
+    v33 = *a1;
+    a1[1] = a2;
+    v34 = (__int64)v24 + v32 - a2 + 16;
+    v35 = (char*)v24 + ((char*)v33 - (char*)a2);
+    if (v33 != a2) {
+      v36 = (_QWORD*)((char*)v24 + ((char*)v33 - (char*)a2));
+      do {
+        v36[1] = *((_QWORD*)v33 + 1);
+        v37 = *(_QWORD*)v33;
+        v33 += 16;
+        *v36 = v37;
+        v36 += 2;
+      } while (v33 != a2);
+      v33 = *a1;
+    }
+    *a1 = v35;
+    a1[1] = (char*)v34;
+    a1[2] = (char*)v23;
+    if (v33 != nullptr) {
+      v38 = 128;
+      if (*(_QWORD*)(*v20 + 200) == 0) {
+        v38 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*v20 + v38, (__int64)v33);
+    }
+  }
+  else if (a2 == v3) {
+    *((_QWORD*)v3 + 1) = *((_QWORD*)a3 + 1);
+    *(_QWORD*)v3 = *(_QWORD*)a3;
+    a1[1] = v3 + 16;
+  }
+  else {
+    v8 = a1[1];
+    if ((unsigned __int64)v3 >= 0x10) {
+      v8 = v3 + 16;
+      *((_QWORD*)v3 + 1) = *((_QWORD*)v3 - 1);
+      *(_QWORD*)v3 = *((_QWORD*)v3 - 2);
+    }
+    a1[1] = v8;
+    if (v3 != a2 + 16) {
+      v9 = 0;
+      do {
+        v10 = &v3[v9];
+        v9 -= 16;
+        v11 = *((_DWORD*)v10 - 7);
+        *((_DWORD*)v10 - 4) = *((_DWORD*)v10 - 8);
+        *((_DWORD*)v10 - 3) = v11;
+        v12 = *((_OWORD*)v10 - 1);
+        *((_QWORD*)&v12 + 1) = *((unsigned int*)v10 - 6);
+        *((_OWORD*)v10 - 1) = v12;
+      } while (&v3[v9 - 16] != a2);
+      v8 = a1[1];
+    }
+    v13 = 16;
+    if (a3 >= v8 || a3 < a2) {
+      v13 = 0;
+    }
+    v15 = &a3[v13];
+    *(_DWORD*)a2 = *(_DWORD*)v15;
+    *((_DWORD*)a2 + 1) = *((_DWORD*)v15 + 1);
+    v16 = *(_OWORD*)a2;
+    *((_QWORD*)&v16 + 1) = *((unsigned int*)v15 + 2);
+    *(_OWORD*)a2 = v16;
+  }
 }
 
 void game_zview_RouteAStarSpace_ConnectNodes_lambda0_Invoke(__int64 a1,

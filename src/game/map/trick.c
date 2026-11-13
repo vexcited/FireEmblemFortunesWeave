@@ -110,6 +110,8 @@ void game_map_Trick_Impl_EachDanger(__int64 a1, __int64 a2);
 __int64 Trick_7d2180(__int64 a1, int a2, int a3, __int64 a4);
 __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 __int64 Trick_Unknown3(__int64 a1);
+__int64 game_map_Trick_Impl_Register_closure_Invoke(__int64 result, _DWORD* a2,
+                                                    _DWORD* a3);
 
 __int64 Trick_Destructor(_QWORD* a1)
 {
@@ -1704,6 +1706,16 @@ __int64 game_map_Trick_Impl_EachCoveredCharacter_closure_Invoke(__int64 result,
     return (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v3 + 48LL))(
         v3, *(_QWORD*)a2 + 104LL);
   }
+  return result;
+}
+
+__int64 game_map_Trick_Impl_Register_closure_Invoke(__int64 result, _DWORD* a2,
+                                                    _DWORD* a3)
+{
+  int v3;
+
+  v3 = (*(int*)a2 + 32 * *(int*)a3) >> 5;
+  *(_DWORD*)(*(_QWORD*)(result + 8) + 4LL * v3) |= 1 << *(_DWORD*)a2;
   return result;
 }
 

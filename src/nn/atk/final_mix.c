@@ -62,6 +62,7 @@ __int64 BaseNx_2a0e80(__int64, _QWORD*);
 void* BaseNx_2a1860();
 void nn_detail_UnexpectedDefaultImpl_alt1() __asm__(
     "nn_detail_UnexpectedDefaultImpl");
+__int64 FinalMix_Unknown10(__int64 a1, int a2);
 
 __int64 FinalMix_DeletingDestructor(__int64 a1)
 {
@@ -146,6 +147,16 @@ __int64 FinalMix_Unknown9(__int64 a1, int a2)
   }
   else {
     return v4;
+  }
+}
+
+__int64 FinalMix_Unknown10(__int64 a1, int a2)
+{
+  if (a2 >= 6 * *(int*)(a1 + 88)) {
+    return a2 & 1;
+  }
+  else {
+    return (unsigned int)(a2 % 6);
   }
 }
 
