@@ -38076,10 +38076,10 @@ cd7430,248,verified,src/game/script/hub_character_natives.cpp,_ZN4game6script3hu
 cd7530,240,verified,src/game/script/hub_character_natives.cpp,_ZN4game6script3hub9character14IsIndifferenceENS_3hub15CharacterHandleE
 cd7620,856,verified,src/game/unnamed/b010_3.c,GameHr_cd7620
 cd7b70,640,verified,src/game/script/hub_character_natives_impl.c,hub_character_AddTalkSelectItem
-cd7e00,816,verified,src/game/unnamed/e004_0.c,GameHr_cd7e00
+cd7e00,1008,verified,src/game/unnamed/e004_0.c,GameHr_cd7e00
 cd82a0,1312,verified,src/game/unnamed/e004_0.c,GameHr_cd82a0
-cd8860,1200,verified,src/game/unnamed/e004_0.c,GameHr_cd8860
-cd8de0,1476,verified,src/game/unnamed/e004_0.c,GameHr_cd8de0
+cd8860,1224,verified,src/game/unnamed/e004_0.c,GameHr_cd8860
+cd8de0,1520,verified,src/game/unnamed/e004_0.c,GameHr_cd8de0
 cd9470,332,verified,src/game/script/hub_character_natives_impl.c,hub_character_PreTalkEvent
 cd9640,676,verified,src/game/script/hub_character_natives_impl.c,hub_character_PostTalkEvent
 cd9940,496,verified,src/game/unnamed/b010_2.c,GameHr_cd9940
@@ -41232,7 +41232,7 @@ dea820,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17DungeonSymb
 dea830,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17DungeonSymbolDataES1_E9OnUnbuildEv
 dea840,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17DungeonSymbolDataES1_E9OnRebuildEv
 dea850,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
-dea880,1604,verified,src/game/unnamed/e004_0.c,GameHr_dea880
+dea880,1604,disputed,src/game/unnamed/e004_0.c,GameHr_dea880
 deb450,460,verified,src/game/unplaced_13.c,game_deb450
 deb620,808,verified,src/game/unplaced_21.c,game_deb620
 deb970,116,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game17SingletonDataFileINS_18DungeonSettingFileENS_18DungeonSettingDataES2_ED2Ev
