@@ -1162,7 +1162,7 @@ __int64 GameHr_1820970(__int64 a1, int* a2)
   unsigned int v4;
   __int64 v5;
 
-  v2 = llroundf((float)((float)*a2 * 100.0) / 10.0);
+  v2 = vcvtas_s32_f32((float)((float)*a2 * 100.0) / 10.0);
   v3 = v2 & ~(v2 >> 31);
   if (v3 >= 100) {
     v4 = 100;

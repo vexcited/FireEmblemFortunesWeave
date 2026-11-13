@@ -1741,7 +1741,8 @@ __int64 GameHr_1756900(__int64 a1, __int64* a2)
       *(_QWORD*)(v11 + 408) = v8;
       *(_QWORD*)(v11 + 416) = 0;
       if (*(_QWORD*)v8 != 0 &&
-          *(_DWORD*)(v8 + 12) + *(_DWORD*)(v8 + 8) + *(_DWORD*)(v8 + 16) >= 1) {
+          (int)(*(_DWORD*)(v8 + 12) + *(_DWORD*)(v8 + 8) +
+                *(_DWORD*)(v8 + 16)) >= 1) {
         *(_QWORD*)(v11 + 416) = *(_QWORD*)v8;
         *(_DWORD*)(v11 + 424) = *(_DWORD*)(v8 + 8);
         v12 = *(_DWORD*)(v8 + 12);

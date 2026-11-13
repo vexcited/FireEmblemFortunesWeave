@@ -620,7 +620,7 @@ __int64 StatusItem_188e530(__int64 a1, __int64 a2)
     }
   }
   LayoutAccessor_1562cf0(a1 + 88, "HellPoint");
-  LayoutAccessor_15636c0(a1 + 88, "HellPoint", 0);
+  LayoutAccessor_15636c0_alt1(a1 + 88, (__int64)"HellPoint", 0, 0.0f);
   result = *(_QWORD*)(a1 + 1104);
   if (result != 0) {
     result = std___1___shared_weak_count_lock(result);

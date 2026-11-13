@@ -1706,7 +1706,7 @@ __int64 GameHr_1868580(_QWORD* a1)
 
   v2 = (*(__int64 (**)(_QWORD*))(*a1 + 608LL))(a1);
   if (v2 >= 1 &&
-      (GameData_21caab0 == 0 || v2 > *(_DWORD*)(GameData_21caab0 + 72))) {
+      (GameData_21caab0 == 0 || v2 > *(int*)(GameData_21caab0 + 72))) {
     return 1;
   }
   if ((unsigned int)GameRoutine_8a1dc0(a1[15]) == 0) {

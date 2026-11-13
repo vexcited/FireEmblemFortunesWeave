@@ -3082,7 +3082,7 @@ __int64 GameHr_15e3fe0(__int64 a1)
     }
     v15 = *v14;
     *(_WORD*)(v12 + 249) = 257;
-    if (v6 <= 0.0) {
+    if (!(v6 > 0.0)) {
       if (*(_BYTE*)(v12 + 176) == 1) {
         *(_BYTE*)(v12 + 176) = 0;
       }
@@ -3120,7 +3120,7 @@ __int64 GameHr_15e3fe0(__int64 a1)
     if (*(_BYTE*)(v13 + 250) == 1) {
       *(_BYTE*)(v13 + 250) = 0;
     }
-    if (v6 <= 0.0) {
+    if (!(v6 > 0.0)) {
       if (*(_BYTE*)(v13 + 176) == 1) {
         *(_BYTE*)(v13 + 176) = 0;
       }
@@ -7284,7 +7284,7 @@ __int64 GameHr_1618f20(__int64 result, __int64* a2, float* a3)
   v3 = *((float*)a2 + 9);
   v4 = a3[9];
   v7 = result;
-  if (v3 <= *(float*)(result + 36)) {
+  if (!(v3 > *(float*)(result + 36))) {
     if (v4 > v3) {
       v17 = *a2;
       v18 = a2[1];
@@ -7364,7 +7364,7 @@ __int64 GameHr_1618f20(__int64 result, __int64* a2, float* a3)
       }
     }
   }
-  else if (v4 <= v3) {
+  else if (!(v4 > v3)) {
     v37 = *(_QWORD*)result;
     v38 = *(_QWORD*)(result + 8);
     v39 = *(_QWORD*)(result + 16);

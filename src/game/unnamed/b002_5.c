@@ -1,7 +1,7 @@
 #include "decomp/pseudo_types.h"
 #pragma GCC visibility push(hidden)
 
-bool GameRoutine_56eaa0(__int64, __int64, __int64);
+__int64 GameRoutine_56eaa0(__int64, __int64, __int64);
 __int64 GameRoutine_5714e0(_QWORD, _QWORD);
 __int64 GameRoutine_5716e0(_QWORD, _QWORD);
 __int64 GameRoutine_58fac0(_QWORD, _QWORD);

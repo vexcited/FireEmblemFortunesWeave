@@ -3583,7 +3583,7 @@ bool GameHr_1353740(__int64* a1, __int64* a2)
   float v118;
   int v119;
 
-  v2 = a2 - a1;
+  v2 = ((__int64)a2 - (__int64)a1) >> 3;
   if (v2 > 2) {
     if (v2 == 3) {
       v20 = *a1;

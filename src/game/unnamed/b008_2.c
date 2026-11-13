@@ -7201,7 +7201,7 @@ unsigned __int64 GameHr_a61680(_QWORD* a1)
     v6 = *(unsigned __int16*)(v4 + 12);
     v7 = v4 + 8 + 16 * v6;
     v8 = *(_DWORD*)v7;
-    if (*(_DWORD*)(v4 + 8) < *(_DWORD*)v7) {
+    if (*(int*)(v4 + 8) < *(int*)v7) {
       do {
         v11 = (__int64)v8 >> 3;
         if (result > v11) {
@@ -7211,7 +7211,7 @@ unsigned __int64 GameHr_a61680(_QWORD* a1)
           v9 = 0;
         }
         v6 = *(unsigned __int16*)(v4 + 12 + 16 * v6 + 2 * v9);
-        v10 = v8 < *(_DWORD*)(v5 + 16 * v6);
+        v10 = v8 < *(int*)(v5 + 16 * v6);
         v8 = *(_DWORD*)(v5 + 16 * v6);
       } while (v10);
       v7 = v5 + 16 * v6;

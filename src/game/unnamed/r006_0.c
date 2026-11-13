@@ -1852,13 +1852,13 @@ __int64 GameHr_10eca20(__int64 a1)
   bool v17;
 
   v2 = *(float*)(GameData_2265ae0 + 160);
-  (*(void (**)(__int64))(*(_QWORD*)a1 + 152LL))(a1);
+  v3 = (*(float (**)(__int64))(*(_QWORD*)a1 + 152LL))(a1);
   v5 = *(float**)(a1 + 152);
   v6 = *(float**)(a1 + 160);
   result = a1 + 152;
   if (v5 != v6) {
-    v7 = (float)((float)(v2 * 16.683) / 1000.0) / v3;
-    if (*(float*)(a1 + 184) <= *(float*)(a1 + 188)) {
+    v7 = (float)((float)(v2 * 0x1.0aefp+4f) / 1000.0f) / v3;
+    if (!(*(float*)(a1 + 184) > *(float*)(a1 + 188))) {
       v8 = v7;
     }
     else {
@@ -1874,7 +1874,7 @@ __int64 GameHr_10eca20(__int64 a1)
   v10 = v9;
   while (v5 != v6) {
     v11 = *v5;
-    if (v10 <= *v5) {
+    if (!(v10 > *v5)) {
       v12 = v10;
     }
     else {
@@ -1887,7 +1887,7 @@ __int64 GameHr_10eca20(__int64 a1)
       v13 = v9;
     }
     v14 = v11 < 0.0;
-    if (v11 >= 0.0) {
+    if (!(v11 < 0.0)) {
       v15 = v13;
     }
     else {
@@ -1903,7 +1903,7 @@ __int64 GameHr_10eca20(__int64 a1)
     if (v10 > v9) {
       v10 = v5[1];
     }
-    if (v15 >= v9) {
+    if (!(v15 < v9)) {
     LABEL_7:
       v9 = v15;
     }

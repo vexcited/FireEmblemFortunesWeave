@@ -1633,7 +1633,7 @@ __int64 nn_g3d_5f4620(__int64 result, float32x4_t* a2)
     v3 = 0;
     v4 = (float32x4_t*)(*(_QWORD*)result + 48LL);
     do {
-      if (fabsf(LANES128(v4[1]).n128_f32[1]) >= 0x1.0624de0000000p-10f) {
+      if (!(fabsf(LANES128(v4[1]).n128_f32[1]) < 0x1.0624de0000000p-10f)) {
         LANES128(v2[-5]).n128_u32[0] =
             (LANES128(v2[-5]).n128_u32[0] & 0xF07FFFFF |
              (((LANES128(v4[1]).n128_u32[0] >> 23) & 0x1F) << 23)) ^

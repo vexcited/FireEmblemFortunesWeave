@@ -1382,12 +1382,12 @@ __int64 ITarget_773420(__int64 a1, __int64 a2, long double a3)
                 }
                 v240 = 4;
               LABEL_439:
-                (*v231)[v240]();
+                ((void (*)(void*))(*v231)[v240])(v231);
               LABEL_440:
                 if (v435 == (__int64 (***)())&v433) {
                   v241 = 4;
                 LABEL_444:
-                  (*v435)[v241]();
+                  ((void (*)(void*))(*v435)[v241])(v435);
                 }
                 else if (v435 != nullptr) {
                   v241 = 5;
@@ -1454,12 +1454,12 @@ __int64 ITarget_773420(__int64 a1, __int64 a2, long double a3)
                 }
                 v251 = 4;
               LABEL_462:
-                (*v242)[v251]();
+                ((void (*)(void*))(*v242)[v251])(v242);
               LABEL_463:
                 if (v435 == (__int64 (***)())&v433) {
                   v252 = 4;
                 LABEL_467:
-                  (*v435)[v252]();
+                  ((void (*)(void*))(*v435)[v252])(v435);
                 }
                 else if (v435 != nullptr) {
                   v252 = 5;
@@ -1946,7 +1946,7 @@ __int64 ITarget_773420(__int64 a1, __int64 a2, long double a3)
                     v372 = v417;
                     v374 = 4;
                   LABEL_686:
-                    (*v435)[v374]();
+                    ((void (*)(void*))(*v435)[v374])(v435);
                   }
                   else {
                     v372 = v417;
@@ -2138,7 +2138,7 @@ __int64 ITarget_773420(__int64 a1, __int64 a2, long double a3)
                   if (v441 == &v439) {
                     v312 = 4;
                   LABEL_565:
-                    (*v441)[v312]();
+                    ((void (*)(void*))(*v441)[v312])(v441);
                   }
                   else if (v441 != nullptr) {
                     v312 = 5;
@@ -2403,7 +2403,7 @@ __int64 ITarget_773420(__int64 a1, __int64 a2, long double a3)
       }
       v380 = 5;
     }
-    (*v441)[v380]();
+    ((void (*)(void*))(*v441)[v380])(v441);
   LABEL_708:
     if (v436 == v434) {
       v381 = 32;

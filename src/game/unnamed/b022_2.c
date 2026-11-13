@@ -3371,7 +3371,7 @@ __int64 GameHr_1705460(__int64 result, __int64* a2, __int64 a3, char a4)
     while (1) {
       while (1) {
         v7 = v8;
-        v9 = a2 - v8;
+        v9 = ((__int64)a2 - (__int64)v8) >> 3;
         if (v9 > 2) {
           if (v9 == 3) {
             v75 = *v8;

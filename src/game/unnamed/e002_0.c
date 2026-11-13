@@ -7020,7 +7020,7 @@ unsigned __int64 GameHr_885f00(unsigned __int64 a1)
       }
       v5 = 5;
     }
-    (*v68)[v5]();
+    ((void (*)(void*))(*v68)[v5])(v68);
     goto LABEL_21;
   }
 LABEL_28:

@@ -4652,7 +4652,7 @@ LABEL_54:
       v58 = COERCE_FLOAT(*v8) - *(float*)(v57 + 40);
       v59 = COERCE_FLOAT(LANES128(*(v8)).n128_u64[1]) - *(float*)(v57 + 44);
       v60 = (float)(v59 * v59) + (float)(v58 * v58);
-      if (v60 >= 0x1.0000000000000p-23) {
+      if (!(v60 < 0x1.0000000000000p-23)) {
         v63 = 1.0 / sqrtf(v60);
         v62 = v58 * v63;
         v61 = v59 * v63;

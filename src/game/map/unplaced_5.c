@@ -3001,7 +3001,7 @@ void game_map_11404a0(__int64 a1, int a2, __int64* a3)
     v17_.v18 = -1;
     v10 = *(_DWORD*)(v8 + 24);
     if (v10 != -1) {
-      v11 = GameData_2011fa8[v10];
+      v11 = GameData_2011fa8[(unsigned int)v10];
       v19 = v17_.v17;
       ((void (*)(_BYTE**, __int64))v11)(&v19, v8);
       v17_.v18 = v10;

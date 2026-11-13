@@ -41,9 +41,10 @@ _QWORD* snd_se_WaitPrepared()
   }
   v4 = *(__int64 (**)(void))(**(_QWORD**)(v3 + 24) + 448LL);
   if ((v0 & 1) == 0) {
-    return (_QWORD*)v4();
+    return (_QWORD*)((__int64 (*)(__int64, __int64))v4)(
+        *(_QWORD*)(v3 + 24), 0);
   }
-  v4();
+  ((__int64 (*)(__int64, __int64))v4)(*(_QWORD*)(v3 + 24), 1);
   result = *(_QWORD**)(v3 + 2240);
   *(_QWORD*)(v3 + 2240) = 0;
   if (result == (_QWORD*)(v3 + 2208)) {

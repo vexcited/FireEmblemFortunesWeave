@@ -1961,7 +1961,7 @@ unsigned __int64 GaugeUtil_1750620()
     if (v9 >= v8) {
       v9 = *(_DWORD*)(GameData_21d99a8 - 4 + 4LL * v3);
     }
-    if (v8 >= *(_DWORD*)GameData_21d99a8) {
+    if (v8 >= *(int*)GameData_21d99a8) {
       v11 = v9;
     }
     else {

@@ -1175,7 +1175,7 @@ LABEL_10:
     while (2) {
       while (1) {
         v16 = *v15;
-        if (*(_QWORD*)(*v15 + 752LL) >= a3) {
+        if (*(__int64*)(*v15 + 752LL) >= a3) {
           break;
         }
         if (++v15 == v14) {
@@ -1187,7 +1187,7 @@ LABEL_10:
           v14 = v15;
           goto LABEL_20;
         }
-      } while (*(_QWORD*)(*v14 + 752LL) >= a3);
+      } while (*(__int64*)(*v14 + 752LL) >= a3);
       *v15++ = *v14;
       *v14 = v16;
       if (v14 != v15) {
@@ -1197,7 +1197,7 @@ LABEL_10:
     }
   }
 LABEL_20:
-  *a2 = ((__int64)v14 - *v7) >> 3;
+  *a2 = (__int64)((__int64)v14 - *v7) >> 3;
   a2[1] = v3 - v13;
   return result;
 }
@@ -1729,7 +1729,7 @@ __int64 GameHr_6c3050(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   v8 = *v7;
   if (*v7 != 0) {
     v9 = *(_QWORD*)(a1 + 560);
-    v10 = (*(_QWORD*)(a1 + 568) - v9) >> 1;
+    v10 = (__int64)(*(_QWORD*)(a1 + 568) - v9) >> 1;
     v11 = (int)((__int64)(*(_QWORD*)(v8 + 72) - *(_QWORD*)(v8 + 64)) >> 3);
     if (v11 != v10) {
       if (v11 <= v10) {
@@ -2071,7 +2071,7 @@ unsigned __int64 GameHr_6f1340(unsigned __int64 result, __int64* a2, __int64 a3,
     while (1) {
       while (1) {
         v7 = v8;
-        v9 = a2 - v8;
+        v9 = ((__int64)a2 - (__int64)v8) >> 3;
         if (v9 > 2) {
           if (v9 == 3) {
             v75 = *v8;

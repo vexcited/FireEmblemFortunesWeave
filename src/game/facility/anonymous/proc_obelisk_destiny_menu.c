@@ -480,7 +480,7 @@ bool game_facility_anonymous_ProcObeliskDestinyMenu_SortAndFilter_closure_Invoke
   v3 = *a2;
   v4 = *a3;
   if (game_GameModeData_instance_ == 0) {
-    return *(_DWORD*)(v3 + 40) < *(_DWORD*)(v4 + 40);
+    return *(int*)(v3 + 40) < *(int*)(v4 + 40);
   }
   v5 = game_GameVariableTable_Find(*(_QWORD*)(game_GameModeData_instance_ + 48),
                                    *(_QWORD*)(*(_QWORD*)(v3 + 88) + 24LL) +
@@ -515,7 +515,7 @@ bool game_facility_anonymous_ProcObeliskDestinyMenu_SortAndFilter_closure_Invoke
   }
 LABEL_12:
   if (game_GameModeData_instance_ == 0) {
-    return *(_DWORD*)(v3 + 40) < *(_DWORD*)(v4 + 40);
+    return *(int*)(v3 + 40) < *(int*)(v4 + 40);
   }
   v11 = game_GameVariableTable_Find(
       *(_QWORD*)(game_GameModeData_instance_ + 48),
@@ -529,7 +529,7 @@ LABEL_12:
         v15 = false;
         return v15 && !v12;
       }
-      return *(_DWORD*)(v3 + 40) < *(_DWORD*)(v4 + 40);
+      return *(int*)(v3 + 40) < *(int*)(v4 + 40);
     }
   }
   else {
@@ -548,7 +548,7 @@ LABEL_12:
   if (((v12 ^ v15) & 1) != 0) {
     return v15 && !v12;
   }
-  return *(_DWORD*)(v3 + 40) < *(_DWORD*)(v4 + 40);
+  return *(int*)(v3 + 40) < *(int*)(v4 + 40);
 }
 
 #pragma GCC visibility pop

@@ -2725,12 +2725,14 @@ LABEL_25:
     v14 = v3 + 15;
     v15 = (int*)(v3 + 14);
     return (*(__int64 (**)(_QWORD, __int64, __int64, _QWORD, _QWORD))(
-        *(_QWORD*)*a2 + 224LL))(*a2, 3, 13, v14[2 * *v15], v14[2 * *v15 + 1]);
+        *(_QWORD*)*a2 + 224LL))(*a2, 3, 13, v14[2 * (__int64)*v15],
+                                  v14[2 * (__int64)*v15 + 1]);
   }
   v14 = (_QWORD*)(v13 + 32);
   v15 = (int*)(v13 + 24);
   return (*(__int64 (**)(_QWORD, __int64, __int64, _QWORD, _QWORD))(
-      *(_QWORD*)*a2 + 224LL))(*a2, 3, 13, v14[2 * *v15], v14[2 * *v15 + 1]);
+      *(_QWORD*)*a2 + 224LL))(*a2, 3, 13, v14[2 * (__int64)*v15],
+                                v14[2 * (__int64)*v15 + 1]);
 }
 
 _QWORD* GameHr_bf8240(_QWORD* result, unsigned __int64 a2)
@@ -6514,7 +6516,7 @@ __int64 GameHr_c156c0(__int64 a1, int a2)
   v7 = *(unsigned __int16*)(v5 + 12);
   v8 = v5 + 8 + 16 * v7;
   v9 = *(_DWORD*)v8;
-  if (*(_DWORD*)(v5 + 8) < *(_DWORD*)v8) {
+  if (*(int*)(v5 + 8) < *(int*)v8) {
     do {
       if ((unsigned int)(v9 >> 3) <= 0xB) {
         v10 = ((unsigned __int8)GameData_1aa4dd7[~(v9 >> 3) + 12] >> (v9 & 7)) &
@@ -6524,7 +6526,7 @@ __int64 GameHr_c156c0(__int64 a1, int a2)
         v10 = 0;
       }
       v7 = *(unsigned __int16*)(v5 + 12 + 16 * v7 + 2 * v10);
-      v11 = v9 < *(_DWORD*)(v6 + 16 * v7);
+      v11 = v9 < *(int*)(v6 + 16 * v7);
       v9 = *(_DWORD*)(v6 + 16 * v7);
     } while (v11);
     v8 = v6 + 16 * v7;

@@ -5626,7 +5626,7 @@ int* GameHr_89f190(int* a1, int* a2, int* a3, int* a4, int* a5, __int64 a6)
 
   result = GameRoutine_89ef30(a1, a2, a3, a4, a6);
   v13 = *a4;
-  if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+  if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
                                        8LL *
                                            *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)
                                                                                a6 +
@@ -5635,7 +5635,7 @@ int* GameHr_89f190(int* a1, int* a2, int* a3, int* a4, int* a5, __int64 a6)
                                                                 4)) +
                             24LL) +
                  608LL) <
-      *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+      *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
                                        8LL *
                                            *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)
                                                                                a6 +
@@ -5647,7 +5647,7 @@ int* GameHr_89f190(int* a1, int* a2, int* a3, int* a4, int* a5, __int64 a6)
     *a4 = *a5;
     *a5 = v13;
     v14 = *a3;
-    if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+    if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
                                          8LL *
                                              *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)
                                                                                  a6 +
@@ -5656,7 +5656,7 @@ int* GameHr_89f190(int* a1, int* a2, int* a3, int* a4, int* a5, __int64 a6)
                                                                   4)) +
                               24LL) +
                    608LL) <
-        *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+        *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
                                          8LL *
                                              *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)
                                                                                  a6 +
@@ -5668,7 +5668,7 @@ int* GameHr_89f190(int* a1, int* a2, int* a3, int* a4, int* a5, __int64 a6)
       *a3 = *a4;
       *a4 = v14;
       v15 = *a2;
-      if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+      if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
                                            8LL *
                                                *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)
                                                                                    a6 +
@@ -5677,7 +5677,7 @@ int* GameHr_89f190(int* a1, int* a2, int* a3, int* a4, int* a5, __int64 a6)
                                                                     4)) +
                                 24LL) +
                      608LL) <
-          *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+          *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
                                            8LL *
                                                *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)
                                                                                    a6 +
@@ -5689,7 +5689,7 @@ int* GameHr_89f190(int* a1, int* a2, int* a3, int* a4, int* a5, __int64 a6)
         *a2 = *a3;
         *a3 = v15;
         v16 = *a1;
-        if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+        if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
                                              8LL *
                                                  *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)
                                                                                      a6 +
@@ -5699,7 +5699,7 @@ int* GameHr_89f190(int* a1, int* a2, int* a3, int* a4, int* a5, __int64 a6)
                                                                       4)) +
                                   24LL) +
                        608LL) <
-            *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+            *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
                                              8LL *
                                                  *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)
                                                                                      a6 +

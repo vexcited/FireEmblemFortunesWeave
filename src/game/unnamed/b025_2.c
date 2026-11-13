@@ -4096,7 +4096,7 @@ __int64 GameHr_18e2460(__int64 result, __int64* a2, float* a3)
 
   v3 = *((float*)a2 + 6);
   v4 = a3[6];
-  if (v3 <= *(float*)(result + 24)) {
+  if (!(v3 > *(float*)(result + 24))) {
     if (v4 > v3) {
       v21 = a2[5];
       v23 = a2 + 2;
@@ -4222,7 +4222,7 @@ __int64 GameHr_18e2460(__int64 result, __int64* a2, float* a3)
       }
     }
   }
-  else if (v4 <= v3) {
+  else if (!(v4 > v3)) {
     v57 = *(_QWORD*)(result + 48);
     v58 = *(_QWORD*)(result + 56);
     v59 = *(_QWORD*)result;

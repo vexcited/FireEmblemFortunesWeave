@@ -499,13 +499,13 @@ float* BlendLayer_d2af80(float* result, long double a2, double a3, double a4,
       v20 = *((float*)v6 + 6);
       v21 = *((unsigned __int8*)v6 + 40);
       v22 = v20 + (float)(*((float*)v6 + 7) * v9);
-      if (v22 <= 1.0) {
+      if (!(v22 > 1.0)) {
         v23 = v20 + (float)(*((float*)v6 + 7) * v9);
       }
       else {
         v23 = 1.0;
       }
-      if (v22 >= 0.0) {
+      if (!(v22 < 0.0)) {
         v24 = v23;
       }
       else {
@@ -633,7 +633,7 @@ float* BlendLayer_d2af80(float* result, long double a2, double a3, double a4,
              .n64_u8[0] &
          1) != 0) {
       v18 = *(float*)&a2 - v17;
-      if ((float)(*(float*)&a2 - v17) >= *(float*)&a6) {
+      if (!((float)(*(float*)&a2 - v17) < *(float*)&a6)) {
         goto LABEL_18;
       }
     }
@@ -643,15 +643,15 @@ float* BlendLayer_d2af80(float* result, long double a2, double a3, double a4,
                .n64_u32[0] &
            1) == 0 ||
           (v18 = *(float*)&a2 + v17,
-           (float)(*(float*)&a2 + v17) <= *(float*)&a6)) {
+           !((float)(*(float*)&a2 + v17) > *(float*)&a6))) {
       LABEL_18:
         *(float*)&a6 = fabsf(v16 * fabsf(*((float*)&v15 + 1)));
-        if (*((float*)&a2 + 1) <= *((float*)&a6 + 1)) {
+        if (!(*((float*)&a2 + 1) > *((float*)&a6 + 1))) {
           LODWORD(v15) = HIDWORD(*(_QWORD*)(v10 + 88));
-          if (*((float*)&a2 + 1) >= *((float*)&a6 + 1) ||
+          if (!(*((float*)&a2 + 1) < *((float*)&a6 + 1)) ||
               (*(float*)& v15 = *((float*)&a2 + 1) + *(float*)&a6,
-               (float)(*((float*)&a2 + 1) + *(float*)&a6) <=
-                   *((float*)&a6 + 1))) {
+               !((float)(*((float*)&a2 + 1) + *(float*)&a6) >
+                 *((float*)&a6 + 1)))) {
           LABEL_24:
             if (*(float*)&a2 != v18 || *((float*)&a2 + 1) != *(float*)&v15) {
               *(float*)(v10 + 88) = v18;
@@ -666,8 +666,8 @@ float* BlendLayer_d2af80(float* result, long double a2, double a3, double a4,
         }
         else {
           *(float*)&v15 = *((float*)&a2 + 1) - *(float*)&a6;
-          if ((float)(*((float*)&a2 + 1) - *(float*)&a6) >=
-              *((float*)&a6 + 1)) {
+          if (!((float)(*((float*)&a2 + 1) - *(float*)&a6) <
+                *((float*)&a6 + 1))) {
             goto LABEL_24;
           }
         }
@@ -727,7 +727,7 @@ LABEL_76:
                         (float)(v47 * v47)) +
                 1.0);
     v50 = fabsf(v49) * 0.5;
-    if (v49 >= 0.0) {
+    if (!(v49 < 0.0)) {
       v51 = -1.0;
     }
     else {

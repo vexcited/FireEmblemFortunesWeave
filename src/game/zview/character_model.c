@@ -744,7 +744,7 @@ __int64 game_zview_CharacterModel_UpdateOutlineBold(__int64 a1)
           *(_QWORD*)(v22 + 440) > *(_QWORD*)(v21 + 440)) {
         v23 = *(_QWORD*)(*(_QWORD*)(v22 + 8) + 328LL);
         GameRoutine_d60750(v23);
-        if (*(float*)(v23 + 376) >= 0x1.0000000000000p-1f) {
+        if (!(*(float*)(v23 + 376) < 0x1.0000000000000p-1f)) {
           v24 = *(_QWORD*)(a1 + 16);
           v25 = *(float*)(v22 + 532);
           v26 = *(float*)(v24 + 532);
@@ -767,15 +767,15 @@ __int64 game_zview_CharacterModel_UpdateOutlineBold(__int64 a1)
                     (float)(LANES128(v27).n128_f32[1] - *(float*)(v22 + 552))) {
               v29 =
                   vsubq_f32(*(float32x4_t*)(*(_QWORD*)(v24 + 16) + 560LL), v27);
-              if ((float)(LANES128_OF(vmulq_f32(v29, v29)).n128_f32[2] +
-                          (float)(LANES128(v29).n128_f32[0] *
-                                  LANES128(v29).n128_f32[0])) <=
-                  (float)((float)((float)(PSEUDO_UNFUSED(v18 *
-                                                         (float)(v26 + v25))) +
-                                  -0x1.47ae140000000p-7f) *
-                          (float)((float)(PSEUDO_UNFUSED(v18 *
-                                                         (float)(v26 + v25))) +
-                                  -0x1.47ae140000000p-7f))) {
+              if (!((float)(LANES128_OF(vmulq_f32(v29, v29)).n128_f32[2] +
+                            (float)(LANES128(v29).n128_f32[0] *
+                                    LANES128(v29).n128_f32[0])) >
+                    (float)((float)((float)(PSEUDO_UNFUSED(
+                                        v18 * (float)(v26 + v25))) +
+                                    -0x1.47ae140000000p-7f) *
+                            (float)((float)(PSEUDO_UNFUSED(
+                                        v18 * (float)(v26 + v25))) +
+                                    -0x1.47ae140000000p-7f)))) {
                 goto LABEL_103;
               }
             }
@@ -813,7 +813,7 @@ __int64 game_zview_CharacterModel_UpdateOutlineBold(__int64 a1)
     if (*(_QWORD*)(*v32 + 440) > *(_QWORD*)(*(_QWORD*)(a1 + 16) + 440LL)) {
       v37 = *(_QWORD*)(*(_QWORD*)(v35 + 8) + 328LL);
       GameRoutine_d60750(v37);
-      if (*(float*)(v37 + 376) >= 0x1.0000000000000p-1f) {
+      if (!(*(float*)(v37 + 376) < 0x1.0000000000000p-1f)) {
         v38 = *(_QWORD*)(a1 + 16);
         v39 = *(float*)(v35 + 532);
         v40 = *(float*)(v38 + 532);
@@ -846,20 +846,20 @@ __int64 game_zview_CharacterModel_UpdateOutlineBold(__int64 a1)
                                          (float)(v40 + v39))) +
                   -0x1.47ae140000000p-7f;
             v45 = vsubq_f32(*(float32x4_t*)(*(_QWORD*)(v38 + 16) + 560LL), v42);
-            if ((float)(LANES128_OF(vmulq_f32(v45, v45)).n128_f32[2] +
-                        (float)(LANES128(v45).n128_f32[0] *
-                                LANES128(v45).n128_f32[0])) <=
-                    (float)(v44 * v44) &&
+            if (!((float)(LANES128_OF(vmulq_f32(v45, v45)).n128_f32[2] +
+                          (float)(LANES128(v45).n128_f32[0] *
+                                  LANES128(v45).n128_f32[0])) >
+                  (float)(v44 * v44)) &&
                 (*(float*)(a1 + 404) != 0x0.0p+0f ||
-                 (float)((float)(PSEUDO_UNFUSED(
-                             LANES128(v41[42]).n128_f32[0] *
-                             LANES128(v41[42]).n128_f32[0])) +
-                         (float)(LANES128(v41[41]).n128_f32[3] *
-                                 LANES128(v41[41]).n128_f32[3])) <
-                     (float)((float)(LANES128(v41[23]).n128_f32[0] *
-                                     0x1.99999a0000000p-1f) *
-                             (float)(LANES128(v41[23]).n128_f32[0] *
-                                     0x1.99999a0000000p-1f)))) {
+                 !((float)((float)(PSEUDO_UNFUSED(
+                               LANES128(v41[42]).n128_f32[0] *
+                               LANES128(v41[42]).n128_f32[0])) +
+                           (float)(LANES128(v41[41]).n128_f32[3] *
+                                   LANES128(v41[41]).n128_f32[3])) >=
+                   (float)((float)(LANES128(v41[23]).n128_f32[0] *
+                                   0x1.99999a0000000p-1f) *
+                           (float)(LANES128(v41[23]).n128_f32[0] *
+                                   0x1.99999a0000000p-1f))))) {
               break;
             }
           }
@@ -876,7 +876,7 @@ LABEL_103:
   v50 = fabsf(*(float*)(a1 + 228));
   if (v71 > v17) {
     v71 = v71 - v50;
-    if (v71 >= v17) {
+    if (!(v71 < v17)) {
       goto LABEL_109;
     }
   LABEL_108:
@@ -901,7 +901,7 @@ LABEL_62:
   v51 = *v49;
   if (*v49 > 0x0.0p+0f) {
     v51 = v51 - v50;
-    if (v51 >= 0x0.0p+0f) {
+    if (!(v51 < 0x0.0p+0f)) {
       goto LABEL_68;
     }
   LABEL_67:
@@ -951,7 +951,7 @@ LABEL_70:
   v60 = fabsf(*(float*)(a1 + 228) / 0x1.3333340000000p-2f);
   if (v59 > v58) {
     v61 = v59 - v60;
-    if ((float)(v59 - v60) >= v58) {
+    if (!((float)(v59 - v60) < v58)) {
       goto LABEL_85;
     }
     goto LABEL_84;

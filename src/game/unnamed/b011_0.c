@@ -13604,18 +13604,18 @@ _QWORD* GameHr_d47300(_QWORD* result)
       }
       if (v5 != 0) {
         v7 = *(float*)(v5 + 12);
-        if (v7 <= 0.0) {
-          if (v7 >= 0.0) {
+        if (!(v7 > 0.0)) {
+          if (!(v7 < 0.0)) {
             goto LABEL_13;
           }
           v7 = v4 + v7;
-          if (v7 <= 0.0) {
+          if (!(v7 > 0.0)) {
             goto LABEL_13;
           }
         }
         else {
           v7 = v7 - v4;
-          if (v7 >= 0.0) {
+          if (!(v7 < 0.0)) {
             goto LABEL_13;
           }
         }
@@ -13746,7 +13746,7 @@ LABEL_56:
           }
         }
       }
-      else if (*(float*)(v22 + 16) <= 0.0 || *(float*)(v22 + 12) > 0.0) {
+      else if (!(*(float*)(v22 + 16) > 0.0) || !(*(float*)(v22 + 12) <= 0.0)) {
       LABEL_75:
         v29 = *i;
         v30 = i[1];

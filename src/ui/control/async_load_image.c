@@ -307,7 +307,7 @@ __int64 AsyncLoadImage_17e5490(__int64 a1)
   }
   v3 = *(_QWORD*)(a1 + 208);
   if (v3 != 0) {
-    GameRoutine_634d80(*(_QWORD*)(v3 + 8));
+    GameRoutine_634d80_alt1(*(_QWORD*)(v3 + 8), v3);
     *(_QWORD*)(a1 + 208) = 0;
   }
   LayoutAccessor_155e140(a1 + 80);

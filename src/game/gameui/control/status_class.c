@@ -761,7 +761,7 @@ __int64 StatusClass_189da80(__int64 a1, _QWORD* a2, __int64 a3, __int64 a4,
     if (v14 != 0) {
       v15 = v14;
       if (*a2 != 0) {
-        ControlCreator_13633c0();
+        ControlCreator_13633c0_alt1(*a2);
       }
       if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {

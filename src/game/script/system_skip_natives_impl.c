@@ -115,9 +115,10 @@ LABEL_18:
   }
   v18 = *(__int64 (**)(void))(**(_QWORD**)(v17 + 24) + 448LL);
   if (v14) {
-    return (_QWORD*)v18();
+    return (_QWORD*)((__int64 (*)(__int64, __int64))v18)(
+        *(_QWORD*)(v17 + 24), 0);
   }
-  v18();
+  ((__int64 (*)(__int64, __int64))v18)(*(_QWORD*)(v17 + 24), 2);
   result = *(_QWORD**)(v17 + 2240);
   *(_QWORD*)(v17 + 2240) = 0;
   if (result == (_QWORD*)(v17 + 2208)) {

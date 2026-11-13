@@ -4577,7 +4577,7 @@ bool GameHr_15a8320(int* a1, int* a2)
   unsigned int v48;
   int* v49;
 
-  v2 = a2 - a1;
+  v2 = ((__int64)a2 - (__int64)a1) >> 2;
   if (v2 > 2) {
     if (v2 == 3) {
       v16 = *a1;

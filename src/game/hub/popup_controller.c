@@ -848,7 +848,7 @@ bool PopupController_d7c8b0(__int64 a1, __int64 a2)
       }
     }
     if (*(int*)(GameData_21f3cb8 + 32) > 0 ||
-        *(_DWORD*)(GameData_21f3cb8 + 16) > 0) {
+        *(int*)(GameData_21f3cb8 + 16) > 0) {
       return false;
     }
     if (game_ProcGameSkipView_instance_ != 0 &&
@@ -873,7 +873,7 @@ bool PopupController_d7c8b0(__int64 a1, __int64 a2)
       return false;
     }
     return *(_BYTE*)(GameData_21f3d10 + 10) == 1 &&
-           *(_DWORD*)(GameData_21d96b8 + 24) < 1;
+           *(int*)(GameData_21d96b8 + 24) < 1;
   }
   return result;
 }

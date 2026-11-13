@@ -745,16 +745,16 @@ __int64 GameHr_a8fde0(__int64 result, __int64 a2, __int64 a3, float a4,
 
   v7 = *(float*)(a3 + 32);
   v8 = *(float*)(a2 + 32) + v7;
-  if (v8 >= 0.00000011921f) {
+  if (!(v8 < 0.00000011921f)) {
     v9 = v7 / v8;
     v11 = (unsigned __int64*)result;
-    if (v9 <= 1.0f) {
+    if (!(v9 > 1.0f)) {
       v12 = v9;
     }
     else {
       v12 = 1.0f;
     }
-    if (v9 >= 0.0f) {
+    if (!(v9 < 0.0f)) {
       v13 = v12;
     }
     else {
@@ -1819,11 +1819,13 @@ __int64 GameHr_bbc570(__int64 a1)
   __int64 result;
   __int64 v21;
   __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  _DWORD v25[4];
-  __int64 v26;
-  __int64 v27;
+  struct {
+    __int64 v23;
+    __int64 v24;
+    _DWORD v25[4];
+    __int64 v26;
+    __int64 v27;
+  } v23_;
 
   v1 = *(_QWORD*)(a1 + 8);
   *(_BYTE*)(a1 + 1664) = 1;
@@ -1843,17 +1845,17 @@ __int64 GameHr_bbc570(__int64 a1)
   v6 = v21;
   GameRoutine_ba3910(*(_QWORD*)(a1 + 1552), v21);
   v7 = *(_QWORD*)(a1 + 1520);
-  v24 = 0x100000001LL;
-  __builtin_memset(v25, 0, 11);
-  v23 = v6;
+  v23_.v24 = 0x100000001LL;
+  __builtin_memset(v23_.v25, 0, 11);
+  v23_.v23 = v6;
   v8 = *(_QWORD*)(v7 + 184);
-  v25[1] = 13;
+  v23_.v25[1] = 13;
   v9 = *(_QWORD*)(*(_QWORD*)v8 + 552LL);
-  v26 = *(_QWORD*)(*(_QWORD*)v8 + 360LL);
+  v23_.v26 = *(_QWORD*)(*(_QWORD*)v8 + 360LL);
   v10 = *(_QWORD*)(v9 + 16);
-  LOBYTE(v25[2]) = 1;
-  v27 = v10;
-  GameRoutine_53c20((void*)(&v22), &v23);
+  LOBYTE(v23_.v25[2]) = 1;
+  v23_.v27 = v10;
+  GameRoutine_53c20((void*)(&v22), &v23_.v23);
   v11 = v22;
   v12 = *(_QWORD*)(v8 + 8);
   v22 = 0;
@@ -1867,8 +1869,8 @@ __int64 GameHr_bbc570(__int64 a1)
     }
   }
   *(_BYTE*)(v8 + 1032) = 1;
-  v24 = 0x100000001LL;
-  __builtin_memset(v25, 0, 11);
+  v23_.v24 = 0x100000001LL;
+  __builtin_memset(v23_.v25, 0, 11);
   v14 = 0;
   v15 = *(__int64**)(a1 + 1568);
   v16 = *v15;
@@ -1876,13 +1878,13 @@ __int64 GameHr_bbc570(__int64 a1)
   if ((unsigned int)v17 <= 6) {
     v14 = GameData_1b7bcc8[v17];
   }
-  v25[1] = v14;
-  v23 = *(_QWORD*)(v16 + 13312);
+  v23_.v25[1] = v14;
+  v23_.v23 = *(_QWORD*)(v16 + 13312);
   v18 = *(_QWORD*)(GameData_21a60d8 + 552);
-  v26 = *(_QWORD*)(GameData_21a60d8 + 360);
-  v27 = *(_QWORD*)(v18 + 16);
-  LOBYTE(v25[2]) = 1;
-  GameRoutine_53c20((void*)(&v22), &v23);
+  v23_.v26 = *(_QWORD*)(GameData_21a60d8 + 360);
+  v23_.v27 = *(_QWORD*)(v18 + 16);
+  LOBYTE(v23_.v25[2]) = 1;
+  GameRoutine_53c20((void*)(&v22), &v23_.v23);
   v19 = v22;
   result = v15[6];
   v22 = 0;

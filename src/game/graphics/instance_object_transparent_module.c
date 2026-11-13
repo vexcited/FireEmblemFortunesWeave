@@ -146,7 +146,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
                               0x1.0aef000000000p+4f) /
                       0x1.f400000000000p+9f);
         *(float*)(v4 + v5 + 16) = v19;
-        if (v19 < v17) {
+        if (!(v19 >= v17)) {
           goto LABEL_77;
         }
       LABEL_38:
@@ -157,7 +157,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
           v20 = 0x0.0p+0f;
         }
         v26 = v4 + 8LL * (int)v10;
-        if (*(float*)(v26 + v5) >= v20) {
+        if (!(*(float*)(v26 + v5) < v20)) {
           v20 = *(float*)(v26 + v5);
         }
         *(float*)(v26 + v5) = v20;
@@ -171,7 +171,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
           if (v11 != 0x0.0p+0f ||
               *(float*)(v4 + v5 + 4) != 0x1.0000000000000p+0f) {
             *(_BYTE*)(result + 88) = 1;
-            if (*(float*)(v4 + v5) <= 0x0.0p+0f) {
+            if (!(*(float*)(v4 + v5) > 0x0.0p+0f)) {
               v12 = 0x1.0000000000000p+0f;
             }
             else {
@@ -183,7 +183,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
           if (*(float*)(v13 + 8) != 0x0.0p+0f ||
               *(float*)(v13 + 12) != 0x1.0000000000000p+0f) {
             *(_BYTE*)(result + 88) = 1;
-            if (*(float*)(v13 + 8) <= 0x0.0p+0f) {
+            if (!(*(float*)(v13 + 8) > 0x0.0p+0f)) {
               v9 = 0x1.0000000000000p+0f;
             }
             else {
@@ -202,7 +202,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
             v16 = fabsf(v7 / *(float*)(a2 + 16));
             if (v15 > v2) {
               v15 = v15 - v16;
-              if (v15 >= v2) {
+              if (!(v15 < v2)) {
                 goto LABEL_43;
               }
             LABEL_42:
@@ -217,7 +217,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
             }
           LABEL_43:
             v14 = v14 - v8;
-            if (v14 >= 0x0.0p+0f) {
+            if (!(v14 < 0x0.0p+0f)) {
             LABEL_51:
               *(float*)(v4 + v5) = v14;
               *(float*)(v4 + v5 + 4) = v15;
@@ -228,7 +228,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
             goto LABEL_51;
           }
           v18 = fabsf(v7 / *(float*)(a2 + 8));
-          if (v15 <= 0x1.0000000000000p+0f) {
+          if (!(v15 > 0x1.0000000000000p+0f)) {
             if (v15 < 0x1.0000000000000p+0f) {
               v15 = v15 + v18;
               if (v15 > 0x1.0000000000000p+0f) {
@@ -238,18 +238,18 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
           }
           else {
             v15 = v15 - v18;
-            if (v15 >= 0x1.0000000000000p+0f) {
+            if (!(v15 < 0x1.0000000000000p+0f)) {
               goto LABEL_48;
             }
           LABEL_47:
             v15 = 0x1.0000000000000p+0f;
           }
         LABEL_48:
-          if (v14 >= 0x0.0p+0f) {
+          if (!(v14 < 0x0.0p+0f)) {
             goto LABEL_51;
           }
           v14 = v8 + v14;
-          if (v14 <= 0x0.0p+0f) {
+          if (!(v14 > 0x0.0p+0f)) {
             goto LABEL_51;
           }
           goto LABEL_50;
@@ -265,11 +265,11 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
         v23 = *(float*)(v21 + 12);
         if (v22 > 0x0.0p+0f) {
           v24 = fabsf(v7 / *(float*)(a2 + 20));
-          if (v23 <= v2) {
-            if (v23 >= v2 || (v23 = v23 + v24) <= v2) {
+          if (!(v23 > v2)) {
+            if (!(v23 < v2) || !((v23 = v23 + v24) > v2)) {
             LABEL_64:
               v22 = v22 - v8;
-              if (v22 >= 0x0.0p+0f) {
+              if (!(v22 < 0x0.0p+0f)) {
                 goto LABEL_72;
               }
               goto LABEL_71;
@@ -277,7 +277,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
           }
           else {
             v23 = v23 - v24;
-            if (v23 >= v2) {
+            if (!(v23 < v2)) {
               goto LABEL_64;
             }
           }
@@ -287,7 +287,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
         v25 = fabsf(v7 / *(float*)(a2 + 12));
         if (v23 > 0x1.0000000000000p+0f) {
           v23 = v23 - v25;
-          if (v23 >= 0x1.0000000000000p+0f) {
+          if (!(v23 < 0x1.0000000000000p+0f)) {
             goto LABEL_69;
           }
         LABEL_68:
@@ -303,7 +303,7 @@ __int64 InstanceObjectTransparentModule_fb82a0(__int64 result, __int64 a2)
       LABEL_69:
         if (v22 < 0x0.0p+0f) {
           v22 = v8 + v22;
-          if (v22 <= 0x0.0p+0f) {
+          if (!(v22 > 0x0.0p+0f)) {
             goto LABEL_72;
           }
         LABEL_71:

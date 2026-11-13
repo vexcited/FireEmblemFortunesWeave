@@ -3623,7 +3623,7 @@ __int64 GameHr_d8cb20(__int64 result)
 __int64 GameHr_d8ce40(__int64 result)
 {
   int v1;
-  _DWORD* v2;
+  int* v2;
   int v3;
   _BYTE* v4;
   bool v5;
@@ -3637,7 +3637,7 @@ __int64 GameHr_d8ce40(__int64 result)
   int v14;
 
   v1 = *(_DWORD*)(result + 32);
-  v2 = (_DWORD*)result;
+  v2 = (int*)result;
   v3 = v1 + 1;
   *(_DWORD*)(result + 32) = v1 + 1;
   if (v1 == 0) {
@@ -3674,7 +3674,7 @@ __int64 GameHr_d8ce40(__int64 result)
 
 __int64 GameHr_d8d1a0(__int64 result)
 {
-  _DWORD* v1;
+  int* v1;
   int v2;
   __int64 v3;
   bool v4;
@@ -3687,7 +3687,7 @@ __int64 GameHr_d8d1a0(__int64 result)
   bool v12;
   int v13;
 
-  v1 = (_DWORD*)result;
+  v1 = (int*)result;
   v2 = *(_DWORD*)(result + 48) - 1;
   *(_DWORD*)(result + 48) = v2;
   if (v2 == 0) {
@@ -8300,7 +8300,7 @@ bool GameHr_da9380(unsigned __int64* a1, unsigned __int64* a2)
   unsigned __int64 v36;
   unsigned __int64 v37;
 
-  v2 = a2 - a1;
+  v2 = ((__int64)a2 - (__int64)a1) >> 3;
   if (v2 > 2) {
     if (v2 == 3) {
       v11 = *a1;

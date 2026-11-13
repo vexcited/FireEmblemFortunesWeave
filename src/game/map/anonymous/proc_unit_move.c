@@ -527,8 +527,9 @@ void ProcUnitMove_Unknown2(__int64 a1)
     }
     return;
   }
-  if ((float)(0x1.e000000000000p+5f /
-              (float)*(int*)(*game_g_frame_clock_ptr[0] + 476)) <= 0x0.0p+0f) {
+  if (!((float)(0x1.e000000000000p+5f /
+                (float)*(int*)(*game_g_frame_clock_ptr[0] + 476)) >
+        0x0.0p+0f)) {
     v6 = 0x1.0000000000000p+0f;
   }
   else {
@@ -549,7 +550,7 @@ void ProcUnitMove_Unknown2(__int64 a1)
   (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(v11 + 16))(
       (void*)(&v63), v10),
       v49 = COERCE_AS(__typeof__(v49), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  if (v13 <= 0x0.0p+0f) {
+  if (!(v13 > 0x0.0p+0f)) {
     v14 = 0;
   }
   else {
@@ -661,9 +662,9 @@ void ProcUnitMove_Unknown2(__int64 a1)
       *(_QWORD*)(v35 + 48) + 16LL))((void*)(&v62), v35 + 48),
       v49 = COERCE_AS(__typeof__(v49), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v38 = vsubq_f32(v62, v63);
-  if ((float)(vmuls_lane_f32(LANES128(v38).n128_f32[2], v38, 2) +
-              (float)(LANES128(v38).n128_f32[0] * LANES128(v38).n128_f32[0])) >=
-      0x1.0000000000000p-4f) {
+  if (!((float)(vmuls_lane_f32(LANES128(v38).n128_f32[2], v38, 2) +
+                (float)(LANES128(v38).n128_f32[0] *
+                        LANES128(v38).n128_f32[0])) < 0x1.0000000000000p-4f)) {
     v36 = 0x0.0p+0f;
     if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, 1065353216LL),
                              COERCE_AS(float32x2_t, 1065353216LL)))

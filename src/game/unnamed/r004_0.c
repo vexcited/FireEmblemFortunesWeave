@@ -1362,7 +1362,8 @@ __int64 GameHr_d4a880(__int64 result, _DWORD* a2, _DWORD* a3)
       return result;
     }
     v5 = a3;
-    result = ((__int64 (*)(char*, _DWORD*))GameData_1fdc1d8[v4])(&v6, v3);
+    result = ((__int64 (*)(char*, _DWORD*))
+                  GameData_1fdc1d8[(unsigned int)v4])(&v6, v3);
     a3 = v5;
   }
   v3[24] = -1;

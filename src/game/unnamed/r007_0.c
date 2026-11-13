@@ -1163,8 +1163,9 @@ __int64 GameHr_1290b80(__int64 a1, __int64 a2, __int64 a3, _DWORD* a4)
       return 1;
     }
     v8 = *(_DWORD*)(a2 + 28);
-    if (v8 < 0 || *(_DWORD*)a2 <= v4 && (v8 | (*(_DWORD*)(a2 + 32) << 16)) >
-                                            (a4[3] | (a4[4] << 16))) {
+    if (v8 < 0 || *(_DWORD*)a2 <= v4 &&
+                      (int)(v8 | (*(_DWORD*)(a2 + 32) << 16)) >
+                          (int)(a4[3] | (a4[4] << 16))) {
       return 1;
     }
   }

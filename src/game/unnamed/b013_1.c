@@ -1772,7 +1772,7 @@ __int64 GameHr_eab520(__int64 a1, __int64 a2, __int64* a3)
       *(_DWORD*)(v15 + 24) = -1;
       v16 = *(_DWORD*)(v9 + 24);
       if (v16 != -1) {
-        v17 = GameData_1fed708[v16];
+        v17 = GameData_1fed708[(unsigned int)v16];
         v24 = v15;
         ((void (*)(__int64*, __int64))v17)(&v24, v9);
         *(_DWORD*)(v15 + 24) = v16;

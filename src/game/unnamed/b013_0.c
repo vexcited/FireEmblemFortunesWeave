@@ -404,6 +404,9 @@ __int64 GameRoutine_fc8470(void);
 __int64 GameRoutine_fc8790(void);
 __int64 GameRoutine_ffd180(_QWORD, _QWORD);
 __int64 GameRoutine_ffd4e0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_ffd4e0_alt1(PSEUDO_X8,
+                                                        _QWORD) __asm__(
+    "GameRoutine_ffd4e0");
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
@@ -1052,7 +1055,7 @@ __int64 GameHr_ea5c40(__int64 a1, __int64 a2)
   else {
     v18 = 1;
   }
-  if (v18 == (_DWORD)v16 || *(_DWORD*)(GameData_21d99c8 + 4LL * v18) <=
+  if (v18 == (_DWORD)v16 || *(int*)(GameData_21d99c8 + 4LL * v18) <=
                                 (int)*((unsigned __int16*)v15 + 6)) {
     return 0;
   }
@@ -10202,9 +10205,13 @@ unsigned __int64 GameHr_ef8e60(unsigned __int64 result)
   __int64 v38;
   __int64 v39;
   __int64 v40;
-  char v41;
-  _BYTE v42[7];
-  _BYTE* v43;
+  struct {
+    _QWORD pad0;
+    char v41;
+    _BYTE v42[7];
+    _QWORD pad1;
+    _BYTE* v43;
+  } v41_;
 
   switch (*(_DWORD*)(result + 208)) {
   case 0:
@@ -10250,12 +10257,12 @@ unsigned __int64 GameHr_ef8e60(unsigned __int64 result)
     else {
       v25 = result + 217;
     }
-    GameRoutine_ffd4e0(v25);
-    if ((v41 & 1) != 0) {
-      v26 = v43;
+    GameRoutine_ffd4e0_alt1(&v41_, v25);
+    if ((v41_.v41 & 1) != 0) {
+      v26 = v41_.v43;
     }
     else {
-      v26 = v42;
+      v26 = v41_.v42;
     }
     result = GameRoutine_7a86e0(v26);
     if (result == 0) {
@@ -10318,12 +10325,13 @@ unsigned __int64 GameHr_ef8e60(unsigned __int64 result)
         }
         if (v37 != v30) {
         LABEL_123:
-          if ((v41 & 1) != 0 && v43 != nullptr) {
+          if ((v41_.v41 & 1) != 0 && v41_.v43 != nullptr) {
             v39 = 128;
             if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
               v39 = 56;
             }
-            return GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v39, v43);
+            return GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v39,
+                                       v41_.v43);
           }
           return result;
         }

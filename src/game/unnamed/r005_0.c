@@ -4704,7 +4704,7 @@ bool GameHr_f624c0(__int64* a1, __int64* a2)
   __int64 v33;
   __int64 v34;
 
-  v2 = a2 - a1;
+  v2 = ((__int64)a2 - (__int64)a1) >> 3;
   if (v2 > 2) {
     if (v2 == 3) {
       v5 = *a1;

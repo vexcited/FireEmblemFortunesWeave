@@ -33,7 +33,7 @@ extern int GameData_21fdf08;
 extern int GameData_21fdf14;
 __int64 Manager_18cf680(__int64 a1);
 __int64 Manager_18cfa40(__int64 a1, _QWORD* a2);
-__int64 Manager_18cfba0(__int64 a1);
+__int64 Manager_18cfba0(__int64 a1, _QWORD* a2);
 __int64 Manager_18cfcb0(__int64 a1);
 __int64 Manager_18cfce0_alt2(__int64 result) __asm__("Manager_18cfce0");
 void omovie_Manager_SetupGfxResources_lambda0_Invoke(__int64 a1, _WORD* a2);
@@ -361,10 +361,12 @@ __int64 Manager_18cfa40(__int64 a1, _QWORD* a2)
   __int64 result;
   __int64 v5;
 
-  if (GameRoutine_18d04c0(a1 + 144) == 0) {
+  if (GameRoutine_18d04c0_alt1((_QWORD*)(a1 + 144), (unsigned __int8*)a2) ==
+      0) {
     GameRoutine_18cf910(a1, a2);
   }
-  result = GameRoutine_18d04c0(a1 + 144);
+  result = (__int64)GameRoutine_18d04c0_alt1((_QWORD*)(a1 + 144),
+                                             (unsigned __int8*)a2);
   if (result != 0) {
     v5 = result;
     if ((MoviePlayer_18d1b90(*(_QWORD*)(result + 40)) & 1) == 0) {
@@ -402,7 +404,7 @@ __int64 Manager_18cfa40(__int64 a1, _QWORD* a2)
   return result;
 }
 
-__int64 Manager_18cfba0(__int64 a1)
+__int64 Manager_18cfba0(__int64 a1, _QWORD* a2)
 {
   __int64 result;
   __int64 v3;
@@ -414,7 +416,8 @@ __int64 Manager_18cfba0(__int64 a1)
   _QWORD* v9;
   __int64 v10;
 
-  result = GameRoutine_18d04c0(a1 + 144);
+  result = (__int64)GameRoutine_18d04c0_alt1((_QWORD*)(a1 + 144),
+                                             (unsigned __int8*)a2);
   if (result != 0) {
     v3 = result;
     MoviePlayer_18d2310(*(_QWORD*)(result + 40));
@@ -436,7 +439,8 @@ __int64 Manager_18cfba0(__int64 a1)
     *(_QWORD*)(v10 + 8) = v9;
     *(_QWORD*)(v4 + 16592) = v9;
     ++*(_QWORD*)(v4 + 16608);
-    result = GameRoutine_18d04c0(a1 + 144);
+    result = (__int64)GameRoutine_18d04c0_alt1((_QWORD*)(a1 + 144),
+                                               (unsigned __int8*)a2);
     if (result != 0) {
       result = GameRoutine_18d0c60(a1 + 144, result);
     }

@@ -3860,7 +3860,8 @@ __int64* GameHr_2a0440(_QWORD* a1, unsigned int a2, unsigned int a3, __int64 a4,
         return nullptr;
       }
       v20 = (*((_DWORD*)v19 - 105) + *((unsigned __int8*)v19 - 288)) &
-            ~((*((_DWORD*)v19 - 105) + *((unsigned __int8*)v19 - 288)) >> 31);
+            ~((int)(*((_DWORD*)v19 - 105) +
+                    *((unsigned __int8*)v19 - 288)) >> 31);
       if (v20 >= 127) {
         v20 = 127;
       }
@@ -3893,7 +3894,8 @@ __int64* GameHr_2a0440(_QWORD* a1, unsigned int a2, unsigned int a3, __int64 a4,
       GameRoutine_2804d0(v5 - 68, a2, a3);
       for (i = (_QWORD*)a1[5]; i != v7; i = (_QWORD*)i[1]) {
         v17 = (*((_DWORD*)i - 105) + *((unsigned __int8*)i - 288)) &
-              ~((*((_DWORD*)i - 105) + *((unsigned __int8*)i - 288)) >> 31);
+              ~((int)(*((_DWORD*)i - 105) +
+                      *((unsigned __int8*)i - 288)) >> 31);
         if (v17 >= 127) {
           v17 = 127;
         }

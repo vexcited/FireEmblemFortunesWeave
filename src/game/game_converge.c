@@ -482,7 +482,7 @@ __int64 GameConverge_8e7ec0(__int64 result, unsigned __int8 a2, int a3)
   if (game_GameModeData_instance_ != 0) {
     v6 = *(_DWORD*)(game_GameModeData_instance_ + 72);
   }
-  if (*(_DWORD*)(v3 + 216LL * a2 + 320) > v6) {
+  if (*(int*)(v3 + 216LL * a2 + 320) > v6) {
     v6 = *(_DWORD*)(v3 + 216LL * a2 + 320);
   }
   *(_DWORD*)(v3 + 216LL * a2 + 320) = v6;
@@ -992,7 +992,7 @@ __int64 game_GameConverge_Impl_Commit(__int64 result, __int64* a2)
             v56 = 0;
             do {
               v57 = *(_DWORD*)(*(_QWORD*)(v45 + 8) + v55);
-              if (*(_DWORD*)(v48 + v55) < v57) {
+              if (*(int*)(v48 + v55) < v57) {
                 *(_DWORD*)(v48 + v55) = v57;
                 v48 = *(_QWORD*)(v46 + 8);
                 v47 = *(_QWORD*)(v46 + 16);
@@ -1065,7 +1065,7 @@ __int64 game_GameConverge_Impl_Commit(__int64 result, __int64* a2)
       v32 = 0;
       do {
         v33 = *(_DWORD*)(*(_QWORD*)(v22 + 8) + v31);
-        if (*(_DWORD*)(v25 + v31) < v33) {
+        if (*(int*)(v25 + v31) < v33) {
           *(_DWORD*)(v25 + v31) = v33;
           v25 = *(_QWORD*)(v23 + 8);
           v24 = *(_QWORD*)(v23 + 16);

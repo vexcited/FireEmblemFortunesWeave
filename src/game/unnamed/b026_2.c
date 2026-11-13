@@ -6060,19 +6060,19 @@ __int64* GameHr_19a2d40(__int64* result, __int64* a2, __int64* a3, __int64* a4,
   v6 = *a5;
   v7 = *result;
   if ((*a2 == *a5) != (*result != *a5)) {
-    if (*(float*)(v5 + 52) <= *(float*)(v7 + 52)) {
+    if (!(*(float*)(v5 + 52) > *(float*)(v7 + 52))) {
       goto LABEL_3;
     }
   LABEL_7:
     v8 = *a3;
     if ((v5 != v6) != (*a3 == v6)) {
-      if (*(float*)(v8 + 52) <= *(float*)(v5 + 52)) {
+      if (!(*(float*)(v8 + 52) > *(float*)(v5 + 52))) {
       LABEL_9:
         *result = v5;
         *a2 = v7;
         v5 = *a3;
         if ((*a3 == *a5) != (v7 != *a5)) {
-          if (*(float*)(v5 + 52) <= *(float*)(v7 + 52)) {
+          if (!(*(float*)(v5 + 52) > *(float*)(v7 + 52))) {
             goto LABEL_22;
           }
         }
@@ -6097,7 +6097,7 @@ __int64* GameHr_19a2d40(__int64* result, __int64* a2, __int64* a3, __int64* a4,
 LABEL_3:
   v7 = *a3;
   if ((v5 != v6) != (*a3 == v6)) {
-    if (*(float*)(v7 + 52) <= *(float*)(v5 + 52)) {
+    if (!(*(float*)(v7 + 52) > *(float*)(v5 + 52))) {
       goto LABEL_21;
     }
     goto LABEL_15;
@@ -6113,7 +6113,7 @@ LABEL_15:
   v9 = *a2;
   v10 = *result;
   if ((*a2 == *a5) != (*result != *a5)) {
-    if (*(float*)(v9 + 52) <= *(float*)(v10 + 52)) {
+    if (!(*(float*)(v9 + 52) > *(float*)(v10 + 52))) {
       goto LABEL_22;
     }
   }
@@ -6126,7 +6126,7 @@ LABEL_15:
 LABEL_22:
   v11 = *a4;
   if ((*a4 == *a5) != (v5 != *a5)) {
-    if (*(float*)(v11 + 52) <= *(float*)(v5 + 52)) {
+    if (!(*(float*)(v11 + 52) > *(float*)(v5 + 52))) {
       return result;
     }
   }
@@ -6138,7 +6138,7 @@ LABEL_22:
   v12 = *a3;
   v13 = *a2;
   if ((*a3 == *a5) != (*a2 != *a5)) {
-    if (*(float*)(v12 + 52) <= *(float*)(v13 + 52)) {
+    if (!(*(float*)(v12 + 52) > *(float*)(v13 + 52))) {
       return result;
     }
   }

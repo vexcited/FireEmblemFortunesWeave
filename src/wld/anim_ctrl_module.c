@@ -1770,7 +1770,7 @@ _QWORD* AnimCtrlModule_a78700(_QWORD* result, unsigned __int64 a2,
 
   v3 = (_QWORD*)result[1];
   v4 = result;
-  v5 = 0x4EC4EC4EC4EC4EC5LL * (((__int64)v3 - *result) >> 3);
+  v5 = 0x4EC4EC4EC4EC4EC5LL * ((__int64)((__int64)v3 - *result) >> 3);
   v6 = a2 >= v5;
   v7 = a2 - v5;
   if (v7 != 0 && v6) {
@@ -1790,7 +1790,7 @@ _QWORD* AnimCtrlModule_a78700(_QWORD* result, unsigned __int64 a2,
           else {
             v11 = 56;
           }
-          nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v11, a3);
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v9 + v11, v10);
         }
         v12 = *(v3 - 10);
         if (v12 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),

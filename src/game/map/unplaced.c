@@ -19986,7 +19986,8 @@ void game_map_a18eb0(int* a1, int* a2, int* a3, int* a4, int* a5, __int64* a6)
   if (v16 == 0) {
     goto LABEL_15;
   }
-  if (v14 >= (*(float (**)(__int64, int*))(*(_QWORD*)v16 + 48LL))(v16, &v36)) {
+  if (!(v14 <
+        (*(float (**)(__int64, int*))(*(_QWORD*)v16 + 48LL))(v16, &v36))) {
     return;
   }
   v17 = *a4;
@@ -20009,7 +20010,8 @@ void game_map_a18eb0(int* a1, int* a2, int* a3, int* a4, int* a5, __int64* a6)
   if (v22 == 0) {
     goto LABEL_15;
   }
-  if (v20 >= (*(float (**)(__int64, int*))(*(_QWORD*)v22 + 48LL))(v22, &v36)) {
+  if (!(v20 <
+        (*(float (**)(__int64, int*))(*(_QWORD*)v22 + 48LL))(v22, &v36))) {
     return;
   }
   v23 = *a3;
@@ -20032,7 +20034,8 @@ void game_map_a18eb0(int* a1, int* a2, int* a3, int* a4, int* a5, __int64* a6)
   if (v28 == 0) {
     goto LABEL_15;
   }
-  if (v26 >= (*(float (**)(__int64, int*))(*(_QWORD*)v28 + 48LL))(v28, &v36)) {
+  if (!(v26 <
+        (*(float (**)(__int64, int*))(*(_QWORD*)v28 + 48LL))(v28, &v36))) {
     return;
   }
   v29 = *a2;

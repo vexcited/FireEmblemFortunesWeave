@@ -187,8 +187,8 @@ __int64 GameHr_10ab80(__int64 a1)
       v8 = *(float*)(v4 + 60);
       v7 = v5 + (float)(v6 * v3);
       *(float*)(v4 + 56) = v7;
-      if (v6 >= 0.0f) {
-        if (v7 <= v8) {
+      if (!(v6 < 0.0f)) {
+        if (!(v7 > v8)) {
           goto LABEL_10;
         }
       LABEL_9:
@@ -225,8 +225,8 @@ __int64 GameHr_10ab80(__int64 a1)
     v13 = *(float*)(v9 + 72);
     v12 = v10 + (float)(v11 * v3);
     *(float*)(v9 + 68) = v12;
-    if (v11 >= 0.0f) {
-      if (v12 <= v13) {
+    if (!(v11 < 0.0f)) {
+      if (!(v12 > v13)) {
         goto LABEL_19;
       }
     LABEL_18:
@@ -262,8 +262,8 @@ __int64 GameHr_10ab80(__int64 a1)
     v18 = *(float*)(v14 + 84);
     v17 = v15 + (float)(v16 * v3);
     *(float*)(v14 + 80) = v17;
-    if (v16 >= 0.0f) {
-      if (v17 <= v18) {
+    if (!(v16 < 0.0f)) {
+      if (!(v17 > v18)) {
         goto LABEL_28;
       }
     LABEL_27:
@@ -295,8 +295,8 @@ __int64 GameHr_10ab80(__int64 a1)
     v21 = *(float*)(v19 + 96);
     v22 = *(float*)(v19 + 92) + (float)(v20 * v3);
     *(float*)(v19 + 92) = v22;
-    if (v20 >= 0.0f) {
-      if (v22 <= v21) {
+    if (!(v20 < 0.0f)) {
+      if (!(v22 > v21)) {
         goto LABEL_37;
       }
     LABEL_36:
@@ -313,8 +313,8 @@ __int64 GameHr_10ab80(__int64 a1)
       v24 = *(float*)(v19 + 104) + (float)(v23 * v3);
       v25 = *(float*)(a1 + v2 + 108);
       *(float*)(v19 + 104) = v24;
-      if (v23 >= 0.0f) {
-        if (v24 <= v25) {
+      if (!(v23 < 0.0f)) {
+        if (!(v24 > v25)) {
           goto LABEL_43;
         }
       LABEL_42:
@@ -333,8 +333,8 @@ __int64 GameHr_10ab80(__int64 a1)
       v28 = *(float*)(v26 + 120);
       v29 = *(float*)(v26 + 116) + (float)(v27 * v3);
       *(float*)(v26 + 116) = v29;
-      if (v27 >= 0.0f) {
-        if (v29 <= v28) {
+      if (!(v27 < 0.0f)) {
+        if (!(v29 > v28)) {
           goto LABEL_49;
         }
       LABEL_48:
@@ -352,8 +352,8 @@ __int64 GameHr_10ab80(__int64 a1)
       v31 = *(float*)(v26 + 128) + (float)(v30 * v3);
       v32 = *(float*)(a1 + v2 + 132);
       *(float*)(v26 + 128) = v31;
-      if (v30 >= 0.0f) {
-        if (v31 <= v32) {
+      if (!(v30 < 0.0f)) {
+        if (!(v31 > v32)) {
           goto LABEL_55;
         }
       LABEL_54:
@@ -372,8 +372,8 @@ __int64 GameHr_10ab80(__int64 a1)
       v35 = *(float*)(v33 + 144);
       v36 = *(float*)(v33 + 140) + (float)(v34 * v3);
       *(float*)(v33 + 140) = v36;
-      if (v34 >= 0.0f) {
-        if (v36 <= v35) {
+      if (!(v34 < 0.0f)) {
+        if (!(v36 > v35)) {
           goto LABEL_61;
         }
       LABEL_60:
@@ -391,8 +391,8 @@ __int64 GameHr_10ab80(__int64 a1)
       v38 = *(float*)(v33 + 152) + (float)(v37 * v3);
       v39 = *(float*)(a1 + v2 + 156);
       *(float*)(v33 + 152) = v38;
-      if (v37 >= 0.0f) {
-        if (v38 <= v39) {
+      if (!(v37 < 0.0f)) {
+        if (!(v38 > v39)) {
           goto LABEL_67;
         }
       LABEL_66:
@@ -411,8 +411,8 @@ __int64 GameHr_10ab80(__int64 a1)
       v42 = *(float*)(v40 + 168);
       v43 = *(float*)(v40 + 164) + (float)(v41 * v3);
       *(float*)(v40 + 164) = v43;
-      if (v41 >= 0.0f) {
-        if (v43 <= v42) {
+      if (!(v41 < 0.0f)) {
+        if (!(v43 > v42)) {
           goto LABEL_73;
         }
       LABEL_72:
@@ -430,7 +430,7 @@ __int64 GameHr_10ab80(__int64 a1)
       v45 = *(float*)(v40 + 176) + (float)(v44 * v3);
       v46 = *(float*)(a1 + v2 + 180);
       *(float*)(v40 + 176) = v45;
-      if (v44 >= 0.0f) {
+      if (!(v44 < 0.0f)) {
         if (v45 > v46) {
         LABEL_2:
           *(float*)(v40 + 176) = v46;
@@ -2226,7 +2226,7 @@ void GameHr_4a5a10(__int64 a1, float* a2, float* a3, float* a4, float* a5,
     v40 = (float)((float)(v37 * v54) + (float)(v56 * *a7)) + (float)(v52 * v38);
     v41 = (float)((float)(v37 * v25) + (float)(v61 * *a7)) + (float)(v63 * v38);
     v42 = (float)((float)(v37 * v20) + (float)(v19 * *a7)) + (float)(v21 * v38);
-    if (v39 >= v40) {
+    if (!(v39 < v40)) {
       v43 =
           (float)((float)(v37 * v54) + (float)(v56 * *a7)) + (float)(v52 * v38);
     }
@@ -2234,18 +2234,18 @@ void GameHr_4a5a10(__int64 a1, float* a2, float* a3, float* a4, float* a5,
       v43 = (float)((float)(v55 * v37) + (float)(v60[0] * *a7)) +
             (float)(v53 * v38);
     }
-    if (v43 >= v41) {
+    if (!(v43 < v41)) {
       v43 = v41;
     }
-    if (v43 >= v42) {
+    if (!(v43 < v42)) {
       v44 = v42;
     }
     else {
       v44 = v43;
     }
-    if (v44 <= (float)((float)(a9 + 0.002f) + (float)(v51 + a10))) {
+    if (!(v44 > (float)((float)(a9 + 0.002f) + (float)(v51 + a10)))) {
       v45 = a10 - (float)(a9 + 0.002f);
-      if (v39 >= v45 || v40 >= v45 || v41 >= v45 || v42 >= v45) {
+      if (!(v39 < v45) || !(v40 < v45) || !(v41 < v45) || !(v42 < v45)) {
         v46 = GameRoutine_1a0a010(v29);
         if (v46 != 0.0f) {
           v47 = 1.0f / v46;
@@ -2255,13 +2255,13 @@ void GameHr_4a5a10(__int64 a1, float* a2, float* a3, float* a4, float* a5,
           v59[0] = v48;
           v59[1] = v49;
           if ((GameRoutine_507c70(v60, v59, a1 + 524, a7, &v67, a9) & 1) != 0) {
-            if (*a8 >= 1.0f) {
+            if (!(*a8 < 1.0f)) {
               v50 = *a8;
             }
             else {
               v50 = 1.0f;
             }
-            if (v67 <= (float)(*a8 + (float)(v50 * 0.001f))) {
+            if (!(v67 > (float)(*a8 + (float)(v50 * 0.001f)))) {
               *a8 = v67;
               *a11 = 1;
             }
@@ -3749,8 +3749,8 @@ __int64 GameHr_d96be0(__int64 result)
     v5 = *(float*)(v6 + 20);
     v8 = *(float*)(v6 + 24);
     v9 = fabsf(v7 * *(float*)(v6 + 28));
-    if (v5 <= v8) {
-      if (v5 >= v8 || (v5 = v5 + v9) <= v8) {
+    if (!(v5 > v8)) {
+      if (!(v5 < v8) || !((v5 = v5 + v9) > v8)) {
       LABEL_13:
         *(float*)(v6 + 20) = v5;
         if (v3 != 0 && *(_BYTE*)(v3 + 152) == 3) {
@@ -3770,7 +3770,7 @@ __int64 GameHr_d96be0(__int64 result)
     }
     else {
       v5 = v5 - v9;
-      if (v5 >= v8) {
+      if (!(v5 < v8)) {
         goto LABEL_13;
       }
     }

@@ -5576,7 +5576,7 @@ __int64* GameHr_1939d80(__int64* result, __int64* a2, __int64* a3, __int64* a4,
   v5 = **(_QWORD**)(a5 + 8);
   v6 = *(float*)((char*)a2 + v5);
   v7 = *(float*)((char*)a3 + v5);
-  if (v6 <= *(float*)((char*)result + v5)) {
+  if (!(v6 > *(float*)((char*)result + v5))) {
     if (v7 > v6) {
       v11 = *a2;
       v12 = a2[1];

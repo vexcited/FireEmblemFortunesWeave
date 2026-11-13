@@ -238,7 +238,7 @@ __int64 GameRoutine_128e990(__int64 result, _DWORD*);
 
 __int64 GameRoutine_12aaf80(__int64);
 
-bool GameRoutine_12ac240(__int64*, __int64);
+__int64 GameRoutine_12ac240(__int64*, __int64);
 
 __int64 GameRoutine_12b41a0(void);
 

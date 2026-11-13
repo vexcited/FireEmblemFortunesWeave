@@ -1072,7 +1072,9 @@ __int64 save_Task_Open_lambda0_Clone(__int64 a1)
   *(_QWORD*)(result + 8) = v4;
   if ((v3 & 1) != 0) {
     v7 = result;
-    fw_text_String_CopyTerminated(result + 16, *(_QWORD*)(a1 + 32));
+    fw_text_String_CopyTerminated_alt1((__int64*)(result + 16),
+                                       *(_QWORD*)(a1 + 32),
+                                       *(_QWORD*)(a1 + 24));
     result = v7;
   }
   else {
@@ -1096,7 +1098,8 @@ _QWORD* save_Task_Open_lambda0_CloneInto(_QWORD* result, __int64 a2)
   *(_QWORD*)a2 = GameData_2109438;
   *(_QWORD*)(a2 + 8) = result[1];
   if ((result[2] & 1) != 0) {
-    result = (_QWORD*)fw_text_String_CopyTerminated(a2 + 16, result[4]);
+    result = (_QWORD*)fw_text_String_CopyTerminated_alt1(
+        (__int64*)(a2 + 16), result[4], result[3]);
   }
   else {
     v4 = result[2];

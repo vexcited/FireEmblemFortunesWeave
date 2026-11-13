@@ -4745,7 +4745,7 @@ __int64 GameHr_10790e0(__int64 a1)
             v11 = *(unsigned __int16*)(v9 + 12);
             v12 = v9 + 8 + 16 * v11;
             v13 = *(_DWORD*)v12;
-            if (*(_DWORD*)(v9 + 8) < *(_DWORD*)v12) {
+            if (*(int*)(v9 + 8) < *(int*)v12) {
               do {
                 if ((unsigned int)(v13 >> 3) <= 0xA) {
                   v14 = ((unsigned __int8)GameData_1abbc8d[~(v13 >> 3) + 11] >>
@@ -4756,7 +4756,7 @@ __int64 GameHr_10790e0(__int64 a1)
                   v14 = 0;
                 }
                 v11 = *(unsigned __int16*)(v9 + 12 + 16 * v11 + 2 * v14);
-                v15 = v13 < *(_DWORD*)(v10 + 16 * v11);
+                v15 = v13 < *(int*)(v10 + 16 * v11);
                 v13 = *(_DWORD*)(v10 + 16 * v11);
               } while (v15);
               v12 = v10 + 16 * v11;

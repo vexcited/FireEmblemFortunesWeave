@@ -69,6 +69,7 @@ void __attribute__((noreturn)) GameRoutine_8123d0(_QWORD);
 __int64 CmdBtlUnit_e7ada0_alt3(__int64 result) __asm__("CmdBtlUnit_e7ada0");
 bool CmdBtlUnit_e7c280(__int64 a1);
 bool CmdBtlUnit_e7c4f0(__int64 a1);
+__int64 CmdBtlUnit_e7c4f0_alt1(__int64) __asm__("CmdBtlUnit_e7c4f0");
 __int64 CmdBtlUnit_e7c980_alt1(__int64 result) __asm__("CmdBtlUnit_e7c980");
 __int64 CmdBtlUnit_e7cbc0(__int64 a1);
 _QWORD* CmdBtlUnit_e7cc50(_QWORD* result);
@@ -3076,7 +3077,7 @@ __int64 CmdBtlUnit_e7d620(__int64 result)
       }
       result = std___1___shared_weak_count___release_weak_alt2(v6);
       if (v7 != 0 && (*(_DWORD*)(v5 + 24) != 0 || *(_DWORD*)(v5 + 12) != 0)) {
-        result = CmdBtlUnit_e7c4f0(v1);
+        result = CmdBtlUnit_e7c4f0_alt1(v1);
         if ((result & 1) == 0) {
           return CmdBtlUnit_e7c6f0_alt1(v1, 1, 0x1.0000000000000p-1f);
         }
@@ -4242,7 +4243,7 @@ game_cmdbtl_CmdBtlUnit_GetLinkItem_Heal_lambda0_Invoke(__int64 a1,
     v5 = *(_BYTE**)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *a2);
     if ((v5[336] & 0x40) == 0 && v5[73] == 2) {
       v6 = (unsigned __int8)v5[88] >> ((*((_BYTE*)a2 + 3) & 8) != 0);
-      if (**(_DWORD**)(a1 + 16) < v6) {
+      if (**(int**)(a1 + 16) < v6) {
         **(_QWORD**)(a1 + 8) = a2;
         **(_DWORD**)(a1 + 16) = v6;
       }

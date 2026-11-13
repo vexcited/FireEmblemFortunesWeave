@@ -1847,7 +1847,7 @@ __int64 GameHr_6886c0(__int64 result, __int64* a2, __int64 a3, char a4)
     while (1) {
       while (1) {
         v7 = v8;
-        v9 = a2 - v8;
+        v9 = ((__int64)a2 - (__int64)v8) >> 3;
         if (v9 > 2) {
           if (v9 == 3) {
             v75 = *v8;
@@ -5556,7 +5556,7 @@ void GameHr_6c7cb0(__int64 a1, __int64 a2, __int64 a3)
   LABEL_12:
     *(_DWORD*)(a1 + 416) = v6 & 0xFFFFEFFF;
     *(float*)&v7 = GameRoutine_764490();
-    if (*(float*)&v7 <= 0.0) {
+    if (!(*(float*)&v7 > 0.0)) {
       return;
     }
     v9 = *(unsigned __int8*)(a1 + 176);
@@ -5567,7 +5567,7 @@ void GameHr_6c7cb0(__int64 a1, __int64 a2, __int64 a3)
       *(_QWORD*)&v7 = 0;
     }
     else {
-      if (*(float*)(a1 + 160) <= 0.0) {
+      if (!(*(float*)(a1 + 160) > 0.0)) {
         if (((*(__int64 (**)(__int64, _QWORD*, __int64))(
                  *(_QWORD*)(a1 + 152) + 8LL))(a1 + 152, v19, a1 + 184) &
              1) != 0) {

@@ -501,7 +501,7 @@ __int64 TutorialInfoImpl_17e6660(__int64 a1, unsigned __int8 a2, char a3)
   }
   v13 = *(_DWORD*)(a1 + 132);
   v14 = *(_QWORD*)(a1 + 144);
-  if (v13 < (unsigned __int64)((*(_QWORD*)(a1 + 152) - v14) >> 2)) {
+  if (v13 < (unsigned __int64)((__int64)(*(_QWORD*)(a1 + 152) - v14) >> 2)) {
     v13 = *(_DWORD*)(v14 + 4LL * v13);
   }
   v15 = GameRoutine_17e5d20_alt1((_QWORD*)a1, v13);

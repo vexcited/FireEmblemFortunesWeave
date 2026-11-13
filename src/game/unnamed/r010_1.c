@@ -685,7 +685,7 @@ __int64* GameHr_194cb90(__int64* result, __int64* a2, __int64* a3, __int64* a4,
   v6 = **(_QWORD**)(a6 + 8);
   v7 = *(float*)((char*)a2 + v6);
   v8 = *(float*)((char*)a3 + v6);
-  if (v7 >= *(float*)((char*)result + v6)) {
+  if (!(v7 < *(float*)((char*)result + v6))) {
     if (v8 < v7) {
       v10 = *a2;
       *a2 = *a3;

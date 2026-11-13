@@ -557,8 +557,6 @@ void IndividualMenu_Unknown50(__int64 a1, __int64* a2)
 __int64 IndividualMenu_Unknown35(__int64 a1)
 {
   __int64 v2;
-  long double v3;
-  double v4;
   __int64 v5;
   __int64 (**v6)();
   __int64 v7;
@@ -587,7 +585,8 @@ __int64 IndividualMenu_Unknown35(__int64 a1)
   v2 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
                                       1072, 16, 0);
   if (*(_QWORD*)(a1 + 208) != 0 &&
-      (v5 = std___1___shared_weak_count_lock(v3, v4)) != 0) {
+      (v5 = std___1___shared_weak_count_lock_alt1(*(_QWORD*)(a1 + 208))) !=
+          0) {
     v6 = *(__int64 (***)())(a1 + 200);
     v7 = v5;
     v8 = ui_LayoutAccessor_FindPartsLayout(a1 + 200, "L_List");

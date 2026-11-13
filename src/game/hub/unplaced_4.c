@@ -2345,7 +2345,7 @@ __int64 game_hub_efa580(__int64 a1)
               0x1.f400000000000p+9f);
   if (*v9 > 0x0.0p+0f) {
     v8 = v8 - v10;
-    if (v8 >= 0x0.0p+0f) {
+    if (!(v8 < 0x0.0p+0f)) {
       goto LABEL_23;
     }
     goto LABEL_22;
@@ -2371,7 +2371,7 @@ LABEL_23:
   }
   v14 = *(float**)(v12 + 16);
   v15 = v14 != nullptr && ((*(_BYTE*)(*(_QWORD*)v14 + 12LL) & 1) != 0 ||
-                           v14[8] < *(float*)(*(_QWORD*)v14 + 8LL));
+                           !(v14[8] >= *(float*)(*(_QWORD*)v14 + 8LL)));
   if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     v17 = result;
@@ -2381,7 +2381,7 @@ LABEL_23:
       goto LABEL_34;
     }
   LABEL_33:
-    if (*(float*)(v11 + 8) <= 0x0.0p+0f) {
+    if (!(*(float*)(v11 + 8) > 0x0.0p+0f)) {
       goto LABEL_35;
     }
     goto LABEL_34;

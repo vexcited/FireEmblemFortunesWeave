@@ -7218,7 +7218,7 @@ float* GameHr_5d8fc0(float* a1, float* a2)
     do {
       v10 = i[2];
       i += 2;
-    } while (v10 <= v5);
+    } while (!(v10 > v5));
     if (i < a2) {
       goto LABEL_32;
     }
@@ -7258,12 +7258,12 @@ LABEL_21:
   if (i < a2) {
     if (v5 < 0.0) {
       for (a2 -= 2;; a2 -= 2) {
-        if (v4 >= 0.0) {
-          if (v4 <= v5) {
+        if (!(v4 < 0.0)) {
+          if (!(v4 > v5)) {
             goto LABEL_45;
           }
         }
-        else if (v4 >= v5) {
+        else if (!(v4 < v5)) {
           goto LABEL_45;
         }
         v9 = *(a2 - 2);
@@ -7304,7 +7304,7 @@ LABEL_45:
           if (v17 < 0.0) {
             break;
           }
-          if (v18 <= v5) {
+          if (!(v18 > v5)) {
             goto LABEL_45;
           }
         }
@@ -7314,7 +7314,7 @@ LABEL_45:
       do {
         v13 = i[2];
         i += 2;
-      } while (v13 <= v5);
+      } while (!(v13 > v5));
       do {
         v14 = *(a2 - 2);
         a2 -= 2;
@@ -7363,7 +7363,7 @@ unsigned __int64 GameHr_5d91c0(float* a1, float* a2)
   v2 = *a1;
   v3 = *((_DWORD*)a1 + 1);
   v4 = *a1;
-  if (*a1 >= 0x0.0p+0f) {
+  if (!(*a1 < 0x0.0p+0f)) {
     v14 = 8;
     v7 = (unsigned __int64)a1;
     do {
@@ -7375,7 +7375,7 @@ unsigned __int64 GameHr_5d91c0(float* a1, float* a2)
       do {
         v16 = *(a2 - 2);
         a2 -= 2;
-      } while (v16 >= v4);
+      } while (!(v16 < v4));
     }
     else if (v7 < (unsigned __int64)a2) {
       v17 = a2 - 2;
@@ -7395,7 +7395,7 @@ unsigned __int64 GameHr_5d91c0(float* a1, float* a2)
     if (v6 < 0x0.0p+0f) {
       break;
     }
-    if (v6 >= v4) {
+    if (!(v6 < v4)) {
       goto LABEL_7;
     }
   LABEL_4:;
@@ -7453,7 +7453,7 @@ LABEL_38:
             if (v26 < 0x0.0p+0f) {
               break;
             }
-            if (v27 >= v4) {
+            if (!(v27 < v4)) {
               goto LABEL_50;
             }
           }
@@ -7481,7 +7481,7 @@ LABEL_38:
         do {
           v25 = *(v22 - 2);
           v22 -= 2;
-        } while (v25 >= v4);
+        } while (!(v25 < v4));
       }
     LABEL_40:;
     } while (v21 < (unsigned __int64)v22);
@@ -7673,7 +7673,7 @@ float* GameHr_5daa20(float* a1, float* a2)
     do {
       v10 = i[2];
       i += 2;
-    } while (v10 >= v5);
+    } while (!(v10 < v5));
     if (i < a2) {
       goto LABEL_32;
     }
@@ -7713,12 +7713,12 @@ LABEL_21:
   if (i < a2) {
     if (v5 < 0x0.0p+0f) {
       for (a2 -= 2;; a2 -= 2) {
-        if (v4 >= 0x0.0p+0f) {
-          if (v4 >= v5) {
+        if (!(v4 < 0x0.0p+0f)) {
+          if (!(v4 < v5)) {
             goto LABEL_45;
           }
         }
-        else if (v4 <= v5) {
+        else if (!(v4 > v5)) {
           goto LABEL_45;
         }
         v9 = *(a2 - 2);
@@ -7759,7 +7759,7 @@ LABEL_45:
           if (v17 < 0x0.0p+0f) {
             break;
           }
-          if (v18 >= v5) {
+          if (!(v18 < v5)) {
             goto LABEL_45;
           }
         }
@@ -7769,7 +7769,7 @@ LABEL_45:
       do {
         v13 = i[2];
         i += 2;
-      } while (v13 >= v5);
+      } while (!(v13 < v5));
       do {
         v14 = *(a2 - 2);
         a2 -= 2;
@@ -9686,7 +9686,7 @@ __int64 GameHr_5e24c0(__int64 result, __int64* a2, _QWORD* a3, __int64 a4)
     if (v11 >= 1) {
       v12 = 0;
     LABEL_12:
-      result = memset(*(_QWORD*)(v7 + 24) + 4LL * v12 * v11, 0,
+      result = memset(*(_QWORD*)(v7 + 24) + 4LL * (v12 * v11), 0,
                       4LL * (unsigned int)v11);
       while (++v12 < (signed __int32)*(_DWORD*)(v7 + 32)) {
         v11 = *(_DWORD*)(v7 + 36);
@@ -10680,8 +10680,7 @@ __int64 GameHr_5e45e0(__int64 a1, __int64 a2, float a3)
     v6 = *(float*)(a1 + 28) - v5;
     *(float*)&v7 = a3 - v5;
     v8 = *(float*)&v7 * (float)(1.0 / v6);
-    LOWORD(v7) = *(_WORD*)(a1 + 18);
-    v9 = (int)(float)(v8 * (float)v7);
+    v9 = (int)(float)(v8 * (float)*(unsigned __int16*)(a1 + 18));
     *(_DWORD*)(a2 + 8) = v9;
     v10 = *(unsigned __int16*)(a1 + 18);
     if (v10 <= v9) {
@@ -10707,8 +10706,7 @@ __int64 GameHr_5e4690(__int64 a1, __int64 a2, float a3)
     v6 = *(float*)(a1 + 28) - v5;
     *(float*)&v7 = a3 - v5;
     v8 = *(float*)&v7 * (float)(1.0 / v6);
-    LOWORD(v7) = *(_WORD*)(a1 + 18);
-    v9 = (int)(float)(v8 * (float)v7);
+    v9 = (int)(float)(v8 * (float)*(unsigned __int16*)(a1 + 18));
     *(_DWORD*)(a2 + 8) = v9;
     v10 = *(unsigned __int16*)(a1 + 18);
     if (v10 <= v9) {
