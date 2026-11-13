@@ -212,6 +212,14 @@ __int64 gfxa_MainPassImageProcess_SetupOffscreenPostProcessPass(__int64 result,
                                                                 __int64 a2,
                                                                 __int64 a3,
                                                                 __int64 a4);
+__int64 TaskDoFTemporalFilter_b7d920(__int64, _QWORD*, _QWORD*, __int64*,
+                                     float*);
+__int64 TaskMirage_b6dbe0(__int64, _QWORD*, _QWORD*, _QWORD*, _QWORD*);
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass1_lambda1_Invoke(
+    __int64 a1, __int64 a2, _QWORD* a3);
+__int64 gfxa_MainPassImageProcess_SetupPreDoFPass_lambda3_Invoke(__int64 a1,
+                                                                 __int64 a2,
+                                                                 __int64* a3);
 
 __int64 gfxa_MainPassImageProcess_SetupExposureCalcPass(__int64 result,
                                                         __int64 a2, __int64 a3,
@@ -5879,6 +5887,163 @@ __int64 gfxa_MainPassImageProcess_SetupPostProcessPass1_lambda0_Invoke(
   return result;
 }
 
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass1_lambda1_Invoke(
+    __int64 a1, __int64 a2, _QWORD* a3)
+{
+  _QWORD* v3;
+  __int64 v5;
+  __int64 v6;
+  _BYTE* v7;
+  __int64 v8;
+  int v9;
+  bool v10;
+  __int64 v11;
+  int v12;
+  __int64 v13;
+  int v14;
+  __int64 v15;
+  __int64 v16;
+  int v17;
+  __int64 v18;
+  int v19;
+  __int64 v20;
+  _QWORD* v21;
+  __int64* v22;
+  _QWORD* v23;
+  __int64 v25;
+  char v26;
+  int v27;
+  int v28;
+  int v29;
+  int v30;
+  int v31;
+  int v32;
+  __int64 v33;
+
+  {
+    v3 = *(_QWORD**)(a1 + 8);
+    __asm__ volatile("" ::"r"(v3));
+  }
+  {
+    v5 = v3[27];
+    __asm__ volatile("" ::"r"(v5));
+  }
+  {
+    v6 = *(_QWORD*)(**(_QWORD**)(a2 + 24) + 8LL);
+    __asm__ volatile("" ::"r"(v6));
+  }
+  {
+    v25 = v3[3];
+    __asm__ volatile("" ::"r"(v25));
+  }
+  {
+    v7 = *(_BYTE**)(v6 + 328);
+    __asm__ volatile("" ::"r"(v7));
+  }
+  v8 = 200;
+  if (v7[168] != 0) {
+    v8 = 164;
+  }
+  {
+    v9 = *(_DWORD*)&v7[v8];
+    __asm__ volatile("" ::"r"(v9));
+  }
+  {
+    v10 = v7[248] == 0;
+    __asm__ volatile("" ::"r"(v10));
+  }
+  v11 = 280;
+  v27 = v9;
+  if (!v10) {
+    v11 = 244;
+  }
+  {
+    v12 = *(_DWORD*)&v7[v11];
+    __asm__ volatile("" ::"r"(v12));
+  }
+  {
+    v10 = v7[328] == 0;
+    __asm__ volatile("" ::"r"(v10));
+  }
+  v13 = 360;
+  v28 = v12;
+  if (!v10) {
+    v13 = 324;
+  }
+  {
+    v14 = *(_DWORD*)&v7[v13];
+    __asm__ volatile("" ::"r"(v14));
+  }
+  {
+    v10 = v7[642] == 0;
+    __asm__ volatile("" ::"r"(v10));
+  }
+  v15 = 672;
+  v29 = v14;
+  if (!v10) {
+    v15 = 641;
+  }
+  {
+    v26 = v7[v15];
+    __asm__ volatile("" ::"r"(v26));
+  }
+  v16 = 440;
+  if (v7[408] != 0) {
+    v16 = 404;
+  }
+  {
+    v17 = *(_DWORD*)&v7[v16];
+    __asm__ volatile("" ::"r"(v17));
+  }
+  {
+    v10 = v7[488] == 0;
+    __asm__ volatile("" ::"r"(v10));
+  }
+  v18 = 520;
+  v30 = v17;
+  if (!v10) {
+    v18 = 484;
+  }
+  {
+    v19 = *(_DWORD*)&v7[v18];
+    __asm__ volatile("" ::"r"(v19));
+  }
+  {
+    v10 = v7[568] == 0;
+    __asm__ volatile("" ::"r"(v10));
+  }
+  v20 = 600;
+  v31 = v19;
+  if (!v10) {
+    v20 = 564;
+  }
+  {
+    v32 = *(_DWORD*)&v7[v20];
+    __asm__ volatile("" ::"r"(v32));
+  }
+  {
+    v21 = *(_QWORD**)(a2 + 8);
+    __asm__ volatile("" ::"r"(v21));
+  }
+  {
+    v22 = (__int64*)(*v3 + 13304LL);
+    __asm__ volatile("" ::"r"(v22));
+  }
+  {
+    v23 = *(_QWORD**)a2;
+    __asm__ volatile("" ::"r"(v23));
+  }
+  if (*(_BYTE*)(*v3 + 16700LL) != 0) {
+    v22 = (__int64*)(*(_QWORD*)(*v3 + 16672LL) + 24LL);
+    __asm__ volatile("" ::"r"(v22));
+  }
+  {
+    v33 = *v22;
+    __asm__ volatile("" ::"r"(v33));
+  }
+  return TaskMirage_b6dbe0(v5, v23, v21, a3, &v25);
+}
+
 __int64 gfxa_MainPassImageProcess_SetupPostProcessPass3_lambda1_Invoke(
     __int64 a1, __int64 a2, __int64* a3)
 {
@@ -6121,6 +6286,77 @@ __int64 gfxa_MainPassImageProcess_SetupPostProcessPass4_lambda4_Invoke(
   v15_.v19 = 1;
   result = GameRoutine_b53d40(a3, (__int64)"RadialBlurDst", &v15_.v15);
   *v13 = result;
+  return result;
+}
+
+__int64 gfxa_MainPassImageProcess_SetupPreDoFPass_lambda3_Invoke(__int64 a1,
+                                                                 __int64 a2,
+                                                                 __int64* a3)
+{
+
+#pragma clang fp contract(off)
+  _QWORD* v3;
+  __int64 v5;
+  __int64 v6;
+  _QWORD* v7;
+  char v8;
+  _QWORD* v9;
+  __int64 v10;
+  _QWORD* v11;
+  _QWORD* v12;
+  __int64 result;
+  _QWORD v14[5];
+  char v15;
+
+  {
+    v3 = *(_QWORD**)(a1 + 8);
+    __asm__ volatile("" ::"r"(v3));
+  }
+  {
+    v5 = *v3;
+    __asm__ volatile("" ::"r"(v5));
+  }
+  v14[3] = 0x3F8000003A83126FLL;
+  v14[4] = 0x3F6666663E4CCCCDLL;
+  *(_BYTE*)(v5 + 16700) = 0;
+  {
+    v6 = v3[30];
+    __asm__ volatile("" ::"r"(v6));
+  }
+  {
+    v7 = (_QWORD*)(*v3 + 13304LL);
+    __asm__ volatile("" ::"r"(v7));
+  }
+  {
+    v8 = *(_BYTE*)(*(_QWORD*)(a2 + 24) + 120LL);
+    __asm__ volatile("" ::"r"(v8));
+  }
+  if (*(_BYTE*)(*v3 + 16700LL) != 0) {
+    v7 = (_QWORD*)(*(_QWORD*)(*v3 + 16672LL) + 24LL);
+    __asm__ volatile("" ::"r"(v7));
+  }
+  v14[0] = *v7;
+  {
+    v9 = (_QWORD*)(v3[7] + 1220LL);
+    __asm__ volatile("" ::"r"(v9));
+  }
+  v14[1] = *v9;
+  {
+    v10 = v9[1];
+    __asm__ volatile("" ::"r"(v10));
+  }
+  v15 = v8;
+  {
+    v12 = *(_QWORD**)a2;
+    __asm__ volatile("" ::"r"(v12));
+  }
+  {
+    v11 = *(_QWORD**)(a2 + 8);
+    __asm__ volatile("" ::"r"(v11));
+  }
+  v14[2] = v10;
+  result = TaskDoFTemporalFilter_b7d920(v6, v12, v11, a3, (float*)v14);
+  *(_BYTE*)(*v3 + 16700LL) = 1;
   return result;
 }
 

@@ -85,6 +85,10 @@ void gfxa_MainPassLighting_SetupMainShadowPass_lambda2_Invoke(__int64 a1,
 void gfxa_MainPassLighting_SetupMainShadowPass_lambda4_Invoke(__int64 a1,
                                                               __int64 a2,
                                                               __int64* a3);
+__int64 TaskCapsuleAO_18dff40(__int64*, _QWORD*, _QWORD*, _QWORD*, __int64);
+__int64 gfxa_MainPassLighting_SetupAOPass2_lambda1_Invoke(__int64 a1,
+                                                          __int64 a2,
+                                                          _QWORD* a3);
 
 __int64 gfxa_MainPassLighting_SetupAOPass1(__int64* a1, __int64 a2, __int64 a3,
                                            __int64* a4)
@@ -1613,6 +1617,88 @@ __int64 gfxa_MainPassLighting_SetupAOPass2_lambda0_Invoke(__int64 a1,
   result = GameRoutine_b60f30(a3, (__int64)"HalfDepth", (__int64)&v18_.v18);
   v8[1] = result;
   return result;
+}
+
+__int64 gfxa_MainPassLighting_SetupAOPass2_lambda1_Invoke(__int64 a1,
+                                                          __int64 a2,
+                                                          _QWORD* a3)
+{
+  __int64* v3;
+  __int64 v5;
+  __int64* v6;
+  int v7;
+  unsigned __int64* v8;
+  unsigned __int64* v9;
+  unsigned __int64 v10;
+  int v11;
+  unsigned __int64 v12;
+  __int64* v13;
+  _QWORD* v14;
+  _QWORD* v15;
+  char v17[4];
+  unsigned __int64 v18;
+  int v19;
+  int v20;
+  __int64 v21;
+  unsigned __int64 v22;
+  int v23;
+
+  {
+    v3 = *(__int64**)(a1 + 8);
+    __asm__ volatile("" ::"r"(v3));
+  }
+  {
+    v5 = *v3;
+    __asm__ volatile("" ::"r"(v5));
+  }
+  v17[0] = 1;
+  {
+    v6 = (__int64*)v3[22];
+    __asm__ volatile("" ::"r"(v6));
+  }
+  {
+    v7 = *(unsigned __int8*)(v5 + 16700);
+    __asm__ volatile("" ::"r"(v7));
+  }
+  v8 = (unsigned __int64*)(v5 + 13304);
+  {
+    v9 = (unsigned __int64*)(*(_QWORD*)(v5 + 16672) + 24LL);
+    __asm__ volatile("" ::"r"(v9));
+  }
+  if (v7 == 0) {
+    v9 = v8;
+  }
+  {
+    v10 = *v9;
+    __asm__ volatile("" ::"r"(v10));
+  }
+  v11 = v10;
+  v12 = v10 >> 63;
+  v18 = v10;
+  {
+    v13 = (__int64*)v3[15];
+    __asm__ volatile("" ::"r"(v13));
+  }
+  {
+    v15 = *(_QWORD**)a2;
+    __asm__ volatile("" ::"r"(v15));
+  }
+  {
+    v14 = *(_QWORD**)(a2 + 8);
+    __asm__ volatile("" ::"r"(v14));
+  }
+  v19 = v11 / 2;
+  v20 = (HIDWORD(v18) + (int)v12) >> 1;
+  {
+    v21 = *v13;
+    __asm__ volatile("" ::"r"(v21));
+  }
+  {
+    v22 = 0xCCCCCCCCCCCCCCCDLL * ((v13[1] - v21) >> 4);
+    __asm__ volatile("" ::"r"(v22));
+  }
+  v23 = 1065353216;
+  return TaskCapsuleAO_18dff40(v6, v15, v14, a3, (__int64)v17);
 }
 
 __int64 gfxa_MainPassLighting_SetupLightingPass_lambda1_Invoke(__int64 a1,

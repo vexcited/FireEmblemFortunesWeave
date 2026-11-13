@@ -140,6 +140,9 @@ void nn_diag_detail_AbortImpl_1a0a590_alt1() __asm__(
 _QWORD* ProxySnd_Unknown64(__int64 a1, __int64 a2, __int64 a3, int a4);
 __int64 ProxySnd_Unknown65(__int64 a1, __int64 a2, __int64 a3, int a4);
 __int64 ProxySnd_Unknown69(__int64 a1, __int64 a2, int a3);
+__int64 snd_isLoaded(unsigned __int8*);
+__int64 strstr(const char*, const char*);
+__int64 ProxySnd_Unknown55(__int64 a1, _QWORD* a2);
 __attribute__((swiftcall)) void
 
 ProxySnd_Unknown23(PSEUDO_X8 x8_, __int64 unused_int0, __int64* a1)
@@ -890,6 +893,50 @@ LABEL_50:
     }
   }
   return 0;
+}
+
+__int64 ProxySnd_Unknown55(__int64 a1, _QWORD* a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 result;
+  unsigned __int8* v4;
+  _QWORD v5[25];
+
+  result = ((__int64 (*)(__int64, unsigned int))snd_Voice_hasFeature)(
+      (__int64)a2, 0xFu);
+  if ((result & 1) != 0 && (*((_BYTE*)a2 + 5889) & 1) == 0 &&
+      (*((_BYTE*)a2 + 5890) & 1) == 0 && a2[747] == 0) {
+    result = (*(__int64 (**)(_QWORD, __int64, __int64))(
+        **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(*snd_g_memory_ptr[0], 8, 32);
+    a2[747] = result;
+    *(_QWORD*)result = 0;
+  }
+  if (game_sound_g_game_sound != 0 &&
+      *(float*)(game_sound_g_game_sound + 592) > 0x1.f5c2900000000p-1f) {
+    result = (*(__int64 (**)(_QWORD*, __int64))(*a2 + 664LL))(a2, 64);
+    if ((result & 1) != 0) {
+      if (game_sound_g_game_sound == 0) {
+        result = (*(__int64 (**)(_QWORD*))(*a2 + 512LL))(a2);
+        if ((result & 1) != 0) {
+          return result;
+        }
+        goto LABEL_15;
+      }
+      v4 = (unsigned __int8*)snd_Voice_getBufferLabel(a2);
+      result = snd_isLoaded(v4);
+      if ((result & 1) == 0 &&
+          (v4 == nullptr || (result = strstr((const char*)v4, "_lp")) == 0)) {
+      LABEL_15:
+        snd_Fade_Fade_10c830((__int64)v5, 0x0.0p+0f);
+        (*(void (**)(_QWORD*, _QWORD*, double))(a2[5] + 128LL))(a2 + 5, v5,
+                                                                0x0.0p+0);
+        snd_Fade_Destroy_Fade(v5);
+        return snd_Voice_finish(a2);
+      }
+    }
+  }
+  return result;
 }
 
 __attribute__((swiftcall)) void

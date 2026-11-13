@@ -27,6 +27,13 @@ extern __int64 (*GameData_20b62e8[])();
 __int64 CorpsDecide_Unknown141(__int64 a1);
 __int64 MultiMenuSequence_1787b80(__int64);
 __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+_QWORD* GameRoutine_654050(_QWORD* result, _QWORD*);
+extern __int64 (*GameData_20b6068[])();
+extern __int64 (*GameData_20b61e8[])();
+extern __int64 (*game_sound_PlayDecideSe_ptr[7])();
+extern __int64* GameData_212d2b8;
+__int64 CorpsDecide_Unknown100(__int64 a1);
+__int64 CorpsDecide_Unknown112(__int64 a1);
 
 __int64 CorpsDecide_Unknown30(__int64 a1, char a2)
 {
@@ -58,6 +65,107 @@ void* CorpsDecide_Unknown67(__int64 a1)
   }
 }
 
+__int64 CorpsDecide_Unknown100(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  _QWORD v9[4];
+  _QWORD* v10;
+  _QWORD v11[4];
+  _QWORD* v12;
+  const char* v13;
+  _QWORD v14[4];
+  _QWORD* v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 vars0;
+  __int64 vars8;
+
+  v8 = __dynamic_cast(*(_QWORD*)(a1 + 1056), GameData_21319e8[0],
+                      &GameData_20b3420, 0);
+  if (*(_BYTE*)(v8 + 409) != 1) {
+    return 1;
+  }
+  v16 = vars0;
+  v17 = vars8;
+  v14[1] = v8;
+  v13 = "MID_CorpsMenu_Confirm";
+  v14[0] = GameData_20b6068;
+  v10 = v9;
+  v15 = v14;
+  v12 = v11;
+  v11[0] = GameData_20b61e8;
+  v9[0] = GameData_20b61e8;
+  v1 = MapSortieMenu_871860(v8, (__int64)&v13, (__int64)v14, (__int64)v11,
+                            (__int64)v9);
+  if (v10 == v9) {
+    v2 = 32;
+  }
+  else {
+    if (v10 == nullptr) {
+      goto LABEL_8;
+    }
+    v2 = 40;
+  }
+  (*(void (**)(__int64))(*v10 + v2))((__int64)v10);
+LABEL_8:
+  if (v12 == v11) {
+    v4 = 32;
+  }
+  else {
+    if (v12 == nullptr) {
+      goto LABEL_13;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v12 + v4))((__int64)v12);
+LABEL_13:
+  if (v15 == v14) {
+    v5 = 32;
+  }
+  else {
+    if (v15 == nullptr) {
+      goto LABEL_18;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v15 + v5))((__int64)v15);
+LABEL_18:
+  v12 = v11;
+  v15 = v14;
+  v11[0] = GameData_212d2b8 + 2;
+  v11[1] = game_sound_PlayDecideSe_ptr[0];
+  v14[0] = GameData_212d2b8 + 2;
+  v14[1] = game_sound_PlayDecideSe_ptr[0];
+  GameRoutine_654050(v14, (_QWORD*)(v1 + 1152));
+  if (v15 == v14) {
+    v6 = 32;
+  }
+  else {
+    if (v15 == nullptr) {
+      goto LABEL_23;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v15 + v6))((__int64)v15);
+LABEL_23:
+  if (v12 == v11) {
+    v7 = 32;
+    goto LABEL_27;
+  }
+  if (v12 != nullptr) {
+    v7 = 40;
+  LABEL_27:
+    (*(void (**)(__int64))(*v12 + v7))((__int64)v12);
+  }
+  return 12;
+}
+
 __int64 CorpsDecide_Unknown107(_QWORD* a1)
 {
   _QWORD* v2;
@@ -76,6 +184,107 @@ __int64 CorpsDecide_Unknown107(_QWORD* a1)
     *(_BYTE*)(__dynamic_cast(v2[110], v4, &GameData_20b3420, 0) + 410) = 1;
   }
   return 0;
+}
+
+__int64 CorpsDecide_Unknown112(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  _QWORD v9[4];
+  _QWORD* v10;
+  _QWORD v11[4];
+  _QWORD* v12;
+  const char* v13;
+  _QWORD v14[4];
+  _QWORD* v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 vars0;
+  __int64 vars8;
+
+  v8 = __dynamic_cast(*(_QWORD*)(a1 + 1056), GameData_21319e8[0],
+                      &GameData_20b3420, 0);
+  if (*(_BYTE*)(v8 + 409) != 1) {
+    return 1;
+  }
+  v16 = vars0;
+  v17 = vars8;
+  v14[1] = v8;
+  v13 = "MID_CorpsMenu_Confirm";
+  v14[0] = GameData_20b6068;
+  v10 = v9;
+  v15 = v14;
+  v12 = v11;
+  v11[0] = GameData_20b61e8;
+  v9[0] = GameData_20b61e8;
+  v1 = MapSortieMenu_871860(v8, (__int64)&v13, (__int64)v14, (__int64)v11,
+                            (__int64)v9);
+  if (v10 == v9) {
+    v2 = 32;
+  }
+  else {
+    if (v10 == nullptr) {
+      goto LABEL_8;
+    }
+    v2 = 40;
+  }
+  (*(void (**)(__int64))(*v10 + v2))((__int64)v10);
+LABEL_8:
+  if (v12 == v11) {
+    v4 = 32;
+  }
+  else {
+    if (v12 == nullptr) {
+      goto LABEL_13;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v12 + v4))((__int64)v12);
+LABEL_13:
+  if (v15 == v14) {
+    v5 = 32;
+  }
+  else {
+    if (v15 == nullptr) {
+      goto LABEL_18;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v15 + v5))((__int64)v15);
+LABEL_18:
+  v12 = v11;
+  v15 = v14;
+  v11[0] = GameData_212d2b8 + 2;
+  v11[1] = game_sound_PlayDecideSe_ptr[0];
+  v14[0] = GameData_212d2b8 + 2;
+  v14[1] = game_sound_PlayDecideSe_ptr[0];
+  GameRoutine_654050(v14, (_QWORD*)(v1 + 1152));
+  if (v15 == v14) {
+    v6 = 32;
+  }
+  else {
+    if (v15 == nullptr) {
+      goto LABEL_23;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v15 + v6))((__int64)v15);
+LABEL_23:
+  if (v12 == v11) {
+    v7 = 32;
+    goto LABEL_27;
+  }
+  if (v12 != nullptr) {
+    v7 = 40;
+  LABEL_27:
+    (*(void (**)(__int64))(*v12 + v7))((__int64)v12);
+  }
+  return 12;
 }
 
 __int64 CorpsDecide_Unknown137(__int64 a1)

@@ -64,6 +64,13 @@ __int64 GameRoutine_6040f0_alt1(__int64) __asm__("GameRoutine_6040f0");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void BillboardModel_Destructor(__int64 a1);
+__int64 gxc_NvnStateCache_BindBlendState(__int64 result, int);
+__int64 gxc_NvnStateCache_BindPolygonState(__int64 result, int);
+__int64 gxc_NvnStateCache_ClearCommandList(_QWORD);
+__int64 gxc_NvnStateCache_SetCommandList(_QWORD, _QWORD);
+extern int GameData_21fdee0;
+extern int GameData_21fdf10;
+__int64 BillboardModel_Unknown10(__int64 a1, _QWORD* a2);
 
 __int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
                                                  unsigned __int64 a3,
@@ -505,6 +512,21 @@ __int64 BillboardModel_Unknown2(__int64 a1)
       v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v1", "=w")),
       v18 = COERCE_AS(__typeof__(v18), PSEUDO_REGISTER(__n128, "v2", "=w"));
   return Material_add560(*(_QWORD*)(a1 + 184));
+}
+
+__int64 BillboardModel_Unknown10(__int64 a1, _QWORD* a2)
+{
+  __int64 v3;
+
+  (*(void (**)(void*))(*(_QWORD*)*a2 + 200LL))((void*)*a2);
+  gxc_NvnStateCache_SetCommandList(a2[1], *a2);
+  {
+    v3 = a2[1];
+    __asm__ volatile("" ::"r"(v3));
+  }
+  gxc_NvnStateCache_BindPolygonState(v3, GameData_21fdf10);
+  gxc_NvnStateCache_BindBlendState(v3, GameData_21fdee0);
+  return gxc_NvnStateCache_ClearCommandList(a2[1]);
 }
 
 __int64 BillboardModel_Unknown11(__int64 a1, __int64* a2)

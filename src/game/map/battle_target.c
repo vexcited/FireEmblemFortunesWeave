@@ -54,6 +54,7 @@ __int64 game_map_BattleUtil_GetRevengeSkill_alt1(__int64 result) __asm__(
     "game_map_BattleUtil_GetRevengeSkill");
 bool game_HasSkill_alt1(_QWORD*, _DWORD*) __asm__("game_HasSkill");
 __int64 BattleTarget_8fe740(__int64 a1);
+__attribute__((swiftcall)) void BattleTarget_8fef10(PSEUDO_X8 x8_, __int64 a1);
 
 bool game_map_BattleTarget_Commit_8fdae0(__int64 a1, __int64 a2)
 {
@@ -1320,6 +1321,119 @@ LABEL_31:
   *(_QWORD*)&v20 = __PAIR64__(LODWORD(v19), LODWORD(v17));
   *((_QWORD*)&v20 + 1) = LODWORD(v18);
   *a2 = v20;
+}
+
+__attribute__((swiftcall)) void BattleTarget_8fef10(PSEUDO_X8 x8_, __int64 a1)
+{
+  _OWORD* a2 = (_OWORD*)PSEUDO_X8_VALUE(x8_);
+  _BYTE* v4;
+  int v5;
+  __int64* v6;
+  int v7;
+  float v8;
+  float v9;
+  __int64 v10;
+  float v11;
+  unsigned int v12;
+  __int64 v13;
+  __int64 v14;
+  unsigned int v15;
+  bool v16;
+  __int128 v17;
+  float v18;
+  float v19;
+
+  {
+    v5 = *(unsigned __int8*)(a1 + 8);
+    __asm__ volatile("" ::"r"(v5));
+  }
+  v4 = (_BYTE*)(a1 + 8);
+  if (v5 == 0) {
+    goto LABEL_15;
+  }
+  v6 = game_UnitPool_Get_alt1(v4);
+  if (v6 == nullptr) {
+    goto LABEL_15;
+  }
+  if ((*(_DWORD*)(a1 + 40) & 0xFFF) != 0) {
+    if (*(_QWORD*)(*(_QWORD*)(GameData_21c99b0 + 64) +
+                   8LL * (*(_DWORD*)(a1 + 40) & 0xFFF)) != 0) {
+      goto LABEL_5;
+    }
+  LABEL_15:
+    {
+      v8 = (float)((float)((float)(*(_DWORD*)(a1 + 12) + 256) *
+                           0x1.4000000000000p+2f) +
+                   0x1.4000000000000p+1f) +
+           -0x1.4000000000000p+10f;
+      __asm__ volatile("" ::"w"(v8));
+    }
+    v10 = GameData_21ca2e8;
+    {
+      v9 = (float)((float)((float)(*(_DWORD*)(a1 + 16) + 256) *
+                           0x1.4000000000000p+2f) +
+                   0x1.4000000000000p+1f) +
+           -0x1.4000000000000p+10f;
+      __asm__ volatile("" ::"w"(v9));
+    }
+    if (GameData_21ca2e8 == 0) {
+      goto LABEL_6;
+    }
+  LABEL_16:
+    v18 = v9;
+    v19 = v8;
+    v11 = Height_7c4d10(*(_QWORD*)(v10 + 61456), v8, v9);
+    v9 = v18;
+    v8 = v19;
+    goto LABEL_17;
+  }
+  {
+    v12 = *(unsigned __int16*)(a1 + 32);
+    __asm__ volatile("" ::"r"(v12));
+  }
+  if (*(_WORD*)(a1 + 32) == 0) {
+    v12 = *(unsigned __int16*)game_g_empty_item_ptr;
+    __asm__ volatile("" ::"r"(v12));
+  }
+  {
+    v13 = *(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) + 8LL * v12);
+    __asm__ volatile("" ::"r"(v13));
+  }
+  {
+    v14 = *(_QWORD*)(v13 + 192);
+    __asm__ volatile("" ::"r"(v14));
+  }
+  {
+    v15 = *(unsigned __int8*)(v13 + 72);
+    __asm__ volatile("" ::"r"(v15));
+  }
+  v16 = v14 == 0 || v15 > 7;
+  if (v16 || *(_BYTE*)(v14 + 105) == 0 || *(_BYTE*)(v14 + 104) == 2) {
+    goto LABEL_15;
+  }
+LABEL_5:
+  {
+    v7 = *((_DWORD*)v6 + 148);
+    __asm__ volatile("" ::"r"(v7));
+  }
+  {
+    v8 = (float)(v7 + 2 * *((char*)v6 + 584)) * 0x1.4000000000000p+1f;
+    __asm__ volatile("" ::"w"(v8));
+  }
+  {
+    v9 = (float)(v7 + 2 * *((char*)v6 + 585)) * 0x1.4000000000000p+1f;
+    __asm__ volatile("" ::"w"(v9));
+  }
+  v10 = GameData_21ca2e8;
+  if (GameData_21ca2e8 != 0) {
+    goto LABEL_16;
+  }
+LABEL_6:
+  v11 = 0x0.0p+0f;
+LABEL_17:
+  *(_QWORD*)&v17 = __PAIR64__(LODWORD(v11), LODWORD(v8));
+  *((_QWORD*)&v17 + 1) = LODWORD(v9);
+  *a2 = v17;
 }
 
 __attribute__((swiftcall)) void BattleTarget_8ff080(PSEUDO_X8 x8_, __int64 a1)

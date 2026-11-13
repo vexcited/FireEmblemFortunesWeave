@@ -207,6 +207,10 @@ void GameRoutine_10a9ec0(__int64*);
 __int64 CharacterObservable_Destructor(_QWORD* a1);
 void game_character_CharacterObservable_CharacterObservable_lambda3_Invoke(
     __int64 a1, __int64* a2);
+extern __int64 (*GameData_200b0f0[])();
+__int64
+game_character_CharacterObservable_CharacterObservable_lambda18_Invoke_10d2020(
+    __int64 a1, __int64 a2);
 
 void CharacterObservable_10cd4e0(__int64 a1)
 {
@@ -4242,6 +4246,40 @@ __int64 game_character_CharacterObservable_CharacterObservable_lambda17_Invoke(
     }
   }
   return result;
+}
+
+__int64
+
+game_character_CharacterObservable_CharacterObservable_lambda18_Invoke_10d2020(
+    __int64 a1, __int64 a2)
+{
+  _QWORD* v2;
+  __int64 result;
+  __int64 v4;
+  struct {
+    _QWORD v5[4];
+    _QWORD* v6;
+    char gap40_[36];
+    int v7;
+  } v5_;
+
+  v2 = *(_QWORD**)(*(_QWORD*)(a1 + 8) + 40LL);
+  v5_.v7 = *(_DWORD*)(*(_QWORD*)a2 + 32LL);
+  v5_.v6 = v5_.v5;
+  v5_.v5[0] = GameData_200b0f0;
+  v5_.v5[1] = &v5_.v7;
+  CharacterBuilder_1083e90(v2, (__int64)v5_.v5);
+  result = (__int64)v5_.v6;
+  if (v5_.v6 == v5_.v5) {
+    v4 = 32;
+  }
+  else {
+    if (v5_.v6 == nullptr) {
+      return result;
+    }
+    v4 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v5_.v6 + v4))((__int64)v5_.v6);
 }
 
 float game_character_CharacterObservable_CharacterObservable_lambda18_Invoke(

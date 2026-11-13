@@ -507,6 +507,7 @@ int* Unit_6e7200(int* result, int* a2, _QWORD* a3, unsigned __int64 a4,
                  int* a5);
 char* Unit_6e7460(char* result, char* a2, char* a3, _QWORD* a4, __int64 a5,
                   __int64 a6, __int64 a7, __int64 a8);
+__int64 Unit_6c9c00(_QWORD* a1, __int64 a2);
 
 float Unit_6c7fa0(__int64 a1, _OWORD* a2)
 {
@@ -1129,6 +1130,95 @@ bool Unit_6c9ab0(_QWORD* a1, _DWORD* a2, unsigned __int16* a3)
   v15 = (*((_DWORD*)a3 + 1) & 0xF) * *(unsigned __int8*)(v9 + 87) -
         *((unsigned __int8*)a3 + 2);
   return v6 <= (v15 & (unsigned int)~(v15 >> 31));
+}
+
+__int64 Unit_6c9c00(_QWORD* a1, __int64 a2)
+{
+  unsigned int* v2;
+  unsigned int* v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 result;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  unsigned int v12;
+  unsigned int v13;
+
+  {
+    v2 = *(unsigned int**)(a2 + 32);
+    __asm__ volatile("" ::"r"(v2));
+  }
+  {
+    v3 = *(unsigned int**)(a2 + 40);
+    __asm__ volatile("" ::"r"(v3));
+  }
+  if (v2 != v3) {
+    {
+      v4 = a1[170];
+      __asm__ volatile("" ::"r"(v4));
+    }
+    {
+      v5 = a1[175];
+      __asm__ volatile("" ::"r"(v5));
+    }
+    {
+      v6 = a1[171] - v4;
+      __asm__ volatile("" ::"r"(v6));
+    }
+    {
+      v7 = a1[174];
+      __asm__ volatile("" ::"r"(v7));
+    }
+    result = 1;
+    v9 = v6 >> 2;
+    do {
+      {
+        v10 = *v2;
+        __asm__ volatile("" ::"r"(v10));
+      }
+      if ((v10 & 0xFFF) != 0) {
+        if (v9 < ((v10 >> 5) & 0x7F) + 1 ||
+            ((*(_DWORD*)(v4 + 4 * ((v10 >> 5) & 0x7F)) >> v10) & 1) == 0) {
+          return 1;
+        }
+        if (v5 != v7) {
+          v11 = 0;
+          while (((*(_DWORD*)(v7 + 4 * v11) ^ (unsigned int)v10) & 0xFFF) !=
+                 0) {
+            if ((v5 - v7) >> 2 == ++v11) {
+              goto LABEL_3;
+            }
+          }
+          if ((v11 & 0x8000000000000000LL) == 0) {
+            {
+              v12 = *(_DWORD*)(v7 + 4LL * (unsigned int)v11);
+              __asm__ volatile("" ::"r"(v12));
+            }
+            {
+              v13 = *(
+                  unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] +
+                                                          64) +
+                                               8LL * (v12 & 0xFFF)) +
+                                    281LL);
+              __asm__ volatile("" ::"r"(v13));
+            }
+            if (v13 <= 1) {
+              v13 = 1;
+            }
+            if ((v12 & 0x1F000000) != 0 || ((v12 >> 19) & 0x1F) < v13 - 1) {
+              return result;
+            }
+          }
+        }
+      }
+    LABEL_3:
+      ++v2;
+    } while (v2 != v3);
+  }
+  return 0;
 }
 
 __int64 Unit_6c9cf0(__int64 a1, __int64 a2)

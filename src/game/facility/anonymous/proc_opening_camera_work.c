@@ -40,6 +40,89 @@ __attribute__((swiftcall)) void
 game_facility_anonymous_ProcOpeningCameraWork_SetConversationCamera_closure_Invoke(
     PSEUDO_X8 x8_);
 void ProcOpeningCameraWork_DeletingDestructor(__int64* a1);
+_QWORD* GameRoutine_14514d0(_QWORD* result, _QWORD*);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 std___1___shared_weak_count_lock(__int64);
+extern __int64 (*GameData_211b418[])();
+extern __int64 GameData_21f4000;
+float GameHr_144f360(__int64);
+void game_facility_anonymous_ProcOpeningCameraWork_SetConversationCamera();
+
+void game_facility_anonymous_ProcOpeningCameraWork_SetConversationCamera()
+{
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  struct {
+    _QWORD v6[4];
+    _QWORD* v7;
+  } v6_;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+
+  {
+    v0 = *(_QWORD*)(GameData_21f4000 + 264);
+    __asm__ volatile("" ::"r"(v0));
+  }
+  if (v0 != 0) {
+    {
+      v1 = *(_QWORD*)(GameData_21f4000 + 256);
+      __asm__ volatile("" ::"r"(v1));
+    }
+    {
+      v2 = *(_QWORD*)(GameData_21f4000 + 264);
+      __asm__ volatile("" ::"r"(v2));
+    }
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v0 + 16), 1u,
+                              memory_order_relaxed);
+    v3 = std___1___shared_weak_count_lock(v2);
+    std___1___shared_weak_count___release_weak(v0);
+    if (v3 != 0) {
+      if (v1 == 0) {
+        goto LABEL_14;
+      }
+      GameHr_144f360(v1);
+      v6_.v6[0] = GameData_211b418;
+      v6_.v7 = v6_.v6;
+      v8_.v9 = v8_.v8;
+      v8_.v8[0] = GameData_211b418;
+      GameRoutine_14514d0(v8_.v8, (_QWORD*)(v1 + 272));
+      if (v8_.v9 == v8_.v8) {
+        v4 = 32;
+      }
+      else {
+        if (v8_.v9 == nullptr) {
+          goto LABEL_9;
+        }
+        v4 = 40;
+      }
+      (*(void (**)(__int64))(*v8_.v9 + v4))((__int64)v8_.v9);
+    LABEL_9:
+      if (v6_.v7 == v6_.v6) {
+        v5 = 32;
+      }
+      else {
+        if (v6_.v7 == nullptr) {
+          goto LABEL_14;
+        }
+        v5 = 40;
+      }
+      (*(void (**)(__int64))(*v6_.v7 + v5))((__int64)v6_.v7);
+    LABEL_14:
+      if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+        std___1___shared_weak_count___release_weak(v3);
+      }
+    }
+  }
+}
+
 __attribute__((swiftcall)) void
 
 game_facility_anonymous_ProcOpeningCameraWork_SetConversationCamera_closure_Invoke(

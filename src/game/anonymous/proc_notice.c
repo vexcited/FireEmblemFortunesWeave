@@ -50,6 +50,9 @@ __int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
 void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
 void ProcNotice_Destructor(__int64 a1);
 void ProcNotice_DeletingDestructor(__int64 a1);
+__int64 GameHr_7fa250(__int64, __int64, __int64);
+__int64 game_anonymous_ProcNotice_TryMastery_closure0_Invoke(__int64 a1,
+                                                             __int64* a2);
 
 void game_anonymous_ProcNotice_TryMastery(__int64 a1)
 {
@@ -371,6 +374,31 @@ __int64 ProcNotice_9d63c0(__int64 result)
     }
   }
   return result;
+}
+
+__int64 game_anonymous_ProcNotice_TryMastery_closure0_Invoke(__int64 a1,
+                                                             __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  int v4;
+  struct {
+    _QWORD v6[12];
+    char gap104_[4];
+    __int16 v7;
+    char v8;
+  } v6_;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = *(_DWORD*)(a1 + 28);
+  memset(&v6_.v6[1], 0, 83);
+  v6_.v8 = 0;
+  v6_.v7 = 0;
+  v6_.v6[0] = v2;
+  BYTE2(v6_.v6[11]) = 1;
+  *((_DWORD*)&v6_.v6[2] + *(unsigned __int8*)(a1 + 24) + 1) = v4;
+  return GameHr_7fa250(v3, (__int64)v6_.v6, (__int64)&v6_.v7);
 }
 
 void ProcNotice_Destructor(__int64 a1)

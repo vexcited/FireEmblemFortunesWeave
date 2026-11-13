@@ -117,6 +117,12 @@ __attribute__((swiftcall)) void CharacterSound_10962d0(PSEUDO_X8 x8_,
                                                        __int64 a1, __int64 a2,
                                                        unsigned __int64 a3);
 __int64 CharacterSound_Destructor(_QWORD* a1);
+__int64 snd_playAt_ff4e0(__int64, __int64, __int64, unsigned int, unsigned int,
+                         int, float, float, float, float, float);
+__attribute__((swiftcall)) void CharacterSound_1096110(PSEUDO_X8 x8_,
+                                                       __int64 a1, char* a2,
+                                                       const char* a3,
+                                                       __int64 a4, float a6);
 
 __int64 CharacterSound_Unknown7(__int64 result)
 {
@@ -759,6 +765,97 @@ __int64 CharacterSound_1096020(__int64 a1, _BYTE* a2, float a3)
 LABEL_14:
   snd_play_ff3e0(&GameData_1a9f09e, a2, v10, v12, 0, 0, 0, 0.0f, a3);
   return snd_Fade_Destroy_Fade(v12);
+}
+
+__attribute__((swiftcall)) void CharacterSound_1096110(PSEUDO_X8 x8_,
+                                                       __int64 a1, char* a2,
+                                                       const char* a3,
+                                                       __int64 a4, float a6)
+{
+
+#pragma clang fp contract(off)
+  __int64 a5 = (__int64)PSEUDO_X8_VALUE(x8_);
+  float v7;
+  float v8;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  char* v13;
+  const char* v14;
+  double v15;
+  char* v16;
+  __int64 v17;
+  unsigned __int64 v18;
+  float v19;
+  float v20;
+  char* v21;
+  __int64 v22;
+  __int128 v23;
+  _QWORD v24[25];
+  struct {
+    unsigned __int8 v25;
+    _BYTE v26[15];
+    char* v27;
+  } v25_;
+
+  v7 = a6 * *(float*)(a1 + 60);
+  if (v7 > 0x0.0p+0f) {
+    v8 = 0x1.0000000000000p+0f;
+    if (*GameData_212d168 == 6 || *GameData_212d168 == 1) {
+      v10 = *(_DWORD*)(a1 + 128);
+      if (v10 == 2) {
+        v8 = 0x0.0p+0f;
+      }
+      else if (v10 == 1) {
+        v11 = a1;
+        v12 = a4;
+        v13 = a2;
+        v14 = a3;
+        v15 = snd_getDefineValue_alt1("SetVolume_SE_Bmap_CharaSelect");
+        a1 = v11;
+        a3 = v14;
+        a2 = v13;
+        a4 = v12;
+        v8 = *(float*)&v15 * 0x1.47ae140000000p-7f;
+      }
+    }
+    v7 = v7 * v8;
+  }
+  if (v7 <= 0x0.0p+0f) {
+    *(_QWORD*)a5 = 0;
+    *(_DWORD*)(a5 + 8) = 0x2000;
+  }
+  else {
+    v16 = a2;
+    v17 = a4;
+    CharacterSound_1095a00_alt3((void*)(&v25_.v25), a1, a2, a3, a4);
+    v18 = *(_QWORD*)&v25_.v26[7];
+    v23 = *(_OWORD*)v17;
+    LODWORD(v19) = HIDWORD(*(_QWORD*)v17);
+    LODWORD(v20) = *(_QWORD*)(v17 + 8);
+    if ((v25_.v25 & 1) != 0) {
+      v21 = v25_.v27;
+    }
+    else {
+      v18 = (unsigned __int64)v25_.v25 >> 1;
+      v21 = v25_.v26;
+    }
+    if (v18 != 0) {
+      v16 = v21;
+    }
+    snd_Fade_Fade_10c830_alt1((__int64)v24, 0x0.0p+0f);
+    snd_playAt_ff4e0((__int64)&GameData_1a9f09e, (__int64)v16, (__int64)v24, 0,
+                     0x10001u, 0, *(float*)&v23, v19, v20, 0x0.0p+0f, v7);
+    snd_Fade_Destroy_Fade_alt1(v24);
+    if ((v25_.v25 & 1) != 0 && v25_.v27 != nullptr) {
+      v22 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v22 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v22, (__int64)v25_.v27);
+    }
+  }
 }
 
 __attribute__((swiftcall)) void CharacterSound_10962d0(PSEUDO_X8 x8_,

@@ -116,6 +116,12 @@ bool Unit_6c9ab0(_QWORD*, _DWORD*, unsigned __int16*);
 void CmdBtlParty_e734e0_alt1(__int64) __asm__("CmdBtlParty_e734e0");
 void CmdBtlParty_e73380(__int64 a1);
 __int64 CmdBtlParty_e77750(__int64 a1, __int64 a2);
+bool game_cmdbtl_e76770(unsigned int*, __int64, unsigned __int16*);
+bool game_cmdbtl_e76a50(__int64, __int64, unsigned __int16*);
+__int64 game_cmdbtl_CmdBtlParty_CanAttack_lambda0_Invoke(__int64 a1,
+                                                         unsigned __int16* a2);
+__int64 game_cmdbtl_CmdBtlParty_CanAssist_lambda0_Invoke(__int64 a1,
+                                                         unsigned __int16* a2);
 
 void CmdBtlParty_Destructor(__int64 a1)
 {
@@ -1588,6 +1594,99 @@ __int64 game_cmdbtl_CmdBtlParty_CanSkill_lambda0_Invoke(__int64 result,
   if (v10 != 0) {
   LABEL_16:
     **(_BYTE**)(v4 + 8) = 1;
+  }
+  return result;
+}
+
+__int64 game_cmdbtl_CmdBtlParty_CanAttack_lambda0_Invoke(__int64 a1,
+                                                         unsigned __int16* a2)
+{
+  _QWORD* v3;
+  unsigned int* v4;
+  __int64 v5;
+  __int64 result;
+  char v7;
+  _QWORD v8[2];
+
+  v3 = *(_QWORD**)(a1 + 16);
+  v4 = *(unsigned int**)(a1 + 24);
+  v5 = v3[1];
+  v8[0] = *v3;
+  v8[1] = v5;
+  if (v5 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 8), 1u,
+                              memory_order_relaxed);
+    result = ((__int64 (*)(unsigned int*, __int64, unsigned __int16*))
+                  game_cmdbtl_e76770)(v4, (__int64)v8, a2);
+    v7 = result;
+    if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) != 0) {
+      if ((result & 1) == 0) {
+        return result;
+      }
+    }
+    else {
+      (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+      result = std___1___shared_weak_count___release_weak_alt3(v5);
+      if ((v7 & 1) == 0) {
+        return result;
+      }
+    }
+    goto LABEL_4;
+  }
+  result =
+      ((__int64 (*)(unsigned int*, __int64,
+                    unsigned __int16*))game_cmdbtl_e76770)(v4, (__int64)v8, a2);
+  if ((result & 1) != 0) {
+  LABEL_4:
+    **(_BYTE**)(a1 + 8) = 1;
+  }
+  return result;
+}
+
+__int64 game_cmdbtl_CmdBtlParty_CanAssist_lambda0_Invoke(__int64 a1,
+                                                         unsigned __int16* a2)
+{
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 result;
+  char v7;
+  _QWORD v8[2];
+
+  v3 = *(_QWORD**)(a1 + 16);
+  v4 = *(_QWORD*)(a1 + 24);
+  v5 = v3[1];
+  v8[0] = *v3;
+  v8[1] = v5;
+  if (v5 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 8), 1u,
+                              memory_order_relaxed);
+    result =
+        ((__int64 (*)(__int64, __int64, unsigned __int16*))game_cmdbtl_e76a50)(
+            v4, (__int64)v8, a2);
+    v7 = result;
+    if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) != 0) {
+      if ((result & 1) == 0) {
+        return result;
+      }
+    }
+    else {
+      (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+      result = std___1___shared_weak_count___release_weak_alt3(v5);
+      if ((v7 & 1) == 0) {
+        return result;
+      }
+    }
+    goto LABEL_4;
+  }
+  result =
+      ((__int64 (*)(__int64, __int64, unsigned __int16*))game_cmdbtl_e76a50)(
+          v4, (__int64)v8, a2);
+  if ((result & 1) != 0) {
+  LABEL_4:
+    **(_BYTE**)(a1 + 8) = 1;
   }
   return result;
 }

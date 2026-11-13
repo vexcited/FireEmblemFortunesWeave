@@ -69,6 +69,9 @@ void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void ProcGmapTalkSeq_Destructor(__int64 a1);
+bool SpotMgr_1333c60();
+extern __int64 (*GameData_20464e8[])();
+__int64 game_gmap_ProcGmapTalkSeq_SetCursorAtOpenSpot();
 
 void ProcGmapTalkSeq_14d0630(__int64 a1)
 {
@@ -173,6 +176,35 @@ void ProcGmapTalkSeq_14d0630(__int64 a1)
       v10[24] = v13 - 8;
     }
   }
+}
+
+__int64 game_gmap_ProcGmapTalkSeq_SetCursorAtOpenSpot()
+{
+  __int64 result;
+  __int64 v1;
+  struct {
+    _QWORD v2[4];
+    _QWORD* v3;
+  } v2_;
+
+  result = ((__int64 (*)())SpotMgr_1333c60)();
+  if ((result & 1) != 0) {
+    v2_.v2[0] = GameData_20464e8;
+    v2_.v3 = v2_.v2;
+    SpotMgr_1333de0((__int64)v2_.v2);
+    result = (__int64)v2_.v3;
+    if (v2_.v3 == v2_.v2) {
+      v1 = 32;
+    }
+    else {
+      if (v2_.v3 == nullptr) {
+        return result;
+      }
+      v1 = 40;
+    }
+    return (*(__int64 (**)(__int64))(*v2_.v3 + v1))((__int64)v2_.v3);
+  }
+  return result;
 }
 
 __int64 ProcGmapTalkSeq_14d11b0(__int64 a1)

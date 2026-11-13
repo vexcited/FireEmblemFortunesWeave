@@ -127,6 +127,8 @@ int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 void GameRoutine_10e4bc0_alt2(__int64*,
                               unsigned __int64) __asm__("GameRoutine_10e4bc0");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void __attribute__((noreturn)) GameRoutine_10e53f0();
+void IKFoot_10e4bc0(__int64* a1, unsigned __int64 a2);
 
 void game_character_IKFoot_IKFoot(__int64 a1, _QWORD* a2, __int64 a3)
 {
@@ -1387,6 +1389,581 @@ void IKFoot_Unknown4(__int64 a1)
         LANES128(v43).n128_u64[1] = LANES128(v38).n128_u32[2];
         v37[19] = v43;
       }
+    }
+  }
+}
+
+void IKFoot_10e4bc0(__int64* a1, unsigned __int64 a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v5;
+  unsigned __int64 v6;
+  __int64 v7;
+  unsigned __int64 v8;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  bool v16;
+  unsigned __int64 v17;
+  unsigned __int64 v18;
+  _QWORD* v19;
+  _QWORD* v20;
+  __int64 v21;
+  _QWORD* v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  __int64 v33;
+  __int64 v34;
+
+  {
+    v2 = a1[1];
+    __asm__ volatile("" ::"r"(v2));
+  }
+  {
+    v3 = a1[2];
+    __asm__ volatile("" ::"r"(v3));
+  }
+  if (0xAAAAAAAAAAAAAAABLL * ((v3 - v2) >> 6) >= a2) {
+    if (a2 != 0) {
+      *(_QWORD*)(v2 + 128) = 0;
+      *(_QWORD*)(v2 + 136) = 0;
+      *(_QWORD*)(v2 + 112) = 0;
+      *(_QWORD*)(v2 + 120) = 0;
+      *(_QWORD*)(v2 + 96) = 0;
+      *(_QWORD*)(v2 + 104) = 0;
+      *(_QWORD*)(v2 + 80) = 0;
+      *(_QWORD*)(v2 + 88) = 0;
+      *(_QWORD*)(v2 + 64) = 0;
+      *(_QWORD*)(v2 + 72) = 0;
+      *(_QWORD*)(v2 + 48) = 0;
+      *(_QWORD*)(v2 + 56) = 0;
+      *(_QWORD*)(v2 + 32) = 0;
+      *(_QWORD*)(v2 + 40) = 0;
+      *(_QWORD*)(v2 + 16) = 0;
+      *(_QWORD*)(v2 + 24) = 0;
+      *(_QWORD*)v2 = 0;
+      *(_QWORD*)(v2 + 8) = 0;
+      *(_QWORD*)(v2 + 100) = 0x3F8000003F800000LL;
+      *(_QWORD*)(v2 + 116) = 0;
+      *(_QWORD*)(v2 + 124) = 0;
+      *(_DWORD*)(v2 + 132) = 0;
+      *(_QWORD*)(v2 + 160) = 0;
+      *(_QWORD*)(v2 + 168) = 0;
+      *(_DWORD*)(v2 + 108) = 1045220557;
+      *(_OWORD*)(v2 + 144) = GameData_1a83610;
+      *(_OWORD*)(v2 + 176) = GameData_1a83610;
+      if (a2 != 1) {
+        *(_QWORD*)(v2 + 320) = 0;
+        *(_QWORD*)(v2 + 328) = 0;
+        *(_QWORD*)(v2 + 304) = 0;
+        *(_QWORD*)(v2 + 312) = 0;
+        *(_QWORD*)(v2 + 288) = 0;
+        *(_QWORD*)(v2 + 296) = 0;
+        *(_QWORD*)(v2 + 272) = 0;
+        *(_QWORD*)(v2 + 280) = 0;
+        *(_QWORD*)(v2 + 256) = 0;
+        *(_QWORD*)(v2 + 264) = 0;
+        *(_QWORD*)(v2 + 240) = 0;
+        *(_QWORD*)(v2 + 248) = 0;
+        *(_QWORD*)(v2 + 224) = 0;
+        *(_QWORD*)(v2 + 232) = 0;
+        *(_QWORD*)(v2 + 208) = 0;
+        *(_QWORD*)(v2 + 216) = 0;
+        *(_QWORD*)(v2 + 192) = 0;
+        *(_QWORD*)(v2 + 200) = 0;
+        *(_DWORD*)(v2 + 300) = 1045220557;
+        *(_DWORD*)(v2 + 324) = 0;
+        *(_QWORD*)(v2 + 292) = 0x3F8000003F800000LL;
+        *(_OWORD*)(v2 + 336) = GameData_1a83610;
+        *(_QWORD*)(v2 + 352) = 0;
+        *(_QWORD*)(v2 + 360) = 0;
+        *(_OWORD*)(v2 + 368) = GameData_1a83610;
+        *(_QWORD*)(v2 + 308) = 0;
+        *(_QWORD*)(v2 + 316) = 0;
+        if (a2 != 2) {
+          *(_QWORD*)(v2 + 520) = 0;
+          *(_QWORD*)(v2 + 504) = 0;
+          *(_QWORD*)(v2 + 512) = 0;
+          *(_OWORD*)(v2 + 528) = GameData_1a83610;
+          *(_OWORD*)(v2 + 544) = (__typeof__(*(_OWORD*)(v2 + 544))){0};
+          *(_QWORD*)(v2 + 488) = 0;
+          *(_QWORD*)(v2 + 496) = 0;
+          *(_QWORD*)(v2 + 472) = 0;
+          *(_QWORD*)(v2 + 480) = 0;
+          *(_QWORD*)(v2 + 484) = 0x3F8000003F800000LL;
+          *(_QWORD*)(v2 + 456) = 0;
+          *(_QWORD*)(v2 + 464) = 0;
+          *(_QWORD*)(v2 + 440) = 0;
+          *(_QWORD*)(v2 + 448) = 0;
+          *(_QWORD*)(v2 + 424) = 0;
+          *(_QWORD*)(v2 + 432) = 0;
+          *(_QWORD*)(v2 + 408) = 0;
+          *(_QWORD*)(v2 + 416) = 0;
+          *(_QWORD*)(v2 + 392) = 0;
+          *(_QWORD*)(v2 + 400) = 0;
+          *(_QWORD*)(v2 + 384) = 0;
+          *(_DWORD*)(v2 + 492) = 1045220557;
+          *(_QWORD*)(v2 + 500) = 0;
+          *(_QWORD*)(v2 + 508) = 0;
+          *(_DWORD*)(v2 + 516) = 0;
+          *(_OWORD*)(v2 + 560) = GameData_1a83610;
+          if (a2 != 3) {
+            *(_QWORD*)(v2 + 712) = 0;
+            *(_QWORD*)(v2 + 704) = 0;
+            *(_OWORD*)(v2 + 720) = GameData_1a83610;
+            *(_OWORD*)(v2 + 736) = (__typeof__(*(_OWORD*)(v2 + 736))){0};
+            *(_QWORD*)(v2 + 696) = 0;
+            *(_QWORD*)(v2 + 688) = 0;
+            *(_QWORD*)(v2 + 680) = 0;
+            *(_QWORD*)(v2 + 672) = 0;
+            *(_QWORD*)(v2 + 664) = 0;
+            *(_QWORD*)(v2 + 656) = 0;
+            *(_QWORD*)(v2 + 648) = 0;
+            *(_QWORD*)(v2 + 640) = 0;
+            *(_QWORD*)(v2 + 676) = 0x3F8000003F800000LL;
+            *(_QWORD*)(v2 + 632) = 0;
+            *(_QWORD*)(v2 + 624) = 0;
+            *(_QWORD*)(v2 + 616) = 0;
+            *(_QWORD*)(v2 + 608) = 0;
+            *(_QWORD*)(v2 + 600) = 0;
+            *(_QWORD*)(v2 + 592) = 0;
+            *(_QWORD*)(v2 + 584) = 0;
+            *(_QWORD*)(v2 + 576) = 0;
+            *(_DWORD*)(v2 + 684) = 1045220557;
+            *(_DWORD*)(v2 + 708) = 0;
+            *(_QWORD*)(v2 + 692) = 0;
+            *(_QWORD*)(v2 + 700) = 0;
+            *(_OWORD*)(v2 + 752) = GameData_1a83610;
+            if (a2 != 4) {
+              *(_QWORD*)(v2 + 904) = 0;
+              *(_QWORD*)(v2 + 896) = 0;
+              *(_OWORD*)(v2 + 912) = GameData_1a83610;
+              *(_OWORD*)(v2 + 928) = (__typeof__(*(_OWORD*)(v2 + 928))){0};
+              *(_QWORD*)(v2 + 888) = 0;
+              *(_QWORD*)(v2 + 880) = 0;
+              *(_QWORD*)(v2 + 872) = 0;
+              *(_QWORD*)(v2 + 864) = 0;
+              *(_QWORD*)(v2 + 856) = 0;
+              *(_QWORD*)(v2 + 848) = 0;
+              *(_QWORD*)(v2 + 868) = 0x3F8000003F800000LL;
+              *(_QWORD*)(v2 + 840) = 0;
+              *(_QWORD*)(v2 + 832) = 0;
+              *(_QWORD*)(v2 + 824) = 0;
+              *(_QWORD*)(v2 + 816) = 0;
+              *(_QWORD*)(v2 + 808) = 0;
+              *(_QWORD*)(v2 + 800) = 0;
+              *(_QWORD*)(v2 + 792) = 0;
+              *(_QWORD*)(v2 + 784) = 0;
+              *(_QWORD*)(v2 + 776) = 0;
+              *(_QWORD*)(v2 + 768) = 0;
+              *(_QWORD*)(v2 + 884) = 0;
+              *(_QWORD*)(v2 + 892) = 0;
+              *(_DWORD*)(v2 + 900) = 0;
+              *(_OWORD*)(v2 + 944) = GameData_1a83610;
+              *(_DWORD*)(v2 + 876) = 1045220557;
+              if (a2 != 5) {
+                *(_QWORD*)(v2 + 1096) = 0;
+                *(_QWORD*)(v2 + 1088) = 0;
+                *(_QWORD*)(v2 + 1080) = 0;
+                *(_QWORD*)(v2 + 1072) = 0;
+                *(_QWORD*)(v2 + 1064) = 0;
+                *(_QWORD*)(v2 + 1056) = 0;
+                *(_QWORD*)(v2 + 1048) = 0;
+                *(_QWORD*)(v2 + 1040) = 0;
+                *(_QWORD*)(v2 + 1032) = 0;
+                *(_QWORD*)(v2 + 1024) = 0;
+                *(_QWORD*)(v2 + 1016) = 0;
+                *(_QWORD*)(v2 + 1060) = 0x3F8000003F800000LL;
+                *(_QWORD*)(v2 + 1008) = 0;
+                *(_QWORD*)(v2 + 1000) = 0;
+                *(_QWORD*)(v2 + 992) = 0;
+                *(_QWORD*)(v2 + 984) = 0;
+                *(_QWORD*)(v2 + 976) = 0;
+                *(_QWORD*)(v2 + 968) = 0;
+                *(_QWORD*)(v2 + 960) = 0;
+                *(_DWORD*)(v2 + 1068) = 1045220557;
+                *(_DWORD*)(v2 + 1092) = 0;
+                *(_OWORD*)(v2 + 1104) = GameData_1a83610;
+                *(_QWORD*)(v2 + 1076) = 0;
+                *(_QWORD*)(v2 + 1084) = 0;
+                *(_OWORD*)(v2 + 1120) = (__typeof__(*(_OWORD*)(v2 + 1120))){0};
+                *(_OWORD*)(v2 + 1136) = GameData_1a83610;
+                if (a2 != 6) {
+                  *(_QWORD*)(v2 + 1288) = 0;
+                  *(_QWORD*)(v2 + 1280) = 0;
+                  *(_QWORD*)(v2 + 1272) = 0;
+                  *(_QWORD*)(v2 + 1264) = 0;
+                  *(_QWORD*)(v2 + 1256) = 0;
+                  *(_QWORD*)(v2 + 1248) = 0;
+                  *(_QWORD*)(v2 + 1240) = 0;
+                  *(_QWORD*)(v2 + 1232) = 0;
+                  *(_QWORD*)(v2 + 1224) = 0;
+                  *(_QWORD*)(v2 + 1252) = 0x3F8000003F800000LL;
+                  *(_QWORD*)(v2 + 1216) = 0;
+                  *(_QWORD*)(v2 + 1208) = 0;
+                  *(_QWORD*)(v2 + 1200) = 0;
+                  *(_QWORD*)(v2 + 1192) = 0;
+                  *(_QWORD*)(v2 + 1184) = 0;
+                  *(_QWORD*)(v2 + 1176) = 0;
+                  *(_QWORD*)(v2 + 1168) = 0;
+                  *(_QWORD*)(v2 + 1160) = 0;
+                  *(_QWORD*)(v2 + 1152) = 0;
+                  *(_QWORD*)(v2 + 1268) = 0;
+                  *(_QWORD*)(v2 + 1276) = 0;
+                  *(_DWORD*)(v2 + 1284) = 0;
+                  *(_OWORD*)(v2 + 1296) = GameData_1a83610;
+                  *(_OWORD*)(v2 + 1312) =
+                      (__typeof__(*(_OWORD*)(v2 + 1312))){0};
+                  *(_OWORD*)(v2 + 1328) = GameData_1a83610;
+                  *(_DWORD*)(v2 + 1260) = 1045220557;
+                  if (a2 != 7) {
+                    *(_QWORD*)(v2 + 1480) = 0;
+                    *(_QWORD*)(v2 + 1472) = 0;
+                    *(_QWORD*)(v2 + 1464) = 0;
+                    *(_QWORD*)(v2 + 1456) = 0;
+                    *(_QWORD*)(v2 + 1448) = 0;
+                    *(_QWORD*)(v2 + 1440) = 0;
+                    *(_QWORD*)(v2 + 1432) = 0;
+                    *(_QWORD*)(v2 + 1424) = 0;
+                    *(_QWORD*)(v2 + 1416) = 0;
+                    *(_QWORD*)(v2 + 1408) = 0;
+                    *(_QWORD*)(v2 + 1400) = 0;
+                    *(_QWORD*)(v2 + 1444) = 0x3F8000003F800000LL;
+                    *(_QWORD*)(v2 + 1392) = 0;
+                    *(_QWORD*)(v2 + 1384) = 0;
+                    *(_QWORD*)(v2 + 1376) = 0;
+                    *(_QWORD*)(v2 + 1368) = 0;
+                    *(_QWORD*)(v2 + 1360) = 0;
+                    *(_QWORD*)(v2 + 1352) = 0;
+                    *(_QWORD*)(v2 + 1344) = 0;
+                    *(_DWORD*)(v2 + 1452) = 1045220557;
+                    *(_DWORD*)(v2 + 1476) = 0;
+                    *(_OWORD*)(v2 + 1488) = GameData_1a83610;
+                    *(_QWORD*)(v2 + 1460) = 0;
+                    *(_QWORD*)(v2 + 1468) = 0;
+                    *(_OWORD*)(v2 + 1504) =
+                        (__typeof__(*(_OWORD*)(v2 + 1504))){0};
+                    *(_OWORD*)(v2 + 1520) = GameData_1a83610;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      a1[1] = v2 + 192 * a2;
+    }
+    else {
+      a1[1] = v2;
+    }
+  }
+  else {
+    v5 = v2 - *a1;
+    v6 = a2 - 0x5555555555555555LL * (v5 >> 6);
+    if (v6 > 0x155555555555555LL) {
+      GameRoutine_10e53f0();
+    }
+    v7 = fw_memory_g_heap_manager_ptr;
+    v8 = 0xAAAAAAAAAAAAAAABLL * ((v3 - *a1) >> 6);
+    if (2 * v8 > v6) {
+      v6 = 2 * v8;
+    }
+    if (v8 >= 0xAAAAAAAAAAAAAALL) {
+      v9 = 0x155555555555555LL;
+    }
+    else {
+      v9 = v6;
+    }
+    if (v9 != 0) {
+      if (v9 > 0x155555555555555LL) {
+        GameRoutine_60a210();
+      }
+      v10 = a2;
+      v11 = fw_memory_HeapManager_Allocate(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 192 * v9, 16, 0);
+      a2 = v10;
+    }
+    else {
+      v11 = 0;
+    }
+    v12 = v11 + v5;
+    v13 = 192 * a2 - 192;
+    if ((~(v13 / 0xC0) & 3) != 0) {
+      v15 = -(__int64)(((unsigned __int8)(v13 / 0xC0) + 1) & 3);
+      v14 = v11 + v5;
+      do {
+        *(_QWORD*)(v14 + 128) = 0;
+        *(_QWORD*)(v14 + 136) = 0;
+        *(_QWORD*)(v14 + 112) = 0;
+        *(_QWORD*)(v14 + 120) = 0;
+        v16 = __CFADD__(v15++, 1);
+        *(_QWORD*)(v14 + 96) = 0;
+        *(_QWORD*)(v14 + 104) = 0;
+        *(_QWORD*)(v14 + 80) = 0;
+        *(_QWORD*)(v14 + 88) = 0;
+        *(_QWORD*)(v14 + 64) = 0;
+        *(_QWORD*)(v14 + 72) = 0;
+        *(_QWORD*)(v14 + 48) = 0;
+        *(_QWORD*)(v14 + 56) = 0;
+        *(_QWORD*)(v14 + 32) = 0;
+        *(_QWORD*)(v14 + 40) = 0;
+        *(_QWORD*)(v14 + 16) = 0;
+        *(_QWORD*)(v14 + 24) = 0;
+        *(_QWORD*)v14 = 0;
+        *(_QWORD*)(v14 + 8) = 0;
+        *(_QWORD*)(v14 + 100) = 0x3F8000003F800000LL;
+        *(_DWORD*)(v14 + 108) = 1045220557;
+        *(_QWORD*)(v14 + 116) = 0;
+        *(_QWORD*)(v14 + 124) = 0;
+        *(_DWORD*)(v14 + 132) = 0;
+        *(_OWORD*)(v14 + 144) = GameData_1a83610;
+        *(_QWORD*)(v14 + 160) = 0;
+        *(_QWORD*)(v14 + 168) = 0;
+        *(_OWORD*)(v14 + 176) = GameData_1a83610;
+        v14 += 192;
+      } while (!v16);
+    }
+    else {
+      v14 = v11 + v5;
+    }
+    v17 = v12 + 192 * a2;
+    if (v13 >= 0x240) {
+      do {
+        *(_QWORD*)(v14 + 128) = 0;
+        *(_QWORD*)(v14 + 136) = 0;
+        *(_QWORD*)(v14 + 112) = 0;
+        *(_QWORD*)(v14 + 120) = 0;
+        *(_OWORD*)(v14 + 144) = GameData_1a83610;
+        *(_OWORD*)(v14 + 160) = (__typeof__(*(_OWORD*)(v14 + 160))){0};
+        *(_QWORD*)(v14 + 96) = 0;
+        *(_QWORD*)(v14 + 104) = 0;
+        *(_QWORD*)(v14 + 80) = 0;
+        *(_QWORD*)(v14 + 88) = 0;
+        *(_QWORD*)(v14 + 64) = 0;
+        *(_QWORD*)(v14 + 72) = 0;
+        *(_QWORD*)(v14 + 48) = 0;
+        *(_QWORD*)(v14 + 56) = 0;
+        *(_QWORD*)(v14 + 32) = 0;
+        *(_QWORD*)(v14 + 40) = 0;
+        *(_QWORD*)(v14 + 16) = 0;
+        *(_QWORD*)(v14 + 24) = 0;
+        *(_QWORD*)v14 = 0;
+        *(_QWORD*)(v14 + 8) = 0;
+        *(_QWORD*)(v14 + 100) = 0x3F8000003F800000LL;
+        *(_DWORD*)(v14 + 108) = 1045220557;
+        *(_QWORD*)(v14 + 116) = 0;
+        *(_QWORD*)(v14 + 124) = 0;
+        *(_DWORD*)(v14 + 132) = 0;
+        *(_OWORD*)(v14 + 176) = GameData_1a83610;
+        *(_QWORD*)(v14 + 192) = 0;
+        *(_QWORD*)(v14 + 200) = 0;
+        *(_QWORD*)(v14 + 208) = 0;
+        *(_QWORD*)(v14 + 216) = 0;
+        *(_QWORD*)(v14 + 224) = 0;
+        *(_QWORD*)(v14 + 232) = 0;
+        *(_QWORD*)(v14 + 240) = 0;
+        *(_QWORD*)(v14 + 248) = 0;
+        *(_QWORD*)(v14 + 256) = 0;
+        *(_QWORD*)(v14 + 264) = 0;
+        *(_QWORD*)(v14 + 272) = 0;
+        *(_QWORD*)(v14 + 280) = 0;
+        *(_QWORD*)(v14 + 288) = 0;
+        *(_QWORD*)(v14 + 296) = 0;
+        *(_QWORD*)(v14 + 304) = 0;
+        *(_QWORD*)(v14 + 312) = 0;
+        *(_QWORD*)(v14 + 320) = 0;
+        *(_QWORD*)(v14 + 328) = 0;
+        *(_QWORD*)(v14 + 292) = 0x3F8000003F800000LL;
+        *(_DWORD*)(v14 + 300) = 1045220557;
+        *(_DWORD*)(v14 + 324) = 0;
+        *(_OWORD*)(v14 + 368) = GameData_1a83610;
+        *(_QWORD*)(v14 + 384) = 0;
+        *(_QWORD*)(v14 + 392) = 0;
+        *(_QWORD*)(v14 + 400) = 0;
+        *(_QWORD*)(v14 + 408) = 0;
+        *(_QWORD*)(v14 + 416) = 0;
+        *(_QWORD*)(v14 + 424) = 0;
+        *(_QWORD*)(v14 + 432) = 0;
+        *(_QWORD*)(v14 + 440) = 0;
+        *(_QWORD*)(v14 + 448) = 0;
+        *(_QWORD*)(v14 + 456) = 0;
+        *(_QWORD*)(v14 + 464) = 0;
+        *(_QWORD*)(v14 + 472) = 0;
+        *(_QWORD*)(v14 + 480) = 0;
+        *(_QWORD*)(v14 + 488) = 0;
+        *(_QWORD*)(v14 + 496) = 0;
+        *(_QWORD*)(v14 + 504) = 0;
+        *(_QWORD*)(v14 + 512) = 0;
+        *(_QWORD*)(v14 + 520) = 0;
+        *(_DWORD*)(v14 + 492) = 1045220557;
+        *(_DWORD*)(v14 + 516) = 0;
+        *(_OWORD*)(v14 + 560) = GameData_1a83610;
+        *(_QWORD*)(v14 + 576) = 0;
+        *(_QWORD*)(v14 + 584) = 0;
+        *(_QWORD*)(v14 + 592) = 0;
+        *(_QWORD*)(v14 + 600) = 0;
+        *(_QWORD*)(v14 + 608) = 0;
+        *(_QWORD*)(v14 + 616) = 0;
+        *(_QWORD*)(v14 + 624) = 0;
+        *(_QWORD*)(v14 + 632) = 0;
+        *(_QWORD*)(v14 + 640) = 0;
+        *(_QWORD*)(v14 + 648) = 0;
+        *(_QWORD*)(v14 + 656) = 0;
+        *(_QWORD*)(v14 + 664) = 0;
+        *(_QWORD*)(v14 + 672) = 0;
+        *(_QWORD*)(v14 + 680) = 0;
+        *(_QWORD*)(v14 + 688) = 0;
+        *(_QWORD*)(v14 + 696) = 0;
+        *(_QWORD*)(v14 + 704) = 0;
+        *(_QWORD*)(v14 + 712) = 0;
+        *(_DWORD*)(v14 + 684) = 1045220557;
+        *(_DWORD*)(v14 + 708) = 0;
+        *(_OWORD*)(v14 + 752) = GameData_1a83610;
+        *(_QWORD*)(v14 + 308) = 0;
+        *(_QWORD*)(v14 + 316) = 0;
+        *(_QWORD*)(v14 + 484) = 0x3F8000003F800000LL;
+        *(_QWORD*)(v14 + 500) = 0;
+        *(_QWORD*)(v14 + 508) = 0;
+        *(_QWORD*)(v14 + 676) = 0x3F8000003F800000LL;
+        *(_QWORD*)(v14 + 692) = 0;
+        *(_QWORD*)(v14 + 700) = 0;
+        *(_OWORD*)(v14 + 336) = GameData_1a83610;
+        *(_OWORD*)(v14 + 352) = (__typeof__(*(_OWORD*)(v14 + 352))){0};
+        *(_OWORD*)(v14 + 528) = GameData_1a83610;
+        *(_OWORD*)(v14 + 544) = (__typeof__(*(_OWORD*)(v14 + 544))){0};
+        *(_OWORD*)(v14 + 720) = GameData_1a83610;
+        *(_OWORD*)(v14 + 736) = (__typeof__(*(_OWORD*)(v14 + 736))){0};
+        v14 += 768;
+      } while (v14 != v17);
+    }
+    v18 = v11 + 192 * v9;
+    v19 = (_QWORD*)*a1;
+    {
+      v20 = (_QWORD*)a1[1];
+      __asm__ volatile("" ::"r"(v20));
+    }
+    v21 = v12 + *a1 - (_QWORD)v20;
+    if (v20 != (_QWORD*)*a1) {
+      v22 = (_QWORD*)*a1;
+      v23 = v21;
+      do {
+        {
+          v24 = *v22;
+          __asm__ volatile("" ::"r"(v24));
+        }
+        *(_QWORD*)(v23 + 16) = 0;
+        *(_QWORD*)(v23 + 24) = 0;
+        *(_QWORD*)v23 = v24;
+        *(_QWORD*)(v23 + 8) = v22[1];
+        *(_QWORD*)(v23 + 16) = v22[2];
+        *(_QWORD*)(v23 + 24) = v22[3];
+        v22[2] = 0;
+        v22[3] = 0;
+        v22[1] = 0;
+        *(_QWORD*)(v23 + 40) = 0;
+        *(_QWORD*)(v23 + 48) = 0;
+        *(_QWORD*)(v23 + 32) = 0;
+        *(_QWORD*)(v23 + 32) = v22[4];
+        *(_QWORD*)(v23 + 40) = v22[5];
+        *(_QWORD*)(v23 + 48) = v22[6];
+        v22[5] = 0;
+        v22[6] = 0;
+        v22[4] = 0;
+        {
+          v25 = v22[9];
+          __asm__ volatile("" ::"r"(v25));
+        }
+        *(_QWORD*)(v23 + 64) = v22[8];
+        *(_QWORD*)(v23 + 72) = v25;
+        *(_QWORD*)(v23 + 80) = v22[10];
+        {
+          v26 = v22[13];
+          __asm__ volatile("" ::"r"(v26));
+        }
+        {
+          v27 = v22[14];
+          __asm__ volatile("" ::"r"(v27));
+        }
+        {
+          v28 = v22[12];
+          __asm__ volatile("" ::"r"(v28));
+        }
+        *(_QWORD*)(v23 + 88) = v22[11];
+        *(_QWORD*)(v23 + 96) = v28;
+        *(_QWORD*)(v23 + 104) = v26;
+        *(_QWORD*)(v23 + 112) = v27;
+        *(_DWORD*)(v23 + 120) = *((_DWORD*)v22 + 30);
+        *(_DWORD*)(v23 + 124) = *((_DWORD*)v22 + 31);
+        *(_DWORD*)(v23 + 128) = *((_DWORD*)v22 + 32);
+        *(_DWORD*)(v23 + 132) = *((_DWORD*)v22 + 33);
+        *(_QWORD*)(v23 + 152) = v22[19];
+        *(_QWORD*)(v23 + 144) = v22[18];
+        *(_QWORD*)(v23 + 168) = v22[21];
+        *(_QWORD*)(v23 + 160) = v22[20];
+        *(_QWORD*)(v23 + 184) = v22[23];
+        {
+          v29 = v22[22];
+          __asm__ volatile("" ::"r"(v29));
+        }
+        v22 += 24;
+        *(_QWORD*)(v23 + 176) = v29;
+        v23 += 192;
+      } while (v22 != v20);
+      do {
+        {
+          v30 = v19[4];
+          __asm__ volatile("" ::"r"(v30));
+        }
+        if (v30 != 0) {
+          v19[5] = v30;
+          if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) != 0) {
+            v31 = 128;
+          }
+          else {
+            v31 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt3(*(_QWORD*)v7 + v31, v30);
+        }
+        {
+          v32 = v19[1];
+          __asm__ volatile("" ::"r"(v32));
+        }
+        if (v32 != 0) {
+          v19[2] = v32;
+          if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) != 0) {
+            v33 = 128;
+          }
+          else {
+            v33 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt3(*(_QWORD*)v7 + v33, v32);
+        }
+        v19 += 24;
+      } while (v19 != v20);
+      v19 = (_QWORD*)*a1;
+    }
+    *a1 = v21;
+    a1[1] = v17;
+    a1[2] = v18;
+    if (v19 != nullptr) {
+      v34 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) == 0) {
+        v34 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt3(*(_QWORD*)v7 + v34, (__int64)v19);
     }
   }
 }

@@ -92,6 +92,11 @@ __int64 UnitUtil_15e04f0(__int64 result);
 __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64 game_UnitPool_GetLast(int*);
+extern __int64 (*GameData_205c1f8[])();
+extern __int64 GameData_21ca310;
+void __attribute__((noreturn)) GameRoutine_60a310();
+__int64 game_gameui_UnitUtil_GetPrevDefault(__int64 a1, _QWORD* a2, char a3);
 
 bool game_gameui_UnitUtil_CheckDangerCritical(__int64 a1, __int64 a2)
 {
@@ -307,6 +312,158 @@ LABEL_11:
     v9 = 40;
   }
   return (*(__int64 (**)(__int64))(*v10_.v11 + v9))((__int64)v10_.v11);
+}
+
+__int64 game_gameui_UnitUtil_GetPrevDefault(__int64 a1, _QWORD* a2, char a3)
+{
+  char v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  int v10;
+  __int64 v11;
+  char v12;
+  int v13;
+  __int64 v14;
+  int v15;
+  __int64 v16;
+  char v17;
+  int v18;
+  struct {
+    _QWORD v20[4];
+    _QWORD* v21;
+    char gap40_[36];
+    unsigned int v22;
+  } v20_;
+
+  if (a2[4] == 0) {
+    v5 = a3;
+    v20_.v20[0] = GameData_205c1f8;
+    v20_.v21 = v20_.v20;
+    GameRoutine_145f5d0(v20_.v20, a2);
+    if (v20_.v21 == v20_.v20) {
+      v6 = 32;
+    }
+    else {
+      if (v20_.v21 == nullptr) {
+      LABEL_7:
+        a3 = v5;
+        goto LABEL_8;
+      }
+      v6 = 40;
+    }
+    (*(void (**)(__int64))(*v20_.v21 + v6))((__int64)v20_.v21);
+    goto LABEL_7;
+  }
+LABEL_8:
+  v20_.v22 = 497;
+  v7 = a1;
+  if ((a3 & 1) != 0) {
+    while (1) {
+      if (v7 != 0) {
+        v8 = *(_QWORD*)(v7 + 424);
+        if (v8 != 0) {
+          goto LABEL_15;
+        }
+        v9 = *(_QWORD*)(v7 + 440);
+        if (v9 != 0) {
+          v10 = *(unsigned __int8*)(v9 + 16);
+          if (*(_BYTE*)(v9 + 16) == 0) {
+          LABEL_13:
+            v8 = 0;
+            goto LABEL_15;
+          }
+        }
+        else {
+          v10 = 9;
+        }
+        v13 = v10 + 1;
+        while (1) {
+          if (((v20_.v22 >> (v13 - 2)) & 1) != 0) {
+            v8 = *(_QWORD*)(*(_QWORD*)(GameData_21ca310 + 56) +
+                            24 * (unsigned int)(unsigned __int8)(v13 - 2) +
+                            556008LL);
+            if (v8 != 0) {
+              break;
+            }
+          }
+          if ((unsigned int)--v13 < 2) {
+            goto LABEL_13;
+          }
+        }
+      }
+      else {
+        v8 = game_UnitPool_GetLast((int*)&v20_.v22);
+      }
+    LABEL_15:
+      if (v8 == a1) {
+        return 0;
+      }
+      v11 = a2[4];
+      v20_.v20[0] = v8;
+      if (v11 == 0) {
+        goto LABEL_42;
+      }
+      v12 = (*(__int64 (**)(__int64, _QWORD*))(*(_QWORD*)v11 + 48LL))(v11,
+                                                                      v20_.v20);
+      v7 = v8;
+      if ((v12 & 1) != 0) {
+        return v8;
+      }
+    }
+  }
+  while (1) {
+    if (v7 == 0) {
+    LABEL_29:
+      v8 = game_UnitPool_GetLast((int*)&v20_.v22);
+      goto LABEL_30;
+    }
+    v8 = *(_QWORD*)(v7 + 424);
+    if (v8 != 0) {
+      goto LABEL_30;
+    }
+    v14 = *(_QWORD*)(v7 + 440);
+    if (v14 != 0) {
+      v15 = *(unsigned __int8*)(v14 + 16);
+      if (*(_BYTE*)(v14 + 16) == 0) {
+        goto LABEL_29;
+      }
+    }
+    else {
+      v15 = 9;
+    }
+    v18 = v15 + 1;
+    while (1) {
+      if (((v20_.v22 >> (v18 - 2)) & 1) != 0) {
+        v8 = *(_QWORD*)(*(_QWORD*)(GameData_21ca310 + 56) +
+                        24 * (unsigned int)(unsigned __int8)(v18 - 2) +
+                        556008LL);
+        if (v8 != 0) {
+          break;
+        }
+      }
+      if ((unsigned int)--v18 <= 1) {
+        goto LABEL_29;
+      }
+    }
+  LABEL_30:
+    if (v8 == a1) {
+      return 0;
+    }
+    v16 = a2[4];
+    v20_.v20[0] = v8;
+    if (v16 == 0) {
+    LABEL_42:
+      GameRoutine_60a310();
+    }
+    v17 = (*(__int64 (**)(__int64, _QWORD*))(*(_QWORD*)v16 + 48LL))(v16,
+                                                                    v20_.v20);
+    v7 = v8;
+    if ((v17 & 1) != 0) {
+      return v8;
+    }
+  }
 }
 
 __int64 game_gameui_UnitUtil_GetNext(__int64 a1, char a2, _QWORD* a3, char a4)

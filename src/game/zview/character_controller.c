@@ -269,6 +269,8 @@ extern __int64 (*eft_ClampCurve_ptr)();
 unsigned __int64 GameRoutine_d2b5f0(__int64);
 void CharacterController_d48660(__int64 a1, unsigned __int32 a2, int* a3);
 float CharacterController_StateGuard_Start_Unknown4(__int64 a1, long double a2);
+float CharacterController_d40750(__int64 a1, __int64 a2, __int64 a3,
+                                 __int64 a4);
 
 void CharacterController_StateWarpTo_Unknown3(__int64 a1)
 {
@@ -4517,6 +4519,105 @@ LABEL_143:
   }
   v87 = 0x0.0p+0f;
   goto LABEL_149;
+}
+
+float CharacterController_d40750(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
+{
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  __int64 v5;
+  float v6;
+  int v7;
+  int v8;
+  float v9;
+  __int64 v10;
+  __int64 v11;
+  float v12;
+  float v13;
+  __int64 v14;
+  float v15;
+  float result;
+
+  *(_DWORD*)(a1 + 20) = *(_DWORD*)a2;
+  *(_DWORD*)(a1 + 24) = *(_DWORD*)(a2 + 4);
+  *(_DWORD*)(a1 + 28) = *(_DWORD*)(a2 + 8);
+  *(_DWORD*)(a1 + 32) = *(_DWORD*)(a2 + 12);
+  *(_DWORD*)(a1 + 36) = *(_DWORD*)(a2 + 16);
+  *(_DWORD*)(a1 + 40) = *(_DWORD*)(a2 + 20);
+  {
+    v4 = *(_QWORD*)(a2 + 24);
+    __asm__ volatile("" ::"r"(v4));
+  }
+  *(_QWORD*)(a1 + 52) = *(_QWORD*)(a2 + 32);
+  *(_QWORD*)(a1 + 44) = v4;
+  *(_DWORD*)(a1 + 60) = *(_DWORD*)a3;
+  *(_DWORD*)(a1 + 64) = *(_DWORD*)(a3 + 4);
+  *(_DWORD*)(a1 + 68) = *(_DWORD*)(a3 + 8);
+  *(_DWORD*)(a1 + 72) = *(_DWORD*)(a3 + 12);
+  *(_DWORD*)(a1 + 76) = *(_DWORD*)(a3 + 16);
+  *(_DWORD*)(a1 + 80) = *(_DWORD*)(a3 + 20);
+  {
+    v5 = *(_QWORD*)(a3 + 24);
+    __asm__ volatile("" ::"r"(v5));
+  }
+  *(_QWORD*)(a1 + 92) = *(_QWORD*)(a3 + 32);
+  *(_QWORD*)(a1 + 84) = v5;
+  {
+    v6 = *(float*)a4;
+    __asm__ volatile("" ::"w"(v6));
+  }
+  {
+    v7 = *(_DWORD*)(a1 + 84);
+    __asm__ volatile("" ::"r"(v7));
+  }
+  {
+    v8 = *(_DWORD*)(a1 + 88);
+    __asm__ volatile("" ::"r"(v8));
+  }
+  *(_DWORD*)(a1 + 100) = *(_DWORD*)a4;
+  {
+    v9 = *(float*)(a4 + 4);
+    __asm__ volatile("" ::"w"(v9));
+  }
+  *(float*)(a1 + 104) = v9;
+  *(_DWORD*)(a1 + 108) = *(_DWORD*)(a4 + 8);
+  *(_DWORD*)(a1 + 112) = *(_DWORD*)(a4 + 12);
+  *(_DWORD*)(a1 + 116) = *(_DWORD*)(a4 + 16);
+  *(_DWORD*)(a1 + 120) = *(_DWORD*)(a4 + 20);
+  {
+    v10 = *(_QWORD*)(a4 + 24);
+    __asm__ volatile("" ::"r"(v10));
+  }
+  {
+    v11 = *(_QWORD*)(a4 + 32);
+    __asm__ volatile("" ::"r"(v11));
+  }
+  *(float*)(a1 + 144) = v6;
+  *(float*)(a1 + 148) = v9;
+  *(_QWORD*)(a1 + 124) = v10;
+  *(_QWORD*)(a1 + 132) = v11;
+  {
+    v12 = (float)(*(_DWORD*)(a1 + 124) - v7);
+    __asm__ volatile("" ::"w"(v12));
+  }
+  {
+    v13 = (float)(*(_DWORD*)(a1 + 128) - v8);
+    __asm__ volatile("" ::"w"(v13));
+  }
+  {
+    v14 = *(_QWORD*)(a1 + 8);
+    __asm__ volatile("" ::"r"(v14));
+  }
+  *(_BYTE*)(a1 + 140) = *(_DWORD*)(a1 + 124) != v7;
+  {
+    v15 = *(float*)(*(_QWORD*)(v14 + 8) + 528LL) + 0x1.4000000000000p-1f;
+    __asm__ volatile("" ::"w"(v15));
+  }
+  result = v6 + (float)(v15 * v12);
+  *(float*)(a1 + 144) = result;
+  *(float*)(a1 + 148) = v9 + (float)(v15 * v13);
+  return result;
 }
 
 __int64 CharacterController_d40860(__int64 a1, __int64 a2, __int64 a3,

@@ -29,6 +29,10 @@ unsigned __int64 strlen(const char*);
 void __attribute__((noreturn)) snd_a36650();
 __int64 BGM_d7320(__int64* a1, __int64 a2, __int64 a3, unsigned int a4, char a5,
                   float a6, float a7);
+bool snd_BGM_equals(__int64, const char*);
+const char* snd_data_findCtrlBgmData(__int64);
+__int64 BGM_d7bf0(__int64 result, __int64 a2, __int64 a3, unsigned int a4,
+                  float a5, float a6);
 
 __int64 BGM_d5640(__int64 a1)
 {
@@ -724,6 +728,158 @@ __int64 BGM_d7320(__int64* a1, __int64 a2, __int64 a3, unsigned int a4, char a5,
     result = 1;
     v46 += 7;
   } while ((_DWORD)v45++ != 6);
+  return result;
+}
+
+__int64 BGM_d7bf0(__int64 result, __int64 a2, __int64 a3, unsigned int a4,
+                  float a5, float a6)
+{
+
+#pragma clang fp contract(off)
+  __int64 v6;
+  __int64* v11;
+  char v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  const char* v16;
+  char v17;
+  __int64 v18;
+  unsigned __int64 v19;
+  char* v20;
+  bool v21;
+  __int64 v22;
+  __int64 v23;
+  char v24;
+  struct {
+    __int64 v25;
+    __int64 v26;
+    char* v27;
+    __int64 v28;
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+    int v32;
+  } v25_;
+
+  {
+    v6 = *(_QWORD*)(result + 16);
+    __asm__ volatile("" ::"r"(v6));
+  }
+  v11 = (__int64*)result;
+  if (v6 == *(_QWORD*)(result + 8)) {
+    v12 = 0;
+    if (a2 == 0) {
+      return result;
+    }
+  }
+  else {
+    {
+      v12 = *(_BYTE*)(v6 - 75);
+      __asm__ volatile("" ::"r"(v12));
+    }
+    if (a2 == 0) {
+      return result;
+    }
+  }
+  if ((v12 & 1) == 0) {
+    result = (__int64)snd_data_findCtrlBgmData(a2);
+    if (result != 0) {
+      {
+        v13 = v11[2];
+        __asm__ volatile("" ::"r"(v13));
+      }
+      v14 = result;
+      if (v13 == v11[1]) {
+      LABEL_24:
+        {
+          v22 = *(_QWORD*)(v14 + 16);
+          __asm__ volatile("" ::"r"(v22));
+        }
+        v25_.v27 = nullptr;
+        v25_.v28 = 0;
+        v25_.v29 = 0;
+        v25_.v30 = 0;
+        v25_.v31 = 0;
+        v25_.v25 = v22;
+        v25_.v26 = 0;
+        v25_.v32 = 1;
+        result = snd_BGM_startEntry(v11, &v25_.v25, a3, a4, -1, a5, a6);
+        {
+          v23 = v11[2];
+          __asm__ volatile("" ::"r"(v23));
+        }
+        *(_BYTE*)(v23 - 80) = 1;
+        *(_BYTE*)(v23 - 74) = 1;
+        *(_QWORD*)(v23 - 72) = v14;
+        return result;
+      }
+      v15 = v13 - 416;
+      if ((*(_BYTE*)(v13 - 79) & 1) != 0 || (*(_BYTE*)(v13 - 78) & 1) != 0 ||
+          (*(_BYTE*)(v13 - 77) & 1) != 0 || *(_BYTE*)(v13 - 76) == 1) {
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+            *(_QWORD*)v15 + 32LL))((void*)(&v25_.v25), (__int64)v15);
+        {
+          v16 = *(const char**)(v14 + 16);
+          __asm__ volatile("" ::"r"(v16));
+        }
+        result = strlen(v16);
+        v17 = v25_.v25;
+        v18 = (unsigned __int8)v25_.v25 >> 1;
+        if ((v25_.v25 & 1) != 0) {
+          v18 = v25_.v26;
+        }
+        if (result == v18) {
+          v19 = result;
+          if (result == -1) {
+            snd_a36650();
+          }
+          if ((v25_.v25 & 1) != 0) {
+            v20 = v25_.v27;
+          }
+          else {
+            v20 = (char*)&v25_.v25 + 1;
+          }
+          result = memcmp((__int64)v20, (__int64)v16, v19);
+          v21 = (_DWORD)result == 0;
+          if ((v17 & 1) == 0) {
+          LABEL_23:
+            if (v21) {
+              return result;
+            }
+            goto LABEL_24;
+          }
+        }
+        else {
+          v21 = false;
+          if ((v25_.v25 & 1) == 0) {
+            goto LABEL_23;
+          }
+        }
+        result = (*(__int64 (**)(_QWORD, char*))(
+            **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(*snd_g_memory_ptr[0],
+                                                     v25_.v27);
+        goto LABEL_23;
+      }
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+          *(_QWORD*)v15 + 32LL))((void*)(&v25_.v25), (__int64)v15);
+      result = ((__int64 (*)(__int64, const char*))snd_BGM_equals)(
+          (__int64)&v25_.v25, *(const char**)(v14 + 16));
+      v24 = result;
+      if ((v25_.v25 & 1) != 0) {
+        result = (*(__int64 (**)(_QWORD, char*))(
+            **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(*snd_g_memory_ptr[0],
+                                                     v25_.v27);
+      }
+      if ((v24 & 1) == 0) {
+        snd_Fade_Fade_10c910((__int64)&v25_.v25, 500);
+        (*(void (**)(__int64*, __int64*, _QWORD))(*v11 + 48))(v11, &v25_.v25,
+                                                              0);
+        snd_Fade_Destroy_Fade(&v25_.v25);
+        goto LABEL_24;
+      }
+    }
+  }
   return result;
 }
 

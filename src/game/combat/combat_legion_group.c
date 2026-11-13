@@ -115,6 +115,12 @@ void game_character_CharacterAppearance_Setup_alt1(
     unsigned __int64,
     __int64) __asm__("game_character_CharacterAppearance_Setup");
 void CombatLegionGroup_e57880(_QWORD* a1);
+__int64 GameHr_1083840(__int64 result);
+__int64 GameRoutine_a7c6a0(__int64 result, __int64);
+__int64 game_combat_CombatLegionGroup_AddCharacter_lambda0_Invoke(double a1,
+                                                                  double a2,
+                                                                  __int64 a3,
+                                                                  __int64* a4);
 __attribute__((swiftcall)) void
 
 CombatLegionGroup_e57320(PSEUDO_X8 x8_, __int64 a1, unsigned __int8* a2,
@@ -1955,6 +1961,121 @@ LABEL_6:
     goto LABEL_27;
   }
   return v15;
+}
+
+__int64 game_combat_CombatLegionGroup_AddCharacter_lambda0_Invoke(double a1,
+                                                                  double a2,
+                                                                  __int64 a3,
+                                                                  __int64* a4)
+{
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  __int64 v5;
+  float32x4_t* v6;
+  float32x4_t v7;
+  float32x4_t v8;
+  int8x16_t v9;
+  float32x4_t v10;
+  __int64* v11;
+  __int64* v12;
+  __int64 v13;
+  int v14;
+  __int64 v15;
+  __int128 v16;
+  __int64 result;
+  float v18;
+
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  {
+    v4 = *a4;
+    __asm__ volatile("" ::"r"(v4));
+  }
+  if (*a4 != 0) {
+    *(_DWORD*)(v4 + 336) = 1065353216;
+    {
+      v5 = *(_QWORD*)(v4 + 392);
+      __asm__ volatile("" ::"r"(v5));
+    }
+    if (v5 != 0) {
+      {
+        v6 = *(float32x4_t**)(v4 + 8);
+        __asm__ volatile("" ::"r"(v6));
+      }
+      *(float*)&a2 = *(float*)(v5 + 40) +
+                     (float)(0x1.0000000000000p+0f - *(float*)(v5 + 40));
+      v7 = vdupq_lane_s32(*(int32x2_t*)&a2, 0);
+      LANES128(v7).n128_u32[3] = 0;
+      v8 = vsubq_f32(v6[22], v7);
+      v9 = vmulq_f32(v8, v8);
+      LANES128(v9).n128_u64[0] =
+          LANES64_OF(
+              vadd_f32(COERCE_AS(float32x2_t,
+                                 LANES128_OF(vextq_s8(v9, v9, 8u)).n128_u64[0]),
+                       COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
+              .n64_u64[0];
+      if (LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
+              .n64_f32[0] != 0x0.0p+0f) {
+        LANES128(v6[22]).n128_u32[0] = LODWORD(a2);
+        LANES128(v6[22]).n128_u32[1] = LODWORD(a2);
+        {
+          v10 = v6[22];
+          __asm__ volatile("" ::"w"(v10));
+        }
+        LANES128(v6[18]).n128_u32[2] |= 1u;
+        LANES128(v10).n128_u64[1] = LODWORD(a2);
+        v6[22] = v10;
+        {
+          v5 = *(_QWORD*)(v4 + 392);
+          __asm__ volatile("" ::"r"(v5));
+        }
+      }
+      {
+        v11 = *(__int64**)(v4 + 528);
+        __asm__ volatile("" ::"r"(v11));
+      }
+      {
+        v12 = *(__int64**)(v4 + 536);
+        __asm__ volatile("" ::"r"(v12));
+      }
+      if (v11 != v12) {
+        {
+          v18 = *(float*)(v5 + 44) +
+                (float)(0x1.0000000000000p+0f - *(float*)(v5 + 44));
+          __asm__ volatile("" ::"w"(v18));
+        }
+        do {
+          {
+            v13 = *v11++;
+            __asm__ volatile("" ::"r"(v13));
+          }
+          {
+            v14 = *(_DWORD*)(v13 + 128);
+            __asm__ volatile("" ::"r"(v14));
+          }
+          {
+            v15 = *(_QWORD*)v13;
+            __asm__ volatile("" ::"r"(v15));
+          }
+          *(float*)(v13 + 112) = v18;
+          *(float*)(v13 + 116) = v18;
+          v16 = *(_OWORD*)(v13 + 112);
+          *(_DWORD*)(v13 + 128) = v14 | 0x20;
+          *((_QWORD*)&v16 + 1) = LODWORD(v18);
+          *(_OWORD*)(v13 + 112) = v16;
+          GameRoutine_a7c6a0(v15, v13),
+              result =
+                  COERCE_AS(__typeof__(result),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        } while (v11 != v12);
+      }
+      return GameHr_1083840(v4);
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

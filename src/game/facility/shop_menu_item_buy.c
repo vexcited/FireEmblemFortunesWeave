@@ -120,6 +120,7 @@ __int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
 extern char GameData_1a9f09e;
 char* ShopMenuItem_Buy_Unknown69(_BYTE* a1);
 void ShopMenuItem_Buy_186a120(__int64 a1);
+__int64 ShopMenuItem_Buy_Unknown82(__int64 a1);
 
 __int64 ShopMenuItem_Buy_Unknown17(_QWORD* a1)
 {
@@ -395,6 +396,77 @@ bool ShopMenuItem_Buy_1868b60(__int64 a1)
     }
     return v9 < (*(int (**)(__int64))(*(_QWORD*)a1 + 608LL))(a1);
   }
+}
+
+__int64 ShopMenuItem_Buy_Unknown82(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  bool v4;
+  __int64 v5;
+  __int64 v6;
+  char v7;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
+  struct {
+    _QWORD v14[4];
+    _QWORD* v15;
+  } v14_;
+
+  {
+    v2 = *(_QWORD*)(a1 + 8);
+    __asm__ volatile("" ::"r"(v2));
+  }
+  v4 = false;
+  if (v2 != 0) {
+    v3 = __dynamic_cast(v2, GameData_212e030[0], GameData_2131c68[0], -2);
+    if (v3 != 0 && (int)((*(_QWORD*)(v3 + 16) - *(_QWORD*)(v3 + 8)) >> 3) > 0) {
+      v4 = true;
+    }
+  }
+  {
+    v6 = *(_QWORD*)(a1 + 96);
+    __asm__ volatile("" ::"r"(v6));
+  }
+  v5 = a1 + 96;
+  v7 = (*(__int64 (**)(__int64))(v6 + 24))(v5);
+  if (!v4 && (v7 & 1) == 0) {
+    return (*(__int64 (**)(__int64))(*(_QWORD*)v5 + 56LL))(v5);
+  }
+  v14_.v14[0] = GameData_20f73c0;
+  v14_.v14[1] = v5;
+  v12_.v13 = v12_.v12;
+  v14_.v15 = v14_.v14;
+  v12_.v12[0] = GameData_20f7440;
+  v9 = (*(__int64 (**)(__int64, _QWORD*, _QWORD*))(*(_QWORD*)v5 + 40LL))(
+      v5, v14_.v14, v12_.v12);
+  if (v12_.v13 == v12_.v12) {
+    v10 = 32;
+  }
+  else {
+    if (v12_.v13 == nullptr) {
+      goto LABEL_14;
+    }
+    v10 = 40;
+  }
+  (*(void (**)(__int64))(*v12_.v13 + v10))((__int64)v12_.v13);
+LABEL_14:
+  if (v14_.v15 == v14_.v14) {
+    v11 = 32;
+    goto LABEL_18;
+  }
+  if (v14_.v15 != nullptr) {
+    v11 = 40;
+  LABEL_18:
+    (*(void (**)(__int64))(*v14_.v15 + v11))((__int64)v14_.v15);
+  }
+  (*(void (**)(__int64, __int64))(*(_QWORD*)v5 + 48LL))(v5, v9);
+  return 12;
 }
 
 __int64 ShopMenuItem_Buy_Unknown2(__int64 a1)

@@ -188,6 +188,7 @@ int __cxa_guard_acquire_alt2(__int64) __asm__("__cxa_guard_acquire");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 _QWORD* BattleSide_79ec90(_QWORD* a1);
 __int64 BattleSide_7a2950(_QWORD* a1);
+bool BattleSide_7a0850(__int64 a1, __int64 a2);
 
 void BattleSide_Destructor(_QWORD* a1)
 {
@@ -2814,6 +2815,79 @@ LABEL_52:
     v22[3] = v36 * v22[3];
   }
   return 1;
+}
+
+bool BattleSide_7a0850(__int64 a1, __int64 a2)
+{
+  __int64 v4;
+  char v5;
+  __int64 v6;
+  char v7;
+  int v8;
+  _WORD v10[10];
+
+  if (a1 == 0) {
+    return false;
+  }
+  {
+    v4 = *(_QWORD*)(a1 + 440);
+    __asm__ volatile("" ::"r"(v4));
+  }
+  if (v4 != 0) {
+    {
+      v5 = *(_BYTE*)(v4 + 16);
+      __asm__ volatile("" ::"r"(v5));
+    }
+    if (a2 == 0) {
+      return false;
+    }
+  }
+  else {
+    v5 = 9;
+    if (a2 == 0) {
+      return false;
+    }
+  }
+  if (((1 << v5) & 0xF1) == 0) {
+    return false;
+  }
+  {
+    v6 = *(_QWORD*)(a2 + 440);
+    __asm__ volatile("" ::"r"(v6));
+  }
+  {
+    v7 = v6 != 0 ? *(_BYTE*)(v6 + 16) : 9;
+    __asm__ volatile("" ::"r"(v7));
+  }
+  if (((1 << v7) & 0xF1) == 0) {
+    return false;
+  }
+  if (v4 != 0) {
+    {
+      v8 = *(unsigned __int8*)(v4 + 16);
+      __asm__ volatile("" ::"r"(v8));
+    }
+    if (v6 != 0) {
+      goto LABEL_13;
+    }
+  LABEL_16:
+    if (v8 != 9) {
+      return false;
+    }
+    goto LABEL_17;
+  }
+  v8 = 9;
+  if (v6 == 0) {
+    goto LABEL_16;
+  }
+LABEL_13:
+  if (v8 != *(unsigned __int8*)(v6 + 16)) {
+    return false;
+  }
+LABEL_17:
+  BattleSide_7a0e10((__int64)v10, a1, a2);
+  return (v10[1] | v10[0] | v10[2] | v10[3] | v10[4] | v10[5] | v10[6] |
+          v10[7] | v10[8]) != 0;
 }
 
 __int64 game_map_BattleSide_CalculateTerrain(__int64 result)

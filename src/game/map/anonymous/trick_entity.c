@@ -198,6 +198,7 @@ __int64 GameRoutine_6e98a0_alt1(__int64) __asm__("GameRoutine_6e98a0");
 __int64 GameRoutine_72ca20_alt1(__int64) __asm__("GameRoutine_72ca20");
 __int64 GameRoutine_7c8860_alt1(__int64) __asm__("GameRoutine_7c8860");
 void game_map_7cb980(__int64, int, int, int, int);
+bool TrickEntity_Unknown85(_QWORD* a1);
 
 __int64 game_map_anonymous_TrickEntity_TryBroken(__int64 a1, __int64 a2,
                                                  _WORD* a3)
@@ -674,6 +675,93 @@ __int64 TrickEntity_Unknown75(__int64 a1, int a2, int a3, char a4)
     }
   }
   return result;
+}
+
+bool TrickEntity_Unknown85(_QWORD* a1)
+{
+  __int64 v1;
+  int v3;
+  int v4;
+  float v5;
+  float v6;
+  float v7;
+  float32x4_t* v8;
+  float32x4_t v9;
+  float32x4_t v10;
+  int8x16_t v11;
+  float32x4_t v12;
+  float v14;
+
+  {
+    v1 = a1[14];
+    __asm__ volatile("" ::"r"(v1));
+  }
+  if (v1 != 0) {
+    v3 = (*(__int64 (**)(_QWORD*))(*a1 + 56LL))(a1);
+    v4 = (*(__int64 (**)(_QWORD*))(*a1 + 64LL))(a1);
+    v5 = (float)((float)((float)(v3 + 256) * 0x1.4000000000000p+2f) +
+                 0x1.4000000000000p+1f) +
+         -0x1.4000000000000p+10f;
+    v6 = (float)((float)((float)(v4 + 256) * 0x1.4000000000000p+2f) +
+                 0x1.4000000000000p+1f) +
+         -0x1.4000000000000p+10f;
+    if (GameData_21ca2e8 != 0) {
+      v14 = (float)((float)((float)(v4 + 256) * 0x1.4000000000000p+2f) +
+                    0x1.4000000000000p+1f) +
+            -0x1.4000000000000p+10f;
+      v7 = Height_7c4d10(
+          *(_QWORD*)(GameData_21ca2e8 + 61464),
+          (float)((float)((float)(v3 + 256) * 0x1.4000000000000p+2f) +
+                  0x1.4000000000000p+1f) +
+              -0x1.4000000000000p+10f,
+          v6);
+      v5 = (float)((float)((float)(v3 + 256) * 0x1.4000000000000p+2f) +
+                   0x1.4000000000000p+1f) +
+           -0x1.4000000000000p+10f;
+      v6 = v14;
+      {
+        v8 = (float32x4_t*)a1[14];
+        __asm__ volatile("" ::"r"(v8));
+      }
+      if (v8 == nullptr) {
+        return v1 != 0;
+      }
+    }
+    else {
+      v7 = 0x0.0p+0f;
+      {
+        v8 = (float32x4_t*)a1[14];
+        __asm__ volatile("" ::"r"(v8));
+      }
+      if (v8 == nullptr) {
+        return v1 != 0;
+      }
+    }
+    LANES128(v9).n128_u64[0] = __PAIR64__(LODWORD(v7), LODWORD(v5));
+    LANES128(v9).n128_u64[1] = LODWORD(v6);
+    v10 = vsubq_f32(v8[19], v9);
+    v11 = vmulq_f32(v10, v10);
+    LANES128(v10).n128_u64[0] =
+        LANES64_OF(
+            vadd_f32(COERCE_AS(float32x2_t,
+                               LANES128_OF(vextq_s8(v11, v11, 8u)).n128_u64[0]),
+                     COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0])))
+            .n64_u64[0];
+    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0]),
+                             COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0])))
+            .n64_f32[0] != 0x0.0p+0f) {
+      LANES128(v8[19]).n128_f32[0] = v5;
+      LANES128(v8[19]).n128_f32[1] = v7;
+      {
+        v12 = v8[19];
+        __asm__ volatile("" ::"w"(v12));
+      }
+      LANES128(v8[18]).n128_u32[2] |= 1u;
+      LANES128(v12).n128_u64[1] = LODWORD(v6);
+      v8[19] = v12;
+    }
+  }
+  return v1 != 0;
 }
 
 bool TrickEntity_Unknown88(_QWORD* a1)

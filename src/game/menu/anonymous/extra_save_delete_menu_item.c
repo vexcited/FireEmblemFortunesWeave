@@ -17,6 +17,11 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 game_menu_anonymous_ExtraSaveDeleteMenuItem_ACall_16a31b0(__int64 a1);
 __int64 game_menu_anonymous_ExtraSaveDeleteMenuItem_ACall_16a3380(__int64 a1,
                                                                   __int64 a2);
+_QWORD* GameRoutine_6680e0(_QWORD* result, _QWORD*);
+extern __int64 (*GameData_20869d8[])();
+extern __int64 GameData_21f5fc0;
+__int64 game_menu_anonymous_ExtraSaveDeleteMenuItem_ACall(__int64 a1,
+                                                          __int64* a2);
 
 __int64 game_menu_anonymous_ExtraSaveDeleteMenuItem_ACall_16a31b0(__int64 a1)
 {
@@ -176,6 +181,88 @@ LABEL_15:
   }
   Dialog_16499c0((__int64)v4);
   return 2;
+}
+
+__int64 game_menu_anonymous_ExtraSaveDeleteMenuItem_ACall(__int64 a1,
+                                                          __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
+  const char* v14;
+
+  {
+    v2 = *a2;
+    __asm__ volatile("" ::"r"(v2));
+  }
+  if (GameData_21f5fc0 != 0) {
+    *(_BYTE*)(GameData_21f5fc0 + 330) = 1;
+  }
+  {
+    v3 = *(_QWORD*)(v2 + 8);
+    __asm__ volatile("" ::"r"(v3));
+  }
+  v10_.v11 = v10_.v10;
+  if (*(_QWORD*)(v3 + 152) != 0) {
+    v4 = *(_QWORD*)(v3 + 152);
+    __asm__ volatile("" ::"r"(v4));
+  }
+  else {
+    v4 = v3;
+  }
+  v14 = "MID_Title_SaveDelete_Result";
+  v10_.v10[0] = GameData_20869d8;
+  v5 = game_menu_Dialog__CreateBind_game_menu_Dialog(v4, (__int64)&v14);
+  if (v5 != 0) {
+    v6 = v5;
+    if (v10_.v11 != nullptr) {
+      if (v10_.v11 == v10_.v10) {
+        v12_.v13 = v12_.v12;
+        (*(void (**)(__int64))(*v10_.v11 + 24LL))((__int64)v10_.v11);
+      }
+      else {
+        v12_.v13 = (_QWORD*)(*(__int64 (**)(__int64))(*v10_.v11 + 16LL))(
+            (__int64)v10_.v11);
+      }
+    }
+    else {
+      v12_.v13 = nullptr;
+    }
+    GameRoutine_6680e0(v12_.v12, (_QWORD*)(v6 + 1248));
+    if (v12_.v13 == v12_.v12) {
+      v7 = 32;
+    }
+    else {
+      if (v12_.v13 == nullptr) {
+        goto LABEL_17;
+      }
+      v7 = 40;
+    }
+    (*(void (**)(__int64))(*v12_.v13 + v7))((__int64)v12_.v13);
+  }
+LABEL_17:
+  if (v10_.v11 == v10_.v10) {
+    v8 = 32;
+    goto LABEL_21;
+  }
+  if (v10_.v11 != nullptr) {
+    v8 = 40;
+  LABEL_21:
+    (*(void (**)(__int64))(*v10_.v11 + v8))((__int64)v10_.v11);
+  }
+  return 9;
 }
 
 #pragma GCC visibility pop

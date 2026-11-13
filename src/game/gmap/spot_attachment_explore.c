@@ -85,6 +85,11 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void SpotAttachmentExplore_Unknown40(_QWORD* a1);
 void SpotAttachmentExplore_DeletingDestructor(_QWORD* a1);
+__int64 Dir_70e760(__int16*, __int16*);
+extern __int64 game_gmap_GmapClock_instance_;
+extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
+void GmapExploreInfo_135d220(__int64, __int64*, int);
+void SpotAttachmentExplore_Unknown17(__int64* a1, int a2);
 
 __int64 SpotAttachmentExplore_15197c0(_QWORD* a1, char a2)
 {
@@ -420,6 +425,62 @@ LABEL_8:
     (*(void (**)(__int64))(*v9_.v10 + v7))((__int64)v9_.v10);
   }
   return v11;
+}
+
+void SpotAttachmentExplore_Unknown17(__int64* a1, int a2)
+{
+  __int16* v3;
+  __int64 v4;
+  __int64 v6;
+  __int16* v7;
+  __int64 v8;
+  char v9;
+  __int64 v10;
+  int v12;
+
+  v3 = (__int16*)a1 + 10;
+  {
+    v4 = *((__int16*)a1 + 10);
+    __asm__ volatile("" ::"r"(v4));
+  }
+  {
+    v6 = *((__int16*)a1 + 11);
+    __asm__ volatile("" ::"r"(v6));
+  }
+  if (game_gmap_GmapClock_instance_ != 0) {
+    v7 = (__int16*)(game_gmap_GmapClock_instance_ + 8);
+  }
+  else {
+    v7 = (__int16*)game_gmap_GmapClock_kDefaultTime_ptr;
+  }
+  if ((v6 << 24) + (v4 << 32) + ((__int64)v3[2] << 18) +
+          ((__int64)v3[3] << 12) + ((__int64)v3[4] << 6) + v3[5] >=
+      (unsigned __int64)(((__int64)v7[1] << 24) + ((__int64)*v7 << 32) +
+                         ((__int64)v7[2] << 18) + ((__int64)v7[3] << 12) +
+                         ((__int64)v7[4] << 6) + v7[5])) {
+    a2 += ~(unsigned int)Dir_70e760(v7, v3);
+  }
+  {
+    v8 = a1[4];
+    __asm__ volatile("" ::"r"(v8));
+  }
+  v9 = Impl_13261c0_alt1(v8);
+  if (a2 >= 1) {
+    {
+      v10 = *(_QWORD*)(v8 + 144);
+      __asm__ volatile("" ::"r"(v10));
+    }
+    if (v9 == 5 && v10 != 0) {
+      do {
+        if ((*(unsigned int (**)(__int64*))(*a1 + 256))(a1) == 0) {
+          break;
+        }
+        v12 = (*(__int64 (**)(__int64*))(*a1 + 240))(a1);
+        GmapExploreInfo_135d220(v10, a1 + 6, v12);
+        --a2;
+      } while (a2 != 0);
+    }
+  }
 }
 
 __int64 SpotAttachmentExplore_Unknown30(__int64 a1)

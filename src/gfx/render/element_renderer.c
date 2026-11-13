@@ -25,6 +25,13 @@ __int64 ElementRenderer_a75e00(char** a1, __int64 a2, __int64 a3,
                                long double a4);
 __int64 gfx_render_ElementRenderer_RenderMultithread_lambda0_Invoke(__int64 a1,
                                                                     int* a2);
+__int64 ElementRenderer_a75980_alt1(
+    _QWORD*, _QWORD*, _QWORD*, _QWORD*,
+    __int64 (**)(_QWORD)) __asm__("ElementRenderer_a75980");
+bool GameRoutine_a75ae0(_QWORD*, _QWORD*, __int64 (**)(__int64));
+__int64 ElementRenderer_a74e00(__int64 result, __int64* a2,
+                               __int64 (**a3)(__int64, __int64), __int64 a4,
+                               char a5);
 
 __int64 ElementRenderer_a74470(__int64 result, __int64 a2, __int64 a3,
                                __int64 a4, __int64 a5, __int64 a6)
@@ -344,6 +351,675 @@ LABEL_28:
       v20 = 56;
     }
     return (__int64**)nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v20, v19);
+  }
+  return result;
+}
+
+__int64 ElementRenderer_a74e00(__int64 result, __int64* a2,
+                               __int64 (**a3)(__int64, __int64), __int64 a4,
+                               char a5)
+{
+  __int64* v9;
+  __int64* v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64* v13;
+  __int64 (*v14)(__int64, __int64);
+  char v15;
+  char v16;
+  __int64 v17;
+  char v18;
+  char v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  char v26;
+  char v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  char v33;
+  char v34;
+  __int64 v35;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  char v39;
+  char v40;
+  __int64 v41;
+  __int64 v42;
+  __int64 v43;
+  char v44;
+  __int64 v45;
+  __int64 v46;
+  char v47;
+  __int64 v48;
+  __int64 v49;
+  char v50;
+  __int64 v51;
+  char v52;
+  __int64* v53;
+  __int64* v54;
+  __int64 v55;
+  __int64 v56;
+  __int64* v57;
+  __int64* v58;
+  __int64 v59;
+  __int64 v60;
+  __int64 v61;
+  __int64* v62;
+  bool v63;
+  __int64 v64;
+  unsigned __int64 v65;
+  __int64* v66;
+  __int64 v67;
+  __int64 v68;
+  __int64 v69;
+  __int64 v70;
+  __int64* v71;
+  __int64 v72;
+  __int64 v73;
+  __int64 v74;
+  __int64 v75;
+  __int64 v76;
+  __int64 v77;
+  char v78;
+  __int64 v79;
+  __int64* v80;
+  bool v82;
+  __int64 v83;
+  __int64* v84;
+  __int64* v85;
+  __int64 v86;
+  __int64 v87;
+  __int64 v88;
+  __int64 v89;
+  unsigned __int64 v90;
+  bool v91;
+  __int64 v92;
+  __int64* v93;
+  __int64* v94;
+  __int64 v95;
+  __int64* v96;
+  __int64 v97;
+  __int64 v98;
+  __int64* v99;
+  __int64* v100;
+  __int64 v101;
+  __int64* v102;
+  __int64* v103;
+  __int64 v104;
+  __int64* v105;
+  __int64* v106;
+  __int64 v107;
+  __int64 v108;
+  __int64 v109;
+  unsigned __int64 v110;
+  unsigned __int64 v111;
+  __int64* v112;
+  __int64 v113;
+  __int64* v114;
+  __int64 v115;
+  __int64 v116;
+  __int64 v117;
+  __int64 v118;
+  __int64 v119;
+  __int64* v120;
+  __int64* v121;
+  __int64 v122;
+  __int64 v123;
+  __int64* v124;
+  __int64 v125;
+  __int64 v126;
+
+  v9 = (__int64*)result;
+LABEL_2:
+  v10 = v9;
+  v124 = a2;
+  while (1) {
+    v9 = v10;
+    v11 = a2 - v10;
+    v12 = v11 - 2;
+    if (v11 > 2) {
+      break;
+    }
+    if ((unsigned __int64)v11 < 2) {
+      return result;
+    }
+    if (v11 == 2) {
+      result = (*a3)(*(a2 - 1), *v10);
+      if ((result & 1) != 0) {
+        v77 = *v10;
+        *v10 = *(a2 - 1);
+      LABEL_105:
+        *(a2 - 1) = v77;
+        return result;
+      }
+      return result;
+    }
+  LABEL_10:
+    if (v11 <= 23) {
+      v80 = v10 + 1;
+      v82 = v10 == a2 || v80 == a2;
+      if ((a5 & 1) != 0) {
+        if (!v82) {
+          v83 = 0;
+          v84 = v10;
+          do {
+            v87 = *v84;
+            v86 = v84[1];
+            v84 = v80;
+            result = (*a3)(v86, v87);
+            if ((result & 1) != 0) {
+              v88 = *v84;
+              v89 = v83;
+              do {
+                *(__int64*)((char*)v10 + v89 + 8) =
+                    *(__int64*)((char*)v10 + v89);
+                if (v89 == 0) {
+                  v85 = v10;
+                  goto LABEL_120;
+                }
+                result = (*a3)(v88, *(__int64*)((char*)v10 + v89 - 8));
+                v89 -= 8;
+              } while ((result & 1) != 0);
+              v85 = (__int64*)((char*)v10 + v89 + 8);
+            LABEL_120:
+              *v85 = v88;
+            }
+            v80 = v84 + 1;
+            v83 += 8;
+          } while (v84 + 1 != a2);
+        }
+      }
+      else if (!v82) {
+        do {
+          v118 = *v9;
+          v117 = v9[1];
+          v9 = v80;
+          result = (*a3)(v117, v118);
+          if ((result & 1) != 0) {
+            v119 = *v9;
+            v120 = v9;
+            do {
+              v121 = v120;
+              v122 = *--v120;
+              v123 = *(v121 - 2);
+              *v121 = v122;
+              result = (*a3)(v119, v123);
+            } while ((result & 1) != 0);
+            *v120 = v119;
+          }
+          v80 = v9 + 1;
+        } while (v9 + 1 != a2);
+      }
+      return result;
+    }
+    if (a4 == 0) {
+      if (v10 != a2) {
+        v90 = v12 >> 1;
+        v125 = v12 >> 1;
+        do {
+          if (v125 >= v90) {
+            v92 = (2 * (v90 & 0x3FFFFFFFFFFFFFFFLL)) | 1;
+            v93 = &v9[v92];
+            if ((__int64)(2 * v90 + 2) < v11 &&
+                ((*a3)(*v93, v93[1]) & 1) != 0) {
+              ++v93;
+              v92 = 2 * v90 + 2;
+            }
+            v94 = &v9[v90];
+            result = (*a3)(*v93, *v94);
+            if ((result & 1) == 0) {
+              v95 = *v94;
+              do {
+                v96 = v93;
+                *v94 = *v93;
+                if (v125 < v92) {
+                  break;
+                }
+                v97 = (2 * (v92 & 0x3FFFFFFFFFFFFFFFLL)) | 1;
+                v98 = 2 * v92 + 2;
+                v93 = &v9[v97];
+                if (v98 < v11 && ((*a3)(*v93, v93[1]) & 1) != 0) {
+                  ++v93;
+                  v97 = v98;
+                }
+                result = (*a3)(*v93, v95);
+                v94 = v96;
+                v92 = v97;
+              } while ((result & 1) == 0);
+              *v96 = v95;
+            }
+          }
+          v91 = (__int64)v90-- <= 0;
+        } while (!v91);
+        v99 = v124;
+        do {
+          v100 = v99;
+          v101 = 0;
+          v102 = v9;
+          v126 = *v9;
+          do {
+            v106 = &v102[v101];
+            v107 = (2 * v101) | 1;
+            v105 = v106 + 1;
+            v108 = 2 * v101 + 2;
+            if (v108 < v11) {
+              v104 = v106[2];
+              v103 = v106 + 2;
+              result = (*a3)(*(v103 - 1), v104);
+              if ((result & 1) != 0) {
+                v105 = v103;
+                v101 = v108;
+              }
+              else {
+                v101 = v107;
+              }
+            }
+            else {
+              v101 = (2 * v101) | 1;
+            }
+            *v102 = *v105;
+            v102 = v105;
+          } while (v101 <= (__int64)((unsigned __int64)(v11 - 2) >> 1));
+          v99 = v100 - 1;
+          if (v105 == v100 - 1) {
+            *v105 = v126;
+          }
+          else {
+            *v105 = *v99;
+            *v99 = v126;
+            v109 = ((char*)v105 - (char*)v9 + 8) >> 3;
+            v91 = v109 < 2;
+            v110 = v109 - 2;
+            if (!v91) {
+              v111 = v110 >> 1;
+              v112 = &v9[v110 >> 1];
+              result = (*a3)(*v112, *v105);
+              if ((result & 1) != 0) {
+                v113 = *v105;
+                do {
+                  v114 = v112;
+                  *v105 = *v112;
+                  if (v111 == 0) {
+                    break;
+                  }
+                  v111 = (v111 - 1) >> 1;
+                  v112 = &v9[v111];
+                  result = (*a3)(*v112, v113);
+                  v105 = v114;
+                } while ((result & 1) != 0);
+                *v114 = v113;
+              }
+            }
+          }
+          v91 = v11-- <= 2;
+        } while (!v91);
+      }
+      return result;
+    }
+    v13 = &v10[(unsigned __int64)v11 >> 1];
+    v14 = *a3;
+    if ((unsigned __int64)v11 < 0x81) {
+      v18 = v14(*v9, *v13);
+      v19 = (*a3)(*(a2 - 1), *v9);
+      if ((v18 & 1) != 0) {
+        v20 = *v13;
+        if ((v19 & 1) != 0) {
+          *v13 = *(a2 - 1);
+          *(a2 - 1) = v20;
+        }
+        else {
+          *v13 = *v9;
+          *v9 = v20;
+          if ((((__int64 (*)(_QWORD))*a3)(*(a2 - 1)) & 1) != 0) {
+            v31 = *v9;
+            *v9 = *(a2 - 1);
+            *(a2 - 1) = v31;
+          }
+        }
+      }
+      else if ((v19 & 1) != 0) {
+        v23 = *v9;
+        *v9 = *(a2 - 1);
+        *(a2 - 1) = v23;
+        if (((*a3)(*v9, *v13) & 1) != 0) {
+          v24 = *v13;
+          *v13 = *v9;
+          *v9 = v24;
+        }
+      }
+      goto LABEL_55;
+    }
+    v15 = v14(*v13, *v9);
+    v16 = (*a3)(*(a2 - 1), *v13);
+    if ((v15 & 1) != 0) {
+      v17 = *v9;
+      if ((v16 & 1) != 0) {
+        *v9 = *(a2 - 1);
+        *(a2 - 1) = v17;
+      }
+      else {
+        *v9 = *v13;
+        *v13 = v17;
+        if ((((__int64 (*)(_QWORD))*a3)(*(a2 - 1)) & 1) != 0) {
+          v25 = *v13;
+          *v13 = *(a2 - 1);
+          *(a2 - 1) = v25;
+        }
+      }
+    }
+    else if ((v16 & 1) != 0) {
+      v21 = *v13;
+      *v13 = *(a2 - 1);
+      *(a2 - 1) = v21;
+      if (((*a3)(*v13, *v9) & 1) != 0) {
+        v22 = *v9;
+        *v9 = *v13;
+        *v13 = v22;
+      }
+    }
+    v26 = (*a3)(*(v13 - 1), v9[1]);
+    v27 = (*a3)(*(a2 - 2), *(v13 - 1));
+    if ((v26 & 1) != 0) {
+      v28 = v9[1];
+      if ((v27 & 1) != 0) {
+        v9[1] = *(a2 - 2);
+        *(a2 - 2) = v28;
+      }
+      else {
+        v9[1] = *(v13 - 1);
+        *(v13 - 1) = v28;
+        if ((((__int64 (*)(_QWORD))*a3)(*(a2 - 2)) & 1) != 0) {
+          v32 = *(v13 - 1);
+          *(v13 - 1) = *(a2 - 2);
+          *(a2 - 2) = v32;
+        }
+      }
+    }
+    else if ((v27 & 1) != 0) {
+      v29 = *(v13 - 1);
+      *(v13 - 1) = *(a2 - 2);
+      *(a2 - 2) = v29;
+      if (((*a3)(*(v13 - 1), v9[1]) & 1) != 0) {
+        v30 = v9[1];
+        v9[1] = *(v13 - 1);
+        *(v13 - 1) = v30;
+      }
+    }
+    v33 = (*a3)(v13[1], v9[2]);
+    v34 = (*a3)(*(a2 - 3), v13[1]);
+    if ((v33 & 1) != 0) {
+      v35 = v9[2];
+      if ((v34 & 1) != 0) {
+        v9[2] = *(a2 - 3);
+        *(a2 - 3) = v35;
+      }
+      else {
+        v9[2] = v13[1];
+        v13[1] = v35;
+        if ((((__int64 (*)(_QWORD))*a3)(*(a2 - 3)) & 1) != 0) {
+          v38 = v13[1];
+          v13[1] = *(a2 - 3);
+          *(a2 - 3) = v38;
+        }
+      }
+    }
+    else if ((v34 & 1) != 0) {
+      v36 = v13[1];
+      v13[1] = *(a2 - 3);
+      *(a2 - 3) = v36;
+      if (((*a3)(v13[1], v9[2]) & 1) != 0) {
+        v37 = v9[2];
+        v9[2] = v13[1];
+        v13[1] = v37;
+      }
+    }
+    v39 = (*a3)(*v13, *(v13 - 1));
+    v40 = (*a3)(v13[1], *v13);
+    if ((v39 & 1) == 0) {
+      v42 = *v13;
+      if ((v40 & 1) == 0) {
+        goto LABEL_54;
+      }
+      *v13 = v13[1];
+      v13[1] = v42;
+      v44 = ((__int64 (*)(void))*a3)();
+      v42 = *v13;
+      if ((v44 & 1) == 0) {
+        goto LABEL_54;
+      }
+      v45 = *(v13 - 1);
+      *(v13 - 1) = v42;
+      *v13 = v45;
+      goto LABEL_53;
+    }
+    v41 = *(v13 - 1);
+    if ((v40 & 1) != 0) {
+      v42 = *v13;
+      v43 = v13[1];
+      v13[1] = v41;
+      *(v13 - 1) = v43;
+    }
+    else {
+      v46 = v13[1];
+      *(v13 - 1) = *v13;
+      *v13 = v41;
+      v47 = ((__int64 (*)(__int64))*a3)(v46);
+      v42 = *v13;
+      if ((v47 & 1) != 0) {
+        v45 = v13[1];
+        *v13 = v45;
+        v13[1] = v42;
+      LABEL_53:
+        v42 = v45;
+      }
+    }
+  LABEL_54:
+    v48 = *v9;
+    *v9 = v42;
+    *v13 = v48;
+  LABEL_55:
+    v49 = *v9;
+    --a4;
+    if ((a5 & 1) != 0 ||
+        (v50 = (*a3)(*(v9 - 1), *v9), v49 = *v9, (v50 & 1) != 0)) {
+      v51 = 0;
+      do {
+        v52 = (*a3)(v9[++v51], v49);
+      } while ((v52 & 1) != 0);
+      v53 = &v9[v51];
+      v54 = a2;
+      if (v51 == 1) {
+        v54 = a2;
+        do {
+          if (v53 >= v54) {
+            break;
+          }
+          v56 = *--v54;
+        } while (((*a3)(v56, v49) & 1) == 0);
+      }
+      else {
+        do {
+          v55 = *--v54;
+        } while (((*a3)(v55, v49) & 1) == 0);
+      }
+      if (v53 >= v54) {
+        v62 = v53 - 1;
+        if (v9 == v53 - 1) {
+          goto LABEL_75;
+        }
+      LABEL_74:
+        *v9 = *v62;
+        goto LABEL_75;
+      }
+      v57 = &v9[v51];
+      v58 = v54;
+      do {
+        v59 = *v57;
+        *v57 = *v58;
+        *v58 = v59;
+        do {
+          v60 = v57[1];
+          ++v57;
+        } while (((*a3)(v60, v49) & 1) != 0);
+        do {
+          v61 = *--v58;
+        } while (((*a3)(v61, v49) & 1) == 0);
+      } while (v57 < v58);
+      a2 = v124;
+      v62 = v57 - 1;
+      if (v9 != v62) {
+        goto LABEL_74;
+      }
+    LABEL_75:
+      *v62 = v49;
+      if (v53 < v54) {
+        goto LABEL_78;
+      }
+      v10 = v62 + 1;
+      v63 = GameRoutine_a75ae0(v9, v62, (__int64 (**)(__int64))a3);
+      result = ((__int64 (*)(_QWORD*, _QWORD*, __int64 (**)(__int64)))
+                    GameRoutine_a75ae0)(v62 + 1, a2, (__int64 (**)(__int64))a3);
+      if ((result & 1) != 0) {
+        a2 = v62;
+        if (!v63) {
+          goto LABEL_2;
+        }
+        return result;
+      }
+      if (!v63) {
+      LABEL_78:
+        result = ElementRenderer_a74e00((__int64)v9, v62,
+                                        (__int64 (**)(__int64))a3, a4, a5 & 1);
+        a5 = 0;
+        v10 = v62 + 1;
+      }
+    }
+    else {
+      result = (*a3)(*v9, *(a2 - 1));
+      if ((result & 1) != 0) {
+        v10 = v9;
+        do {
+          v64 = v10[1];
+          ++v10;
+          result = (*a3)(v49, v64);
+        } while ((result & 1) == 0);
+      }
+      else {
+        v65 = (unsigned __int64)(v9 + 1);
+        do {
+          v10 = (__int64*)v65;
+          if (v65 >= (unsigned __int64)a2) {
+            break;
+          }
+          v65 += 8LL;
+          result = (*a3)(v49, *v10);
+        } while ((result & 1) == 0);
+      }
+      v66 = a2;
+      if (v10 < a2) {
+        v66 = a2;
+        do {
+          v67 = *--v66;
+          result = (*a3)(v49, v67);
+        } while ((result & 1) != 0);
+      }
+      while (v10 < v66) {
+        v68 = *v10;
+        *v10 = *v66;
+        *v66 = v68;
+        do {
+          v69 = v10[1];
+          ++v10;
+        } while (((*a3)(v49, v69) & 1) == 0);
+        do {
+          v70 = *--v66;
+          result = (*a3)(v49, v70);
+        } while ((result & 1) != 0);
+      }
+      v71 = v10 - 1;
+      if (v9 != v10 - 1) {
+        *v9 = *v71;
+      }
+      a5 = 0;
+      *v71 = v49;
+    }
+  }
+  if (v11 != 3) {
+    if (v11 == 4) {
+      return ElementRenderer_a75980_alt1(v10, v10 + 1, v10 + 2, a2 - 1,
+                                         (__int64 (**)(_QWORD))a3);
+    }
+    if (v11 == 5) {
+      ElementRenderer_a75980_alt1(v10, v10 + 1, v10 + 2, v10 + 3,
+                                  (__int64 (**)(_QWORD))a3);
+      result = (*a3)(*(a2 - 1), v10[3]);
+      if ((result & 1) == 0) {
+        return result;
+      }
+      v72 = v10[3];
+      v10[3] = *(a2 - 1);
+      *(a2 - 1) = v72;
+      result = (*a3)(v10[3], v10[2]);
+      if ((result & 1) == 0) {
+        return result;
+      }
+      v73 = v10[2];
+      v10[2] = v10[3];
+      v10[3] = v73;
+      result = ((__int64 (*)(void))*a3)();
+      if ((result & 1) == 0) {
+        return result;
+      }
+      v75 = v10[1];
+      v74 = v10[2];
+      v76 = *v10;
+      v10[1] = v74;
+      v10[2] = v75;
+      result = (*a3)(v74, v76);
+      goto LABEL_162;
+    }
+    goto LABEL_10;
+  }
+  v78 = (*a3)(v10[1], *v10);
+  result = (*a3)(*(a2 - 1), v10[1]);
+  if ((v78 & 1) == 0) {
+    if ((result & 1) == 0) {
+      return result;
+    }
+    v115 = v10[1];
+    v10[1] = *(a2 - 1);
+    *(a2 - 1) = v115;
+    result = (*a3)(v10[1], *v10);
+  LABEL_162:
+    if ((result & 1) != 0) {
+      v116 = *v10;
+      *v10 = v10[1];
+      v10[1] = v116;
+    }
+    return result;
+  }
+  v79 = *v10;
+  if ((result & 1) != 0) {
+    *v10 = *(a2 - 1);
+    *(a2 - 1) = v79;
+  }
+  else {
+    *v10 = v10[1];
+    v10[1] = v79;
+    result = ((__int64 (*)(_QWORD))*a3)(*(a2 - 1));
+    if ((result & 1) != 0) {
+      v77 = v10[1];
+      v10[1] = *(a2 - 1);
+      goto LABEL_105;
+    }
   }
   return result;
 }

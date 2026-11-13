@@ -118,6 +118,14 @@ void GameRoutine_1564060_alt2(__int64*) __asm__("GameRoutine_1564060");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 MapUnitCommandSkillMenu_Unknown84(__int64 a1);
+__int64* MapUnitCommandSkillMenu_15bdea0_alt1() __asm__(
+    "MapUnitCommandSkillMenu_15bdea0");
+__int64 game_map_ITarget_EachSelectable(__int64, __int64);
+extern __int64 (*GameData_1f97c90[])();
+extern __int64* GameData_212d1f8[2];
+__int64
+game_map_MapUnitCommandSkillMenu_CreateBindSpecial_lambda0_Invoke(__int64 a1,
+                                                                  int* a2);
 
 const char* MapUnitCommandSkillMenu_Unknown36(__int64 a1)
 {
@@ -995,6 +1003,104 @@ game_map_MapUnitCommandSkillMenu_CreateBindNormal_lambda0_Invoke(__int64 a1,
     (*(void (**)(__int64))(*v8 + v9))((__int64)v8);
   }
   return BasicMenuCursor_16e0c00(**(_QWORD***)(a1 + 16), v4);
+}
+
+__int64
+
+game_map_MapUnitCommandSkillMenu_CreateBindSpecial_lambda0_Invoke(__int64 a1,
+                                                                  int* a2)
+{
+  int v2;
+  __int64* v3;
+  char v6;
+  int v7;
+  unsigned int v8;
+  unsigned int v9;
+  __int64 v10;
+  __int64 v11;
+  __int64* v13;
+  char v14;
+  unsigned __int64 v15;
+  int v16;
+  char v17;
+  int v18;
+  __int64 v19;
+  int v20;
+  int v21;
+  char v22;
+  struct {
+    _QWORD v23[4];
+    _QWORD* v24;
+    char gap104_[36];
+    unsigned __int8 v25;
+  } v23_;
+
+  {
+    v2 = *a2;
+    __asm__ volatile("" ::"r"(v2));
+  }
+  v20 = 0;
+  {
+    v13 = GameData_212d1f8[0] + 2;
+    __asm__ volatile("" ::"r"(v13));
+  }
+  v3 = MapUnitCommandSkillMenu_15bdea0_alt1();
+  v14 = 0;
+  v15 = 0;
+  {
+    v6 = *(_BYTE*)(*GameData_212cfd0[0] + 20);
+    __asm__ volatile("" ::"r"(v6));
+  }
+  v19 = 0;
+  v21 = -1;
+  v22 = 0;
+  v18 = -1;
+  v16 = 0;
+  if (v3 != nullptr) {
+    {
+      v7 = *((_DWORD*)v3 + 148);
+      __asm__ volatile("" ::"r"(v7));
+    }
+    {
+      v8 = *((char*)v3 + 585);
+      __asm__ volatile("" ::"r"(v8));
+    }
+    {
+      v14 = *((_BYTE*)v3 + 2088);
+      __asm__ volatile("" ::"r"(v14));
+    }
+    {
+      v9 = *((char*)v3 + 584);
+      __asm__ volatile("" ::"r"(v9));
+    }
+    v16 = v7;
+    v15 = __PAIR64__(v8, v9);
+  }
+  v17 = v6;
+  {
+    v10 =
+        *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) + 8LL * (v2 & 0xFFF));
+    __asm__ volatile("" ::"r"(v10));
+  }
+  if (v10 != 0) {
+    LODWORD(v10) = *(_WORD*)(v10 + 16) & 0xFFF;
+  }
+  v20 = v10;
+  v23_.v25 = 0;
+  v23_.v23[0] = GameData_1f97c90;
+  v23_.v23[1] = &v23_.v25;
+  v23_.v24 = v23_.v23;
+  game_map_ITarget_EachSelectable((__int64)&v13, (__int64)v23_.v23);
+  if (v23_.v24 == v23_.v23) {
+    v11 = 32;
+    goto LABEL_9;
+  }
+  if (v23_.v24 != nullptr) {
+    v11 = 40;
+  LABEL_9:
+    (*(void (**)(__int64))(*v23_.v24 + v11))((__int64)v23_.v24);
+  }
+  return v23_.v25;
 }
 
 #pragma GCC visibility pop

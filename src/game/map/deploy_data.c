@@ -160,6 +160,11 @@ void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64 game_map_DeployData_TargetEnumerate_lambda1_Invoke(__int64 a1, int* a2,
+                                                           int* a3);
+__int64 game_map_DeployData_BuildDeploy_Trick_lambda0_Invoke(__int64 result,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3);
 
 __int64 game_map_DeployData_TargetEnumerate(__int64 a1, __int64* a2, int a3)
 {
@@ -4165,6 +4170,94 @@ LABEL_181:
   goto LABEL_206;
 }
 
+__int64 game_map_DeployData_TargetEnumerate_lambda1_Invoke(__int64 a1, int* a2,
+                                                           int* a3)
+{
+  __int64** v3;
+  int v4;
+  int v5;
+  __int64 v6;
+  __int16 v7;
+  __int16 v8;
+  __int64 v9;
+  __int16* v10;
+  _QWORD* v12;
+  _QWORD* v13;
+  _QWORD* v14;
+  __int64* v15;
+  __int64 v16;
+  char v17;
+  char v18;
+  char v19;
+  __int16 v20;
+  char v21;
+  __int16 v22;
+  int v23;
+
+  {
+    v3 = *(__int64***)(a1 + 8);
+    __asm__ volatile("" ::"r"(v3));
+  }
+  {
+    v4 = *a2;
+    __asm__ volatile("" ::"r"(v4));
+  }
+  {
+    v5 = *a3;
+    __asm__ volatile("" ::"r"(v5));
+  }
+  {
+    v6 = **(_QWORD**)(a1 + 16);
+    __asm__ volatile("" ::"r"(v6));
+  }
+  v17 = 0;
+  v23 = 0;
+  v21 = 0;
+  v22 = -1;
+  v20 = 9;
+  if (v6 != 0) {
+    v22 = (*(__int64 (**)(__int64))(*(_QWORD*)v6 + 32LL))(v6);
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 56LL))(v6);
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 64LL))(v6);
+  }
+  v18 = v4;
+  v19 = v5;
+  if (**v3 == 0) {
+    v12 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 12368, 16, 0);
+    v13 = v12 + 3;
+    v14 = v12;
+    v12[1] = 0;
+    v12[2] = 0;
+    *v12 = GameData_1ff2e90;
+    GameRoutine_844ee0_alt1((__int64)(v12 + 3));
+    {
+      v15 = *v3;
+      __asm__ volatile("" ::"r"(v15));
+    }
+    {
+      v16 = (*v3)[1];
+      __asm__ volatile("" ::"r"(v16));
+    }
+    *v15 = (__int64)v13;
+    v15[1] = (__int64)v14;
+    if (v16 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v16 + 8),
+                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
+      std___1___shared_weak_count___release_weak_alt1(v16);
+    }
+  }
+  v7 = v18;
+  v8 = v19;
+  {
+    v9 = **v3;
+    __asm__ volatile("" ::"r"(v9));
+  }
+  *(_DWORD*)(v9 + 12336) |= v23;
+  v10 = GameRoutine_8450e0_alt2(v9, v7, v8);
+  return GameRoutine_844950_alt1((__int64)v10, (__int64)&v17);
+}
+
 __int64 game_map_DeployData_TargetEnumerate_lambda2_Invoke(__int64 result,
                                                            __int64 a2,
                                                            __int64 a3)
@@ -4213,6 +4306,20 @@ game_map_DeployData_BuildDeploy_LocalTargetSelect_lambda0_Invoke(__int64 a1,
   v4 = GameRoutine_8450e0_alt1(v2 + 102472, (unsigned int)*(char*)(a2 + 1),
                                (unsigned int)*(char*)(a2 + 2));
   return GameRoutine_844950(v4, a2);
+}
+
+__int64 game_map_DeployData_BuildDeploy_Trick_lambda0_Invoke(__int64 result,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3)
+{
+  __int64 v3;
+
+  {
+    v3 = **(_QWORD**)(result + 8) + 4LL * ((*a2 + 32 * *a3) >> 5);
+    __asm__ volatile("" ::"r"(v3));
+  }
+  *(_DWORD*)(v3 + 12872) |= 1 << *a2;
+  return result;
 }
 
 __int64 game_map_DeployData_BuildDeploy_Trick_lambda1_Invoke(__int64 result,
