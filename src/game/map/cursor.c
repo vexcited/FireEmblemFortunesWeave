@@ -2493,7 +2493,7 @@ bool game_map_Cursor_Impl_Tick(unsigned __int64 a1, __int64 a2, double a3,
       v14 = game_g_game_setting_ptr;
       v17 = game_g_frame_clock_ptr[0];
     LABEL_321:
-      (*(void (**)(void))(LANES128(*(v158)).n128_u64[0] + v186))();
+      (*(void (**)(void*))(LANES128(*(v158)).n128_u64[0] + v186))((void*)v158);
     LABEL_322:
       v188 = *(float*)(a1 + 24);
       v187 = *(float*)(a1 + 28);

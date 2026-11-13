@@ -1052,8 +1052,9 @@ _QWORD* IKFoot_10e4480(_QWORD* result, unsigned __int64 a2, long double a3)
           else {
             v11 = 56;
           }
-          result =
-              (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v11, a3);
+          result = (_QWORD*)((
+              __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+              *(_QWORD*)v9 + v11, (__int64)v10);
         }
         v12 = *(_QWORD*)(v3 - 184);
         if (v12 != 0) {
@@ -1064,8 +1065,9 @@ _QWORD* IKFoot_10e4480(_QWORD* result, unsigned __int64 a2, long double a3)
           else {
             v13 = 56;
           }
-          result =
-              (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v13, a3);
+          result = (_QWORD*)((
+              __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+              *(_QWORD*)v9 + v13, (__int64)v12);
         }
         v3 -= 192;
       } while (v3 != v8);

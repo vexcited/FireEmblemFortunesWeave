@@ -722,7 +722,7 @@ __int64 game_telop_174bfc0(__int64 a1, int a2)
     *(_QWORD*)(v5 + 872) = v10 + 24;
     GameData_21f61c8 = v13;
     if (v12 == 0) {
-      (*(void (**)(void))GameData_21f61c0)();
+      (*(void (**)(__int64*))GameData_21f61c0)(&GameData_21f61c0);
     }
     v14 = *(_QWORD*)GameData_2130f48;
     if (*(_QWORD*)GameData_2130f48 != 0) {

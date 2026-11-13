@@ -773,7 +773,7 @@ LABEL_72:
   }
   v48 = *(void (**)(void))(**(_QWORD**)(v47 + 24) + 448LL);
   if ((v44 & 1) == 0) {
-    ((void (*)(__int64))v48)(*(_QWORD*)(v47 + 24));
+    ((void (*)(__int64, __int64))v48)(*(_QWORD*)(v47 + 24), 1);
     result = *(_QWORD**)(v47 + 2240);
     *(_QWORD*)(v47 + 2240) = 0;
     if (result == (_QWORD*)(v47 + 2208)) {
@@ -788,7 +788,8 @@ LABEL_72:
     result = (_QWORD*)(*(__int64 (**)(void*))(*result + v51))(result);
     goto LABEL_82;
   }
-  result = (_QWORD*)((__int64 (*)(__int64))v48)(*(_QWORD*)(v47 + 24));
+  result = (_QWORD*)((__int64 (*)(__int64, __int64))v48)(
+      *(_QWORD*)(v47 + 24), 0);
 LABEL_82:
   if ((v54[0] & 1) != 0 && v55 != nullptr) {
     v52 = 128;

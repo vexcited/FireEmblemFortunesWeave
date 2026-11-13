@@ -390,8 +390,9 @@ char** LODAdjuster_a9b980(char** result, unsigned __int64 a2, long double a3)
           else {
             v29 = 56;
           }
-          result = (char**)nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)v9 + v29, a3);
+          result = (char**)((
+              __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+              *(_QWORD*)v9 + v29, (__int64)v28);
         }
         v22 += 32;
       } while (v22 != v23);
@@ -405,7 +406,9 @@ char** LODAdjuster_a9b980(char** result, unsigned __int64 a2, long double a3)
       if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) == 0) {
         v30 = 56;
       }
-      return (char**)nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v9 + v30, a3);
+      return (char**)((
+          __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+          *(_QWORD*)v9 + v30, (__int64)v22);
     }
   }
   return result;

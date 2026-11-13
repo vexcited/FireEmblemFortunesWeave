@@ -146,8 +146,8 @@ __int64 ProcHubSeqTalkSelect_Destructor(__int64 a1, long double a2)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v4 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4,
-                                  a2);
+    ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, (__int64)v2);
   }
   v5 = *(_QWORD*)(a1 + 160);
   if (v5 != 0) {

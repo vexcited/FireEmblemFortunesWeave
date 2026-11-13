@@ -3504,7 +3504,9 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
                 case 6:
                   v24 = *(__int64 (**)(void))(**(_QWORD**)(v20[1] + 24LL) +
                                               104LL);
-                  goto LABEL_34;
+                  result = ((__int64 (*)(_QWORD, _QWORD, _QWORD))v24)(
+                      *(_QWORD*)(v20[1] + 24LL), v21, *(unsigned __int8*)v18);
+                  break;
                 default:
                   break;
                 }
@@ -3522,8 +3524,8 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
                 LABEL_29:
                   v24 = *(__int64 (**)(void))(**(_QWORD**)(v20[1] + 24LL) +
                                               120LL);
-                LABEL_34:
-                  result = v24();
+                  result = ((__int64 (*)(_QWORD, _QWORD, _QWORD))v24)(
+                      *(_QWORD*)(v20[1] + 24LL), v21, *(unsigned int*)v18);
                   break;
                 default:
                   break;

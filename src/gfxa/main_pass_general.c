@@ -2073,8 +2073,8 @@ __int64 gfxa_MainPassGeneral_SetupPrePass_lambda0_Invoke(__int64 a1, __int64 a2,
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v30 = 56;
       }
-      nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v30, v29);
+      ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v30, (__int64)v19);
     }
   }
   else {
@@ -2127,7 +2127,8 @@ __int64 gfxa_MainPassGeneral_SetupPrePass_lambda0_Invoke(__int64 a1, __int64 a2,
         if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
           v43 = 56;
         }
-        nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v43, v42);
+        ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+            fw_memory_g_heap_manager + v43, (__int64)v63);
       }
       if ((v59[0] & 1) != 0 && v60 != 0) {
         v44 = 128;
@@ -2183,8 +2184,8 @@ __int64 gfxa_MainPassGeneral_SetupPrePass_lambda0_Invoke(__int64 a1, __int64 a2,
         if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
           v56 = 56;
         }
-        result =
-            nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v56, v55);
+        result = ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+            fw_memory_g_heap_manager + v56, (__int64)v63);
       }
       if ((v59[0] & 1) != 0 && v60 != 0) {
         v57 = 128;

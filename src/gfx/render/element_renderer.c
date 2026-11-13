@@ -1218,7 +1218,8 @@ __int64 ElementRenderer_a75e00(char** a1, __int64 a2, __int64 a3,
     if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) == 0) {
       v28 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v9 + v28, a4);
+    ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+        *(_QWORD*)v9 + v28, (__int64)v16);
   }
   return v19;
 }

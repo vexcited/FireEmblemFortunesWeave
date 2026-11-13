@@ -680,7 +680,7 @@ LABEL_123:
   result = GameRoutine_8693c0();
   v93 = GameData_21f61c8++;
   if (v93 == 0) {
-    result = (*(__int64 (**)(void))GameData_21f61c0)();
+    result = (*(__int64 (**)(__int64*))GameData_21f61c0)(&GameData_21f61c0);
   }
   v94 = *(_QWORD*)GameData_2130f48;
   if (*(_QWORD*)GameData_2130f48 != 0) {

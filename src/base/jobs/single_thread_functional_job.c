@@ -34,8 +34,8 @@ LABEL_6:
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(
-      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, a2);
+  return ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, (__int64)a1);
 }
 
 __int64 SingleThreadFunctionalJob_Unknown2(__int64 a1, __int64 a2)

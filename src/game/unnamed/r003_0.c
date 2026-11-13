@@ -2825,13 +2825,15 @@ __int64 GameHr_c32aa0(__int64 result, _QWORD* a2, long double a3)
             if (*(_QWORD*)(v17 + 200) == 0) {
               v18 = 56;
             }
-            GameRoutine_1a0a4e0(v17 + v18, a3);
+            ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+                v17 + v18, (__int64)(*v15));
           }
           v19 = 128;
           if (*(_QWORD*)(*(_QWORD*)v16 + 200LL) == 0) {
             v19 = 56;
           }
-          GameRoutine_1a0a4e0(*(_QWORD*)v16 + v19, a3);
+          ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+              *(_QWORD*)v16 + v19, (__int64)v15);
         }
         v20 = *a2;
         v21 = *(__int64**)(*a2 + 288LL);

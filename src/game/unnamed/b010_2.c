@@ -8817,7 +8817,7 @@ LABEL_45:
     }
     v58 = *(__int64 (**)(void))(**(_QWORD**)(v57 + 24) + 448LL);
     if ((v54 & 1) != 0) {
-      result = v58();
+      result = ((__int64 (*)(__int64, __int64))v58)(*(_QWORD*)(v57 + 24), 0);
     LABEL_102:
       if ((v65[0] & 1) != 0 && v65[2] != 0) {
         v60 = 128;
@@ -8828,7 +8828,7 @@ LABEL_45:
       }
       goto LABEL_107;
     }
-    v58();
+    ((__int64 (*)(__int64, __int64))v58)(*(_QWORD*)(v57 + 24), 1);
     result = *(_QWORD*)(v57 + 2240);
     *(_QWORD*)(v57 + 2240) = 0;
     if (result == v57 + 2208) {
@@ -8843,7 +8843,7 @@ LABEL_45:
     result = (*(__int64 (**)(void*))(*(_QWORD*)result + v59))((void*)result);
     goto LABEL_102;
   }
-  (*(void (**)(void))(v34 + 448))();
+  (*(void (**)(__int64, __int64))(v34 + 448))(*(_QWORD*)(v33 + 24), 1);
   result = *(_QWORD*)(v33 + 2240);
   *(_QWORD*)(v33 + 2240) = 0;
   if (result == v33 + 2208) {

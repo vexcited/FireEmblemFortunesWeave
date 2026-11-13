@@ -308,7 +308,9 @@ __attribute__((swiftcall)) void Layout_c12ec0(PSEUDO_X8 x8_, _QWORD* a1)
       if (*(_QWORD*)(*v5 + 200LL) == 0) {
         v21 = 56;
       }
-      result = (char*)nn_mem_StandardAllocator_Free_alt1(*v5 + v21, v20);
+      result = (char*)((
+          __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+          *v5 + v21, (__int64)v10);
     }
     v10 = (char*)v19;
   }
@@ -518,8 +520,8 @@ bool Layout_c13be0(__int64 a1, __int64 a2, __int64 a3, __int64 a4, char a5)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v37 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v37, v26);
+    ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v37, (__int64)v27);
   }
   v38 = *(_QWORD*)(a1 + 288);
   if (v38 != 0) {
@@ -2310,16 +2312,18 @@ __attribute__((swiftcall)) void Layout_c1d100(PSEUDO_X8 x8_, __int64 result,
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v18 = 56;
       }
-      result = nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v18, v17);
+      result =
+          ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v18, (__int64)v35);
     }
     if ((v30 & 1) != 0 && v32 != nullptr) {
       v19 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v19 = 56;
       }
-      result = nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, v17);
+      result =
+          ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, (__int64)v32);
     }
   }
   if (a4 == 0) {
@@ -2376,8 +2380,9 @@ __attribute__((swiftcall)) void Layout_c1d100(PSEUDO_X8 x8_, __int64 result,
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v28 = 56;
     }
-    result = nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v28, v27);
+    result =
+        ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v28, (__int64)v35);
   }
   if ((v30 & 1) != 0 && v32 != nullptr) {
     v29 = 128;
@@ -2385,8 +2390,8 @@ __attribute__((swiftcall)) void Layout_c1d100(PSEUDO_X8 x8_, __int64 result,
       v29 = 56;
     }
     {
-      nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v29, v27);
+      ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v29, (__int64)v32);
       return;
     }
   }

@@ -3166,7 +3166,7 @@ LABEL_27:
     v20 = *(const char***)(v9 + 1536);
     if (v50_.v51 == v50_.v50) {
       if (v20 == v18) {
-        (*((void (**)(void))*v50_.v51 + 3))();
+        (*((void (**)(char**, _QWORD*))*v50_.v51 + 3))(v50_.v51, v48_.v48);
         (*((void (**)(const char**))*v50_.v51 + 4))(v50_.v51);
         v23 = *(_QWORD*)(v9 + 1536);
         v50_.v51 = nullptr;
@@ -3182,7 +3182,7 @@ LABEL_27:
         *(_QWORD*)(v9 + 1536) = v18;
       }
       else {
-        (*((void (**)(void))*v50_.v51 + 3))();
+        (*((void (**)(char**, char**))*v50_.v51 + 3))(v50_.v51, v18);
         (*((void (**)(const char**))*v50_.v51 + 4))(v50_.v51);
         v21 = *(const char***)(v9 + 1536);
         *(_QWORD*)(v9 + 1536) = v18;
@@ -3190,8 +3190,7 @@ LABEL_27:
       }
     }
     else if (v20 == v18) {
-      (*((void (**)(const char** __return_ptr, _QWORD, const char**))*v20 + 3))(
-          v20, *(_QWORD*)(v9 + 1536), v50_.v50);
+      (*((void (**)(const char**, char**))*v20 + 3))(v20, v50_.v50);
       (*(void (**)(_QWORD))(**(_QWORD**)(v9 + 1536) + 32LL))(
           *(_QWORD*)(v9 + 1536));
       v22 = v50_.v51;

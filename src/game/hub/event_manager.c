@@ -699,7 +699,9 @@ LABEL_11:
         else {
           v30 = 56;
         }
-        result = nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v29 + v30, v3);
+        result =
+            ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+                *(_QWORD*)v29 + v30, (__int64)(*v15));
         v15 = v37;
         v16 = v38;
       }
@@ -727,8 +729,9 @@ LABEL_55:
         else {
           v32 = 56;
         }
-        result = nn_mem_StandardAllocator_Free_alt1(
-            fw_memory_g_heap_manager + v32, v3);
+        result =
+            ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+                fw_memory_g_heap_manager + v32, (__int64)(*v15));
       }
       ++v15;
     } while (v15 != v16);
@@ -742,8 +745,8 @@ LABEL_55:
     if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
       v33 = 56;
     }
-    return nn_mem_StandardAllocator_Free_alt1(fw_memory_g_heap_manager + v33,
-                                              v3);
+    return ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+        fw_memory_g_heap_manager + v33, (__int64)v36);
   }
   return result;
 }

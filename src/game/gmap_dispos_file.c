@@ -138,7 +138,8 @@ void GmapDisposFile_Unknown4(long double a1)
         else {
           v4 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v1 + v4, a1);
+        ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+            *(_QWORD*)v1 + v4, (__int64)v2);
         v2 = v3;
       } while (v3 != nullptr);
     }
@@ -371,8 +372,8 @@ void GmapDisposFile_Unknown4(long double a1)
                   0) {
                 v76 = 56;
               }
-              nn_mem_StandardAllocator_Free(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v76, v47);
+              ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v76, (__int64)v74);
               v74 = v75;
             } while (v75 != nullptr);
           }
@@ -384,8 +385,8 @@ void GmapDisposFile_Unknown4(long double a1)
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v78 = 56;
           }
-          nn_mem_StandardAllocator_Free(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v78, v47);
+          ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v78, (__int64)v77);
         }
       }
       v10 = v81 + 1;

@@ -14822,7 +14822,7 @@ __int64 game_66ed20(__int64 a1, __int64 a2, __int64 a3, int* a4,
       do {
         v26 = *(_QWORD*)v25;
         v25 += 88;
-        (*(void (**)(void))(v26 + 8))();
+        (*(void (**)(char*))(v26 + 8))(v25 - 88);
       } while (v25 != v14);
       v18 = *(char**)(a1 + 160);
       v9 = (atomic_uchar*)GameData_212c840;

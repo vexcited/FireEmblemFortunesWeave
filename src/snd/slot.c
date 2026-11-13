@@ -2012,7 +2012,8 @@ __int64 snd_Slot_checkPriority_1340a0(__int64 a1, __int64 a2)
                     PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
     if (*(_BYTE*)(v83 + 5889) == 1) {
       v23 = *(_QWORD*)(v83 + 6096);
-      if (v22() >= (float)(v21[50] / 0x1.0aac080000000p+4f)) {
+      if (((float (*)(__int64))v22)(v83 + 40) >=
+          (float)(v21[50] / 0x1.0aac080000000p+4f)) {
         if (v21[52] > 0x0.0p+0f &&
             (*(float (**)(__int64))(*(_QWORD*)(v83 + 40) + 1088LL))(v83 + 40) <
                 (float)(v21[52] / 0x1.0aac080000000p+4f)) {
@@ -2050,7 +2051,8 @@ __int64 snd_Slot_checkPriority_1340a0(__int64 a1, __int64 a2)
     }
     else {
       v25 = *(_QWORD*)(v83 + 5656);
-      if (v22() >= (float)(v21[50] / 0x1.0aac080000000p+4f)) {
+      if (((float (*)(__int64))v22)(v83 + 40) >=
+          (float)(v21[50] / 0x1.0aac080000000p+4f)) {
         if (v21[52] > 0x0.0p+0f &&
             (*(float (**)(__int64))(*(_QWORD*)(v83 + 40) + 1088LL))(v83 + 40) <
                 (float)(v21[52] / 0x1.0aac080000000p+4f)) {
@@ -2705,7 +2707,8 @@ __int64 snd_Slot_checkPriority_134880(__int64 a1, __int64 a2)
                     PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
     if (*(_BYTE*)(v83 + 5889) == 1) {
       v23 = *(_QWORD*)(v83 + 6096);
-      if (v22() >= (float)(v21[50] / 0x1.0aac080000000p+4f)) {
+      if (((float (*)(__int64))v22)(v83 + 40) >=
+          (float)(v21[50] / 0x1.0aac080000000p+4f)) {
         if (v21[52] > 0x0.0p+0f &&
             (*(float (**)(__int64))(*(_QWORD*)(v83 + 40) + 1088LL))(v83 + 40) <
                 (float)(v21[52] / 0x1.0aac080000000p+4f)) {
@@ -2740,7 +2743,8 @@ __int64 snd_Slot_checkPriority_134880(__int64 a1, __int64 a2)
     }
     else {
       v25 = *(_QWORD*)(v83 + 5656);
-      if (v22() >= (float)(v21[50] / 0x1.0aac080000000p+4f)) {
+      if (((float (*)(__int64))v22)(v83 + 40) >=
+          (float)(v21[50] / 0x1.0aac080000000p+4f)) {
         if (v21[52] > 0x0.0p+0f &&
             (*(float (**)(__int64))(*(_QWORD*)(v83 + 40) + 1088LL))(v83 + 40) <
                 (float)(v21[52] / 0x1.0aac080000000p+4f)) {

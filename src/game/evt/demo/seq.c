@@ -373,7 +373,7 @@ __int64 Seq_Destructor(__int64 a1)
     }
   }
   if (--GameData_21f61c8 == 0) {
-    (*(void (**)(void))(GameData_21f61c0 + 8))();
+    (*(void (**)(__int64*))(GameData_21f61c0 + 8))(&GameData_21f61c0);
   }
   v12 = *(_QWORD**)(a1 + 752);
   v13 = fw_memory_g_heap_manager_ptr;

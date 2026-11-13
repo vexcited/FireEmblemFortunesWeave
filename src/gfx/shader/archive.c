@@ -379,7 +379,9 @@ gfx_shader_Archive_CreateShader(PSEUDO_X8 x8_, __int64 a1, __int64 a2,
               if (*(_QWORD*)(*v45 + 200) == 0) {
                 v64 = 56;
               }
-              result = nn_mem_StandardAllocator_Free_alt1(*v45 + v64, v18);
+              result = ((__int64 (*)(
+                  __int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+                  *v45 + v64, (__int64)v61);
             }
           }
           else {
@@ -398,8 +400,9 @@ gfx_shader_Archive_CreateShader(PSEUDO_X8 x8_, __int64 a1, __int64 a2,
                   0) {
                 v32 = 56;
               }
-              result = nn_mem_StandardAllocator_Free_alt1(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v32, v18);
+              result = ((__int64 (*)(
+                  __int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v32, (__int64)v67);
             }
           }
         LABEL_43:
@@ -410,8 +413,9 @@ gfx_shader_Archive_CreateShader(PSEUDO_X8 x8_, __int64 a1, __int64 a2,
               v33 = 56;
             }
             {
-              nn_mem_StandardAllocator_Free_alt1(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v33, v18);
+              ((__int64 (*)(__int64,
+                            __int64))nn_mem_StandardAllocator_Free_alt1)(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v33, (__int64)v69);
               return;
             }
           }

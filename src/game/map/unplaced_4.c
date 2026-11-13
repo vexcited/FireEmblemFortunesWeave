@@ -1724,7 +1724,8 @@ __int64 game_map_78d280(__int64 a1, __int64 a2)
           }
           v35 = 40;
         }
-        (*(void (**)(void))(LANES128(*(v166_.v167)).n128_u64[0] + v35))(),
+        (*(void (**)(void*))(LANES128(*(v166_.v167)).n128_u64[0] + v35))(
+            (void*)v166_.v167),
             v146 =
                 COERCE_AS(__typeof__(v146), PSEUDO_REGISTER(float, "s0", "=w"));
       LABEL_48:
@@ -1776,7 +1777,8 @@ __int64 game_map_78d280(__int64 a1, __int64 a2)
           }
           v39 = 40;
         }
-        (*(void (**)(void))(LANES128(*(v166_.v167)).n128_u64[0] + v39))(),
+        (*(void (**)(void*))(LANES128(*(v166_.v167)).n128_u64[0] + v39))(
+            (void*)v166_.v167),
             v146 =
                 COERCE_AS(__typeof__(v146), PSEUDO_REGISTER(float, "s0", "=w"));
         goto LABEL_53;
@@ -1866,7 +1868,8 @@ __int64 game_map_78d280(__int64 a1, __int64 a2)
           }
           v49 = 40;
         }
-        (*(void (**)(void))(LANES128(*(v166_.v167)).n128_u64[0] + v49))(),
+        (*(void (**)(void*))(LANES128(*(v166_.v167)).n128_u64[0] + v49))(
+            (void*)v166_.v167),
             v146 =
                 COERCE_AS(__typeof__(v146), PSEUDO_REGISTER(float, "s0", "=w"));
         goto LABEL_75;

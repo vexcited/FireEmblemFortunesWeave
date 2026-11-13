@@ -1919,7 +1919,8 @@ void GameHr_1526520(__int64 a1)
             }
             v67 = 40;
           }
-          (*(void (**)(void))(LANES128(*(v362_.v364)).n128_u64[0] + v67))(),
+          (*(void (**)(void*))(LANES128(*(v362_.v364)).n128_u64[0] + v67))(
+              (void*)v362_.v364),
               v45 = COERCE_AS(__typeof__(v45),
                               PSEUDO_REGISTER(float, "s0", "=w"));
         }

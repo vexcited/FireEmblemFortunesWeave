@@ -523,8 +523,9 @@ LABEL_19:
         else {
           v16 = 56;
         }
-        result = (__int64*)nn_mem_StandardAllocator_Free_alt1(
-            *(_QWORD*)v15 + v16, a3);
+        result = (__int64*)((
+            __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+            *(_QWORD*)v15 + v16, (__int64)v17);
       }
       v14 += 8;
     } while (v14 != v9);
@@ -553,8 +554,9 @@ LABEL_19:
       else {
         v20 = 56;
       }
-      result =
-          (__int64*)nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v15 + v20, a3);
+      result = (__int64*)((
+          __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free_alt1)(
+          *(_QWORD*)v15 + v20, (__int64)v21);
     }
   }
   v6[6] = (__int64)v12;

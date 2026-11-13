@@ -1171,7 +1171,7 @@ __int64 ProcLoadingSeq_Unknown4(__int64 a1, long double a2)
   }
   v6 = GameData_21f61c8++;
   if (v6 == 0) {
-    (*(void (**)(void))GameData_21f61c0)();
+    (*(void (**)(__int64*))GameData_21f61c0)(&GameData_21f61c0);
   }
   v7 = *(_QWORD*)GameData_2130f48;
   if (*(_QWORD*)GameData_2130f48 != 0) {

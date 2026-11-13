@@ -965,7 +965,8 @@ void GameHr_2a0f40(__int64* a1)
       case 0x48:
         v2 = *(void (**)(void))(*(_QWORD*)i[7] + 120LL);
       LABEL_4:
-        v2();
+        ((void (*)(__int64, __int64, unsigned int, __int64, __int64))v2)(
+            i[7], i[4], *((_DWORD*)i + 6), i[5], i[6]);
         continue;
       case 0x49:
         GameHr_2b60e0((_QWORD*)i[7], (__int64*)i[4], *((_DWORD*)i + 6));

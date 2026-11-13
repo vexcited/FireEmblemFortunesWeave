@@ -708,7 +708,7 @@ __int64 Manager_Destructor_e99e00(__int64 a1)
       }
     }
     if (--GameData_21f61c8 == 0) {
-      (*(void (**)(void))(GameData_21f61c0 + 8))();
+      (*(void (**)(__int64*))(GameData_21f61c0 + 8))(&GameData_21f61c0);
     }
   }
   v21 = GameData_212f2e0;

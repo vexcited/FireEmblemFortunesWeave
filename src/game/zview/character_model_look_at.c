@@ -30,7 +30,9 @@ _QWORD* CharacterModelLookAt_Destructor(_QWORD* result, long double a2)
     if (*(_QWORD*)(v5 + 200) == 0) {
       v6 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v5 + v6, a2);
+    result =
+        (_QWORD*)((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+            v5 + v6, (__int64)v2);
   }
   v7 = v3[3];
   if (v7 != 0) {
@@ -40,7 +42,8 @@ _QWORD* CharacterModelLookAt_Destructor(_QWORD* result, long double a2)
     if (*(_QWORD*)(v8 + 200) == 0) {
       v9 = 56;
     }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(v8 + v9, a2);
+    return (_QWORD*)((__int64 (*)(
+        __int64, __int64))nn_mem_StandardAllocator_Free)(v8 + v9, (__int64)v7);
   }
   return result;
 }
@@ -66,7 +69,8 @@ __int64 CharacterModelLookAt_DeletingDestructor(_QWORD* a1, long double a2)
     if (*(_QWORD*)(v5 + 200) == 0) {
       v6 = 56;
     }
-    nn_mem_StandardAllocator_Free(v5 + v6, a2);
+    ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(v5 + v6,
+                                                                   (__int64)v2);
   }
   v7 = a1[3];
   if (v7 != 0) {
@@ -76,13 +80,15 @@ __int64 CharacterModelLookAt_DeletingDestructor(_QWORD* a1, long double a2)
     if (*(_QWORD*)(v8 + 200) == 0) {
       v9 = 56;
     }
-    nn_mem_StandardAllocator_Free(v8 + v9, a2);
+    ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(v8 + v9,
+                                                                   (__int64)v7);
   }
   v10 = 128;
   if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
     v10 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v10, a2);
+  return ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+      *(_QWORD*)v4 + v10, (__int64)a1);
 }
 
 #pragma GCC visibility pop

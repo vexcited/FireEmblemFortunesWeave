@@ -27,7 +27,7 @@ __int64 game_cmdbtl_e63390()
     *(_BYTE*)(*GameData_212ea58 + 12576) = 1;
     v1 = GameData_21f61c8++;
     if (v1 == 0) {
-      result = (*(__int64 (**)(void))GameData_21f61c0)();
+      result = (*(__int64 (**)(__int64*))GameData_21f61c0)(&GameData_21f61c0);
     }
     v2 = GameData_2241720;
     if (GameData_2241720 != 0) {

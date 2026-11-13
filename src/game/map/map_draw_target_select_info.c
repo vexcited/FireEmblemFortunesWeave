@@ -74,7 +74,9 @@ _QWORD* MapDrawTargetSelectInfo_Destructor(_QWORD* result, long double a2)
       else {
         v6 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v6, a2);
+      result = (_QWORD*)((
+          __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+          *(_QWORD*)v4 + v6, (__int64)v2);
       v2 = v5;
     } while (v5 != nullptr);
   }
@@ -85,12 +87,15 @@ _QWORD* MapDrawTargetSelectInfo_Destructor(_QWORD* result, long double a2)
     if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
       v8 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v8, a2);
+    result =
+        (_QWORD*)((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+            *(_QWORD*)v4 + v8, (__int64)v7);
   }
   v9 = (__int64 (***)(_QWORD))v3[3];
   if (v9 != nullptr) {
     v10 = (__int64 (***)(_QWORD))v3[4];
     if (v9 == v10) {
+      v15 = (__int64)v9;
       goto LABEL_16;
     }
     v11 = v10 - 7;
@@ -110,7 +115,9 @@ _QWORD* MapDrawTargetSelectInfo_Destructor(_QWORD* result, long double a2)
       if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
         v16 = 56;
       }
-      return (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v16, a2);
+      return (_QWORD*)((
+          __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+          *(_QWORD*)v4 + v16, (__int64)v15);
     }
   }
   return result;

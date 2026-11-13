@@ -50,7 +50,9 @@ _QWORD* CharacterTrailResources_Destructor(_QWORD* result, long double a2)
         else {
           v9 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v9, a2);
+        result = (_QWORD*)((
+            __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+            *(_QWORD*)v5 + v9, (__int64)(*(_QWORD*)(v8 - 24)));
       }
     } while (v3 != v2);
     v6 = v4[1];
@@ -77,8 +79,9 @@ _QWORD* CharacterTrailResources_Destructor(_QWORD* result, long double a2)
           else {
             v12 = 56;
           }
-          result =
-              (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v12, a2);
+          result = (_QWORD*)((
+              __int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+              *(_QWORD*)v5 + v12, (__int64)(*(_QWORD*)(v10 - 24)));
         }
       } while (v2 != v6);
       v13 = v4[1];
@@ -91,7 +94,9 @@ _QWORD* CharacterTrailResources_Destructor(_QWORD* result, long double a2)
     if (*(_QWORD*)(*(_QWORD*)v5 + 200LL) == 0) {
       v14 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v14, a2);
+    result =
+        (_QWORD*)((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+            *(_QWORD*)v5 + v14, (__int64)(v4[1]));
   }
 
 LABEL_33:

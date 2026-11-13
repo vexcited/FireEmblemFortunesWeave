@@ -537,7 +537,8 @@ _QWORD* ScheduleNatives_11c05d0(char a1, __int64 a2, char a3, char a4,
   }
   v14 = **(_QWORD**)(v13 + 24);
   if (v9 == 0) {
-    (*(void (**)(void*))(v14 + 448))((void*)*(_QWORD**)(v13 + 24));
+    (*(void (**)(void*, __int64))(v14 + 448))(
+        (void*)*(_QWORD**)(v13 + 24), 1);
     result = *(_QWORD**)(v13 + 2240);
     *(_QWORD*)(v13 + 2240) = 0;
     if (result == (_QWORD*)(v13 + 2208)) {
@@ -873,7 +874,8 @@ _QWORD* ScheduleNatives_11c0b80(unsigned __int8* a1, __int64 a2, char a3,
     }
     v21 = **(_QWORD**)(v18 + 24);
     if (v15 == 0) {
-      (*(void (**)(void*))(v21 + 448))((void*)*(_QWORD**)(v18 + 24));
+      (*(void (**)(void*, __int64))(v21 + 448))(
+          (void*)*(_QWORD**)(v18 + 24), 1);
       result = *(_QWORD**)(v18 + 2240);
       *(_QWORD*)(v18 + 2240) = 0;
       if (result == (_QWORD*)(v18 + 2208)) {
@@ -890,7 +892,8 @@ _QWORD* ScheduleNatives_11c0b80(unsigned __int8* a1, __int64 a2, char a3,
       return (_QWORD*)(*(__int64 (**)(__int64))(*result + v26))(
           (__int64)result);
     }
-    if (((*(__int64 (**)(void))(v21 + 456))() & 1) == 0) {
+    if (((*(__int64 (**)(__int64))(v21 + 456))(*(_QWORD*)(v18 + 24)) &
+         1) == 0) {
       return game_script_WaitProc_alt1();
     }
     if (StringIsEmpty_25eef0_alt1(a1)) {

@@ -22,8 +22,9 @@ __int64 CombatConfig_Destructor(__int64 result, long double a2)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v3 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v3,
-                                  a2);
+    ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3,
+        (__int64)(*(_QWORD*)(result + 72)));
     result = v2;
   }
   *(_QWORD*)result = GameData_2007fb8;

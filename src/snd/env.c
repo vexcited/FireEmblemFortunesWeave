@@ -2508,7 +2508,8 @@ __int64 Env_e25a0(__int64 a1, __int64 a2)
                                                 632LL))(v21 - 5592, 8);
                 v22 = *(float (**)(void))(*(_QWORD*)(v21 - 5592) + 112LL);
               LABEL_9:
-                *(float*)(*v12 + 144) = v22();
+                *(float*)(*v12 + 144) =
+                    ((float (*)(__int64))v22)(v21 - 5592);
               }
             }
             else {
@@ -2530,6 +2531,7 @@ __int64 Env_e25a0(__int64 a1, __int64 a2)
                 (*(void (**)(__int64, __int64))(*(_QWORD*)(v24 - 5592) +
                                                 632LL))(v24 - 5592, 4);
                 v22 = *(float (**)(void))(*(_QWORD*)(v25 - 5592) + 112LL);
+                v21 = v25;
                 goto LABEL_9;
               }
             }

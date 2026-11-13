@@ -3332,7 +3332,8 @@ LABEL_20:
         if (v146_.v148 != nullptr) {
           v73 = 40;
         LABEL_92:
-          (*(void (**)(void))(LANES128(*(v146_.v148)).n128_u64[0] + v73))(),
+          (*(void (**)(void*))(LANES128(*(v146_.v148)).n128_u64[0] + v73))(
+              (void*)v146_.v148),
               v130 = COERCE_AS(__typeof__(v130),
                                PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         }
@@ -3400,7 +3401,8 @@ LABEL_20:
       }
       v79 = 40;
     }
-    (*(void (**)(void))(LANES128(*(v146_.v148)).n128_u64[0] + v79))(),
+    (*(void (**)(void*))(LANES128(*(v146_.v148)).n128_u64[0] + v79))(
+        (void*)v146_.v148),
         v130 = COERCE_AS(__typeof__(v130),
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     goto LABEL_107;
@@ -3548,7 +3550,8 @@ LABEL_110:
         if (v146_.v148 != nullptr) {
           v122 = 40;
         LABEL_186:
-          (*(void (**)(void))(LANES128(*(v146_.v148)).n128_u64[0] + v122))(),
+          (*(void (**)(void*))(LANES128(*(v146_.v148)).n128_u64[0] + v122))(
+              (void*)v146_.v148),
               v130 = COERCE_AS(__typeof__(v130),
                                PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         }
@@ -3579,7 +3582,8 @@ LABEL_110:
         if (v146_.v148 != nullptr) {
           v98 = 40;
         LABEL_143:
-          (*(void (**)(void))(LANES128(*(v146_.v148)).n128_u64[0] + v98))(),
+          (*(void (**)(void*))(LANES128(*(v146_.v148)).n128_u64[0] + v98))(
+              (void*)v146_.v148),
               v130 = COERCE_AS(__typeof__(v130),
                                PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         }
