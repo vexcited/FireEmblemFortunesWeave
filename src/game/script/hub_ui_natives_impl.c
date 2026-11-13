@@ -277,7 +277,7 @@ void hub_ui_GainItem(__int64 a1)
   __int64 v17;
   __int64 v18;
   __int64 v19;
-  void (*v20)(void);
+  void (*v20)(_QWORD, __int64);
   _QWORD* v21;
   __int64 v22;
   __int64 v23;
@@ -371,9 +371,9 @@ void hub_ui_GainItem(__int64 a1)
     else {
       v19 = 0;
     }
-    v20 = *(void (**)(void))(**(_QWORD**)(v19 + 24) + 448LL);
+    v20 = *(void (**)(_QWORD, __int64))(**(_QWORD**)(v19 + 24) + 448LL);
     if ((v16 & 1) != 0) {
-      v20();
+      v20(*(_QWORD*)(v19 + 24), 0);
     LABEL_34:
       if ((v26_.v26[0] & 1) != 0 && v26_.v27 != 0) {
         v23 = 128;
@@ -385,7 +385,7 @@ void hub_ui_GainItem(__int64 a1)
       }
       return;
     }
-    v20();
+    v20(*(_QWORD*)(v19 + 24), 1);
     v21 = *(_QWORD**)(v19 + 2240);
     *(_QWORD*)(v19 + 2240) = 0;
     if (v21 == (_QWORD*)(v19 + 2208)) {

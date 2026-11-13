@@ -2093,6 +2093,8 @@ void AnimCtrlModule_a78f60(__int64 a1, __int64* a2, __int64* a3, __int64 a4)
   __int64 v15;
   __int64 v16;
 
+  // Callers pass a1 though the body ignores it, keep it live for them.
+  __asm__ volatile("" ::"r"(a1));
   if (a2 != a3) {
     v5 = a2;
     v6 = a2;

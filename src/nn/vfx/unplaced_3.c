@@ -1144,143 +1144,99 @@ LABEL_32:
   }
 }
 
+// The key is a float then an int. Unordered floats fall to the int.
+#define VFX_KEY_LESS(af, ai, bf, bi) \
+  (!((af) > (bf)) && ((af) < (bf) || (ai) < (bi)))
+#define VFX_LESS(a, b)                                                    \
+  VFX_KEY_LESS(*(float*)(a), *((int*)(a) + 1), *(float*)(b),             \
+               *((int*)(b) + 1))
+
 __int64* nn_vfx_5d66c0(__int64* a1, __int64* a2, __int64* a3, __int64 a4)
 {
+  __int64 len;
+  __int64 n;
+  __int64 child;
+  __int64 top;
+  __int64 t;
+  __int64 k;
+  __int64* i;
+  __int64* last;
+  __int64* hole;
+  __int64* child_i;
+  __int64* ptr;
+  float tf;
+  int ti;
 
-#pragma clang fp contract(off)
-  __int64* v6;
-  __int64 v8;
-  unsigned __int64 v9;
-  unsigned __int64 v10;
-  __int64* v11;
-  __int64* v12;
-  __int64 v13;
-  __int64 v16;
-  __int64 v17;
-  __int64* v18;
-  __int64* v19;
-  __int64* v20;
-  __int64 v21;
-  float v22;
-  float v23;
-  __int64 v24;
-  unsigned __int64 v25;
-  unsigned __int64 v26;
-  float v27;
-  __int64* v28;
-  int v29;
-  __int64* v30;
-  unsigned __int64 v31;
-
-  if (a1 != a2) {
-    v6 = a2;
-    v8 = a2 - a1;
-    if (v8 >= 2) {
-      v9 = (unsigned __int64)(v8 - 2) >> 1;
-      v10 = v9 + 1;
-      v11 = &a1[v9];
-      do {
-        GameRoutine_5d6960((__int64)a1, a4, v8, (__int64)v11);
-        --v10;
-        --v11;
-      } while (v10 != 0);
+  if (a1 == a2) {
+    return a3;
+  }
+  len = ((__int64)a2 - (__int64)a1) >> 3;
+  if (len >= 2) {
+    k = (unsigned __int64)(len - 2) >> 1;
+    ptr = &a1[k];
+    for (n = k + 1; n != 0; --n) {
+      GameRoutine_5d6960((__int64)a1, a4, len, (__int64)ptr);
+      --ptr;
     }
-    v12 = v6;
-    if (v6 != a3) {
-      v12 = v6;
-      do {
-        if (*(float*)v12 <= *(float*)a1 &&
-            (*(float*)v12 < *(float*)a1 ||
-             (signed __int32)*((_DWORD*)v12 + 1) <
-                 (signed __int32)*((_DWORD*)a1 + 1))) {
-          v13 = *v12;
-          *v12 = *a1;
-          *a1 = v13;
-          GameRoutine_5d6960((__int64)a1, a4, v8, (__int64)a1);
-        }
-        ++v12;
-      } while (v12 != a3);
+  }
+  for (i = a2; i != a3; ++i) {
+    if (VFX_LESS(i, a1)) {
+      t = *i;
+      *i = *a1;
+      *a1 = t;
+      GameRoutine_5d6960((__int64)a1, a4, len, (__int64)a1);
     }
-    if (v8 < 2) {
-      return v12;
-    }
-    while (1) {
-      v16 = *a1;
-      v17 = 0;
-      v18 = a1;
-      do {
-        v19 = &v18[v17];
-        v20 = v18;
-        v18 = v19 + 1;
-        v21 = 2 * v17 + 2;
-        v17 = (2 * v17) | 1;
-        if (v21 < v8) {
-          v22 = *((float*)v19 + 4);
-          v23 = *((float*)v19 + 2);
-          if (v23 <= v22 &&
-              (v23 < v22 || (signed __int32)*((_DWORD*)v19 + 3) <
-                                (signed __int32)*((_DWORD*)v19 + 5))) {
-            v18 = v19 + 2;
-            v17 = v21;
-          }
-        }
-        *v20 = *v18;
-      } while (v17 <= (__int64)((unsigned __int64)(v8 - 2) >> 1));
-      if (v18 == --v6) {
-        *v18 = v16;
+  }
+  last = a2;
+  for (n = len; n > 1; --n) {
+    top = *a1;
+    hole = a1;
+    child = 0;
+    do {
+      child_i = hole + child + 1;
+      child = 2 * child + 1;
+      if (child + 1 < n && VFX_LESS(child_i, child_i + 1)) {
+        ++child_i;
+        ++child;
       }
-      else {
-        *v18 = *v6;
-        *v6 = v16;
-        v24 = ((char*)v18 - (char*)a1 + 8) >> 3;
-        v25 = v24 - 2;
-        if (v24 >= 2) {
-          v26 = v25 >> 1;
-          v27 = *(float*)v18;
-          v28 = &a1[v25 >> 1];
-          if (*(float*)v28 <= *(float*)v18) {
-            if (*(float*)v28 < *(float*)v18) {
-              v29 = *((_DWORD*)v18 + 1);
-            LABEL_32:
-              *v18 = *v28;
-              if (v25 >= 2) {
-                while (1) {
-                  v31 = v26 - 1;
-                  v26 = (v26 - 1) >> 1;
-                  v30 = &a1[v26];
-                  if (*(float*)v30 > v27 ||
-                      *(float*)v30 >= v27 &&
-                          (signed __int32)*((_DWORD*)v30 + 1) >= v29) {
-                    break;
-                  }
-                  *v28 = *v30;
-                  v28 = &a1[v26];
-                  if (v31 <= 1) {
-                    goto LABEL_34;
-                  }
-                }
-              }
-              v30 = v28;
-            LABEL_34:
-              *(float*)v30 = v27;
-              *((_DWORD*)v30 + 1) = v29;
-              goto LABEL_17;
-            }
-            v29 = *((_DWORD*)v18 + 1);
-            if ((signed __int32)*((_DWORD*)v28 + 1) < v29) {
-              goto LABEL_32;
-            }
-          }
-        }
-      }
-    LABEL_17:
-      if (v8-- <= 2) {
-        return v12;
-      }
+      *hole = *child_i;
+      hole = child_i;
+    } while (child <= (__int64)((unsigned __int64)(n - 2) >> 1));
+    --last;
+    if (hole == last) {
+      *hole = top;
+      continue;
     }
+    *hole = *last;
+    *last = top;
+    k = ((__int64)hole - (__int64)a1 + 8) >> 3;
+    if (k < 2) {
+      continue;
+    }
+    k = (unsigned __int64)(k - 2) >> 1;
+    ptr = &a1[k];
+    tf = *(float*)hole;
+    ti = *((int*)hole + 1);
+    if (!VFX_KEY_LESS(*(float*)ptr, *((int*)ptr + 1), tf, ti)) {
+      continue;
+    }
+    t = *hole;
+    do {
+      *hole = *ptr;
+      hole = ptr;
+      if (k == 0) {
+        break;
+      }
+      k = (unsigned __int64)(k - 1) >> 1;
+      ptr = &a1[k];
+    } while (VFX_KEY_LESS(*(float*)ptr, *((int*)ptr + 1), tf, ti));
+    *hole = t;
   }
   return a3;
 }
+
+#undef VFX_LESS
+#undef VFX_KEY_LESS
 
 __int64* nn_vfx_5d7840(__int64 a1, unsigned __int64 a2)
 {
@@ -1310,7 +1266,7 @@ __int64* nn_vfx_5d7840(__int64 a1, unsigned __int64 a2)
   v4 = (float*)(a1 + 8);
   v5 = *(float*)(a1 + 8);
   v6 = *(float*)a1;
-  if (v5 >= *(float*)a1) {
+  if (!(v5 < *(float*)a1)) {
     v10 = 0;
     while (v5 > v6 || (signed __int32)*((_DWORD*)v4 + 1) < v3) {
       v11 = v4[2];
@@ -1329,7 +1285,7 @@ __int64* nn_vfx_5d7840(__int64 a1, unsigned __int64 a2)
       LABEL_17:
         v12 = *(float*)(a2 - 8);
         a2 -= 8LL;
-        v13 = v12 <= v6;
+        v13 = !(v12 > v6);
       } while (v12 < v6);
     } while (v13 && (signed __int32)*(_DWORD*)(a2 + 4) >= v3);
   }
@@ -1339,7 +1295,7 @@ __int64* nn_vfx_5d7840(__int64 a1, unsigned __int64 a2)
       while (1) {
         v7 = *(float*)(a2 - 8);
         a2 -= 8LL;
-        v8 = v7 <= v6;
+        v8 = !(v7 > v6);
         if (v7 < v6) {
           break;
         }
@@ -1364,13 +1320,13 @@ LABEL_21:
         v17 = v14[2];
         v14 += 2;
         v18 = v17;
-      } while (v17 >= v6 &&
+      } while (!(v17 < v6) &&
                (v18 > v6 || (signed __int32)*((_DWORD*)v14 + 1) < v3));
       do {
         do {
           v19 = *(float*)(v15 - 8);
           v15 -= 8LL;
-          v20 = v19 <= v6;
+          v20 = !(v19 > v6);
         } while (v19 < v6);
       } while (v20 && (signed __int32)*(_DWORD*)(v15 + 4) >= v3);
     } while ((unsigned __int64)v14 < v15);

@@ -343,6 +343,7 @@ void game_ThermaeData_GetLearnSkillList_lambda0_Invoke(_QWORD* a1, __int64* a2,
               *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b0 + 64) +
                                              8LL * (v14 & 0xFFF)) +
                                   281LL);
+          __asm__ volatile("" ::"r"(v15));
           if (v15 <= 1) {
             v15 = 1;
           }

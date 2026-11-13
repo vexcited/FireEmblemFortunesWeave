@@ -682,7 +682,7 @@ __int64 ProcTalkLogMenu_Unknown122(__int64 a1)
   __int64 v11;
   __int64 v12;
 
-  if (*(_BYTE*)(a1 + 1688) == 1 && *(_DWORD*)(a1 + 552) <= 0) {
+  if (*(_BYTE*)(a1 + 1688) == 1 && *(int*)(a1 + 552) <= 0) {
     if ((*(_BYTE*)(a1 + 1689) & 1) == 0) {
       v3 = GameData_21ec7b8;
       if (GameData_21ec7b8 != 0 &&

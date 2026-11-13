@@ -9890,7 +9890,7 @@ __int64 game_fc76e0(__int64 result, __int64* a2, char* a3, __int64 a4,
           v94 = *(__int64 (**)(void))((char*)v94 +
                                       *(__int64*)((char*)a2 + (v95 >> 1) - 12));
         }
-        result = v94();
+        result = ((__int64 (*)(__int64))v94)((__int64)a2 + (v95 >> 1) - 12);
         if (v92 >= (int)result) {
           v86 = v85 - 12;
         }

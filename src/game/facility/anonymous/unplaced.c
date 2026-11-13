@@ -2983,8 +2983,12 @@ __int64 game_facility_anonymous_1723840(__int64 a1, unsigned int a2, int a3)
   *(_BYTE*)(v6 + 1200) = a2;
   *(_DWORD*)(v6 + 1204) = a3;
   *(_WORD*)(v6 + 1208) = 0;
-  *(_QWORD*)(v6 + 1056) = game_menu_GameMenuImpl_ImplUnknown00_ptr;
-  *(_QWORD*)(v6 + 176) = game_menu_MenuInput_InputUnknown00_ptr;
+  *(_QWORD*)(v6 + 1056) =
+      (__int64)((char*)game_facility_anonymous_ProcObeliskResumeMenu_vtable +
+                1368);
+  *(_QWORD*)(v6 + 176) =
+      (__int64)((char*)game_facility_anonymous_ProcObeliskResumeMenu_vtable +
+                1160);
   *(_BYTE*)(v6 + 1210) = 0;
   *(_DWORD*)(v6 + 1244) = 0;
   *(_BYTE*)(v6 + 1248) = 0;
@@ -3025,7 +3029,8 @@ __int64 game_facility_anonymous_1723840(__int64 a1, unsigned int a2, int a3)
   *(_QWORD*)(v6 + 1352) = 0;
   GameData_21668e0 = v10;
   if (v9 == 0) {
-    ((void (*)(long double))*game_anonymous_MountBind_vtable_ptr)(v7);
+    ((void (*)(__int64))*game_anonymous_MountBind_vtable_ptr)(
+        (__int64)&game_anonymous_MountBind_vtable_ptr);
     v11 = *(_QWORD**)GameData_212d6e8;
     v12 = GameRoutine_18d3900(**(_QWORD**)GameData_212d6e8);
     v13 = (unsigned int*)(*v11 + 804LL);
@@ -3765,8 +3770,8 @@ LABEL_208:
       -1 - 1227133513 * ((*(_QWORD*)(v6 + 1224) - *(_QWORD*)(v6 + 1216)) >> 4);
   *(_QWORD*)(v6 + 1076) = 0;
   if (--GameData_21668e0 == 0) {
-    (*(void (**)(void))((char*)((_UNKNOWN**)0x8LL) +
-                        (_QWORD)game_anonymous_MountBind_vtable_ptr))();
+    ((void (*)(__int64))game_anonymous_MountBind_vtable_ptr[1])(
+        (__int64)&game_anonymous_MountBind_vtable_ptr);
     v229 = *(_QWORD**)GameData_212d6e8;
     v230 = GameRoutine_18d3a00(**(_QWORD**)GameData_212d6e8);
     v231 = (unsigned int*)(*v229 + 804LL);
@@ -3977,19 +3982,18 @@ void game_facility_anonymous_197c920(__int64 a1, int a2)
   _BYTE* v8;
   char v9;
   __int64 v10;
-  char v11;
   struct {
-    char gap8_[1];
+    char v11;
     _BYTE v12[7];
     char gap16_[8];
     const char* v13;
   } v12_;
 
-  FacilityDialogueFile_196e9e0((void*)((__int64)&v11),
+  FacilityDialogueFile_196e9e0((void*)((__int64)&v12_.v11),
                                *(_QWORD*)(a1 + 184) + 8LL,
                                *(_QWORD*)(*(_QWORD*)(a1 + 184) + 72LL), a2);
-  v3 = v11 & 1;
-  if ((v11 & 1) != 0) {
+  v3 = v12_.v11 & 1;
+  if ((v12_.v11 & 1) != 0) {
     v4 = v12_.v13;
   }
   else {
@@ -4026,7 +4030,7 @@ void game_facility_anonymous_197c920(__int64 a1, int a2)
     }
     v8[138] = v9 + 1;
     *(_WORD*)(v6 + 136) |= 2u;
-    v3 = v11 & 1;
+    v3 = v12_.v11 & 1;
   }
   GameData_224ae48 = 259;
   if (v3 != 0 && v12_.v13 != nullptr) {

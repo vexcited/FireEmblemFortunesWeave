@@ -169,7 +169,8 @@ __int64 ProcGmapExWarpList_1690440(__int64 result)
   *(_QWORD*)(v6 + 1208) = 0;
   *(_QWORD*)v6 = game_gmap_anonymous_ProcGmapExWarpList_vtable;
   *(_QWORD*)(v6 + 1216) = 0;
-  *(_QWORD*)(v6 + 176) = game_menu_MenuInput_InputUnknown00_ptr;
+  *(_QWORD*)(v6 + 176) =
+      (__int64)((char*)game_gmap_anonymous_ProcGmapExWarpList_vtable + 1232);
   *(_QWORD*)(v6 + 1056) = GameData_2082138;
   ProcInst_657850(v6, GameData_212c730, "ProcGmapExWarpList", 1, v1);
   v7 = *(_QWORD*)(*GameData_212c790 + 8);
@@ -297,7 +298,7 @@ LABEL_14:
                 if (*(_QWORD*)(*v5 + 200LL) == 0) {
                   v49 = 56;
                 }
-                nn_mem_StandardAllocator_Free_alt1(*v5 + v49);
+                nn_mem_StandardAllocator_Free(*v5 + v49, v38);
               }
               v4 = v43;
               v3 = v42;

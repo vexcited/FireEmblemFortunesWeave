@@ -2428,7 +2428,8 @@ __int64 GameHr_bd8300(__int64 result, __int64 a2, unsigned __int64 a3,
         v16 = v13 + 377;
         v17 = *(_QWORD*)(v13 + 392);
         v18 = (v14 & 1) != 0 ? v17 : v16;
-        result = memcmp(v18, a2, a3);
+        result = ((__int64 (*)(__int64, __int64, unsigned __int64))memcmp)(
+            v18, a2, a3);
         if ((_DWORD)result == 0) {
           break;
         }

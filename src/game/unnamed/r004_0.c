@@ -541,6 +541,7 @@ void GameHr_d1aa20(float* a1, unsigned int a2, __int64 a3, __int64 a4)
   v109_.v111 = a1;
   v100 = v4;
   v5 = v4 + 88LL * a2;
+  __asm__ volatile("" ::"r"(*(_QWORD*)(v5 + 168)));
   if (*(_QWORD*)(v5 + 168) == 0 || a4 == a3) {
     return;
   }

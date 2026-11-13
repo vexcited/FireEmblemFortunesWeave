@@ -455,7 +455,7 @@ __int64* game_16ad210_alt1(__int64* result, __int64 a2, char a3,
 void game_16db800(__int64 a1);
 _QWORD* game_16f1350(_QWORD* a1, __int64 a2, char a3);
 void game_170cea0();
-__n128 game_170ecf0(__int64 a1, int a2);
+void game_170ecf0(__int64 a1, int a2);
 __int64 game_1738db0(__int64 a1);
 __int64 game_1786010_alt1(__int64 result) __asm__("game_1786010");
 __attribute__((swiftcall)) void game_18c9a10(PSEUDO_X8 x8_, __int64 a1,
@@ -4165,7 +4165,7 @@ void game_170cea0()
   }
 }
 
-__n128 game_170ecf0(__int64 a1, int a2)
+void game_170ecf0(__int64 a1, int a2)
 {
   float* v3;
   __int64 v4;
@@ -4264,9 +4264,8 @@ __n128 game_170ecf0(__int64 a1, int a2)
   if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-    return std___1___shared_weak_count___release_weak(v6);
+    std___1___shared_weak_count___release_weak(v6);
   }
-  return result;
 }
 
 __int64 game_1738db0(__int64 a1)

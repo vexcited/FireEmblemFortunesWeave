@@ -8487,7 +8487,8 @@ LABEL_18:
                v25 >> 2) &&
           ((*(_DWORD*)(v24 + 4LL * (unsigned int)v26) >> GameData_21d992c) &
            1) != 0) {
-        result = game_HasActiveSkill_843420_alt1(&v78_.v78, v21 + 1744);
+        result = ((__int64 (*)(_DWORD*, __int64))
+                       game_HasActiveSkill_843420_alt1)(&v78_.v78, v21 + 1744);
         if ((result & 1) != 0) {
           goto LABEL_31;
         }
@@ -8519,7 +8520,9 @@ LABEL_18:
                  v33 >> 2) &&
             ((*(_DWORD*)(v32 + 4LL * (unsigned int)v34) >> GameData_21d992c) &
              1) != 0) {
-          result = game_HasActiveSkill_843420_alt1(&v78_.v78, result + 1744);
+          result = ((__int64 (*)(_DWORD*, __int64))
+                         game_HasActiveSkill_843420_alt1)(&v78_.v78,
+                                                          result + 1744);
           if ((result & 1) != 0) {
             v35 = *(char*)(v22 + 408);
             if (v35 <= 1) {
@@ -8556,7 +8559,8 @@ LABEL_53:
     if (v41 + 1 <= v40 >> 2 &&
         ((*(_DWORD*)(v39 + 4LL * (unsigned int)v41) >> GameData_21d992c) & 1) !=
             0 &&
-        ((result = game_HasActiveSkill_843420_alt1(&v78_.v78,
+        ((result = ((__int64 (*)(_DWORD*, __int64))
+                       game_HasActiveSkill_843420_alt1)(&v78_.v78,
                                                    (__int64)(v37 + 218))) &
          1) != 0) {
       LOBYTE(v13) = 0;
@@ -8606,7 +8610,8 @@ LABEL_70:
                         0xFFF;
     if (((v50 >> 5) & 0x7F) + 1 <= v51 >> 2 &&
         ((*(_DWORD*)(v49 + 4 * ((v50 >> 5) & 0x7F)) >> v50) & 1) != 0) {
-      result = game_HasActiveSkill_843420_alt1(&v78_.v78, v48 + 1744);
+      result = ((__int64 (*)(_DWORD*, __int64))
+                     game_HasActiveSkill_843420_alt1)(&v78_.v78, v48 + 1744);
       if ((result & 1) != 0) {
         v52 = true;
       }
@@ -8673,8 +8678,9 @@ LABEL_94:
       ((*(_DWORD*)(v63 + 4LL * (unsigned int)v65) >>
         game_g_shared_system_skills) &
        1) == 0 ||
-      ((result =
-            game_HasActiveSkill_843420_alt1(&v78_.v78, (__int64)(v53 + 218))) &
+      ((result = ((__int64 (*)(_DWORD*, __int64))
+                      game_HasActiveSkill_843420_alt1)(&v78_.v78,
+                                                       (__int64)(v53 + 218))) &
        1) == 0 ||
       ((v66 = v53[55]) == 0 ? (v67 = 9) : (v67 = *(_BYTE*)(v66 + 16)), v68 = 1,
        ((1 << v67) & 0xF1) == 0)) {

@@ -11550,7 +11550,7 @@ __int64 GameHr_7271e0()
     v9 = *(_QWORD*)(GameData_21caab0 + 160);
     *(_QWORD*)(v9 + 104) =
         (*(_DWORD*)(v9 + 104) - *(_DWORD*)(v9 + 108)) &
-        (unsigned int)~((*(_DWORD*)(v9 + 104) - *(_DWORD*)(v9 + 108)) >> 31);
+        (unsigned int)~((*(int*)(v9 + 104) - *(int*)(v9 + 108)) >> 31);
     v10 = *(_QWORD*)(v8 + 128);
     v11 = *(_QWORD*)(v10 + 8);
     for (i = *(_QWORD*)(v10 + 16); v11 != i; v11 += 56) {

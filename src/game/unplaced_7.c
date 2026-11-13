@@ -2593,7 +2593,8 @@ __int64 game_1294f20(__int64 a1, signed int* a2)
   __int64 v38;
   _QWORD* v39;
   _QWORD* v40;
-  void (*v41)(void);
+  void (*v41)(void*);
+  void* v300;
   __int64* v42;
   _QWORD* v43;
   __int64 (**v44)();
@@ -2942,7 +2943,8 @@ __int64 game_1294f20(__int64 a1, signed int* a2)
     if (v40 == nullptr) {
       goto LABEL_63;
     }
-    v41 = *(void (**)(void))(*v40 + 8LL);
+    v41 = *(void (**)(void*))(*v40 + 8LL);
+    v300 = v40;
     goto LABEL_62;
   }
   v29 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
@@ -3006,9 +3008,10 @@ __int64 game_1294f20(__int64 a1, signed int* a2)
       }
       v45 = 40;
     }
-    v41 = *(void (**)(void))(*v184_.v188 + v45);
+    v41 = *(void (**)(void*))(*v184_.v188 + v45);
+    v300 = v184_.v188;
   LABEL_62:
-    v41();
+    v41(v300);
     goto LABEL_63;
   }
   v42 = GameData_2130c20[0];
@@ -8260,8 +8263,8 @@ LABEL_19:
   }
   v15 = GameRoutine_9db9e0(0x14u, v14);
   if (game_GameModeData_instance_ != 0) {
-    v16 = (*(_DWORD*)(game_GameModeData_instance_ + 72) - v15) &
-          ~((*(_DWORD*)(game_GameModeData_instance_ + 72) - v15) >> 31);
+    v16 = (*(int*)(game_GameModeData_instance_ + 72) - v15) &
+          ~((*(int*)(game_GameModeData_instance_ + 72) - v15) >> 31);
     if (v16 >= 9999999) {
       v16 = 9999999;
     }
@@ -8860,6 +8863,8 @@ __int64 game_13e4860(__int64 a1)
       v1 = (const char*)(v2 + 1);
     }
   }
+  // strlen lets clang drop the null test above, hide v1 from it.
+  __asm__("" : "+r"(v1));
   v3 = strlen_alt1(v1);
   if (v3 >= 0xFFFFFFFFFFFFFFF7LL) {
     String_60a1d0_alt1();

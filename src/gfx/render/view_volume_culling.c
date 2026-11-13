@@ -5,8 +5,8 @@
 bool ViewVolumeCulling_Unknown4(float32x4_t* a1, float32x4_t* a2);
 __int64 GameRoutine_5eaef0(_QWORD, _QWORD, float, float, float, float);
 __int64 ViewVolumeCulling_Unknown2(__int64 a1, __int64 a2);
-float GameRoutine_5eaef0_alt1(__int64, float32x4_t*, float, float, float, float,
-                              double, double) __asm__("GameRoutine_5eaef0");
+float GameRoutine_5eaef0_alt1(__int64, float32x4_t*, float, float, float,
+                              float) __asm__("GameRoutine_5eaef0");
 
 __int64 ViewVolumeCulling_Unknown2(__int64 a1, __int64 a2)
 {
@@ -155,8 +155,7 @@ __int64 ViewVolumeCulling_Unknown2(__int64 a1, __int64 a2)
   v42[1] = vbicq_s8(v35, v39);
   v42[2] = vbicq_s8(v36, v39);
   v42[3] = vbicq_s8(v38, v39);
-  v40 = GameRoutine_5eaef0_alt1(a1 + 16, v42, v7, v8, v9, v10,
-                                LANES128(v38).n128_f64[0], *(double*)&v33),
+  v40 = GameRoutine_5eaef0_alt1(a1 + 16, v42, v7, v8, v9, v10),
   v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(float, "s1", "=w"));

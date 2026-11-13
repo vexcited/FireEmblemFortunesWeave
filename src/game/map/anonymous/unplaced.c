@@ -22,7 +22,7 @@ __int64 CharacterBuilder_1084780(void);
 __int64 Cursor_730ff0(_QWORD, _QWORD);
 __int64 Cursor_734a80(__int64, __int64*);
 __int64 Cursor_734a80_alt1(_QWORD, _QWORD) __asm__("Cursor_734a80");
-__int64 EffectConst_961520(__int64*, __int64, __int64*, int, char, int32x2_t,
+__int64 EffectConst_961520(__int64*, __int64, __int64*, int, char, float,
                            float);
 __int64 GameRoutine_120c280(__int64 result, char);
 __int64 GameRoutine_120f3d0(_QWORD);
@@ -2111,7 +2111,7 @@ void game_map_anonymous_7b2f00(__int64 a1)
   __int16 v13;
 
   v2 = *(_DWORD*)(a1 + 22920);
-  if (*(_DWORD*)(*(_QWORD*)(a1 + 168) + 12356LL) <= v2) {
+  if (*(int*)(*(_QWORD*)(a1 + 168) + 12356LL) <= v2) {
     v8 = *(unsigned __int8**)(a1 + 16);
     *(_DWORD*)(a1 + 22920) = 0;
     if (v8 != nullptr) {
@@ -4857,8 +4857,7 @@ __int64 game_map_anonymous_9674c0(__int64 a1, __n128 a2)
             v10 = a1 + 225;
           }
           EffectConst_961520((__int64*)&v34_.v34, v10, (__int64*)(a1 + 160), 5,
-                             0, COERCE_AS(int32x2_t, LANES128(a2).n128_u64[0]),
-                             0x0.0p+0f);
+                             0, 1.0f, 0x0.0p+0f);
           GameRoutine_9a48c0(a1, &v34_.v34);
           v12 = v34_.v34;
           result = v34_.v35;

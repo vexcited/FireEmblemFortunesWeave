@@ -747,9 +747,12 @@ bool TrickEntity_Unknown85(_QWORD* a1)
                                LANES128_OF(vextq_s8(v11, v11, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0])))
-            .n64_f32[0] != 0x0.0p+0f) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0])))
+                .n64_f32[0],
+            0x0.0p+0f)) {
       LANES128(v8[19]).n128_f32[0] = v5;
       LANES128(v8[19]).n128_f32[1] = v7;
       {

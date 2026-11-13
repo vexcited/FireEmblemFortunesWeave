@@ -2418,11 +2418,11 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
               return result;
             }
             if (v10 == 2) {
-              if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+              if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                    8LL * *(a2 - 8)) +
                                         24LL) +
                              88LL) <
-                  *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+                  *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                    8LL *
                                                        *(unsigned __int8*)v9) +
                                         24LL) +
@@ -2435,13 +2435,13 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                 }
                 *(_WORD*)v9 = *((_WORD*)a2 - 4);
                 *(_BYTE*)(v9 + 2) = *(a2 - 6);
-                v107 = *(_DWORD*)(a2 - 5);
+                v107 = *(int*)(a2 - 5);
                 *(_BYTE*)(v9 + 7) = *(a2 - 1);
-                *(_DWORD*)(v9 + 3) = v107;
+                *(int*)(v9 + 3) = v107;
                 *((_WORD*)a2 - 4) = v50;
                 *(a2 - 6) = BYTE2(v50);
                 *(a2 - 1) = HIBYTE(v50);
-                *(_DWORD*)(a2 - 5) = v50 >> 24;
+                *(int*)(a2 - 5) = v50 >> 24;
               }
               return result;
             }
@@ -2458,11 +2458,11 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                   v58 = v56[8];
                   v59 = *v56;
                   v56 = v51;
-                  if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v54 + 64) +
+                  if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v54 + 64) +
                                                        8 * v58) +
                                             24LL) +
                                  88LL) <
-                      *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v54 + 64) +
+                      *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v54 + 64) +
                                                        8 * v59) +
                                             24LL) +
                                  88LL)) {
@@ -2477,7 +2477,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                       v62 = v9 + v61;
                       *(_WORD*)(v62 + 8) = *(_WORD*)(v9 + v61);
                       *(_BYTE*)(v62 + 10) = *(_BYTE*)(v9 + v61 + 2);
-                      *(_DWORD*)(v62 + 11) = *(_DWORD*)(v9 + v61 + 3);
+                      *(int*)(v62 + 11) = *(int*)(v9 + v61 + 3);
                       *(_BYTE*)(v62 + 15) = *(_BYTE*)(v9 + v61 + 7);
                       if (v61 == 0) {
                         v57 = v9;
@@ -2485,12 +2485,12 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                       }
                       v61 -= 8;
                     } while (
-                        *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+                        *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                          8LL * (unsigned __int8)
                                                                    v60) +
                                               24LL) +
                                    88LL) <
-                        *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+                        *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                          8LL *
                                                              *(unsigned __int8*)(v62 -
                                                                                  8)) +
@@ -2501,7 +2501,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                     *(_WORD*)v57 = v60;
                     *(_BYTE*)(v57 + 2) = BYTE2(v60);
                     *(_BYTE*)(v62 + 7) = HIBYTE(v60);
-                    *(_DWORD*)(v62 + 3) = v60 >> 24;
+                    *(int*)(v62 + 3) = v60 >> 24;
                     v54 = *v8;
                   }
                   v51 = v56 + 8;
@@ -2516,11 +2516,11 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                 v99 = v7[8];
                 v100 = *v7;
                 v7 = v51;
-                if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v97 + 64) +
+                if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v97 + 64) +
                                                      8 * v99) +
                                           24LL) +
                                88LL) <
-                    *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v97 + 64) +
+                    *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v97 + 64) +
                                                      8 * v100) +
                                           24LL) +
                                88LL)) {
@@ -2535,19 +2535,19 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                     v103 = v102;
                     *(_WORD*)(v102 - 3) = *(_WORD*)(v102 - 11);
                     v104 = *(_BYTE*)(v102 - 9);
-                    v105 = *(_DWORD*)(v102 - 8);
+                    v105 = *(int*)(v102 - 8);
                     v102 -= 8LL;
                     *(_BYTE*)(v103 - 1) = v104;
                     v106 = *(_BYTE*)(v103 - 4);
-                    *(_DWORD*)v103 = v105;
+                    *(int*)v103 = v105;
                     *(_BYTE*)(v103 + 4) = v106;
                   } while (
-                      *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+                      *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                        8LL * (unsigned __int8)
                                                                  v101) +
                                             24LL) +
                                  88LL) <
-                      *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+                      *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                        8LL *
                                                            *(unsigned __int8*)(v103 -
                                                                                19)) +
@@ -2556,7 +2556,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                   *(_WORD*)(v102 - 3) = v101;
                   *(_BYTE*)(v102 - 1) = BYTE2(v101);
                   *(_BYTE*)(v102 + 4) = HIBYTE(v101);
-                  *(_DWORD*)v102 = v101 >> 24;
+                  *(int*)v102 = v101 >> 24;
                   v97 = *v8;
                 }
                 v51 = v7 + 8;
@@ -2587,7 +2587,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                                                                8LL * v68[8]) +
                                                     24LL) +
                                          88LL);
-                    if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v70 + 8 * v69) +
+                    if (*(int*)(*(_QWORD*)(*(_QWORD*)(v70 + 8 * v69) +
                                               24LL) +
                                    88LL) < (int)result) {
                       LODWORD(v69) = v68[8];
@@ -2596,12 +2596,12 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                     }
                   }
                   v71 = (unsigned __int8*)(v9 + 8 * v65);
-                  if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v70 +
+                  if (*(int*)(*(_QWORD*)(*(_QWORD*)(v70 +
                                                        8LL *
                                                            (unsigned int)v69) +
                                             24LL) +
                                  88LL) >=
-                      *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v70 + 8LL * *v71) +
+                      *(int*)(*(_QWORD*)(*(_QWORD*)(v70 + 8LL * *v71) +
                                             24LL) +
                                  88LL)) {
                     if (*v71 != 0) {
@@ -2614,9 +2614,9 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                       v75 = v68;
                       *(_WORD*)v71 = *(_WORD*)v68;
                       v71[2] = v68[2];
-                      v76 = *(_DWORD*)(v68 + 3);
+                      v76 = *(int*)(v68 + 3);
                       v71[7] = v75[7];
-                      *(_DWORD*)(v71 + 3) = v76;
+                      *(int*)(v71 + 3) = v76;
                       if (v63 < v66) {
                         break;
                       }
@@ -2632,7 +2632,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                                                         24LL) +
                                              88LL);
                         if ((int)result >=
-                            *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v74 +
+                            *(int*)(*(_QWORD*)(*(_QWORD*)(v74 +
                                                              8LL * v68[8]) +
                                                   24LL) +
                                        88LL)) {
@@ -2650,19 +2650,19 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                       }
                       v71 = v75;
                     } while (
-                        *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v74 +
+                        *(int*)(*(_QWORD*)(*(_QWORD*)(v74 +
                                                          8LL * (unsigned int)
                                                                    v73) +
                                               24LL) +
                                    88LL) >=
-                        *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v74 +
+                        *(int*)(*(_QWORD*)(*(_QWORD*)(v74 +
                                                          8LL * (unsigned __int8)
                                                                    v72) +
                                               24LL) +
                                    88LL));
                     *(_WORD*)v75 = v72;
                     v75[2] = BYTE2(v72);
-                    *(_DWORD*)(v75 + 3) = v72 >> 24;
+                    *(int*)(v75 + 3) = v72 >> 24;
                     v75[7] = HIBYTE(v72);
                   }
                 }
@@ -2685,11 +2685,11 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                   if (v80 < v10) {
                     v83 = v86[16];
                     v82 = v86 + 16;
-                    if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+                    if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                          8LL * *(v82 - 8)) +
                                               24LL) +
                                    88LL) >=
-                        *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+                        *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                          8LL * v83) +
                                               24LL) +
                                    88LL)) {
@@ -2705,7 +2705,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                   *(_WORD*)v81 = *(_WORD*)v84;
                   v81[2] = v84[2];
                   v85 = v84[7];
-                  *(_DWORD*)(v81 + 3) = *(_DWORD*)(v84 + 3);
+                  *(int*)(v81 + 3) = *(int*)(v84 + 3);
                   v81[7] = v85;
                   v81 = v84;
                 } while (v80 <= (__int64)((unsigned __int64)(v10 - 2) >> 1));
@@ -2714,29 +2714,29 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                   *(_WORD*)v84 = v79;
                   v84[2] = BYTE2(v79);
                   v84[7] = HIBYTE(v79);
-                  *(_DWORD*)(v84 + 3) = v88;
+                  *(int*)(v84 + 3) = v88;
                 }
                 else {
                   *(_WORD*)v84 = *((_WORD*)a2 - 4);
                   v84[2] = *(a2 - 6);
-                  v89 = *(_DWORD*)(a2 - 5);
+                  v89 = *(int*)(a2 - 5);
                   v84[7] = *(a2 - 1);
-                  *(_DWORD*)(v84 + 3) = v89;
+                  *(int*)(v84 + 3) = v89;
                   *((_WORD*)a2 - 4) = v79;
                   *(a2 - 6) = BYTE2(v79);
                   *(a2 - 1) = HIBYTE(v79);
-                  *(_DWORD*)(a2 - 5) = v88;
+                  *(int*)(a2 - 5) = v88;
                   v90 = (__int64)&v84[-v9 + 8] >> 3;
                   v78 = v90 < 2;
                   v91 = v90 - 2;
                   if (!v78) {
                     v92 = v91 >> 1;
                     v93 = (unsigned __int8*)(v9 + 8 * v92);
-                    if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+                    if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                          8LL * *v93) +
                                               24LL) +
                                    88LL) <
-                        *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
+                        *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 + 64) +
                                                          8LL * *v84) +
                                               24LL) +
                                    88LL)) {
@@ -2750,9 +2750,9 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                         v95 = v93;
                         *(_WORD*)v84 = *(_WORD*)v93;
                         v84[2] = v93[2];
-                        v96 = *(_DWORD*)(v93 + 3);
+                        v96 = *(int*)(v93 + 3);
                         v84[7] = v95[7];
-                        *(_DWORD*)(v84 + 3) = v96;
+                        *(int*)(v84 + 3) = v96;
                         if (v92 == 0) {
                           break;
                         }
@@ -2760,12 +2760,12 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                         v93 = (unsigned __int8*)(v9 + 8 * v92);
                         v84 = v95;
                       } while (
-                          *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 +
+                          *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 +
                                                                       64) +
                                                            8LL * *v93) +
                                                 24LL) +
                                      88LL) <
-                          *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 +
+                          *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v8 +
                                                                       64) +
                                                            8LL *
                                                                (unsigned __int8)
@@ -2774,7 +2774,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                                      88LL));
                       *(_WORD*)v95 = v94;
                       v95[2] = BYTE2(v94);
-                      *(_DWORD*)(v95 + 3) = v94 >> 24;
+                      *(int*)(v95 + 3) = v94 >> 24;
                       v95[7] = HIBYTE(v94);
                     }
                   }
@@ -2803,22 +2803,22 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
             *(_WORD*)v7 = *(_WORD*)v11;
             v7[2] = v13;
             v14 = *(_BYTE*)(v11 + 7);
-            v15 = *(_DWORD*)(v11 + 3);
+            v15 = *(int*)(v11 + 3);
             *(_WORD*)v11 = v12;
-            *(_DWORD*)(v7 + 3) = v15;
+            *(int*)(v7 + 3) = v15;
             v7[7] = v14;
             *(_BYTE*)(v11 + 2) = BYTE2(v12);
             *(_BYTE*)(v11 + 7) = HIBYTE(v12);
-            *(_DWORD*)(v11 + 3) = v12 >> 24;
+            *(int*)(v11 + 3) = v12 >> 24;
           }
           --a3;
           if ((a4 & 1) != 0) {
             break;
           }
           v16 = *(_QWORD*)(*v8 + 64);
-          if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * *(v7 - 8)) + 24LL) +
+          if (*(int*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * *(v7 - 8)) + 24LL) +
                          88LL) <
-              *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * *v7) + 24LL) +
+              *(int*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * *v7) + 24LL) +
                          88LL)) {
             break;
           }
@@ -2829,11 +2829,11 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
             v36 = 0;
           }
           v37 = *(
-              _DWORD*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * (unsigned __int8)v36) +
+              int*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * (unsigned __int8)v36) +
                                   24LL) +
                        88LL);
           if (v37 >=
-              *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * *(a2 - 8)) + 24LL) +
+              *(int*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * *(a2 - 8)) + 24LL) +
                          88LL)) {
             v39 = (unsigned __int64)(v7 + 8);
             do {
@@ -2844,7 +2844,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
               v39 += 8LL;
             } while (
                 v37 >=
-                *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v16 +
+                *(int*)(*(_QWORD*)(*(_QWORD*)(v16 +
                                                  8LL * *(unsigned __int8*)v9) +
                                       24LL) +
                            88LL));
@@ -2855,7 +2855,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
               v38 = *(unsigned __int8*)(v9 + 8);
               v9 += 8LL;
             } while (v37 >=
-                     *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * v38) + 24LL) +
+                     *(int*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * v38) + 24LL) +
                                 88LL));
           }
           v40 = a2;
@@ -2865,7 +2865,7 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
               v41 = *(v40 - 8);
               v40 -= 8;
             } while (v37 <
-                     *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * v41) + 24LL) +
+                     *(int*)(*(_QWORD*)(*(_QWORD*)(v16 + 8LL * v41) + 24LL) +
                                 88LL));
           }
           if (v9 < (unsigned __int64)v40) {
@@ -2879,16 +2879,16 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
               }
               *(_WORD*)v9 = *(_WORD*)v40;
               *(_BYTE*)(v9 + 2) = v40[2];
-              v44 = *(_DWORD*)(v40 + 3);
+              v44 = *(int*)(v40 + 3);
               *(_BYTE*)(v9 + 7) = v40[7];
-              *(_DWORD*)(v9 + 3) = v44;
+              *(int*)(v9 + 3) = v44;
               *(_WORD*)v40 = v43;
               v40[2] = BYTE2(v43);
-              *(_DWORD*)(v40 + 3) = v43 >> 24;
+              *(int*)(v40 + 3) = v43 >> 24;
               v40[7] = HIBYTE(v43);
               v45 = *(_QWORD*)(*v8 + 64);
               v46 =
-                  *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v45 +
+                  *(int*)(*(_QWORD*)(*(_QWORD*)(v45 +
                                                    8LL * (unsigned __int8)v36) +
                                         24LL) +
                              88LL);
@@ -2898,12 +2898,12 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
                 v42 = v47;
               } while (
                   v46 >=
-                  *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v45 + 8LL * v47) + 24LL) +
+                  *(int*)(*(_QWORD*)(*(_QWORD*)(v45 + 8LL * v47) + 24LL) +
                              88LL));
               do {
                 v48 = *(v40 - 8);
                 v40 -= 8;
-              } while (v46 < *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v45 + 8LL * v48) +
+              } while (v46 < *(int*)(*(_QWORD*)(*(_QWORD*)(v45 + 8LL * v48) +
                                                    24LL) +
                                         88LL));
             } while (v9 < (unsigned __int64)v40);
@@ -2911,15 +2911,15 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
           if (v7 != (unsigned __int8*)(v9 - 8)) {
             *(_WORD*)v7 = *(_WORD*)(v9 - 8);
             v7[2] = *(_BYTE*)(v9 - 6);
-            v49 = *(_DWORD*)(v9 - 5);
+            v49 = *(int*)(v9 - 5);
             v7[7] = *(_BYTE*)(v9 - 1);
-            *(_DWORD*)(v7 + 3) = v49;
+            *(int*)(v7 + 3) = v49;
           }
           *(_WORD*)(v9 - 8) = v36;
           a4 = 0;
           *(_BYTE*)(v9 - 6) = BYTE2(v36);
           *(_BYTE*)(v9 - 1) = HIBYTE(v36);
-          *(_DWORD*)(v9 - 5) = v36 >> 24;
+          *(int*)(v9 - 5) = v36 >> 24;
         }
         if (*v7 != 0) {
           v17 = *(_QWORD*)v7;
@@ -2930,14 +2930,14 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
         v18 = 0;
         v19 = *(_QWORD*)(*v8 + 64);
         v20 =
-            *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v19 + 8LL * (unsigned __int8)v17) +
+            *(int*)(*(_QWORD*)(*(_QWORD*)(v19 + 8LL * (unsigned __int8)v17) +
                                   24LL) +
                        88LL);
         do {
           v21 = &v7[v18];
           v18 += 8;
           v22 = v21[8];
-        } while (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v19 + 8LL * v21[8]) + 24LL) +
+        } while (*(int*)(*(_QWORD*)(*(_QWORD*)(v19 + 8LL * v21[8]) + 24LL) +
                             88LL) < v20);
         v23 = &v7[v18];
         v24 = a2;
@@ -2949,14 +2949,14 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
             }
             v26 = *(v24 - 8);
             v24 -= 8;
-          } while (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v19 + 8LL * v26) + 24LL) +
+          } while (*(int*)(*(_QWORD*)(*(_QWORD*)(v19 + 8LL * v26) + 24LL) +
                               88LL) >= v20);
         }
         else {
           do {
             v25 = *(v24 - 8);
             v24 -= 8;
-          } while (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v19 + 8LL * v25) + 24LL) +
+          } while (*(int*)(*(_QWORD*)(*(_QWORD*)(v19 + 8LL * v25) + 24LL) +
                               88LL) >= v20);
         }
         v9 = (unsigned __int64)&v7[v18];
@@ -2971,15 +2971,15 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
             }
             *(_WORD*)v9 = *(_WORD*)v27;
             *(_BYTE*)(v9 + 2) = v27[2];
-            v29 = *(_DWORD*)(v27 + 3);
+            v29 = *(int*)(v27 + 3);
             *(_BYTE*)(v9 + 7) = v27[7];
-            *(_DWORD*)(v9 + 3) = v29;
+            *(int*)(v9 + 3) = v29;
             *(_WORD*)v27 = v28;
             v27[2] = BYTE2(v28);
-            *(_DWORD*)(v27 + 3) = v28 >> 24;
+            *(int*)(v27 + 3) = v28 >> 24;
             v27[7] = HIBYTE(v28);
             v30 = *(_QWORD*)(*v8 + 64);
-            v31 = *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v30 +
+            v31 = *(int*)(*(_QWORD*)(*(_QWORD*)(v30 +
                                                    8LL * (unsigned __int8)v17) +
                                         24LL) +
                              88LL);
@@ -2987,26 +2987,26 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
               v32 = *(unsigned __int8*)(v9 + 8);
               v9 += 8LL;
               v22 = v32;
-            } while (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v30 + 8LL * v32) + 24LL) +
+            } while (*(int*)(*(_QWORD*)(*(_QWORD*)(v30 + 8LL * v32) + 24LL) +
                                 88LL) < v31);
             do {
               v33 = *(v27 - 8);
               v27 -= 8;
-            } while (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v30 + 8LL * v33) + 24LL) +
+            } while (*(int*)(*(_QWORD*)(*(_QWORD*)(v30 + 8LL * v33) + 24LL) +
                                 88LL) >= v31);
           } while (v9 < (unsigned __int64)v27);
         }
         if (v7 != (unsigned __int8*)(v9 - 8)) {
           *(_WORD*)v7 = *(_WORD*)(v9 - 8);
           v7[2] = *(_BYTE*)(v9 - 6);
-          v34 = *(_DWORD*)(v9 - 5);
+          v34 = *(int*)(v9 - 5);
           v7[7] = *(_BYTE*)(v9 - 1);
-          *(_DWORD*)(v7 + 3) = v34;
+          *(int*)(v7 + 3) = v34;
         }
         *(_WORD*)(v9 - 8) = v17;
         *(_BYTE*)(v9 - 6) = BYTE2(v17);
         *(_BYTE*)(v9 - 1) = HIBYTE(v17);
-        *(_DWORD*)(v9 - 5) = v17 >> 24;
+        *(int*)(v9 - 5) = v17 >> 24;
         if (v23 >= v24) {
           break;
         }
@@ -3016,7 +3016,8 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
         a4 = 0;
       }
       v35 = GameRoutine_93a560(v7, (unsigned __int8*)(v9 - 8));
-      result = GameRoutine_93a560((unsigned __int8*)v9, a2);
+      result = ((__int64 (*)(unsigned __int8*, unsigned __int8*))
+                    GameRoutine_93a560)((unsigned __int8*)v9, a2);
       if ((result & 1) != 0) {
         break;
       }
@@ -3171,11 +3172,11 @@ unsigned __int8* LegionPool_93a150(unsigned __int8* a1, unsigned __int8* a2,
 
   result = GameRoutine_939f20(a1, a2, a3);
   v9 = GameData_212c998[0];
-  if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c998[0] + 64) +
+  if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c998[0] + 64) +
                                        8LL * *a4) +
                             24LL) +
                  88LL) <
-      *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c998[0] + 64) +
+      *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c998[0] + 64) +
                                        8LL * *a3) +
                             24LL) +
                  88LL)) {
@@ -3183,32 +3184,32 @@ unsigned __int8* LegionPool_93a150(unsigned __int8* a1, unsigned __int8* a2,
     *(_WORD*)a3 = *(_WORD*)a4;
     a3[2] = a4[2];
     v11 = a4[7];
-    *(_DWORD*)(a3 + 3) = *(_DWORD*)(a4 + 3);
+    *(int*)(a3 + 3) = *(int*)(a4 + 3);
     a3[7] = v11;
     *(_WORD*)a4 = v10;
     a4[2] = BYTE2(v10);
-    *(_DWORD*)(a4 + 3) = v10 >> 24;
+    *(int*)(a4 + 3) = v10 >> 24;
     a4[7] = HIBYTE(v10);
-    if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v9 + 64) + 8LL * *a3) +
+    if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v9 + 64) + 8LL * *a3) +
                               24LL) +
                    88LL) <
-        *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v9 + 64) + 8LL * *a2) +
+        *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v9 + 64) + 8LL * *a2) +
                               24LL) +
                    88LL)) {
       v12 = *a2 != 0 ? *(_QWORD*)a2 : 0LL;
       *(_WORD*)a2 = *(_WORD*)a3;
       a2[2] = a3[2];
       v13 = a3[7];
-      *(_DWORD*)(a2 + 3) = *(_DWORD*)(a3 + 3);
+      *(int*)(a2 + 3) = *(int*)(a3 + 3);
       a2[7] = v13;
       *(_WORD*)a3 = v12;
       a3[2] = BYTE2(v12);
-      *(_DWORD*)(a3 + 3) = v12 >> 24;
+      *(int*)(a3 + 3) = v12 >> 24;
       a3[7] = HIBYTE(v12);
-      if (*(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v9 + 64) + 8LL * *a2) +
+      if (*(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v9 + 64) + 8LL * *a2) +
                                 24LL) +
                      88LL) <
-          *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v9 + 64) + 8LL * *a1) +
+          *(int*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v9 + 64) + 8LL * *a1) +
                                 24LL) +
                      88LL)) {
         if (*a1 != 0) {
@@ -3219,13 +3220,13 @@ unsigned __int8* LegionPool_93a150(unsigned __int8* a1, unsigned __int8* a2,
         }
         *(_WORD*)a1 = *(_WORD*)a2;
         a1[2] = a2[2];
-        v15 = *(_DWORD*)(a2 + 3);
+        v15 = *(int*)(a2 + 3);
         a1[7] = a2[7];
-        *(_DWORD*)(a1 + 3) = v15;
+        *(int*)(a1 + 3) = v15;
         *(_WORD*)a2 = v14;
         a2[2] = BYTE2(v14);
         a2[7] = HIBYTE(v14);
-        *(_DWORD*)(a2 + 3) = v14 >> 24;
+        *(int*)(a2 + 3) = v14 >> 24;
       }
     }
   }

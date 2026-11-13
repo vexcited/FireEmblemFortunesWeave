@@ -791,8 +791,7 @@ __n128 GameHr_f47e80(__int64 a1, int a2, __int64* a3)
   __int64 v13;
   __n128 result;
   __int64 v15;
-  _QWORD v16[2];
-  __int64 v17;
+  _QWORD v16[3];
   _BYTE v18[24];
   int v19;
   _BYTE* v20;
@@ -844,15 +843,15 @@ __n128 GameHr_f47e80(__int64 a1, int a2, __int64* a3)
     v13 = a3[9];
     v16[0] = a3[7];
     v16[1] = v12;
-    v17 = v13;
+    v16[2] = v13;
   }
   (*(void (**)(__int64, _QWORD*))(*(_QWORD*)a1 + 120LL))(a1, v16);
-  if ((v16[0] & 1) != 0 && v17 != 0) {
+  if ((v16[0] & 1) != 0 && v16[2] != 0) {
     v15 = 128;
     if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
       v15 = 56;
     }
-    return GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v15, (_QWORD)(v17));
+    return GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v15, (_QWORD)(v16[2]));
   }
   return result;
 }

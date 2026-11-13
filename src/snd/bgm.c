@@ -672,8 +672,8 @@ __int64 BGM_d7320(__int64* a1, __int64 a2, __int64 a3, unsigned int a4, char a5,
       do {
         v37 = *v36;
         v36 += 7;
-        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8))(v37 + 32))(
-            (void*)(&v49_.v49));
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(v37 + 32))(
+            (void*)(&v49_.v49), (__int64)(v36 - 7));
         v38 = *(const char**)(a2 + 8 * v35);
         v39 = strlen(v38);
         v40 = v49_.v49;

@@ -82,8 +82,7 @@ float32x4_t game_templates_a56ac0(_BYTE*, float32x4_t result, long double,
                                   long double, long double);
 int* GameRoutine_15a8170(int* result, int*, int*, int*);
 int memcmp(__int64, __int64, unsigned __int64);
-int8x16_t* GameRoutine_a57200(int8x16_t* result, float32x4_t*, float, double,
-                              double, double);
+int8x16_t* GameRoutine_a57200(int8x16_t* result, float32x4_t*, float);
 unsigned __int64 strlen(const char*);
 unsigned int* game_gmap_SpotMgr_FindSpot(unsigned int* result);
 void GameHr_1683ec0(__int64, __int64*, __int64, __int64, long double,
@@ -112,8 +111,7 @@ float32x4_t llvm_libcxx_21_libcxx_include___vector_a56f20(_QWORD* a1,
                                                           float32x4_t* a2,
                                                           float32x2_t* a3);
 int8x16_t* llvm_libcxx_21_libcxx_include___vector_a583e0(
-    int8x16_t* result, float32x4_t* a2, char a3, char a4, int a5, float a6,
-    double a7, double a8, double a9);
+    int8x16_t* result, float32x4_t* a2, char a3, char a4, int a5, float a6);
 void llvm_libcxx_21_libcxx_include___vector_a58fe0(
     __int64 a1, __int64 a2, float32x4_t* a3, char a4, float32x4_t a5,
     long double a6, long double a7, long double a8, long double a9,
@@ -327,8 +325,7 @@ float32x4_t llvm_libcxx_21_libcxx_include___vector_a56f20(_QWORD* a1,
 }
 
 int8x16_t* llvm_libcxx_21_libcxx_include___vector_a583e0(
-    int8x16_t* result, float32x4_t* a2, char a3, char a4, int a5, float a6,
-    double a7, double a8, double a9)
+    int8x16_t* result, float32x4_t* a2, char a3, char a4, int a5, float a6)
 {
 
 #pragma clang fp contract(off)
@@ -360,7 +357,7 @@ int8x16_t* llvm_libcxx_21_libcxx_include___vector_a583e0(
       if ((*(_DWORD*)(v10 + v17) & a5) == 0) {
         result =
             GameRoutine_a57200((int8x16_t*)(LANES128(v16[1]).n128_u64[1] + v18),
-                               a2, a6, a7, a8, a9);
+                               a2, a6);
         v10 = LANES128(*(v16)).n128_u64[0];
         v9 = LANES128(*(v16)).n128_i64[1];
       }
@@ -379,8 +376,7 @@ int8x16_t* llvm_libcxx_21_libcxx_include___vector_a583e0(
       do {
         if ((*(_DWORD*)(v21 + v22) & a5) == 0) {
           result = GameRoutine_a57200(
-              (int8x16_t*)(LANES128(v16[4]).n128_u64[1] + v23), a2, a6, a7, a8,
-              a9);
+              (int8x16_t*)(LANES128(v16[4]).n128_u64[1] + v23), a2, a6);
           v21 = LANES128(v16[3]).n128_u64[0];
           v20 = LANES128(v16[3]).n128_u64[1];
         }
@@ -400,8 +396,7 @@ int8x16_t* llvm_libcxx_21_libcxx_include___vector_a583e0(
       do {
         if ((*(_DWORD*)(v26 + v27) & a5) == 0) {
           result = GameRoutine_a57200(
-              (int8x16_t*)(LANES128(v16[7]).n128_u64[1] + v28), a2, a6, a7, a8,
-              a9);
+              (int8x16_t*)(LANES128(v16[7]).n128_u64[1] + v28), a2, a6);
           v26 = LANES128(v16[6]).n128_u64[0];
           v25 = LANES128(v16[6]).n128_u64[1];
         }
@@ -12286,7 +12281,7 @@ bool llvm_libcxx_21_libcxx_include___vector_18d9660(__int64* a1, __int64* a2)
   __int64* v49;
   int v50;
 
-  v3 = a2 - a1;
+  v3 = ((__int64)a2 - (__int64)a1) >> 3;
   if (v3 > 2) {
     if (v3 == 3) {
       v6 = *a1;

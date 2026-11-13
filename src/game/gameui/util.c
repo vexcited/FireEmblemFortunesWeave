@@ -18818,6 +18818,7 @@ __int64 game_gameui_Util_SetUnitInfoTraining_lambda0_Invoke(__int64 a1,
     v17 = *(_QWORD**)(a1 + 8);
     v18 = (__int64)v16;
     v19 = *((unsigned __int8*)v17 + v3 + 540);
+    __asm__ volatile("" ::"r"(v19));
     v20 = (unsigned __int64)(GameData_21d99b0 - GameData_21d99a8) >> 2;
     if ((int)v20 < 1) {
       goto LABEL_31;

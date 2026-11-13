@@ -4099,12 +4099,12 @@ __int64 CharacterController_StateJump_Unknown4(__int64 result, long double a2)
         *(_DWORD*)(result + 156) = 0;
         if (v11 <= 0x0.0p+0f) {
           v12 = true;
-          if (v10 > 0x0.0p+0f) {
+          if (!(v10 <= 0x0.0p+0f)) {
             goto LABEL_102;
           }
         }
         else {
-          if (v10 > 0x0.0p+0f) {
+          if (!(v10 <= 0x0.0p+0f)) {
             v12 = false;
           LABEL_102:
             if (v12 && (*(_QWORD*)(*(_QWORD*)((v51 = *(_QWORD*)(v3 + 8)) + 8) +
@@ -4141,7 +4141,7 @@ __int64 CharacterController_StateJump_Unknown4(__int64 result, long double a2)
                                              *((float*)&v49 + 1))) +
                       (float)(*(float*)&v49 * *(float*)&v49)) >
                 0x1.3333340000000p-2f;
-          if (v10 > 0x0.0p+0f) {
+          if (!(v10 <= 0x0.0p+0f)) {
             goto LABEL_102;
           }
         }
@@ -4514,7 +4514,7 @@ LABEL_143:
       goto LABEL_149;
     }
   }
-  else if (v87 >= 0x0.0p+0f || (v87 = v87 + v88) <= 0x0.0p+0f) {
+  else if (!(v87 < 0x0.0p+0f) || (v87 = v87 + v88) <= 0x0.0p+0f) {
   LABEL_149:
     *(float*)(v3 + 164) = v87;
     return result;
@@ -6840,9 +6840,8 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
   __int64 v16;
   const char* v17;
   __int64 v18;
-  char v19;
   struct {
-    char gap8_[1];
+    char v19;
     char v20[15];
     __int64 v21;
   } v20_;
@@ -6874,10 +6873,10 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
   case 28:
   case 29:
     if (a1 == 1) {
-      v19 = 20;
+      v20_.v19 = 20;
       strcpy(v20_.v20, "Jnt_R_Foot");
-      GameRoutine_7a8220_alt1(a3, &v19);
-      if ((v19 & 1) != 0 && v20_.v21 != 0) {
+      GameRoutine_7a8220_alt1(a3, &v20_.v19);
+      if ((v20_.v19 & 1) != 0 && v20_.v21 != 0) {
         v13 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v13 = 56;
@@ -6885,15 +6884,15 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
         nn_mem_StandardAllocator_Free_alt3(
             *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, v20_.v21);
       }
-      v19 = 18;
+      v20_.v19 = 18;
       v11 = "Jnt_R_Toe";
       goto LABEL_37;
     }
     if (a1 == 0) {
-      v19 = 20;
+      v20_.v19 = 20;
       strcpy(v20_.v20, "Jnt_L_Foot");
-      GameRoutine_7a8220_alt1(a3, &v19);
-      if ((v19 & 1) != 0 && v20_.v21 != 0) {
+      GameRoutine_7a8220_alt1(a3, &v20_.v19);
+      if ((v20_.v19 & 1) != 0 && v20_.v21 != 0) {
         v10 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v10 = 56;
@@ -6901,7 +6900,7 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
         nn_mem_StandardAllocator_Free_alt3(
             *(_QWORD*)fw_memory_g_heap_manager_ptr + v10, v20_.v21);
       }
-      v19 = 18;
+      v20_.v19 = 18;
       v11 = "Jnt_L_Toe";
     LABEL_37:
       *(_QWORD*)v20_.v20 = *(_QWORD*)v11;
@@ -6918,10 +6917,10 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
   case 25:
     if (a1 > 3) {
       if (a1 == 4) {
-        v19 = 18;
+        v20_.v19 = 18;
         strcpy(v20_.v20, "Jnt_L_Toe");
-        GameRoutine_7a8220_alt1(a3, &v19);
-        if ((v19 & 1) != 0 && v20_.v21 != 0) {
+        GameRoutine_7a8220_alt1(a3, &v20_.v19);
+        if ((v20_.v19 & 1) != 0 && v20_.v21 != 0) {
           v15 = 128;
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v15 = 56;
@@ -6929,7 +6928,7 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
           nn_mem_StandardAllocator_Free_alt3(
               *(_QWORD*)fw_memory_g_heap_manager_ptr + v15, v20_.v21);
         }
-        v19 = 20;
+        v20_.v19 = 20;
         *(_WORD*)&v20_.v20[8] = 27753;
         v9 = "Jnt_L_Nail";
       }
@@ -6937,10 +6936,10 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
         if (a1 != 5) {
           return;
         }
-        v19 = 18;
+        v20_.v19 = 18;
         strcpy(v20_.v20, "Jnt_R_Toe");
-        GameRoutine_7a8220_alt1(a3, &v19);
-        if ((v19 & 1) != 0 && v20_.v21 != 0) {
+        GameRoutine_7a8220_alt1(a3, &v20_.v19);
+        if ((v20_.v19 & 1) != 0 && v20_.v21 != 0) {
           v12 = 128;
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v12 = 56;
@@ -6948,16 +6947,16 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
           nn_mem_StandardAllocator_Free_alt3(
               *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v20_.v21);
         }
-        v19 = 20;
+        v20_.v19 = 20;
         *(_WORD*)&v20_.v20[8] = 27753;
         v9 = "Jnt_R_Nail";
       }
     }
     else if (a1 == 2) {
-      v19 = 20;
+      v20_.v19 = 20;
       strcpy(v20_.v20, "Jnt_L_Arm4");
-      GameRoutine_7a8220_alt1(a3, &v19);
-      if ((v19 & 1) != 0 && v20_.v21 != 0) {
+      GameRoutine_7a8220_alt1(a3, &v20_.v19);
+      if ((v20_.v19 & 1) != 0 && v20_.v21 != 0) {
         v14 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v14 = 56;
@@ -6965,7 +6964,7 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
         nn_mem_StandardAllocator_Free_alt3(
             *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v20_.v21);
       }
-      v19 = 20;
+      v20_.v19 = 20;
       *(_WORD*)&v20_.v20[8] = 13677;
       v9 = "Jnt_L_Arm5";
     }
@@ -6973,10 +6972,10 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
       if (a1 != 3) {
         return;
       }
-      v19 = 20;
+      v20_.v19 = 20;
       strcpy(v20_.v20, "Jnt_R_Arm4");
-      GameRoutine_7a8220_alt1(a3, &v19);
-      if ((v19 & 1) != 0 && v20_.v21 != 0) {
+      GameRoutine_7a8220_alt1(a3, &v20_.v19);
+      if ((v20_.v19 & 1) != 0 && v20_.v21 != 0) {
         v8 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v8 = 56;
@@ -6984,7 +6983,7 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
         nn_mem_StandardAllocator_Free_alt3(
             *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v20_.v21);
       }
-      v19 = 20;
+      v20_.v19 = 20;
       *(_WORD*)&v20_.v20[8] = 13677;
       v9 = "Jnt_R_Arm5";
     }
@@ -7077,10 +7076,10 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
       v17 = "Jnt_R_Arm3";
     }
   LABEL_85:
-    Manager_6326c0_alt1((__int64*)&v19, v17);
+    Manager_6326c0_alt1((__int64*)&v20_.v19, v17);
   LABEL_86:
-    GameRoutine_7a8220_alt1(a3, &v19);
-    if ((v19 & 1) != 0 && v20_.v21 != 0) {
+    GameRoutine_7a8220_alt1(a3, &v20_.v19);
+    if ((v20_.v19 & 1) != 0 && v20_.v21 != 0) {
       v18 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v18 = 56;

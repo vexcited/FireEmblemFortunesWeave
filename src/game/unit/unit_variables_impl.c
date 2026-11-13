@@ -810,7 +810,8 @@ LABEL_129:
         }
         result = v70 + 1880;
         if (v70 + 1880 != v4) {
-          return UnitVariables_932770(result, v4);
+          return ((__int64 (*)(__int64, __int64))UnitVariables_932770)(
+              result, v4);
         }
       }
     }

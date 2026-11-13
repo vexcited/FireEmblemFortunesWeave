@@ -5,7 +5,7 @@
 #pragma GCC visibility push(hidden)
 
 __int64 CharacterTrailModule_d3d7a0(_QWORD, _QWORD, _QWORD);
-__int64 CharacterTrailModule_d3d960(long double);
+__int64 CharacterTrailModule_d3d960(_QWORD, _QWORD);
 __n128 GameRoutine_109d5e0(unsigned int*);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 char** GameRoutine_108c640(int);
@@ -67,7 +67,7 @@ void CharacterLookAt_10b7fc0(__int64 a1)
       v6 = *(char**)(v4 + 64);
     }
     if (0xCCCCCCCCCCCCCCCDLL * ((v6 - v5) >> 4) >= 0x40) {
-      v7 = CharacterTrailModule_d3d960(v2);
+      v7 = CharacterTrailModule_d3d960((_QWORD)v5, (_QWORD)v6);
       CharacterTrailModule_d3d7a0(v4 + 56, v7, *(_QWORD*)(v4 + 64));
     }
   }
@@ -164,9 +164,9 @@ float32x2_t* CharacterLookAt_Unknown5(float32x2_t* result)
       v10 = 0x1.0000000000000p+0f;
     }
     LANES64(result[13]).n64_f32[0] = v10;
-    if (v11 <= 0x0.0p+0f || v10 > 0x0.0p+0f) {
+    if (!(v11 > 0x0.0p+0f) || !(v10 <= 0x0.0p+0f)) {
       v12 = v10 > 0x0.0p+0f;
-      if (v11 > 0x0.0p+0f) {
+      if (!(v11 <= 0x0.0p+0f)) {
         v12 = false;
       }
     }

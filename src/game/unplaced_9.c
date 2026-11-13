@@ -8789,7 +8789,7 @@ void game_5c1c50(__int64 a1, float32x2_t* a2, float32x4_t* a3, __int64 a4,
       *a8,
       vmulq_n_f32(*a16, *(float*)&a10 * *(float*)(LANES128(a6[30]).n128_u64[1] +
                                                   16LL * a7 + 12)));
-  LANES128(v24).n128_u32[0] = 0x1.0000000000000p+0f;
+  LANES128(v24).n128_f32[0] = 0x1.0000000000000p+0f;
   *(float32x4_t*)LANES64(*(a2)).n64_u64 = v25;
   LANES128(v25).n128_u32[0] =
       *(_DWORD*)(*(_QWORD*)(LANES128(a6[35]).n128_u64[1] + 24) + 112LL);
@@ -9257,7 +9257,7 @@ void game_5c26c0(long double a1, float a2, long double a3, __int64 a4,
                 v71 = vbslq_s8(v69, v70, v52);
                 *a5 = v71;
                 if (LANES128(v71).n128_f32[3] > 1.0) {
-                  LANES128(v71).n128_u32[3] = 1.0;
+                  LANES128(v71).n128_f32[3] = 1.0f;
                   *a5 = v71;
                 }
                 return;

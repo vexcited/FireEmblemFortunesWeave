@@ -2672,8 +2672,8 @@ __int64 game_GameCalendar_ProcNotify_Notify_closure0_Invoke(__int64 a1,
   return result;
 }
 
-unsigned __int64 game_GameCalendar_UpdateLatest_lambda0_Invoke(_QWORD* a1,
-                                                               __int64* a2)
+unsigned __int64 GameRoutine_12da9b0(unsigned __int64 result, __int64 v54,
+                                     char v57, __int16* v55)
 {
   int v2;
   unsigned __int64 v3;
@@ -2721,21 +2721,11 @@ unsigned __int64 game_GameCalendar_UpdateLatest_lambda0_Invoke(_QWORD* a1,
   unsigned __int64 v48;
   unsigned int v49;
   unsigned __int64 v50;
-  char* v53;
-  __int64 v54;
-  __int16* v55;
-  unsigned __int64 result;
-  char v57;
   int v58;
   __int16 v59;
   int v60;
   __int16 v61;
 
-  v53 = (char*)a1[2];
-  v54 = *a2;
-  v55 = (__int16*)a1[3];
-  result = a1[1];
-  v57 = *v53;
   if (v54 == 0) {
     return result;
   }
@@ -3057,6 +3047,12 @@ LABEL_89:
     goto LABEL_94;
   }
   return result;
+}
+
+unsigned __int64 game_GameCalendar_UpdateLatest_lambda0_Invoke(_QWORD* a1,
+                                                               __int64* a2)
+{
+  return GameRoutine_12da9b0(a1[1], *a2, *(char*)a1[2], (__int16*)a1[3]);
 }
 
 unsigned __int64 game_GameCalendar_UpdateLatest_lambda1_Invoke(_QWORD* a1,

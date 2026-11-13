@@ -2654,7 +2654,7 @@ __int64 game_menu_anonymous_17aed00(__int64 result, __int64* a2,
       while (1) {
         while (1) {
           v9 = v11;
-          v12 = a2 - v11;
+          v12 = ((__int64)a2 - (__int64)v11) >> 3;
           if (v12 > 2) {
             switch (v12) {
             case 3LL:
@@ -3262,7 +3262,9 @@ __int64 game_menu_anonymous_17aed00(__int64 result, __int64* a2,
       }
       v11 = v29 + 1;
       v31 = game_menu_anonymous_17afdc0_alt1(v9, v29, a3);
-      result = game_menu_anonymous_17afdc0_alt1(v29 + 1, v117, a3);
+      result = ((__int64 (*)(__int64*, __int64*,
+                             __int64 (**)(__int64*, __int64*)))
+                    game_menu_anonymous_17afdc0_alt1)(v29 + 1, v117, a3);
       if ((result & 1) != 0) {
         break;
       }

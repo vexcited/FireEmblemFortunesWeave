@@ -2801,16 +2801,16 @@ LABEL_35:
               *(__int16*)(game_gmap_GmapClock_instance_ + 20) *
               *(__int16*)(game_gmap_GmapClock_instance_ + 24) !=
           0) {
-    result = GameRoutine_9d5430_alt1(a1);
+    result = ((__int64 (*)(__int64))GameRoutine_9d5430_alt1)(a1);
     if ((result & 1) != 0) {
       goto LABEL_6;
     }
   }
-  result = game_gmap_887a40(a1);
+  result = ((__int64 (*)(__int64))game_gmap_887a40)(a1);
   if ((result & 1) != 0) {
     goto LABEL_6;
   }
-  result = GmapSituation_14dbd80_alt1();
+  result = ((__int64 (*)())GmapSituation_14dbd80_alt1)();
   if ((result & 1) != 0) {
     v4 = 4;
     goto LABEL_9;

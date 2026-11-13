@@ -57,7 +57,7 @@ bool gfx_194cd60(__int64* a1, __int64* a2, __int64 a3)
   __int64 v47;
   __int64 v49;
 
-  v3 = a2 - a1;
+  v3 = ((__int64)a2 - (__int64)a1) >> 3;
   if (v3 > 2) {
     if (v3 == 3) {
       v6 = a1 + 1;

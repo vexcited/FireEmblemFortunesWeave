@@ -181,7 +181,7 @@ __int64 nn_vfx_detail_5caf20(__int64 a1, __int64 a2, int8x16_t* a3)
   v21 = vmuls_lane_f32(v20, *a3, 2);
   LANES128(v17).n128_f32[0] = v20 * COERCE_FLOAT(*a3);
   *(float*)&v22 = v20 * LANES128(v18).n128_f32[0];
-  LANES128(v17).n128_u32[1] = vmuls_lane_f32(
+  LANES128(v17).n128_f32[1] = vmuls_lane_f32(
       v20, COERCE_AS(float32x2_t, LANES128(*(a3)).n128_u64[0]), 1);
   *(float*)&v23 =
       vmuls_lane_f32(v20, COERCE_AS(float32x2_t, LANES128(v18).n128_u64[0]), 1);
@@ -594,13 +594,13 @@ LABEL_44:
     LANES128(v58).n128_u32[0] = *(_DWORD*)(v7 + 20);
   }
   else {
-    LANES128(v58).n128_u32[0] = 0x1.0000000000000p+0;
+    LANES128(v58).n128_f32[0] = 0x1.0000000000000p+0f;
     if (v106 == 0) {
       LANES128(v58).n128_f32[0] = (float)LANES128(a3[7]).n128_i32[0];
     }
   }
   v107 = *(_DWORD*)(v6 + 32) * LANES128(a3[7]).n128_u32[1];
-  LODWORD(v38) = 0x1.0000000000000p+0;
+  *(float*)&v38 = 0x1.0000000000000p+0f;
   v108 = *(_QWORD*)(*(_QWORD*)(v3 + 568) + 16LL);
   v109 = *(unsigned __int8*)(v108 + 1884);
   v110 = *(unsigned __int8*)(v108 + 1878);

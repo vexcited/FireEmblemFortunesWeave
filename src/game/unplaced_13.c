@@ -777,7 +777,7 @@ void game_dbdff0(__int64 a1, int32x2_t* a2);
 __int64* game_deb450(__int64* result, __int64* a2, __int64* a3, __int64* a4,
                      __int64* a5);
 bool game_e2aae0(__int64 a1, __int64 a2);
-__int64 game_e9f360(__int64 result);
+float game_e9f360(__int64 a1);
 __attribute__((swiftcall)) void game_e9fe30(PSEUDO_X8 x8_, __int64* a1);
 __int64 game_eade00(__int64 a1);
 void game_ebabe0(__int64 a1, __int64* a2, unsigned __int64 a3, __int64* a4,
@@ -8526,6 +8526,7 @@ __int64 game_90fd20(__int64 a1, _DWORD* a2)
   if (*(_QWORD*)(v6 + 664) == 0) {
     return result;
   }
+  __asm__ volatile("" ::"r"(v6));
   if ((*a2 & 0xFFF) == 0 ||
       (GameRoutine_6fc510(
            *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) + 8 * v5)) &
@@ -8908,7 +8909,7 @@ LABEL_26:
   if (a3 != 0) {
     v12 = v9[3];
     if (v12 != 0) {
-      result = game_868630(),
+      result = ((__int64 (*)())game_868630)(),
       v22 = COERCE_AS(__typeof__(v22),
                       PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
       v50 = COERCE_AS(__typeof__(v50),
@@ -10555,58 +10556,60 @@ LABEL_14:
   return v16;
 }
 
-__int64 game_e9f360(__int64 result)
+float game_e9f360(__int64 a1)
 {
   __int64 v1;
-  __int64 v2;
   __int64 v3;
   __int64 v5;
   __int64 v6;
   __int64 v7;
+  float v8;
+  float v9;
 
-  v1 = *(_QWORD*)(result + 8);
-  if (v1 != 0) {
-    v2 = *(_QWORD*)(v1 + 8);
-    v3 = *(_QWORD*)(result + 16);
-    if (v2 != -1 && v3 != 0) {
-      v6 = *(_QWORD*)(v3 + 392);
-      v5 = *(_QWORD*)(v3 + 400);
-      if (v5 != 0) {
-        atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 8), 1u,
-                                  memory_order_relaxed);
-      }
-      if (v6 != 0) {
-        v7 = *(_QWORD*)(v3 + 400);
-        if (v7 == 0) {
-          if (v5 == 0) {
-            return result;
-          }
-          goto LABEL_14;
-        }
-        atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 8), 1u,
-                                  memory_order_relaxed);
-        if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
-                             0xFFFFFFFFFFFFFFFFLL) == 0) {
-          (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-          result = std___1___shared_weak_count___release_weak(v7);
-          if (v5 == 0) {
-            return result;
-          }
-          goto LABEL_14;
-        }
-      }
-      if (v5 == 0) {
-        return result;
-      }
-    LABEL_14:
-      if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
-                           0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-        return std___1___shared_weak_count___release_weak(v5);
-      }
+  v1 = *(_QWORD*)(a1 + 8);
+  if (v1 == 0) {
+    return 1.8f;
+  }
+  v3 = *(_QWORD*)(a1 + 16);
+  if (*(_QWORD*)(v1 + 8) == -1 || v3 == 0) {
+    return 1.8f;
+  }
+  v6 = *(_QWORD*)(v3 + 392);
+  v5 = *(_QWORD*)(v3 + 400);
+  if (v5 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 8), 1u,
+                              memory_order_relaxed);
+  }
+  if (v6 != 0) {
+    v6 = *(_QWORD*)(v3 + 392);
+    v7 = *(_QWORD*)(v3 + 400);
+    if (v7 != 0) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 8), 1u,
+                                memory_order_relaxed);
+    }
+    v9 = *(float*)(v6 + 40);
+    v8 = *(float*)(*(_QWORD*)(v6 + 11792) + 32) *
+         (*(float*)(v6 + 32) *
+          ((1.0f - v9) * *(float*)(v3 + 336) + v9));
+    if (v7 != 0 &&
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL,
+                                  memory_order_acq_rel) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+      std___1___shared_weak_count___release_weak(v7);
     }
   }
-  return result;
+  if (v5 != 0 &&
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 8),
+                                0xFFFFFFFFFFFFFFFFLL,
+                                memory_order_acq_rel) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+    std___1___shared_weak_count___release_weak(v5);
+  }
+  if (v6 == 0) {
+    return 1.8f;
+  }
+  return v8;
 }
 
 __attribute__((swiftcall)) void game_e9fe30(PSEUDO_X8 x8_, __int64* a1)

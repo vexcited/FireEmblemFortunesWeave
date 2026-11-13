@@ -188,7 +188,8 @@ game_character_ChariotCrew_ChariotCrew_closure_Invoke(__int64 a1, __int64 a2,
   if (v35_.v37 != nullptr) {
     v11 = 40;
   LABEL_10:
-    (*(void (**)(void))(LANES128(*(v35_.v37)).n128_u64[0] + v11))();
+    (*(void (**)(int8x16_t*))(LANES128(*(v35_.v37)).n128_u64[0] + v11))(
+        v35_.v37);
   }
   v12 = *((_OWORD*)v4 + 3);
   v13 = LANES128(v3[12]).n128_u8[4];

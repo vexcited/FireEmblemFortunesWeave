@@ -4258,10 +4258,8 @@ _QWORD* game_evt_demo_Seq_ChangeMap_lambda0_Invoke(__int64 a1)
   __int64 v10;
   char* v11;
   _QWORD* result;
-  _QWORD v13[2];
-  __int64 v14;
-  _QWORD v15[2];
-  __int64 v16;
+  _QWORD v13[3];
+  _QWORD v15[3];
 
   v1 = *(_QWORD*)(a1 + 8);
   v3 = Seq_114cda0_alt2(v1, *(_QWORD*)(a1 + 80), (__int16*)(a1 + 64),
@@ -4276,7 +4274,7 @@ _QWORD* game_evt_demo_Seq_ChangeMap_lambda0_Invoke(__int64 a1)
     v5 = *(_QWORD*)(a1 + 32);
     v15[0] = *(_QWORD*)(a1 + 16);
     v15[1] = v4;
-    v16 = v5;
+    v15[2] = v5;
   }
   if ((*(_BYTE*)(a1 + 40) & 1) != 0) {
     fw_text_String_CopyTerminated(v13, *(_QWORD*)(a1 + 56),
@@ -4287,24 +4285,24 @@ _QWORD* game_evt_demo_Seq_ChangeMap_lambda0_Invoke(__int64 a1)
     v7 = *(_QWORD*)(a1 + 56);
     v13[0] = *(_QWORD*)(a1 + 40);
     v13[1] = v6;
-    v14 = v7;
+    v13[2] = v7;
   }
   GameRoutine_114a040(v1, (char*)v15, v13);
-  if ((v13[0] & 1) != 0 && v14 != 0) {
+  if ((v13[0] & 1) != 0 && v13[2] != 0) {
     v9 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v9 = 56;
     }
     nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v9,
-                                  v14);
+                                  v13[2]);
   }
-  if ((v15[0] & 1) != 0 && v16 != 0) {
+  if ((v15[0] & 1) != 0 && v15[2] != 0) {
     v10 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v10 = 56;
     }
     nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v10,
-                                  v16);
+                                  v15[2]);
   }
   Seq_114d0d0_alt1(v1, 0, v8);
   if (*(_QWORD*)(*(_QWORD*)(a1 + 80) + 96LL) != 0) {

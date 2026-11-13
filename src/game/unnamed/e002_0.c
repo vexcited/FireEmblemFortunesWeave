@@ -5469,7 +5469,7 @@ LABEL_2:
   v8 = v7;
   while (1) {
     v7 = v8;
-    v9 = a2 - v8;
+    v9 = ((__int64)a2 - (__int64)v8) >> 3;
     if (v9 <= 2) {
       if ((unsigned __int64)v9 < 2) {
         return result;
@@ -6005,7 +6005,7 @@ LABEL_2:
       v61 = game_857500(v8, v60);
       v8 = v60 + 1;
       v62 = v61;
-      result = game_857500(v60 + 1, a2);
+      result = ((__int64 (*)(__int64*, __int64*))game_857500)(v60 + 1, a2);
       if ((result & 1) != 0) {
         a2 = v60;
         if (!v62) {

@@ -9333,7 +9333,7 @@ LABEL_2:
       }
       v10 = v45 + 1;
       v46 = GameRoutine_852ca0_alt1(v7, v45);
-      result = (int*)GameRoutine_852ca0_alt1(v45 + 1, a2);
+      result = ((int* (*)(int*, int*))GameRoutine_852ca0_alt1)(v45 + 1, a2);
       if (((unsigned __int8)result & 1) != 0) {
         a2 = v45;
         if (v46) {

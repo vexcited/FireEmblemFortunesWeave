@@ -1190,12 +1190,18 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
   unsigned int v70;
   __int64 v71;
   unsigned int v72;
-  __int64 v74;
-  __int64 v75;
-  __int64 v76;
-  int v77;
-  __int64 (**v78)();
-  __int64* v79;
+  struct {
+    __int64 v74;
+    __int64 v75;
+  } v74_;
+  struct {
+    __int64 v76;
+    int v77;
+  } v76_;
+  struct {
+    __int64 (**v78)();
+    __int64* v79;
+  } v78_;
   unsigned __int64 v80;
   unsigned __int64 v81;
   __int64 (***v82)();
@@ -1215,10 +1221,10 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
 
   v1 = *(int**)(a1 + 360);
   v2 = *(int**)(a1 + 368);
-  v76 = 0;
-  v77 = 0;
-  v74 = 0;
-  v75 = 0;
+  v76_.v76 = 0;
+  v76_.v77 = 0;
+  v74_.v74 = 0;
+  v74_.v75 = 0;
   if (v1 == v2) {
     v14 = 0;
     v15 = 0;
@@ -1240,18 +1246,18 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
                                                  12LL * *v1 + 4));
         v7 = *(unsigned __int8*)(v6 + 94);
         v8 = *(unsigned __int8*)(v6 + 95);
-        ++*((_DWORD*)&v76 + v7);
-        ++*((_DWORD*)&v74 + v8);
+        ++*((_DWORD*)&v76_.v76 + v7);
+        ++*((_DWORD*)&v74_.v74 + v8);
       }
       ++v1;
     } while (v1 != v2);
-    v9 = v76;
-    v10 = HIDWORD(v76);
-    v11 = v77;
-    v13 = v74;
-    v12 = HIDWORD(v74);
-    v15 = v75;
-    v14 = HIDWORD(v75);
+    v9 = v76_.v76;
+    v10 = HIDWORD(v76_.v76);
+    v11 = v76_.v77;
+    v13 = v74_.v74;
+    v12 = HIDWORD(v74_.v74);
+    v15 = v74_.v75;
+    v14 = HIDWORD(v74_.v75);
   }
   v16 = a1 + 200;
   if (v13 > v12) {
@@ -1284,12 +1290,12 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
   else {
     v19 = v18;
   }
-  GameRoutine_1560070((void*)&v78, v16, "L_List");
-  if (v79 != nullptr) {
-    v20 = std___1___shared_weak_count_lock(v79);
-    v21 = v78;
-    if (v79 != nullptr) {
-      std___1___shared_weak_count___release_weak(v79);
+  GameRoutine_1560070((void*)&v78_.v78, v16, "L_List");
+  if (v78_.v79 != nullptr) {
+    v20 = std___1___shared_weak_count_lock(v78_.v79);
+    v21 = v78_.v78;
+    if (v78_.v79 != nullptr) {
+      std___1___shared_weak_count___release_weak(v78_.v79);
     }
     if (v20 == 0 || v21 == nullptr) {
     LABEL_113:
@@ -1363,12 +1369,12 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
   LABEL_49:
     if (v17 == v13 &&
         (v37 = game_util_Format("L_Taste%02d", 0),
-         X8CALL_X0(_QWORD*, GameRoutine_1560070((void*)&v78, v21, v37)),
-         v79 != nullptr)) {
-      v38 = std___1___shared_weak_count_lock(v79);
-      v39 = v78;
-      if (v79 != nullptr) {
-        std___1___shared_weak_count___release_weak(v79);
+         X8CALL_X0(_QWORD*, GameRoutine_1560070((void*)&v78_.v78, v21, v37)),
+         v78_.v79 != nullptr)) {
+      v38 = std___1___shared_weak_count_lock(v78_.v79);
+      v39 = v78_.v78;
+      if (v78_.v79 != nullptr) {
+        std___1___shared_weak_count___release_weak(v78_.v79);
       }
       if (v38 != 0 && v39 != nullptr) {
         v40 = 1;
@@ -1386,13 +1392,13 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
         v92 = -1;
         v93 = -1;
         v94 = -1;
-        v78 = (__int64 (**)())(GameData_212e348 + 2);
-        v79 = (__int64*)0xFFFF0001FFFF0000LL;
+        v78_.v78 = (__int64 (**)())(GameData_212e348 + 2);
+        v78_.v79 = (__int64*)0xFFFF0001FFFF0000LL;
         v80 = 0xFFFF0004FFFF0002LL;
         v81 = 0xFFFF0006FFFF0005LL;
         v95 = 8;
         v82 = (__int64 (***)())0xFFFF0008FFFF0007LL;
-        v42 = GameRoutine_a4dbe0(v41, "MID_Sys_Taste_Sweet", 0, &v78);
+        v42 = GameRoutine_a4dbe0(v41, "MID_Sys_Taste_Sweet", 0, &v78_.v78);
         if (v42 != 0) {
           v43 = v42;
           v44 = ui_LayoutAccessor_FindTextBox(v39, "T_Taste");
@@ -1417,14 +1423,14 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
       v40 = 0;
     }
   LABEL_59:
-    if (v17 == HIDWORD(v74)) {
+    if (v17 == HIDWORD(v74_.v74)) {
       v45 = game_util_Format("L_Taste%02d", v40);
-      GameRoutine_1560070((void*)&v78, v21, v45);
-      if (v79 != nullptr) {
-        v46 = std___1___shared_weak_count_lock(v79);
-        v47 = v78;
-        if (v79 != nullptr) {
-          std___1___shared_weak_count___release_weak(v79);
+      GameRoutine_1560070((void*)&v78_.v78, v21, v45);
+      if (v78_.v79 != nullptr) {
+        v46 = std___1___shared_weak_count_lock(v78_.v79);
+        v47 = v78_.v78;
+        if (v78_.v79 != nullptr) {
+          std___1___shared_weak_count___release_weak(v78_.v79);
         }
         if (v46 != 0 && v47 != nullptr) {
           GameRoutine_155e830(v47, 1);
@@ -1441,13 +1447,13 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
           v92 = -1;
           v93 = -1;
           v94 = -1;
-          v78 = (__int64 (**)())(GameData_212e348 + 2);
-          v79 = (__int64*)0xFFFF0001FFFF0000LL;
+          v78_.v78 = (__int64 (**)())(GameData_212e348 + 2);
+          v78_.v79 = (__int64*)0xFFFF0001FFFF0000LL;
           v80 = 0xFFFF0004FFFF0002LL;
           v81 = 0xFFFF0006FFFF0005LL;
           v95 = 8;
           v82 = (__int64 (***)())0xFFFF0008FFFF0007LL;
-          v49 = GameRoutine_a4dbe0(v48, "MID_Sys_Taste_Spicy", 0, &v78);
+          v49 = GameRoutine_a4dbe0(v48, "MID_Sys_Taste_Spicy", 0, &v78_.v78);
           if (v49 != 0) {
             v50 = v49;
             v51 = ui_LayoutAccessor_FindTextBox(v47, "T_Taste");
@@ -1468,14 +1474,14 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
       }
     }
   LABEL_75:
-    if (v17 == (_DWORD)v75) {
+    if (v17 == (_DWORD)v74_.v75) {
       v52 = game_util_Format("L_Taste%02d", v40);
-      GameRoutine_1560070((void*)&v78, v21, v52);
-      if (v79 != nullptr) {
-        v53 = std___1___shared_weak_count_lock(v79);
-        v54 = v78;
-        if (v79 != nullptr) {
-          std___1___shared_weak_count___release_weak(v79);
+      GameRoutine_1560070((void*)&v78_.v78, v21, v52);
+      if (v78_.v79 != nullptr) {
+        v53 = std___1___shared_weak_count_lock(v78_.v79);
+        v54 = v78_.v78;
+        if (v78_.v79 != nullptr) {
+          std___1___shared_weak_count___release_weak(v78_.v79);
         }
         if (v53 != 0 && v54 != nullptr) {
           GameRoutine_155e830(v54, 1);
@@ -1492,13 +1498,13 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
           v92 = -1;
           v93 = -1;
           v94 = -1;
-          v78 = (__int64 (**)())(GameData_212e348 + 2);
-          v79 = (__int64*)0xFFFF0001FFFF0000LL;
+          v78_.v78 = (__int64 (**)())(GameData_212e348 + 2);
+          v78_.v79 = (__int64*)0xFFFF0001FFFF0000LL;
           v80 = 0xFFFF0004FFFF0002LL;
           v81 = 0xFFFF0006FFFF0005LL;
           v95 = 8;
           v82 = (__int64 (***)())0xFFFF0008FFFF0007LL;
-          v56 = GameRoutine_a4dbe0(v55, "MID_Sys_Taste_Bitter", 0, &v78);
+          v56 = GameRoutine_a4dbe0(v55, "MID_Sys_Taste_Bitter", 0, &v78_.v78);
           if (v56 != 0) {
             v57 = v56;
             v58 = ui_LayoutAccessor_FindTextBox(v54, "T_Taste");
@@ -1519,14 +1525,14 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
         }
       }
     }
-    if (v17 == HIDWORD(v75)) {
+    if (v17 == HIDWORD(v74_.v75)) {
       v59 = game_util_Format("L_Taste%02d", v40);
-      GameRoutine_1560070((void*)&v78, v21, v59);
-      if (v79 != nullptr) {
-        v60 = std___1___shared_weak_count_lock(v79);
-        v61 = v78;
-        if (v79 != nullptr) {
-          std___1___shared_weak_count___release_weak(v79);
+      GameRoutine_1560070((void*)&v78_.v78, v21, v59);
+      if (v78_.v79 != nullptr) {
+        v60 = std___1___shared_weak_count_lock(v78_.v79);
+        v61 = v78_.v78;
+        if (v78_.v79 != nullptr) {
+          std___1___shared_weak_count___release_weak(v78_.v79);
         }
         if (v60 != 0 && v61 != nullptr) {
           GameRoutine_155e830(v61, 1);
@@ -1543,13 +1549,13 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
           v92 = -1;
           v93 = -1;
           v94 = -1;
-          v78 = (__int64 (**)())(GameData_212e348 + 2);
-          v79 = (__int64*)0xFFFF0001FFFF0000LL;
+          v78_.v78 = (__int64 (**)())(GameData_212e348 + 2);
+          v78_.v79 = (__int64*)0xFFFF0001FFFF0000LL;
           v80 = 0xFFFF0004FFFF0002LL;
           v81 = 0xFFFF0006FFFF0005LL;
           v95 = 8;
           v82 = (__int64 (***)())0xFFFF0008FFFF0007LL;
-          v63 = GameRoutine_a4dbe0(v62, "MID_Sys_TasteCate", 0, &v78);
+          v63 = GameRoutine_a4dbe0(v62, "MID_Sys_TasteCate", 0, &v78_.v78);
           if (v63 != 0) {
             v64 = v63;
             v65 = ui_LayoutAccessor_FindTextBox(v61, "T_Taste");
@@ -1575,12 +1581,12 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
     while (1) {
     LABEL_104:
       v66 = game_util_Format("L_Taste%02d", v40);
-      GameRoutine_1560070((void*)&v78, v21, v66);
-      if (v79 != nullptr) {
-        v67 = std___1___shared_weak_count_lock(v79);
-        v68 = v78;
-        if (v79 != nullptr) {
-          std___1___shared_weak_count___release_weak(v79);
+      GameRoutine_1560070((void*)&v78_.v78, v21, v66);
+      if (v78_.v79 != nullptr) {
+        v67 = std___1___shared_weak_count_lock(v78_.v79);
+        v68 = v78_.v78;
+        if (v78_.v79 != nullptr) {
+          std___1___shared_weak_count___release_weak(v78_.v79);
         }
         if (v67 != 0 && v68 != nullptr) {
           GameRoutine_155e830(v68, 0);
@@ -1604,12 +1610,12 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
   }
 
 LABEL_116:
-  LODWORD(v74) = 0;
-  v78 = GameData_1fb0600;
-  v79 = &v74;
-  v82 = &v78;
-  game_gmap_BanquetManager_EachItem(a1 + 384, &v78);
-  if (v82 == &v78) {
+  LODWORD(v74_.v74) = 0;
+  v78_.v78 = GameData_1fb0600;
+  v78_.v79 = &v74_.v74;
+  v82 = &v78_.v78;
+  game_gmap_BanquetManager_EachItem(a1 + 384, &v78_.v78);
+  if (v82 == &v78_.v78) {
     v69 = 4;
   }
   else {
@@ -1618,25 +1624,25 @@ LABEL_116:
     }
     v69 = 5;
   }
-  (*v82)[v69]();
+  ((void (*)(void*))(*v82)[v69])(v82);
 
 LABEL_121:
-  v70 = v74;
-  LODWORD(v74) = 0;
-  v78 = GameData_1fb0690;
-  v79 = &v74;
-  v82 = &v78;
-  game_gmap_BanquetManager_EachItem(a1 + 384, &v78);
-  if (v82 == &v78) {
+  v70 = v74_.v74;
+  LODWORD(v74_.v74) = 0;
+  v78_.v78 = GameData_1fb0690;
+  v78_.v79 = &v74_.v74;
+  v82 = &v78_.v78;
+  game_gmap_BanquetManager_EachItem(a1 + 384, &v78_.v78);
+  if (v82 == &v78_.v78) {
     v71 = 4;
     goto LABEL_125;
   }
   if (v82 != nullptr) {
     v71 = 5;
   LABEL_125:
-    (*v82)[v71]();
+    ((void (*)(void*))(*v82)[v71])(v82);
   }
-  v72 = v74;
+  v72 = v74_.v74;
   GameRoutine_1642910(a1, "T_NumHP", v70);
   return GameRoutine_1642910(a1, "T_NumMajic", v72);
 }

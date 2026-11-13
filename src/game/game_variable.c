@@ -19,7 +19,7 @@ __int64 GameRoutine_826320_alt1(_QWORD*) __asm__("GameRoutine_826320");
 __int64 GameRoutine_827060();
 __int64 GameRoutine_82ec20(_QWORD);
 __int64 GameRoutine_82ed20(_QWORD);
-__int64 GameRoutine_82f5a0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_82f5a0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_82f8a0(_QWORD, _QWORD);
 __int64 GameRoutine_82fc00(_QWORD, _QWORD);
 __int64 GameRoutine_82ffa0(_QWORD);
@@ -1728,7 +1728,7 @@ __int64 GameVariable_8277b0(__int64 a1, unsigned __int8 a2, _QWORD* a3)
   v10 = (unsigned int)(*(_DWORD*)(a1 + 3932112) - (_DWORD)v5) >> 3;
   v51 = &v49;
   v11 = GameRoutine_82f5a0(a1 + 3932128, &v49, std___1_piecewise_construct_ptr,
-                           &v51, &v50);
+                           &v51);
   *(_WORD*)(v11 + 18) = v10;
   v12 = (_QWORD*)v3[506];
   v13 = v3[507];
@@ -2334,8 +2334,7 @@ char* GameVariable_827c00(char* result)
                       v107[0] = &v105;
                       *(_WORD*)(GameRoutine_82f5a0(
                                     v103 + 3932128, &v105,
-                                    std___1_piecewise_construct_ptr, v107,
-                                    &v106) +
+                                    std___1_piecewise_construct_ptr, v107) +
                                 18) = v56;
                       v54 = v102[506];
                     }

@@ -348,17 +348,17 @@ _DWORD* GameHr_5d76e0(float* a1, unsigned __int64 a2)
   v3 = *((_DWORD*)a1 + 1);
   v4 = *(float*)(a2 - 8);
   v5 = *a1;
-  if (v4 > *a1 || v4 >= *a1 && v3 >= (signed __int32)*(_DWORD*)(a2 - 4)) {
+  if (v4 > *a1 || !(v4 < *a1) && v3 >= (signed __int32)*(_DWORD*)(a2 - 4)) {
     for (i = a1 + 2;
          (unsigned __int64)i < a2 &&
-         (*(float*)i > v5 || *(float*)i >= v5 && v3 >= (signed __int32)i[1]);
+         (*(float*)i > v5 || !(*(float*)i < v5) && v3 >= (signed __int32)i[1]);
          i += 2) {
       ;
     }
   }
   else {
     for (i = a1 + 2;
-         *(float*)i > v5 || *(float*)i >= v5 && v3 >= (signed __int32)i[1];
+         *(float*)i > v5 || !(*(float*)i < v5) && v3 >= (signed __int32)i[1];
          i += 2)
       ;
   }
@@ -368,30 +368,31 @@ _DWORD* GameHr_5d76e0(float* a1, unsigned __int64 a2)
   else {
     v7 = a2;
   }
-  if ((unsigned __int64)i < a2 && v4 <= v5) {
+  if ((unsigned __int64)i < a2 && !(v4 > v5)) {
     v7 = a2 - 8;
     do {
-      if (v4 >= v5 && v3 >= (signed __int32)*(_DWORD*)(v7 + 4)) {
+      if (!(v4 < v5) && v3 >= (signed __int32)*(_DWORD*)(v7 + 4)) {
         break;
       }
       v8 = *(float*)(v7 - 8);
       v7 -= 8LL;
       v4 = v8;
-    } while (v8 <= v5);
+    } while (!(v8 > v5));
   }
   while ((unsigned __int64)i < v7) {
     v9 = *(_QWORD*)i;
     *(_QWORD*)i = *(_QWORD*)v7;
     i += 2;
     *(_QWORD*)v7 = v9;
-    while (*(float*)i > v5 || *(float*)i >= v5 && v3 >= (signed __int32)i[1]) {
+    while (*(float*)i > v5 ||
+           !(*(float*)i < v5) && v3 >= (signed __int32)i[1]) {
       i += 2;
     }
     do {
       v10 = *(float*)(v7 - 8);
       v7 -= 8LL;
       v11 = v10;
-    } while (v10 <= v5 &&
+    } while (!(v10 > v5) &&
              (v11 < v5 || v3 < (signed __int32)*(_DWORD*)(v7 + 4)));
   }
   if (a1 != (float*)(i - 2)) {
@@ -1506,7 +1507,7 @@ bool GameHr_689280(__int64* a1, __int64* a2)
   __int64 v33;
   __int64 v34;
 
-  v2 = a2 - a1;
+  v2 = ((__int64)a2 - (__int64)a1) >> 3;
   if (v2 > 2) {
     if (v2 == 3) {
       v5 = *a1;

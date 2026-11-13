@@ -1498,8 +1498,10 @@ __int64 GameReliance_8e18b0(_QWORD* a1, _QWORD* a2, _QWORD* a3)
                         return (unsigned int)v5;
                       }
                     LABEL_38:
-                      LODWORD(v5) = (int)GameReliance_8e17a0(a1, (__int64)a2,
-                                                             (__int64)a3) >= 0;
+                      v5 = GameReliance_8e17a0(a1, (__int64)a2, (__int64)a3);
+                      // The body is in this unit, hide what clang knows of it.
+                      __asm__("" : "+r"(v5));
+                      LODWORD(v5) = (int)v5 >= 0;
                       return (unsigned int)v5;
                     }
                     if (v21 == 3) {

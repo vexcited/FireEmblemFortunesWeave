@@ -26,7 +26,7 @@ __int64 nn_audio_GetRequiredBufferSizeForCircularBufferSink();
 __int64 nn_detail_UnexpectedDefaultImpl();
 __int64 rcContext_doStartTimer_283ce0(__int64);
 float GameRoutine_2a35c0(__int64);
-float GameRoutine_2a3850(__int64, int, float result, float);
+void GameRoutine_2a3850(__int64, int);
 float GameRoutine_2a38f0(__int64);
 float GameRoutine_2a52e0(unsigned int);
 float GameRoutine_2a5490(float);
@@ -290,16 +290,16 @@ __int64 nn_atk_detail_2a5b40(__int64 result, int a2, int a3)
       *(_DWORD*)(v5 + 320) = v36;
     }
     if (*(unsigned __int8*)(v5 + 188) != 255) {
-      v24 = GameRoutine_2a3850(v5 + 60, v35, v24, v18);
+      GameRoutine_2a3850(v5 + 60, v35);
     }
     if (*(unsigned __int8*)(v5 + 189) != 255) {
-      v24 = GameRoutine_2a3850(v5 + 92, v35, v24, v18);
+      GameRoutine_2a3850(v5 + 92, v35);
     }
     if (*(unsigned __int8*)(v5 + 190) != 255) {
-      v24 = GameRoutine_2a3850(v5 + 124, v35, v24, v18);
+      GameRoutine_2a3850(v5 + 124, v35);
     }
     if (*(unsigned __int8*)(v5 + 191) != 255) {
-      GameRoutine_2a3850(v5 + 156, v35, v24, v18);
+      GameRoutine_2a3850(v5 + 156, v35);
     }
     GameRoutine_2a3600(v5 + 32, v35);
     if (*(_BYTE*)(v5 + 977) == 1) {

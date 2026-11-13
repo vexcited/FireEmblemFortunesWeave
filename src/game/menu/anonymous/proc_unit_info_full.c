@@ -147,8 +147,6 @@ __int64 ProcUnitInfoFull_16171e0(__int64 a1, _QWORD* a2, const char* a3);
 __int64 ProcUnitInfoFull_16172f0(__int64 a1, __int64 a2, __int64 a3);
 _QWORD* ProcUnitInfoFull_1617540(_QWORD* result, __int64 a2, __int64 a3);
 __attribute__((swiftcall)) void
-    GameRoutine_15b71b0_alt1(PSEUDO_X8) __asm__("GameRoutine_15b71b0");
-__attribute__((swiftcall)) void
 GameRoutine_160bc20_alt1(PSEUDO_X8, __int64*,
                          _QWORD*) __asm__("GameRoutine_160bc20");
 __attribute__((swiftcall)) void
@@ -3128,7 +3126,8 @@ void ProcUnitInfoFull_1616a00(const char** a1, __int64 a2, _QWORD* a3, int a4)
     v19 = *(_QWORD*)(a2 + 848);
     v20 = v18;
     if (v19 != 0) {
-      GameRoutine_15b71b0_alt1((void*)((__int64*)&v44_.v44));
+      GameRoutine_15b71b0((void*)((__int64*)&v44_.v44), v19,
+                          (__int64)&v48_.v48);
     }
     if (atomic_fetch_add((atomic_ullong* volatile)(v20 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {

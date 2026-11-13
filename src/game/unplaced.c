@@ -5283,6 +5283,7 @@ __int64 game_6d7270(__int64 a1, __int64 a2, int a3)
   if (v6 != 0) {
     v5 += *(char*)(v6 + 128);
   }
+  __asm__ volatile("" ::"r"(v5));
   a3 = *(unsigned __int8*)(a2 + 442);
   if (*(_BYTE*)(a2 + 442) == 0) {
   LABEL_11:
@@ -6312,7 +6313,7 @@ __int64 game_6ecd40(__int64 a1)
       LABEL_16:
         (*(void (**)(__int64))(*v37_.v38 + v19))((__int64)v37_.v38);
       }
-      if ((int)v36 < v4[2]) {
+      if ((int)v36 < (int)v4[2]) {
         return 0;
       }
       v4 += 4;
@@ -6326,8 +6327,8 @@ __int64 game_6ecd40(__int64 a1)
 LABEL_19:
   v20 = GameRoutine_9db9e0(0x16u, *(_DWORD*)(a1 + 44));
   if (game_GameModeData_instance_ != 0) {
-    v21 = (*(_DWORD*)(game_GameModeData_instance_ + 72) - v20) &
-          ~((*(_DWORD*)(game_GameModeData_instance_ + 72) - v20) >> 31);
+    v21 = (*(int*)(game_GameModeData_instance_ + 72) - v20) &
+          ~((*(int*)(game_GameModeData_instance_ + 72) - v20) >> 31);
     if (v21 >= 9999999) {
       v21 = 9999999;
     }
@@ -11326,7 +11327,7 @@ LABEL_2:
   v499 = a2 - 1;
   while (1) {
     v6 = v9;
-    v10 = a2 - v9;
+    v10 = ((__int64)a2 - (__int64)v9) >> 2;
     if (v10 <= 2) {
       if ((unsigned __int64)v10 < 2) {
         return result;
@@ -13889,7 +13890,7 @@ bool game_855ec0(int* a1, int* a2)
   __int64 v113;
   __int64 v114;
 
-  v2 = a2 - a1;
+  v2 = ((__int64)a2 - (__int64)a1) >> 2;
   if (v2 > 2) {
     if (v2 == 3) {
       game_855190(a1, a1 + 1, a2 - 1);
