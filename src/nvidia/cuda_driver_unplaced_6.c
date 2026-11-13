@@ -252,35 +252,35 @@ __int64 cuda_driver_helpers_1dcb20(__int64, __int64, _QWORD*);
 __int64 memcmp_plt(_QWORD, _QWORD, _QWORD);
 __int64 memset_plt(_QWORD, _QWORD, _QWORD);
 __int64 snprintf_plt(_QWORD, _QWORD, const char*, ...);
-bool CudaDriverRoutine_116ff0(__int64);
-bool CudaDriverRoutine_127160(__int64, __int64);
-bool CudaDriverRoutine_12b530();
-bool CudaDriverRoutine_1bb290(__int64);
-bool CudaDriverRoutine_1d8a80(__int64);
-bool CudaDriverRoutine_1db9c0(__int64);
-bool CudaDriverRoutine_1dc6f0(__int64);
-bool CudaDriverRoutine_1dc820(__int64);
-bool CudaDriverRoutine_1dc900(__int64);
-bool CudaDriverRoutine_1dc9c0(__int64);
-bool CudaDriverRoutine_1dd060(__int64);
-bool CudaDriverRoutine_1ec4a0(__int64, _QWORD*);
-bool CudaDriverRoutine_92190(__int64);
-bool CudaDriverRoutine_99720(__int64);
-bool CudaDriverRoutine_9aa40(__int64);
-bool CudaDriverRoutine_9acf0(__int64);
-bool CudaDriverRoutine_eedd0(__int64, __int64);
-bool CudaDriverRoutine_efe40(__int64);
-bool CudaDriverStub_1dbf40(__int64);
-bool CudaDriverStub_1dbff0(__int64);
-bool CudaDriverStub_b9300(__int64);
-bool cuda_debugger_api_7cff0();
-bool cuda_driver_7e7d0(__int64);
-bool cuda_driver_predicates_10e830(__int64);
-bool cuda_driver_predicates_10ebb0(__int64);
-bool cuda_driver_predicates_1dc880(__int64);
-bool cuda_driver_predicates_1dc8c0(__int64);
-bool cuda_driver_predicates_9ac80(__int64);
-bool cuda_driver_predicates_9ae50(__int64);
+unsigned __int8 CudaDriverRoutine_116ff0(__int64);
+unsigned __int8 CudaDriverRoutine_127160(__int64, __int64);
+unsigned __int8 CudaDriverRoutine_12b530();
+unsigned __int8 CudaDriverRoutine_1bb290(__int64);
+unsigned __int8 CudaDriverRoutine_1d8a80(__int64);
+unsigned __int8 CudaDriverRoutine_1db9c0(__int64);
+unsigned __int8 CudaDriverRoutine_1dc6f0(__int64);
+unsigned __int8 CudaDriverRoutine_1dc820(__int64);
+unsigned __int8 CudaDriverRoutine_1dc900(__int64);
+unsigned __int8 CudaDriverRoutine_1dc9c0(__int64);
+unsigned __int8 CudaDriverRoutine_1dd060(__int64);
+unsigned __int8 CudaDriverRoutine_1ec4a0(__int64, _QWORD*);
+unsigned __int8 CudaDriverRoutine_92190(__int64);
+unsigned __int8 CudaDriverRoutine_99720(__int64);
+unsigned __int8 CudaDriverRoutine_9aa40(__int64);
+unsigned __int8 CudaDriverRoutine_9acf0(__int64);
+unsigned __int8 CudaDriverRoutine_eedd0(__int64, __int64);
+unsigned __int8 CudaDriverRoutine_efe40(__int64);
+unsigned __int8 CudaDriverStub_1dbf40(__int64);
+unsigned __int8 CudaDriverStub_1dbff0(__int64);
+unsigned __int8 CudaDriverStub_b9300(__int64);
+unsigned __int8 cuda_debugger_api_7cff0();
+unsigned __int8 cuda_driver_7e7d0(__int64);
+unsigned __int8 cuda_driver_predicates_10e830(__int64);
+unsigned __int8 cuda_driver_predicates_10ebb0(__int64);
+unsigned __int8 cuda_driver_predicates_1dc880(__int64);
+unsigned __int8 cuda_driver_predicates_1dc8c0(__int64);
+unsigned __int8 cuda_driver_predicates_9ac80(__int64);
+unsigned __int8 cuda_driver_predicates_9ae50(__int64);
 double CudaDriverRoutine_8dc70(__int64, __int64, __int64, int, int);
 extern _BYTE CudaDriverData_4c38[8];
 extern _DWORD CudaDriverData_1432ddc;
@@ -4391,7 +4391,7 @@ __int64 cuda_driver_e6730(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   __int128 v79;
   __int128 v80;
   _OWORD* v81;
-  bool v82;
+  unsigned __int8 v82;
   __int64 v83;
   char v84;
   __int64 v85;
@@ -4581,10 +4581,10 @@ __int64 cuda_driver_e6730(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
       v39 = *(_OWORD*)(a1 + 144);
       BYTE8(v110) = 1;
       v40 = *(_QWORD*)(a1 + 32);
-      HIDWORD(v110) = v38;
+      DWORD3(v110) = v38;
       v36 = &v110;
       v111_.v112 = v39;
-      HIDWORD(v111_.v112) =
+      DWORD3(v111_.v112) =
           *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v40 + 24) + 64LL) + 4152LL) * v38 /
           0x64u;
     }
@@ -9625,7 +9625,7 @@ LABEL_59:
       }
     }
     else {
-      *(_BYTE*)(a1 + 158) |= CudaDriverStub_1dbff0((__int64)v28);
+      *(_BYTE*)(a1 + 158) |= CudaDriverStub_1dbff0((__int64)v28) != 0;
       if (*(_DWORD*)((char*)((_UNKNOWN*)0x1128LL) + (_QWORD)v35) < 2u) {
         goto LABEL_81;
       }

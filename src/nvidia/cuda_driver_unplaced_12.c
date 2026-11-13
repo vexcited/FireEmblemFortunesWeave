@@ -99,16 +99,16 @@ __int64 cuda_driver_predicates_10f750(__int64, int, unsigned int, __int64,
 __int64 memset_plt(_QWORD, _QWORD, _QWORD);
 __int64 puts_plt(_QWORD);
 __int64 strlen_plt(_QWORD);
-bool CudaDriverRoutine_11f2f0(__int64);
-bool CudaDriverRoutine_11f690(__int64*);
-bool CudaDriverRoutine_11f6d0(__int64);
-bool CudaDriverRoutine_985b0(int);
-bool CudaDriverRoutine_bbdf0(__int64);
-bool CudaDriverRoutine_bbe30(__int64);
-bool CudaDriverRoutine_bbe70(__int64);
-bool CudaDriverRoutine_e7cb0(__int64, __int64, unsigned int);
-bool CudaDriverStub_985a0(__int64);
-bool CudaDriverStub_b9300(__int64);
+unsigned __int8 CudaDriverRoutine_11f2f0(__int64);
+unsigned __int8 CudaDriverRoutine_11f690(__int64*);
+unsigned __int8 CudaDriverRoutine_11f6d0(__int64);
+unsigned __int8 CudaDriverRoutine_985b0(int);
+unsigned __int8 CudaDriverRoutine_bbdf0(__int64);
+unsigned __int8 CudaDriverRoutine_bbe30(__int64);
+unsigned __int8 CudaDriverRoutine_bbe70(__int64);
+unsigned __int8 CudaDriverRoutine_e7cb0(__int64, __int64, unsigned int);
+unsigned __int8 CudaDriverStub_985a0(__int64);
+unsigned __int8 CudaDriverStub_b9300(__int64);
 extern _DWORD CudaDriverData_1130110[6];
 extern _UNKNOWN* CudaDriverData_1422118;
 extern _UNKNOWN* CudaDriverData_14225e0;
@@ -286,7 +286,7 @@ __int64 CudaDriverStub_1db7a0(__int64);
 __int64 CudaDriverStub_1dbfb0(__int64);
 __int64 CudaDriverStub_1dbfc0(_QWORD);
 __int64 memcpy_plt(__int64, __int64, unsigned __int64);
-bool CudaDriverRoutine_1ec4a0(__int64, _QWORD*);
+unsigned __int8 CudaDriverRoutine_1ec4a0(__int64, _QWORD*);
 __int64 cuda_driver_21f6b0(__int64 a1, unsigned __int64* a2);
 __int64 cuda_driver_21f790(unsigned int* a1, __int64 a2, __int64 a3);
 
@@ -893,7 +893,7 @@ long double cuda_driver_229040(__int64 a1, __int64 a2, unsigned int* a3,
         if (v24 != 0) {
           break;
         }
-        a3[(unsigned int)(v23 + 640) >> 5] &= ~(1 << v23);
+        a3[(unsigned int)(v23 + 640) >> 5] &= ~(1 << (v23 & 0x1F));
         v21 = *(unsigned int**)(a1 + 64);
         ++v23;
         v22 += 64;
@@ -902,7 +902,7 @@ long double cuda_driver_229040(__int64 a1, __int64 a2, unsigned int* a3,
         }
       }
       v25 = ((v51[v23] + v21[946] - 1) / v21[946] * v21[946]) << 15;
-      a3[(unsigned int)(v23 + 640) >> 5] |= 1 << v23;
+      a3[(unsigned int)(v23 + 640) >> 5] |= 1 << (v23 & 0x1F);
       a3[v22 >> 5] = v25 & 0xFFF80000 | a3[v22 >> 5] & 0x7FFFF;
       a3[(v22 - 19) >> 5] =
           HIDWORD(v24) & 0x1FFFF | (a3[(v22 - 19) >> 5] >> 17 << 17);
@@ -913,7 +913,7 @@ long double cuda_driver_229040(__int64 a1, __int64 a2, unsigned int* a3,
     } while (v23 < v21[944]);
   }
 LABEL_6:
-  a3[(v21[2927] + 640) >> 5] |= 1 << v21[2927];
+  a3[(v21[2927] + 640) >> 5] |= 1 << (v21[2927] & 0x1F);
   v26 =
       (unsigned int)((*(_DWORD*)(*(_QWORD*)(a1 + 64) + 11708LL) << 6) + 1075) >>
       5;

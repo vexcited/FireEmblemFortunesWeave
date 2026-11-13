@@ -136,7 +136,7 @@ __int64 fwrite_plt(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 memcpy_plt(_QWORD, _QWORD, _QWORD);
 __int64 memset_plt(_QWORD, _QWORD, _QWORD);
 __int64 puts_plt(_QWORD);
-bool CudaDriverRoutine_bbe70(__int64);
+unsigned __int8 CudaDriverRoutine_bbe70(__int64);
 extern _DWORD CudaDriverData_1130324[5];
 extern _QWORD CudaDriverData_14347b0[];
 extern _QWORD CudaDriverData_14347c0[];
