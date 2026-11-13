@@ -31639,7 +31639,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 7a14e0,288,verified,src/nnmusl/stdio/fread.c,fread_unlocked
 7a1600,108,verified,src/musl/src/stdio/fscanf.c,fscanf
 7a1670,232,verified,src/musl/src/stdio/fseek_impl.c,__fseeko_unlocked
-7a1760,264,verified,src/musl/src/stdio/unplaced.c,musl_src_stdio_7a1760
+7a1760,268,verified,src/musl/src/stdio/unplaced.c,musl_src_stdio_7a1760
 7a1870,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fseek
 7a1880,12,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fsetpos
 7a1890,188,verified,src/nnmusl/nnmusl_stdio_position.cpp,ftello
