@@ -41412,8 +41412,8 @@ df8180,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"st
 df81a0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::hub::Locator::GetRegisterPos(math::Vec3&, float&) const::$_0, void (std::__1::shared_ptr<game::hub::AreaEvent> const&)>::target_type()"
 df81b0,1072,verified,src/game/hub/unplaced_9.c,game_hub_df81b0
 df8600,640,verified,src/game/hub/unplaced_11.c,game_hub_df8600
-df88c0,812,verified,src/game/hub/object.c,Object_Destructor_df88c0
-df8cc0,2164,verified,src/game/hub/object.c,Object_df8cc0
+df88c0,900,verified,src/game/hub/object.c,Object_Destructor_df88c0
+df8cc0,2228,verified,src/game/hub/object.c,Object_df8cc0
 df95b0,80,verified,src/memory/new_delete.cpp,deleting destructor at 0xdf95b0
 df9600,1664,verified,src/game/unnamed/b012_0.c,GameHr_df9600
 df9ca0,504,verified,src/game/hub/unplaced_4.c,game_hub_df9ca0
@@ -41430,13 +41430,13 @@ dfbc80,800,verified,src/game/hub/unplaced.c,game_hub_dfbc80
 dfc000,464,verified,src/game/hub/unplaced.c,game_hub_dfc000
 dfc1e0,272,verified,src/game/hub/unplaced.c,game_hub_dfc1e0
 dfc300,272,verified,src/game/hub/unplaced.c,game_hub_dfc300
-dfc810,516,verified,src/game/hub/object.c,game_hub_Object_EnableAccess
+dfc810,544,verified,src/game/hub/object.c,game_hub_Object_EnableAccess
 dfca40,500,verified,src/game/hub/object_controller_drop_item.c,ObjectControllerDropItem_dfca40
 dfcc60,276,verified,src/game/script/hub_object_natives_impl.c,HubObjectNatives_dfcc60
 dfcd80,500,verified,src/game/hub/object.c,Object_dfcd80
 dfcfa0,348,verified,src/game/hub/object.c,Object_dfcfa0
 dfd100,352,verified,src/game/hub/object.c,Object_dfd100
-dfd280,1188,verified,src/game/hub/object.c,game_hub_Object_EnableHitAttack
+dfd280,1188,disputed,src/game/hub/object.c,game_hub_Object_EnableHitAttack
 dfd7e0,460,verified,src/game/hub/object.c,Object_dfd7e0
 dfd9e0,308,verified,src/game/script/hub_object_natives_impl.c,HubObjectNatives_dfd9e0
 dfdb40,236,verified,src/game/script/hub_object_natives_impl.c,HubObjectNatives_dfdb40
