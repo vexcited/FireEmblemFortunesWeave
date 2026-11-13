@@ -9363,7 +9363,8 @@ LABEL_7:
   *(float*)(a1 + 80) = v2;
   v6 = *(_QWORD*)(v1 + 488);
   v7 = CharacterRotate_d52080(v6);
-  result = fmodf(*(float*)(v6 + 36) - v7, 0x1.921fb60000000p+2f);
+  v9 = fmodf_alt1(*(float*)(v6 + 36) - v7, 0x1.921fb60000000p+2f);
+  result = PSEUDO_REGISTER(unsigned long long, "x0", "=r");
   if (v9 >= 0.0f) {
     v10 = v9 + 0.0f;
   }

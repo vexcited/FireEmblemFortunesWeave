@@ -2794,7 +2794,7 @@ bool game_159d390(__int64 a1, _DWORD* a2, char a3)
     else {
       v18 = (*a2 >> 19) & 0x1F;
     }
-    return v18 - ((*a2 >> 12) & 0x7F) + v17 < 1;
+    return (int)(v18 - ((*a2 >> 12) & 0x7F) + v17) < 1;
   }
   if (a3 == 3) {
     if (a1 == 0) {

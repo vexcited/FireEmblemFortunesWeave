@@ -44,7 +44,9 @@ void CmdBtlInventoryUnitTroopListMenu_Destructor(_QWORD* a1)
 
   v1 = a1[150];
   *a1 = game_menu_anonymous_CmdBtlInventoryUnitTroopListMenu_vtable;
-  a1[22] = game_menu_MenuInput_InputUnknown00_ptr;
+  a1[22] =
+      (__int64)(game_menu_anonymous_CmdBtlInventoryUnitTroopListMenu_vtable +
+                170);
   if (v1 != 0) {
     a1[151] = v1;
     v3 = 128;
@@ -156,7 +158,9 @@ void CmdBtlInventoryUnitTroopListMenu_DeletingDestructor(_QWORD* a1)
 
   v1 = a1[150];
   *a1 = game_menu_anonymous_CmdBtlInventoryUnitTroopListMenu_vtable;
-  a1[22] = game_menu_MenuInput_InputUnknown00_ptr;
+  a1[22] =
+      (__int64)(game_menu_anonymous_CmdBtlInventoryUnitTroopListMenu_vtable +
+                170);
   v3 = fw_memory_g_heap_manager_ptr;
   if (v1 != 0) {
     v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;

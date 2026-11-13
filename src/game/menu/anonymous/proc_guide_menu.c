@@ -1211,7 +1211,9 @@ __int64 ProcGuideMenu_1713fe0(__int64 a1, char a2)
           v15 = *v6;
           *(_BYTE*)(v7 + 1069) = v14;
           *(_QWORD*)v7 = game_menu_anonymous_ProcGuideMenu_vtable;
-          *(_QWORD*)(v7 + 176) = game_menu_MenuInput_InputUnknown00_ptr;
+          *(_QWORD*)(v7 + 176) =
+              (__int64)((char*)&game_menu_anonymous_ProcGuideMenu_vtable +
+                        1208);
           *(_QWORD*)(v7 + 1056) = GameData_20ae070;
           v16 = fw_memory_HeapManager_Allocate_alt1(v15, 168, 16, 0);
           *(_QWORD*)v16 = 0;

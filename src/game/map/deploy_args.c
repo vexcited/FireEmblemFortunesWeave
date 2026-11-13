@@ -34,7 +34,7 @@ __int64 game_map_DeployArgs_SetUnit_lambda0_Invoke(__int64 result, _DWORD* a2)
             v9 = *(unsigned __int8*)(v7 + 273), (unsigned int)(v8 - 5) >= 2)
                ? (v10 = 0)
                : (v10 = (*a2 >> 19) & 0x1F),
-           v10 - ((*a2 >> 12) & 0x7F) + v9 >= 1)) {
+           (int)(v10 - ((*a2 >> 12) & 0x7F) + v9) >= 1)) {
         result = GameRoutine_6fc7a0(v6, v2 + 1744);
         if ((result & 1) != 0) {
           v11 = *(_QWORD*)(*(_QWORD*)(*v5 + 64) + 8LL * (*a2 & 0xFFF));

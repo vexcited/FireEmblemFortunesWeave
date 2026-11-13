@@ -8538,7 +8538,7 @@ __int64 game_90fd20(__int64 a1, _DWORD* a2)
     v9 = *(unsigned __int8*)(v8 + 104);
     v10 = *(unsigned __int8*)(v8 + 273);
     v11 = (unsigned int)(v9 - 5) >= 2 ? 0 : (*a2 >> 19) & 0x1F;
-    if (v11 - ((*a2 >> 12) & 0x7F) + v10 < 1) {
+    if ((int)(v11 - ((*a2 >> 12) & 0x7F) + v10) < 1) {
       return 0;
     }
   }

@@ -90,7 +90,7 @@ __int64 game_UnitSkill_GetEquipSortKey(_DWORD* a1, __int64 a2)
           v17 = *(unsigned __int8*)(v15 + 273), (unsigned int)(v16 - 5) >= 2)
              ? (v18 = 0)
              : (v18 = (*a1 >> 19) & 0x1F),
-         v18 - ((*a1 >> 12) & 0x7F) + v17 >= 1)) {
+         (int)(v18 - ((*a1 >> 12) & 0x7F) + v17) >= 1)) {
       v19 = *(_QWORD*)(v4 + 24);
       if (*(_BYTE*)(v19 + 1122) != 1) {
         goto LABEL_40;

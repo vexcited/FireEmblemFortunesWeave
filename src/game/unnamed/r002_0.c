@@ -976,7 +976,7 @@ __int64 GameHr_843780(_DWORD* a1, __int64 a2)
     v9 = *(unsigned __int8*)(v8 + 104);
     v10 = *(unsigned __int8*)(v8 + 273);
     v11 = (unsigned int)(v9 - 5) >= 2 ? 0 : (*a1 >> 19) & 0x1F;
-    if (v11 - ((*a1 >> 12) & 0x7F) + v10 < 1) {
+    if ((int)(v11 - ((*a1 >> 12) & 0x7F) + v10) < 1) {
       return 0;
     }
   }

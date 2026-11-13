@@ -4850,7 +4850,7 @@ void GameHr_1602d00(__int64 a1, _DWORD* a2)
             v9 = *(unsigned __int8*)(v7 + 273), (unsigned int)(v8 - 5) >= 2)
                ? (v10 = 0)
                : (v10 = (*a2 >> 19) & 0x1F),
-           v10 - ((*a2 >> 12) & 0x7F) + v9 >= 1)) {
+           (int)(v10 - ((*a2 >> 12) & 0x7F) + v9) >= 1)) {
         if (GameRoutine_6fc7a0_alt1(v6, (_QWORD*)(v2 + 1744))) {
           v11 = *(_QWORD*)(a1 + 16);
           v12 = (unsigned int)*a2;

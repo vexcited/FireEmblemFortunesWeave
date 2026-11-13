@@ -3571,7 +3571,7 @@ __int64 game_map_BattleUtil_EachFactorSkill_lambda1_Invoke(__int64 result,
             v10 = *(unsigned __int8*)(v8 + 273), (unsigned int)(v9 - 5) >= 2)
                ? (v11 = 0)
                : (v11 = (*a2 >> 19) & 0x1F),
-           v11 - ((*a2 >> 12) & 0x7F) + v10 >= 1)) {
+           (int)(v11 - ((*a2 >> 12) & 0x7F) + v10) >= 1)) {
         result = GameRoutine_6fc7a0(v7, v3);
         if ((result & 1) != 0) {
           result = GameRoutine_6fc960(v7, v2);
@@ -3731,7 +3731,7 @@ __int64 game_map_BattleUtil_GetRevengeSkill_lambda0_Invoke(__int64 result,
             v9 = *(unsigned __int8*)(v7 + 273), (unsigned int)(v8 - 5) >= 2)
                ? (v10 = 0)
                : (v10 = (*a2 >> 19) & 0x1F),
-           v10 - ((*a2 >> 12) & 0x7F) + v9 >= 1)) {
+           (int)(v10 - ((*a2 >> 12) & 0x7F) + v9) >= 1)) {
         result = GameRoutine_6fc7a0(v6, v2 + 1744);
         if ((result & 1) != 0) {
           **(_QWORD**)(v4 + 16) =

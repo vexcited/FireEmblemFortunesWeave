@@ -115,7 +115,8 @@ __int64 ProcGmapCarriageList_168b1e0(__int64 a1)
   v3[151] = 0;
   v3[152] = 0;
   *v3 = game_gmap_anonymous_ProcGmapCarriageList_vtable;
-  v3[22] = game_menu_MenuInput_InputUnknown00_ptr;
+  v3[22] =
+      (__int64)((char*)&game_gmap_anonymous_ProcGmapCarriageList_vtable + 1232);
   v3[132] = GameData_2080ec0;
   ProcInst_657850(v3, GameData_212c730, "ProcGmapCarriageList", 1, a1);
   v7 = *(_QWORD*)(*GameData_212c790 + 8);

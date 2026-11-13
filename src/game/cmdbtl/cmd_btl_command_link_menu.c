@@ -335,8 +335,10 @@ LABEL_13:
   *(_QWORD*)(v19 + 1176) = v5;
   *(_DWORD*)(v19 + 1144) = 1065353216;
   *(_QWORD*)v19 = game_cmdbtl_CmdBtlCommandLinkMenu_vtable;
-  *(_QWORD*)(v19 + 176) = game_menu_MenuInput_InputUnknown00_ptr;
-  *(_QWORD*)(v19 + 1056) = game_menu_GameMenuImpl_ImplUnknown00_ptr;
+  *(_QWORD*)(v19 + 176) =
+      (__int64)((char*)&game_cmdbtl_CmdBtlCommandLinkMenu_vtable + 1176);
+  *(_QWORD*)(v19 + 1056) =
+      (__int64)((char*)&game_cmdbtl_CmdBtlCommandLinkMenu_vtable + 1384);
   ProcInst_657850(v19, GameData_212c730, "CmdBtlCommandLinkMenu", 1, v3);
   v52 = (_QWORD*)v19;
   v22 = (_QWORD*)*v1;

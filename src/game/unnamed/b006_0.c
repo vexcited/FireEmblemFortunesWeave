@@ -315,7 +315,7 @@ __int64 GameHr_7ab7e0(__int64 result, _DWORD* a2)
             v10 = *(unsigned __int8*)(v8 + 273), (unsigned int)(v9 - 5) >= 2)
                ? (v11 = 0)
                : (v11 = (*a2 >> 19) & 0x1F),
-           v11 - ((*a2 >> 12) & 0x7F) + v10 >= 1)) {
+           (int)(v11 - ((*a2 >> 12) & 0x7F) + v10) >= 1)) {
         result = GameRoutine_6fc7a0(v7, v3);
         if ((result & 1) != 0) {
           result = GameRoutine_6fc960(v7, v2);

@@ -67,7 +67,9 @@ void RelianceMemoryMenu_DeletingDestructor(_QWORD* a1)
 
   *a1 = game_facility_anonymous_RelianceMemoryMenu_vtable;
   a1[22] = GameData_2124210;
-  a1[132] = game_menu_GameMenuImpl_ImplUnknown00_ptr;
+  a1[132] =
+      (__int64)((char*)&game_facility_anonymous_RelianceMemoryMenu_vtable +
+                1440);
   Impl_717b40();
   if (GameData_2246ca0 != 0 && GameData_2246ca8-- <= 1) {
     (*(void (**)(__int64))(*(_QWORD*)GameData_2246ca0 + 24LL))(

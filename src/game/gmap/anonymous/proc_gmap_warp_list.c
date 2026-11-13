@@ -422,7 +422,9 @@ _QWORD* ProcGmapWarpList_168ca80(_QWORD* result, __int64 a2)
         v34 = *v32;
         v33[150] = v31;
         *v33 = game_gmap_anonymous_ProcGmapWarpList_vtable;
-        v33[22] = game_menu_MenuInput_InputUnknown00_ptr;
+        v33[22] =
+            (__int64)((char*)&game_gmap_anonymous_ProcGmapWarpList_vtable +
+                      1224);
         v33[132] = GameData_20817f8;
         v35 = (_QWORD*)fw_memory_HeapManager_Allocate(v34, 8, 16, 0);
         v33[151] = v35;

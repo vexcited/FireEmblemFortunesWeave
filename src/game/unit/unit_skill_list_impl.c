@@ -1666,7 +1666,7 @@ bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3)
     v23 = *(unsigned __int8*)(v22 + 104);
     v24 = *(unsigned __int8*)(v22 + 273);
     v25 = (unsigned int)(v23 - 5) >= 2 ? 0 : (*a1 >> 19) & 0x1F;
-    if (v25 - ((*a1 >> 12) & 0x7F) + v24 < 1) {
+    if ((int)(v25 - ((*a1 >> 12) & 0x7F) + v24) < 1) {
       goto LABEL_16;
     }
   }
@@ -1903,7 +1903,7 @@ bool UnitSkillList_844040(_DWORD* a1, __int64 a2)
     v9 = *(unsigned __int8*)(v8 + 104);
     v10 = *(unsigned __int8*)(v8 + 273);
     v11 = (unsigned int)(v9 - 5) >= 2 ? 0 : (*a1 >> 19) & 0x1F;
-    if (v11 - ((*a1 >> 12) & 0x7F) + v10 < 1) {
+    if ((int)(v11 - ((*a1 >> 12) & 0x7F) + v10) < 1) {
       return false;
     }
   }

@@ -1494,7 +1494,7 @@ __int64 TargetEnumerator_77e300(__int64 a1, _DWORD* a2, __int64* a3)
                   (unsigned int)(v26 - 5) >= 2)
                      ? (v28 = 0)
                      : (v28 = (*v16 >> 19) & 0x1F),
-                 v28 - ((*v16 >> 12) & 0x7F) + v27 >= 1)) {
+                 (int)(v28 - ((*v16 >> 12) & 0x7F) + v27) >= 1)) {
               if (GameRoutine_6fc7a0(v24, v23 + 218) &&
                   (TargetEnumerator_77e300(a1, v16, v57) & 1) != 0) {
                 goto LABEL_68;

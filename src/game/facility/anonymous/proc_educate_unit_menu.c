@@ -63,7 +63,9 @@ _QWORD* game_facility_anonymous_ProcEducateUnitMenu_CreateBind(__int64 a1)
   *(_QWORD*)v2 = game_facility_anonymous_ProcEducateUnitMenu_vtable;
   *(_QWORD*)(v2 + 1376) = 0;
   *(_QWORD*)(v2 + 176) = GameData_209c1e8;
-  *(_QWORD*)(v2 + 1056) = game_menu_GameMenuImpl_ImplUnknown00_ptr;
+  *(_QWORD*)(v2 + 1056) =
+      (__int64)((char*)&game_facility_anonymous_ProcEducateUnitMenu_vtable +
+                1472);
   *(_QWORD*)(*GameData_212dcd0 + 56) = *(_QWORD*)(*GameData_212dcd0 + 48);
   ProcInst_657850(v2, GameData_212c730, "ProcEducateUnitMenu", 1, a1);
   result = v12;

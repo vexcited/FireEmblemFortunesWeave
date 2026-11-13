@@ -2056,11 +2056,11 @@ void game_10221c0(__int64 a1)
   } v206_;
 
   v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  if ((float)((float)(*(float*)(*(_QWORD*)
-                                    game_script_hub_g_frame_counter_ptr[0] +
-                                160LL) *
-                      0x1.0aef000000000p+4f) /
-              0x1.f400000000000p+9f) > 0x0.0p+0f) {
+  if (!((float)((float)(*(float*)(*(_QWORD*)
+                                      game_script_hub_g_frame_counter_ptr[0] +
+                                  160LL) *
+                        0x1.0aef000000000p+4f) /
+                0x1.f400000000000p+9f) <= 0x0.0p+0f)) {
     v2 = *(_QWORD*)(*(_QWORD*)GameData_212d020[0] + 24LL);
     v3 = *(_QWORD*)(*(_QWORD*)GameData_212d020[0] + 104LL);
     if (v3 != 0 &&
@@ -10174,7 +10174,7 @@ bool game_108c9c0(int a1)
   }
   v6 = 639;
 LABEL_21:
-  v8 = *((_DWORD*)&game_hub_g_motions + 10 * v6 + 3);
+  v8 = *((_DWORD*)&game_hub_g_motions + 10LL * v6 + 3);
   result = false;
   if (a1 != v8) {
     v9 = v8 == -574916402 || v8 == 1669996436;
@@ -10216,8 +10216,8 @@ unsigned __int64 game_108cc80(unsigned __int64 result, int a2)
   if (v5 == nullptr || (v6 = *v5) == nullptr) {
   LABEL_25:
     v9 = 639;
-    return *((_DWORD*)&game_hub_g_motions + 10 * v9 + 3) == a2 &&
-           *((_DWORD*)(v10 = &(&game_hub_g_motions)[5 * v9]) + 12) == a2 &&
+    return *((_DWORD*)&game_hub_g_motions + 10LL * v9 + 3) == a2 &&
+           *((_DWORD*)(v10 = &(&game_hub_g_motions)[5LL * v9]) + 12) == a2 &&
            *((_DWORD*)v10 + 13) == a2;
   }
   if ((GameData_22356f8 & v3) == 0) {
@@ -10259,8 +10259,8 @@ unsigned __int64 game_108cc80(unsigned __int64 result, int a2)
   }
 LABEL_31:
   v9 = *((_DWORD*)v6 + 5);
-  return *((_DWORD*)&game_hub_g_motions + 10 * v9 + 3) == a2 &&
-         *((_DWORD*)(v10 = &(&game_hub_g_motions)[5 * v9]) + 12) == a2 &&
+  return *((_DWORD*)&game_hub_g_motions + 10LL * v9 + 3) == a2 &&
+         *((_DWORD*)(v10 = &(&game_hub_g_motions)[5LL * v9]) + 12) == a2 &&
          *((_DWORD*)v10 + 13) == a2;
 }
 

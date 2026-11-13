@@ -37,8 +37,12 @@ __int64 ProcThermaeUnitMenu_192bcc0(__int64 a1)
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 1072, 16, 0);
   GameRoutine_fa6720(v3, "ThermaeThermaeMenu");
   *v3 = game_facility_anonymous_ProcThermaeThermaeMenu_vtable;
-  v3[22] = game_menu_MenuInput_InputUnknown00_ptr;
-  v3[132] = game_menu_GameMenuImpl_ImplUnknown00_ptr;
+  v3[22] =
+      (__int64)((char*)&game_facility_anonymous_ProcThermaeThermaeMenu_vtable +
+                1160);
+  v3[132] =
+      (__int64)((char*)&game_facility_anonymous_ProcThermaeThermaeMenu_vtable +
+                1368);
   *(_DWORD*)(*GameData_212dcd0 + 8) = -1;
   GameRoutine_657850(v3, GameData_212c730, "ProcThermaeThermaeMenu", 1, a1);
   if (game_gmap_GmapClock_instance_ != 0) {

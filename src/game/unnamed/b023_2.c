@@ -3592,7 +3592,8 @@ __int64 GameHr_179e620(__int64 a1, __int64* a2, int a3)
   *(_DWORD*)(v10 + 1064) = 3;
   *(_QWORD*)v10 = game_menu_UnitHairColorSelectMenu_vtable;
   *(_QWORD*)(v10 + 176) = GameData_20cc028;
-  *(_QWORD*)(v10 + 1056) = game_menu_GameMenuImpl_ImplUnknown00_ptr;
+  *(_QWORD*)(v10 + 1056) =
+      (__int64)((char*)&game_menu_UnitHairColorSelectMenu_vtable + 1368);
   ProcInst_657850(v10, (__int64)GameData_212c730,
                   (__int64)"UnitHairColorSelectMenu", 1, a1);
   if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),

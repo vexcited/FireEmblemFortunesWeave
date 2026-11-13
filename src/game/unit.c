@@ -958,7 +958,7 @@ __int64 Unit_6c9540(__int64 a1, _DWORD* a2)
     v14 = *(unsigned __int8*)(v13 + 104);
     v15 = *(unsigned __int8*)(v13 + 273);
     v16 = (unsigned int)(v14 - 5) >= 2 ? 0 : (*a2 >> 19) & 0x1F;
-    if (v16 - (int)((*a2 >> 12) & 0x7F) + v15 < 1) {
+    if ((int)(v16 - (int)((*a2 >> 12) & 0x7F) + v15) < 1) {
       return 0;
     }
   }
@@ -2772,7 +2772,7 @@ LABEL_8:
     v10 = *(unsigned __int8*)(v9 + 104);
     v11 = *(unsigned __int8*)(v9 + 273);
     v12 = (unsigned int)(v10 - 5) >= 2 ? 0 : (*v6 >> 19) & 0x1F;
-    if (v12 - ((*v6 >> 12) & 0x7F) + v11 < 1) {
+    if ((int)(v12 - ((*v6 >> 12) & 0x7F) + v11) < 1) {
       return GameData_212c8a8;
     }
   }

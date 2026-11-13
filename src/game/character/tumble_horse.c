@@ -218,7 +218,7 @@ LABEL_10:
     }
     v25 = 639;
   LABEL_22:
-    v26 = *((_DWORD*)&game_hub_g_motions + 10 * v25 + 3);
+    v26 = *((_DWORD*)&game_hub_g_motions + 10LL * v25 + 3);
     if (v26 == -574916402 || v26 != (unsigned int)game_108c8a0(v21)) {
       if ((CharacterAnimator_1079e10(v20) & 1) == 0) {
         *(_DWORD*)(v20 + 124) = 0;

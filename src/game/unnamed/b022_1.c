@@ -4066,7 +4066,7 @@ _QWORD* GameHr_16c9f20(_QWORD* result, _DWORD* a2, __int64 a3)
       else {
         v17 = (*a2 >> 19) & 0x1F;
       }
-      if (v17 - ((*a2 >> 12) & 0x7F) + v16 > 0 || (v25 & 1) != 0) {
+      if ((int)(v17 - ((*a2 >> 12) & 0x7F) + v16) > 0 || (v25 & 1) != 0) {
         v18 = (_QWORD*)GameData_212bf68;
         v19 = GameRoutine_651b90(*(_QWORD*)GameData_212bf68, 160, 16, 0);
         GameRoutine_16d25e0(v19, "MID_BtlMenu_Morph", "MID_Sys_Remaining", 0);

@@ -344,7 +344,8 @@ _QWORD* anonymous_ProcObeliskClearStatusMenu_CreateBindClear_closure0_Invoke(
                                       1200, 16, 0);
   GameRoutine_1789cf0(v5, "ObeliskClearStatusMenu");
   *(_QWORD*)v5 = anonymous_ProcObeliskClearStatusMenu_vtable;
-  *(_QWORD*)(v5 + 1056) = game_menu_GameMenuImpl_ImplUnknown00_ptr;
+  *(_QWORD*)(v5 + 1056) =
+      (__int64)((char*)&anonymous_ProcObeliskClearStatusMenu_vtable + 1440);
   *(_QWORD*)(v5 + 176) = GameData_2001010;
   *(_BYTE*)(v5 + 1184) = 1;
   ProcInst_657850(v5, GameData_212c730, "ProcObeliskClearStatusMenu", 1, v3);
