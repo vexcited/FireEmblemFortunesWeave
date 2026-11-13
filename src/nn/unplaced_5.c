@@ -1069,8 +1069,8 @@ __int64 nn_6a6d80(__int64 a1, unsigned int a2)
   if (a2 != 0) {
     if (a2 >= 8) {
       v9 = (__typeof__(v9)){0};
-      LANES128(v10).n128_u64[0] = 0x300000003LL;
-      LANES128(v10).n128_u64[1] = 0x300000003LL;
+      LANES128(v10).n128_u64[0] = 0xFFFFFFFCFFFFFFFCLL;
+      LANES128(v10).n128_u64[1] = 0xFFFFFFFCFFFFFFFCLL;
       v11 = vdupq_n_s32(v4);
       v6 = a2 & 0xFFFFFFF8;
       v12 = COERCE_AS(int32x4_t, SdkData_bb1cc0);
@@ -1747,7 +1747,7 @@ __int64 nn_6ade30(__int64 a1, int a2)
 bool nn_6ade60(__int64 a1, unsigned int a2, unsigned int a3,
                unsigned __int8* a4, unsigned int* a5)
 {
-  int v6;
+  unsigned int v6;
   int v7;
   unsigned int v8;
   unsigned int v9;

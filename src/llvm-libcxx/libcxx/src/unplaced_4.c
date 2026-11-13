@@ -2260,6 +2260,7 @@ __int64 llvm_libcxx_libcxx_src_818500(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89658[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2314,6 +2315,7 @@ __int64 llvm_libcxx_libcxx_src_818780(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89480[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2368,6 +2370,7 @@ __int64 llvm_libcxx_libcxx_src_8188c0(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e894c0[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2422,6 +2425,7 @@ __int64 llvm_libcxx_libcxx_src_818a00(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89660[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2476,6 +2480,7 @@ __int64 llvm_libcxx_libcxx_src_818b40(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89668[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2530,6 +2535,7 @@ __int64 llvm_libcxx_libcxx_src_818c80(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89670[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2584,6 +2590,7 @@ __int64 llvm_libcxx_libcxx_src_818dc0(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89678[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2638,6 +2645,7 @@ __int64 llvm_libcxx_libcxx_src_818f00(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89530[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2692,6 +2700,7 @@ __int64 llvm_libcxx_libcxx_src_819040(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89560[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2746,6 +2755,7 @@ __int64 llvm_libcxx_libcxx_src_819180(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89558[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2800,6 +2810,7 @@ __int64 llvm_libcxx_libcxx_src_8192c0(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89570[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2854,6 +2865,7 @@ __int64 llvm_libcxx_libcxx_src_819400(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89568[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2908,6 +2920,7 @@ __int64 llvm_libcxx_libcxx_src_819540(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89680[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -2962,6 +2975,7 @@ __int64 llvm_libcxx_libcxx_src_819680(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89688[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -3016,6 +3030,7 @@ __int64 llvm_libcxx_libcxx_src_819a40(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89540[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -3070,6 +3085,7 @@ __int64 llvm_libcxx_libcxx_src_819b80(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89550[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -3124,6 +3140,7 @@ __int64 llvm_libcxx_libcxx_src_81a080(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e89498[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -3178,6 +3195,7 @@ __int64 llvm_libcxx_libcxx_src_81a1c0(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e896a0[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -3232,6 +3250,7 @@ __int64 llvm_libcxx_libcxx_src_81a440(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e896b0[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -3286,6 +3305,7 @@ __int64 llvm_libcxx_libcxx_src_81a580(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e896b8[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -3340,6 +3360,7 @@ __int64 llvm_libcxx_libcxx_src_81a6c0(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e896c0[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);
@@ -3394,6 +3415,7 @@ __int64 llvm_libcxx_libcxx_src_81a800(__int64 a1, __int64 a2, __int64 a3,
     v16 = &v14;
     v15 = &v16;
     std___1___call_once_plt(SdkData_e896c8[0], &v15, SdkRoutine_82f0b0);
+    a3 = (__int64)SdkRoutine_82f0b0;
   }
   v7 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v6 + 4) - 1LL;
   v8 = *(_QWORD*)(a2 + 16);

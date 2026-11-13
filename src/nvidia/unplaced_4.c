@@ -1327,6 +1327,7 @@ LABEL_10:
         v16 = (_QWORD*)*a3;
         do {
           *v16++ = 0;
+          __asm__ volatile("" : "+r"(v16));
         } while (!__CFADD__(v17++, 1));
       }
       if (v15 >= 0x38) {
@@ -1341,6 +1342,7 @@ LABEL_10:
           v16[6] = 0;
           v16[7] = 0;
           v16 += 8;
+          __asm__ volatile("" : "+r"(v16));
         } while (v16 != v19);
       }
     }

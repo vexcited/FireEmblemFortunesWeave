@@ -276,7 +276,7 @@ __int64 SdkHr_837c80(unsigned __int8** a1, char a2, __int64 a3, __int64 a4,
   unsigned __int8* v55;
   __int64 v56;
   __int64 v57;
-  __int64 v58;
+  unsigned __int128 v58;
   __int64 v59;
   __int64 v60;
   __int16 v61;
@@ -594,10 +594,14 @@ LABEL_81:
   }
 LABEL_76:
   *(_QWORD*)v12 = v17 + 1;
-  v57 = SdkRoutine_8363a0((_QWORD*)v12, v15, a3, a4, a5, a6, a7, a8, v64);
+  v58 = ((unsigned __int128 (*)(_QWORD*, unsigned __int64, __int64, __int64,
+                                 __int64, __int64, __int64, __int64,
+                                 __int64))SdkRoutine_8363a0)(
+      (_QWORD*)v12, v15, a3, a4, a5, a6, a7, a8, v64);
+  v57 = (__int64)v58;
   v12 = *(_QWORD*)(v12 + 4912);
   v8 = (__int64*)v57;
-  v59 = v58;
+  v59 = (__int64)(v58 >> 64);
   v60 = *(_QWORD*)(v12 + 8);
   if ((unsigned __int64)(v60 - 4032) <= 0xFFFFFFFFFFFFF00FLL) {
     v36 = (__int64*)SdkRoutine_8578d0(4096);

@@ -4456,6 +4456,7 @@ __attribute__((swiftcall)) void nvidia_619950(PSEUDO_X8 x8_, __int64 a1,
   int v99;
   __int64 v100;
   __int64 v101;
+  unsigned __int128 v102;
 
   result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w")),
   v8 = COERCE_AS(__typeof__(v8),
@@ -4487,7 +4488,10 @@ __attribute__((swiftcall)) void nvidia_619950(PSEUDO_X8 x8_, __int64 a1,
     goto LABEL_14;
   }
   v13 = a4;
-  if ((nvidia_619120(a1 + 1256, v9) & 1) != 0) {
+  v102 = ((unsigned __int128 (*)(__int64, int))nvidia_619120)(
+      a1 + 1256, v9);
+  v8 = (__int64)(v102 >> 64);
+  if ((v102 & 1) != 0) {
     v15 = (unsigned int)a2[7];
     v16 = *(_QWORD*)(v8 + 8);
     v6 = v16 >= v15;
@@ -4563,7 +4567,10 @@ __attribute__((swiftcall)) void nvidia_619950(PSEUDO_X8 x8_, __int64 a1,
     if (v30 == 0) {
       goto LABEL_19;
     }
-    if ((nvidia_619120(a1 + 1256, v30) & 1) != 0) {
+    v102 = ((unsigned __int128 (*)(__int64, int))nvidia_619120)(
+        a1 + 1256, v30);
+    v8 = (__int64)(v102 >> 64);
+    if ((v102 & 1) != 0) {
       v31 = (unsigned int)a2[29];
       v32 = *(_QWORD*)(v8 + 8);
       v6 = v32 >= v31;
@@ -4626,7 +4633,10 @@ __attribute__((swiftcall)) void nvidia_619950(PSEUDO_X8 x8_, __int64 a1,
       if (v49 == 0) {
         goto LABEL_19;
       }
-      if ((nvidia_619120(a1 + 1256, v49) & 1) != 0) {
+      v102 = ((unsigned __int128 (*)(__int64, int))nvidia_619120)(
+          a1 + 1256, v49);
+      v8 = (__int64)(v102 >> 64);
+      if ((v102 & 1) != 0) {
         v50 = (unsigned int)a2[51];
         v51 = *(_QWORD*)(v8 + 8);
         v6 = v51 >= v50;

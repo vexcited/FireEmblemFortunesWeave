@@ -217,7 +217,8 @@ int virtual_socket_collection::Listen(int id, int backlogCount,
   int index = Find(id, nullptr);
   if (index >= 0) {
     virtual_socket& entry = m_List[index];
-    if (entry.doBind) {
+    // The original tests the whole byte.
+    if (*reinterpret_cast<const uint8_t*>(&entry.doBind) != 0) {
       entry.listenBacklogCount = backlogCount > 1 ? backlogCount : 1;
       lastError = 0;
       result = 0;

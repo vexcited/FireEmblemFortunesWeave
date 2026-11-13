@@ -14,8 +14,7 @@ void* musl_798d70(void* a1);
 __int64 musl_7a5860(_QWORD* a1, _BYTE* a2, __int64 a3);
 unsigned __int64 __memcpy_aarch64(unsigned __int64 result, char* a2,
                                   unsigned __int64 a3);
-long double __memcpy_aarch64_simd(__int64 a1, __int64 a2, unsigned __int64 a3,
-                                  long double result);
+__int64 __memcpy_aarch64_simd(__int64 a1, __int64 a2, unsigned __int64 a3);
 
 _QWORD* musl_78eaa0(_QWORD* result, __int64 a2)
 {
@@ -415,9 +414,9 @@ unsigned __int64 __memcpy_aarch64(unsigned __int64 result, char* a2,
   return result;
 }
 
-long double __memcpy_aarch64_simd(__int64 a1, __int64 a2, unsigned __int64 a3,
-                                  long double result)
+__int64 __memcpy_aarch64_simd(__int64 a1, __int64 a2, unsigned __int64 a3)
 {
+  long double result;
   __int64 v4;
   __int64 v5;
   __int128 v6;
@@ -593,7 +592,7 @@ long double __memcpy_aarch64_simd(__int64 a1, __int64 a2, unsigned __int64 a3,
     *(_OWORD*)a1 = *(_OWORD*)a2;
     *(_OWORD*)(v5 - 16) = v6;
   }
-  return result;
+  return a1;
 }
 
 #pragma GCC visibility pop

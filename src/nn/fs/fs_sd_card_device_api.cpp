@@ -614,6 +614,9 @@ Result SetSdCardActivationMode(SdCardActivationMode mode) {
         nn::sf::InBuffer(&mode, sizeof(mode)), 0, sizeof(mode),
         SdCardManagerOperationId_SetActivationMode);
     }));
+  if (mode == static_cast<SdCardActivationMode>(2)) {
+    NN_FS_RESULT_DO_WITH_ABORT_CHECK(fileSystemProxy->DetachSdCard());
+  }
   return ResultSuccess();
 }
 

@@ -650,6 +650,8 @@ bool TaskQueue::UnregisterEventHandlerAsync(uint64_t id) {
     }
 
     if (pending != m_PendingRegistrations.end()) {
+      // The original reloads the handler and tests it for null.
+      __asm__ volatile("" ::: "memory");
       m_PendingRegistrations.erase(pending);
     }
     else {

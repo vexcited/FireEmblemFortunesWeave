@@ -230,7 +230,8 @@ void LogPacketTransmitterBase::PushDataChunk(LogDataChunkKey key,
   PushDataChunkImpl(key, string, length, true);
 }
 
-size_t LogPacketTransmitterBase::GetRequiredSizeToPushUleb128(
+[[gnu::always_inline]] size_t
+LogPacketTransmitterBase::GetRequiredSizeToPushUleb128(
   uint64_t value) {
   size_t size = 0;
 

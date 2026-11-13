@@ -4,6 +4,7 @@
 
 __int64 LockFile(__int64);
 __int64 UnlockFile(__int64 result);
+__int64 _uflow(__int64);
 __int64 __errno_location_plt(_QWORD, _QWORD);
 __int64 __getlocale_addr_plt(void);
 __int64 fwide_plt(_QWORD, _QWORD);

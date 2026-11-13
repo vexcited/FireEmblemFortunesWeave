@@ -6405,10 +6405,13 @@ __int64 nvidia_61ea60(_QWORD* a1, char a2)
   __int64 v2;
   __int64 v3;
   int v4;
+  int v5;
   __int64 v6;
   __int64 v7;
 
   if ((a2 & 1) != 0) {
+    v5 = *(_DWORD*)(a1[1] + 3912LL);
+    __asm__ volatile("" ::"r"(v5));
     v2 = 128;
     if (a1[16] == 0) {
       v2 = 352;
@@ -6418,7 +6421,7 @@ __int64 nvidia_61ea60(_QWORD* a1, char a2)
       v3 = v2;
     }
     v4 = *(_DWORD*)(*(_QWORD*)((char*)a1 + v3) + 12LL) & 0x3F;
-    if (*(_DWORD*)(a1[1] + 3912LL) != 0) {
+    if (v5 != 0) {
       if ((((unsigned int)(v4 - 11) < 0xC) &
            (unsigned __int8)(0xE07u >> (v4 - 11))) != 0) {
         return 12;

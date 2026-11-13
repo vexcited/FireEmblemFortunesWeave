@@ -6830,7 +6830,7 @@ __int64 nn_66a170(unsigned __int16* a1, __int64 a2)
   *((_DWORD*)a1 + 9) = v8;
 LABEL_6:
   v9 = (char*)SdkData_e89ba0;
-  v10 = (unsigned __int8*)SdkData_e89ba0 + 48 * *(int*)(a2 + 56);
+  v10 = (unsigned __int8*)SdkData_e89ba0 + 48LL * *(int*)(a2 + 56);
   v11 = *(_QWORD*)a1 & 0xFFFFFFFFFFFFFF00LL;
   v12 = v10[16];
   *((_BYTE*)a1 + 12) = v12;
@@ -6925,7 +6925,7 @@ LABEL_16:
     v33 = 0;
     goto LABEL_37;
   }
-  v32 = (unsigned __int8*)&v9[48 * v31];
+  v32 = (unsigned __int8*)&v9[48LL * v31];
   if (v32[14] == 0 && v32[15] == 0) {
     if (v32[8] <= 1u && *(_DWORD*)(v29 + 7280) != 1981175382) {
       v33 = 1;

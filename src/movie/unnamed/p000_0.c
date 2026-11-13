@@ -3531,6 +3531,8 @@ __int64 MovieHr_7a6c0(__int64* a1, __int64 a2, int a3)
   __int64 v8;
   _QWORD* v9;
   __int64 v10;
+  __int64 v11;
+  __int64 v12;
 
   v3 = *((_DWORD*)a1 + 18);
   if (v3 < 0) {
@@ -3552,6 +3554,9 @@ __int64 MovieHr_7a6c0(__int64* a1, __int64 a2, int a3)
         v9 = *(_QWORD**)(v8 + 48);
         v10 = 0;
         do {
+          v11 = *(_QWORD*)(a1[7] + 8 * v10);
+          v12 = *(_QWORD*)(a1[8] + 8 * v10);
+          __asm__ volatile("" ::"r"(v11), "r"(v12));
           MovieRoutine_7dee0(*v9, v9[1], *((unsigned int*)a1 + 20),
                              *((unsigned int*)a1 + 22));
           ++v10;

@@ -1113,7 +1113,7 @@ __int64 nn_movie_detail_BaseMediaExtractor_SetUpMediaSourceMode(void* this_)
   v10 = *((_QWORD*)this_ + 173);
   *((_QWORD*)this_ + 173) = v9;
   if (v10 != 0) {
-    (*((void (**)(void))this_ + 174))();
+    (*((void (**)(__int64))this_ + 174))(v10);
     if (*((_QWORD*)this_ + 173) == 0) {
       return 259840;
     }
