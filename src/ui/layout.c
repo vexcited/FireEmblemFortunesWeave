@@ -111,8 +111,13 @@ __int64 std___1___shared_weak_count___release_weak_alt3(__int64) __asm__(
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
     "std___1___shared_weak_count_lock");
 int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
-void GameRoutine_190a0c0_alt1(float*, __int64, float*, _QWORD*,
-                              __int64) __asm__("GameRoutine_190a0c0");
+struct layout_float_pair {
+  float x;
+  float y;
+};
+struct layout_float_pair GameRoutine_190a0c0_alt1(float*, __int64, float*,
+                                                  _QWORD*, __int64)
+    __asm__("GameRoutine_190a0c0");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 __int64* Layout_1363220(__int64* result);
 void Layout_1364020(_QWORD* a1, __int64 a2, __int64 a3);
@@ -345,6 +350,7 @@ void Layout_1363800(_QWORD* result, __int64* a2, __int64 a3, __int64 a4)
   _BYTE v25[8];
   float v26[2];
   _QWORD v27[5];
+  struct layout_float_pair v28;
 
   if (*result == a3 || *result == a4) {
     v27[1] = v7;
@@ -366,20 +372,22 @@ void Layout_1363800(_QWORD* result, __int64* a2, __int64 a3, __int64 a4)
     v15 = v14 / (float)(*(int (**)(__int64))(*(_QWORD*)a3 + 40LL))(a3);
     if (*result == v10) {
       v10 = a4;
-      if (v15 > (float)(v13 + -0x1.0000000000000p-23f)) {
+      if (!(v15 <= (float)(v13 + -0x1.0000000000000p-23f))) {
         return;
       }
     }
-    else if (v15 < (float)(v13 + 0x1.0000000000000p-23f)) {
+    else if (!(v15 >= (float)(v13 + 0x1.0000000000000p-23f))) {
       return;
     }
     TextBox_59d3c0(v9, v10);
-    GameRoutine_190a0c0_alt1(v26, (__int64)v25, &v24, (_QWORD*)v9,
-                             *(_QWORD*)(v9 + 216));
+    v28 = GameRoutine_190a0c0_alt1(v26, (__int64)v25, &v24, (_QWORD*)v9,
+                                   *(_QWORD*)(v9 + 216));
+    v16 = v28.x;
+    v17 = v28.y;
     v27[0] = __PAIR64__(LODWORD(v17), LODWORD(v16));
     v18 = vabds_f32(v17, *(float*)(v9 + 252));
-    if (vabds_f32(v16, *(float*)(v9 + 248)) > 0x1.0000000000000p-23f ||
-        v18 > 0x1.0000000000000p-23f) {
+    if (!(vabds_f32(v16, *(float*)(v9 + 248)) <= 0x1.0000000000000p-23f &&
+          v18 <= 0x1.0000000000000p-23f)) {
       TextBox_59d550(v9, (__int64)v27);
       v20 = v24;
       v21 = *(float*)(v9 + 260);

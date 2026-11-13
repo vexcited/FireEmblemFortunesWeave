@@ -113,6 +113,8 @@ __int64 game_cmdbtl_CmdBtlParty_GetLinkCause_alt1(
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
     "std___1___shared_weak_count_lock");
 bool Unit_6c9ab0(_QWORD*, _DWORD*, unsigned __int16*);
+__int64 Unit_6c9ab0_alt1(_QWORD*, _DWORD*, unsigned __int16*) __asm__(
+    "Unit_6c9ab0");
 void CmdBtlParty_e734e0_alt1(__int64) __asm__("CmdBtlParty_e734e0");
 void CmdBtlParty_e73380(__int64 a1);
 __int64 CmdBtlParty_e77750(__int64 a1, __int64 a2);
@@ -1557,7 +1559,8 @@ __int64 game_cmdbtl_CmdBtlParty_CanSkill_lambda0_Invoke(__int64 result,
       goto LABEL_13;
     }
   }
-  result = Unit_6c9ab0(*(_QWORD**)(v5 + 16), *(_DWORD**)(result + 24), a2);
+  result =
+      Unit_6c9ab0_alt1(*(_QWORD**)(v5 + 16), *(_DWORD**)(result + 24), a2);
   if ((result & 1) == 0 ||
       (v9 = *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) +
                        8LL * (*v7 & 0xFFF)),

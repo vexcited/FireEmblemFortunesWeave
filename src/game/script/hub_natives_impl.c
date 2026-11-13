@@ -5002,7 +5002,7 @@ _QWORD* hub_TryPopWorldPost()
   __int64 v17;
   __int64 v18;
   __int64 v19;
-  void (*v20)(void);
+  __int64 (*v20)(__int64, __int64);
   __int64 v21;
   __int64 v22;
   unsigned __int8 v23;
@@ -5107,9 +5107,9 @@ LABEL_9:
   else {
     v19 = 0;
   }
-  v20 = *(void (**)(void))(**(_QWORD**)(v19 + 24) + 448LL);
+  v20 = *(__int64 (**)(__int64, __int64))(**(_QWORD**)(v19 + 24) + 448LL);
   if ((v16 & 1) == 0) {
-    v20();
+    v20(*(_QWORD*)(v19 + 24), 1);
     result = *(_QWORD**)(v19 + 2240);
     *(_QWORD*)(v19 + 2240) = 0;
     if (result == (_QWORD*)(v19 + 2208)) {
@@ -5125,7 +5125,7 @@ LABEL_9:
         (_QWORD*)(*(__int64 (**)(__int64))(*result + v21))((__int64)result);
     goto LABEL_36;
   }
-  result = (_QWORD*)((__int64 (*)(void))v20)();
+  result = (_QWORD*)v20(*(_QWORD*)(v19 + 24), 0);
 LABEL_36:
   if ((v23 & 1) != 0 && *(_QWORD*)&v24[15] != 0) {
     v22 = 128;
@@ -5164,7 +5164,7 @@ void hub_RunTalkSelectQuestMenuAccept(__int64 a1)
   __int64 v22;
   __int64 v23;
   __int64 v24;
-  void (*v25)(void);
+  __int64 (*v25)(__int64, __int64);
   _QWORD* v26;
   __int64 v27;
   __int64 v28;
@@ -5288,9 +5288,9 @@ LABEL_33:
   else {
     v24 = 0;
   }
-  v25 = *(void (**)(void))(**(_QWORD**)(v24 + 24) + 448LL);
+  v25 = *(__int64 (**)(__int64, __int64))(**(_QWORD**)(v24 + 24) + 448LL);
   if ((v21 & 1) == 0) {
-    v25();
+    v25(*(_QWORD*)(v24 + 24), 1);
     v26 = *(_QWORD**)(v24 + 2240);
     *(_QWORD*)(v24 + 2240) = 0;
     if (v26 == (_QWORD*)(v24 + 2208)) {
@@ -5305,7 +5305,7 @@ LABEL_33:
     (*(void (**)(__int64))(*v26 + v27))((__int64)v26);
     goto LABEL_43;
   }
-  v25();
+  v25(*(_QWORD*)(v24 + 24), 0);
 LABEL_43:
   if ((v29[0] & 1) != 0 && v29[2] != 0) {
     v28 = 128;

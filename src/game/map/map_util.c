@@ -3991,9 +3991,9 @@ __int64 MapUtil_75f320(__int64 a1, long double a2)
       }
       v15 = COERCE_AS(float32x4_t, GameData_21a6120);
     }
-    if ((float)(vmuls_lane_f32(LANES128(v15).n128_f32[2], v15, 2) +
-                (float)(LANES128(v15).n128_f32[0] *
-                        LANES128(v15).n128_f32[0])) >= 0.0625) {
+    if (!((float)(vmuls_lane_f32(LANES128(v15).n128_f32[2], v15, 2) +
+                  (float)(LANES128(v15).n128_f32[0] *
+                          LANES128(v15).n128_f32[0])) < 0.0625)) {
       *(_QWORD*)&v14 = 0;
       if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, 1065353216LL),
                                COERCE_AS(float32x2_t, 1065353216LL)))

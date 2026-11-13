@@ -291,19 +291,19 @@ int8x16_t CameraAnimObj_5e57f0(int8x16_t* a1, int a2, long double a3,
   v8 = LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v6).n128_u64[0]),
                     COERCE_AS(float32x2_t, LANES128(v6).n128_u64[0])))
          .n64_f32[0];
-  if (v8 >= 0x0.0p+0f) {
+  if (!(v8 < 0x0.0p+0f)) {
     v9 = v8;
   }
   else {
     v9 = -v8;
   }
-  if (v8 >= 0x0.0p+0f) {
+  if (!(v8 < 0x0.0p+0f)) {
     v10 = 0x1.0000000000000p+0f;
   }
   else {
     v10 = -0x1.0000000000000p+0f;
   }
-  if (v9 > 0x1.fffeb00000000p-1f) {
+  if (!(v9 <= 0x1.fffeb00000000p-1f)) {
     v11 = a5 * v10;
     v12 = 0x1.0000000000000p+0f - a5;
     LANES128(v13).n128_f32[0] =
@@ -648,11 +648,10 @@ LABEL_44:
     (float)((float)(v51 / v38) * *(float*)&a3);
   LANES128(result).n128_f32[1] = vmuls_lane_f32(v52, *(float32x2_t*)&a4, 1) +
     (float)((float)(v51 / v38) * *((float*)&a3 + 1));
-  LANES128(result).n128_u64[1] =
-    __PAIR64__(vmuls_lane_f32(v52, *(float32x4_t*)&a4, 3) +
-        (float)((float)(v51 / v38) * *((float*)&a3 + 3)),
-      vmuls_lane_f32(v52, *(float32x4_t*)&a4, 2) +
-        (float)((float)(v51 / v38) * *((float*)&a3 + 2)));
+  LANES128(result).n128_f32[2] = vmuls_lane_f32(v52, *(float32x4_t*)&a4, 2) +
+    (float)((float)(v51 / v38) * *((float*)&a3 + 2));
+  LANES128(result).n128_f32[3] = vmuls_lane_f32(v52, *(float32x4_t*)&a4, 3) +
+    (float)((float)(v51 / v38) * *((float*)&a3 + 3));
   *a1 = result;
   return result;
 }

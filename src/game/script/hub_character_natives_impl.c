@@ -4675,7 +4675,7 @@ __int64 hub_character_PreTalkEvent(__int64 result)
   __int64 v12;
   __int64 v13;
   __int64 v14;
-  void (*v15)(void);
+  __int64 (*v15)(__int64, __int64);
   __int64 v16;
   __int64 v17;
   char v18[16];
@@ -4725,9 +4725,9 @@ __int64 hub_character_PreTalkEvent(__int64 result)
   else {
     v14 = 0;
   }
-  v15 = *(void (**)(void))(**(_QWORD**)(v14 + 24) + 448LL);
+  v15 = *(__int64 (**)(__int64, __int64))(**(_QWORD**)(v14 + 24) + 448LL);
   if ((v11 & 1) == 0) {
-    v15();
+    v15(*(_QWORD*)(v14 + 24), 1);
     result = *(_QWORD*)(v14 + 2240);
     *(_QWORD*)(v14 + 2240) = 0;
     if (result == v14 + 2208) {
@@ -4743,7 +4743,7 @@ __int64 hub_character_PreTalkEvent(__int64 result)
         (*(__int64 (**)(__int64))(*(_QWORD*)result + v16))((__int64)result);
     goto LABEL_16;
   }
-  result = ((__int64 (*)(void))v15)();
+  result = v15(*(_QWORD*)(v14 + 24), 0);
 LABEL_16:
   if ((v18[0] & 1) != 0 && v19 != 0) {
     v17 = 128;
@@ -5549,7 +5549,7 @@ __int64 hub_character_DngTalkSetupEnd(__int64 result)
   __int64 v22;
   __int64 v23;
   __int64 v24;
-  void (*v25)(void);
+  __int64 (*v25)(__int64, __int64);
   __int64 v26;
   __int64 v27;
   unsigned __int8 v28;
@@ -5685,9 +5685,9 @@ __int64 hub_character_DngTalkSetupEnd(__int64 result)
   else {
     v24 = 0;
   }
-  v25 = *(void (**)(void))(**(_QWORD**)(v24 + 24) + 448LL);
+  v25 = *(__int64 (**)(__int64, __int64))(**(_QWORD**)(v24 + 24) + 448LL);
   if ((v21 & 1) == 0) {
-    v25();
+    v25(*(_QWORD*)(v24 + 24), 1);
     result = *(_QWORD*)(v24 + 2240);
     *(_QWORD*)(v24 + 2240) = 0;
     if (result == v24 + 2208) {
@@ -5703,7 +5703,7 @@ __int64 hub_character_DngTalkSetupEnd(__int64 result)
         (*(__int64 (**)(__int64))(*(_QWORD*)result + v26))((__int64)result);
     goto LABEL_42;
   }
-  result = ((__int64 (*)(void))v25)();
+  result = v25(*(_QWORD*)(v24 + 24), 0);
 LABEL_42:
   if ((v28 & 1) != 0 && *(_QWORD*)&v29[15] != 0) {
     v27 = 128;

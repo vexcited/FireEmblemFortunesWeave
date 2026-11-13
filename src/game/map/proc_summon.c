@@ -310,9 +310,10 @@ __int64 game_map_ProcSummon_CreateUnit_closure_Invoke(__int64 a1, __int64* a2,
                      *(_QWORD*)(v8 + 48) + 16LL))((void*)&v38, v8 + 48)),
     v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v0", "=w"));
     v9 = vsubq_f32(v39, v38);
-    if ((float)(vmuls_lane_f32(LANES128(v9).n128_f32[2], v9, 2) +
-                (float)(LANES128(v9).n128_f32[0] * LANES128(v9).n128_f32[0])) >=
-        0x1.0000000000000p-4f) {
+    if (!((float)(vmuls_lane_f32(LANES128(v9).n128_f32[2], v9, 2) +
+                  (float)(LANES128(v9).n128_f32[0] *
+                          LANES128(v9).n128_f32[0])) <
+          0x1.0000000000000p-4f)) {
       v10 = 0x0.0p+0f;
       if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, 1065353216LL),
                                COERCE_AS(float32x2_t, 1065353216LL)))

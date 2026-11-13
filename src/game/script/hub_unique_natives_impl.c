@@ -1945,49 +1945,49 @@ __int64 hub_unique_GetPart2RouteClearedCount()
        (v6 = game_GameVariableTable_Find_alt1(
             *(_QWORD**)(game_GameModeData_instance_ + 48),
             (unsigned __int64*)v5)) != 0 &&
-       *(_DWORD*)(v6 + 32) > 0;
+       *(int*)(v6 + 32) > 0;
   v8 = GameVariable_82e7c0(2u, 2);
   v10 = game_GameModeData_instance_ != 0 &&
         (v9 = game_GameVariableTable_Find_alt1(
              *(_QWORD**)(game_GameModeData_instance_ + 48),
              (unsigned __int64*)v8)) != 0 &&
-        *(_DWORD*)(v9 + 32) > 0;
+        *(int*)(v9 + 32) > 0;
   v11 = GameVariable_82e7c0(3u, 2);
   v13 = game_GameModeData_instance_ != 0 &&
         (v12 = game_GameVariableTable_Find_alt1(
              *(_QWORD**)(game_GameModeData_instance_ + 48),
              (unsigned __int64*)v11)) != 0 &&
-        *(_DWORD*)(v12 + 32) > 0;
+        *(int*)(v12 + 32) > 0;
   v14 = GameVariable_82e7c0(4u, 2);
   v16 = game_GameModeData_instance_ != 0 &&
         (v15 = game_GameVariableTable_Find_alt1(
              *(_QWORD**)(game_GameModeData_instance_ + 48),
              (unsigned __int64*)v14)) != 0 &&
-        *(_DWORD*)(v15 + 32) > 0;
+        *(int*)(v15 + 32) > 0;
   v17 = GameVariable_82e7c0(5u, 2);
   v19 = game_GameModeData_instance_ != 0 &&
         (v18 = game_GameVariableTable_Find_alt1(
              *(_QWORD**)(game_GameModeData_instance_ + 48),
              (unsigned __int64*)v17)) != 0 &&
-        *(_DWORD*)(v18 + 32) > 0;
+        *(int*)(v18 + 32) > 0;
   v20 = GameVariable_82e7c0(6u, 2);
   v22 = game_GameModeData_instance_ != 0 &&
         (v21 = game_GameVariableTable_Find_alt1(
              *(_QWORD**)(game_GameModeData_instance_ + 48),
              (unsigned __int64*)v20)) != 0 &&
-        *(_DWORD*)(v21 + 32) > 0;
+        *(int*)(v21 + 32) > 0;
   v23 = GameVariable_82e7c0(7u, 2);
   v25 = game_GameModeData_instance_ != 0 &&
         (v24 = game_GameVariableTable_Find_alt1(
              *(_QWORD**)(game_GameModeData_instance_ + 48),
              (unsigned __int64*)v23)) != 0 &&
-        *(_DWORD*)(v24 + 32) > 0;
+        *(int*)(v24 + 32) > 0;
   v26 = GameVariable_82e7c0(8u, 2);
   v27 = game_GameModeData_instance_;
   if (game_GameModeData_instance_ != 0) {
     v28 = game_GameVariableTable_Find_alt1(
         *(_QWORD**)(game_GameModeData_instance_ + 48), (unsigned __int64*)v26);
-    v27 = v28 != 0 && *(_DWORD*)(v28 + 32) > 0;
+    v27 = v28 != 0 && *(int*)(v28 + 32) > 0;
   }
   return (unsigned int)(v10 + v7 + v13 + v16 + v19 + v22 + v25 + v27);
 }

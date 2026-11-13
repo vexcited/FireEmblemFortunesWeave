@@ -1542,12 +1542,12 @@ bool GameHr_108cb20(int a1)
               }
             }
             else if ((v9 & v2) != v3) {
-              return a1 == *((_DWORD*)&GameData_2167828 + 10 * v6 + 3) &&
+              return a1 == ((_DWORD*)&GameData_2167828)[10 * (__int64)v6 + 3] &&
                      a1 != -574916402 && a1 != 1669996436 && a1 != 0;
             }
             v5 = (__int64*)*v5;
             if (v5 == nullptr) {
-              return a1 == *((_DWORD*)&GameData_2167828 + 10 * v6 + 3) &&
+              return a1 == ((_DWORD*)&GameData_2167828)[10 * (__int64)v6 + 3] &&
                      a1 != -574916402 && a1 != 1669996436 && a1 != 0;
             }
           }
@@ -1558,7 +1558,7 @@ bool GameHr_108cb20(int a1)
             if (*((_DWORD*)v5 + 4) == a1) {
             LABEL_32:
               v6 = *((_DWORD*)v5 + 5);
-              return a1 == *((_DWORD*)&GameData_2167828 + 10 * v6 + 3) &&
+              return a1 == ((_DWORD*)&GameData_2167828)[10 * (__int64)v6 + 3] &&
                      a1 != -574916402 && a1 != 1669996436 && a1 != 0;
             }
           }
@@ -1567,13 +1567,13 @@ bool GameHr_108cb20(int a1)
               v7 %= (unsigned __int64)GameData_22356f8;
             }
             if (v7 != v3) {
-              return a1 == *((_DWORD*)&GameData_2167828 + 10 * v6 + 3) &&
+              return a1 == ((_DWORD*)&GameData_2167828)[10 * (__int64)v6 + 3] &&
                      a1 != -574916402 && a1 != 1669996436 && a1 != 0;
             }
           }
           v5 = (__int64*)*v5;
           if (v5 == nullptr) {
-            return a1 == *((_DWORD*)&GameData_2167828 + 10 * v6 + 3) &&
+            return a1 == ((_DWORD*)&GameData_2167828)[10 * (__int64)v6 + 3] &&
                    a1 != -574916402 && a1 != 1669996436 && a1 != 0;
           }
         }
@@ -1581,7 +1581,7 @@ bool GameHr_108cb20(int a1)
     }
   }
   v6 = 639;
-  return a1 == *((_DWORD*)&GameData_2167828 + 10 * v6 + 3) &&
+  return a1 == ((_DWORD*)&GameData_2167828)[10 * (__int64)v6 + 3] &&
          a1 != -574916402 && a1 != 1669996436 && a1 != 0;
 }
 

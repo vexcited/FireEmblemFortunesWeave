@@ -2679,7 +2679,8 @@ __int64 GameHr_eaec10(__int64* a1, __int64 a2)
     *(_DWORD*)(v20 + 24) = -1;
     if (v19 != -1) {
       v24 = v17 + v8;
-      ((void (*)(__int64*, __int64))GameData_1feddc0[v19])(&v24, a2);
+      ((void (*)(__int64*, __int64))GameData_1feddc0[(unsigned int)v19])(
+          &v24, a2);
       v7 = *a1;
       v21 = a1[1];
       *(_DWORD*)(v20 + 24) = v19;
@@ -2705,7 +2706,8 @@ __int64 GameHr_eaec10(__int64* a1, __int64 a2)
     v5 = *(_DWORD*)(a2 + 24);
     if (v5 != -1) {
       v24 = v3;
-      ((void (*)(__int64*))GameData_1feddc0[v5])(&v24);
+      ((void (*)(__int64*, __int64))GameData_1feddc0[(unsigned int)v5])(
+          &v24, a2);
       *(_DWORD*)(v3 + 24) = v5;
     }
     v6 = v3 + 32;
@@ -6058,7 +6060,8 @@ __int64* GameHr_ed5250(__int64* result, __int64 a2)
     *(_DWORD*)(v20 + 24) = -1;
     if (v19 != -1) {
       v23 = v17 + v8;
-      ((void (*)(__int64*, __int64))GameData_1fee8c8[v19])(&v23, a2);
+      ((void (*)(__int64*, __int64))GameData_1fee8c8[(unsigned int)v19])(
+          &v23, a2);
       v7 = *v4;
       v21 = v4[1];
       *(_DWORD*)(v20 + 24) = v19;
@@ -6084,7 +6087,8 @@ __int64* GameHr_ed5250(__int64* result, __int64 a2)
     v5 = *(_DWORD*)(a2 + 24);
     if (v5 != -1) {
       v23 = v3;
-      result = (__int64*)((__int64 (*)(__int64*))GameData_1fee8c8[v5])(&v23);
+      result = (__int64*)((__int64 (*)(__int64*, __int64))
+                              GameData_1fee8c8[(unsigned int)v5])(&v23, a2);
       *(_DWORD*)(v3 + 24) = v5;
     }
     v6 = v3 + 32;
