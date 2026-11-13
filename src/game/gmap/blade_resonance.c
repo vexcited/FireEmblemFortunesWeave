@@ -104,6 +104,8 @@ unsigned int* game_gmap_SpotMgr_GetCurrentSpot_alt1() __asm__(
     "game_gmap_SpotMgr_GetCurrentSpot");
 float32x4_t* BladeResonance_14b7a80(__int64 a1);
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_14a1390(__int64*, char);
 __int64 std___1___shared_weak_count___release_weak_alt3(__int64) __asm__(
@@ -1536,11 +1538,12 @@ LABEL_8:
   v37_.v43 = *(_QWORD*)GameData_212c540;
   v37_.v44 = v20;
   v37_.v39 = "Gmap_Hanari_Area_Trigger";
-  v21 = Manager_bc6460_alt1(v17, (__int64)&v37_.v37, 1),
-  v22 = COERCE_AS(__typeof__(v22),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v30 = COERCE_AS(__typeof__(v30),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v21 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v17, (__int64)&v37_.v37, 1);
+    v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+    v30 = COERCE_AS(__typeof__(v30), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v37_.v37, (__int64)v21, v22, (__int64)&GameData_1a9f09e),
       v22 = COERCE_AS(__typeof__(v22),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1619,11 +1622,12 @@ LABEL_8:
   v37_.v43 = *v19;
   v37_.v44 = v28;
   v37_.v39 = "Gmap_Hanari_Area_Sub_Trigger";
-  v29 = Manager_bc6460_alt1(v27, (__int64)&v37_.v37, 1),
-  v22 = COERCE_AS(__typeof__(v22),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v30 = COERCE_AS(__typeof__(v30),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v29 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v27, (__int64)&v37_.v37, 1);
+    v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+    v30 = COERCE_AS(__typeof__(v30), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result =
       GameHr_14a10d0(&v37_.v37, (__int64)v29, v30, (__int64)&GameData_1a9f09e),
   v22 = COERCE_AS(__typeof__(v22),
@@ -1968,9 +1972,11 @@ LABEL_18:
   v30_.v37 = *(_QWORD*)GameData_212c540;
   v30_.v38 = v22;
   v30_.v32 = "Gmap_Hanari_Area_Loop";
-  v23 = Manager_bc6460_alt1(v19, (__int64)&v30_.v30, 1),
-  v24 = COERCE_AS(__typeof__(v24),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v23 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v19, (__int64)&v30_.v30, 1);
+    v24 = COERCE_AS(__typeof__(v24), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v30_.v30, (__int64)v23, v24, (__int64)&GameData_1a9f09e),
       v24 = COERCE_AS(__typeof__(v24),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

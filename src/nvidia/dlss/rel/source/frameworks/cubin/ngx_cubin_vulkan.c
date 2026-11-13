@@ -1655,7 +1655,7 @@ __int64 CreateTexture2DResourceSharedImpl(__int64 a1, unsigned int* a2,
   v9 = *a2;
   v10 = a2[1];
   v11 = -1;
-  HIDWORD(v59) = 0;
+  DWORD3(v59) = 0;
   LODWORD(v63) = 0;
   a2[14] = -1;
   v57 = __PAIR64__(v9, v7);

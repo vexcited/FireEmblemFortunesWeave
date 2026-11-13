@@ -1001,7 +1001,7 @@ __int64 movie_detail_TaskQueue_NotifyOfThreadEvent(_QWORD* a1, int a2)
   }
   v8 = *((unsigned int*)a1 + 150);
   v9 = 8 * v8;
-  v10 = (char*)v22 - ((8 * v8 + 15) & 0xFFFFFFFF0LL);
+  v10 = (char*)__builtin_alloca((8 * v8 + 15) & 0xFFFFFFFF0LL);
   memset_plt(v10, 0, 8 * v8);
   if (v6 == 0) {
     v18 = 0;
@@ -1018,7 +1018,7 @@ __int64 movie_detail_TaskQueue_NotifyOfThreadEvent(_QWORD* a1, int a2)
     nn_os_UnlockMutex_plt(a1 + 3);
     if (v8 != 0) {
       v2 = v8;
-      v16 = (_QWORD*)((char*)v22 - ((8 * v8 + 15) & 0xFFFFFFFF0LL));
+      v16 = (_QWORD*)v10;
       do {
         v17 = *v16++;
         (*(void (**)(__int64))(*(_QWORD*)v17 + 56LL))(v17);

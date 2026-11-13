@@ -1893,7 +1893,7 @@ float* GameHr_104b900(float* result, char a2)
           (*(void (**)(__int64, float**, int*))(*(_QWORD*)v22 + 48LL))(
               v22, &v32, &v31);
         }
-        HIDWORD(v30) = v21;
+        DWORD3(v30) = v21;
         v9 = (unsigned __int8)v7[16];
         v10 = (v9 & 1) == 0;
         v11 = v9 >> 1;
@@ -5149,7 +5149,7 @@ __int64 GameHr_108a260(__int64 result, __int64 a2)
                 v20 = GameRoutine_1a0a550(v19, v12);
                 *(_QWORD*)&v21 = __PAIR64__(LODWORD(v23), LODWORD(v24));
                 *((float*)&v21 + 2) = v20;
-                HIDWORD(v21) = *(_DWORD*)(v2 + 44);
+                DWORD3(v21) = *(_DWORD*)(v2 + 44);
                 result =
                     (*(__int64 (**)(__int64, __int64, __int64, long double))(
                         *(_QWORD*)v14 + 64LL))(v14, v13, v17, v21);

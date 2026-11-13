@@ -783,6 +783,8 @@ extern __int64 GameData_212dc68;
 extern __int64 GameData_21c9608;
 extern __int64 GameData_22127a8;
 unsigned __int64 game_hub_e286a0(__int64, __int64*);
+unsigned __int128 game_hub_e286a0_pair(__int64,
+                                       __int64*) __asm__("game_hub_e286a0");
 void __attribute__((noreturn)) GameRoutine_f7e4a0(_QWORD);
 void game_hub_f71a70(__int64 a1);
 __attribute__((swiftcall)) void
@@ -11779,9 +11781,11 @@ __int64 game_hub_102e240(__int64 a1, __int128* a2, unsigned __int8* a3)
     if (v16 != 2) {
       goto LABEL_104;
     }
-    v17 = game_hub_e286a0(*v8, &v65_.v65),
-    v18 = COERCE_AS(__typeof__(v18),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v17 = ({
+      unsigned __int128 r_ = game_hub_e286a0_pair(*v8, &v65_.v65);
+      v18 = COERCE_AS(__typeof__(v18), (unsigned long long)(r_ >> 64));
+      (unsigned __int64)(unsigned long long)r_;
+    });
     if ((v18 & 1) != 0) {
       v19 = v17;
       game_hub_e28d20((void*)(v62_.v62), *v8, v17),

@@ -1067,6 +1067,8 @@ GameRoutine_14a3a60_alt1(__int64*,
                          unsigned __int8*) __asm__("GameRoutine_14a3a60");
 
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 
 __int64* Material_addbe0(__int64* result, __int64, unsigned __int64, char);
 
@@ -4402,11 +4404,13 @@ LABEL_69:
         v108 = *((_QWORD*)v53 + 13);
         v149_.v157 = *((_QWORD*)v53 + 12);
         v149_.v158 = v108;
-        v109 = Manager_bc6460(v102, (__int64)&v149_.v149, 1),
-        v110 = COERCE_AS(__typeof__(v110),
-                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v74 = COERCE_AS(__typeof__(v74),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v109 = ({
+          unsigned __int128 r_ =
+              Manager_bc6460_pair(v102, (__int64)&v149_.v149, 1);
+          v110 = COERCE_AS(__typeof__(v110), (unsigned long long)(r_ >> 64));
+          v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+          (__int64*)(unsigned long long)r_;
+        });
         GameHr_14a10d0(&v147_.v147, (__int64)v109, v110,
                        (__int64)&GameData_1a9f09e),
             v110 = COERCE_AS(__typeof__(v110),
@@ -4716,11 +4720,14 @@ LABEL_69:
             v72 = *((_QWORD*)v53 + 13);
             v149_.v157 = *((_QWORD*)v53 + 12);
             v149_.v158 = v72;
-            v73 = Manager_bc6460(v69, (__int64)&v149_.v149, 1),
-            v110 = COERCE_AS(__typeof__(v110),
-                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-            v74 = COERCE_AS(__typeof__(v74),
-                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+            v73 = ({
+              unsigned __int128 r_ =
+                  Manager_bc6460_pair(v69, (__int64)&v149_.v149, 1);
+              v110 =
+                  COERCE_AS(__typeof__(v110), (unsigned long long)(r_ >> 64));
+              v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+              (__int64*)(unsigned long long)r_;
+            });
             GameHr_14a10d0(&v147_.v147, (__int64)v73, v74,
                            (__int64)&GameData_1a9f09e),
                 v110 =

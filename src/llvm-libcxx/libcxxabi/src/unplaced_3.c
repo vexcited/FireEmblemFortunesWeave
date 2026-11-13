@@ -63,6 +63,9 @@ __int64
 anonymous_itanium_demangle_AbstractManglingParser_parseVectorType(__int64);
 __int64 anonymous_itanium_demangle_AbstractManglingParser_popTrailingNodeArray(
     _QWORD*, unsigned __int64);
+unsigned __int128 popTrailingNodeArray_pair(_QWORD*, unsigned __int64) __asm__(
+    "anonymous_itanium_demangle_"
+    "AbstractManglingParser_popTrailingNodeArray");
 __int64 llvm_libcxx_libcxxabi_src_835780_alt1(
     unsigned __int8**, __int64) __asm__("llvm_libcxx_libcxxabi_src_835780");
 __int64 llvm_libcxx_libcxxabi_src_838aa0_alt1(
@@ -100,6 +103,8 @@ extern __int64 SdkData_e89848;
 extern __int64 SdkData_e89858;
 int strcmp_plt(const char*, const char*);
 unsigned __int8* SdkRoutine_833d40(unsigned __int8**, char);
+unsigned __int128 SdkRoutine_833d40_pair(unsigned __int8**,
+                                         char) __asm__("SdkRoutine_833d40");
 unsigned __int8* SdkRoutine_845fc0(unsigned __int8* result, unsigned __int8*);
 void __attribute__((noreturn)) SdkRoutine_7cd620();
 void __attribute__((noreturn)) abort_plt(_QWORD);
@@ -328,15 +333,14 @@ char* llvm_libcxx_libcxxabi_src_833e70(unsigned __int8** a1, __int64 a2,
       }
     }
     else {
-      v124_.v124 = SdkRoutine_833d40(a1, 0),
-      v10 = COERCE_AS(__typeof__(v10),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v117 = COERCE_AS(__typeof__(v117),
-                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v68 = COERCE_AS(__typeof__(v68),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v72 = COERCE_AS(__typeof__(v72),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v124_.v124 = ({
+        unsigned __int128 r_ = SdkRoutine_833d40_pair(a1, 0);
+        v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+        v117 = COERCE_AS(__typeof__(v117), (unsigned long long)(r_ >> 64));
+        v68 = COERCE_AS(__typeof__(v68), (unsigned long long)(r_ >> 64));
+        v72 = COERCE_AS(__typeof__(v72), (unsigned long long)(r_ >> 64));
+        (unsigned __int8*)(unsigned long long)r_;
+      }),
       v73 = COERCE_AS(__typeof__(v73),
                       PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
       v124_.v125 = v10;
@@ -577,15 +581,14 @@ char* llvm_libcxx_libcxxabi_src_833e70(unsigned __int8** a1, __int64 a2,
         }
       }
       else {
-        v124_.v124 = SdkRoutine_833d40(a1, 0),
-        v10 = COERCE_AS(__typeof__(v10),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v117 = COERCE_AS(__typeof__(v117),
-                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v68 = COERCE_AS(__typeof__(v68),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v72 = COERCE_AS(__typeof__(v72),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v124_.v124 = ({
+          unsigned __int128 r_ = SdkRoutine_833d40_pair(a1, 0);
+          v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+          v117 = COERCE_AS(__typeof__(v117), (unsigned long long)(r_ >> 64));
+          v68 = COERCE_AS(__typeof__(v68), (unsigned long long)(r_ >> 64));
+          v72 = COERCE_AS(__typeof__(v72), (unsigned long long)(r_ >> 64));
+          (unsigned __int8*)(unsigned long long)r_;
+        }),
         v73 = COERCE_AS(__typeof__(v73),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
         v124_.v125 = v68;
@@ -633,15 +636,14 @@ char* llvm_libcxx_libcxxabi_src_833e70(unsigned __int8** a1, __int64 a2,
         v108 = "std::bfloat16_t";
         goto LABEL_243;
       }
-      v124_.v124 = SdkRoutine_833d40(a1, 0),
-      v10 = COERCE_AS(__typeof__(v10),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v117 = COERCE_AS(__typeof__(v117),
-                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v68 = COERCE_AS(__typeof__(v68),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v72 = COERCE_AS(__typeof__(v72),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v124_.v124 = ({
+        unsigned __int128 r_ = SdkRoutine_833d40_pair(a1, 0);
+        v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+        v117 = COERCE_AS(__typeof__(v117), (unsigned long long)(r_ >> 64));
+        v68 = COERCE_AS(__typeof__(v68), (unsigned long long)(r_ >> 64));
+        v72 = COERCE_AS(__typeof__(v72), (unsigned long long)(r_ >> 64));
+        (unsigned __int8*)(unsigned long long)r_;
+      }),
       v73 = COERCE_AS(__typeof__(v73),
                       PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
       v124_.v125 = v117;
@@ -2940,11 +2942,11 @@ LABEL_11:
         }
       }
       *a1 = v35;
-      v37 =
-          anonymous_itanium_demangle_AbstractManglingParser_popTrailingNodeArray(
-              a1, v27),
-      v40 = COERCE_AS(__typeof__(v40),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v37 = ({
+        unsigned __int128 r_ = popTrailingNodeArray_pair(a1, v27);
+        v40 = COERCE_AS(__typeof__(v40), (unsigned long long)(r_ >> 64));
+        (__int64)(unsigned long long)r_;
+      });
       v38 = a1[614];
       v39 = v37;
       v41 = v40;
@@ -3271,11 +3273,12 @@ char* llvm_libcxx_libcxxabi_src_83ca00(__int64 a1, __int64 a2, __int64 a3)
           }
           v29 = result;
           *(_QWORD*)a1 = v9 + 1;
-          v30 =
-              anonymous_itanium_demangle_AbstractManglingParser_popTrailingNodeArray(
-                  (_QWORD*)a1, (v12 - v11) >> 3),
-          v33 = COERCE_AS(__typeof__(v33),
-                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+          v30 = ({
+            unsigned __int128 r_ =
+                popTrailingNodeArray_pair((_QWORD*)a1, (v12 - v11) >> 3);
+            v33 = COERCE_AS(__typeof__(v33), (unsigned long long)(r_ >> 64));
+            (__int64)(unsigned long long)r_;
+          });
           v31 = *(_QWORD**)(a1 + 4912);
           v32 = v30;
           v34 = v33;

@@ -56,9 +56,9 @@ __int64 spreading_decision(__int64, __int64, int*, int, int*, int*, int, int,
 __int64 tf_analysis_alt1(__int64, unsigned int, int, __int64, int, __int64, int,
                          unsigned int, __int16, int,
                          _DWORD*) __asm__("tf_analysis");
-bool MovieRoutine_2ffe0(__int64, unsigned int, int, _WORD*, _DWORD*, int,
+int MovieRoutine_2ffe0(__int64, unsigned int, int, _WORD*, _DWORD*, int,
                         _DWORD*);
-bool MovieRoutine_30f00(__int64, _WORD*, int, int, int);
+int MovieRoutine_30f00(__int64, _WORD*, int, int, int);
 extern _UNKNOWN MovieData_a24c2;
 extern _UNKNOWN MovieData_a24c5;
 extern _UNKNOWN MovieData_a24ca;
@@ -5091,7 +5091,7 @@ __int64 tf_analysis(__int64 a1, int a2, int a3, __int64 a4, int a5, __int64 a6,
   v275_.v279 = a11;
   v17 = (v12 + 15) & 0xFFFFFFFFFFFFFFF0LL;
   v275_.v292 = a6;
-  v275_.v293 = (_DWORD*)((char*)&v275_.v275 - v17);
+  v275_.v293 = (_DWORD*)__builtin_alloca(v17);
   memset_plt(v275_.v293, 0, v12);
   v18 = *(_QWORD*)(a1 + 24);
   v275_.v291 = a1;
@@ -5099,12 +5099,12 @@ __int64 tf_analysis(__int64 a1, int a2, int a3, __int64 a4, int a5, __int64 a6,
   v19 = 2LL *
         ((*(__int16*)(v18 + 2LL * (int)v11) - *(__int16*)(v18 + 2 * (v16 - 1)))
          << v14);
-  v20 = (char*)v275_.v293 - ((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
-  v275_.v287 = v20 - ((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
-  v275_.v277 = v275_.v287 - v17;
+  v20 = (char*)__builtin_alloca((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v275_.v287 = (char*)__builtin_alloca((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v275_.v277 = (char*)__builtin_alloca(v17);
   v275_.v278 = v16 - 1;
   memset_plt(v275_.v277, 0, v12);
-  v275_.v276 = v275_.v277 - v17;
+  v275_.v276 = (char*)__builtin_alloca(v17);
   memset_plt(v275_.v276, 0, v12);
   v275_.v282 = v11;
   if ((int)v11 >= 1) {

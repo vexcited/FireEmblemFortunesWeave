@@ -609,7 +609,7 @@ __int64 game_templates_a54440(__int64 a1, __int64 a2, __int64 a3,
           }
           v195 = v53;
           v84 = v52;
-          HIDWORD(v41) = 0;
+          DWORD3(v41) = 0;
           v85 = *(_DWORD*)(a1 + 156);
           if (v11 < v202) {
             *(_BYTE*)(v11 + 48) = v42;
@@ -1621,7 +1621,7 @@ LABEL_40:
         v43 = std___1___next_prime(v43);
       }
       else {
-        v44 = 1LL << -(char)__clz(v43 - 1);
+        v44 = 1LL << (-(char)__clz(v43 - 1) & 63);
         if (v43 >= 2) {
           v43 = v44;
         }
@@ -1942,7 +1942,7 @@ LABEL_23:
         result = v43;
       }
       else {
-        v31 = 1LL << -(char)__clz(v30 - 1);
+        v31 = 1LL << (-(char)__clz(v30 - 1) & 63);
         if (v30 >= 2) {
           v30 = v31;
         }

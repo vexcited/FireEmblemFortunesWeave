@@ -172,7 +172,7 @@ __int64 CudaDriverRoutine_1ba580(__int64);
 
 __int64 CudaDriverRoutine_1bbf50(_QWORD, _QWORD, _QWORD, _QWORD);
 
-bool CudaDriverRoutine_1bc430(__int64, int);
+unsigned __int8 CudaDriverRoutine_1bc430(__int64, int);
 
 __int64 CudaDriverRoutine_1bc4b0(_QWORD);
 
@@ -3324,14 +3324,14 @@ __int64 CudaDriverHr_1c7f20(__int64 a1, __int64 a2)
   v5 = 0u;
   v6 = 0u;
   BYTE1(v5) = 1;
-  HIDWORD(v5) = 5260976;
+  DWORD3(v5) = 5260976;
   result = (*(__int64 (**)(__int64, __int64, __int128*, __int64))(
       *(_QWORD*)(a1 + 32306416) + 40LL))(a1, a2, &v5, 1);
   if ((_DWORD)result == 0) {
     LOWORD(v5) = 257;
-    HIDWORD(v5) = 4300464;
+    DWORD3(v5) = 4300464;
     DWORD1(v6) &= ~0x100u;
-    HIDWORD(v6) = -1;
+    DWORD3(v6) = -1;
     return (*(__int64 (**)(__int64, __int64, __int128*, __int64))(
         *(_QWORD*)(a1 + 32306416) + 40LL))(a1, a2, &v5, 1);
   }
@@ -3347,14 +3347,14 @@ __int64 CudaDriverHr_1c7ff0(__int64 a1, __int64 a2)
   v5 = 0u;
   v6 = 0u;
   BYTE1(v5) = 1;
-  HIDWORD(v5) = 5260976;
+  DWORD3(v5) = 5260976;
   result = (*(__int64 (**)(__int64, __int64, __int128*, __int64))(
       *(_QWORD*)(a1 + 32306416) + 40LL))(a1, a2, &v5, 1);
   if ((_DWORD)result == 0) {
     LOWORD(v5) = 257;
-    HIDWORD(v5) = 4300464;
+    DWORD3(v5) = 4300464;
     DWORD1(v6) |= 0x100u;
-    HIDWORD(v6) = -1;
+    DWORD3(v6) = -1;
     return (*(__int64 (**)(__int64, __int64, __int128*, __int64))(
         *(_QWORD*)(a1 + 32306416) + 40LL))(a1, a2, &v5, 1);
   }
@@ -4983,7 +4983,7 @@ __int64* CudaDriverHr_1caa40(__int64* result, unsigned int a2, unsigned int a3,
       v10 = -1;
     }
     v11 = result[1] & ~(v10 << a2);
-    v12 = v6 >> -(char)a2;
+    v12 = v6 >> (-(char)a2 & 63);
     v13 = v6 << a2;
     if (a2 < 0x40) {
       v13 = v12;

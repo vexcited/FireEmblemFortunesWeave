@@ -1140,7 +1140,7 @@ __int64 GameHr_268800(__int64* a1, float* a2, float* a3, __int64 a4, _DWORD* a5,
       v16 = 0x40000000;
       *a5 = v21;
       if (a6 != 0 && v15 != 0) {
-        v17 = HIDWORD(v21);
+        v17 = DWORD3(v21);
         *(_QWORD*)a6 = *(_QWORD*)((char*)&v21 + 4);
         *(_DWORD*)(a6 + 8) = v17;
       }

@@ -91,7 +91,7 @@ __int64 SuperStripeSystem_5cd920(__int64 a1, double a2, long double a3)
   v16 = vmuls_lane_f32(v15, *v4, 2);
   LANES128(v13).n128_f32[0] = v15 * COERCE_FLOAT(*v4);
   *(float*)&v17 = v15 * LANES128(v14).n128_f32[0];
-  LANES128(v13).n128_u32[1] = vmuls_lane_f32(
+  LANES128(v13).n128_f32[1] = vmuls_lane_f32(
       v15, COERCE_AS(float32x2_t, LANES128(*(v4)).n128_u64[0]), 1);
   *(float*)&v18 =
       vmuls_lane_f32(v15, COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0]), 1);
@@ -189,7 +189,7 @@ __int64 SuperStripeSystem_5ce190(__int64 a1, __int64 a2, float32x4_t* a3)
   v20 = vmuls_lane_f32(v19, *a3, 2);
   LANES128(v17).n128_f32[0] = v19 * COERCE_FLOAT(*a3);
   *(float*)&v21 = v19 * LANES128(v18).n128_f32[0];
-  LANES128(v17).n128_u32[1] = vmuls_lane_f32(
+  LANES128(v17).n128_f32[1] = vmuls_lane_f32(
       v19, COERCE_AS(float32x2_t, LANES128(*(a3)).n128_u64[0]), 1);
   *(float*)&v22 =
       vmuls_lane_f32(v19, COERCE_AS(float32x2_t, LANES128(v18).n128_u64[0]), 1);

@@ -414,18 +414,19 @@ __int64 MovieHr_23ce0(__int64 a1, int a2, int a3, int a4)
   __int64 v48;
   __int16 v49;
   _QWORD vars0[2];
+  char* v8a;
 
   v8 = 2LL * a3 * a2;
-  MovieRoutine_82ce0((char*)vars0 - ((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL), 0, v8);
+  v8a = (char*)__builtin_alloca((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  MovieRoutine_82ce0(v8a, 0, v8);
   if (a4 == 0) {
     if (a3 < 1 || a2 < 1) {
-      return MovieRoutine_82920(
-          a1, (char*)vars0 - ((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL), v8);
+      return MovieRoutine_82920(a1, v8a, v8);
     }
     v29 = (_WORD*)(a1 + 8);
     v30 = 0;
     v31 = a1;
-    v32 = (char*)vars0 - ((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+    v32 = v8a;
     v33 = 2LL * (unsigned int)a2;
     v34 = 2LL * (unsigned int)a3;
     while ((unsigned int)a2 < 8) {
@@ -439,8 +440,7 @@ __int64 MovieHr_23ce0(__int64 a1, int a2, int a3, int a4)
       v29 = (_WORD*)((char*)v29 + v33);
       v31 += v33;
       if (v30 == a3) {
-        return MovieRoutine_82920(
-            a1, (char*)vars0 - ((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL), v8);
+        return MovieRoutine_82920(a1, v8a, v8);
       }
     }
     v36 = 0;
@@ -484,7 +484,7 @@ __int64 MovieHr_23ce0(__int64 a1, int a2, int a3, int a4)
   }
   if (a3 >= 1 && a2 >= 1) {
     v9 = 0;
-    v10 = (char*)vars0 - ((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+    v10 = v8a;
     v11 = 2LL * a3;
     while (1) {
       v12 = MovieData_a2290[a3 - 2 + v9] * a2;
@@ -499,8 +499,7 @@ __int64 MovieHr_23ce0(__int64 a1, int a2, int a3, int a4)
       ++v9;
       v10 += 2;
       if (v9 == a3) {
-        return MovieRoutine_82920(
-            a1, (char*)vars0 - ((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL), v8);
+        return MovieRoutine_82920(a1, v8a, v8);
       }
     }
     v14 = (_WORD*)(a1 + 8 + 2 * v12);
@@ -543,8 +542,7 @@ __int64 MovieHr_23ce0(__int64 a1, int a2, int a3, int a4)
     } while (v26 != 0);
     goto LABEL_5;
   }
-  return MovieRoutine_82920(
-      a1, (char*)vars0 - ((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL), v8);
+  return MovieRoutine_82920(a1, v8a, v8);
 }
 
 __int64 MovieHr_4a340(__int64 a1, __int64 a2, int a3, __int64 a4, __int64 a5,
@@ -959,7 +957,7 @@ __int64 MovieHr_4a340(__int64 a1, __int64 a2, int a3, __int64 a4, __int64 a5,
   v368 = a6;
   v367 = a5;
   v387 = a3;
-  v424 = (char*)&v360 - ((56LL * (int)a24 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v424 = (char*)__builtin_alloca((56LL * (int)a24 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   result = MovieRoutine_82ce0(v424, 0, 56LL * (int)a24);
   v31 = (int)a24;
   if (a19 >= 1) {
@@ -3269,7 +3267,7 @@ __int64 MovieHr_7a0b0(int* a1, int a2)
                 if (v17 != 1) {
                   v7 = v15[1];
                 LABEL_9:
-                  v6 |= v7 << -(char)v3;
+                  v6 |= v7 << (-(char)v3 & 31);
                   return v6 & MovieData_a9508[a2];
                 }
                 while (1) {
@@ -4557,7 +4555,7 @@ unsigned __int64 MovieHr_7d020(int a1, int* a2)
   v297 = -v2;
   v5 = v2 + 7;
   v6 = &a2[a1 >> 1];
-  v7 = 2 << -(char)v2;
+  v7 = 2 << (-(char)v2 & 31);
   v8 = (int*)&MovieData_b1994;
   v9 = v6 - 3;
   do {
@@ -4588,7 +4586,7 @@ unsigned __int64 MovieHr_7d020(int a1, int* a2)
   } while (v15 - 4 >= a2);
   v20 = 4 * v7;
   v21 = 0;
-  v298 = 2 << -(char)v2;
+  v298 = 2 << (-(char)v2 & 31);
   v300 = v4;
   v22 = a2;
   v23 = 0x7FFFFFFF;

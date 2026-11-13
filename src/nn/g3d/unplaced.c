@@ -2349,7 +2349,7 @@ __int64 nn_g3d_5f6180(__int64 result, unsigned __int16* a2, __int64 a3,
                 v59 = *(_QWORD*)(v36 + 68);
                 v60 = v39;
                 v40 = *(_QWORD*)(v36 + 56);
-                HIDWORD(v56) = *(_DWORD*)(v36 + 64);
+                DWORD3(v56) = *(_DWORD*)(v36 + 64);
                 *(_QWORD*)((char*)&v56 + 4) = v40;
                 v41 = *(_QWORD*)(v36 + 84);
                 LODWORD(v58) = *(_DWORD*)(v36 + 92);
@@ -2416,7 +2416,7 @@ __int64 nn_g3d_5f6180(__int64 result, unsigned __int16* a2, __int64 a3,
                     *((_QWORD*)&v56 + 1) = __PAIR64__(LODWORD(a4), v28);
                     (*(void (**)(__int64, __int128*, float))(
                         *(_QWORD*)v45 + 16LL))(v45, &v56, a4);
-                    LODWORD(v13) = HIDWORD(v56);
+                    LODWORD(v13) = DWORD3(v56);
                   }
                   result = (*((__int64 (**)(_QWORD*, _QWORD, _DWORD*, _QWORD,
                                             long double))nn_g3d_5f33e0_ptr_ptr +

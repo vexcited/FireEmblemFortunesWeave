@@ -345,7 +345,7 @@ LABEL_35:
       (float)((float)((float)((float)(v30 | 0x100u) * 5.0f) + 2.5f) +
               -0x1.4000000000000p+10f) +
       -2.5f;
-  HIDWORD(v35) = 0;
+  DWORD3(v35) = 0;
   *(_OWORD*)v76 = v35;
   game_13f9460((void*)(&v73), v76);
   v79 = 0;

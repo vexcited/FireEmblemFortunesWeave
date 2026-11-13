@@ -4957,7 +4957,7 @@ unsigned int* GameHr_6b6c80(unsigned int* result, unsigned __int64 a2,
   v7 = result;
   v8 = GameData_212ce38;
   if (a2 >= v4) {
-    v11 = __clz(a2 - v4 + 16);
+    v11 = __clz((unsigned int)(a2 - v4 + 16));
     v9 = 28 - v11;
     v10 = (unsigned __int8*)(*(_QWORD*)(*((_QWORD*)result + 2) +
                                         8 * (27 - v11) + 8) +
@@ -4972,7 +4972,7 @@ unsigned int* GameHr_6b6c80(unsigned int* result, unsigned __int64 a2,
   v12 = *a3;
   v13 = a4 - 1;
   if (a4 - 1 >= v12) {
-    v16 = __clz(v13 - v12 + 16);
+    v16 = __clz((unsigned int)(v13 - v12 + 16));
     v14 = *(_QWORD*)(*((_QWORD*)a3 + 2) + 8 * (27 - v16) + 8) +
           16LL * (unsigned int)(v13 - v12 -
                                 *((_DWORD*)GameData_212ce38 + 28 - v16));
@@ -5002,7 +5002,7 @@ LABEL_13:
       v18 = *a3;
       if (v13 >= v18) {
         v21 = v13 - v18;
-        v22 = __clz(v13 - v18 + 16);
+        v22 = __clz((unsigned int)(v13 - v18 + 16));
         v19 = 28 - v22;
         v20 = *(_QWORD*)(*((_QWORD*)a3 + 2) + 8 * (27 - v22) + 8) +
               16LL * (unsigned int)(v21 - v8[28 - v22]);
@@ -5012,7 +5012,7 @@ LABEL_13:
         v20 = *((_QWORD*)a3 + 1) + 16 * v13;
       }
       v23 = *v7;
-      v24 = 28LL - __clz(v6 - v23 + 16);
+      v24 = 28LL - __clz((unsigned int)(v6 - v23 + 16));
       if (v6 < v23) {
         v24 = 0;
       }
@@ -5085,7 +5085,7 @@ void GameHr_6b6ee0(unsigned int* a1, unsigned __int64 a2, unsigned int* a3,
   v6 = a2;
   v8 = GameData_212ce38;
   if (a2 >= v4) {
-    v11 = __clz(a2 - v4 + 16);
+    v11 = __clz((unsigned int)(a2 - v4 + 16));
     v9 = 28 - v11;
     v10 = *(_QWORD*)(*((_QWORD*)a1 + 2) + 8 * (27 - v11) + 8) +
           32LL *
@@ -5098,7 +5098,7 @@ void GameHr_6b6ee0(unsigned int* a1, unsigned __int64 a2, unsigned int* a3,
   v12 = *a3;
   v13 = a4 - 1;
   if (a4 - 1 >= v12) {
-    v17 = __clz(v13 - v12 + 16);
+    v17 = __clz((unsigned int)(v13 - v12 + 16));
     v14 = *(_QWORD*)(*((_QWORD*)a3 + 2) + 8 * (27 - v17) + 8) +
           32LL * (unsigned int)(v13 - v12 -
                                 *((_DWORD*)GameData_212ce38 + 28 - v17));
@@ -5128,7 +5128,7 @@ LABEL_14:
       v23 = *a3;
       if (v13 >= v23) {
         v26 = v13 - v23;
-        v27 = __clz(v13 - v23 + 16);
+        v27 = __clz((unsigned int)(v13 - v23 + 16));
         v24 = 28 - v27;
         v25 = *(_QWORD*)(*((_QWORD*)a3 + 2) + 8 * (27 - v27) + 8) +
               32LL * (unsigned int)(v26 - v8[28 - v27]);
@@ -5138,7 +5138,7 @@ LABEL_14:
         v25 = *((_QWORD*)a3 + 1) + 32 * v13;
       }
       v28 = *a1;
-      v29 = 28LL - __clz(v6 - v28 + 16);
+      v29 = 28LL - __clz((unsigned int)(v6 - v28 + 16));
       if (v6 < v28) {
         v29 = 0;
       }
@@ -5726,7 +5726,7 @@ __int64 GameHr_6e9a40(__int64* a1)
       v9 = std___1___next_prime(v9);
     }
     else {
-      v10 = 1LL << -(char)__clz(v9 - 1);
+      v10 = 1LL << (-(char)__clz(v9 - 1) & 63);
       if (v9 >= 2) {
         v9 = v10;
       }
@@ -6371,7 +6371,7 @@ unsigned __int64 GameHr_6ec020(unsigned __int64 result)
           result = GameRoutine_1a09d00(result);
         }
         else {
-          v63 = 1LL << -(char)__clz(result - 1);
+          v63 = 1LL << (-(char)__clz(result - 1) & 63);
           if (result >= 2) {
             result = v63;
           }
@@ -7905,7 +7905,7 @@ LABEL_27:
         v38 = std___1___next_prime(v38);
       }
       else {
-        v39 = 1LL << -(char)__clz(v38 - 1);
+        v39 = 1LL << (-(char)__clz(v38 - 1) & 63);
         if (v38 >= 2) {
           v38 = v39;
         }
@@ -8445,13 +8445,13 @@ __int64 GameHr_769d60(__int64 a1, __int64 a2, _DWORD* a3, long double a4,
     else {
       a4 = *(long double*)(v9 + 208);
     }
-    LODWORD(a4) = HIDWORD(a4);
+    LODWORD(a4) = DWORD3(a4);
     if (*((float*)&a4 + 3) != 0x1.0000000000000p+0f ||
         (v11 = a1,
          *(__n128*)& a4 = ((__n128 (*)(unsigned __int64, float)) *
                            (_QWORD*)(*(_QWORD*)(v9 + 160) + 16LL))(
              v9 + 160, *((float*)&a4 + 3)),
-         LODWORD(a4) = HIDWORD(a4), a1 = v11,
+         LODWORD(a4) = DWORD3(a4), a1 = v11,
          *((float*)&a4 + 3) != 0x1.0000000000000p+0f)) {
     LABEL_16:
       v13 = "Bmap_Warp_Hit";

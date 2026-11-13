@@ -596,7 +596,7 @@ __int64 SightMapsImpl_Unknown5(__int64 result)
           v15 = *(_QWORD*)(v13 + 24);
           *(_QWORD*)(v15 + 160) = v14;
           *(_DWORD*)(v15 + 168) = DWORD2(v14);
-          *(_DWORD*)(*(_QWORD*)(v13 + 24) + 172LL) = HIDWORD(v14);
+          *(_DWORD*)(*(_QWORD*)(v13 + 24) + 172LL) = DWORD3(v14);
           v16 = *(_QWORD*)(result + 536);
           v17 = *(_DWORD*)(v4 + 196);
           *(_DWORD*)(*(_QWORD*)(v16 + 24) + 176LL) = *(_DWORD*)(v4 + 192);

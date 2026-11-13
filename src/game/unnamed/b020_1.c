@@ -553,6 +553,8 @@ __int64 GameRoutine_1562060(__int64 result, __int64, __int64);
 __int64 GameRoutine_15621a0(_QWORD, _QWORD);
 
 __int64 GameRoutine_15623e0(_QWORD*, __int64);
+unsigned __int128
+GameRoutine_15623e0_pair(_QWORD*, __int64) __asm__("GameRoutine_15623e0");
 
 __int64 GameRoutine_1562680(__int64 result, __int64, float);
 
@@ -2423,9 +2425,12 @@ LABEL_16:
     v13 = COERCE_AS(__typeof__(v13),
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     if ((result & 1) != 0) {
-      v12 = GameRoutine_15623e0((_QWORD*)v4, (__int64)a2),
-      v13 = COERCE_AS(__typeof__(v13),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v12 = ({
+        unsigned __int128 r_ =
+            GameRoutine_15623e0_pair((_QWORD*)v4, (__int64)a2);
+        v13 = COERCE_AS(__typeof__(v13), (unsigned long long)(r_ >> 64));
+        (__int64)(unsigned long long)r_;
+      });
       v14 = v13;
       v58_.v58[0] = v12;
       v58_.v58[1] = v13;

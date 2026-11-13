@@ -53,6 +53,8 @@ __int64*
 GameRoutine_e07e20_alt1(unsigned __int8*) __asm__("GameRoutine_e07e20");
 __int64* HandlePtr_d5bf40(__int64* result, __int64, __int64*);
 __int64* Manager_bc6460(float*, float32x4_t*, char);
+unsigned __int128 Manager_bc6460_pair(float*, float32x4_t*,
+                                      char) __asm__("Manager_bc6460");
 __int64* SpineModel_64dde0_alt1(__int64*, __int64,
                                 unsigned __int64) __asm__("SpineModel_64dde0");
 __int64* game_ff5c20(__int64, unsigned __int8*);
@@ -479,6 +481,8 @@ __int64* GameRoutine_1017b90_alt1(__int64*,
 __int64* HandlePtr_cb3600_alt1(__int64* result, __int64, __int64,
                                unsigned __int64) __asm__("HandlePtr_cb3600");
 __int64* Manager_bc6460_alt1(float*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(float*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_10182e0(__int64*, __int64);
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_df9600(__int64);
@@ -11423,10 +11427,12 @@ __attribute__((swiftcall)) void game_hub_e1be60(PSEUDO_X8 x8_, __int64* a1,
   v25_.v28 = v10;
   v25_.v31 = v11;
   v25_.v32 = v10;
-  v14 = Manager_bc6460_alt1(*(float**)eft_g_effectSystem_ptr[0],
-                            (__int64)v25_.v25, 0),
-  v15 = COERCE_AS(__typeof__(v15),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v14 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(float**)eft_g_effectSystem_ptr[0], (__int64)v25_.v25, 0);
+    v15 = COERCE_AS(__typeof__(v15), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(a3, (__int64)v14, v15, (__int64)&GameData_1a9f09e),
       v15 = COERCE_AS(__typeof__(v15),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -11531,9 +11537,11 @@ __attribute__((swiftcall)) void game_hub_e1bfe0(PSEUDO_X8 x8_, __int64* a1,
   v11 = *((_QWORD*)GameData_212c540 + 1);
   v23_.v28 = *(_QWORD*)GameData_212c540;
   v23_.v29 = v11;
-  v12 = Manager_bc6460_alt1(v9, (__int64)v23_.v23, 1),
-  v13 = COERCE_AS(__typeof__(v13),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v12 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v9, (__int64)v23_.v23, 1);
+    v13 = COERCE_AS(__typeof__(v13), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(a4, (__int64)v12, v13, (__int64)&GameData_1a9f09e),
       v13 = COERCE_AS(__typeof__(v13),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -11655,9 +11663,12 @@ __attribute__((swiftcall)) void game_hub_e1c160(PSEUDO_X8 x8_, _QWORD* a1,
   v36_.v40 = v12;
   v36_.v43 = v13;
   v36_.v44 = v12;
-  v16 = Manager_bc6460(*(float**)eft_g_effectSystem_ptr[0], &v36_.v36, 0),
-  v17 = COERCE_AS(__typeof__(v17),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v16 = ({
+    unsigned __int128 r_ =
+        Manager_bc6460_pair(*(float**)eft_g_effectSystem_ptr[0], &v36_.v36, 0);
+    v17 = COERCE_AS(__typeof__(v17), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameRoutine_14a10d0(a4, (__int64)v16, v17, (__int64)&GameData_1a9f09e),
       v17 = COERCE_AS(__typeof__(v17),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

@@ -3810,7 +3810,7 @@ LABEL_56:
       v43 = std___1___next_prime_alt1(v43);
     }
     else {
-      v44 = 1LL << -(char)__clz(v43 - 1);
+      v44 = 1LL << (-(char)__clz(v43 - 1) & 63);
       if (v43 >= 2) {
         v43 = v44;
       }

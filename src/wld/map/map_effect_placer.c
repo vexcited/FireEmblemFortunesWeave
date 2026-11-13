@@ -53,6 +53,8 @@ __int64*
 GameRoutine_14a3a60_alt1(__int64*,
                          unsigned __int8*) __asm__("GameRoutine_14a3a60");
 __int64* Manager_bc6460_alt1(float*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(float*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_98ed40(__int64);
 __int64 GameRoutine_bd16c0_alt1(_QWORD*, __int64) __asm__("GameRoutine_bd16c0");
@@ -390,13 +392,14 @@ bool MapEffectPlacer_198c1e0(__int64* a1, __int64** a2, float32x4_t* a3,
     v28 = LANES128(a3[7]).n128_u64[1];
     v114_.v121 = LANES128(a3[7]).n128_u64[0];
     v114_.v122 = v28;
-    v29 = Manager_bc6460_alt1(v26, (__int64)&v114_.v114, 1),
-    v107 = COERCE_AS(__typeof__(v107),
-                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v30 = COERCE_AS(__typeof__(v30),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v69 = COERCE_AS(__typeof__(v69),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v29 = ({
+      unsigned __int128 r_ =
+          Manager_bc6460_alt1_pair(v26, (__int64)&v114_.v114, 1);
+      v107 = COERCE_AS(__typeof__(v107), (unsigned long long)(r_ >> 64));
+      v30 = COERCE_AS(__typeof__(v30), (unsigned long long)(r_ >> 64));
+      v69 = COERCE_AS(__typeof__(v69), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v114_.v114, (__int64)v29, v30, v25),
         v107 = COERCE_AS(__typeof__(v107),
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -773,13 +776,14 @@ LABEL_97:
   v67 = LANES128(a3[7]).n128_u64[1];
   v114_.v121 = LANES128(a3[7]).n128_u64[0];
   v114_.v122 = v67;
-  v68 = Manager_bc6460_alt1(v64, (__int64)&v114_.v114, 1),
-  v107 = COERCE_AS(__typeof__(v107),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v30 = COERCE_AS(__typeof__(v30),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v69 = COERCE_AS(__typeof__(v69),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v68 = ({
+    unsigned __int128 r_ =
+        Manager_bc6460_alt1_pair(v64, (__int64)&v114_.v114, 1);
+    v107 = COERCE_AS(__typeof__(v107), (unsigned long long)(r_ >> 64));
+    v30 = COERCE_AS(__typeof__(v30), (unsigned long long)(r_ >> 64));
+    v69 = COERCE_AS(__typeof__(v69), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v114_.v114, (__int64)v68, v69, v63),
       v107 = COERCE_AS(__typeof__(v107),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1122,13 +1126,14 @@ LABEL_131:
       v105 = LANES128(a3[7]).n128_u64[1];
       v114_.v121 = LANES128(a3[7]).n128_u64[0];
       v114_.v122 = v105;
-      v106 = Manager_bc6460_alt1(v103, (__int64)&v114_.v114, 1),
-      v107 = COERCE_AS(__typeof__(v107),
-                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v30 = COERCE_AS(__typeof__(v30),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v69 = COERCE_AS(__typeof__(v69),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v106 = ({
+        unsigned __int128 r_ =
+            Manager_bc6460_alt1_pair(v103, (__int64)&v114_.v114, 1);
+        v107 = COERCE_AS(__typeof__(v107), (unsigned long long)(r_ >> 64));
+        v30 = COERCE_AS(__typeof__(v30), (unsigned long long)(r_ >> 64));
+        v69 = COERCE_AS(__typeof__(v69), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v114_.v114, (__int64)v106, v107, v102),
           v107 = COERCE_AS(__typeof__(v107),
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),

@@ -661,6 +661,8 @@ char** game_9ddae0_alt1(char** result,
 _QWORD* GameHr_e5d5a0(_QWORD*, _QWORD*);
 __int64* Manager_bc6460_alt1(_QWORD*, float32x4_t*,
                              char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, float32x4_t*,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 _QWORD* game_e5d200(_QWORD* a1, __int64 a2);
 __int64* Registration_a4f800_alt1(_QWORD*, const char*,
@@ -6333,7 +6335,7 @@ void game_da7be0(_QWORD* a1)
       v34 = *(float*)(*(_QWORD*)(v33 + 488) + 36LL);
       v36 = a1[2];
       v35 = a1[3];
-      HIDWORD(v37) = 0;
+      DWORD3(v37) = 0;
       v38 = v34 * 0x1.ca5dc20000000p+5f;
       if (v36 >= v35) {
         v40 = a1[1];
@@ -9661,9 +9663,11 @@ _QWORD* game_e5d200(_QWORD* a1, __int64 a2)
   v24_.v30 = *(_QWORD*)(a2 + 48);
   v24_.v31 = v12;
   v24_.v29 = v11;
-  v13 = Manager_bc6460_alt1(v7, &v24_.v24, 1),
-  v14 = COERCE_AS(__typeof__(v14),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v13 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v7, &v24_.v24, 1);
+    v14 = COERCE_AS(__typeof__(v14), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v24_.v24, (__int64)v13, v14, (__int64)&GameData_1a9f09e),
       v14 = COERCE_AS(__typeof__(v14),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

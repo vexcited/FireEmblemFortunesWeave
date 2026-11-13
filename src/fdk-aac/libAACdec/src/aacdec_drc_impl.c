@@ -1650,7 +1650,7 @@ unsigned __int64 nn_codec_aacDecoder_drcApply(unsigned __int64 result,
     v26 = v139[0] - v23;
     v25 = (v26 < 0) ^ v24 | (v26 == 0);
     v27 = v20 << v26;
-    v28 = v20 >> -(char)v26;
+    v28 = v20 >> (-(char)v26 & 31);
     if (!v25) {
       v28 = v27;
     }

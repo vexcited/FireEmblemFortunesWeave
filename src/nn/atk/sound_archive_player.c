@@ -194,6 +194,8 @@ bool GameHr_29f0e0(__int64, __int64, __int64, unsigned __int64);
 unsigned __int64 GameHr_29ee90(int);
 unsigned __int64 GameHr_29f560(__int64, int);
 unsigned __int64 SoundArchivePlayer_27dc10();
+unsigned __int128
+SoundArchivePlayer_27dc10_pair() __asm__("SoundArchivePlayer_27dc10");
 __int64 SoundArchivePlayer_279750(__int64 a1, __int64 a2);
 unsigned __int64 SoundArchivePlayer_279c00(__int64 a1);
 __int64 SoundArchivePlayer_27b0d0(__int64 a1, __int64 a2, unsigned int* a3,
@@ -613,9 +615,11 @@ unsigned __int64 SoundArchivePlayer_2799e0(__int64 a1, __int64 a2, int a3)
 
   v6 = COERCE_AS(__typeof__(v6),
                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  v18_.v18 = SoundArchivePlayer_27dc10(),
-  v6 = COERCE_AS(__typeof__(v6),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v18_.v18 = ({
+    unsigned __int128 r_ = SoundArchivePlayer_27dc10_pair();
+    v6 = COERCE_AS(__typeof__(v6), (unsigned long long)(r_ >> 64));
+    (unsigned __int64)(unsigned long long)r_;
+  });
   LODWORD(v18_.v19) = v6;
   WORD2(v18_.v18) = 0;
   v7 = GameRoutine_278650(a1),

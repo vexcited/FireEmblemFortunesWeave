@@ -764,9 +764,9 @@ __int64 nvidia_64f5d0(__int64 a1, __int64 a2, int a3, __int64 a4, int a5,
   v38[1] = v57 & 0xFFFFFFFE | a15 & 1;
   v38[2] = 537158188;
   v38[3] = a8;
-  v38[8] = a12 << -a14;
+  v38[8] = a12 << (-a14 & 31);
   v38[9] = a12 >> a14;
-  v38[10] = a13 << -a14;
+  v38[10] = a13 << (-a14 & 31);
   v38[11] = a13 >> a14;
   v38[12] = 537158196;
   v38[13] = a6 << 28;
@@ -912,13 +912,13 @@ __int64 nvidia_64fbf0(__int64 a1, __int64 a2, int* a3, __int64 a4, int* a5)
   v32 = 0u;
   v30 = 0u;
   v31 = 0u;
-  HIDWORD(v34) = HIWORD(v6);
+  DWORD3(v34) = HIWORD(v6);
   LODWORD(v35) = 2;
   v12 = *a5;
   v13 = a5[1];
   DWORD2(v38) = v8;
   DWORD2(v35) = v5;
-  HIDWORD(v35) = (unsigned __int16)v6;
+  DWORD3(v35) = (unsigned __int16)v6;
   DWORD1(v34) = v5;
   DWORD2(v34) = (unsigned __int16)v6;
   v14 = *(unsigned __int8*)(a2 + 113);
@@ -937,7 +937,7 @@ __int64 nvidia_64fbf0(__int64 a1, __int64 a2, int* a3, __int64 a4, int* a5)
   LODWORD(v15) = HIWORD(*(_DWORD*)(a4 + 108));
   v27 = *(_QWORD*)(a4 + 96);
   v19 = (v16 >> 21) & 0x3F;
-  HIDWORD(v28) = v15;
+  DWORD3(v28) = v15;
   LODWORD(v29) = 2;
   LODWORD(v15) = (unsigned __int8)v16;
   v20 = *(_QWORD*)(a4 + 72);

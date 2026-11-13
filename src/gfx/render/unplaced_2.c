@@ -3799,7 +3799,7 @@ LABEL_215:
   v195 = *(_OWORD*)(v187 + 96);
   if ((int)*(float*)&v195 != v193 || (int)*((float*)&v195 + 2) != v194) {
     DWORD1(v196) = 0;
-    HIDWORD(v196) = 0;
+    DWORD3(v196) = 0;
     *(_BYTE*)(v187 + 160) = 1;
     *(float*)&v196 = (float)v193;
     *((float*)&v196 + 2) = (float)v194;

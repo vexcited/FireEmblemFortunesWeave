@@ -1335,6 +1335,8 @@ GameRoutine_12274e0_alt1(__int64 result,
 __int64 GameRoutine_1832df0_alt1(__int64, char,
                                  char) __asm__("GameRoutine_1832df0");
 __int64 GameRoutine_19f3620_alt1(__int64, char) __asm__("GameRoutine_19f3620");
+unsigned __int128
+GameRoutine_19f3620_alt1_pair(__int64, char) __asm__("GameRoutine_19f3620");
 __int64 GameRoutine_60a020_alt1(__int64,
                                 const char*) __asm__("GameRoutine_60a020");
 __int64
@@ -8955,11 +8957,12 @@ LABEL_16:
   if ((v1 & 0x2000) != 0 &&
       *(_QWORD*)(a1 + 22808) - *(_QWORD*)(a1 + 22800) >= 0x11u) {
     v2 = a1;
-    v8[0] = GameRoutine_19f3620_alt1(a1 + 22792, 0),
-    v3 = COERCE_AS(__typeof__(v3),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v6 = COERCE_AS(__typeof__(v6),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v8[0] = ({
+      unsigned __int128 r_ = GameRoutine_19f3620_alt1_pair(a1 + 22792, 0);
+      v3 = COERCE_AS(__typeof__(v3), (unsigned long long)(r_ >> 64));
+      v6 = COERCE_AS(__typeof__(v6), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     v8[1] = v3;
     GameRoutine_1832df0_alt1(*GameData_212f628[0], 0, 0),
         v3 = COERCE_AS(__typeof__(v3),
@@ -8979,11 +8982,12 @@ LABEL_16:
     return 0;
   }
   v5 = a1;
-  v8[0] = GameRoutine_19f3620_alt1(a1 + 22792, 1),
-  v3 = COERCE_AS(__typeof__(v3),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v6 = COERCE_AS(__typeof__(v6),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v8[0] = ({
+    unsigned __int128 r_ = GameRoutine_19f3620_alt1_pair(a1 + 22792, 1);
+    v3 = COERCE_AS(__typeof__(v3), (unsigned long long)(r_ >> 64));
+    v6 = COERCE_AS(__typeof__(v6), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v8[1] = v6;
   GameRoutine_1832df0_alt1(*GameData_212f628[0], 0, 1),
       v3 = COERCE_AS(__typeof__(v3),

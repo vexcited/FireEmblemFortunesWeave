@@ -910,7 +910,7 @@ void game_combat_1069600(__int64 a1, float a2)
           v28 = COERCE_FLOAT(*(_OWORD*)(v9 + 336)) == v26 &&
                 COERCE_FLOAT(HIDWORD(*(_QWORD*)(v9 + 336))) == v27;
           v29 = v28 && COERCE_FLOAT(*(_QWORD*)(v9 + 344)) == v26;
-          if (!v29 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v9 + 336))) != v25) {
+          if (!v29 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v9 + 336))) != v25) {
             v31 = *(_DWORD*)(v9 + 296);
             *(float*)(v9 + 336) = v26;
             *(float*)(v9 + 340) = v27;
@@ -960,7 +960,7 @@ void game_combat_1069600(__int64 a1, float a2)
       if (COERCE_FLOAT(*(_OWORD*)&v7[21]) != v45 ||
           COERCE_FLOAT(HIDWORD(LANES128(v7[21]).n128_u64[0])) != v46 ||
           COERCE_FLOAT(LANES128(v7[21]).n128_u64[1]) != v48 ||
-          COERCE_FLOAT(HIDWORD(*(_OWORD*)&v7[21])) != v47) {
+          COERCE_FLOAT(DWORD3(*(_OWORD*)&v7[21])) != v47) {
         v52 = LANES128(v7[18]).n128_u32[2];
         LANES128(v7[21]).n128_f32[0] = v45;
         LANES128(v7[21]).n128_f32[1] = v46;
@@ -1694,7 +1694,7 @@ LABEL_142:
     }
     else {
       if ((unsigned int)(v10 + 1193575789) <= 0x10 &&
-          ((1 << (v10 + 109)) & 0x10403) != 0) {
+          ((1 << ((v10 + 109) & 31)) & 0x10403) != 0) {
         goto LABEL_272;
       }
       v74 = -972548316;

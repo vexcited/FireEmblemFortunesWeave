@@ -84,7 +84,7 @@ LABEL_3:
   v13 = (unsigned int)a2 - 32687;
   if ((unsigned int)v13 <= 0x20) {
     v14 = *(_QWORD*)(v6 + 8LL * v9);
-    if (((1LL << ((unsigned __int8)a2 + 81)) & 0x144000041LL) != 0) {
+    if (((1LL << (((unsigned __int8)a2 + 81) & 63)) & 0x144000041LL) != 0) {
       goto LABEL_44;
     }
     if (v13 == 20) {

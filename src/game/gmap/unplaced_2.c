@@ -183,6 +183,8 @@ long double LayoutAccessor_15638b0(_QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64* Manager_bc6460_alt2(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt2_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_1562680(__int64 result, const char*, float);
 __int64 GameRoutine_1656a50_alt1(__int64 result, __int64,
                                  char) __asm__("GameRoutine_1656a50");
@@ -1298,7 +1300,7 @@ LABEL_22:
         result = v28;
       }
       else {
-        v27 = 1LL << -(char)__clz(v26 - 1);
+        v27 = 1LL << (-(char)__clz(v26 - 1) & 63);
         if (v26 >= 2) {
           v26 = v27;
         }
@@ -1492,7 +1494,7 @@ LABEL_23:
         result = v28;
       }
       else {
-        v27 = 1LL << -(char)__clz(v26 - 1);
+        v27 = 1LL << (-(char)__clz(v26 - 1) & 63);
         if (v26 >= 2) {
           v26 = v27;
         }
@@ -2183,9 +2185,11 @@ LABEL_15:
   v32_.v37 = *(_QWORD*)GameData_212c540;
   v32_.v38 = v24;
   v32_.v33 = "UI_Gmap_Icon_ExclamationEvent";
-  v25 = Manager_bc6460_alt2(v23, (__int64)&v32_.v32, 1),
-  v26 = COERCE_AS(__typeof__(v26),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v25 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt2_pair(v23, (__int64)&v32_.v32, 1);
+    v26 = COERCE_AS(__typeof__(v26), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0_alt1(&v32_.v32, (__int64)v25, v26, (__int64)&GameData_1a9f09e),
       v26 = COERCE_AS(__typeof__(v26),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -2837,11 +2841,13 @@ __int64 game_gmap_1550220(__int64 result)
       v13 = v4[1];
       v36_.v42 = *v4;
       v36_.v43 = v13;
-      v14 = Manager_bc6460_alt2(v10, (__int64)v36_.v36, 1),
-      v15 = COERCE_AS(__typeof__(v15),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v25 = COERCE_AS(__typeof__(v25),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v14 = ({
+        unsigned __int128 r_ =
+            Manager_bc6460_alt2_pair(v10, (__int64)v36_.v36, 1);
+        v15 = COERCE_AS(__typeof__(v15), (unsigned long long)(r_ >> 64));
+        v25 = COERCE_AS(__typeof__(v25), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v32_.v32, (__int64)v14, v15, (__int64)&GameData_1a9f09e),
           v15 = COERCE_AS(__typeof__(v15),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -2908,11 +2914,13 @@ __int64 game_gmap_1550220(__int64 result)
     v23 = v4[1];
     v36_.v42 = *v4;
     v36_.v43 = v23;
-    v24 = Manager_bc6460_alt2(v20, (__int64)v36_.v36, 1),
-    v15 = COERCE_AS(__typeof__(v15),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v25 = COERCE_AS(__typeof__(v25),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v24 = ({
+      unsigned __int128 r_ =
+          Manager_bc6460_alt2_pair(v20, (__int64)v36_.v36, 1);
+      v15 = COERCE_AS(__typeof__(v15), (unsigned long long)(r_ >> 64));
+      v25 = COERCE_AS(__typeof__(v25), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v30_.v30, (__int64)v24, v25, (__int64)&GameData_1a9f09e),
         v15 = COERCE_AS(__typeof__(v15),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),

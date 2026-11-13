@@ -5962,7 +5962,7 @@ __int64 CudaDriverHr_2332e0(__int64 a1, __int64 a2, __int64 a3, char* a4,
           v30 = 1LL << ((unsigned __int8)v23 - 64);
           v31 = v26 & ~v30;
           if (v23 < 0x40) {
-            v30 = 1uLL >> -(char)v23;
+            v30 = 1uLL >> (-(char)v23 & 63);
           }
           v32 = v31 | v30;
           if ((unsigned int)(v23 - 64) <= 0xFFFFFFBE) {
@@ -5981,7 +5981,7 @@ __int64 CudaDriverHr_2332e0(__int64 a1, __int64 a2, __int64 a3, char* a4,
             v36 = 1LL << ((unsigned __int8)v23 - 64);
           }
           else {
-            v36 = 1uLL >> -(char)v23;
+            v36 = 1uLL >> (-(char)v23 & 63);
           }
           v37 = v24 & ~v35 | v36;
           if (v34 <= 0xFFFFFFBE) {

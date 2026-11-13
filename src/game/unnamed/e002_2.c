@@ -768,7 +768,7 @@ LABEL_10:
           v64 = std___1___next_prime(v64);
         }
         else {
-          v65 = 1LL << -(char)__clz(v64 - 1);
+          v65 = 1LL << (-(char)__clz(v64 - 1) & 63);
           if (v64 >= 2) {
             v64 = v65;
           }
@@ -2114,7 +2114,7 @@ __int64 GameHr_8eb7a0(__int64 a1, __int64 a2)
                           v88 = GameRoutine_1a09d00(v88);
                         }
                         else {
-                          v89 = 1LL << -(char)__clz(v88 - 1);
+                          v89 = 1LL << (-(char)__clz(v88 - 1) & 63);
                           if (v88 >= 2) {
                             v88 = v89;
                           }
@@ -2425,7 +2425,7 @@ __int64 GameHr_8eb7a0(__int64 a1, __int64 a2)
                                 v130 = GameRoutine_1a09d00(v130);
                               }
                               else {
-                                v131 = 1LL << -(char)__clz(v130 - 1);
+                                v131 = 1LL << (-(char)__clz(v130 - 1) & 63);
                                 if (v130 >= 2) {
                                   v130 = v131;
                                 }
@@ -3146,7 +3146,7 @@ void GameHr_90cd80(__int64 a1)
           v63 = std___1___next_prime(v63);
         }
         else {
-          v64 = 1LL << -(char)__clz(v63 - 1);
+          v64 = 1LL << (-(char)__clz(v63 - 1) & 63);
           if (v63 >= 2) {
             v63 = v64;
           }
@@ -4399,7 +4399,7 @@ void GameHr_96bec0(__int64 a1, __int64 a2)
             v68 = std___1___next_prime(v68);
           }
           else {
-            v69 = 1LL << -(char)__clz(v68 - 1);
+            v69 = 1LL << (-(char)__clz(v68 - 1) & 63);
             if (v68 >= 2) {
               v68 = v69;
             }
@@ -5453,7 +5453,7 @@ unsigned __int64 GameHr_a166a0(unsigned __int64 result, __int64 a2)
       v5 = v8;
     }
     else {
-      v7 = 1LL << -(char)__clz(result - 1);
+      v7 = 1LL << (-(char)__clz(result - 1) & 63);
       if (result >= 2) {
         result = v7;
       }
@@ -5565,7 +5565,7 @@ LABEL_18:
             result = GameRoutine_1a09d00(result);
           }
           else {
-            v27 = 1LL << -(char)__clz(result - 1);
+            v27 = 1LL << (-(char)__clz(result - 1) & 63);
             if (result >= 2) {
               result = v27;
             }

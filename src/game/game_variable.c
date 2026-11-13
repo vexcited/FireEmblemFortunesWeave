@@ -6540,7 +6540,7 @@ __int64* GameVariable_82eee0(__int64 a1)
       result = (__int64*)std___1___next_prime(result);
     }
     else {
-      v15 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+      v15 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
       if ((unsigned __int64)result >= 2) {
         result = (__int64*)v15;
       }
@@ -6756,7 +6756,7 @@ LABEL_23:
         result = v26;
       }
       else {
-        v25 = 1LL << -(char)__clz(v24 - 1);
+        v25 = 1LL << (-(char)__clz(v24 - 1) & 63);
         if (v24 >= 2) {
           v24 = v25;
         }
@@ -7162,7 +7162,7 @@ LABEL_23:
         result = v27;
       }
       else {
-        v26 = 1LL << -(char)__clz(v25 - 1);
+        v26 = 1LL << (-(char)__clz(v25 - 1) & 63);
         if (v25 >= 2) {
           v25 = v26;
         }

@@ -556,7 +556,7 @@ void RecallCategoryFile_Unknown4()
           v33 = std___1___next_prime_alt1(v33);
         }
         else {
-          v34 = 1LL << -(char)__clz(v33 - 1);
+          v34 = 1LL << (-(char)__clz(v33 - 1) & 63);
           if (v33 >= 2) {
             v33 = v34;
           }
@@ -2100,7 +2100,7 @@ LABEL_21:
               v77 = std___1___next_prime_alt1(v77);
             }
             else {
-              v78 = 1LL << -(char)__clz(v77 - 1);
+              v78 = 1LL << (-(char)__clz(v77 - 1) & 63);
               if (v77 >= 2) {
                 v77 = v78;
               }
@@ -2487,7 +2487,7 @@ LABEL_21:
             v111 = std___1___next_prime_alt1(v111);
           }
           else {
-            v112 = 1LL << -(char)__clz(v111 - 1);
+            v112 = 1LL << (-(char)__clz(v111 - 1) & 63);
             if (v111 >= 2) {
               v111 = v112;
             }

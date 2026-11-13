@@ -318,7 +318,7 @@ _QWORD* game_anonymous_TimelineMap_Build_closure_Invoke(_QWORD* result,
         result = (_QWORD*)std___1___next_prime(result);
       }
       else {
-        v38 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+        v38 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
         if ((unsigned __int64)result >= 2) {
           result = (_QWORD*)v38;
         }
@@ -723,7 +723,7 @@ LABEL_199:
         result = (_QWORD*)std___1___next_prime(result);
       }
       else {
-        v103 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+        v103 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
         if ((unsigned __int64)result >= 2) {
           result = (_QWORD*)v103;
         }

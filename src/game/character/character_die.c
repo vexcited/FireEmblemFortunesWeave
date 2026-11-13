@@ -308,7 +308,7 @@ LABEL_16:
     v25 = COERCE_FLOAT(*(_OWORD*)(v14 + 336)) == v23 &&
           COERCE_FLOAT(HIDWORD(*(_QWORD*)(v14 + 336))) == v24;
     v26 = v25 && COERCE_FLOAT(*(_QWORD*)(v14 + 344)) == v23;
-    if (!v26 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v14 + 336))) != v22) {
+    if (!v26 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v14 + 336))) != v22) {
       v28 = *(_DWORD*)(v14 + 296);
       *(float*)(v14 + 336) = v23;
       *(float*)(v14 + 340) = v24;

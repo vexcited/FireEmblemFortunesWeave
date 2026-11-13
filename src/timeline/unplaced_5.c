@@ -4,6 +4,8 @@
 
 __int64 GameRoutine_651190(__int64);
 __int64 GameRoutine_b940(unsigned int**);
+unsigned __int128
+GameRoutine_b940_pair(unsigned int**) __asm__("GameRoutine_b940");
 __int64 GameRoutine_ca80(__int64, __int64, __int64, ...);
 __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 memset(__int64, int, unsigned __int64);
@@ -329,7 +331,7 @@ __int64 timeline_c1a0(__int64 a1, unsigned int* a2, unsigned __int64 a3,
   v24_.v25 = a3;
   v6 = *a2;
   if (a3 >= v6) {
-    v11 = __clz(a3 - v6 + 16);
+    v11 = __clz((unsigned int)(a3 - v6 + 16));
     v7 = 28 - v11;
     v8 = *(_QWORD*)(*((_QWORD*)a2 + 2) + 8 * (27 - v11) + 8) +
          16LL * ((_DWORD)a3 - (_DWORD)v6 - GameData_1b37d88[28 - v11]);
@@ -350,7 +352,7 @@ __int64 timeline_c1a0(__int64 a1, unsigned int* a2, unsigned __int64 a3,
   }
   v12 = *a4;
   if ((unsigned __int64)v9 >= v12) {
-    v15 = __clz((_DWORD)v9 - v12 + 16);
+    v15 = __clz((unsigned int)((_DWORD)v9 - v12 + 16));
     v13 = *(_QWORD*)(*((_QWORD*)a4 + 2) + 8 * (27 - v15) + 8) +
           16LL * ((_DWORD)v9 - (_DWORD)v12 - GameData_1b37d88[28 - v15]);
     if (v7 != 28 - v15) {
@@ -380,13 +382,14 @@ LABEL_7:
     }
     v26[0] = a4;
     v26[1] = v9;
-    result = GameRoutine_b940(v26),
-    v17 = COERCE_AS(__typeof__(v17),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v23 = COERCE_AS(__typeof__(v23),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    result = ({
+      unsigned __int128 r_ = GameRoutine_b940_pair(v26);
+      v17 = COERCE_AS(__typeof__(v17), (unsigned long long)(r_ >> 64));
+      v23 = COERCE_AS(__typeof__(v23), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     v18 = *v24_.v24;
-    v19 = 28LL - __clz(v24_.v25 - v18 + 16);
+    v19 = 28LL - __clz((unsigned int)(v24_.v25 - v18 + 16));
     v20 = v24_.v25 >= v18 ? v19 : 0LL;
     if (v20 == result) {
       return result;
@@ -394,11 +397,12 @@ LABEL_7:
     v21 = result;
     v22 = v17;
     v24_.v25 = GameData_1b37d88[v20 + 1] + v18;
-    result = GameRoutine_b940(&v24_.v24),
-    v17 = COERCE_AS(__typeof__(v17),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v23 = COERCE_AS(__typeof__(v23),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    result = ({
+      unsigned __int128 r_ = GameRoutine_b940_pair(&v24_.v24);
+      v17 = COERCE_AS(__typeof__(v17), (unsigned long long)(r_ >> 64));
+      v23 = COERCE_AS(__typeof__(v23), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     v8 = v23;
     if (result == v21) {
       v10 = v22 + 16;
@@ -564,7 +568,7 @@ __attribute__((swiftcall)) void timeline_c3e0(PSEUDO_X8 x8_, _BYTE* a1,
         v23 = 16 * v16 + 16;
         while (1) {
           if (v22 - 1 >= v21) {
-            v26 = __clz(v22 - v21 + 15);
+            v26 = __clz((unsigned int)(v22 - v21 + 15));
             v24 =
                 (_BYTE*)(*(_QWORD*)(*((_QWORD*)v19 + 2) + 8 * (27 - v26) + 8) +
                          16LL * (~GameData_1b37d88[28 - v26] + (_DWORD)v22 -
@@ -609,7 +613,7 @@ __attribute__((swiftcall)) void timeline_c3e0(PSEUDO_X8 x8_, _BYTE* a1,
         v29 = 32 * v16 + 32;
         while (1) {
           if (v28 - 1 >= v27) {
-            v30 = __clz(v28 - v27 + 15);
+            v30 = __clz((unsigned int)(v28 - v27 + 15));
             v24 =
                 (_BYTE*)(*(_QWORD*)(*((_QWORD*)v19 + 2) + 8 * (27 - v30) + 8) +
                          32LL * (~GameData_1b37d88[28 - v30] + (_DWORD)v28 -
@@ -704,7 +708,7 @@ __attribute__((swiftcall)) void timeline_c3e0(PSEUDO_X8 x8_, _BYTE* a1,
     v38 = a3;
     while (1) {
       if (v36 >= (unsigned int)v62_.v62) {
-        v42 = __clz(v36 - v62_.v62 + 16);
+        v42 = __clz((unsigned int)(v36 - v62_.v62 + 16));
         v41 = (unsigned __int64*)(*((_QWORD*)v62_.v64 + 27 - v42 + 1) +
                                   16LL * ((_DWORD)v36 - (_DWORD)v62_.v62 -
                                           GameData_1b37d88[28 - v42]));
@@ -876,7 +880,7 @@ LABEL_3:
     return 0;
   }
   v5 = *a1;
-  v6 = 28LL - __clz(a2 - v5 + 16);
+  v6 = 28LL - __clz((unsigned int)(a2 - v5 + 16));
   if (a2 >= v5) {
     v7 = v6;
   }
@@ -970,7 +974,7 @@ LABEL_3:
     return 0;
   }
   v5 = *a1;
-  v6 = 28LL - __clz(a2 - v5 + 16);
+  v6 = 28LL - __clz((unsigned int)(a2 - v5 + 16));
   if (a2 >= v5) {
     v7 = v6;
   }

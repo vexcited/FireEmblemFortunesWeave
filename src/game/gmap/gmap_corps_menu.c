@@ -3283,7 +3283,7 @@ LABEL_22:
         result = v42;
       }
       else {
-        v30 = 1LL << -(char)__clz(v29 - 1);
+        v30 = 1LL << (-(char)__clz(v29 - 1) & 63);
         if (v29 >= 2) {
           v29 = v30;
         }

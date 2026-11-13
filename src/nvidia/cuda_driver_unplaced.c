@@ -538,9 +538,9 @@ _DWORD* cuda_driver_bc0(__int64 a1, _DWORD** a2, __int64 a3)
   *(_QWORD*)&v39_.v40 = 0x3C00000000001000LL;
   CudaDriverRoutine_bbd70(v8, &v55);
   *(_QWORD*)&v39_.v51 = v55 & 0x1FFFFFFFFFFFFLL;
-  HIDWORD(v39_.v41) = 1141047296;
+  DWORD3(v39_.v41) = 1141047296;
   v14 = *(_DWORD*)(v8 + 392);
-  HIDWORD(v39_.v44) = 0x8000000;
+  DWORD3(v39_.v44) = 0x8000000;
   v15 = (v14 & 0x1FF) << 8;
   BYTE8(v39_.v43) = 48;
   HIBYTE(v39_.v51) = -122;
@@ -597,10 +597,10 @@ LABEL_6:
   *((_DWORD*)v39_.v39 + (((v22[2927] << 6) + 1024) >> 5)) = v13;
   WORD5(v39_.v43) = 1;
   v29 = HIBYTE(v39_.v44);
-  HIDWORD(v39_.v43) = 65537;
+  DWORD3(v39_.v43) = 65537;
   v30 = *(_DWORD*)(CudaDriverRoutine_98340(a1) + 1276) & 0xFFFFFF | (v29 << 24);
   v31 = BYTE11(v39_.v51);
-  HIDWORD(v39_.v44) = v30;
+  DWORD3(v39_.v44) = v30;
   v32 = *(_DWORD*)(CudaDriverRoutine_98340(a1) + 1280) & 0xFFFFFF | (v31 << 24);
   LODWORD(v39_.v40) = v39_.v40 & 0xFFFFFFC0;
   DWORD2(v39_.v51) = v32;
@@ -1736,7 +1736,7 @@ LABEL_13:
               v105 = *(_DWORD*)(a1 + 396) | 1;
             }
             else {
-              v105 = HIDWORD(v107);
+              v105 = DWORD3(v107);
             }
             *(_DWORD*)(a1 + 396) = v105;
           LABEL_302:
@@ -5870,9 +5870,9 @@ _DWORD* cuda_driver_13660(__int64 a1, _DWORD** a2, __int64 a3)
   *(_QWORD*)&v39_.v40 = 0x3C00000000001000LL;
   CudaDriverRoutine_bbd70(v8, &v55);
   *(_QWORD*)&v39_.v51 = v55 & 0x1FFFFFFFFFFFFLL;
-  HIDWORD(v39_.v41) = 1141047296;
+  DWORD3(v39_.v41) = 1141047296;
   v14 = *(_DWORD*)(v8 + 392);
-  HIDWORD(v39_.v44) = 0x8000000;
+  DWORD3(v39_.v44) = 0x8000000;
   v15 = (v14 & 0x1FF) << 8;
   BYTE8(v39_.v43) = 48;
   HIBYTE(v39_.v51) = -122;
@@ -5929,10 +5929,10 @@ LABEL_6:
   *((_DWORD*)v39_.v39 + (((v22[2927] << 6) + 1024) >> 5)) = v13;
   WORD5(v39_.v43) = 1;
   v29 = HIBYTE(v39_.v44);
-  HIDWORD(v39_.v43) = 65537;
+  DWORD3(v39_.v43) = 65537;
   v30 = *(_DWORD*)(CudaDriverRoutine_98340(a1) + 1276) & 0xFFFFFF | (v29 << 24);
   v31 = BYTE11(v39_.v51);
-  HIDWORD(v39_.v44) = v30;
+  DWORD3(v39_.v44) = v30;
   v32 = *(_DWORD*)(CudaDriverRoutine_98340(a1) + 1280) & 0xFFFFFF | (v31 << 24);
   LODWORD(v39_.v40) = v39_.v40 & 0xFFFFFFC0;
   DWORD2(v39_.v51) = v32;

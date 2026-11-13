@@ -291,6 +291,8 @@ void game_gmap_SpotMgr_CalcExcludedDisposSpot_lambda0_Invoke(__int64 a1,
                                                              __int64* a2);
 void game_gmap_SpotMgr_GetAroundSpot_lambda0_Invoke(__int64 a1, __int64** a2);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_14a1390(__int64*, char);
 __int64 std___1___shared_weak_count___release_weak(__int64);
@@ -8380,10 +8382,12 @@ __int64* SpotMgr_1334ec0(__int64* result)
             v43_.v49 = v36;
             v43_.v50 = v37;
             v43_.v44 = 5;
-            v38 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                                 (__int64)v43_.v43, 0),
-            v39 = COERCE_AS(__typeof__(v39),
-                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+            v38 = ({
+              unsigned __int128 r_ = Manager_bc6460_pair(
+                  *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v43_.v43, 0);
+              v39 = COERCE_AS(__typeof__(v39), (unsigned long long)(r_ >> 64));
+              (__int64*)(unsigned long long)r_;
+            });
             result = (__int64*)GameHr_14a10d0(&v41_.v41, (__int64)v38, v39,
                                               (__int64)&GameData_1a9f09e),
             v39 = COERCE_AS(__typeof__(v39),
@@ -10339,7 +10343,7 @@ LABEL_22:
         v32 = std___1___next_prime_alt1(v32);
       }
       else {
-        v33 = 1LL << -(char)__clz(v32 - 1);
+        v33 = 1LL << (-(char)__clz(v32 - 1) & 63);
         if (v32 >= 2) {
           v32 = v33;
         }
@@ -12715,7 +12719,7 @@ LABEL_22:
         result = v44;
       }
       else {
-        v32 = 1LL << -(char)__clz(v31 - 1);
+        v32 = 1LL << (-(char)__clz(v31 - 1) & 63);
         if (v31 >= 2) {
           v31 = v32;
         }

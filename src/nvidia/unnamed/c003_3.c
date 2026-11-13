@@ -2994,7 +2994,7 @@ __int64 CudaDriverHr_1de8f0(__int64 a1, unsigned __int64** a2, __int64 a3)
         LODWORD(v46[1]) = v14 & 0xFFFFF07F | (((_DWORD)v13 << 7) - 128);
         HIDWORD(v46[1]) = v41;
         HIDWORD(v42[2]) = v11;
-        HIDWORD(v43) = v13;
+        DWORD3(v43) = v13;
         LODWORD(v45) = 1;
         if (v8 / v11 >= 0x18) {
           v15 = v13 * v11 + 288;
@@ -3057,7 +3057,7 @@ __int64 CudaDriverHr_1de8f0(__int64 a1, unsigned __int64** a2, __int64 a3)
                                        (((_DWORD)v25 << 7) - 128);
                         v46[5] = __PAIR64__(v41, HIDWORD(v41));
                         DWORD1(v43) = v24;
-                        HIDWORD(v44) = v25;
+                        DWORD3(v44) = v25;
                         LODWORD(v45) = 5;
                       }
                     }

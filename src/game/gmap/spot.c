@@ -1535,7 +1535,7 @@ LABEL_14:
           v56 = std___1___next_prime_alt1(v56);
         }
         else {
-          v57 = 1LL << -(char)__clz(v56 - 1);
+          v57 = 1LL << (-(char)__clz(v56 - 1) & 63);
           if (v56 >= 2) {
             v56 = v57;
           }
@@ -1812,7 +1812,7 @@ unsigned __int64 Spot_132c460(unsigned __int64 result, __int64 a2)
       v5 = v9;
     }
     else {
-      v8 = 1LL << -(char)__clz(result - 1);
+      v8 = 1LL << (-(char)__clz(result - 1) & 63);
       if (result >= 2) {
         result = v8;
       }
@@ -1980,7 +1980,7 @@ LABEL_18:
           result = std___1___next_prime(result);
         }
         else {
-          v42 = 1LL << -(char)__clz(result - 1);
+          v42 = 1LL << (-(char)__clz(result - 1) & 63);
           if (result >= 2) {
             result = v42;
           }

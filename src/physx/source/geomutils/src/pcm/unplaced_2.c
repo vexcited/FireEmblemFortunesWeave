@@ -265,7 +265,7 @@ __int64 physx_source_geomutils_src_pcm_4d9000(
   v23 = v21;
   LANES128(a13).n128_u32[2] = LANES64(a3[3]).n64_u32[0];
   LANES128(a14).n128_u32[2] = LANES128(a4[1]).n128_u32[2];
-  LANES128(v23).n128_u32[3] = HIDWORD(*(unsigned __int128*)a4);
+  LANES128(v23).n128_u32[3] = DWORD3(*(unsigned __int128*)a4);
   LANES64(v24).n64_u64[0] =
       LANES64_OF(
           vmul_f32(

@@ -13,7 +13,7 @@ __int64 CudaDriverStub_1db760(_QWORD);
 __int64 CudaDriverStub_1dbf90(_QWORD);
 __int64 CudaDriverStub_1dbfc0(_QWORD);
 __int64 CudaDriverStub_4f840(_QWORD);
-bool CudaDriverRoutine_12cad0(__int64);
+unsigned __int8 CudaDriverRoutine_12cad0(__int64);
 extern _UNKNOWN CudaDriverData_14347a8;
 extern int CudaDriverData_1434ac0;
 __int64 cuda_driver_multicast_45f00(__int64 a1, __int64 a2, unsigned __int64 a3,

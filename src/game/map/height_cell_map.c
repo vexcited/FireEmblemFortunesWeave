@@ -714,7 +714,7 @@ LABEL_23:
         result = v44;
       }
       else {
-        v32 = 1LL << -(char)__clz(v31 - 1);
+        v32 = 1LL << (-(char)__clz(v31 - 1) & 63);
         if (v31 >= 2) {
           v31 = v32;
         }

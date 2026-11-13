@@ -3279,7 +3279,7 @@ __int64 StreamSoundPlayer_29af00(__int64 a1, __int64 a2, __int64 a3, int a4,
     v27[0] = v17;
     v18 = *(_QWORD*)((char*)&v28 + 4);
     LODWORD(v27[1]) = v28;
-    v19 = HIDWORD(v28);
+    v19 = DWORD3(v28);
     v28 = (__typeof__(v28)){0};
     *(_QWORD*)((char*)&v27[1] + 4) = v18;
     HIDWORD(v27[2]) = v19;
@@ -3300,7 +3300,7 @@ __int64 StreamSoundPlayer_29af00(__int64 a1, __int64 a2, __int64 a3, int a4,
       v27[0] = v20;
       v21 = *(_QWORD*)((char*)&v28 + 4);
       LODWORD(v27[1]) = v28;
-      v22 = HIDWORD(v28);
+      v22 = DWORD3(v28);
       v28 = (__typeof__(v28)){0};
       *(_QWORD*)((char*)&v27[1] + 4) = v21;
       HIDWORD(v27[2]) = v22;
@@ -3321,7 +3321,7 @@ __int64 StreamSoundPlayer_29af00(__int64 a1, __int64 a2, __int64 a3, int a4,
         v27[0] = v23;
         v24 = *(_QWORD*)((char*)&v28 + 4);
         LODWORD(v27[1]) = v28;
-        v25 = HIDWORD(v28);
+        v25 = DWORD3(v28);
         v28 = (__typeof__(v28)){0};
         *(_QWORD*)((char*)&v27[1] + 4) = v24;
         HIDWORD(v27[2]) = v25;

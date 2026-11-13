@@ -573,7 +573,8 @@ LABEL_47:
           goto LABEL_113;
         }
       }
-      v49 = (unsigned int)(v48 - 129) > 6 || ((1 << (v48 + 127)) & 0x45) == 0;
+      v49 = (unsigned int)(v48 - 129) > 6 ||
+            ((1 << ((v48 + 127) & 31)) & 0x45) == 0;
       if (v49 && v48 != 193 && v48 != 207) {
         goto LABEL_61;
       }
@@ -699,7 +700,7 @@ __int64 nandroid_ATSParser_Stream_Stream(__int64 a1, __int64 a2, int a3,
     *(_QWORD*)(a1 + 144) = result;
   }
   v22 = *(_DWORD*)(a1 + 28);
-  v23 = ((unsigned int)(v22 - 193) < 0x1B) & (0x4004001u >> (v22 + 63));
+  v23 = ((unsigned int)(v22 - 193) < 0x1B) & (0x4004001u >> ((v22 + 63) & 31));
   v24 = true;
   *(_BYTE*)(a1 + 105) = v23;
   if (v22 <= 128) {
@@ -729,7 +730,8 @@ __int64 nandroid_ATSParser_Stream_Stream(__int64 a1, __int64 a2, int a3,
       goto LABEL_19;
     }
   }
-  else if ((unsigned int)(v22 - 129) > 6 || ((1 << (v22 + 127)) & 0x45) == 0) {
+  else if ((unsigned int)(v22 - 129) > 6 ||
+           ((1 << ((v22 + 127) & 31)) & 0x45) == 0) {
     goto LABEL_28;
   }
 LABEL_21:
@@ -850,7 +852,7 @@ LABEL_57:
       }
       else {
       LABEL_69:
-        if (v30 - 129 > 6 || ((1 << (v30 + 127)) & 0x45) == 0) {
+        if (v30 - 129 > 6 || ((1 << ((v30 + 127) & 31)) & 0x45) == 0) {
           v31 = v30 - 193;
           if (v31 > 0x1A || ((1 << v31) & 0x4004001) == 0) {
             return result;
@@ -888,7 +890,7 @@ LABEL_57:
       }
     }
     else if (((unsigned int)(v34 - 129) > 6 ||
-              ((1 << (v34 + 127)) & 0x45) == 0) &&
+              ((1 << ((v34 + 127) & 31)) & 0x45) == 0) &&
              v34 != 193 && v34 != 207) {
     LABEL_92:
       v35 = SdkData_e88b40[0];

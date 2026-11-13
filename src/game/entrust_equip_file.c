@@ -557,7 +557,7 @@ _QWORD* EntrustEquipFile_12f5ac0(_QWORD* result, __int64 a2, int a3)
             v43 = std___1___next_prime_alt1(v43);
           }
           else {
-            v44 = 1LL << -(char)__clz(v43 - 1);
+            v44 = 1LL << (-(char)__clz(v43 - 1) & 63);
             if (v43 >= 2) {
               v43 = v44;
             }
@@ -742,7 +742,7 @@ LABEL_22:
         result = std___1___next_prime(result);
       }
       else {
-        v24 = 1LL << -(char)__clz(result - 1);
+        v24 = 1LL << (-(char)__clz(result - 1) & 63);
         if (result >= 2) {
           result = v24;
         }

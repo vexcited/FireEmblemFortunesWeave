@@ -4189,7 +4189,7 @@ void wld_be6480(__int64 a1, __int64 a2, unsigned __int64 a3, float a4)
             v72 = std___1___next_prime_alt1(v72);
           }
           else {
-            v73 = 1LL << -(char)__clz(v72 - 1);
+            v73 = 1LL << (-(char)__clz(v72 - 1) & 63);
             if (v72 >= 2) {
               v72 = v73;
             }
@@ -4252,7 +4252,7 @@ void wld_be6480(__int64 a1, __int64 a2, unsigned __int64 a3, float a4)
               v85 = std___1___next_prime_alt1(v85);
             }
             else {
-              v86 = 1LL << -(char)__clz(v85 - 1);
+              v86 = 1LL << (-(char)__clz(v85 - 1) & 63);
               if (v85 >= 2) {
                 v85 = v86;
               }
@@ -6823,7 +6823,7 @@ void wld_c2a300(__int64** a1)
                               v258 =
                                   v257 &&
                                   COERCE_FLOAT(*(_QWORD*)(v228 + 344)) == v256;
-                              if (!v258 || COERCE_FLOAT(HIDWORD(*(
+                              if (!v258 || COERCE_FLOAT(DWORD3(*(
                                                _OWORD*)(v228 + 336))) != v255) {
                                 v260 = *(_DWORD*)(v228 + 296);
                                 *(float*)(v228 + 336) = v253;
@@ -10564,7 +10564,7 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
               }
               v602 = v360;
               GameRoutine_1a09ce0(v343, v361, v359);
-              HIDWORD(v24) = LANES128(v602).n128_u32[3];
+              DWORD3(v24) = LANES128(v602).n128_u32[3];
               if (v583 != 0) {
                 v362 = v606;
                 v363 = 1;
@@ -10655,7 +10655,7 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                                COERCE_FLOAT(LANES128(v370[21]).n128_u64[1]) ==
                                    *(float*)&v372;
                         if (!v392 ||
-                            COERCE_FLOAT(HIDWORD(*(_OWORD*)&v370[21])) !=
+                            COERCE_FLOAT(DWORD3(*(_OWORD*)&v370[21])) !=
                                 *(float*)&v379) {
                           v394 = LANES128(v370[18]).n128_u32[2];
                           LANES128(v370[21]).n128_u32[0] = LODWORD(v378);
@@ -11096,7 +11096,7 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                         v496 = v495 && COERCE_FLOAT(*(_QWORD*)(v474 + 344)) ==
                                            *(float*)&v476;
                         if (!v496 ||
-                            COERCE_FLOAT(HIDWORD(*(_OWORD*)(v474 + 336))) !=
+                            COERCE_FLOAT(DWORD3(*(_OWORD*)(v474 + 336))) !=
                                 *(float*)&v483) {
                           v498 = *(_DWORD*)(v474 + 296);
                           *(_DWORD*)(v474 + 336) = LODWORD(v482);
@@ -12319,7 +12319,7 @@ void wld_c32fa0(__int64 a1, float32x4_t** a2)
         v63 = COERCE_FLOAT(*(_OWORD*)(v40 + 336)) == v59 &&
               COERCE_FLOAT(HIDWORD(*(_QWORD*)(v40 + 336))) == v60;
         v64 = v63 && COERCE_FLOAT(*(_QWORD*)(v40 + 344)) == v62;
-        if (!v64 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v40 + 336))) != v61) {
+        if (!v64 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v40 + 336))) != v61) {
           v66 = *(_DWORD*)(v40 + 296);
           *(float*)(v40 + 336) = v59;
           *(float*)(v40 + 340) = v60;
@@ -12485,7 +12485,7 @@ void wld_c32fa0(__int64 a1, float32x4_t** a2)
         v242 = COERCE_FLOAT(*(_OWORD*)(v219 + 336)) == v238 &&
                COERCE_FLOAT(HIDWORD(*(_QWORD*)(v219 + 336))) == v239;
         v243 = v242 && COERCE_FLOAT(*(_QWORD*)(v219 + 344)) == v241;
-        if (!v243 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v219 + 336))) != v240) {
+        if (!v243 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v219 + 336))) != v240) {
           v245 = *(_DWORD*)(v219 + 296);
           *(float*)(v219 + 336) = v238;
           *(float*)(v219 + 340) = v239;
@@ -12902,7 +12902,7 @@ void wld_c32fa0(__int64 a1, float32x4_t** a2)
             v166 = COERCE_FLOAT(*(_OWORD*)(v87 + 336)) == v162 &&
                    COERCE_FLOAT(HIDWORD(*(_QWORD*)(v87 + 336))) == v163;
             v167 = v166 && COERCE_FLOAT(*(_QWORD*)(v87 + 344)) == v165;
-            if (!v167 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v87 + 336))) != v164) {
+            if (!v167 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v87 + 336))) != v164) {
               v169 = *(_DWORD*)(v87 + 296);
               *(float*)(v87 + 336) = v162;
               *(float*)(v87 + 340) = v163;

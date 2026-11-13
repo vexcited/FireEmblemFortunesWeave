@@ -43,7 +43,7 @@ __int64 CudaDriverRoutine_59ce0(__int64*);
 bool CudaDriverRoutine_5a220(__int64, __int64, unsigned int);
 __int64 CudaDriverRoutine_5a700(__int64, char, _BYTE*, unsigned int,
                                 unsigned int);
-bool CudaDriverRoutine_5ada0(__int64);
+unsigned __int8 CudaDriverRoutine_5ada0(__int64);
 __int64 CudaDriverRoutine_5ae20(__int64 result, __int64, __int64, unsigned int);
 __int64 CudaDriverRoutine_5aeb0(__int64 result, __int64*, __int64, char);
 __int64 CudaDriverRoutine_5b8d0(_QWORD);

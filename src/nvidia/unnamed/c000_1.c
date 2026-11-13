@@ -4602,7 +4602,7 @@ __int64 CudaDriverHr_46e50(__int64 a1, int* a2, __int64 a3)
         if ((_DWORD)result == 0) {
           v10 = DWORD1(v15);
           v11 = DWORD2(v15);
-          v12 = HIDWORD(v15);
+          v12 = DWORD3(v15);
           result = CudaDriverRoutine_10ac30(
               v36, v13,
               (unsigned int)(*(_DWORD*)(a3 + 16) * *(_DWORD*)(a3 + 12) *
@@ -7977,14 +7977,14 @@ __int64 CudaDriverHr_52620(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4)
   }
   else {
     DWORD1(v18) = 0;
-    HIDWORD(v18) = 0;
+    DWORD3(v18) = 0;
     v9 = 2;
-    HIDWORD(v19) = 0;
+    DWORD3(v19) = 0;
     WORD3(v20) = 257;
     BYTE1(v20) = 1;
     BYTE1(v17) = 1;
     v21 = CudaDriverData_1422bf0;
-    HIDWORD(v24) = 2;
+    DWORD3(v24) = 2;
     v22 = CudaDriverData_1422c00;
     v23 = CudaDriverData_1422c10;
     *(_QWORD*)&v24 = CudaDriverData_1422c20;
@@ -9462,10 +9462,10 @@ __int64 CudaDriverHr_55610(__int64 a1, __int64 a2, __int64 a3)
   result = CudaDriverRoutine_97bc0(v6, a2, 0, 3);
   if ((_DWORD)result == 0) {
     DWORD1(v8) = 0;
-    HIDWORD(v8) = 0;
-    HIDWORD(v9) = 0;
+    DWORD3(v8) = 0;
+    DWORD3(v9) = 0;
     v19 = a3;
-    HIDWORD(v14) = 2;
+    DWORD3(v14) = 2;
     *(_QWORD*)((char*)&v10 + 1) = 0x101010101010101LL;
     BYTE1(v7) = 1;
     *(_QWORD*)&v11 = CudaDriverRoutine_55720;

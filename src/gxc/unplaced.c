@@ -10,6 +10,8 @@ __int64 GameRoutine_5d210(int);
 __int64 GameRoutine_651190(__int64);
 __int64 gxc_DeviceChild_GetDevice();
 __int64 gxc_NvnDescriptorPool_AllocateTextureDescriptor(__int64);
+unsigned __int128 gxc_NvnDescriptorPool_AllocateTextureDescriptor_pair(
+    __int64) __asm__("gxc_NvnDescriptorPool_AllocateTextureDescriptor");
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
 extern _UNKNOWN* GameData_2132be0[23];
@@ -539,10 +541,13 @@ LABEL_32:
       v58 = 0;
       v59 = GameData_2132c80[0];
       do {
-        v60 = gxc_NvnDescriptorPool_AllocateTextureDescriptor(
-            *(_QWORD*)(a1 + 48)),
-        v62 = COERCE_AS(__typeof__(v62),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v60 = ({
+          unsigned __int128 r_ =
+              gxc_NvnDescriptorPool_AllocateTextureDescriptor_pair(
+                  *(_QWORD*)(a1 + 48));
+          v62 = COERCE_AS(__typeof__(v62), (unsigned long long)(r_ >> 64));
+          (__int64)(unsigned long long)r_;
+        });
         v61 = *(_QWORD*)(a1 + 88) + 16 * v58;
         *(_QWORD*)v61 = v60;
         *(_DWORD*)(v61 + 8) = v62;

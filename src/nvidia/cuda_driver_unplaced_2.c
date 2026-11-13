@@ -523,7 +523,7 @@ __int64 cuda_driver_21ec0(_QWORD* a1, int64x2_t* a2, unsigned int a3)
   v14 = (__typeof__(v14)){0};
   if (a2 != nullptr) {
     v5 = *a2;
-    HIDWORD(v14) = LANES128(a2[2]).n128_u32[0];
+    DWORD3(v14) = LANES128(a2[2]).n128_u32[0];
     LODWORD(v14) = LANES128(a2[1]).n128_u64[0];
     v13 = LANES64_OF(vmovn_s64(v5)).n64_u64[0];
     *(_QWORD*)((char*)&v14 + 4) = LANES128(a2[1]).n128_u64[1];
@@ -5473,18 +5473,18 @@ __int64 cuda_driver_unplaced_2_4f330(_QWORD* a1, unsigned __int64* a2, int a3)
             DWORD1(v12_.v17) = v30_.v31;
           }
           if (DWORD1(v30_.v31) != 0) {
-            HIDWORD(v12_.v17) = DWORD1(v30_.v31);
+            DWORD3(v12_.v17) = DWORD1(v30_.v31);
           }
           LOBYTE(v12_.v19) = BYTE8(v30_.v31);
-          if (HIDWORD(v30_.v30) != 0) {
+          if (DWORD3(v30_.v30) != 0) {
             v9 = 8;
           }
           else {
             v9 = 0;
           }
           DWORD2(v12_.v12) |= v9;
-          if (HIDWORD(v30_.v31) != 0) {
-            DWORD2(v12_.v18) = HIDWORD(v30_.v31);
+          if (DWORD3(v30_.v31) != 0) {
+            DWORD2(v12_.v18) = DWORD3(v30_.v31);
           }
           if ((_DWORD)v30_.v32 != 0) {
             BYTE3(v12_.v19) = 1;

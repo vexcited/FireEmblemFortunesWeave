@@ -958,7 +958,7 @@ __int64 NgxHr_b9d60(__int64 a1, __int64 a2, unsigned __int64 a3, __int64 a4,
     v31 = *(_QWORD*)a3;
     LODWORD(v32) = 1;
     *(_QWORD*)((char*)&v26 + 4) = 0x100000000LL;
-    HIDWORD(v26) = 3;
+    DWORD3(v26) = 3;
     v27 = &v30;
     v22 = 46;
     v23 = 0;

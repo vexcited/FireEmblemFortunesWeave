@@ -2600,6 +2600,8 @@ float Unit_6c7fa0(__int64, __int64);
 float fmodf_alt1(float, float) __asm__("fmodf");
 float powf(float, float);
 unsigned __int64 GameRoutine_d271a0(__int64);
+unsigned __int128
+GameRoutine_d271a0_pair(__int64) __asm__("GameRoutine_d271a0");
 unsigned __int64 hub_JoinPersonCreate(__int64);
 unsigned __int64 hub_PlaySE_cc8740(__int64, __int128*);
 void __attribute__((noreturn)) GameRoutine_8123d0();
@@ -2901,7 +2903,7 @@ __int64* game_846040(__int64 a1, unsigned __int64 a2, unsigned __int16* a3)
         v15 = std___1___next_prime(v15);
       }
       else {
-        v16 = 1LL << -(char)__clz(v15 - 1);
+        v16 = 1LL << (-(char)__clz(v15 - 1) & 63);
         if (v15 >= 2) {
           v15 = v16;
         }
@@ -3104,7 +3106,7 @@ LABEL_23:
         result = v27;
       }
       else {
-        v26 = 1LL << -(char)__clz(v25 - 1);
+        v26 = 1LL << (-(char)__clz(v25 - 1) & 63);
         if (v25 >= 2) {
           v25 = v26;
         }
@@ -3287,7 +3289,7 @@ LABEL_22:
         result = std___1___next_prime(result);
       }
       else {
-        v24 = 1LL << -(char)__clz(result - 1);
+        v24 = 1LL << (-(char)__clz(result - 1) & 63);
         if (result >= 2) {
           result = v24;
         }
@@ -3572,7 +3574,7 @@ LABEL_22:
         result = std___1___next_prime(result);
       }
       else {
-        v24 = 1LL << -(char)__clz(result - 1);
+        v24 = 1LL << (-(char)__clz(result - 1) & 63);
         if (result >= 2) {
           result = v24;
         }
@@ -3760,7 +3762,7 @@ LABEL_23:
         result = v27;
       }
       else {
-        v26 = 1LL << -(char)__clz(v25 - 1);
+        v26 = 1LL << (-(char)__clz(v25 - 1) & 63);
         if (v25 >= 2) {
           v25 = v26;
         }
@@ -6367,7 +6369,7 @@ LABEL_41:
         v40 = std___1___next_prime(v40);
       }
       else {
-        v41 = 1LL << -(char)__clz(v40 - 1);
+        v41 = 1LL << (-(char)__clz(v40 - 1) & 63);
         if (v40 >= 2) {
           v40 = v41;
         }
@@ -9163,9 +9165,11 @@ float game_d27af0(float a1, float a2, float a3, float a4, __int64 a5)
 
   v10 = COERCE_AS(__typeof__(v10),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  v9 = GameRoutine_d271a0(a5),
-  v10 = COERCE_AS(__typeof__(v10),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9 = ({
+    unsigned __int128 r_ = GameRoutine_d271a0_pair(a5);
+    v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+    (unsigned __int64)(unsigned long long)r_;
+  });
   if ((v10 & 1) != 0) {
     v11 = *((float*)&v9 + 1);
     v12 = *(float*)&v9;

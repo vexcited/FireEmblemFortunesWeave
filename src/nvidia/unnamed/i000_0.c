@@ -2002,7 +2002,7 @@ __int64 CudaDriverHr_228820(__int64 a1, unsigned int a2, unsigned int a3)
   }
   v12 = 1LL << a3;
   if (a3 < 0x40) {
-    v12 = 1uLL >> -(char)a3;
+    v12 = 1uLL >> (-(char)a3 & 63);
   }
   if (a3 - 64 >= 0xFFFFFFBF) {
     v13 = 0;

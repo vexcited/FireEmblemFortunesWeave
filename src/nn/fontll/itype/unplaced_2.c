@@ -7381,7 +7381,7 @@ __int64 nn_fontll_itype_437950(int a1, int* a2, __int64 a3)
     v8 = *(unsigned __int16*)(v3 - 8);
     *a2 = v6 - 16;
     *(_QWORD*)(a3 + 40) -= 4LL;
-    return ((v8 | (unsigned int)(v5 << 16)) >> -(char)v6) & v4;
+    return ((v8 | (unsigned int)(v5 << 16)) >> (-(char)v6 & 31)) & v4;
   }
   else {
     *a2 = v6;

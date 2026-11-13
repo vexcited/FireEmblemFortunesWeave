@@ -1404,7 +1404,7 @@ __int64 ProcInst_6595e0()
       v11 = std___1___next_prime(v11);
     }
     else {
-      v12 = 1LL << -(char)__clz(v11 - 1);
+      v12 = 1LL << (-(char)__clz(v11 - 1) & 63);
       if (v11 >= 2) {
         v11 = v12;
       }

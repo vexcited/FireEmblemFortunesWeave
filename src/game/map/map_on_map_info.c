@@ -2162,7 +2162,7 @@ LABEL_72:
     LANES128(v39).n128_u64[1] = 0x3F8000003F800000LL;
     PSEUDO_LOW_LANE128(
         v44, n128_f32,
-        -COERCE_FLOAT(HIDWORD(
+        -COERCE_FLOAT(DWORD3(
             *(_OWORD*)((char*)((_UNKNOWN*)0x4LL) + (_QWORD)GameData_212c190))));
     v46 = vmlaq_f32(
         vdupq_lane_s32(COERCE_AS(int32x2_t, LANES128(v44).n128_u64[0]), 0), v42,

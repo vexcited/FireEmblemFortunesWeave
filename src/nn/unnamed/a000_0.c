@@ -735,7 +735,7 @@ __int64 SdkHr_1a51a0(__int64 a1, __int64 a2, _DWORD* a3)
       v9 = (v8 + 31) >> 5;
       v10 = *(_QWORD*)(a2 + 2496);
       if (v9 <= v8) {
-        v11 = 0xFFFFFFFF >> -(char)((unsigned int)v8 / (unsigned int)v9);
+        v11 = 0xFFFFFFFF >> (-(char)((unsigned int)v8 / (unsigned int)v9) & 31);
       }
       else {
         v11 = 0;

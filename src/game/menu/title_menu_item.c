@@ -3,6 +3,8 @@
 #pragma GCC visibility push(hidden)
 
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_1562680(__int64 result, unsigned int*, float);
 __int64 GameMenuItem_16eacc0(_QWORD*);
@@ -290,9 +292,11 @@ LABEL_49:
   v31 = *((_QWORD*)GameData_212c540 + 1);
   v38_.v44 = *(_QWORD*)GameData_212c540;
   v38_.v45 = v31;
-  v32 = Manager_bc6460(v30, (__int64)&v38_.v38, 1),
-  v33 = COERCE_AS(__typeof__(v33),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v32 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(v30, (__int64)&v38_.v38, 1);
+    v33 = COERCE_AS(__typeof__(v33), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result =
       GameHr_14a10d0(&v38_.v38, (__int64)v32, v33, (__int64)&GameData_1a9f09e),
   v33 = COERCE_AS(__typeof__(v33),
@@ -927,9 +931,13 @@ LABEL_19:
               v76 = *((_QWORD*)GameData_212c540 + 1);
               v91_.v97 = *(_QWORD*)GameData_212c540;
               v91_.v98 = v76;
-              v77 = Manager_bc6460(v75, (__int64)&v91_.v91, 1),
-              v78 = COERCE_AS(__typeof__(v78),
-                              PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+              v77 = ({
+                unsigned __int128 r_ =
+                    Manager_bc6460_pair(v75, (__int64)&v91_.v91, 1);
+                v78 =
+                    COERCE_AS(__typeof__(v78), (unsigned long long)(r_ >> 64));
+                (__int64*)(unsigned long long)r_;
+              });
               GameHr_14a10d0(&v83_.v83, (__int64)v77, v78,
                              (__int64)&GameData_1a9f09e),
                   v78 = COERCE_AS(

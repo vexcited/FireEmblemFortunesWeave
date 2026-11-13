@@ -27,6 +27,10 @@ __int64 nn_os_TimedWaitAny_plt(_QWORD, _QWORD);
 __int64 nn_os_TryWaitSystemEvent_plt(_QWORD);
 __int64 nn_os_UnlinkMultiWaitHolder_plt(_QWORD);
 __int64 nn_syncpt_sdk_MakeNativeSyncHandleFromSyncPointHandle_plt(_QWORD);
+unsigned __int128
+    nn_syncpt_sdk_MakeNativeSyncHandleFromSyncPointHandle_plt_pair(
+        _QWORD) __asm__("nn_syncpt_sdk_MakeNativeSyncHandleFromSyncPointHandle_"
+                        "plt");
 __int64 nn_vi2_5e5e40(__int64, unsigned int);
 __int64 nn_vi2_5e6180(__int64, unsigned int*);
 __int64 nn_vi2_5e6400(__int64);
@@ -579,9 +583,13 @@ __int64 vi2_frontend_5e7b00(__int64 a1, __int64* a2, unsigned int a3, char a4)
   *(_DWORD*)(v4 + 204) = 0;
   v23_.v23 = v18;
   v23_.v24 = v19;
-  result = nn_syncpt_sdk_MakeNativeSyncHandleFromSyncPointHandle_plt(&v23_.v23),
-  v21 = COERCE_AS(__typeof__(v21),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ =
+        nn_syncpt_sdk_MakeNativeSyncHandleFromSyncPointHandle_plt_pair(
+            &v23_.v23);
+    v21 = COERCE_AS(__typeof__(v21), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   *a2 = result;
   a2[1] = v21;
   if (v7 != 0) {

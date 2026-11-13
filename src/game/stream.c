@@ -1102,7 +1102,7 @@ LABEL_42:
             v72 = std___1___next_prime(v72);
           }
           else {
-            v73 = 1LL << -(char)__clz(v72 - 1);
+            v73 = 1LL << (-(char)__clz(v72 - 1) & 63);
             if (v72 >= 2) {
               v72 = v73;
             }
@@ -1238,7 +1238,7 @@ LABEL_42:
       v97 = v3;
     }
     else {
-      v102 = 1LL << -(char)__clz(v101 - 1);
+      v102 = 1LL << (-(char)__clz(v101 - 1) & 63);
       if (v101 >= 2) {
         v101 = v102;
       }
@@ -1350,7 +1350,7 @@ LABEL_42:
             v122 = std___1___next_prime(v122);
           }
           else {
-            v123 = 1LL << -(char)__clz(v122 - 1);
+            v123 = 1LL << (-(char)__clz(v122 - 1) & 63);
             if (v122 >= 2) {
               v122 = v123;
             }

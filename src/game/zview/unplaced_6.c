@@ -136,7 +136,7 @@ __attribute__((swiftcall)) void game_zview_d33ac0(PSEUDO_X8 x8_, _QWORD* result,
       *a3 = v9;
       v10 = *(float32x4_t**)(*(_QWORD*)(v9 + 8) + 240LL);
       v11 = *(_OWORD*)(*(_QWORD*)(v9 + 16) + 560LL);
-      HIDWORD(v11) = 0;
+      DWORD3(v11) = 0;
       if (v10 != nullptr) {
         v12 = v10[3];
       }
@@ -157,7 +157,7 @@ LABEL_11:
   if (*((_BYTE*)v7 + 32) == 1) {
     v16 = *((_OWORD*)v7 + 1);
     *(_QWORD*)a6 = 0;
-    HIDWORD(v16) = 0;
+    DWORD3(v16) = 0;
     *(_OWORD*)(a6 + 16) = v16;
     *(_OWORD*)(a6 + 32) = v16;
   LABEL_17:

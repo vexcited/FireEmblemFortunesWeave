@@ -280,7 +280,7 @@ void SceneObject_13fc4d0(__int64 a1)
       v27 = COERCE_FLOAT(*(_OWORD*)(v8 + 336)) == v23 &&
             COERCE_FLOAT(HIDWORD(*(_QWORD*)(v8 + 336))) == v24;
       v28 = v27 && COERCE_FLOAT(*(_QWORD*)(v8 + 344)) == v26;
-      if (!v28 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v8 + 336))) != v25) {
+      if (!v28 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v8 + 336))) != v25) {
         v30 = *(_DWORD*)(v8 + 296);
         *(float*)(v8 + 336) = v23;
         *(float*)(v8 + 340) = v24;
@@ -414,7 +414,7 @@ void SceneObject_Unknown2(float32x4_t* a1)
         v26 = COERCE_FLOAT(*(_OWORD*)(v2 + 336)) == v22 &&
               COERCE_FLOAT(HIDWORD(*(_QWORD*)(v2 + 336))) == v23;
         v27 = v26 && COERCE_FLOAT(*(_QWORD*)(v2 + 344)) == v25;
-        if (!v27 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v2 + 336))) != v24) {
+        if (!v27 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v2 + 336))) != v24) {
           v29 = *(_DWORD*)(v2 + 296);
           *(float*)(v2 + 336) = v22;
           *(float*)(v2 + 340) = v23;

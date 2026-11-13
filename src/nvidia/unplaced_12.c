@@ -31,7 +31,7 @@ __int64 strcmp_plt(void* this_, const char*, const char*);
 __int64 strcmp_plt_alt1(void* this_, const char*) __asm__("strcmp_plt");
 __int64 strncpy_plt(_QWORD, _QWORD, _QWORD);
 __int64 unplaced_4_629030(_QWORD*, __int64);
-bool nvrm_surface_query_607de0(__int64, char*);
+int nvrm_surface_query_607de0(__int64, char*);
 extern __int64* SdkData_e89a70[4];
 extern char* SdkData_e71f28;
 extern char* SdkData_e71f58;

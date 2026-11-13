@@ -85,6 +85,9 @@ unsigned __int64 strlen(const char*);
 unsigned __int8* snd_fnd_calcCrc32(unsigned __int8* result, int);
 unsigned int* game_6b7f00(unsigned int*, unsigned __int64, unsigned int*,
                           __int64, __int64*);
+unsigned __int128 game_6b7f00_pair(unsigned int*, unsigned __int64,
+                                   unsigned int*, __int64,
+                                   __int64*) __asm__("game_6b7f00");
 void GameRoutine_6b8990_alt1(_QWORD*, __int64*) __asm__("GameRoutine_6b8990");
 void GameRoutine_c4e300_alt1(_QWORD*, __int64*) __asm__("GameRoutine_c4e300");
 void nn_mem_StandardAllocator_Free(__int64, __int64);
@@ -3045,9 +3048,11 @@ void GameHr_c47f40(_QWORD* a1, __int64* a2)
       v14 = *(unsigned int**)(v10 + 1);
       v39_.v39 = (__int64)v12;
       v39_.v40 = v13;
-      game_6b7f00(v14, 0, v14, v14[1], &v39_.v39),
-          v15 = COERCE_AS(__typeof__(v15),
-                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      ({
+        unsigned __int128 r_ = game_6b7f00_pair(v14, 0, v14, v14[1], &v39_.v39);
+        v15 = COERCE_AS(__typeof__(v15), (unsigned long long)(r_ >> 64));
+        (unsigned int*)(unsigned long long)r_;
+      });
       v16 = v15 == v14[1];
       if ((v35_.v35 & 1) != 0) {
       LABEL_22:

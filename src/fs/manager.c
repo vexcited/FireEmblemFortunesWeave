@@ -178,6 +178,9 @@ __int64 GameRoutine_631500(__int64 result, _QWORD*);
 __int64 GameRoutine_634d80_alt1(_QWORD, _QWORD) __asm__("GameRoutine_634d80");
 __int64 GameRoutine_635a60_alt1(__int64, char**, char, char, __int64,
                                 __int64) __asm__("GameRoutine_635a60");
+unsigned __int128
+GameRoutine_635a60_alt1_pair(__int64, char**, char, char, __int64,
+                             __int64) __asm__("GameRoutine_635a60");
 __int64 GameRoutine_64be60();
 __int64 GameRoutine_8319e0(__int64 result, char*, __int64, __int64, char);
 __int64 GameRoutine_a4a400(_QWORD, _QWORD);
@@ -287,6 +290,9 @@ __int64 GameRoutine_632cd0_alt1(__int64, __int64) __asm__("GameRoutine_632cd0");
 __int64 GameRoutine_634d80_alt2(__int64, __int64) __asm__("GameRoutine_634d80");
 __int64 GameRoutine_635a60_alt2(__int64, __int64*, char, char, __int64,
                                 __int64) __asm__("GameRoutine_635a60");
+unsigned __int128
+GameRoutine_635a60_alt2_pair(__int64, __int64*, char, char, __int64,
+                             __int64) __asm__("GameRoutine_635a60");
 __int64 GameRoutine_a4a400_alt1(__int64,
                                 const char*) __asm__("GameRoutine_a4a400");
 __int64 Registration_a4ac60_alt1(__int64,
@@ -2598,9 +2604,12 @@ __int64 fs_Manager_createFileAsync_fs_File(__int64 a1, __int64 a2)
   v16_.v17 = v16_.v16;
   v16_.v16[2] = a1;
   v16_.v16[3] = &v18_.v18;
-  v7 = GameRoutine_635a60_alt1(a1, (char**)a2, 0, 0, 0, (__int64)v16_.v16),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = ({
+    unsigned __int128 r_ = GameRoutine_635a60_alt1_pair(a1, (char**)a2, 0, 0, 0,
+                                                        (__int64)v16_.v16);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v9 = v8;
   if (v16_.v17 == v16_.v16) {
     v10 = 32;
@@ -5227,9 +5236,12 @@ __int64 fs_Manager_createFileAsync_fs_ElfFile(__int64 a1, __int64 a2)
   v16_.v17 = v16_.v16;
   v16_.v16[2] = a1;
   v16_.v16[3] = &v18_.v18;
-  v7 = GameRoutine_635a60_alt1(a1, (char**)a2, 0, 0, 0, (__int64)v16_.v16),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = ({
+    unsigned __int128 r_ = GameRoutine_635a60_alt1_pair(a1, (char**)a2, 0, 0, 0,
+                                                        (__int64)v16_.v16);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v9 = v8;
   if (v16_.v17 == v16_.v16) {
     v10 = 32;
@@ -5467,11 +5479,13 @@ __int64 fs_Manager_createFileSync_fs_GfxFile(__int64 a1)
                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
   v9 = COERCE_AS(__typeof__(v9),
                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  v2 = GameRoutine_635a60_alt2(v4, v25_.v25, 1, 0, 0, (__int64)&v29_.v29),
-  v5 = COERCE_AS(__typeof__(v5),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v9 = COERCE_AS(__typeof__(v9),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v2 = ({
+    unsigned __int128 r_ =
+        GameRoutine_635a60_alt2_pair(v4, v25_.v25, 1, 0, 0, (__int64)&v29_.v29);
+    v5 = COERCE_AS(__typeof__(v5), (unsigned long long)(r_ >> 64));
+    v9 = COERCE_AS(__typeof__(v9), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v6 = v5;
   if (v29_.v32 == (__int64*)&v29_.v29) {
     v7 = 32;
@@ -5957,9 +5971,12 @@ __int64 fs_Manager_createFileAsync_ui_IconManager_Ui2dIconArcFile(__int64 a1,
   v16_.v17 = v16_.v16;
   v16_.v16[2] = a1;
   v16_.v16[3] = &v18_.v18;
-  v7 = GameRoutine_635a60_alt2(a1, (__int64*)a2, 0, 0, 0, (__int64)v16_.v16),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = ({
+    unsigned __int128 r_ = GameRoutine_635a60_alt2_pair(a1, (__int64*)a2, 0, 0,
+                                                        0, (__int64)v16_.v16);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v9 = v8;
   if (v16_.v17 == v16_.v16) {
     v10 = 32;
@@ -6816,9 +6833,12 @@ __int64 fs_Manager_createFileAsync_fs_BntxFile(__int64 a1, __int64 a2)
   v16_.v17 = v16_.v16;
   v16_.v16[2] = a1;
   v16_.v16[3] = &v18_.v18;
-  v7 = GameRoutine_635a60_alt2(a1, (__int64*)a2, 0, 0, 0, (__int64)v16_.v16),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = ({
+    unsigned __int128 r_ = GameRoutine_635a60_alt2_pair(a1, (__int64*)a2, 0, 0,
+                                                        0, (__int64)v16_.v16);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v9 = v8;
   if (v16_.v17 == v16_.v16) {
     v10 = 32;
@@ -7022,9 +7042,12 @@ __int64 fs_Manager_createFileAsync_fs_ShaderFile(__int64 a1, __int64 a2,
   v20_.v24 = &v20_.v20;
   v20_.v22 = v4;
   v20_.v23 = &v25_.v25;
-  v10 = GameRoutine_635a60_alt2(v4, v16_.v16, 0, 0, 0, (__int64)&v20_.v20),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v10 = ({
+    unsigned __int128 r_ =
+        GameRoutine_635a60_alt2_pair(v4, v16_.v16, 0, 0, 0, (__int64)&v20_.v20);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  }),
   v9 = COERCE_AS(__typeof__(v9),
                  PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   v11 = v8;
@@ -7180,9 +7203,12 @@ __int64 fs_Manager_createFileAsync_fs_ResFile(__int64 a1, __int64 a2,
   v19_.v23 = &v19_.v19;
   v19_.v21 = v4;
   v19_.v22 = &v24_.v24;
-  v9 = GameRoutine_635a60_alt2(v4, v15_.v15, 0, 0, 0, (__int64)&v19_.v19),
-  v7 = COERCE_AS(__typeof__(v7),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v9 = ({
+    unsigned __int128 r_ =
+        GameRoutine_635a60_alt2_pair(v4, v15_.v15, 0, 0, 0, (__int64)&v19_.v19);
+    v7 = COERCE_AS(__typeof__(v7), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  }),
   v8 = COERCE_AS(__typeof__(v8),
                  PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
   v10 = v7;
@@ -7516,9 +7542,12 @@ __int64 fs_Manager_createFileAsync_fs_PropertyFile(__int64 a1, __int64 a2)
   v16_.v17 = v16_.v16;
   v16_.v16[2] = a1;
   v16_.v16[3] = &v18_.v18;
-  v7 = GameRoutine_635a60_alt2(a1, (__int64*)a2, 0, 0, 0, (__int64)v16_.v16),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = ({
+    unsigned __int128 r_ = GameRoutine_635a60_alt2_pair(a1, (__int64*)a2, 0, 0,
+                                                        0, (__int64)v16_.v16);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v9 = v8;
   if (v16_.v17 == v16_.v16) {
     v10 = 32;

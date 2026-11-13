@@ -12,6 +12,8 @@ __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
 __attribute__((swiftcall)) void snd_BGM_getFirstHandle(PSEUDO_X8, __int64);
 __int64* LayoutAccessor_155fbe0(__int64*, const char*);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameManager_a22bd0();
 __int64 GameRoutine_155da20(__int64 result, float);
@@ -1000,16 +1002,15 @@ _QWORD* game_menu_162e6a0(_QWORD* result)
       *(_DWORD*)&v125_.v126[8] = 9;
       *(_QWORD*)v125_.v126 = "UI_Deco_CharaMake_Graph_Loop";
       v17 = eft_g_effectSystem_ptr[0];
-      v18 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                           (__int64)v125_.v125, 0),
-      v19 = COERCE_AS(__typeof__(v19),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v40 = COERCE_AS(__typeof__(v40),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v61 = COERCE_AS(__typeof__(v61),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v82 = COERCE_AS(__typeof__(v82),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v18 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(
+            *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v125_.v125, 0);
+        v19 = COERCE_AS(__typeof__(v19), (unsigned long long)(r_ >> 64));
+        v40 = COERCE_AS(__typeof__(v40), (unsigned long long)(r_ >> 64));
+        v61 = COERCE_AS(__typeof__(v61), (unsigned long long)(r_ >> 64));
+        v82 = COERCE_AS(__typeof__(v82), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v121_.v121, (__int64)v18, v19,
                      (__int64)&GameData_1a9f09e),
           v19 = COERCE_AS(__typeof__(v19),
@@ -1157,15 +1158,14 @@ _QWORD* game_menu_162e6a0(_QWORD* result)
       v125_.v131 = v37;
       *(_DWORD*)&v125_.v126[8] = 9;
       *(_QWORD*)v125_.v126 = "UI_Deco_CharaMake_Noise_Loop";
-      v39 = Manager_bc6460(v38, (__int64)v125_.v125, 0),
-      v19 = COERCE_AS(__typeof__(v19),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v40 = COERCE_AS(__typeof__(v40),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v61 = COERCE_AS(__typeof__(v61),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v82 = COERCE_AS(__typeof__(v82),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v39 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(v38, (__int64)v125_.v125, 0);
+        v19 = COERCE_AS(__typeof__(v19), (unsigned long long)(r_ >> 64));
+        v40 = COERCE_AS(__typeof__(v40), (unsigned long long)(r_ >> 64));
+        v61 = COERCE_AS(__typeof__(v61), (unsigned long long)(r_ >> 64));
+        v82 = COERCE_AS(__typeof__(v82), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v121_.v121, (__int64)v39, v40,
                      (__int64)&GameData_1a9f09e),
           v19 = COERCE_AS(__typeof__(v19),
@@ -1313,15 +1313,14 @@ _QWORD* game_menu_162e6a0(_QWORD* result)
       v125_.v131 = v58;
       *(_DWORD*)&v125_.v126[8] = 9;
       *(_QWORD*)v125_.v126 = "Field_Dust_Hub_40_A2";
-      v60 = Manager_bc6460(v59, (__int64)v125_.v125, 0),
-      v19 = COERCE_AS(__typeof__(v19),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v40 = COERCE_AS(__typeof__(v40),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v61 = COERCE_AS(__typeof__(v61),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v82 = COERCE_AS(__typeof__(v82),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v60 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(v59, (__int64)v125_.v125, 0);
+        v19 = COERCE_AS(__typeof__(v19), (unsigned long long)(r_ >> 64));
+        v40 = COERCE_AS(__typeof__(v40), (unsigned long long)(r_ >> 64));
+        v61 = COERCE_AS(__typeof__(v61), (unsigned long long)(r_ >> 64));
+        v82 = COERCE_AS(__typeof__(v82), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v121_.v121, (__int64)v60, v61,
                      (__int64)&GameData_1a9f09e),
           v19 = COERCE_AS(__typeof__(v19),
@@ -1469,15 +1468,14 @@ _QWORD* game_menu_162e6a0(_QWORD* result)
       v125_.v131 = v79;
       *(_DWORD*)&v125_.v126[8] = 9;
       *(_QWORD*)v125_.v126 = "UI_Deco_CharaMake_Ball_Loop";
-      v81 = Manager_bc6460(v80, (__int64)v125_.v125, 0),
-      v19 = COERCE_AS(__typeof__(v19),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v40 = COERCE_AS(__typeof__(v40),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v61 = COERCE_AS(__typeof__(v61),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v82 = COERCE_AS(__typeof__(v82),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v81 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(v80, (__int64)v125_.v125, 0);
+        v19 = COERCE_AS(__typeof__(v19), (unsigned long long)(r_ >> 64));
+        v40 = COERCE_AS(__typeof__(v40), (unsigned long long)(r_ >> 64));
+        v61 = COERCE_AS(__typeof__(v61), (unsigned long long)(r_ >> 64));
+        v82 = COERCE_AS(__typeof__(v82), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v121_.v121, (__int64)v81, v82,
                      (__int64)&GameData_1a9f09e),
           v19 = COERCE_AS(__typeof__(v19),

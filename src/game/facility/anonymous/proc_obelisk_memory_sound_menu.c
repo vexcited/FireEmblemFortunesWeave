@@ -95,6 +95,8 @@ __n128 std___1___shared_weak_count___release_weak(_QWORD);
 __n128 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
 char* GameRoutine_a4dbe0(__int64, _BYTE*, char);
 const char* game_facility_anonymous_16abe00(int, int);
+unsigned __int128 game_facility_anonymous_16abe00_pair(int, int) __asm__(
+    "game_facility_anonymous_16abe00");
 extern __int64 (*game_facility_anonymous_SoundMenuItem_vtable[])();
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern char game_sound_g_vibration_enabled;
@@ -1603,9 +1605,12 @@ __int64 ProcObeliskMemorySoundMenu_16ac260(__int64 a1, char a2, char a3)
         return 0;
       }
     }
-    game_facility_anonymous_16abe00(*(_DWORD*)(v8 + 96), *(_DWORD*)(v8 + 100)),
-        v9 = COERCE_AS(__typeof__(v9),
-                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    ({
+      unsigned __int128 r_ = game_facility_anonymous_16abe00_pair(
+          *(_DWORD*)(v8 + 96), *(_DWORD*)(v8 + 100));
+      v9 = COERCE_AS(__typeof__(v9), (unsigned long long)(r_ >> 64));
+      (const char*)(unsigned long long)r_;
+    });
     if (v9 != 0) {
       if ((a2 & 1) != 0) {
         v10 = -1;

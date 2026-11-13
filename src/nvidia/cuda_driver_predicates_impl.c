@@ -70,7 +70,7 @@ __int64 cuda_driver_predicates_1dc880_alt1(_QWORD, _QWORD) __asm__(
 __int64 cuda_driver_predicates_1dc8c0_alt1(_QWORD) __asm__(
     "cuda_driver_predicates_1dc8c0");
 __int64 memset_plt(_QWORD, _QWORD, _QWORD);
-bool CudaDriverRoutine_8f480(_QWORD*);
+unsigned __int8 CudaDriverRoutine_8f480(_QWORD*);
 extern _QWORD CudaDriverData_1134160[10];
 extern _UNKNOWN* CudaDriverData_1422118;
 extern __int128 CudaDriverData_1115950;

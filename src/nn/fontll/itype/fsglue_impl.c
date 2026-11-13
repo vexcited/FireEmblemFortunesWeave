@@ -2858,8 +2858,8 @@ LABEL_10:
       if ((v72 & 0x80000) != 0) {
       LABEL_46:
         v77 = *v26++;
-        HIDWORD(v123) = 4 * ((int)bswap32(v77) >> 16);
-        LODWORD(v123) = HIDWORD(v123);
+        DWORD3(v123) = 4 * ((int)bswap32(v77) >> 16);
+        LODWORD(v123) = DWORD3(v123);
         goto LABEL_55;
       }
     }
@@ -2876,7 +2876,7 @@ LABEL_10:
       LODWORD(v123) = 4 * ((int)bswap32(*v26) >> 16);
       v78 = v26[1];
       v26 += 2;
-      HIDWORD(v123) = 4 * ((int)bswap32(v78) >> 16);
+      DWORD3(v123) = 4 * ((int)bswap32(v78) >> 16);
     LABEL_55:
       *(_QWORD*)((char*)&v123 + 4) = 0;
       *(_BYTE*)(a2 + 528) = 0;
@@ -2896,7 +2896,7 @@ LABEL_10:
       v79 = v26[3];
       v26 += 4;
       *(_BYTE*)(a2 + 528) = 0;
-      HIDWORD(v123) = 4 * ((int)bswap32(v79) >> 16);
+      DWORD3(v123) = 4 * ((int)bswap32(v79) >> 16);
       if ((v73 & 0x100) != 0) {
         v71 = 1;
       }

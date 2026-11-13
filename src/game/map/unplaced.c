@@ -5915,13 +5915,13 @@ __int64 game_map_769920(__int64 a1, __int64 a2, char a3, const char* a4,
     else {
       a5 = *(long double*)(v11 + 208);
     }
-    LODWORD(a5) = HIDWORD(a5);
+    LODWORD(a5) = DWORD3(a5);
     if (*((float*)&a5 + 3) != 0x1.0000000000000p+0f ||
         (v13 = a1,
          *(__n128*)& a5 = ((__n128 (*)(unsigned __int64, float)) *
                            (_QWORD*)(*(_QWORD*)(v11 + 160) + 16LL))(
              v11 + 160, *((float*)&a5 + 3)),
-         LODWORD(a5) = HIDWORD(a5), a1 = v13,
+         LODWORD(a5) = DWORD3(a5), a1 = v13,
          *((float*)&a5 + 3) != 0x1.0000000000000p+0f)) {
     LABEL_17:
       if (a4 == nullptr || *a4 == 0) {
@@ -6012,13 +6012,13 @@ __int64 game_map_769b20(__int64 a1, __int64 a2, unsigned __int8 a3,
     else {
       a5 = *(long double*)(v11 + 208);
     }
-    LODWORD(a5) = HIDWORD(a5);
+    LODWORD(a5) = DWORD3(a5);
     if (*((float*)&a5 + 3) != 0x1.0000000000000p+0f ||
         (v13 = a1,
          *(__n128*)& a5 = ((__n128 (*)(unsigned __int64, float)) *
                            (_QWORD*)(*(_QWORD*)(v11 + 160) + 16LL))(
              v11 + 160, *((float*)&a5 + 3)),
-         LODWORD(a5) = HIDWORD(a5), a1 = v13,
+         LODWORD(a5) = DWORD3(a5), a1 = v13,
          *((float*)&a5 + 3) != 0x1.0000000000000p+0f)) {
     LABEL_17:
       if (a4 == nullptr || *a4 == 0) {
@@ -6129,13 +6129,13 @@ __int64 game_map_769f40(__int64 a1, __int64 a2, _DWORD* a3, long double a4,
     else {
       a4 = *(long double*)(v9 + 208);
     }
-    LODWORD(a4) = HIDWORD(a4);
+    LODWORD(a4) = DWORD3(a4);
     if (*((float*)&a4 + 3) != 0x1.0000000000000p+0f ||
         (v11 = a1,
          *(__n128*)& a4 = ((__n128 (*)(unsigned __int64, float)) *
                            (_QWORD*)(*(_QWORD*)(v9 + 160) + 16LL))(
              v9 + 160, *((float*)&a4 + 3)),
-         LODWORD(a4) = HIDWORD(a4), a1 = v11,
+         LODWORD(a4) = DWORD3(a4), a1 = v11,
          *((float*)&a4 + 3) != 0x1.0000000000000p+0f)) {
     LABEL_16:
       v14 = "Bmap_Warp_Start";

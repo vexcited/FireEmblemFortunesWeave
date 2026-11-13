@@ -1277,7 +1277,7 @@ LABEL_21:
       v24 = std___1___next_prime(v24);
     }
     else {
-      v25 = 1LL << -(char)__clz(v24 - 1);
+      v25 = 1LL << (-(char)__clz(v24 - 1) & 63);
       if (v24 >= 2) {
         v24 = v25;
       }

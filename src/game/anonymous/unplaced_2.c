@@ -636,7 +636,7 @@ LABEL_71:
         result = std___1___next_prime(result);
       }
       else {
-        v43 = 1LL << -(char)__clz(result - 1);
+        v43 = 1LL << (-(char)__clz(result - 1) & 63);
         if (result >= 2) {
           result = v43;
         }
@@ -843,7 +843,7 @@ LABEL_24:
           result = (_QWORD*)std___1___next_prime(result);
         }
         else {
-          v30 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+          v30 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
           if ((unsigned __int64)result >= 2) {
             result = (_QWORD*)v30;
           }
@@ -1225,7 +1225,7 @@ LABEL_23:
         result = v29;
       }
       else {
-        v28 = 1LL << -(char)__clz(v27 - 1);
+        v28 = 1LL << (-(char)__clz(v27 - 1) & 63);
         if (v27 >= 2) {
           v27 = v28;
         }
@@ -1356,7 +1356,7 @@ void game_anonymous_1266e00(unsigned __int64 result, __int64 a2)
       v5 = v10;
     }
     else {
-      v9 = 1LL << -(char)__clz(v8 - 1);
+      v9 = 1LL << (-(char)__clz(v8 - 1) & 63);
       if (v8 >= 2) {
         v8 = v9;
       }
@@ -1468,7 +1468,7 @@ LABEL_18:
             v31 = std___1___next_prime(v31);
           }
           else {
-            v32 = 1LL << -(char)__clz(v31 - 1);
+            v32 = 1LL << (-(char)__clz(v31 - 1) & 63);
             if (v31 >= 2) {
               v31 = v32;
             }

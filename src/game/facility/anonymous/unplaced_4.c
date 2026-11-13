@@ -1683,7 +1683,7 @@ __int64 game_facility_anonymous_19e7820()
           v91 = std___1___next_prime(v91);
         }
         else {
-          v92 = 1LL << -(char)__clz(v91 - 1);
+          v92 = 1LL << (-(char)__clz(v91 - 1) & 63);
           if (v91 >= 2) {
             v91 = v92;
           }

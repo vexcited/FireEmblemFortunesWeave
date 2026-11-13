@@ -2439,7 +2439,7 @@ LABEL_244:
         v84 = v137;
       }
       else {
-        v136 = 1LL << -(char)__clz(v135 - 1);
+        v136 = 1LL << (-(char)__clz(v135 - 1) & 63);
         if (v135 >= 2) {
           v135 = v136;
         }
@@ -4212,7 +4212,7 @@ bool GameHr_7ecc80(__int64 a1, __int64 a2, unsigned __int8* a3)
           v145 = a1;
         }
         else {
-          v176 = 1LL << -(char)__clz(v175 - 1);
+          v176 = 1LL << (-(char)__clz(v175 - 1) & 63);
           if (v175 >= 2) {
             v175 = v176;
           }
@@ -4525,7 +4525,7 @@ void GameHr_7f26a0(unsigned __int64 a1)
     v10 = vcvtps_u64_f32((float)(unsigned __int64)GameData_21d9ad8 /
                          *(float*)&GameData_21d9ae0);
     if (v9) {
-      v21 = 1LL << -(char)__clz(v10 - 1);
+      v21 = 1LL << (-(char)__clz(v10 - 1) & 63);
       if (v10 >= 2) {
         v10 = v21;
       }

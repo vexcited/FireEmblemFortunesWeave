@@ -79,6 +79,8 @@ __int64 game_facility_anonymous_ProcUnitSelectMenu_AddItemList(__int64 a1);
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64* GameVariable_82e7c0(unsigned __int8, int);
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameVariable_82e3a0_alt1(int) __asm__("GameVariable_82e3a0");
 __int64
 LayoutAccessor_1562cf0_alt1(__int64 result,
@@ -830,10 +832,12 @@ __int64 ProcUnitSelectMenu_Unknown84(__int64 a1)
       v27_.v32 = v13;
       v27_.v28 = 9;
       v27_.v27[2] = "UI_Deco_CharaChoice_Hades";
-      v15 = Manager_bc6460_alt1(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                                (__int64)v27_.v27, 0),
-      v16 = COERCE_AS(__typeof__(v16),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v15 = ({
+        unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+            *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v27_.v27, 0);
+        v16 = COERCE_AS(__typeof__(v16), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v35_.v35, (__int64)v15, v16, (__int64)&GameData_1a9f09e),
           v16 = COERCE_AS(__typeof__(v16),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

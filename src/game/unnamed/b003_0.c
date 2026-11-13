@@ -1476,6 +1476,7 @@ __int64 GameHr_579410(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   __int64 v15;
   __int64 v16;
   __int64 v17;
+  __int64 v17a;
   char v18;
   __int64 v19;
   __int64 v20;
@@ -1548,12 +1549,12 @@ __int64 GameHr_579410(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   v28_.v37 = nullptr;
   v17 = v16 + 104LL * *GameData_2136228[0];
   v28_.v35 = 0xFFFFFFFF00000000LL;
-  memset((__int64)&v23_.v23 - ((v17 + 79) & 0xFFFFFFFFFFFFFFF0LL), 0, v17 + 64);
+  v17a = (__int64)__builtin_alloca((v17 + 79) & 0xFFFFFFFFFFFFFFF0LL);
+  memset(v17a, 0, v17 + 64);
   v25_.v26 = 0;
   v25_.v27 = 0;
   __builtin_memset(v25_.v25, 0, sizeof(v25_.v25));
-  Layout_57dd20((__int64)v25_.v25,
-                (__int64)&v23_.v23 - ((v17 + 79) & 0xFFFFFFFFFFFFFFF0LL));
+  Layout_57dd20((__int64)v25_.v25, v17a);
   v18 = *(_BYTE*)(a8 + 25);
   v28_.v37 = v25_.v25;
   BYTE1(v28_.v43) = a9;
@@ -6771,7 +6772,7 @@ __int64 GameHr_58d610(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
     v4 = a3;
     v5 = a2;
     v6 = a4;
-    HIDWORD(v10) = 0;
+    DWORD3(v10) = 0;
     v7 = a1;
     v9 = 21;
     *(_QWORD*)&v10 = -1;

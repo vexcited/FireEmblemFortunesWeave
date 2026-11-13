@@ -373,7 +373,7 @@ __int64 CudaDriverRoutine_79f70();
 
 __int64 CudaDriverRoutine_79fa0(__int64, __int64);
 
-bool CudaDriverRoutine_7cff0();
+unsigned __int8 CudaDriverRoutine_7cff0();
 
 __int64 CudaDriverRoutine_7d930();
 
@@ -2886,7 +2886,7 @@ __int64 CudaDriverHr_904a0(__int64* a1)
       *(_QWORD*)((char*)&v7 + 4) = 0x100000001LL;
       *(_QWORD*)&v8 = 0x100000001LL;
       LODWORD(v7) = ((v5 >> 5) + 15) >> 4;
-      HIDWORD(v7) = v7;
+      DWORD3(v7) = v7;
       CudaDriverRoutine_e6700(v6, *(_QWORD*)(*a1 + 96));
       return CudaDriverRoutine_e6730(a1[54], v6, *(_QWORD*)(*a1 + 96), 0, 0);
     }
@@ -4182,7 +4182,7 @@ __int64 CudaDriverHr_95120(__int64* a1)
       *(_QWORD*)((char*)&v7 + 4) = 0x100000001LL;
       *(_QWORD*)&v8 = 0x100000001LL;
       LODWORD(v7) = (((unsigned int)(v5 + 31) >> 5) + 15) >> 4;
-      HIDWORD(v7) = v7;
+      DWORD3(v7) = v7;
       CudaDriverRoutine_e6700(v6, *(_QWORD*)(*a1 + 96));
       return CudaDriverRoutine_e6730(a1[54], v6, *(_QWORD*)(*a1 + 96), 0, 0);
     }

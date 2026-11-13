@@ -1526,7 +1526,7 @@ void PropActor_Unknown4(__int64 a1, long double a2, float a3)
               COERCE_FLOAT(HIDWORD(*(_QWORD*)(v31 + 336))) == v54;
         v57 = v56 &&
               COERCE_FLOAT(*(_QWORD*)(v31 + 344)) == LANES64(v39).n64_f32[0];
-        if (!v57 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v31 + 336))) != v55) {
+        if (!v57 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v31 + 336))) != v55) {
           v59 = *(_DWORD*)(v31 + 296);
           *(float*)(v31 + 336) = v53;
           *(float*)(v31 + 340) = v54;

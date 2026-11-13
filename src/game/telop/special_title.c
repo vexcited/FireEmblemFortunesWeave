@@ -34,6 +34,8 @@ __int64 GameRoutine_14a1520_alt1(__int64*, char) __asm__("GameRoutine_14a1520");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 extern _UNKNOWN* GameData_212c540;
 extern _UNKNOWN* GameData_212c548;
@@ -190,10 +192,12 @@ __int64 SpecialTitle_Unknown35(__int64 result)
     v6 = "UI_Theater_Special_Ripples";
   }
   v18_.v18[2] = v6;
-  v10 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v18_.v18,
-                       0),
-  v11 = COERCE_AS(__typeof__(v11),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v10 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v18_.v18, 0);
+    v11 = COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result =
       GameHr_14a10d0(&v16_.v16, (__int64)v10, v11, (__int64)&GameData_1a9f09e),
   v11 = COERCE_AS(__typeof__(v11),

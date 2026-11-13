@@ -26,7 +26,7 @@ __int64 CudaDriverRoutine_25cf30(_QWORD, _QWORD, _QWORD);
 __int64 CudaDriverRoutine_5e9b0(_QWORD);
 _QWORD* CudaDriverRoutine_640e0(_QWORD* result, __int64*, char, unsigned int);
 unsigned __int128 CudaDriverRoutine_87d10(_QWORD);
-bool CudaDriverRoutine_8f480(_QWORD*);
+unsigned __int8 CudaDriverRoutine_8f480(_QWORD*);
 __int64 CudaDriverRoutine_92bd0(__int64, __int64, _QWORD*);
 __int64 CudaDriverRoutine_944a0(_QWORD);
 __int64 CudaDriverRoutine_98340(_QWORD);

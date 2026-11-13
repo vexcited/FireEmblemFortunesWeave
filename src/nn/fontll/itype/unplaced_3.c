@@ -13063,7 +13063,7 @@ __int64 nn_fontll_itype_44eee0(void* a1, __int64 a2, __int16 a3, __int16 a4,
 LABEL_25:
   v20 = (unsigned __int16)__rev16(v17);
   v82_.v84 = 0;
-  HIDWORD(v82_.v85) = 0;
+  DWORD3(v82_.v85) = 0;
   v82_.v82 = 0;
   v82_.v83 = 0;
   WORD1(v82_.v85) = v9;

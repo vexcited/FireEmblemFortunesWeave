@@ -351,12 +351,12 @@ __int64 ScheduleNatives_86a070(__int64 a1, int a2, long double a3)
     else {
       a3 = *(long double*)(v8 + 208);
     }
-    LODWORD(a3) = HIDWORD(a3);
+    LODWORD(a3) = DWORD3(a3);
     if (*((float*)&a3 + 3) == 0x1.0000000000000p+0f) {
       (*(void (**)(unsigned __int64, float))(*(_QWORD*)(v8 + 160) + 16LL))(
           v8 + 160, *((float*)&a3 + 3));
       if (v7 > 0x0.0p+0f) {
-        LODWORD(a3) = HIDWORD(a3);
+        LODWORD(a3) = DWORD3(a3);
         if (*((float*)&a3 + 3) != 0x1.0000000000000p+0f) {
         LABEL_14:
           v9 = fw_memory_HeapManager_Allocate_alt1(

@@ -77,7 +77,7 @@ __int64 MemoryOutputStream_Destructor(__int64 a1, __int64 a2, unsigned int a3)
   v7 = v3 + a3;
   if ((unsigned int)v3 + a3 > *(_DWORD*)(a1 + 12)) {
     v8 = fw_memory_g_heap_manager_ptr;
-    v9 = 1 << -(char)__clz(v7 - 1);
+    v9 = 1 << (-(char)__clz(v7 - 1) & 31);
     v10 = v9 <= 0x1000 ? 4096LL : v9;
     v11 = fw_memory_HeapManager_Allocate_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr, v10, 4096, 0);

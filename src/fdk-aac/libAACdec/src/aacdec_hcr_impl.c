@@ -1914,7 +1914,7 @@ LABEL_314:
             ++v306;
             *(_WORD*)(v303 + 2LL * ((int)v305 + 16 * v315)) =
                 v309 -
-                (__clz(
+                (__clz((unsigned int)(
                      (unsigned __int64)(*(int*)(v311 + 4LL * (32 - v325)) *
                                         (__int64)(int)((v326 & 0xF) *
                                                            *(_DWORD*)(v300 +
@@ -1927,7 +1927,7 @@ LABEL_314:
                                                                       4LL *
                                                                           (unsigned __int8)(v326 >>
                                                                                             4)))) >>
-                     32) +
+                     32)) +
                  (char)~*(_BYTE*)(v312 + 32 - v325) - 2);
           } while (v306 != v304);
         LABEL_337:

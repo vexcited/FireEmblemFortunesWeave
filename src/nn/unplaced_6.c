@@ -104,7 +104,7 @@ long double nn_5b4190(__int64 a1)
   *(float*)&v15 = v13 + (float)((float)((float)(v12 * 0x1.0000000000000p+1f) +
                                         -0x1.0000000000000p+0f) *
                                 v2[487]);
-  HIDWORD(result) = 0;
+  DWORD3(result) = 0;
   LANES128(v16).n128_u64[0] = __PAIR64__(v11, v7);
   {
     v17 = v2[476];
@@ -179,7 +179,7 @@ long double nn_5b4190(__int64 a1)
   LANES128(v33).n128_u64[1] = 0x3F8000003F800000LL;
   PSEUDO_LOW_LANE128(
       v38, n128_f32,
-      -COERCE_FLOAT(HIDWORD(
+      -COERCE_FLOAT(DWORD3(
           *(_OWORD*)((char*)((_UNKNOWN*)0x4LL) + (_QWORD)GameData_212c190))));
   v40 = vmlaq_f32(
       vdupq_lane_s32(COERCE_AS(int32x2_t, LANES128(v38).n128_u64[0]), 0), v36,

@@ -109,6 +109,8 @@ __int64 memset(_QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 nn_util_GenerateUuid(void);
+unsigned __int128
+nn_util_GenerateUuid_pair(void) __asm__("nn_util_GenerateUuid");
 __int64 nn_util_TSNPrintf(_QWORD, _QWORD, const char*, ...);
 __int64 sprintf(_QWORD, const char*, ...);
 __int64 std___1___shared_weak_count_lock(_QWORD);
@@ -295,9 +297,11 @@ __attribute__((swiftcall)) void LocatorDispos_db1840(PSEUDO_X8 x8_)
 
   v3 = COERCE_AS(__typeof__(v3),
                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  UuidEv = nn_util_GenerateUuid(),
-  v3 = COERCE_AS(__typeof__(v3),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  UuidEv = ({
+    unsigned __int128 r_ = nn_util_GenerateUuid_pair();
+    v3 = COERCE_AS(__typeof__(v3), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   nn_util_TSNPrintf(
       v9, 64,
       "%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x",

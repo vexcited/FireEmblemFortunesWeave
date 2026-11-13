@@ -255,9 +255,12 @@ LABEL_16:
   *(float*)&v41 = 0x1.0000000000000p-1f * LANES64(v34).n64_f32[0];
   *(float*)&v42 = 0x1.0000000000000p-1f * LANES64(v35).n64_f32[0];
   *(float*)&v43 = 0x1.0000000000000p-1f * LANES64(v38).n64_f32[0];
-  HIDWORD(v41) = vmuls_lane_f32(0x1.0000000000000p-1f, v34, 1);
-  HIDWORD(v42) = vmuls_lane_f32(0x1.0000000000000p-1f, v35, 1);
-  HIDWORD(v43) = vmuls_lane_f32(0x1.0000000000000p-1f, v38, 1);
+  HIDWORD(v41) =
+      COERCE_UNSIGNED_INT(vmuls_lane_f32(0x1.0000000000000p-1f, v34, 1));
+  HIDWORD(v42) =
+      COERCE_UNSIGNED_INT(vmuls_lane_f32(0x1.0000000000000p-1f, v35, 1));
+  HIDWORD(v43) =
+      COERCE_UNSIGNED_INT(vmuls_lane_f32(0x1.0000000000000p-1f, v38, 1));
   LANES64(v47[0]).n64_u64[0] = v41;
   LANES64(v47[1]).n64_u64[0] = v42;
   v48[0] = v43;

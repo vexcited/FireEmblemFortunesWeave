@@ -218,7 +218,7 @@ void ui_control_1885260(__int64 a1, __int64 a2)
       v4 = v10;
     }
     else {
-      v9 = 1LL << -(char)__clz(v8 - 1);
+      v9 = 1LL << (-(char)__clz(v8 - 1) & 63);
       if (v8 >= 2) {
         v8 = v9;
       }

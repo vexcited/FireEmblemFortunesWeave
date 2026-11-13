@@ -104,7 +104,7 @@ unsigned __int64 AutoGrowJobFile_Unknown4(unsigned __int64 result)
       result = std___1___next_prime(result);
     }
     else {
-      v5 = 1LL << -(char)__clz(result - 1);
+      v5 = 1LL << (-(char)__clz(result - 1) & 63);
       if (result >= 2) {
         result = v5;
       }
@@ -286,7 +286,7 @@ unsigned __int64 AutoGrowJobFile_Unknown4(unsigned __int64 result)
             result = std___1___next_prime(result);
           }
           else {
-            v40 = 1LL << -(char)__clz(result - 1);
+            v40 = 1LL << (-(char)__clz(result - 1) & 63);
             if (result >= 2) {
               result = v40;
             }
@@ -694,7 +694,7 @@ void AutoGrowJobFile_12c0bc0(__int64 a1, __int64 a2, char** a3)
                 v47 = std___1___next_prime_alt1(v47);
               }
               else {
-                v48 = 1LL << -(char)__clz(v47 - 1);
+                v48 = 1LL << (-(char)__clz(v47 - 1) & 63);
                 if (v47 >= 2) {
                   v47 = v48;
                 }

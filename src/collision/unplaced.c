@@ -414,7 +414,7 @@ collision_670880(PSEUDO_X8 x8_, unsigned int* result, __int64 a2, __int64 a3)
       v24 = (_QWORD*)((char*)v23 + (((v15 + v22) >> 3) & 0x3FFFFFF8));
       *(_QWORD*)a3 = v24;
       if (v16 >= 1) {
-        *v24 &= ~(0xFFFFFFFFFFFFFFFFLL >> -(char)v16);
+        *v24 &= ~(0xFFFFFFFFFFFFFFFFLL >> (-(char)v16 & 63));
         **(_QWORD**)a3 |=
             v12 >> ((unsigned __int8)v15 + (unsigned __int8)result[2]);
         *(_DWORD*)(a3 + 8) = v16;
@@ -470,7 +470,7 @@ collision_670880(PSEUDO_X8 x8_, unsigned int* result, __int64 a2, __int64 a3)
       }
     }
     if (v26 >= 1) {
-      v38 = *v4 & (0xFFFFFFFFFFFFFFFFLL >> -(char)v26);
+      v38 = *v4 & (0xFFFFFFFFFFFFFFFFLL >> (-(char)v26 & 63));
       if (v26 >= v27) {
         v39 = v27;
       }
@@ -1333,7 +1333,7 @@ __attribute__((swiftcall)) void collision_670c60(PSEUDO_X8 x8_,
       if ((**(unsigned int (***)(__int64))v17)(v17) == 1) {
         *(_QWORD*)&v20 = v47_.v50;
         LODWORD(v18) = v47_.v51;
-        LODWORD(v19) = HIDWORD(v47_.v51);
+        LODWORD(v19) = DWORD3(v47_.v51);
         *((_QWORD*)&v20 + 1) = v18;
         *(_QWORD*)&v21 = *(_QWORD*)((char*)&v47_.v51 + 4);
         v22 = *(_QWORD*)(v17 + 24);

@@ -5260,7 +5260,7 @@ LABEL_54:
         result = std___1___next_prime(result);
       }
       else {
-        v27 = 1LL << -(char)__clz(result - 1);
+        v27 = 1LL << (-(char)__clz(result - 1) & 63);
         if (result >= 2) {
           result = v27;
         }

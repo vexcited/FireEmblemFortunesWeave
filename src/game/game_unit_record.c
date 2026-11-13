@@ -227,7 +227,7 @@ void GameUnitRecord_130b1a0(__int64 a1, int a2, __int64 a3)
             v35 = std___1___next_prime(v35);
           }
           else {
-            v36 = 1LL << -(char)__clz(v35 - 1);
+            v36 = 1LL << (-(char)__clz(v35 - 1) & 63);
             if (v35 >= 2) {
               v35 = v36;
             }
@@ -488,7 +488,7 @@ LABEL_105:
         v58 = std___1___next_prime(v58);
       }
       else {
-        v59 = 1LL << -(char)__clz(v58 - 1);
+        v59 = 1LL << (-(char)__clz(v58 - 1) & 63);
         if (v58 >= 2) {
           v58 = v59;
         }
@@ -1080,7 +1080,7 @@ __int64 GameUnitRecord_130b980(_QWORD* a1, __int64 a2)
                 v71 = v97;
               }
               else {
-                v84 = 1LL << -(char)__clz(v83 - 1);
+                v84 = 1LL << (-(char)__clz(v83 - 1) & 63);
                 if (v83 >= 2) {
                   v83 = v84;
                 }
@@ -1539,7 +1539,7 @@ LABEL_22:
         v34 = std___1___next_prime(v34);
       }
       else {
-        v35 = 1LL << -(char)__clz(v34 - 1);
+        v35 = 1LL << (-(char)__clz(v34 - 1) & 63);
         if (v34 >= 2) {
           v34 = v35;
         }

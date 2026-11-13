@@ -26,6 +26,8 @@ float* GameRoutine_5d9ac0(float* result, __int64, __int64, __int64);
 float* nn_vfx_5d8dd0(float* result, float*, float*, float*);
 int strcmp(const char*, const char*);
 unsigned __int64 GameRoutine_5d91c0(float*, float*);
+unsigned __int128 GameRoutine_5d91c0_pair(float*,
+                                          float*) __asm__("GameRoutine_5d91c0");
 void nn_mem_StandardAllocator_Free(__int64, __int64);
 __int64 nn_vfx_5d2580(__int64 a1, __int64 a2, int a3, int a4, int a5, int a6,
                       __int64 a7, char a8);
@@ -2431,9 +2433,11 @@ LABEL_3:
       }
     }
   LABEL_158:
-    v66 = (__int64*)GameRoutine_5d91c0(v9, a2),
-    v67 = COERCE_AS(__typeof__(v67),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v66 = (__int64*)({
+      unsigned __int128 r_ = GameRoutine_5d91c0_pair(v9, a2);
+      v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+      (unsigned __int64)(unsigned long long)r_;
+    });
     if ((v67 & 1) == 0) {
       goto LABEL_161;
     }

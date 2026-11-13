@@ -15,6 +15,8 @@ __attribute__((swiftcall)) void game_112e760(PSEUDO_X8, const char*);
 __attribute__((swiftcall)) void game_ffd4e0(PSEUDO_X8, const char*);
 __int64* GameRoutine_714e40();
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64* game_6f1f10(__int64* result, __int64*, __int64*, __int64*, __int64*);
 __int64* game_8224a0(unsigned __int8);
 __int64* game_UnitPool_Get(_BYTE*);
@@ -5473,9 +5475,11 @@ LABEL_21:
       v33_.v39 = *(_QWORD*)GameData_212c540;
       v33_.v40 = v26;
       v33_.v35 = "Gmap_Spot_Soldier_Area_Start";
-      v27 = Manager_bc6460(v23, (__int64)&v33_.v33, 1),
-      v28 = COERCE_AS(__typeof__(v28),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v27 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(v23, (__int64)&v33_.v33, 1);
+        v28 = COERCE_AS(__typeof__(v28), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       result = GameHr_14a10d0(&v33_.v33, (__int64)v27, v28,
                               (__int64)&GameData_1a9f09e),
       v28 = COERCE_AS(__typeof__(v28),

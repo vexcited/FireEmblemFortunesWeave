@@ -306,7 +306,7 @@ void GmapDisposFile_Unknown4(long double a1)
                     v72 = std___1___next_prime(v72);
                   }
                   else {
-                    v73 = 1LL << -(char)__clz(v72 - 1);
+                    v73 = 1LL << (-(char)__clz(v72 - 1) & 63);
                     if (v72 >= 2) {
                       v72 = v73;
                     }
@@ -552,7 +552,7 @@ void GmapDisposFile_Unknown4(long double a1)
             v39 = std___1___next_prime(v39);
           }
           else {
-            v40 = 1LL << -(char)__clz(v39 - 1);
+            v40 = 1LL << (-(char)__clz(v39 - 1) & 63);
             if (v39 >= 2) {
               v39 = v40;
             }

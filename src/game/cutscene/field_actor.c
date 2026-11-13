@@ -2804,7 +2804,7 @@ LABEL_13:
         v34 = COERCE_FLOAT(*(_OWORD*)&v15[21]) == v30 &&
               COERCE_FLOAT(HIDWORD(LANES128(v15[21]).n128_u64[0])) == v31;
         v35 = v34 && COERCE_FLOAT(LANES128(v15[21]).n128_u64[1]) == v33;
-        if (!v35 || COERCE_FLOAT(HIDWORD(*(_OWORD*)&v15[21])) != v32) {
+        if (!v35 || COERCE_FLOAT(DWORD3(*(_OWORD*)&v15[21])) != v32) {
           v37 = LANES128(v15[18]).n128_u32[2];
           LANES128(v15[21]).n128_f32[0] = v30;
           LANES128(v15[21]).n128_f32[1] = v31;

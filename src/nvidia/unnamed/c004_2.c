@@ -182,7 +182,7 @@ __int64 CudaDriverRoutine_201340(__int64*, unsigned __int64);
 
 __int64 CudaDriverRoutine_201450(_QWORD);
 
-bool CudaDriverRoutine_201460(_QWORD*);
+unsigned __int8 CudaDriverRoutine_201460(_QWORD*);
 
 __int64 CudaDriverRoutine_201480(unsigned __int64*, __int64);
 
@@ -758,7 +758,7 @@ __int64 CudaDriverHr_205fa0(int a1, __int64 a2, __int64* a3, __int64* a4)
   if (a4 != nullptr) {
     *a4 = v8;
   }
-  v10 = HIDWORD(v15);
+  v10 = DWORD3(v15);
   CudaDriverRoutine_205860(a2);
   result = CudaDriverRoutine_205940(v9, a2, a3, v10);
   v12 = v15;

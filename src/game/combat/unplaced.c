@@ -1411,7 +1411,7 @@ void game_combat_e3f5f0(__int64 a1)
         if (COERCE_FLOAT(*(_OWORD*)&v17[21]) != v35 ||
             COERCE_FLOAT(HIDWORD(LANES128(v17[21]).n128_u64[0])) != v36 ||
             COERCE_FLOAT(LANES128(v17[21]).n128_u64[1]) != v35 ||
-            COERCE_FLOAT(HIDWORD(*(_OWORD*)&v17[21])) != v34) {
+            COERCE_FLOAT(DWORD3(*(_OWORD*)&v17[21])) != v34) {
           v40 = LANES128(v17[18]).n128_u32[2];
           LANES128(v17[21]).n128_f32[0] = v35;
           LANES128(v17[21]).n128_f32[1] = v36;
@@ -4858,7 +4858,7 @@ __int64 game_combat_109acb0(__int64 a1, __int64 a2)
   if (((unsigned int)(v4 - 989295305) > 0x21 ||
        ((1LL << ((unsigned __int8)v4 + 55)) & 0x200040007LL) == 0) &&
       ((unsigned int)(v4 + 2068235592) > 0x12 ||
-       ((1 << (v4 + 72)) & 0x40003) == 0)) {
+       ((1 << ((v4 + 72) & 31)) & 0x40003) == 0)) {
     v19 = a2;
     v20 = *(_DWORD*)(v3 + 120);
     result = GameRoutine_108cfd0(v4);
@@ -5551,7 +5551,7 @@ LABEL_41:
         v44 = std___1___next_prime_alt1(v44);
       }
       else {
-        v45 = 1LL << -(char)__clz(v44 - 1);
+        v45 = 1LL << (-(char)__clz(v44 - 1) & 63);
         if (v44 >= 2) {
           v44 = v45;
         }

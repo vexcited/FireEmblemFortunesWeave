@@ -14,7 +14,7 @@ __int64 quant_coarse_energy_impl_alt1(__int64, int, int, __int64, __int64, int,
                                       int, __int64, __int64, __int64, int, int,
                                       int, __int16,
                                       int) __asm__("quant_coarse_energy_impl");
-bool ec_dec_bit_logp(__int64*, char);
+int ec_dec_bit_logp(__int64*, char);
 extern _UNKNOWN MovieData_a2410;
 extern _UNKNOWN MovieData_a5c0d;
 extern __int16 MovieData_a2418[4];
@@ -731,20 +731,20 @@ __int64 unquant_coarse_energy(__int64 result, int a2, int a3, __int64 a4,
         v22 = ec_dec_icdf((__int64*)a6, MovieData_a5d5d, 2);
         result = (v22 << 31 >> 31) ^ (unsigned int)(v22 >> 1);
       }
-      v18 = *(__int16*)(a4 + 2LL * (v10 + *(_DWORD*)(v11 + 8) * (int)v15));
+      v18 = *(__int16*)(a4 + 2LL * (v10 + *(int*)(v11 + 8) * (int)v15));
       if (v18 <= -9216) {
         LOWORD(v18) = -9216;
       }
-      *(_WORD*)(a4 + 2LL * (v10 + *(_DWORD*)(v11 + 8) * (int)v15)) = v18;
+      *(_WORD*)(a4 + 2LL * (v10 + *(int*)(v11 + 8) * (int)v15)) = v18;
       v19 = *((_DWORD*)&v27 + v15) + ((_DWORD)result << 17);
-      v20 = v19 + ((v25 * *(__int16*)(a4 + 2LL * (v10 + *(_DWORD*)(v11 + 8) *
+      v20 = v19 + ((v25 * *(__int16*)(a4 + 2LL * (v10 + *(int*)(v11 + 8) *
                                                             (int)v15)) +
                     128) >>
                    8);
       if (v20 <= -3670016) {
         v20 = -3670016;
       }
-      *(_WORD*)(a4 + 2LL * (v10 + *(_DWORD*)(v11 + 8) * (int)v15)) =
+      *(_WORD*)(a4 + 2LL * (v10 + *(int*)(v11 + 8) * (int)v15)) =
           (unsigned int)(v20 + 64) >> 7;
       *((_DWORD*)&v27 + v15++) = v19 - v26 * (__int16)(4 * result);
     } while (v13 != v15);

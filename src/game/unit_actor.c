@@ -3363,7 +3363,7 @@ void UnitActor_81c600(__int64 a1)
               v35 = std___1___next_prime_alt1(v35);
             }
             else {
-              v36 = 1LL << -(char)__clz(v35 - 1);
+              v36 = 1LL << (-(char)__clz(v35 - 1) & 63);
               if (v35 >= 2) {
                 v35 = v36;
               }
@@ -5433,7 +5433,7 @@ LABEL_23:
         v26 = std___1___next_prime(v26);
       }
       else {
-        v27 = 1LL << -(char)__clz(v26 - 1);
+        v27 = 1LL << (-(char)__clz(v26 - 1) & 63);
         if (v26 >= 2) {
           v26 = v27;
         }

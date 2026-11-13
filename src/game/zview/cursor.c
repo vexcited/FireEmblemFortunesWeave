@@ -39,6 +39,8 @@ __int64 Cursor_f57c50(__int64 a1);
 __n128
 Cursor_Impl_Destructor_alt1(__int64 a1) __asm__("Cursor_Impl_Destructor");
 __int64* Manager_bc6460(float*, float32x4_t*, char);
+unsigned __int128 Manager_bc6460_pair(float*, float32x4_t*,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameRoutine_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_14a1390_alt1(__int64*, char) __asm__("GameRoutine_14a1390");
 __int64 GameRoutine_14a3920(__int64 result);
@@ -679,9 +681,11 @@ __int64 Cursor_f57960(__int64 a1)
       v22_.v28 = v6;
       v22_.v26 = GameData_1a837f0;
       v22_.v23 = "UI_ZoomView_Cursor";
-      v7 = Manager_bc6460(v5, &v22_.v22, 1),
-      v8 = COERCE_AS(__typeof__(v8),
-                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v7 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(v5, &v22_.v22, 1);
+        v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameRoutine_14a10d0(&v22_.v22, (__int64)v7, v8,
                           (__int64)&GameData_1a9f09e),
           v8 = COERCE_AS(__typeof__(v8),

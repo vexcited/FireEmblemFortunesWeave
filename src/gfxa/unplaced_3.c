@@ -5,6 +5,8 @@
 _QWORD* GameHr_e5d5a0(__int64*, _QWORD*);
 __attribute__((swiftcall)) void std___1_to_string_1a0a790(PSEUDO_X8);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_1a09ce0(__int64, const char*, unsigned __int64);
 __int64 GameRoutine_1a0a680(__int64, unsigned __int64, const char*,
@@ -13,6 +15,8 @@ __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 gxc_Allocate_5f420(__int64, __int64);
 __int64 gxc_Free_5f440(__int64);
 __int64 gxc_NvnDescriptorPool_AllocateTextureDescriptor(__int64);
+unsigned __int128 gxc_NvnDescriptorPool_AllocateTextureDescriptor_pair(
+    __int64) __asm__("gxc_NvnDescriptorPool_AllocateTextureDescriptor");
 __int64 gxc_NvnDescriptorPool_FreeTextureDescriptor(__int64 result, __int64,
                                                     int);
 __int64 memcpy(__int64, __int64, unsigned __int64);
@@ -412,13 +416,13 @@ __int64 gfxa_18dd220(__int64* a1)
     v79_.v81 = (char*)v18;
     v79_.v86 = v19;
     v79_.v87 = v20;
-    v21 = Manager_bc6460(v17, (__int64)&v79_.v79, 1),
-    v22 = COERCE_AS(__typeof__(v22),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v49 = COERCE_AS(__typeof__(v49),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v63 = COERCE_AS(__typeof__(v63),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v21 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(v17, (__int64)&v79_.v79, 1);
+      v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+      v49 = COERCE_AS(__typeof__(v49), (unsigned long long)(r_ >> 64));
+      v63 = COERCE_AS(__typeof__(v63), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v79_.v79, (__int64)v21, v22, (__int64)&GameData_1a9f09e),
         v22 = COERCE_AS(__typeof__(v22),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -642,13 +646,13 @@ __int64 gfxa_18dd220(__int64* a1)
       v79_.v81 = (char*)v45;
       v79_.v86 = v46;
       v79_.v87 = v47;
-      v48 = Manager_bc6460(v44, (__int64)&v79_.v79, 1),
-      v22 = COERCE_AS(__typeof__(v22),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v49 = COERCE_AS(__typeof__(v49),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v63 = COERCE_AS(__typeof__(v63),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v48 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(v44, (__int64)&v79_.v79, 1);
+        v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+        v49 = COERCE_AS(__typeof__(v49), (unsigned long long)(r_ >> 64));
+        v63 = COERCE_AS(__typeof__(v63), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v79_.v79, (__int64)v48, v49, (__int64)&GameData_1a9f09e),
           v22 = COERCE_AS(__typeof__(v22),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -761,13 +765,13 @@ __int64 gfxa_18dd220(__int64* a1)
   v61 = *((_QWORD*)GameData_212c548 + 1);
   *(_QWORD*)&v79_.v85 = *(_QWORD*)GameData_212c548;
   *((_QWORD*)&v79_.v85 + 1) = v61;
-  v62 = Manager_bc6460(v60, (__int64)&v79_.v79, 0),
-  v22 = COERCE_AS(__typeof__(v22),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v49 = COERCE_AS(__typeof__(v49),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v63 = COERCE_AS(__typeof__(v63),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v62 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(v60, (__int64)&v79_.v79, 0);
+    v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+    v49 = COERCE_AS(__typeof__(v49), (unsigned long long)(r_ >> 64));
+    v63 = COERCE_AS(__typeof__(v63), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result =
       GameHr_14a10d0(&v76_.v76, (__int64)v62, v63, (__int64)&GameData_1a9f09e),
   v22 = COERCE_AS(__typeof__(v22),
@@ -1029,9 +1033,12 @@ void gfxa_18df280(__int64 a1, __int64* a2)
     v24 = 0;
     v53 = v23 + 4 * v22;
     do {
-      v27 = gxc_NvnDescriptorPool_AllocateTextureDescriptor(v21),
-      v28 = COERCE_AS(__typeof__(v28),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v27 = ({
+        unsigned __int128 r_ =
+            gxc_NvnDescriptorPool_AllocateTextureDescriptor_pair(v21);
+        v28 = COERCE_AS(__typeof__(v28), (unsigned long long)(r_ >> 64));
+        (__int64)(unsigned long long)r_;
+      });
       v29 = *(_QWORD*)(a1 + 2104);
       v30 = *(_QWORD*)(a1 + 2112);
       v31 = v28;

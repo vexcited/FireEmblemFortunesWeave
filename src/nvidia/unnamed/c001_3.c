@@ -336,7 +336,7 @@ __int64 CudaDriverHr_95420(_QWORD* a1, __int64 a2)
       *(_QWORD*)((char*)&v21 + 4) = 0x100000001LL;
       *(_QWORD*)&v22 = 0x100000001LL;
       LODWORD(v21) = (((unsigned int)(v18 + 31) >> 5) + 15) >> 4;
-      HIDWORD(v21) = v21;
+      DWORD3(v21) = v21;
       CudaDriverRoutine_e6700(v20, *(_QWORD*)(*(_QWORD*)v16 + 96LL));
       result = CudaDriverRoutine_e6730(*(_QWORD*)(v16 + 432), v20,
                                        *(_QWORD*)(*(_QWORD*)v16 + 96LL), 0, 0);

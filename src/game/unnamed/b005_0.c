@@ -2072,7 +2072,7 @@ LABEL_64:
   LODWORD(v43) = *(_DWORD*)(v43 + 60);
 LABEL_81:
   v44 = *(unsigned __int8*)(a1 + 498);
-  HIDWORD(v77) = v43;
+  DWORD3(v77) = v43;
   LODWORD(v77) = v5;
   v79 = 0;
   *(_QWORD*)((char*)&v77 + 4) = 0x3F80000000000000LL;

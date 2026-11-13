@@ -4,6 +4,9 @@
 
 __int64 memcpy_plt(_QWORD, _QWORD, _QWORD);
 __int64 nn_audio_driver_detail_GetPhysicalMemoryGroupDescriptor_plt(void);
+unsigned __int128
+nn_audio_driver_detail_GetPhysicalMemoryGroupDescriptor_plt_pair(void) __asm__(
+    "nn_audio_driver_detail_GetPhysicalMemoryGroupDescriptor_plt");
 __int64 nn_audio_driver_detail_GetPhysicalMemoryRegionGroupNameImpl(__int64 a1,
                                                                     int a2);
 
@@ -22,9 +25,12 @@ __int64 nn_audio_driver_detail_GetPhysicalMemoryRegionGroupNameImpl(__int64 a1,
 
   v5 = COERCE_AS(__typeof__(v5),
                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  v4 = nn_audio_driver_detail_GetPhysicalMemoryGroupDescriptor_plt(),
-  v5 = COERCE_AS(__typeof__(v5),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v4 = ({
+    unsigned __int128 r_ =
+        nn_audio_driver_detail_GetPhysicalMemoryGroupDescriptor_plt_pair();
+    v5 = COERCE_AS(__typeof__(v5), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v6 = 0;
   if (v5 != 0) {
     for (i = (_DWORD*)(v4 + 64); *i != a2; i += 370) {

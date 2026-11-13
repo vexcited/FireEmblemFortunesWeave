@@ -15,6 +15,8 @@ __int64 GameRoutine_1551f00();
 __int64 GameRoutine_176caa0(_QWORD, _QWORD, _QWORD, _QWORD, long double);
 __int64 GameRoutine_18aff60(__int64 result, __int64);
 __int64 GameRoutine_19f38c0(_QWORD*, char);
+unsigned __int128 GameRoutine_19f38c0_pair(_QWORD*,
+                                           char) __asm__("GameRoutine_19f38c0");
 __int64 GameRoutine_6c6da0(__int64);
 __int64 GameRoutine_e720a0(__int64);
 __int64 GameRoutine_e724e0(__int64, char);
@@ -2443,11 +2445,13 @@ LABEL_221:
       (v138[953] & 8) != 0) {
   LABEL_273:
     if (*(_QWORD*)(v1 + 22856) - *(_QWORD*)(v1 + 22848) >= 9u) {
-      v159[0] = GameRoutine_19f38c0((_QWORD*)(v1 + 22792), 0),
-      v147 = COERCE_AS(__typeof__(v147),
-                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v149 = COERCE_AS(__typeof__(v149),
-                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v159[0] = ({
+        unsigned __int128 r_ =
+            GameRoutine_19f38c0_pair((_QWORD*)(v1 + 22792), 0);
+        v147 = COERCE_AS(__typeof__(v147), (unsigned long long)(r_ >> 64));
+        v149 = COERCE_AS(__typeof__(v149), (unsigned long long)(r_ >> 64));
+        (__int64)(unsigned long long)r_;
+      });
       v159[1] = v147;
       GameRoutine_1832df0(*GameData_212f628[0], 1, 0),
           v147 = COERCE_AS(__typeof__(v147),
@@ -2508,11 +2512,15 @@ LABEL_276:
               (*(_BYTE*)(v148 + 953) & 0x10) != 0) {
           LABEL_302:
             if (*(_QWORD*)(v1 + 22856) - *(_QWORD*)(v1 + 22848) >= 9u) {
-              v159[0] = GameRoutine_19f38c0((_QWORD*)(v1 + 22792), 1),
-              v147 = COERCE_AS(__typeof__(v147),
-                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-              v149 = COERCE_AS(__typeof__(v149),
-                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+              v159[0] = ({
+                unsigned __int128 r_ =
+                    GameRoutine_19f38c0_pair((_QWORD*)(v1 + 22792), 1);
+                v147 =
+                    COERCE_AS(__typeof__(v147), (unsigned long long)(r_ >> 64));
+                v149 =
+                    COERCE_AS(__typeof__(v149), (unsigned long long)(r_ >> 64));
+                (__int64)(unsigned long long)r_;
+              });
               v159[1] = v149;
               GameRoutine_1832df0(*GameData_212f628[0], 1, 1),
                   v147 = COERCE_AS(

@@ -469,7 +469,7 @@ __int64 bands_2cb1e0(__int64 a1, void* a2, unsigned int a3, int a4, int a5,
     return 1;
   }
   v19 = __clz(a5 & -a5);
-  v20 = ((unsigned int)SdkData_e877c0[(unsigned int)a5 >> -v19] *
+  v20 = ((unsigned int)SdkData_e877c0[(unsigned int)a5 >> (-v19 & 31)] *
          (unsigned __int64)(a3 >> ~v19)) >>
         32;
   if (a3 - a5 * (_DWORD)v20 < a5) {

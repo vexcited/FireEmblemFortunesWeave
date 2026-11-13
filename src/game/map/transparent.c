@@ -330,9 +330,9 @@ void Transparent_fe8fa0()
     }
     else {
       v41 = v46;
-      HIDWORD(v37) = 0;
+      DWORD3(v37) = 0;
       *(_BYTE*)(v38 + 80) = 1;
-      HIDWORD(v41) = 0;
+      DWORD3(v41) = 0;
       *(_OWORD*)(v38 + 48) = v37;
       *(_OWORD*)(v38 + 64) = v41;
     }

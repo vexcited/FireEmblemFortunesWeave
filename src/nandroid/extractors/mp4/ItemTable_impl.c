@@ -1938,7 +1938,7 @@ LABEL_24:
     if (v22 < v4) {
       v25 = vcvtps_u64_f32((float)*((unsigned __int64*)a1 + 3) / a1[8]);
       if (v4 >= 3 && (v4 & (v4 - 1)) == 0) {
-        v26 = 1LL << -(char)__clz(v25 - 1);
+        v26 = 1LL << (-(char)__clz(v25 - 1) & 63);
         if (v25 >= 2) {
           v25 = v26;
         }

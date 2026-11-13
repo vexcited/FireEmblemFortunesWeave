@@ -729,6 +729,8 @@ _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 _QWORD* GameRoutine_64df20_alt1(_QWORD*, __int64,
                                 unsigned __int64) __asm__("GameRoutine_64df20");
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64* SpineModel_64dde0(__int64*, __int64, unsigned __int64);
 __int64* game_821090(int);
 __int64 ArcResourceAccessor_573580(_QWORD*, __int64, __int64, __int64, __int64,
@@ -6460,10 +6462,12 @@ __int64 GameHr_137d540(__int64 a1)
   v34_.v39 = v11;
   v34_.v35 = 9;
   v34_.v34[2] = "UI_Deco_StageClear";
-  v13 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v34_.v34,
-                       0),
-  v14 = COERCE_AS(__typeof__(v14),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v13 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v34_.v34, 0);
+    v14 = COERCE_AS(__typeof__(v14), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v32_.v32, (__int64)v13, v14, (__int64)&GameData_1a9f09e),
       v14 = COERCE_AS(__typeof__(v14),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -6648,10 +6652,12 @@ __int64 GameHr_137d940(__int64 result)
     v26_.v31 = v4;
     v26_.v27 = 9;
     v26_.v26[2] = "UI_Deco_StageClear_Loop";
-    v6 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v26_.v26,
-                        0),
-    v7 = COERCE_AS(__typeof__(v7),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v6 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(
+          *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v26_.v26, 0);
+      v7 = COERCE_AS(__typeof__(v7), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v24_.v24, (__int64)v6, v7, (__int64)&GameData_1a9f09e),
         v7 = COERCE_AS(__typeof__(v7),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

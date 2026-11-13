@@ -611,7 +611,7 @@ __int64 opus_silk_fixed_5b1c0(_DWORD* a1, int* a2, __int64 a3, __int64 a4,
   result = opus_653a0(a4, a4, a7 * a6);
   v500_.v512 = 0;
   memset(v500_.v513, 0, 56);
-  v11 = __clz(result) + 32;
+  v11 = __clz((unsigned int)result) + 32;
   v12 = __clz(HIDWORD(result));
   if (HIDWORD(result) == 0) {
     v12 = v11;
@@ -629,7 +629,7 @@ __int64 opus_silk_fixed_5b1c0(_DWORD* a1, int* a2, __int64 a3, __int64 a4,
   v14 = result >> v13;
   v456 = v13;
   v479 = -v13;
-  v15 = (_DWORD)result << -(char)v13;
+  v15 = (_DWORD)result << (-(char)v13 & 31);
   v448 = v14;
   v449 = v15;
   if (v12 < 0x24) {
@@ -2211,12 +2211,12 @@ __int64 opus_silk_fixed_5f5e0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   v59 = 0;
   v12 = v11 + v5 + v7;
   memset(v58, 0, sizeof(v58));
-  v13 = (__int16*)((char*)&v56_.v56 - ((2 * v6 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v13 = (__int16*)__builtin_alloca((2 * v6 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v13, 0, 2 * v6);
   opus_silk_fixed_5b060((__int64)v13, a4 + 2LL * v12 - 2 * v6, 1, v5);
   v14 = *(int*)(a1 + 4596);
   v15 = a4 + 2LL * v12 - 2 * v6 + 2 * v14;
-  v16 = 2LL * (*(_DWORD*)(a1 + 4548) - 2 * (int)v14);
+  v16 = 2LL * (int)(*(_DWORD*)(a1 + 4548) - 2 * (int)v14);
   memcpy_plt(&v13[v14], v15, v16);
   opus_silk_fixed_5b060((__int64)&v13[v14 + (unsigned __int64)v16 / 2],
                         v15 + v16, 2, v14);
@@ -2593,14 +2593,14 @@ LABEL_48:
   v72_.v72 = 0;
   v72_.v73 = 0;
   v43 = 2LL * (v42 + v41 * (int)v5);
-  v44 = (char*)&v72_.v72 - ((v43 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v44 = (char*)__builtin_alloca((v43 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v44, 0, v43);
   if (*(_BYTE*)(a1 + 4781) == 2) {
     v45 = 20LL * (_DWORD)v5;
-    v46 = (int*)((char*)&v72_.v72 - ((v45 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+    v46 = (int*)__builtin_alloca((v45 + 15) & 0xFFFFFFFFFFFFFFF0LL);
     memset_plt(v46, 0, v45);
     v47 = 100LL * (_DWORD)v5;
-    v48 = (_DWORD*)((char*)&v72_.v72 - ((v47 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+    v48 = (_DWORD*)__builtin_alloca((v47 + 15) & 0xFFFFFFFFFFFFFFF0LL);
     memset_plt(v48, 0, v47);
     silk_find_LTP_FIX((__int64)v48, v46, a3, (int*)(a2 + 124),
                       *(_DWORD*)(a1 + 4588), v5, *(_DWORD*)(a1 + 5108));

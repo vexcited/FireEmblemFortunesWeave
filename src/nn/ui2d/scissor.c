@@ -193,7 +193,7 @@ __int64 Scissor_Unknown27(__int64 result, __int64 a2, __int64 a3)
   v46 = v43 < v44 && v36 < v38;
   if (v46 && v40 > 0x0.0p+0f && v45 > 0x0.0p+0f) {
     v47 = result;
-    HIDWORD(v61) = 0;
+    DWORD3(v61) = 0;
     v62 = 0;
     LODWORD(v60) = (int)(float)(v36 + 0x1.0000000000000p-1f);
     HIDWORD(v60) = (int)(float)(v43 + 0x1.0000000000000p-1f);

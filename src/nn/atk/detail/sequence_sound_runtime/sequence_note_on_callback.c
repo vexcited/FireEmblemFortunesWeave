@@ -54,6 +54,8 @@ __int64 SequenceNoteOnCallback_2933d0(__int64 a1, __int64 a2, __int64 a3,
                                       __int64 a4);
 __int64 BaseNx_2832c0(unsigned int*, char);
 unsigned __int64 SoundArchivePlayer_27dc10();
+unsigned __int128
+SoundArchivePlayer_27dc10_pair() __asm__("SoundArchivePlayer_27dc10");
 
 unsigned __int64 SequenceNoteOnCallback_291fa0(__int64 a1, __int64 a2,
                                                unsigned __int64 a3,
@@ -300,9 +302,11 @@ __int64 SequenceNoteOnCallback_2925c0(int* a1, int a2)
   v5 = COERCE_AS(__typeof__(v5),
                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v2 = *a1;
-  v9_.v9 = SoundArchivePlayer_27dc10(),
-  v5 = COERCE_AS(__typeof__(v5),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9_.v9 = ({
+    unsigned __int128 r_ = SoundArchivePlayer_27dc10_pair();
+    v5 = COERCE_AS(__typeof__(v5), (unsigned long long)(r_ >> 64));
+    (unsigned __int64)(unsigned long long)r_;
+  });
   v9_.v10 = v5;
   v6 = BaseNx_2832c0((unsigned int*)&v9_.v9, 1),
   v5 = COERCE_AS(__typeof__(v5),

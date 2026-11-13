@@ -2005,7 +2005,7 @@ LABEL_6:
                   if (v21 == 0) {
                   LABEL_113:
                     DWORD1(v47) = 0;
-                    HIDWORD(v47) = 0;
+                    DWORD3(v47) = 0;
                     *(float*)&v47 =
                         (float)((float)((float)((float)(unsigned int)(v13 + v9 +
                                                                       256) *
@@ -2694,7 +2694,7 @@ __int64 game_map_anonymous_TrickEntity_EachObject_closure_Invoke(__int64 a1,
           v36 = std___1___next_prime(v36);
         }
         else {
-          v37 = 1LL << -(char)__clz(v36 - 1);
+          v37 = 1LL << (-(char)__clz(v36 - 1) & 63);
           if (v36 >= 2) {
             v36 = v37;
           }
@@ -3231,13 +3231,13 @@ __int64 game_map_anonymous_TrickEntity_TryBroken_closure_Invoke(__int64 a1,
     else {
       v4 = *(long double*)(v7 + 208);
     }
-    LODWORD(v4) = HIDWORD(v4);
+    LODWORD(v4) = DWORD3(v4);
     if (*((float*)&v4 + 3) == 0x1.0000000000000p+0f) {
       *(__n128*)&v4 = ((__n128 (*)(unsigned __int64, float)) *
                        (_QWORD*)(*(_QWORD*)(v7 + 160) + 16LL))(
           v7 + 160, *((float*)&v4 + 3)),
       v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w"));
-      LODWORD(v4) = HIDWORD(v4);
+      LODWORD(v4) = DWORD3(v4);
       if (*((float*)&v4 + 3) == 0x1.0000000000000p+0f || v2 == 0) {
         goto LABEL_17;
       }
@@ -3366,12 +3366,12 @@ __int64 game_map_anonymous_TrickEntity_TryRepair_closure_Invoke(__int64 a1,
     else {
       v4 = *(long double*)(v7 + 208);
     }
-    LODWORD(v4) = HIDWORD(v4);
+    LODWORD(v4) = DWORD3(v4);
     if (*((float*)&v4 + 3) == 1.0) {
       *(__n128*)&v4 = ((__n128 (*)(unsigned __int64, float)) *
                        (_QWORD*)(*(_QWORD*)(v7 + 160) + 16LL))(
           v7 + 160, *((float*)&v4 + 3));
-      LODWORD(v4) = HIDWORD(v4);
+      LODWORD(v4) = DWORD3(v4);
       if (*((float*)&v4 + 3) == 1.0 || v2 == 0) {
         goto LABEL_17;
       }
@@ -3529,13 +3529,13 @@ __int64 game_map_anonymous_TrickEntity_TryDone_closure_Invoke(__int64 a1,
     else {
       v8 = *(long double*)(v11 + 208);
     }
-    LODWORD(v8) = HIDWORD(v8);
+    LODWORD(v8) = DWORD3(v8);
     if (*((float*)&v8 + 3) == 0x1.0000000000000p+0f) {
       *(__n128*)&v8 = ((__n128 (*)(unsigned __int64, float)) *
                        (_QWORD*)(*(_QWORD*)(v11 + 160) + 16LL))(
           v11 + 160, *((float*)&v8 + 3)),
       v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(__n128, "v0", "=w"));
-      LODWORD(v8) = HIDWORD(v8);
+      LODWORD(v8) = DWORD3(v8);
       if (*((float*)&v8 + 3) == 0x1.0000000000000p+0f || v2 == 0) {
         goto LABEL_24;
       }
@@ -3693,12 +3693,12 @@ __int64 game_map_anonymous_TrickEntity_TryDone_closure0_Invoke(__int64 a1,
     else {
       v8 = *(long double*)(v11 + 208);
     }
-    LODWORD(v8) = HIDWORD(v8);
+    LODWORD(v8) = DWORD3(v8);
     if (*((float*)&v8 + 3) == 1.0) {
       *(__n128*)&v8 = ((__n128 (*)(unsigned __int64, float)) *
                        (_QWORD*)(*(_QWORD*)(v11 + 160) + 16LL))(
           v11 + 160, *((float*)&v8 + 3));
-      LODWORD(v8) = HIDWORD(v8);
+      LODWORD(v8) = DWORD3(v8);
       if (*((float*)&v8 + 3) == 1.0 || v2 == 0) {
         goto LABEL_24;
       }
@@ -3825,13 +3825,13 @@ __int64 game_map_anonymous_TrickEntity_TryCancel_closure_Invoke(__int64 a1,
     else {
       v4 = *(long double*)(v7 + 208);
     }
-    LODWORD(v4) = HIDWORD(v4);
+    LODWORD(v4) = DWORD3(v4);
     if (*((float*)&v4 + 3) == 0x1.0000000000000p+0f) {
       *(__n128*)&v4 = ((__n128 (*)(unsigned __int64, float)) *
                        (_QWORD*)(*(_QWORD*)(v7 + 160) + 16LL))(
           v7 + 160, *((float*)&v4 + 3)),
       v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v0", "=w"));
-      LODWORD(v4) = HIDWORD(v4);
+      LODWORD(v4) = DWORD3(v4);
       if (*((float*)&v4 + 3) == 0x1.0000000000000p+0f || v2 == 0) {
         goto LABEL_17;
       }

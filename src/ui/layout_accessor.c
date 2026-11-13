@@ -286,6 +286,9 @@ __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 ui_LayoutAccessor_SetPaneVisible_alt1(
     __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
 const char* GameRoutine_15623e0(__int64*, unsigned int*);
+unsigned __int128
+GameRoutine_15623e0_pair(__int64*,
+                         unsigned int*) __asm__("GameRoutine_15623e0");
 extern __int64 GameData_2130ec0[2];
 extern __int64 game_g_frame_clock;
 unsigned int** AnimTransformBasic_570de0(unsigned int** result, unsigned int*);
@@ -1951,9 +1954,11 @@ LABEL_16:
     }
   }
   else if (a1[5] != 0) {
-    v22_.v22 = GameRoutine_15623e0(a1, (unsigned int*)a2),
-    v18 = COERCE_AS(__typeof__(v18),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v22_.v22 = ({
+      unsigned __int128 r_ = GameRoutine_15623e0_pair(a1, (unsigned int*)a2);
+      v18 = COERCE_AS(__typeof__(v18), (unsigned long long)(r_ >> 64));
+      (const char*)(unsigned long long)r_;
+    });
     v22_.v23 = v18;
     v19 = (__int64*)LayoutAccessor_1564a20((__int64)(a1 + 3),
                                            (__int64*)&v22_.v22),
@@ -2168,7 +2173,7 @@ LABEL_41:
         v43 = std___1___next_prime_alt1(v43);
       }
       else {
-        v44 = 1LL << -(char)__clz(v43 - 1);
+        v44 = 1LL << (-(char)__clz(v43 - 1) & 63);
         if (v43 >= 2) {
           v43 = v44;
         }

@@ -314,6 +314,7 @@ __int64 quant_all_bands(unsigned int a1, __int64 a2, int a3, __int64 a4,
   int v37;
   __int64 v38;
   char* v39;
+  char* v39b;
   __int64 result;
   unsigned int v41;
   int v42;
@@ -707,8 +708,7 @@ __int64 quant_all_bands(unsigned int a1, __int64 a2, int a3, __int64 a4,
   v267_.v293 = v33;
   v35 = *(v34 - 1);
   v36 = 2LL * ((v35 - v33) << a18 << (a6 != 0));
-  v267_.v329 =
-      (__int16*)((char*)&v267_.v267 - ((v36 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v267_.v329 = (__int16*)__builtin_alloca((v36 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v267_.v329, 0, v36);
   v37 = v35 << a18;
   v267_.v315 = v31;
@@ -716,22 +716,23 @@ __int64 quant_all_bands(unsigned int a1, __int64 a2, int a3, __int64 a4,
   v267_.v322 = v35 << a18;
   if (v31) {
     v38 = 2LL * ((*v34 - v35) << a18);
-    v267_.v330 = (__int64)&v267_.v267 - ((v38 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+    v267_.v330 = (__int64)__builtin_alloca((v38 + 15) & 0xFFFFFFFFFFFFFFF0LL);
     memset_plt(v267_.v330, 0, v38);
   }
   else {
     v38 = 0;
     v267_.v330 = a5 + 2LL * v37;
   }
-  v39 = (char*)&v267_.v267 - ((v38 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v39 = (char*)__builtin_alloca((v38 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v39, 0, v38);
-  memset_plt(v39, 0, v38);
-  v267_.v278 = v39;
-  memset_plt(v39, 0, v38);
-  v267_.v277 = v39;
-  memset_plt(v39, 0, v38);
-  v267_.v271 = v39;
-  memset_plt(v39, 0, v38);
+  v39b = (char*)__builtin_alloca((v38 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  memset_plt(v39b, 0, v38);
+  v267_.v278 = (char*)__builtin_alloca((v38 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  memset_plt(v267_.v278, 0, v38);
+  v267_.v277 = (char*)__builtin_alloca((v38 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  memset_plt(v267_.v277, 0, v38);
+  v267_.v271 = (char*)__builtin_alloca((v38 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  memset_plt(v267_.v271, 0, v38);
   v364_.v370 = v267_.v272;
   result = v267_.v328;
   v364_.v364 = __PAIR64__(v267_.v316, a1);
@@ -750,7 +751,7 @@ __int64 quant_all_bands(unsigned int a1, __int64 a2, int a3, __int64 a4,
     v44 = true;
     v45 = v267_.v308;
     v267_.v327 = 0;
-    v267_.v290 = v39;
+    v267_.v290 = v39b;
     v267_.v291 = v39;
     v267_.v302 = a14;
     v267_.v303 = a7;
@@ -785,7 +786,7 @@ __int64 quant_all_bands(unsigned int a1, __int64 a2, int a3, __int64 a4,
     v267_.v295 = 2 * v52 - 2 * v48;
     v267_.v296 = (int)v267_.v328;
     v53 = v43;
-    v267_.v269 = (__int16*)(v39 + 8);
+    v267_.v269 = (__int16*)(v39b + 8);
     v267_.v270 = (__int16*)(v39 + 8);
     while (1) {
       LODWORD(v364_.v366) = v53;

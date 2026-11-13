@@ -6,6 +6,7 @@ __attribute__((swiftcall)) void __nnmusl_fd_get(PSEUDO_X8, unsigned int);
 __int64 __errno_location_plt(_QWORD, _QWORD);
 __int64 __nnmusl_fd_context(__int64);
 __int64 __nnmusl_fd_extra(__int64);
+unsigned __int128 __nnmusl_fd_extra_pair(__int64) __asm__("__nnmusl_fd_extra");
 __int64 __nnmusl_fd_kind(_WORD**);
 __int64 __nnmusl_fd_lookup(unsigned int);
 __int64 __nnmusl_slot_release(unsigned int**);
@@ -1062,11 +1063,15 @@ __int64 nnmusl_b1220(unsigned __int64* a1, _BYTE* a2, unsigned __int64 a3,
               v59_.v59[0] = v56_.v56;
               v59_.v59[1] = v56_.v57;
               v59_.v60 = v56_.v58;
-              v24 = __nnmusl_fd_extra((__int64)v59_.v59),
-              v11 = COERCE_AS(__typeof__(v11),
-                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-              v25 = COERCE_AS(__typeof__(v25),
-                              PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+              v24 = ({
+                unsigned __int128 r_ =
+                    __nnmusl_fd_extra_pair((__int64)v59_.v59);
+                v11 =
+                    COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+                v25 =
+                    COERCE_AS(__typeof__(v25), (unsigned long long)(r_ >> 64));
+                (__int64)(unsigned long long)r_;
+              });
               v22 = v25;
               v59_.v59[0] = v56_.v56;
               v59_.v59[1] = v56_.v57;

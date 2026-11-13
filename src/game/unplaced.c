@@ -62,6 +62,8 @@ __int64 GameRoutine_610540(const char*, const char*);
 __int64 GameRoutine_66dd60(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_6b51b0(void);
 __int64 GameRoutine_6b7180(unsigned int**);
+unsigned __int128
+GameRoutine_6b7180_pair(unsigned int**) __asm__("GameRoutine_6b7180");
 __int64 GameRoutine_6b71e0(__int64*);
 __int64 GameRoutine_6bc3e0(void);
 __int64 GameRoutine_6c3980(_QWORD);
@@ -1756,7 +1758,7 @@ unsigned int* game_6b7f00(unsigned int* a1, unsigned __int64 a2,
   v6 = *a1;
   v9 = (int*)GameData_212ce38;
   if (a2 >= v6) {
-    v12 = __clz(a2 - v6 + 16);
+    v12 = __clz((unsigned int)(a2 - v6 + 16));
     v10 = 28 - v12;
     v11 =
         (unsigned __int8*)(*(_QWORD*)(*((_QWORD*)a1 + 2) + 8 * (27 - v12) + 8) +
@@ -1780,7 +1782,7 @@ unsigned int* game_6b7f00(unsigned int* a1, unsigned __int64 a2,
     v19 = 0;
     goto LABEL_14;
   }
-  v17 = __clz((_DWORD)v14 - v13 + 16);
+  v17 = __clz((unsigned int)((_DWORD)v14 - v13 + 16));
   v15 =
       *(_QWORD*)(*((_QWORD*)a3 + 2) + 8 * (27 - v17) + 8) +
       32LL * (unsigned int)((_DWORD)v14 - v13 - (*GameData_212ce38)[28 - v17]);
@@ -1802,25 +1804,27 @@ LABEL_7:
     if (v11 == (unsigned __int8*)v18) {
       v37[0] = a3;
       v37[1] = v14;
-      v25 = GameRoutine_6b7180(v37),
-      v26 = COERCE_AS(__typeof__(v26),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v32 = COERCE_AS(__typeof__(v32),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v25 = ({
+        unsigned __int128 r_ = GameRoutine_6b7180_pair(v37);
+        v26 = COERCE_AS(__typeof__(v26), (unsigned long long)(r_ >> 64));
+        v32 = COERCE_AS(__typeof__(v32), (unsigned long long)(r_ >> 64));
+        (__int64)(unsigned long long)r_;
+      });
       v34 = v26;
       v27 = *v35_.v35;
-      v28 = 28LL - __clz(v35_.v36 - v27 + 16);
+      v28 = 28LL - __clz((unsigned int)(v35_.v36 - v27 + 16));
       v29 = v35_.v36 >= v27 ? v28 : 0LL;
       if (v29 == v25) {
         return a3;
       }
       v30 = v25;
       v35_.v36 = (unsigned int)v9[v29 + 1] + v27;
-      v31 = GameRoutine_6b7180(&v35_.v35),
-      v26 = COERCE_AS(__typeof__(v26),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v32 = COERCE_AS(__typeof__(v32),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v31 = ({
+        unsigned __int128 r_ = GameRoutine_6b7180_pair(&v35_.v35);
+        v26 = COERCE_AS(__typeof__(v26), (unsigned long long)(r_ >> 64));
+        v32 = COERCE_AS(__typeof__(v32), (unsigned long long)(r_ >> 64));
+        (__int64)(unsigned long long)r_;
+      });
       v11 = v32;
       if (v31 == v30) {
         v18 = v34 + 32;
@@ -9051,7 +9055,7 @@ __int64 game_809ba0(__int64 a1, float a2)
   v7 = ((long double (*)(unsigned __int64)) *
         (_QWORD*)(*(_QWORD*)v5 + 16LL))(v5);
   v6 = *(unsigned __int8*)(a1 + 480);
-  HIDWORD(v7) = 0;
+  DWORD3(v7) = 0;
   v8 = (__int64*)(v2 + (v6 << 6));
   if (v6 != 1 ||
       (v14 = v7,
@@ -9118,7 +9122,7 @@ __int64 game_809dc0(__int64 a1, _QWORD* a2, long double a3)
   v7 = (__int64*)(v6 + 160);
   if (*(float*)&a3 == *(float*)(v6 + 168)) {
     *(__n128*)&a3 = ((__n128 (*)(__int64)) * (_QWORD*)(*v7 + 16))(v6 + 160);
-    LODWORD(a3) = HIDWORD(a3);
+    LODWORD(a3) = DWORD3(a3);
     if (*((float*)&a3 + 3) == 0x0.0p+0f) {
       *(_QWORD*)&v10 = *a2;
       LANES64(v8).n64_u64[0] = a2[1];

@@ -4,6 +4,8 @@
 
 _QWORD* GameRoutine_64df20(_QWORD*, __int64, unsigned __int64);
 __int64* Manager_bc6460(_QWORD*, float32x4_t*, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, float32x4_t*,
+                                      char) __asm__("Manager_bc6460");
 __int64 Config_bc72a0(__int64 result, unsigned int);
 __int64 GameRoutine_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 ProcInst_657850(__int64, __int64, __int64, char, __int64);
@@ -318,9 +320,12 @@ void ProcLoadWait_9a5560(__int64 a1, __int64 a2)
   v27_.v32 = v10;
   v27_.v33 = v9;
   v27_.v29 = 9;
-  v11 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], &v27_.v27, 0),
-  v12 = COERCE_AS(__typeof__(v12),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v11 = ({
+    unsigned __int128 r_ =
+        Manager_bc6460_pair(*(_QWORD**)eft_g_effectSystem_ptr[0], &v27_.v27, 0);
+    v12 = COERCE_AS(__typeof__(v12), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameRoutine_14a10d0(&v25_.v25, (__int64)v11, v12, (__int64)&GameData_1a9f09e),
       v12 = COERCE_AS(__typeof__(v12),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

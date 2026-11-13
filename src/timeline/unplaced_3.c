@@ -44,7 +44,7 @@ LABEL_3:
     return 0;
   }
   v5 = *a1;
-  v6 = 28LL - __clz(a2 - v5 + 16);
+  v6 = 28LL - __clz((unsigned int)(a2 - v5 + 16));
   if (a2 >= v5) {
     v7 = v6;
   }

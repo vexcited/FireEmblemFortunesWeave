@@ -72,6 +72,9 @@ __int64 fw_text_String_CopyTerminated_alt1(
 unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 unsigned int* game_6b7f00(unsigned int*, unsigned __int64, unsigned int*,
                           __int64, __int64*);
+unsigned __int128 game_6b7f00_pair(unsigned int*, unsigned __int64,
+                                   unsigned int*, __int64,
+                                   __int64*) __asm__("game_6b7f00");
 void GfxLoader_c48320(_QWORD*, __int64*);
 void Manager_c47290_alt1(__int64) __asm__("Manager_c47290");
 void Manager_c475a0(__int64* a1, _QWORD* a2);
@@ -1739,9 +1742,11 @@ void Manager_c47c80(_QWORD* a1, __int64* a2)
     v14 = *(unsigned int**)(v10 + 1);
     v22_.v22 = (__int64)v12;
     v22_.v23 = v13;
-    game_6b7f00(v14, 0, v14, v14[1], &v22_.v22),
-        v15 = COERCE_AS(__typeof__(v15),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    ({
+      unsigned __int128 r_ = game_6b7f00_pair(v14, 0, v14, v14[1], &v22_.v22);
+      v15 = COERCE_AS(__typeof__(v15), (unsigned long long)(r_ >> 64));
+      (unsigned int*)(unsigned long long)r_;
+    });
     v16 = v15 == v14[1];
     if ((v25_.v25 & 1) != 0) {
     LABEL_22:

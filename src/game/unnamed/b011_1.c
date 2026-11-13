@@ -2129,6 +2129,9 @@ __int64 GameHr_d791f0(_QWORD* a1);
 
 _QWORD* GameRoutine_d5f200_alt1(__int64, _QWORD*, _QWORD*,
                                 __int64) __asm__("GameRoutine_d5f200");
+unsigned __int128
+GameRoutine_d5f200_alt1_pair(__int64, _QWORD*, _QWORD*,
+                             __int64) __asm__("GameRoutine_d5f200");
 
 __attribute__((swiftcall)) void BlendLayer_d2b700(PSEUDO_X8, _QWORD* result);
 
@@ -7636,9 +7639,12 @@ void GameHr_d5ee40(__int64* a1, _QWORD* a2, _QWORD* a3, unsigned __int64 a4)
   if (a4 <= 0xAAAAAAAAAAAAAAABLL * ((v4 - *a1) >> 4)) {
     v14 = a1[1] - v5;
     if (a4 <= 0xAAAAAAAAAAAAAAABLL * (v14 >> 4)) {
-      GameRoutine_d5f200_alt1((__int64)&v52, a2, a3, v5),
-          v28 = COERCE_AS(__typeof__(v28),
-                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      ({
+        unsigned __int128 r_ =
+            GameRoutine_d5f200_alt1_pair((__int64)&v52, a2, a3, v5);
+        v28 = COERCE_AS(__typeof__(v28), (unsigned long long)(r_ >> 64));
+        (_QWORD*)(unsigned long long)r_;
+      });
       v27 = a1[1];
       v29 = v28;
       if (v27 != v28) {
@@ -7678,10 +7684,12 @@ void GameHr_d5ee40(__int64* a1, _QWORD* a2, _QWORD* a3, unsigned __int64 a4)
     }
     else {
       v15 = (_QWORD*)((char*)a2 + v14);
-      GameRoutine_d5f200_alt1((__int64)&v51, a2, (_QWORD*)((char*)a2 + v14),
-                              v5),
-          v28 = COERCE_AS(__typeof__(v28),
-                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      ({
+        unsigned __int128 r_ = GameRoutine_d5f200_alt1_pair(
+            (__int64)&v51, a2, (_QWORD*)((char*)a2 + v14), v5);
+        v28 = COERCE_AS(__typeof__(v28), (unsigned long long)(r_ >> 64));
+        (_QWORD*)(unsigned long long)r_;
+      });
       v16 = a1[1];
       if (v15 != a3) {
         v17 = 0;

@@ -6959,14 +6959,14 @@ __int64* nn_67a390(__int64* result, __int64 a2)
     if (v7 == 52928) {
       DWORD2(v23_.v37) = 1;
       DWORD2(v23_.v26) = 5243136;
-      HIDWORD(v23_.v27) = 196608;
+      DWORD3(v23_.v27) = 196608;
       v9 = 0x1000000;
     }
     else {
       LODWORD(v23_.v28) = 1;
       DWORD2(v23_.v27) = 48;
       v9 = 64;
-      HIDWORD(v23_.v25) = 67305472;
+      DWORD3(v23_.v25) = 67305472;
     }
     v10 = *(_DWORD*)(v2 + 56);
     v11 = *(unsigned int*)(a2 + 16);
@@ -6981,10 +6981,10 @@ __int64* nn_67a390(__int64* result, __int64 a2)
     v13 = (int8x8_t*)(v5 + 76);
     *(_QWORD*)v5 = 0x110036A0122EA6LL;
     *(_QWORD*)(v5 + 8) = v23_.v24;
-    *(_DWORD*)(v5 + 16) = HIDWORD(v23_.v25);
+    *(_DWORD*)(v5 + 16) = DWORD3(v23_.v25);
     *(_OWORD*)(v5 + 20) = v23_.v27;
     *(_DWORD*)(v5 + 36) = v23_.v28;
-    *(_DWORD*)(v5 + 40) = HIDWORD(v23_.v28);
+    *(_DWORD*)(v5 + 40) = DWORD3(v23_.v28);
     *(_QWORD*)(v5 + 44) = *((_QWORD*)&v23_.v31 + 1);
     *(_OWORD*)(v5 + 52) = v23_.v35;
     *(_QWORD*)(v5 + 68) = *((_QWORD*)&v23_.v38 + 1);
@@ -11151,13 +11151,13 @@ double nn_685160(__int64 a1, unsigned __int8 a2)
       if (v2 == 0) {
         v11 = 0;
       }
-      v12 = 0xFFFFFFFF >> -*(_BYTE*)(v6 + 289) << v7;
+      v12 = 0xFFFFFFFF >> (-*(_BYTE*)(v6 + 289) & 31) << v7;
       v13 = *(_DWORD*)(v6 + 292);
       v14 = *(_BYTE*)(v6 + 297);
       *(_DWORD*)(v3 + 16) = v11;
       *(_DWORD*)(v3 + 20) = v12;
       *(_DWORD*)(v3 + 32) = v9 << v10;
-      *(_DWORD*)(v3 + 36) = 0xFFFFFFFF >> -v14 << v10;
+      *(_DWORD*)(v3 + 36) = 0xFFFFFFFF >> (-v14 & 31) << v10;
       *(_DWORD*)(v3 + 8) = -1610412520;
       *(_DWORD*)(v3 + 12) = v8;
       *(_DWORD*)(v3 + 24) = -1610412520;

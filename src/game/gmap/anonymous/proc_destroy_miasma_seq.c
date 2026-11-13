@@ -83,6 +83,8 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 unsigned __int64 ProcDestroyMiasmaSeq_14abed0(__int64 a1);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 CorpsManager_971ee0(__int64);
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_65c660(_QWORD*, unsigned __int64*);
@@ -430,9 +432,11 @@ __int64 ProcDestroyMiasmaSeq_14ac310(__int64 a1)
   v20_.v27 = *(_QWORD*)GameData_212c540;
   v20_.v28 = v6;
   v20_.v22 = "Gmap_HadesDoor_Barrier_Broken";
-  v7 = Manager_bc6460(v3, (__int64)&v20_.v20, 1),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(v3, (__int64)&v20_.v20, 1);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v20_.v20, (__int64)v7, v8, (__int64)&GameData_1a9f09e),
       v8 = COERCE_AS(__typeof__(v8),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

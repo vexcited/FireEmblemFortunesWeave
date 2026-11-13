@@ -4537,7 +4537,7 @@ unsigned __int64 GameHr_9adfa0(unsigned __int64 result, __int64 a2)
           result = v48;
         }
         else {
-          v47 = 1LL << -(char)__clz(primeEm - 1);
+          v47 = 1LL << (-(char)__clz(primeEm - 1) & 63);
           if (primeEm >= 2) {
             primeEm = v47;
           }
@@ -4982,7 +4982,7 @@ __int64 GameHr_9ae660(__int64 result, __int64 a2)
           primeEm = v46;
         }
         else {
-          v45 = 1LL << -(char)__clz(v44 - 1);
+          v45 = 1LL << (-(char)__clz(v44 - 1) & 63);
           if (v44 >= 2) {
             v44 = v45;
           }

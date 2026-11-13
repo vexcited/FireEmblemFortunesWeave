@@ -4387,11 +4387,11 @@ __int64 SdkHr_689ce0(__int64 result)
     v15 = *(_DWORD*)(v12 + 64);
     v16 = *(unsigned __int16*)(v12 + 68);
     v17 = *(_DWORD*)(v12 + 80) << v13;
-    v18 = 0xFFFFFFFF >> -*(_BYTE*)(v12 + 85) << v14;
-    v19 = v18 | (0xFFFFFFFF >> -*(_BYTE*)(v12 + 73) << v13);
+    v18 = 0xFFFFFFFF >> (-*(_BYTE*)(v12 + 85) & 31) << v14;
+    v19 = v18 | (0xFFFFFFFF >> (-*(_BYTE*)(v12 + 73) & 31) << v13);
     v20 = v17 & ~v18;
     LOBYTE(v18) = *(_BYTE*)(v12 + 104);
-    v21 = 0xFFFFFFFF >> -*(_BYTE*)(v12 + 105) << v18;
+    v21 = 0xFFFFFFFF >> (-*(_BYTE*)(v12 + 105) & 31) << v18;
     LODWORD(v12) = (v20 | (*(_DWORD*)(v12 + 100) << v14)) & ~v21 |
                    (*(_DWORD*)(v12 + 108) << v18);
     v22 = v15 + (v6 >> 3) * v16;
@@ -4410,7 +4410,7 @@ __int64 SdkHr_689ce0(__int64 result)
     v10[4] = -1610412520;
     v10[5] = v12;
     v24 = v11 << v22;
-    LODWORD(v23) = 0xFFFFFFFF >> -(char)v23 << v22;
+    LODWORD(v23) = 0xFFFFFFFF >> (-(char)v23 & 31) << v22;
     LOBYTE(v22) = v8 & 0x10;
     v8 += 16;
     v10[6] = v24 << v22;
@@ -10012,7 +10012,7 @@ bool SdkHr_6a2720(__int64 a1, unsigned int a2, __int64 a3)
     if (v6 != 0) {
       result = false;
       if (a3 != 0 && *(_QWORD*)(v6 + 72) != 0) {
-        v8 = (char*)&vars0 - ((56LL * a2 + 15) & 0x7FFFFFFFF0LL);
+        v8 = (char*)__builtin_alloca((56LL * a2 + 15) & 0x7FFFFFFFF0LL);
         v9 = (*(__int64 (**)(_QWORD, __int64))(
             *(_QWORD*)(*(_QWORD*)(a1 + 8) + 7688LL) + 328LL))(
             **(_QWORD**)(a1 + 152), 14);

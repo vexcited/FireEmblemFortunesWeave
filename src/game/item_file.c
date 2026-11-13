@@ -1183,7 +1183,7 @@ LABEL_173:
             v180 = std___1___next_prime_alt1(v180);
           }
           else {
-            v181 = 1LL << -(char)__clz(v180 - 1);
+            v181 = 1LL << (-(char)__clz(v180 - 1) & 63);
             if (v180 >= 2) {
               v180 = v181;
             }

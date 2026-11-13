@@ -665,7 +665,7 @@ __int64 SdkHr_11e1a0(_QWORD* a1, int* a2, __int64 a3, __int64 a4, _DWORD* a5)
               if ((_DWORD)result == 0) {
                 result = 3533826;
                 *(_QWORD*)((char*)&v33 + 4) = v31;
-                HIDWORD(v33) = v32;
+                DWORD3(v33) = v32;
                 if (a1[9] != 0) {
                   result = SdkRoutine_859fe0(v17, 24, a1[11]);
                   if ((_DWORD)result == 0) {

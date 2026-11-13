@@ -2338,7 +2338,7 @@ LABEL_11:
     *a2 += GameRoutine_592b20(a3, v13, v15);
   }
   if ((*(_BYTE*)(v5 + 98) & 0x20) == 0) {
-    HIDWORD(v20) = 0;
+    DWORD3(v20) = 0;
     v19 = 21;
     *(_QWORD*)&v20 = -1;
     *(_QWORD*)((char*)&v20 + 5) = -1;
@@ -6775,7 +6775,7 @@ __int64 GameHr_5ad720(__int64 a1, __int64 a2, __int64 a3)
     v23 = (__typeof__(v23)){0};
     GameRoutine_5fc420_alt1((__int64)&v22);
     v12 = *(_QWORD*)(a1 + 448);
-    HIDWORD(v23) = v7;
+    DWORD3(v23) = v7;
     LODWORD(v24_.v24) = v8;
     *(_QWORD*)((char*)&v23 + 4) = 0xA000000B01LL;
     BYTE1(v22) = 2;
@@ -6814,7 +6814,7 @@ __int64 GameHr_5ad720(__int64 a1, __int64 a2, __int64 a3)
   v23 = (__typeof__(v23)){0};
   GameRoutine_5fc420_alt1((__int64)&v22);
   v15 = *(_QWORD*)(a1 + 8);
-  HIDWORD(v23) = v7;
+  DWORD3(v23) = v7;
   LODWORD(v24_.v24) = v8;
   BYTE1(v22) = 2;
   HIWORD(v22) = 1;
@@ -6830,7 +6830,7 @@ __int64 GameHr_5ad720(__int64 a1, __int64 a2, __int64 a3)
   v22 = 0;
   v23 = (__typeof__(v23)){0};
   GameRoutine_5fc420_alt1((__int64)&v22);
-  HIDWORD(v23) = v7;
+  DWORD3(v23) = v7;
   v24_.v24 = v8 | 0x100000000LL;
   BYTE1(v22) = 2;
   HIWORD(v22) = 1;

@@ -18,6 +18,8 @@ void FootprintModule2_Unknown6_alt1(__int64 a1) __asm__(
     "FootprintModule2_Unknown6");
 __attribute__((swiftcall)) void Quat_624bc0(PSEUDO_X8, __int64);
 __int64* Manager_bc6460(_QWORD*, float32x4_t*, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, float32x4_t*,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameRoutine_10e94e0(_QWORD*, _QWORD*, _QWORD*);
 __int64 GameRoutine_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GroundAttributeFile_60b080(int);
@@ -938,9 +940,11 @@ __int64 game_character_FootprintModule2_Start_lambda0_Invoke(__int64 a1,
       v50_.v53 = v46;
       v50_.v54 = v36;
       v50_.v55 = v44;
-      v37 = Manager_bc6460(v34, &v50_.v50, 1),
-      v38 = COERCE_AS(__typeof__(v38),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v37 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(v34, &v50_.v50, 1);
+        v38 = COERCE_AS(__typeof__(v38), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameRoutine_14a10d0(&v50_.v50, (__int64)v37, v38,
                           (__int64)&GameData_1a9f09e),
           v38 = COERCE_AS(__typeof__(v38),

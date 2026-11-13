@@ -63,6 +63,8 @@ __int64 GameRoutine_9c6120(_QWORD, _QWORD);
 __int64 GameRoutine_bc6460(_QWORD, _QWORD, _QWORD);
 __int64* LayoutAccessor_155fbe0(__int64*, const char*);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 BasicMenu_16dcd30(__int64, __int64, _QWORD*, __int64);
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 LayoutAccessor_155cda0(__int64 result, const char*, const char*);
@@ -464,9 +466,11 @@ LABEL_60:
   v52 = *((_QWORD*)GameData_212c548 + 1);
   v69_.v75 = *(_QWORD*)GameData_212c548;
   v69_.v76 = v52;
-  v53 = Manager_bc6460(v50, (__int64)&v69_.v69, 0),
-  v54 = COERCE_AS(__typeof__(v54),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v53 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(v50, (__int64)&v69_.v69, 0);
+    v54 = COERCE_AS(__typeof__(v54), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v69_.v69, (__int64)v53, v54, (__int64)&GameData_1a9f09e),
       v54 = COERCE_AS(__typeof__(v54),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

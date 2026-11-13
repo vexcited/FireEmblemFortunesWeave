@@ -2613,7 +2613,7 @@ LABEL_22:
               v95 = std___1___next_prime(v95);
             }
             else {
-              v96 = 1LL << -(char)__clz(v95 - 1);
+              v96 = 1LL << (-(char)__clz(v95 - 1) & 63);
               if (v95 >= 2) {
                 v95 = v96;
               }

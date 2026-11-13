@@ -44,6 +44,8 @@ extern int GameData_21f3d48;
 extern int GameData_21f4d44;
 int __cxa_guard_acquire(__int64);
 unsigned __int64 GameRoutine_1802fe0(_QWORD*, float, float);
+unsigned __int128
+GameRoutine_1802fe0_pair(_QWORD*, float, float) __asm__("GameRoutine_1802fe0");
 unsigned __int64 strlen(const char*);
 void GameRoutine_180db80(__int64*, __int64, __int64);
 void GameRoutine_1811e40();
@@ -965,9 +967,12 @@ __int64 game_cutscene_1811fa0(__int64 a1, float a2, float a3)
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
   }
-  result = GameRoutine_1802fe0(*(_QWORD**)(a1 + 24), a2, a3),
-  v10 = COERCE_AS(__typeof__(v10),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ =
+        GameRoutine_1802fe0_pair(*(_QWORD**)(a1 + 24), a2, a3);
+    v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+    (unsigned __int64)(unsigned long long)r_;
+  });
   v15_.v15 = result;
   v15_.v16 = v10;
   if ((v10 & 1) != 0) {

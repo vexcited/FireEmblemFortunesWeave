@@ -376,7 +376,7 @@ LABEL_24:
       v29 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
                            *(float*)(a1 + 32));
       if (v27 >= 3 && (v27 & (v27 - 1)) == 0) {
-        v30 = 1LL << -(char)__clz(v29 - 1);
+        v30 = 1LL << (-(char)__clz(v29 - 1) & 63);
         if (v29 >= 2) {
           v29 = v30;
         }
@@ -2232,7 +2232,7 @@ LABEL_24:
       v27 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
                            *(float*)(a1 + 32));
       if (v25 >= 3 && (v25 & (v25 - 1)) == 0) {
-        v28 = 1LL << -(char)__clz(v27 - 1);
+        v28 = 1LL << (-(char)__clz(v27 - 1) & 63);
         if (v27 >= 2) {
           v27 = v28;
         }

@@ -5329,6 +5329,8 @@ __int64** GameRoutine_14a1e70_alt1(__int64** result,
                                    float) __asm__("GameRoutine_14a1e70");
 
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 
 __int64 GameRoutine_14a1390_alt1(__int64*, char) __asm__("GameRoutine_14a1390");
 
@@ -8673,10 +8675,12 @@ LABEL_31:
   v34_.v39 = v22;
   v34_.v40 = v21;
   v34_.v41 = v20;
-  v24 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v34_.v34,
-                       0),
-  v25 = COERCE_AS(__typeof__(v25),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v24 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v34_.v34, 0);
+    v25 = COERCE_AS(__typeof__(v25), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result =
       GameHr_14a10d0(&v32_.v32, (__int64)v24, v25, (__int64)&GameData_1a9f09e),
   v25 = COERCE_AS(__typeof__(v25),

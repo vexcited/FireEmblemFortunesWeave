@@ -50,6 +50,8 @@ void game_character_CharacterAura_ChangeViewMode_lambda0_Invoke_alt1(
                                                "ChangeViewMode_lambda0_Invoke");
 _QWORD* Situation_767300_alt1(__int64*, _QWORD*) __asm__("Situation_767300");
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_98ed40(__int64);
 __int64 GameRoutine_14a1390_alt2(__int64*, char) __asm__("GameRoutine_14a1390");
@@ -1027,10 +1029,12 @@ void game_character_CharacterAura_ChangeViewMode_lambda0_Invoke(__int64 a1,
         v64_.v71 = GameData_22365d0;
         v64_.v72 = GameData_22365d8;
         v64_.v66 = v31;
-        v32 = Manager_bc6460_alt1(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                                  (__int64)&v64_.v64, 1),
-        v33 = COERCE_AS(__typeof__(v33),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v32 = ({
+          unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+              *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)&v64_.v64, 1);
+          v33 = COERCE_AS(__typeof__(v33), (unsigned long long)(r_ >> 64));
+          (__int64*)(unsigned long long)r_;
+        });
         GameHr_14a10d0(&v62_.v62, (__int64)v32, v33,
                        (__int64)&GameData_1a9f09e),
             v33 = COERCE_AS(__typeof__(v33),

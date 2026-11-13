@@ -28,6 +28,9 @@ __int64 nn_streamplay_detail_CalculateRequiredWorkBufferSizePerInterface_plt(
 __int64 nn_streamplay_detail_CreateWorkBufferInProcessGlobal_plt(_QWORD, _QWORD,
                                                                  _QWORD,
                                                                  _QWORD);
+unsigned __int128 nn_streamplay_detail_CreateWorkBufferInProcessGlobal_plt_pair(
+    _QWORD, _QWORD, _QWORD,
+    _QWORD) __asm__("nn_streamplay_detail_CreateWorkBufferInProcessGlobal_plt");
 __int64 nn_streamplay_detail_IsAbortNeeded_plt(_QWORD);
 __int64 nn_streamplay_detail_ShowMatchmakeSupportCore_plt(_QWORD, _QWORD,
                                                           _QWORD);
@@ -499,10 +502,14 @@ __int64 nn_streamplay_OpenSessionWithMatchmakeSupport_767140(_DWORD* a1,
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
   v15 = SdkData_e89240[0];
-  v16 = nn_streamplay_detail_CreateWorkBufferInProcessGlobal_plt(
-      v59[0], v58[0], *(_QWORD*)SdkData_e89240[0], *(_QWORD*)SdkData_e89248[0]),
-  v17 = COERCE_AS(__typeof__(v17),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v16 = ({
+    unsigned __int128 r_ =
+        nn_streamplay_detail_CreateWorkBufferInProcessGlobal_plt_pair(
+            v59[0], v58[0], *(_QWORD*)SdkData_e89240[0],
+            *(_QWORD*)SdkData_e89248[0]);
+    v17 = COERCE_AS(__typeof__(v17), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v18 = v17;
   v19 = SdkData_e89260[0];
   LODWORD(v37_.v37) = v16;

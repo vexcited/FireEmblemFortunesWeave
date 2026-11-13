@@ -3759,7 +3759,7 @@ _QWORD* nn_6594c0(__int64 a1, __int64 a2, __int64 a3)
   v59 = *(_DWORD*)(a2 + 592);
   if ((v59 & 0x41) == 0) {
     v60 = *(_QWORD*)(a3 + 104);
-    HIDWORD(v84) = *(_DWORD*)(a3 + 96);
+    DWORD3(v84) = *(_DWORD*)(a3 + 96);
     if (v60 != 0) {
       *(_QWORD*)&v82 = &v86;
     }
@@ -7609,7 +7609,8 @@ bool nn_66dde0(__int64 a1, int a2, __int64 a3)
     }
     v29 = v10;
     v12 = 40LL * v10;
-    v13 = (char*)v28 - ((v12 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+    char v13a[(v12 + 15) & 0xFFFFFFFFFFFFFFF0LL];
+    v13 = v13a;
     memset_plt_alt2((__int64)v13, 0, v12);
     v14 = v29;
     v15 = *(_DWORD*)(a1 + 108);
@@ -7832,7 +7833,7 @@ __int64 nn_66ef20(__int64 a1, __int64 a2, __int64 a3, int a4, __int64 a5,
   *(_OWORD*)v52_.v55 = (__typeof__(*(_OWORD*)v52_.v55)){0};
   v52_.v56 = (__typeof__(v52_.v56)){0};
   DWORD1(v52_.v56) = -1;
-  HIDWORD(v52_.v56) = -1;
+  DWORD3(v52_.v56) = -1;
   v52_.v52[1] = (unsigned __int64)a4 >> 3;
   v25 = *(_DWORD*)(a2 + 356);
   if ((v25 & 0x14) == 0) {
@@ -7870,7 +7871,7 @@ __int64 nn_66ef20(__int64 a1, __int64 a2, __int64 a3, int a4, __int64 a5,
     *(_QWORD*)&v52_.v53 = *(_QWORD*)(a5 + 16);
     v27 = *(_DWORD*)(a5 + 40);
     DWORD1(v52_.v56) = v26;
-    HIDWORD(v52_.v56) = v27;
+    DWORD3(v52_.v56) = v27;
   }
 LABEL_10:
   DWORD2(v52_.v54) = *(_DWORD*)(a1 + 240);

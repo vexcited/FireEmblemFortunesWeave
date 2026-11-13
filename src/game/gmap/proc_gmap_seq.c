@@ -4453,7 +4453,7 @@ LABEL_25:
             v65 = 0;
             v66 = nullptr;
             *(_QWORD*)((char*)&v74 + 4) = 0;
-            HIDWORD(v74) = 0;
+            DWORD3(v74) = 0;
             v64 = *(_QWORD*)(v34 + 392);
             v36 = *(unsigned __int8*)(v34 + 498);
             v72 = 1;

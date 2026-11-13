@@ -4712,7 +4712,7 @@ __int64 CudaDriverHr_10b0f0(__int64 a1, __int64 a2, _BYTE* a3)
   *(_QWORD*)&v24 = 0;
   v22 = 0xFFFFFFFF00000000LL;
   DWORD2(v24) = v19;
-  HIDWORD(v24) = v20 == 1;
+  DWORD3(v24) = v20 == 1;
   result =
       CudaDriverRoutine_10a530((__int64)v35, (__int64)&v26, (__int64)v23, &v22,
                                *(_DWORD*)(*(_QWORD*)(a1 + 64) + 3924LL), 0);
@@ -10216,7 +10216,7 @@ __int64 CudaDriverHr_11f370(__int64 a1, unsigned int a2)
     if ((unsigned __int8)CudaDriverRoutine_874c0(v6) != 0) {
       if (v6 - 145 >= 6) {
         if (v6 - 153 <= 5) {
-          v7 = 1 << (v6 + 103);
+          v7 = 1 << ((v6 + 103) & 31);
           if ((v7 & 3) != 0) {
             if (a2 < 4) {
               return CudaDriverData_1115500[a2];

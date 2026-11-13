@@ -141,9 +141,9 @@ __int64 fread_plt(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 memcpy_plt(__int64, __int64, unsigned __int64);
 __int64 memset_plt(_QWORD, _QWORD, _QWORD);
 __int64 memset_plt_alt1(__int64, int, unsigned __int64) __asm__("memset_plt");
-bool CudaDriverRoutine_122140(_BOOL8 result);
+unsigned __int8 CudaDriverRoutine_122140(_BOOL8 result);
 bool CudaDriverRoutine_98110(_BOOL8 result);
-bool CudaDriverRoutine_9ac20(__int64);
+unsigned __int8 CudaDriverRoutine_9ac20(__int64);
 __int64 CudaDriverStub_985a0(__int64);
 extern _DWORD CudaDriverData_14328d4;
 extern _DWORD CudaDriverData_143bd30[];
@@ -2084,7 +2084,7 @@ LABEL_15:
     v42_.v61 = (__typeof__(v42_.v61)){0};
     v42_.v62 = (__typeof__(v42_.v62)){0};
     v42_.v63 = (__typeof__(v42_.v63)){0};
-    HIDWORD(v42_.v63) = -1;
+    DWORD3(v42_.v63) = -1;
     if ((CudaDriverData_1436502 & 1) != 0) {
       v23 = 0x802119000211LL;
     }

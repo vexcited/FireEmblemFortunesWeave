@@ -29,7 +29,7 @@ __int64 nn_codec_fLdPow(void* this_, __int64 a2, __int64 a3, __int64 a4)
     return v6;
   }
   else {
-    return (unsigned int)(v4 >> -(char)v8);
+    return (unsigned int)(v4 >> (-(char)v8 & 31));
   }
 }
 

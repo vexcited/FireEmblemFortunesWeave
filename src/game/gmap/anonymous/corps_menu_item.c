@@ -15,6 +15,9 @@ __int64 (**game_gmap_GmapCorpsMenu_ExchangeImpl(__int64, char, _QWORD*, _QWORD*,
 __int64 GameRoutine_16eb960(__int64, _QWORD*);
 __int64 GmapCorpsMenu_172a480_alt1(__int64, char,
                                    __int64) __asm__("GmapCorpsMenu_172a480");
+unsigned __int128
+GmapCorpsMenu_172a480_alt1_pair(__int64, char,
+                                __int64) __asm__("GmapCorpsMenu_172a480");
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
@@ -813,9 +816,12 @@ LABEL_102:
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
       v69 = COERCE_AS(__typeof__(v69),
                       PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
-  GmapCorpsMenu_172a480_alt1(*(_QWORD*)(a1 + 88), *(_BYTE*)(a1 + 104), a1),
-      v59 = COERCE_AS(__typeof__(v59),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  ({
+    unsigned __int128 r_ = GmapCorpsMenu_172a480_alt1_pair(
+        *(_QWORD*)(a1 + 88), *(_BYTE*)(a1 + 104), a1);
+    v59 = COERCE_AS(__typeof__(v59), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  }),
       v60 = COERCE_AS(__typeof__(v60),
                       PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
       v64 = COERCE_AS(__typeof__(v64),

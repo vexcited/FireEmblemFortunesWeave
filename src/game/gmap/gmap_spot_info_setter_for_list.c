@@ -142,7 +142,7 @@ void GmapSpotInfoSetterForList_Unknown6(__int64 a1, long double a2)
             if (*(_QWORD*)v11 != 0) {
               v19 = *(_OWORD*)(v18 + 112);
               v20 = *(_OWORD*)(v18 + 144);
-              LODWORD(v15) = HIDWORD(*(_OWORD*)(v18 + 128));
+              LODWORD(v15) = DWORD3(*(_OWORD*)(v18 + 128));
               v21 = LANES128_OF(vmulq_f32(*(float32x4_t*)(v18 + 128),
                                           *(float32x4_t*)(v18 + 128)))
                         .n128_u64[0];

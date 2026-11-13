@@ -686,7 +686,7 @@ LABEL_25:
         v34 = std___1___next_prime(v34);
       }
       else {
-        v35 = 1LL << -(char)__clz(v34 - 1);
+        v35 = 1LL << (-(char)__clz(v34 - 1) & 63);
         if (v34 >= 2) {
           v34 = v35;
         }
@@ -1011,7 +1011,7 @@ LABEL_23:
         result = v44;
       }
       else {
-        v32 = 1LL << -(char)__clz(v31 - 1);
+        v32 = 1LL << (-(char)__clz(v31 - 1) & 63);
         if (v31 >= 2) {
           v31 = v32;
         }
@@ -2459,7 +2459,7 @@ LABEL_18:
         v47 = std___1___next_prime(v47);
       }
       else {
-        v48 = 1LL << -(char)__clz(v47 - 1);
+        v48 = 1LL << (-(char)__clz(v47 - 1) & 63);
         if (v47 >= 2) {
           v47 = v48;
         }
@@ -6161,7 +6161,7 @@ LABEL_23:
         result = v45;
       }
       else {
-        v33 = 1LL << -(char)__clz(v32 - 1);
+        v33 = 1LL << (-(char)__clz(v32 - 1) & 63);
         if (v32 >= 2) {
           v32 = v33;
         }
@@ -6518,7 +6518,7 @@ LABEL_41:
         v38 = std___1___next_prime(v38);
       }
       else {
-        v39 = 1LL << -(char)__clz(v38 - 1);
+        v39 = 1LL << (-(char)__clz(v38 - 1) & 63);
         if (v38 >= 2) {
           v38 = v39;
         }

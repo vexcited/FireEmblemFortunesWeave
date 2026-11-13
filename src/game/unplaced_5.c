@@ -44,6 +44,8 @@ __int64* GameRoutine_112cc60(__int64* result, unsigned __int8*,
                              unsigned __int8*);
 __int64* GlobalMapData_e28380(char**, __int64*, __int64*);
 __int64* Manager_bc6460(_QWORD*, float32x4_t*, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, float32x4_t*,
+                                      char) __asm__("Manager_bc6460");
 __int64 BattleArea_8b9d00(_QWORD);
 __int64 BattleInfo_790800(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 BattleInfo_790b00(_QWORD, _QWORD);
@@ -849,11 +851,12 @@ __int64* game_100f680(_QWORD* a1)
     v55_.v60 = *(_QWORD*)GameData_212c540;
     v55_.v61 = v8;
     v55_.v56 = "UI_Base_Arrow_Bmap_0";
-    v9 = Manager_bc6460(v6, &v55_.v55, 1),
-    v10 = COERCE_AS(__typeof__(v10),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v23 = COERCE_AS(__typeof__(v23),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v9 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(v6, &v55_.v55, 1);
+      v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+      v23 = COERCE_AS(__typeof__(v23), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     v11 = GameRoutine_14a10d0(&v55_.v55, (__int64)v9, v10,
                               (__int64)&GameData_1a9f09e),
     v10 = COERCE_AS(__typeof__(v10),
@@ -924,11 +927,12 @@ __int64* game_100f680(_QWORD* a1)
     v55_.v61 = v21;
     v55_.v59 = v20;
     v55_.v56 = "UI_Base_Arrow_Bmap_1";
-    v22 = Manager_bc6460(v19, &v55_.v55, 1),
-    v10 = COERCE_AS(__typeof__(v10),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v23 = COERCE_AS(__typeof__(v23),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v22 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(v19, &v55_.v55, 1);
+      v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+      v23 = COERCE_AS(__typeof__(v23), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     v11 = GameRoutine_14a10d0(&v55_.v55, (__int64)v22, v23,
                               (__int64)&GameData_1a9f09e),
     v10 = COERCE_AS(__typeof__(v10),
@@ -2214,7 +2218,7 @@ void game_10221c0(__int64 a1)
                 v71 = *(int*)((char*)v63 + 6);
                 WORD5(v193_.v193) = *((_WORD*)v63 + 5);
                 *(_DWORD*)((char*)&v193_.v193 + 6) = v71;
-                HIDWORD(v193_.v193) = v63[3];
+                DWORD3(v193_.v193) = v63[3];
                 v72 = *((_QWORD*)v63 + 2);
                 v73 = *((_QWORD*)v63 + 3);
                 v74 = *((_BYTE*)v63 + 32);
@@ -9050,7 +9054,7 @@ LABEL_60:
                 v88 = std___1___next_prime_alt1(v88);
               }
               else {
-                v89 = 1LL << -(char)__clz(v88 - 1);
+                v89 = 1LL << (-(char)__clz(v88 - 1) & 63);
                 if (v88 >= 2) {
                   v88 = v89;
                 }
@@ -10743,9 +10747,11 @@ LABEL_58:
   v61_.v67 = v54;
   v61_.v64 = vaddq_f32(v58, v50);
   v61_.v65 = v53;
-  v55 = Manager_bc6460(v51, &v61_.v61, 1),
-  v56 = COERCE_AS(__typeof__(v56),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v55 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(v51, &v61_.v61, 1);
+    v56 = COERCE_AS(__typeof__(v56), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameRoutine_14a10d0(a5, (__int64)v55, v56, (__int64)&GameData_1a9f09e),
       v56 = COERCE_AS(__typeof__(v56),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -12083,7 +12089,7 @@ void game_10e7f80(int8x16_t* a1, int a2, __int64 a3, int a4)
       v27 = -1300398262;
       goto LABEL_76;
     }
-    if (((1 << (a2 + 109)) & 0x10403) == 0) {
+    if (((1 << ((a2 + 109) & 31)) & 0x10403) == 0) {
       if (a2 != -1193575777) {
         goto LABEL_70;
       }
@@ -13598,7 +13604,7 @@ LABEL_39:
         else if ((unsigned int)(v98 - 989295305) > 0x21 ||
                  ((1LL << ((unsigned __int8)v98 + 55)) & 0x200040007LL) == 0) {
           if ((unsigned int)(v98 - 603384486) <= 0x12 &&
-              ((1 << (v98 + 90)) & 0x40007) != 0) {
+              ((1 << ((v98 + 90) & 31)) & 0x40007) != 0) {
           LABEL_244:
             v107 = 603384504;
             goto LABEL_249;
@@ -16086,7 +16092,7 @@ float game_1109f50(__int64 a1, float result)
   else if ((unsigned int)(v5 - 603384300) > 0x12 ||
            ((1 << (v5 + 20)) & 0x40007) == 0) {
     v7 = (unsigned int)(v5 - 603384486) > 0x12 ||
-         ((1 << (v5 + 90)) & 0x40007) == 0;
+         ((1 << ((v5 + 90) & 31)) & 0x40007) == 0;
     if (v7 && v5 != 309207209) {
       goto LABEL_18;
     }

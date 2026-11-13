@@ -77,7 +77,7 @@ __int64 ProcHeroMove_Unknown2(__int64 a1)
     }
     else {
       DWORD1(v15) = 0;
-      HIDWORD(v15) = 0;
+      DWORD3(v15) = 0;
       v16 =
           vsubq_f32(COERCE_AS(float32x4_t, 0), *(float32x4_t*)GameData_212c680);
       if ((float)(vmuls_lane_f32(LANES128(v16).n128_f32[2], v16, 2) +

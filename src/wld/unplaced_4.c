@@ -5947,7 +5947,7 @@ void wld_c11000(__int64 a1)
           v160 = std___1___next_prime(v160);
         }
         else {
-          v161 = 1LL << -(char)__clz(v160 - 1);
+          v161 = 1LL << (-(char)__clz(v160 - 1) & 63);
           if (v160 >= 2) {
             v160 = v161;
           }
@@ -6603,7 +6603,7 @@ LABEL_41:
         v42 = std___1___next_prime(v42);
       }
       else {
-        v43 = 1LL << -(char)__clz(v42 - 1);
+        v43 = 1LL << (-(char)__clz(v42 - 1) & 63);
         if (v42 >= 2) {
           v42 = v43;
         }
@@ -8674,7 +8674,7 @@ LABEL_166:
           v168 = std___1___next_prime(v168);
         }
         else {
-          v169 = 1LL << -(char)__clz(v168 - 1);
+          v169 = 1LL << (-(char)__clz(v168 - 1) & 63);
           if (v168 >= 2) {
             v168 = v169;
           }

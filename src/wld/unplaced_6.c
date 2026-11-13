@@ -40,6 +40,8 @@ extern __int64 GameData_212e9d0[4];
 float cosf(float);
 float sinf(float);
 unsigned __int64 GameRoutine_c4c260(_DWORD*, float**);
+unsigned __int128
+GameRoutine_c4c260_pair(_DWORD*, float**) __asm__("GameRoutine_c4c260");
 void GameRoutine_c4c550(float*, float*, _QWORD*, char);
 void wld_c4a9a0(__int64* a1, _DWORD* a2);
 __attribute__((swiftcall)) void wld_c52150(PSEUDO_X8 x8_, __int64 a1);
@@ -703,7 +705,7 @@ void wld_c4a9a0(__int64* a1, _DWORD* a2)
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
       v270 = COERCE_AS(__typeof__(v270),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-      HIDWORD(v37) = 0;
+      DWORD3(v37) = 0;
       v165 = (_QWORD*)a1[23];
       v166 = v165[22];
       *(_QWORD*)&v37 = __PAIR64__(v297, v320);
@@ -1413,7 +1415,7 @@ void wld_c4a9a0(__int64* a1, _DWORD* a2)
                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
   v270 = COERCE_AS(__typeof__(v270),
                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  HIDWORD(v37) = 0;
+  DWORD3(v37) = 0;
   v2 = v307;
   a1[8] = 0;
   v11 = COERCE_AS(float32x4_t, GameData_1a83610);
@@ -1580,11 +1582,12 @@ LABEL_199:
   }
 LABEL_208:
   if (a1[16] != a1[15]) {
-    v260 = GameRoutine_c4c260(a2, (float**)a1 + 15),
-    v262 = COERCE_AS(__typeof__(v262),
-                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v270 = COERCE_AS(__typeof__(v270),
-                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v260 = ({
+      unsigned __int128 r_ = GameRoutine_c4c260_pair(a2, (float**)a1 + 15);
+      v262 = COERCE_AS(__typeof__(v262), (unsigned long long)(r_ >> 64));
+      v270 = COERCE_AS(__typeof__(v270), (unsigned long long)(r_ >> 64));
+      (unsigned __int64)(unsigned long long)r_;
+    });
     v261 = *((_DWORD*)a1 + 20);
     v346_.v346 = v260;
     v346_.v347 = v262;
@@ -1621,11 +1624,12 @@ LABEL_208:
         goto LABEL_253;
       }
     }
-    v268 = GameRoutine_c4c260(a2, (float**)a1 + 18),
-    v262 = COERCE_AS(__typeof__(v262),
-                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v270 = COERCE_AS(__typeof__(v270),
-                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v268 = ({
+      unsigned __int128 r_ = GameRoutine_c4c260_pair(a2, (float**)a1 + 18);
+      v262 = COERCE_AS(__typeof__(v262), (unsigned long long)(r_ >> 64));
+      v270 = COERCE_AS(__typeof__(v270), (unsigned long long)(r_ >> 64));
+      (unsigned __int64)(unsigned long long)r_;
+    });
     v269 = *((_DWORD*)a1 + 23);
     v344_.v344 = v268;
     v344_.v345 = v270;

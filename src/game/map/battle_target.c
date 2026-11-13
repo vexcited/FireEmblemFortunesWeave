@@ -1767,7 +1767,7 @@ __attribute__((swiftcall)) void BattleTarget_8ff080(PSEUDO_X8 x8_, __int64 a1)
           else {
             v61 = 0.0f;
           }
-          HIDWORD(v63) = 0;
+          DWORD3(v63) = 0;
           v62 = *(_DWORD*)(a1 + 16);
           *(_QWORD*)&v63 = __PAIR64__(LODWORD(v61), LODWORD(v59));
           v64 = *(char*)(a1 + 53) - *(_DWORD*)(a1 + 12);

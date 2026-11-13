@@ -826,7 +826,7 @@ void ResFile_ad7640(__int64 a1)
                 v17 = (__int64*)v195;
               }
               else {
-                v95 = 1LL << -(char)__clz(v94 - 1);
+                v95 = 1LL << (-(char)__clz(v94 - 1) & 63);
                 if (v94 >= 2) {
                   v94 = v95;
                 }
@@ -1738,7 +1738,7 @@ __int64 ResFile_ad8b40(__int64 a1, __int64 a2, __int64 a3)
               v37 = a3;
             }
             else {
-              v53 = 1LL << -(char)__clz(v52 - 1);
+              v53 = 1LL << (-(char)__clz(v52 - 1) & 63);
               if (v52 >= 2) {
                 v52 = v53;
               }
@@ -2204,7 +2204,7 @@ __int64 ResFile_ad8b40(__int64 a1, __int64 a2, __int64 a3)
                   v138 = std___1___next_prime_alt1(v138);
                 }
                 else {
-                  v139 = 1LL << -(char)__clz(v138 - 1);
+                  v139 = 1LL << (-(char)__clz(v138 - 1) & 63);
                   if (v138 >= 2) {
                     v138 = v139;
                   }
@@ -2890,7 +2890,7 @@ LABEL_41:
         v36 = std___1___next_prime(v36);
       }
       else {
-        v37 = 1LL << -(char)__clz(v36 - 1);
+        v37 = 1LL << (-(char)__clz(v36 - 1) & 63);
         if (v36 >= 2) {
           v36 = v37;
         }

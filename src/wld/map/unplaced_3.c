@@ -322,7 +322,7 @@ void wld_map_c15dc0(__int64 a1, __int64 a2, __int64 a3, __int64* a4)
                                                (_QWORD)GameData_212c190))));
           PSEUDO_LOW_LANE64(
               v21, n64_f32,
-              -COERCE_FLOAT(HIDWORD(*(_OWORD*)((char*)((_UNKNOWN*)0x4LL) +
+              -COERCE_FLOAT(DWORD3(*(_OWORD*)((char*)((_UNKNOWN*)0x4LL) +
                                                (_QWORD)GameData_212c190))));
           PSEUDO_LOW_LANE64(
               v22, n64_f32,
@@ -2053,7 +2053,7 @@ LABEL_41:
         v44 = std___1___next_prime(v44);
       }
       else {
-        v45 = 1LL << -(char)__clz(v44 - 1);
+        v45 = 1LL << (-(char)__clz(v44 - 1) & 63);
         if (v44 >= 2) {
           v44 = v45;
         }
@@ -2426,7 +2426,7 @@ LABEL_41:
         v45 = std___1___next_prime(v45);
       }
       else {
-        v46 = 1LL << -(char)__clz(v45 - 1);
+        v46 = 1LL << (-(char)__clz(v45 - 1) & 63);
         if (v45 >= 2) {
           v45 = v46;
         }

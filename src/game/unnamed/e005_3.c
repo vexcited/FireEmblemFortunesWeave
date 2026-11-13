@@ -215,6 +215,8 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 
 unsigned __int64 game_hub_e286a0(__int64, __int64*);
+unsigned __int128 game_hub_e286a0_pair(__int64,
+                                       __int64*) __asm__("game_hub_e286a0");
 
 __int64 GameHr_f7c340_alt1(__int64 a1, __int64* a2, __int64* a3, __int64 a4,
                            char a5, __int64* a6) __asm__("GameHr_f7c340");
@@ -2865,10 +2867,11 @@ __int64 GameHr_f7c340(__int64 a1, _QWORD* a2, __int64* a3, __int64 a4, char a5,
       v56 = v55 + 19;
       v55 += 37;
     } while (v56 != v53);
-    *(_QWORD*)(a1 +
-               184) = game_hub_e286a0(*v39, &v71_.v71),
-               v64 = COERCE_AS(__typeof__(v64),
-                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    *(_QWORD*)(a1 + 184) = ({
+      unsigned __int128 r_ = game_hub_e286a0_pair(*v39, &v71_.v71);
+      v64 = COERCE_AS(__typeof__(v64), (unsigned long long)(r_ >> 64));
+      (unsigned __int64)(unsigned long long)r_;
+    });
     *(_BYTE*)(a1 + 192) = v64;
     v51 = 1;
   LABEL_87:

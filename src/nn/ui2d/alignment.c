@@ -2053,7 +2053,7 @@ void Alignment_56d3e0(float32x4_t* a1, float* a2, float* a3, float32x4_t* a4)
           LANES128(v118).n128_u32[2] = 0;
           LANES128(v119).n128_u64[0] =
               COERCE_UNSIGNED_INT(0x1.0000000000000p+0f);
-          LANES128(v116).n128_u32[3] = HIDWORD(*(unsigned __int128*)a4);
+          LANES128(v116).n128_u32[3] = DWORD3(*(unsigned __int128*)a4);
           LANES128(v119).n128_u32[2] = 0;
           v122 = vaddq_f32(
               v116,
@@ -2429,7 +2429,7 @@ void Alignment_56d3e0(float32x4_t* a1, float* a2, float* a3, float32x4_t* a4)
               v64 = a4[2];
               LANES128(v65).n128_u64[0] =
                   COERCE_UNSIGNED_INT(0x1.0000000000000p+0f);
-              LANES128(v63).n128_u32[3] = HIDWORD(*(unsigned __int128*)a4);
+              LANES128(v63).n128_u32[3] = DWORD3(*(unsigned __int128*)a4);
               LANES128(v65).n128_u32[2] = 0;
               v68 = vaddq_f32(
                   v63,
@@ -3021,7 +3021,7 @@ void Alignment_56dd00(float32x4_t* a1, float* a2, float* a3, float32x4_t* a4)
           LANES128(v116).n128_u32[2] = 0;
           LANES128(v117).n128_u64[0] =
               COERCE_UNSIGNED_INT(0x1.0000000000000p+0f);
-          LANES128(v114).n128_u32[3] = HIDWORD(*(unsigned __int128*)a4);
+          LANES128(v114).n128_u32[3] = DWORD3(*(unsigned __int128*)a4);
           LANES128(v117).n128_u32[2] = 0;
           v120 = vaddq_f32(
               v114,
@@ -3382,7 +3382,7 @@ void Alignment_56dd00(float32x4_t* a1, float* a2, float* a3, float32x4_t* a4)
               v64 = a4[2];
               LANES128(v65).n128_u64[0] =
                   COERCE_UNSIGNED_INT(0x1.0000000000000p+0f);
-              LANES128(v63).n128_u32[3] = HIDWORD(*(unsigned __int128*)a4);
+              LANES128(v63).n128_u32[3] = DWORD3(*(unsigned __int128*)a4);
               LANES128(v65).n128_u32[2] = 0;
               v68 = vaddq_f32(
                   v63,

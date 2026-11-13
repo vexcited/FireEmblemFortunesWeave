@@ -10210,7 +10210,7 @@ LABEL_18:
     if (COERCE_FLOAT(*(_OWORD*)&v6[21]) != v31 ||
         COERCE_FLOAT(HIDWORD(LANES128(v6[21]).n128_u64[0])) != v32 ||
         COERCE_FLOAT(LANES128(v6[21]).n128_u64[1]) != v31 ||
-        COERCE_FLOAT(HIDWORD(*(_OWORD*)&v6[21])) != v30) {
+        COERCE_FLOAT(DWORD3(*(_OWORD*)&v6[21])) != v30) {
       v36 = LANES128(v6[18]).n128_u32[2];
       LANES128(v6[21]).n128_f32[0] = v31;
       LANES128(v6[21]).n128_f32[1] = v32;

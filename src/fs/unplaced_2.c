@@ -385,7 +385,7 @@ LABEL_64:
         v53 = std___1___next_prime(v53);
       }
       else {
-        v54 = 1LL << -(char)__clz(v53 - 1);
+        v54 = 1LL << (-(char)__clz(v53 - 1) & 63);
         if (v53 >= 2) {
           v53 = v54;
         }
@@ -1036,7 +1036,7 @@ unsigned __int64 fs_6360e0(__int64 a1, __int64 a2, unsigned __int64 a3, char a4,
             v74 = std___1___next_prime(v74);
           }
           else {
-            v75 = 1LL << -(char)__clz(v74 - 1);
+            v75 = 1LL << (-(char)__clz(v74 - 1) & 63);
             if (v74 >= 2) {
               v74 = v75;
             }

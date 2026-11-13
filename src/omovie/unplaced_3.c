@@ -218,7 +218,7 @@ LABEL_41:
         v46 = std___1___next_prime(v46);
       }
       else {
-        v47 = 1LL << -(char)__clz(v46 - 1);
+        v47 = 1LL << (-(char)__clz(v46 - 1) & 63);
         if (v46 >= 2) {
           v46 = v47;
         }

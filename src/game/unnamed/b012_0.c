@@ -10548,7 +10548,7 @@ __int64 GameHr_e2d300(__int64 result, __int64* a2, unsigned int a3)
   LABEL_37:
     v23 = *v22;
     v24 = v18[8];
-    HIDWORD(v23) = 0;
+    DWORD3(v23) = 0;
     v25 = *(_DWORD*)(v24 + 112);
     v50 = v23;
     if (v25 == 1) {

@@ -4232,7 +4232,7 @@ __attribute__((swiftcall)) void snd_131640(PSEUDO_X8 x8_, unsigned int* result,
       v24 = (_QWORD*)((char*)v23 + (((v15 + v22) >> 3) & 0x3FFFFFF8));
       *(_QWORD*)a3 = v24;
       if (v16 >= 1) {
-        *v24 &= ~(0xFFFFFFFFFFFFFFFFLL >> -(char)v16);
+        *v24 &= ~(0xFFFFFFFFFFFFFFFFLL >> (-(char)v16 & 63));
         **(_QWORD**)a3 |=
             v12 >> ((unsigned __int8)v15 + (unsigned __int8)result[2]);
         *(_DWORD*)(a3 + 8) = v16;
@@ -4288,7 +4288,7 @@ __attribute__((swiftcall)) void snd_131640(PSEUDO_X8 x8_, unsigned int* result,
       }
     }
     if (v26 >= 1) {
-      v38 = *v4 & (0xFFFFFFFFFFFFFFFFLL >> -(char)v26);
+      v38 = *v4 & (0xFFFFFFFFFFFFFFFFLL >> (-(char)v26 & 63));
       if (v26 >= v27) {
         v39 = v27;
       }
@@ -4508,7 +4508,7 @@ __attribute__((swiftcall)) void snd_131b60(PSEUDO_X8 x8_,
     *(_QWORD*)a5 = v22;
     if (v13 >= 1) {
       v21 = v13;
-      *v22 &= ~(0xFFFFFFFFFFFFFFFFLL >> -(char)v13);
+      *v22 &= ~(0xFFFFFFFFFFFFFFFFLL >> (-(char)v13 & 63));
       **(_QWORD**)a5 |= v8 >> ((unsigned __int8)v12 + (unsigned __int8)a2);
       *(_DWORD*)(a5 + 8) = v13;
     }
@@ -4565,7 +4565,7 @@ __attribute__((swiftcall)) void snd_131b60(PSEUDO_X8 x8_,
   v23 = v6;
 LABEL_21:
   if (v23 >= 1) {
-    v34 = *result & (0xFFFFFFFFFFFFFFFFLL >> -(char)v23);
+    v34 = *result & (0xFFFFFFFFFFFFFFFFLL >> (-(char)v23 & 63));
     if (v23 >= v24) {
       v35 = v24;
     }

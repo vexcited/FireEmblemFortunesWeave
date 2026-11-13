@@ -71,6 +71,8 @@ void ExpMenuItem_1756280_alt1(__int64 a1) __asm__("ExpMenuItem_1756280");
 __int64 ExpMenuItem_17565c0_alt1(__int64 a1,
                                  int a2) __asm__("ExpMenuItem_17565c0");
 __int64* Manager_bc6460_alt1(float*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(float*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_1562680(__int64 result, const char*, float);
 __int64 GameRoutine_155f760_alt1(__int64, __int64,
@@ -969,10 +971,12 @@ __int64 ExpMenuItem_1756280(__int64 result)
   v39_.v44 = v6;
   v39_.v40 = 9;
   v39_.v39[2] = "UI_Deco_ExperiencePoint_MVP";
-  v8 = Manager_bc6460_alt1(*(float**)eft_g_effectSystem_ptr[0],
-                           (__int64)v39_.v39, 0),
-  v9 = COERCE_AS(__typeof__(v9),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v8 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(float**)eft_g_effectSystem_ptr[0], (__int64)v39_.v39, 0);
+    v9 = COERCE_AS(__typeof__(v9), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v37_.v37, (__int64)v8, v9, (__int64)&GameData_1a9f09e),
       v9 = COERCE_AS(__typeof__(v9),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

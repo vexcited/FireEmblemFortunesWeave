@@ -271,6 +271,8 @@ __int64 GameRoutine_291440_alt1(__int64) __asm__("GameRoutine_291440");
 __int64 SoundThread_2a1ee0(__int64, _QWORD*);
 __int64 SoundVoiceNx_2ab4a0(__int64, __int64, int, __int64, unsigned int);
 __int64 nn_atk_detail_2a5060(__int64, int, char);
+unsigned __int128
+nn_atk_detail_2a5060_pair(__int64, int, char) __asm__("nn_atk_detail_2a5060");
 __int64 nn_audio_AppendWaveBuffer(_QWORD, _QWORD);
 __int64 nn_audio_GetAuxBufferStatistics(_QWORD);
 __int64 nn_audio_GetAuxSampleCount(_QWORD);
@@ -296,6 +298,8 @@ extern __int64 (
 unsigned __int64 BaseNx_2ae5e0(__int64, __int64, unsigned __int64,
                                unsigned int*);
 unsigned __int64 SoundArchivePlayer_27dc10();
+unsigned __int128
+SoundArchivePlayer_27dc10_pair() __asm__("SoundArchivePlayer_27dc10");
 void* BaseNx_2a1b90();
 void* SoundVoiceNX_14e360();
 __int64 GameHr_2a4c20(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
@@ -4030,9 +4034,11 @@ __int64 GameHr_2ab3c0(__int64 a1, __int64 a2)
       v8 = 1;
       v7 = v5;
     }
-    v9 = nn_atk_detail_2a5060(v7, v6, v8),
-    v10 = COERCE_AS(__typeof__(v10),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v9 = ({
+      unsigned __int128 r_ = nn_atk_detail_2a5060_pair(v7, v6, v8);
+      v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     LOWORD(v12_.v12) = 0;
     HIWORD(v12_.v13) = v10;
     *(_DWORD*)((char*)&v12_.v12 + 2) = v9;
@@ -5134,9 +5140,11 @@ __int64 GameHr_2ae3e0(_QWORD* a1, int a2, _BYTE* a3, __int64 a4)
   if ((*a3 & 0x3F) != 0) {
     return 0;
   }
-  v27_.v27 = SoundArchivePlayer_27dc10(),
-  v11 = COERCE_AS(__typeof__(v11),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v27_.v27 = ({
+    unsigned __int128 r_ = SoundArchivePlayer_27dc10_pair();
+    v11 = COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+    (unsigned __int64)(unsigned long long)r_;
+  });
   v27_.v28 = v11;
   v12 = BaseNx_2832c0((unsigned int*)&v27_.v27, 1),
   v11 = COERCE_AS(__typeof__(v11),
@@ -5354,9 +5362,11 @@ __int64 GameHr_2ae9a0(__int64 a1, int a2)
   v5 = COERCE_AS(__typeof__(v5),
                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v2 = *(int*)(a1 + 20);
-  v9_.v9 = SoundArchivePlayer_27dc10(),
-  v5 = COERCE_AS(__typeof__(v5),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9_.v9 = ({
+    unsigned __int128 r_ = SoundArchivePlayer_27dc10_pair();
+    v5 = COERCE_AS(__typeof__(v5), (unsigned long long)(r_ >> 64));
+    (unsigned __int64)(unsigned long long)r_;
+  });
   v9_.v10 = v5;
   v6 = BaseNx_2832c0((unsigned int*)&v9_.v9, 1),
   v5 = COERCE_AS(__typeof__(v5),

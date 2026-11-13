@@ -4420,7 +4420,7 @@ LABEL_23:
         result = v48;
       }
       else {
-        v36 = 1LL << -(char)__clz(v35 - 1);
+        v36 = 1LL << (-(char)__clz(v35 - 1) & 63);
         if (v35 >= 2) {
           v35 = v36;
         }

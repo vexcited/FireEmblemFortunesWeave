@@ -9171,7 +9171,7 @@ LABEL_22:
         v27 = std___1___next_prime(v27);
       }
       else {
-        v28 = 1LL << -(char)__clz(v27 - 1);
+        v28 = 1LL << (-(char)__clz(v27 - 1) & 63);
         if (v27 >= 2) {
           v27 = v28;
         }

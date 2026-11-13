@@ -464,7 +464,7 @@ void DisposFile_Unknown4()
         v68 = std___1___next_prime(v68);
       }
       else {
-        v69 = 1LL << -(char)__clz(v68 - 1);
+        v69 = 1LL << (-(char)__clz(v68 - 1) & 63);
         if (v68 >= 2) {
           v68 = v69;
         }

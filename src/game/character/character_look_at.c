@@ -599,7 +599,7 @@ char** game_character_CharacterLookAt_Startup_lambda2_Invoke(__int64 a1,
     }
   }
   else if (((unsigned int)(v2 + 1193575789) > 0x10 ||
-            ((1 << (v2 + 109)) & 0x10403) == 0) &&
+            ((1 << ((v2 + 109) & 31)) & 0x10403) == 0) &&
            v2 != -972548316) {
   LABEL_9:
     v9 = 1.0;

@@ -363,14 +363,14 @@ __int64 SdkHr_6884a0(__int64 a1, __int64 a2)
   if (v6 == 52928) {
     DWORD2(v42) = 1;
     DWORD2(v31) = 5243136;
-    HIDWORD(v32) = 196608;
+    DWORD3(v32) = 196608;
     v8 = 0x1000000;
   }
   else {
     LODWORD(v33) = 1;
     DWORD2(v32) = 48;
     v8 = 64;
-    HIDWORD(v30) = 67305472;
+    DWORD3(v30) = 67305472;
   }
   v9 = *(_DWORD*)(a2 + 108);
   v10 = *(_QWORD*)(a1 + 16);
@@ -480,14 +480,14 @@ __int64 SdkHr_6897c0(__int64 a1, __int64 a2, unsigned __int64 a3, int a4)
   if (v4 == 52928) {
     DWORD2(v38) = 1;
     DWORD2(v27) = 5243136;
-    HIDWORD(v28) = 196608;
+    DWORD3(v28) = 196608;
     v10 = 0x1000000;
   }
   else {
     LODWORD(v29) = 1;
     DWORD2(v28) = 48;
     v10 = 64;
-    HIDWORD(v26) = 67305472;
+    DWORD3(v26) = 67305472;
   }
   LODWORD(v25[2]) = v10;
   v11 = *(_QWORD*)(a1 + 16);
@@ -648,14 +648,14 @@ __int64 SdkHr_689990(__int64 a1, __int64 a2, __int64 a3, unsigned __int64 a4,
   if (v18 == 52928) {
     DWORD2(v43) = 1;
     DWORD2(v32) = 5243136;
-    HIDWORD(v33) = 196608;
+    DWORD3(v33) = 196608;
     v20 = 0x1000000;
   }
   else {
     LODWORD(v34) = 1;
     DWORD2(v33) = 48;
     v20 = 64;
-    HIDWORD(v31) = 67305472;
+    DWORD3(v31) = 67305472;
   }
   LODWORD(v30[2]) = v20;
   v21 = *(_QWORD*)(a1 + 16);
@@ -2670,14 +2670,14 @@ __int64 SdkHr_6a6e70(__int64 a1, _DWORD* a2, int a3, int a4, int* a5,
   if (v7 == 52928) {
     DWORD2(v29) = 1;
     DWORD2(v18) = 5243136;
-    HIDWORD(v19) = 196608;
+    DWORD3(v19) = 196608;
     v12 = 0x1000000;
   }
   else {
     LODWORD(v20) = 1;
     DWORD2(v19) = 48;
     v12 = 64;
-    HIDWORD(v17) = 67305472;
+    DWORD3(v17) = 67305472;
   }
   LODWORD(v16[2]) = v12;
   result = SdkRoutine_686c00(a1, a2, a3, a4, v16);

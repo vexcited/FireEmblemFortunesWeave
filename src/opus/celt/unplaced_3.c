@@ -34,7 +34,7 @@ __int64 unquant_energy_finalise(__int64 result, int, int, __int64, __int64,
                                 __int64, int, __int64*, int);
 __int64 unquant_fine_energy(__int64 result, int, int, __int64, __int64,
                             __int64*, int);
-bool ec_dec_bit_logp(__int64*, char);
+int ec_dec_bit_logp(__int64*, char);
 extern char MovieData_a231a[34];
 extern unsigned __int8 MovieData_a23e5[];
 extern unsigned __int8 MovieData_a23e8[];
@@ -195,6 +195,7 @@ __int64 opus_celt_254a0(__int64 a1, unsigned __int8* a2, unsigned int a3,
   int v157;
   unsigned __int64 v158;
   char* v159;
+  char* v159b;
   int v160;
   __int64 v161;
   char* v162;
@@ -712,7 +713,7 @@ __int64 opus_celt_254a0(__int64 a1, unsigned __int8* a2, unsigned int a3,
                             v314_.v345, v93, (__int64)v314_.v348, v314_.v344,
                             v18);
       v314_.v328 =
-          (__int64)&v314_.v314 - ((4 * v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+          (__int64)__builtin_alloca((4 * v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
       v314_.v333 = 4 * v19;
       memset_plt(v314_.v328, 0, 4 * v19);
       v98 = 0;
@@ -825,13 +826,12 @@ __int64 opus_celt_254a0(__int64 a1, unsigned __int8* a2, unsigned int a3,
       }
       v126 = v314_.v333;
       v127 = (v314_.v333 + 15) & 0xFFFFFFFFFFFFFFF0LL;
-      memset_plt((__int64)&v314_.v314 - v127, 0, v314_.v333);
-      v314_.v351 = (__int64)&v314_.v314 - v127;
-      init_caps((__int64)v314_.v347, (__int64)&v314_.v314 - v127, v18,
-                v314_.v344);
-      v128 = (char*)&v314_.v314 - v127;
+      v314_.v351 = (__int64)__builtin_alloca(v127);
+      memset_plt(v314_.v351, 0, v314_.v333);
+      init_caps((__int64)v314_.v347, v314_.v351, v18, v314_.v344);
+      v128 = (char*)__builtin_alloca(v127);
       v314_.v316 = v127;
-      memset_plt((__int64)&v314_.v314 - v127, 0, v126);
+      memset_plt((__int64)v128, 0, v126);
       v129 = a3 << 6;
       v130 = ec_tell_frac((__int64)v95);
       v131 = v314_.v349;
@@ -930,9 +930,9 @@ __int64 opus_celt_254a0(__int64 a1, unsigned __int8* a2, unsigned int a3,
       }
       v135 = v129;
     LABEL_145:
-      v314_.v350 = (__int64)&v314_.v314 - v314_.v316;
+      v314_.v350 = (__int64)__builtin_alloca(v314_.v316);
       v148 = v135;
-      memset_plt((__int64)&v314_.v314 - v314_.v316, 0, v314_.v333);
+      memset_plt(v314_.v350, 0, v314_.v333);
       if (v132 + 48 <= v148) {
         v149 = ec_dec_icdf(v95, MovieData_a23ec, 7);
       }
@@ -964,11 +964,12 @@ __int64 opus_celt_254a0(__int64 a1, unsigned __int8* a2, unsigned int a3,
       v157 = v155 - v156;
       LODWORD(v314_.v316) = v156;
       v158 = v314_.v333;
-      v159 = (char*)&v314_.v314 - ((v314_.v333 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+      v159 = (char*)__builtin_alloca((v314_.v333 + 15) & 0xFFFFFFFFFFFFFFF0LL);
       memset_plt((__int64)v159, 0, v314_.v333);
-      memset_plt((__int64)v159, 0, v158);
+      v159b = (char*)__builtin_alloca((v158 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+      memset_plt((__int64)v159b, 0, v158);
       v160 = v314_.v344;
-      v314_.v343 = v159;
+      v314_.v343 = v159b;
       LODWORD(v158) = v314_.v349;
       v161 = v314_.v350;
       v162 = v314_.v347;
@@ -978,7 +979,7 @@ __int64 opus_celt_254a0(__int64 a1, unsigned __int8* a2, unsigned int a3,
           opus_41040(v314_.v347, v314_.v349, v153, v314_.v338, v314_.v351, v149,
                      (int*)&v356 + 1, (_BOOL4*)&v356, v313,
                      (unsigned int*)&v355, (__int64)v159, v314_.v350,
-                     (__int64)v159, v314_.v344, v18, v314_.v348, 0, 0, 0);
+                     (__int64)v159b, v314_.v344, v18, v314_.v348, 0, 0, 0);
       unquant_fine_energy((__int64)v162, v158, v153, v314_.v345, v161, v163,
                           v160);
       v164 = 4LL * (v314_.v342 / 2 - v150 + 2048);
@@ -1019,12 +1020,10 @@ __int64 opus_celt_254a0(__int64 a1, unsigned __int8* a2, unsigned int a3,
       v174 = v314_.v344;
       v175 = v166;
       v176 = v171 * v314_.v344;
-      v177 = (char*)&v314_.v314 -
-             ((v171 * v314_.v344 + 15LL) & 0xFFFFFFFFFFFFFFF0LL);
-      memset_plt((__int64)&v314_.v314 - ((v176 + 15LL) & 0xFFFFFFFFFFFFFFF0LL),
-                 0, v176);
+      v177 = (char*)__builtin_alloca((v176 + 15LL) & 0xFFFFFFFFFFFFFFF0LL);
+      memset_plt((__int64)v177, 0, v176);
       v178 = 2LL * (int)v314_.v354 * v174;
-      v179 = (char*)&v314_.v314 - ((v178 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+      v179 = (char*)__builtin_alloca((v178 + 15) & 0xFFFFFFFFFFFFFFF0LL);
       memset_plt((__int64)v179, 0, v178);
       if (v174 == 2) {
         v180 = (__int64)&v179[2 * v175];

@@ -4,6 +4,8 @@
 
 __int64* GameHr_14a4a80(__int64, __int64*);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_14a1390(__int64*, char);
 __int64 GameHr_14a1520(__int64*, char);
@@ -350,7 +352,7 @@ LABEL_41:
         v42 = std___1___next_prime(v42);
       }
       else {
-        v43 = 1LL << -(char)__clz(v42 - 1);
+        v43 = 1LL << (-(char)__clz(v42 - 1) & 63);
         if (v42 >= 2) {
           v42 = v43;
         }
@@ -618,7 +620,7 @@ void game_templates_be1ba0(__int64 a1, __int64 a2)
       v20 = std___1___next_prime(v20);
     }
     else {
-      v21 = 1LL << -(char)__clz(v20 - 1);
+      v21 = 1LL << (-(char)__clz(v20 - 1) & 63);
       if (v20 >= 2) {
         v20 = v21;
       }
@@ -1048,7 +1050,7 @@ LABEL_23:
         result = v46;
       }
       else {
-        v34 = 1LL << -(char)__clz(v33 - 1);
+        v34 = 1LL << (-(char)__clz(v33 - 1) & 63);
         if (v33 >= 2) {
           v33 = v34;
         }
@@ -1858,9 +1860,11 @@ __int64 game_templates_14a7aa0(__int64* a1)
   v14_.v21 = *(_QWORD*)GameData_212c540;
   v14_.v22 = v6;
   v14_.v16 = "Gmap_Spot_Miasma_Cancel";
-  v7 = Manager_bc6460(v5, (__int64)&v14_.v14, 1),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(v5, (__int64)&v14_.v14, 1);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result =
       GameHr_14a10d0(&v14_.v14, (__int64)v7, v8, (__int64)&GameData_1a9f09e),
   v8 = COERCE_AS(__typeof__(v8),

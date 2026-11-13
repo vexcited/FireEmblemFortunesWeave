@@ -1585,7 +1585,7 @@ __int64 game_gmap_1360f00(__int64 a1, __int64 a2)
       v20 = std___1___next_prime(v20);
     }
     else {
-      v21 = 1LL << -(char)__clz(v20 - 1);
+      v21 = 1LL << (-(char)__clz(v20 - 1) & 63);
       if (v20 >= 2) {
         v20 = v21;
       }
@@ -2737,7 +2737,7 @@ void game_gmap_151e060(__int64 a1, __int64 a2, int a3)
                          COERCE_FLOAT(*(_OWORD*)(v3 + v7)),
                          COERCE_FLOAT(HIDWORD(*(_QWORD*)(v3 + v7))),
                          COERCE_FLOAT(*(_QWORD*)(v3 + v7 + 8)),
-                         COERCE_FLOAT(HIDWORD(*(_OWORD*)(v3 + v7))));
+                         COERCE_FLOAT(DWORD3(*(_OWORD*)(v3 + v7))));
       if ((v27_.v27[0] & 1) == 0) {
         goto LABEL_2;
       }
@@ -3541,7 +3541,7 @@ LABEL_55:
                        COERCE_FLOAT(*(_OWORD*)(a1 + 400)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 400))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 408)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 400))));
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 400))));
     if ((v51[0] & 1) == 0) {
       goto LABEL_69;
     }
@@ -3588,7 +3588,7 @@ LABEL_69:
                        COERCE_FLOAT(*(_OWORD*)(a1 + 416)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 416))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 424)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 416))));
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 416))));
     if ((v51[0] & 1) == 0) {
       goto LABEL_83;
     }
@@ -3635,7 +3635,7 @@ LABEL_83:
                        COERCE_FLOAT(*(_OWORD*)(a1 + 432)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 432))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 440)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 432))));
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 432))));
     if ((v51[0] & 1) == 0) {
       goto LABEL_97;
     }
@@ -3682,7 +3682,7 @@ LABEL_97:
                        COERCE_FLOAT(*(_OWORD*)(a1 + 448)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 448))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 456)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 448))));
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 448))));
     if ((v51[0] & 1) == 0) {
       goto LABEL_111;
     }
@@ -3729,7 +3729,7 @@ LABEL_111:
                        COERCE_FLOAT(*(_OWORD*)(a1 + 464)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 464))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 472)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 464))));
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 464))));
     if ((v51[0] & 1) == 0) {
       goto LABEL_125;
     }
@@ -3776,7 +3776,7 @@ LABEL_125:
                        COERCE_FLOAT(*(_OWORD*)(a1 + 480)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 480))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 488)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 480))));
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 480))));
     if ((v51[0] & 1) == 0) {
       return;
     }
@@ -3993,7 +3993,7 @@ LABEL_55:
                        COERCE_FLOAT(*(_OWORD*)(a1 + 608)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 608))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 616)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 608))));
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 608))));
     if ((v31[0] & 1) == 0) {
       goto LABEL_69;
     }
@@ -4036,7 +4036,7 @@ LABEL_69:
                        COERCE_FLOAT(*(_OWORD*)(a1 + 624)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 624))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 632)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 624))));
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 624))));
     if ((v31[0] & 1) == 0) {
       return;
     }

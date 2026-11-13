@@ -332,7 +332,7 @@ LABEL_40:
         v44 = std___1___next_prime(v44);
       }
       else {
-        v45 = 1LL << -(char)__clz(v44 - 1);
+        v45 = 1LL << (-(char)__clz(v44 - 1) & 63);
         if (v44 >= 2) {
           v44 = v45;
         }
@@ -857,7 +857,7 @@ void llvm_libcxx_21_libcxx_include___functional_a5c540(_QWORD* a1, _QWORD* a2,
         v74 = std___1___next_prime(v74);
       }
       else {
-        v75 = 1LL << -(char)__clz(v74 - 1);
+        v75 = 1LL << (-(char)__clz(v74 - 1) & 63);
         if (v74 >= 2) {
           v74 = v75;
         }
@@ -3880,7 +3880,7 @@ __n128 llvm_libcxx_21_libcxx_include___functional_19a4910(__int64 a1,
                        COERCE_FLOAT(*(_OWORD*)(a1 + 144)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 144))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 152)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 144)))),
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 144)))),
         result =
             COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
     v14 = fs_609260(a2 + 800, "GmapMapInfo_RouteColorAll", 1),
@@ -3889,7 +3889,7 @@ __n128 llvm_libcxx_21_libcxx_include___functional_19a4910(__int64 a1,
                        COERCE_FLOAT(*(_OWORD*)(a1 + 176)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 176))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 184)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 176)))),
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 176)))),
         result =
             COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
     v15 = fs_609260(a2 + 800, "GmapMapInfo_RouteColor", 1),
@@ -3898,7 +3898,7 @@ __n128 llvm_libcxx_21_libcxx_include___functional_19a4910(__int64 a1,
                        COERCE_FLOAT(*(_OWORD*)(a1 + 192)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 192))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 200)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 192)))),
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 192)))),
         result =
             COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
     v16 = fs_609260(a2 + 800, "GmapMapInfo_FuchiSize", 1),
@@ -3967,7 +3967,7 @@ __n128 llvm_libcxx_21_libcxx_include___functional_19a4910(__int64 a1,
                        COERCE_FLOAT(*(_OWORD*)(a1 + 208)),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 208))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 216)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 208)))),
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 208)))),
         result =
             COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   }

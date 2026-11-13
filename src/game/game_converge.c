@@ -2907,7 +2907,7 @@ LABEL_23:
         result = v29;
       }
       else {
-        v28 = 1LL << -(char)__clz(v27 - 1);
+        v28 = 1LL << (-(char)__clz(v27 - 1) & 63);
         if (v27 >= 2) {
           v27 = v28;
         }
@@ -3739,7 +3739,7 @@ unsigned __int64 GameConverge_8f04a0(unsigned __int64 result, _QWORD* a2)
       result = std___1___next_prime(result);
     }
     else {
-      v18 = 1LL << -(char)__clz(result - 1);
+      v18 = 1LL << (-(char)__clz(result - 1) & 63);
       if (result >= 2) {
         result = v18;
       }

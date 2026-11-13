@@ -9968,7 +9968,7 @@ LABEL_23:
         result = v25;
       }
       else {
-        v24 = 1LL << -(char)__clz(v23 - 1);
+        v24 = 1LL << (-(char)__clz(v23 - 1) & 63);
         if (v23 >= 2) {
           v23 = v24;
         }

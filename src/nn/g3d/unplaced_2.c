@@ -190,7 +190,7 @@ __int64 nn_g3d_5ef0a0(__int64 result, __int64 a2)
                                               *(_QWORD*)(v12 + 16 * v7 + 8)))) +
                     (float)(v25 *
                             COERCE_FLOAT(HIDWORD(*(_QWORD*)(v12 + 16 * v7))))) +
-            (float)(v24 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v12 + 16 * v7))));
+            (float)(v24 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v12 + 16 * v7))));
         *(float*)(v4 + 24) =
             (float)((float)(vmuls_lane_f32(v20, *(float32x2_t*)(v12 + 16 * v7),
                                            1) +
@@ -198,7 +198,7 @@ __int64 nn_g3d_5ef0a0(__int64 result, __int64 a2)
                                     v24)) +
                     (float)(v25 *
                             COERCE_FLOAT(*(_QWORD*)(v12 + 16 * v7 + 8)))) +
-            (float)(v22 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v12 + 16 * v7))));
+            (float)(v22 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v12 + 16 * v7))));
       }
     }
     v10 = *(_DWORD*)v4;
@@ -330,14 +330,14 @@ __int64 nn_g3d_5ef450(__int64 result, __int64 a2)
                                             *(_QWORD*)(v15 + 16 * v6 + 8)))) +
                   (float)(v28 *
                           COERCE_FLOAT(HIDWORD(*(_QWORD*)(v15 + 16 * v6))))) +
-          (float)(v27 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v15 + 16 * v6))));
+          (float)(v27 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v15 + 16 * v6))));
       *(float*)(v10 + 24) =
           (float)((float)(vmuls_lane_f32(v23, *(float32x2_t*)(v15 + 16 * v6),
                                          1) +
                           (float)(COERCE_FLOAT(*(_OWORD*)(v15 + 16 * v6)) *
                                   v27)) +
                   (float)(v28 * COERCE_FLOAT(*(_QWORD*)(v15 + 16 * v6 + 8)))) +
-          (float)(v25 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v15 + 16 * v6))));
+          (float)(v25 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v15 + 16 * v6))));
     }
     if ((v12 & 0x80000000) != 0) {
       v2 = v35;
@@ -508,7 +508,7 @@ void nn_g3d_5ef800(__int64 a1, long double a2)
                         (float)(v51 * COERCE_FLOAT(HIDWORD(
                                           *(_QWORD*)(v38 + 16 * v30))))) +
                 (float)(v50 *
-                        COERCE_FLOAT(HIDWORD(*(_OWORD*)(v38 + 16 * v30))));
+                        COERCE_FLOAT(DWORD3(*(_OWORD*)(v38 + 16 * v30))));
             a2 = *(long double*)(v38 + 16 * v30);
             *(float*)(v5 + 24) =
                 (float)((float)(vmuls_lane_f32(v46, *(float32x2_t*)&a2, 1) +
@@ -586,7 +586,7 @@ void nn_g3d_5ef800(__int64 a1, long double a2)
                                                 _QWORD*)(v15 + 16 * v9 + 8)))) +
                       (float)(v28 * COERCE_FLOAT(
                                         HIDWORD(*(_QWORD*)(v15 + 16 * v9))))) +
-              (float)(v27 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v15 + 16 * v9))));
+              (float)(v27 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v15 + 16 * v9))));
           a2 = *(long double*)(v15 + 16 * v9);
           *(float*)(v5 + 24) =
               (float)((float)(vmuls_lane_f32(v23, *(float32x2_t*)&a2, 1) +
@@ -852,7 +852,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                                           *(_QWORD*)(v98 + 16 * v79 + 8)))) +
                       (float)(v111 * COERCE_FLOAT(HIDWORD(
                                          *(_QWORD*)(v98 + 16 * v79))))) +
-              (float)(v110 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v98 + 16 * v79))));
+              (float)(v110 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v98 + 16 * v79))));
           *(float*)(v90 + 24) =
               (float)((float)(vmuls_lane_f32(
                                   v106, *(float32x2_t*)(v98 + 16 * v79), 1) +
@@ -860,7 +860,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                                       v110)) +
                       (float)(v111 *
                               COERCE_FLOAT(*(_QWORD*)(v98 + 16 * v79 + 8)))) +
-              (float)(v108 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v98 + 16 * v79))));
+              (float)(v108 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v98 + 16 * v79))));
           ((void (*)(__int64, _QWORD))SkeletalAnimObj_5f6770_ptr
                [3 * ((unsigned __int8)*(_DWORD*)(*(_QWORD*)(a1 + 136) + 4LL) >>
                      6) +
@@ -921,7 +921,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                       (float)(v148 * COERCE_FLOAT(HIDWORD(
                                          *(_QWORD*)(v135 + 16 * v79))))) +
               (float)(v147 *
-                      COERCE_FLOAT(HIDWORD(*(_OWORD*)(v135 + 16 * v79))));
+                      COERCE_FLOAT(DWORD3(*(_OWORD*)(v135 + 16 * v79))));
           *(float*)(v90 + 24) =
               (float)((float)(vmuls_lane_f32(
                                   v143, *(float32x2_t*)(v135 + 16 * v79), 1) +
@@ -931,7 +931,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                       (float)(v148 *
                               COERCE_FLOAT(*(_QWORD*)(v135 + 16 * v79 + 8)))) +
               (float)(v145 *
-                      COERCE_FLOAT(HIDWORD(*(_OWORD*)(v135 + 16 * v79))));
+                      COERCE_FLOAT(DWORD3(*(_OWORD*)(v135 + 16 * v79))));
           ((void (*)(__int64, _QWORD))SkeletalAnimObj_5f6770_ptr
                [3 * ((unsigned __int8)*(_DWORD*)(*(_QWORD*)(a1 + 136) + 4LL) >>
                      6) +
@@ -1034,7 +1034,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                                              _QWORD*)(v115 + 16 * v79 + 8)))) +
                   (float)(v128 *
                           COERCE_FLOAT(HIDWORD(*(_QWORD*)(v115 + 16 * v79))))) +
-          (float)(v127 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v115 + 16 * v79))));
+          (float)(v127 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v115 + 16 * v79))));
       a2 = *(long double*)(v115 + 16 * v79);
       *(float*)(v90 + 24) =
           (float)((float)(vmuls_lane_f32(v123, *(float32x2_t*)&a2, 1) +
@@ -1133,7 +1133,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                                                 _QWORD*)(v27 + 16 * v9 + 8)))) +
                       (float)(v40 * COERCE_FLOAT(
                                         HIDWORD(*(_QWORD*)(v27 + 16 * v9))))) +
-              (float)(v39 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v27 + 16 * v9))));
+              (float)(v39 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v27 + 16 * v9))));
           *(float*)(v18 + 24) =
               (float)((float)(vmuls_lane_f32(
                                   v35, *(float32x2_t*)(v27 + 16 * v9), 1) +
@@ -1141,7 +1141,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                                       v39)) +
                       (float)(v40 *
                               COERCE_FLOAT(*(_QWORD*)(v27 + 16 * v9 + 8)))) +
-              (float)(v37 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v27 + 16 * v9))));
+              (float)(v37 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v27 + 16 * v9))));
           ((void (*)(__int64, _QWORD))SkeletalAnimObj_5f6770_ptr
                [3 * ((unsigned __int8)*(_DWORD*)(*(_QWORD*)(a1 + 136) + 4LL) >>
                      6) +
@@ -1199,7 +1199,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                                                 _QWORD*)(v64 + 16 * v9 + 8)))) +
                       (float)(v77 * COERCE_FLOAT(
                                         HIDWORD(*(_QWORD*)(v64 + 16 * v9))))) +
-              (float)(v76 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v64 + 16 * v9))));
+              (float)(v76 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v64 + 16 * v9))));
           *(float*)(v18 + 24) =
               (float)((float)(vmuls_lane_f32(
                                   v72, *(float32x2_t*)(v64 + 16 * v9), 1) +
@@ -1207,7 +1207,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                                       v76)) +
                       (float)(v77 *
                               COERCE_FLOAT(*(_QWORD*)(v64 + 16 * v9 + 8)))) +
-              (float)(v74 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v64 + 16 * v9))));
+              (float)(v74 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v64 + 16 * v9))));
           ((void (*)(__int64, _QWORD))SkeletalAnimObj_5f6770_ptr
                [3 * ((unsigned __int8)*(_DWORD*)(*(_QWORD*)(a1 + 136) + 4LL) >>
                      6) +
@@ -1305,7 +1305,7 @@ void nn_g3d_5f0040(__int64 a1, long double a2)
                                             *(_QWORD*)(v44 + 16 * v9 + 8)))) +
                   (float)(v57 *
                           COERCE_FLOAT(HIDWORD(*(_QWORD*)(v44 + 16 * v9))))) +
-          (float)(v56 * COERCE_FLOAT(HIDWORD(*(_OWORD*)(v44 + 16 * v9))));
+          (float)(v56 * COERCE_FLOAT(DWORD3(*(_OWORD*)(v44 + 16 * v9))));
       a2 = *(long double*)(v44 + 16 * v9);
       *(float*)(v18 + 24) =
           (float)((float)(vmuls_lane_f32(v52, *(float32x2_t*)&a2, 1) +

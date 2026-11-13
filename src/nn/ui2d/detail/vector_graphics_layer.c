@@ -214,11 +214,11 @@ void VectorGraphicsLayer_Unknown6(__int64 a1, __int64 a2, float32x4_t* a3,
     if (v11 != 0) {
       v13 = *(float32x2_t**)(v11 + 32);
       v14 = 0;
-      HIDWORD(v18) = 0;
+      DWORD3(v18) = 0;
       v15 = 0;
       v16 = 0;
-      v17 = HIDWORD(*(_OWORD*)LANES64(*(v13)).n64_u64);
-      *(_QWORD*)&v18 = (unsigned int)HIDWORD(*(_OWORD*)LANES64(v13[4]).n64_u64);
+      v17 = DWORD3(*(_OWORD*)LANES64(*(v13)).n64_u64);
+      *(_QWORD*)&v18 = (unsigned int)DWORD3(*(_OWORD*)LANES64(v13[4]).n64_u64);
       v19 = vaddq_f32(
           *(float32x4_t*)(&v14 - 1),
           vmlaq_laneq_f32(
@@ -229,8 +229,8 @@ void VectorGraphicsLayer_Unknown6(__int64 a1, __int64 a2, float32x4_t* a3,
                   1),
               v27_.v29, *(float32x4_t*)LANES64(*(v13)).n64_u64, 2));
       *(_QWORD*)((char*)&v18 + 4) = 0;
-      HIDWORD(v18) = 0;
-      v20 = HIDWORD(*(_OWORD*)LANES64(v13[2]).n64_u64);
+      DWORD3(v18) = 0;
+      v20 = DWORD3(*(_OWORD*)LANES64(v13[2]).n64_u64);
       v21 = vaddq_f32(
           *(float32x4_t*)((char*)&v18 + 4),
           vmlaq_laneq_f32(

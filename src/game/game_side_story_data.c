@@ -604,7 +604,7 @@ _QWORD* GameSideStoryData_12b42e0(_QWORD* result)
       result = (_QWORD*)std___1___next_prime(result);
     }
     else {
-      v25 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+      v25 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
       if ((unsigned __int64)result >= 2) {
         result = (_QWORD*)v25;
       }
@@ -783,7 +783,7 @@ _QWORD* GameSideStoryData_12b42e0(_QWORD* result)
             result = (_QWORD*)std___1___next_prime(result);
           }
           else {
-            v62 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+            v62 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
             if ((unsigned __int64)result >= 2) {
               result = (_QWORD*)v62;
             }

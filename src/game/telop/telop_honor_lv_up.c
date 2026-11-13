@@ -37,6 +37,8 @@ __int64 TelopHonorLvUP_Unknown35(_QWORD* a1);
 const char* TelopHonorLvUP_Unknown51(__int64 a1);
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64
 ControlCreator_13633c0_alt1(__int64 result) __asm__("ControlCreator_13633c0");
 __int64 GameRoutine_14a1520_alt1(__int64*, char) __asm__("GameRoutine_14a1520");
@@ -457,10 +459,12 @@ __int64 TelopHonorLvUP_Unknown35(_QWORD* a1)
   v44_.v49 = v8;
   v44_.v45 = 9;
   v44_.v44[2] = "UI_Deco_ShineB";
-  v10 = Manager_bc6460_alt1(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                            (__int64)v44_.v44, 0),
-  v11 = COERCE_AS(__typeof__(v11),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v10 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v44_.v44, 0);
+    v11 = COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result = (__int64)GameHr_14a10d0(&v42_.v42, (__int64)v10, v11,
                                    (__int64)&GameData_1a9f09e),
   v11 = COERCE_AS(__typeof__(v11),

@@ -351,7 +351,7 @@ __int64 opus_silk_592e0(unsigned __int16* a1, __int16* a2, __int64 a3, char* a4,
   v187_.v195 = a6;
   v187_.v190 = a4;
   v16 = 2LL * (int)(a11 + 2);
-  v17 = (_DWORD*)((char*)&v187_.v187 - ((v16 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v17 = (_DWORD*)__builtin_alloca((v16 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt((__int64)v17, 0, v16);
   if ((int)a11 < -1) {
     goto LABEL_18;
@@ -424,16 +424,16 @@ LABEL_18:
   *((_DWORD*)a1 + 1) = v38;
   *((_DWORD*)a1 + 2) = v39;
   v40 = (v35 + 15) & 0xFFFFFFFFFFFFFFF0LL;
-  v41 = (char*)&v187_.v187 - v40;
-  memset_plt((__int64)&v187_.v187 - v40, 0, v35);
-  v42 = (char*)&v187_.v187 - v40;
-  memset_plt((__int64)&v187_.v187 - v40, 0, v35);
+  v41 = (char*)__builtin_alloca(v40);
+  memset_plt((__int64)v41, 0, v35);
+  v42 = (char*)__builtin_alloca(v40);
+  memset_plt((__int64)v42, 0, v35);
   v187_.v193 = a2;
   v187_.v187 = v36;
   if ((int)a11 < 1) {
-    v46 = (char*)&v187_.v187 - v40;
-    memset_plt((__int64)&v187_.v187 - v40, 0, 2LL * (int)a11);
-    v47 = (char*)&v187_.v187 - v40;
+    v46 = (char*)__builtin_alloca(v40);
+    memset_plt((__int64)v46, 0, 2LL * (int)a11);
+    v47 = (char*)__builtin_alloca(v40);
     memset_plt((__int64)v47, 0, 2LL * (int)a11);
     goto LABEL_36;
   }
@@ -492,10 +492,10 @@ LABEL_18:
     } while (v44 != 0);
   }
 LABEL_28:
-  v46 = (char*)&v187_.v187 - ((v35 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v46 = (char*)__builtin_alloca((v35 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt((__int64)v46, 0, 2LL * (int)a11);
-  v47 = v46;
-  memset_plt((__int64)v46, 0, 2LL * (int)a11);
+  v47 = (char*)__builtin_alloca((v35 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  memset_plt((__int64)v47, 0, 2LL * (int)a11);
   v66 = a11 & 3;
   if (a11 < 4) {
     v67 = 0;

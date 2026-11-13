@@ -9,6 +9,8 @@ __attribute__((swiftcall)) void
 __int64 SdkRoutine_85af00(_QWORD, _QWORD);
 __int64 SdkRoutine_85af90(_QWORD, _QWORD);
 __int64 SdkRoutine_85afa0(_QWORD, _QWORD);
+unsigned __int128 SdkRoutine_85afa0_pair(_QWORD,
+                                         _QWORD) __asm__("SdkRoutine_85afa0");
 __int64 SdkRoutine_dbd00(_QWORD);
 __int64 SdkRoutine_f3600(__int64, int);
 __int64 SdkRoutine_f42c0();
@@ -3710,9 +3712,11 @@ __int64 nn_fs_dbe80(__int64* a1, __int64 a2, __int64 a3)
   v20_.v23 = v20_.v26;
   v20_.v24 = v20_.v27;
   v20_.v25 = v20_.v28;
-  SdkRoutine_85afa0(v3, v20_.v20),
-      v13 = COERCE_AS(__typeof__(v13),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  ({
+    unsigned __int128 r_ = SdkRoutine_85afa0_pair(v3, v20_.v20);
+    v13 = COERCE_AS(__typeof__(v13), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v14 = v13;
   if ((v20_.v20[0] & 1) != 0) {
     (*(void (**)(__int64, __int64, unsigned __int64, __int64))(
@@ -4751,9 +4755,11 @@ __int64 nn_fs_dcb60(__int64* a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
   v24_.v25 = v20_.v22;
   v24_.v26 = v20_.v23;
   v24_.v29 = 1;
-  SdkRoutine_85afa0(v5, v24_.v24),
-      v17 = COERCE_AS(__typeof__(v17),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  ({
+    unsigned __int128 r_ = SdkRoutine_85afa0_pair(v5, v24_.v24);
+    v17 = COERCE_AS(__typeof__(v17), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   v18 = v17;
   if ((v24_.v24[0] & 1) != 0) {
     (*(void (**)(__int64, __int64, unsigned __int64, __int64))(

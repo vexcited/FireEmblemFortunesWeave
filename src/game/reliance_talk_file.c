@@ -647,7 +647,7 @@ void RelianceTalkFile_Unknown4()
         v47 = (__int64*)fw_memory_g_heap_manager_ptr;
       }
       else {
-        v79 = 1LL << -(char)__clz(v78 - 1);
+        v79 = 1LL << (-(char)__clz(v78 - 1) & 63);
         if (v78 >= 2) {
           v78 = v79;
         }
@@ -762,7 +762,7 @@ void RelianceTalkFile_Unknown4()
               v101 = std___1___next_prime(v101);
             }
             else {
-              v102 = 1LL << -(char)__clz(v101 - 1);
+              v102 = 1LL << (-(char)__clz(v101 - 1) & 63);
               if (v101 >= 2) {
                 v101 = v102;
               }
@@ -873,7 +873,7 @@ void RelianceTalkFile_Unknown4()
           v133 = std___1___next_prime(v133);
         }
         else {
-          v134 = 1LL << -(char)__clz(v133 - 1);
+          v134 = 1LL << (-(char)__clz(v133 - 1) & 63);
           if (v133 >= 2) {
             v133 = v134;
           }
@@ -1631,7 +1631,7 @@ LABEL_48:
         v32 = std___1___next_prime(v32);
       }
       else {
-        v33 = 1LL << -(char)__clz(v32 - 1);
+        v33 = 1LL << (-(char)__clz(v32 - 1) & 63);
         if (v32 >= 2) {
           v32 = v33;
         }

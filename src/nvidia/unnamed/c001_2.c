@@ -431,7 +431,7 @@ __int64 CudaDriverRoutine_6b950(_QWORD);
 
 __int64 CudaDriverRoutine_6baa0(_QWORD, _QWORD, _QWORD, _QWORD);
 
-bool CudaDriverRoutine_7d1f0();
+unsigned __int8 CudaDriverRoutine_7d1f0();
 
 __int64 CudaDriverRoutine_83de0(unsigned int*, char);
 
@@ -444,7 +444,7 @@ _QWORD* CudaDriverRoutine_86ae0(__int64, unsigned __int64);
 
 __int64 CudaDriverRoutine_86eb0(int*);
 
-bool CudaDriverRoutine_874e0(_DWORD*, int, unsigned int, unsigned int,
+int CudaDriverRoutine_874e0(_DWORD*, int, unsigned int, unsigned int,
                              unsigned int);
 
 __int64 CudaDriverRoutine_87a10(unsigned __int8, int);
@@ -1282,7 +1282,7 @@ __int64 CudaDriverHr_90f00(_QWORD* a1, __int64 a2)
       *(_QWORD*)((char*)&v20 + 4) = 0x100000001LL;
       *(_QWORD*)&v21 = 0x100000001LL;
       LODWORD(v20) = ((v17 >> 5) + 15) >> 4;
-      HIDWORD(v20) = v20;
+      DWORD3(v20) = v20;
       CudaDriverRoutine_e6700(v19, *(_QWORD*)(*(_QWORD*)v15 + 96LL));
       result = CudaDriverRoutine_e6730(*(_QWORD*)(v15 + 432), v19,
                                        *(_QWORD*)(*(_QWORD*)v15 + 96LL), 0, 0);
@@ -4783,7 +4783,7 @@ __int64 CudaDriverHr_b3f80(__int64 a1, unsigned __int64 a2, char a3,
     }
   }
   if ((a2 & 0xFF000000) != 0) {
-    v11 = 0xFFFFFFFFFFFFFFFFLL >> -(char)v10;
+    v11 = 0xFFFFFFFFFFFFFFFFLL >> (-(char)v10 & 63);
     v12 = a4 >> SBYTE2(a2);
     v13 = v11 << SBYTE4(a2);
     v14 = (unsigned int)(v5 << 8) | (unsigned __int64)(unsigned __int8)v9 |
@@ -4810,7 +4810,7 @@ __int64 CudaDriverHr_b3f80(__int64 a1, unsigned __int64 a2, char a3,
     return 200;
   }
   if ((a2 & 0xFF000000000000LL) != 0) {
-    v20 = 0xFFFFFFFFFFFFFFFFLL >> -BYTE6(a2);
+    v20 = 0xFFFFFFFFFFFFFFFFLL >> (-BYTE6(a2) & 63);
     v21 = (a4 >> SBYTE5(a2)) & v20;
     v22 = v20 << SHIBYTE(a2);
     v23 = (unsigned int)(v5 << 8) | (unsigned __int64)(unsigned __int8)v9 |
@@ -7936,7 +7936,7 @@ __int64 CudaDriverHr_c04f0(__int64 a1, __int64* a2)
     DWORD2(v20) |= v10;
     v16 = v9;
     v11 = *a2;
-    HIDWORD(v20) = *(_DWORD*)(v4 + 12);
+    DWORD3(v20) = *(_DWORD*)(v4 + 12);
     *(_QWORD*)&v21 = *(_QWORD*)(v4 + 16);
     v12 = (unsigned int)(*(_DWORD*)(a1 + 136) +
                          *(_DWORD*)(a1 + 136) * *(_DWORD*)(a1 + 132));

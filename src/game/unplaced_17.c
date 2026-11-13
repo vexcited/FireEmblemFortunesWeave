@@ -498,6 +498,9 @@ unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 unsigned __int8* GameRoutine_112ca90(unsigned __int8* result, int*, _WORD*);
 unsigned int* game_6b7f00(unsigned int*, unsigned __int64, unsigned int*,
                           __int64, __int64*);
+unsigned __int128 game_6b7f00_pair(unsigned int*, unsigned __int64,
+                                   unsigned int*, __int64,
+                                   __int64*) __asm__("game_6b7f00");
 unsigned int* game_gmap_SpotMgr_GetCurrentSpot();
 void AIDeploy_1274f90(_QWORD*, __int64, int, unsigned int*);
 void AISupportSkillScope_11fef70(_DWORD*);
@@ -3731,7 +3734,7 @@ LABEL_10:
               v62 = std___1___next_prime(v62);
             }
             else {
-              v63 = 1LL << -(char)__clz(v62 - 1);
+              v63 = 1LL << (-(char)__clz(v62 - 1) & 63);
               if (v62 >= 2) {
                 v62 = v63;
               }
@@ -9869,7 +9872,7 @@ void game_18c3220(__int64 a1)
           v89 = std___1___next_prime(v89);
         }
         else {
-          v90 = 1LL << -(char)__clz(v89 - 1);
+          v90 = 1LL << (-(char)__clz(v89 - 1) & 63);
           if (v89 >= 2) {
             v89 = v90;
           }
@@ -10072,7 +10075,7 @@ void game_18c3220(__int64 a1)
         v46 = std___1___next_prime(v46);
       }
       else {
-        v47 = 1LL << -(char)__clz(v46 - 1);
+        v47 = 1LL << (-(char)__clz(v46 - 1) & 63);
         if (v46 >= 2) {
           v46 = v47;
         }
@@ -11129,11 +11132,13 @@ void game_18d6580(_QWORD* a1)
       v79 = *(unsigned int**)(v119_.v123 + 1);
       v148_.v148 = (__int64)"ContentsName";
       v148_.v149 = 12;
-      v80 = game_6b7f00(v79, 0, v79, v79[1], &v148_.v148),
-      v71 = COERCE_AS(__typeof__(v71),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v81 = COERCE_AS(__typeof__(v81),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v80 = ({
+        unsigned __int128 r_ =
+            game_6b7f00_pair(v79, 0, v79, v79[1], &v148_.v148);
+        v71 = COERCE_AS(__typeof__(v71), (unsigned long long)(r_ >> 64));
+        v81 = COERCE_AS(__typeof__(v81), (unsigned long long)(r_ >> 64));
+        (unsigned int*)(unsigned long long)r_;
+      });
       if (v81 == v79[1]) {
         LODWORD(v82) = (unsigned __int8)v116_.v116;
         v83 = v116_.v117;
@@ -13953,7 +13958,7 @@ float32x2_t* game_19132c0(float32x2_t* result, __int64* a2, __int64 a3,
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   *(_QWORD*)&v137 = __PAIR64__(LODWORD(v493), LODWORD(v503));
   *((float*)&v137 + 2) = v136;
-  HIDWORD(v137) = LANES64(v5[135]).n64_u32[1];
+  DWORD3(v137) = LANES64(v5[135]).n64_u32[1];
   *(_OWORD*)v134 = v137;
   v504 = powf(LANES64(v5[136]).n64_f32[0], v135),
   v412 = COERCE_AS(__typeof__(v412),
@@ -14038,7 +14043,7 @@ float32x2_t* game_19132c0(float32x2_t* result, __int64* a2, __int64 a3,
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   *(_QWORD*)&v139 = __PAIR64__(LODWORD(v494), LODWORD(v504));
   *((float*)&v139 + 2) = v138;
-  HIDWORD(v139) = LANES64(v5[137]).n64_u32[1];
+  DWORD3(v139) = LANES64(v5[137]).n64_u32[1];
   *(_OWORD*)(v134 + 16) = v139;
   v140 = LANES64(v5[139]).n64_f32[0];
   v141 = LANES64(v5[138]).n64_f32[1];
@@ -14138,7 +14143,7 @@ float32x2_t* game_19132c0(float32x2_t* result, __int64* a2, __int64 a3,
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   *(_QWORD*)&v145 = __PAIR64__(LODWORD(v495), LODWORD(v505));
   *((float*)&v145 + 2) = v144;
-  HIDWORD(v145) = LANES64(v5[145]).n64_u32[1];
+  DWORD3(v145) = LANES64(v5[145]).n64_u32[1];
   *(_OWORD*)(v134 + 32) = v145;
   v506 = powf(LANES64(v5[146]).n64_f32[0], v135),
   v412 = COERCE_AS(__typeof__(v412),
@@ -14225,7 +14230,7 @@ float32x2_t* game_19132c0(float32x2_t* result, __int64* a2, __int64 a3,
   v485 = v16;
   v487 = v17;
   *((float*)&v147 + 2) = v146;
-  HIDWORD(v147) = LANES64(v5[147]).n64_u32[1];
+  DWORD3(v147) = LANES64(v5[147]).n64_u32[1];
   *(_OWORD*)(v134 + 48) = v147;
   v148 = LANES64(v5[149]).n64_f32[0];
   v149 = LANES64(v5[148]).n64_f32[1];
@@ -21158,7 +21163,7 @@ LABEL_22:
         v35 = std___1___next_prime(v35);
       }
       else {
-        v36 = 1LL << -(char)__clz(v35 - 1);
+        v36 = 1LL << (-(char)__clz(v35 - 1) & 63);
         if (v35 >= 2) {
           v35 = v36;
         }
@@ -21482,7 +21487,7 @@ LABEL_22:
         v35 = std___1___next_prime(v35);
       }
       else {
-        v36 = 1LL << -(char)__clz(v35 - 1);
+        v36 = 1LL << (-(char)__clz(v35 - 1) & 63);
         if (v35 >= 2) {
           v35 = v36;
         }

@@ -3288,7 +3288,7 @@ LABEL_63:
               v108 = std___1___next_prime_alt1(v108);
             }
             else {
-              v109 = 1LL << -(char)__clz(v108 - 1);
+              v109 = 1LL << (-(char)__clz(v108 - 1) & 63);
               if (v108 >= 2) {
                 v108 = v109;
               }
@@ -4164,7 +4164,7 @@ LABEL_41:
               v70 = std___1___next_prime_alt1(v70);
             }
             else {
-              v71 = 1LL << -(char)__clz(v70 - 1);
+              v71 = 1LL << (-(char)__clz(v70 - 1) & 63);
               if (v70 >= 2) {
                 v70 = v71;
               }
@@ -5342,7 +5342,7 @@ unsigned __int64 game_12a5280()
     result = vcvtps_u64_f32((float)*(unsigned __int64*)(v2 + 96) /
                             *(float*)(v2 + 104));
     if (v8) {
-      v9 = 1LL << -(char)__clz(result - 1);
+      v9 = 1LL << (-(char)__clz(result - 1) & 63);
       if (result >= 2) {
         result = v9;
       }
@@ -7201,7 +7201,7 @@ unsigned __int64 game_1313be0(__int64 a1)
     result = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 48) /
                             *(float*)(a1 + 56));
     if (v7) {
-      v8 = 1LL << -(char)__clz(result - 1);
+      v8 = 1LL << (-(char)__clz(result - 1) & 63);
       if (result >= 2) {
         result = v8;
       }
@@ -12860,7 +12860,7 @@ __int64 game_15571e0(__int64 result, unsigned int* a2, __int128* a3)
         LODWORD(v10) = DWORD2(v9);
       }
       else if (v12 == 3) {
-        LODWORD(v10) = HIDWORD(v9);
+        LODWORD(v10) = DWORD3(v9);
       }
     }
     else if (v12 != 0) {
@@ -12878,7 +12878,7 @@ __int64 game_15571e0(__int64 result, unsigned int* a2, __int128* a3)
         v14 = DWORD2(v9);
       }
       else if (v13 == 3) {
-        v14 = HIDWORD(v9);
+        v14 = DWORD3(v9);
       }
     }
     else if (v13 != 0) {
@@ -12896,7 +12896,7 @@ __int64 game_15571e0(__int64 result, unsigned int* a2, __int128* a3)
         v16 = DWORD2(v9);
       }
       else if (v15 == 3) {
-        v16 = HIDWORD(v9);
+        v16 = DWORD3(v9);
       }
     }
     else if (v15 != 0) {
@@ -12914,7 +12914,7 @@ __int64 game_15571e0(__int64 result, unsigned int* a2, __int128* a3)
         v18 = DWORD2(v9);
       }
       else if (v17 == 3) {
-        v18 = HIDWORD(v9);
+        v18 = DWORD3(v9);
       }
     }
     else if (v17 != 0) {

@@ -26,6 +26,8 @@ __attribute__((swiftcall)) void InfoCursorBottomImpl_100e7d0(PSEUDO_X8 x8_,
                                                              __int64 a1);
 void InfoCursorBottomImpl_100eaa0(__int64* a1);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 fw_memory_HeapManager_Allocate_alt1(
     __int64, __int64, __int64,
@@ -1153,10 +1155,12 @@ __int64 InfoCursorBottomImpl_100e280(__int64 result, __int128* a2, int32x2_t a3)
     v31_.v36 = v11;
     v31_.v37 = v31_.v33;
     v31_.v38 = v10;
-    v13 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                         (__int64)v31_.v31, 0),
-    v14 = COERCE_AS(__typeof__(v14),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v13 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(
+          *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v31_.v31, 0);
+      v14 = COERCE_AS(__typeof__(v14), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v29_.v29, (__int64)v13, v14, (__int64)&GameData_1a9f09e),
         v14 = COERCE_AS(__typeof__(v14),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

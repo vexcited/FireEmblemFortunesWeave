@@ -70,6 +70,8 @@ __attribute__((swiftcall)) void TelopLevelUp_1748a00(PSEUDO_X8 x8_, __int64 a1,
 void TelopLevelUp_1749970(__int64 a1, long double a2);
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_1562680(__int64 result, const char*, float);
 __int64 LayoutAccessor_1563c50_alt1(__int64 result, __int64, char,
                                     float) __asm__("LayoutAccessor_1563c50");
@@ -668,10 +670,12 @@ __int64 TelopLevelUp_Unknown35(__int64 a1)
   v30_.v35 = v4;
   v30_.v31 = 9;
   v30_.v30[2] = "UI_Deco_ShineA";
-  v6 = Manager_bc6460_alt1(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                           (__int64)v30_.v30, 0),
-  v7 = COERCE_AS(__typeof__(v7),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v6 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v30_.v30, 0);
+    v7 = COERCE_AS(__typeof__(v7), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0_alt1(&v28_.v28, (__int64)v6, v7, (__int64)&GameData_1a9f09e),
       v7 = COERCE_AS(__typeof__(v7),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -926,12 +930,13 @@ __int64 TelopLevelUp_Unknown36(__int64 a1)
   v64_.v66 = 9;
   v64_.v65 = "UI_Deco_ShineA_Loop";
   v9 = eft_g_effectSystem_ptr[0];
-  v10 = Manager_bc6460_alt1(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                            (__int64)v64_.v64, 0),
-  v11 = COERCE_AS(__typeof__(v11),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v37 = COERCE_AS(__typeof__(v37),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v10 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v64_.v64, 0);
+    v11 = COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+    v37 = COERCE_AS(__typeof__(v37), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0_alt1(&v62_.v62, (__int64)v10, v11, (__int64)&GameData_1a9f09e),
       v11 = COERCE_AS(__typeof__(v11),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1099,11 +1104,12 @@ LABEL_40:
   v64_.v70 = v34;
   v64_.v66 = 9;
   v64_.v65 = "UI_Deco_LightA_Loop";
-  v36 = Manager_bc6460_alt1(v35, (__int64)v64_.v64, 0),
-  v11 = COERCE_AS(__typeof__(v11),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v37 = COERCE_AS(__typeof__(v37),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v36 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v35, (__int64)v64_.v64, 0);
+    v11 = COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+    v37 = COERCE_AS(__typeof__(v37), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result = GameHr_14a10d0_alt1(&v62_.v62, (__int64)v36, v37,
                                (__int64)&GameData_1a9f09e),
   v11 = COERCE_AS(__typeof__(v11),

@@ -613,7 +613,7 @@ __int64 VectorGraphicsShapePathStar_Unknown13(__int64* a1, __int64 a2, int* a3,
         v76_.v78 = ceilf(sqrtf(v50 / v41));
         GameRoutine_59fe80(&v76_.v78, 0x1.0000000000000p+0f,
                            0x1.0000000000000p+10f);
-        v51 = 1 << -__clz((unsigned int)((int)v76_.v78 - 1));
+        v51 = 1 << (-__clz((unsigned int)((int)v76_.v78 - 1)) & 31);
       }
       v55 = *(float32x2_t**)a2;
       v56 = nn_ui2d_5a3850(&v73, &v74, &v75, (__int64)&v76_.v76, a2, v51,

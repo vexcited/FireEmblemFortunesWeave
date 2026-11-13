@@ -1049,7 +1049,7 @@ void wld_map_ObjectEffectLoader_LoadAsync_lambda0_Invoke(__int64 a1,
                   v76 = std___1___next_prime_alt1(v76);
                 }
                 else {
-                  v77 = 1LL << -(char)__clz(v76 - 1);
+                  v77 = 1LL << (-(char)__clz(v76 - 1) & 63);
                   if (v76 >= 2) {
                     v76 = v77;
                   }

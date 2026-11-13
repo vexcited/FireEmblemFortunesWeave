@@ -139,6 +139,8 @@ __int64*
 LayoutAccessor_155fbe0_alt1(__int64*,
                             const char*) __asm__("LayoutAccessor_155fbe0");
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 BlnPopup_19f25b0_alt1(__int64*) __asm__("BlnPopup_19f25b0");
 __int64 GameHr_1562680(__int64 result, const char*, float);
 __int64 GameRoutine_9b11a0_alt1(_QWORD*, unsigned __int64*,
@@ -2451,10 +2453,12 @@ LABEL_16:
   v44_.v49 = v16;
   v44_.v45 = 9;
   v44_.v44[2] = "UI_Deco_StatusUP";
-  v18 = Manager_bc6460_alt1(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                            (__int64)v44_.v44, 0),
-  v19 = COERCE_AS(__typeof__(v19),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v18 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v44_.v44, 0);
+    v19 = COERCE_AS(__typeof__(v19), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result = GameHr_14a10d0_alt1(&v42_.v42, (__int64)v18, v19,
                                (__int64)&GameData_1a9f09e),
   v19 = COERCE_AS(__typeof__(v19),

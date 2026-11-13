@@ -745,7 +745,7 @@ opus_73380(void (*a1)(__int64, char*, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD),
     v12 = (int)(2 * a6) / 3;
   }
   v19 = 4LL * v13;
-  v20 = (char*)&v84 - ((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v20 = (char*)__builtin_alloca((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   v84 = v19;
   memset_plt(v20, 0, v19);
   a1(a2, v20, (unsigned int)v13, v12, a7, (unsigned int)a8, a9);
@@ -839,7 +839,7 @@ LABEL_22:
   v43 = 3 * v13;
   v44 = v20;
   v45 = 12LL * v13;
-  v46 = (char*)&v84 - ((v45 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v46 = (char*)__builtin_alloca((v45 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v46, 0, v45);
   if (v13 < 1) {
     return 0;

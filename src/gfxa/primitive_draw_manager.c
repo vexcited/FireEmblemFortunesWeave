@@ -115,7 +115,11 @@ _QWORD* GameHr_1999040(__int64*, __int64*, _QWORD*);
 __int64 GameRoutine_1a09d20_alt1(unsigned __int64,
                                  __int64) __asm__("GameRoutine_1a09d20");
 __int64 GameRoutine_5ddd0_alt1(__int64) __asm__("GameRoutine_5ddd0");
+unsigned __int128
+GameRoutine_5ddd0_alt1_pair(__int64) __asm__("GameRoutine_5ddd0");
 __int64 GameRoutine_5de20_alt1(__int64) __asm__("GameRoutine_5de20");
+unsigned __int128
+GameRoutine_5de20_alt1_pair(__int64) __asm__("GameRoutine_5de20");
 __int64 GameRoutine_5fb900_alt1(__int64) __asm__("GameRoutine_5fb900");
 __int64 GameRoutine_beefc0_alt1(char**, __int64, __int64, __int64, unsigned int,
                                 unsigned int,
@@ -3290,11 +3294,13 @@ __int64 PrimitiveDrawManager_1995760(__int64 a1, _QWORD* a2, int a3)
       v31 = COERCE_AS(__typeof__(v31),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v152 = v7;
-  v15 = GameRoutine_5ddd0_alt1(*(_QWORD*)(v6 + 8LL * *v7 + 19208)),
-  v16 = COERCE_AS(__typeof__(v16),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v31 = COERCE_AS(__typeof__(v31),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v15 = ({
+    unsigned __int128 r_ =
+        GameRoutine_5ddd0_alt1_pair(*(_QWORD*)(v6 + 8LL * *v7 + 19208));
+    v16 = COERCE_AS(__typeof__(v16), (unsigned long long)(r_ >> 64));
+    v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   result = (*(__int64 (**)(_QWORD, _QWORD, __int64, __int64))(
       *(_QWORD*)*v5 + 176LL))(*v5, 0, v15, v16),
   v16 = COERCE_AS(__typeof__(v16),
@@ -3960,11 +3966,13 @@ __int64 PrimitiveDrawManager_1995760(__int64 a1, _QWORD* a2, int a3)
           v31 = COERCE_AS(__typeof__(v31),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     LABEL_12:
-      v30 = GameRoutine_5de20_alt1(*(_QWORD*)(v146 + 8LL * v152[6])),
-      v16 = COERCE_AS(__typeof__(v16),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v31 = COERCE_AS(__typeof__(v31),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v30 = ({
+        unsigned __int128 r_ =
+            GameRoutine_5de20_alt1_pair(*(_QWORD*)(v146 + 8LL * v152[6]));
+        v16 = COERCE_AS(__typeof__(v16), (unsigned long long)(r_ >> 64));
+        v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+        (__int64)(unsigned long long)r_;
+      });
       v155 = v155 & 0xFFFFFFFF00000000LL | v31;
       (*(void (**)(_QWORD, __int64))(*(_QWORD*)*v5 + 192LL))(*v5, v30),
           v16 = COERCE_AS(__typeof__(v16),
@@ -5155,12 +5163,13 @@ __int64 gfxa_PrimitiveDrawManager_Impl_draw2D_closure_Invoke(
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
         v99 = COERCE_AS(__typeof__(v99),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    v21 = GameRoutine_5ddd0_alt1(
-        *(_QWORD*)(v6 + 8LL * *(int*)(v6 + 19224) + 19208)),
-    v22 = COERCE_AS(__typeof__(v22),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v99 = COERCE_AS(__typeof__(v99),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v21 = ({
+      unsigned __int128 r_ = GameRoutine_5ddd0_alt1_pair(
+          *(_QWORD*)(v6 + 8LL * *(int*)(v6 + 19224) + 19208));
+      v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+      v99 = COERCE_AS(__typeof__(v99), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     result = (*(__int64 (**)(_QWORD, _QWORD, __int64, __int64))(
         *(_QWORD*)*a2 + 176LL))(*a2, 0, v21, v22),
     v22 = COERCE_AS(__typeof__(v22),
@@ -5552,12 +5561,13 @@ __int64 gfxa_PrimitiveDrawManager_Impl_draw2D_closure_Invoke(
           v99 = COERCE_AS(__typeof__(v99),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     LABEL_83:
-      v98 = GameRoutine_5de20_alt1(
-          *(_QWORD*)(v6 + 8LL * *(int*)(v89 + 24) + 19232)),
-      v22 = COERCE_AS(__typeof__(v22),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v99 = COERCE_AS(__typeof__(v99),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v98 = ({
+        unsigned __int128 r_ = GameRoutine_5de20_alt1_pair(
+            *(_QWORD*)(v6 + 8LL * *(int*)(v89 + 24) + 19232));
+        v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+        v99 = COERCE_AS(__typeof__(v99), (unsigned long long)(r_ >> 64));
+        (__int64)(unsigned long long)r_;
+      });
       (*(void (**)(_QWORD, __int64, _QWORD))(*(_QWORD*)*v110 + 192LL))(
           *v110, v98, v99),
           v22 = COERCE_AS(__typeof__(v22),

@@ -164,6 +164,8 @@ float GameRoutine_d48540(__int64);
 float atan2f_alt2(long double, float) __asm__("atan2f");
 float fmodf(float, float);
 unsigned __int64 GameRoutine_d12690(__int64);
+unsigned __int128
+GameRoutine_d12690_pair(__int64) __asm__("GameRoutine_d12690");
 void CharacterController_d449c0_alt1(__int64, long double) __asm__(
     "CharacterController_d449c0");
 void CharacterRotate_d519c0(int8x16_t*);
@@ -4702,7 +4704,7 @@ __int64 CharacterController_d40860(__int64 a1, __int64 a2, __int64 a3,
     *(_QWORD*)((char*)&v54 + 4) = (unsigned int)(v19 - 256);
     if (((v17 - 256) | (v19 - 256)) != 0) {
       DWORD2(v54) = v17 - 256;
-      HIDWORD(v54) = v19 - 256;
+      DWORD3(v54) = v19 - 256;
       v25 = (float)((float)((float)v17 * 5.0f) + 2.5f) + -1280.0f;
       v23 = v25 + 2.5f;
       v20 = (float)((float)((float)v19 * 5.0f) + 2.5f) + -1280.0f;
@@ -5408,7 +5410,7 @@ bool CharacterController_d41fa0(__int64 a1, _BYTE* a2)
     do {
       v103 = *(_OWORD*)&v97[4 * v99];
       v102 = *(_QWORD*)(a1 + 112);
-      HIDWORD(v103) = 0;
+      DWORD3(v103) = 0;
       if (v98 < v102) {
         *(_OWORD*)v98 = v103;
         *(_DWORD*)(v98 + 16) = v99;
@@ -5696,9 +5698,12 @@ CharacterController_StateStay_Main_Unknown4(unsigned __int64 result)
     return result;
   }
   v3 = result;
-  result = GameRoutine_d12690(*(_QWORD*)(*(_QWORD*)(result + 8) + 8LL)),
-  v5 = COERCE_AS(__typeof__(v5),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ =
+        GameRoutine_d12690_pair(*(_QWORD*)(*(_QWORD*)(result + 8) + 8LL));
+    v5 = COERCE_AS(__typeof__(v5), (unsigned long long)(r_ >> 64));
+    (unsigned __int64)(unsigned long long)r_;
+  });
   v4 = *(_QWORD*)(v3 + 8);
   if ((v5 & 1) != 0) {
     if ((*(_BYTE*)(v4 + 40) & 1) == 0) {

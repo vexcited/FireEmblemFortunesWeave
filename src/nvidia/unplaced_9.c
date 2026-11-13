@@ -2958,7 +2958,7 @@ __int64 nvidia_649d70(__int64 a1, unsigned __int64 a2, unsigned __int64 a3,
     else {
       v16 = 196608;
     }
-    HIDWORD(v40) = v16;
+    DWORD3(v40) = v16;
     if ((a5 & 1) != 0) {
       v17 = a6 & 0xFFC0FFFF | ((*(_DWORD*)(a1 + 5984) & 0x3F) << 16);
     LABEL_23:
@@ -2970,7 +2970,7 @@ __int64 nvidia_649d70(__int64 a1, unsigned __int64 a2, unsigned __int64 a3,
     LODWORD(v41) = 1;
     LODWORD(v37) = 64;
     DWORD2(v40) = 48;
-    HIDWORD(v38) = 67305472;
+    DWORD3(v38) = 67305472;
     v15 = a1 + 11128;
     v11 = (_BYTE*)(a1 + 11136);
     if (*(_BYTE*)(a1 + 11136) != 0) {
@@ -4530,7 +4530,7 @@ __int64 nvidia_64de60(__int64 result, __int64 a2, __int64 a3, __int64* a4,
     v46 = *(_DWORD*)(*(_QWORD*)(result + 112) + 76LL);
     v98 = 0u;
     LODWORD(v98) = v39;
-    HIDWORD(v94) = v41;
+    DWORD3(v94) = v41;
     LODWORD(v95) = 1;
     DWORD2(v98) = v76;
     v72 = *a5;
@@ -4956,7 +4956,7 @@ __int64 nvidia_64ea10(__int64 a1, __int64 a2, __int64 a3, __int128* a4, int a5,
   *((_QWORD*)&v13 + 1) = a6;
   *(_QWORD*)&v14 = __PAIR64__(a8, a7);
   DWORD1(v17) = 0;
-  HIDWORD(v16) = -2147483647;
+  DWORD3(v16) = -2147483647;
   *(_OWORD*)&v11[2] = v9;
   *(_QWORD*)((char*)&v16 + 4) = 0x1000000010LL;
   return nvidia_64ea80_alt1(a1, v11);

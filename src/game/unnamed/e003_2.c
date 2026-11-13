@@ -503,7 +503,7 @@ void GameHr_c06d00(__int64 a1, __int64 a2, __int64 a3, int a4)
         v34 = std___1___next_prime(v34);
       }
       else {
-        v35 = 1LL << -(char)__clz(v34 - 1);
+        v35 = 1LL << (-(char)__clz(v34 - 1) & 63);
         if (v34 >= 2) {
           v34 = v35;
         }

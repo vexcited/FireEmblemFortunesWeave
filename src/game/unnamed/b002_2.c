@@ -4624,7 +4624,7 @@ __int64 GameHr_55c7c0(__int64 result, __int64 a2, _QWORD* a3, unsigned int a4,
           LODWORD(v46) = *((_DWORD*)v11 + 12);
           LOBYTE(v47) = -1;
           *(_QWORD*)((char*)&v49 + 4) = *(_QWORD*)((char*)v11 + 76);
-          HIDWORD(v49) = *((_DWORD*)v11 + 21);
+          DWORD3(v49) = *((_DWORD*)v11 + 21);
           GameRoutine_55ca90(v6, v19, v18, v44);
           v19 = *(_QWORD*)(*((_QWORD*)v6 + 22) + 56LL) + *v6 + v10;
         }

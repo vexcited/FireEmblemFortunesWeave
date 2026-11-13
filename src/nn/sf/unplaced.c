@@ -6,6 +6,8 @@ __int64 SdkRoutine_857220(_QWORD, _QWORD);
 __int64 SdkRoutine_8584e0(_QWORD, _QWORD);
 __int64 SdkRoutine_b83c0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 SdkRoutine_b8cb0(__int64, char);
+unsigned __int128 SdkRoutine_b8cb0_pair(__int64,
+                                        char) __asm__("SdkRoutine_b8cb0");
 __int64 memcpy_plt(_QWORD, _QWORD, _QWORD);
 __int64 nn_diag_detail_AbortImpl_plt_856170(_QWORD);
 __int64 nn_diag_detail_AbortImpl_plt_858db0(_QWORD);
@@ -117,9 +119,11 @@ __int64 nn_sf_e3940(__int64 a1, unsigned int* a2)
   *(_BYTE*)(v9 + 6) = v2 >> 28;
   *(_BYTE*)(v9 + 10) = v12;
   *(_WORD*)(v9 + 8) = 4 * (v3 & 0x3FF);
-  result = SdkRoutine_b8cb0(v10, v3 < 0),
-  v14 = COERCE_AS(__typeof__(v14),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ = SdkRoutine_b8cb0_pair(v10, v3 < 0);
+    v14 = COERCE_AS(__typeof__(v14), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   *(_QWORD*)(v9 + 18) = result;
   *(_DWORD*)(v9 + 26) = v14;
   return result;

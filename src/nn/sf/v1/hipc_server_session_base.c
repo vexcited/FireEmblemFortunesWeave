@@ -3,6 +3,8 @@
 #pragma GCC visibility push(hidden)
 
 __int64 SdkRoutine_b8cb0(__int64, char);
+unsigned __int128 SdkRoutine_b8cb0_pair(__int64,
+                                        char) __asm__("SdkRoutine_b8cb0");
 __int64 memcpy_plt(_QWORD, _QWORD, _QWORD);
 __int64 nn_detail_UnexpectedDefaultImpl_plt_857150(_QWORD);
 __int64 nn_diag_detail_AbortImpl_plt_856170(_QWORD);
@@ -136,7 +138,7 @@ __int64 nn_sf_hipc_server_v1_HipcServerSessionBase_ReceiveImpl(void* this_,
     *a2 = DWORD1(v15_.v15) & 0xFFFF0000;
     a2[1] = v8;
     if (BYTE1(v15_.v15) == 1) {
-      a2[2] = HIDWORD(v15_.v15);
+      a2[2] = DWORD3(v15_.v15);
     }
     v9 = *((_QWORD*)this_ + 10);
     v10 = (v9 & 0xFFFF00000000uLL | (*((_QWORD*)this_ + 11) << 48)) >> 32;
@@ -156,7 +158,7 @@ __int64 nn_sf_hipc_server_v1_HipcServerSessionBase_ReceiveImpl(void* this_,
     *a2 = DWORD1(v15_.v15) & 0xFFFF0000;
     a2[1] = v12;
     if (BYTE1(v15_.v15) == 1) {
-      a2[2] = HIDWORD(v15_.v15);
+      a2[2] = DWORD3(v15_.v15);
     }
   }
   v13 = *((unsigned int*)this_ + 18);
@@ -228,9 +230,11 @@ __attribute__((swiftcall)) void hipc_server_session_base_17b580(PSEUDO_X8 x8_,
       v4 = *(_BYTE*)(result + 2) != 0;
     }
     v6 = (_BYTE*)result;
-    result = SdkRoutine_b8cb0(result, v4),
-    v10 = COERCE_AS(__typeof__(v10),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    result = ({
+      unsigned __int128 r_ = SdkRoutine_b8cb0_pair(result, v4);
+      v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     v7 = v6[4];
     v8 = v6[5];
     v9 = (v6[3] & 0xF) << 16;

@@ -8352,7 +8352,7 @@ __int64 nerd_gyro_pointing_GyroPointingCore_ResetHeadingCovariance(void* this_)
   v5 = *(float*)&v20;
   v6 = v21;
   *(_QWORD*)((char*)&v20 + 4) = 0;
-  HIDWORD(v20) = 0;
+  DWORD3(v20) = 0;
   v16 = (__typeof__(v16)){0};
   v15 = (__typeof__(v15)){0};
   v14 = (__typeof__(v14)){0};
@@ -8372,9 +8372,9 @@ __int64 nerd_gyro_pointing_GyroPointingCore_ResetHeadingCovariance(void* this_)
   v8 = *((_QWORD*)this_ + 1032);
   *(_QWORD*)((char*)&v30 + 4) = *(_QWORD*)((char*)&v15 + 4);
   v13[2] = v8;
-  HIDWORD(v30) = HIDWORD(v15);
-  LODWORD(v30) = HIDWORD(v14);
-  v11_.v12 = HIDWORD(v16);
+  DWORD3(v30) = DWORD3(v15);
+  LODWORD(v30) = DWORD3(v14);
+  v11_.v12 = DWORD3(v16);
   v32 = 0;
   v9 = v30;
   v30 = (__typeof__(v30)){0};

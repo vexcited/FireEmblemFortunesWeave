@@ -4298,7 +4298,7 @@ LABEL_32:
       v31 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
                            *(float*)(a1 + 32));
       if (v30 >= 3 && (v30 & (v30 - 1)) == 0) {
-        v32 = 1LL << -(char)__clz(v31 - 1);
+        v32 = 1LL << (-(char)__clz(v31 - 1) & 63);
         if (v31 >= 2) {
           v31 = v32;
         }
@@ -4709,7 +4709,7 @@ LABEL_24:
       v36 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
                            *(float*)(a1 + 32));
       if (v34 >= 3 && (v34 & (v34 - 1)) == 0) {
-        v37 = 1LL << -(char)__clz(v36 - 1);
+        v37 = 1LL << (-(char)__clz(v36 - 1) & 63);
         if (v36 >= 2) {
           v36 = v37;
         }
@@ -6633,7 +6633,7 @@ LABEL_24:
       v30 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
                            *(float*)(a1 + 32));
       if (v28 >= 3 && (v28 & (v28 - 1)) == 0) {
-        v31 = 1LL << -(char)__clz(v30 - 1);
+        v31 = 1LL << (-(char)__clz(v30 - 1) & 63);
         if (v30 >= 2) {
           v30 = v31;
         }

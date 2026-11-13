@@ -141,7 +141,7 @@ __int64 opus_multistream_decode_native(
     v14 = 3 * (v51 / 25);
   }
   v19 = 2LL * (int)(2 * v14);
-  v20 = (char*)&v43 - ((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v20 = (char*)__builtin_alloca((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v20, 0, v19);
   v47 = opus_decoder_get_size_plt(2);
   v46 = opus_decoder_get_size_plt(1);

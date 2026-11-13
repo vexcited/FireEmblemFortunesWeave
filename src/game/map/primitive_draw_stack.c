@@ -554,7 +554,7 @@ __int64 PrimitiveDrawStack_f52120(__int64 a1, char a2, int a3)
   *((_OWORD*)v8 + 1090) = GameData_1a82dd0;
   if (*GameData_212f878 != 0) {
     LODWORD(v10) = 0;
-    HIDWORD(v10) = 0;
+    DWORD3(v10) = 0;
     *(_QWORD*)((char*)&v10 + 4) = *(unsigned int*)(*GameData_212f878 + 1424);
   }
   else {

@@ -653,7 +653,7 @@ __int64 nn_ui2d_597360(__int64 a1, __int64 a2, __int64 a3, __int64 a4, char a5,
     v11 = a2;
     v12 = a3;
     v14 = GameRoutine_59f940(a4, v9);
-    v15 = (char*)&v20 - ((v14 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+    v15 = (char*)__builtin_alloca((v14 + 15) & 0xFFFFFFFFFFFFFFF0LL);
     memset(v15, 0, v14);
     GameRoutine_59f9c0((__int64)v15, v14, a4, v9);
     a1 = v10;

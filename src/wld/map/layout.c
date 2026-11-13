@@ -866,7 +866,7 @@ _QWORD* wld_map_Layout_Internal_LoadMapModelFile(__int64 a1, __int64 a2,
             v85 = std___1___next_prime(v85);
           }
           else {
-            v86 = 1LL << -(char)__clz(v85 - 1);
+            v86 = 1LL << (-(char)__clz(v85 - 1) & 63);
             if (v85 >= 2) {
               v85 = v86;
             }

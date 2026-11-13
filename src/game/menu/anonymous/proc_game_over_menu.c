@@ -116,6 +116,8 @@ __int64 game_menu_anonymous_ProcGameOverMenu_AddItemList(__int64 a1);
 __int64 game_menu_anonymous_ProcGameOverMenu_SortAndFilter(__int64 a1);
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64
 ControlCreator_13633c0_alt2(__int64 result) __asm__("ControlCreator_13633c0");
 __int64 GameHr_1562680(__int64 result, const char*, float);
@@ -515,10 +517,12 @@ __int64 ProcGameOverMenu_Unknown85(__int64 a1)
   v33_.v38 = v23;
   v33_.v39 = v22;
   LODWORD(v33_.v35) = 9;
-  v24 = Manager_bc6460_alt1(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                            (__int64)v33_.v33, 0),
-  v25 = COERCE_AS(__typeof__(v25),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v24 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v33_.v33, 0);
+    v25 = COERCE_AS(__typeof__(v25), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0_alt1(&v31_.v31, (__int64)v24, v25, (__int64)&GameData_1a9f09e),
       v25 = COERCE_AS(__typeof__(v25),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

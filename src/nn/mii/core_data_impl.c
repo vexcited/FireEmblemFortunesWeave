@@ -12,6 +12,8 @@ __int64 nn_mii_detail_StoreDataRaw_GetBeardColor_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetBeardType_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetBuild_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetCreateId_plt(_QWORD);
+unsigned __int128 nn_mii_detail_StoreDataRaw_GetCreateId_plt_pair(
+    _QWORD) __asm__("nn_mii_detail_StoreDataRaw_GetCreateId_plt");
 __int64 nn_mii_detail_StoreDataRaw_GetEyeAspect_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetEyeColor_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetEyeRotate_plt(_QWORD);
@@ -45,6 +47,8 @@ __int64 nn_mii_detail_StoreDataRaw_GetMoleScale_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetMoleType_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetMoleX_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetMoleY_plt(_QWORD);
+unsigned __int128 nn_mii_detail_StoreDataRaw_GetMoleY_plt_pair(_QWORD) __asm__(
+    "nn_mii_detail_StoreDataRaw_GetMoleY_plt");
 __int64 nn_mii_detail_StoreDataRaw_GetMouthAspect_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetMouthColor_plt(_QWORD);
 __int64 nn_mii_detail_StoreDataRaw_GetMouthScale_plt(_QWORD);
@@ -74,9 +78,11 @@ __int64 nn_mii_detail_CharInfoRaw_SetFromStoreDataRaw(void* this_, void* a2)
   nn_mii_detail_StoreDataRaw_GetNickname_plt(a2, (char*)this_ + 16),
       v4 = COERCE_AS(__typeof__(v4),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  *(_QWORD*)this_ = nn_mii_detail_StoreDataRaw_GetCreateId_plt(a2),
-  v4 = COERCE_AS(__typeof__(v4),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  *(_QWORD*)this_ = ({
+    unsigned __int128 r_ = nn_mii_detail_StoreDataRaw_GetCreateId_plt_pair(a2);
+    v4 = COERCE_AS(__typeof__(v4), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   *((_QWORD*)this_ + 1) = v4;
   *((_BYTE*)this_ +
     38) = nn_mii_detail_StoreDataRaw_GetFontRegion_plt(a2),
@@ -270,9 +276,11 @@ __int64 nn_mii_detail_CharInfoRaw_SetFromStoreDataRaw(void* this_, void* a2)
     85) = nn_mii_detail_StoreDataRaw_GetMoleX_plt(a2),
     v4 = COERCE_AS(__typeof__(v4),
                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  result = nn_mii_detail_StoreDataRaw_GetMoleY_plt(a2),
-  v4 = COERCE_AS(__typeof__(v4),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ = nn_mii_detail_StoreDataRaw_GetMoleY_plt_pair(a2);
+    v4 = COERCE_AS(__typeof__(v4), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   *((_WORD*)this_ + 43) = (unsigned __int8)result;
   return result;
 }

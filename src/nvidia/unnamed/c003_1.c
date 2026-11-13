@@ -4405,7 +4405,7 @@ __int64 CudaDriverHr_1abd90(__int64 a1, __int64* a2, __int64 a3)
   v14 = 8388610;
   LODWORD(v19) = 0;
   HIDWORD(v18[0]) = v9;
-  HIDWORD(v19) = 65537;
+  DWORD3(v19) = 65537;
   if (CudaDriverData_1438b44 != 0) {
     DWORD2(v19) = 0x10000;
   }

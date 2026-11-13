@@ -807,8 +807,8 @@ void Pane_58e740(__int64 a1, __int64 a2, __int64 a3, char a4, long double a5)
     v15 = *(float32x4_t**)(a1 + 160);
     v16 = v15[1];
     v17 = v15[2];
-    LANES128(v12).n128_u32[3] = HIDWORD(*(_OWORD*)LANES64(*(v14)).n64_u64);
-    LANES128(v13).n128_u32[3] = HIDWORD(*(_OWORD*)LANES64(v14[4]).n64_u64);
+    LANES128(v12).n128_u32[3] = DWORD3(*(_OWORD*)LANES64(*(v14)).n64_u64);
+    LANES128(v13).n128_u32[3] = DWORD3(*(_OWORD*)LANES64(v14[4]).n64_u64);
     v18 = vaddq_f32(
         v12,
         vmlaq_laneq_f32(
@@ -819,7 +819,7 @@ void Pane_58e740(__int64 a1, __int64 a2, __int64 a3, char a4, long double a5)
             v17, *(float32x4_t*)LANES64(*(v14)).n64_u64, 2));
     LANES128(v19).n128_u64[0] = 0;
     LANES128(v19).n128_u32[2] = 0;
-    LANES128(v19).n128_u32[3] = HIDWORD(*(_OWORD*)LANES64(v14[2]).n64_u64);
+    LANES128(v19).n128_u32[3] = DWORD3(*(_OWORD*)LANES64(v14[2]).n64_u64);
     v20 = vaddq_f32(
         v19, vmlaq_laneq_f32(
                  vmlaq_lane_f32(

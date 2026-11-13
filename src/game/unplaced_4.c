@@ -59,6 +59,8 @@ __int64* GameRoutine_ff7280(__int64**, unsigned __int8*, __int64**);
 __int64* Manager_bc6460(float*, float32x4_t*, char);
 __int64* Manager_bc6460_alt1(_QWORD*, float32x4_t*,
                              char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, float32x4_t*,
+                                           char) __asm__("Manager_bc6460");
 __int64* ProcHubSeqObeliskCleared_fba300(__int64* result, int);
 __int64* SpineModel_64dde0(__int64*, __int64, unsigned __int64);
 __int64* fw_containers_BalanceAfterInsert(__int64* result, __int64*);
@@ -1544,7 +1546,7 @@ void game_edede0(__int64 a1, float a2, float a3, float a4)
   *(float*)&v25_.v25 = a2;
   *((float*)&v25_.v25 + 1) = a2;
   *((float*)&v23 + 2) = (float)(unsigned __int16)v22;
-  HIDWORD(v23) = 0;
+  DWORD3(v23) = 0;
   v25_.v28 = v23;
   GameRoutine_edef80_alt1((__int64*)(a1 + 32), &v25_.v25);
 }
@@ -5846,7 +5848,7 @@ void game_f8eb50(__int64 a1)
         }
         v7 = ((long double (*)(float*)) * (_QWORD*)(*(_QWORD*)v4 + 40LL))(v4);
         v31 = v7;
-        HIDWORD(v7) = 0;
+        DWORD3(v7) = 0;
         v9 = v4[21];
         v8 = v4[22];
         v30 = *(float32x4_t*)&v7;
@@ -7715,9 +7717,12 @@ __int64 game_fbb5a0(__int64 a1, __int128* a2, float a3)
   v34_.v40 = v12;
   v34_.v41 = v34_.v37;
   v34_.v42 = v11;
-  v14 = Manager_bc6460_alt1(*(_QWORD**)eft_g_effectSystem_ptr[0], &v34_.v34, 0),
-  v15 = COERCE_AS(__typeof__(v15),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v14 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], &v34_.v34, 0);
+    v15 = COERCE_AS(__typeof__(v15), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   v16 = GameRoutine_14a10d0_alt1(&v32_.v32, (__int64)v14, v15,
                                  (__int64)&GameData_1a9f09e),
   v15 = COERCE_AS(__typeof__(v15),

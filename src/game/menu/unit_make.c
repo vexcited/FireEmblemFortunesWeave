@@ -130,6 +130,8 @@ __int64 UnitMake_1630780(__int64 a1);
 __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
                                                        const char*);
 __int64* Manager_bc6460_alt1(float*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(float*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_1562680(__int64 result, const char*, float);
 __int64 GameHr_179c320(__int64, __int64);
@@ -2002,12 +2004,13 @@ __int64 UnitMake_16328c0(__int64 result)
     v108_.v114 = v55;
     v108_.v110 = 9;
     v108_.v109 = "UI_Deco_CharaMake_Switching_M";
-    v57 = Manager_bc6460_alt1(*(float**)eft_g_effectSystem_ptr[0],
-                              (__int64)v108_.v108, 0),
-    v58 = COERCE_AS(__typeof__(v58),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v8 = COERCE_AS(__typeof__(v8),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v57 = ({
+      unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+          *(float**)eft_g_effectSystem_ptr[0], (__int64)v108_.v108, 0);
+      v58 = COERCE_AS(__typeof__(v58), (unsigned long long)(r_ >> 64));
+      v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v106_.v106, (__int64)v57, v58, (__int64)&GameData_1a9f09e),
         v58 = COERCE_AS(__typeof__(v58),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -2343,12 +2346,13 @@ __int64 UnitMake_16328c0(__int64 result)
     v108_.v114 = v5;
     v108_.v110 = 9;
     v108_.v109 = "UI_Deco_CharaMake_Switching_L";
-    v7 = Manager_bc6460_alt1(*(float**)eft_g_effectSystem_ptr[0],
-                             (__int64)v108_.v108, 0),
-    v58 = COERCE_AS(__typeof__(v58),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v8 = COERCE_AS(__typeof__(v8),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v7 = ({
+      unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+          *(float**)eft_g_effectSystem_ptr[0], (__int64)v108_.v108, 0);
+      v58 = COERCE_AS(__typeof__(v58), (unsigned long long)(r_ >> 64));
+      v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v106_.v106, (__int64)v7, v8, (__int64)&GameData_1a9f09e),
         v58 = COERCE_AS(__typeof__(v58),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -2760,7 +2764,7 @@ void UnitMake_1633490(__int64 a1)
       DWORD2(v32) = v35;
       LOBYTE(v35) = v37_.v37[259];
       *(float*)&v36 = (float)v35 / 0x1.fe00000000000p+7f;
-      HIDWORD(v32) = v36;
+      DWORD3(v32) = v36;
       LOBYTE(v36) = v37_.v44;
       v47 = v32;
       *(float*)&v32 = (float)v19;

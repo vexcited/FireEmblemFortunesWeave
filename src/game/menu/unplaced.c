@@ -3908,7 +3908,7 @@ __int64 game_menu_1820a00()
         v26 = std___1___next_prime_alt1(v26);
       }
       else {
-        v27 = 1LL << -(char)__clz(v26 - 1);
+        v27 = 1LL << (-(char)__clz(v26 - 1) & 63);
         if (v26 >= 2) {
           v26 = v27;
         }

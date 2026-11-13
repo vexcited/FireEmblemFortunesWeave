@@ -556,7 +556,7 @@ _QWORD* GameRecord_99da40(_QWORD* result, _QWORD* a2)
             result = (_QWORD*)std___1___next_prime(result);
           }
           else {
-            v32 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+            v32 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
             if ((unsigned __int64)result >= 2) {
               result = (_QWORD*)v32;
             }
@@ -815,7 +815,7 @@ LABEL_105:
         result = (_QWORD*)std___1___next_prime(result);
       }
       else {
-        v51 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+        v51 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
         if ((unsigned __int64)result >= 2) {
           result = (_QWORD*)v51;
         }
@@ -989,7 +989,7 @@ _QWORD* GameRecord_99e080(_QWORD* result, int a2, __int64 a3)
               result = (_QWORD*)std___1___next_prime(result);
             }
             else {
-              v41 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+              v41 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
               if ((unsigned __int64)result >= 2) {
                 result = (_QWORD*)v41;
               }
@@ -1913,7 +1913,7 @@ __int64 GameRecord_99e5e0(__int64 a1, __int64* a2)
                     v116 = std___1___next_prime_alt1(v116);
                   }
                   else {
-                    v117 = 1LL << -(char)__clz(v116 - 1);
+                    v117 = 1LL << (-(char)__clz(v116 - 1) & 63);
                     if (v116 >= 2) {
                       v116 = v117;
                     }
@@ -2666,7 +2666,7 @@ LABEL_23:
         result = v34;
       }
       else {
-        v33 = 1LL << -(char)__clz(v32 - 1);
+        v33 = 1LL << (-(char)__clz(v32 - 1) & 63);
         if (v32 >= 2) {
           v32 = v33;
         }

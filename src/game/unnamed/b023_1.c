@@ -3157,7 +3157,7 @@ __int64 GameHr_175fac0(__int64 a1)
     result = ui_LayoutAccessor_FindPane((__int64*)(a1 + 168), "L_Stamp");
     v15 = *(_OWORD*)(v13 + 104);
     v16 = *(_OWORD*)(v13 + 120);
-    HIDWORD(v15) = *(_DWORD*)(result + 124);
+    DWORD3(v15) = *(_DWORD*)(result + 124);
     v17 = *(_BYTE*)(result + 88);
     *(_OWORD*)(result + 144) = *(_OWORD*)(v13 + 136);
     *(_BYTE*)(result + 88) = v17 | 0x40;

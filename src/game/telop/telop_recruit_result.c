@@ -35,6 +35,8 @@ __int64*
 LayoutAccessor_155fbe0_alt1(__int64*,
                             const char*) __asm__("LayoutAccessor_155fbe0");
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64
 ControlCreator_13633c0_alt1(__int64 result) __asm__("ControlCreator_13633c0");
 __int64 GameHr_1562680(__int64 result, const char*, float);
@@ -497,13 +499,13 @@ __int64 TelopRecruitResult_Unknown36(__int64* a1)
   v85_.v90 = v12;
   v85_.v91 = v13;
   v85_.v86 = "UI_Deco_StatusUP";
-  v15 = Manager_bc6460_alt1(v14, (__int64)v85_.v85, 0),
-  v16 = COERCE_AS(__typeof__(v16),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v41 = COERCE_AS(__typeof__(v41),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v67 = COERCE_AS(__typeof__(v67),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v15 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v14, (__int64)v85_.v85, 0);
+    v16 = COERCE_AS(__typeof__(v16), (unsigned long long)(r_ >> 64));
+    v41 = COERCE_AS(__typeof__(v41), (unsigned long long)(r_ >> 64));
+    v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0_alt1(&v83_.v83, (__int64)v15, v16, (__int64)&GameData_1a9f09e),
       v16 = COERCE_AS(__typeof__(v16),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -663,13 +665,13 @@ LABEL_36:
   v85_.v90 = v37;
   v85_.v91 = v38;
   v85_.v86 = "UI_Deco_ShineA_Side_Loop";
-  v40 = Manager_bc6460_alt1(v39, (__int64)v85_.v85, 0),
-  v16 = COERCE_AS(__typeof__(v16),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v41 = COERCE_AS(__typeof__(v41),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v67 = COERCE_AS(__typeof__(v67),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v40 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v39, (__int64)v85_.v85, 0);
+    v16 = COERCE_AS(__typeof__(v16), (unsigned long long)(r_ >> 64));
+    v41 = COERCE_AS(__typeof__(v41), (unsigned long long)(r_ >> 64));
+    v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result = GameHr_14a10d0_alt1(&v81_.v81, (__int64)v40, v41,
                                (__int64)&GameData_1a9f09e),
   v16 = COERCE_AS(__typeof__(v16),
@@ -884,13 +886,14 @@ LABEL_81:
     v85_.v91 = v64;
     v85_.v87 = 9;
     v85_.v86 = "UI_Deco_Soldier_Paper_Loop";
-    v66 = Manager_bc6460_alt1(v65, (__int64)v85_.v85, 0),
-    v16 = COERCE_AS(__typeof__(v16),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v41 = COERCE_AS(__typeof__(v41),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v67 = COERCE_AS(__typeof__(v67),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v66 = ({
+      unsigned __int128 r_ =
+          Manager_bc6460_alt1_pair(v65, (__int64)v85_.v85, 0);
+      v16 = COERCE_AS(__typeof__(v16), (unsigned long long)(r_ >> 64));
+      v41 = COERCE_AS(__typeof__(v41), (unsigned long long)(r_ >> 64));
+      v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     result = GameHr_14a10d0_alt1(&v83_.v83, (__int64)v66, v67,
                                  (__int64)&GameData_1a9f09e),
     v16 = COERCE_AS(__typeof__(v16),

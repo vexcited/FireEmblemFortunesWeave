@@ -1162,7 +1162,7 @@ LABEL_22:
       v29 = vcvtps_u64_f32((float)*(unsigned __int64*)(v4 + 88) /
                            *(float*)(v4 + 96));
       if (v28) {
-        v43 = 1LL << -(char)__clz(v29 - 1);
+        v43 = 1LL << (-(char)__clz(v29 - 1) & 63);
         if (v29 >= 2) {
           v29 = v43;
         }

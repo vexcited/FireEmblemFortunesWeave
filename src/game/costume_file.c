@@ -585,7 +585,7 @@ void CostumeFile_Unknown4()
           v36 = std___1___next_prime_alt1(v36);
         }
         else {
-          v37 = 1LL << -(char)__clz(v36 - 1);
+          v37 = 1LL << (-(char)__clz(v36 - 1) & 63);
           if (v36 >= 2) {
             v36 = v37;
           }

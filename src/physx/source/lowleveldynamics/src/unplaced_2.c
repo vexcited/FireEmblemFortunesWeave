@@ -436,7 +436,7 @@ void physx_source_lowleveldynamics_src_327da0(__int64 a1, __int64 a2,
     v390_.v394 = v130;
     LOBYTE(v398[1]) = (unsigned int)v130 > 0x1000;
     if ((unsigned int)v130 <= 0x1000) {
-      v131 = (_DWORD*)((char*)&v390_.v390 - ((v130 + 15) & 0x1FFFFFFF0LL));
+      v131 = (_DWORD*)__builtin_alloca((v130 + 15) & 0x1FFFFFFF0LL);
       v398[0] = v131;
       v132 = a3;
       if (a3 == (unsigned __int64)a6) {
@@ -1415,7 +1415,7 @@ void physx_source_lowleveldynamics_src_327da0(__int64 a1, __int64 a2,
           LANES128(v97).n128_f32[2] + (float)(PSEUDO_UNFUSED(v108 * v102[2]));
       v104 = v108 * v102[4];
       v105 = v108 * v102[5];
-      HIDWORD(v106) = HIDWORD(v83);
+      DWORD3(v106) = DWORD3(v83);
       *(float*)&v106 = *(float*)&v83 + (float)(PSEUDO_UNFUSED(v108 * v102[3]));
       *((float*)&v106 + 1) = *((float*)&v83 + 1) + v104;
       v97 = v103;
@@ -1471,7 +1471,7 @@ LABEL_27:
   LANES128(v78).n128_u32[3] = 0;
   *a5 = v78;
   a5[1] = v82;
-  HIDWORD(v106) = 0;
+  DWORD3(v106) = 0;
   LANES128(v103).n128_u32[3] = 0;
   *(_OWORD*)a8 = v106;
   *((float32x4_t*)a8 + 1) = v103;

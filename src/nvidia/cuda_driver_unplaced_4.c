@@ -1326,7 +1326,7 @@ __int64 cuda_driver_89100(_QWORD* a1, __int64 a2, __int64 a3, __int128* a4,
   v20 = *(_QWORD*)a3;
   v21 = v18 & 0xFFFF7FFFFFFFFFFFLL;
   v22 = *(_QWORD*)(a2 + 80);
-  HIDWORD(v28_.v29) = *(_DWORD*)(a3 + 8);
+  DWORD3(v28_.v29) = *(_DWORD*)(a3 + 8);
   v23 = *(_DWORD*)(a3 + 20);
   *(_QWORD*)((char*)&v28_.v29 + 4) = v20;
   v24 = (v23 & 0x40) != 0;

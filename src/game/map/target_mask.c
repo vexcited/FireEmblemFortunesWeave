@@ -811,7 +811,7 @@ LABEL_166:
             v127 = std___1___next_prime(v127);
           }
           else {
-            v128 = 1LL << -(char)__clz(v127 - 1);
+            v128 = 1LL << (-(char)__clz(v127 - 1) & 63);
             if (v127 >= 2) {
               v127 = v128;
             }
@@ -1094,7 +1094,7 @@ LABEL_35:
         result = std___1___next_prime(result);
       }
       else {
-        v30 = 1LL << -(char)__clz(result - 1);
+        v30 = 1LL << (-(char)__clz(result - 1) & 63);
         if (result >= 2) {
           result = v30;
         }

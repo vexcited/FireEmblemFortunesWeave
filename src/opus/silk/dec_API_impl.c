@@ -15,7 +15,7 @@ __int64 silk_decode_indices(__int64, __int64*, int, int, int);
 __int64 silk_resampler(_DWORD*, __int64, __int64, int);
 __int64 silk_stereo_decode_mid_only(__int64*, _DWORD*);
 __int64 silk_stereo_decode_pred(__int64*, _DWORD*);
-bool ec_dec_bit_logp(__int64*, char);
+int ec_dec_bit_logp(__int64*, char);
 extern _DWORD MovieData_a5f60[3];
 extern _UNKNOWN* MovieData_c0a48;
 unsigned __int16* opus_silk_59ee0(unsigned __int16* result, _DWORD*, _DWORD*,

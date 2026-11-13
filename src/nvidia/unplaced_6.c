@@ -1233,7 +1233,7 @@ __int64 nvidia_633b30(__int64 a1, __int64 a2)
     if (v4 == 0) {
       LODWORD(v4) = v6;
     }
-    v8 = 1LL << -v7;
+    v8 = 1LL << (-v7 & 63);
     if ((unsigned int)v8 <= 4) {
       LODWORD(v9) = 4;
     }

@@ -67,6 +67,8 @@ __attribute__((swiftcall)) void game_templates_17e9850(PSEUDO_X8 x8_);
 __attribute__((swiftcall)) void game_templates_17e9d20(PSEUDO_X8 x8_);
 __attribute__((swiftcall)) void game_templates_17e9e30(PSEUDO_X8 x8_);
 __int64* Manager_bc6460_alt1(float*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(float*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 
 __int64 game_templates_a93ea0(__int64 a1, unsigned __int8* a2, __int64 a3,
@@ -248,7 +250,7 @@ LABEL_41:
         v38 = std___1___next_prime(v38);
       }
       else {
-        v39 = 1LL << -(char)__clz(v38 - 1);
+        v39 = 1LL << (-(char)__clz(v38 - 1) & 63);
         if (v38 >= 2) {
           v38 = v39;
         }
@@ -342,10 +344,12 @@ __attribute__((swiftcall)) void game_templates_14a4be0(PSEUDO_X8 x8_,
   v12_.v17 = v7;
   v12_.v18 = v12_.v14;
   v12_.v19 = v6;
-  v9 = Manager_bc6460_alt1(*(float**)eft_g_effectSystem_ptr[0],
-                           (__int64)v12_.v12, 0),
-  v10 = COERCE_AS(__typeof__(v10),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(float**)eft_g_effectSystem_ptr[0], (__int64)v12_.v12, 0);
+    v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   {
     GameHr_14a10d0(a4, (__int64)v9, v10, a3),
         v10 = COERCE_AS(__typeof__(v10),

@@ -1536,7 +1536,7 @@ LABEL_32:
       v33 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
                            *(float*)(a1 + 32));
       if (v31 >= 3 && (v31 & (v31 - 1)) == 0) {
-        v34 = 1LL << -(char)__clz(v33 - 1);
+        v34 = 1LL << (-(char)__clz(v33 - 1) & 63);
         if (v33 >= 2) {
           v33 = v34;
         }

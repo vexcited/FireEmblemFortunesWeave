@@ -114,6 +114,8 @@ __int64 GameRoutine_bc6460(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_c73b90(_QWORD);
 _QWORD* GmapDrawer_1539fc0(__int64);
 __int64* Manager_bc6460(_QWORD*, float32x4_t*, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, float32x4_t*,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_17b8e80_alt1(__int64, char) __asm__("GameRoutine_17b8e80");
 __int64 Impl_13261c0(__int64);
@@ -130,6 +132,8 @@ __int64 GameHr_154b5a0();
 _QWORD* GameManager_a2c820(__int64, __int64, char);
 _QWORD* LayoutEx_57b6d0(__int64, __int64, const char*, __int64, char);
 __int64* Manager_bc6460_alt1(float*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(float*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64* nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
 __int64 GameRoutine_1317f10_alt1(float32x4_t*,
                                  float32x4_t*) __asm__("GameRoutine_1317f10");
@@ -767,11 +771,13 @@ __int64 GameHr_14a6a10(__int64 result)
         v36_.v43 = *(_QWORD*)GameData_212c540;
         v36_.v44 = v8;
         v36_.v38 = "Gmap_Spot_MiasmaC";
-        v9 = Manager_bc6460_alt1(v6, (__int64)&v36_.v36, 1),
-        v10 = COERCE_AS(__typeof__(v10),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v26 = COERCE_AS(__typeof__(v26),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v9 = ({
+          unsigned __int128 r_ =
+              Manager_bc6460_alt1_pair(v6, (__int64)&v36_.v36, 1);
+          v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+          v26 = COERCE_AS(__typeof__(v26), (unsigned long long)(r_ >> 64));
+          (__int64*)(unsigned long long)r_;
+        });
         result = GameHr_14a10d0(&v36_.v36, (__int64)v9, v10,
                                 (__int64)&GameData_1a9f09e),
         v10 = COERCE_AS(__typeof__(v10),
@@ -862,11 +868,13 @@ __int64 GameHr_14a6a10(__int64 result)
           v24 = v4[1];
           v36_.v43 = *v4;
           v36_.v44 = v24;
-          v25 = Manager_bc6460_alt1(v22, (__int64)&v36_.v36, 1),
-          v10 = COERCE_AS(__typeof__(v10),
-                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-          v26 = COERCE_AS(__typeof__(v26),
-                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+          v25 = ({
+            unsigned __int128 r_ =
+                Manager_bc6460_alt1_pair(v22, (__int64)&v36_.v36, 1);
+            v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+            v26 = COERCE_AS(__typeof__(v26), (unsigned long long)(r_ >> 64));
+            (__int64*)(unsigned long long)r_;
+          });
           GameHr_14a10d0(&v36_.v36, (__int64)v25, v26,
                          (__int64)&GameData_1a9f09e),
               v10 = COERCE_AS(__typeof__(v10),
@@ -1071,11 +1079,12 @@ __int64 GameHr_14b8500(__int64 result)
       v32_.v38 = *(_QWORD*)GameData_212c540;
       v32_.v39 = v9;
       v32_.v33 = "Gmap_Spot_Hanari_SeaDragon_Start";
-      v10 = Manager_bc6460(v7, &v32_.v32, 1),
-      v11 = COERCE_AS(__typeof__(v11),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v22 = COERCE_AS(__typeof__(v22),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v10 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(v7, &v32_.v32, 1);
+        v11 = COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+        v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v32_.v32, (__int64)v10, v11, (__int64)&GameData_1a9f09e),
           v11 = COERCE_AS(__typeof__(v11),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1153,11 +1162,12 @@ __int64 GameHr_14b8500(__int64 result)
       v32_.v38 = *v8;
       v32_.v39 = v20;
       v32_.v33 = "Gmap_Spot_Hanari_SeaDragon_Loop";
-      v21 = Manager_bc6460(v17, &v32_.v32, 1),
-      v11 = COERCE_AS(__typeof__(v11),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-      v22 = COERCE_AS(__typeof__(v22),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v21 = ({
+        unsigned __int128 r_ = Manager_bc6460_pair(v17, &v32_.v32, 1);
+        v11 = COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+        v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       result = GameHr_14a10d0(&v32_.v32, (__int64)v21, v22,
                               (__int64)&GameData_1a9f09e),
       v11 = COERCE_AS(__typeof__(v11),

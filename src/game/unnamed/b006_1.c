@@ -4725,9 +4725,9 @@ void GameHr_80a0c0()
     }
     v6 = v0[66] + v0[65];
     if (v5 == v6) {
-      v7 = HIDWORD(v2);
+      v7 = DWORD3(v2);
       GameRoutine_80bf20_alt1(v0 + 61);
-      HIDWORD(v2) = v7;
+      DWORD3(v2) = v7;
       v6 = v0[66] + v0[65];
       v3 = v0[62];
     }
@@ -4771,9 +4771,9 @@ __int64 GameHr_80a1a0(__int64 result)
       }
       v8 = v2[66] + v2[65];
       if (v7 == v8) {
-        v9 = HIDWORD(v4);
+        v9 = DWORD3(v4);
         result = GameRoutine_80bf20(v2 + 61);
-        HIDWORD(v4) = v9;
+        DWORD3(v4) = v9;
         v8 = v2[66] + v2[65];
         v5 = v2[62];
       }
@@ -4844,9 +4844,9 @@ __int64 GameHr_80a7c0(__int64 result)
     }
     v9 = v1[66] + v1[65];
     if (v8 == v9) {
-      v10 = HIDWORD(v4);
+      v10 = DWORD3(v4);
       GameRoutine_80bf20(v1 + 61);
-      HIDWORD(v4) = v10;
+      DWORD3(v4) = v10;
       v9 = v1[66] + v1[65];
       v5 = v1[62];
     }

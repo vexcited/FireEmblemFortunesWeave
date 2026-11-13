@@ -748,7 +748,7 @@ opus_31b6e0(void (*a1)(__int64, void*, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD),
     v12 = (int)(2 * a6) / 3;
   }
   v19 = 4LL * v13;
-  v20 = (void*)((char*)&v84_.v84 - ((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v20 = __builtin_alloca((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   v84_.v84 = v19;
   memset_plt(v20, nullptr, v19, (unsigned __int64)a4),
       v21 = COERCE_AS(__typeof__(v21),
@@ -846,7 +846,7 @@ LABEL_22:
   }
   v44 = 3 * v13;
   v45 = v20;
-  v46 = (void*)((char*)&v84_.v84 - ((12LL * v13 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v46 = __builtin_alloca((12LL * v13 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v46, nullptr, 12 * v13, v21),
       v21 = COERCE_AS(__typeof__(v21),
                       PSEUDO_REGISTER(unsigned long long, "x3", "=r"));

@@ -3948,8 +3948,8 @@ __int64 opus_src_7fca0(__int64 a1, int* a2)
       if (v6 >= 1) {
         v7 = *((_QWORD*)a2 + 4);
         if (v7 >= 1) {
-          v8 = 32 - __clz(v7);
-          v9 = 32 - __clz(v6);
+          v8 = 32 - __clz((unsigned int)v7);
+          v9 = 32 - __clz((unsigned int)v6);
           if ((_DWORD)v7 == 0) {
             v8 = 0;
           }
@@ -4064,7 +4064,7 @@ __int64 opus_src_7fca0(__int64 a1, int* a2)
                 if (v61 > 31) {
                   v68 = *((_QWORD*)a2 + 9);
                   a2[5] = 3;
-                  v69 = (32 - __clz(v68 - 1)) >> 3;
+                  v69 = (32 - __clz((unsigned int)(v68 - 1))) >> 3;
                   if ((_DWORD)v68 == 1) {
                     v70 = 1;
                   }
@@ -4154,7 +4154,7 @@ __int64 opus_src_7fca0(__int64 a1, int* a2)
                   goto LABEL_18;
                 }
                 v48 = v44;
-                v49 = 32 - __clz(v44 - 1);
+                v49 = 32 - __clz((unsigned int)(v44 - 1));
                 if ((_DWORD)v44 == 1) {
                   v50 = 0;
                 }
@@ -4508,7 +4508,7 @@ __int64 opus_src_80de0(__int64 a1, __int64 a2, __int64 a3, int a4)
   v26 = a4 - v22;
   v25 = (v26 < 0) ^ v24 | (v26 == 0);
   v27 = v23 >> v26;
-  v28 = v23 << -(char)v26;
+  v28 = v23 << (-(char)v26 & 31);
   if (v25) {
     v27 = v28;
   }
@@ -5113,7 +5113,7 @@ void* opus_src_81b40(__int64 a1, int a2, unsigned int a3, int* a4, __int64 a5,
   v11 = (int)a5;
   v140_.v154 = a6;
   v140_.v148 =
-      (_DWORD*)((char*)&v140_.v140 - ((v9 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+      (_DWORD*)__builtin_alloca((v9 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   v16 = (int)v8;
   v17 = (unsigned __int16*)&MovieData_b399e;
   v18 = 0;

@@ -309,7 +309,7 @@ void PerchQuestionFile_Unknown4()
         v37 = std___1___next_prime_alt1(v37);
       }
       else {
-        v38 = 1LL << -(char)__clz(v37 - 1);
+        v38 = 1LL << (-(char)__clz(v37 - 1) & 63);
         if (v37 >= 2) {
           v37 = v38;
         }

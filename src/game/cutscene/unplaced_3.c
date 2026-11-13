@@ -168,7 +168,7 @@ LABEL_22:
         v31 = std___1___next_prime(v31);
       }
       else {
-        v32 = 1LL << -(char)__clz(v31 - 1);
+        v32 = 1LL << (-(char)__clz(v31 - 1) & 63);
         if (v31 >= 2) {
           v31 = v32;
         }

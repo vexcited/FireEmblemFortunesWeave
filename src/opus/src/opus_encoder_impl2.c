@@ -1104,7 +1104,7 @@ __int64 opus_encode_float(int* a1, __int64 a2, signed int a3, _BYTE* a4, int a5)
   }
   v32 = a1[28];
   v36 = 2LL * (int)(v32 * v15);
-  v37 = (char*)v40 - ((v36 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v37 = (char*)__builtin_alloca((v36 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   v38 = memset_plt(v37, 0, v36);
   if ((int)(v32 * v15) >= 1) {
     v39 = 0;
@@ -1148,7 +1148,7 @@ __int64 opus_encode(int* a1, __int64 a2, int a3, _BYTE* a4, int a5)
     if (v7 - 5001 > 8) {
       goto LABEL_2;
     }
-    v18 = (v5 / 400) << (v7 + 119);
+    v18 = (v5 / 400) << ((v7 + 119) & 31);
     v19 = v7 >> 1 > 0x9C6;
     v20 = (1374389535LL * (int)((v7 - 5003) * v5)) >> 36;
     v21 = v20 + ((unsigned int)v20 >> 31);

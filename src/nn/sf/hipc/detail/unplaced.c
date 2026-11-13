@@ -3,6 +3,8 @@
 #pragma GCC visibility push(hidden)
 
 __int64 SdkRoutine_b8cb0(__int64, char);
+unsigned __int128 SdkRoutine_b8cb0_pair(__int64,
+                                        char) __asm__("SdkRoutine_b8cb0");
 __int64 nn_sf_hipc_detail_b8c00(__int64 a1, unsigned int* a2);
 
 __int64 nn_sf_hipc_detail_b8c00(__int64 a1, unsigned int* a2)
@@ -45,9 +47,11 @@ __int64 nn_sf_hipc_detail_b8c00(__int64 a1, unsigned int* a2)
   *(_WORD*)(a1 + 22) = v3 < 0;
   *(_WORD*)(a1 + 24) = 0;
   *(_BYTE*)(a1 + 12) = (v2 >> 20) & 0xF;
-  result = SdkRoutine_b8cb0(a1 + 8, v3 < 0),
-  v10 = COERCE_AS(__typeof__(v10),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ = SdkRoutine_b8cb0_pair(a1 + 8, v3 < 0);
+    v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   *(_QWORD*)(v8 + 18) = result;
   *(_DWORD*)(v8 + 26) = v10;
   return result;

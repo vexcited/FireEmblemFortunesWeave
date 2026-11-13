@@ -151,7 +151,7 @@ __int64 HUF_readStats_wksp(unsigned __int64 a1, unsigned __int64 a2, __int64 a3,
               return -20;
             }
             *v11 = 32 - v22;
-            v23 = (1 << -(char)v22) - v20;
+            v23 = (1 << (-(char)v22 & 31)) - v20;
             v24 = __clz(v23);
             if (0x80000000 >> v24 != v23) {
               return -20;

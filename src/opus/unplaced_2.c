@@ -590,14 +590,14 @@ __int64 opus_41040(char* a1, unsigned int a2, unsigned int a3, char* a4,
   v286 = a11;
   v269 = a10;
   v28 = (4 * v19 + 15) & 0xFFFFFFFFFFFFFFF0LL;
-  v279 = (__int64)&v265 - v28;
-  memset_plt((char*)&v265 - v28, 0, 4 * v19);
-  v281 = (char*)&v265 - v28;
-  memset_plt((char*)&v265 - v28, 0, 4 * v19);
-  v287 = (char*)&v265 - v28;
-  memset_plt((char*)&v265 - v28, 0, 4 * v19);
-  v29 = (char*)&v265 - v28;
-  memset_plt((char*)&v265 - v28, 0, 4 * v19);
+  v279 = (__int64)__builtin_alloca(v28);
+  memset_plt((void*)v279, 0, 4 * v19);
+  v281 = (char*)__builtin_alloca(v28);
+  memset_plt(v281, 0, 4 * v19);
+  v287 = (char*)__builtin_alloca(v28);
+  memset_plt(v287, 0, 4 * v19);
+  v29 = (char*)__builtin_alloca(v28);
+  memset_plt(v29, 0, 4 * v19);
   v30 = 8 * a14;
   v31 = v21;
   if ((int)v21 >= (int)v20) {

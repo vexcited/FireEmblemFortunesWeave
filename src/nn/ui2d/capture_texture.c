@@ -408,7 +408,7 @@ __int64 CaptureTexture_Unknown7(__int64 a1, __int64 a2, __int64* a3, __int64 a4)
     GameRoutine_5fd940(a4, v18, 0, *(long double*)(a1 + 80),
                        COERCE_FLOAT(HIDWORD(*(_QWORD*)(a1 + 80))),
                        COERCE_FLOAT(*(_QWORD*)(a1 + 88)),
-                       COERCE_FLOAT(HIDWORD(*(_OWORD*)(a1 + 80))));
+                       COERCE_FLOAT(DWORD3(*(_OWORD*)(a1 + 80))));
     if ((*(_WORD*)(a1 + 104) & 1) != 0) {
       CaptureTexture_581e00_alt1(a1, a3, a4);
     }

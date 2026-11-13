@@ -762,6 +762,8 @@ extern int GameData_223f1e8;
 extern int GameData_223f238;
 __int64* ProcManager_1193860();
 __int64* Manager_bc6460_alt1(float*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(float*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_14a1390_alt1(__int64*, char) __asm__("GameRoutine_14a1390");
 __int64 GameRoutine_14a1520_alt1(__int64*, char) __asm__("GameRoutine_14a1520");
@@ -1906,14 +1908,14 @@ __int64 ProcManager_126ca60(_QWORD* a1)
   v63_.v65 = 9;
   v63_.v64 = "UI_Deco_GodSkill_Time_SandA";
   v8 = (float**)eft_g_effectSystem_ptr[0];
-  v9 = Manager_bc6460_alt1(*(float**)eft_g_effectSystem_ptr[0],
-                           (__int64)v63_.v63, 0),
-  v10 = COERCE_AS(__typeof__(v10),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v25 = COERCE_AS(__typeof__(v25),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v48 = COERCE_AS(__typeof__(v48),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(float**)eft_g_effectSystem_ptr[0], (__int64)v63_.v63, 0);
+    v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+    v25 = COERCE_AS(__typeof__(v25), (unsigned long long)(r_ >> 64));
+    v48 = COERCE_AS(__typeof__(v48), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v75_.v75, (__int64)v9, v10, (__int64)&GameData_1a9f09e),
       v10 = COERCE_AS(__typeof__(v10),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -2018,13 +2020,13 @@ __int64 ProcManager_126ca60(_QWORD* a1)
   v63_.v69 = v22;
   v63_.v65 = 9;
   v63_.v64 = "UI_Deco_GodSkill_Time_SandB";
-  v24 = Manager_bc6460_alt1(v23, (__int64)v63_.v63, 0),
-  v10 = COERCE_AS(__typeof__(v10),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v25 = COERCE_AS(__typeof__(v25),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v48 = COERCE_AS(__typeof__(v48),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v24 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v23, (__int64)v63_.v63, 0);
+    v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+    v25 = COERCE_AS(__typeof__(v25), (unsigned long long)(r_ >> 64));
+    v48 = COERCE_AS(__typeof__(v48), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v75_.v75, (__int64)v24, v25, (__int64)&GameData_1a9f09e),
       v10 = COERCE_AS(__typeof__(v10),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -2344,13 +2346,13 @@ LABEL_54:
   v63_.v71 = v46;
   v63_.v65 = 9;
   v63_.v64 = "UI_Deco_GodSkill_Time_Sand_Loop";
-  v47 = Manager_bc6460_alt1(v39, (__int64)v63_.v63, 0),
-  v10 = COERCE_AS(__typeof__(v10),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v25 = COERCE_AS(__typeof__(v25),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v48 = COERCE_AS(__typeof__(v48),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v47 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v39, (__int64)v63_.v63, 0);
+    v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+    v25 = COERCE_AS(__typeof__(v25), (unsigned long long)(r_ >> 64));
+    v48 = COERCE_AS(__typeof__(v48), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v75_.v75, (__int64)v47, v48, (__int64)&GameData_1a9f09e),
       v10 = COERCE_AS(__typeof__(v10),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -2739,12 +2741,13 @@ __int64 ProcManager_126d740(_QWORD* a1)
   v41_.v44 = 9;
   v41_.v43 = "UI_Deco_GodSkill_Time_SandC";
   v15 = (float**)eft_g_effectSystem_ptr[0];
-  v16 = Manager_bc6460_alt1(*(float**)eft_g_effectSystem_ptr[0],
-                            (__int64)&v41_.v41, 0),
-  v17 = COERCE_AS(__typeof__(v17),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v29 = COERCE_AS(__typeof__(v29),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v16 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+        *(float**)eft_g_effectSystem_ptr[0], (__int64)&v41_.v41, 0);
+    v17 = COERCE_AS(__typeof__(v17), (unsigned long long)(r_ >> 64));
+    v29 = COERCE_AS(__typeof__(v29), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v54_.v54, (__int64)v16, v17, (__int64)&GameData_1a9f09e),
       v17 = COERCE_AS(__typeof__(v17),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -2792,11 +2795,12 @@ __int64 ProcManager_126d740(_QWORD* a1)
   v41_.v48 = v26;
   v41_.v44 = 9;
   v41_.v43 = "UI_Deco_GodSkill_Time_SandD";
-  v28 = Manager_bc6460_alt1(v27, (__int64)&v41_.v41, 0),
-  v17 = COERCE_AS(__typeof__(v17),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-  v29 = COERCE_AS(__typeof__(v29),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v28 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v27, (__int64)&v41_.v41, 0);
+    v17 = COERCE_AS(__typeof__(v17), (unsigned long long)(r_ >> 64));
+    v29 = COERCE_AS(__typeof__(v29), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v52_.v52, (__int64)v28, v29, (__int64)&GameData_1a9f09e),
       v17 = COERCE_AS(__typeof__(v17),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),

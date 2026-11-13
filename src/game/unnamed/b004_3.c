@@ -57,6 +57,8 @@ __int64 GameRoutine_a82380(_QWORD);
 __int64 GameHr_6c1f80(__int64 result, __int64*, __int64, unsigned __int64,
                       __int64*, __int64);
 unsigned __int8* fs_638380(unsigned __int8* result, unsigned __int8*, __int64);
+unsigned __int128 fs_638380_pair(unsigned __int8* result, unsigned __int8*,
+                                 __int64) __asm__("fs_638380");
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 bool GameHr_6390c0(__int64 a1, unsigned __int8** a2, unsigned __int8* a3,
@@ -125,9 +127,11 @@ bool GameHr_6390c0(__int64 a1, unsigned __int8** a2, unsigned __int8* a3,
                             PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       }
       v9 = a2;
-      v11 = fs_638380(v4 + 2, a3, a4),
-      v12 = COERCE_AS(__typeof__(v12),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v11 = ({
+        unsigned __int128 r_ = fs_638380_pair(v4 + 2, a3, a4);
+        v12 = COERCE_AS(__typeof__(v12), (unsigned long long)(r_ >> 64));
+        (unsigned __int8*)(unsigned long long)r_;
+      });
       if (a3 == v11 || *v11 != 125) {
         GameRoutine_638240("The argument index is invalid"),
             v12 = COERCE_AS(__typeof__(v12),

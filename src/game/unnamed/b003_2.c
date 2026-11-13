@@ -1059,7 +1059,7 @@ LABEL_47:
 LABEL_58:
   v41 = *(_QWORD*)(a1 + 168);
   if (v41 != 0 && *(_BYTE*)(v41 + 22) == 3) {
-    HIDWORD(v74) = 0;
+    DWORD3(v74) = 0;
     v73 = 21;
     *(_QWORD*)&v74 = -1;
     *(_QWORD*)((char*)&v74 + 5) = -1;
@@ -1168,7 +1168,7 @@ LABEL_61:
       *(_QWORD*)&v72[4] = 0;
       *(_DWORD*)v72 = 18;
       if ((v46 & 0x200000) == 0) {
-        HIDWORD(v74) = 0;
+        DWORD3(v74) = 0;
         v73 = 21;
         *(_QWORD*)&v74 = -1;
         *(_QWORD*)((char*)&v74 + 5) = -1;
@@ -1183,7 +1183,7 @@ LABEL_61:
       *(_QWORD*)&v72[8] = 0;
       *(_QWORD*)v72 = 20;
     LABEL_84:
-      HIDWORD(v74) = 0;
+      DWORD3(v74) = 0;
       v73 = 21;
       *(_QWORD*)&v74 = -1;
       *(_QWORD*)((char*)&v74 + 5) = -1;
@@ -2867,12 +2867,12 @@ __int64 GameHr_5acb40(__int64* a1, __int64 a2, __int64 a3, __int64 a4,
   v34_.v37 = a3;
   v34_.v38 = a6;
   v34_.v39 = a7;
-  v8 = (char*)&v34_.v34 - ((8 * v7 + 15) & 0xFFFFFFFF0LL);
+  v8 = (char*)__builtin_alloca((8 * v7 + 15) & 0xFFFFFFFF0LL);
   if ((_DWORD)v7 == 0) {
     return 0;
   }
   v34_.v35 = a4;
-  memset((__int64)&v34_.v34 - ((8 * v7 + 15) & 0xFFFFFFFF0LL), 0, 8 * v7);
+  memset((__int64)v8, 0, 8 * v7);
   v12 = 0;
   v13 = 0;
   v34_.v40 = 0;

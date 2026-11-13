@@ -2412,7 +2412,7 @@ void GameHr_fcce80(double a1)
         v25_.v25 = v13;
       }
     }
-    HIDWORD(v11) = 0;
+    DWORD3(v11) = 0;
     v19_.v24 = 1;
   LABEL_32:
     v19_.v22 = v11;

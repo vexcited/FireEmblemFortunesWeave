@@ -1172,7 +1172,7 @@ LABEL_25:
         v35 = std___1___next_prime_alt1(v35);
       }
       else {
-        v36 = 1LL << -(char)__clz(v35 - 1);
+        v36 = 1LL << (-(char)__clz(v35 - 1) & 63);
         if (v35 >= 2) {
           v35 = v36;
         }

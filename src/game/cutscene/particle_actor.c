@@ -20,6 +20,8 @@ __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_14a1520(__int64*, char);
 extern _UNKNOWN* GameData_212c540;
@@ -208,9 +210,11 @@ __int64 ParticleActor_Unknown4(__int64 result, float a2, float a3)
     v18 = *((_QWORD*)GameData_212c548 + 1);
     v25_.v31 = *(_QWORD*)GameData_212c548;
     v25_.v32 = v18;
-    v19 = Manager_bc6460(v17, (__int64)&v25_.v25, 0),
-    v20 = COERCE_AS(__typeof__(v20),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v19 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(v17, (__int64)&v25_.v25, 0);
+      v20 = COERCE_AS(__typeof__(v20), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     result = GameHr_14a10d0(&v25_.v25, (__int64)v19, v20,
                             (__int64)&GameData_1a9f09e),
     v20 = COERCE_AS(__typeof__(v20),

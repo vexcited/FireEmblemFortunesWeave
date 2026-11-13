@@ -5,6 +5,8 @@
 __attribute__((swiftcall)) void Pane_58dfa0(PSEUDO_X8, __int64);
 __int64* GameRoutine_1889100(__int64* result, __int64*, __int64*);
 __int64* ui_control_1888dc0(__int64, __int64);
+unsigned __int128
+ui_control_1888dc0_pair(__int64, __int64) __asm__("ui_control_1888dc0");
 __int64 GameRoutine_5766a0(__int64, const char*);
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 std___1___hash_memory(__int64, unsigned __int64);
@@ -107,9 +109,11 @@ __int64* ui_control_1888c80(__int64 a1, __int64* a2, __int64* a3)
              8) = std___1___hash_memory(v11, v12),
              v14 = COERCE_AS(__typeof__(v14),
                              PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  result = ui_control_1888dc0(a1, v7),
-  v14 = COERCE_AS(__typeof__(v14),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ = ui_control_1888dc0_pair(a1, v7);
+    v14 = COERCE_AS(__typeof__(v14), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   if ((v14 & 1) == 0) {
     v15 = result;
     if ((*(_BYTE*)(v7 + 40) & 1) != 0) {
@@ -197,9 +201,11 @@ __int64* ui_control_1889230(__int64 a1, __int64* a2, const char** a3)
              8) = std___1___hash_memory(v11, v12),
              v14 = COERCE_AS(__typeof__(v14),
                              PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  result = ui_control_1888dc0(a1, v7),
-  v14 = COERCE_AS(__typeof__(v14),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ = ui_control_1888dc0_pair(a1, v7);
+    v14 = COERCE_AS(__typeof__(v14), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   if ((v14 & 1) == 0) {
     v15 = result;
     if ((*(_BYTE*)(v7 + 40) & 1) != 0) {

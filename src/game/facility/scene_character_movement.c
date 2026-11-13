@@ -603,7 +603,7 @@ void SceneCharacterMovement_Unknown3(__int64 a1, long double a2)
       if (COERCE_FLOAT(*(_OWORD*)&v9[21]) != v19 ||
           COERCE_FLOAT(HIDWORD(LANES128(v9[21]).n128_u64[0])) != *(float*)&a2 ||
           COERCE_FLOAT(LANES128(v9[21]).n128_u64[1]) != v19 ||
-          COERCE_FLOAT(HIDWORD(*(_OWORD*)&v9[21])) != v18) {
+          COERCE_FLOAT(DWORD3(*(_OWORD*)&v9[21])) != v18) {
         v23 = LANES128(v9[18]).n128_u32[2];
         LANES128(v9[21]).n128_f32[0] = v19;
         LANES128(v9[21]).n128_u32[1] = LODWORD(a2);

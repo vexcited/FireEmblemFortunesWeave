@@ -131,7 +131,7 @@ LABEL_13:
   v23 = *(_QWORD*)a1;
   v26 = v36;
   v24 = *(void (**)(__int64, int*))(v23 + 240);
-  v28 = HIDWORD(v36);
+  v28 = DWORD3(v36);
   v29 = v15;
   v24(a1, &v26);
   return v20;

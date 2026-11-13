@@ -1369,7 +1369,7 @@ LABEL_25:
         v28 = std___1___next_prime(v28);
       }
       else {
-        v29 = 1LL << -(char)__clz(v28 - 1);
+        v29 = 1LL << (-(char)__clz(v28 - 1) & 63);
         if (v28 >= 2) {
           v28 = v29;
         }

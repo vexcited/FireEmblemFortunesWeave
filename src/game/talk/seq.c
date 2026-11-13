@@ -1366,7 +1366,7 @@ LABEL_14:
           v51 = std___1___next_prime_alt1(v51);
         }
         else {
-          v52 = 1LL << -(char)__clz(v51 - 1);
+          v52 = 1LL << (-(char)__clz(v51 - 1) & 63);
           if (v51 >= 2) {
             v51 = v52;
           }
@@ -1658,7 +1658,7 @@ __int64 Seq_1131cc0(__int64 a1, const char* a2)
           v42 = std___1___next_prime_alt1(v42);
         }
         else {
-          v43 = 1LL << -(char)__clz(v42 - 1);
+          v43 = 1LL << (-(char)__clz(v42 - 1) & 63);
           if (v42 >= 2) {
             v42 = v43;
           }

@@ -32,6 +32,8 @@ extern char GameData_1af0f9a[4];
 float* GameRoutine_5da830(float* result, float*, float*, float*);
 float* GameRoutine_5daa20(float*, float*);
 unsigned __int64 GameRoutine_5dac20(float*, float*);
+unsigned __int128 GameRoutine_5dac20_pair(float*,
+                                          float*) __asm__("GameRoutine_5dac20");
 void GameRoutine_5b6320();
 __int64 nn_vfx_5c8480(_QWORD* a1, __int64 a2, __int64 a3);
 __int64 nn_vfx_5c8ca0(__int64 a1, __int64 a2, int a3);
@@ -2506,9 +2508,11 @@ LABEL_3:
       }
     }
   LABEL_158:
-    v66 = (__int64*)GameRoutine_5dac20(v9, a2),
-    v67 = COERCE_AS(__typeof__(v67),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v66 = (__int64*)({
+      unsigned __int128 r_ = GameRoutine_5dac20_pair(v9, a2);
+      v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+      (unsigned __int64)(unsigned long long)r_;
+    });
     if ((v67 & 1) == 0) {
       goto LABEL_161;
     }

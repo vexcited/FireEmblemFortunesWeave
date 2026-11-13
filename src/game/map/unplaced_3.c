@@ -147,6 +147,7 @@ __int64 GameHr_78e5d0(__int64);
 __int64 GameHr_84cf20(__int64, __int64, char);
 __int64 GameHr_8517e0(__int64 result, int*, __int64, char);
 __int64 game_19f3620(__int64, char);
+unsigned __int128 game_19f3620_pair(__int64, char) __asm__("game_19f3620");
 __int64 game_gameui_FloatingHelp_CheckNeedUpdateTargetElement(__int64 result,
                                                               __int64);
 __int64 game_map_768a20_alt1(__int64, __int64, __int64, _BYTE*, unsigned __int8,
@@ -2182,13 +2183,15 @@ void game_map_78a0a0(__int64 a1)
                       if ((v306 & 0x2000) != 0 &&
                           *(_QWORD*)(a1 + 22936) - *(_QWORD*)(a1 + 22928) >=
                               0x11u) {
-                        v307 = (unsigned __int16*)game_19f3620(a1 + 22920, 0),
-                        v308 = COERCE_AS(
-                            __typeof__(v308),
-                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-                        v313 = COERCE_AS(
-                            __typeof__(v313),
-                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+                        v307 = (unsigned __int16*)({
+                          unsigned __int128 r_ =
+                              game_19f3620_pair(a1 + 22920, 0);
+                          v308 = COERCE_AS(__typeof__(v308),
+                                           (unsigned long long)(r_ >> 64));
+                          v313 = COERCE_AS(__typeof__(v313),
+                                           (unsigned long long)(r_ >> 64));
+                          (__int64)(unsigned long long)r_;
+                        });
                         v309 = v308;
                         GameRoutine_1832df0(*(_QWORD*)GameData_212d220[0], 0,
                                             0),
@@ -2217,13 +2220,15 @@ void game_map_78a0a0(__int64 a1)
                         if ((v306 & 0x1000) != 0 &&
                             *(_QWORD*)(a1 + 22936) - *(_QWORD*)(a1 + 22928) >=
                                 0x11u) {
-                          v312 = (unsigned __int16*)game_19f3620(a1 + 22920, 1),
-                          v308 = COERCE_AS(
-                              __typeof__(v308),
-                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-                          v313 = COERCE_AS(
-                              __typeof__(v313),
-                              PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+                          v312 = (unsigned __int16*)({
+                            unsigned __int128 r_ =
+                                game_19f3620_pair(a1 + 22920, 1);
+                            v308 = COERCE_AS(__typeof__(v308),
+                                             (unsigned long long)(r_ >> 64));
+                            v313 = COERCE_AS(__typeof__(v313),
+                                             (unsigned long long)(r_ >> 64));
+                            (__int64)(unsigned long long)r_;
+                          });
                           v314 = v313;
                           GameRoutine_1832df0(*(_QWORD*)GameData_212d220[0], 0,
                                               1),

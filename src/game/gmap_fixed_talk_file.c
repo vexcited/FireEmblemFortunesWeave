@@ -218,7 +218,7 @@ void GmapFixedTalkFile_Unknown4()
           v44 = std___1___next_prime_alt1(v44);
         }
         else {
-          v45 = 1LL << -(char)__clz(v44 - 1);
+          v45 = 1LL << (-(char)__clz(v44 - 1) & 63);
           if (v44 >= 2) {
             v44 = v45;
           }

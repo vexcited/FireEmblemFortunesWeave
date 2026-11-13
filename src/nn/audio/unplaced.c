@@ -383,7 +383,7 @@ LABEL_8:
     *(_QWORD*)(a1 + 360) = 0;
     *(_DWORD*)a1 = v17;
     *(_QWORD*)(a1 + 4) = *(_QWORD*)((char*)&v38 + 4);
-    *(_DWORD*)(a1 + 12) = HIDWORD(v38);
+    *(_DWORD*)(a1 + 12) = DWORD3(v38);
     while (1) {
       v19 = (unsigned __int8*)v35 + v18;
       v20 = a1 + v18;

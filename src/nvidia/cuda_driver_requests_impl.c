@@ -1641,7 +1641,7 @@ __int64 cuda_driver_requests_68370(__int64 a1)
   LOBYTE(v12) = *(_BYTE*)(a1 + 88);
   v6 = *(_DWORD*)(a1 + 80) - 1;
   if (v6 <= 2) {
-    HIDWORD(v12) = CudaDriverData_1130d70[v6];
+    DWORD3(v12) = CudaDriverData_1130d70[v6];
   }
   v7 = *(_DWORD*)(a1 + 84);
   if (v7 == 1) {
@@ -1696,7 +1696,7 @@ __int64 cuda_driver_requests_68470(__int64 a1)
   LOBYTE(v12) = *(_BYTE*)(a1 + 88);
   v6 = *(_DWORD*)(a1 + 80) - 1;
   if (v6 <= 2) {
-    HIDWORD(v12) = CudaDriverData_1130d70[v6];
+    DWORD3(v12) = CudaDriverData_1130d70[v6];
   }
   v7 = *(_DWORD*)(a1 + 84);
   if (v7 == 1) {

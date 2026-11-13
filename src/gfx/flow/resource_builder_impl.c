@@ -5071,7 +5071,7 @@ __int64 ResourceBuilder_b61dc0(__int64 a1, __int64 a2, _QWORD** a3, __int64* a4)
   DWORD2(v45_.v46) = v29(v27),
   v38 = COERCE_AS(__typeof__(v38),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  HIDWORD(v45_.v46) = 1;
+  DWORD3(v45_.v46) = 1;
   v43 = v45_.v45;
   v44 = v45_.v46;
   v30 = ((__int64 (*)(__int64))*v17)(v23),
@@ -5108,7 +5108,7 @@ __int64 ResourceBuilder_b61dc0(__int64 a1, __int64 a2, _QWORD** a3, __int64* a4)
   DWORD2(v45_.v46) = v40(v37),
   v38 = COERCE_AS(__typeof__(v38),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  HIDWORD(v45_.v46) = 1;
+  DWORD3(v45_.v46) = 1;
   v44 = v45_.v46;
   v41 = (void (*)(__int64, __int64, _QWORD, __int64*, __int64, _QWORD, __int64*,
                   _QWORD))*v21,

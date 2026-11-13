@@ -53,6 +53,8 @@ _QWORD* ui_LayoutAccessor_Setup_155dda0_alt1(_QWORD*, _QWORD*) __asm__(
     "ui_LayoutAccessor_Setup_155dda0");
 __int64 LayoutAccessor_155e830(__int64 result, char);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameHr_1562680(__int64 result, const char*, float);
 __int64 GameRoutine_158a7c0(unsigned __int8);
@@ -571,10 +573,12 @@ LABEL_28:
     v46_.v50 = v26;
     v46_.v51 = v25;
     v46_.v47 = 9;
-    v27 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                         (__int64)v46_.v46, 0),
-    v28 = COERCE_AS(__typeof__(v28),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v27 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(
+          *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v46_.v46, 0);
+      v28 = COERCE_AS(__typeof__(v28), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v43_.v43, (__int64)v27, v28, (__int64)&GameData_1a9f09e),
         v28 = COERCE_AS(__typeof__(v28),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

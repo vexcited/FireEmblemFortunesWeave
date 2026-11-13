@@ -464,7 +464,7 @@ AnimLayerCtrlModule_ce5500(PSEUDO_X8 x8_, unsigned __int64* result,
       *(_QWORD*)a5 = v22;
       if (v13 >= 1) {
         v21 = v13;
-        *v22 &= ~(0xFFFFFFFFFFFFFFFFLL >> -(char)v13);
+        *v22 &= ~(0xFFFFFFFFFFFFFFFFLL >> (-(char)v13 & 63));
         **(_QWORD**)a5 |= v8 >> ((unsigned __int8)v12 + (unsigned __int8)a2);
         *(_DWORD*)(a5 + 8) = v13;
       }
@@ -515,7 +515,7 @@ AnimLayerCtrlModule_ce5500(PSEUDO_X8 x8_, unsigned __int64* result,
       }
     }
     if (v23 >= 1) {
-      v34 = *result & (0xFFFFFFFFFFFFFFFFLL >> -(char)v23);
+      v34 = *result & (0xFFFFFFFFFFFFFFFFLL >> (-(char)v23 & 63));
       if (v23 >= v24) {
         v35 = v24;
       }

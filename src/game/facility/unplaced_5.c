@@ -6,10 +6,15 @@
 
 _QWORD* GameHr_144e680(__int64);
 _QWORD* GameRoutine_1498aa0(_QWORD*, __int64);
+unsigned __int128
+GameRoutine_1498aa0_pair(_QWORD*, __int64) __asm__("GameRoutine_1498aa0");
 _QWORD* SceneCharacter_14020c0(__int64);
 _QWORD* SceneManager_138e2c0(__int64, unsigned __int8*);
 _QWORD* SceneManager_13909c0(__int64, unsigned __int64*, __int64, _QWORD**,
                              _QWORD**);
+unsigned __int128
+SceneManager_13909c0_pair(__int64, unsigned __int64*, __int64, _QWORD**,
+                          _QWORD**) __asm__("SceneManager_13909c0");
 __attribute__((swiftcall)) void CostumeFile_9fea70(PSEUDO_X8, __int64 result,
                                                    __int64);
 __attribute__((swiftcall)) void FacilityUtil_947460(PSEUDO_X8, __int64);
@@ -2279,7 +2284,7 @@ LABEL_41:
         v41 = std___1___next_prime(v41);
       }
       else {
-        v42 = 1LL << -(char)__clz(v41 - 1);
+        v42 = 1LL << (-(char)__clz(v41 - 1) & 63);
         if (v41 >= 2) {
           v41 = v42;
         }
@@ -6621,13 +6626,14 @@ __int64 game_facility_1469d90(__int64 a1, char a2)
     v102_.v102 = &v105;
     v105 = v83;
     v106 = &v99_.v99;
-    v84 = SceneManager_13909c0(v80 + 272, (unsigned __int64*)&v105,
-                               (__int64)std___1_piecewise_construct_ptr,
-                               &v102_.v102, &v106),
-    v85 = COERCE_AS(__typeof__(v85),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v93 = COERCE_AS(__typeof__(v93),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v84 = ({
+      unsigned __int128 r_ = SceneManager_13909c0_pair(
+          v80 + 272, (unsigned __int64*)&v105,
+          (__int64)std___1_piecewise_construct_ptr, &v102_.v102, &v106);
+      v85 = COERCE_AS(__typeof__(v85), (unsigned long long)(r_ >> 64));
+      v93 = COERCE_AS(__typeof__(v93), (unsigned long long)(r_ >> 64));
+      (_QWORD*)(unsigned long long)r_;
+    });
     v82 = v99_.v100;
     if ((v85 & 1) == 0) {
       v86 = v99_.v99;
@@ -6679,13 +6685,14 @@ __int64 game_facility_1469d90(__int64 a1, char a2)
     v106 = &v104;
     v104 = v91;
     v105 = &v102_.v102;
-    v92 = SceneManager_13909c0(v88 + 272, (unsigned __int64*)&v104,
-                               (__int64)std___1_piecewise_construct_ptr, &v106,
-                               &v105),
-    v85 = COERCE_AS(__typeof__(v85),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v93 = COERCE_AS(__typeof__(v93),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v92 = ({
+      unsigned __int128 r_ = SceneManager_13909c0_pair(
+          v88 + 272, (unsigned __int64*)&v104,
+          (__int64)std___1_piecewise_construct_ptr, &v106, &v105);
+      v85 = COERCE_AS(__typeof__(v85), (unsigned long long)(r_ >> 64));
+      v93 = COERCE_AS(__typeof__(v93), (unsigned long long)(r_ >> 64));
+      (_QWORD*)(unsigned long long)r_;
+    });
     v90 = v102_.v103;
     if ((v93 & 1) == 0) {
       v94 = v102_.v102;
@@ -7750,9 +7757,11 @@ _QWORD* game_facility_1498870(_QWORD* a1, const char* a2, __int64 a3)
   game_facility_1498970((void*)(&v14_.v14), (__int64)a1, a2, a3),
       v5 = COERCE_AS(__typeof__(v5),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  result = GameRoutine_1498aa0(a1, v14_.v14),
-  v5 = COERCE_AS(__typeof__(v5),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ = GameRoutine_1498aa0_pair(a1, v14_.v14);
+    v5 = COERCE_AS(__typeof__(v5), (unsigned long long)(r_ >> 64));
+    (_QWORD*)(unsigned long long)r_;
+  });
   if ((v5 & 1) != 0) {
     return result;
   }
@@ -7884,9 +7893,11 @@ _QWORD* game_facility_14994e0(_QWORD* a1, const char** a2, __int64 a3)
   game_facility_14995e0((void*)(&v14_.v14), (__int64)a1, a2, a3),
       v5 = COERCE_AS(__typeof__(v5),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  result = GameRoutine_1498aa0(a1, v14_.v14),
-  v5 = COERCE_AS(__typeof__(v5),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ = GameRoutine_1498aa0_pair(a1, v14_.v14);
+    v5 = COERCE_AS(__typeof__(v5), (unsigned long long)(r_ >> 64));
+    (_QWORD*)(unsigned long long)r_;
+  });
   if ((v5 & 1) != 0) {
     return result;
   }

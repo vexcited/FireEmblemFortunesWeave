@@ -60,6 +60,8 @@ __int64 NvTegraSysGetChipId_plt(void);
 __int64 NvTegraSysGetProductionMode_plt(void);
 __int64 NvTegraSysInit_plt(_QWORD);
 __int64 SdkRoutine_616510(_QWORD*, __int64);
+unsigned __int128 SdkRoutine_616510_pair(_QWORD*,
+                                         __int64) __asm__("SdkRoutine_616510");
 __int64 SdkRoutine_6165a0(_QWORD, _QWORD);
 __int64 SdkRoutine_617b40(_QWORD);
 __int64 SdkRoutine_617f10(_QWORD);
@@ -3515,9 +3517,12 @@ __int64 nvidia_618460(__int64 a1)
     v6 = (_QWORD*)nvidia_617a80((_QWORD*)(a1 + 8)),
     v7 = COERCE_AS(__typeof__(v7),
                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    v8 = SdkRoutine_616510(v6, (unsigned int)(56 * v5)),
-    v7 = COERCE_AS(__typeof__(v7),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v8 = ({
+      unsigned __int128 r_ =
+          SdkRoutine_616510_pair(v6, (unsigned int)(56 * v5));
+      v7 = COERCE_AS(__typeof__(v7), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     result = v7;
     if ((v8 & 1) != 0) {
       v9 = 0;

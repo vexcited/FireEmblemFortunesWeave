@@ -3638,7 +3638,7 @@ unsigned __int64 AssetTableFile_7f1f20(unsigned __int64 result, __int64 a2)
       v5 = v9;
     }
     else {
-      v8 = 1LL << -(char)__clz(result - 1);
+      v8 = 1LL << (-(char)__clz(result - 1) & 63);
       if (result >= 2) {
         result = v8;
       }
@@ -3752,7 +3752,7 @@ LABEL_18:
             result = std___1___next_prime(result);
           }
           else {
-            v29 = 1LL << -(char)__clz(result - 1);
+            v29 = 1LL << (-(char)__clz(result - 1) & 63);
             if (result >= 2) {
               result = v29;
             }

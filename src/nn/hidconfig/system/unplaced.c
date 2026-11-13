@@ -100,7 +100,7 @@ __int64 nn_hidconfig_system_SetButtonConfigStoragesFull(__int64 result)
         SdkRoutine_6e6c60(&v19, *(_QWORD*)(v8 + 1256),
                           *(unsigned int*)(v8 + 1264));
         *(_QWORD*)((char*)&v19 + 4) = 0x1700000016LL;
-        HIDWORD(v19) = 23;
+        DWORD3(v19) = 23;
         LODWORD(v20) = *(_DWORD*)(v8 + 1296);
         BYTE4(v20) = *(_BYTE*)(v8 + 1300) & 1;
         LODWORD(v21) = *(_DWORD*)(v8 + 1372);

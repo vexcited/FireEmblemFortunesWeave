@@ -675,7 +675,7 @@ LABEL_76:
     v37 = powf(a2, 0x1.3333340000000p+1);
     a4 = v46;
   }
-  HIDWORD(v41) = 0;
+  DWORD3(v41) = 0;
   v38 = *(_QWORD*)(a1 + 120);
   v39 = *(unsigned __int8*)(v38 + 120);
   v40 = *(_QWORD*)(v38 + 128);

@@ -489,7 +489,7 @@ void MapDrawOutlineBmap_Unknown3(__int64 a1)
                                    COERCE_FLOAT(LANES64(v51[-3]).n64_u64[0]))) +
                    (float)(0x1.8000000000000p+1f *
                            COERCE_FLOAT(
-                               HIDWORD(*(_OWORD*)LANES64(v51[-4]).n64_u64)))) -
+                               DWORD3(*(_OWORD*)LANES64(v51[-4]).n64_u64)))) -
                0x61C8864680B583EBLL + (v56 << 12) + (v56 >> 4)) ^
               v56;
           v58 = (COERCE_UNSIGNED_INT(
@@ -509,7 +509,7 @@ void MapDrawOutlineBmap_Unknown3(__int64 a1)
                       (float)(0x1.c000000000000p+2f *
                               COERCE_FLOAT(LANES64(v51[5]).n64_u64[0]))) +
               (float)(0x1.8000000000000p+1f *
-                      COERCE_FLOAT(HIDWORD(*(_OWORD*)LANES64(v51[4]).n64_u64)));
+                      COERCE_FLOAT(DWORD3(*(_OWORD*)LANES64(v51[4]).n64_u64)));
           PSEUDO_LOW_LANE64(v63, n64_u64, LANES64(v51[2]).n64_u64[0]);
           v64 = LANES64(*(v51)).n64_u32[0];
           v51 += 16;
@@ -542,7 +542,7 @@ void MapDrawOutlineBmap_Unknown3(__int64 a1)
                   (float)(0x1.c000000000000p+2f *
                           COERCE_FLOAT(LANES64(v69[7]).n64_u64[0]))) +
           (float)(0x1.8000000000000p+1f *
-                  COERCE_FLOAT(HIDWORD(*(_OWORD*)LANES64(v69[6]).n64_u64)));
+                  COERCE_FLOAT(DWORD3(*(_OWORD*)LANES64(v69[6]).n64_u64)));
       PSEUDO_LOW_LANE64(v74, n64_u64, LANES64(v69[4]).n64_u64[0]);
       v75 = ((v71 << 12) - 0x61C8864680B583EBLL + (v71 >> 4) +
              LANES64(v69[2]).n64_u32[0]) ^

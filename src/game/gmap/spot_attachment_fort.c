@@ -62,6 +62,8 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void SpotAttachmentFort_DeletingDestructor(_QWORD* a1);
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 game_gmap_1340560_alt1(__int64 result, char, __n128,
                                long double) __asm__("game_gmap_1340560");
@@ -378,9 +380,12 @@ void game_gmap_SpotAttachmentFort_OnStartPhase(__int64 a1, double a2,
       v32_.v36 = GameData_1a83910;
       v32_.v37 = v19;
       v32_.v38 = v20;
-      v21 = Manager_bc6460_alt1(v18, (__int64)v32_.v32, 1),
-      v22 = COERCE_AS(__typeof__(v22),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v21 = ({
+        unsigned __int128 r_ =
+            Manager_bc6460_alt1_pair(v18, (__int64)v32_.v32, 1);
+        v22 = COERCE_AS(__typeof__(v22), (unsigned long long)(r_ >> 64));
+        (__int64*)(unsigned long long)r_;
+      });
       GameHr_14a10d0(&v25_.v25, (__int64)v21, v22, (__int64)&GameData_1a9f09e),
           v22 = COERCE_AS(__typeof__(v22),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -677,7 +682,7 @@ LABEL_23:
         result = v29;
       }
       else {
-        v28 = 1LL << -(char)__clz(v27 - 1);
+        v28 = 1LL << (-(char)__clz(v27 - 1) & 63);
         if (v27 >= 2) {
           v27 = v28;
         }

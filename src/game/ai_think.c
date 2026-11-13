@@ -27500,7 +27500,7 @@ __int64 AIThink_12870c0(int* a1, __int64 a2, unsigned int a3, __int64 a4,
                     v101_.v108 = v72;
                     LODWORD(v98) = v91_.v93;
                     DWORD2(v99) = 0;
-                    HIDWORD(v99) = v65;
+                    DWORD3(v99) = v65;
                     LODWORD(v100) = v64;
                     LODWORD(v99) = v91_.v97;
                     if ((AISupportSkillScope_11ff9b0(a2, &v113_.v113,
@@ -31931,7 +31931,7 @@ LABEL_22:
         result = std___1___next_prime(result);
       }
       else {
-        v24 = 1LL << -(char)__clz(result - 1);
+        v24 = 1LL << (-(char)__clz(result - 1) & 63);
         if (result >= 2) {
           result = v24;
         }

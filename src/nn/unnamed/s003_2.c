@@ -4480,7 +4480,7 @@ __int64 SdkHr_65f5c0(__int64 a1, __int64 a2, unsigned int a3,
   v7 = SdkRoutine_876430(a3);
   v11[0] = 0;
   *(_OWORD*)&v11[2] = 0u;
-  v11[1] = (char*)v11 - ((v7 + 15LL) & 0x1FFFFFFF0LL);
+  v11[1] = (_QWORD)__builtin_alloca((v7 + 15LL) & 0x1FFFFFFF0LL);
   LODWORD(v11[2]) = v7;
   result = SdkRoutine_876440(a2, a3, v11, &v12);
   if ((_DWORD)result == 0) {

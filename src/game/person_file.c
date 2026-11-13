@@ -874,7 +874,7 @@ __int64 game_PersonFile_OnBuild(_QWORD* a1)
           v82 = std___1___next_prime(v82);
         }
         else {
-          v83 = 1LL << -(char)__clz(v82 - 1);
+          v83 = 1LL << (-(char)__clz(v82 - 1) & 63);
           if (v82 >= 2) {
             v82 = v83;
           }
@@ -1098,7 +1098,7 @@ __int64 game_PersonFile_OnBuild(_QWORD* a1)
                 v118 = std___1___next_prime(v118);
               }
               else {
-                v119 = 1LL << -(char)__clz(v118 - 1);
+                v119 = 1LL << (-(char)__clz(v118 - 1) & 63);
                 if (v118 >= 2) {
                   v118 = v119;
                 }
@@ -1418,7 +1418,7 @@ __int64 game_PersonFile_OnBuild(_QWORD* a1)
             v235 = std___1___next_prime(v235);
           }
           else {
-            v236 = 1LL << -(char)__clz(v235 - 1);
+            v236 = 1LL << (-(char)__clz(v235 - 1) & 63);
             if (v235 >= 2) {
               v235 = v236;
             }
@@ -2697,7 +2697,7 @@ LABEL_22:
         result = (unsigned int*)std___1___next_prime(result);
       }
       else {
-        v27 = 1LL << -(char)__clz((unsigned __int64)result - 1);
+        v27 = 1LL << (-(char)__clz((unsigned __int64)result - 1) & 63);
         if ((unsigned __int64)result >= 2) {
           result = (unsigned int*)v27;
         }

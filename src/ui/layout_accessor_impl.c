@@ -145,6 +145,9 @@ char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
                               char) __asm__("GameRoutine_a4dbe0");
 const char*
 GameRoutine_15623e0_alt1(__int64*, const char*) __asm__("GameRoutine_15623e0");
+unsigned __int128
+GameRoutine_15623e0_alt1_pair(__int64*,
+                              const char*) __asm__("GameRoutine_15623e0");
 int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
 unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 void GameRoutine_156c5d0_alt1(__int64, __int64,
@@ -1863,9 +1866,11 @@ __int64 LayoutAccessor_15625b0(__int64* a1, const char* a2, char a3)
   if (a1[5] == 0) {
     return 0;
   }
-  v14[0] = (__int64)GameRoutine_15623e0_alt1(a1, a2),
-  v6 = COERCE_AS(__typeof__(v6),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v14[0] = (__int64)({
+    unsigned __int128 r_ = GameRoutine_15623e0_alt1_pair(a1, a2);
+    v6 = COERCE_AS(__typeof__(v6), (unsigned long long)(r_ >> 64));
+    (const char*)(unsigned long long)r_;
+  });
   v14[1] = v6;
   v7 = LayoutAccessor_1564a20((__int64)(a1 + 3), v14),
   v6 = COERCE_AS(__typeof__(v6),
@@ -1991,9 +1996,11 @@ LABEL_16:
     if (v3[5] == 0) {
       goto LABEL_20;
     }
-    v17[0] = (__int64)GameRoutine_15623e0_alt1(v3, a2),
-    v10 = COERCE_AS(__typeof__(v10),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v17[0] = (__int64)({
+      unsigned __int128 r_ = GameRoutine_15623e0_alt1_pair(v3, a2);
+      v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+      (const char*)(unsigned long long)r_;
+    });
     v17[1] = v10;
     v11 = LayoutAccessor_1564b20((__int64)(v3 + 3), v17),
     v10 = COERCE_AS(__typeof__(v10),
@@ -2114,9 +2121,11 @@ __int64 LayoutAccessor_1562f00(__int64 result, const char* a2, float a3)
   }
 LABEL_16:
   if (v4[5] != 0) {
-    v16[0] = (__int64)GameRoutine_15623e0_alt1(v4, v11),
-    v13 = COERCE_AS(__typeof__(v13),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v16[0] = (__int64)({
+      unsigned __int128 r_ = GameRoutine_15623e0_alt1_pair(v4, v11);
+      v13 = COERCE_AS(__typeof__(v13), (unsigned long long)(r_ >> 64));
+      (const char*)(unsigned long long)r_;
+    });
     v16[1] = v13;
     result = LayoutAccessor_1564a20((__int64)(v4 + 3), v16),
     v13 = COERCE_AS(__typeof__(v13),
@@ -2208,9 +2217,11 @@ __int64 LayoutAccessor_1563030(__int64 result, const char* a2, char a3)
   }
 LABEL_16:
   if (v4[5] != 0) {
-    v19[0] = (__int64)GameRoutine_15623e0_alt1(v4, a2),
-    v12 = COERCE_AS(__typeof__(v12),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v19[0] = (__int64)({
+      unsigned __int128 r_ = GameRoutine_15623e0_alt1_pair(v4, a2);
+      v12 = COERCE_AS(__typeof__(v12), (unsigned long long)(r_ >> 64));
+      (const char*)(unsigned long long)r_;
+    });
     v19[1] = v12;
     result = LayoutAccessor_1564b20((__int64)(v4 + 3), v19),
     v12 = COERCE_AS(__typeof__(v12),

@@ -470,7 +470,7 @@ void game_anonymous_1261f00(__int64 a1, unsigned __int64 a2)
     v12 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
                          *(float*)(a1 + 32));
     if (v11) {
-      v24 = 1LL << -(char)__clz(v12 - 1);
+      v24 = 1LL << (-(char)__clz(v12 - 1) & 63);
       if (v12 >= 2) {
         v12 = v24;
       }

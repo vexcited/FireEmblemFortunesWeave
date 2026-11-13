@@ -775,7 +775,7 @@ __int64 BasicSound_280a00(__int64 a1)
             v67_.v68 = v25;
             v27 = *(_DWORD*)(a1 + 128);
             LODWORD(v25) = *(_DWORD*)(a1 + 132);
-            HIDWORD(v67_.v67) = v26;
+            DWORD3(v67_.v67) = v26;
             v67_.v69 = v25;
             v67_.v70 = v27;
             v28 = -24;
@@ -847,7 +847,7 @@ __int64 BasicSound_280a00(__int64 a1)
           *(_QWORD*)(a1 + 108) = *(_QWORD*)((char*)&v67_.v67 + 4);
           v37 = v67_.v68;
           *(_DWORD*)(a1 + 104) = v36;
-          v38 = HIDWORD(v67_.v67);
+          v38 = DWORD3(v67_.v67);
           *(_QWORD*)(a1 + 120) = v37;
           LODWORD(v37) = v67_.v69;
           v39 = v67_.v70;

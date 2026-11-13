@@ -11,6 +11,8 @@ __attribute__((swiftcall)) void game_1366bd0(PSEUDO_X8, __int64, __int64,
                                              __int64);
 __attribute__((swiftcall)) void game_cmdbtl_f901d0(PSEUDO_X8, float, float);
 __int64* GameRoutine_14a5400(__int64, __int64);
+unsigned __int128
+GameRoutine_14a5400_pair(__int64, __int64) __asm__("GameRoutine_14a5400");
 __int64* llvm_libcxx_21_libcxx_include___vector_a583e0(__int64* result, __int64,
                                                        char, char, int, float);
 __int64 GameHr_1562680(__int64 result, const char*, float);
@@ -1652,7 +1654,7 @@ LABEL_22:
         result = v42;
       }
       else {
-        v30 = 1LL << -(char)__clz(v29 - 1);
+        v30 = 1LL << (-(char)__clz(v29 - 1) & 63);
         if (v29 >= 2) {
           v29 = v30;
         }
@@ -2031,7 +2033,7 @@ LABEL_41:
         v45 = std___1___next_prime(v45);
       }
       else {
-        v46 = 1LL << -(char)__clz(v45 - 1);
+        v46 = 1LL << (-(char)__clz(v45 - 1) & 63);
         if (v45 >= 2) {
           v45 = v46;
         }
@@ -2381,7 +2383,7 @@ LABEL_41:
         v37 = std___1___next_prime(v37);
       }
       else {
-        v38 = 1LL << -(char)__clz(v37 - 1);
+        v38 = 1LL << (-(char)__clz(v37 - 1) & 63);
         if (v37 >= 2) {
           v37 = v38;
         }
@@ -2458,9 +2460,11 @@ __int64* game_templates_14a51c0(__int64 a1, __int64* a2, __int64* a3)
   game_templates_14a52c0((void*)(&v15_.v15), a1, a2, a3),
       v5 = COERCE_AS(__typeof__(v5),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  result = GameRoutine_14a5400(a1, v15_.v15),
-  v5 = COERCE_AS(__typeof__(v5),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = ({
+    unsigned __int128 r_ = GameRoutine_14a5400_pair(a1, v15_.v15);
+    v5 = COERCE_AS(__typeof__(v5), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   if ((v5 & 1) == 0) {
     v6 = v15_.v15;
     v15_.v15 = 0;

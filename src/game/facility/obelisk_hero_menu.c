@@ -91,6 +91,8 @@ __attribute__((swiftcall)) void
 LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
                             const char*) __asm__("LayoutAccessor_1560070");
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_1562680(__int64 result, const char*, float);
 __int64
 LayoutAccessor_1562cf0_alt1(__int64 result,
@@ -617,10 +619,12 @@ __int64 ObeliskHeroMenu_1662b20(__int64 result)
     v19_.v24 = v4;
     v19_.v20 = 9;
     v19_.v19[2] = "UI_Deco_CharaChoice_Sand";
-    v6 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v19_.v19,
-                        0),
-    v7 = COERCE_AS(__typeof__(v7),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v6 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(
+          *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v19_.v19, 0);
+      v7 = COERCE_AS(__typeof__(v7), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v17_.v17, (__int64)v6, v7, (__int64)&GameData_1a9f09e),
         v7 = COERCE_AS(__typeof__(v7),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

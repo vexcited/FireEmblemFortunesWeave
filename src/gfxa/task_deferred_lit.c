@@ -695,7 +695,7 @@ __int64 TaskDeferredLit_b57f50(unsigned int* a1, _QWORD* a2, __int64 a3)
                           COERCE_AS(float32x2_t, LANES128(v69).n128_u64[0])))
                 .n64_u32[0];
         v60 = COERCE_LONG_DOUBLE(vmulq_f32(v54[5], vdupq_n_s32(0x3C23D70Au)));
-        HIDWORD(v60) = 0;
+        DWORD3(v60) = 0;
         v131 = v60;
       }
       else {
@@ -707,7 +707,7 @@ __int64 TaskDeferredLit_b57f50(unsigned int* a1, _QWORD* a2, __int64 a3)
         v31 = v58;
         v56 = *(_DWORD*)(*(_QWORD*)a1 + 13240LL);
         v60 = COERCE_LONG_DOUBLE(vmulq_f32(v54[5], vdupq_n_s32(0x3C23D70Au)));
-        HIDWORD(v60) = 0;
+        DWORD3(v60) = 0;
         v131 = v60;
         if ((unsigned int)(v56 - 3) > 3) {
           goto LABEL_49;

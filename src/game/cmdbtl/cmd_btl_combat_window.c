@@ -198,6 +198,8 @@ __int64 LayoutAccessor_1563280_alt1(__int64*, __int64,
 float LayoutAccessor_15637c0(__int64*, __int64, char);
 __int64 CmdBtlCombatWindow_17c3690(__int64 a1, int a2);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_155f760(__int64, __int64, const char*);
 char* game_util_Format(const char*, ...);
@@ -453,7 +455,7 @@ __int64 CmdBtlCombatWindow_17c1f00(__int64 result, long double a2)
       else {
         a2 = *(long double*)(v5 + 208);
       }
-      LODWORD(a2) = HIDWORD(a2);
+      LODWORD(a2) = DWORD3(a2);
       if (*((float*)&a2 + 3) != 1.0) {
       LABEL_20:
         if ((*(_BYTE*)(v2 + 296) & 1) == 0) {
@@ -466,7 +468,7 @@ __int64 CmdBtlCombatWindow_17c1f00(__int64 result, long double a2)
       *(__n128*)&a2 = ((__n128 (*)(unsigned __int64, float)) *
                        (_QWORD*)(*(_QWORD*)(v5 + 160) + 16LL))(
           v5 + 160, *((float*)&a2 + 3));
-      LODWORD(a2) = HIDWORD(a2);
+      LODWORD(a2) = DWORD3(a2);
       v6 = (_BYTE*)(v2 + 296);
       if (*((float*)&a2 + 3) != 1.0) {
         if ((*v6 & 1) != 0) {
@@ -1185,9 +1187,11 @@ __int64 CmdBtlCombatWindow_17c2c40(__int64 a1, unsigned int a2)
     v27_.v33 = *(_QWORD*)GameData_212c540;
     v27_.v34 = v23;
     v27_.v29 = "UI_Deco_HPStock_Erase";
-    v24 = Manager_bc6460(v22, (__int64)&v27_.v27, 1),
-    v25 = COERCE_AS(__typeof__(v25),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v24 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(v22, (__int64)&v27_.v27, 1);
+      v25 = COERCE_AS(__typeof__(v25), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v27_.v27, (__int64)v24, v25, (__int64)&GameData_1a9f09e),
         v25 = COERCE_AS(__typeof__(v25),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

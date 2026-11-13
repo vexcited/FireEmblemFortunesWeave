@@ -178,6 +178,8 @@ __int64* Seq_1153800(__int64 a1, __int64 a2);
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int16* game_8697c0(__int16* result, char, float);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_f41c80();
 __int64 GameRoutine_14a1390_alt2(__int64*, char) __asm__("GameRoutine_14a1390");
 __int64 GameRoutine_60a020_alt2(__int64,
@@ -1348,10 +1350,12 @@ __int64 Seq_114d0d0(__int64 a1, char a2)
     v23_.v30 = v11;
     v23_.v31 = v23_.v27;
     v23_.v32 = v10;
-    v13 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                         (__int64)&v23_.v23, 0),
-    v14 = COERCE_AS(__typeof__(v14),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v13 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(
+          *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)&v23_.v23, 0);
+      v14 = COERCE_AS(__typeof__(v14), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v21_.v21, (__int64)v13, v14, (__int64)&GameData_1a9f09e),
         v14 = COERCE_AS(__typeof__(v14),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -5059,7 +5063,7 @@ LABEL_40:
         v32 = std___1___next_prime(v32);
       }
       else {
-        v33 = 1LL << -(char)__clz(v32 - 1);
+        v33 = 1LL << (-(char)__clz(v32 - 1) & 63);
         if (v32 >= 2) {
           v32 = v33;
         }

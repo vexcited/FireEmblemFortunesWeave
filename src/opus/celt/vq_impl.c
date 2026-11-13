@@ -672,7 +672,7 @@ __int64 vq_2e6d80(__int64 result, int a2, int a3, int a4, int a5, int a6)
       goto LABEL_13;
     }
     v22 = __clz(a4 & -a4);
-    v21 = ((unsigned int)SdkData_e877c0[(unsigned int)a4 >> -v22] *
+    v21 = ((unsigned int)SdkData_e877c0[(unsigned int)a4 >> (-v22 & 31)] *
            (unsigned __int64)((unsigned int)a2 >> ~v22)) >>
           32;
     if (a2 - a4 * (int)v21 >= (unsigned int)a4) {

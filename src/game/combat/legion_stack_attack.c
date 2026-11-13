@@ -170,7 +170,7 @@ __int64 (***LegionStackAttack_Unknown2(__int64 a1))()
     if (((unsigned int)(v1 - 603384300) > 0x12 ||
          ((1 << (v1 + 20)) & 0x40007) == 0) &&
         ((unsigned int)(v1 - 603384486) > 0x12 ||
-         ((1 << (v1 + 90)) & 0x40007) == 0)) {
+         ((1 << ((v1 + 90) & 31)) & 0x40007) == 0)) {
       goto LABEL_24;
     }
   LABEL_19:

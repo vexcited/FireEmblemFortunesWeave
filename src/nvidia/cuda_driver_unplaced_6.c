@@ -913,7 +913,7 @@ __int64 cuda_driver_da010(__int64 a1, __int128* a2, __int64 a3)
         (_QWORD)v13_.v15);
     return 5;
   }
-  if (*(_DWORD*)(v5 + 12) == HIDWORD(v13_.v13) &&
+  if (*(_DWORD*)(v5 + 12) == DWORD3(v13_.v13) &&
       *(_OWORD*)(v5 + 16) == v13_.v14) {
     if (*(_QWORD*)v5 == (_QWORD)v13_.v13 &&
         *(_DWORD*)(v5 + 8) == DWORD2(v13_.v13)) {

@@ -308,7 +308,7 @@ __int64 SdkHr_65d550(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
     else {
       v24 = 1;
     }
-    HIDWORD(v87) = 0;
+    DWORD3(v87) = 0;
     v88[0] = 0;
     *(_QWORD*)&v88[16] = 0;
     *(_WORD*)&v88[24] = 0;
@@ -326,7 +326,7 @@ __int64 SdkHr_65d550(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
       *(_DWORD*)&v86[16] = 0x20000;
       LODWORD(v87) = v24;
       *(_QWORD*)((char*)&v87 + 4) = *(_QWORD*)(a1 + 56);
-      HIDWORD(v87) = 6656;
+      DWORD3(v87) = 6656;
       if ((unsigned int)SdkRoutine_86ad00(
               *(_QWORD*)(*(_QWORD*)(a1 + 8) + 2544LL), &v86[4], a1 + 88) != 0) {
         goto LABEL_35;

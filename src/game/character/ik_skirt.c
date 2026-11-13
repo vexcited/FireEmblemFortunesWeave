@@ -939,7 +939,7 @@ __attribute__((swiftcall)) void IKSkirt_fc5ce0(PSEUDO_X8 x8_, __int64 a1,
   *(float*)&v26 = *(float*)&v18 / v21;
   *((float*)&v26 + 1) = v24;
   *((_QWORD*)&v26 + 1) = v25;
-  HIDWORD(v27) = 0;
+  DWORD3(v27) = 0;
   *(float*)&v27 = *(float*)&v19 / v22;
   v139_.v139 = v23;
   v139_.v140 = v26;
@@ -995,7 +995,7 @@ __attribute__((swiftcall)) void IKSkirt_fc5ce0(PSEUDO_X8 x8_, __int64 a1,
   *(float*)&v38 = *(float*)&v30 / v33;
   *((float*)&v38 + 1) = v36;
   *((_QWORD*)&v38 + 1) = v37;
-  HIDWORD(v39) = 0;
+  DWORD3(v39) = 0;
   *(float*)&v39 = *(float*)&v31 / v34;
   v139_.v139 = v35;
   v139_.v140 = v38;
@@ -1041,7 +1041,7 @@ __attribute__((swiftcall)) void IKSkirt_fc5ce0(PSEUDO_X8 x8_, __int64 a1,
       (float)(vmuls_lane_f32(*((float*)&v43 + 1), *(float32x2_t*)&v43, 1) +
               (float)(*(float*)&v43 * *(float*)&v43)) +
       (float)(*((float*)&v43 + 2) * *((float*)&v43 + 2)));
-  HIDWORD(v48) = 0;
+  DWORD3(v48) = 0;
   LANES128(v44).n128_f32[0] = *(float*)&v41 / v45;
   LANES128(v44).n128_f32[1] = *((float*)&v41 + 1) / v45;
   LANES128(v44).n128_f32[2] = *((float*)&v41 + 2) / v45;
@@ -1185,7 +1185,7 @@ __attribute__((swiftcall)) void IKSkirt_fc5ce0(PSEUDO_X8 x8_, __int64 a1,
         (float)(vmuls_lane_f32(*((float*)&v71 + 1), *(float32x2_t*)&v71, 1) +
                 (float)(*(float*)&v71 * *(float*)&v71)) +
         (float)(*((float*)&v71 + 2) * *((float*)&v71 + 2)));
-    HIDWORD(v76) = 0;
+    DWORD3(v76) = 0;
     LANES128(v72).n128_f32[0] = *(float*)&v69 / v73;
     LANES128(v72).n128_f32[1] = *((float*)&v69 + 1) / v73;
     LANES128(v72).n128_f32[2] = *((float*)&v69 + 2) / v73;

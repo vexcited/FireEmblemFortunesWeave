@@ -35,6 +35,9 @@ __int64 GameRoutine_631500_alt1(__int64 result,
 __int64 GameRoutine_634d80_alt1(__int64, __int64) __asm__("GameRoutine_634d80");
 __int64 GameRoutine_635a60_alt1(__int64, __int64*, char, char, __int64,
                                 __int64) __asm__("GameRoutine_635a60");
+unsigned __int128
+GameRoutine_635a60_alt1_pair(__int64, __int64*, char, char, __int64,
+                             __int64) __asm__("GameRoutine_635a60");
 __int64 fw_memory_HeapManager_Allocate_alt1(
     __int64, __int64, __int64,
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
@@ -169,9 +172,12 @@ __int64 Resource_Unknown2(__int64 a1)
     v34_.v38 = &v34_.v34;
     v34_.v36 = v7;
     v34_.v37 = &v39_.v39;
-    v9 = GameRoutine_635a60_alt1(v7, v29_.v29, 0, 0, 0, (__int64)&v34_.v34),
-    v8 = COERCE_AS(__typeof__(v8),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v9 = ({
+      unsigned __int128 r_ = GameRoutine_635a60_alt1_pair(v7, v29_.v29, 0, 0, 0,
+                                                          (__int64)&v34_.v34);
+      v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     v10 = v8;
     if (v34_.v38 == &v34_.v34) {
       v11 = 4;

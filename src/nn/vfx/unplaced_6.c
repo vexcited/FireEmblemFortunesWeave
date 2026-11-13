@@ -880,7 +880,7 @@ float nn_vfx_5ce320(__int64 a1, __int64 a2, __int64 a3, float* a4, char a5)
         }
         else {
           v130 = *(_OWORD*)(*(_QWORD*)(a2 + 16) + 848LL);
-          HIDWORD(v130) = 0;
+          DWORD3(v130) = 0;
         }
         *(_OWORD*)(v26 + 64) = v130;
         v371 = (__typeof__(v371)){0};
@@ -1941,7 +1941,7 @@ LABEL_66:
   }
   else {
     v226 = *(_OWORD*)(*(_QWORD*)(a2 + 16) + 848LL);
-    HIDWORD(v226) = 0;
+    DWORD3(v226) = 0;
   }
   *(_OWORD*)(v26 + 64) = v226;
   v227 = (float32x4_t*)(v26 + 64);

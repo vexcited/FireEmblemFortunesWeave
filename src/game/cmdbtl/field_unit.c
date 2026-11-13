@@ -207,7 +207,7 @@ void FieldUnit_1015950(__int64 a1, long double a2)
       v15 = COERCE_FLOAT(*(_OWORD*)(v2 + 336)) == v14 &&
             COERCE_FLOAT(HIDWORD(*(_QWORD*)(v2 + 336))) == *(float*)&a2;
       v16 = v15 && COERCE_FLOAT(*(_QWORD*)(v2 + 344)) == v14;
-      if (!v16 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v2 + 336))) != v13) {
+      if (!v16 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v2 + 336))) != v13) {
         v18 = *(_DWORD*)(v2 + 296);
         *(float*)(v2 + 336) = v14;
         *(_DWORD*)(v2 + 340) = LODWORD(a2);

@@ -301,7 +301,7 @@ LABEL_40:
         v29 = std___1___next_prime(v29);
       }
       else {
-        v30 = 1LL << -(char)__clz(v29 - 1);
+        v30 = 1LL << (-(char)__clz(v29 - 1) & 63);
         if (v29 >= 2) {
           v29 = v30;
         }

@@ -295,7 +295,7 @@ void CalendarDetailFile_12c7260(__int64 a1)
                 v42 = std___1___next_prime_alt1(v42);
               }
               else {
-                v43 = 1LL << -(char)__clz(v42 - 1);
+                v43 = 1LL << (-(char)__clz(v42 - 1) & 63);
                 if (v42 >= 2) {
                   v42 = v43;
                 }

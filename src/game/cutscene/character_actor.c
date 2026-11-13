@@ -130,6 +130,9 @@ __int64 CharacterActor_1805160(__int64 a1);
 void CharacterActor_Unknown9(__int64 a1, __int64 a2);
 _QWORD* game_cutscene_CharaLocalWindAccessor_Start(_QWORD**);
 __int64 game_cutscene_17ffec0(__int64 result, __int64, __int64);
+unsigned __int128
+game_cutscene_17ffec0_pair(__int64 result, __int64,
+                           __int64) __asm__("game_cutscene_17ffec0");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
@@ -3229,7 +3232,7 @@ LABEL_20:
       v57 = COERCE_FLOAT(*(_OWORD*)(v34 + 336)) == v54 &&
             COERCE_FLOAT(HIDWORD(*(_QWORD*)(v34 + 336))) == v55;
       v58 = v57 && COERCE_FLOAT(*(_QWORD*)(v34 + 344)) == *(float*)&a2;
-      if (!v58 || COERCE_FLOAT(HIDWORD(*(_OWORD*)(v34 + 336))) != v56) {
+      if (!v58 || COERCE_FLOAT(DWORD3(*(_OWORD*)(v34 + 336))) != v56) {
         v60 = *(_DWORD*)(v34 + 296);
         *(float*)(v34 + 336) = v54;
         *(float*)(v34 + 340) = v55;
@@ -3724,9 +3727,12 @@ LABEL_145:
           v127 = v125 >> 1;
           v128 = v126 ? v111 + 105 : *(_QWORD*)(v111 + 120);
           v129 = v126 ? v127 : *(_QWORD*)(v111 + 112);
-          v139_.v139 = game_cutscene_17ffec0(*(_QWORD*)(a1 + 272), v128, v129),
-          v130 = COERCE_AS(__typeof__(v130),
-                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+          v139_.v139 = ({
+            unsigned __int128 r_ =
+                game_cutscene_17ffec0_pair(*(_QWORD*)(a1 + 272), v128, v129);
+            v130 = COERCE_AS(__typeof__(v130), (unsigned long long)(r_ >> 64));
+            (__int64)(unsigned long long)r_;
+          });
           LODWORD(v139_.v140) = v130;
           if (v139_.v139 == 0 || v130 == -1) {
           LABEL_205:

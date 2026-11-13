@@ -21,6 +21,8 @@ __int64 nn_os_SleepThread(_QWORD);
 extern _UNKNOWN* GameData_2135058;
 extern char* GameData_2135060;
 unsigned __int64 SoundArchivePlayer_27dc10();
+unsigned __int128
+SoundArchivePlayer_27dc10_pair() __asm__("SoundArchivePlayer_27dc10");
 __int64 SequenceSoundRuntime_291e40_alt1(
     __int64 a1, int a2, int a3, _BYTE* a4,
     __int64 a5) __asm__("SequenceSoundRuntime_291e40");
@@ -65,9 +67,11 @@ __int64 SequenceSoundRuntime_291e40(_QWORD* a1, int a2, int a3, _BYTE* a4,
   if ((*a4 & 0x3F) != 0) {
     return 0;
   }
-  v26_.v26 = SoundArchivePlayer_27dc10(),
-  v13 = COERCE_AS(__typeof__(v13),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v26_.v26 = ({
+    unsigned __int128 r_ = SoundArchivePlayer_27dc10_pair();
+    v13 = COERCE_AS(__typeof__(v13), (unsigned long long)(r_ >> 64));
+    (unsigned __int64)(unsigned long long)r_;
+  });
   v26_.v27 = v13;
   v14 = BaseNx_2832c0((unsigned int*)&v26_.v26, 1),
   v13 = COERCE_AS(__typeof__(v13),

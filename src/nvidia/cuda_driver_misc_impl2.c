@@ -43,7 +43,7 @@ __int64 cuda_driver_misc_helpers_ded50(_QWORD, _QWORD, _QWORD);
 __int64 cuda_driver_misc_helpers_ded50_alt1(
     __int64, __int64*, unsigned int) __asm__("cuda_driver_misc_helpers_ded50");
 __int64 cuda_driver_misc_helpers_deeb0(_QWORD, _QWORD);
-bool CudaDriverRoutine_d47e0(__int64);
+unsigned __int8 CudaDriverRoutine_d47e0(__int64);
 extern _DWORD CudaDriverData_1432ddc;
 extern _UNKNOWN* CudaDriverData_1422118;
 extern __int64 (*CudaDriverData_1423270[3])();

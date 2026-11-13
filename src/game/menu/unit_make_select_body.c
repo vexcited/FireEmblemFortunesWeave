@@ -526,7 +526,7 @@ __int64 UnitMakeSelectBody_179a240(__int64 a1)
                               0x1.18bc4e0000000p-2f) +
                       0x1.0000000000000p+0f) *
               0x1.0a3d700000000p+0f);
-  HIDWORD(v15) = 0;
+  DWORD3(v15) = 0;
   v21_.v21 = v15;
   v21_.v22 = v14;
   GameRoutine_179ac50_alt1(a1, (__int64)&v21_.v21, 11);
@@ -681,7 +681,7 @@ __int64 UnitMakeSelectBody_179a4c0(__int64 a1)
                               0x1.3f6a1e0000000p-4f) +
                       0x1.0000000000000p+0f) *
               0x1.0a3d700000000p+0f);
-  HIDWORD(v15) = 0;
+  DWORD3(v15) = 0;
   v23_.v23 = v15;
   v23_.v24 = v14;
   GameRoutine_179ac50_alt1(a1, (__int64)&v23_.v23, 11);

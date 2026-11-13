@@ -114,7 +114,7 @@ void Cursor_730b20(__int64 a1, int a2, int a3)
 
   v3 = *(_QWORD*)(a1 + 48);
   DWORD1(v4) = 0;
-  HIDWORD(v4) = 0;
+  DWORD3(v4) = 0;
   *(float*)&v4 = (float)((float)((float)(a2 + 256) * 5.0f) + 2.5f) + -1280.0f;
   v5 = (float)(*(float*)&v4 + 1280.0f) * 0.2f;
   v6 = (float)((float)((float)((float)((float)(a3 + 256) * 5.0f) + 2.5f) +
@@ -128,7 +128,7 @@ void Cursor_730b20(__int64 a1, int a2, int a3)
   v17 = v4;
   GameRoutine_734a80(v3 + 16, &v17);
   DWORD1(v7) = 0;
-  HIDWORD(v7) = 0;
+  DWORD3(v7) = 0;
   *(float*)&v7 = (float)((float)((float)(int)v5 * 5.0f) + 2.5f) + -1280.0f;
   *((float*)&v7 + 2) =
       (float)((float)((float)(int)v6 * 5.0f) + 2.5f) + -1280.0f;
@@ -184,7 +184,7 @@ void Cursor_730cb0(__int64 a1, char* a2)
   v2 = a2[1];
   v3 = *(_QWORD*)(a1 + 48);
   DWORD1(v4) = 0;
-  HIDWORD(v4) = 0;
+  DWORD3(v4) = 0;
   *(float*)&v4 =
       (float)((float)((float)(unsigned int)(*a2 + 256) * 5.0f) + 2.5f) +
       -1280.0f;
@@ -202,7 +202,7 @@ void Cursor_730cb0(__int64 a1, char* a2)
   v17 = v4;
   GameRoutine_734a80(v3 + 16, &v17);
   DWORD1(v7) = 0;
-  HIDWORD(v7) = 0;
+  DWORD3(v7) = 0;
   *(float*)&v7 = (float)((float)((float)(int)v5 * 5.0f) + 2.5f) + -1280.0f;
   *((float*)&v7 + 2) =
       (float)((float)((float)(int)v6 * 5.0f) + 2.5f) + -1280.0f;
@@ -260,7 +260,7 @@ void Cursor_730e40(__int64 a1, __int64 a2)
     if (v9 != 0 && *(unsigned __int8*)(v9 + 16) <= 3u) {
       v10 = *(char*)(a2 + 585);
       DWORD1(v12) = 0;
-      HIDWORD(v12) = 0;
+      DWORD3(v12) = 0;
       *(float*)&v12 =
           (float)((float)((float)(unsigned int)(*(char*)(a2 + 584) + 256) *
                           0x1.4000000000000p+2f) +
@@ -283,7 +283,7 @@ void Cursor_730e40(__int64 a1, __int64 a2)
       *(_DWORD*)(a1 + 12) = (int)v14 - 256;
       Cursor_734a80(a1 + 16, (__int64*)&v25);
       DWORD1(v15) = 0;
-      HIDWORD(v15) = 0;
+      DWORD3(v15) = 0;
       *(float*)&v15 = (float)((float)((float)(int)v13 * 0x1.4000000000000p+2f) +
                               0x1.4000000000000p+1f) +
                       -0x1.4000000000000p+10f;
@@ -542,9 +542,9 @@ float* Cursor_731180(float* result)
       v63 = v80;
       v62 = v81;
       v64 = v79;
-      HIDWORD(v62) = 0;
-      HIDWORD(v63) = 0;
-      HIDWORD(v64) = 0;
+      DWORD3(v62) = 0;
+      DWORD3(v63) = 0;
+      DWORD3(v64) = 0;
       v65 = *(_QWORD*)&v6[8 * (v14 / 0x33)] + 80 * (v14 % 0x33);
       *(_QWORD*)v65 = v1;
       *(_OWORD*)(v65 + 16) = v63;
@@ -2871,7 +2871,7 @@ __int64 Cursor_Unknown9(__int64 a1, __int64 a2)
   v2 = *(int*)(a2 + 20);
   v3 = *(_QWORD*)(a2 + 8);
   DWORD1(v5) = 0;
-  HIDWORD(v5) = 0;
+  DWORD3(v5) = 0;
   *(_DWORD*)(a2 + 20) = v2 + 1;
   v6 = *(unsigned __int8*)(v3 + v2);
   *(_DWORD*)(a2 + 20) = v2 + 2;
@@ -2898,7 +2898,7 @@ __int64 Cursor_Unknown9(__int64 a1, __int64 a2)
   v25 = v5;
   Cursor_734a80(v7 + 16, (__int64*)&v25);
   DWORD1(v10) = 0;
-  HIDWORD(v10) = 0;
+  DWORD3(v10) = 0;
   *(float*)&v10 = (float)((float)((float)(int)v8 * 0x1.4000000000000p+2f) +
                           0x1.4000000000000p+1f) +
                   -0x1.4000000000000p+10f;
@@ -3676,7 +3676,7 @@ __int64 game_map_Cursor_Impl_Tick_closure_Invoke(__int64 a1, int* a2, int* a3,
   *(_QWORD*)&v10 = v15;
   *((float*)&v10 + 2) =
       (float)((float)((float)(v6 + 256) * 5.0) + 2.5) + -1280.0;
-  HIDWORD(v10) = 0;
+  DWORD3(v10) = 0;
   v15 = v10;
   v14 = v10;
   result = GameRoutine_734a80_alt1(v4 + 16, (__int64*)&v14);

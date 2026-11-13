@@ -1018,7 +1018,7 @@ __int64 graphics_68f9e0(__int64 result, double a2, double a3, int32x4_t a4)
           if ((v63 & 0x80) != 0) {
             v64 = *((_BYTE*)v23 + 408);
             v56 = v23[104] << v64;
-            v62 = 0xFFFFFFFF >> -*((_BYTE*)v23 + 409) << v64;
+            v62 = 0xFFFFFFFF >> (-*((_BYTE*)v23 + 409) & 31) << v64;
             if ((v63 & 4) == 0) {
               goto LABEL_91;
             }
@@ -1030,7 +1030,7 @@ __int64 graphics_68f9e0(__int64 result, double a2, double a3, int32x4_t a4)
             LABEL_91:
               if ((v63 & 8) != 0) {
                 v143 = *((_BYTE*)v23 + 312);
-                v144 = 0xFFFFFFFF >> -*((_BYTE*)v23 + 313) << v143;
+                v144 = 0xFFFFFFFF >> (-*((_BYTE*)v23 + 313) & 31) << v143;
                 v62 |= v144;
                 v56 = v56 & ~v144 | (v23[80] << v143);
                 if ((v63 & 0x10) == 0) {
@@ -1045,7 +1045,7 @@ __int64 graphics_68f9e0(__int64 result, double a2, double a3, int32x4_t a4)
                 goto LABEL_93;
               }
               v145 = *((_BYTE*)v23 + 432);
-              v146 = 0xFFFFFFFF >> -*((_BYTE*)v23 + 433) << v145;
+              v146 = 0xFFFFFFFF >> (-*((_BYTE*)v23 + 433) & 31) << v145;
               v62 |= v146;
               v56 = v56 & ~v146 | (v23[110] << v145);
               if ((v63 & 0x20) == 0) {
@@ -1062,14 +1062,14 @@ __int64 graphics_68f9e0(__int64 result, double a2, double a3, int32x4_t a4)
                 }
               LABEL_95:
                 v67 = *((_BYTE*)v23 + 468);
-                v68 = 0xFFFFFFFF >> -*((_BYTE*)v23 + 469) << v67;
+                v68 = 0xFFFFFFFF >> (-*((_BYTE*)v23 + 469) & 31) << v67;
                 v62 |= v68;
                 v56 = v56 & ~v68 | (v23[119] << v67);
                 goto LABEL_96;
               }
             LABEL_156:
               v147 = *((_BYTE*)v23 + 456);
-              v148 = 0xFFFFFFFF >> -*((_BYTE*)v23 + 457) << v147;
+              v148 = 0xFFFFFFFF >> (-*((_BYTE*)v23 + 457) & 31) << v147;
               v62 |= v148;
               v56 = v56 & ~v148 | (v23[116] << v147);
               v57 = v23[77];
@@ -1080,7 +1080,7 @@ __int64 graphics_68f9e0(__int64 result, double a2, double a3, int32x4_t a4)
             }
           }
           v65 = *((_BYTE*)v23 + 396);
-          v66 = 0xFFFFFFFF >> -*((_BYTE*)v23 + 397) << v65;
+          v66 = 0xFFFFFFFF >> (-*((_BYTE*)v23 + 397) & 31) << v65;
           v62 |= v66;
           v56 = v56 & ~v66 | (v23[101] << v65);
           goto LABEL_91;

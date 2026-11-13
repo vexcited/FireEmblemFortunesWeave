@@ -3695,7 +3695,7 @@ LABEL_41:
         v39 = std___1___next_prime(v39);
       }
       else {
-        v40 = 1LL << -(char)__clz(v39 - 1);
+        v40 = 1LL << (-(char)__clz(v39 - 1) & 63);
         if (v39 >= 2) {
           v39 = v40;
         }

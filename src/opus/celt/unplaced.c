@@ -714,12 +714,12 @@ unsigned __int64 opus_celt_2e2a60(__int64 a1, __int64 a2, _DWORD* a3,
   v151_.v156 = *(_QWORD*)(a1 + 8LL * a6 + 8);
   v151_.v154 = v17;
   v21 = 4LL * (v12 >> 1);
-  v22 = (void*)((char*)&v151_.v151 - ((v21 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v22 = __builtin_alloca((v21 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v22, nullptr, 4 * (v12 >> 1), a4),
       v25 = COERCE_AS(__typeof__(v25),
                       PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
   v23 = 8LL * (int)v19;
-  v24 = (void*)((char*)&v151_.v151 - ((v23 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v24 = __builtin_alloca((v23 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v24, nullptr, v23, v25),
       v25 = COERCE_AS(__typeof__(v25),
                       PSEUDO_REGISTER(unsigned long long, "x3", "=r"));
@@ -733,7 +733,7 @@ unsigned __int64 opus_celt_2e2a60(__int64 a1, __int64 a2, _DWORD* a3,
   if (v30 < 1) {
     v34 = v151_.v156;
     v38 = 0;
-    v36 = (_DWORD*)((char*)&v151_.v151 - ((v21 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+    v36 = (_DWORD*)v22;
     v39 = v19 - v30;
     if ((int)v19 - v30 > 0) {
       goto LABEL_21;
@@ -749,7 +749,7 @@ unsigned __int64 opus_celt_2e2a60(__int64 a1, __int64 a2, _DWORD* a3,
   if (v30 == 1) {
     v34 = v151_.v156;
     v35 = &v8[v33];
-    v36 = (_DWORD*)((char*)&v151_.v151 - ((v21 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+    v36 = (_DWORD*)v22;
     v37 = v35 - 1;
     if ((((_BYTE)v151_.v157 + 3) & 4) == 0) {
       goto LABEL_20;
@@ -776,7 +776,7 @@ unsigned __int64 opus_celt_2e2a60(__int64 a1, __int64 a2, _DWORD* a3,
   v151_.v152 = v20;
   v151_.v153 = v19;
   v47 = v8;
-  v48 = (_DWORD*)((char*)&v151_.v151 - ((v21 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v48 = (_DWORD*)v22;
   v49 = a2 - 12;
   v50 = v8 - 1;
   v51 = a2 + 4 * v20 + 8;

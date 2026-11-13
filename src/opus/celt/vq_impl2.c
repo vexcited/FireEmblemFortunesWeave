@@ -1503,7 +1503,7 @@ __int64 alg_quant(__int16* a1, int a2, int a3, int a4, int a5, __int64* a6,
   __int64 vars0;
 
   v9 = 4LL * a2;
-  v17 = (int*)((char*)&vars0 - ((v9 + 27) & 0xFFFFFFFFFFFFFFF0LL));
+  v17 = (int*)__builtin_alloca((v9 + 27) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v17, 0, v9 + 12);
   vq_3e6a0((__int64)a1, a2, 1, a5, a3, a4);
   v18 = MovieRoutine_3fca0(a1, v17, a3, a2);
@@ -1658,7 +1658,7 @@ __int64 alg_unquant(__int64 a1, int a2, int a3, int a4, int a5, __int64* a6,
   __int64 vars0;
 
   v9 = 4LL * a2;
-  v15 = (_DWORD*)((char*)&vars0 - ((v9 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v15 = (_DWORD*)__builtin_alloca((v9 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v15, 0, v9);
   v16 = opus_celt_372e0(v15, a2, a3, a6);
   v17 = 31 - __clz(v16);

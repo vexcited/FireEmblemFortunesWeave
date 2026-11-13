@@ -67,7 +67,7 @@ __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 wld_Crc32_alt1(int, unsigned __int8*,
                        unsigned __int64) __asm__("wld_Crc32");
-bool GameHr_be7140(_QWORD*, __int64*, __int64, char);
+__int64 GameHr_be7140(_QWORD*, __int64*, __int64, char);
 bool GameRoutine_ad7390(_QWORD*);
 extern __int64 (*GameData_2008ef0[])();
 int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
@@ -655,7 +655,7 @@ void CharacterFacialController_10b2650(__int64 a1, int a2, __n128 a3)
   }
   if (a2 <= -589947501) {
     if ((unsigned int)(a2 + 1193575789) <= 0x10 &&
-        ((1 << (a2 + 109)) & 0x10403) != 0) {
+        ((1 << ((a2 + 109) & 31)) & 0x10403) != 0) {
       goto LABEL_13;
     }
     if (a2 != -1101902990) {

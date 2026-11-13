@@ -91,6 +91,8 @@ TroopMgr_134b820_alt1(PSEUDO_X8, __int64) __asm__("TroopMgr_134b820");
 __attribute__((swiftcall)) void
 UnitActor_81d430_alt1(PSEUDO_X8, __int64) __asm__("UnitActor_81d430");
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
     "game_GameVariableTable_Find");
 __int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
@@ -961,10 +963,12 @@ void game_gmap_anonymous_1523820(__int64 a1, char a2)
           v12 = "Btl_Ish_Warp_Out";
         }
         v30_.v30[2] = v12;
-        v13 = Manager_bc6460_alt1(*(_QWORD**)eft_g_effectSystem_ptr[0],
-                                  (__int64)v30_.v30, 0),
-        v14 = COERCE_AS(__typeof__(v14),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v13 = ({
+          unsigned __int128 r_ = Manager_bc6460_alt1_pair(
+              *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v30_.v30, 0);
+          v14 = COERCE_AS(__typeof__(v14), (unsigned long long)(r_ >> 64));
+          (__int64*)(unsigned long long)r_;
+        });
         GameHr_14a10d0_alt1(&v28_.v28, (__int64)v13, v14,
                             (__int64)&GameData_1a9f09e),
             v14 = COERCE_AS(__typeof__(v14),
@@ -1444,9 +1448,11 @@ LABEL_19:
   v35_.v40 = *(_QWORD*)GameData_212c540;
   v35_.v41 = v27;
   v35_.v36 = "UI_Gmap_Icon_Exclamation";
-  v28 = Manager_bc6460_alt1(v26, (__int64)&v35_.v35, 1),
-  v29 = COERCE_AS(__typeof__(v29),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v28 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v26, (__int64)&v35_.v35, 1);
+    v29 = COERCE_AS(__typeof__(v29), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v35_.v35, (__int64)v28, v29, &GameData_1a9f09e),
       v29 = COERCE_AS(__typeof__(v29),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

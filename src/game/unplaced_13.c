@@ -2008,7 +2008,8 @@ void game_66f9a0(__int64 a1)
     memset(v18, 0, 8 * v19);
   }
   if ((v16 & 0x3F) != 0) {
-    *(_QWORD*)(v20 + 8 * v19) &= ~(0xFFFFFFFFFFFFFFFFLL >> -(v16 & 0x3F));
+    *(_QWORD*)(v20 + 8 * v19) &=
+        ~(0xFFFFFFFFFFFFFFFFLL >> (-(v16 & 0x3F) & 63));
   }
   v21 = v16 & 0x3F;
   if ((v16 & 0x3F) != 0) {
@@ -17126,7 +17127,7 @@ void game_1367b60(__int64 a1, _QWORD* a2)
             v37 = std___1___next_prime(v37);
           }
           else {
-            v38 = 1LL << -(char)__clz(v37 - 1);
+            v38 = 1LL << (-(char)__clz(v37 - 1) & 63);
             if (v37 >= 2) {
               v37 = v38;
             }

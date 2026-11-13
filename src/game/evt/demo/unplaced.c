@@ -308,6 +308,7 @@ __int64* GameHr_10aa000(__int64* result, _QWORD*);
 __int64* Registration_a4f800_alt1(__int64, const char*,
                                   int) __asm__("Registration_a4f800");
 __int64* Seq_1153800(__int64, __int64);
+unsigned __int128 Seq_1153800_pair(__int64, __int64) __asm__("Seq_1153800");
 __int64 GameRoutine_112180_alt1(__int64, __int64) __asm__("GameRoutine_112180");
 __int64
 GameRoutine_113c310_alt1(unsigned __int8*) __asm__("GameRoutine_113c310");
@@ -585,9 +586,11 @@ void game_evt_demo_114e5a0(__int64 a1, const char* a2)
     Seq_11536d0_alt1((void*)(&v12_.v12), a1 + 736, &v11, &v10),
         v3 = COERCE_AS(__typeof__(v3),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    Seq_1153800(a1 + 736, v12_.v12),
-        v3 = COERCE_AS(__typeof__(v3),
-                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    ({
+      unsigned __int128 r_ = Seq_1153800_pair(a1 + 736, v12_.v12);
+      v3 = COERCE_AS(__typeof__(v3), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     if ((v3 & 1) == 0) {
       v4 = v12_.v12;
       v12_.v12 = 0;
@@ -4901,10 +4904,10 @@ LABEL_165:
               v96 = 3;
               goto LABEL_194;
             }
-            HIDWORD(v98) = 0;
-            HIDWORD(v97) = 0;
+            DWORD3(v98) = 0;
+            DWORD3(v97) = 0;
             *(float*)&v98 = v111;
-            HIDWORD(v99) = 0;
+            DWORD3(v99) = 0;
             if ((v121_.v121[0] & 1) != 0) {
               v100 = v121_.v122;
             }
@@ -9898,7 +9901,7 @@ LABEL_41:
         v45 = std___1___next_prime_alt1(v45);
       }
       else {
-        v46 = 1LL << -(char)__clz(v45 - 1);
+        v46 = 1LL << (-(char)__clz(v45 - 1) & 63);
         if (v45 >= 2) {
           v45 = v46;
         }
@@ -10353,7 +10356,7 @@ LABEL_41:
         v45 = std___1___next_prime_alt1(v45);
       }
       else {
-        v46 = 1LL << -(char)__clz(v45 - 1);
+        v46 = 1LL << (-(char)__clz(v45 - 1) & 63);
         if (v45 >= 2) {
           v45 = v46;
         }
@@ -10724,7 +10727,7 @@ LABEL_41:
         v47 = std___1___next_prime_alt1(v47);
       }
       else {
-        v48 = 1LL << -(char)__clz(v47 - 1);
+        v48 = 1LL << (-(char)__clz(v47 - 1) & 63);
         if (v47 >= 2) {
           v47 = v48;
         }

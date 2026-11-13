@@ -40,6 +40,8 @@ game_ObjectInfoConst_CreateEffect_lambda1_Invoke(unsigned __int64 result,
 __attribute__((swiftcall)) void wld_bd3a40(PSEUDO_X8, __int64, __int64*);
 __int64** GameRoutine_14a1e70(__int64** result, float);
 __int64* Manager_bc6460(_QWORD*, float32x4_t*, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, float32x4_t*,
+                                      char) __asm__("Manager_bc6460");
 __int64* fw_containers_BalanceAfterInsert(__int64* result, __int64*);
 __int64 GameRoutine_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_bd16c0(_QWORD*, __int64**);
@@ -379,10 +381,12 @@ __int64* game_ObjectInfoConst_CreateEffect_lambda0_Invoke(__int64* result,
         v64_.v68 = GameData_21a6140;
         v64_.v69 = GameData_21a6120;
         v64_.v65 = v10;
-        v15 =
-            Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], &v64_.v64, 1),
-        v16 = COERCE_AS(__typeof__(v16),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v15 = ({
+          unsigned __int128 r_ = Manager_bc6460_pair(
+              *(_QWORD**)eft_g_effectSystem_ptr[0], &v64_.v64, 1);
+          v16 = COERCE_AS(__typeof__(v16), (unsigned long long)(r_ >> 64));
+          (__int64*)(unsigned long long)r_;
+        });
         GameRoutine_14a10d0(&v62_.v62, (__int64)v15, v16,
                             (__int64)&GameData_1a9f09e),
             v16 = COERCE_AS(__typeof__(v16),

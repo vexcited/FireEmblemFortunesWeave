@@ -2041,7 +2041,7 @@ unsigned __int64 RidePool_93d9e0(unsigned __int64 result)
           result = std___1___next_prime(result);
         }
         else {
-          v51 = 1LL << -(char)__clz(result - 1);
+          v51 = 1LL << (-(char)__clz(result - 1) & 63);
           if (result >= 2) {
             result = v51;
           }
@@ -2215,7 +2215,7 @@ LABEL_21:
         a1 = v21;
       }
       else {
-        v20 = 1LL << -(char)__clz(v19 - 1);
+        v20 = 1LL << (-(char)__clz(v19 - 1) & 63);
         if (v19 >= 2) {
           v19 = v20;
         }

@@ -19,6 +19,8 @@ __int64* GameHr_17ccf20(__int64, const char*);
 __int64* GameRoutine_1760e40(__int64, unsigned int);
 __int64* LayoutAccessor_155fbe0(__int64*, const char*);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64* SpineModel_64dde0(__int64*, __int64, unsigned __int64);
 __int64 Alignment_56b600(__int64 result);
 __int64 ControlCreator_13633c0(__int64 result);
@@ -3227,10 +3229,12 @@ void game_telop_17624c0(__int64* a1, int a2)
   v42_.v46 = v15;
   v42_.v47 = v14;
   v42_.v43 = 9;
-  v16 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v42_.v42,
-                       0),
-  v17 = COERCE_AS(__typeof__(v17),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v16 = ({
+    unsigned __int128 r_ = Manager_bc6460_pair(
+        *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v42_.v42, 0);
+    v17 = COERCE_AS(__typeof__(v17), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v39_.v39, (__int64)v16, v17, (__int64)&GameData_1a9f09e),
       v17 = COERCE_AS(__typeof__(v17),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

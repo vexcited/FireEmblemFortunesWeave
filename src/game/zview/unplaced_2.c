@@ -1129,7 +1129,7 @@ LABEL_2:
           *((float*)&v60 + 2) = v55;
         }
       LABEL_75:
-        HIDWORD(v60) = 0;
+        DWORD3(v60) = 0;
         v17 = 1;
         *v59 = v60;
         return v17 & 1;

@@ -164,9 +164,12 @@ __attribute__((swiftcall)) void fs_6427a0(PSEUDO_X8 x8_, unsigned int* a1,
                                           unsigned __int8 a5);
 __int64 fs_63e700(__int64 a1, unsigned __int64 a2, unsigned int a3);
 __int64 GameHr_639910(char*, _QWORD*);
+unsigned __int128 GameHr_639910_pair(char*, _QWORD*) __asm__("GameHr_639910");
 __int64 fs_638520(__int64**, const char**);
 __int64 fs_639590(__int64 result, char, __int64, int);
 unsigned __int8* fs_638380(unsigned __int8* result, unsigned __int8*, __int64);
+unsigned __int128 fs_638380_pair(unsigned __int8* result, unsigned __int8*,
+                                 __int64) __asm__("fs_638380");
 __int64 fs_63cc30(__int64 a1, unsigned __int8 a2);
 __int64 fs_63cee0(__int64 a1, __int64 a2);
 __int64 fs_63eef0(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
@@ -1600,9 +1603,11 @@ _BYTE* fs_638260(unsigned __int8* a1, unsigned __int8* a2, __int64* a3,
 
   v8 = COERCE_AS(__typeof__(v8),
                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  v7 = fs_638380(a1, a2, (__int64)a3),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = ({
+    unsigned __int128 r_ = fs_638380_pair(a1, a2, (__int64)a3);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (unsigned __int8*)(unsigned long long)r_;
+  });
   if (a2 != v7) {
     v9 = *v7;
     v25 = v9 == 58;
@@ -3017,9 +3022,11 @@ __int64 fs_63cc30(__int64 a1, unsigned __int8 a2)
     v8 = *(__int64**)(a1 + 8);
   LABEL_15:
     v11 = *v8;
-    v12 = GameHr_639910((char*)&v14, v8),
-    v13 = COERCE_AS(__typeof__(v13),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v12 = ({
+      unsigned __int128 r_ = GameHr_639910_pair((char*)&v14, v8);
+      v13 = COERCE_AS(__typeof__(v13), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     v19[0] = a2;
     result = GameRoutine_639dc0((__int64)v19, 1u, v11, v12, v13, 1),
     v13 = COERCE_AS(__typeof__(v13),
@@ -3050,9 +3057,11 @@ __int64 fs_63cc30(__int64 a1, unsigned __int8 a2)
   if (BYTE1(v14) == 10 || BYTE1(v14) == 0) {
     goto LABEL_15;
   }
-  GameHr_639910((char*)&v14, v8),
-      v13 = COERCE_AS(__typeof__(v13),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  ({
+    unsigned __int128 r_ = GameHr_639910_pair((char*)&v14, v8);
+    v13 = COERCE_AS(__typeof__(v13), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   result = GameRoutine_639a90(a2),
   v13 = COERCE_AS(__typeof__(v13),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -3109,9 +3118,11 @@ __int64 fs_63cd90(__int64 a1, int a2)
     *v4 = v5;
   }
   v7 = *(__int64**)(a1 + 8);
-  v9 = GameHr_639910((char*)&v14, v7),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9 = ({
+    unsigned __int128 r_ = GameHr_639910_pair((char*)&v14, v7);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   if ((v9 & 0xFF00) == 0xA00) {
     if ((unsigned int)a2 >= 0x100) {
       GameRoutine_638240("Integral value outside the range of the char type"),
@@ -3187,9 +3198,11 @@ __int64 fs_63cee0(__int64 a1, __int64 a2)
     *v4 = v5;
   }
   v7 = *(__int64**)(a1 + 8);
-  v9 = GameHr_639910((char*)&v14, v7),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9 = ({
+    unsigned __int128 r_ = GameHr_639910_pair((char*)&v14, v7);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   if ((v9 & 0xFF00) == 0xA00) {
     if ((unsigned __int64)a2 >= 0x100) {
       GameRoutine_638240("Integral value outside the range of the char type"),
@@ -3455,9 +3468,11 @@ __int64 fs_63dab0(__int64 a1, __int64 a2, unsigned __int64 a3, __int64 a4)
     *v7 = v8;
   }
   v10 = *(__int64**)(a1 + 8);
-  v12 = GameHr_639910((char*)&v16, v10),
-  v11 = COERCE_AS(__typeof__(v11),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v12 = ({
+    unsigned __int128 r_ = GameHr_639910_pair((char*)&v16, v10);
+    v11 = COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   if ((v12 & 0xFF00) == 0xA00) {
     if (__PAIR128__(a4, a3) >= 0x100) {
       GameRoutine_638240("Integral value outside the range of the char type"),
@@ -3987,9 +4002,11 @@ __int64 fs_63ec50(__int64 a1, unsigned int a2)
     *v4 = v5;
   }
   v7 = *(__int64**)(a1 + 8);
-  v9 = GameHr_639910((char*)&v13, v7),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9 = ({
+    unsigned __int128 r_ = GameHr_639910_pair((char*)&v13, v7);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   if ((v9 & 0xFF00) == 0xA00) {
     if (a2 >= 0x100) {
       GameRoutine_638240("Integral value outside the range of the char type"),
@@ -4058,9 +4075,11 @@ __int64 fs_63eda0(__int64 a1, unsigned __int64 a2)
     *v4 = v5;
   }
   v7 = *(__int64**)(a1 + 8);
-  v9 = GameHr_639910((char*)&v13, v7),
-  v8 = COERCE_AS(__typeof__(v8),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v9 = ({
+    unsigned __int128 r_ = GameHr_639910_pair((char*)&v13, v7);
+    v8 = COERCE_AS(__typeof__(v8), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   if ((v9 & 0xFF00) == 0xA00) {
     if (a2 >= 0x100) {
       GameRoutine_638240("Integral value outside the range of the char type"),
@@ -4129,9 +4148,11 @@ __int64 fs_63eef0(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
     *v7 = v8;
   }
   v10 = *(__int64**)(a1 + 8);
-  v12 = GameHr_639910((char*)&v16, v10),
-  v11 = COERCE_AS(__typeof__(v11),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v12 = ({
+    unsigned __int128 r_ = GameHr_639910_pair((char*)&v16, v10);
+    v11 = COERCE_AS(__typeof__(v11), (unsigned long long)(r_ >> 64));
+    (__int64)(unsigned long long)r_;
+  });
   if ((v12 & 0xFF00) == 0xA00) {
     if (__PAIR128__(a4, a3) >= 0x100) {
       GameRoutine_638240("Integral value outside the range of the char type"),

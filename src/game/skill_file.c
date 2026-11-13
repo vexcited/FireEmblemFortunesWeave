@@ -1438,7 +1438,7 @@ void game_SkillFile_OnBuild(_QWORD* a1)
           v32 = std___1___next_prime_alt1(v32);
         }
         else {
-          v33 = 1LL << -(char)__clz(v32 - 1);
+          v33 = 1LL << (-(char)__clz(v32 - 1) & 63);
           if (v32 >= 2) {
             v32 = v33;
           }
@@ -6082,7 +6082,7 @@ LABEL_982:
                 v1097 = std___1___next_prime_alt1(v1097);
               }
               else {
-                v1098 = 1LL << -(char)__clz(v1097 - 1);
+                v1098 = 1LL << (-(char)__clz(v1097 - 1) & 63);
                 if (v1097 >= 2) {
                   v1097 = v1098;
                 }
@@ -6615,7 +6615,7 @@ LABEL_22:
         result = std___1___next_prime(result);
       }
       else {
-        v24 = 1LL << -(char)__clz(result - 1);
+        v24 = 1LL << (-(char)__clz(result - 1) & 63);
         if (result >= 2) {
           result = v24;
         }

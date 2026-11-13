@@ -14,6 +14,8 @@ CombatLegionGroup_e57320(PSEUDO_X8, __int64, __int64, __int64, char);
 __int64* CharacterModel_1070c00(__int64, __int64);
 __int64* GameRoutine_e2b120(__int64);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 CharacterAnimator_1079e10(__int64);
 __int64 CharacterBuilder_1083e90(_QWORD*, __int64);
 __int64 CmdBtlCombatWindow_17c3cd0(__int64 result, char);
@@ -2445,9 +2447,11 @@ LABEL_70:
     v96_.v102 = (__typeof__(v96_.v102)){0};
     v96_.v100 = (__typeof__(v96_.v100)){0};
     v96_.v101 = v38;
-    v39 = Manager_bc6460(v36, (__int64)&v96_.v96, 1),
-    v40 = COERCE_AS(__typeof__(v40),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v39 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(v36, (__int64)&v96_.v96, 1);
+      v40 = COERCE_AS(__typeof__(v40), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     GameHr_14a10d0(&v96_.v96, (__int64)v39, v40, (__int64)&GameData_1a9f09e),
         v40 = COERCE_AS(__typeof__(v40),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

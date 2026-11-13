@@ -2499,7 +2499,7 @@ void VectorGraphicsShapeLayer_Unknown6(__int64 a1, __int64 a2, __int64 a3,
           LANES128(v20).n128_u64[0] = 0;
           LANES128(v20).n128_u32[2] = 0;
           LANES128(v20).n128_u32[3] =
-              HIDWORD(*(_OWORD*)LANES64(*(v19)).n64_u64);
+              DWORD3(*(_OWORD*)LANES64(*(v19)).n64_u64);
           v21 = (float32x4_t*)(*(_QWORD*)(a1 + 184) + v9);
           v22 = vaddq_f32(
               v20,
@@ -2516,9 +2516,9 @@ void VectorGraphicsShapeLayer_Unknown6(__int64 a1, __int64 a2, __int64 a3,
           LANES128(v23).n128_u64[0] = 0;
           LANES128(v23).n128_u32[2] = 0;
           LANES128(v20).n128_u32[3] =
-              HIDWORD(*(_OWORD*)LANES64(v19[2]).n64_u64);
+              DWORD3(*(_OWORD*)LANES64(v19[2]).n64_u64);
           LANES128(v23).n128_u32[3] =
-              HIDWORD(*(_OWORD*)LANES64(v19[4]).n64_u64);
+              DWORD3(*(_OWORD*)LANES64(v19[4]).n64_u64);
           v24 = vaddq_f32(
               v20, vmlaq_laneq_f32(
                        vmlaq_lane_f32(

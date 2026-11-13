@@ -460,7 +460,7 @@ __int64 nn_fs_HierarchicalRomFileTable_CreateDirectory(void* this_,
                   *(_QWORD*)v14 + 16LL))(v14, v15 + v13, &v30, 24);
               if ((_DWORD)result == 0) {
                 *(_QWORD*)((char*)&v30 + 4) = v28_.v28;
-                HIDWORD(v30) = v28_.v29;
+                DWORD3(v30) = v28_.v29;
                 result = 3533826;
                 if (*((_QWORD*)this_ + 9) != 0) {
                 LABEL_26:

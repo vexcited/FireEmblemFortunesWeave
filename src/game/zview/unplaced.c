@@ -4186,13 +4186,13 @@ LABEL_7:
         v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v3", "=w"));
     if (v78_.v86 == 1) {
       v28 = v78_.v78;
-      HIDWORD(v28) = 0;
+      DWORD3(v28) = 0;
       v73 = v78_.v82;
       v74 = v78_.v83;
       v27 = v78_.v79;
       v25 = *a2;
       v26 = *a3;
-      HIDWORD(v27) = 0;
+      DWORD3(v27) = 0;
       LANES128(v25).n128_u32[3] = 0;
       LANES128(v26).n128_u32[3] = 0;
       v75 = v78_.v84;
@@ -4222,13 +4222,13 @@ LABEL_7:
         v22[14] = v28;
         v22[16] = v28;
         *((_QWORD*)&v34 + 1) = DWORD2(v28);
-        HIDWORD(v35) = 0;
+        DWORD3(v35) = 0;
         v38 = *((_OWORD*)v22 + 7);
         v39 = *((_OWORD*)v22 + 8);
-        HIDWORD(v36) = 0;
+        DWORD3(v36) = 0;
         v22[6] = v73;
         v22[7] = v74;
-        HIDWORD(v37) = 0;
+        DWORD3(v37) = 0;
         v22[8] = v75;
         *(_OWORD*)v22 = v34;
         *((_OWORD*)v22 + 1) = v35;
@@ -4281,8 +4281,8 @@ LABEL_7:
     v28 = v78_.v78;
     v32 = v78_.v79;
     LANES128(v30).n128_u32[3] = 0;
-    HIDWORD(v28) = 0;
-    HIDWORD(v32) = 0;
+    DWORD3(v28) = 0;
+    DWORD3(v32) = 0;
     v75 = v78_.v84;
     v76 = v78_.v85;
     v71 = v78_.v80;
@@ -8652,9 +8652,9 @@ void game_zview_d32f80(__int64 a1, double a2, double a3, long double a4,
     a5 = COERCE_LONG_DOUBLE(
         vaddq_f32(*(float32x4_t*)&a4, COERCE_AS(float32x4_t, v95)));
   }
-  HIDWORD(a4) = 0;
+  DWORD3(a4) = 0;
   v27 = 1;
-  HIDWORD(a5) = 0;
+  DWORD3(a5) = 0;
   if (v10 != 0) {
   LABEL_144:
     v99 = a5;

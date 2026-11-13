@@ -1473,7 +1473,7 @@ _WORD* nn_g3d_5fa6a0(_WORD* result, double a2, double a3, double a4, double a5,
       v22 = vdupq_n_s32(0xC0C90FDB);
       *(float*)&a8 = -COERCE_FLOAT(HIDWORD(
           *(_QWORD*)((char*)((_UNKNOWN*)0x4LL) + (_QWORD)GameData_212c190)));
-      *(float*)&a9 = -COERCE_FLOAT(HIDWORD(
+      *(float*)&a9 = -COERCE_FLOAT(DWORD3(
           *(_OWORD*)((char*)((_UNKNOWN*)0x4LL) + (_QWORD)GameData_212c190)));
       v23 = -*(float*)GameData_212c188;
       v24 = vdupq_lane_s32(COERCE_AS(int32x2_t, LANES128(v17).n128_u64[0]), 0);
@@ -1488,7 +1488,7 @@ _WORD* nn_g3d_5fa6a0(_WORD* result, double a2, double a3, double a4, double a5,
                                            (_QWORD)GameData_212c188))));
       PSEUDO_LOW_LANE64(
           v10, n64_f32,
-          -COERCE_FLOAT(HIDWORD(*(_OWORD*)((char*)((_UNKNOWN*)0x4LL) +
+          -COERCE_FLOAT(DWORD3(*(_OWORD*)((char*)((_UNKNOWN*)0x4LL) +
                                            (_QWORD)GameData_212c188))));
       v30 = vdupq_n_s32(0xBFC90FDB);
       v31 = vdupq_lane_s32(v9, 0);

@@ -797,7 +797,7 @@ LABEL_138:
               v111 = std___1___next_prime(v111);
             }
             else {
-              v112 = 1LL << -(char)__clz(v111 - 1);
+              v112 = 1LL << (-(char)__clz(v111 - 1) & 63);
               if (v111 >= 2) {
                 v111 = v112;
               }

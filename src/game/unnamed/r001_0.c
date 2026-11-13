@@ -129,7 +129,7 @@ __int64 GameHr_597240(__int64 a1, __int64 a2, int a3, __int64 a4, __int64 a5,
       v13 = v12;
       v14 = GameRoutine_1a09c70(a6);
       v18 = v14;
-      v19 = (char*)&vars0 - ((v13 + v14 + 17) & 0xFFFFFFFFFFFFFFF0LL);
+      v19 = (char*)__builtin_alloca((v13 + v14 + 17) & 0xFFFFFFFFFFFFFFF0LL);
       v20 = &v19[v13];
       if (v13 + v14 + 2 >= v13) {
         v21 = v14 + 2;

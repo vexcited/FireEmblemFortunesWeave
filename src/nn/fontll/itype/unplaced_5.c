@@ -91,15 +91,15 @@ __int64 nn_fontll_itype_415de0(__int64 a1, unsigned int a2, unsigned int a3,
           LODWORD(v28) = varmul_64_plt(v28, v16, 16);
           DWORD1(v28) = varmul_64_plt(SDWORD1(v28), v16, 16);
           DWORD2(v28) = varmul_64_plt(SDWORD2(v28), v16, 16);
-          v17 = varmul_64_plt(SHIDWORD(v28), v16, 16);
-          HIDWORD(v28) = v17;
+          v17 = varmul_64_plt(SDWORD3(v28), v16, 16);
+          DWORD3(v28) = v17;
           v18 = v25_.v27;
           if ((*(_BYTE*)(v15 + 36) & 0x40) == 0) {
             goto LABEL_18;
           }
         }
         else {
-          v17 = HIDWORD(v28);
+          v17 = DWORD3(v28);
           v18 = v25_.v27;
           if ((*(_BYTE*)(v15 + 36) & 0x40) == 0) {
             goto LABEL_18;
@@ -108,7 +108,7 @@ __int64 nn_fontll_itype_415de0(__int64 a1, unsigned int a2, unsigned int a3,
         if ((int)v28 >= 1 && *(_QWORD*)((char*)&v28 + 4) == 0 && v17 >= 1) {
           LODWORD(v28) =
               (v28 + ((int)((_DWORD)v28 << 15) >> 31 << 16)) & 0xFFFF0000;
-          HIDWORD(v28) = (v17 + (v17 << 15 >> 31 << 16)) & 0xFFFF0000;
+          DWORD3(v28) = (v17 + (v17 << 15 >> 31 << 16)) & 0xFFFF0000;
         }
       LABEL_18:
         if (*(_BYTE*)(v14 + 43) != 0) {
@@ -144,7 +144,7 @@ __int64 nn_fontll_itype_415de0(__int64 a1, unsigned int a2, unsigned int a3,
               *(_QWORD*)(v22 + 12) == *(_QWORD*)((char*)&v28 + 4) &&
               __PAIR64__(*(unsigned __int16*)(v22 + 24),
                          *(_DWORD*)(v22 + 20)) ==
-                  __PAIR64__(v18, HIDWORD(v28)) &&
+                  __PAIR64__(v18, DWORD3(v28)) &&
               *(_DWORD*)(v22 + 32) ==
                   *(_DWORD*)(v14 + 44) + *(_DWORD*)(a1 + 100)) {
             break;

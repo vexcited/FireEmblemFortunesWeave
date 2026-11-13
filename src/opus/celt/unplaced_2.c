@@ -393,7 +393,7 @@ __int64 opus_celt_29540(__int64 result, __int16* a2, unsigned int a3,
     return result;
   }
   v22 = 4LL * (int)a3;
-  v279_.v280 = (char*)&v279_.v279 - ((v22 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v279_.v280 = (char*)__builtin_alloca((v22 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   result = memset_plt(v279_.v280, 0, v22);
   v23 = *a6;
   if ((int)v11 <= 1) {

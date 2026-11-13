@@ -619,7 +619,7 @@ LABEL_44:
         *(_OWORD*)(v36 + 304) = v41;
       }
       else {
-        HIDWORD(v38) = 0;
+        DWORD3(v38) = 0;
         *(_BYTE*)(v36 + 336) = 1;
         *(_OWORD*)(v36 + 288) = v38;
         *(_OWORD*)(v36 + 304) = v38;

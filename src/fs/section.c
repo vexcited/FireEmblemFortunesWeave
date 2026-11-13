@@ -50,6 +50,9 @@ extern __int64* GameData_212ce30;
 extern __int64* snd_g_fileIndex_ptr[2];
 unsigned int* game_6b7f00(unsigned int*, unsigned __int64, unsigned int*,
                           __int64, __int64*);
+unsigned __int128 game_6b7f00_pair(unsigned int*, unsigned __int64,
+                                   unsigned int*, __int64,
+                                   __int64*) __asm__("game_6b7f00");
 void GameRoutine_6b55a0(__int64, unsigned __int8);
 void Value_77d0(_QWORD*);
 __int64 Section_18db840(__int64 a1, __int64* a2, __int64 a3);
@@ -1130,23 +1133,19 @@ LABEL_7:
     v19 = *(unsigned int**)(v16 + 1);
     v108_.v108 = "ReleaseVersions";
     v108_.v109 = 15;
-    v20 = game_6b7f00(v19, 0, v19, v19[1], (__int64*)&v108_.v108),
-    v21 = COERCE_AS(__typeof__(v21),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v31 = COERCE_AS(__typeof__(v31),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v38 = COERCE_AS(__typeof__(v38),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v45 = COERCE_AS(__typeof__(v45),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v52 = COERCE_AS(__typeof__(v52),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v60 = COERCE_AS(__typeof__(v60),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v67 = COERCE_AS(__typeof__(v67),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v74 = COERCE_AS(__typeof__(v74),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v20 = ({
+      unsigned __int128 r_ =
+          game_6b7f00_pair(v19, 0, v19, v19[1], (__int64*)&v108_.v108);
+      v21 = COERCE_AS(__typeof__(v21), (unsigned long long)(r_ >> 64));
+      v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+      v38 = COERCE_AS(__typeof__(v38), (unsigned long long)(r_ >> 64));
+      v45 = COERCE_AS(__typeof__(v45), (unsigned long long)(r_ >> 64));
+      v52 = COERCE_AS(__typeof__(v52), (unsigned long long)(r_ >> 64));
+      v60 = COERCE_AS(__typeof__(v60), (unsigned long long)(r_ >> 64));
+      v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+      v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+      (unsigned int*)(unsigned long long)r_;
+    });
     if (v21 != v19[1]) {
       v22 = *v20;
       if (v21 >= v22) {
@@ -1212,23 +1211,19 @@ LABEL_7:
     v29 = *(unsigned int**)(v16 + 1);
     v108_.v108 = "ContentsName";
     v108_.v109 = 12;
-    v30 = game_6b7f00(v29, 0, v29, v29[1], (__int64*)&v108_.v108),
-    v21 = COERCE_AS(__typeof__(v21),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v31 = COERCE_AS(__typeof__(v31),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v38 = COERCE_AS(__typeof__(v38),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v45 = COERCE_AS(__typeof__(v45),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v52 = COERCE_AS(__typeof__(v52),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v60 = COERCE_AS(__typeof__(v60),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v67 = COERCE_AS(__typeof__(v67),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v74 = COERCE_AS(__typeof__(v74),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v30 = ({
+      unsigned __int128 r_ =
+          game_6b7f00_pair(v29, 0, v29, v29[1], (__int64*)&v108_.v108);
+      v21 = COERCE_AS(__typeof__(v21), (unsigned long long)(r_ >> 64));
+      v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+      v38 = COERCE_AS(__typeof__(v38), (unsigned long long)(r_ >> 64));
+      v45 = COERCE_AS(__typeof__(v45), (unsigned long long)(r_ >> 64));
+      v52 = COERCE_AS(__typeof__(v52), (unsigned long long)(r_ >> 64));
+      v60 = COERCE_AS(__typeof__(v60), (unsigned long long)(r_ >> 64));
+      v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+      v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+      (unsigned int*)(unsigned long long)r_;
+    });
     if (v31 != v29[1]) {
       v32 = *v30;
       if (v31 >= v32) {
@@ -1264,23 +1259,19 @@ LABEL_7:
     v36 = *(unsigned int**)(v16 + 1);
     v108_.v108 = "ReleaseName";
     v108_.v109 = 11;
-    v37 = game_6b7f00(v36, 0, v36, v36[1], (__int64*)&v108_.v108),
-    v21 = COERCE_AS(__typeof__(v21),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v31 = COERCE_AS(__typeof__(v31),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v38 = COERCE_AS(__typeof__(v38),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v45 = COERCE_AS(__typeof__(v45),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v52 = COERCE_AS(__typeof__(v52),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v60 = COERCE_AS(__typeof__(v60),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v67 = COERCE_AS(__typeof__(v67),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v74 = COERCE_AS(__typeof__(v74),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v37 = ({
+      unsigned __int128 r_ =
+          game_6b7f00_pair(v36, 0, v36, v36[1], (__int64*)&v108_.v108);
+      v21 = COERCE_AS(__typeof__(v21), (unsigned long long)(r_ >> 64));
+      v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+      v38 = COERCE_AS(__typeof__(v38), (unsigned long long)(r_ >> 64));
+      v45 = COERCE_AS(__typeof__(v45), (unsigned long long)(r_ >> 64));
+      v52 = COERCE_AS(__typeof__(v52), (unsigned long long)(r_ >> 64));
+      v60 = COERCE_AS(__typeof__(v60), (unsigned long long)(r_ >> 64));
+      v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+      v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+      (unsigned int*)(unsigned long long)r_;
+    });
     if (v38 != v36[1]) {
       v39 = *v37;
       if (v38 >= v39) {
@@ -1316,23 +1307,19 @@ LABEL_7:
     v43 = *(unsigned int**)(v16 + 1);
     v108_.v108 = "Fs";
     v108_.v109 = 2;
-    v44 = game_6b7f00(v43, 0, v43, v43[1], (__int64*)&v108_.v108),
-    v21 = COERCE_AS(__typeof__(v21),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v31 = COERCE_AS(__typeof__(v31),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v38 = COERCE_AS(__typeof__(v38),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v45 = COERCE_AS(__typeof__(v45),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v52 = COERCE_AS(__typeof__(v52),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v60 = COERCE_AS(__typeof__(v60),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v67 = COERCE_AS(__typeof__(v67),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-    v74 = COERCE_AS(__typeof__(v74),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v44 = ({
+      unsigned __int128 r_ =
+          game_6b7f00_pair(v43, 0, v43, v43[1], (__int64*)&v108_.v108);
+      v21 = COERCE_AS(__typeof__(v21), (unsigned long long)(r_ >> 64));
+      v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+      v38 = COERCE_AS(__typeof__(v38), (unsigned long long)(r_ >> 64));
+      v45 = COERCE_AS(__typeof__(v45), (unsigned long long)(r_ >> 64));
+      v52 = COERCE_AS(__typeof__(v52), (unsigned long long)(r_ >> 64));
+      v60 = COERCE_AS(__typeof__(v60), (unsigned long long)(r_ >> 64));
+      v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+      v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+      (unsigned int*)(unsigned long long)r_;
+    });
     if (v45 != v43[1]) {
       v46 = *v44;
       if (v45 >= v46) {
@@ -1349,23 +1336,19 @@ LABEL_7:
         v50 = *(unsigned int**)(v47 + 17);
         v108_.v108 = "Section";
         v108_.v109 = 7;
-        v51 = game_6b7f00(v50, 0, v50, v50[1], (__int64*)&v108_.v108),
-        v21 = COERCE_AS(__typeof__(v21),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v31 = COERCE_AS(__typeof__(v31),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v38 = COERCE_AS(__typeof__(v38),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v45 = COERCE_AS(__typeof__(v45),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v52 = COERCE_AS(__typeof__(v52),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v60 = COERCE_AS(__typeof__(v60),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v67 = COERCE_AS(__typeof__(v67),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v74 = COERCE_AS(__typeof__(v74),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v51 = ({
+          unsigned __int128 r_ =
+              game_6b7f00_pair(v50, 0, v50, v50[1], (__int64*)&v108_.v108);
+          v21 = COERCE_AS(__typeof__(v21), (unsigned long long)(r_ >> 64));
+          v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+          v38 = COERCE_AS(__typeof__(v38), (unsigned long long)(r_ >> 64));
+          v45 = COERCE_AS(__typeof__(v45), (unsigned long long)(r_ >> 64));
+          v52 = COERCE_AS(__typeof__(v52), (unsigned long long)(r_ >> 64));
+          v60 = COERCE_AS(__typeof__(v60), (unsigned long long)(r_ >> 64));
+          v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+          v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+          (unsigned int*)(unsigned long long)r_;
+        });
         if (v52 != v50[1]) {
           v53 = *v51;
           if (v52 >= v53) {
@@ -1401,23 +1384,19 @@ LABEL_7:
         v58 = *(unsigned int**)(v47 + 17);
         v108_.v108 = "SectionRule";
         v108_.v109 = 11;
-        v59 = game_6b7f00(v58, 0, v58, v58[1], (__int64*)&v108_.v108),
-        v21 = COERCE_AS(__typeof__(v21),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v31 = COERCE_AS(__typeof__(v31),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v38 = COERCE_AS(__typeof__(v38),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v45 = COERCE_AS(__typeof__(v45),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v52 = COERCE_AS(__typeof__(v52),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v60 = COERCE_AS(__typeof__(v60),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v67 = COERCE_AS(__typeof__(v67),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v74 = COERCE_AS(__typeof__(v74),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v59 = ({
+          unsigned __int128 r_ =
+              game_6b7f00_pair(v58, 0, v58, v58[1], (__int64*)&v108_.v108);
+          v21 = COERCE_AS(__typeof__(v21), (unsigned long long)(r_ >> 64));
+          v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+          v38 = COERCE_AS(__typeof__(v38), (unsigned long long)(r_ >> 64));
+          v45 = COERCE_AS(__typeof__(v45), (unsigned long long)(r_ >> 64));
+          v52 = COERCE_AS(__typeof__(v52), (unsigned long long)(r_ >> 64));
+          v60 = COERCE_AS(__typeof__(v60), (unsigned long long)(r_ >> 64));
+          v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+          v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+          (unsigned int*)(unsigned long long)r_;
+        });
         if (v60 != v58[1]) {
           v61 = *v59;
           if (v60 >= v61) {
@@ -1453,23 +1432,19 @@ LABEL_7:
         v65 = *(unsigned int**)(v47 + 17);
         v108_.v108 = "ExportContentsRule";
         v108_.v109 = 18;
-        v66 = game_6b7f00(v65, 0, v65, v65[1], (__int64*)&v108_.v108),
-        v21 = COERCE_AS(__typeof__(v21),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v31 = COERCE_AS(__typeof__(v31),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v38 = COERCE_AS(__typeof__(v38),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v45 = COERCE_AS(__typeof__(v45),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v52 = COERCE_AS(__typeof__(v52),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v60 = COERCE_AS(__typeof__(v60),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v67 = COERCE_AS(__typeof__(v67),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v74 = COERCE_AS(__typeof__(v74),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v66 = ({
+          unsigned __int128 r_ =
+              game_6b7f00_pair(v65, 0, v65, v65[1], (__int64*)&v108_.v108);
+          v21 = COERCE_AS(__typeof__(v21), (unsigned long long)(r_ >> 64));
+          v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+          v38 = COERCE_AS(__typeof__(v38), (unsigned long long)(r_ >> 64));
+          v45 = COERCE_AS(__typeof__(v45), (unsigned long long)(r_ >> 64));
+          v52 = COERCE_AS(__typeof__(v52), (unsigned long long)(r_ >> 64));
+          v60 = COERCE_AS(__typeof__(v60), (unsigned long long)(r_ >> 64));
+          v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+          v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+          (unsigned int*)(unsigned long long)r_;
+        });
         if (v67 != v65[1]) {
           v68 = *v66;
           if (v67 >= v68) {
@@ -1505,23 +1480,19 @@ LABEL_7:
         v72 = *(unsigned int**)(v47 + 17);
         v108_.v108 = "Contents";
         v108_.v109 = 8;
-        v73 = game_6b7f00(v72, 0, v72, v72[1], (__int64*)&v108_.v108),
-        v21 = COERCE_AS(__typeof__(v21),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v31 = COERCE_AS(__typeof__(v31),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v38 = COERCE_AS(__typeof__(v38),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v45 = COERCE_AS(__typeof__(v45),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v52 = COERCE_AS(__typeof__(v52),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v60 = COERCE_AS(__typeof__(v60),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v67 = COERCE_AS(__typeof__(v67),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-        v74 = COERCE_AS(__typeof__(v74),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v73 = ({
+          unsigned __int128 r_ =
+              game_6b7f00_pair(v72, 0, v72, v72[1], (__int64*)&v108_.v108);
+          v21 = COERCE_AS(__typeof__(v21), (unsigned long long)(r_ >> 64));
+          v31 = COERCE_AS(__typeof__(v31), (unsigned long long)(r_ >> 64));
+          v38 = COERCE_AS(__typeof__(v38), (unsigned long long)(r_ >> 64));
+          v45 = COERCE_AS(__typeof__(v45), (unsigned long long)(r_ >> 64));
+          v52 = COERCE_AS(__typeof__(v52), (unsigned long long)(r_ >> 64));
+          v60 = COERCE_AS(__typeof__(v60), (unsigned long long)(r_ >> 64));
+          v67 = COERCE_AS(__typeof__(v67), (unsigned long long)(r_ >> 64));
+          v74 = COERCE_AS(__typeof__(v74), (unsigned long long)(r_ >> 64));
+          (unsigned int*)(unsigned long long)r_;
+        });
         if (v74 != v72[1]) {
           v75 = *v73;
           if (v74 >= v75) {

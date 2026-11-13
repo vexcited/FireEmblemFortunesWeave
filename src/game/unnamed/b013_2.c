@@ -2254,6 +2254,8 @@ __int64 GameRoutine_f7dc20(_QWORD);
 __int64 GameRoutine_f7de90(void);
 __int64 GameRoutine_f9fbf0(_QWORD);
 __int64* Manager_bc6460(_QWORD*, float32x4_t*, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, float32x4_t*,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 game_14a1b00(__int64*, float);
@@ -4122,9 +4124,12 @@ __int64 GameHr_f2f020(int* a1, int a2)
   v27_.v33 = v10;
   v27_.v34 = v27_.v30;
   v27_.v35 = v9;
-  v12 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], &v27_.v27, 0),
-  v13 = COERCE_AS(__typeof__(v13),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v12 = ({
+    unsigned __int128 r_ =
+        Manager_bc6460_pair(*(_QWORD**)eft_g_effectSystem_ptr[0], &v27_.v27, 0);
+    v13 = COERCE_AS(__typeof__(v13), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   GameHr_14a10d0(&v25_.v25, (__int64)v12, v13, (__int64)&GameData_1a9f09e),
       v13 = COERCE_AS(__typeof__(v13),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));

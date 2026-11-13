@@ -2498,7 +2498,7 @@ __int64* MapAnimModule_c0a320(__int64 a1, __int64* a2)
           v44 = std___1___next_prime(v44);
         }
         else {
-          v45 = 1LL << -(char)__clz(v44 - 1);
+          v45 = 1LL << (-(char)__clz(v44 - 1) & 63);
           if (v44 >= 2) {
             v44 = v45;
           }
@@ -3030,7 +3030,7 @@ LABEL_41:
         v43 = std___1___next_prime(v43);
       }
       else {
-        v44 = 1LL << -(char)__clz(v43 - 1);
+        v44 = 1LL << (-(char)__clz(v43 - 1) & 63);
         if (v43 >= 2) {
           v43 = v44;
         }

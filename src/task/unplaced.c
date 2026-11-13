@@ -1099,7 +1099,7 @@ __int64 task_6463a0(__int64 a1, __int64 a2, int a3)
   v122 = *(_QWORD*)(a1 + 256) + 8LL;
   DWORD2(v155_.v156) = *(_DWORD*)(a1 + 13312);
   v123 = *(_QWORD*)(a1 + 13304);
-  HIDWORD(v155_.v156) = v121;
+  DWORD3(v155_.v156) = v121;
   LODWORD(v155_.v157) = 1;
   v124 = *v6;
   *(_QWORD*)&v155_.v156 = v123;

@@ -83,6 +83,8 @@ __int64 nn_os_UnlockMutex_plt(_QWORD);
 __int64 nn_util_Base64_FromBase64String_plt_858500(_QWORD, _QWORD, _QWORD,
                                                    _QWORD, _QWORD);
 __int64 nn_util_GenerateUuid_plt(void);
+unsigned __int128
+nn_util_GenerateUuid_plt_pair(void) __asm__("nn_util_GenerateUuid_plt");
 __int64 nn_util_SNPrintf_plt(_QWORD, _QWORD, const char*, ...);
 __int64 nn_util_TSNPrintf_plt(_QWORD, _QWORD, const char*, ...);
 __int64 strlen_plt(_QWORD);
@@ -349,9 +351,11 @@ __int64 nn_ec_EndGetConsumableRightData_3f39c0(void* this_, int* a2, void* a3,
         *((_QWORD*)v14 + 4) = v25;
         *((_QWORD*)v14 + 1) = v23;
         *((_QWORD*)v14 + 2) = v24;
-        v26 = nn_util_GenerateUuid_plt(),
-        v27 = COERCE_AS(__typeof__(v27),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v26 = ({
+          unsigned __int128 r_ = nn_util_GenerateUuid_plt_pair();
+          v27 = COERCE_AS(__typeof__(v27), (unsigned long long)(r_ >> 64));
+          (__int64)(unsigned long long)r_;
+        });
         nn_util_TSNPrintf_plt(v14, 37,
                               "%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%"
                               "02x%02x%02x%02x%02x%02x",

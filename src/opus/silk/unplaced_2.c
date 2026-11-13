@@ -1351,7 +1351,7 @@ __int64 opus_silk_4cbc0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   __int64 vars0;
 
   v16 = 4LL * a7;
-  v17 = (char*)&vars0 - ((v16 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v17 = (char*)__builtin_alloca((v16 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v17, 0, v16);
   if (a7 < 1) {
     goto LABEL_58;
@@ -3881,7 +3881,7 @@ int* opus_silk_575a0(__int64 a1, _WORD* a2, __int16* a3, int a4)
 
   v4 = *(_DWORD*)(a1 + 268);
   v9 = 4LL * v4;
-  v10 = (_QWORD**)((char*)&v34_.v34 - ((v9 + 31) & 0xFFFFFFFFFFFFFFF0LL));
+  v10 = (_QWORD**)__builtin_alloca((v9 + 31) & 0xFFFFFFFFFFFFFFF0LL);
   if (v9 < 0xFFFFFFFFFFFFFFF0LL) {
     v11 = 4LL * v4;
   }

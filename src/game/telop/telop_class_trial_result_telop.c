@@ -13,6 +13,8 @@ __int64 TelopClassTrialResultTelop_Unknown35_alt1(__int64 result) __asm__(
     "TelopClassTrialResultTelop_Unknown35");
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 _QWORD* TelopClassTrialResultTelop_Unknown35(_QWORD* result);
@@ -57,10 +59,12 @@ _QWORD* TelopClassTrialResultTelop_Unknown35(_QWORD* result)
     v9_.v14 = v2;
     v9_.v10 = 9;
     v9_.v9[2] = "UI_Deco_ClassChange";
-    v4 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v9_.v9,
-                        0),
-    v5 = COERCE_AS(__typeof__(v5),
-                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v4 = ({
+      unsigned __int128 r_ = Manager_bc6460_pair(
+          *(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v9_.v9, 0);
+      v5 = COERCE_AS(__typeof__(v5), (unsigned long long)(r_ >> 64));
+      (__int64*)(unsigned long long)r_;
+    });
     result =
         GameHr_14a10d0(&v7_.v7, (__int64)v4, v5, (__int64)&GameData_1a9f09e),
     v5 = COERCE_AS(__typeof__(v5),

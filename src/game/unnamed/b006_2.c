@@ -1329,7 +1329,7 @@ void GameHr_7c89e0(_QWORD* a1)
       *(_QWORD*)(v54 + 8) = v57;
       *(_DWORD*)(v54 + 80) = v50;
       *(_QWORD*)(v54 + 84) = *(_QWORD*)((char*)&v98 + 4);
-      *(_DWORD*)(v54 + 92) = HIDWORD(v98);
+      *(_DWORD*)(v54 + 92) = DWORD3(v98);
       GameRoutine_74e220_alt1(v49 + v44 + 56, v55, v56,
                               (v56 - (char*)v55) >> 2);
       *(_BYTE*)(v54 + 96) = v99;

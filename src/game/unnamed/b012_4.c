@@ -33,6 +33,7 @@ __int64 CmdbtlPartyNatives_e749a0(__int64 result, _QWORD*);
 __int64 GameRoutine_17c6540_alt1(__int64, char) __asm__("GameRoutine_17c6540");
 __int64 MapCombatPrediction_19f2a10(__int64, __int64, __int64*);
 __int64 game_19f3620(__int64, char);
+unsigned __int128 game_19f3620_pair(__int64, char) __asm__("game_19f3620");
 __int64 game_Unit_EquipItem_6d8f40(__int64, unsigned int);
 __int64 game_Unit_GetParam(__int64);
 __int64 game_cmdbtl_anonymous_e70790(__int64);
@@ -209,9 +210,11 @@ LABEL_10:
       v16 = true;
       goto LABEL_58;
     }
-    v42[0] = game_19f3620((__int64)(a1 + 2863), a2 & 1),
-    v18 = COERCE_AS(__typeof__(v18),
-                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v42[0] = ({
+      unsigned __int128 r_ = game_19f3620_pair((__int64)(a1 + 2863), a2 & 1);
+      v18 = COERCE_AS(__typeof__(v18), (unsigned long long)(r_ >> 64));
+      (__int64)(unsigned long long)r_;
+    });
     v42[1] = v18;
     v19 = MapCombatPrediction_19f2a10((__int64)(a1 + 2863),
                                       *(_QWORD*)(v14 + 16), v42),

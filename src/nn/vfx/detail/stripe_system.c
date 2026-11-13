@@ -439,7 +439,7 @@ bool StripeSystem_5ca220(__int64 a1, double a2, long double a3)
       v18 = vmuls_lane_f32(v17, *v7, 2);
       LANES128(v15).n128_f32[0] = v17 * COERCE_FLOAT(*v7);
       *(float*)&v19 = v17 * LANES128(v16).n128_f32[0];
-      LANES128(v15).n128_u32[1] = vmuls_lane_f32(
+      LANES128(v15).n128_f32[1] = vmuls_lane_f32(
           v17, COERCE_AS(float32x2_t, LANES128(*(v7)).n128_u64[0]), 1);
       *(float*)&v20 = vmuls_lane_f32(
           v17, COERCE_AS(float32x2_t, LANES128(v16).n128_u64[0]), 1);

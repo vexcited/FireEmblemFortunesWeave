@@ -28,6 +28,8 @@ __int64 nn_fs_463e10_alt1(_QWORD, _QWORD, _QWORD,
 __int64 nn_fs_463ee0_alt1(_QWORD, _QWORD, _QWORD,
                           _QWORD) __asm__("nn_fs_463ee0");
 __int64 nn_fs_ConvertAccountUidToFsUserId_plt(_QWORD);
+unsigned __int128 nn_fs_ConvertAccountUidToFsUserId_plt_pair(_QWORD) __asm__(
+    "nn_fs_ConvertAccountUidToFsUserId_plt");
 __int64 nn_fs_HierarchicalRomFileTable_FindNextDirectory_plt(_QWORD, _QWORD,
                                                              _QWORD, _QWORD);
 __int64 nn_fs_HierarchicalRomFileTable_FindNextFile_plt(_QWORD, _QWORD, _QWORD,
@@ -2752,9 +2754,11 @@ __int64 nn_fs_EnsureApplicationSaveData(__int64* a1, __int64 a2, __int64* a3,
     v9 = a4[1];
     v49 = nullptr;
     if ((v8 | v9) != 0 && a3[1552] >= 1) {
-      v47_.v47 = nn_fs_ConvertAccountUidToFsUserId_plt(a4),
-      v10 = COERCE_AS(__typeof__(v10),
-                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v47_.v47 = ({
+        unsigned __int128 r_ = nn_fs_ConvertAccountUidToFsUserId_plt_pair(a4);
+        v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+        (__int64)(unsigned long long)r_;
+      });
       v47_.v48 = v10;
       v43[1] = v47_.v47;
       v43[2] = v10;

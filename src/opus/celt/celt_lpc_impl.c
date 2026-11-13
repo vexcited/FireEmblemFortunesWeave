@@ -61,7 +61,7 @@ __int64 celt_fir_c(__int64 a1, __int64 a2, __int64 a3, int a4, int a5)
 
   v7 = 2LL * a5;
   v8 = a5;
-  v12 = (char*)&v52 - ((v7 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v12 = (char*)__builtin_alloca((v7 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   result = memset_plt(v12, 0, v7);
   if (a5 >= 1) {
     v14 = a5 & 7;

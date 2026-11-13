@@ -202,7 +202,7 @@ LABEL_41:
         v38 = std___1___next_prime(v38);
       }
       else {
-        v39 = 1LL << -(char)__clz(v38 - 1);
+        v39 = 1LL << (-(char)__clz(v38 - 1) & 63);
         if (v38 >= 2) {
           v38 = v39;
         }
@@ -420,7 +420,7 @@ LABEL_40:
         v32 = std___1___next_prime(v32);
       }
       else {
-        v33 = 1LL << -(char)__clz(v32 - 1);
+        v33 = 1LL << (-(char)__clz(v32 - 1) & 63);
         if (v32 >= 2) {
           v32 = v33;
         }

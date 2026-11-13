@@ -108,6 +108,8 @@ extern __int64 GameData_224b6a0;
 extern __int64 GameData_224b6a8;
 bool EffectConst_964040(__int64 a1);
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_960f80_alt1(__int64 result) __asm__("GameRoutine_960f80");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
@@ -282,9 +284,11 @@ const char* EffectConst_961520(__int64** a1, __int64 a2, __int64* a3, int a4,
   v12 = *((_QWORD*)GameData_212c540 + 1);
   v36_.v36 = *(_QWORD*)GameData_212c540;
   v36_.v37 = v12;
-  v13 = Manager_bc6460_alt1(v10, (__int64)v31_.v31, 1),
-  v14 = COERCE_AS(__typeof__(v14),
-                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v13 = ({
+    unsigned __int128 r_ = Manager_bc6460_alt1_pair(v10, (__int64)v31_.v31, 1);
+    v14 = COERCE_AS(__typeof__(v14), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result = (const char*)GameHr_14a10d0(a1, (__int64)v13, v14,
                                        (__int64)&GameData_1a9f09e),
   v14 = COERCE_AS(__typeof__(v14),

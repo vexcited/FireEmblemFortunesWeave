@@ -6038,7 +6038,7 @@ __int64 GameHr_162f5c0(__int64 result)
         DWORD2(v24) = v27;
         LOBYTE(v27) = v30[259];
         *(float*)&v28 = (float)v27 / 255.0;
-        HIDWORD(v24) = v28;
+        DWORD3(v24) = v28;
         LOBYTE(v28) = v30[278];
         v32 = v24;
         *(float*)&v24 = (float)v22;

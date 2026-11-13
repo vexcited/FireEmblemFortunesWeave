@@ -110,7 +110,7 @@ __int64
 __int64 cuda_driver_predicates_99750(_QWORD);
 __int64 cuda_driver_predicates_9af30(__int64, __int64);
 __int64 memset_plt(_QWORD, _QWORD, _QWORD);
-bool CudaDriverRoutine_1b76a0(__int64, __int64);
+unsigned __int8 CudaDriverRoutine_1b76a0(__int64, __int64);
 extern _UNKNOWN* CudaDriverData_1422118;
 extern _UNKNOWN* CudaDriverData_1432140;
 extern _UNKNOWN CudaDriverData_1432cd0;

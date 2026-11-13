@@ -228,7 +228,7 @@ LABEL_22:
         result = v24;
       }
       else {
-        v23 = 1LL << -(char)__clz(primeEm - 1);
+        v23 = 1LL << (-(char)__clz(primeEm - 1) & 63);
         if (primeEm >= 2) {
           primeEm = v23;
         }
@@ -410,7 +410,7 @@ LABEL_22:
         result = v24;
       }
       else {
-        v23 = 1LL << -(char)__clz(primeEm - 1);
+        v23 = 1LL << (-(char)__clz(primeEm - 1) & 63);
         if (primeEm >= 2) {
           primeEm = v23;
         }

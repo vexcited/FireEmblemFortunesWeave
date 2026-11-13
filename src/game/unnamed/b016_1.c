@@ -2929,7 +2929,7 @@ LABEL_16:
               DWORD2(v34) = v37;
               LOBYTE(v37) = v45_.v49;
               *(float*)&v38 = (float)v37 / 0x1.fe00000000000p+7f;
-              HIDWORD(v34) = v38;
+              DWORD3(v34) = v38;
               LOBYTE(v38) = v45_.v56;
               v59 = v34;
               *(float*)&v34 = (float)v31;

@@ -92,6 +92,8 @@ _QWORD* PrimitiveDrawManager_19935e0_alt1(
     unsigned int) __asm__("PrimitiveDrawManager_19935e0");
 __int64* GameRoutine_1993840_alt1(__int64) __asm__("GameRoutine_1993840");
 __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
+unsigned __int128 Manager_bc6460_alt1_pair(_QWORD*, __int64,
+                                           char) __asm__("Manager_bc6460");
 __int64* PrimitiveDrawManager_1994180_alt1(__int64* result) __asm__(
     "PrimitiveDrawManager_1994180");
 __int64* game_gmap_1541180(__int64* result, unsigned int*, __int128*, float);
@@ -697,9 +699,12 @@ __int64 GmapDrawer_1538c80(__int64* a1, char a2)
         v200_.v204 = *(_QWORD*)GameData_212c540;
         v200_.v205 = v8;
         *(_QWORD*)&v200_.v201 = "Gmap_Quest_Main";
-        v9 = Manager_bc6460_alt1(v7, (__int64)&v200_.v200, 1),
-        v10 = COERCE_AS(__typeof__(v10),
-                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v9 = ({
+          unsigned __int128 r_ =
+              Manager_bc6460_alt1_pair(v7, (__int64)&v200_.v200, 1);
+          v10 = COERCE_AS(__typeof__(v10), (unsigned long long)(r_ >> 64));
+          (__int64*)(unsigned long long)r_;
+        }),
         v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v1", "=w")),
         v56 = COERCE_AS(__typeof__(v56), PSEUDO_REGISTER(__n128, "v2", "=w")),
         v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(__n128, "v3", "=w")),
@@ -4674,7 +4679,7 @@ LABEL_8:
             primeEm = (_QWORD*)std___1___next_prime(primeEm);
           }
           else {
-            v1403 = 1LL << -(char)__clz((unsigned __int64)primeEm - 1);
+            v1403 = 1LL << (-(char)__clz((unsigned __int64)primeEm - 1) & 63);
             if ((unsigned __int64)primeEm >= 2) {
               primeEm = (_QWORD*)v1403;
             }

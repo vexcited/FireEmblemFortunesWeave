@@ -339,7 +339,7 @@ LABEL_14:
                                       (float)(v45 * v45)) +
                               1.0f)) *
               v8);
-  HIDWORD(v48) = 0;
+  DWORD3(v48) = 0;
   *(_QWORD*)&v49 = __PAIR64__(LODWORD(v9), LODWORD(v29));
   *((_QWORD*)&v49 + 1) = LODWORD(v47);
   *(_OWORD*)(*(_QWORD*)(a1 + 152) + 32LL) = v49;

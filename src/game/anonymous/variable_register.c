@@ -3056,7 +3056,7 @@ unsigned __int64 game_anonymous_VariableRegister_RegisterKeyMap_closure_Invoke(
         result = std___1___next_prime(result);
       }
       else {
-        v34 = 1LL << -(char)__clz(result - 1);
+        v34 = 1LL << (-(char)__clz(result - 1) & 63);
         if (result >= 2) {
           result = v34;
         }

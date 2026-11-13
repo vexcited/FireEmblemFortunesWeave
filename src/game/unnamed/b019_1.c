@@ -596,6 +596,8 @@ __attribute__((swiftcall)) void
 SceneEffectManager_1950850(PSEUDO_X8, __int64, __int64, unsigned int);
 __attribute__((swiftcall)) void game_148a650(PSEUDO_X8);
 __int64* Manager_bc6460(_QWORD*, __int64, char);
+unsigned __int128 Manager_bc6460_pair(_QWORD*, __int64,
+                                      char) __asm__("Manager_bc6460");
 __int64 GameHr_7a88a0(__int64*);
 __int64 GameRoutine_149e3e0_alt1(_QWORD*, __int64,
                                  int*) __asm__("GameRoutine_149e3e0");
@@ -6527,7 +6529,7 @@ __int64 GameHr_14a03d0(__int64 a1, __int64 a2, __int64 a3, __int128* a4)
   v61 = 0x10000000000LL;
   v62 = 0;
   v13 = *(_QWORD*)v9;
-  HIDWORD(v19) = DWORD2(v12);
+  DWORD3(v19) = DWORD2(v12);
   v14 = *(_QWORD*)(a1 + 8);
   v15 = *(_QWORD*)(a2 + 24);
   *(_QWORD*)((char*)&v19 + 4) = v12;
@@ -8090,9 +8092,12 @@ __int64 GameHr_14a7980(__int64 a1)
   v12_.v19 = *(_QWORD*)GameData_212c540;
   v12_.v20 = v5;
   v12_.v14 = "Gmap_Spot_MiasmaA_Damage";
-  v6 = Manager_bc6460((_QWORD*)eft_g_effectSystem, (__int64)&v12_.v12, 1),
-  v7 = COERCE_AS(__typeof__(v7),
-                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v6 = ({
+    unsigned __int128 r_ =
+        Manager_bc6460_pair((_QWORD*)eft_g_effectSystem, (__int64)&v12_.v12, 1);
+    v7 = COERCE_AS(__typeof__(v7), (unsigned long long)(r_ >> 64));
+    (__int64*)(unsigned long long)r_;
+  });
   result = GameHr_14a10d0_alt2(&v10_.v10, (__int64)v6, v7,
                                (__int64)&GameData_1a9f09e),
   v7 = COERCE_AS(__typeof__(v7),

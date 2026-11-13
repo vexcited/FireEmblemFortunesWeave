@@ -927,7 +927,7 @@ __int64 GameHr_14ce840(__int64* a1, const char* a2)
             v146 = v141;
             while (1) {
               DWORD1(v148) = 0;
-              HIDWORD(v148) = 0;
+              DWORD3(v148) = 0;
               v147 = &v230[v87];
               LODWORD(v148) = *(_DWORD*)v147;
               LODWORD(v142) = *((_DWORD*)v147 + 2);

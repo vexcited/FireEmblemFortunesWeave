@@ -59,7 +59,7 @@ __int64 timeline_Cursor_HasNext(_QWORD);
 __int64 timeline_Cursor_Next(_QWORD);
 __int64 timeline_Value_ToFloat(_QWORD);
 __int64 timeline_Value_ToInt(_QWORD);
-bool MaterialAnimModule_be7140(_QWORD*, __int64*, __int64, __int64, __int64,
+__int64 MaterialAnimModule_be7140(_QWORD*, __int64*, __int64, __int64, __int64,
                                __int64);
 extern __int64 (*GameData_1fd0ad0[])();
 extern __int64 (*nn_nlib_MemoryInputStream_vtable[])();
@@ -170,7 +170,7 @@ std___1___hash_memory_alt1(__int64,
                            unsigned __int64) __asm__("std___1___hash_memory");
 __int64 timeline_7910(__int64, __int64);
 __int64 timeline_Cursor_Next_alt1(_BYTE**) __asm__("timeline_Cursor_Next");
-bool GameHr_be7140(_QWORD*, __int64*, __int64, char);
+__int64 GameHr_be7140(_QWORD*, __int64*, __int64, char);
 bool timeline_Cursor_HasNext_alt1(_DWORD*) __asm__("timeline_Cursor_HasNext");
 int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
@@ -5186,7 +5186,7 @@ LABEL_41:
         v38 = std___1___next_prime(v38);
       }
       else {
-        v39 = 1LL << -(char)__clz(v38 - 1);
+        v39 = 1LL << (-(char)__clz(v38 - 1) & 63);
         if (v38 >= 2) {
           v38 = v39;
         }
@@ -5428,7 +5428,7 @@ LABEL_41:
         v39 = std___1___next_prime(v39);
       }
       else {
-        v40 = 1LL << -(char)__clz(v39 - 1);
+        v40 = 1LL << (-(char)__clz(v39 - 1) & 63);
         if (v39 >= 2) {
           v39 = v40;
         }
