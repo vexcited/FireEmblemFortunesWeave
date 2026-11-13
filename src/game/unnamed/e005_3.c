@@ -184,7 +184,7 @@ __int64 GameRoutine_fcd580(_QWORD);
 
 __int64 GameRoutine_fce960(_QWORD);
 
-struct PseudoSret GameRoutine_febfc0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_febfc0(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_ff7c00(_QWORD, _QWORD);
 
@@ -5236,7 +5236,7 @@ __n128 GameHr_fe2c20(__int64 a1)
   __int64 v10;
   _QWORD v11[3];
 
-  *(struct PseudoSret*)(v11) = GameRoutine_febfc0(*GameData_212cc28[0]);
+  GameRoutine_febfc0((void*)(v11), *GameData_212cc28[0]);
   v2 = (__int64*)GameData_212bf68;
   v3 = GameRoutine_651b90(*(_QWORD*)GameData_212bf68, 1104, 16, 0);
   GameRoutine_18704b0(v3, 1);

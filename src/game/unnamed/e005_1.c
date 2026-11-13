@@ -30,13 +30,15 @@ void __attribute__((noreturn)) GameRoutine_8123d0(_QWORD);
 __int64 GameRoutine_e9a800(_QWORD, _QWORD);
 __int64 GameRoutine_e9bcb0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_f90cd0(_QWORD);
-struct PseudoSret GameRoutine_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                    _QWORD, double, float);
+__attribute__((swiftcall)) void GameRoutine_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                                  _QWORD, _QWORD, _QWORD,
+                                                  _QWORD, double, float);
 __int64 GameRoutine_60a020_alt1(__int64,
                                 const char*) __asm__("GameRoutine_60a020");
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count___release_weak(__int64);
 __int64 std___1___shared_weak_count_lock(__int64);
 extern _UNKNOWN GameData_1b9abf0_alt1 __asm__("GameData_1b9abf0");
@@ -278,6 +280,7 @@ LABEL_31:
 
 void GameHr_f3e780()
 {
+  _QWORD handle[2];
   __int64 v0;
   __int64 v1;
   __int64 v2;
@@ -347,8 +350,9 @@ void GameHr_f3e780()
         v12 = v10 != 0 ? v14_.v16 : (__int16*)((char*)&v14_.v14 + 1);
         if (v12 != nullptr) {
           snd_Fade_Fade_10c830((__int64)v17, 0x0.0p+0f);
-          snd_play_ff2d0((__int64)v12, (__int64)v12, (__int64)v17, 0, 0x10001u,
-                         0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+          snd_play_ff2d0((void*)(handle), (__int64)v12, (__int64)v12,
+                         (__int64)v17, 0, 0x10001u, 0, 0x0.0p+0f,
+                         0x1.0000000000000p+0f);
           snd_Fade_Destroy_Fade(v17);
           v10 = v14_.v14 & 1;
         }
@@ -389,9 +393,8 @@ __int64 GameHr_f40b80(__int64 a1)
   __int64 v17;
 
   GameRoutine_10c830(&v16, 0.0f);
-  *(struct PseudoSret*)(&v15) =
-      GameRoutine_ff2d0("FF_Capture_Failure", "FF_Capture_Failure", &v16, 0,
-                        65537, 0, 0.0f, 1.0f);
+  GameRoutine_ff2d0((void*)(&v15), "FF_Capture_Failure", "FF_Capture_Failure",
+                    &v16, 0, 65537, 0, 0.0f, 1.0f);
   GameRoutine_10cff0(&v16);
   result = GameRoutine_f90cd0(GameData_21ec7a8);
   v3 = *(_QWORD*)(GameData_2203490 + 888);

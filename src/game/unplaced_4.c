@@ -7067,7 +7067,7 @@ __attribute__((swiftcall)) void game_fb22c0(PSEUDO_X8 x8_, __int64 a1,
                          ? (v27 = a3)
                          : (v27 = a2),
                      v28 = vsubq_f32(*v27, v36),
-                     LANES128(v28).n128_u32[1] = vmuls_lane_f32(
+                     LANES128(v28).n128_f32[1] = vmuls_lane_f32(
                          0x1.0000000000000p+2f,
                          COERCE_AS(float32x2_t, LANES128(v28).n128_u64[0]), 1),
                      v29 = vmulq_f32(v28, v28),

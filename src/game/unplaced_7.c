@@ -176,8 +176,9 @@ __int64 nn_os_UnlockMutex(_QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD) __asm__("snd_Fade_Destroy_Fade");
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___next_prime(_QWORD);
 __int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
     "std___1___shared_weak_count___release_weak");
@@ -1633,7 +1634,7 @@ LABEL_50:
         if (v203_.v205 != nullptr) {
           v57 = 40;
         LABEL_115:
-          (*(void (**)(void)) & (*v203_.v205)[v57])();
+          (*(void (**)(void*)) & (*v203_.v205)[v57])(v203_.v205);
         }
         v68 = v201_.v201[0];
         v69 = *(_QWORD*)(v201_.v201[0] + 1680);
@@ -7290,6 +7291,7 @@ __int64 game_1374320(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v2;
   int v3;
   const char* v4;
@@ -7349,8 +7351,8 @@ __int64 game_1374320(__int64 a1)
     }
     if (v7 != 0) {
       snd_Fade_Fade_10c830((__int64)v29, 0x0.0p+0f);
-      snd_play_ff2d0(v7, v7, (__int64)v29, 0, 0x10001u, 0, 0x0.0p+0f,
-                     0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), v7, v7, (__int64)v29, 0, 0x10001u, 0,
+                     0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(v29);
     }
     v6 += 24;
@@ -7369,8 +7371,8 @@ __int64 game_1374320(__int64 a1)
     }
     if (v10 != 0) {
       snd_Fade_Fade_10c830((__int64)v29, 0x0.0p+0f);
-      snd_play_ff2d0(v10, v10, (__int64)v29, 0, 0x10001u, 0, 0x0.0p+0f,
-                     0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), v10, v10, (__int64)v29, 0, 0x10001u, 0,
+                     0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(v29);
     }
     else {
@@ -10832,6 +10834,7 @@ LABEL_30:
 
 __int64 game_1488fb0(__int64 result, __int64 a2)
 {
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   unsigned int v4;
@@ -10923,8 +10926,8 @@ __int64 game_1488fb0(__int64 result, __int64 a2)
       if (v25 != nullptr) {
         v26 = (__int64)v25;
         snd_Fade_Fade_10c830((__int64)v29, 0x0.0p+0f);
-        snd_play_ff2d0(v26, v26, (__int64)v29, 0, 0x10001u, 0, 0x0.0p+0f,
-                       0x1.0000000000000p+0f);
+        snd_play_ff2d0((void*)(handle), v26, v26, (__int64)v29, 0, 0x10001u, 0,
+                       0x0.0p+0f, 0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade(v29);
       }
       else {

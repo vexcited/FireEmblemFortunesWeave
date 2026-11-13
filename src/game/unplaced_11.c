@@ -4655,7 +4655,8 @@ LABEL_13:
                       (float)(v12 * v12)) +
               0x1.0000000000000p+0f);
   v36 = vaddq_f32(vmulq_n_f32(vmulq_f32(v33, v35), (float)a3), v43_.v43);
-  LANES128(v37).n128_u64[0] = __PAIR64__(0x1.4000000000000p+1f, LODWORD(v34));
+  LANES128(v37).n128_u64[0] =
+      __PAIR64__(COERCE_UNSIGNED_INT(0x1.4000000000000p+1f), LODWORD(v34));
   LANES128(v37).n128_u64[1] = LODWORD(v34);
   v43_.v43 = vaddq_f32(v37, v36);
   return game_fbb5a0(a1, (__int128*)&v43_.v43, v11) & 1;

@@ -4252,7 +4252,7 @@ __int64 GameHr_17fdec0(__int64 result, __int64* a2, float a3)
     v12 = (unsigned int*)(v3 + 4);
     v13 = 1;
     v14 = 0;
-    v15 = __PAIR64__(0x1.0000000000000p+0f, 0);
+    v15 = __PAIR64__(COERCE_UNSIGNED_INT(0x1.0000000000000p+0f), 0);
     while (1) {
       if (v14 >= (int)v6) {
         v16 = 0;

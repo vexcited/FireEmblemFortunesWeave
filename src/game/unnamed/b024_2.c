@@ -626,9 +626,9 @@ LABEL_16:
               *(float*)&v34 = (float)v31;
               LOBYTE(v31) = v45_.v57;
               *((float*)&v36 + 1) = *(float*)&v34 / 0x1.fe00000000000p+7f;
-              *((_QWORD*)&v36 + 1) =
-                  __PAIR64__((float)v31 / 0x1.fe00000000000p+7f,
-                             (float)v38 / 0x1.fe00000000000p+7f);
+              *((_QWORD*)&v36 + 1) = __PAIR64__(
+                  COERCE_UNSIGNED_INT((float)v31 / 0x1.fe00000000000p+7f),
+                  COERCE_UNSIGNED_INT((float)v38 / 0x1.fe00000000000p+7f));
               v58 = v36;
               GameRoutine_1917400_alt1(v33, "_Skin", 5u, (__int64)&v59, 1, 1),
                   v23 = COERCE_AS(
@@ -4750,7 +4750,7 @@ __int64 GameHr_1848370(const char* a1)
     }
     v5 = 40;
   }
-  (*(void (**)(void)) & (*v17)[v5])();
+  (*(void (**)(void*)) & (*v17)[v5])(v17);
 LABEL_8:
   if (v2 != 0) {
     GameRoutine_1a09c50(v2);

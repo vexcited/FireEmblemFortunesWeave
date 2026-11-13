@@ -1191,7 +1191,8 @@ LABEL_16:
     LANES128(v182).n128_u64[0] = 0;
     a1[14] = COERCE_AS(float32x4_t, LODWORD(v180));
     a1[15] = COERCE_AS(float32x4_t, v181);
-    LANES128(v182).n128_u64[1] = __PAIR64__(0x1.0000000000000p+0f, v176);
+    LANES128(v182).n128_u64[1] =
+        __PAIR64__(COERCE_UNSIGNED_INT(0x1.0000000000000p+0f), v176);
     a1[16] = v179;
     a1[17] = v182;
   }

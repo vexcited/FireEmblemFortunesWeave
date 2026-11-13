@@ -262,8 +262,9 @@ __int64 GameRoutine_9b3b00(_QWORD);
 __int64 GameRoutine_a14660(_QWORD, _QWORD);
 __int64 GameRoutine_a15480(_QWORD);
 __int64 GameRoutine_db7ba0(_QWORD);
-struct PseudoSret GameRoutine_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                    _QWORD, double, float);
+__attribute__((swiftcall)) void GameRoutine_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                                  _QWORD, _QWORD, _QWORD,
+                                                  _QWORD, double, float);
 _BYTE* ProcInst_657a50(__int64, char);
 _DWORD* GameRoutine_6544c0_alt1(__int64, __int64) __asm__("GameRoutine_6544c0");
 _QWORD* GameRoutine_64df20_alt1(_QWORD*, __int64,
@@ -310,8 +311,9 @@ __int64 memcpy(__int64, __int64, unsigned __int64);
 __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 memset(__int64, int, unsigned __int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___next_prime(unsigned __int64);
 __int64 std___1___shared_weak_count___release_weak(__int64);
 bool Stream_65d2d0(__int64, int*, int*, int*);
@@ -7266,9 +7268,8 @@ __int64 GameHr_726c50(__int64 a1)
 
   GameRoutine_1738620(a1, 0, 0);
   GameRoutine_10c830(v4, 0.0f);
-  *(struct PseudoSret*)(&v3) =
-      GameRoutine_ff2d0("SE_SYS_Telop_Tettai", "SE_SYS_Telop_Tettai", v4, 0,
-                        65537, 0, 0.0f, 1.0f);
+  GameRoutine_ff2d0((void*)(&v3), "SE_SYS_Telop_Tettai", "SE_SYS_Telop_Tettai",
+                    v4, 0, 65537, 0, 0.0f, 1.0f);
   v1 = GameRoutine_10cff0(v4);
   return GameRoutine_80cc80(v1);
 }
@@ -7294,8 +7295,8 @@ float* GameHr_739120()
   _BYTE v2[200];
 
   GameRoutine_10c830(v2, 0.0f);
-  *(struct PseudoSret*)(&v1) = GameRoutine_ff2d0(
-      "SE_SYS_Decide_Unit", "SE_SYS_Decide_Unit", v2, 0, 65537, 0, 0.0f, 1.0f);
+  GameRoutine_ff2d0((void*)(&v1), "SE_SYS_Decide_Unit", "SE_SYS_Decide_Unit",
+                    v2, 0, 65537, 0, 0.0f, 1.0f);
   GameRoutine_10cff0(v2);
   return GameRoutine_731180(*(float**)(GameData_21cd130 + 48));
 }
@@ -7306,8 +7307,8 @@ void GameHr_7392c0()
   _BYTE v1[200];
 
   GameRoutine_10c830(v1, 0.0f);
-  *(struct PseudoSret*)(&v0) = GameRoutine_ff2d0(
-      "SE_SYS_Cancel_Unit", "SE_SYS_Cancel_Unit", v1, 0, 65537, 0, 0.0f, 1.0f);
+  GameRoutine_ff2d0((void*)(&v0), "SE_SYS_Cancel_Unit", "SE_SYS_Cancel_Unit",
+                    v1, 0, 65537, 0, 0.0f, 1.0f);
   GameRoutine_10cff0(v1);
   GameRoutine_7317c0(*(_QWORD*)(GameData_21cd130 + 48));
 }
@@ -7318,8 +7319,8 @@ __int64 GameHr_739690(__int64 a1)
   _BYTE v4[200];
 
   GameRoutine_10c830(v4, 0.0f);
-  *(struct PseudoSret*)(&v3) = GameRoutine_ff2d0(
-      "SE_SYS_Menu_Open", "SE_SYS_Menu_Open", v4, 0, 65537, 0, 0.0f, 1.0f);
+  GameRoutine_ff2d0((void*)(&v3), "SE_SYS_Menu_Open", "SE_SYS_Menu_Open", v4, 0,
+                    65537, 0, 0.0f, 1.0f);
   GameRoutine_10cff0(v4);
   return GameRoutine_86c160(a1);
 }
@@ -7356,8 +7357,8 @@ __int64 GameHr_7397a0(__int64 a1)
     ++v4[22];
   }
   GameRoutine_10c830(v9, 0.0f);
-  *(struct PseudoSret*)(&v8) = GameRoutine_ff2d0(
-      "SE_SYS_Attention", "SE_SYS_Attention", v9, 0, 65537, 0, 0.0f, 1.0f);
+  GameRoutine_ff2d0((void*)(&v8), "SE_SYS_Attention", "SE_SYS_Attention", v9, 0,
+                    65537, 0, 0.0f, 1.0f);
   GameRoutine_10cff0(v9);
   return GameRoutine_19f5240(a1);
 }
@@ -8681,6 +8682,7 @@ __int64 GameHr_789670(__int64 result)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v1;
   __int64* v2;
   __int64 v3;
@@ -8729,14 +8731,14 @@ __int64 GameHr_789670(__int64 result)
       snd_Fade_Fade_10c830((__int64)v37, 0x0.0p+0f);
       v13 = "SE_SYS_NG";
     LABEL_32:
-      snd_play_ff2d0((__int64)v13, (__int64)v13, (__int64)v37, 0, 0x10001u, 0,
-                     0x0.0p+0f, 0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)v13, (__int64)v13, (__int64)v37,
+                     0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       return snd_Fade_Destroy_Fade(v37);
     }
     snd_Fade_Fade_10c830((__int64)v37, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Decide_M", (__int64)"SE_SYS_Decide_M",
-                   (__int64)v37, 0, 0x10001u, 0, 0x0.0p+0f,
-                   0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Decide_M",
+                   (__int64)"SE_SYS_Decide_M", (__int64)v37, 0, 0x10001u, 0,
+                   0x0.0p+0f, 0x1.0000000000000p+0f);
     result = snd_Fade_Destroy_Fade(v37);
     v7 = 4;
     goto LABEL_25;
@@ -8954,8 +8956,7 @@ __int64 GameHr_78c950(__int64 result)
       v11 = 1.0f;
       v12 = "SE_SYS_NG";
     LABEL_27:
-      *(struct PseudoSret*)(v14) =
-          GameRoutine_ff2d0(v10, v12, v15, 0, 65537, 0, 0.0f, v11);
+      GameRoutine_ff2d0((void*)(v14), v10, v12, v15, 0, 65537, 0, 0.0f, v11);
       return GameRoutine_10cff0(v15);
     }
     if (*(_DWORD*)(v1 + 152) == 8) {
@@ -8983,8 +8984,8 @@ __int64 GameHr_78c950(__int64 result)
   }
   if ((v2 & 2) != 0) {
     GameRoutine_10c830(v15, 0.0f);
-    *(struct PseudoSret*)(v14) = GameRoutine_ff2d0(
-        "SE_SYS_Cancel_M", "SE_SYS_Cancel_M", v15, 0, 65537, 0, 0.0f, 1.0f);
+    GameRoutine_ff2d0((void*)(v14), "SE_SYS_Cancel_M", "SE_SYS_Cancel_M", v15,
+                      0, 65537, 0, 0.0f, 1.0f);
     result = GameRoutine_10cff0(v15);
     *(_DWORD*)(v1 + 152) = 4;
     v5 = *(unsigned __int8**)(v1 + 16);
@@ -9013,6 +9014,7 @@ _BYTE* GameHr_78cb60(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64* v2;
   __int64 v3;
   __int64 v4;
@@ -9269,9 +9271,9 @@ LABEL_39:
   }
 LABEL_49:
   snd_Fade_Fade_10c830((__int64)v44, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)"SE_SYS_Cancel_M", (__int64)"SE_SYS_Cancel_M",
-                 (__int64)v44, 0, 0x10001u, 0, 0x0.0p+0f,
-                 0x1.0000000000000p+0f);
+  snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Cancel_M",
+                 (__int64)"SE_SYS_Cancel_M", (__int64)v44, 0, 0x10001u, 0,
+                 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(v44);
   if (GameData_21cf830 != 0) {
     *(_DWORD*)(GameData_21cf830 + 152) = v12;

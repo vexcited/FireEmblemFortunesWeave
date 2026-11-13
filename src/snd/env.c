@@ -16,10 +16,13 @@ __int64 snd_BGM_getInstance();
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_fnd_WeakHandle_get(__int64);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
-__int64 snd_playAt_ff5f0(__int64, __int64, __int64, __int64, unsigned int,
-                         unsigned int, int, float, float);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, __int64, __int64,
+                                                 __int64, __int64, unsigned int,
+                                                 unsigned int, int, float,
+                                                 float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 snd_startBusVolume(__int64, unsigned int, unsigned int, float);
 __int64 strlen(_QWORD);
 bool GameAlloc_e2d10(__int64, float*, float*, float*);
@@ -416,6 +419,7 @@ void Env_de340(__int64 a1, __int64 a2)
 
 void Env_de920(__int64 a1, __int64 a2)
 {
+  _QWORD handle[2];
   __int64 v4;
   __int64 v5;
   __int64 v6;
@@ -1015,8 +1019,9 @@ LABEL_35:
                                        *(float*)(*v53 + 164)),
                       v8 = COERCE_AS(__typeof__(v8),
                                      PSEUDO_REGISTER(float, "s0", "=w"));
-                  snd_play_ff2d0((__int64)"Env", v126, (__int64)&v145_.v145, 0,
-                                 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f),
+                  snd_play_ff2d0((void*)(handle), (__int64)"Env", v126,
+                                 (__int64)&v145_.v145, 0, 0x10001u, 0,
+                                 0x0.0p+0f, 0x1.0000000000000p+0f),
                       v8 = COERCE_AS(__typeof__(v8),
                                      PSEUDO_REGISTER(float, "s0", "=w"));
                   GameRoutine_112180(*v53 + 40, (__int64)&v152_.v152),
@@ -1247,7 +1252,7 @@ LABEL_35:
             snd_Fade_Fade_10c830((__int64)&v145_.v145, *(float*)(*v53 + 184)),
                 v8 = COERCE_AS(__typeof__(v8),
                                PSEUDO_REGISTER(float, "s0", "=w"));
-            snd_playAt_ff5f0((__int64)"Env", v140, v139 + 120,
+            snd_playAt_ff5f0((void*)(handle), (__int64)"Env", v140, v139 + 120,
                              (__int64)&v145_.v145, 0, 0x10001u, 0, 0x0.0p+0f,
                              0x1.0000000000000p+0f),
                 v8 = COERCE_AS(__typeof__(v8),
@@ -1341,7 +1346,7 @@ LABEL_35:
           snd_Fade_Fade_10c830((__int64)&v145_.v145, *(float*)(*v53 + 184)),
               v8 =
                   COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s0", "=w"));
-          snd_playAt_ff5f0((__int64)"Env", v133, v132 + 120,
+          snd_playAt_ff5f0((void*)(handle), (__int64)"Env", v133, v132 + 120,
                            (__int64)&v145_.v145, 0, 0x10001u, 0, 0x0.0p+0f,
                            0x1.0000000000000p+0f),
               v8 =
@@ -2079,6 +2084,7 @@ __int64 Env_e25a0(__int64 a1, __int64 a2)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v4;
   __int64 result;
   __int64 v6;
@@ -2184,8 +2190,9 @@ __int64 Env_e25a0(__int64 a1, __int64 a2)
             if (***(_DWORD***)(*v12 + 56) == 1) {
               v19 = (*(__int64 (**)(__int64))(*(_QWORD*)*v12 + 24LL))(*v12);
               snd_Fade_Fade_10c830((__int64)v31_.v31, 0x0.0p+0f);
-              snd_play_ff2d0((__int64)"Env", v19, (__int64)v31_.v31, 0,
-                             0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+              snd_play_ff2d0((void*)(handle), (__int64)"Env", v19,
+                             (__int64)v31_.v31, 0, 0x10001u, 0, 0x0.0p+0f,
+                             0x1.0000000000000p+0f);
               GameRoutine_112180(*v12 + 40, (__int64)v29_.v29);
               snd_Fade_Destroy_Fade(v31_.v31);
               v20 = snd_fnd_WeakHandle_get(*v12 + 40);
@@ -2210,9 +2217,10 @@ __int64 Env_e25a0(__int64 a1, __int64 a2)
               Env_e0b20(v27, *v12, (__int64)v29_.v29, (__int64)v33);
               v23 = (*(__int64 (**)(__int64))(*(_QWORD*)*v12 + 24LL))(*v12);
               snd_Fade_Fade_10c830((__int64)v31_.v31, 0x0.0p+0f);
-              snd_playAt_ff5f0((__int64)"Env", v23, (__int64)v29_.v29,
-                               (__int64)v31_.v31, 0, 0x10001u, 0,
-                               0x1.9000000000000p+6f, 0x1.0000000000000p+0f);
+              snd_playAt_ff5f0((void*)(handle), (__int64)"Env", v23,
+                               (__int64)v29_.v29, (__int64)v31_.v31, 0,
+                               0x10001u, 0, 0x1.9000000000000p+6f,
+                               0x1.0000000000000p+0f);
               GameRoutine_112180(*v12 + 40, (__int64)v28);
               snd_Fade_Destroy_Fade(v31_.v31);
               v24 = snd_fnd_WeakHandle_get(*v12 + 40);

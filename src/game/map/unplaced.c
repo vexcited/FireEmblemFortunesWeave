@@ -1182,9 +1182,9 @@ __int64 game_map_799ca0_alt2(__int64, __int64) __asm__("game_map_799ca0");
 __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 __int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
 __int64 nn_os_UnlockMutex_alt2(__int64) __asm__("nn_os_UnlockMutex");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 extern _QWORD GameData_21d40b8_alt1[] __asm__("GameData_21d40b8");
 int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
@@ -6686,6 +6686,7 @@ __int64 game_map_76aaf0(__int64 a1, __int64 a2)
 
 __int64 game_map_76b0c0(__int64 a1, __int64 a2)
 {
+  _QWORD handle[2];
   __int64* v4;
   unsigned int v5;
   unsigned int v6;
@@ -6888,7 +6889,7 @@ __int64 game_map_76b0c0(__int64 a1, __int64 a2)
     *(_BYTE*)(v12 + 336) = v32;
     *(_QWORD*)(v12 + 356) = 1084227584;
     snd_Fade_Fade_10c830_alt1((__int64)v49, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"SE_EFF_Terrain_QuickSand_lp",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_EFF_Terrain_QuickSand_lp",
                         (__int64)"SE_EFF_Terrain_QuickSand_lp", (__int64)v49, 0,
                         0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v49);

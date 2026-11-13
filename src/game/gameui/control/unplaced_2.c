@@ -36,8 +36,10 @@ __int64 game_GameVariableTable_Find(_QWORD*, unsigned __int64*);
 __int64 game_Unit_GetJob(__int64);
 __int64 nn_util_SNPrintf(_QWORD, _QWORD, const char*, ...);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_playAt_ff5f0(__int64, __int64, __int64, __int64, unsigned int,
-                         unsigned int, int, float, float);
+__attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, __int64, __int64,
+                                                 __int64, __int64, unsigned int,
+                                                 unsigned int, int, float,
+                                                 float);
 __int64 std___1___shared_weak_count___release_weak(__int64);
 __int64 std___1___shared_weak_count_lock(__int64);
 __int64 ui_LayoutAccessor_FindAlignment(__int64*, __int64);
@@ -2537,6 +2539,7 @@ __int64 game_gameui_control_18bfa40(__int64 a1, unsigned int a2)
 
 __int64 game_gameui_control_18c0480(__int64 a1, int a2)
 {
+  _QWORD handle[2];
   char* v3;
   __int64* v4;
   __int64 v5;
@@ -2668,9 +2671,9 @@ __int64 game_gameui_control_18c0480(__int64 a1, int a2)
     snd_Fade_Fade_10c830((__int64)v22_.v22, 0x0.0p+0f);
     v10 = "SE_ACT_LD_StatusUp_Common";
   }
-  snd_playAt_ff5f0((__int64)v10, (__int64)v10, (__int64)&v19_.v19,
-                   (__int64)v22_.v22, 0, 0x10001u, 0, 0x0.0p+0f,
-                   0x1.0000000000000p+0f);
+  snd_playAt_ff5f0((void*)(handle), (__int64)v10, (__int64)v10,
+                   (__int64)&v19_.v19, (__int64)v22_.v22, 0, 0x10001u, 0,
+                   0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(v22_.v22);
   if ((*(_BYTE*)(a1 + 248) & 1) != 0) {
     v17 = *(const char**)(a1 + 264);
@@ -2684,6 +2687,7 @@ __int64 game_gameui_control_18c0480(__int64 a1, int a2)
 
 __int64 game_gameui_control_18c0790(__int64 a1)
 {
+  _QWORD handle[2];
   char* v2;
   __int64* v3;
   __int64 v4;
@@ -2761,7 +2765,7 @@ __int64 game_gameui_control_18c0790(__int64 a1)
   v11_.v12 = DWORD2(v8);
   v11_.v11[0] = GameData_212d1e0[0] + 2;
   snd_Fade_Fade_10c830((__int64)v13_.v13, 0x0.0p+0f);
-  snd_playAt_ff5f0((__int64)"SE_ACT_LD_BadCondition_Common",
+  snd_playAt_ff5f0((void*)(handle), (__int64)"SE_ACT_LD_BadCondition_Common",
                    (__int64)"SE_ACT_LD_BadCondition_Common", (__int64)v11_.v11,
                    (__int64)v13_.v13, 0, 0x10001u, 0, 0x0.0p+0f,
                    0x1.0000000000000p+0f);
@@ -2778,6 +2782,7 @@ __int64 game_gameui_control_18c0790(__int64 a1)
 
 __int64 game_gameui_control_18c0980(__int64 a1)
 {
+  _QWORD handle[2];
   char* v2;
   __int64* v3;
   __int64 v4;
@@ -2855,7 +2860,7 @@ __int64 game_gameui_control_18c0980(__int64 a1)
   v11_.v12 = DWORD2(v8);
   v11_.v11[0] = GameData_212d1e0[0] + 2;
   snd_Fade_Fade_10c830((__int64)v13_.v13, 0x0.0p+0f);
-  snd_playAt_ff5f0((__int64)"SE_ACT_LD_CureCondition_Common",
+  snd_playAt_ff5f0((void*)(handle), (__int64)"SE_ACT_LD_CureCondition_Common",
                    (__int64)"SE_ACT_LD_CureCondition_Common", (__int64)v11_.v11,
                    (__int64)v13_.v13, 0, 0x10001u, 0, 0x0.0p+0f,
                    0x1.0000000000000p+0f);

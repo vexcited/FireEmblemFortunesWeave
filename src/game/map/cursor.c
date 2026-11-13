@@ -23,8 +23,9 @@ extern __int64 GameData_21cd140;
 extern __int64 fw_memory_g_heap_manager;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212cfc0[10];
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void Cursor_730b20(__int64 a1, int a2, int a3);
 void Cursor_730cb0(__int64 a1, char* a2);
@@ -68,9 +69,9 @@ __int64* game_8224a0(unsigned __int8);
 __int64* game_UnitPool_Get(_BYTE*);
 __int64 GameRoutine_747df0(__int64, int, int, unsigned __int8);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 extern _UNKNOWN GameData_21a60e8;
 extern __int64 (*GameData_1f94610[])();
 extern __int64* GameData_212ce88[4];
@@ -1011,6 +1012,7 @@ bool game_map_Cursor_Impl_Tick(unsigned __int64 a1, __int64 a2, double a3,
                                long double a7, long double a8, long double a9,
                                long double a10)
 {
+  _QWORD handle[2];
   int v10;
   int v11;
   unsigned __int64 v13;
@@ -2687,7 +2689,7 @@ bool game_map_Cursor_Impl_Tick(unsigned __int64 a1, __int64 a2, double a3,
             snd_Fade_Fade_10c830_alt1((__int64)&v286_.v286, 0x0.0p+0f);
             v203 = "SE_SYS_DangerZone_On";
           }
-          snd_play_ff2d0_alt1((__int64)v203, (__int64)v203,
+          snd_play_ff2d0_alt1((void*)(handle), (__int64)v203, (__int64)v203,
                               (__int64)&v286_.v286, 0, 0x10001u, 0, 0x0.0p+0f,
                               0x1.0000000000000p+0f);
           snd_Fade_Destroy_Fade_alt1(&v286_.v286);
@@ -2833,8 +2835,8 @@ bool Cursor_7339d0(__int64 a1, double a2, double a3, double a4, long double a5,
                           a9);
   if (v9) {
     snd_Fade_Fade_10c830(v12, 0.0);
-    *(struct PseudoSret*)(&v11) = snd_play_ff2d0(
-        "SE_SYS_Cursor_M", "SE_SYS_Cursor_M", v12, 0, 65537, 0, 0.0, 1.0);
+    snd_play_ff2d0((void*)(&v11), "SE_SYS_Cursor_M", "SE_SYS_Cursor_M", v12, 0,
+                   65537, 0, 0.0, 1.0);
     snd_Fade_Destroy_Fade(v12);
   }
   return v9;

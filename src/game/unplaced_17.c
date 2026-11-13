@@ -7893,7 +7893,7 @@ __int64 game_1637670(__int64 result, __int64 a2)
   }
   if (*(_BYTE*)(v4 + 297) == 1) {
     v32 = *(__int64**)(*(_QWORD*)(v4 + 304) + 8LL);
-    LODWORD(v62) = ui_LayoutAccessor_GetScale(v32),
+    LODWORD(v62) = COERCE_UNSIGNED_INT(ui_LayoutAccessor_GetScale(v32)),
     v23 = COERCE_AS(__typeof__(v23), PSEUDO_REGISTER(float, "s1", "=w")),
     v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(float, "s1", "=w")),
     v50 = COERCE_AS(__typeof__(v50), PSEUDO_REGISTER(float, "s1", "=w")),

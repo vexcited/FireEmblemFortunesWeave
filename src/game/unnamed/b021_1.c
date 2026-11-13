@@ -6045,7 +6045,8 @@ __int64 GameHr_162f5c0(__int64 result)
         LOBYTE(v22) = v30[279];
         *((float*)&v26 + 1) = *(float*)&v24 / 255.0;
         *((_QWORD*)&v26 + 1) =
-            __PAIR64__((float)v22 / 255.0, (float)v28 / 255.0);
+            __PAIR64__(COERCE_UNSIGNED_INT((float)((float)v22 / 255.0)),
+                       COERCE_UNSIGNED_INT((float)((float)v28 / 255.0)));
         v31 = v26;
         GameRoutine_1917400(v23, "_Skin", 5, &v32, 1, 1);
         GameRoutine_1917400(v23, "_Lip", 4, &v31, 1, 1);

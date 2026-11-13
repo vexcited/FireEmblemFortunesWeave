@@ -129,9 +129,9 @@ __int64 game_menu_BasicMenu_Unknown16dd9a0_alt1(__int64 result) __asm__(
 __int64 game_menu_BasicMenu_Unknown16de2e0_alt1(__int64 result, char) __asm__(
     "game_menu_BasicMenu_Unknown16de2e0");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 snd_startSlotFadeVolume_100ca0_alt1(_DWORD*, __int64, float) __asm__(
     "snd_startSlotFadeVolume_100ca0");
 __int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
@@ -307,6 +307,7 @@ __int64 ProcGameOverMenu_Unknown85(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   const char* v2;
   __int64 v3;
   char* v4;
@@ -480,7 +481,7 @@ __int64 ProcGameOverMenu_Unknown85(__int64 a1)
     snd_Fade_Fade_10c830_alt1((__int64)v33_.v33, 0x0.0p+0f),
         v25 = COERCE_AS(__typeof__(v25),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    snd_play_ff2d0_alt1((__int64)"SE_SYS_Telop_GameOver",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Telop_GameOver",
                         (__int64)"SE_SYS_Telop_GameOver", (__int64)v33_.v33, 0,
                         0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f),
         v25 = COERCE_AS(__typeof__(v25),

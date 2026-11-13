@@ -4313,7 +4313,8 @@ void GameHr_e80c40(__int64 a1, __int64 a2, float a3)
   *(_QWORD*)&v20_.v20 = v17;
   *((_QWORD*)&v20_.v21 + 1) = 0;
   v20_.v22 = 0x4220000000000000LL;
-  *(_QWORD*)&v18 = __PAIR64__(*(_DWORD*)(a2 + 12), v15 + 0x1.6800000000000p+7f);
+  *(_QWORD*)&v18 = __PAIR64__(*(_DWORD*)(a2 + 12),
+                              COERCE_UNSIGNED_INT(v15 + 0x1.6800000000000p+7f));
   *((_QWORD*)&v17 + 1) = *(unsigned int*)(a2 + 8);
   *((_QWORD*)&v18 + 1) = v16;
   v20_.v20 = v17;

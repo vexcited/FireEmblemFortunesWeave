@@ -3002,7 +3002,7 @@ LABEL_52:
     v44 = *v9 + (float)(a2 * (float)(v9[1] - *v9));
   }
   LODWORD(v45) = 0;
-  HIDWORD(v45) = fmaxf(v44, 0x1.6666660000000p+0f);
+  HIDWORD(v45) = COERCE_UNSIGNED_INT(fmaxf(v44, 0x1.6666660000000p+0f));
   *a1 = vaddq_f32(v43, COERCE_AS(float32x4_t, v45));
 LABEL_57:
   v46 = v6;

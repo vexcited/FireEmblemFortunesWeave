@@ -33,8 +33,9 @@ __int64 LayoutAccessor_155e830(_QWORD, _QWORD);
 __int64 LayoutAccessor_1562cf0(__int64 result, __int64);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 ui_LayoutAccessor_SetPaneVisible_alt1(_QWORD, _QWORD) __asm__(
     "ui_LayoutAccessor_SetPaneVisible");
 __int64 ui_LayoutAccessor_SetPriority(_QWORD, _QWORD, long double);
@@ -117,6 +118,7 @@ const char* TelopSequence_1375430(__int64* a1);
 
 __int64 TelopSequence_1374920(_QWORD* a1)
 {
+  _QWORD handle[2];
   const char* v2;
   __int64 v3;
   __int64 v4;
@@ -142,8 +144,8 @@ __int64 TelopSequence_1374920(_QWORD* a1)
     }
     if (v5 != 0) {
       snd_Fade_Fade_10c830((__int64)v12, 0x0.0p+0f);
-      snd_play_ff2d0(v5, v5, (__int64)v12, 0, 0x10001u, 0, 0x0.0p+0f,
-                     0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), v5, v5, (__int64)v12, 0, 0x10001u, 0,
+                     0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(v12);
     }
     v4 += 24;

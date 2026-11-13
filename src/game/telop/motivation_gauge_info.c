@@ -56,9 +56,10 @@ __int64 LayoutAccessor_1563280(__int64*, __int64, char);
 __int64 LayoutAccessor_15636c0(__int64 result, __int64, char, float);
 __int64 LayoutAccessor_1563c50(__int64 result, __int64, char, float);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
-bool LayoutAccessor_1563380(__int64*, __int64, char);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
+__int64 LayoutAccessor_1563380(__int64*, __int64, char);
 float LayoutAccessor_15637c0(__int64*, __int64, char);
 void snd_Fade_Fade_10c830(__int64, float);
 __int64 MotivationGaugeInfo_Unknown29(__int64 result);
@@ -286,6 +287,7 @@ __int64 MotivationGaugeInfo_Unknown29(__int64 result)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   int v1;
   char v2;
   int v3;
@@ -528,8 +530,9 @@ __int64 MotivationGaugeInfo_Unknown29(__int64 result)
         *(_DWORD*)(v4 + 232) = 3;
         v72 = game_util_Format_alt1(v71, (unsigned int)v15);
         snd_Fade_Fade_10c830((__int64)&v79_.v79, 0x0.0p+0f);
-        snd_play_ff2d0((__int64)v72, (__int64)v72, (__int64)&v79_.v79, 0,
-                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+        snd_play_ff2d0((void*)(handle), (__int64)v72, (__int64)v72,
+                       (__int64)&v79_.v79, 0, 0x10001u, 0, 0x0.0p+0f,
+                       0x1.0000000000000p+0f);
         return snd_Fade_Destroy_Fade(&v79_.v79);
       }
       if (v11 == v12) {

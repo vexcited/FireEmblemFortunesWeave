@@ -410,7 +410,8 @@ __int64 GameRoutine_f6f200(_QWORD, _QWORD);
 __int64 GameRoutine_f6f590(_QWORD, _QWORD);
 __int64 GameRoutine_f6f8c0(_QWORD, _QWORD);
 __int64 GameRoutine_f72140(_QWORD, _QWORD);
-struct PseudoSret GameRoutine_f724a0(_QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_f724a0(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 __n128 GameRoutine_fb13e0(_QWORD, _QWORD);
 __int64 GameRoutine_fbc550(_QWORD);
 __int64 GameRoutine_fbc6b0(void);
@@ -421,8 +422,9 @@ struct PseudoSret GameRoutine_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
 __int64 GameHr_d1fb60(__int64, char);
 __int64 GameRoutine_112180_alt1(__int64, __int64) __asm__("GameRoutine_112180");
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 void GameHr_cdeee0(__int64 result, __int64);
 void game_hub_d97a00(__int64, float);
 void snd_Fade_Fade_10c830(__int64, float);
@@ -2824,7 +2826,7 @@ __int64 GameHr_f71d40(__int64 a1, __int64 a2, __int64 a3)
   }
   strcpy(&v21[1], "HierarchyHigh");
   v21[0] = 26;
-  *(struct PseudoSret*)(v20) = GameRoutine_f724a0(a1, v21, a3);
+  GameRoutine_f724a0((void*)(v20), a1, v21, a3);
   v9 = v20[0];
   if (v20[0] != 0 &&
       (*(float*)(v20[0] + 260LL) > 0.0f && *(float*)(v20[0] + 264LL) > 0.0f &&
@@ -2864,7 +2866,7 @@ __int64 GameHr_f71d40(__int64 a1, __int64 a2, __int64 a3)
 LABEL_18:
   v21[0] = 30;
   strcpy(&v21[1], "HierarchyMiddle");
-  *(struct PseudoSret*)(v20) = GameRoutine_f724a0(a1, v21, a3);
+  GameRoutine_f724a0((void*)(v20), a1, v21, a3);
   v15 = v20[0];
   if (v20[0] != 0 &&
       (*(float*)(v20[0] + 260LL) > 0.0f && *(float*)(v20[0] + 264LL) > 0.0f &&
@@ -3374,14 +3376,15 @@ LABEL_3:
 
 void GameHr_10009e0(__int64 a1)
 {
+  _QWORD handle[2];
   char v2[15];
   _BYTE v3[16];
   _QWORD v4[25];
 
   strcpy(v2, "BGM_EVT_Act1_B");
   snd_Fade_Fade_10c830((__int64)v4, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)v2, (__int64)v2, (__int64)v4, 0, 0x10001u, 0,
-                 0x0.0p+0f, 0x1.0000000000000p+0f);
+  snd_play_ff2d0((void*)(handle), (__int64)v2, (__int64)v2, (__int64)v4, 0,
+                 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(v4);
   GameRoutine_112180_alt1(a1 + 216, (__int64)v3);
 }

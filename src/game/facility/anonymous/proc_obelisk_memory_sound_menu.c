@@ -153,7 +153,7 @@ snd_startSlotVolume_100b50_alt1(_QWORD, _QWORD,
                                 double) __asm__("snd_startSlotVolume_100b50");
 __n128 snd_fnd_calcCrc32_alt1(_QWORD, _QWORD) __asm__("snd_fnd_calcCrc32");
 extern __int64* GameData_212e348;
-struct PseudoSret snd_BGM_getFirstHandle(_QWORD);
+__attribute__((swiftcall)) void snd_BGM_getFirstHandle(PSEUDO_X8, _QWORD);
 __int64 ProcObeliskMemorySoundMenu_Unknown100(__int64 a1);
 __attribute__((swiftcall)) void
 LayoutAccessor_1560070_alt2(PSEUDO_X8, __int64*,
@@ -168,9 +168,9 @@ LayoutAccessor_1562cf0_alt1(__int64 result,
 __int64 LayoutAccessor_1563030_alt1(__int64 result, const char*,
                                     char) __asm__("LayoutAccessor_1563030");
 __int64 PageTab_16e6880_alt1(__int64, int, int, int) __asm__("PageTab_16e6880");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
@@ -810,8 +810,7 @@ LABEL_9:
             snd_startSlotVolume_100b50_alt1(&v50, v35,
                                             LANES128(v23).n128_f64[0]);
             snd_Fade_Destroy_Fade(v35);
-            *(struct PseudoSret*)(v35) =
-                snd_BGM_getFirstHandle(*(_QWORD*)(*v12 + 8));
+            snd_BGM_getFirstHandle((void*)(v35), *(_QWORD*)(*v12 + 8));
             v24 = snd_fnd_WeakHandle_get(v35);
             if (v24 != 0) {
               (*(void (**)(__int64))(*(_QWORD*)(v24 - 5592) + 104LL))(v24 -
@@ -1302,6 +1301,7 @@ LABEL_33:
 
 __int64 ProcObeliskMemorySoundMenu_Unknown146()
 {
+  _QWORD handle[2];
   __int64 result;
   struct {
     __int64 v1;
@@ -1318,7 +1318,7 @@ __int64 ProcObeliskMemorySoundMenu_Unknown146()
     snd_Fade_Fade_10c830_alt1((__int64)v4, 0x0.0p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-    snd_play_ff2d0_alt1((__int64)"VIB_Cursor_Medium",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_Cursor_Medium",
                         (__int64)"VIB_Cursor_Medium", (__int64)v4, 0, 0x10001u,
                         0, 0x0.0p+0f, 0x1.0000000000000p+0f),
         result = COERCE_AS(__typeof__(result),
@@ -1333,6 +1333,7 @@ __int64 ProcObeliskMemorySoundMenu_Unknown146()
 
 __int64 ProcObeliskMemorySoundMenu_Unknown147()
 {
+  _QWORD handle[2];
   __int64 result;
   struct {
     __int64 v1;
@@ -1349,9 +1350,9 @@ __int64 ProcObeliskMemorySoundMenu_Unknown147()
     snd_Fade_Fade_10c830_alt1((__int64)v4, 0x0.0p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-    snd_play_ff2d0_alt1((__int64)"VIB_List_Right", (__int64)"VIB_List_Right",
-                        (__int64)v4, 0, 0x10001u, 0, 0x0.0p+0f,
-                        0x1.0000000000000p+0f),
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_List_Right",
+                        (__int64)"VIB_List_Right", (__int64)v4, 0, 0x10001u, 0,
+                        0x0.0p+0f, 0x1.0000000000000p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
     snd_Fade_Destroy_Fade_alt1(v4),
@@ -1364,6 +1365,7 @@ __int64 ProcObeliskMemorySoundMenu_Unknown147()
 
 __int64 ProcObeliskMemorySoundMenu_Unknown148()
 {
+  _QWORD handle[2];
   __int64 result;
   struct {
     __int64 v1;
@@ -1380,9 +1382,9 @@ __int64 ProcObeliskMemorySoundMenu_Unknown148()
     snd_Fade_Fade_10c830_alt1((__int64)v4, 0x0.0p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-    snd_play_ff2d0_alt1((__int64)"VIB_List_Left", (__int64)"VIB_List_Left",
-                        (__int64)v4, 0, 0x10001u, 0, 0x0.0p+0f,
-                        0x1.0000000000000p+0f),
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_List_Left",
+                        (__int64)"VIB_List_Left", (__int64)v4, 0, 0x10001u, 0,
+                        0x0.0p+0f, 0x1.0000000000000p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
     snd_Fade_Destroy_Fade_alt1(v4),
@@ -1405,6 +1407,7 @@ __int64 ProcObeliskMemorySoundMenu_Unknown8(__int64 a1, unsigned int a2)
 
 __int64 ProcObeliskMemorySoundMenu_Unknown18()
 {
+  _QWORD handle[2];
   __int64 result;
   struct {
     __int64 v1;
@@ -1421,7 +1424,7 @@ __int64 ProcObeliskMemorySoundMenu_Unknown18()
     snd_Fade_Fade_10c830_alt1((__int64)v4, 0x0.0p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-    snd_play_ff2d0_alt1((__int64)"VIB_Cursor_Medium",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_Cursor_Medium",
                         (__int64)"VIB_Cursor_Medium", (__int64)v4, 0, 0x10001u,
                         0, 0x0.0p+0f, 0x1.0000000000000p+0f),
         result = COERCE_AS(__typeof__(result),
@@ -1436,6 +1439,7 @@ __int64 ProcObeliskMemorySoundMenu_Unknown18()
 
 __int64 ProcObeliskMemorySoundMenu_Unknown21()
 {
+  _QWORD handle[2];
   __int64 result;
   struct {
     __int64 v1;
@@ -1452,9 +1456,9 @@ __int64 ProcObeliskMemorySoundMenu_Unknown21()
     snd_Fade_Fade_10c830_alt1((__int64)v4, 0x0.0p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-    snd_play_ff2d0_alt1((__int64)"VIB_List_Left", (__int64)"VIB_List_Left",
-                        (__int64)v4, 0, 0x10001u, 0, 0x0.0p+0f,
-                        0x1.0000000000000p+0f),
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_List_Left",
+                        (__int64)"VIB_List_Left", (__int64)v4, 0, 0x10001u, 0,
+                        0x0.0p+0f, 0x1.0000000000000p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
     snd_Fade_Destroy_Fade_alt1(v4),
@@ -1467,6 +1471,7 @@ __int64 ProcObeliskMemorySoundMenu_Unknown21()
 
 __int64 ProcObeliskMemorySoundMenu_Unknown22()
 {
+  _QWORD handle[2];
   __int64 result;
   struct {
     __int64 v1;
@@ -1483,9 +1488,9 @@ __int64 ProcObeliskMemorySoundMenu_Unknown22()
     snd_Fade_Fade_10c830_alt1((__int64)v4, 0x0.0p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-    snd_play_ff2d0_alt1((__int64)"VIB_List_Right", (__int64)"VIB_List_Right",
-                        (__int64)v4, 0, 0x10001u, 0, 0x0.0p+0f,
-                        0x1.0000000000000p+0f),
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_List_Right",
+                        (__int64)"VIB_List_Right", (__int64)v4, 0, 0x10001u, 0,
+                        0x0.0p+0f, 0x1.0000000000000p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
     snd_Fade_Destroy_Fade_alt1(v4),

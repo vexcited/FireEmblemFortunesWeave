@@ -595,9 +595,9 @@ __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 __int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
 __int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
 __int64 nn_os_UnlockMutex_alt2(__int64) __asm__("nn_os_UnlockMutex");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 std___1___shared_weak_count___release_weak_alt3(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 void CrowdCharacter_10315c0_alt1(__int64) __asm__("CrowdCharacter_10315c0");
@@ -3906,7 +3906,7 @@ LABEL_86:
         v111 = vaddq_f32(
             *(float32x4_t*)(*(_QWORD*)(*(_QWORD*)(v54 + 24) + 16LL) + 560LL),
             v53);
-        LANES128(v111).n128_u32[1] = vmuls_lane_f32(
+        LANES128(v111).n128_f32[1] = vmuls_lane_f32(
             0x1.99999a0000000p-4f,
             COERCE_AS(float32x2_t, LANES128(v111).n128_u64[0]), 1);
         v23 = COERCE_LONG_DOUBLE(vmulq_f32(v111, v111));
@@ -3974,7 +3974,7 @@ LABEL_86:
             do {
               v120 = *v118++;
               v121 = vaddq_f32(v120, v53);
-              LANES128(v121).n128_u32[1] = vmuls_lane_f32(
+              LANES128(v121).n128_f32[1] = vmuls_lane_f32(
                   0x1.99999a0000000p-4f,
                   COERCE_AS(float32x2_t, LANES128(v121).n128_u64[0]), 1);
               v23 = COERCE_LONG_DOUBLE(vmulq_f32(v121, v121));
@@ -3999,7 +3999,7 @@ LABEL_86:
           v76 = vsubq_f32(
               *(float32x4_t*)(*(_QWORD*)(*(_QWORD*)(v67 + 24) + 16LL) + 560LL),
               v36);
-          LANES128(v76).n128_u32[1] = vmuls_lane_f32(
+          LANES128(v76).n128_f32[1] = vmuls_lane_f32(
               0x1.99999a0000000p-4f,
               COERCE_AS(float32x2_t, LANES128(v76).n128_u64[0]), 1);
           v77 = vmulq_f32(v76, v76);
@@ -4054,7 +4054,7 @@ LABEL_86:
                   do {
                     v86 = *v84++;
                     v87 = vsubq_f32(v86, v36);
-                    LANES128(v87).n128_u32[1] = vmuls_lane_f32(
+                    LANES128(v87).n128_f32[1] = vmuls_lane_f32(
                         0x1.99999a0000000p-4f,
                         COERCE_AS(float32x2_t, LANES128(v87).n128_u64[0]), 1);
                     v88 = vmulq_f32(v87, v87);
@@ -6154,8 +6154,8 @@ __attribute__((swiftcall)) void game_103bcc0(PSEUDO_X8 x8_, __int64 unused_int0,
     snd_Fade_Fade_10c830_alt1((__int64)v4, 0x0.0p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-    snd_play_ff2d0_alt1(v2, v2, (__int64)v4, 0, 0x10001u, 0, 0x0.0p+0f,
-                        0x1.0000000000000p+0f),
+    snd_play_ff2d0_alt1((void*)(a2), v2, v2, (__int64)v4, 0, 0x10001u, 0,
+                        0x0.0p+0f, 0x1.0000000000000p+0f),
         result = COERCE_AS(__typeof__(result),
                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
     {

@@ -37,7 +37,7 @@ extern __int64 eft_g_effectSystem;
 extern char GameData_1af96e6;
 extern char GameData_1af96e7;
 extern char GameData_1af96e8;
-struct PseudoSret GameRoutine_bccce0(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_bccce0(PSEUDO_X8, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
 __int64 Manager_bcc860(__int64 result);
 __int64 fw_memory_HeapManager_Allocate_alt1(
@@ -285,7 +285,7 @@ __int64 Manager_bcc860(__int64 result)
     }
     i = 0xFFFFFFFFLL;
   LABEL_21:
-    *(struct PseudoSret*)(v38) = GameRoutine_bccce0(result, i);
+    GameRoutine_bccce0((void*)(v38), result, i);
     result = GameRoutine_18e5d80(v38);
     if ((v39 & 1) != 0 && v40 != 0) {
       v11 = 128;

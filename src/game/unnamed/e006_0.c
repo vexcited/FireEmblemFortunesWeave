@@ -163,7 +163,7 @@ __int64 GameRoutine_a4dbe0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_a4f800(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_a4fa80(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_a50100(_QWORD, _QWORD, _QWORD);
-struct PseudoSret GameRoutine_a50e90(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_a50e90(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_a51280(_QWORD, _QWORD);
 __int64 GameRoutine_a51640(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_a5e4c0(_QWORD, _QWORD);
@@ -4564,8 +4564,7 @@ __int64 GameHr_1135e80(__int64 result)
               else {
                 v36 = 0;
               }
-              *(struct PseudoSret*)(&v168_.v168) =
-                  GameRoutine_a50e90(*v25, v26);
+              GameRoutine_a50e90((void*)(&v168_.v168), *v25, v26);
               if ((v168_.v168 & 1) != 0) {
                 v65 = v168_.v170;
               }

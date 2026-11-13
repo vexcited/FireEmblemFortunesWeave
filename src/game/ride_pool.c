@@ -55,7 +55,8 @@ extern __int64* GameData_212c8b0[11];
 extern __int64* GameData_212d6d0;
 extern char GameData_21f42c0;
 extern int GameData_21f42c4;
-struct PseudoSret GameRoutine_93c6a0(_QWORD, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_93c6a0(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD);
 unsigned __int8* GameRoutine_932ec0(unsigned __int8* result, __int64);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 RidePool_93bb80_alt1(__int64 a1) __asm__("RidePool_93bb80");
@@ -669,7 +670,7 @@ LABEL_36:
     return UnitHeroes_6d2b90(a2, *(_QWORD*)(v3 + 120) + (v18 << 6));
   }
 LABEL_38:
-  *(struct PseudoSret*)(&v19) = GameRoutine_93c6a0(v3, a2 + 1880, 0, 1);
+  GameRoutine_93c6a0((void*)(&v19), v3, a2 + 1880, 0, 1);
   if (v19 < 0) {
     return UnitHeroes_6d2b90(a2, GameData_212c8b0[0]);
   }

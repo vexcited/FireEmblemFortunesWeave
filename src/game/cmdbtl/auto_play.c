@@ -74,8 +74,9 @@ __int64 game_cmdbtl_e76940(_QWORD, _QWORD);
 __int64 game_cmdbtl_e76c00(_QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
@@ -185,6 +186,7 @@ void AutoPlay_Destructor(_QWORD* a1)
 
 void AutoPlay_f81a10(__int64 a1)
 {
+  _QWORD handle[2];
   int v2;
   __int64 v3;
   int v4;
@@ -362,7 +364,7 @@ void AutoPlay_f81a10(__int64 a1)
   }
   if ((AutoPlay_f83360(a1, 1, v5) & 1) != 0) {
     snd_Fade_Fade_10c830((__int64)v19, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Cursor_Chara_CmdBtl",
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Cursor_Chara_CmdBtl",
                    (__int64)"SE_SYS_Cursor_Chara_CmdBtl", (__int64)v19, 0,
                    0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v19);

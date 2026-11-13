@@ -132,9 +132,9 @@ __int64 game_menu_GameMenu_Unknown135_alt1(__int64*, __int64*) __asm__(
     "game_menu_GameMenu_Unknown135");
 __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 int sprintf_alt1(__int64, const char*, ...) __asm__("sprintf");
 void __attribute__((noreturn))
 GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
@@ -671,6 +671,7 @@ LABEL_22:
 
 __int64 ProcTradeItemSelectMenu_Unknown135(__int64 a1, __int64* a2)
 {
+  _QWORD handle[2];
   __int64 v4;
   __int64 v5;
   unsigned __int64 v7;
@@ -829,7 +830,7 @@ __int64 ProcTradeItemSelectMenu_Unknown135(__int64 a1, __int64* a2)
 LABEL_41:
   a2[1] = v24;
   snd_Fade_Fade_10c830_alt1((__int64)v34, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Window_Open",
                       (__int64)"SE_SYS_Window_Open", (__int64)v34, 0, 0x10001u,
                       0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   return snd_Fade_Destroy_Fade_alt1(v34);

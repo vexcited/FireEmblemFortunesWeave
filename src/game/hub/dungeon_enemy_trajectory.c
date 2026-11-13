@@ -18,8 +18,9 @@ __int64 game_hub_fa1b40(float*, float);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 strlen(_QWORD);
@@ -100,6 +101,7 @@ __int64 DungeonEnemyTrajectory_fa03f0(__int64 a1, char a2)
 
 void DungeonEnemyTrajectory_fa0960(__int64 a1, float a2)
 {
+  _QWORD handle[2];
   __int64 v3;
   float v4;
   __int64 v5;
@@ -894,8 +896,8 @@ LABEL_190:
   }
   if (v133 != nullptr) {
     snd_Fade_Fade_10c830_alt1((__int64)v166, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)v133, (__int64)v133, (__int64)v166, 0, 0x10001u, 0,
-                   0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v133, (__int64)v133, (__int64)v166,
+                   0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v166);
   }
   else {
@@ -946,8 +948,8 @@ LABEL_190:
   }
   if (v140 != nullptr) {
     snd_Fade_Fade_10c830_alt1((__int64)v166, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)v140, (__int64)v140, (__int64)v166, 0, 0x10001u, 0,
-                   0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v140, (__int64)v140, (__int64)v166,
+                   0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v166);
   }
   else {
@@ -998,8 +1000,8 @@ LABEL_190:
   }
   if (v147 != nullptr) {
     snd_Fade_Fade_10c830_alt1((__int64)v166, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)v147, (__int64)v147, (__int64)v166, 0, 0x10001u, 0,
-                   0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v147, (__int64)v147, (__int64)v166,
+                   0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v166);
   }
   else {
@@ -1052,8 +1054,8 @@ LABEL_264:
   }
   if (v154 != nullptr) {
     snd_Fade_Fade_10c830_alt1((__int64)v166, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)v154, (__int64)v154, (__int64)v166, 0, 0x10001u, 0,
-                   0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v154, (__int64)v154, (__int64)v166,
+                   0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v166);
   }
   else {

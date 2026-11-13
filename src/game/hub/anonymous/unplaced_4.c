@@ -13,8 +13,9 @@ __int64 HubCharacterNatives_cee990(__int64, unsigned __int32, int, __int64,
                                    __int64, __int64, float);
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count___release_weak(__int64);
 __int64 std___1___shared_weak_count_lock(__int64);
 __int64 wld_Crc32(int, unsigned __int8*, unsigned __int64);
@@ -47,6 +48,7 @@ void game_hub_anonymous_f8dc00(__int64 a1);
 
 void game_hub_anonymous_da6360(__int64 a1)
 {
+  _QWORD handle[2];
   int v1;
   __int64 v3;
   int v4;
@@ -136,8 +138,9 @@ void game_hub_anonymous_da6360(__int64 a1)
         *(_QWORD*)fw_memory_g_heap_manager_ptr, 32, 16, 0);
     strcpy(v18, "SE_SYS_CmdBtl_PreEmptive_In");
     snd_Fade_Fade_10c830((__int64)v51_.v51, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)v18, (__int64)v18, (__int64)v51_.v51, 0, 0x10001u,
-                   0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v18, (__int64)v18,
+                   (__int64)v51_.v51, 0, 0x10001u, 0, 0x0.0p+0f,
+                   0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v51_.v51);
     v19 = 128;
     if (*(_QWORD*)(*(_QWORD*)v17 + 200LL) == 0) {
@@ -317,8 +320,9 @@ LABEL_75:
   *(_WORD*)(v51_.v52 + 193) = 257;
   qmemcpy(v49, " SE_SYS_CmdBtl_In", 17);
   snd_Fade_Fade_10c830((__int64)v51_.v51, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)&v49[1], (__int64)&v49[1], (__int64)v51_.v51, 0,
-                 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+  snd_play_ff2d0((void*)(handle), (__int64)&v49[1], (__int64)&v49[1],
+                 (__int64)v51_.v51, 0, 0x10001u, 0, 0x0.0p+0f,
+                 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(v51_.v51);
   if ((v49[0] & 1) != 0 && *(_QWORD*)&v49[16] != 0) {
     v47 = 128;
@@ -342,6 +346,7 @@ LABEL_75:
 
 void game_hub_anonymous_da7680()
 {
+  _QWORD handle[2];
   __int64 v0;
   __int64 v1[3];
   _QWORD v2[25];
@@ -350,8 +355,9 @@ void game_hub_anonymous_da7680()
     GameHr_10c0c60(GameData_21f3cd8);
     strcpy((char*)v1, "\"SE_SYS_CmdBtl_Out");
     snd_Fade_Fade_10c830((__int64)v2, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)v1 + 1, (__int64)v1 + 1, (__int64)v2, 0, 0x10001u,
-                   0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v1 + 1, (__int64)v1 + 1,
+                   (__int64)v2, 0, 0x10001u, 0, 0x0.0p+0f,
+                   0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v2);
     if ((v1[0] & 1) != 0 && v1[2] != 0) {
       v0 = 128;
@@ -366,6 +372,7 @@ void game_hub_anonymous_da7680()
 
 void game_hub_anonymous_f8dc00(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v2;
   char* v3;
   __int64 v4;
@@ -415,8 +422,8 @@ void game_hub_anonymous_f8dc00(__int64 a1)
   snd_Fade_Fade_10c830((__int64)v34, 0x0.0p+0f),
       v18 = COERCE_AS(__typeof__(v18),
                       PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-  snd_play_ff2d0((__int64)v3, (__int64)v3, (__int64)v34, 0, 0x10001u, 0,
-                 0x0.0p+0f, 0x1.0000000000000p+0f),
+  snd_play_ff2d0((void*)(handle), (__int64)v3, (__int64)v3, (__int64)v34, 0,
+                 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f),
       v18 = COERCE_AS(__typeof__(v18),
                       PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   snd_Fade_Destroy_Fade(v34),

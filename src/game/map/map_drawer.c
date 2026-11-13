@@ -49,7 +49,7 @@ extern __int64 game_map_MapColorPalette_g_texture_archives;
 extern __int64* GameData_212d1e0[2];
 extern __int64* GameData_212d570[7];
 extern int GameData_21d92e0;
-struct PseudoSret GameRoutine_81d430(void);
+__attribute__((swiftcall)) void GameRoutine_81d430(PSEUDO_X8);
 struct PseudoSret snd_playAt_ff5f0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                                    _QWORD, _QWORD, double, float);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD);
@@ -75,9 +75,10 @@ __attribute__((swiftcall)) void UnitActor_81d430(PSEUDO_X8, __int64);
 __int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
 __int64 game_UnitPool_GetFirst_alt1(int*) __asm__("game_UnitPool_GetFirst");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
-                              unsigned int, int, float,
-                              float) __asm__("snd_playAt_ff5f0");
+__attribute__((swiftcall)) void
+snd_playAt_ff5f0_alt1(PSEUDO_X8, __int64, __int64, __int64, __int64,
+                      unsigned int, unsigned int, int, float,
+                      float) __asm__("snd_playAt_ff5f0");
 bool MapUtil_7536a0_alt1(_BOOL8 result) __asm__("MapUtil_7536a0");
 bool game_HasSkill_alt1(_QWORD*, _DWORD*) __asm__("game_HasSkill");
 char* GameHr_6fb960(__int64, __int64);
@@ -418,7 +419,7 @@ __int64 MapDrawer_808650(__int64 a1, __int64 a2, int a3)
   }
 LABEL_10:
   if ((v5 & 1) == 0) {
-    *(struct PseudoSret*)(v12) = GameRoutine_81d430();
+    GameRoutine_81d430((void*)(v12));
     if (GameData_21ed098 != 0) {
       GameRoutine_18c4dd0(GameData_21ed098, v12, (unsigned int)-a3, 0);
     }
@@ -449,6 +450,7 @@ __int64 MapDrawer_808760(__int64 a1, __int64 a2, _DWORD* a3)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   char v3;
   int v4;
   int v5;
@@ -533,9 +535,9 @@ LABEL_10:
       snd_Fade_Fade_10c830_alt1((__int64)v25, 0x0.0p+0f);
       v16 = "SE_SYS_Telop_SkillActive_Popup";
     }
-    snd_playAt_ff5f0_alt1((__int64)v16, (__int64)v16, (__int64)&v22_.v22,
-                          (__int64)v25, 0, 0x10001u, 0, 0x0.0p+0f,
-                          0x1.0000000000000p+0f);
+    snd_playAt_ff5f0_alt1((void*)(handle), (__int64)v16, (__int64)v16,
+                          (__int64)&v22_.v22, (__int64)v25, 0, 0x10001u, 0,
+                          0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v25);
     if (a1 != 0) {
       if (game_ProcGameSkipView_instance_ == 0 ||
@@ -598,7 +600,7 @@ __int64 MapDrawer_8089c0(__int64 a1, __int64 a2, unsigned int a3)
   }
 LABEL_10:
   if ((v4 & 1) == 0) {
-    *(struct PseudoSret*)(v12) = GameRoutine_81d430();
+    GameRoutine_81d430((void*)(v12));
     if (GameData_21ed098 != 0) {
       GameRoutine_18c6550(GameData_21ed098, v12, a3);
     }

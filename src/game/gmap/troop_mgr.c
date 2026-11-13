@@ -260,7 +260,8 @@ game_gmap_TroopMgr_Impl_UpdateVisibleTroops_closure0_Invoke(__int64 result,
                                                             __int64 a2);
 _QWORD* TroopMgr_1355e40(float* a1, __int64* a2, _QWORD** a3);
 __int64 GameRoutine_ae0560_alt1() __asm__("GameRoutine_ae0560");
-__int64 GameSituation_906320(__int64, __int64*);
+__attribute__((swiftcall)) void GameSituation_906320(PSEUDO_X8, __int64,
+                                                   __int64*);
 __int64 game_GetHero_alt1(unsigned __int8) __asm__("game_GetHero");
 __int64 CorpsManager_9728b0();
 void TroopMgr_134a4a0_alt2(__int64) __asm__("TroopMgr_134a4a0");
@@ -2290,6 +2291,7 @@ __int64 TroopMgr_1349260(unsigned __int8 a1)
     __int64 v5[2];
     char gap16_[32];
     __int64 v6;
+    char tail_[32];
   } v5_;
 
   if (game_gmap_GmapClock_instance_ == 0) {
@@ -2312,7 +2314,8 @@ __int64 TroopMgr_1349260(unsigned __int8 a1)
   if (result != 0) {
     v5_.v5[0] = 0;
     v5_.v5[1] = result;
-    GameSituation_906320(game_GameModeData_instance_ + 136, v5_.v5);
+    GameSituation_906320((void*)(v5_.gap16_), game_GameModeData_instance_ + 136,
+                         v5_.v5);
     if (v5_.v6 == 0) {
       return 0;
     }

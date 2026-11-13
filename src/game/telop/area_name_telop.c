@@ -24,8 +24,9 @@ __int64 LayoutAccessor_1562060(_QWORD, _QWORD, _QWORD);
 __int64 LayoutAccessor_1562680(_QWORD, _QWORD, long double);
 __int64 snd_Fade_Destroy_Fade(_QWORD);
 __n128 snd_Fade_Fade_10c830(_QWORD, double);
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 bool AreaNameTelop_1782140(__int64 a1);
 
 bool AreaNameTelop_1782140(__int64 a1)
@@ -51,9 +52,8 @@ bool AreaNameTelop_1782140(__int64 a1)
     LODWORD(v3) = 1.0;
     LayoutAccessor_1562680(v1 + 168, "In", v3);
     snd_Fade_Fade_10c830(v6, 0.0);
-    *(struct PseudoSret*)(&v5) =
-        snd_play_ff2d0("SE_SYS_Telop_AreaTelop", "SE_SYS_Telop_AreaTelop", v6,
-                       0, 65537, 0, 0.0, 1.0);
+    snd_play_ff2d0((void*)(&v5), "SE_SYS_Telop_AreaTelop",
+                   "SE_SYS_Telop_AreaTelop", v6, 0, 65537, 0, 0.0, 1.0);
     snd_Fade_Destroy_Fade(v6);
   }
   return v1 != 0;

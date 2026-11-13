@@ -90,9 +90,9 @@ __int64 game_gameui_anonymous_ProcGameUIFade_In_alt1(
     __int64) __asm__("game_gameui_anonymous_ProcGameUIFade_In");
 __int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
@@ -113,6 +113,7 @@ void __attribute__((noreturn)) MultiMenuSequence_DeletingDestructor()
 
 __int64 MultiMenuSequence_1786b20(__int64* a1)
 {
+  _QWORD handle[2];
   __int64* v1;
   __int64 v3;
   __int64 v4;
@@ -149,7 +150,7 @@ __int64 MultiMenuSequence_1786b20(__int64* a1)
                                               (const char*)v12) != -1 &&
               ((*(__int64 (**)(__int64*))(*v1 + 120))(v1) & 1) == 0) {
             snd_Fade_Fade_10c830_alt1((__int64)v12, 0x0.0p+0f);
-            snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
+            snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Window_Open",
                                 (__int64)"SE_SYS_Window_Open", (__int64)v12, 0,
                                 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
             snd_Fade_Destroy_Fade_alt1(v12);
@@ -161,10 +162,10 @@ __int64 MultiMenuSequence_1786b20(__int64* a1)
                                                 (const char*)v12) != -1 &&
                 ((*(__int64 (**)(__int64*))(*v1 + 120))(v1) & 1) == 0) {
               snd_Fade_Fade_10c830_alt1((__int64)v12, 0x0.0p+0f);
-              snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
-                                  (__int64)"SE_SYS_Window_Open", (__int64)v12,
-                                  0, 0x10001u, 0, 0x0.0p+0f,
-                                  0x1.0000000000000p+0f);
+              snd_play_ff2d0_alt1(
+                  (void*)(handle), (__int64)"SE_SYS_Window_Open",
+                  (__int64)"SE_SYS_Window_Open", (__int64)v12, 0, 0x10001u, 0,
+                  0x0.0p+0f, 0x1.0000000000000p+0f);
               snd_Fade_Destroy_Fade_alt1(v12);
             }
           }

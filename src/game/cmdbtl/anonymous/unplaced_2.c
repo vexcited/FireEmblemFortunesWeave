@@ -7,8 +7,9 @@ __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
 __attribute__((swiftcall)) void game_sound_PlayVibration(PSEUDO_X8,
                                                          __int64 result, char);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __n128 GameRoutine_159e540(__int64);
 __n128 game_cmdbtl_anonymous_e70790(__int64);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
@@ -19,6 +20,7 @@ __int64 game_cmdbtl_anonymous_e724e0(__int64 a1, char a2);
 
 __int64 game_cmdbtl_anonymous_e724e0(__int64 a1, char a2)
 {
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -91,7 +93,7 @@ __int64 game_cmdbtl_anonymous_e724e0(__int64 a1, char a2)
   v14 = a2;
   game_cmdbtl_anonymous_e70790(a1);
   snd_Fade_Fade_10c830((__int64)&v17_.v17, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)"SE_SYS_LinkUnit_Change",
+  snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_LinkUnit_Change",
                  (__int64)"SE_SYS_LinkUnit_Change", (__int64)&v17_.v17, 0,
                  0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(&v17_.v17);

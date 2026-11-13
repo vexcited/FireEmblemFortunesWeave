@@ -74,8 +74,6 @@ __int64
 game_facility_ReleaseGroups_alt1() __asm__("game_facility_ReleaseGroups");
 extern __int64 (*ProcDivinePerformance_Destructor_ptr[])();
 void FacilitySceneBase_1958ed0(__int64, __int64);
-void GameRoutine_1950740_alt1(__int64, __int64,
-                              unsigned int) __asm__("GameRoutine_1950740");
 void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
 void ProcDivinePerformance_196d760();
 void game_facility_anonymous_ProcDivinePerformance_StartPerformance_closure_Invoke();
@@ -676,7 +674,7 @@ void game_facility_anonymous_ProcDivinePerformance_StartPerformance_closure_Invo
   unsigned __int64 v7;
   _BYTE v8[11];
   char v9;
-  __int64 v10;
+  __int64 v10_[2];
 
   v9 = 0;
   v2_.v4 = 0;
@@ -687,9 +685,9 @@ void game_facility_anonymous_ProcDivinePerformance_StartPerformance_closure_Invo
   v2_.v2 = 26;
   *(_QWORD*)v2_.v3 = 0xE75F8481E3A08DE5LL;
   *(_QWORD*)&v2_.v3[5] = 0x8AB8E4A49BE75F84LL;
-  GameRoutine_1950740_alt1((__int64)&v6, (__int64)&v2_.v2, 1u);
-  v0 = v10;
-  if (v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
+  GameRoutine_1950740((void*)(v10_), (_QWORD*)&v6, (__int64)&v2_.v2, 1u);
+  v0 = v10_[1];
+  if (v10_[1] != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10_[1] + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v0 + 16LL))(v0);
     std___1___shared_weak_count___release_weak_alt2(v0);

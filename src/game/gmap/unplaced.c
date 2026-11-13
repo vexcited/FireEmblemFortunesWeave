@@ -507,12 +507,13 @@ __int64 game_gmap_133fe00_alt2(__int64, unsigned __int8,
                                float) __asm__("game_gmap_133fe00");
 __int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
-                              unsigned int, int, float,
-                              float) __asm__("snd_playAt_ff5f0");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_playAt_ff5f0_alt1(PSEUDO_X8, __int64, __int64, __int64, __int64,
+                      unsigned int, unsigned int, int, float,
+                      float) __asm__("snd_playAt_ff5f0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __n64 GameRoutine_a6c440_alt1(float32x4_t*, __int128*,
@@ -824,6 +825,7 @@ float32x4_t* game_gmap_1318260()
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   unsigned int* v0;
   __int64 v1;
   __int64 v2;
@@ -918,7 +920,7 @@ LABEL_23:
       GameRoutine_1317f10(*(float32x4_t**)(v10 + 16), result + 2);
     }
     snd_Fade_Fade_10c830_alt2((__int64)&v13_.v13, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"SE_SYS_GMAP_Cancel_Spot",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_GMAP_Cancel_Spot",
                         (__int64)"SE_SYS_GMAP_Cancel_Spot", (__int64)&v13_.v13,
                         0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     return (float32x4_t*)snd_Fade_Destroy_Fade_alt1(&v13_.v13);
@@ -7238,6 +7240,7 @@ __int64 game_gmap_1520240(__int64 a1, __int64 a2, char a3)
 
 __int64 game_gmap_1520ea0(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   char* v2;
   char* v3;
@@ -7318,14 +7321,14 @@ LABEL_18:
     v11_.v12 = DWORD2(v10);
     v11_.v11[0] = GameData_212d1e0[0] + 2;
     snd_Fade_Fade_10c830_alt2((__int64)v13, 0x0.0p+0f);
-    snd_playAt_ff5f0_alt1((__int64)"SE_SYS_GMAP_GoalPin_Remove",
-                          (__int64)"SE_SYS_GMAP_GoalPin_Remove",
-                          (__int64)v11_.v11, (__int64)v13, 0, 0x10001u, 0,
-                          0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_playAt_ff5f0_alt1(
+        (void*)(handle), (__int64)"SE_SYS_GMAP_GoalPin_Remove",
+        (__int64)"SE_SYS_GMAP_GoalPin_Remove", (__int64)v11_.v11, (__int64)v13,
+        0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   }
   else {
     snd_Fade_Fade_10c830_alt2((__int64)v13, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"SE_SYS_GMAP_GoalPin_Remove",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_GMAP_GoalPin_Remove",
                         (__int64)"SE_SYS_GMAP_GoalPin_Remove", (__int64)v13, 0,
                         0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   }

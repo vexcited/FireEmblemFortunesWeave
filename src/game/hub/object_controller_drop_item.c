@@ -102,8 +102,9 @@ __int64 ItemSupport_f2e340();
 __int64 game_989ea0(__int64 result, int, __int64);
 __int64 game_hub_dfc000(__int64 result);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 extern _UNKNOWN GameData_1aa15ff;
 extern __int64 (*GameData_1fe26b0[])();
 extern __int64* GameData_212d458[7];
@@ -697,6 +698,7 @@ ObjectControllerDropItem_Unknown3(PSEUDO_X8 x8_, __int64 result)
 
 __int64 game_hub_ObjectControllerDropItem_PlayGetItem(__int64 a1)
 {
+  _QWORD handle[2];
   float v2;
   float v3;
   float32x4_t v4;
@@ -1577,9 +1579,9 @@ LABEL_42:
             snd_Fade_Fade_10c830((__int64)v145_.v145, 0x0.0p+0f),
                 v29 = COERCE_AS(__typeof__(v29),
                                 PSEUDO_REGISTER(__n128, "v0", "=w"));
-            snd_play_ff2d0((__int64)v134 + 1, (__int64)v134 + 1,
-                           (__int64)v145_.v145, 0, 0x10001u, 0, 0x0.0p+0f,
-                           0x1.0000000000000p+0f),
+            snd_play_ff2d0((void*)(handle), (__int64)v134 + 1,
+                           (__int64)v134 + 1, (__int64)v145_.v145, 0, 0x10001u,
+                           0, 0x0.0p+0f, 0x1.0000000000000p+0f),
                 v29 = COERCE_AS(__typeof__(v29),
                                 PSEUDO_REGISTER(__n128, "v0", "=w"));
             snd_Fade_Destroy_Fade(v145_.v145),

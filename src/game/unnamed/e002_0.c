@@ -147,7 +147,7 @@ extern __int64 GameData_2240160;
 extern __int64 GameData_2258ba8;
 extern __int64 GameData_2264c50;
 extern __int64 GameData_2265ef8;
-struct PseudoSret GameRoutine_100a50(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_100a50(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_10c830(_QWORD, double);
 __int64 GameRoutine_10c910(_QWORD, _QWORD);
 __int64 GameRoutine_10cff0(_QWORD);
@@ -243,16 +243,16 @@ __int64 GameRoutine_874970(__int64, unsigned __int8, unsigned int);
 __int64 GameRoutine_874e20(__int64*, __int64);
 __int64 GameRoutine_877330(unsigned __int8, unsigned __int8, int, int);
 __int64 GameRoutine_877b20(_QWORD, _QWORD, _QWORD, _QWORD);
-struct PseudoSret GameRoutine_878ea0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_878ea0(PSEUDO_X8, _QWORD);
 unsigned __int64 GameRoutine_8808c0(unsigned __int64 result, int32x4_t);
 __int64 GameRoutine_887600(_QWORD);
 __int64 GameRoutine_889be0(_QWORD);
 __int64 GameRoutine_88d500(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_8aa110(_QWORD);
 __int64 GameRoutine_8fe1a0(_QWORD, _QWORD);
-struct PseudoSret GameRoutine_8fe8e0(_QWORD);
-struct PseudoSret GameRoutine_8fef10(_QWORD);
-struct PseudoSret GameRoutine_8ff080(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_8fe8e0(PSEUDO_X8, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_8fef10(PSEUDO_X8, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_8ff080(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_8ffa20(void);
 __int64 GameRoutine_961420(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_963210(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -935,8 +935,8 @@ __int64 GameHr_7b3bb0(__int64 a1)
     v19 = 1056964608;
     goto LABEL_52;
   }
-  *(struct PseudoSret*)(v36) = GameRoutine_8fef10(*(_QWORD*)(a1 + 168));
-  *(struct PseudoSret*)(v35) = GameRoutine_8ff080(*(_QWORD*)(a1 + 168));
+  GameRoutine_8fef10((void*)(v36), *(_QWORD*)(a1 + 168));
+  GameRoutine_8ff080((void*)(v35), *(_QWORD*)(a1 + 168));
   result = GameRoutine_963210(a1, v8, v36, v35, 1);
   if (result != 0) {
     v11 = v35[1];
@@ -1094,7 +1094,7 @@ __int64 GameHr_7b5c20(__int64 a1)
   __int128 v3;
   _QWORD v5[2];
 
-  *(struct PseudoSret*)(v5) = GameRoutine_8fe8e0(*(_QWORD*)(a1 + 168));
+  GameRoutine_8fe8e0((void*)(v5), *(_QWORD*)(a1 + 168));
   v2 = v5[1];
   *(_QWORD*)(a1 + 23120) = v5[0];
   v3 = *(_OWORD*)(a1 + 23120);
@@ -5011,7 +5011,7 @@ __int64 GameHr_810e50()
     v1 = 1;
   }
   else {
-    *(struct PseudoSret*)(v4) = GameRoutine_100a50(&GameData_21ec578);
+    GameRoutine_100a50((void*)(v4), &GameData_21ec578);
     if ((GameRoutine_1120d0(v4) & 1) != 0) {
       v2 = GameRoutine_112290(v4);
       v1 = GameRoutine_1369e0(v2 - 5592);
@@ -6470,7 +6470,7 @@ LABEL_15:
     v24 = (const char*)GameRoutine_7a7dc0("%s_%s_%d", "Part", "Ism", 3);
     v36[0] = GameRoutine_7a7dc0("%s/%s", "000", v24);
     v36[1] = GameRoutine_1a09c70(v36[0]);
-    *(struct PseudoSret*)(&v37) = GameRoutine_878ea0(v36);
+    GameRoutine_878ea0((void*)(&v37), v36);
     if ((_BYTE)v37 != 0 && (v39 & 0x40) == 0 && GameData_21caab0 != 0 &&
         HIDWORD(v37) == *(_DWORD*)(GameData_21caab0 + 8) &&
         *(_DWORD*)(GameData_21caab0 + 60) == 3) {
@@ -6632,7 +6632,7 @@ __int64 GameHr_877860(char a1)
   v4 = (const char*)GameRoutine_7a7dc0("%s_%s", "Route", "Ism");
   v5[0] = GameRoutine_7a7dc0("%s/%s", "000", v4);
   v5[1] = GameRoutine_1a09c70(v5[0]);
-  *(struct PseudoSret*)(&v6) = GameRoutine_878ea0(v5);
+  GameRoutine_878ea0((void*)(&v6), v5);
   if ((_BYTE)v6 != 0 && (v8 & 0x40) == 0) {
     if (GameData_21caab0 != 0) {
       if (HIDWORD(v6) == *(_DWORD*)(GameData_21caab0 + 8) &&
@@ -6713,7 +6713,7 @@ __int64 GameHr_877d00()
   v0 = (const char*)GameRoutine_7a7dc0("%s_%s", "Route", "Ism");
   v5 = GameRoutine_7a7dc0("%s/%s", "000", v0);
   v6 = GameRoutine_1a09c70(v5);
-  *(struct PseudoSret*)(&v7) = GameRoutine_878ea0(&v5);
+  GameRoutine_878ea0((void*)(&v7), &v5);
   if ((_BYTE)v7 == 0 || (v9 & 0x40) != 0) {
     return 0;
   }
@@ -6755,7 +6755,7 @@ LABEL_15:
   v3 = (const char*)GameRoutine_7a7dc0("%s_%s", "Route", "Ism");
   v5 = GameRoutine_7a7dc0("%s/%s", "000", v3);
   v6 = GameRoutine_1a09c70(v5);
-  *(struct PseudoSret*)(&v7) = GameRoutine_878ea0(&v5);
+  GameRoutine_878ea0((void*)(&v7), &v5);
   if ((_BYTE)v7 == 0 || (v9 & 0x40) != 0) {
     return 0;
   }

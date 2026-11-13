@@ -56,8 +56,9 @@ __int64 game_Unit_GetJob(__int64);
 __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 memset(__int64, int, unsigned __int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count___release_weak(__int64);
 __int64 std___1___shared_weak_count_lock(__int64);
 __int64 ui_LayoutAccessor_FindAlignment(__int64*, const char*);
@@ -3663,6 +3664,7 @@ void game_telop_1763490(__int64* a1, const char* a2, __int64 a3)
 
 void game_telop_17ca960(__int64 a1, __int64 a2)
 {
+  _QWORD handle[2];
   int v2;
   unsigned __int64 v6;
   unsigned __int64 v7;
@@ -4769,14 +4771,14 @@ LABEL_36:
       GameHr_1562680(v189, (unsigned int*)"In", 0x1.0000000000000p+0f);
       if (*(_DWORD*)(a1 + 16) == 8) {
         snd_Fade_Fade_10c830((__int64)&v204_.v204, 0x0.0p+0f);
-        snd_play_ff2d0((__int64)"SE_SYS_Information2",
+        snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Information2",
                        (__int64)"SE_SYS_Information2", (__int64)&v204_.v204, 0,
                        0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade(&v204_.v204);
         goto LABEL_343;
       }
       snd_Fade_Fade_10c830((__int64)&v204_.v204, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"SE_SYS_Information",
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Information",
                      (__int64)"SE_SYS_Information", (__int64)&v204_.v204, 0,
                      0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(&v204_.v204);
@@ -4860,8 +4862,8 @@ LABEL_36:
         }
         if (v192 != 0) {
           snd_Fade_Fade_10c830((__int64)&v204_.v204, 0x0.0p+0f);
-          snd_play_ff2d0(v192, v192, (__int64)&v204_.v204, 0, 0x10001u, 0,
-                         0x0.0p+0f, 0x1.0000000000000p+0f);
+          snd_play_ff2d0((void*)(handle), v192, v192, (__int64)&v204_.v204, 0,
+                         0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
           snd_Fade_Destroy_Fade(&v204_.v204);
         }
       }

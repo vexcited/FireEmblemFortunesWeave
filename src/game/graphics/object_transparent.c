@@ -1932,7 +1932,7 @@ LABEL_35:
     v22 = ObjectTransparent_f391a0(*(_QWORD*)GameData_212c7d8[0], 1);
     v23 = *v21;
     *((float*)&v129_.v131 + 1) = v22;
-    HIDWORD(v129_.v132) = ObjectTransparent_f39230(v23, 1);
+    HIDWORD(v129_.v132) = COERCE_UNSIGNED_INT(ObjectTransparent_f39230(v23, 1));
   }
   v24 = LANES128(a1[17]).n128_u64[0];
   v126_.v127 = 0;

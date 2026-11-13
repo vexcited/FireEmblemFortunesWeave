@@ -24,7 +24,7 @@ __int64 GameRoutine_a2cc00(_QWORD, _QWORD, long double);
 
 __int64 GameRoutine_d9850(_QWORD);
 
-struct PseudoSret GameRoutine_d98c0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_d98c0(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_dab80(_QWORD);
 
@@ -65,7 +65,7 @@ void GameHr_a2f940(__int64 a1, __int64 a2, _BYTE* a3, char a4, float a5)
   if ((unsigned int)GameRoutine_1a09d30(v12, a3) == 0) {
     goto LABEL_13;
   }
-  *(struct PseudoSret*)(v17) = GameRoutine_d98c0(*(_QWORD*)(a1 + 8));
+  GameRoutine_d98c0((void*)(v17), *(_QWORD*)(a1 + 8));
   v13 = GameRoutine_112290(v17);
   if (v13 != 0 && (GameRoutine_149a90(v13 - 5592) & 1) == 0) {
     (*(void (**)(_QWORD, __int64, _QWORD))(**(_QWORD**)(a1 + 8) + 48LL))(

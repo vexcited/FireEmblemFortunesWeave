@@ -139,7 +139,6 @@ __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
     "std___1___shared_weak_count_lock");
 __int64 ui_LayoutAccessor_SetPriority_alt1(__int64 result, int) __asm__(
     "ui_LayoutAccessor_SetPriority");
-void GameRoutine_1366ac0_alt1(__int64, __int64) __asm__("GameRoutine_1366ac0");
 __attribute__((swiftcall)) void
 GameRoutine_18acd40(PSEUDO_X8, __int64 result, _QWORD*, unsigned int, __int64*);
 __attribute__((swiftcall)) void Pane_58dfa0(PSEUDO_X8, __int64);
@@ -716,7 +715,7 @@ __int64 FloatingHelp_18ac7f0(_QWORD* a1, __int64 a2, __int64 a3)
       std___1___shared_weak_count___release_weak_alt1(v8);
     }
   }
-  GameRoutine_1366ac0_alt1(a2, a3);
+  GameRoutine_1366ac0((void*)(&v30_), a2, a3);
   v9 = v30_.v30;
   v10 = v30_.v31;
   v11 = a1[3];

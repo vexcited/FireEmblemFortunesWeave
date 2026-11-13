@@ -67,8 +67,9 @@ __int64 GameRoutine_c48550(_QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_c601e0(_QWORD);
 __int64 GameRoutine_c606c0(_QWORD, _QWORD);
 __int64 GameRoutine_caed40(_QWORD*, __int64);
-struct PseudoSret GameRoutine_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                    _QWORD, double, float);
+__attribute__((swiftcall)) void GameRoutine_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                                  _QWORD, _QWORD, _QWORD,
+                                                  _QWORD, double, float);
 __attribute__((swiftcall)) void std___1_to_string_1a0a790(PSEUDO_X8, _QWORD);
 __int64* Manager_c475a0(__int64* result, _QWORD*);
 __int64
@@ -3528,8 +3529,7 @@ LABEL_9:
   if (v14 != nullptr) {
     *(_QWORD*)&v9 = 0;
     GameRoutine_10c830(v19, v9);
-    *(struct PseudoSret*)(&v16) =
-        GameRoutine_ff2d0(v14, v14, v19, 0, 65537, 0, 0.0, 1.0);
+    GameRoutine_ff2d0((void*)(&v16), v14, v14, v19, 0, 65537, 0, 0.0, 1.0);
     *(__n128*)&v9 = GameRoutine_10cff0(v19);
     v13 = v17[0] & 1;
   }

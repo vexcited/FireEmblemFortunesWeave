@@ -12,7 +12,7 @@ EffectModule_Destructor_alt1(_QWORD* result) __asm__("EffectModule_Destructor");
 __int64 EffectModule_Unknown5(__int64 result);
 _QWORD* EffectModule_bd3360(_QWORD* result, __int64* a2);
 __int64 EffectModule_bd37c0(__int64 result);
-__attribute__((swiftcall)) void wld_Crc32(PSEUDO_X8, _QWORD, _QWORD, _QWORD);
+__int64 wld_Crc32(int, unsigned __int8*, unsigned __int64);
 __int64 GameRoutine_bd2320(_QWORD, _QWORD, long double, long double);
 __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
@@ -593,8 +593,7 @@ void EffectModule_Unknown7(__int64 a1, long double a2, long double a3)
   v7 = GameData_212df08;
   if ((explicit & 1) == 0 &&
       (unsigned int)__cxa_guard_acquire(GameData_212df10) != 0) {
-    *v7 = (unsigned int)(wld_Crc32((void*)(v106), 0, "ModelModule", 11),
-                         (void*)(v106));
+    *v7 = (unsigned int)wld_Crc32(0, (unsigned __int8*)"ModelModule", 11);
     __cxa_guard_release(GameData_212df10);
   }
   v8 = *(_QWORD*)(v3 + 512);
@@ -632,9 +631,8 @@ void EffectModule_Unknown7(__int64 a1, long double a2, long double a3)
   v14 = GameData_212ea10;
   if ((v13 & 1) == 0 &&
       (unsigned int)__cxa_guard_acquire(GameData_212ea18) != 0) {
-    *v14 = (unsigned int)(wld_Crc32((void*)(v107), 0,
-                                    "InstancedObjectCtrlModule", 25),
-                          (void*)(v107));
+    *v14 = (unsigned int)wld_Crc32(
+        0, (unsigned __int8*)"InstancedObjectCtrlModule", 25);
     __cxa_guard_release(GameData_212ea18);
   }
   v15 = *(_QWORD*)(v3 + 512);

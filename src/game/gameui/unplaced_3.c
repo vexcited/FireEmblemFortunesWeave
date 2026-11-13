@@ -123,7 +123,8 @@ float ui_LayoutAccessor_SetTranslate(__int64*, __int64);
 int __cxa_guard_acquire(__int64);
 unsigned __int64 strlen(const char*);
 void BlnPopup_19f1f60(__int64);
-void GameRoutine_1366ac0(__int64, __int64);
+__attribute__((swiftcall)) void GameRoutine_1366ac0(PSEUDO_X8, __int64,
+                                                    __int64);
 void GameRoutine_1563f90(__int64, __int64);
 void GameRoutine_1564060(__int64*);
 void GameRoutine_156c5d0(__int64, __int64, char);
@@ -1552,7 +1553,7 @@ __int64 game_gameui_17aa8e0(__int64 a1)
       std___1___shared_weak_count___release_weak(v4);
     }
   }
-  GameRoutine_1366ac0((__int64)"Layout/Common.arc",
+  GameRoutine_1366ac0((void*)(&v11_.v12), (__int64)"Layout/Common.arc",
                       (__int64)"Common_System_MouseCursor");
   v5 = v11_.v12;
   v6 = v11_.v13;
@@ -1643,7 +1644,7 @@ __int64 game_gameui_18a2660(_QWORD* a1, __int64 a2, __int64 a3)
       std___1___shared_weak_count___release_weak(v7);
     }
   }
-  GameRoutine_1366ac0(a2, a3);
+  GameRoutine_1366ac0((void*)(&v13_.v14), a2, a3);
   v8 = v13_.v14;
   v9 = v13_.v15;
   v10 = a1[3];
@@ -2341,7 +2342,8 @@ __int64 game_gameui_19aeaf0(__int64 a1)
       std___1___shared_weak_count___release_weak(v4);
     }
   }
-  GameRoutine_1366ac0((__int64)"Layout/Common.arc", (__int64)"Common_IconSave");
+  GameRoutine_1366ac0((void*)(&v11_.v12), (__int64)"Layout/Common.arc",
+                      (__int64)"Common_IconSave");
   v5 = v11_.v12;
   v6 = v11_.v13;
   v7 = *(_QWORD*)(a1 + 16);

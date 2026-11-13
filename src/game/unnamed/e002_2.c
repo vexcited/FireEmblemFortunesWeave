@@ -64,7 +64,7 @@ __int64 GameRoutine_130b980(_QWORD, _QWORD);
 __int64 GameRoutine_132ffa0(_QWORD);
 __int64 GameRoutine_133ed80(_QWORD, _QWORD);
 __int64 GameRoutine_134ae50(_QWORD, _QWORD);
-struct PseudoSret GameRoutine_1366ac0(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1366ac0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1418c20(void);
 __int64 GameRoutine_155dda0(_QWORD, _QWORD);
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
@@ -142,8 +142,9 @@ __int64 GameRoutine_96bae0(void);
 __int64 GameRoutine_97b9e0(_QWORD, _QWORD);
 __int64 GameRoutine_9c12a0(_QWORD);
 void __attribute__((noreturn)) GameRoutine_9c2e00(void);
-struct PseudoSret GameRoutine_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                    _QWORD, double, float);
+__attribute__((swiftcall)) void GameRoutine_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                                  _QWORD, _QWORD, _QWORD,
+                                                  _QWORD, double, float);
 __int64 GameRoutine_ffc40(_QWORD, _QWORD);
 __int64 GameRoutine_7fc5c0_alt1(__int64 result, __int64,
                                 char) __asm__("GameRoutine_7fc5c0");
@@ -4873,8 +4874,7 @@ LABEL_62:
     v38 = "SE_SYS_Multiple_Select";
   }
   GameRoutine_10c830(v40, 0.0f);
-  *(struct PseudoSret*)(&v39) =
-      GameRoutine_ff2d0(v38, v38, v40, 0, 65537, 0, 0.0f, 1.0f);
+  GameRoutine_ff2d0((void*)(&v39), v38, v38, v40, 0, 65537, 0, 0.0f, 1.0f);
   GameRoutine_10cff0(v40);
   GameRoutine_1872af0(v4, (*(_BYTE*)(v4 + 88) & 1) == 0);
   return 0;
@@ -4890,9 +4890,9 @@ _QWORD* GameHr_a09090(__int64 a1)
   __int64 v7;
   __int64 v8;
 
-  result = (*(struct PseudoSret*)(&v7) =
-                GameRoutine_1366ac0("Layout/Title.arc", "Title_ModeSelectBg"),
-            (void*)(&v7));
+  result = X8CALL_X0(__typeof__(result),
+                     GameRoutine_1366ac0((void*)(&v7), "Layout/Title.arc",
+                                         "Title_ModeSelectBg"));
   v3 = v7;
   v4 = v8;
   v5 = *(_QWORD*)(a1 + 168);
@@ -4953,9 +4953,8 @@ __int64 GameHr_a09140(__int64 result)
     GameRoutine_1562680(v2 + 176, "Loop", 1.0f);
   }
   GameRoutine_10c830(v11, 0.0f);
-  *(struct PseudoSret*)(v9) =
-      GameRoutine_ff2d0("AMB_UnderWater_Near_4ch", "AMB_UnderWater_Near_4ch",
-                        v11, 0, 65537, 0, 0.0f, 1.0f);
+  GameRoutine_ff2d0((void*)(v9), "AMB_UnderWater_Near_4ch",
+                    "AMB_UnderWater_Near_4ch", v11, 0, 65537, 0, 0.0f, 1.0f);
   GameRoutine_10cff0(v11);
   result = GameRoutine_112180(v2 + 280, v9);
   v4 = *(unsigned __int8**)(v2 + 16);

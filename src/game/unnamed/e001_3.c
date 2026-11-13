@@ -12,7 +12,7 @@ extern __int64 GameData_21caab0;
 
 __int64 GameRoutine_127cc60(_QWORD, _QWORD);
 
-struct PseudoSret GameRoutine_127cec0(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_127cec0(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
 
@@ -155,7 +155,7 @@ LABEL_18:
   v37 = v9;
   if (v8 != 0) {
     v48 = v8;
-    *(struct PseudoSret*)(v47) = GameRoutine_127cec0(&v48, v9);
+    GameRoutine_127cec0((void*)(v47), &v48, v9);
     v10 = v47[0];
     v47[0] = v8;
     v44 = v47[2];

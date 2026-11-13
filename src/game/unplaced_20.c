@@ -69,10 +69,13 @@ __int64 nn_vi_SetLayerNextHdrExtendedContentLuminanceRangeMetadata(
 __int64 nn_vi_SetLayerNextHdrStandardContentLuminanceRangeMetadata(
     __int64, unsigned __int16, unsigned __int16);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_playAt_ff5f0(__int64, __int64, __int64, float, float, __int64,
-                         unsigned int, unsigned int, int);
-__int64 snd_play_ff2d0(__int64, __int64, float, float, __int64, unsigned int,
-                       unsigned int, int);
+__attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, __int64, __int64,
+                                                 __int64, float, float, __int64,
+                                                 unsigned int, unsigned int,
+                                                 int);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               float, float, __int64,
+                                               unsigned int, unsigned int, int);
 __int64 std___1___next_prime(unsigned __int64);
 __int64 std___1___shared_weak_count___release_weak(__int64);
 __int64 std___1___shared_weak_count_lock(__int64);
@@ -1205,16 +1208,18 @@ __attribute__((swiftcall)) void game_a3aba0(PSEUDO_X8 x8_, __int64 unused_int0,
     LANES128(v72).n128_u32[3] = 0;
     v136 = v64;
     LANES128(v72).n128_u64[0] = __PAIR64__(
-        (float)(LANES128(v72).n128_f32[0] + LANES128(v79).n128_f32[1]) +
+        COERCE_UNSIGNED_INT(
+            (float)(LANES128(v72).n128_f32[0] + LANES128(v79).n128_f32[1]) +
             (float)((float)((float)(LANES128(v72).n128_f32[0] -
                                     LANES128(v72).n128_f32[0]) +
                             LANES128(v79).n128_f32[1]) *
-                    0x1.99999a0000000p-5f),
-        (float)(LANES128(v70).n128_f32[0] + LANES128(v79).n128_f32[0]) +
+                    0x1.99999a0000000p-5f)),
+        COERCE_UNSIGNED_INT(
+            (float)(LANES128(v70).n128_f32[0] + LANES128(v79).n128_f32[0]) +
             (float)((float)((float)(LANES128(v70).n128_f32[0] -
                                     LANES128(v70).n128_f32[0]) +
                             LANES128(v79).n128_f32[0]) *
-                    0x1.99999a0000000p-5f));
+                    0x1.99999a0000000p-5f)));
     LANES128(v72).n128_f32[2] =
         (float)(LANES128(v61).n128_f32[0] + LANES128(v79).n128_f32[2]) +
         (float)((float)((float)(LANES128(v61).n128_f32[0] -
@@ -2983,6 +2988,7 @@ __int64 game_f69f40(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   char* v4;
@@ -3041,7 +3047,7 @@ __int64 game_f69f40(__int64 a1)
     LANES128(v16_.v16).n128_u64[0] =
         (unsigned __int64)(GameData_212d1e0[0] + 2);
     snd_Fade_Fade_10c830((__int64)v18, 0x0.0p+0f);
-    snd_playAt_ff5f0(v8, v8, (__int64)&v16_.v16, 0x0.0p+0f,
+    snd_playAt_ff5f0((void*)(handle), v8, v8, (__int64)&v16_.v16, 0x0.0p+0f,
                      0x1.0000000000000p+0f, (__int64)v18, 0, 0x10001u, 0);
     snd_Fade_Destroy_Fade(v18);
     v13 = 128;
@@ -3066,6 +3072,7 @@ void game_f6ab70(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   char* v3;
@@ -3123,7 +3130,7 @@ void game_f6ab70(__int64 a1)
     LANES128(v13_.v13).n128_u64[0] =
         (unsigned __int64)(GameData_212d1e0[0] + 2);
     snd_Fade_Fade_10c830((__int64)v15, 0x0.0p+0f);
-    snd_playAt_ff5f0(v7, v7, (__int64)&v13_.v13, 0x0.0p+0f,
+    snd_playAt_ff5f0((void*)(handle), v7, v7, (__int64)&v13_.v13, 0x0.0p+0f,
                      0x1.0000000000000p+0f, (__int64)v15, 0, 0x10001u, 0);
     snd_Fade_Destroy_Fade(v15);
     v12 = 128;
@@ -3136,13 +3143,14 @@ void game_f6ab70(__int64 a1)
 
 void game_f91e40()
 {
+  _QWORD handle[2];
   __int64 v0;
   __int64 v1[3];
   __int64 v2[25];
 
   strcpy((char*)v1, "&SE_SYS_Ish_Warp_Out");
   snd_Fade_Fade_10c830((__int64)v2, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)v1 + 1, (__int64)v1 + 1, 0x0.0p+0f,
+  snd_play_ff2d0((void*)(handle), (__int64)v1 + 1, (__int64)v1 + 1, 0x0.0p+0f,
                  0x1.0000000000000p+0f, (__int64)v2, 0, 0x10001u, 0);
   snd_Fade_Destroy_Fade(v2);
   if ((v1[0] & 1) != 0 && v1[2] != 0) {
@@ -3422,6 +3430,7 @@ LABEL_15:
 
 void game_fb9a90(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int128 v3;
@@ -3443,9 +3452,9 @@ void game_fb9a90(__int64 a1)
     v6_.v7 = DWORD2(v3);
     v6_.v6[0] = GameData_212d1e0[0] + 2;
     snd_Fade_Fade_10c830((__int64)v8, 0x0.0p+0f);
-    snd_playAt_ff5f0((__int64)v5 + 1, (__int64)v5 + 1, (__int64)v6_.v6,
-                     0x0.0p+0f, 0x1.0000000000000p+0f, (__int64)v8, 0, 0x10001u,
-                     0);
+    snd_playAt_ff5f0((void*)(handle), (__int64)v5 + 1, (__int64)v5 + 1,
+                     (__int64)v6_.v6, 0x0.0p+0f, 0x1.0000000000000p+0f,
+                     (__int64)v8, 0, 0x10001u, 0);
     snd_Fade_Destroy_Fade(v8);
     if ((v5[0] & 1) != 0 && v5[2] != 0) {
       v4 = 128;

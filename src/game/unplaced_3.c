@@ -7702,7 +7702,7 @@ __int64 game_dbe360()
       v94 = v90;
       do {
         v95 = vsubq_f32(v89, *v92);
-        LANES128(v95).n128_u32[1] = vmuls_lane_f32(
+        LANES128(v95).n128_f32[1] = vmuls_lane_f32(
             0x1.0000000000000p+2f,
             COERCE_AS(float32x2_t, LANES128(v95).n128_u64[0]), 1);
         v96 = vmulq_f32(v95, v95);

@@ -2197,13 +2197,13 @@ void game_hub_e02d20(__int64 a1, __int64* a2)
                 }
                 v33 = vdupq_n_s32(v32);
                 v34 = *(_BYTE*)(v31 + 16);
-                HIDWORD(v36[0]) = vmuls_lane_f32(
+                HIDWORD(v36[0]) = COERCE_UNSIGNED_INT(vmuls_lane_f32(
                     0x1.0000000000000p-1f,
                     COERCE_AS(
                         float32x2_t,
                         LANES128_OF(vaddq_f32(v29, vbslq_s8(v33, v30, v25)))
                             .n128_u64[0]),
-                    1);
+                    1));
                 if ((v34 & 1) == 0) {
                   GameRoutine_d57390(v31, v54_.v54);
                   game_zview_d57520((_QWORD*)v31, (__int64)v36, 0, &v53);

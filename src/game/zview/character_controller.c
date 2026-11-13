@@ -7370,21 +7370,24 @@ _QWORD* CharacterController_d48b40(_QWORD* a1, __int64 a2, long double a3,
       v20 = *v16;
       ++v17;
       v16 += 3;
-      v11 = __PAIR64__(*((float*)&v11 + 1) + v20, *(float*)&v11 + v19);
+      v11 = __PAIR64__(COERCE_UNSIGNED_INT(*((float*)&v11 + 1) + v20),
+                       COERCE_UNSIGNED_INT(*(float*)&v11 + v19));
       if (v18 == v17) {
         LODWORD(v17) = v18;
         break;
       }
     }
     if ((_DWORD)v17 != 0) {
-      v11 = __PAIR64__(*((float*)&v11 + 1) / (float)(unsigned int)v17,
-                       *(float*)&v11 / (float)(unsigned int)v17);
+      v11 = __PAIR64__(
+          COERCE_UNSIGNED_INT(*((float*)&v11 + 1) / (float)(unsigned int)v17),
+          COERCE_UNSIGNED_INT(*(float*)&v11 / (float)(unsigned int)v17));
     }
   }
   v21 = sqrtf(__builtin_fmaf(*(float*)&v11, *(float*)&v11,
                              *((float*)&v11 + 1) * *((float*)&v11 + 1)));
   if (*(float*)&v11 != 0x0.0p+0f || *((float*)&v11 + 1) != 0x0.0p+0f) {
-    v11 = __PAIR64__(*((float*)&v11 + 1) / v21, *(float*)&v11 / v21);
+    v11 = __PAIR64__(COERCE_UNSIGNED_INT(*((float*)&v11 + 1) / v21),
+                     COERCE_UNSIGNED_INT(*(float*)&v11 / v21));
   }
   v22 = 0x0.0p+0f;
   v23 = *(float*)&a3 == 0x0.0p+0f;

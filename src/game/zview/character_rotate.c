@@ -15,7 +15,8 @@ __int64 snd_fnd_WeakHandle_isValid(_QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_zview_CharacterRotate_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-struct PseudoSret GameRoutine_d56a60(_QWORD, _QWORD, _QWORD, float);
+__attribute__((swiftcall)) void GameRoutine_d56a60(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, float);
 __int64 CharacterRotate_Destructor(_QWORD* a1);
 __attribute__((swiftcall)) void
 CharacterModel_cf8040(PSEUDO_X8, unsigned __int64 result, __int64);
@@ -96,8 +97,8 @@ __int64 CharacterRotate_Destructor(_QWORD* a1)
     (*(void (**)(__int64, _QWORD*, _QWORD, double))(
         *(_QWORD*)(v3 - 5592) + 248LL))(v3 - 5592, v17, 0, 0.0);
     snd_Fade_Destroy_Fade(v17);
-    *(struct PseudoSret*)(v17) =
-        GameRoutine_d56a60(v2, "SE_FS_Add_Orhel_Sprint_StepNoise_End", 36, 1.0);
+    GameRoutine_d56a60((void*)(v17), v2, "SE_FS_Add_Orhel_Sprint_StepNoise_End",
+                       36, 1.0);
   }
   v4 = a1[43];
   v5 = fw_memory_g_heap_manager_ptr;

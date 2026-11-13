@@ -82,8 +82,9 @@ __attribute__((swiftcall)) void game_hub_e1bfe0(PSEUDO_X8, __int64, __int64,
 __int64 CharacterBuilder_1084a50(__int64, _BYTE*);
 __int64 GameHr_14a1520(__int64*, char);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 snd_startSlotLpfFrequency_101110(int*, __int64, float);
 __int64 std___1___shared_weak_count_lock(__int64);
 double snd_getDefineValue(__int64);
@@ -566,6 +567,7 @@ void DungeonController_f5f030(__int64 a1, char a2)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -718,8 +720,9 @@ void DungeonController_f5f030(__int64 a1, char a2)
   snd_Fade_Destroy_Fade(v35);
   strcpy((char*)v31, "&SE_EFF_Wallhack_Out");
   snd_Fade_Fade_10c830((__int64)v35, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)v31 + 1, (__int64)v31 + 1, (__int64)v35, 0, 0x10001u,
-                 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+  snd_play_ff2d0((void*)(handle), (__int64)v31 + 1, (__int64)v31 + 1,
+                 (__int64)v35, 0, 0x10001u, 0, 0x0.0p+0f,
+                 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(v35);
   if ((v31[0] & 1) != 0 && v31[2] != 0) {
     v12 = 128;

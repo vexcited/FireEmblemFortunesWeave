@@ -50,8 +50,9 @@ __int64 nn_mem_StandardAllocator_Free_alt2(_QWORD) __asm__(
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex_alt1(_QWORD) __asm__("nn_os_UnlockMutex");
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __n128 game_gmap_133fe00(__int64, unsigned __int8, float);
 __n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
@@ -174,6 +175,7 @@ LABEL_8:
 
 void SpotAttachmentFarm_Unknown9(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v2;
   int v3;
   __int64* v4;
@@ -275,7 +277,7 @@ void SpotAttachmentFarm_Unknown9(__int64 a1)
   }
   game_gmap_133fe00_alt1(v5, 5u, 0x1.0000000000000p+0f);
   snd_Fade_Fade_10c830((__int64)&v38_.v38, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)"SE_EVT_Cultivation_Harvest",
+  snd_play_ff2d0((void*)(handle), (__int64)"SE_EVT_Cultivation_Harvest",
                  (__int64)"SE_EVT_Cultivation_Harvest", (__int64)&v38_.v38, 0,
                  0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(&v38_.v38);

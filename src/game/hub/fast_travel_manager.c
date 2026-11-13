@@ -391,7 +391,7 @@ FastTravelManager_ee05e0(PSEUDO_X8 x8_, __int64 unused_int0, float32x4_t* a1,
         LODWORD(v27) = *(_DWORD*)(v28 + 168);
         LANES128(v29).n128_u64[1] = v27;
         v30 = vsubq_f32(v29, *a1);
-        LANES128(v30).n128_u32[1] = vmuls_lane_f32(
+        LANES128(v30).n128_f32[1] = vmuls_lane_f32(
             4.0f, COERCE_AS(float32x2_t, LANES128(v30).n128_u64[0]), 1);
         v31 = vmulq_f32(v30, v30);
         LANES128(v31).n128_u64[0] =
@@ -447,7 +447,7 @@ FastTravelManager_ee05e0(PSEUDO_X8 x8_, __int64 unused_int0, float32x4_t* a1,
                   LODWORD(v41) = *(_DWORD*)(v42 + 168);
                   LANES128(v43).n128_u64[1] = v41;
                   v44 = vsubq_f32(v43, *a1);
-                  LANES128(v44).n128_u32[1] = vmuls_lane_f32(
+                  LANES128(v44).n128_f32[1] = vmuls_lane_f32(
                       4.0f, COERCE_AS(float32x2_t, LANES128(v44).n128_u64[0]),
                       1);
                   v45 = vmulq_f32(v44, v44);

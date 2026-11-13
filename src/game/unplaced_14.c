@@ -1205,7 +1205,8 @@ void BasicMenuCursor_16de600(__int64);
 void CondTalkIconList_Unknown4(__int64, __int64, int*, __int64, __int64);
 void GameHr_157e0f0(__int64*, const char*, const char*);
 void GameHr_a07960(__int64, __int64*, int*);
-void GameRoutine_1366ac0(__int64, __int64);
+__attribute__((swiftcall)) void GameRoutine_1366ac0(PSEUDO_X8, __int64,
+                                                    __int64);
 void GameRoutine_1563f90(__int64, __int64);
 void GameRoutine_1564060(__int64*);
 void GameRoutine_156c5d0(__int64, __int64, char);
@@ -8808,8 +8809,10 @@ __int64 game_17c13d0(__int64* a1, char a2)
 void game_17cdea0(__int64 a1)
 {
   __int64 v2;
-  __int64 v3;
-  __int64 v4;
+  struct {
+    __int64 v3;
+    __int64 v4;
+  } v3_;
 
   if (*GameData_212d578[0] == 0) {
     *GameData_212d578[0] = a1;
@@ -8846,11 +8849,11 @@ void game_17cdea0(__int64 a1)
   *(_QWORD*)(a1 + 56) = 0;
   *(_QWORD*)(a1 + 64) = a1 + 72;
   *(_DWORD*)(a1 + 120) = 1065353216;
-  GameRoutine_1366ac0((__int64)"Layout/Battle.arc",
+  GameRoutine_1366ac0((void*)(&v3_), (__int64)"Layout/Battle.arc",
                       (__int64)"Battle_SkillInfo");
   v2 = *(_QWORD*)(a1 + 32);
-  *(_QWORD*)(a1 + 24) = v3;
-  *(_QWORD*)(a1 + 32) = v4;
+  *(_QWORD*)(a1 + 24) = v3_.v3;
+  *(_QWORD*)(a1 + 32) = v3_.v4;
   if (v2 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);

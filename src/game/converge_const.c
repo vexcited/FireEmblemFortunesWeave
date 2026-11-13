@@ -12,8 +12,10 @@ extern __int64 GameData_21c9c50;
 extern __int64 GameData_21ca310;
 extern __int64 game_TransporterConst_List_instance_;
 extern __int64* GameData_212c878[6];
-struct PseudoSret GameRoutine_936f60(_QWORD, _QWORD, _QWORD);
-struct PseudoSret GameRoutine_93c6a0(_QWORD, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_936f60(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
+__attribute__((swiftcall)) void GameRoutine_93c6a0(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD);
 struct PseudoSret GameRoutine_93e420(_QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 ConvergeConst_8e68e0_alt3(__int64 a1, __int64 a2,
@@ -1054,9 +1056,9 @@ _QWORD* game_ConvergeConst_Depository_Clone_lambda1_Invoke(__int64 a1,
 {
   __int64 v3;
 
-  return (*(struct PseudoSret*)(&v3) =
-              GameRoutine_936f60(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 40LL), a2, 0),
-          (void*)(&v3));
+  return X8CALL_X0(
+      _QWORD*, GameRoutine_936f60(
+                   (void*)(&v3), *(_QWORD*)(*(_QWORD*)(a1 + 8) + 40LL), a2, 0));
 }
 
 _QWORD* game_ConvergeConst_Depository_Clone_lambda2_Invoke(__int64 a1,
@@ -1064,9 +1066,10 @@ _QWORD* game_ConvergeConst_Depository_Clone_lambda2_Invoke(__int64 a1,
 {
   __int64 v3;
 
-  return (*(struct PseudoSret*)(&v3) = GameRoutine_93c6a0(
-              *(_QWORD*)(*(_QWORD*)(a1 + 8) + 24LL), a2, 0, 1),
-          (void*)(&v3));
+  return X8CALL_X0(_QWORD*,
+                   GameRoutine_93c6a0((void*)(&v3),
+                                      *(_QWORD*)(*(_QWORD*)(a1 + 8) + 24LL), a2,
+                                      0, 1));
 }
 
 void game_ConvergeConst_Depository_Merge_lambda0_Invoke(__int64 a1, __int64 a2)

@@ -97,7 +97,7 @@ extern __int64 game_gmap_GmapClock_instance_;
 extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
 extern __int64* GameData_212c790;
 extern char GameData_1a9f09e;
-struct PseudoSret GameRoutine_88d260(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_88d260(PSEUDO_X8, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_667c50(void);
 void __attribute__((noreturn)) String_60a1d0();
@@ -252,7 +252,7 @@ __int64 game_anonymous_ProcMainSeq_TimelineRun(__int64 a1)
   LABEL_11:
     (*(void (**)(__int64))(*v16 + v5))((__int64)v16);
   }
-  *(struct PseudoSret*)(v14) = GameRoutine_88d260(v3);
+  GameRoutine_88d260((void*)(v14), v3);
   v6 = v14[0];
   v7 = (__int64*)v14[1];
   if (v14[0] != v14[1]) {

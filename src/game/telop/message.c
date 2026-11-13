@@ -59,7 +59,7 @@ __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 ui_LayoutAccessor_FindTextBox(_QWORD, _QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern char** msg_MessageManager_empty_text__ptr;
-struct PseudoSret GameRoutine_9b8fe0(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_9b8fe0(PSEUDO_X8, _QWORD, _QWORD);
 struct PseudoSret TextBoxEx_188aa00(_QWORD, _QWORD, long double);
 __int64 Message_16f9b50(__int64 a1, __int64* a2, __int64* a3);
 __int64 Message_16f9d60(__int64 a1, __int64* a2, __int64* a3);
@@ -830,7 +830,7 @@ void Message_Unknown33(__int64 a1)
 
   v48[0] = "L_Txt";
   v48[1] = 5;
-  *(struct PseudoSret*)(&v49) = GameRoutine_9b8fe0(a1 + 168, v48);
+  GameRoutine_9b8fe0((void*)(&v49), a1 + 168, v48);
   if (v50 == 0) {
     goto LABEL_44;
   }

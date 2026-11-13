@@ -145,8 +145,7 @@ float snd_fnd_calcDistance_fe090(_QWORD, _QWORD);
 float snd_getFadeTime(_QWORD);
 struct PseudoSret GameRoutine_1181f0(_QWORD, _QWORD);
 struct PseudoSret GameRoutine_a3aba0(_QWORD, _QWORD, _QWORD, float);
-struct PseudoSret snd_BGM_getFirstHandle(void);
-struct PseudoSret snd_findSlot_100a50(_QWORD);
+__attribute__((swiftcall)) void snd_BGM_getFirstHandle(PSEUDO_X8);
 void GameManager_a2c6e0(__int64, __int64, _BYTE*, float);
 void __attribute__((noreturn)) GameRoutine_60a230(void);
 __int64 GameManager_Destructor(__int64 a1);
@@ -210,7 +209,8 @@ extern __int64 GameData_21fac90;
 extern __int64 as_g_base_frame_counter;
 extern __int64 fw_memory_g_heap_manager;
 extern __int64* GameData_212e248[2];
-struct PseudoSret GameRoutine_120380(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_120380(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
 void __attribute__((noreturn)) String_60a1d0(_QWORD, _QWORD, _QWORD, _QWORD,
                                              _QWORD);
@@ -1653,10 +1653,10 @@ __int64 snd_GameManager_UpdateListenerPos(__int64 result)
               v56 = vaddq_f32(v12, v68);
               LANES128(v12).n128_f32[0] =
                   0x1.0000000000000p-1f * LANES128(v56).n128_f32[0];
-              LANES128(v12).n128_u32[1] = vmuls_lane_f32(
+              LANES128(v12).n128_f32[1] = vmuls_lane_f32(
                   0x1.0000000000000p-1f,
                   COERCE_AS(float32x2_t, LANES128(v56).n128_u64[0]), 1);
-              LANES128(v12).n128_u32[2] =
+              LANES128(v12).n128_f32[2] =
                   vmuls_lane_f32(0x1.0000000000000p-1f, v56, 2);
             }
             else if (v6 == 2) {
@@ -1892,7 +1892,7 @@ __int64 GameManager_a22bd0()
   __int64 v5;
   _QWORD v6[25];
 
-  *(struct PseudoSret*)(v6) = snd_findSlot_100a50(&GameData_21fa938);
+  snd_findSlot_100a50_alt1((void*)(v6), &GameData_21fa938);
   v0 = snd_fnd_WeakHandle_get(v6);
   if (v0 != 0) {
     v1 = v0;
@@ -1901,7 +1901,7 @@ __int64 GameManager_a22bd0()
         v1 - 5552, v6, 1.0f);
     snd_Fade_Destroy_Fade(v6);
   }
-  *(struct PseudoSret*)(v6) = snd_findSlot_100a50(&GameData_21fa93c);
+  snd_findSlot_100a50_alt1((void*)(v6), &GameData_21fa93c);
   v2 = snd_fnd_WeakHandle_get(v6);
   if (v2 != 0) {
     v3 = v2;
@@ -1910,7 +1910,7 @@ __int64 GameManager_a22bd0()
         v3 - 5552, v6, 1.0f);
     snd_Fade_Destroy_Fade(v6);
   }
-  *(struct PseudoSret*)(v6) = snd_findSlot_100a50(&GameData_21fa940);
+  snd_findSlot_100a50_alt1((void*)(v6), &GameData_21fa940);
   result = snd_fnd_WeakHandle_get(v6);
   if (result != 0) {
     v5 = result;
@@ -2016,21 +2016,21 @@ __int64 GameManager_stopWithoutBGM(__int64 a1, __int64 a2)
   }
   (*(void (**)(__int64))(*(_QWORD*)v7 + 40LL))(v7);
   snd_Fade_Destroy_Fade(v14);
-  *(struct PseudoSret*)(v13) = snd_findSlot_100a50(&GameData_21fa938);
+  snd_findSlot_100a50_alt1((void*)(v13), &GameData_21fa938);
   v10 = snd_fnd_WeakHandle_get(v13);
   if (v10 != 0) {
     (*(void (**)(__int64, __int64, double))(*(_QWORD*)(v10 - 5552) + 96LL))(
         v10 - 5552, a2, 0.0);
   }
   if ((*(_BYTE*)(a1 + 612) & 1) == 0) {
-    *(struct PseudoSret*)(v13) = snd_findSlot_100a50(&GameData_21fa93c);
+    snd_findSlot_100a50_alt1((void*)(v13), &GameData_21fa93c);
     v11 = snd_fnd_WeakHandle_get(v13);
     if (v11 != 0) {
       (*(void (**)(__int64, __int64, double))(*(_QWORD*)(v11 - 5552) + 96LL))(
           v11 - 5552, a2, 0.0);
     }
   }
-  *(struct PseudoSret*)(v13) = snd_findSlot_100a50(&GameData_21fa940);
+  snd_findSlot_100a50_alt1((void*)(v13), &GameData_21fa940);
   result = snd_fnd_WeakHandle_get(v13);
   if (result != 0) {
     return (*(__int64 (**)(__int64, __int64, double))(
@@ -5220,7 +5220,7 @@ _QWORD* GameManager_a28c50(__int64 a1)
       snd_Fade_Fade_10c830(v15, 0.0f);
       GameRoutine_a290c0(a1, v5, v15, 0, 0, 0.0f);
       snd_Fade_Destroy_Fade(v15);
-      *(struct PseudoSret*)(v14) = snd_BGM_getFirstHandle();
+      snd_BGM_getFirstHandle((void*)(v14));
       snd_Fade_Fade_10c830(v15, 0.0f);
       snd_startVolume_1006d0(v14, 0, v15, 1.0f);
       snd_Fade_Destroy_Fade(v15);
@@ -7358,10 +7358,10 @@ __int64 GameManager_setupFields(__int64 a1)
   if ((result & 1) == 0) {
     LODWORD(v14[0]) = snd_fnd_calcCrc32("MultiBridge_FinalMix", 0);
     v3 = snd_data_findEffectData(v14);
-    *(struct PseudoSret*)(v14) =
-        GameRoutine_120380(*GameData_212e248[0], "FxMultiBridgeFinalMix",
-                           *(unsigned int*)(*(_QWORD*)(v3 + 8) + 16LL),
-                           *(unsigned int*)(*(_QWORD*)(v3 + 8) + 20LL), 3);
+    GameRoutine_120380((void*)(v14), *GameData_212e248[0],
+                       "FxMultiBridgeFinalMix",
+                       *(unsigned int*)(*(_QWORD*)(v3 + 8) + 16LL),
+                       *(unsigned int*)(*(_QWORD*)(v3 + 8) + 20LL), 3);
     GameRoutine_112180(a1 + 528, v14);
     snd_setListenerSurround_100920("DEFAULT_FIELD");
     LODWORD(v14[0]) = snd_fnd_calcCrc32("DEFAULT_FIELD", 0);

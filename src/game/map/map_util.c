@@ -152,8 +152,9 @@ __int64 game_UnitPool_Get_alt1(_QWORD,
 __int64 game_map_Mind_UpdateSubTarget(__int64 result);
 __int64 math_Vec3_Angle_alt1(_QWORD, _QWORD) __asm__("math_Vec3_Angle");
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 extern _DWORD GameData_1b3c61c[25];
 extern _UNKNOWN* GameData_212c540;
 extern _UNKNOWN GameData_21a6130;
@@ -1616,6 +1617,7 @@ __int64 MapUtil_755860(__int64 result)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   int v1;
   __int64 v3;
   unsigned __int64 v4;
@@ -1663,8 +1665,9 @@ __int64 MapUtil_755860(__int64 result)
         else {
           v11 = "SE_SYS_EnemyMoveArea_On";
         }
-        snd_play_ff2d0((__int64)v11, (__int64)v11, (__int64)v14, 0, 0x10001u, 0,
-                       0x0.0p+0f, 0x1.0000000000000p+0f);
+        snd_play_ff2d0((void*)(handle), (__int64)v11, (__int64)v11,
+                       (__int64)v14, 0, 0x10001u, 0, 0x0.0p+0f,
+                       0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade(v14);
       }
       Image_72a260(*(_QWORD*)(GameData_21ca300 + 152));
@@ -1694,6 +1697,7 @@ __int64 MapUtil_755a10(__int64 result)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v1;
   char v2;
   char v3;
@@ -1735,8 +1739,9 @@ __int64 MapUtil_755a10(__int64 result)
         else {
           v11 = "SE_SYS_EnemyMoveArea_Off";
         }
-        snd_play_ff2d0((__int64)v11, (__int64)v11, (__int64)v12, 0, 0x10001u, 0,
-                       0x0.0p+0f, 0x1.0000000000000p+0f);
+        snd_play_ff2d0((void*)(handle), (__int64)v11, (__int64)v11,
+                       (__int64)v12, 0, 0x10001u, 0, 0x0.0p+0f,
+                       0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade(v12);
       }
       Image_72a260(*(_QWORD*)(GameData_21ca300 + 152));

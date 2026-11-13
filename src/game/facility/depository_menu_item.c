@@ -46,8 +46,9 @@ extern __int64* GameData_212e348;
 extern __int64* game_map_history_g_transporter_ptr[8];
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 __int64 DepositoryMenuItem_Unknown21(__int64 a1);
 __int64 DepositoryMenuItem_Unknown55(_QWORD* a1);
 bool DepositoryMenuItem_9c12a0(__int64 a1);
@@ -1748,9 +1749,8 @@ __int64 DepositoryMenuItem_Unknown26(__int64 a1)
   (*(void (**)(__int64))(*(_QWORD*)v5 + 1136LL))(v5);
   (*(void (**)(__int64))(*(_QWORD*)v5 + 1120LL))(v5);
   snd_Fade_Fade_10c830(v8, 0.0f);
-  *(struct PseudoSret*)(&v7) =
-      snd_play_ff2d0("SE_SYS_Multiple_CancelAll", "SE_SYS_Multiple_CancelAll",
-                     v8, 0, 65537, 0, 0.0f, 1.0f);
+  snd_play_ff2d0((void*)(&v7), "SE_SYS_Multiple_CancelAll",
+                 "SE_SYS_Multiple_CancelAll", v8, 0, 65537, 0, 0.0f, 1.0f);
   snd_Fade_Destroy_Fade(v8);
   return 13;
 }

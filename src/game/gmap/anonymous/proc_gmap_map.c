@@ -2129,7 +2129,7 @@ __int64* ProcGmapMap_Unknown3(__int64 a1)
       LOBYTE(v85) = *(_BYTE*)(a1 + 296);
       v87 = (float)LODWORD(v85) / 0x1.fe00000000000p+7f;
       *(_QWORD*)&v88 = *(_QWORD*)(a1 + 560);
-      LANES64(v74).n64_u32[1] = vmuls_lane_f32(v87, v74, 1);
+      LANES64(v74).n64_f32[1] = vmuls_lane_f32(v87, v74, 1);
       *((float32x2_t*)&v88 + 1) = v74;
       if (LANES64(v71[1]).n64_u8[4] == 1) {
         v89 = *(float*)(a1 + 648);
@@ -2291,8 +2291,8 @@ __int64* ProcGmapMap_Unknown3(__int64 a1)
       *(float32x2_t*)&v158 = v71[-1];
       PSEUDO_LOW_LANE64(v153, n64_u64, LANES64(*(v71)).n64_u64[0]);
       v154 = *v56;
-      HIDWORD(v159) = vmuls_lane_f32(
-          v121, COERCE_AS(float32x2_t, LANES64(*(v71)).n64_u64[0]), 1);
+      HIDWORD(v159) = COERCE_UNSIGNED_INT(vmuls_lane_f32(
+          v121, COERCE_AS(float32x2_t, LANES64(*(v71)).n64_u64[0]), 1));
       v155 = (*v56)[2342];
       v156 = *((_DWORD*)*v56 + 4800);
       v157 = *((_DWORD*)*v56 + 4320);
@@ -2532,7 +2532,7 @@ __int64* ProcGmapMap_Unknown3(__int64 a1)
                   v245 = vmulq_f32(v244,
                                    vrsqrtsq_f32(v244, vmulq_f32(v243, v244)));
                   LANES64(v246).n64_u64[0] = *(unsigned __int64*)(a1 + 632);
-                  LANES64(v246).n64_u32[1] =
+                  LANES64(v246).n64_f32[1] =
                       vmuls_lane_f32((float)LANES64(v208[37]).n64_u8[0] /
                                          0x1.fe00000000000p+7f,
                                      v246, 1);
@@ -2706,7 +2706,7 @@ __int64* ProcGmapMap_Unknown3(__int64 a1)
                 *(_QWORD*)&v304 = *(_QWORD*)(a1 + 624);
                 v303 = v282 - *((float*)&v286 + 1);
                 *(_DWORD*)(*(_QWORD*)v392_.v393 + 19200LL) = v298 + 1;
-                LANES128(v294).n128_u32[1] = vmuls_lane_f32(
+                LANES128(v294).n128_f32[1] = vmuls_lane_f32(
                     v295 / 0x1.fe00000000000p+7f,
                     COERCE_AS(float32x2_t, LANES128(v294).n128_u64[0]), 1);
                 *((_QWORD*)&v304 + 1) = LANES128(v294).n128_u64[0];
@@ -2837,7 +2837,7 @@ __int64* ProcGmapMap_Unknown3(__int64 a1)
       LOBYTE(v355) = *(_BYTE*)(a1 + 296);
       v357 = (float)LODWORD(v355) / 0x1.fe00000000000p+7f;
       *(_QWORD*)&v358 = *(_QWORD*)(a1 + 624);
-      LANES64(v347).n64_u32[1] = vmuls_lane_f32(v357, v347, 1);
+      LANES64(v347).n64_f32[1] = vmuls_lane_f32(v357, v347, 1);
       *((float32x2_t*)&v358 + 1) = v347;
       if ((v344 & 1) != 0) {
         v359 = *(float*)(a1 + 648);

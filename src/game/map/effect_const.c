@@ -111,9 +111,10 @@ __int64* Manager_bc6460_alt1(_QWORD*, __int64, char) __asm__("Manager_bc6460");
 __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_960f80_alt1(__int64 result) __asm__("GameRoutine_960f80");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
-                              unsigned int, int, float,
-                              float) __asm__("snd_playAt_ff5f0");
+__attribute__((swiftcall)) void
+snd_playAt_ff5f0_alt1(PSEUDO_X8, __int64, __int64, __int64, __int64,
+                      unsigned int, unsigned int, int, float,
+                      float) __asm__("snd_playAt_ff5f0");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 strstr_alt1(const char*, const char*) __asm__("strstr");
@@ -404,6 +405,7 @@ void EffectConst_961740(__int64 a1, const char** a2, __int64 a3, char a4)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   int v8;
   int v9;
   unsigned __int64 v10;
@@ -509,10 +511,10 @@ void EffectConst_961740(__int64 a1, const char** a2, __int64 a3, char a4)
           v27_.v28 = LANES128(v26).n128_u32[2];
           v27_.v27[0] = GameData_212d1e0[0] + 2;
           snd_Fade_Fade_10c830_alt1((__int64)v29, 0x0.0p+0f);
-          snd_playAt_ff5f0_alt1((__int64)"SE_ACT_LD_Hit_Common",
-                                (__int64)"SE_ACT_LD_Hit_Common",
-                                (__int64)v27_.v27, (__int64)v29, 0, 0x10001u, 0,
-                                0x0.0p+0f, 0x1.0000000000000p+0f);
+          snd_playAt_ff5f0_alt1(
+              (void*)(handle), (__int64)"SE_ACT_LD_Hit_Common",
+              (__int64)"SE_ACT_LD_Hit_Common", (__int64)v27_.v27, (__int64)v29,
+              0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
           snd_Fade_Destroy_Fade_alt1(v29);
         }
       }
@@ -524,6 +526,7 @@ void EffectConst_9619a0(__int64 a1, const char** a2, __int64 a3, char a4)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   int v8;
   int v9;
   unsigned __int64 v10;
@@ -629,10 +632,10 @@ void EffectConst_9619a0(__int64 a1, const char** a2, __int64 a3, char a4)
           v27_.v28 = LANES128(v26).n128_u32[2];
           v27_.v27[0] = GameData_212d1e0[0] + 2;
           snd_Fade_Fade_10c830_alt1((__int64)v29, 0x0.0p+0f);
-          snd_playAt_ff5f0_alt1((__int64)"SE_ACT_LD_Hit_Recovery_Common",
-                                (__int64)"SE_ACT_LD_Hit_Recovery_Common",
-                                (__int64)v27_.v27, (__int64)v29, 0, 0x10001u, 0,
-                                0x0.0p+0f, 0x1.0000000000000p+0f);
+          snd_playAt_ff5f0_alt1(
+              (void*)(handle), (__int64)"SE_ACT_LD_Hit_Recovery_Common",
+              (__int64)"SE_ACT_LD_Hit_Recovery_Common", (__int64)v27_.v27,
+              (__int64)v29, 0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
           snd_Fade_Destroy_Fade_alt1(v29);
         }
       }
@@ -733,9 +736,10 @@ __int64 EffectConst_961d00(__int64 a1, const char** a2, int a3, int a4, int a5,
     }
     *(_QWORD*)&v26 =
         __PAIR64__(LODWORD(v25),
-                   (float)((float)((float)(a3 + 256) * 0x1.4000000000000p+2f) +
-                           0x1.4000000000000p+1f) +
-                       -0x1.4000000000000p+10f);
+                   COERCE_UNSIGNED_INT((float)((float)((float)(a3 + 256) *
+                                                       0x1.4000000000000p+2f) +
+                                               0x1.4000000000000p+1f) +
+                                       -0x1.4000000000000p+10f));
     *((_QWORD*)&v26 + 1) = LODWORD(v24);
     *(_OWORD*)v37_.v37 = v26;
     v27 = (float)((float)((float)(a6 + 256) * 0x1.4000000000000p+2f) +
@@ -755,9 +759,10 @@ __int64 EffectConst_961d00(__int64 a1, const char** a2, int a3, int a4, int a5,
     }
     *(_QWORD*)&v29 =
         __PAIR64__(LODWORD(v21),
-                   (float)((float)((float)(a5 + 256) * 0x1.4000000000000p+2f) +
-                           0x1.4000000000000p+1f) +
-                       -0x1.4000000000000p+10f);
+                   COERCE_UNSIGNED_INT((float)((float)((float)(a5 + 256) *
+                                                       0x1.4000000000000p+2f) +
+                                               0x1.4000000000000p+1f) +
+                                       -0x1.4000000000000p+10f));
     v37_.v38 = a7 & 1;
     *((_QWORD*)&v29 + 1) = LODWORD(v27);
     *(_OWORD*)&v37_.v37[2] = v29;

@@ -66,9 +66,10 @@ __int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 game_gmap_1340560_alt1(__int64 result, char, __n128,
                                long double) __asm__("game_gmap_1340560");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
-                              unsigned int, int, float,
-                              float) __asm__("snd_playAt_ff5f0");
+__attribute__((swiftcall)) void
+snd_playAt_ff5f0_alt1(PSEUDO_X8, __int64, __int64, __int64, __int64,
+                      unsigned int, unsigned int, int, float,
+                      float) __asm__("snd_playAt_ff5f0");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 void __attribute__((noreturn))
@@ -238,6 +239,7 @@ void game_gmap_SpotAttachmentFort_OnStartPhase(__int64 a1, double a2,
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v3;
   _QWORD* v4;
   __int64 v5;
@@ -341,7 +343,7 @@ void game_gmap_SpotAttachmentFort_OnStartPhase(__int64 a1, double a2,
     snd_Fade_Fade_10c830_alt1((__int64)v32_.v32, 0x0.0p+0f),
         v22 = COERCE_AS(__typeof__(v22),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    snd_playAt_ff5f0_alt1((__int64)"SE_SYS_GMAP_Dead_Unit",
+    snd_playAt_ff5f0_alt1((void*)(handle), (__int64)"SE_SYS_GMAP_Dead_Unit",
                           (__int64)"SE_SYS_GMAP_Dead_Unit", (__int64)v30_.v30,
                           (__int64)v32_.v32, 0, 0x10001u, 0, 0x0.0p+0f,
                           0x1.0000000000000p+0f),

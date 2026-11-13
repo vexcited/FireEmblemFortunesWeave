@@ -119,9 +119,9 @@ __int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
     "game_GameVariableTable_Find");
 __int64 game_HashString_alt2(__int64 result) __asm__("game_HashString");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 void GameRoutine_1958ed0_alt2(__int64, __int64) __asm__("GameRoutine_1958ed0");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 void ProcPerchScene_15f0fe0(__int64 a1);
@@ -1154,6 +1154,7 @@ __int64 ProcPerchScene_15efd70(__int64 a1)
 
 unsigned __int64 ProcPerchScene_15f0160()
 {
+  _QWORD handle[2];
   unsigned __int64 result;
   unsigned __int64 v1;
   unsigned __int64 v3;
@@ -1215,8 +1216,9 @@ unsigned __int64 ProcPerchScene_15f0160()
                   v10 = *(_QWORD*)(v9 + 32);
                   if (v10 != 0) {
                     snd_Fade_Fade_10c830_alt1((__int64)v13, 0x0.0p+0f);
-                    snd_play_ff2d0_alt1(v10, v10, (__int64)v13, 0, 0x10001u, 0,
-                                        0x0.0p+0f, 0x1.0000000000000p+0f);
+                    snd_play_ff2d0_alt1((void*)(handle), v10, v10, (__int64)v13,
+                                        0, 0x10001u, 0, 0x0.0p+0f,
+                                        0x1.0000000000000p+0f);
                     snd_Fade_Destroy_Fade_alt1(v13);
                   }
                   else {

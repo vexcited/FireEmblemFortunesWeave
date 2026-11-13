@@ -78,7 +78,7 @@ extern __int64 game_gameui_Footer_instance_;
 extern __int64* GameData_212d670[3];
 extern __int64* GameData_212d678[2];
 float snd_Fade_getTime(_QWORD);
-struct PseudoSret snd_BGM_getFirstHandle(_QWORD);
+__attribute__((swiftcall)) void snd_BGM_getFirstHandle(PSEUDO_X8, _QWORD);
 void GameRoutine_a290c0(__int64, __int64, __int64, int, char, float);
 void __attribute__((noreturn)) GameRoutine_11d1170(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
@@ -339,7 +339,7 @@ void Seq_a30f00(__int64 a1, __int64 a2)
   _BYTE v6[200];
   _QWORD v7[2];
 
-  *(struct PseudoSret*)(v7) = snd_BGM_getFirstHandle(*(_QWORD*)(a1 + 8));
+  snd_BGM_getFirstHandle((void*)(v7), *(_QWORD*)(a1 + 8));
   if ((snd_fnd_WeakHandle_isValid(v7) & 1) != 0) {
     v4 = snd_fnd_WeakHandle_get(v7);
     v5 = v4 != 0 ? v4 - 5592 : 0LL;

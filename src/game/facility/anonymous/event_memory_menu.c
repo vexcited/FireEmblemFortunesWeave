@@ -87,9 +87,9 @@ __int64 game_menu_BasicMenu_Unknown77_alt1(__int64, int) __asm__(
     "game_menu_BasicMenu_Unknown77");
 __int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 char* GameRoutine_a4dbe0_alt1(__int64, const char*,
                               char) __asm__("GameRoutine_a4dbe0");
 char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
@@ -733,6 +733,7 @@ __int64 EventMemoryMenu_Unknown2(__int64 a1)
 
 __int64 EventMemoryMenu_Unknown76(__int64 a1, int a2)
 {
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   _QWORD v5[27];
@@ -743,7 +744,7 @@ __int64 EventMemoryMenu_Unknown76(__int64 a1, int a2)
   v5[25] = v2;
   v5[26] = v3;
   snd_Fade_Fade_10c830_alt1((__int64)v5, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_UnitChange_Left",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_UnitChange_Left",
                       (__int64)"SE_SYS_UnitChange_Left", (__int64)v5, 0,
                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   return snd_Fade_Destroy_Fade_alt1(v5);
@@ -751,6 +752,7 @@ __int64 EventMemoryMenu_Unknown76(__int64 a1, int a2)
 
 __int64 EventMemoryMenu_Unknown77(__int64 a1, int a2)
 {
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   _QWORD v5[27];
@@ -761,7 +763,7 @@ __int64 EventMemoryMenu_Unknown77(__int64 a1, int a2)
   v5[25] = v2;
   v5[26] = v3;
   snd_Fade_Fade_10c830_alt1((__int64)v5, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_UnitChange_Right",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_UnitChange_Right",
                       (__int64)"SE_SYS_UnitChange_Right", (__int64)v5, 0,
                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   return snd_Fade_Destroy_Fade_alt1(v5);

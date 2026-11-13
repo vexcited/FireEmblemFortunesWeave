@@ -16,8 +16,10 @@ __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_fnd_WeakHandle_get(__int64);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
 __int64 snd_fnd_WeakHandle_reset(__int64);
-__int64 snd_playAt_ff5f0(__int64, __int64, __int64, __int64, unsigned int,
-                         unsigned int, int, float, float);
+__attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, __int64, __int64,
+                                                 __int64, __int64, unsigned int,
+                                                 unsigned int, int, float,
+                                                 float);
 __int64 strcpy(_QWORD, _QWORD);
 __int64 strlen(_QWORD);
 bool snd_hasSound(__int64);
@@ -334,6 +336,7 @@ LABEL_71:
 
 void Wind_e60d0(__int64 a1, __int64* a2)
 {
+  _QWORD handle[2];
   __int64 v4;
   __int64 v5;
   __int64 v6;
@@ -408,8 +411,9 @@ void Wind_e60d0(__int64 a1, __int64* a2)
       *((_DWORD*)a2 + 38) = *(_DWORD*)(v10 + 24);
       v12 = (*(__int64 (**)(__int64*))(v11 + 24))(a2);
       snd_Fade_Fade_10c830((__int64)v47, 0x0.0p+0f);
-      snd_playAt_ff5f0((__int64)"wind", v12, (__int64)(a2 + 17), (__int64)v47,
-                       0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+      snd_playAt_ff5f0((void*)(handle), (__int64)"wind", v12,
+                       (__int64)(a2 + 17), (__int64)v47, 0, 0x10001u, 0,
+                       0x0.0p+0f, 0x1.0000000000000p+0f);
       GameRoutine_112180((__int64)(a2 + 5), (__int64)v48);
       snd_Fade_Destroy_Fade(v47);
       v13 = snd_fnd_WeakHandle_get((__int64)(a2 + 5));
@@ -540,8 +544,9 @@ LABEL_36:
     *((_BYTE*)a2 + 124) = 0;
     v42 = (*(__int64 (**)(__int64*))(v41 + 24))(a2);
     snd_Fade_Fade_10c830((__int64)v47, *((float*)a2 + 43));
-    snd_playAt_ff5f0((__int64)"wind", v42, (__int64)(a2 + 17), (__int64)v47, 0,
-                     0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_playAt_ff5f0((void*)(handle), (__int64)"wind", v42, (__int64)(a2 + 17),
+                     (__int64)v47, 0, 0x10001u, 0, 0x0.0p+0f,
+                     0x1.0000000000000p+0f);
     GameRoutine_112180((__int64)(a2 + 5), (__int64)v48);
     snd_Fade_Destroy_Fade(v47);
     v43 = snd_fnd_WeakHandle_get((__int64)(a2 + 5));

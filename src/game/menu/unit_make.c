@@ -2766,8 +2766,9 @@ void UnitMake_1633490(__int64 a1)
       *(float*)&v32 = (float)v19;
       LOBYTE(v19) = v37_.v45;
       *((float*)&v34 + 1) = *(float*)&v32 / 0x1.fe00000000000p+7f;
-      *((_QWORD*)&v34 + 1) = __PAIR64__((float)v19 / 0x1.fe00000000000p+7f,
-                                        (float)v36 / 0x1.fe00000000000p+7f);
+      *((_QWORD*)&v34 + 1) =
+          __PAIR64__(COERCE_UNSIGNED_INT((float)v19 / 0x1.fe00000000000p+7f),
+                     COERCE_UNSIGNED_INT((float)v36 / 0x1.fe00000000000p+7f));
       v46 = v34;
       GameRoutine_1917400_alt1(v20, "_Skin", 5u, (__int64)&v47, 1, 1);
       v27 = "_Lip";

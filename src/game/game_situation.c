@@ -20,8 +20,6 @@ __int64 GameRoutine_7152e0();
 __int64 GameRoutine_715440();
 __int64 GameRoutine_9011a0(_QWORD*, __int16*);
 __int64 GameRoutine_91c600(__int64);
-__int64 GameSituation_906e20_alt1(_QWORD, _QWORD,
-                                  _QWORD) __asm__("GameSituation_906e20");
 __int64 Situation_7659e0(__int64, __int64);
 __int64 TrickEntity_7d1480(__int64 result);
 __int64 game_GameVariableTable_Find(_QWORD*, unsigned __int64*);
@@ -49,7 +47,8 @@ extern __int64 game_gmap_GmapClock_instance_;
 extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
 extern char GameData_21d9d78;
 extern int GameData_21d9d7c;
-__int64 GameSituation_906320(__int64 a1, __int64* a2);
+__attribute__((swiftcall)) void GameSituation_906320(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64* a2);
 __int64 GameSituation_906440(__int64 a1, __int64* a2);
 bool GameSituation_906560(__int64 a1, __int64* a2);
 bool GameSituation_906690(__int64 a1, __int64* a2);
@@ -96,7 +95,8 @@ void GameSituation_DeletingDestructor(_QWORD* a1)
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)a1);
 }
 
-__int64 GameSituation_906320(__int64 a1, __int64* a2)
+__attribute__((swiftcall)) void GameSituation_906320(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64* a2)
 {
   __int64 v2;
   __int64 v3;
@@ -186,7 +186,7 @@ __int64 GameSituation_906320(__int64 a1, __int64* a2)
   else {
     game_907570((void*)((__int64)&v17_.v17), a2[1]);
   }
-  return GameSituation_906e20_alt1(v2, &v17_.v17, 1);
+  GameSituation_906e20(x8_, v2, (__int64)&v17_.v17, 1);
 }
 
 __int64 GameSituation_906440(__int64 a1, __int64* a2)
@@ -209,6 +209,7 @@ __int64 GameSituation_906440(__int64 a1, __int64* a2)
     __int64 v17;
     char gap8_[8];
     unsigned __int8 v18;
+    char tail_[64];
   } v17_;
   struct {
     __int64 v19;
@@ -283,7 +284,7 @@ __int64 GameSituation_906440(__int64 a1, __int64* a2)
   else {
     game_907570((void*)((__int64)&v19_.v19), a2[1]);
   }
-  GameSituation_906e20_alt1(v2, &v19_.v19, 0);
+  GameSituation_906e20((void*)(&v17_), v2, (__int64)&v19_.v19, 0);
   return v17_.v18;
 }
 
@@ -306,6 +307,7 @@ bool GameSituation_906560(__int64 a1, __int64* a2)
   struct {
     __int64 v17[7];
     __int16 v18;
+    char tail_[64];
   } v17_;
   struct {
     __int64 v19;
@@ -380,7 +382,7 @@ bool GameSituation_906560(__int64 a1, __int64* a2)
   else {
     game_907570((void*)((__int64)&v19_.v19), a2[1]);
   }
-  GameSituation_906e20_alt1(v2, &v19_.v19, 0);
+  GameSituation_906e20((void*)(&v17_), v2, (__int64)&v19_.v19, 0);
   return (v17_.v18 & 0x1E) == 0;
 }
 
@@ -403,6 +405,7 @@ bool GameSituation_906690(__int64 a1, __int64* a2)
   struct {
     __int64 v17[7];
     __int16 v18;
+    char tail_[64];
   } v17_;
   struct {
     __int64 v19;
@@ -477,7 +480,7 @@ bool GameSituation_906690(__int64 a1, __int64* a2)
   else {
     game_907570((void*)((__int64)&v19_.v19), a2[1]);
   }
-  GameSituation_906e20_alt1(v2, &v19_.v19, 0);
+  GameSituation_906e20((void*)(&v17_), v2, (__int64)&v19_.v19, 0);
   return (v17_.v18 & 0x11E) == 0;
 }
 
@@ -501,6 +504,7 @@ bool GameSituation_9067c0(__int64 a1, __int64* a2)
     __int64 v17[6];
     __int64 v18;
     __int16 v19;
+    char tail_[64];
   } v17_;
   struct {
     __int64 v20;
@@ -575,7 +579,7 @@ bool GameSituation_9067c0(__int64 a1, __int64* a2)
   else {
     game_907570((void*)((__int64)&v20_.v20), a2[1]);
   }
-  GameSituation_906e20_alt1(v2, &v20_.v20, 0);
+  GameSituation_906e20((void*)(&v17_), v2, (__int64)&v20_.v20, 0);
   return (v17_.v19 & 0x19E) == 0 && (v17_.v18 == 0 || (v17_.v19 & 0x60) == 0 ||
                                      (*(_BYTE*)(v17_.v18 + 36) & 2) == 0);
 }
@@ -599,6 +603,7 @@ __int64 GameSituation_906910(__int64 a1, __int64* a2)
   struct {
     __int64 v17[5];
     __int64 v18;
+    char tail_[64];
   } v17_;
   struct {
     __int64 v19;
@@ -673,7 +678,7 @@ __int64 GameSituation_906910(__int64 a1, __int64* a2)
   else {
     game_907570((void*)((__int64)&v19_.v19), a2[1]);
   }
-  GameSituation_906e20_alt1(v2, &v19_.v19, 0);
+  GameSituation_906e20((void*)(&v17_), v2, (__int64)&v19_.v19, 0);
   if (v17_.v18 != 0) {
     return *(_QWORD*)(v17_.v18 + 64);
   }
@@ -701,6 +706,7 @@ __int64* GameSituation_906a40(__int64 a1, __int64* a2)
   struct {
     __int64 v17[5];
     __int64 v18;
+    char tail_[64];
   } v17_;
   struct {
     __int64 v19;
@@ -775,7 +781,7 @@ __int64* GameSituation_906a40(__int64 a1, __int64* a2)
   else {
     game_907570((void*)((__int64)&v19_.v19), a2[1]);
   }
-  GameSituation_906e20_alt1(v2, &v19_.v19, 0);
+  GameSituation_906e20((void*)(&v17_), v2, (__int64)&v19_.v19, 0);
   if (v17_.v18 != 0) {
     return (__int64*)(v17_.v18 + 72);
   }
@@ -804,6 +810,7 @@ __int64 GameSituation_906b70(__int64 a1, __int64* a2)
     __int64 v17;
     char gap8_[9];
     unsigned __int8 v18;
+    char tail_[64];
   } v17_;
   struct {
     __int64 v19;
@@ -878,7 +885,7 @@ __int64 GameSituation_906b70(__int64 a1, __int64* a2)
   else {
     game_907570((void*)((__int64)&v19_.v19), a2[1]);
   }
-  GameSituation_906e20_alt1(v2, &v19_.v19, 0);
+  GameSituation_906e20((void*)(&v17_), v2, (__int64)&v19_.v19, 0);
   return v17_.v18;
 }
 
@@ -904,6 +911,7 @@ __int64 GameSituation_906c90(__int64 a1, __int64* a2)
     char gap8_[8];
     char v19;
     unsigned __int8 v20;
+    char tail_[64];
   } v18_;
   struct {
     __int64 v21;
@@ -978,7 +986,7 @@ __int64 GameSituation_906c90(__int64 a1, __int64* a2)
   else {
     game_907570((void*)((__int64)&v21_.v21), a2[1]);
   }
-  GameSituation_906e20_alt1(v2, &v21_.v21, 0);
+  GameSituation_906e20((void*)(&v18_), v2, (__int64)&v21_.v21, 0);
   if ((unsigned int)v18_.v20 - 1 >= 2) {
     v16 = 1;
   }

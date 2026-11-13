@@ -41,9 +41,9 @@ __int64 UnitMakeCamera_179b570(__int64 a1, int8x16_t a2, int8x16_t a3);
 void UnitMakeCamera_179ba60_alt1(__int64 a1) __asm__("UnitMakeCamera_179ba60");
 void UnitMakeCamera_179bb70_alt1(__int64 a1) __asm__("UnitMakeCamera_179bb70");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
@@ -414,6 +414,7 @@ LABEL_14:
 
 __int64 UnitMakeCamera_179ba60(__int64 result)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64 v3;
@@ -428,7 +429,7 @@ __int64 UnitMakeCamera_179ba60(__int64 result)
     v8[26] = v2;
     v3 = result;
     snd_Fade_Fade_10c830_alt1((__int64)v8, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"SE_SYS_ZoomIn_CharaMake",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_ZoomIn_CharaMake",
                         (__int64)"SE_SYS_ZoomIn_CharaMake", (__int64)v8, 0,
                         0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v8);
@@ -461,6 +462,7 @@ __int64 UnitMakeCamera_179ba60(__int64 result)
 
 __int64 UnitMakeCamera_179bb70(__int64 result)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64 v3;
@@ -470,7 +472,7 @@ __int64 UnitMakeCamera_179bb70(__int64 result)
   if ((*(_BYTE*)(result + 208) & 1) == 0) {
     v1 = result;
     snd_Fade_Fade_10c830_alt1((__int64)v5, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"SE_SYS_ZoomOut_CharaMake",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_ZoomOut_CharaMake",
                         (__int64)"SE_SYS_ZoomOut_CharaMake", (__int64)v5, 0,
                         0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v5);

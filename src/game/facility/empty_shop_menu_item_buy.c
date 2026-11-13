@@ -9,8 +9,9 @@ extern __int64* GameData_212e008[9];
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
 _QWORD* EmptyShopMenuItem_Buy_186b2c0(__int64* a1);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, float, float, __int64, unsigned int,
-                       unsigned int, int);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               float, float, __int64,
+                                               unsigned int, unsigned int, int);
 extern __int64* GameData_212e000[10];
 extern __int64* GameData_212e030[4];
 extern __int64 GameData_2131c68[45];
@@ -19,6 +20,7 @@ __int64 EmptyShopMenuItem_Buy_BCall(__int64 a1);
 
 __int64 EmptyShopMenuItem_Buy_BCall(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v2;
   __int64* v3;
   __int64 v4;
@@ -40,7 +42,7 @@ __int64 EmptyShopMenuItem_Buy_BCall(__int64 a1)
   (*(void (**)(__int64))(*(_QWORD*)v4 + 1136LL))(v4);
   (*(void (**)(__int64))(*(_QWORD*)v4 + 1120LL))(v4);
   snd_Fade_Fade_10c830((__int64)v6, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)"SE_SYS_Multiple_CancelAll",
+  snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Multiple_CancelAll",
                  (__int64)"SE_SYS_Multiple_CancelAll", 0x0.0p+0f,
                  0x1.0000000000000p+0f, (__int64)v6, 0, 0x10001u, 0);
   snd_Fade_Destroy_Fade(v6);

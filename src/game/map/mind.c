@@ -68,8 +68,9 @@ extern __int64 game_map_UnitFlags_instance_;
 extern __int64* GameData_212c878[6];
 extern __int64* GameData_212d1f8[2];
 extern int GameData_21cfa68;
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD,
                                                   _QWORD);
@@ -3018,9 +3019,8 @@ __int64 Mind_746c60(__int64 a1, char a2, long double a3)
         }
       }
       snd_Fade_Fade_10c830(v22, 0.0);
-      *(struct PseudoSret*)(&v21) =
-          snd_play_ff2d0("SE_SYS_Weapon_Change", "SE_SYS_Weapon_Change", v22, 0,
-                         65537, 0, 0.0, 1.0);
+      snd_play_ff2d0((void*)(&v21), "SE_SYS_Weapon_Change",
+                     "SE_SYS_Weapon_Change", v22, 0, 65537, 0, 0.0, 1.0);
       snd_Fade_Destroy_Fade(v22);
       if (GameData_22400f8 != 0 && *(_BYTE*)(GameData_22400f8 + 8) == 1 &&
           (*(_BYTE*)(GameData_22400f8 + 9) & 1) == 0) {

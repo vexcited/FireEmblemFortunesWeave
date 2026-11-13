@@ -14,8 +14,9 @@ __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_gameui_1586840(__int64*, char);
 __int64 game_menu_BasicMenu_Unknown16dd9a0(__int64 result);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count___release_weak(__int64);
 __int64 std___1___shared_weak_count_lock(__int64);
 __int64 ui_LayoutAccessor_FindPane(__int64*, __int64);
@@ -241,6 +242,7 @@ __int64 game_map_anonymous_1271640(__int64 a1)
 
 __int64 game_map_anonymous_1784360(__int64 a1, _QWORD* a2, __int64 a3)
 {
+  _QWORD handle[2];
   unsigned int v6;
   unsigned __int64 v7;
   __int64 v8;
@@ -283,14 +285,14 @@ __int64 game_map_anonymous_1784360(__int64 a1, _QWORD* a2, __int64 a3)
   if (v10 == 0 || *(_BYTE*)(v10 + 16) != 0) {
     if ((v7 & 1) != 0) {
       snd_Fade_Fade_10c830((__int64)v21_.v21, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"SE_SYS_NG", (__int64)"SE_SYS_NG",
-                     (__int64)v21_.v21, 0, 0x10001u, 0, 0x0.0p+0f,
-                     0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_NG",
+                     (__int64)"SE_SYS_NG", (__int64)v21_.v21, 0, 0x10001u, 0,
+                     0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(v21_.v21);
       return v6;
     }
     snd_Fade_Fade_10c830((__int64)v21_.v21, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Sortie_Include",
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Sortie_Include",
                    (__int64)"SE_SYS_Sortie_Include", (__int64)v21_.v21, 0,
                    0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v21_.v21);
@@ -339,7 +341,7 @@ __int64 game_map_anonymous_1784360(__int64 a1, _QWORD* a2, __int64 a3)
   GameHr_6c47b0(a3, v21_.v21, 0, 0);
   game_map_73c7c0((_QWORD*)a3, *(char*)(a3 + 584), *(char*)(a3 + 585));
   snd_Fade_Fade_10c830((__int64)v21_.v21, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)"SE_SYS_Sortie_Exclude",
+  snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Sortie_Exclude",
                  (__int64)"SE_SYS_Sortie_Exclude", (__int64)v21_.v21, 0,
                  0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(v21_.v21);

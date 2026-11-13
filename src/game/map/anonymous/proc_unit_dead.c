@@ -50,8 +50,9 @@ __int64 game_6c6ec0(__int64);
 __int64 game_HasSkill(_QWORD*, unsigned int*);
 __int64 game_Unit_GetParam(__int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 extern _QWORD game_g_shared_system_skills_ptr;
 extern __int64 GameData_21d9188;
 extern __int64 GameData_21ed080;
@@ -163,6 +164,7 @@ void ProcUnitDead_76ef60(__int64 a1, __int64 a2)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   int v2;
   __int64 v4;
   int v5;
@@ -383,9 +385,9 @@ void ProcUnitDead_76ef60(__int64 a1, __int64 a2)
       snd_Fade_Fade_10c830((__int64)v36, 0x0.0p+0f),
           v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v1", "=w")),
           v35 = COERCE_AS(__typeof__(v35), PSEUDO_REGISTER(__n128, "v0", "=w"));
-      snd_play_ff2d0((__int64)"SE_SYS_Dead_Unit", (__int64)"SE_SYS_Dead_Unit",
-                     (__int64)v36, 0, 0x10001u, 0, 0x0.0p+0f,
-                     0x1.0000000000000p+0f),
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Dead_Unit",
+                     (__int64)"SE_SYS_Dead_Unit", (__int64)v36, 0, 0x10001u, 0,
+                     0x0.0p+0f, 0x1.0000000000000p+0f),
           v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v1", "=w")),
           v35 = COERCE_AS(__typeof__(v35), PSEUDO_REGISTER(__n128, "v0", "=w"));
       snd_Fade_Destroy_Fade(v36),

@@ -422,7 +422,8 @@ long double GameRoutine_1917380(__int64, __int64, _BYTE*, char, char, float,
                                 double, float, float, float);
 long double LayoutAccessor_15638b0(_QWORD, _QWORD, _QWORD);
 long double spine_MathUtil_clamp(float, double, float);
-struct PseudoSret LayoutAccessor_1560070(_QWORD, _QWORD);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, _QWORD,
+                                                       _QWORD);
 void GameRoutine_1566440(__int64, char);
 void GameRoutine_19171d0(__int64, __int64, int8x16_t*, char, char);
 void __attribute__((noreturn)) GameRoutine_195daf0(_QWORD);
@@ -969,7 +970,7 @@ __int64 game_1679f70(__int64 result)
         LABEL_25:
           v28 = &ui_LayoutAccessor_empty_;
         }
-        *(struct PseudoSret*)(&v36) = LayoutAccessor_1560070(v28, v23);
+        LayoutAccessor_1560070((void*)(&v36), v28, v23);
         GameRoutine_1653f50((_DWORD*)(v6 + 176 + 16LL * v21), &v36);
         if (v37 != 0) {
           std___1___shared_weak_count___release_weak(v37);
@@ -4836,9 +4837,9 @@ __int64 game_191b920(__int64 result, _BYTE* a2, _BYTE* a3, float a4, float a5,
     LOBYTE(a7) = a3[3];
     LANES128(v10).n128_f32[1] =
         LANES128(v8).n128_f32[0] / 0x1.fe00000000000p+7f;
-    LANES128(v10).n128_u64[1] =
-        __PAIR64__((float)LODWORD(a7) / 0x1.fe00000000000p+7f,
-                   (float)v12 / 0x1.fe00000000000p+7f);
+    LANES128(v10).n128_u64[1] = __PAIR64__(
+        COERCE_UNSIGNED_INT((float)LODWORD(a7) / 0x1.fe00000000000p+7f),
+        COERCE_UNSIGNED_INT((float)v12 / 0x1.fe00000000000p+7f));
     v13 = v10;
     GameRoutine_1917400(result, (__int64)"_Skin", 5u, &v14, 1, 1);
     return GameRoutine_1917400(v7, (__int64)"_Lip", 4u, &v13, 1, 1);

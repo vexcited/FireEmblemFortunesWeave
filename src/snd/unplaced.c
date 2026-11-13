@@ -182,11 +182,6 @@ __int64 nn_os_SetThreadName(_QWORD, _QWORD);
 __int64 nn_os_StartThread(_QWORD);
 __int64 nn_os_TryLockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
-__int64 snd_1190b0_alt1(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                        _QWORD, _QWORD, _DWORD, _QWORD, _DWORD, _QWORD,
-                        _DWORD) __asm__("snd_1190b0");
-__int64 snd_1190b0_alt2(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                        _QWORD) __asm__("snd_1190b0");
 __int64 snd_BGM_getFirstName(__int64);
 __int64 snd_BGM_isFirstActive(__int64);
 __int64 snd_BGM_releaseFirst(__int64 result);
@@ -433,7 +428,6 @@ __int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
 __int64 snd_Fade_Fade_10cb00_alt1(__int64,
                                   __int64) __asm__("snd_Fade_Fade_10cb00");
 __int64 snd_a290c0(__int64 result, const char*, __int64, int, char, float);
-__int64 snd_findSlot_100a50_alt1(int*) __asm__("snd_findSlot_100a50");
 __int64 strstr_alt1(const char*, const char*) __asm__("strstr");
 bool snd_hasDefine_alt1(__int64) __asm__("snd_hasDefine");
 double snd_getDefineValue_alt1(__int64) __asm__("snd_getDefineValue");
@@ -5322,7 +5316,7 @@ __int64* snd_a292c0(__int64 a1, unsigned int a2, char a3)
     int v145;
   } v144_;
 
-  snd_findSlot_100a50_alt1(&GameData_21fa938);
+  snd_findSlot_100a50((void*)(v143), &GameData_21fa938);
   v6 = snd_fnd_WeakHandle_get((__int64)v143);
   if (v6 != 0) {
     v7 = v6;
@@ -5333,7 +5327,7 @@ __int64* snd_a292c0(__int64 a1, unsigned int a2, char a3)
     snd_Fade_Destroy_Fade(v143);
   }
   if ((*(_BYTE*)(a1 + 612) & 1) == 0) {
-    snd_findSlot_100a50_alt1(&GameData_21fa93c);
+    snd_findSlot_100a50((void*)(v143), &GameData_21fa93c);
     v9 = snd_fnd_WeakHandle_get((__int64)v143);
     if (v9 != 0) {
       v10 = v9;
@@ -5344,7 +5338,7 @@ __int64* snd_a292c0(__int64 a1, unsigned int a2, char a3)
       snd_Fade_Destroy_Fade(v143);
     }
   }
-  snd_findSlot_100a50_alt1(&GameData_21fa940);
+  snd_findSlot_100a50((void*)(v143), &GameData_21fa940);
   result = (__int64*)snd_fnd_WeakHandle_get((__int64)v143);
   if (result != nullptr && (*(_BYTE*)(a1 + 601) & 1) == 0) {
     v13 = result;
@@ -5472,7 +5466,7 @@ __int64* snd_a292c0(__int64 a1, unsigned int a2, char a3)
     LABEL_61:
       snd_Fade_Destroy_Fade(&v136_.v136);
       snd_Fade_Destroy_Fade(v143);
-      snd_findSlot_100a50_alt1(&GameData_21fa944);
+      snd_findSlot_100a50((void*)(v143), &GameData_21fa944);
       v37 = snd_fnd_WeakHandle_get((__int64)v143);
       v39 = a2 == 3 || v25 == 3;
       if (v37 != 0 && v39) {
@@ -5497,7 +5491,7 @@ __int64* snd_a292c0(__int64 a1, unsigned int a2, char a3)
           snd_Fade_Destroy_Fade(v143);
         }
       }
-      snd_findSlot_100a50_alt1(&GameData_21fa948);
+      snd_findSlot_100a50((void*)(v143), &GameData_21fa948);
       v43 = snd_fnd_WeakHandle_get((__int64)v143);
       v128 = v26;
       v130 = v27;
@@ -8913,6 +8907,7 @@ __int64 snd_a2f180(__int64 result, __int64 a2)
 
 __int64 snd_a2f2a0(__int64 result, _BYTE* a2)
 {
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -8930,8 +8925,9 @@ __int64 snd_a2f2a0(__int64 result, _BYTE* a2)
     *(_BYTE*)(result + 3076) = 0;
     if (a2 != nullptr && *a2 != 0) {
       snd_Fade_Fade_10c830((__int64)v10, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)a2, (__int64)a2, (__int64)v10, 0, 0x10001u, 0,
-                     0x0.0p+0f, 0x1.0000000000000p+0f);
+      snd_play_ff2d0_alt1((void*)(handle), (__int64)a2, (__int64)a2,
+                          (__int64)v10, 0, 0x10001u, 0, 0x0.0p+0f,
+                          0x1.0000000000000p+0f);
       result = snd_Fade_Destroy_Fade(v10);
     }
     if (*(_DWORD*)(v4 + 632) == 0) {
@@ -9258,9 +9254,9 @@ __attribute__((swiftcall)) void snd_a307a0(PSEUDO_X8 x8_, __int64 unused_int0,
     v6 = *GameData_212e248[0];
     v7 = 0;
     v8 = 0x2000;
-    ((void (*)(__int64, __int64*, _BYTE*, const char*, __int64*, _BYTE*,
-               __int64*))snd_1190b0_alt1)(v6, &v11, a1, "V_MID_Replacement",
-                                          &v9, v13, &v7);
+    snd_1190b0((void*)(a3), v6, (__int64)&v11, (__int64)a1,
+               (unsigned __int8*)"V_MID_Replacement", (__int64)&v9,
+               (__int64)v13, (__int64)&v7);
     snd_Fade_Destroy_Fade_alt1(v13);
   }
   else {
@@ -9301,7 +9297,9 @@ __attribute__((swiftcall)) void snd_a30960(PSEUDO_X8 x8_, __int64 unused_int0,
     v6 = *GameData_212e248[0];
     v9 = 0;
     v10 = 0x2000;
-    snd_1190b0_alt2(v6, &v13, a1, "V_MID_Replacement", &v11, v15, &v9, v7);
+    snd_1190b0((void*)(a2), v6, (__int64)&v13, (__int64)a1,
+               (unsigned __int8*)"V_MID_Replacement", (__int64)&v11,
+               (__int64)v15, (__int64)&v9);
   }
   else {
     *(_QWORD*)&a3 = 0;
@@ -9451,6 +9449,7 @@ __int64 snd_a31410(__int64 result, _BYTE* a2, __int64 a3)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v4;
   __int64 v6;
   char v7;
@@ -9468,8 +9467,9 @@ __int64 snd_a31410(__int64 result, _BYTE* a2, __int64 a3)
     v4 = result;
     if (strstr(a2, "FF_") != 0) {
       snd_Fade_Fade_10c830((__int64)v13_.v13, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"MovieBGM", (__int64)a2, (__int64)v13_.v13, 0,
-                     0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+      snd_play_ff2d0_alt1((void*)(handle), (__int64)"MovieBGM", (__int64)a2,
+                          (__int64)v13_.v13, 0, 0x10001u, 0, 0x0.0p+0f,
+                          0x1.0000000000000p+0f);
       return snd_Fade_Destroy_Fade(v13_.v13);
     }
     snd_BGM_getFirstNameString((void*)((__int64)v13_.v13), *(_QWORD*)(v4 + 8));

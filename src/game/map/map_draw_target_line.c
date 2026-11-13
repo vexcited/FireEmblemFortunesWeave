@@ -77,8 +77,9 @@ __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
 __int64
 snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 extern _QWORD GameData_1b98ed8[3];
 extern _UNKNOWN* GameData_212c540;
 extern _UNKNOWN GameData_21a6130;
@@ -1577,7 +1578,7 @@ LABEL_116:
       v104 = COERCE_AS(__typeof__(v104), PSEUDO_REGISTER(float, "s0", "=w")),
       v64 = COERCE_AS(__typeof__(v64), PSEUDO_REGISTER(float, "s0", "=w"));
       v107 = v228;
-      LANES128(v107).n128_u32[1] =
+      LANES128(v107).n128_f32[1] =
           fmaxf(v105 + 0x1.4000000000000p+1f, v106 + -0x1.8000000000000p+0f);
       v95 = v107;
       LANES128(v95).n128_u32[2] = v221;
@@ -2264,6 +2265,7 @@ void MapDrawTargetLine_Unknown4(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -2467,8 +2469,8 @@ LABEL_27:
         snd_Fade_Fade_10c830((__int64)&v52_.v52, 0x0.0p+0f),
             v30 =
                 COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w"));
-        snd_play_ff2d0(v20, v20, (__int64)&v52_.v52, 0, 0x10001u, 0, 0x0.0p+0f,
-                       0x1.0000000000000p+0f),
+        snd_play_ff2d0((void*)(handle), v20, v20, (__int64)&v52_.v52, 0,
+                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f),
             v30 =
                 COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w"));
         snd_Fade_Destroy_Fade(&v52_.v52),

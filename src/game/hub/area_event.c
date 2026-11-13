@@ -31,8 +31,9 @@ __int64 game_hub_d5ae40(void);
 __int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 bool Manager_d9af70(__int64, __int64, __int64, __int64, unsigned int);
 extern __int64 (*GameData_1fdcdb8[22])();
 extern __int64 (*HandlePtr_Unknown21_cb39c0_ptr[15])();
@@ -472,6 +473,7 @@ __int64 AreaEvent_Destructor(__int64 a1)
 __attribute__((swiftcall)) void AreaEvent_d59720(PSEUDO_X8 x8_, __int64 a1,
                                                  int a2)
 {
+  _QWORD handle[2];
   __int64* a3 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64* v3;
   int v6;
@@ -589,8 +591,8 @@ __attribute__((swiftcall)) void AreaEvent_d59720(PSEUDO_X8 x8_, __int64 a1,
       v10 = (v8 & 1) != 0 ? *(_QWORD*)(a1 + 1504) : a1 + 1489;
       if (v10 != 0) {
         snd_Fade_Fade_10c830((__int64)&v80_.v80, 0x0.0p+0f);
-        snd_play_ff2d0(v10, v10, (__int64)&v80_.v80, 0, 0x10001u, 0, 0x0.0p+0f,
-                       0x1.0000000000000p+0f);
+        snd_play_ff2d0((void*)(handle), v10, v10, (__int64)&v80_.v80, 0,
+                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade(&v80_.v80);
       }
     }
@@ -605,8 +607,8 @@ __attribute__((swiftcall)) void AreaEvent_d59720(PSEUDO_X8 x8_, __int64 a1,
       v13 = (v11 & 1) != 0 ? *(_QWORD*)(a1 + 1472) : a1 + 1457;
       if (v13 != 0) {
         snd_Fade_Fade_10c830((__int64)&v80_.v80, 0x0.0p+0f);
-        snd_play_ff2d0(v13, v13, (__int64)&v80_.v80, 0, 0x10001u, 0, 0x0.0p+0f,
-                       0x1.0000000000000p+0f);
+        snd_play_ff2d0((void*)(handle), v13, v13, (__int64)&v80_.v80, 0,
+                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade(&v80_.v80);
       }
     }

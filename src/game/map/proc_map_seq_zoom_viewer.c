@@ -97,8 +97,9 @@ __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
     "std___1___shared_weak_count___release_weak");
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
@@ -1116,6 +1117,7 @@ bool ProcMapSeqZoomViewer_fb0ab0(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64* v2;
   __int64 v3;
   int32x2_t* v4;
@@ -1182,8 +1184,8 @@ bool ProcMapSeqZoomViewer_fb0ab0(__int64 a1)
         *(_QWORD*)fw_memory_g_heap_manager_ptr, 32, 16, 0);
     strcpy(v10, "SE_SYS_Cancel_Move_ZoomView");
     snd_Fade_Fade_10c830((__int64)v13, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)v10, (__int64)v10, (__int64)v13, 0, 0x10001u, 0,
-                   0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v10, (__int64)v10, (__int64)v13, 0,
+                   0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v13);
     v11 = 128;
     if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) == 0) {

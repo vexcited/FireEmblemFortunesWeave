@@ -382,9 +382,9 @@ __attribute__((swiftcall)) void game_148a410(PSEUDO_X8, float*, float32x2_t*,
                                              float32x2_t*, float32x4_t*);
 __int64 GameRoutine_1872af0_alt1(__int64, char) __asm__("GameRoutine_1872af0");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 void gfx_render_b3aee0(float32x4_t*);
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 void game_facility_141ff70();
@@ -7090,6 +7090,7 @@ __int64 game_facility_17043b0(__int64 a1)
 
 __int64 game_facility_17045b0(_QWORD* a1)
 {
+  _QWORD handle[2];
   __int64 result;
   _QWORD* v3;
   _BYTE* v4;
@@ -7269,8 +7270,8 @@ LABEL_49:
     v37 = "SE_SYS_Multiple_Select";
   }
   snd_Fade_Fade_10c830_alt1((__int64)v38, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)v37, (__int64)v37, (__int64)v38, 0, 0x10001u, 0,
-                      0x0.0p+0f, 0x1.0000000000000p+0f);
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)v37, (__int64)v37, (__int64)v38,
+                      0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade_alt1(v38);
   GameRoutine_1872af0_alt1((__int64)v4, (v4[88] & 1) == 0);
   return 1;

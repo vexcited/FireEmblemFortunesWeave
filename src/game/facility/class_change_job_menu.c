@@ -190,9 +190,9 @@ __int64 game_11912b0(__int64, const char**, const char*, __int64);
 __int64 game_960210(__int64, __int64);
 __int64 game_facility_14682e0_alt1() __asm__("game_facility_14682e0");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64
 ui_LayoutAccessor_FindPane_alt1(__int64*,
                                 __int64) __asm__("ui_LayoutAccessor_FindPane");
@@ -2314,6 +2314,7 @@ LABEL_31:
 
 __int64 ClassChangeJobMenu_16b6f70(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64* v3;
@@ -2402,15 +2403,15 @@ LABEL_19:
 LABEL_29:
   if ((game_facility_14682e0_alt1() & 1) != 0) {
     snd_Fade_Fade_10c830_alt1((__int64)&v18_.v18, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"SE_SYS_Costume_Change",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Costume_Change",
                         (__int64)"SE_SYS_Costume_Change", (__int64)&v18_.v18, 0,
                         0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(&v18_.v18);
     snd_Fade_Fade_10c830_alt1((__int64)&v18_.v18, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"SE_SYS_ClassChange_Appearance",
-                        (__int64)"SE_SYS_ClassChange_Appearance",
-                        (__int64)&v18_.v18, 0, 0x10001u, 0, 0x0.0p+0f,
-                        0x1.0000000000000p+0f);
+    snd_play_ff2d0_alt1(
+        (void*)(handle), (__int64)"SE_SYS_ClassChange_Appearance",
+        (__int64)"SE_SYS_ClassChange_Appearance", (__int64)&v18_.v18, 0,
+        0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(&v18_.v18);
     v11 = 0;
     LODWORD(v1) = 13;

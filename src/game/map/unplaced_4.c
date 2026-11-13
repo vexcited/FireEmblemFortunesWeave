@@ -3375,7 +3375,7 @@ void game_map_1044ea0(_QWORD* a1, __int64 a2)
   LANES128(v48_.v51).n128_u32[3] = LANES128(v17).n128_u32[0];
   LANES128(v17).n128_u64[0] = __PAIR64__(LODWORD(v7), v6);
   LANES128(v17).n128_u64[1] = v6;
-  LANES128(v48_.v52).n128_u32[3] =
+  LANES128(v48_.v52).n128_f32[3] =
       vmuls_lane_f32(LANES128(v15).n128_f32[0], v16, 3);
   v48_.v55 = v17;
   v18 = (__int64*)GameData_212d018[0];

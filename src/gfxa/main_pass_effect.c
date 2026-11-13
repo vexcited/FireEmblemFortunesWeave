@@ -2177,13 +2177,14 @@ __int64 gfxa_MainPassEffect_SetupDecalPass_lambda1_Invoke(__int64 a1,
     v31 = v28[1];
     v38_.v55 = 1;
     v38_.v53 = vsubq_f32(
-        v22,
-        COERCE_AS(
-            float32x4_t,
-            __PAIR64__((float)(*(float*)(v29 + 1224) * -0x1.0000000000000p+1f) /
-                           (float)v31,
-                       (float)(*(float*)(v29 + 1220) + *(float*)(v29 + 1220)) /
-                           (float)v30)));
+        v22, COERCE_AS(float32x4_t,
+                       __PAIR64__(
+                           COERCE_UNSIGNED_INT((float)(*(float*)(v29 + 1224) *
+                                                       -0x1.0000000000000p+1f) /
+                                               (float)v31),
+                           COERCE_UNSIGNED_INT((float)(*(float*)(v29 + 1220) +
+                                                       *(float*)(v29 + 1220)) /
+                                               (float)v30))));
     v38_.v54 = v23;
   }
   v33 = *(_QWORD**)a2;

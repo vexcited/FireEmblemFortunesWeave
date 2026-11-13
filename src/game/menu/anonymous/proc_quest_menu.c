@@ -181,7 +181,7 @@ __int64 game_menu_anonymous_ProcQuestMenu_OnInit(__int64 a1)
     }
     v3 = 40;
   }
-  (*(void (**)(void)) & (*v14)[v3])();
+  (*(void (**)(void*)) & (*v14)[v3])(v14);
 LABEL_8:
   if (v2 != 0) {
     std___1___shared_weak_count___release_weak_alt1(v2);

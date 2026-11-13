@@ -157,9 +157,9 @@ __int64 Util_1583920_alt1(__int64 result, __int64,
 __int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
 __int64 game_Unit_GetJob_alt1(__int64) __asm__("game_Unit_GetJob");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
@@ -450,6 +450,7 @@ void TelopBattleExp_1743280(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   bool v4;
@@ -1020,7 +1021,7 @@ LABEL_94:
     LABEL_286:
       TelopBattleExp_17453e0_alt3(a1, "N_ClassEff");
       snd_Fade_Fade_10c830_alt1((__int64)&v160_.v160, 0x0.0p+0f);
-      snd_play_ff2d0_alt1((__int64)"SE_SYS_Level_Up",
+      snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Level_Up",
                           (__int64)"SE_SYS_Level_Up", (__int64)&v160_.v160, 0,
                           0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade_alt1(&v160_.v160);
@@ -1189,9 +1190,9 @@ LABEL_190:
 LABEL_220:
   TelopBattleExp_17453e0_alt3(a1, "N_AnimalEff");
   snd_Fade_Fade_10c830_alt1((__int64)&v160_.v160, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Level_Up", (__int64)"SE_SYS_Level_Up",
-                      (__int64)&v160_.v160, 0, 0x10001u, 0, 0x0.0p+0f,
-                      0x1.0000000000000p+0f);
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Level_Up",
+                      (__int64)"SE_SYS_Level_Up", (__int64)&v160_.v160, 0,
+                      0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade_alt1(&v160_.v160);
   v110 = *(_QWORD*)(a1 + 824);
   if (v110 == 0) {
@@ -1533,6 +1534,7 @@ __int64 TelopBattleExp_Unknown37(__int64 a1)
 
 __int64 TelopBattleExp_Unknown36(__int64 result)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64 v3;
@@ -1583,7 +1585,7 @@ __int64 TelopBattleExp_Unknown36(__int64 result)
           }
           std___1___shared_weak_count___release_weak_alt2(v6);
           snd_Fade_Fade_10c830_alt1((__int64)v13, 0x0.0p+0f);
-          snd_play_ff2d0_alt1((__int64)"SE_SYS_FriendShip_Up",
+          snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_FriendShip_Up",
                               (__int64)"SE_SYS_FriendShip_Up", (__int64)v13, 0,
                               0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
           snd_Fade_Destroy_Fade_alt1(v13);

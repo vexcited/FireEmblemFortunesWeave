@@ -40,8 +40,9 @@ __int64 snd_fnd_WeakHandle_get_alt1(_QWORD) __asm__("snd_fnd_WeakHandle_get");
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
 __int64 snd_fnd_WeakHandle_isValid_alt1(_QWORD) __asm__(
     "snd_fnd_WeakHandle_isValid");
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 snd_stop_ffc40(_QWORD, _QWORD, long double);
 __int64 snd_stop_ffc40_alt1(__int64*, __int64) __asm__("snd_stop_ffc40");
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
@@ -1387,8 +1388,9 @@ LABEL_15:
   v17 = *(float*)(a1 + 664);
   LODWORD(v15) = *(_DWORD*)(a1 + 688);
   if (v16 < v17) {
-    LODWORD(v15) = Cursor_734120(*(_DWORD*)(a1 + 672), *(_DWORD*)(a1 + 676),
-                                 *(float*)(a1 + 684), *(float*)&v15, v16, v17),
+    LODWORD(v15) = COERCE_UNSIGNED_INT(
+        Cursor_734120(*(_DWORD*)(a1 + 672), *(_DWORD*)(a1 + 676),
+                      *(float*)(a1 + 684), *(float*)&v15, v16, v17)),
     v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v0", "=w"));
   }
   v18 = *(unsigned __int8*)(a1 + 680);
@@ -2743,6 +2745,7 @@ __int64 Camera_1317300(__int64 a1, long double a2, double a3, long double a4)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   float v4;
   float v6;
   __int64* v7;
@@ -2955,9 +2958,9 @@ __int64 Camera_1317300(__int64 a1, long double a2, double a3, long double a4)
         snd_Fade_Fade_10c830_alt1((__int64)v38, 0x0.0p+0f),
             v16 =
                 COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s0", "=w"));
-        snd_play_ff2d0((__int64)"SE_SYS_Zoom_Move", (__int64)"SE_SYS_Zoom_Move",
-                       (__int64)v38, 0, 0x10001u, 0, 0x0.0p+0f,
-                       0x1.0000000000000p+0f),
+        snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Zoom_Move",
+                       (__int64)"SE_SYS_Zoom_Move", (__int64)v38, 0, 0x10001u,
+                       0, 0x0.0p+0f, 0x1.0000000000000p+0f),
             v16 =
                 COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s0", "=w"));
         snd_Fade_Destroy_Fade_alt1(v38),

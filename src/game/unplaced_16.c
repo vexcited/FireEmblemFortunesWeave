@@ -9012,16 +9012,18 @@ __attribute__((swiftcall)) void game_a3aba0(PSEUDO_X8 x8_, __int64 unused_int0,
     LANES128(v72).n128_u32[3] = 0;
     v136 = v64;
     LANES128(v72).n128_u64[0] = __PAIR64__(
-        (float)(LANES128(v72).n128_f32[0] + LANES128(v79).n128_f32[1]) +
+        COERCE_UNSIGNED_INT(
+            (float)(LANES128(v72).n128_f32[0] + LANES128(v79).n128_f32[1]) +
             (float)((float)((float)(LANES128(v72).n128_f32[0] -
                                     LANES128(v72).n128_f32[0]) +
                             LANES128(v79).n128_f32[1]) *
-                    0x1.99999a0000000p-5f),
-        (float)(LANES128(v70).n128_f32[0] + LANES128(v79).n128_f32[0]) +
+                    0x1.99999a0000000p-5f)),
+        COERCE_UNSIGNED_INT(
+            (float)(LANES128(v70).n128_f32[0] + LANES128(v79).n128_f32[0]) +
             (float)((float)((float)(LANES128(v70).n128_f32[0] -
                                     LANES128(v70).n128_f32[0]) +
                             LANES128(v79).n128_f32[0]) *
-                    0x1.99999a0000000p-5f));
+                    0x1.99999a0000000p-5f)));
     LANES128(v72).n128_f32[2] =
         (float)(LANES128(v61).n128_f32[0] + LANES128(v79).n128_f32[2]) +
         (float)((float)((float)(LANES128(v61).n128_f32[0] -
@@ -24391,10 +24393,10 @@ LABEL_27:
             if (*(_QWORD*)(*game_g_frame_clock_ptr[0] + 16616) != 0) {
               v48 = *(int**)(*game_g_frame_clock_ptr[0] + 16616);
             }
-            LODWORD(v84_.v86) =
+            LODWORD(v84_.v86) = COERCE_UNSIGNED_INT(
                 fminf((float)(*(float*)(a2 + 80) / 0x1.9000000000000p+10f) *
                           (float)((float)*v48 / 0x1.ea00000000000p+10f),
-                      0x1.0000000000000p+0f);
+                      0x1.0000000000000p+0f));
             atomic_fetch_add_explicit((atomic_ullong* volatile)(v45 + 8), 1u,
                                       memory_order_relaxed);
             atomic_fetch_add_explicit((atomic_ullong* volatile)(v45 + 8), 1u,

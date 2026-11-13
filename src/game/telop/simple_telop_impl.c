@@ -51,9 +51,9 @@ __int64 LayoutAccessor_155ea30_alt1(__int64*) __asm__("LayoutAccessor_155ea30");
 __int64 TelopParts_17cdc40_alt1(__int64,
                                 __int64*) __asm__("TelopParts_17cdc40");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 float GameRoutine_618640_alt1(int, float result, float, float,
                               float) __asm__("GameRoutine_618640");
 float ui_LayoutAccessor_SetTranslate_alt1(__int64*, __int64) __asm__(
@@ -465,6 +465,7 @@ LABEL_50:
 
 void SimpleTelopImpl_Unknown2(__int64 a1)
 {
+  _QWORD handle[2];
   int v1;
   __int64 v2;
   __int64 v4;
@@ -956,9 +957,9 @@ LABEL_120:
           *(_BYTE*)(a1 + 1689) = 1;
         }
         snd_Fade_Fade_10c830_alt1((__int64)&v84_.v84, 0x0.0p+0f);
-        snd_play_ff2d0_alt1((__int64)"VIB_SideQuest", (__int64)"VIB_SideQuest",
-                            (__int64)&v84_.v84, 0, 0x10001u, 0, 0x0.0p+0f,
-                            0x1.0000000000000p+0f);
+        snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_SideQuest",
+                            (__int64)"VIB_SideQuest", (__int64)&v84_.v84, 0,
+                            0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade_alt1(&v84_.v84);
         *(_BYTE*)(a1 + 1688) = 0;
         *(_BYTE*)(v72 - 62) = 1;

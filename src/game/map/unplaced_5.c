@@ -75,8 +75,9 @@ __int64 memset(__int64, int, unsigned __int64);
 __int64 nn_os_LockMutex(__int64);
 __int64 nn_os_UnlockMutex(__int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___next_prime(unsigned __int64);
 __int64 std___1___shared_weak_count___release_weak(__int64);
 __int64 std___1___shared_weak_count_lock(__int64);
@@ -2434,6 +2435,7 @@ __int64 game_map_faf4a0(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v2;
   unsigned int v3;
   __int64 v4;
@@ -2456,8 +2458,9 @@ __int64 game_map_faf4a0(__int64 a1)
       v5 = v4;
       strcpy((char*)v8, ",SE_SYS_Decide_ZoomView");
       snd_Fade_Fade_10c830((__int64)v9, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)v8 + 1, (__int64)v8 + 1, (__int64)v9, 0, 0x10001u,
-                     0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)v8 + 1, (__int64)v8 + 1,
+                     (__int64)v9, 0, 0x10001u, 0, 0x0.0p+0f,
+                     0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(v9);
       if ((v8[0] & 1) != 0 && v8[2] != 0) {
         v6 = 128;
@@ -2483,6 +2486,7 @@ __int64 game_map_fb01c0(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v2;
   float v3;
   float v4;
@@ -2550,15 +2554,17 @@ __int64 game_map_fb01c0(__int64 a1)
     char v70;
   } v63_;
 
-  if (*(float*)(a1 + 276) > 0x0.0p+0f) {
+  // The original branches on b.ls, a NaN takes the second path.
+  if (!(*(float*)(a1 + 276) <= 0x0.0p+0f)) {
     goto LABEL_2;
   }
   v5 = *(_DWORD*)(*(_QWORD*)game_g_game_setting_ptr + 952LL);
   if ((v5 & 2) != 0) {
     strcpy((char*)v62, ",SE_SYS_Cancel_ZoomView");
     snd_Fade_Fade_10c830((__int64)&v63_.v63, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)v62 + 1, (__int64)v62 + 1, (__int64)&v63_.v63, 0,
-                   0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v62 + 1, (__int64)v62 + 1,
+                   (__int64)&v63_.v63, 0, 0x10001u, 0, 0x0.0p+0f,
+                   0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(&v63_.v63);
     if ((v62[0] & 1) != 0 && v62[2] != 0) {
       v12 = 128;

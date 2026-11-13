@@ -973,7 +973,7 @@ LABEL_15:
     if (v147_.v150 != nullptr) {
       v135 = 10;
     LABEL_187:
-      (*(void (**)(void)) & (*v132)[v135])();
+      (*(void (**)(void*)) & (*v132)[v135])(v132);
     }
   LABEL_188:
     v151 = game_map_anonymous_EntityObject_vtable;

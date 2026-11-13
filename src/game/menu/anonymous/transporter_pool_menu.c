@@ -20,7 +20,7 @@ extern __int64* GameData_212c878[6];
 extern __int64* GameData_212e008[9];
 extern __int64* GameData_21319e8[10];
 extern __int64* game_g_empty_item_ptr;
-struct PseudoSret GameRoutine_1560070(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 TransporterPoolMenu_Unknown88(__int64 a1);
 __int64 TransporterPoolMenu_Unknown139(_QWORD* a1);
 __int64 TransporterPoolMenu_Unknown144(__int64 a1, char a2);
@@ -270,7 +270,7 @@ __int64 TransporterPoolMenu_Unknown88(__int64 a1)
             (unsigned __int64)(*(_BYTE*)(v11 + 73) != 16);
     }
     GameRoutine_1567590("StatusChange", v10);
-    *(struct PseudoSret*)(v18) = GameRoutine_1560070(v1 + 200, "L_ItemDetail");
+    GameRoutine_1560070((void*)(v18), v1 + 200, "L_ItemDetail");
     result = v18[1];
     v12 = *(_BYTE*)(v1 + 389) != 0 ? *(_QWORD*)(v1 + 360) : 0LL;
     if (v18[1] != 0) {

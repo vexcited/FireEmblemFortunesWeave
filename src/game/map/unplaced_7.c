@@ -20,8 +20,9 @@ __int64 game_gameui_FloatingHelp_CheckNeedUpdateTargetElement(__int64 result,
 __int64 game_map_7d1920(__int64, char**);
 __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 bool game_map_782c60(_QWORD*, int, int, long double);
 bool game_map_786420(_QWORD*, int, int, long double);
 bool game_map_Cursor_Impl_Tick(__int64*, __int64, double, double, double,
@@ -911,6 +912,7 @@ __int64 game_map_7890a0(__int64 a1, double a2, double a3, double a4,
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   int v10;
   __int64 result;
   unsigned int v12;
@@ -931,23 +933,24 @@ __int64 game_map_7890a0(__int64 a1, double a2, double a3, double a4,
   if ((v10 & 1) != 0) {
     if ((GameRoutine_78d0e0() & 1) == 0) {
       snd_Fade_Fade_10c830((__int64)v25, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"SE_SYS_NG", (__int64)"SE_SYS_NG", (__int64)v25,
-                     0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_NG",
+                     (__int64)"SE_SYS_NG", (__int64)v25, 0, 0x10001u, 0,
+                     0x0.0p+0f, 0x1.0000000000000p+0f);
       return snd_Fade_Destroy_Fade(v25);
     }
     snd_Fade_Fade_10c830((__int64)v25, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Decide_M", (__int64)"SE_SYS_Decide_M",
-                   (__int64)v25, 0, 0x10001u, 0, 0x0.0p+0f,
-                   0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Decide_M",
+                   (__int64)"SE_SYS_Decide_M", (__int64)v25, 0, 0x10001u, 0,
+                   0x0.0p+0f, 0x1.0000000000000p+0f);
     result = snd_Fade_Destroy_Fade(v25);
     v15 = 4;
     goto LABEL_18;
   }
   if ((v10 & 2) != 0) {
     snd_Fade_Fade_10c830((__int64)v25, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Cancel_M", (__int64)"SE_SYS_Cancel_M",
-                   (__int64)v25, 0, 0x10001u, 0, 0x0.0p+0f,
-                   0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Cancel_M",
+                   (__int64)"SE_SYS_Cancel_M", (__int64)v25, 0, 0x10001u, 0,
+                   0x0.0p+0f, 0x1.0000000000000p+0f);
     result = snd_Fade_Destroy_Fade(v25);
     v15 = 7;
   LABEL_18:
@@ -984,7 +987,7 @@ __int64 game_map_7890a0(__int64 a1, double a2, double a3, double a4,
     return result;
   }
   snd_Fade_Fade_10c830((__int64)v25, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)"SE_SYS_Cursor_Target",
+  snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Cursor_Target",
                  (__int64)"SE_SYS_Cursor_Target", (__int64)v25, 0, 0x10001u, 0,
                  0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(v25);
@@ -1035,6 +1038,7 @@ __int64 game_map_78c350(__int64 a1, double a2, double a3, double a4,
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   int v10;
   __int64 result;
   __int64* v12;
@@ -1069,8 +1073,8 @@ __int64 game_map_78c350(__int64 a1, double a2, double a3, double a4,
       v28 = 0x1.0000000000000p+0f;
       v29 = "SE_SYS_NG";
     LABEL_36:
-      snd_play_ff2d0((__int64)v27, (__int64)v29, (__int64)v36, 0, 0x10001u, 0,
-                     0x0.0p+0f, v28);
+      snd_play_ff2d0((void*)(handle), (__int64)v27, (__int64)v29, (__int64)v36,
+                     0, 0x10001u, 0, 0x0.0p+0f, v28);
       return snd_Fade_Destroy_Fade(v36);
     }
     if (*(_DWORD*)(a1 + 152) == 8) {
@@ -1098,9 +1102,9 @@ __int64 game_map_78c350(__int64 a1, double a2, double a3, double a4,
   }
   if ((v10 & 2) != 0) {
     snd_Fade_Fade_10c830((__int64)v36, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Cancel_M", (__int64)"SE_SYS_Cancel_M",
-                   (__int64)v36, 0, 0x10001u, 0, 0x0.0p+0f,
-                   0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Cancel_M",
+                   (__int64)"SE_SYS_Cancel_M", (__int64)v36, 0, 0x10001u, 0,
+                   0x0.0p+0f, 0x1.0000000000000p+0f);
     result = snd_Fade_Destroy_Fade(v36);
     *(_DWORD*)(a1 + 152) = 4;
     v22 = *(unsigned __int8**)(a1 + 16);
@@ -1130,7 +1134,7 @@ __int64 game_map_78c350(__int64 a1, double a2, double a3, double a4,
         a9);
     if ((result & 1) != 0) {
       snd_Fade_Fade_10c830((__int64)v36, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"SE_SYS_Cursor_Target",
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Cursor_Target",
                      (__int64)"SE_SYS_Cursor_Target", (__int64)v36, 0, 0x10001u,
                      0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(v36);

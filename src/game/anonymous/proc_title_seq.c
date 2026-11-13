@@ -62,7 +62,6 @@ game_VariableManager_SetFlag_alt1(__int64 result,
                                   int) __asm__("game_VariableManager_SetFlag");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
-void GameRoutine_1366ac0_alt1(__int64, __int64) __asm__("GameRoutine_1366ac0");
 void GameRoutine_16a7080_alt1() __asm__("GameRoutine_16a7080");
 __int64 ProcTitleSeq_9ab8f0(__int64 a1);
 __int64 GameRoutine_91b5c0();
@@ -99,7 +98,8 @@ __int64 ProcTitleSeq_9ab8f0(__int64 a1)
     game_VariableManager_SetFlag_alt1((__int64)&v10_.v10, 1);
   }
   GameRoutine_16a7080_alt1();
-  GameRoutine_1366ac0_alt1((__int64)"Layout/Title.arc", (__int64)"Title");
+  GameRoutine_1366ac0((void*)(&v10_), (_QWORD)"Layout/Title.arc",
+                      (_QWORD)"Title");
   v3 = v10_.v10;
   v4 = v10_.v11;
   v5 = *(_QWORD*)(a1 + 216);

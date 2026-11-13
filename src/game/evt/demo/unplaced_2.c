@@ -421,7 +421,7 @@ LABEL_48:
     else {
       v72 = v71;
     }
-    LODWORD(a8) = strtof(v72, &v80);
+    LODWORD(a8) = COERCE_UNSIGNED_INT(strtof(v72, &v80));
     if (*v80 != 0) {
       if (*v80 == 102) {
         if (*((_BYTE*)((_UNKNOWN*)0x0LL) + (_QWORD)v80) != 0) {
@@ -664,7 +664,7 @@ LABEL_76:
   }
   else {
     *(float*)&a2 = (float)(v21 + 0x1.c28f5c0000000p-5) / 0x1.0e147a0000000p+0;
-    LODWORD(a4) = powf(a2, 0x1.3333340000000p+1);
+    LODWORD(a4) = COERCE_UNSIGNED_INT(powf(a2, 0x1.3333340000000p+1));
   }
   if (v36 <= 0x1.4b5dcc0000000p-5) {
     v37 = v36 / 0x1.9d70a40000000p+3;
@@ -696,7 +696,7 @@ LABEL_76:
     else {
       v44 = v43;
     }
-    LODWORD(a4) = strtof(v44, &v50);
+    LODWORD(a4) = COERCE_UNSIGNED_INT(strtof(v44, &v50));
     if (*v50 != 0) {
       if (*v50 == 102) {
         if (*((_BYTE*)((_UNKNOWN*)0x0LL) + (_QWORD)v50) != 0) {

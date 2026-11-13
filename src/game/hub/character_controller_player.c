@@ -1115,7 +1115,7 @@ LABEL_124:
                                 560LL),
                 COERCE_AS(float32x4_t, GameData_1a831c0));
             v108 = vsubq_f32(v126_.v126, v130[0]);
-            LANES128(v108).n128_u32[1] = vmuls_lane_f32(
+            LANES128(v108).n128_f32[1] = vmuls_lane_f32(
                 0x1.0000000000000p+2f,
                 COERCE_AS(float32x2_t, LANES128(v108).n128_u64[0]), 1);
             v109 = vmulq_f32(v108, v108);
@@ -1585,7 +1585,7 @@ void game_hub_CharacterControllerPlayer_UpdateAccessLookTo_lambda0_Invoke(
                                  560LL),
                  COERCE_AS(float32x4_t, GameData_1a831c0)),
              v27 = vsubq_f32(v39_.v39[0], v38),
-             LANES128(v27).n128_u32[1] = vmuls_lane_f32(
+             LANES128(v27).n128_f32[1] = vmuls_lane_f32(
                  0x1.0000000000000p+2f,
                  COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0]), 1),
              v28 = vmulq_f32(v27, v27),

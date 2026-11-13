@@ -699,7 +699,8 @@ game_zview_CharacterInputPlayer_CharacterInputPlayer_lambda0_Invoke(__int64 a1,
     if (game_d26f50(*v23, 2)) {
       v64 = *(_QWORD*)(v63 + 64);
       if (*(_QWORD*)(v63 + 72) != v64 && *(_BYTE*)(v64 + 8) == 1) {
-        LODWORD(v68_.v73) = CharacterInputPlayer_d4f350(v3, (__int64)a2),
+        LODWORD(v68_.v73) =
+            COERCE_UNSIGNED_INT(CharacterInputPlayer_d4f350(v3, (__int64)a2)),
         v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(float, "s1", "=w")),
         v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
         v65 = COERCE_AS(__typeof__(v65), PSEUDO_REGISTER(float, "s1", "=w"));

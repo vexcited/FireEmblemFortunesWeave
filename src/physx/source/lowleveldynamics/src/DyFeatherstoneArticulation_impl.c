@@ -1141,10 +1141,12 @@ float physx_Dy_FeatherstoneArticulation_solveInternalJointConstraints(
         ++v76;
         v72 = v116_.v117 + v72;
         v73 = v116_.v120 + v73;
-        v70 = __PAIR64__(*((float*)&v116_.v116 + 1) + *((float*)&v70 + 1),
-                         *(float*)&v116_.v116 + *(float*)&v70);
-        v74 = __PAIR64__(v116_.v119 + *((float*)&v74 + 1),
-                         v116_.v118 + *(float*)&v74);
+        v70 = __PAIR64__(
+            COERCE_UNSIGNED_INT(*((float*)&v116_.v116 + 1) +
+                                *((float*)&v70 + 1)),
+            COERCE_UNSIGNED_INT(*(float*)&v116_.v116 + *(float*)&v70));
+        v74 = __PAIR64__(COERCE_UNSIGNED_INT(v116_.v119 + *((float*)&v74 + 1)),
+                         COERCE_UNSIGNED_INT(v116_.v118 + *(float*)&v74));
       } while (v75 != 0);
     }
     else {
@@ -1238,15 +1240,19 @@ float physx_Dy_FeatherstoneArticulation_solveInternalJointConstraints(
         *(float*)&v131_.v134 = v80;
         *(float*)&v131_.v131 = v100 + *(float*)&v77;
         *((float*)&v131_.v131 + 1) = v101 + *((float*)&v77 + 1);
-        v131_.v133 = __PAIR64__((float)(v92 + v104) + *((float*)&v79 + 1),
-                                v103 + *(float*)&v79);
-        v70 = __PAIR64__(*((float*)&v116_.v116 + 1) + *((float*)&v70 + 1),
-                         *(float*)&v116_.v116 + *(float*)&v70);
-        v74 = __PAIR64__(v116_.v119 + *((float*)&v74 + 1),
-                         v116_.v118 + *(float*)&v74);
+        v131_.v133 = __PAIR64__(
+            COERCE_UNSIGNED_INT((float)(v92 + v104) + *((float*)&v79 + 1)),
+            COERCE_UNSIGNED_INT(v103 + *(float*)&v79));
+        v70 = __PAIR64__(
+            COERCE_UNSIGNED_INT(*((float*)&v116_.v116 + 1) +
+                                *((float*)&v70 + 1)),
+            COERCE_UNSIGNED_INT(*(float*)&v116_.v116 + *(float*)&v70));
+        v74 = __PAIR64__(COERCE_UNSIGNED_INT(v116_.v119 + *((float*)&v74 + 1)),
+                         COERCE_UNSIGNED_INT(v116_.v118 + *(float*)&v74));
         v77 = v131_.v131;
-        v79 = __PAIR64__((float)(v92 + v104) + *((float*)&v79 + 1),
-                         v103 + *(float*)&v79);
+        v79 = __PAIR64__(
+            COERCE_UNSIGNED_INT((float)(v92 + v104) + *((float*)&v79 + 1)),
+            COERCE_UNSIGNED_INT(v103 + *(float*)&v79));
       } while (v75 != 0);
     }
   }

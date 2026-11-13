@@ -27,7 +27,7 @@ extern __int64 game_ProcGameSkipView_instance_;
 extern __int64 game_map_UnitFlags_instance_;
 extern __int64* GameData_212cfd0[8];
 extern __int64* GameData_212d258[2];
-struct PseudoSret GameRoutine_81d430(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_81d430(PSEUDO_X8, _QWORD);
 __int64 ProcUnitBlazeOn_Destructor_770db0(__int64 a1);
 __int64 ProcUnitBlazeOn_DeletingDestructor_770eb0(__int64 a1);
 void ProcUnitBlazeOn_Unknown20();
@@ -397,7 +397,7 @@ __int64 ProcUnitBlazeOn_Unknown24(_QWORD* a1)
   if (v4 != 0) {
     v5 = GameData_21ed098;
     if (GameData_21ed098 != 0) {
-      *(struct PseudoSret*)(v6) = GameRoutine_81d430(v4);
+      GameRoutine_81d430((void*)(v6), v4);
       return GameRoutine_18c51a0(v5, v6, v4, 0);
     }
   }

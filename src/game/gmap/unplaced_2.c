@@ -60,8 +60,10 @@ __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_playAt_ff5f0(__int64, __int64, __int64, __int64, unsigned int,
-                         unsigned int, int, float, float);
+__attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, __int64, __int64,
+                                                 __int64, __int64, unsigned int,
+                                                 unsigned int, int, float,
+                                                 float);
 __int64 std___1___hash_memory(_QWORD, _QWORD);
 __int64 std___1___next_prime(_QWORD);
 __int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
@@ -2031,6 +2033,7 @@ _QWORD* game_gmap_1541de0(__int64* a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64* v2;
   __int64 v3;
   int v4;
@@ -2107,7 +2110,7 @@ _QWORD* game_gmap_1541de0(__int64* a1)
   snd_Fade_Fade_10c830((__int64)&v32_.v32, 0x0.0p+0f),
       v26 = COERCE_AS(__typeof__(v26),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  snd_playAt_ff5f0((__int64)"SE_SYS_GMAP_Exclamation",
+  snd_playAt_ff5f0((void*)(handle), (__int64)"SE_SYS_GMAP_Exclamation",
                    (__int64)"SE_SYS_GMAP_Exclamation", (__int64)v30_.v30,
                    (__int64)&v32_.v32, 0, 0x10001u, 0, 0x0.0p+0f,
                    0x1.0000000000000p+0f),
@@ -2758,6 +2761,7 @@ LABEL_26:
 
 __int64 game_gmap_1550220(__int64 result)
 {
+  _QWORD handle[2];
   __int64* v1;
   __int64* v2;
   __int64* v3;
@@ -2867,7 +2871,7 @@ __int64 game_gmap_1550220(__int64 result)
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
           v25 = COERCE_AS(__typeof__(v25),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-      snd_playAt_ff5f0((__int64)"SE_SYS_GMAP_Dead_Unit",
+      snd_playAt_ff5f0((void*)(handle), (__int64)"SE_SYS_GMAP_Dead_Unit",
                        (__int64)"SE_SYS_GMAP_Dead_Unit", (__int64)v34_.v34,
                        (__int64)v36_.v36, 0, 0x10001u, 0, 0x0.0p+0f,
                        0x1.0000000000000p+0f),

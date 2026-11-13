@@ -34,7 +34,7 @@ __int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
 __int64 GameRoutine_60a270(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_7a86e0(_QWORD);
 __int64 GameRoutine_9a3bc0(_QWORD, _QWORD);
-struct PseudoSret GameRoutine_db1f30(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_db1f30(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_f71cb0(_QWORD, _QWORD);
 __int64 GameRoutine_f71d40(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_f71fc0(_QWORD, _QWORD, _QWORD);
@@ -317,12 +317,16 @@ __int64 GameHr_102ff60(__int64 result, __int64* a2)
   __int64 v30;
   __int64 v31;
   __int64 v32;
-  __int64 v33;
-  unsigned __int64 v34;
-  char* v35;
-  __int64 v36;
-  unsigned __int64 v37;
-  char* v38;
+  struct {
+    __int64 v33;
+    unsigned __int64 v34;
+    char* v35;
+  } v33_;
+  struct {
+    __int64 v36;
+    unsigned __int64 v37;
+    char* v38;
+  } v36_;
   __int128 v39;
   int v40;
   __int64 v41;
@@ -357,40 +361,42 @@ __int64 GameHr_102ff60(__int64 result, __int64* a2)
       *(_QWORD*)&v8 = v39;
       *((_QWORD*)&v8 + 1) = *v7;
       v39 = v8;
-      result = (__int64)(*(struct PseudoSret*)(&v36) = GameRoutine_db1f30(v6),
-                         (void*)(&v36));
+      result = (__int64)(GameRoutine_db1f30((void*)(&v36_.v36), v6),
+                         (void*)(&v36_.v36));
       v9 = *(unsigned __int8*)(v3 + 8);
-      v10 = v36;
-      v11 = v37;
+      v10 = v36_.v36;
+      v11 = v36_.v37;
       if ((v9 & 1) != 0) {
         v12 = *(_QWORD*)(v3 + 16);
       }
       else {
         v12 = v9 >> 1;
       }
-      v13 = (unsigned __int64)(unsigned __int8)v36 >> 1;
-      if ((v36 & 1) != 0) {
-        v13 = v37;
+      v13 = (unsigned __int64)(unsigned __int8)v36_.v36 >> 1;
+      if ((v36_.v36 & 1) != 0) {
+        v13 = v36_.v37;
       }
       if (v12 == v13 &&
           ((v9 & 1) != 0 ? (v14 = *(_QWORD*)(v3 + 24)) : (v14 = v3 + 9),
-           (v36 & 1) == 0 ? (v15 = (char*)&v36 + 1) : (v15 = v38),
+           (v36_.v36 & 1) == 0 ? (v15 = (char*)&v36_.v36 + 1)
+                               : (v15 = v36_.v38),
            (_DWORD)(result = GameRoutine_1a09cf0(v14, v15)) == 0)) {
-        LOWORD(v33) = 0;
+        LOWORD(v33_.v33) = 0;
       }
       else if ((v10 & 1) != 0) {
-        result = GameRoutine_60a270(&v33, v38, v11);
+        result = GameRoutine_60a270(&v33_.v33, v36_.v38, v11);
       }
       else {
-        v33 = v36;
-        v34 = v37;
-        v35 = v38;
+        v33_.v33 = v36_.v36;
+        v33_.v34 = v36_.v37;
+        v33_.v35 = v36_.v38;
       }
       if (*(_BYTE*)(v3 + 32) != 1 ||
-          ((v33 & 1) != 0 ? (v16 = v34)
-                          : (v16 = (unsigned __int64)(unsigned __int8)v33 >> 1),
+          ((v33_.v33 & 1) != 0
+               ? (v16 = v33_.v34)
+               : (v16 = (unsigned __int64)(unsigned __int8)v33_.v33 >> 1),
            v16 == 0)) {
-        result = GameRoutine_102e240(v3, &v39, &v33);
+        result = GameRoutine_102e240(v3, &v39, &v33_.v33);
         if ((result & 1) != 0) {
           v17 = GameData_212ebb0[0];
           v18 = *GameData_212ebb0[0];
@@ -447,21 +453,21 @@ __int64 GameHr_102ff60(__int64 result, __int64* a2)
           }
         }
       }
-      if ((v33 & 1) != 0 && v35 != nullptr) {
+      if ((v33_.v33 & 1) != 0 && v33_.v35 != nullptr) {
         v29 = 128;
         if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
           v29 = 56;
         }
         result = GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v29,
-                                     (_QWORD)(v35));
+                                     (_QWORD)(v33_.v35));
       }
-      if ((v36 & 1) != 0 && v38 != nullptr) {
+      if ((v36_.v36 & 1) != 0 && v36_.v38 != nullptr) {
         v30 = 128;
         if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
           v30 = 56;
         }
         result = GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v30,
-                                     (_QWORD)(v38));
+                                     (_QWORD)(v36_.v38));
       }
     }
     if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),

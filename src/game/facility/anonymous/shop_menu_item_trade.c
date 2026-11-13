@@ -44,9 +44,9 @@ __int64 GameRoutine_9b11a0_alt1(_QWORD*, unsigned __int64*,
 __int64 game_8a26a0_alt1(__int64**) __asm__("game_8a26a0");
 __int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 _QWORD* ObeliskDestinyMenuItem_1a06060_alt1(_QWORD* result, int*, char) __asm__(
     "ObeliskDestinyMenuItem_1a06060");
@@ -62,6 +62,7 @@ void ShopMenuItem_Trade_1867b40(__int64 a1, __int64 a2);
 
 __int64 ShopMenuItem_Trade_Unknown82(__int64 a1)
 {
+  _QWORD handle[2];
   int i;
   void* v3;
   __int64 v4;
@@ -75,7 +76,7 @@ __int64 ShopMenuItem_Trade_Unknown82(__int64 a1)
 
   *GameData_2132020 = 1;
   snd_Fade_Fade_10c830_alt1((__int64)&v9_.v9, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_EVT_Goods_Swap",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_EVT_Goods_Swap",
                       (__int64)"SE_EVT_Goods_Swap", (__int64)&v9_.v9, 0,
                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade_alt1(&v9_.v9);

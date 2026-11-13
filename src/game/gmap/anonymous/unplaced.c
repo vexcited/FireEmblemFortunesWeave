@@ -95,9 +95,10 @@ __int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
     "game_GameVariableTable_Find");
 __int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
-                              unsigned int, int, float,
-                              float) __asm__("snd_playAt_ff5f0");
+__attribute__((swiftcall)) void
+snd_playAt_ff5f0_alt1(PSEUDO_X8, __int64, __int64, __int64, __int64,
+                      unsigned int, unsigned int, int, float,
+                      float) __asm__("snd_playAt_ff5f0");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
@@ -1271,6 +1272,7 @@ _QWORD* game_gmap_anonymous_1542460(__int64* a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64* v2;
   __int64 v3;
   int v4;
@@ -1350,7 +1352,7 @@ _QWORD* game_gmap_anonymous_1542460(__int64* a1)
   snd_Fade_Fade_10c830_alt1((__int64)&v35_.v35, 0x0.0p+0f),
       v29 = COERCE_AS(__typeof__(v29),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  snd_playAt_ff5f0_alt1((__int64)"SE_SYS_GMAP_Encount",
+  snd_playAt_ff5f0_alt1((void*)(handle), (__int64)"SE_SYS_GMAP_Encount",
                         (__int64)"SE_SYS_GMAP_Encount", (__int64)v33_.v33,
                         (__int64)&v35_.v35, 0, 0x10001u, 0, 0x0.0p+0f,
                         0x1.0000000000000p+0f),

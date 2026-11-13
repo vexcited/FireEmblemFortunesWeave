@@ -56,8 +56,9 @@ __int64 map_snd_SetSeVol_alt1(__int64 a1, unsigned int a2,
                               float a3) __asm__("map_snd_SetSeVol");
 _QWORD* map_snd_WaitSe(__int64 a1);
 __int64 as_string_c_str(_QWORD);
-__int64 snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, double,
-                       float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 __attribute__((swiftcall)) void map_snd_PlaySe(PSEUDO_X8 x8_, __int64 a1,
                                                unsigned int a2);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
@@ -127,7 +128,7 @@ __attribute__((swiftcall)) void map_snd_PlaySe(PSEUDO_X8 x8_, __int64 a1,
   v8 = as_string_c_str(a1);
   v9 = as_string_c_str(a1);
   snd_Fade_Fade_10c910(v15, a2);
-  snd_play_ff2d0(v8, v9, v15, 0, 65537, 0, 0.0f, 1.0f);
+  snd_play_ff2d0((void*)(a3), v8, v9, v15, 0, 65537, 0, 0.0f, 1.0f);
   {
     (_QWORD*)snd_Fade_Destroy_Fade(v15);
     return;

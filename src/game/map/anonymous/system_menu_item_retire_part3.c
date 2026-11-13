@@ -16,7 +16,7 @@ extern __int64 (*GameData_1fa5818[])();
 extern __int64 GameData_21eea40;
 extern __int64 GameData_21eea48;
 extern __int64 game_GameModeData_instance_;
-struct PseudoSret GameRoutine_878ea0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_878ea0(PSEUDO_X8, _QWORD);
 bool SystemMenuItem_RetirePart3_Unknown58();
 __int64 SystemMenuItem_RetirePart3_Unknown25(__int64 a1);
 __int64 GameRoutine_879610(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -24,8 +24,9 @@ __int64 GameRoutine_dbce10(_QWORD, _QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD);
 __n128 snd_Fade_Fade_10c830(_QWORD, double);
 extern __int64 GameData_212c6a0[3];
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 __int64
 game_map_anonymous_SystemMenuItem_RetirePart3_ACall_closure_Invoke(__int64 a1);
 
@@ -44,7 +45,7 @@ bool SystemMenuItem_RetirePart3_Unknown58()
     v2 = (const char*)game_util_Format("%s_%s_%d", "Part", "Ism", 3);
     v4[0] = game_util_Format("%s/%s", "000", v2);
     v4[1] = strlen(v4[0]);
-    *(struct PseudoSret*)(&v5) = GameRoutine_878ea0(v4);
+    GameRoutine_878ea0((void*)(&v5), v4);
     if ((_BYTE)v5 != 0 && (v6 & 0x40) == 0 &&
         game_GameModeData_instance_ != 0 &&
         HIDWORD(v5) == *(_DWORD*)(game_GameModeData_instance_ + 8) &&
@@ -126,7 +127,7 @@ LABEL_7:
   v4 = (const char*)game_util_Format("%s_%s_%d", "Part", "Ism", 3);
   v14[0] = game_util_Format("%s/%s", "000", v4);
   v14[1] = strlen(v14[0]);
-  *(struct PseudoSret*)(v17) = GameRoutine_878ea0(v14);
+  GameRoutine_878ea0((void*)(v17), v14);
   if (LOBYTE(v17[0]) == 0 || (v19 & 0x40) != 0 ||
       game_GameModeData_instance_ == 0 ||
       HIDWORD(v17[0]) != *(_DWORD*)(game_GameModeData_instance_ + 8) ||
@@ -206,9 +207,8 @@ game_map_anonymous_SystemMenuItem_RetirePart3_ACall_closure_Invoke(__int64 a1)
   }
   GameRoutine_dbce10(*(_QWORD*)GameData_212c6a0[0], 1);
   snd_Fade_Fade_10c830(v5, 0.0f);
-  *(struct PseudoSret*)(&v4) =
-      snd_play_ff2d0("SE_SYS_Decide_H_Light", "SE_SYS_Decide_H_Light", v5, 0,
-                     65537, 0, 0.0f, 1.0f);
+  snd_play_ff2d0((void*)(&v4), "SE_SYS_Decide_H_Light", "SE_SYS_Decide_H_Light",
+                 v5, 0, 65537, 0, 0.0f, 1.0f);
   snd_Fade_Destroy_Fade(v5);
   return 4;
 }

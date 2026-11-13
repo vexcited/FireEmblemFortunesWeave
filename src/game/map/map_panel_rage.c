@@ -523,8 +523,8 @@ void MapPanelRage_f191c0(float a1, __int64 a2, _QWORD* a3, __int64 a4)
   LOBYTE(v51_.v59) = 1;
   v19 = vmulq_f32(*(float32x4_t*)GameData_212c958, v17);
   v20 = vmulq_f32(*(float32x4_t*)GameData_212c958, v18);
-  LANES128(v20).n128_u32[3] = vmuls_lane_f32(a1, v20, 3);
-  LANES128(v19).n128_u32[3] = vmuls_lane_f32(a1, v19, 3);
+  LANES128(v20).n128_f32[3] = vmuls_lane_f32(a1, v20, 3);
+  LANES128(v19).n128_f32[3] = vmuls_lane_f32(a1, v19, 3);
   v51_.v54 = v20;
   v51_.v55 = v19;
   LANES128(v19).n128_f32[0] = LANES128(v19).n128_f32[3] * *(float*)(a4 + 60);

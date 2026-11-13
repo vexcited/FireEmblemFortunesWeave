@@ -488,8 +488,8 @@ void ProcHubSeqFieldKill_da36a0()
       LODWORD(v4) = 0;
       v5 = *v2;
       v6 = *(_QWORD*)(*(_QWORD*)v0 + 24LL);
-      HIDWORD(v4) = fminf(*(float*)(v6 + 548) * 0x1.0000000000000p-1f,
-                          0x1.3333340000000p+0f);
+      HIDWORD(v4) = COERCE_UNSIGNED_INT(fminf(
+          *(float*)(v6 + 548) * 0x1.0000000000000p-1f, 0x1.3333340000000p+0f));
       v12 = vaddq_f32(*(float32x4_t*)(*(_QWORD*)(v6 + 16) + 560LL),
                       COERCE_AS(float32x4_t, v4));
       game_hub_e1b4d0((void*)(v14_.v14));

@@ -735,7 +735,8 @@ __int64* GmapTargetLine_Unknown4(__int64* result)
             v360 = *(int32x4_t*)(*v16 + 608);
             v346 = powf(LANES128(v360).n128_f32[0], v17);
             v322 = powf(LANES128(v360).n128_f32[1], v17);
-            LODWORD(v53) = powf(LANES128(v360).n128_f32[2], v17);
+            LODWORD(v53) =
+                COERCE_UNSIGNED_INT(powf(LANES128(v360).n128_f32[2], v17));
             explicit =
                 atomic_load_explicit((atomic_uchar* volatile)&GameData_21a60e8,
                                      memory_order_acquire);
@@ -1242,7 +1243,8 @@ __int64* GmapTargetLine_Unknown4(__int64* result)
             v366 = *(int32x4_t*)(*v16 + 608);
             v352 = powf(LANES128(v366).n128_f32[0], v17);
             v323 = powf(LANES128(v366).n128_f32[1], v17);
-            LODWORD(v165) = powf(LANES128(v366).n128_f32[2], v17);
+            LODWORD(v165) =
+                COERCE_UNSIGNED_INT(powf(LANES128(v366).n128_f32[2], v17));
             v166 =
                 atomic_load_explicit((atomic_uchar* volatile)&GameData_21a60e8,
                                      memory_order_acquire);

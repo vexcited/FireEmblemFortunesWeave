@@ -33,7 +33,6 @@ __int64 Manager_644a20(__int64 result, __int64*, __int64, char);
 __int64 Registration_17d5210(__int64, _QWORD*);
 __int64 fs_63e700_alt1(__int64, unsigned __int64,
                        unsigned int) __asm__("fs_63e700");
-__int64 fs_640860_alt1(void) __asm__("fs_640860");
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate_alt1(
     __int64, __int64, __int64,
@@ -4234,7 +4233,8 @@ LABEL_8:
   if (a5 <= 0xEu) {
     if (a5 > 0xBu) {
       if (a5 == 12) {
-        (char*)fs_640860_alt1();
+        fs_640860((void*)(a6), (__int64)a1, (a3 & 1) != 0 ? *a1 : -1,
+                  (unsigned __int8*)v6);
         return;
       }
       if (a5 == 13) {
@@ -4444,7 +4444,7 @@ LABEL_8:
     else {
       v20 = 0;
     }
-    v21 = &result[-v20];
+    v21 = &result[-(int)v20];
     goto LABEL_25;
   }
   if (a5 == 17) {
@@ -4964,7 +4964,7 @@ LABEL_8:
     else {
       v20 = 0;
     }
-    v21 = &result[-v20];
+    v21 = &result[-(int)v20];
     goto LABEL_25;
   }
   if (a5 == 17) {
@@ -5597,7 +5597,7 @@ LABEL_8:
     else {
       v20 = 0;
     }
-    v21 = &result[-v20];
+    v21 = &result[-(int)v20];
     goto LABEL_25;
   }
   if (a5 == 17) {

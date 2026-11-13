@@ -198,7 +198,7 @@ __int64 GameRoutine_1107880(_QWORD, _QWORD);
 
 __int64 GameRoutine_11089a0(_QWORD);
 
-struct PseudoSret GameRoutine_111d140(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_111d140(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_112080(_QWORD);
 
@@ -210,7 +210,7 @@ __int64 GameRoutine_1130220(void);
 
 __int64 GameRoutine_113cca0(void);
 
-struct PseudoSret GameRoutine_1366ac0(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1366ac0(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_14a1390(_QWORD, _QWORD);
 
@@ -5754,7 +5754,7 @@ void GameHr_109d740(__int64 a1, __int64 a2, _QWORD* a3, unsigned int a4)
         v16 = 40;
         goto LABEL_18;
       }
-      *(struct PseudoSret*)(&v23) = GameRoutine_111d140(v14);
+      GameRoutine_111d140((void*)(&v23), v14);
       v17 = *(_QWORD*)(v13 + 24);
       *(_OWORD*)(v13 + 16) = v23;
       if (v17 != 0) {
@@ -7739,8 +7739,7 @@ void GameHr_112e290()
   __int64 v7;
 
   GameRoutine_113cca0();
-  *(struct PseudoSret*)(&v6) =
-      GameRoutine_1366ac0("Layout/Common.arc", "Common_TalkLog");
+  GameRoutine_1366ac0((void*)(&v6), "Layout/Common.arc", "Common_TalkLog");
   v1 = v6;
   v2 = v7;
   v6 = 0;

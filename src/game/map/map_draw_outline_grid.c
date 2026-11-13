@@ -684,8 +684,8 @@ void MapDrawOutlineGrid_Unknown4(_QWORD* a1)
     v12 = (float32x4_t*)GameData_212c958;
     v13 = vmulq_f32(*(float32x4_t*)GameData_212c958, v8[14]);
     v14 = vmulq_f32(*(float32x4_t*)GameData_212c958, v8[13]);
-    LANES128(v14).n128_u32[3] = vmuls_lane_f32(v5, v14, 3);
-    LANES128(v13).n128_u32[3] = vmuls_lane_f32(v5, v13, 3);
+    LANES128(v14).n128_f32[3] = vmuls_lane_f32(v5, v14, 3);
+    LANES128(v13).n128_f32[3] = vmuls_lane_f32(v5, v13, 3);
     v46_.v49 = v14;
     v46_.v50 = v13;
     v15 = (__int64*)GameData_212d018[0];
@@ -744,8 +744,8 @@ void MapDrawOutlineGrid_Unknown4(_QWORD* a1)
     v46_.v52 = 2;
     v27 = vmulq_f32(*v12, (*v6)[12]);
     v28 = vmulq_f32(*v12, (*v6)[11]);
-    LANES128(v28).n128_u32[3] = vmuls_lane_f32(v5, v28, 3);
-    LANES128(v27).n128_u32[3] = vmuls_lane_f32(v5, v27, 3);
+    LANES128(v28).n128_f32[3] = vmuls_lane_f32(v5, v28, 3);
+    LANES128(v27).n128_f32[3] = vmuls_lane_f32(v5, v27, 3);
     v46_.v49 = v28;
     v46_.v50 = v27;
     v29 = *(float32x4_t**)(v26 + 24);

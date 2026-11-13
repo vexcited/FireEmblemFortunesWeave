@@ -908,10 +908,10 @@ void MapPanelTutorial_Unknown4(_QWORD* a1)
   LOBYTE(v41_.v49) = 1;
   v41_.v44 = vmulq_f32(v2, v9);
   v41_.v45 = vmulq_f32(v2, v8);
-  LANES128(v41_.v44).n128_u32[3] =
+  LANES128(v41_.v44).n128_f32[3] =
       vmuls_lane_f32(LANES128(v41_.v44).n128_f32[3], v51_.v52, 3);
   LANES128(v2).n128_u64[0] = __PAIR64__(v7, v6);
-  LANES128(v41_.v45).n128_u32[3] =
+  LANES128(v41_.v45).n128_f32[3] =
       vmuls_lane_f32(LANES128(v41_.v45).n128_f32[3], v51_.v53, 3);
   LANES128(v2).n128_u64[1] = v6;
   v41_.v48 = v2;

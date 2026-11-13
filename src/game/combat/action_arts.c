@@ -22,7 +22,7 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_script_hub_g_frame_counter_ptr[3];
 extern __int64* GameData_212d448[9];
 extern int* GameData_212ff10;
-struct PseudoSret GameRoutine_108d740(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_108d740(PSEUDO_X8, _QWORD, _QWORD);
 void CharacterSelfie_10a6ac0(__int64);
 float ActionArts_Unknown7(__int64 a1);
 __int64 ActionArts_Unknown2_alt1(_QWORD* a1) __asm__("ActionArts_Unknown2");
@@ -32,8 +32,9 @@ __int64 CharacterModel_1071880(__int64, int);
 __int64 Signal_d30a60(__int64**, const char*, __int64, __int64);
 __int64 game_character_CharacterSelfie_Start(__int64 result, char, __int64*);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 extern __int64 (*GameData_200bca0[])();
@@ -49,6 +50,7 @@ void ActionArts_Unknown2(_QWORD* a1);
 
 _DWORD* game_combat_ActionArts_OnEnter(__int64 a1)
 {
+  _QWORD handle[2];
   __int64* v2;
   __int64 v3;
   _DWORD* result;
@@ -131,7 +133,7 @@ _DWORD* game_combat_ActionArts_OnEnter(__int64 a1)
     CharacterAnimator_1079580(v8, v14, 0x0.0p+0f, -0x1.0000000000000p+0f,
                               0x1.0000000000000p+0f);
     snd_Fade_Fade_10c830((__int64)&v45_.v45, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)&GameData_1a9f09e,
+    snd_play_ff2d0((void*)(handle), (__int64)&GameData_1a9f09e,
                    (__int64)"SE_ACT_LD_CombatArts_FaceUp", (__int64)&v45_.v45,
                    0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(&v45_.v45);
@@ -491,9 +493,9 @@ __n128 game_combat_ActionArts_OnEnter_lambda0_Invoke(__int64 a1)
   __int64 v3;
   __int64 v4;
 
-  *(struct PseudoSret*)(&v3) = GameRoutine_108d740(
-      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 376LL),
-      "Btl_Charge_Smoke");
+  GameRoutine_108d740((void*)(&v3),
+                      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 376LL),
+                      "Btl_Charge_Smoke");
   v2 = v4;
   if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {

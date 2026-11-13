@@ -157,7 +157,8 @@ __int64 strtol(_QWORD, _QWORD, _QWORD);
 __int64 tolower(_QWORD);
 __int64 ui_LayoutAccessor_FindPane(__int64*, __int64);
 __n128 GameRoutine_113de80(char*, __int64, __int64**, __n128 result);
-__n128 GameRoutine_1366ac0(__int64, __int64);
+__attribute__((swiftcall)) void GameRoutine_1366ac0(PSEUDO_X8, __int64,
+                                                    __int64);
 __n128 Unit_6d8180_alt1(__int64, __int64, int) __asm__("Unit_6d8180");
 __n128 game_112ce60(__int64, __int64*, __int64);
 __n128 game_112d580(char*, __int64, __int64);
@@ -1189,7 +1190,9 @@ __int64 game_113cca0()
   } v11_;
 
   *(__n128*)&v0 =
-      GameRoutine_1366ac0((__int64)"Layout/Common.arc", (__int64)"Common_Talk");
+      X8CALL_V0(__n128, GameRoutine_1366ac0((void*)(&v11_.v12),
+                                            (__int64)"Layout/Common.arc",
+                                            (__int64)"Common_Talk"));
   v1 = v11_.v12;
   v2 = v11_.v13;
   v11_.v12 = 0;

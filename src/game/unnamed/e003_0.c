@@ -24,7 +24,7 @@ __int64 GameRoutine_1a0a0c0(void);
 __int64 GameRoutine_1a0a4e0(_QWORD, long double);
 struct PseudoSret GameRoutine_1a0a790(_QWORD);
 __int64 GameRoutine_1a0ba50(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-struct PseudoSret GameRoutine_53c20(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_53c20(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_60a020(_QWORD);
 __int64 GameRoutine_634d80(_QWORD, _QWORD);
 __int64 GameRoutine_64dde0(_QWORD, _QWORD, _QWORD, long double);
@@ -58,7 +58,7 @@ __int64 GameRoutine_c69ba0(_QWORD);
 __int64 GameRoutine_c6dc40(_QWORD, _QWORD);
 __int64 GameRoutine_c6ef90(_QWORD, float);
 float GameRoutine_d8e20(_QWORD);
-struct PseudoSret GameRoutine_d98c0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_d98c0(PSEUDO_X8, _QWORD);
 __attribute__((swiftcall)) void
 GameRoutine_17d8560_alt1(PSEUDO_X8, int, __int64,
                          _QWORD*) __asm__("GameRoutine_17d8560");
@@ -217,7 +217,7 @@ __int64 GameHr_a31610(__int64 a1, __int64 a2)
     *(_QWORD*)(a1 + 2904) = v8;
     *(_QWORD*)(a1 + 2912) = *(_QWORD*)(a1 + 2840);
   }
-  *(struct PseudoSret*)(v15) = GameRoutine_d98c0(*(_QWORD*)(a1 + 8));
+  GameRoutine_d98c0((void*)(v15), *(_QWORD*)(a1 + 8));
   result = GameRoutine_112290(v15);
   if (result != 0) {
     result = GameRoutine_149a90(result - 5592);
@@ -1853,7 +1853,7 @@ __int64 GameHr_bbc570(__int64 a1)
   v10 = *(_QWORD*)(v9 + 16);
   LOBYTE(v25[2]) = 1;
   v27 = v10;
-  *(struct PseudoSret*)(&v22) = GameRoutine_53c20(&v23);
+  GameRoutine_53c20((void*)(&v22), &v23);
   v11 = v22;
   v12 = *(_QWORD*)(v8 + 8);
   v22 = 0;
@@ -1882,7 +1882,7 @@ __int64 GameHr_bbc570(__int64 a1)
   v26 = *(_QWORD*)(GameData_21a60d8 + 360);
   v27 = *(_QWORD*)(v18 + 16);
   LOBYTE(v25[2]) = 1;
-  *(struct PseudoSret*)(&v22) = GameRoutine_53c20(&v23);
+  GameRoutine_53c20((void*)(&v22), &v23);
   v19 = v22;
   result = v15[6];
   v22 = 0;
@@ -1965,7 +1965,7 @@ __int64 GameHr_bbf6f0(__int64* a1, __int64 a2)
   v25[4] = *(_QWORD*)(GameData_21a60d8 + 360);
   v25[5] = *(_QWORD*)(v21 + 16);
   LOBYTE(v25[3]) = 1;
-  *(struct PseudoSret*)(&v24) = GameRoutine_53c20(v25);
+  GameRoutine_53c20((void*)(&v24), v25);
   v22 = v24;
   result = a1[6];
   v24 = 0;

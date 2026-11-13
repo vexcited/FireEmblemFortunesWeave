@@ -458,7 +458,7 @@ __int64* game_gmap_anonymous_168a340(__int64**** a1, _QWORD* a2, float a3)
                 v74 = v56 - LANES128(v43).n128_f32[1];
                 LANES64(v75).n64_u64[0] =
                     LANES128_OF(vmulq_n_f32(v72, v16)).n128_u64[0];
-                LANES64(v73).n64_u32[1] = vmuls_lane_f32(v64, v73, 1);
+                LANES64(v73).n64_f32[1] = vmuls_lane_f32(v64, v73, 1);
                 *((float32x2_t*)&v76 + 1) = v73;
                 if (v66 <= 262142) {
                   LODWORD(v77) =
@@ -607,7 +607,7 @@ __int64* game_gmap_anonymous_168a340(__int64**** a1, _QWORD* a2, float a3)
               LANES64(v128).n64_u64[0] = a2[1];
               *((_DWORD*)*v101 + 4800) = v118 + 1;
               v129 = LANES128_OF(vmulq_n_f32(v125, v16)).n128_u64[0];
-              LANES64(v128).n64_u32[1] =
+              LANES64(v128).n64_f32[1] =
                   vmuls_lane_f32(v114 / 0x1.fe00000000000p+7f, v128, 1);
               *((float32x2_t*)&v130 + 1) = v128;
               if (v118 <= 262142) {

@@ -335,8 +335,9 @@ __int64 snd_fnd_WeakHandle_get(__int64);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
 __int64 snd_fnd_WeakHandle_reset(__int64);
 __int64 snd_isActive_100090(__int64);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 snd_startSlotVolume_100b50(int*, __int64, float);
 __int64 snd_stop_ffc40(__int64*, __int64);
 __int64 snprintf(_QWORD, _QWORD, const char*, ...);
@@ -2685,6 +2686,7 @@ __int64 game_80ef70()
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64* v0;
   _QWORD* v1;
   __int64 v2;
@@ -2742,8 +2744,9 @@ LABEL_7:
   if (v5 != 0) {
     if (*v3 != 0) {
       snd_Fade_Fade_10c830((__int64)v15_.v15, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)v3, (__int64)v3, (__int64)v15_.v15, 0, 0x10001u,
-                     0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)v3, (__int64)v3,
+                     (__int64)v15_.v15, 0, 0x10001u, 0, 0x0.0p+0f,
+                     0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(v15_.v15);
       v5 = *(_DWORD*)(v4 + 644);
     }
@@ -2784,6 +2787,7 @@ __int64 game_812030(__int64 result, char a2)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   _QWORD* v3;
   const char* v4;
   float v5;
@@ -2821,8 +2825,8 @@ __int64 game_812030(__int64 result, char a2)
       if ((a2 & 1) == 0) {
         v5 = 0x0.0p+0f;
       }
-      snd_play_ff2d0((__int64)v4, (__int64)v4, (__int64)v7, 0, 0x10001u, 0, v5,
-                     0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)v4, (__int64)v4, (__int64)v7, 0,
+                     0x10001u, 0, v5, 0x1.0000000000000p+0f);
       GameRoutine_112180((__int64)&GameData_21ec798, (__int64)v6);
       return snd_Fade_Destroy_Fade(v7);
     }
@@ -4515,16 +4519,18 @@ __attribute__((swiftcall)) void game_a3aba0(PSEUDO_X8 x8_, __int64 unused_int0,
     LANES128(v72).n128_u32[3] = 0;
     v136 = v64;
     LANES128(v72).n128_u64[0] = __PAIR64__(
-        (float)(LANES128(v72).n128_f32[0] + LANES128(v79).n128_f32[1]) +
+        COERCE_UNSIGNED_INT(
+            (float)(LANES128(v72).n128_f32[0] + LANES128(v79).n128_f32[1]) +
             (float)((float)((float)(LANES128(v72).n128_f32[0] -
                                     LANES128(v72).n128_f32[0]) +
                             LANES128(v79).n128_f32[1]) *
-                    0x1.99999a0000000p-5f),
-        (float)(LANES128(v70).n128_f32[0] + LANES128(v79).n128_f32[0]) +
+                    0x1.99999a0000000p-5f)),
+        COERCE_UNSIGNED_INT(
+            (float)(LANES128(v70).n128_f32[0] + LANES128(v79).n128_f32[0]) +
             (float)((float)((float)(LANES128(v70).n128_f32[0] -
                                     LANES128(v70).n128_f32[0]) +
                             LANES128(v79).n128_f32[0]) *
-                    0x1.99999a0000000p-5f));
+                    0x1.99999a0000000p-5f)));
     LANES128(v72).n128_f32[2] =
         (float)(LANES128(v61).n128_f32[0] + LANES128(v79).n128_f32[2]) +
         (float)((float)((float)(LANES128(v61).n128_f32[0] -
@@ -8932,7 +8938,8 @@ float game_d26b60(__int64 a1)
             v9 = v9 / v13;
             v17 = v17 / v13;
           }
-          v2 = __PAIR64__(v14 * v17, v14 * v9);
+          v2 = __PAIR64__(COERCE_UNSIGNED_INT(v14 * v17),
+                          COERCE_UNSIGNED_INT(v14 * v9));
         }
       }
     }

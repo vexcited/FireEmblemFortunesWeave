@@ -542,7 +542,6 @@ __int64 game_Unit_Destroy_Unit(__int64);
 __int64 game_Unit_Destroy_Unit_alt1(_QWORD) __asm__("game_Unit_Destroy_Unit");
 __int64 game_Unit_GetJob_alt1(__int64) __asm__("game_Unit_GetJob");
 __int64 game_Unit_GetMaxPollution(_QWORD);
-__int64 game_Unit_GetParam_alt1(__int64) __asm__("game_Unit_GetParam");
 __int64 game_Unit_SkillList_ContainsAny(_QWORD, _QWORD);
 __int64
 game_Unit_Unknown6c8f90_alt1(__int64) __asm__("game_Unit_Unknown6c8f90");
@@ -3535,7 +3534,8 @@ __int64 AIThink_11f8fe0(__int64 a1, unsigned int a2, __int64 a3, __int64 a4)
           }
           else {
             v45_.v47 = 10;
-            v19 = (int)(game_Unit_GetParam_alt1(v14) * v4) / 100;
+            v19 =
+                (int)(game_Unit_GetParam(v14, (_QWORD)&v45_.v47, 1) * v4) / 100;
           }
           AIDeploy_1274f90_alt2(v18, v14, v19, &v45_.v45);
           v20 = *(unsigned __int8*)(GameData_21ca300 + 28);
@@ -3652,7 +3652,9 @@ LABEL_68:
   else {
     v41 = *(_QWORD*)(a1 + 8);
     v45_.v46 = 10;
-    v42 = (unsigned int)((int)(game_Unit_GetParam_alt1(v41) * v4) / 100);
+    v42 = (unsigned int)((int)(game_Unit_GetParam(v41, (_QWORD)&v45_.v46, 1) *
+                               v4) /
+                         100);
   }
   v8 = ((__int64 (*)(_QWORD, __int64, _QWORD, _QWORD, _QWORD, __int64,
                      _QWORD))GameRoutine_11f88c0)(
@@ -5921,7 +5923,7 @@ __int64 AIThink_1200be0(__int64 a1, unsigned int a2, unsigned int a3, int a4,
     if (game_GameModeData_instance_ != 0) {
       v11 = *(unsigned __int8*)(game_GameModeData_instance_ + 13);
       LOBYTE(v133) = 10;
-      v10 = game_Unit_GetParam_alt1(v5);
+      v10 = game_Unit_GetParam(v5, (_QWORD)&v133, 1);
       if (v11 == 1) {
         --v10;
       }
@@ -5931,7 +5933,7 @@ __int64 AIThink_1200be0(__int64 a1, unsigned int a2, unsigned int a3, int a4,
     }
     else {
       LOBYTE(v133) = 10;
-      v10 = game_Unit_GetParam_alt1(v5) - 2;
+      v10 = game_Unit_GetParam(v5, (_QWORD)&v133, 1) - 2;
     }
     v5 = *(_QWORD*)(v6 + 8);
   }
@@ -21550,7 +21552,7 @@ __int64 AIThink_1223860(__int64 a1, __int64 a2)
         }
         else {
           LOBYTE(v67) = 0;
-          v26 = game_Unit_GetParam_alt1((__int64)v46),
+          v26 = game_Unit_GetParam((_QWORD)v46, (_QWORD)&v67, 1),
           v22 = COERCE_AS(__typeof__(v22), PSEUDO_REGISTER(__n128, "v0", "=w"));
           if (v26 >= 1) {
             goto LABEL_9;
@@ -26910,7 +26912,8 @@ void game_AIThink_GambitHealCore_lambda0_Invoke(_QWORD* a1, _DWORD* a2)
                         v66 = *((__int16*)v55 + 246);
                         LOBYTE(v106_.v106) = 0;
                         v67 = v55;
-                        v68 = game_Unit_GetParam_alt1((__int64)v55);
+                        v68 = game_Unit_GetParam((_QWORD)v55,
+                                                 (_QWORD)&v106_.v106, 1);
                         v55 = v67;
                         v69 = 100 * v66;
                         v4 = v65;
@@ -26924,7 +26927,8 @@ void game_AIThink_GambitHealCore_lambda0_Invoke(_QWORD* a1, _DWORD* a2)
                       }
                       v61 = *((__int16*)v55 + 246);
                       LOBYTE(v106_.v106) = 0;
-                      v62 = game_Unit_GetParam_alt1((__int64)v55);
+                      v62 = game_Unit_GetParam((_QWORD)v55, (_QWORD)&v106_.v106,
+                                               1);
                       v63 = (unsigned int)(v62 - v61);
                       if (v62 > v61) {
                         v54 += v63;
@@ -30721,7 +30725,7 @@ bool AIThink_1299cc0(__int64 a1)
                     }
                     else {
                       v80_.v81 = 0;
-                      v50 = game_Unit_GetParam_alt1(a1 + 2288);
+                      v50 = game_Unit_GetParam(a1 + 2288, (_QWORD)&v80_.v81, 1);
                       if (v50 < 1) {
                         goto LABEL_90;
                       }

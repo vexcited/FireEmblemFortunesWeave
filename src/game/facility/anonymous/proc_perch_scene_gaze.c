@@ -62,8 +62,9 @@ __int64 game_809dc0(_QWORD, _QWORD, long double);
 __int64 game_ProcInst_Unregister(__int64 result);
 __int64 game_facility_ReleaseGroups();
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 sprintf(_QWORD, const char*, ...);
 __n128 GameRoutine_1439890(_QWORD*, __int64, __n128 result);
 __n128 GameRoutine_14a1520(_QWORD*, char);
@@ -470,6 +471,7 @@ __int64 ProcPerchSceneGaze_Unknown2(__int64 result)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   int v3;
@@ -505,9 +507,9 @@ __int64 ProcPerchSceneGaze_Unknown2(__int64 result)
         *(_WORD*)(v5 + 1016) = 256;
       }
       snd_Fade_Fade_10c830((__int64)v15, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"SE_SYS_Cancel_M", (__int64)"SE_SYS_Cancel_M",
-                     (__int64)v15, 0, 0x10001u, 0, 0x0.0p+0f,
-                     0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Cancel_M",
+                     (__int64)"SE_SYS_Cancel_M", (__int64)v15, 0, 0x10001u, 0,
+                     0x0.0p+0f, 0x1.0000000000000p+0f);
       result = snd_Fade_Destroy_Fade(v15);
       v7 = 4;
       *(_QWORD*)(v1 + 240) = v4;

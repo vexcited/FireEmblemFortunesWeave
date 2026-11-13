@@ -76,8 +76,9 @@ extern __int64 game_GameModeData_instance_;
 extern __int64 ui_Manager_instance_;
 extern char* GameData_20bd060[20];
 extern char** msg_MessageManager_empty_text__ptr;
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 void GameRoutine_17356e0(_QWORD*, __int64);
 void GameRoutine_174f240(_QWORD*, __int64*, signed int, unsigned int);
 void GameRoutine_175ff40(__int64);
@@ -179,9 +180,9 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
     __int64, __int64, __int64,
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 const char* game_HashString32(const char* result);
 extern _UNKNOWN GameData_216de68;
 extern __int64* GameData_212d460[6];
@@ -485,6 +486,7 @@ void TelopResult_175ff40(__int64 a1)
 
 __int64 TelopResult_1760100(__int64 a1)
 {
+  _QWORD handle[2];
   const char* v2;
   __int64 result;
   int v4;
@@ -534,9 +536,9 @@ __int64 TelopResult_1760100(__int64 a1)
           std___1___shared_weak_count___release_weak_alt1(v5);
         }
         snd_Fade_Fade_10c830_alt1((__int64)&v9_.v9, 0x0.0p+0f);
-        snd_play_ff2d0_alt1((__int64)"SE_SYS_Stamp", (__int64)"SE_SYS_Stamp",
-                            (__int64)&v9_.v9, 0, 0x10001u, 0, 0x0.0p+0f,
-                            0x1.0000000000000p+0f);
+        snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Stamp",
+                            (__int64)"SE_SYS_Stamp", (__int64)&v9_.v9, 0,
+                            0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
         result = snd_Fade_Destroy_Fade_alt1(&v9_.v9);
       }
       if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
@@ -651,8 +653,7 @@ void TelopResult_17604a0(__int64 a1)
         }
         if (v14 != 0) {
           snd_Fade_Fade_10c830(v17, 0.0);
-          *(struct PseudoSret*)(&v16) =
-              snd_play_ff2d0(v14, v14, v17, 0, 65537, 0, 0.0, 1.0);
+          snd_play_ff2d0((void*)(&v16), v14, v14, v17, 0, 65537, 0, 0.0, 1.0);
           snd_Fade_Destroy_Fade(v17);
         }
         v13 += 24;

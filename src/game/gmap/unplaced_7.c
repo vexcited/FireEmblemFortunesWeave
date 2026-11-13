@@ -36,8 +36,9 @@ __int64 game_gmap_TroopMgr_GetAroundTroop(char);
 __int64 memcpy(__int64, __int64, unsigned __int64);
 __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, float, float, __int64, unsigned int,
-                       unsigned int, int);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               float, float, __int64,
+                                               unsigned int, unsigned int, int);
 extern _UNKNOWN* GameData_212ceb8;
 extern _UNKNOWN GameData_1ab570b;
 extern _UNKNOWN GameData_1abd4d1;
@@ -98,6 +99,7 @@ void game_gmap_154b9a0(char* a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v1;
   unsigned __int8* v2;
   unsigned int v3;
@@ -1319,10 +1321,10 @@ LABEL_266:
             if (v204 == *v236) {
             LABEL_451:
               snd_Fade_Fade_10c830((__int64)&v296_.v296, 0x0.0p+0f);
-              snd_play_ff2d0((__int64)"SE_SYS_GMAP_Decide_Spot",
-                             (__int64)"SE_SYS_GMAP_Decide_Spot", 0x0.0p+0f,
-                             0x1.0000000000000p+0f, (__int64)&v296_.v296, 0,
-                             0x10001u, 0);
+              snd_play_ff2d0(
+                  (void*)(handle), (__int64)"SE_SYS_GMAP_Decide_Spot",
+                  (__int64)"SE_SYS_GMAP_Decide_Spot", 0x0.0p+0f,
+                  0x1.0000000000000p+0f, (__int64)&v296_.v296, 0, 0x10001u, 0);
               snd_Fade_Destroy_Fade(&v296_.v296);
               *(_DWORD*)(*(_QWORD*)v1 + 152LL) = 6;
               v251 = *(_QWORD*)(*v7 + 16);
@@ -1447,7 +1449,7 @@ LABEL_266:
                       }
                       v250 = 40;
                     }
-                    (*(void (**)(void)) & (*v285_.v288)[v250])();
+                    (*(void (**)(void*)) & (*v285_.v288)[v250])(v285_.v288);
                   LABEL_497:
                     if (v289_.v292 == &v289_.v289) {
                       v278 = 32;
@@ -1458,7 +1460,7 @@ LABEL_266:
                       }
                       v278 = 40;
                     }
-                    (*(void (**)(void)) & (*v289_.v292)[v278])();
+                    (*(void (**)(void*)) & (*v289_.v292)[v278])(v289_.v292);
                   LABEL_502:
                     if (v296_.v299 == &v296_.v296) {
                       v279 = 32;
@@ -1469,7 +1471,7 @@ LABEL_266:
                       }
                       v279 = 40;
                     }
-                    (*(void (**)(void)) & (*v296_.v299)[v279])();
+                    (*(void (**)(void*)) & (*v296_.v299)[v279])(v296_.v299);
                   LABEL_507:
                     v296_.v299 = &v296_.v296;
                     v296_.v296 = (char*)(GameData_212d2b8 + 2);
@@ -1488,7 +1490,7 @@ LABEL_266:
                       }
                       v280 = 40;
                     }
-                    (*(void (**)(void)) & (*v296_.v299)[v280])();
+                    (*(void (**)(void*)) & (*v296_.v299)[v280])(v296_.v299);
                     goto LABEL_512;
                   }
                 }
@@ -1521,7 +1523,7 @@ LABEL_266:
             }
           LABEL_458:
             snd_Fade_Fade_10c830((__int64)&v296_.v296, 0x0.0p+0f);
-            snd_play_ff2d0((__int64)"SE_SYS_GMAP_Decide_NG",
+            snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_GMAP_Decide_NG",
                            (__int64)"SE_SYS_GMAP_Decide_NG", 0x0.0p+0f,
                            0x1.0000000000000p+0f, (__int64)&v296_.v296, 0,
                            0x10001u, 0);
@@ -1758,7 +1760,7 @@ LABEL_380:
   }
   UnitActor_81a540(v214 + 112, 0x723D4B8u, (__int64)GameData_212ceb8);
   snd_Fade_Fade_10c830((__int64)&v296_.v296, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)"SE_SYS_GMAP_Cancel_Unit",
+  snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_GMAP_Cancel_Unit",
                  (__int64)"SE_SYS_GMAP_Cancel_Unit", 0x0.0p+0f,
                  0x1.0000000000000p+0f, (__int64)&v296_.v296, 0, 0x10001u, 0);
   snd_Fade_Destroy_Fade(&v296_.v296);

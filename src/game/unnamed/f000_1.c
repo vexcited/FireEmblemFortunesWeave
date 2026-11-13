@@ -83,7 +83,7 @@ __int64 GameRoutine_cf12a0(void);
 __int64 GameRoutine_cf2500(_QWORD, _QWORD);
 __int64 GameRoutine_d523c0(_QWORD);
 __int64 GameRoutine_d783a0(_QWORD, float);
-struct PseudoSret GameRoutine_d98c0(void);
+__attribute__((swiftcall)) void GameRoutine_d98c0(PSEUDO_X8);
 __int64 GameRoutine_e2920(_QWORD, _QWORD);
 float GameRoutine_efb160(__int64, __int64*);
 float GameRoutine_efc240(void);
@@ -243,7 +243,7 @@ __int64 GameHr_80fde0(__int64 a1, __int64 a2, float* a3)
       return 0;
     }
   }
-  *(struct PseudoSret*)(v18) = GameRoutine_d98c0();
+  GameRoutine_d98c0((void*)(v18));
   v5 = GameRoutine_112290(v18);
   if (v5 != 0 && (GameRoutine_149a40(v5 - 5592, 14) & 1) == 0) {
     return 0;

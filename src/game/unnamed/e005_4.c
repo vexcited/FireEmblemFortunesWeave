@@ -210,7 +210,7 @@ __int64 GameRoutine_bc6460(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_c444d0(void);
 __int64 GameRoutine_c6a240(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_c98260(_QWORD);
-struct PseudoSret GameRoutine_c98880(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_c98880(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_c98a80(_QWORD, _QWORD, _QWORD, _QWORD, long double);
 void __attribute__((noreturn)) GameRoutine_ca7de0(void);
 void __attribute__((noreturn)) GameRoutine_ca7e00(_QWORD);
@@ -236,9 +236,9 @@ __int64 GameRoutine_d98960(_QWORD, _QWORD, long double);
 __int64 GameRoutine_d98e20(_QWORD);
 __int64 GameRoutine_d99480(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_d9d750(_QWORD, _QWORD, _QWORD, _QWORD, long double);
-struct PseudoSret GameRoutine_db1ce0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_db1ce0(PSEUDO_X8, _QWORD);
 struct PseudoSret GameRoutine_db1f30(_QWORD);
-struct PseudoSret GameRoutine_db2180(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_db2180(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_dbcd30(_QWORD, _QWORD);
 __int64 GameRoutine_dfc000(void);
 __int64 GameRoutine_e023c0(_QWORD, _QWORD, _QWORD);
@@ -4688,7 +4688,7 @@ __n128 GameHr_ffa3e0(_QWORD* a1, _QWORD* a2, _DWORD* a3, __n128 result)
           }
         LABEL_71:
           v56[v55] = 0;
-          *(struct PseudoSret*)(&v275) = GameRoutine_db1ce0(&v281);
+          GameRoutine_db1ce0((void*)(&v275), &v281);
           if ((v281 & 1) != 0 && v283 != 0) {
             v60 = 128;
             if (*(_QWORD*)(*v8 + 200LL) == 0) {
@@ -4769,15 +4769,14 @@ __n128 GameHr_ffa3e0(_QWORD* a1, _QWORD* a2, _DWORD* a3, __n128 result)
           v75 = (_QWORD*)v47[4];
           v270 = v269;
           v273 = v272;
-          *(struct PseudoSret*)(&v275) = GameRoutine_c98880(v75 + 4);
+          GameRoutine_c98880((void*)(&v275), v75 + 4);
           v77 = v75[10];
           v76 = v75[11];
           v259 = v75;
           v260 = v76;
           while (v77 != v76) {
             if (*(_BYTE*)v77 != 0) {
-              *(struct PseudoSret*)(&v281) =
-                  GameRoutine_db2180(v259 + 31, v77 + 56);
+              GameRoutine_db2180((void*)(&v281), v259 + 31, v77 + 56);
               v78 = (_QWORD*)v275;
               v79 = (_QWORD*)v276;
               if (v275 != v276) {
@@ -5126,10 +5125,10 @@ __n128 GameHr_ffa3e0(_QWORD* a1, _QWORD* a2, _DWORD* a3, __n128 result)
             if (v139 != 0) {
               v249 = v129;
               v258 = v126;
-              v105 = (unsigned __int64)(*(struct PseudoSret*)(&v275) =
-                                            GameRoutine_db2180(v259 + 31,
-                                                               v128 + 56),
-                                        (void*)(&v275));
+              v105 =
+                  (unsigned __int64)(GameRoutine_db2180((void*)(&v275),
+                                                        v259 + 31, v128 + 56),
+                                     (void*)(&v275));
               v140 = **(_QWORD**)(v139 + 40);
               v141 = *(_QWORD*)(*(_QWORD*)(v139 + 40) + 8LL) - v140;
               if ((int)((unsigned __int64)v141 >> 3) >= 1) {
@@ -5461,10 +5460,9 @@ __n128 GameHr_ffa3e0(_QWORD* a1, _QWORD* a2, _DWORD* a3, __n128 result)
                 LABEL_328:
                   v195 = v192[3];
                   if (v195 != 0) {
-                    v196 =
-                        (__int64)(*(struct PseudoSret*)(&v275) =
-                                      GameRoutine_db2180(v178 + 31, v184 + 56),
-                                  (void*)(&v275));
+                    v196 = (__int64)(GameRoutine_db2180((void*)(&v275),
+                                                        v178 + 31, v184 + 56),
+                                     (void*)(&v275));
                     v197 = **(_QWORD**)(v195 + 40);
                     v198 = *(_QWORD*)(*(_QWORD*)(v195 + 40) + 8LL) - v197;
                     if ((int)((unsigned __int64)v198 >> 3) < 1) {

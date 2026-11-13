@@ -1489,7 +1489,7 @@ LABEL_50:
       vmuls_lane_f32(v57, COERCE_AS(float32x2_t, LANES128(v60).n128_u64[0]), 1);
   v62 = COERCE_FLOAT(*(_QWORD*)(v55 + v49 + 8)) + vmuls_lane_f32(v57, v60, 2);
   *(float*)&v105 = LANES128(v59).n128_f32[3] + vmuls_lane_f32(v57, v60, 3);
-  LODWORD(v108) = powf(v58, v51);
+  LODWORD(v108) = COERCE_UNSIGNED_INT(powf(v58, v51));
   *(float*)&v63 = v61;
   v102 = powf(v63, v51);
   *(float*)&v64 = v62;
@@ -1602,7 +1602,7 @@ LABEL_102:
                          1);
     v91 = COERCE_FLOAT(*(_QWORD*)(*v47 + 472)) + vmuls_lane_f32(v86, v89, 2);
     *(float*)&v107 = LANES128(v88).n128_f32[3] + vmuls_lane_f32(v86, v89, 3);
-    LODWORD(v110) = powf(v87, v51);
+    LODWORD(v110) = COERCE_UNSIGNED_INT(powf(v87, v51));
     *(float*)&v92 = v90;
     v103 = powf(v92, v51);
     *(float*)&v93 = v91;

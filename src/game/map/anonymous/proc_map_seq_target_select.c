@@ -56,8 +56,9 @@ extern __int64 GameData_21cd108;
 extern __int64 GameData_21cf830;
 extern __int64 GameData_21d3f58;
 long double Height_7c4d10(_QWORD, float);
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 float game_map_anonymous_ProcMapSeqTargetSelect_UpdateFocus_closure_Invoke(
     __int64 a1, _DWORD* a2, long double a3);
 __int64 ProcMapSeqTargetSelect_78e3c0(__int64 a1, unsigned __int8 a2);
@@ -622,9 +623,8 @@ __int64 ProcMapSeqTargetSelect_78ece0(__int64 a1, long double a2)
         *(_QWORD*)(a1 + 22936) - *(_QWORD*)(a1 + 22928) < 0x11u;
     GameRoutine_78e5d0(a1, a2);
     snd_Fade_Fade_10c830(v18, 0.0);
-    *(struct PseudoSret*)(&v17) =
-        snd_play_ff2d0("SE_SYS_Cursor_Target", "SE_SYS_Cursor_Target", v18, 0,
-                       65537, 0, 0.0, 1.0);
+    snd_play_ff2d0((void*)(&v17), "SE_SYS_Cursor_Target",
+                   "SE_SYS_Cursor_Target", v18, 0, 65537, 0, 0.0, 1.0);
     snd_Fade_Destroy_Fade(v18);
     return 1;
   }

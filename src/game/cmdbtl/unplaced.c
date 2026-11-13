@@ -197,9 +197,10 @@ __int64 game_UnitPool_GetFirst_alt1(int*) __asm__("game_UnitPool_GetFirst");
 __int64 game_Unit_GetParam_alt1(__int64) __asm__("game_Unit_GetParam");
 __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
-                              unsigned int, int, float,
-                              float) __asm__("snd_playAt_ff5f0");
+__attribute__((swiftcall)) void
+snd_playAt_ff5f0_alt1(PSEUDO_X8, __int64, __int64, __int64, __int64,
+                      unsigned int, unsigned int, int, float,
+                      float) __asm__("snd_playAt_ff5f0");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
     "std___1___shared_weak_count_lock");
 __int64 ui_LayoutAccessor_FindAlignment_alt1(__int64*, __int64) __asm__(
@@ -1844,6 +1845,7 @@ void game_cmdbtl_1042560(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   float32x4_t* v1;
   __int64* v3;
   __int64 v4;
@@ -2073,7 +2075,7 @@ LABEL_19:
             snd_Fade_Fade_10c830_alt1((__int64)v43_.v43, 0x0.0p+0f),
                 v22 = COERCE_AS(__typeof__(v22),
                                 PSEUDO_REGISTER(__n128, "v0", "=w"));
-            snd_playAt_ff5f0_alt1((__int64)v30, (__int64)v30,
+            snd_playAt_ff5f0_alt1((void*)(handle), (__int64)v30, (__int64)v30,
                                   (__int64)&v40_.v40, (__int64)v43_.v43, 0,
                                   0x10001u, 0, 0x0.0p+0f,
                                   0x1.0000000000000p+0f),

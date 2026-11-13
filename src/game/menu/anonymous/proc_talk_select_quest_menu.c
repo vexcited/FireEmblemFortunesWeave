@@ -19,8 +19,9 @@ __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 game_menu_anonymous_187ec30(__int64);
 __int64 memcpy(__int64, __int64, unsigned __int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count_lock(__int64);
 extern __int64 (*GameData_20fb2e8[])();
 extern __int64 GameData_225e7a0;
@@ -35,6 +36,7 @@ void game_menu_anonymous_ProcTalkSelectQuestMenu_OnBuild(__int64 a1);
 
 void game_menu_anonymous_ProcTalkSelectQuestMenu_OnBuild(__int64 a1)
 {
+  _QWORD handle[2];
   __int64* v2;
   __int64 v3;
   __int64 v4;
@@ -82,9 +84,9 @@ void game_menu_anonymous_ProcTalkSelectQuestMenu_OnBuild(__int64 a1)
        1) != 0 ||
       (*(_BYTE*)(a1 + 1088) & 1) != 0) {
     snd_Fade_Fade_10c830((__int64)&v31_.v31, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Stamp", (__int64)"SE_SYS_Stamp",
-                   (__int64)&v31_.v31, 0, 0x10001u, 0, 0x0.0p+0f,
-                   0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Stamp",
+                   (__int64)"SE_SYS_Stamp", (__int64)&v31_.v31, 0, 0x10001u, 0,
+                   0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(&v31_.v31);
     LayoutAccessor_1560070((void*)(&v31_.v31), (__int64*)(a1 + 848),
                            "L_Info/L_Stamp");

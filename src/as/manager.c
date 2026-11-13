@@ -4,8 +4,6 @@
 
 _QWORD* VariableAssign_62dbb0(_QWORD*, __int64, unsigned __int64);
 __int64 GameRoutine_627e70(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 GameRoutine_d9b900(__int64, const char*, __int64, const char*, __int64,
-                           __int64*, int, __int64*);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64* VariableAssign_62da90(__int64*, __int64, unsigned __int64);
 extern _UNKNOWN as_g_context_slots;
@@ -139,8 +137,6 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
 __int64
 std___1___next_prime_alt1(unsigned __int64) __asm__("std___1___next_prime");
-void Manager_d9b900_alt1(__int64, __int64, __int64, __int64, __int64, __int64,
-                         __int64, __int64*) __asm__("Manager_d9b900");
 void __attribute__((noreturn))
 GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 __int64 Manager_d9c8c0(__int64 a1, unsigned __int64* a2);
@@ -3096,8 +3092,8 @@ __attribute__((swiftcall)) void Manager_d9ae80(PSEUDO_X8 x8_, __int64 a1,
   v11_.v11[1] = 0;
   v11_.v12 = 0;
   v11_.v11[0] = 0;
-  Manager_d9b900_alt1(a1, (__int64)"void", 4, a2, a3, (__int64)v10, a4,
-                      v11_.v11);
+  Manager_d9b900((void*)(a5), a1, (_QWORD)"void", 4, a2, a3, (_QWORD)v10,
+                 a4, (_QWORD)v11_.v11);
   v6 = *(unsigned int*)(a5 + 8);
   if ((_DWORD)v6 != 0x2000) {
     v7 = (_QWORD*)((char*)&as_g_context_slots + 16 * v6);
@@ -3374,7 +3370,8 @@ __attribute__((swiftcall)) void Manager_d9b810(PSEUDO_X8 x8_, __int64 a1,
   v11_.v11[1] = 0;
   v11_.v12 = 0;
   v11_.v11[0] = 0;
-  Manager_d9b900_alt1(a1, (__int64)"void", 4, a2, a3, a4, a5, v11_.v11);
+  Manager_d9b900((void*)(a6), a1, (_QWORD)"void", 4, a2, a3, a4, a5,
+                 (_QWORD)v11_.v11);
   v7 = *(unsigned int*)(a6 + 8);
   if ((_DWORD)v7 != 0x2000) {
     v8 = (_QWORD*)((char*)&as_g_context_slots + 16 * v7);
@@ -3998,8 +3995,11 @@ __int64 as_Manager_executeContext(__int64 a1, const char* a2, __int64 a3,
   __int64 v7;
   __int64 v8;
   __int64 v10;
-  __int64 v11;
-  unsigned int v12;
+  struct {
+    __int64 v11;
+    unsigned int v12;
+    char gapc_[12];
+  } v11_;
   __int64 v13[2];
   __int64 v14;
   _QWORD v15[4];
@@ -4013,11 +4013,12 @@ __int64 as_Manager_executeContext(__int64 a1, const char* a2, __int64 a3,
   v13[1] = 0;
   v14 = 0;
   v13[0] = 0;
-  GameRoutine_d9b900(a1, "s32", 3, a2, a3, a4, a5, v13);
-  if (v12 != 0x2000) {
-    v5 = (_QWORD*)((char*)&as_g_context_slots + 16 * v12);
+  Manager_d9b900((void*)(&v11_), a1, (_QWORD)"s32", 3, (_QWORD)a2, a3,
+                 (_QWORD)a4, a5, (_QWORD)v13);
+  if (v11_.v12 != 0x2000) {
+    v5 = (_QWORD*)((char*)&as_g_context_slots + 16 * v11_.v12);
     v6 = v5[1];
-    if (v6 != 0 && *v5 == v11 && *(_DWORD*)(v6 + 52) == 1) {
+    if (v6 != 0 && *v5 == v11_.v11 && *(_DWORD*)(v6 + 52) == 1) {
       v16 = v15;
       v7 = *as_g_script_manager_ptr;
       v15[0] = GameData_1f8e750;

@@ -102,8 +102,9 @@ __int64 game_menu_PageTab_Update(_QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___next_prime(_QWORD);
 extern _UNKNOWN GameData_1ada5b4;
 extern __int64 (*GameData_20b5d68[])();
@@ -553,6 +554,7 @@ __int64 GmapCorpsMenu_172a480(__int64 a1, char a2, __int64 a3)
 __int64 (**game_gmap_GmapCorpsMenu_ExchangeImpl(__int64 a1, char a2, _QWORD* a3,
                                                 _QWORD* a4, char a5))()
 {
+  _QWORD handle[2];
   __int64 v10;
   __int64 v11;
   __int64 v12;
@@ -669,16 +671,16 @@ __int64 (**game_gmap_GmapCorpsMenu_ExchangeImpl(__int64 a1, char a2, _QWORD* a3,
   if ((*(__int64 (**)(_QWORD*))(*a3 + 560LL))(a3) == 0 &&
       (*(__int64 (**)(_QWORD*))(*a4 + 560LL))(a4) == 0) {
     snd_Fade_Fade_10c830((__int64)&v115_.v115, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_NG", (__int64)"SE_SYS_NG",
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_NG", (__int64)"SE_SYS_NG",
                    (__int64)&v115_.v115, 0, 0x10001u, 0, 0x0.0p+0f,
                    0x1.0000000000000p+0f);
     return (__int64 (**)(void))snd_Fade_Destroy_Fade(&v115_.v115);
   }
   v111 = a5;
   snd_Fade_Fade_10c830((__int64)&v115_.v115, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)"SE_SYS_Decide_M", (__int64)"SE_SYS_Decide_M",
-                 (__int64)&v115_.v115, 0, 0x10001u, 0, 0x0.0p+0f,
-                 0x1.0000000000000p+0f);
+  snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Decide_M",
+                 (__int64)"SE_SYS_Decide_M", (__int64)&v115_.v115, 0, 0x10001u,
+                 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(&v115_.v115);
   v10 = *(_QWORD*)(a1 + 304);
   if (v10 != 0) {

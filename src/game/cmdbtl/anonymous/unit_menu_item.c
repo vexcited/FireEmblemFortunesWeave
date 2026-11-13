@@ -23,9 +23,9 @@ __int64 CmdbtlUnitSelectMenu_1637be0_alt1(__int64) __asm__(
 __int64 game_menu_BasicMenu_Unknown16dd9a0_alt1(__int64 result) __asm__(
     "game_menu_BasicMenu_Unknown16dd9a0");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64
 ui_LayoutAccessor_FindPane_alt1(__int64*,
                                 __int64) __asm__("ui_LayoutAccessor_FindPane");
@@ -35,6 +35,7 @@ void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 
 __int64 UnitMenuItem_Unknown25(_QWORD* a1)
 {
+  _QWORD handle[2];
   char v2;
   __int64 result;
   char v4;
@@ -53,7 +54,7 @@ __int64 UnitMenuItem_Unknown25(_QWORD* a1)
     v4 = (*(__int64 (**)(_QWORD*))(*a1 + 712LL))(a1);
     if (*((_BYTE*)a1 + 97) == 1) {
       snd_Fade_Fade_10c830_alt1((__int64)v15, 0x0.0p+0f);
-      snd_play_ff2d0_alt1((__int64)"SE_SYS_Sortie_Exclude",
+      snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Sortie_Exclude",
                           (__int64)"SE_SYS_Sortie_Exclude", (__int64)v15, 0,
                           0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade_alt1(v15);
@@ -65,7 +66,7 @@ __int64 UnitMenuItem_Unknown25(_QWORD* a1)
       }
       else {
         snd_Fade_Fade_10c830_alt1((__int64)v15, 0x0.0p+0f);
-        snd_play_ff2d0_alt1((__int64)"SE_SYS_Sortie_Include",
+        snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Sortie_Include",
                             (__int64)"SE_SYS_Sortie_Include", (__int64)v15, 0,
                             0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade_alt1(v15);

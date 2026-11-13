@@ -15,8 +15,9 @@ extern __int64 game_gameui_Footer_instance_;
 extern __int64 ui_Manager_instance_;
 extern int GameData_22593dc;
 extern int GameData_22593f8;
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 __int64 game_GameUI_Setup_lambda1_Invoke(__int64 a1, _DWORD* a2, int* a3);
 _QWORD* game_GameUI_Setup_lambda2_Invoke();
 _QWORD* game_GameUI_Setup_lambda3_Invoke();
@@ -86,8 +87,8 @@ extern char GameData_21f1dd8[];
 extern char GameData_21f1dd9;
 extern char GameData_21f1ddc;
 extern int* GameData_21320b0[8];
-struct PseudoSret GameRoutine_1908c60(_QWORD, _QWORD);
-struct PseudoSret GameRoutine_1908f00(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1908c60(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1908f00(PSEUDO_X8, _QWORD, _QWORD);
 _QWORD* game_GameUI_Setup();
 __int64 GameUI_8b51d0();
 __attribute__((swiftcall)) void
@@ -151,8 +152,7 @@ _QWORD* game_GameUI_Setup()
   game_15d1d80(v0);
   v34[0] = GameData_1fa94c8;
   v35 = v34;
-  *(struct PseudoSret*)(v32) =
-      GameRoutine_1908f00(ui_Manager_instance_ + 6528, v34);
+  GameRoutine_1908f00((void*)(v32), ui_Manager_instance_ + 6528, v34);
   if (v33 == v32) {
     v1 = 32;
   }
@@ -177,8 +177,7 @@ LABEL_6:
 LABEL_11:
   v34[0] = GameData_1fa9548;
   v35 = v34;
-  *(struct PseudoSret*)(v30) =
-      GameRoutine_1908c60(ui_Manager_instance_ + 6528, v34);
+  GameRoutine_1908c60((void*)(v30), ui_Manager_instance_ + 6528, v34);
   if (v31 == v30) {
     v3 = 32;
   }
@@ -725,8 +724,8 @@ _QWORD* game_GameUI_Setup_lambda2_Invoke()
   _QWORD v4[25];
 
   snd_Fade_Fade_10c830(v4, 0.0f);
-  *(struct PseudoSret*)(v3) =
-      snd_play_ff2d0("VIB_MouseOn", "VIB_MouseOn", v4, 0, 65537, 0, 0.0f, 1.0f);
+  snd_play_ff2d0((void*)(v3), "VIB_MouseOn", "VIB_MouseOn", v4, 0, 65537, 0,
+                 0.0f, 1.0f);
   snd_Fade_Destroy_Fade(v4);
   v4[0] = "MID_Mouse_Notice";
   v4[1] = 16;
@@ -765,7 +764,7 @@ _QWORD* game_GameUI_Setup_lambda3_Invoke()
   _QWORD v4[25];
 
   snd_Fade_Fade_10c830(v4, 0.0f);
-  *(struct PseudoSret*)(v3) = snd_play_ff2d0("VIB_MouseOff", "VIB_MouseOff", v4,
+  snd_play_ff2d0((void*)(v3), "VIB_MouseOff", "VIB_MouseOff", v4,
                                              0, 65537, 0, 0.0f, 1.0f);
   snd_Fade_Destroy_Fade(v4);
   v4[0] = "MID_Mouse_Notice";

@@ -61,9 +61,9 @@ __int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
 __int64 game_menu_Dialog__CreateBind_game_menu_Dialog_alt1(
     __int64, __int64) __asm__("game_menu_Dialog__CreateBind_game_menu_Dialog");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt2(__int64) __asm__(
@@ -89,6 +89,7 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   int v1;
   int v2;
   __int64 v3;
@@ -173,7 +174,7 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
     if (vabds_f32(*(float*)(v3 + 1496), v8) >= 0x1.0000000000000p-1f) {
       *(float*)(v3 + 1496) = v8;
       snd_Fade_Fade_10c830_alt1((__int64)&v28_.v28, 0x0.0p+0f);
-      snd_play_ff2d0_alt1((__int64)"SE_SYS_MouseAdjust_Meter",
+      snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_MouseAdjust_Meter",
                           (__int64)"SE_SYS_MouseAdjust_Meter",
                           (__int64)&v28_.v28, 0, 0x10001u, 0, 0x0.0p+0f,
                           0x1.0000000000000p+0f);
@@ -234,10 +235,10 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
     if (fabsf(*(float*)(GameData_2258178 + 552)) > 0x1.6800000000000p+6f) {
       *(_BYTE*)(v3 + 1300) = 1;
       snd_Fade_Fade_10c830_alt1((__int64)&v28_.v28, 0x0.0p+0f);
-      snd_play_ff2d0_alt1((__int64)"SE_SYS_MouseAdjust_Failure",
-                          (__int64)"SE_SYS_MouseAdjust_Failure",
-                          (__int64)&v28_.v28, 0, 0x10001u, 0, 0x0.0p+0f,
-                          0x1.0000000000000p+0f);
+      snd_play_ff2d0_alt1(
+          (void*)(handle), (__int64)"SE_SYS_MouseAdjust_Failure",
+          (__int64)"SE_SYS_MouseAdjust_Failure", (__int64)&v28_.v28, 0,
+          0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade_alt1(&v28_.v28);
       v18 = *(_QWORD*)(v3 + 152);
       v26_.v27 = v26_.v26;
@@ -291,7 +292,7 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
       return (__int64)BasicMenuCursor_16ddbe0_alt1((_QWORD*)v3);
     }
     snd_Fade_Fade_10c830_alt1((__int64)&v28_.v28, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"SE_SYS_MouseAdjust_Success",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_MouseAdjust_Success",
                         (__int64)"SE_SYS_MouseAdjust_Success",
                         (__int64)&v28_.v28, 0, 0x10001u, 0, 0x0.0p+0f,
                         0x1.0000000000000p+0f);

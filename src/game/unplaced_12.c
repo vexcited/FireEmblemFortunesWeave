@@ -387,9 +387,9 @@ __int64 game_191bd10(__int64 result, __int64 a2);
 __int64 game_19b0cd0(__int64 a1);
 __int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
 __int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 snd_stop_ffc40_alt1(__int64*, __int64) __asm__("snd_stop_ffc40");
 bool GameManager_a35ca0_alt2(__int64,
                              unsigned __int8*) __asm__("GameManager_a35ca0");
@@ -1517,6 +1517,7 @@ LABEL_7:
 
 __int64 game_1489320(__int64 result)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   unsigned int v3;
@@ -1566,8 +1567,9 @@ __int64 game_1489320(__int64 result)
       result = GameManager_a35ca0_alt2(result, v10);
       if ((result & 1) != 0) {
         snd_Fade_Fade_10c830_alt1((__int64)v11, 0x0.0p+0f);
-        snd_play_ff2d0_alt1((__int64)v10, (__int64)v10, (__int64)v11, 0,
-                            0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+        snd_play_ff2d0_alt1((void*)(handle), (__int64)v10, (__int64)v10,
+                            (__int64)v11, 0, 0x10001u, 0, 0x0.0p+0f,
+                            0x1.0000000000000p+0f);
         return snd_Fade_Destroy_Fade_alt1(v11);
       }
     }

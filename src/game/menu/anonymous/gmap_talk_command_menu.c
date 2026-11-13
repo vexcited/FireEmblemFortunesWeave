@@ -38,8 +38,9 @@ extern __int64 game_script_hub_talk_g_select_menu;
 extern __int64* GameData_212c890[3];
 extern __int64* GameData_212f6c8;
 extern char game_sound_g_vibration_enabled;
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 void __attribute__((noreturn)) GameRoutine_64aa00(_QWORD);
 void __attribute__((noreturn)) GameRoutine_688200(void);
 void __attribute__((noreturn)) GameRoutine_cb44e0(_QWORD);
@@ -92,9 +93,9 @@ game_sound_PlayCursorLeftSe_alt1() __asm__("game_sound_PlayCursorLeftSe");
 __int64
 game_sound_PlayCursorRightSe_alt1() __asm__("game_sound_PlayCursorRightSe");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 void GameRoutine_cb2640_alt1(__int64**) __asm__("GameRoutine_cb2640");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
@@ -460,6 +461,7 @@ __int64 GmapTalkCommandMenu_e953e0(_DWORD* a1)
 
 __int64 GmapTalkCommandMenu_e95460(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64 result;
@@ -476,7 +478,7 @@ __int64 GmapTalkCommandMenu_e95460(__int64 a1)
   v7[25] = v1;
   v7[26] = v2;
   snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Cursor_Left_EX",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Cursor_Left_EX",
                       (__int64)"SE_SYS_Cursor_Left_EX", (__int64)v7, 0,
                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   result = snd_Fade_Destroy_Fade_alt1(v7);
@@ -484,9 +486,9 @@ __int64 GmapTalkCommandMenu_e95460(__int64 a1)
   v4_.v5 = 0x2000;
   if (game_sound_g_vibration_enabled == 1) {
     snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"VIB_Page_Back", (__int64)"VIB_Page_Back",
-                        (__int64)v7, 0, 0x10001u, 0, 0x0.0p+0f,
-                        0x1.0000000000000p+0f);
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_Page_Back",
+                        (__int64)"VIB_Page_Back", (__int64)v7, 0, 0x10001u, 0,
+                        0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v7);
     return GameRoutine_112180_alt1((__int64)&v4_.v4, (__int64)v6);
   }
@@ -495,6 +497,7 @@ __int64 GmapTalkCommandMenu_e95460(__int64 a1)
 
 __int64 GmapTalkCommandMenu_e95540(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64 result;
@@ -511,7 +514,7 @@ __int64 GmapTalkCommandMenu_e95540(__int64 a1)
   v7[25] = v1;
   v7[26] = v2;
   snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Cursor_Right_EX",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Cursor_Right_EX",
                       (__int64)"SE_SYS_Cursor_Right_EX", (__int64)v7, 0,
                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   result = snd_Fade_Destroy_Fade_alt1(v7);
@@ -519,9 +522,9 @@ __int64 GmapTalkCommandMenu_e95540(__int64 a1)
   v4_.v5 = 0x2000;
   if (game_sound_g_vibration_enabled == 1) {
     snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"VIB_Page_Send", (__int64)"VIB_Page_Send",
-                        (__int64)v7, 0, 0x10001u, 0, 0x0.0p+0f,
-                        0x1.0000000000000p+0f);
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_Page_Send",
+                        (__int64)"VIB_Page_Send", (__int64)v7, 0, 0x10001u, 0,
+                        0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v7);
     return GameRoutine_112180_alt1((__int64)&v4_.v4, (__int64)v6);
   }
@@ -789,6 +792,7 @@ LABEL_6:
 
 _QWORD* GmapTalkCommandMenu_Unknown69(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   _QWORD v4[27];
@@ -799,7 +803,7 @@ _QWORD* GmapTalkCommandMenu_Unknown69(__int64 a1)
   v4[25] = v1;
   v4[26] = v2;
   snd_Fade_Fade_10c830_alt1((__int64)v4, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Decide_M_EX",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Decide_M_EX",
                       (__int64)"SE_SYS_Decide_M_EX", (__int64)v4, 0, 0x10001u,
                       0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   return (_QWORD*)snd_Fade_Destroy_Fade_alt1(v4);
@@ -807,6 +811,7 @@ _QWORD* GmapTalkCommandMenu_Unknown69(__int64 a1)
 
 _QWORD* GmapTalkCommandMenu_Unknown72(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   _QWORD v4[27];
@@ -817,7 +822,7 @@ _QWORD* GmapTalkCommandMenu_Unknown72(__int64 a1)
   v4[25] = v1;
   v4[26] = v2;
   snd_Fade_Fade_10c830_alt1((__int64)v4, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Cancel_H_EX",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Cancel_H_EX",
                       (__int64)"SE_SYS_Cancel_H_EX", (__int64)v4, 0, 0x10001u,
                       0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   return (_QWORD*)snd_Fade_Destroy_Fade_alt1(v4);
@@ -825,6 +830,7 @@ _QWORD* GmapTalkCommandMenu_Unknown72(__int64 a1)
 
 __int64 GmapTalkCommandMenu_Unknown144(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64 result;
@@ -841,7 +847,7 @@ __int64 GmapTalkCommandMenu_Unknown144(__int64 a1)
   v7[25] = v1;
   v7[26] = v2;
   snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Cursor_H_EX",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Cursor_H_EX",
                       (__int64)"SE_SYS_Cursor_H_EX", (__int64)v7, 0, 0x10001u,
                       0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   result = snd_Fade_Destroy_Fade_alt1(v7);
@@ -849,7 +855,7 @@ __int64 GmapTalkCommandMenu_Unknown144(__int64 a1)
   v4_.v5 = 0x2000;
   if (game_sound_g_vibration_enabled == 1) {
     snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"VIB_Cursor_Medium",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_Cursor_Medium",
                         (__int64)"VIB_Cursor_Medium", (__int64)v7, 0, 0x10001u,
                         0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v7);
@@ -872,13 +878,13 @@ __int64 GmapTalkCommandMenu_Unknown145(__int64 a1)
     snd_Fade_Fade_10c830(v4, 0.0f);
     v1 = "SE_SYS_Cursor_Stop";
   }
-  *(struct PseudoSret*)(&v3) =
-      snd_play_ff2d0(v1, v1, v4, 0, 65537, 0, 0.0f, 1.0f);
+  snd_play_ff2d0((void*)(&v3), v1, v1, v4, 0, 65537, 0, 0.0f, 1.0f);
   return snd_Fade_Destroy_Fade(v4);
 }
 
 __int64 GmapTalkCommandMenu_Unknown18(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64 result;
@@ -895,7 +901,7 @@ __int64 GmapTalkCommandMenu_Unknown18(__int64 a1)
   v7[25] = v1;
   v7[26] = v2;
   snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Cursor_H_EX",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Cursor_H_EX",
                       (__int64)"SE_SYS_Cursor_H_EX", (__int64)v7, 0, 0x10001u,
                       0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   result = snd_Fade_Destroy_Fade_alt1(v7);
@@ -903,7 +909,7 @@ __int64 GmapTalkCommandMenu_Unknown18(__int64 a1)
   v4_.v5 = 0x2000;
   if (game_sound_g_vibration_enabled == 1) {
     snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"VIB_Cursor_Medium",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"VIB_Cursor_Medium",
                         (__int64)"VIB_Cursor_Medium", (__int64)v7, 0, 0x10001u,
                         0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v7);
@@ -926,8 +932,7 @@ __int64 GmapTalkCommandMenu_Unknown23(__int64 a1)
     snd_Fade_Fade_10c830(v4, 0.0f);
     v1 = "SE_SYS_Cursor_Stop";
   }
-  *(struct PseudoSret*)(&v3) =
-      snd_play_ff2d0(v1, v1, v4, 0, 65537, 0, 0.0f, 1.0f);
+  snd_play_ff2d0((void*)(&v3), v1, v1, v4, 0, 65537, 0, 0.0f, 1.0f);
   return snd_Fade_Destroy_Fade(v4);
 }
 

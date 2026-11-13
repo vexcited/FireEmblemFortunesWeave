@@ -29,8 +29,6 @@ __attribute__((swiftcall)) void Model_a66f60(PSEUDO_X8, __int64 result, __int64,
                                              __int64);
 __attribute__((swiftcall)) void math_Mtx43_MakeRotation(PSEUDO_X8,
                                                         float32x4_t*);
-__attribute__((swiftcall)) void wld_Crc32_alt1(PSEUDO_X8, _QWORD, _QWORD,
-                                               _QWORD) __asm__("wld_Crc32");
 __attribute__((swiftcall)) void wld_c2c890_alt1(PSEUDO_X8, _QWORD, _QWORD,
                                                 _QWORD) __asm__("wld_c2c890");
 __attribute__((swiftcall)) void wld_map_c23be0(PSEUDO_X8, __int64, __int64,
@@ -9647,10 +9645,8 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                        memory_order_acquire) &
                    1) == 0 &&
                   (unsigned int)__cxa_guard_acquire(&GameData_21ec980) != 0) {
-                GameData_21ec978 =
-                    (unsigned int)(wld_Crc32_alt1((void*)(v312), 0,
-                                                  "MapObjectModule", 15),
-                                   (void*)(v312));
+                GameData_21ec978 = (unsigned int)wld_Crc32(
+                    0, (unsigned __int8*)"MapObjectModule", 15);
                 __cxa_guard_release(&GameData_21ec980);
               }
               v158 = v584;
@@ -9999,10 +9995,8 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                        memory_order_acquire) &
                    1) == 0 &&
                   (unsigned int)__cxa_guard_acquire(&GameData_21f4d48) != 0) {
-                GameData_21f4d44 =
-                    (unsigned int)(wld_Crc32_alt1((void*)(v313), 0,
-                                                  "ModelModule", 11),
-                                   (void*)(v313));
+                GameData_21f4d44 = (unsigned int)wld_Crc32(
+                    0, (unsigned __int8*)"ModelModule", 11);
                 __cxa_guard_release(&GameData_21f4d48);
               }
               LODWORD(v4) = v560;
@@ -10078,11 +10072,9 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                          1) == 0) {
                       v50 = __cxa_guard_acquire(&GameData_22031a0);
                       if ((_DWORD)v50 != 0) {
-                        GameData_2203198 =
-                            (unsigned int)(wld_Crc32_alt1(
-                                               (void*)(v314), 0,
-                                               "InstancedObjectCtrlModule", 25),
-                                           (void*)(v314));
+                        GameData_2203198 = (unsigned int)wld_Crc32(
+                            0, (unsigned __int8*)"InstancedObjectCtrlModule",
+                            25);
                         v50 = __cxa_guard_release(&GameData_22031a0);
                       }
                     }
@@ -10775,11 +10767,8 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                            1) == 0) {
                         v50 = __cxa_guard_acquire(&GameData_21ec980);
                         if ((_DWORD)v50 != 0) {
-                          GameData_21ec978 =
-                              (unsigned int)(wld_Crc32_alt1((void*)(v462), 0,
-                                                            "MapObjectModule",
-                                                            15),
-                                             (void*)(v462));
+                          GameData_21ec978 = (unsigned int)wld_Crc32(
+                              0, (unsigned __int8*)"MapObjectModule", 15);
                           v50 = __cxa_guard_release(&GameData_21ec980);
                         }
                       }
@@ -11149,10 +11138,8 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                            1) == 0 &&
                           (unsigned int)__cxa_guard_acquire(
                               &GameData_21f4d48) != 0) {
-                        GameData_21f4d44 =
-                            (unsigned int)(wld_Crc32_alt1((void*)(v543), 0,
-                                                          "ModelModule", 11),
-                                           (void*)(v543));
+                        GameData_21f4d44 = (unsigned int)wld_Crc32(
+                            0, (unsigned __int8*)"ModelModule", 11);
                         __cxa_guard_release(&GameData_21f4d48);
                       }
                       v502 = *(_QWORD*)(v474 + 512);

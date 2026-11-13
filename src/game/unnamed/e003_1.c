@@ -97,7 +97,7 @@ __int64 GameRoutine_d8b9c0(_QWORD, _QWORD);
 __int64 GameRoutine_d8bae0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 float GameRoutine_d8e20(_QWORD);
 __int64 GameRoutine_d9850(_QWORD);
-struct PseudoSret GameRoutine_d98c0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_d98c0(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_dbd8e0(_QWORD);
 __int64 GameRoutine_e4440(_QWORD, _QWORD);
 __int64 GameRoutine_e61c90(_QWORD, _QWORD);
@@ -552,7 +552,7 @@ _QWORD* GameHr_a2e490(__int64 a1, __int64 a2, char a3)
     }
   LABEL_27:
     if ((*(_BYTE*)(a1 + 3128) & 1) == 0) {
-      *(struct PseudoSret*)(v37) = GameRoutine_d98c0(*(_QWORD*)(a1 + 8));
+      GameRoutine_d98c0((void*)(v37), *(_QWORD*)(a1 + 8));
       v25 = GameRoutine_112290(v37);
       if (v25 != 0 && (GameRoutine_149a90(v25 - 5592) & 1) == 0) {
         (*(void (**)(_QWORD, __int64, _QWORD))(**(_QWORD**)(a1 + 8) + 48LL))(
@@ -865,7 +865,7 @@ __n128 GameHr_a30fe0(__int64 a1, __int64 a2)
   _QWORD v10[2];
   _QWORD v11[2];
 
-  *(struct PseudoSret*)(v10) = GameRoutine_d98c0(*(_QWORD*)(a1 + 8));
+  GameRoutine_d98c0((void*)(v10), *(_QWORD*)(a1 + 8));
   if ((GameRoutine_1120d0(v10) & 1) != 0) {
     v5 = GameRoutine_112290(v10);
     v6 = v5 != 0 ? v5 - 5592 : 0LL;
@@ -878,7 +878,7 @@ __n128 GameHr_a30fe0(__int64 a1, __int64 a2)
       else {
         GameRoutine_10cd70(v9, a2);
       }
-      *(struct PseudoSret*)(v11) = GameRoutine_d98c0(*(_QWORD*)(a1 + 8));
+      GameRoutine_d98c0((void*)(v11), *(_QWORD*)(a1 + 8));
       v7 = GameRoutine_112290(v11);
       if (v7 != 0 && (GameRoutine_149a90(v7 - 5592) & 1) == 0) {
         (*(void (**)(_QWORD, _BYTE*, _QWORD))(**(_QWORD**)(a1 + 8) + 48LL))(

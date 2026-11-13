@@ -141,8 +141,8 @@ extern __int64 ui_LayoutAccessor_empty_;
 extern char GameData_1a9f09e;
 extern int GameData_226b238;
 long double ui_LayoutAccessor_GetPaneSize(_QWORD, _QWORD);
-struct PseudoSret
-    LayoutAccessor_1560070_alt1(_QWORD,
+__attribute__((swiftcall)) void
+    LayoutAccessor_1560070_alt1(PSEUDO_X8, _QWORD,
                                 _QWORD) __asm__("LayoutAccessor_1560070");
 void* game_97b2f0(__int64);
 void GameRoutine_1597230();
@@ -248,9 +248,9 @@ __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 __int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
 __int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64
 std___1___next_prime_alt1(unsigned __int64) __asm__("std___1___next_prime");
 char* GameHr_67ed20(_QWORD*);
@@ -1317,7 +1317,7 @@ void game_menu_16e7af0(__int64 a1)
   __int64 v9;
   __int64 v10;
 
-  *(struct PseudoSret*)(&v9) = LayoutAccessor_1560070_alt1(a1, "L_ScrollBar");
+  LayoutAccessor_1560070_alt1((void*)(&v9), a1, "L_ScrollBar");
   if (v10 != 0) {
     v2 = std___1___shared_weak_count_lock(v10);
     v4 = v9;
@@ -1346,6 +1346,7 @@ void game_menu_16e7af0(__int64 a1)
 
 __int64 game_menu_16edc90(__int64* a1, __int64* a2)
 {
+  _QWORD handle[2];
   __int64 result;
   __int64 v5;
   unsigned __int64 v6;
@@ -1441,7 +1442,7 @@ __int64 game_menu_16edc90(__int64* a1, __int64* a2)
       result = (*(__int64 (**)(__int64*))(a1[132] + 120))(a1 + 132);
       if ((result & 1) == 0) {
         snd_Fade_Fade_10c830_alt1((__int64)v34, 0x0.0p+0f);
-        snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
+        snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Window_Open",
                             (__int64)"SE_SYS_Window_Open", (__int64)v34, 0,
                             0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
         result = snd_Fade_Destroy_Fade_alt1(v34);
@@ -1463,7 +1464,7 @@ __int64 game_menu_16edc90(__int64* a1, __int64* a2)
           result = (*(__int64 (**)(__int64*))(a1[132] + 120))(a1 + 132);
           if ((result & 1) == 0) {
             snd_Fade_Fade_10c830_alt1((__int64)v34, 0x0.0p+0f);
-            snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
+            snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Window_Open",
                                 (__int64)"SE_SYS_Window_Open", (__int64)v34, 0,
                                 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
             return snd_Fade_Destroy_Fade_alt1(v34);
@@ -1526,6 +1527,7 @@ __int64 game_menu_16edc90(__int64* a1, __int64* a2)
 
 __int64 game_menu_16ee000(__int64* a1, __int64* a2)
 {
+  _QWORD handle[2];
   __int64 result;
   __int64 v5;
   unsigned __int64 v6;
@@ -1621,7 +1623,7 @@ __int64 game_menu_16ee000(__int64* a1, __int64* a2)
       result = (*(__int64 (**)(__int64*))(a1[132] + 128))(a1 + 132);
       if ((result & 1) == 0) {
         snd_Fade_Fade_10c830_alt1((__int64)v34, 0x0.0p+0f);
-        snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Close",
+        snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Window_Close",
                             (__int64)"SE_SYS_Window_Close", (__int64)v34, 0,
                             0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
         result = snd_Fade_Destroy_Fade_alt1(v34);
@@ -1643,7 +1645,7 @@ __int64 game_menu_16ee000(__int64* a1, __int64* a2)
           result = (*(__int64 (**)(__int64*))(a1[132] + 128))(a1 + 132);
           if ((result & 1) == 0) {
             snd_Fade_Fade_10c830_alt1((__int64)v34, 0x0.0p+0f);
-            snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Close",
+            snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Window_Close",
                                 (__int64)"SE_SYS_Window_Close", (__int64)v34, 0,
                                 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
             return snd_Fade_Destroy_Fade_alt1(v34);

@@ -86,7 +86,7 @@ __int64 GameRoutine_c72b30(_QWORD, _QWORD);
 __int64 GameRoutine_cb90b0(_QWORD, float);
 __int64 GameRoutine_d0e440(_QWORD, _QWORD);
 __int64 GameRoutine_d86560(_QWORD);
-struct PseudoSret GameRoutine_d98c0(void);
+__attribute__((swiftcall)) void GameRoutine_d98c0(PSEUDO_X8);
 __int64 GameRoutine_e1a6d0(_QWORD, _QWORD);
 __attribute__((swiftcall)) void collision_6725f0(PSEUDO_X8, float32x4_t* result,
                                                  float32x4_t*, __int64, float);
@@ -2864,7 +2864,7 @@ __int64 GameHr_811b80()
   _BYTE v1[200];
   _QWORD v2[2];
 
-  *(struct PseudoSret*)(v2) = GameRoutine_d98c0();
+  GameRoutine_d98c0((void*)(v2));
   result = GameRoutine_1120d0(v2);
   if ((result & 1) != 0) {
     GameRoutine_10cb00(v1, "FadeTime_BGM_Museum_BTL_XFade");
@@ -2886,7 +2886,7 @@ __int64 GameHr_811c50()
   _BYTE v1[200];
   _QWORD v2[2];
 
-  *(struct PseudoSret*)(v2) = GameRoutine_d98c0();
+  GameRoutine_d98c0((void*)(v2));
   result = GameRoutine_1120d0(v2);
   if ((result & 1) != 0) {
     GameRoutine_10cb00(v1, "FadeTime_BGM_Museum_BTL_XFade");

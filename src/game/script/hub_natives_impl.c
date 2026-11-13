@@ -147,8 +147,10 @@ __int64 game_GameVariableTable_Find(_QWORD*, unsigned __int64*);
 __int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
 __int64 snd_a2c9c0(__int64 result, __int64);
-__int64 snd_playAt_ff5f0(__int64, __int64, __int64, __int64, unsigned int,
-                         unsigned int, int, float, float);
+__attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, __int64, __int64,
+                                                 __int64, __int64, unsigned int,
+                                                 unsigned int, int, float,
+                                                 float);
 extern _DWORD game_script_hub_schedule_kHourCycles[24];
 extern _UNKNOWN* GameData_212c540;
 extern _UNKNOWN* std___1_piecewise_construct_ptr;
@@ -4049,6 +4051,7 @@ LABEL_9:
 
 void hub_PlaySE_cc8740(__int64 a1, __int128* a2)
 {
+  _QWORD handle[2];
   __int64 v4;
   __int64 v5;
   __int64 v6;
@@ -4140,8 +4143,8 @@ LABEL_9:
   v20_.v20[0] = snd_Vec3_vtable;
   if (v16 != nullptr) {
     snd_Fade_Fade_10c830((__int64)v22, 0x0.0p+0f);
-    snd_playAt_ff5f0((__int64)v16, (__int64)v16, (__int64)v20_.v20,
-                     (__int64)v22, 0, 0x10001u, 0, 0x0.0p+0f,
+    snd_playAt_ff5f0((void*)(handle), (__int64)v16, (__int64)v16,
+                     (__int64)v20_.v20, (__int64)v22, 0, 0x10001u, 0, 0x0.0p+0f,
                      0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v22);
     v15 = v18_.v18[0] & 1;

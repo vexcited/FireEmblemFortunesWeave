@@ -238,9 +238,10 @@ __int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
 __int64
 snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
-__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
-                              unsigned int, int, float,
-                              float) __asm__("snd_playAt_ff5f0");
+__attribute__((swiftcall)) void
+snd_playAt_ff5f0_alt1(PSEUDO_X8, __int64, __int64, __int64, __int64,
+                      unsigned int, unsigned int, int, float,
+                      float) __asm__("snd_playAt_ff5f0");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
@@ -2868,7 +2869,7 @@ LABEL_5:
   v13 = vaddq_f32(
       *(float32x4_t*)(*(_QWORD*)(*(_QWORD*)(a1 + 24) + 16LL) + 560LL), v6);
   v7 = vsubq_f32(v13, v12);
-  LANES128(v7).n128_u32[1] =
+  LANES128(v7).n128_f32[1] =
       vmuls_lane_f32(0x1.0000000000000p+2f,
                      COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0]), 1);
   v8 = vmulq_f32(v7, v7);
@@ -2949,6 +2950,7 @@ void Character_cafb80(__int64 a1)
 
 __attribute__((swiftcall)) void Character_cafca0(PSEUDO_X8 x8_, __int64 a1)
 {
+  _QWORD handle[2];
   __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
   int v4;
   unsigned __int64 v5;
@@ -3045,9 +3047,9 @@ __attribute__((swiftcall)) void Character_cafca0(PSEUDO_X8 x8_, __int64 a1)
     v27_.v28 = DWORD2(v13);
     v27_.v27[0] = GameData_212d1e0[0] + 2;
     snd_Fade_Fade_10c830_alt1((__int64)v29, 0x0.0p+0f);
-    snd_playAt_ff5f0_alt1((__int64)v12, (__int64)v12, (__int64)v27_.v27,
-                          (__int64)v29, 0, 0x10001u, 0, 0x0.0p+0f,
-                          0x1.0000000000000p+0f);
+    snd_playAt_ff5f0_alt1((void*)(handle), (__int64)v12, (__int64)v12,
+                          (__int64)v27_.v27, (__int64)v29, 0, 0x10001u, 0,
+                          0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v29);
     if ((v20_.v20[0] & 1) == 0) {
       goto LABEL_29;

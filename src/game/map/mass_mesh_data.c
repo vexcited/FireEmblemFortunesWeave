@@ -1135,7 +1135,7 @@ void MassMeshData_f45440(__int64 a1, _QWORD* a2, __int64 a3)
   v54_.v60 = 0;
   LOBYTE(v54_.v62) = 1;
   LANES128(v54_.v57).n128_u32[3] = LANES128(v19).n128_u32[0];
-  LANES128(v54_.v58).n128_u32[3] = vmuls_lane_f32(v22, v21, 3);
+  LANES128(v54_.v58).n128_f32[3] = vmuls_lane_f32(v22, v21, 3);
   LANES128(v19).n128_u64[0] = __PAIR64__(LODWORD(v5), v52);
   LANES128(v19).n128_u64[1] = v52;
   v54_.v61 = v19;

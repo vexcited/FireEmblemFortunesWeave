@@ -10,8 +10,9 @@ __int64 snd_Name_Destroy_Name(__int64 result);
 __int64 snd_fnd_WeakHandle_get(__int64);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
 __int64 snd_getListenerPosition_100870();
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 void snd_Fade_Fade_10c830(__int64, float);
 void snd_Fade_Fade_10c910(__int64, int);
 __int64 BGM_d5640(__int64 a1);
@@ -38,6 +39,7 @@ __int64 BGM_d5640(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 result;
   __int64 v3;
   __int64 v4;
@@ -365,8 +367,9 @@ __int64 BGM_d5640(__int64 a1)
       v59 = *(_QWORD*)(*(_QWORD*)(v3 - 72) + 8 * v58 + 64);
       if (v59 != 0) {
         snd_Fade_Fade_10c830((__int64)v68_.v68, 0x0.0p+0f);
-        snd_play_ff2d0((__int64)"BGM_Bridge", v59, (__int64)v68_.v68, 0,
-                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+        snd_play_ff2d0((void*)(handle), (__int64)"BGM_Bridge", v59,
+                       (__int64)v68_.v68, 0, 0x10001u, 0, 0x0.0p+0f,
+                       0x1.0000000000000p+0f);
         GameRoutine_112180((__int64)&v66_.v66, (__int64)&v65);
         snd_Fade_Destroy_Fade(v68_.v68);
       }

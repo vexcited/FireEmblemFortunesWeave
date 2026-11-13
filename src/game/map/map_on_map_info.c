@@ -2392,7 +2392,7 @@ LABEL_72:
         LANES128(v101).n128_u64[1] = v87;
         v90 = *(_QWORD*)(v83 + 16);
         v89 = v83 + 16;
-        *(_OWORD*)v103 =
+        *(long double*)v103 =
             ((long double (*)(__int64)) * (_QWORD*)(v90 + 16))(v89),
         v91 = COERCE_AS(__typeof__(v91), PSEUDO_REGISTER(__n128, "v1", "=w")),
         v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v2", "=w")),

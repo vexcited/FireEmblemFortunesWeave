@@ -18,9 +18,9 @@ __int64 GmapCorpsMenu_172a480_alt1(__int64, char,
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 extern __int64 (*GameData_20b4488[])();
 extern __int64 (*GameData_20b4508[])();
 extern __int64 (*GameData_20b4588[])();
@@ -40,6 +40,7 @@ __int64 CorpsMenuItem_172d980(__int64 a1);
 
 __int64 CorpsMenuItem_172d980(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   char v2;
   __int64 v4;
@@ -784,7 +785,7 @@ LABEL_102:
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
       v69 = COERCE_AS(__typeof__(v69),
                       PSEUDO_REGISTER(unsigned long long, "x2", "=r"));
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Decide_L_Next",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Decide_L_Next",
                       (__int64)"SE_SYS_Decide_L_Next", (__int64)v75_.v75, 0,
                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f),
       v59 = COERCE_AS(__typeof__(v59),

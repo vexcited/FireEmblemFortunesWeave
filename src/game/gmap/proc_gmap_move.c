@@ -119,8 +119,9 @@ __int64 game_gmap_1340560(__int64 result, char);
 __int64 game_gmap_1341d60(__int64, char);
 __int64 game_telop_175bde0(__int64*);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 extern _UNKNOWN* GameData_212ceb8;
 extern _UNKNOWN GameData_1abd4d1;
 extern __int64 (*GameData_204bcf8[])();
@@ -256,6 +257,7 @@ void game_gmap_ProcGmapMove_CheckContinueMove(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   _QWORD* v2;
   __int64 v3;
   int v4;
@@ -635,7 +637,7 @@ void game_gmap_ProcGmapMove_CheckContinueMove(__int64 a1)
     if (*(_BYTE*)(v3 + 512) != 1 &&
         (*(_BYTE*)(*(_QWORD*)game_g_game_setting_ptr + 952LL) & 2) != 0) {
       snd_Fade_Fade_10c830((__int64)&v338_.v338, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"SE_SYS_GMAP_Cancel_Spot",
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_GMAP_Cancel_Spot",
                      (__int64)"SE_SYS_GMAP_Cancel_Spot", (__int64)&v338_.v338,
                      0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(&v338_.v338);

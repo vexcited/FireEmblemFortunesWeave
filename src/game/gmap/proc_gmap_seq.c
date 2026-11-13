@@ -379,8 +379,9 @@ __int64 game_gmap_TroopMgr_EachReserveUnit(__int64);
 __int64 game_gmap_TroopMgr_OnUpdateChapter();
 __int64 game_map_100bdf0(__int64, __int64, unsigned __int64);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 strlen(_QWORD);
 extern _UNKNOWN* GameData_212c960;
 extern _UNKNOWN GameData_1af8f10;
@@ -2125,7 +2126,7 @@ unsigned __int64 game_gmap_ProcGmapSeq_PreExeCommand(unsigned __int64 result,
           v32 = *((_DWORD*)v28 + 2);
           v33 = v31 == 0x94E79F9CE69D88E5LL && v32 == -1834489669;
           if (v33 && v148 - v147 == 48) {
-            LODWORD(v144) = std___1_stof(v147 + 24, 0);
+            LODWORD(v144) = COERCE_UNSIGNED_INT(std___1_stof(v147 + 24, 0));
             v34 = *(_QWORD*)(*GameData_212d718 + 16);
             if (*(_BYTE*)(v34 + 680) == 1) {
               v35 = *(_QWORD*)(v34 + 656);
@@ -6718,6 +6719,7 @@ void ProcGmapSeq_886a90()
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   unsigned __int64 v0;
   __n128 v1;
   __int64 v2;
@@ -6731,7 +6733,7 @@ void ProcGmapSeq_886a90()
     if (game_GameModeData_instance_ != 0 &&
         (*(_BYTE*)(game_GameModeData_instance_ + 92) & 2) != 0) {
       snd_Fade_Fade_10c830((__int64)v8, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"SE_SYS_GMAP_Encount_Zoom",
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_GMAP_Encount_Zoom",
                      (__int64)"SE_SYS_GMAP_Encount_Zoom", (__int64)v8, 0,
                      0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade_alt1(v8);

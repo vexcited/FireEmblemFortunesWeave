@@ -277,7 +277,7 @@ void WallCollisionModule_1106720(float* a1, float* a2, float* a3, float a4,
     v31 = a6 + 0x1.47ae140000000p-8f;
     LANES128(v30).n128_f32[0] =
         (float)(a6 + 0x1.47ae140000000p-8f) * LANES128(v63_.v64).n128_f32[0];
-    LANES128(v30).n128_u32[2] =
+    LANES128(v30).n128_f32[2] =
         vmuls_lane_f32(a6 + 0x1.47ae140000000p-8f, v63_.v64, 2);
     v32 = vaddq_f32(v63_.v63, v30);
     LANES128(v33).n128_u64[0] =
@@ -309,7 +309,7 @@ void WallCollisionModule_1106720(float* a1, float* a2, float* a3, float a4,
     collision_6725f0((void*)((__int64)&v63_.v63), &v62, &v61, 8, a6);
     if ((v63_.v65 & 1) != 0) {
       LANES128(v37).n128_f32[0] = v31 * LANES128(v63_.v64).n128_f32[0];
-      LANES128(v37).n128_u32[2] = vmuls_lane_f32(v31, v63_.v64, 2);
+      LANES128(v37).n128_f32[2] = vmuls_lane_f32(v31, v63_.v64, 2);
       v38 = vaddq_f32(v63_.v63, v37);
       LANES128(v38).n128_f32[0] =
           vmuls_lane_f32(LANES128(v38).n128_f32[2] - v60, v63_.v64, 2) +

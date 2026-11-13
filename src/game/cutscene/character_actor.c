@@ -3749,8 +3749,9 @@ LABEL_145:
           v130 = COERCE_AS(__typeof__(v130),
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
           LODWORD(v146_.v148) = LODWORD(v134);
-          HIDWORD(v146_.v148) = PostEffectActor_17fb700_alt1(
-              (__int64)&v142_.v142, (__int64*)(v111 + 184), v134),
+          HIDWORD(v146_.v148) =
+              COERCE_UNSIGNED_INT(PostEffectActor_17fb700_alt1(
+                  (__int64)&v142_.v142, (__int64*)(v111 + 184), v134)),
           v130 = COERCE_AS(__typeof__(v130),
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         }

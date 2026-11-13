@@ -98,8 +98,9 @@ __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 nn_os_LockMutex(__int64);
 __int64 nn_os_UnlockMutex(__int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___hash_memory(__int64, unsigned __int64);
 __int64 std___1___next_prime(unsigned __int64);
 __int64 std___1___shared_weak_count___release_weak(__int64);
@@ -3929,7 +3930,7 @@ LABEL_30:
                                 memory_order_relaxed);
       v31 = SceneCharacterMovement_1417ce0(v29);
       v32 = v64;
-      LANES128(v32).n128_u32[1] = vmuls_lane_f32(v31, v58, 1);
+      LANES128(v32).n128_f32[1] = vmuls_lane_f32(v31, v58, 1);
       v64 = v32;
       if (atomic_fetch_add((atomic_ullong* volatile)(v30 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -3940,7 +3941,7 @@ LABEL_30:
     }
     v57 = SceneCharacterMovement_1417ce0(v29);
     v27 = v64;
-    LANES128(v27).n128_u32[1] = vmuls_lane_f32(v57, v58, 1);
+    LANES128(v27).n128_f32[1] = vmuls_lane_f32(v57, v58, 1);
   LABEL_50:
     v64 = v27;
   }
@@ -4555,7 +4556,7 @@ LABEL_30:
                                 memory_order_relaxed);
       v33 = SceneCharacterMovement_1417ce0(v31);
       v34 = v67;
-      LANES128(v34).n128_u32[1] = vmuls_lane_f32(v33, v64, 1);
+      LANES128(v34).n128_f32[1] = vmuls_lane_f32(v33, v64, 1);
       v67 = v34;
       if (atomic_fetch_add((atomic_ullong* volatile)(v32 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -4566,7 +4567,7 @@ LABEL_30:
     else {
       v35 = SceneCharacterMovement_1417ce0(v31);
       v36 = v67;
-      LANES128(v36).n128_u32[1] = vmuls_lane_f32(v35, v64, 1);
+      LANES128(v36).n128_f32[1] = vmuls_lane_f32(v35, v64, 1);
       v67 = v36;
     }
   }
@@ -7977,6 +7978,7 @@ __int64 game_facility_16d7050(__int64 a1)
 
 __int64 game_facility_186ad20(_QWORD* a1, _WORD* a2)
 {
+  _QWORD handle[2];
   __int64 v3;
   __int64 v5;
   __int64 v6;
@@ -8289,8 +8291,8 @@ LABEL_97:
     v52 = "SE_SYS_Multiple_Select";
   }
   snd_Fade_Fade_10c830((__int64)v53, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)v52, (__int64)v52, (__int64)v53, 0, 0x10001u, 0,
-                 0x0.0p+0f, 0x1.0000000000000p+0f);
+  snd_play_ff2d0((void*)(handle), (__int64)v52, (__int64)v52, (__int64)v53, 0,
+                 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(v53);
   GameRoutine_1872af0(v6, (*(_BYTE*)(v6 + 88) & 1) == 0);
   return 0;

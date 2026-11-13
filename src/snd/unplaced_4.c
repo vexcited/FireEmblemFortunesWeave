@@ -10,8 +10,9 @@ __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 snd_Voice_getBufferLabel(_QWORD);
 __int64 snd_fnd_WeakHandle_get(__int64);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 bool snd_hasSound(__int64);
 extern __int64 fw_memory_g_heap_manager;
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -33,6 +34,7 @@ __attribute__((swiftcall)) void snd_a2fe30(PSEUDO_X8 x8_, __int64 a1,
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 a9 = (__int64)PSEUDO_X8_VALUE(x8_);
   __int64 v15;
   const char* v16;
@@ -140,8 +142,8 @@ LABEL_16:
       (*(void (**)(__int64, __int64, _QWORD, double))(
           *(_QWORD*)(v27 - 5592) + 248LL))(v27 - 5592, a8, 0, 0x0.0p+0);
     }
-    snd_play_ff2d0((__int64)"overall_ambient", (__int64)v33, a7, 0, 0x10001u, 0,
-                   0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)"overall_ambient", (__int64)v33,
+                   a7, 0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     GameRoutine_112180((__int64)a2, (__int64)v32);
     if ((snd_fnd_WeakHandle_isValid(a2) & 1) != 0) {
       v28 = snd_fnd_WeakHandle_get((__int64)a2);

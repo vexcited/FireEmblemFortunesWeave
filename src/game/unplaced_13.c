@@ -166,8 +166,10 @@ __int64 nn_os_UnlockMutex(__int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_fnd_WeakHandle_get(__int64);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
-__int64 snd_playAt_ff5f0(__int64, __int64, __int64, __int64, unsigned int,
-                         unsigned int, int, float, float);
+__attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, __int64, __int64,
+                                                 __int64, __int64, unsigned int,
+                                                 unsigned int, int, float,
+                                                 float);
 __int64 snd_startSlotVolume_100b50(int*, __int64, float);
 __int64 std___1___next_prime(unsigned __int64);
 __int64 std___1___shared_weak_count___release_weak(__int64);
@@ -1127,8 +1129,8 @@ void game_5c11f0(float a1, __int64 a2, float32x2_t* a3, float32x2_t* a4,
     *(float*)&v22 = *(float*)(v9 + 16) * LANES128(v47).n128_f32[0];
     *(_OWORD*)LANES64(*(a4)).n64_u64 = v22;
     DWORD1(v22) =
-        vmuls_lane_f32(*(float*)(v9 + 16),
-                       COERCE_AS(float32x2_t, LANES128(v47).n128_u64[0]), 1);
+        COERCE_UNSIGNED_INT(vmuls_lane_f32(*(float*)(v9 + 16),
+                       COERCE_AS(float32x2_t, LANES128(v47).n128_u64[0]), 1));
     *(_OWORD*)LANES64(*(a4)).n64_u64 = v22;
     *((_QWORD*)&v22 + 1) =
         COERCE_UNSIGNED_INT(vmuls_lane_f32(*(float*)(v9 + 16), v47, 2));
@@ -12128,6 +12130,7 @@ void game_1017cc0(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   float v1;
   __int64 v3;
   float32x4_t* v4;
@@ -12345,8 +12348,9 @@ void game_1017cc0(__int64 a1)
         }
         if (v36 != 0) {
           snd_Fade_Fade_10c830((__int64)v53_.v53, 0x0.0p+0f);
-          snd_playAt_ff5f0(v36, v36, (__int64)v51_.v51, (__int64)v53_.v53, 0,
-                           0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+          snd_playAt_ff5f0((void*)(handle), v36, v36, (__int64)v51_.v51,
+                           (__int64)v53_.v53, 0, 0x10001u, 0, 0x0.0p+0f,
+                           0x1.0000000000000p+0f);
           snd_Fade_Destroy_Fade(v53_.v53);
         }
         else {

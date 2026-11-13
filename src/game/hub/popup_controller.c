@@ -1624,10 +1624,11 @@ __int64 PopupController_d7cc30(float32x4_t* a1)
     v40 = vaddq_f32(v245, v243);
     if (*((float*)&v33 + 2) == 0x0.0p+0f) {
       *(float*)&v41 = fminf(*(float*)&v33, 0x1.e000000000000p+10f);
-      HIDWORD(v41) = fminf(*((float*)&v33 + 1), 0x1.0e00000000000p+10f);
+      HIDWORD(v41) = COERCE_UNSIGNED_INT(
+          fminf(*((float*)&v33 + 1), 0x1.0e00000000000p+10f));
       v244 = v41;
       *(float*)&v41 = fmaxf(*(float*)&v33, 0x0.0p+0f);
-      HIDWORD(v41) = fmaxf(*((float*)&v33 + 1), 0x0.0p+0f);
+      HIDWORD(v41) = COERCE_UNSIGNED_INT(fmaxf(*((float*)&v33 + 1), 0x0.0p+0f));
       v246 = v41;
     }
     else {

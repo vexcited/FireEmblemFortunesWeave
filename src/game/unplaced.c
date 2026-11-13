@@ -9123,7 +9123,7 @@ __int64 game_809dc0(__int64 a1, _QWORD* a2, long double a3)
       *(_QWORD*)&v10 = *a2;
       LANES64(v8).n64_u64[0] = a2[1];
       v9 = *((unsigned __int8*)v7 + 24);
-      LANES64(v8).n64_u32[1] = vmuls_lane_f32(0x0.0p+0f, v8, 1);
+      LANES64(v8).n64_f32[1] = vmuls_lane_f32(0x0.0p+0f, v8, 1);
       *((float32x2_t*)&v10 + 1) = v8;
       v21 = v10;
       if (v9 == 1) {

@@ -68,9 +68,10 @@ __int64 GameRoutine_112180_alt1(__int64, __int64) __asm__("GameRoutine_112180");
 __int64 GameRoutine_60a020_alt1(__int64, __int64) __asm__("GameRoutine_60a020");
 __int64
 snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
-__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
-                              unsigned int, int, float,
-                              float) __asm__("snd_playAt_ff5f0");
+__attribute__((swiftcall)) void
+snd_playAt_ff5f0_alt1(PSEUDO_X8, __int64, __int64, __int64, __int64,
+                      unsigned int, unsigned int, int, float,
+                      float) __asm__("snd_playAt_ff5f0");
 __int64 snd_stop_ffc40(__int64*, __int64);
 __int64 strcmp(_QWORD, _QWORD);
 extern __int64* GameData_212d1e0[2];
@@ -83,9 +84,9 @@ __attribute__((swiftcall)) void
 __int64 GameRoutine_60a020_alt2(__int64,
                                 const char*) __asm__("GameRoutine_60a020");
 __int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
@@ -372,6 +373,7 @@ __int64 GmapSound_15309d0(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   char* v2;
   __int64 v3;
   __int64 v4;
@@ -405,8 +407,8 @@ __int64 GmapSound_15309d0(__int64 a1)
   }
   if (v4 != 0) {
     snd_Fade_Fade_10c830_alt1((__int64)v8, 0x0.0p+0f);
-    snd_play_ff2d0_alt1(v4, v4, (__int64)v8, 0, 0x10001u, 0, 0x0.0p+0f,
-                        0x1.0000000000000p+0f);
+    snd_play_ff2d0_alt1((void*)(handle), v4, v4, (__int64)v8, 0, 0x10001u, 0,
+                        0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v8);
   }
   else {
@@ -418,6 +420,7 @@ __int64 GmapSound_15309d0(__int64 a1)
 
 __int64 GmapSound_1530b00(__int64 result, __int64 a2)
 {
+  _QWORD handle[2];
   __int64 v3;
   char* v4;
   char v5;
@@ -466,8 +469,9 @@ __int64 GmapSound_1530b00(__int64 result, __int64 a2)
         v11_.v12 = v8[1];
         v11_.v11[0] = GameData_212d1e0[0] + 2;
         snd_Fade_Fade_10c830_alt1((__int64)v13, 0x0.0p+0f);
-        snd_playAt_ff5f0_alt1(v7, v7, (__int64)v11_.v11, (__int64)v13, 0,
-                              0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+        snd_playAt_ff5f0_alt1((void*)(handle), v7, v7, (__int64)v11_.v11,
+                              (__int64)v13, 0, 0x10001u, 0, 0x0.0p+0f,
+                              0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade_alt1(v13);
       }
       else {
@@ -577,6 +581,7 @@ __int64 GmapSound_1530ef0(__int64 a1, __int64 a2)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v4;
   __int128 v5;
   __int64 v6;
@@ -614,8 +619,9 @@ __int64 GmapSound_1530ef0(__int64 a1, __int64 a2)
   v12_.v12[0] = snd_Vec3_vtable;
   if (v8 != 0) {
     snd_Fade_Fade_10c830_alt1((__int64)v14, 0x0.0p+0f);
-    snd_playAt_ff5f0_alt1(v8, v8, (__int64)v12_.v12, (__int64)v14, 0, 0x10001u,
-                          0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_playAt_ff5f0_alt1((void*)(handle), v8, v8, (__int64)v12_.v12,
+                          (__int64)v14, 0, 0x10001u, 0, 0x0.0p+0f,
+                          0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v14);
   }
   else {
@@ -656,6 +662,7 @@ __int64 GmapSound_1531110(__int64 a1, __int64 a2)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   char v2;
   char* v5;
   __int64 v6;
@@ -705,8 +712,9 @@ __int64 GmapSound_1531110(__int64 a1, __int64 a2)
   v14_.v14[0] = snd_Vec3_vtable;
   if (v10 != 0) {
     snd_Fade_Fade_10c830_alt1((__int64)v16, 0x0.0p+0f);
-    snd_playAt_ff5f0_alt1(v10, v10, (__int64)v14_.v14, (__int64)v16, 0,
-                          0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_playAt_ff5f0_alt1((void*)(handle), v10, v10, (__int64)v14_.v14,
+                          (__int64)v16, 0, 0x10001u, 0, 0x0.0p+0f,
+                          0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v16);
   }
   else {

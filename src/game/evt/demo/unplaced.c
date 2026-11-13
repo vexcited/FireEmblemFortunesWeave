@@ -8021,7 +8021,7 @@ __int64 game_evt_demo_115cda0(__int64 a1, double a2, double a3, long double a4)
     else {
       v23 = v22;
     }
-    LODWORD(a4) = strtof(v23, &v25);
+    LODWORD(a4) = COERCE_UNSIGNED_INT(strtof(v23, &v25));
     if (*v25 != 0) {
       if (*v25 == 102) {
         if (*((_BYTE*)((_UNKNOWN*)0x0LL) + (_QWORD)v25) != 0) {
@@ -8111,7 +8111,7 @@ __int64 game_evt_demo_115d0b0(__int64 a1, double a2, long double a3)
     else {
       v16 = v15;
     }
-    LODWORD(a3) = strtof(v16, &v18);
+    LODWORD(a3) = COERCE_UNSIGNED_INT(strtof(v16, &v18));
     if (*v18 != 0) {
       if (*v18 == 102) {
         if (*((_BYTE*)((_UNKNOWN*)0x0LL) + (_QWORD)v18) != 0) {
@@ -8236,7 +8236,7 @@ __int64 game_evt_demo_115db10(__int64 a1, double a2, double a3, long double a4)
     else {
       v23 = v22;
     }
-    LODWORD(a4) = strtof(v23, &v25);
+    LODWORD(a4) = COERCE_UNSIGNED_INT(strtof(v23, &v25));
     if (*v25 != 0) {
       if (*v25 == 102) {
         if (*((_BYTE*)((_UNKNOWN*)0x0LL) + (_QWORD)v25) != 0) {

@@ -2552,8 +2552,8 @@ void MapPanelDanger_Unknown4(_QWORD* a1)
   v99_.v103 = 1;
   v36 = vmulq_f32(v32, v34);
   v37 = vmulq_f32(v32, v35);
-  LANES128(v37).n128_u32[3] = vmuls_lane_f32(v13, v37, 3);
-  LANES128(v36).n128_u32[3] = vmuls_lane_f32(v13, v36, 3);
+  LANES128(v37).n128_f32[3] = vmuls_lane_f32(v13, v37, 3);
+  LANES128(v36).n128_f32[3] = vmuls_lane_f32(v13, v36, 3);
   v99_.v100 = v37;
   v99_.v101 = v36;
   v38 = *(int8x16_t**)(v33 + 24);
@@ -2636,8 +2636,8 @@ void MapPanelDanger_Unknown4(_QWORD* a1)
   v99_.v103 = 1;
   v56 = vmulq_f32(v52, v54);
   v57 = vmulq_f32(v52, v55);
-  LANES128(v57).n128_u32[3] = vmuls_lane_f32(v13, v57, 3);
-  LANES128(v56).n128_u32[3] = vmuls_lane_f32(v13, v56, 3);
+  LANES128(v57).n128_f32[3] = vmuls_lane_f32(v13, v57, 3);
+  LANES128(v56).n128_f32[3] = vmuls_lane_f32(v13, v56, 3);
   v99_.v100 = v57;
   v99_.v101 = v56;
   v58 = v53[3];

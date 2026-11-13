@@ -1629,7 +1629,8 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
                   0x1.3bd3ca0000000p-1f) +
           0x1.0000000000000p+0f));
     LANES128(v34).n128_u64[0] = 0;
-    LANES128(v34).n128_u64[1] = __PAIR64__(-0x1.0000000000000p+0f, v42);
+    LANES128(v34).n128_u64[1] =
+        __PAIR64__(COERCE_UNSIGNED_INT(-0x1.0000000000000p+0f), v42);
   }
   v44 = *(_DWORD*)(a3 + 16);
   v45 = *(_DWORD*)(a3 + 20) / 2;

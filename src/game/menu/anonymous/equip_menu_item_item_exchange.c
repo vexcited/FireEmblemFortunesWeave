@@ -69,9 +69,9 @@ __int64 game_IsVibrationEnabled_alt1(_BYTE*) __asm__("game_IsVibrationEnabled");
 __int64 game_menu_BasicMenu_Unknown16dd9a0_alt1(__int64 result) __asm__(
     "game_menu_BasicMenu_Unknown16dd9a0");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
@@ -155,6 +155,7 @@ __int64 EquipMenuItem_ItemExchange_Unknown5(__int64 a1)
 
 __int64 game_menu_anonymous_EquipMenuItem_ItemExchange_ACall(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64* v2;
   __int64* v3;
@@ -287,7 +288,7 @@ __int64 game_menu_anonymous_EquipMenuItem_ItemExchange_ACall(__int64 a1)
       v13 = *(_QWORD*)(*(_QWORD*)(v11 + 1056) +
                        8LL * (*(_DWORD*)(v11 + 1064) == 0) + 304);
       snd_Fade_Fade_10c830_alt1((__int64)v96_.v96, 0x0.0p+0f);
-      snd_play_ff2d0_alt1((__int64)"SE_SYS_Decide_L_Next",
+      snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Decide_L_Next",
                           (__int64)"SE_SYS_Decide_L_Next", (__int64)v96_.v96, 0,
                           0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade_alt1(v96_.v96);

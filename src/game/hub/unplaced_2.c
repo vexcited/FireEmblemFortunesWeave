@@ -152,8 +152,9 @@ __int64 nn_os_UnlockMutex(_QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_fnd_WeakHandle_get(__int64);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 sprintf(_QWORD, const char*, ...);
 __int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
     "std___1___shared_weak_count___release_weak");
@@ -9704,7 +9705,7 @@ LABEL_12:
     v13 = vsubq_f32(
         *(float32x4_t*)(*(_QWORD*)(*(_QWORD*)(v12 + 24) + 16LL) + 560LL),
         *(float32x4_t*)&v59);
-    LANES128(v13).n128_u32[1] =
+    LANES128(v13).n128_f32[1] =
         vmuls_lane_f32(0x1.0000000000000p+2f,
                        COERCE_AS(float32x2_t, LANES128(v13).n128_u64[0]), 1);
     v14 = vmulq_f32(v13, v13);
@@ -11038,6 +11039,7 @@ LABEL_52:
 
 void game_hub_1001800(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v1;
   _DWORD* v3;
   __int128 v4;
@@ -11073,8 +11075,8 @@ void game_hub_1001800(__int64 a1)
         *(_QWORD*)fw_memory_g_heap_manager_ptr, 32, 16, 0);
     strcpy(v9, "SE_EVT_SecondObelisk_Appear");
     snd_Fade_Fade_10c830((__int64)v12, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)v9, (__int64)v9, (__int64)v12, 0, 0x10001u, 0,
-                   0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v9, (__int64)v9, (__int64)v12, 0,
+                   0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v12);
     GameRoutine_112180(a1 + 280, (__int64)&v11);
     v10 = 128;

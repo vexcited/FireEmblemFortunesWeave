@@ -80,10 +80,11 @@ extern __int64* game_g_empty_item_ptr;
 extern __int64 GameData_21f4018[];
 extern __int64 game_GameModeData_instance_;
 extern char GameData_1a9f09e;
-struct PseudoSret GameRoutine_15b71b0(_QWORD, _QWORD);
-struct PseudoSret GameRoutine_15d4100(_QWORD, _QWORD);
-struct PseudoSret GameRoutine_15d4240(_QWORD, _QWORD);
-struct PseudoSret LayoutAccessor_1560070(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15b71b0(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15d4100(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15d4240(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, _QWORD,
+                                                       _QWORD);
 __n128 game_menu_anonymous_ProcScountInfo_OnInit(__int64* a1);
 
 __n128 game_menu_anonymous_ProcScountInfo_OnInit(__int64* a1)
@@ -264,8 +265,8 @@ __n128 game_menu_anonymous_ProcScountInfo_OnInit(__int64* a1)
 
   v1 = a1 + 106;
   *((_BYTE*)a1 + 361) = 1;
-  *(struct PseudoSret*)(&v158) =
-      LayoutAccessor_1560070(a1 + 106, "L_UnitInfo/L_UnitInfoDetail");
+  LayoutAccessor_1560070((void*)(&v158), a1 + 106,
+                         "L_UnitInfo/L_UnitInfoDetail");
   if (v159 != 0) {
     v3 = std___1___shared_weak_count_lock(v159);
     v5 = v158;
@@ -306,8 +307,7 @@ __n128 game_menu_anonymous_ProcScountInfo_OnInit(__int64* a1)
     }
   }
 LABEL_20:
-  *(struct PseudoSret*)(&v149) =
-      LayoutAccessor_1560070(v1, "L_UnitInfo/L_BattleStatus");
+  LayoutAccessor_1560070((void*)(&v149), v1, "L_UnitInfo/L_BattleStatus");
   if (v150 != 0) {
     v13 = a1[133];
     v14 = std___1___shared_weak_count_lock(v150);
@@ -335,8 +335,7 @@ LABEL_20:
       ((v17 = *(_QWORD*)(a1[133] + 440)) == 0 ? (v18 = 9)
                                               : (v18 = *(_BYTE*)(v17 + 16)),
        ((1 << v18) & 0xF1) != 0)) {
-    *(struct PseudoSret*)(&v147) =
-        LayoutAccessor_1560070(v1, "L_UnitInfo/L_BasicStatus");
+    LayoutAccessor_1560070((void*)(&v147), v1, "L_UnitInfo/L_BasicStatus");
     if (v148 != 0) {
       v19 = a1[133];
       v20 = std___1___shared_weak_count_lock(v148);
@@ -360,7 +359,7 @@ LABEL_20:
   else {
     v22 = "CannotScout";
   }
-  *(struct PseudoSret*)(&v158) = LayoutAccessor_1560070(v1, "L_UnitInfo");
+  LayoutAccessor_1560070((void*)(&v158), v1, "L_UnitInfo");
   if (v159 != 0) {
     v23 = std___1___shared_weak_count_lock(v159);
     v25 = v158;
@@ -415,7 +414,7 @@ LABEL_51:
 LABEL_62:
   *((_DWORD*)a1 + 268) = v32;
   *(__int64*)((char*)a1 + 1076) = 0;
-  *(struct PseudoSret*)(&v145) = LayoutAccessor_1560070(v1, "L_List/L_PageTab");
+  LayoutAccessor_1560070((void*)(&v145), v1, "L_List/L_PageTab");
   v158 = (__int64*)GameData_20a1518;
   v33 = *a1;
   v162 = &v158;
@@ -516,7 +515,7 @@ LABEL_79:
 LABEL_99:
   v156 = "L_List/L_Item";
   v157 = 13;
-  *(struct PseudoSret*)(&v158) = GameRoutine_15d4240(v1, &v156);
+  GameRoutine_15d4240((void*)(&v158), v1, &v156);
   if (v159 != 0) {
     v51 = std___1___shared_weak_count_lock(v159);
     v53 = v158;
@@ -567,7 +566,7 @@ LABEL_99:
     }
   }
 LABEL_115:
-  *(struct PseudoSret*)(&v143) = LayoutAccessor_1560070(v1, "L_List/L_Mastery");
+  LayoutAccessor_1560070((void*)(&v143), v1, "L_List/L_Mastery");
   if (v144 != 0) {
     v59 = a1[133];
     v60 = std___1___shared_weak_count_lock(v144);
@@ -591,7 +590,7 @@ LABEL_115:
       *(_BYTE*)(*(_QWORD*)(v62 + 400) + 96LL) != 1 ||
       ui_LayoutAccessor_FindPane(v1, "L_List/L_Legion") == 0 ||
       (v156 = "L_List/L_Legion", v157 = 15,
-       (*(struct PseudoSret*)(&v158) = GameRoutine_15d4100(v1, &v156),
+       (GameRoutine_15d4100((void*)(&v158), v1, &v156),
         (void*)(&v158)),
        v159 == 0)) {
   LABEL_138:
@@ -618,7 +617,7 @@ LABEL_115:
     }
     v156 = "L_List/L_Animal";
     v157 = 15;
-    *(struct PseudoSret*)(&v158) = GameRoutine_15d4100(v1, &v156);
+    GameRoutine_15d4100((void*)(&v158), v1, &v156);
     if (v159 == 0) {
       goto LABEL_185;
     }
@@ -779,7 +778,7 @@ LABEL_185:
   v87 = *v1;
   v88 = v86;
   if (*v1 != 0) {
-    *(struct PseudoSret*)(&v158) = GameRoutine_15b71b0(*v1, &v156);
+    GameRoutine_15b71b0((void*)(&v158), *v1, &v156);
   }
   if (atomic_fetch_add((atomic_ullong* volatile)(v88 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -805,7 +804,7 @@ LABEL_192:
       v91 = *v1;
       v92 = v90;
       if (*v1 != 0) {
-        *(struct PseudoSret*)(&v156) = GameRoutine_15b71b0(*v1, &v154);
+        GameRoutine_15b71b0((void*)(&v156), *v1, &v154);
       }
       if (atomic_fetch_add((atomic_ullong* volatile)(v92 + 8),
                            0xFFFFFFFFFFFFFFFFLL) != 0) {
@@ -1017,7 +1016,7 @@ LABEL_270:
   v121 = *v1;
   v122 = v120;
   if (*v1 != 0) {
-    *(struct PseudoSret*)(&v154) = GameRoutine_15b71b0(*v1, &v152);
+    GameRoutine_15b71b0((void*)(&v154), *v1, &v152);
   }
   if (atomic_fetch_add((atomic_ullong* volatile)(v122 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -1084,7 +1083,7 @@ LABEL_285:
   v129 = *v1;
   v130 = v128;
   if (*v1 != 0) {
-    *(struct PseudoSret*)(&v152) = GameRoutine_15b71b0(*v1, v151);
+    GameRoutine_15b71b0((void*)(&v152), *v1, v151);
   }
   if (atomic_fetch_add((atomic_ullong* volatile)(v130 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {

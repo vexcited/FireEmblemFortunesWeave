@@ -7080,7 +7080,7 @@ void GameHr_591940(_BYTE* a1, __int64 a2)
     v22_.v22 = 0;
     (*(void (**)(__int64, __int64*))(*(_QWORD*)v18 + 96LL))(v18, &v22_.v22),
         v19 = COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s1", "=w"));
-    v25[0] = Pane_592dd0((__int64*)a1, (float*)&v22_.v22),
+    v25[0] = COERCE_UNSIGNED_INT(Pane_592dd0((__int64*)a1, (float*)&v22_.v22)),
     v19 = COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s1", "=w"));
     v25[1] = v19;
     DynamicRenderingTexture_576260((char*)a2, v7, v25, &v22_.v22, 1,

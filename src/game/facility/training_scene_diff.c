@@ -56,8 +56,6 @@ __int64 GameRoutine_60a020_alt1(__int64,
 __int64 SceneManager_138a920(__int64, __int64);
 __int64 SceneManager_138c000_alt1(_QWORD*, unsigned __int8*, __int64,
                                   __int64) __asm__("SceneManager_138c000");
-__int64 TrainingArgs_14261c0_alt1(__int64, __int64,
-                                  int) __asm__("TrainingArgs_14261c0");
 __int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
 char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
 unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
@@ -490,7 +488,7 @@ void TrainingSceneDiff_14299d0(__int64 a1, unsigned int a2, const char* a3)
   v17 = 20;
   strcpy(v19_.v19, "_D");
   v18 = 0x335FAC9CE6BA9FE5LL;
-  TrainingArgs_14261c0_alt1(a1, v3, a2);
+  TrainingArgs_14261c0((void*)(&v13_), a1, v3, a2);
   v16[0] = v13_.v13;
   v16[1] = v13_.v14;
   GameRoutine_60a020_alt1((__int64)&v17, a3);

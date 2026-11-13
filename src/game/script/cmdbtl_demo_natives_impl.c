@@ -37,8 +37,9 @@ extern __int64 game_g_frame_clock;
 extern __int64* GameData_212dec0[4];
 extern __int64* GameData_212ea58;
 extern __int64* game_g_frame_clock_ptr[3];
-struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
 __int64 CmdbtlDemoNatives_f636a0(__int64 result);
 __int64 CmdbtlDemoNatives_f63940(__int64 a1);
 __int64 CmdbtlDemoNatives_f63a30(__int64 a1);
@@ -253,9 +254,8 @@ __int64 CmdbtlDemoNatives_f63a30(__int64 a1)
   _BYTE v4[200];
 
   snd_Fade_Fade_10c830(v4, 0.0f);
-  *(struct PseudoSret*)(v3) =
-      snd_play_ff2d0("SE_SYS_HPGauge_Up_lp", "SE_SYS_HPGauge_Up_lp", v4, 0,
-                     65537, 0, 0.0f, 1.0f);
+  snd_play_ff2d0((void*)(v3), "SE_SYS_HPGauge_Up_lp", "SE_SYS_HPGauge_Up_lp",
+                 v4, 0, 65537, 0, 0.0f, 1.0f);
   snd_Fade_Destroy_Fade(v4);
   result = GameRoutine_112180(a1 + 168, v3);
   *(_BYTE*)(a1 + 156) = 1;

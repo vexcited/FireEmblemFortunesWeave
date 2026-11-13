@@ -87,10 +87,13 @@ __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 nn_os_LockMutex(__int64);
 __int64 nn_os_UnlockMutex(__int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_playAt_ff5f0(__int64, __int64, __int64, __int64, unsigned int,
-                         unsigned int, int, float, float);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, __int64, __int64,
+                                                 __int64, __int64, unsigned int,
+                                                 unsigned int, int, float,
+                                                 float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___next_prime(unsigned __int64);
 __int64 std___1___shared_weak_count___release_weak(__int64);
 __int64 std___1___shared_weak_count_lock(__int64);
@@ -4050,6 +4053,7 @@ LABEL_69:
 
 __int64 game_gmap_1520a70(__int64 a1)
 {
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -4109,14 +4113,14 @@ __int64 game_gmap_1520a70(__int64 a1)
       v30_.v32 = DWORD2(v14);
       v30_.v30 = GameData_212d1e0[0] + 2;
       snd_Fade_Fade_10c830((__int64)v33, 0x0.0p+0f);
-      snd_playAt_ff5f0((__int64)"SE_SYS_GMAP_GoalPin_NG",
+      snd_playAt_ff5f0((void*)(handle), (__int64)"SE_SYS_GMAP_GoalPin_NG",
                        (__int64)"SE_SYS_GMAP_GoalPin_NG", (__int64)&v30_.v30,
                        (__int64)v33, 0, 0x10001u, 0, 0x0.0p+0f,
                        0x1.0000000000000p+0f);
     }
     else {
       snd_Fade_Fade_10c830((__int64)v33, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"SE_SYS_GMAP_GoalPin_NG",
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_GMAP_GoalPin_NG",
                      (__int64)"SE_SYS_GMAP_GoalPin_NG", (__int64)v33, 0,
                      0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     }
@@ -4236,14 +4240,14 @@ LABEL_32:
     v30_.v32 = DWORD2(v29);
     v30_.v30 = GameData_212d1e0[0] + 2;
     snd_Fade_Fade_10c830((__int64)v33, 0x0.0p+0f);
-    snd_playAt_ff5f0((__int64)"SE_SYS_GMAP_GoalPin_Set",
+    snd_playAt_ff5f0((void*)(handle), (__int64)"SE_SYS_GMAP_GoalPin_Set",
                      (__int64)"SE_SYS_GMAP_GoalPin_Set", (__int64)&v30_.v30,
                      (__int64)v33, 0, 0x10001u, 0, 0x0.0p+0f,
                      0x1.0000000000000p+0f);
   }
   else {
     snd_Fade_Fade_10c830((__int64)v33, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_GMAP_GoalPin_Set",
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_GMAP_GoalPin_Set",
                    (__int64)"SE_SYS_GMAP_GoalPin_Set", (__int64)v33, 0,
                    0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   }

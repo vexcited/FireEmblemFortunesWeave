@@ -142,9 +142,9 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
 __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 ui_LayoutAccessor_FindTextBox_alt2(__int64*, const char*) __asm__(
     "ui_LayoutAccessor_FindTextBox");
 __int64 ui_LayoutAccessor_SetPaneVisible_alt2(
@@ -164,6 +164,7 @@ __int64 ProcDeliveryAnimalMenu_171e560(__int64 a1);
 
 __int64 ProcDeliveryAnimalMenu_Unknown57(__int64 a1, __int64* a2)
 {
+  _QWORD handle[2];
   __int64 v4;
   __int64 v5;
   unsigned __int64 v6;
@@ -320,7 +321,7 @@ LABEL_35:
 LABEL_39:
   a2[1] = v23;
   snd_Fade_Fade_10c830_alt1((__int64)v34, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Window_Open",
                       (__int64)"SE_SYS_Window_Open", (__int64)v34, 0, 0x10001u,
                       0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   return snd_Fade_Destroy_Fade_alt1(v34);

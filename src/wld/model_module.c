@@ -724,7 +724,8 @@ LABEL_8:
       v36 = v17;
       v37 = v34;
       LANES128(v35).n128_u64[0] =
-          __PAIR64__(v33 * 0x1.1df46a0000000p-6f, v32 * 0x1.1df46a0000000p-6f);
+          __PAIR64__(COERCE_UNSIGNED_INT(v33 * 0x1.1df46a0000000p-6f),
+                     COERCE_UNSIGNED_INT(v32 * 0x1.1df46a0000000p-6f));
       LANES128(v35).n128_u64[1] = LANES128(v30).n128_u32[0];
       v38 = v35;
       InstanceModel_19862d0(v31, v28++, &v36, &v38, &v37, v30);

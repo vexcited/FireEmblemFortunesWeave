@@ -14,7 +14,7 @@ __int64 std___1___shared_weak_count_lock(_QWORD);
 extern _UNKNOWN* GameData_212c8a8;
 extern __int64 GameData_204fdb0;
 extern __int64* GameData_21319e8[10];
-struct PseudoSret GameRoutine_1560070(_QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 SkillUnitMenu_Unknown88(__int64 a1);
 __int64 SkillUnitMenu_Unknown90(_QWORD* a1);
 __int64 SkillUnitMenu_Unknown139(__int64 a1);
@@ -284,8 +284,7 @@ __int64 SkillUnitMenu_Unknown88(__int64 a1)
   v2 = result;
   if (*(_QWORD*)(v13 + 88) != 0) {
     v3 = *(_DWORD*)(v13 + 112);
-    *(struct PseudoSret*)(&v16) =
-        GameRoutine_1560070(result + 200, "L_InfoDetail");
+    GameRoutine_1560070((void*)(&v16), result + 200, "L_InfoDetail");
     result = v17;
     if (v17 == 0) {
       return result;
@@ -310,8 +309,7 @@ __int64 SkillUnitMenu_Unknown88(__int64 a1)
     }
     return std___1___shared_weak_count___release_weak(result);
   }
-  *(struct PseudoSret*)(&v14) =
-      GameRoutine_1560070(result + 200, "L_InfoDetail");
+  GameRoutine_1560070((void*)(&v14), result + 200, "L_InfoDetail");
   result = v15;
   if (v15 != 0) {
     v8 = *(unsigned __int8*)(v2 + 376);

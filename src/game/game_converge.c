@@ -67,8 +67,10 @@ extern __int64 game_GameModeData_instance_;
 extern __int64* GameData_212c780;
 extern char GameData_1a9f09e;
 extern int GameData_21d8810;
-struct PseudoSret GameRoutine_936f60(_QWORD, _QWORD, _QWORD);
-struct PseudoSret GameRoutine_93c6a0(_QWORD, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_936f60(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
+__attribute__((swiftcall)) void GameRoutine_93c6a0(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_64aa00(_QWORD);
@@ -4338,9 +4340,10 @@ game_GameConverge_Impl_RouteInfo_ResetReceived_closure_Invoke_8f1450(__int64 a1,
 {
   __int64 v3;
 
-  return (*(struct PseudoSret*)(&v3) = GameRoutine_93c6a0(
-              *(_QWORD*)(*(_QWORD*)(a1 + 8) + 96LL), a2, 0, 1),
-          (void*)(&v3));
+  return X8CALL_X0(_QWORD*,
+                   GameRoutine_93c6a0((void*)(&v3),
+                                      *(_QWORD*)(*(_QWORD*)(a1 + 8) + 96LL), a2,
+                                      0, 1));
 }
 
 _QWORD*
@@ -4350,9 +4353,9 @@ game_GameConverge_Impl_RouteInfo_ResetReceived_closure_Invoke_8f1580(__int64 a1,
 {
   __int64 v3;
 
-  return (*(struct PseudoSret*)(&v3) =
-              GameRoutine_936f60(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 112LL), a2, 0),
-          (void*)(&v3));
+  return X8CALL_X0(_QWORD*, GameRoutine_936f60(
+                                (void*)(&v3),
+                                *(_QWORD*)(*(_QWORD*)(a1 + 8) + 112LL), a2, 0));
 }
 
 __int64 game_GameConverge_Impl_CommitStartBind_closure_Invoke_8f16a0(__int64 a1,

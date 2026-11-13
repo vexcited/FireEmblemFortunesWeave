@@ -16,7 +16,7 @@ extern __int64 GameData_212dc38[7];
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212eba8[8];
 extern __int64* GameData_212edb0[9];
-struct PseudoSret GameRoutine_d31ee0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_d31ee0(PSEUDO_X8, _QWORD);
 _QWORD* CameraStateCircleHub_Unknown2(__int64 a1);
 __int64 GameRoutine_1a09ce0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_60a020(_QWORD, _QWORD);
@@ -67,13 +67,15 @@ _QWORD* CameraStateCircleHub_Unknown2(__int64 a1)
   __int64 v23;
   __int64 v24;
   __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  int v32;
+  struct {
+    __int64 v26;
+    __int64 v27;
+    __int64 v28;
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+    int v32;
+  } v26_;
 
   v2 = (__int64*)GameData_212dc38[0];
   GameRoutine_a7fda0(a1 + 80, *(_QWORD*)GameData_212dc38[0] + 16LL);
@@ -146,31 +148,31 @@ _QWORD* CameraStateCircleHub_Unknown2(__int64 a1)
   if (*(_DWORD*)(a1 + 992) != v18) {
     *(_DWORD*)(a1 + 992) = v18;
     *(_QWORD*)(a1 + 1100) = 0;
-    *(struct PseudoSret*)(&v26) = GameRoutine_d31ee0(a1);
-    v19 = v31;
-    *(_QWORD*)(a1 + 1028) = v30;
+    GameRoutine_d31ee0((void*)(&v26_.v26), a1);
+    v19 = v26_.v31;
+    *(_QWORD*)(a1 + 1028) = v26_.v30;
     *(_QWORD*)(a1 + 1036) = v19;
-    v20 = v27;
-    *(_DWORD*)(a1 + 1044) = v32;
-    *(_QWORD*)(a1 + 996) = v26;
+    v20 = v26_.v27;
+    *(_DWORD*)(a1 + 1044) = v26_.v32;
+    *(_QWORD*)(a1 + 996) = v26_.v26;
     *(_QWORD*)(a1 + 1004) = v20;
-    v21 = v29;
-    *(_QWORD*)(a1 + 1012) = v28;
+    v21 = v26_.v29;
+    *(_QWORD*)(a1 + 1012) = v26_.v28;
     *(_QWORD*)(a1 + 1020) = v21;
     result =
-        (*(struct PseudoSret*)(&v26) = GameRoutine_d31ee0(a1), (void*)(&v26));
-    v22 = v31;
-    v23 = v28;
-    *(_QWORD*)(a1 + 1072) = v29;
-    v24 = v30;
+        (GameRoutine_d31ee0((void*)(&v26_.v26), a1), (void*)(&v26_.v26));
+    v22 = v26_.v31;
+    v23 = v26_.v28;
+    *(_QWORD*)(a1 + 1072) = v26_.v29;
+    v24 = v26_.v30;
     *(_QWORD*)(a1 + 1088) = v22;
-    v25 = v27;
+    v25 = v26_.v27;
     *(_QWORD*)(a1 + 1064) = v23;
     *(_QWORD*)(a1 + 1080) = v24;
-    LODWORD(v24) = v32;
+    LODWORD(v24) = v26_.v32;
     *(_QWORD*)(a1 + 1056) = v25;
     *(_DWORD*)(a1 + 1096) = v24;
-    *(_QWORD*)(a1 + 1048) = v26;
+    *(_QWORD*)(a1 + 1048) = v26_.v26;
     *(_BYTE*)(*(_QWORD*)v17 + 720LL) = v18;
   }
   if (atomic_fetch_add(v14, 0xFFFFFFFFFFFFFFFFLL) == 0) {

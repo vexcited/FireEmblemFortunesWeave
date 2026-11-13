@@ -923,16 +923,16 @@ void FloatingHelp_18a55a0(__int64 a1, float a2)
                              PSEUDO_REGISTER(__n128, "v0", "=w"));
         }
         v10_.v10 = __PAIR64__(
-            (float)(*(float*)(a1 + 1068) +
+            COERCE_UNSIGNED_INT((float)(*(float*)(a1 + 1068) +
                     (float)((float)(v9 * (float)(*(float*)(a1 + 1084) -
                                                  *(float*)(a1 + 1068))) *
                             0x1.0000000000000p-2f)) +
-                0x0.0p+0f,
-            (float)(*(float*)(a1 + 1064) +
+                0x0.0p+0f),
+            COERCE_UNSIGNED_INT((float)(*(float*)(a1 + 1064) +
                     (float)((float)(v9 * (float)(*(float*)(a1 + 1080) -
                                                  *(float*)(a1 + 1064))) *
                             0x1.0000000000000p-2f)) +
-                0x0.0p+0f);
+                0x0.0p+0f));
         *(float*)&v5 = ui_LayoutAccessor_SetTranslate(v6, (__int64)&v10_.v10),
         v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
       }

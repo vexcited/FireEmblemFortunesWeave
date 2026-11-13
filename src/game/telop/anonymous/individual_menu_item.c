@@ -101,9 +101,9 @@ GameRoutine_1114920_alt2(PSEUDO_X8, __int64*,
                          _QWORD*) __asm__("GameRoutine_1114920");
 __int64 GameHr_174dbb0(__int64, int);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 unsigned __int64 BlnPopup_19f25b0_alt1(__int64*) __asm__("BlnPopup_19f25b0");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 void IndividualMenuItem_Destructor_1756c80(__int64 a1);
@@ -769,6 +769,7 @@ void IndividualMenuItem_1758480(__int64 a1, int a2)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v3;
   __int64 v5;
   __int64* v6;
@@ -926,9 +927,9 @@ LABEL_20:
   }
 LABEL_34:
   snd_Fade_Fade_10c830_alt1((__int64)&v58_.v58, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_EXP", (__int64)"SE_SYS_EXP",
-                      (__int64)&v58_.v58, 0, 0x10001u, 0, 0x0.0p+0f,
-                      0x1.0000000000000p+0f);
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_EXP",
+                      (__int64)"SE_SYS_EXP", (__int64)&v58_.v58, 0, 0x10001u, 0,
+                      0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade_alt1(&v58_.v58);
   if (v9 < v16) {
     v21 = *(_QWORD*)(a1 + 56);
@@ -996,7 +997,7 @@ LABEL_34:
           LABEL_58:
             *(_BYTE*)(a1 + 92) = 1;
             snd_Fade_Fade_10c830_alt1((__int64)&v58_.v58, 0x0.0p+0f);
-            snd_play_ff2d0_alt1((__int64)"SE_SYS_Level_Up",
+            snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Level_Up",
                                 (__int64)"SE_SYS_Level_Up", (__int64)&v58_.v58,
                                 0, 0x10001u, 0, 0x0.0p+0f,
                                 0x1.0000000000000p+0f);

@@ -74,9 +74,9 @@ __int64
 snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
 __int64
 snd_fnd_WeakHandle_reset_alt1(__int64) __asm__("snd_fnd_WeakHandle_reset");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 snd_startSurroundPan(__int64*, __int64, float);
 __int64 snd_startVolume_ffe30(_QWORD, _QWORD, float);
 __int64 snd_startVolume_ffe30_alt1(__int64*, __int64,
@@ -2926,6 +2926,7 @@ __int64 Camera_7c23c0(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 result;
   __int64 v3;
   __int64 v4;
@@ -2944,7 +2945,7 @@ __int64 Camera_7c23c0(__int64 a1)
     }
     v5 = (*(float (**)(__int64))(*(_QWORD*)(v4 + 40) + 64LL))(v4 + 40);
     snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)"SE_SYS_Zoom_Stop",
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Zoom_Stop",
                         (__int64)"SE_SYS_Zoom_Stop", (__int64)v7, 0, 0x10001u,
                         0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(v7);

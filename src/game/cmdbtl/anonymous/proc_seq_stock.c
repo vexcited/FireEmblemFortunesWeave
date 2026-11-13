@@ -42,8 +42,9 @@ __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
@@ -95,6 +96,7 @@ __int64 game_cmdbtl_anonymous_ProcSeqStock_StockCamera(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v2;
   char* v3;
   __int64 v4;
@@ -146,8 +148,8 @@ __int64 game_cmdbtl_anonymous_ProcSeqStock_StockCamera(__int64 a1)
   strcpy(v3, "SE_SYS_CmdBtl_HPStockErase_Blur");
   snd_Fade_Fade_10c830((__int64)&v26_.v26, 0x0.0p+0f),
       v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s0", "=w"));
-  snd_play_ff2d0((__int64)v3, (__int64)v3, (__int64)&v26_.v26, 0, 0x10001u, 0,
-                 0x0.0p+0f, 0x1.0000000000000p+0f),
+  snd_play_ff2d0((void*)(handle), (__int64)v3, (__int64)v3, (__int64)&v26_.v26,
+                 0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f),
       v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s0", "=w"));
   snd_Fade_Destroy_Fade(&v26_.v26),
       v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s0", "=w"));

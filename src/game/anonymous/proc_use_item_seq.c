@@ -98,14 +98,15 @@ __int64 game_Unit_Recover_alt1(__int64, int) __asm__("game_Unit_Recover");
 __int64
 game_Unit_Unknown6c4610_alt1(__int64) __asm__("game_Unit_Unknown6c4610");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 bool UnitItem_8439c0_alt1(unsigned int*, _QWORD*) __asm__("UnitItem_8439c0");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 
 __int64 game_anonymous_ProcUseItemSeq_Use(__int64 result)
 {
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64 v3;
@@ -290,7 +291,7 @@ __int64 game_anonymous_ProcUseItemSeq_Use(__int64 result)
         }
         *(_QWORD*)(v3 + 272) = v16;
         snd_Fade_Fade_10c830_alt1((__int64)v64_.v64, 0x0.0p+0f);
-        snd_play_ff2d0_alt1((__int64)"SE_SYS_ItemUse_Box",
+        snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_ItemUse_Box",
                             (__int64)"SE_SYS_ItemUse_Box", (__int64)v64_.v64, 0,
                             0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
         return snd_Fade_Destroy_Fade_alt1(v64_.v64);

@@ -61,11 +61,14 @@ extern __int64 as_g_thread_info;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcGameSkipView_instance_;
 extern __int64 game_script_hub_g_frame_counter_ptr[3];
-struct PseudoSret GameRoutine_62a940(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                     _QWORD, _QWORD, _QWORD, _DWORD, _QWORD);
-struct PseudoSret Manager_629620(_QWORD, _QWORD);
-struct PseudoSret Manager_62b060(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                 _QWORD);
+__attribute__((swiftcall)) void GameRoutine_62a940(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD, _QWORD,
+                                                   _DWORD, _QWORD);
+__attribute__((swiftcall)) void Manager_629620(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void Manager_62b060(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               _QWORD);
 void GameRoutine_1a1460();
 __int64 as_607560(__int64 a1);
 __int64 as_607d20(__int64 a1);
@@ -1051,7 +1054,7 @@ as_c7a950(__attribute__((swift_indirect_result)) void* x8_, __int64 a1,
       v60 = (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(v59 + 24) + 336LL))(
           *(_QWORD*)(v59 + 24), 0);
       v61 = (*(__int64 (**)(__int64))(*(_QWORD*)v60 + 40LL))(v60);
-      *(struct PseudoSret*)(&v157) = Manager_629620(*v6, v61);
+      Manager_629620((void*)(&v157), *v6, v61);
       v23 = v158;
       v160 = v157;
       v161 = v158;
@@ -1094,9 +1097,8 @@ as_c7a950(__attribute__((swift_indirect_result)) void* x8_, __int64 a1,
                                as_g_thread_info) +
                      4384);
     v74 = (*(__int64 (**)(__int64))(*(_QWORD*)v73 + 472LL))(v73);
-    *(struct PseudoSret*)(&v157) =
-        GameRoutine_62a940(v66, v65 + 56, &v160, v67, v68, v69, v159,
-                           (unsigned int)v70, *(_DWORD*)(v74 + 2116), 2);
+    GameRoutine_62a940((void*)(&v157), v66, v65 + 56, &v160, v67, v68, v69,
+                       v159, (unsigned int)v70, *(_DWORD*)(v74 + 2116), 2);
     v55 = v157;
     v56 = v158;
     *(_QWORD*)a3 = v157;
@@ -1159,7 +1161,7 @@ as_c7a950(__attribute__((swift_indirect_result)) void* x8_, __int64 a1,
     v42 = (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(v41 + 24) + 336LL))(
         *(_QWORD*)(v41 + 24), 0);
     v43 = (*(__int64 (**)(__int64))(*(_QWORD*)v42 + 40LL))(v42);
-    *(struct PseudoSret*)(&v157) = Manager_629620(*v6, v43);
+    Manager_629620((void*)(&v157), *v6, v43);
     v38 = v158;
     v160 = v157;
     v161 = v158;
@@ -1198,8 +1200,8 @@ as_c7a950(__attribute__((swift_indirect_result)) void* x8_, __int64 a1,
                                                     72LL))(as_g_thread_info) +
                4384);
   v54 = (*(__int64 (**)(__int64))(*(_QWORD*)v53 + 472LL))(v53);
-  *(struct PseudoSret*)(&v157) = Manager_62b060(
-      v49, v48 + 56, &v160, v159, v51, *(unsigned int*)(v54 + 2116), 2);
+  Manager_62b060((void*)(&v157), v49, v48 + 56, &v160, v159, v51,
+                 *(unsigned int*)(v54 + 2116), 2);
   v55 = v157;
   v56 = v158;
   *(_QWORD*)a3 = v157;

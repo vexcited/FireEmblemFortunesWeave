@@ -200,9 +200,9 @@ __int64 Manager_136a920_alt1(__int64, __int64, int, unsigned int,
 __int64 Manager_136afb0_alt1(__int64, unsigned int,
                              _BYTE*) __asm__("Manager_136afb0");
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
@@ -404,7 +404,8 @@ __int64 ProcCalendar_Unknown3(__int64 result)
     if (v13 != 0 && v14 != 0) {
       v15 = 0;
       if ((LayoutAccessor_1563280(v14, "Wait", 0) & 1) != 0) {
-        LODWORD(v3) = LayoutAccessor_15637c0(v14, "Wait", 0);
+        LODWORD(v3) =
+            COERCE_UNSIGNED_INT(LayoutAccessor_15637c0(v14, "Wait", 0));
         v15 = 1;
       }
     }
@@ -967,6 +968,7 @@ __int64 ProcCalendar_Unknown94(__int64 a1)
 
 __int64 ProcCalendar_Unknown112(__int16* a1)
 {
+  _QWORD handle[2];
   __int64 v2;
   int v3;
   int v4;
@@ -1119,8 +1121,9 @@ LABEL_18:
       v31 = "SE_SYS_Reminder_Off";
     }
     snd_Fade_Fade_10c830_alt1((__int64)&v32_.v32, 0x0.0p+0f);
-    snd_play_ff2d0_alt1((__int64)v31, (__int64)v31, (__int64)&v32_.v32, 0,
-                        0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0_alt1((void*)(handle), (__int64)v31, (__int64)v31,
+                        (__int64)&v32_.v32, 0, 0x10001u, 0, 0x0.0p+0f,
+                        0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(&v32_.v32);
     return 13;
   }

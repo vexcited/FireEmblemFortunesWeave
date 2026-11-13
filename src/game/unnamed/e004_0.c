@@ -115,8 +115,9 @@ __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_fnd_WeakHandle_get(__int64);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 extern __int64* as_g_script_manager_ptr;
 extern __int64 as_g_thread_info;
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -5764,6 +5765,7 @@ unsigned __int64 GameHr_dea880(unsigned __int64 result, __int64* a2, __int64 a3,
 
 void GameHr_e1d870(__int64 a1)
 {
+  _QWORD handle[2];
   int v1;
   __int64 v4;
   int v5;
@@ -5782,9 +5784,9 @@ void GameHr_e1d870(__int64 a1)
   switch (v1) {
   case 1:
     snd_Fade_Fade_10c830((__int64)&v10_.v10, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Menu_Open", (__int64)"SE_SYS_Menu_Open",
-                   (__int64)&v10_.v10, 0, 0x10001u, 0, 0x0.0p+0f,
-                   0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Menu_Open",
+                   (__int64)"SE_SYS_Menu_Open", (__int64)&v10_.v10, 0, 0x10001u,
+                   0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(&v10_.v10);
     GameRoutine_1696100_alt1(a1);
     break;
@@ -5796,9 +5798,9 @@ void GameHr_e1d870(__int64 a1)
     break;
   default:
     snd_Fade_Fade_10c830((__int64)&v10_.v10, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Menu_Open", (__int64)"SE_SYS_Menu_Open",
-                   (__int64)&v10_.v10, 0, 0x10001u, 0, 0x0.0p+0f,
-                   0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Menu_Open",
+                   (__int64)"SE_SYS_Menu_Open", (__int64)&v10_.v10, 0, 0x10001u,
+                   0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(&v10_.v10);
     if (*(_DWORD*)(*(_QWORD*)GameData_212dbb8[0] + 136LL) == 1) {
       if (game_GameModeData_instance_ != 0) {
@@ -5841,6 +5843,7 @@ __int64 GameHr_e4cbb0(__int64 a1, __int64 a2)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v4;
   __int64 v5;
   struct {
@@ -5864,8 +5867,8 @@ __int64 GameHr_e4cbb0(__int64 a1, __int64 a2)
   }
   if (v5 != 0) {
     snd_Fade_Fade_10c830((__int64)v9, 0x0.0p+0f);
-    snd_play_ff2d0(v5, v5, (__int64)v9, 0, 0x10001u, 0, 0x0.0p+0f,
-                   0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), v5, v5, (__int64)v9, 0, 0x10001u, 0,
+                   0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v9);
   }
   else {

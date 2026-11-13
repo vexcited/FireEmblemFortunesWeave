@@ -266,7 +266,7 @@ extern int GameData_21675c0;
 extern int GameData_21675cc;
 extern int GameData_22030f8;
 extern int GameData_22030fc;
-struct PseudoSret GameRoutine_53c20(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_53c20(PSEUDO_X8, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_b32f30(_QWORD);
 void __attribute__((noreturn)) GameRoutine_b32f50(void);
@@ -11879,7 +11879,7 @@ __int64 TaskPassNodes_bbc570(__int64 a1)
   v10 = *(_QWORD*)(v9 + 16);
   LOBYTE(v25[2]) = 1;
   v27 = v10;
-  *(struct PseudoSret*)(&v22) = GameRoutine_53c20(&v23);
+  GameRoutine_53c20((void*)(&v22), &v23);
   v11 = v22;
   v12 = *(_QWORD*)(v8 + 8);
   v22 = 0;
@@ -11908,7 +11908,7 @@ __int64 TaskPassNodes_bbc570(__int64 a1)
   v26 = *(_QWORD*)(game_g_frame_clock + 360);
   v27 = *(_QWORD*)(v18 + 16);
   LOBYTE(v25[2]) = 1;
-  *(struct PseudoSret*)(&v22) = GameRoutine_53c20(&v23);
+  GameRoutine_53c20((void*)(&v22), &v23);
   v19 = v22;
   result = v15[6];
   v22 = 0;

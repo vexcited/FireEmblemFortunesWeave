@@ -89,9 +89,9 @@ __int64 GameHr_14a10d0_alt1(_QWORD*, __int64, __int64,
 __int64 GameHr_14a1390(__int64*, char);
 __int64 GameHr_14a1520(__int64*, char);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 unsigned __int64 GameHr_1562680_alt1(unsigned __int64 result, char*,
                                      float) __asm__("GameHr_1562680");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
@@ -610,6 +610,7 @@ __int64 TelopLevelUp_Unknown34(__int64 a1)
 
 __int64 TelopLevelUp_Unknown35(__int64 a1)
 {
+  _QWORD handle[2];
   int v1;
   __int64 v3;
   __int64 v4;
@@ -803,9 +804,9 @@ LABEL_40:
   snd_Fade_Fade_10c830_alt1((__int64)v30_.v30, 0x0.0p+0f),
       v7 = COERCE_AS(__typeof__(v7),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  snd_play_ff2d0_alt1((__int64)"FF_LevelUp_Unit", (__int64)"FF_LevelUp_Unit",
-                      (__int64)v30_.v30, 0, 0x10001u, 0, 0x0.0p+0f,
-                      0x1.0000000000000p+0f),
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"FF_LevelUp_Unit",
+                      (__int64)"FF_LevelUp_Unit", (__int64)v30_.v30, 0,
+                      0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f),
       v7 = COERCE_AS(__typeof__(v7),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   result = snd_Fade_Destroy_Fade_alt1(v30_.v30),

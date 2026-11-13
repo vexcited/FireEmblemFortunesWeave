@@ -77,9 +77,9 @@ __int64 GameRoutine_155f760_alt1(__int64, __int64,
                                  const char*) __asm__("GameRoutine_155f760");
 __int64 game_14a3920(__int64 result);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
-                            unsigned int, int, float,
-                            float) __asm__("snd_play_ff2d0");
+__attribute__((swiftcall)) void
+snd_play_ff2d0_alt1(PSEUDO_X8, __int64, __int64, __int64, unsigned int,
+                    unsigned int, int, float, float) __asm__("snd_play_ff2d0");
 __int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
@@ -897,6 +897,7 @@ __int64 ExpMenuItem_1756280(__int64 result)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v1;
   __int64 v4;
   __int64 v5;
@@ -1139,9 +1140,9 @@ LABEL_40:
   snd_Fade_Fade_10c830_alt1((__int64)v39_.v39, 0x0.0p+0f),
       v9 = COERCE_AS(__typeof__(v9),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_MVP", (__int64)"SE_SYS_MVP",
-                      (__int64)v39_.v39, 0, 0x10001u, 0, 0x0.0p+0f,
-                      0x1.0000000000000p+0f),
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_MVP",
+                      (__int64)"SE_SYS_MVP", (__int64)v39_.v39, 0, 0x10001u, 0,
+                      0x0.0p+0f, 0x1.0000000000000p+0f),
       v9 = COERCE_AS(__typeof__(v9),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   result = snd_Fade_Destroy_Fade_alt1(v39_.v39),
@@ -1160,6 +1161,7 @@ LABEL_40:
 
 void ExpMenuItem_17565c0(__int64 a1, int a2)
 {
+  _QWORD handle[2];
   unsigned __int64 v3;
   int v4;
   int v5;
@@ -1270,9 +1272,9 @@ LABEL_15:
   }
 LABEL_29:
   snd_Fade_Fade_10c830_alt1((__int64)&v34_.v34, 0x0.0p+0f);
-  snd_play_ff2d0_alt1((__int64)"SE_SYS_EXP", (__int64)"SE_SYS_EXP",
-                      (__int64)&v34_.v34, 0, 0x10001u, 0, 0x0.0p+0f,
-                      0x1.0000000000000p+0f);
+  snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_EXP",
+                      (__int64)"SE_SYS_EXP", (__int64)&v34_.v34, 0, 0x10001u, 0,
+                      0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade_alt1(&v34_.v34);
   if (v5 < v12) {
     v17 = *(_QWORD*)(a1 + 56);
@@ -1317,7 +1319,7 @@ LABEL_29:
             }
           LABEL_44:
             snd_Fade_Fade_10c830_alt1((__int64)&v34_.v34, 0x0.0p+0f);
-            snd_play_ff2d0_alt1((__int64)"SE_SYS_Level_Up",
+            snd_play_ff2d0_alt1((void*)(handle), (__int64)"SE_SYS_Level_Up",
                                 (__int64)"SE_SYS_Level_Up", (__int64)&v34_.v34,
                                 0, 0x10001u, 0, 0x0.0p+0f,
                                 0x1.0000000000000p+0f);

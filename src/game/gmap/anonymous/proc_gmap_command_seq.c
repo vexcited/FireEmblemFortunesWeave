@@ -170,8 +170,9 @@ __int64 game_gmap_TroopMgr_EachPlayerTroop(__int64 result, __int64);
 __int64 game_gmap_TroopMgr_EachPlayerUnit(__int64, __int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD) __asm__("snd_Fade_Destroy_Fade");
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __n128 GameRoutine_175b880_alt1(__int64,
                                 __n128 result) __asm__("GameRoutine_175b880");
 __n128 GameRoutine_175bde0_alt1(__int64) __asm__("GameRoutine_175bde0");
@@ -365,6 +366,7 @@ __int64 ProcGmapCommandSeq_14b0370()
 
 void game_gmap_anonymous_ProcGmapCommandSeq_ExecuteStay()
 {
+  _QWORD handle[2];
   __int64 v0;
   int v1;
   __int64* v2;
@@ -544,9 +546,9 @@ LABEL_37:
                        40LL) +
             225LL) = 1;
   snd_Fade_Fade_10c830((__int64)&v32_.v32, 0x0.0p+0f);
-  snd_play_ff2d0((__int64)"BGM_EVT_Act1_B", (__int64)"BGM_EVT_Act1_B",
-                 (__int64)&v32_.v32, 0, 0x10001u, 0, 0x0.0p+0f,
-                 0x1.0000000000000p+0f);
+  snd_play_ff2d0((void*)(handle), (__int64)"BGM_EVT_Act1_B",
+                 (__int64)"BGM_EVT_Act1_B", (__int64)&v32_.v32, 0, 0x10001u, 0,
+                 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(&v32_.v32);
   if (v29_.v29 != nullptr) {
     v29_.v30 = (__int64)v29_.v29;

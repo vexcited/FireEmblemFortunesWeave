@@ -58,8 +58,9 @@ __int64 game_sound_PlayDangerZoneOnSe();
 __int64 game_sound_PlayNgSe();
 __int64 memset(_QWORD, _QWORD, _QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 bool GameRoutine_73baa0(int, int, int, int);
 bool game_map_Cursor_Impl_Tick(_QWORD*, __int64, double, double, double,
                                long double, long double, long double,
@@ -95,6 +96,7 @@ __int64 game_map_anonymous_ProcMapSeqSortie_PickCursorTick(
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   int v9;
   __int64* v11;
   bool v12;
@@ -170,8 +172,8 @@ __int64 game_map_anonymous_ProcMapSeqSortie_PickCursorTick(
     snd_Fade_Fade_10c830((__int64)v69_.v69, 0x0.0p+0f);
     v16 = "SE_SYS_Cursor_L";
   }
-  snd_play_ff2d0((__int64)v16, (__int64)v16, (__int64)v69_.v69, 0, 0x10001u, 0,
-                 0x0.0p+0f, 0x1.0000000000000p+0f);
+  snd_play_ff2d0((void*)(handle), (__int64)v16, (__int64)v16, (__int64)v69_.v69,
+                 0, 0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade(v69_.v69);
 LABEL_7:
   v17 = GameData_212ce98[0];
@@ -247,9 +249,9 @@ LABEL_7:
         MapInfo_825790(*(_QWORD**)GameData_212cff8[0]);
       }
       snd_Fade_Fade_10c830((__int64)v69_.v69, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"SE_SYS_Cancel_M", (__int64)"SE_SYS_Cancel_M",
-                     (__int64)v69_.v69, 0, 0x10001u, 0, 0x0.0p+0f,
-                     0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Cancel_M",
+                     (__int64)"SE_SYS_Cancel_M", (__int64)v69_.v69, 0, 0x10001u,
+                     0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       result = snd_Fade_Destroy_Fade(v69_.v69);
       *(_DWORD*)(a1 + 152) = 1;
       v55 = *(unsigned __int8**)(a1 + 16);
@@ -268,8 +270,9 @@ LABEL_7:
     snd_Fade_Fade_10c830((__int64)v69_.v69, 0x0.0p+0f);
     v33 = "SE_SYS_Cancel_M";
   LABEL_34:
-    snd_play_ff2d0((__int64)v33, (__int64)v33, (__int64)v69_.v69, 0, 0x10001u,
-                   0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v33, (__int64)v33,
+                   (__int64)v69_.v69, 0, 0x10001u, 0, 0x0.0p+0f,
+                   0x1.0000000000000p+0f);
     return snd_Fade_Destroy_Fade(v69_.v69);
   }
   if ((v32 & 1) != 0) {

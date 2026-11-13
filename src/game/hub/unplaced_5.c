@@ -69,8 +69,9 @@ __int64 game_hub_Character_RebuildAppearance(__int64);
 __int64 memcpy(__int64, __int64, unsigned __int64);
 __int64 memmove(__int64, __int64, unsigned __int64);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
@@ -1272,12 +1273,12 @@ float game_hub_d70270(__int64 a1, const char* a2, unsigned __int64 a3,
                               LANES128(v45_.v45).n128_f32[0])) +
               (float)(LANES128(v45_.v45).n128_f32[2] *
                       LANES128(v45_.v45).n128_f32[2]));
-    HIDWORD(v5) =
+    HIDWORD(v5) = COERCE_UNSIGNED_INT(
         sqrtf((float)(LANES128_OF(vmulq_f32(v41_.v42, v41_.v42)).n128_f32[1] +
                       (float)(LANES128(v41_.v42).n128_f32[0] *
                               LANES128(v41_.v42).n128_f32[0])) +
               (float)(LANES128(v45_.v46).n128_f32[2] *
-                      LANES128(v41_.v42).n128_f32[2]));
+                      LANES128(v41_.v42).n128_f32[2])));
     LANES128(v6).n128_u64[1] = COERCE_UNSIGNED_INT(
         sqrtf((float)(LANES128_OF(vmulq_f32(v41_.v43, v41_.v43)).n128_f32[1] +
                       (float)(LANES128(v41_.v43).n128_f32[0] *
@@ -4317,6 +4318,7 @@ LABEL_86:
 
 __int64 game_hub_f8a870(__int64 result, __int64* a2)
 {
+  _QWORD handle[2];
   __int64 v2;
   __int64 v3;
   int v4;
@@ -4377,8 +4379,9 @@ __int64 game_hub_f8a870(__int64 result, __int64* a2)
       }
       if (v12 != nullptr) {
         snd_Fade_Fade_10c830((__int64)v20, 0x0.0p+0f);
-        snd_play_ff2d0((__int64)v12, (__int64)v12, (__int64)v20, 0, 0x10001u, 0,
-                       0x0.0p+0f, 0x1.0000000000000p+0f);
+        snd_play_ff2d0((void*)(handle), (__int64)v12, (__int64)v12,
+                       (__int64)v20, 0, 0x10001u, 0, 0x0.0p+0f,
+                       0x1.0000000000000p+0f);
         snd_Fade_Destroy_Fade(v20);
       }
       else {

@@ -11,7 +11,7 @@ __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 GameData_21c99c0;
 extern __int64 fw_memory_g_heap_manager_ptr;
-struct PseudoSret GameRoutine_677000(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_677000(PSEUDO_X8, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_67afd0(void);
 __int64* JobFile_676c00_alt1(__int64* result,
@@ -742,7 +742,7 @@ __int64 JobFile_676ef0(__int64* a1)
   v13[0] = v4;
   v13[1] = v4 + 1;
   v13[2] = v4 + 1;
-  *(struct PseudoSret*)(v12) = GameRoutine_677000(v13);
+  GameRoutine_677000((void*)(v12), v13);
   v6 = v12[0];
   v7 = v12[1];
   if (v12[1] == v12[0]) {

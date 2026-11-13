@@ -23,7 +23,7 @@ extern __int64 GameData_21c99a8;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212c8a0;
 extern __int64* game_map_history_g_ride_pool_ptr[3];
-struct PseudoSret GameRoutine_932880(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_932880(PSEUDO_X8, _QWORD);
 void __attribute__((noreturn)) GameRoutine_9337e0(void);
 __int64 UnitVariables_6e31a0(__int64 a1, __int64 a2, char a3);
 __int64 UnitVariables_931520(__int64 result, __int64* a2, int a3);
@@ -518,7 +518,7 @@ __int64 UnitVariables_931520(__int64 result, __int64* a2, int a3)
       goto LABEL_76;
     }
     v22 = a3;
-    *(struct PseudoSret*)(&v85) = GameRoutine_932880(v4);
+    GameRoutine_932880((void*)(&v85), v4);
     v23 = v85;
     v24 = v86;
     if (v86 == v85) {

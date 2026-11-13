@@ -33,8 +33,9 @@ __int64 memmove(_QWORD, _QWORD, _QWORD);
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock(_QWORD);
@@ -1164,6 +1165,7 @@ void game_cmdbtl_anonymous_e70e60(__int64 a1)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v1;
   __int64 v2;
   __int64 v3;
@@ -1346,7 +1348,7 @@ void game_cmdbtl_anonymous_e70e60(__int64 a1)
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
         v149 = COERCE_AS(__typeof__(v149),
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    snd_play_ff2d0((__int64)"SE_SYS_Decide_CmdBtl",
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Decide_CmdBtl",
                    (__int64)"SE_SYS_Decide_CmdBtl", (__int64)v159, 0, 0x10001u,
                    0, 0x0.0p+0f, 0x1.0000000000000p+0f),
         v147 = COERCE_AS(__typeof__(v147),
@@ -2113,9 +2115,9 @@ void game_cmdbtl_anonymous_e70e60(__int64 a1)
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
           v149 = COERCE_AS(__typeof__(v149),
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-      snd_play_ff2d0((__int64)"SE_SYS_Cancel_M", (__int64)"SE_SYS_Cancel_M",
-                     (__int64)v159, 0, 0x10001u, 0, 0x0.0p+0f,
-                     0x1.0000000000000p+0f),
+      snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Cancel_M",
+                     (__int64)"SE_SYS_Cancel_M", (__int64)v159, 0, 0x10001u, 0,
+                     0x0.0p+0f, 0x1.0000000000000p+0f),
           v147 = COERCE_AS(__typeof__(v147),
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
           v149 = COERCE_AS(__typeof__(v149),
@@ -2570,6 +2572,7 @@ bool game_cmdbtl_anonymous_e72290(__int64 a1, __int64* a2)
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v2;
   __int64* v5;
   __int64 v6;
@@ -2644,7 +2647,7 @@ bool game_cmdbtl_anonymous_e72290(__int64 a1, __int64* a2)
   v18 = *GameData_212f628[0];
   if (*(_QWORD*)(*GameData_212f628[0] + 176) != *a2) {
     snd_Fade_Fade_10c830((__int64)v24, 0x0.0p+0f);
-    snd_play_ff2d0((__int64)"SE_SYS_Weapon_Change",
+    snd_play_ff2d0((void*)(handle), (__int64)"SE_SYS_Weapon_Change",
                    (__int64)"SE_SYS_Weapon_Change", (__int64)v24, 0, 0x10001u,
                    0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v24);
@@ -2659,8 +2662,8 @@ bool game_cmdbtl_anonymous_e72290(__int64 a1, __int64* a2)
       snd_Fade_Fade_10c830((__int64)v24, 0x0.0p+0f);
       v19 = "SE_SYS_Skill_Remove";
     }
-    snd_play_ff2d0((__int64)v19, (__int64)v19, (__int64)v24, 0, 0x10001u, 0,
-                   0x0.0p+0f, 0x1.0000000000000p+0f);
+    snd_play_ff2d0((void*)(handle), (__int64)v19, (__int64)v19, (__int64)v24, 0,
+                   0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade(v24);
   }
   *(__n128*)&v20 = game_cmdbtl_anonymous_e70790(a1);

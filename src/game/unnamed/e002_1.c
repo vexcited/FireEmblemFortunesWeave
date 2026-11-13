@@ -177,12 +177,13 @@ __int64 GameRoutine_80fde0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_84cb50(_QWORD, _QWORD);
 __int64 GameRoutine_869d10();
 __int64 GameRoutine_874b20(unsigned __int8, unsigned __int8, int, int);
-struct PseudoSret GameRoutine_878ea0(_QWORD);
+__attribute__((swiftcall)) void GameRoutine_878ea0(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_89b540(_QWORD);
 __int64 GameRoutine_89c360(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_910280(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_910f00(void);
-struct PseudoSret GameRoutine_936f60(_QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_936f60(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 __int64 GameRoutine_9374e0(_QWORD, _QWORD);
 __int64 GameRoutine_937de0(_QWORD, _QWORD);
 __int64 GameRoutine_93bb80(_QWORD);
@@ -206,13 +207,14 @@ __int64 GameRoutine_a2fab0(_QWORD, _QWORD, long double);
 __int64 GameRoutine_a31a20(_QWORD);
 __int64 GameRoutine_a4dbe0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_d9850(_QWORD);
-struct PseudoSret GameRoutine_d98c0(void);
+__attribute__((swiftcall)) void GameRoutine_d98c0(PSEUDO_X8);
 __int64 GameRoutine_dab80(_QWORD);
 struct PseudoSret GameRoutine_dabf0(_QWORD);
 __int64 GameRoutine_fdf60(_QWORD, _QWORD);
 __int64 GameRoutine_fdfe0(_QWORD, _QWORD);
-struct PseudoSret GameRoutine_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                                    _QWORD, double, float);
+__attribute__((swiftcall)) void GameRoutine_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                                  _QWORD, _QWORD, _QWORD,
+                                                  _QWORD, double, float);
 __int64 GameRoutine_ffc40(_QWORD, _QWORD);
 _QWORD* GameRoutine_93eed0_alt1(_QWORD* result) __asm__("GameRoutine_93eed0");
 _QWORD* game_Unit_LevelUpSkill(_QWORD* result, unsigned int*);
@@ -281,8 +283,9 @@ __int64 snd_Fade_Fade_10cb00(__int64, unsigned __int8*);
 __int64 snd_a2fab0(__int64 result, __int64);
 __int64 snd_fnd_WeakHandle_get(__int64);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
-__int64 snd_play_ff2d0(__int64, __int64, __int64, unsigned int, unsigned int,
-                       int, float, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int,
+                                               unsigned int, int, float, float);
 __int64 snd_startSlotVolume_100b50(int*, __int64, float);
 __int64 snd_startVolume_1006d0(__int64*, unsigned int, __int64, float);
 __int64 std___1___shared_weak_count___release_weak(__int64);
@@ -1043,6 +1046,7 @@ void GameHr_80ecf0()
 {
 
 #pragma clang fp contract(off)
+  _QWORD handle[2];
   __int64 v0;
   __int64 v1;
   char* v2;
@@ -1145,8 +1149,8 @@ LABEL_19:
     }
     if (v9 != nullptr) {
       snd_Fade_Fade_10c830((__int64)v19, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)v9, (__int64)v9, (__int64)v19, 0, 0x10001u, 0,
-                     0x0.0p+0f, 0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)v9, (__int64)v9, (__int64)v19, 0,
+                     0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(v19);
     }
     else {
@@ -1195,7 +1199,7 @@ __int64 GameHr_80f950(__int64 a1)
   GameRoutine_10c830(v13, 0.0f);
   GameRoutine_a2f940(v3, v13, a1, 0, 0.0f);
   GameRoutine_10cff0(v13);
-  *(struct PseudoSret*)(v12) = GameRoutine_d98c0();
+  GameRoutine_d98c0((void*)(v12));
   GameRoutine_10c830(v13, 0.0f);
   GameRoutine_1006d0(v12, 0, v13, 1.0f);
   GameRoutine_10cff0(v13);
@@ -1444,7 +1448,7 @@ __int64 GameHr_8118f0(_DWORD* a1)
   (*(void (**)(__int64, _DWORD*, _BYTE*, _QWORD, double, float))(
       *(_QWORD*)v7 + 40LL))(v7, v11, v10, 0, 0.0, 1.0);
   GameRoutine_10cff0(v10);
-  *(struct PseudoSret*)(v9) = GameRoutine_d98c0();
+  GameRoutine_d98c0((void*)(v9));
   result = GameRoutine_1120d0(v9);
   if ((result & 1) != 0) {
     GameRoutine_10c830(v10, 0.0);
@@ -1472,7 +1476,7 @@ __int64 GameHr_811a70(__int64 a1)
   (*(void (**)(__int64, __int64, _BYTE*, _QWORD, double, float))(
       *(_QWORD*)v2 + 32LL))(v2, a1, v5, 0, 0.0, 1.0);
   GameRoutine_10cff0(v5);
-  *(struct PseudoSret*)(v4) = GameRoutine_d98c0();
+  GameRoutine_d98c0((void*)(v4));
   result = GameRoutine_1120d0(v4);
   if ((result & 1) != 0) {
     GameRoutine_10c830(v5, 0.0);
@@ -1526,8 +1530,8 @@ __int64 GameHr_812170(__int64 a1)
   result = GameRoutine_100090("ObeliskFotVoice");
   if ((result & 1) == 0) {
     GameRoutine_10c830(v4, 0.0f);
-    *(struct PseudoSret*)(&v3) =
-        GameRoutine_ff2d0("ObeliskFotVoice", a1, v4, 0, 65537, 0, 0.0f, 1.0f);
+    GameRoutine_ff2d0((void*)(&v3), "ObeliskFotVoice", a1, v4, 0, 65537, 0,
+                      0.0f, 1.0f);
     return GameRoutine_10cff0(v4);
   }
   return result;
@@ -1639,7 +1643,7 @@ __int64 GameHr_877790(unsigned __int8 a1, unsigned __int8 a2, int a3, int a4)
 
   v6[0] = GameRoutine_874b20(a1, a2, a3, a4);
   v6[1] = GameRoutine_1a09c70(v6[0]);
-  *(struct PseudoSret*)(&v7) = GameRoutine_878ea0(v6);
+  GameRoutine_878ea0((void*)(&v7), v6);
   if ((_BYTE)v7 == 0) {
     return 0;
   }
@@ -1913,6 +1917,7 @@ LABEL_61:
 
 __int64 GameHr_8b0c90(__int64 a1, __int64 a2, _WORD* a3)
 {
+  _QWORD handle[2];
   char v4;
   int v5;
   int v6;
@@ -1981,9 +1986,9 @@ LABEL_10:
     }
     else {
       snd_Fade_Fade_10c830((__int64)v22_.v22, 0x0.0p+0f);
-      snd_play_ff2d0((__int64)"FF_Negative1", (__int64)"FF_Negative1",
-                     (__int64)v22_.v22, 0, 0x10001u, 0, 0x0.0p+0f,
-                     0x1.0000000000000p+0f);
+      snd_play_ff2d0((void*)(handle), (__int64)"FF_Negative1",
+                     (__int64)"FF_Negative1", (__int64)v22_.v22, 0, 0x10001u, 0,
+                     0x0.0p+0f, 0x1.0000000000000p+0f);
       snd_Fade_Destroy_Fade(v22_.v22);
       v15 = fw_memory_g_heap_manager_ptr;
       v16 = (char*)fw_memory_HeapManager_Allocate(
@@ -3297,8 +3302,8 @@ LABEL_36:
     return (_QWORD*)GameRoutine_6d2c90(a2, v6[6] + 8 * v19);
   }
 LABEL_38:
-  result = (*(struct PseudoSret*)(&v24) = GameRoutine_936f60(v6, a2 + 1944, a2),
-            (void*)(&v24));
+  result = X8CALL_X0(__typeof__(result), GameRoutine_936f60((void*)(&v24), v6,
+                                                          a2 + 1944, a2));
   if (v24 < 0) {
     v20 = GameData_212ceb0;
     v21 = *GameData_212ceb0;
@@ -4276,9 +4281,8 @@ __int64 GameHr_9abea0(__int64 a1)
   _BYTE v4[200];
 
   GameRoutine_10c830(v4, 0.0f);
-  *(struct PseudoSret*)(&v3) =
-      GameRoutine_ff2d0("SE_SYS_Decide_Title", "SE_SYS_Decide_Title", v4, 0,
-                        65537, 0, 0.0f, 1.0f);
+  GameRoutine_ff2d0((void*)(&v3), "SE_SYS_Decide_Title", "SE_SYS_Decide_Title",
+                    v4, 0, 65537, 0, 0.0f, 1.0f);
   GameRoutine_10cff0(v4);
   return GameRoutine_1562680(a1 + 224, "Out", 1.0f);
 }

@@ -458,7 +458,7 @@ float32x4_t game_bcfba0(float32x4_t* a1)
                                            0)))));
       v31 = vbslq_s8(v16, v30, vnegq_f32(v30));
       LANES128(v19).n128_u32[0] = 0;
-      LANES128(v19).n128_u32[1] =
+      LANES128(v19).n128_f32[1] =
           vmuls_lane_f32(0x1.1df46a0000000p-6f,
                          COERCE_AS(float32x2_t, LANES128(v3).n128_u64[0]), 1);
       v32 = vmlsq_f32(
