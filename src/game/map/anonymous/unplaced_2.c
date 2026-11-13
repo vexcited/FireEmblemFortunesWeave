@@ -6,7 +6,7 @@
 
 __int64* GameRoutine_60eb40(__int64* result, unsigned __int64);
 __int64 Cursor_730ff0(__int64, float*);
-__int64 EffectConst_961520(__int64*, __int64, __int64*, int, char, int32x2_t,
+__int64 EffectConst_961520(__int64*, __int64, __int64*, int, char, float,
                            float);
 __int64 GameRoutine_9a48c0(__int64 result, __int64**);
 __int64 __cxa_guard_acquire(_QWORD);
@@ -372,7 +372,6 @@ void game_map_anonymous_966e80(float32x4_t* a1, __n128 a2)
                               memory_order_relaxed);
     goto LABEL_30;
   }
-  LANES128(a2).n128_u32[0] = 0x1.0000000000000p+0f;
   if ((v8 & 1) != 0) {
     v10 = LANES128(a1[13]).n128_i64[1];
   }
@@ -380,7 +379,7 @@ void game_map_anonymous_966e80(float32x4_t* a1, __n128 a2)
     v10 = (__int64)&LANES128(a1[12]).n128_i64[1] + 1;
   }
   EffectConst_961520((__int64*)&v56, v10, (__int64*)&a1[10], 5, 0,
-                     COERCE_AS(int32x2_t, LANES128(a2).n128_u64[0]), 0x0.0p+0f);
+                     0x1.0000000000000p+0f, 0x0.0p+0f);
   GameRoutine_9a48c0((__int64)a1, (__int64**)&v56);
   v11 = LANES128(v56).n128_i64[1];
   v12 = LANES128(v56).n128_u64[0];
@@ -728,7 +727,6 @@ void game_map_anonymous_9683a0(float32x4_t* a1, __n128 a2)
                               memory_order_relaxed);
     goto LABEL_30;
   }
-  LANES128(a2).n128_u32[0] = 0x1.0000000000000p+0f;
   if ((v8 & 1) != 0) {
     v10 = LANES128(a1[16]).n128_i64[1];
   }
@@ -736,7 +734,7 @@ void game_map_anonymous_9683a0(float32x4_t* a1, __n128 a2)
     v10 = (__int64)&LANES128(a1[15]).n128_i64[1] + 1;
   }
   EffectConst_961520((__int64*)&v53, v10, (__int64*)&a1[11], 5, 0,
-                     COERCE_AS(int32x2_t, LANES128(a2).n128_u64[0]), 0x0.0p+0f);
+                     0x1.0000000000000p+0f, 0x0.0p+0f);
   GameRoutine_9a48c0((__int64)a1, (__int64**)&v53);
   v11 = LANES128(v53).n128_i64[1];
   v12 = LANES128(v53).n128_u64[0];

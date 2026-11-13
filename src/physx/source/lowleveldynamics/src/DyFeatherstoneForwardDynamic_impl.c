@@ -19,14 +19,13 @@ long double cosf(float);
 struct PseudoSret
     physx_Dy_FeatherstoneArticulation_computePropagateSpatialInertia_ZA_ZIc_NonSeparated(
         _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-int8x16_t
+void
 physx_Dy_FeatherstoneArticulation_computeArticulatedSpatialInertiaAndZ_NonSeparated(
     __int64 a1, int32x2_t* a2, _QWORD* a3);
 void physx_Dy_FeatherstoneArticulation_propagateLinksDown(
     __int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5, double a6,
     double a7, double a8, float a9);
-int8x16_t
-
+void
 physx_Dy_FeatherstoneArticulation_computeArticulatedSpatialInertiaAndZ_NonSeparated(
     __int64 a1, int32x2_t* a2, _QWORD* a3)
 {
@@ -1065,7 +1064,6 @@ physx_Dy_FeatherstoneArticulation_computeArticulatedSpatialInertiaAndZ_NonSepara
       LANES128_OF(vzip2q_s32(v196, vuzp1q_s32(v196, v186))).n128_u64[0];
   result = vextq_s8(v186, v186, 4u);
   LANES64(a2[132]).n64_u64[0] = LANES128(result).n128_u64[0];
-  return result;
 }
 
 void physx_Dy_FeatherstoneArticulation_propagateLinksDown(

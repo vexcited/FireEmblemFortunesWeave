@@ -184,6 +184,9 @@ extern __int64 snd_g_memory;
 extern __int64 snd_s_target;
 unsigned __int64
 GameRoutine_190020_alt1(__int64*, const char*) __asm__("GameRoutine_190020");
+__int64 GameRoutine_f1b80_alt1(__int64, __int64*) __asm__("GameRoutine_f1b80");
+__int64 GameRoutine_f7060_alt1(__int64) __asm__("GameRoutine_f7060");
+_QWORD* GameRoutine_f7190_alt1(__int64, __int64*) __asm__("GameRoutine_f7190");
 __int64 GameHr_5ceb0(_QWORD* a1, __int64 a2);
 __int64* GameHr_f2ce0(__int64 a1, __int64 a2, __int64* a3, __int64 a4);
 __int64* GameHr_f33e0(__int64* result);

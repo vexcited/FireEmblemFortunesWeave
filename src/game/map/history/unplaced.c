@@ -2024,7 +2024,7 @@ __int64 game_map_history_12297e0(__int64 a1, int a2)
   __int64 result;
   __int64 v13;
 
-  if (a2 >= *(_DWORD*)(a1 + 824)) {
+  if (a2 >= *(int*)(a1 + 824)) {
     return 0;
   }
   v2 = *(unsigned __int16*)(a1 + 828);

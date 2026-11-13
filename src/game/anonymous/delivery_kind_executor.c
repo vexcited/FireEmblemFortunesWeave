@@ -777,7 +777,7 @@ __int64 DeliveryKindExecutor_12634c0(__int64 result, unsigned int* a2,
             if ((v18 & v20) == 0) {
               while (1) {
                 v26 = v24[1];
-                if (v26 == v14) {
+                if (v26 == (__int64)(int)v14) {
                   if (*((_DWORD*)v24 + 4) == v14) {
                     goto LABEL_40;
                   }
@@ -793,7 +793,7 @@ __int64 DeliveryKindExecutor_12634c0(__int64 result, unsigned int* a2,
             }
             while (1) {
               v25 = v24[1];
-              if (v25 == v14) {
+              if (v25 == (__int64)(int)v14) {
                 if (*((_DWORD*)v24 + 4) == v14) {
                 LABEL_40:
                   if ((v18 & v20) != 0) {
@@ -817,7 +817,7 @@ __int64 DeliveryKindExecutor_12634c0(__int64 result, unsigned int* a2,
                   if ((v18 & v20) == 0) {
                     while (1) {
                       v32 = v29[1];
-                      if (v32 == v15) {
+                      if (v32 == (__int64)(int)v15) {
                         if (*((_DWORD*)v29 + 4) == v15) {
                           goto LABEL_15;
                         }
@@ -833,7 +833,7 @@ __int64 DeliveryKindExecutor_12634c0(__int64 result, unsigned int* a2,
                   }
                   while (2) {
                     v31 = v29[1];
-                    if (v31 != v15) {
+                    if (v31 != (__int64)(int)v15) {
                       if (v31 >= v18) {
                         v31 %= v18;
                       }

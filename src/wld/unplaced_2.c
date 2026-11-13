@@ -7,7 +7,7 @@ __attribute__((swiftcall)) void math_Quat_FromAxisAngle(PSEUDO_X8, _QWORD,
                                                         float);
 __attribute__((swiftcall)) void math_Quat_Slerp(PSEUDO_X8, _QWORD, _QWORD,
                                                 long double);
-__attribute__((swiftcall)) void wld_Crc32(PSEUDO_X8, _QWORD, _QWORD, _QWORD);
+unsigned int wld_Crc32(int, const char*, unsigned __int64);
 __int64 GameRoutine_b3aee0(_QWORD);
 __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
@@ -2752,8 +2752,7 @@ float32x4_t wld_bd2320(__int64 a1, float32x2_t* a2, char a3)
   v7 = GameData_212df08;
   if ((explicit & 1) == 0 &&
       (unsigned int)__cxa_guard_acquire(GameData_212df10) != 0) {
-    *v7 = (unsigned int)(wld_Crc32((void*)(v186), 0, "ModelModule", 11),
-                         (void*)(v186));
+    *v7 = wld_Crc32(0, "ModelModule", 11);
     __cxa_guard_release(GameData_212df10);
   }
   v8 = LANES128(v3[32]).n128_u64[0];

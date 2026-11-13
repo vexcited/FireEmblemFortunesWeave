@@ -12,7 +12,7 @@ extern __int64* GameData_212ff98[9];
 extern int GameData_2235740;
 __int64 game_combat_MagicCatalog_MagicCatalog(__int64 a1);
 __int64 MagicCatalog_109c060_alt1(_QWORD) __asm__("MagicCatalog_109c060");
-__int64 nn_mem_StandardAllocator_Free(_QWORD, long double);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 MagicCatalog_109bf60_alt1(__int64 result,
                                   __int64 a2) __asm__("MagicCatalog_109bf60");
 __int64 MagicCatalog_109c060(__int64 result, long double a2);
@@ -213,7 +213,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v6 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v6, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v6,
+                                               *(_QWORD*)(v5 - 16));
       }
       if ((*(_BYTE*)(v5 - 56) & 1) != 0 && *(_QWORD*)(v5 - 40) != 0) {
         if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
@@ -222,7 +223,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v7 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v7, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v7,
+                                               *(_QWORD*)(v5 - 40));
       }
       v5 -= 64;
     } while (v5 != v2);
@@ -234,7 +236,7 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
       if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
         v9 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v9, a2);
+      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v9, v3[12]);
     }
   }
   v10 = v3[9];
@@ -251,7 +253,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v12 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v12, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v12,
+                                               *(_QWORD*)(v11 - 16));
       }
       if ((*(_BYTE*)(v11 - 56) & 1) != 0 && *(_QWORD*)(v11 - 40) != 0) {
         if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
@@ -260,7 +263,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v13 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v13, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v13,
+                                               *(_QWORD*)(v11 - 40));
       }
       v11 -= 64;
     } while (v11 != v10);
@@ -272,7 +276,7 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
       if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
         v15 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v15, a2);
+      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v15, v3[9]);
     }
   }
   v16 = v3[6];
@@ -289,7 +293,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v18 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v18, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v18,
+                                               *(_QWORD*)(v17 - 16));
       }
       if ((*(_BYTE*)(v17 - 56) & 1) != 0 && *(_QWORD*)(v17 - 40) != 0) {
         if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
@@ -298,7 +303,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v19 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v19, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v19,
+                                               *(_QWORD*)(v17 - 40));
       }
       v17 -= 64;
     } while (v17 != v16);
@@ -310,7 +316,7 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
       if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
         v21 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v21, a2);
+      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v21, v3[6]);
     }
   }
   v22 = v3[3];
@@ -327,7 +333,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v24 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v24, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v24,
+                                               *(_QWORD*)(v23 - 16));
       }
       if ((*(_BYTE*)(v23 - 56) & 1) != 0 && *(_QWORD*)(v23 - 40) != 0) {
         if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
@@ -336,7 +343,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v25 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v25, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v25,
+                                               *(_QWORD*)(v23 - 40));
       }
       v23 -= 64;
     } while (v23 != v22);
@@ -348,7 +356,7 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
       if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
         v27 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v27, a2);
+      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v27, v3[3]);
     }
   }
   v28 = *v3;
@@ -365,7 +373,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v30 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v30, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v30,
+                                               *(_QWORD*)(v29 - 16));
       }
       if ((*(_BYTE*)(v29 - 56) & 1) != 0 && *(_QWORD*)(v29 - 40) != 0) {
         if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
@@ -374,7 +383,8 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
         else {
           v31 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v31, a2);
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v31,
+                                               *(_QWORD*)(v29 - 40));
       }
       v29 -= 64;
     } while (v29 != v28);
@@ -386,7 +396,7 @@ __int64 MagicCatalog_109c060(__int64 result, long double a2)
       if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
         v33 = 56;
       }
-      return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v33, a2);
+      return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v33, *v3);
     }
   }
   return result;

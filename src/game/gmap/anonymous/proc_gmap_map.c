@@ -317,8 +317,8 @@ char* ProcGmapMap_1687160(char* result, char* a2, unsigned __int64 a3,
     v8 = *(_QWORD*)result;
     v9 = *(float*)(v7 + 52);
     v10 = *(float*)(*(_QWORD*)result + 52LL);
-    if (vabds_f32(v9, v10) >= 0x1.0000000000000p-23f) {
-      if (v9 <= v10) {
+    if (!(vabds_f32(v9, v10) < 0x1.0000000000000p-23f)) {
+      if (!(v9 > v10)) {
       LABEL_16:
         *v4 = v8;
         v13 = *((_QWORD*)a2 - 1);
@@ -367,7 +367,7 @@ char* ProcGmapMap_1687160(char* result, char* a2, unsigned __int64 a3,
       v20 = *(_QWORD*)v14;
       v21 = *(float*)(*(_QWORD*)v14 + 52LL);
       v22 = *(float*)(v19 + 52);
-      if (vabds_f32(v21, v22) >= 0x1.0000000000000p-23f) {
+      if (!(vabds_f32(v21, v22) < 0x1.0000000000000p-23f)) {
         if (v21 > v22) {
           goto LABEL_37;
         }
@@ -394,8 +394,8 @@ char* ProcGmapMap_1687160(char* result, char* a2, unsigned __int64 a3,
                 v29 = *(__int64*)((char*)v4 + v26 - 8);
                 v30 = *(float*)(*(_QWORD*)v14 + 52LL);
                 v31 = *(float*)(v29 + 52);
-                if (vabds_f32(v30, v31) >= 0x1.0000000000000p-23f) {
-                  if (v30 <= v31) {
+                if (!(vabds_f32(v30, v31) < 0x1.0000000000000p-23f)) {
+                  if (!(v30 > v31)) {
                     goto LABEL_53;
                   }
                 }
@@ -461,7 +461,7 @@ char* ProcGmapMap_1687160(char* result, char* a2, unsigned __int64 a3,
       v40 = *(_QWORD*)v6;
       v41 = *(float*)(*(_QWORD*)v38 + 52LL);
       v42 = *(float*)(*(_QWORD*)v6 + 52LL);
-      if (vabds_f32(v41, v42) >= 0x1.0000000000000p-23f) {
+      if (!(vabds_f32(v41, v42) < 0x1.0000000000000p-23f)) {
         if (v41 > v42) {
           goto LABEL_78;
         }

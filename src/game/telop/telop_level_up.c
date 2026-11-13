@@ -57,7 +57,7 @@ __int64 game_Unit_GetParamLimit(_QWORD, _QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD);
 __int64 ui_LayoutAccessor_FindPane(_QWORD, _QWORD);
 __n128 snd_Fade_Fade_10c830(_QWORD, double);
-__n128 std___1___shared_weak_count___release_weak_alt1() __asm__(
+__n128 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 extern __int128 GameData_1a82fb0;
 extern __int64* GameData_212d670[3];
@@ -2132,7 +2132,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             v29 = v28;
             (*(void (**)(__int64))(*(_QWORD*)v27 + 16LL))(v27);
-            std___1___shared_weak_count___release_weak_alt1();
+            std___1___shared_weak_count___release_weak_alt1(v27);
             v28 = v29;
           }
         }
@@ -2154,7 +2154,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             v33 = v32;
             (*(void (**)(__int64))(*(_QWORD*)v31 + 16LL))(v31);
-            std___1___shared_weak_count___release_weak_alt1();
+            std___1___shared_weak_count___release_weak_alt1(v31);
             v32 = v33;
           }
         }
@@ -2216,7 +2216,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           v47 = v46;
           (*(void (**)(__int64))(*(_QWORD*)v45 + 16LL))(v45);
-          std___1___shared_weak_count___release_weak_alt1();
+          std___1___shared_weak_count___release_weak_alt1(v45);
           v46 = v47;
         }
       }
@@ -2228,7 +2228,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
         v48 = std___1___shared_weak_count_lock(v145);
         v49 = v144;
         if (v145 != 0) {
-          std___1___shared_weak_count___release_weak_alt1();
+          std___1___shared_weak_count___release_weak_alt1(v145);
         }
         if (v48 != 0 && v49 != 0) {
           break;
@@ -2294,7 +2294,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
                   v61 = v60;
                   (*(void (**)(__int64))(*(_QWORD*)v59 + 16LL))(v59);
-                  std___1___shared_weak_count___release_weak_alt1();
+                  std___1___shared_weak_count___release_weak_alt1(v59);
                   v60 = v61;
                 }
               }
@@ -2315,7 +2315,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
             v139 = v144;
             if (v145 != 0) {
               *(__n128*)&v63 =
-                  std___1___shared_weak_count___release_weak_alt1();
+                  std___1___shared_weak_count___release_weak_alt1(v145);
             }
             if (v62 != 0 && v139 != 0) {
               break;
@@ -2329,7 +2329,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
               LABEL_219:
                 (*(void (**)(__int64, long double))(*(_QWORD*)v66 + 16LL))(v66,
                                                                            v63);
-                std___1___shared_weak_count___release_weak_alt1();
+                std___1___shared_weak_count___release_weak_alt1(v66);
                 if ((v62 & 1) != 0) {
                   v67 = 0;
                 }
@@ -2390,7 +2390,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
             if (atomic_fetch_add((atomic_ullong* volatile)(v76 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
               (*(void (**)(const char*))(*(_QWORD*)v76 + 16LL))(v76);
-              v72 = std___1___shared_weak_count___release_weak_alt1();
+              v72 = std___1___shared_weak_count___release_weak_alt1(v76);
             }
             v74 = (__int64)v75[1];
           }
@@ -2400,7 +2400,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
             if (atomic_fetch_add((atomic_ullong* volatile)(v74 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
               (*(void (**)(__int64))(*(_QWORD*)v74 + 16LL))(v74);
-              v72 = std___1___shared_weak_count___release_weak_alt1();
+              v72 = std___1___shared_weak_count___release_weak_alt1(v74);
             }
           }
           v77 = v142;
@@ -2429,7 +2429,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
             if (atomic_fetch_add((atomic_ullong* volatile)(v79 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
               (*(void (**)(__int64))(*(_QWORD*)v79 + 16LL))(v79);
-              std___1___shared_weak_count___release_weak_alt1();
+              std___1___shared_weak_count___release_weak_alt1(v79);
               v81 = v80[1];
               if (v81 == 0) {
                 goto LABEL_165;
@@ -2446,7 +2446,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
               if (atomic_fetch_add((atomic_ullong* volatile)(v82 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
                 (*(void (**)(__int64))(*(_QWORD*)v82 + 16LL))(v82);
-                std___1___shared_weak_count___release_weak_alt1();
+                std___1___shared_weak_count___release_weak_alt1(v82);
               }
               if (v83 == 0) {
               LABEL_165:
@@ -2523,7 +2523,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
                 (*(void (**)(__int64, long double))(*(_QWORD*)v100 + 16LL))(
                     v100, *(long double*)&v72);
-                std___1___shared_weak_count___release_weak_alt1();
+                std___1___shared_weak_count___release_weak_alt1(v100);
               }
             LABEL_197:
               v101 = ui_LayoutAccessor_FindPane(v65, "T_NumUp");
@@ -2542,7 +2542,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                 v104 = v144;
                 if (v145 != 0) {
                   *(__n128*)&v63 =
-                      std___1___shared_weak_count___release_weak_alt1();
+                      std___1___shared_weak_count___release_weak_alt1(v145);
                 }
                 v66 = v62;
                 if (v103 != 0 && v104 != 0) {
@@ -2562,7 +2562,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
                     (*(void (**)(__int64))(*(_QWORD*)v103 + 16LL))(v103);
                     *(__n128*)&v63 =
-                        std___1___shared_weak_count___release_weak_alt1();
+                        std___1___shared_weak_count___release_weak_alt1(v103);
                   }
                 }
               }
@@ -2636,7 +2636,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
                 v118 = v117;
                 (*(void (**)(__int64))(*(_QWORD*)v116 + 16LL))(v116);
-                std___1___shared_weak_count___release_weak_alt1();
+                std___1___shared_weak_count___release_weak_alt1(v116);
                 v117 = v118;
               }
             }
@@ -2648,7 +2648,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
               v119 = std___1___shared_weak_count_lock(v145);
               v120 = v144;
               if (v145 != 0) {
-                std___1___shared_weak_count___release_weak_alt1();
+                std___1___shared_weak_count___release_weak_alt1(v145);
               }
               if (v119 != 0 && v120 != 0) {
                 v121 = LayoutAccessor_1563280(v120, v113, 1);
@@ -2695,7 +2695,8 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                             v134 = v133;
                             (*(void (**)(__int64))(*(_QWORD*)v132 + 16LL))(
                                 v132);
-                            std___1___shared_weak_count___release_weak_alt1();
+                            std___1___shared_weak_count___release_weak_alt1(
+                                v132);
                             v133 = v134;
                           }
                         }
@@ -2708,7 +2709,8 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                           v137 = v144;
                           if (v145 != 0) {
                             *(__n128*)&v136 =
-                                std___1___shared_weak_count___release_weak_alt1();
+                                std___1___shared_weak_count___release_weak_alt1(
+                                    v145);
                           }
                           if (v135 != 0 && v137 != 0) {
                             LODWORD(v136) = 0x1.0000000000000p+0;
@@ -2719,7 +2721,8 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
                               (*(void (**)(__int64))(*(_QWORD*)v135 + 16LL))(
                                   v135);
-                              std___1___shared_weak_count___release_weak_alt1();
+                              std___1___shared_weak_count___release_weak_alt1(
+                                  v135);
                             }
                           }
                           else if (v135 != 0) {
@@ -2743,7 +2746,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                   LODWORD(v155) = v121 | v155;
                 LABEL_252:
                   (*(void (**)(__int64))(*(_QWORD*)v119 + 16LL))(v119);
-                  std___1___shared_weak_count___release_weak_alt1();
+                  std___1___shared_weak_count___release_weak_alt1(v119);
                   if ((v122 & 1) == 0) {
                     goto LABEL_255;
                   }
@@ -2776,7 +2779,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
     if (atomic_fetch_add((atomic_ullong* volatile)(v48 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v48 + 16LL))(v48);
-      std___1___shared_weak_count___release_weak_alt1();
+      std___1___shared_weak_count___release_weak_alt1(v48);
     }
     goto LABEL_70;
   }
@@ -2797,7 +2800,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           v16 = v15;
           (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
-          std___1___shared_weak_count___release_weak_alt1();
+          std___1___shared_weak_count___release_weak_alt1(v14);
           v15 = v16;
         }
       }
@@ -2819,7 +2822,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           v20 = v19;
           (*(void (**)(__int64))(*(_QWORD*)v18 + 16LL))(v18);
-          std___1___shared_weak_count___release_weak_alt1();
+          std___1___shared_weak_count___release_weak_alt1(v18);
           v19 = v20;
         }
       }
@@ -2843,7 +2846,8 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
               v23 = v9;
               (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22);
-              *(__n128*)&a2 = std___1___shared_weak_count___release_weak_alt1();
+              *(__n128*)&a2 =
+                  std___1___shared_weak_count___release_weak_alt1(v22);
               v9 = v23;
             }
           }
@@ -2874,7 +2878,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             v10 = v9;
             (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-            *(__n128*)&a2 = std___1___shared_weak_count___release_weak_alt1();
+            *(__n128*)&a2 = std___1___shared_weak_count___release_weak_alt1(v8);
             v9 = v10;
           }
         }

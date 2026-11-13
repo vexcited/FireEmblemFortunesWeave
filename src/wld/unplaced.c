@@ -1270,7 +1270,8 @@ LABEL_8:
                             PSEUDO_REGISTER(unsigned long long, "x8", "=r"));
       }
       if ((v43 & 0x3F) != 0) {
-        *(_QWORD*)(v51 + 8 * v50) &= ~(0xFFFFFFFFFFFFFFFFLL >> -(v43 & 0x3F));
+        *(_QWORD*)(v51 + 8 * v50) &=
+            ~(0xFFFFFFFFFFFFFFFFLL >> (-(v43 & 0x3F) & 0x3F));
       }
       v52 = v43 & 0x3F;
       v44 = v45;
@@ -9500,7 +9501,7 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                                          *(float32x2_t*)(v131 + v129 + 40))))
                             .n64_u64[0];
                     *(float32x2_t*)&v24 = vpadd_f32(v132, v132);
-                    if (*(float*)&v24 >= 0x1.0000000000000p-23) {
+                    if (!(*(float*)&v24 < 0x1.0000000000000p-23f)) {
                       v133 = *(_QWORD*)(v131 + v129 + 8);
                       v134 = strlen(v133);
                       v50 = wld_c2faa0_alt1(v133, v134);
@@ -10456,8 +10457,8 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                                                 LANES64(v318[6]).n64_u32[0])),
                              vmul_f32(v318[5], v318[5])))
                     .n64_u64[0];
-            if (LANES64_OF(vpadd_f32(v319, v319)).n64_f32[0] >=
-                0x1.0000000000000p-23) {
+            if (!(LANES64_OF(vpadd_f32(v319, v319)).n64_f32[0] <
+                  0x1.0000000000000p-23f)) {
               LODWORD(v24) = LANES64(v318[2]).n64_u32[0];
               v320 = LANES64(v318[1]).n64_u64[0];
               v585 = v316;
@@ -11286,10 +11287,10 @@ __int64 wld_c2caa0(__int64 a1, char a2, char a3)
                         }
                       }
                       v533 = LANES64(v318[5]).n64_f32[1];
-                      if (vabds_f32(LANES64(v318[5]).n64_f32[0], v533) >=
-                              0x1.0000000000000p-23 ||
-                          vabds_f32(v533, LANES64(v318[6]).n64_f32[0]) >=
-                              0x1.0000000000000p-23) {
+                      if (!(vabds_f32(LANES64(v318[5]).n64_f32[0], v533) <
+                            0x1.0000000000000p-23f) ||
+                          !(vabds_f32(v533, LANES64(v318[6]).n64_f32[0]) <
+                            0x1.0000000000000p-23f)) {
                         v534 = *(_QWORD*)(v505 + 24);
                         v535 = *(_DWORD**)(v534 + 360);
                         for (j = *(_DWORD**)(v534 + 368); v535 != j; ++v535) {

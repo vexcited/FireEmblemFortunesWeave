@@ -717,7 +717,7 @@ game_hub_f7be00_alt3(PSEUDO_X8 x8_, __int64 a1,
                      __int64* a2) __asm__("game_hub_f7be00");
 __int64 game_hub_f89710(__int64 a1, _DWORD* a2, __int64 a3);
 __n128 game_hub_f8b240();
-__n128 game_hub_f8b300(__n128 result);
+void game_hub_f8b300(__n128 result);
 __n128 game_hub_f8b650_alt1() __asm__("game_hub_f8b650");
 __n128 game_hub_f8bf30(_QWORD* a1);
 __int64 game_hub_f960c0_alt1(_QWORD* a1,
@@ -744,7 +744,7 @@ game_hub_fb6f80_alt1(__int64 a1,
 __int64 game_hub_1001800_alt1(__int64 result) __asm__("game_hub_1001800");
 __n128 game_hub_1001960();
 __int64 game_hub_1001a00();
-__n128 game_hub_1001b60(float32x4_t* a1, __n128 result);
+void game_hub_1001b60(float32x4_t* a1, __n128 result);
 __n128 game_hub_1001d00(__int64 a1);
 void game_hub_102d900(__int64 a1);
 __n128 game_hub_1035650(__int64 a1, __int64 a2, __int64 a3, float* a4,
@@ -7817,7 +7817,7 @@ __n128 game_hub_f8b240()
   return result;
 }
 
-__n128 game_hub_f8b300(__n128 result)
+void game_hub_f8b300(__n128 result)
 {
 
 #pragma clang fp contract(off)
@@ -7865,7 +7865,7 @@ __n128 game_hub_f8b300(__n128 result)
     result = std___1___shared_weak_count___release_weak(v1);
     if (v4 == 0 || v2 == 0) {
       if (v4 == 0) {
-        return result;
+        return;
       }
     }
     else {
@@ -7993,10 +7993,10 @@ __n128 game_hub_f8b300(__n128 result)
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64, long double))(*(_QWORD*)v4 + 16LL))(
           v4, *(long double*)&result);
-      return std___1___shared_weak_count___release_weak(v4);
+      std___1___shared_weak_count___release_weak(v4);
+      return;
     }
   }
-  return result;
 }
 
 __int64 game_hub_f8b650()
@@ -11177,7 +11177,7 @@ __int64 game_hub_1001a00()
                      0x1.47ae140000000p-8f, 0x1.0000000000000p+0f);
 }
 
-__n128 game_hub_1001b60(float32x4_t* a1, __n128 result)
+void game_hub_1001b60(float32x4_t* a1, __n128 result)
 {
 
 #pragma clang fp contract(off)
@@ -11201,7 +11201,7 @@ __n128 game_hub_1001b60(float32x4_t* a1, __n128 result)
     result = std___1___shared_weak_count___release_weak(v2);
     if (v6 == 0 || v4 == 0) {
       if (v6 == 0) {
-        return result;
+        return;
       }
     }
     else {
@@ -11221,10 +11221,10 @@ __n128 game_hub_1001b60(float32x4_t* a1, __n128 result)
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64, long double))(*(_QWORD*)v6 + 16LL))(
           v6, *(long double*)&result);
-      return std___1___shared_weak_count___release_weak(v6);
+      std___1___shared_weak_count___release_weak(v6);
+      return;
     }
   }
-  return result;
 }
 
 __n128 game_hub_1001d00(__int64 a1)

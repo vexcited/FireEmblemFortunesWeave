@@ -4948,7 +4948,7 @@ __int64 GameHr_f888c0(__int64 result)
 
   if (GameData_2212270 != 0) {
     v1 = GameData_21f3d10 == 0 || *(_BYTE*)(GameData_2212270 + 218) == 0;
-    if (!v1 && *(_DWORD*)(GameData_2212270 + 232) <= 0 &&
+    if (!v1 && *(int*)(GameData_2212270 + 232) <= 0 &&
         (*(_BYTE*)(GameData_2212270 + 240) & 1) == 0 &&
         *(_BYTE*)(GameData_2212270 + 139) == 0 &&
         *(int*)(GameData_21f3d10 + 152) <= 0) {

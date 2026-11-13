@@ -3582,6 +3582,8 @@ void physx_source_lowleveldynamics_src_3678e0(__int64 a1)
         v17 = *v16;
         v18 = *((unsigned __int16*)v16 + 2);
         v19 = *(_QWORD*)(v13 + (v17 << 6) + 32);
+        // The original prefetches from it, the load stays.
+        __asm__ volatile("" ::"r"(v19));
         v20 = ((v19 + 383) >> 6) - (v19 >> 6);
         v21 = v20 + 1;
         for (i = (v20 + 1) & 7; i != 0; --i) {
@@ -3605,7 +3607,8 @@ void physx_source_lowleveldynamics_src_3678e0(__int64 a1)
           }
         }
       LABEL_12:
-        v14[*((unsigned __int16*)v16 + 3)]();
+        ((void (*)(__int64, unsigned int, void*))
+             v14[*((unsigned __int16*)v16 + 3)])(v13 + (v17 << 6), v18, &v69);
         if (++v15 == v4) {
           goto LABEL_27;
         }
@@ -3682,6 +3685,8 @@ void physx_source_lowleveldynamics_src_3678e0(__int64 a1)
         v39 = *v38;
         v40 = *((unsigned __int16*)v38 + 2);
         v41 = *(_QWORD*)(v13 + (v39 << 6) + 32);
+        // The original prefetches from it, the load stays.
+        __asm__ volatile("" ::"r"(v41));
         v42 = ((v41 + 383) >> 6) - (v41 >> 6);
         v43 = v42 + 1;
         for (j = (v42 + 1) & 7; j != 0; --j) {
@@ -3705,8 +3710,9 @@ void physx_source_lowleveldynamics_src_3678e0(__int64 a1)
           }
         }
       LABEL_42:
-        (*((void (**)(void))GameData_21358c0 +
-           *((unsigned __int16*)v38 + 3)))();
+        ((void (*)(__int64, unsigned int, void*))(*(
+            (void (**)(void))GameData_21358c0 +
+            *((unsigned __int16*)v38 + 3))))(v13 + (v39 << 6), v40, &v69);
         if (++v37 == v4) {
           goto LABEL_57;
         }
@@ -3744,6 +3750,8 @@ void physx_source_lowleveldynamics_src_3678e0(__int64 a1)
         v55 = *v54;
         v56 = *((unsigned __int16*)v54 + 2);
         v57 = *(_QWORD*)(v13 + (v55 << 6) + 32);
+        // The original prefetches from it, the load stays.
+        __asm__ volatile("" ::"r"(v57));
         v58 = ((v57 + 383) >> 6) - (v57 >> 6);
         v59 = v58 + 1;
         for (k = (v58 + 1) & 7; k != 0; --k) {
@@ -3767,7 +3775,8 @@ void physx_source_lowleveldynamics_src_3678e0(__int64 a1)
           }
         }
       LABEL_66:
-        v53[*((unsigned __int16*)v54 + 3)]();
+        ((void (*)(__int64, unsigned int, void*))
+             v53[*((unsigned __int16*)v54 + 3)])(v13 + (v55 << 6), v56, &v69);
         if (++v52 == v4) {
           goto LABEL_81;
         }

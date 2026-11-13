@@ -2631,7 +2631,7 @@ __attribute__((swiftcall)) void wld_map_c24020(PSEUDO_X8 x8_, __int64 a1,
   v6 = *(_QWORD*)(a1 + 88);
   v7 = *(_QWORD*)(a1 + 96) - v6;
   v8 = (v7 >> 3) + a2;
-  if (v8 > (*(_QWORD*)(a1 + 104) - v6) >> 3) {
+  if (v8 > (unsigned __int64)((__int64)(*(_QWORD*)(a1 + 104) - v6) >> 3)) {
     if (v8 >> 61 != 0) {
     LABEL_27:
       GameRoutine_81e570();

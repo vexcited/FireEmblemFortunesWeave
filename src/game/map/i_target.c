@@ -2327,8 +2327,9 @@ __int64 ITarget_773420(__int64 a1, __int64 a2, long double a3)
     LOBYTE(v5) = TargetEnumerator_77f800(v145, v144, v8, 1);
     return v5 & 1;
   case 0x1A:
+    return TargetEnumerator_77f800(a1, 3, a2, 1);
   case 0x1E:
-    return ((__int64 (*)(void))TargetEnumerator_77f800)();
+    return TargetEnumerator_77f800(a1, 3, a2, 0);
   case 0x1B:
     v138 = *(_DWORD*)(a1 + 44);
     v430 = 0;

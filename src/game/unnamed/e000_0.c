@@ -1719,15 +1719,18 @@ __int64 GameHr_1046e0(__int64 a1, _QWORD* a2)
                     v63 = GameData_212d480[0];
                     while (1) {
                       v64 = v59 + 2;
+                      // The original scans inline, keep clang off strlen.
                       do {
                         v65 = *++v59;
                         v66 = v64++;
+                        __asm__("" : "+r"(v59));
                       } while (v65 != 0);
                       if (v59[1] == 0 && v59[2] == 0 && v59[3] == 0) {
                         break;
                       }
                       do {
                         v67 = *v66++;
+                        __asm__("" : "+r"(v66));
                       } while (v67 != 0);
                       if (*v66 == 0 && v66[1] == 0 && v66[2] == 0) {
                         break;
@@ -4046,7 +4049,7 @@ void GameHr_3abec0(__int64 a1, __int64 a2, _QWORD* a3, float a4)
           *(_QWORD*)(v25 + 16) = v12[2];
           v24 = *v26;
         }
-        v24[5]();
+        ((void (*)(__int64 (***)()))v24[5])(v29);
         v27 = *(unsigned int*)(v15 + 8);
         if ((*(_DWORD*)(v15 + 12) & 0x7FFFFFFFu) <= (unsigned int)v27) {
           break;

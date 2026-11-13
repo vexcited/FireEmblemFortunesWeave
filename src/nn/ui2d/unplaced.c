@@ -30,8 +30,8 @@ extern __int64* GameData_2134fd0[5];
 extern __int64* GameData_2136200;
 extern int* GameData_2136208[16];
 float acosf(float);
-float powf(_QWORD, float, float);
-long double cosf(float);
+float powf(float, float);
+float cosf(float);
 void* LayoutEx_579130(void* result, void*, __int64);
 void GameRoutine_6a48();
 void GameRoutine_ea44();
@@ -54,7 +54,7 @@ int* nn_ui2d_5a0280(int* result, int* a2, __int64 a3,
 int* nn_ui2d_5a0c60(int* result, int* a2, __int64 a3,
                     __int64 (*a4)(__int64*, char*, __int64, __int64),
                     __int64 a5, unsigned int a6);
-void nn_ui2d_5a3500(__int64 a1, float a2);
+float nn_ui2d_5a3500(__int64 a1, float a2);
 float nn_ui2d_5a3700(unsigned __int16* a1, float a2);
 __int64 (*LayoutEx_579130_alt1(__int64 (*result)(_QWORD, _QWORD, _QWORD), void*,
                                __int64))(_QWORD, _QWORD,
@@ -787,7 +787,7 @@ float nn_ui2d_59f160(float* a1, int a2, float a3)
   if (a2 == 1 || a3 <= *a1) {
     return a1[1];
   }
-  v4 = &a1[3 * v3];
+  v4 = &a1[3 * (int)v3];
   if (a3 >= *v4) {
     return v4[1];
   }
@@ -816,7 +816,7 @@ float nn_ui2d_59f160(float* a1, int a2, float a3)
   }
   v12 = &a1[3 * v6];
   v13 = *v12;
-  if (vabds_f32(a3, *v12) >= 0x1.0624de0000000p-10f) {
+  if (!(vabds_f32(a3, *v12) < 0x1.0624de0000000p-10f)) {
     v15 = &a1[3 * v10];
     v16 = a3 - *v15;
     v17 = 0x1.0000000000000p+0f / (float)(v13 - *v15);
@@ -1808,7 +1808,7 @@ int* nn_ui2d_5a0c60(int* result, int* a2, __int64 a3,
   return result;
 }
 
-void nn_ui2d_5a3500(__int64 a1, float a2)
+float nn_ui2d_5a3500(__int64 a1, float a2)
 {
   float v2;
   float v3;
@@ -1822,48 +1822,53 @@ void nn_ui2d_5a3500(__int64 a1, float a2)
   float v11;
   float v12;
   float v13;
-  long double v14;
+  float v14;
   float v15;
-  long double v17;
-  float v18;
 
   v2 = *(float*)(a1 + 12);
   v3 = *(float*)(a1 + 4);
-  v4 = (float)((float)(PSEUDO_UNFUSED(v2 * 0x1.8000000000000p+1f)) +
-               (float)(v3 * -0x1.8000000000000p+1f)) +
-       0x1.0000000000000p+0f;
-  v5 = (float)((float)((float)(v2 * -0x1.8000000000000p+2f) + 0x0.0p+0f) +
-               (float)(v3 * 0x1.8000000000000p+1f)) /
-       v4;
-  v6 = (float)(v2 * 0x1.8000000000000p+1f) / v4;
-  v7 = v5 / -0x1.8000000000000p+1f;
-  v8 = (float)((float)(PSEUDO_UNFUSED(v6 * -0x1.8000000000000p+1f)) +
-               (float)(v5 * v5)) /
-       0x1.2000000000000p+3f;
-  v9 = (float)((float)((float)((float)(v5 * (float)(v5 + v5)) * v5) -
-                       (float)(PSEUDO_UNFUSED(
-                           v6 * (float)(v5 * 0x1.2000000000000p+3f)))) +
-               (float)((float)((float)(0x0.0p+0f - a2) / v4) *
-                       0x1.b000000000000p+4f)) /
-       0x1.b000000000000p+5f;
-  v10 = v8 * (float)(v8 * v8);
-  v11 = (float)(PSEUDO_UNFUSED(v9 * v9)) - v10;
-  if (v11 <= 0x0.0p+0f) {
-    v12 = acosf(v9 * (float)(0x1.0000000000000p+0f / sqrtf(v10)));
-    v13 = sqrtf(v8) * -0x1.0000000000000p+1f;
-    v14 = cosf(v12 / 0x1.8000000000000p+1f);
-    v15 = v7 + (float)(v13 * *(float*)&v14);
-    if (v15 < 0x0.0p+0f || v15 > 0x1.0000000000000p+0f) {
-      v17 = cosf((float)(v12 + 0x1.921fb60000000p+2f) / 0x1.8000000000000p+1f);
-      v18 = v7 + (float)(v13 * *(float*)&v17);
-      if (v18 < 0x0.0p+0f || v18 > 0x1.0000000000000p+0f) {
-        cosf((float)(v12 + 0x1.921fb60000000p+3f) / 0x1.8000000000000p+1f);
-      }
-    }
+  v12 = v2 * 0x1.8p+1f;
+  v4 = v3 * -0x1.8p+1f + v12;
+  v4 = v4 + 0x1.0p+0f;
+  v5 = v2 * -0x1.8p+2f + 0.0f;
+  v5 = v3 * 0x1.8p+1f + v5;
+  v5 = v5 / v4;
+  v6 = v12 / v4;
+  v13 = (0.0f - a2) / v4;
+  v7 = v5 / -0x1.8p+1f;
+  v14 = v6 * -0x1.8p+1f;
+  v8 = (v5 * v5 + v14) / 0x1.2p+3f;
+  v14 = v5 * (v5 + v5);
+  v15 = v6 * (v5 * 0x1.2p+3f);
+  // Keeps the negation out of the constant so a NaN keeps its sign flip.
+  __asm__("" : "+w"(v15));
+  v15 = -v15;
+  v9 = v14 * v5 + v15;
+  v9 = v13 * 0x1.bp+4f + v9;
+  v9 = v9 / 0x1.bp+5f;
+  v10 = v8 * (v8 * v8);
+  v11 = v9 * v9;
+  v11 = v11 - v10;
+  if (v11 > 0.0f) {
+    v12 = __builtin_copysignf(0x1.0p+0f, -v9);
+    v13 = powf(fabsf(v9) + sqrtf(v11), 0x1.555556p-2f);
+    return v12 * (v13 + v8 / v13) + v7;
   }
-  else {
-    powf(a1, fabsf(v9) + sqrtf(v11), 0x1.5555560000000p-2f);
+  v12 = acosf(v9 * (0x1.0p+0f / sqrtf(v10)));
+  v13 = sqrtf(v8) * -0x1.0p+1f;
+  v14 = v13 * cosf(v12 / 0x1.8p+1f) + v7;
+  if (v14 >= 0.0f && v14 <= 0x1.0p+0f) {
+    return v14;
   }
+  v14 = v13 * cosf((v12 + 0x1.921fb6p+2f) / 0x1.8p+1f) + v7;
+  if (v14 >= 0.0f && v14 <= 0x1.0p+0f) {
+    return v14;
+  }
+  v15 = v13 * cosf((v12 + 0x1.921fb6p+3f) / 0x1.8p+1f) + v7;
+  if (!(v15 >= 0.0f) || !(v15 <= 0x1.0p+0f)) {
+    return a2;
+  }
+  return v15;
 }
 
 float nn_ui2d_5a3700(unsigned __int16* a1, float a2)
@@ -1891,10 +1896,10 @@ float nn_ui2d_5a3700(unsigned __int16* a1, float a2)
   v4 = *((float**)a1 + 1);
   v5 = 0x0.0p+0f;
   v6 = *v4;
-  if (a2 > *v4) {
+  if (!(a2 <= *v4)) {
     v7 = &v4[8 * v2];
     v8 = v7 - 8;
-    if (a2 < *(v7 - 8)) {
+    if (!(a2 >= *(v7 - 8))) {
       v9 = (unsigned int)(v2 - 1);
       v10 = &v4[8 * (unsigned int)(v2 - 2)];
       do {
@@ -1907,9 +1912,7 @@ float nn_ui2d_5a3700(unsigned __int16* a1, float a2)
           if (v16 > 0x1.0000000000000p+0f) {
             v16 = 0x1.0000000000000p+0f;
           }
-          nn_ui2d_5a3500((__int64)v4, v16),
-              v17 = COERCE_AS(__typeof__(v17),
-                              PSEUDO_REGISTER(float, "s0", "=w"));
+          v17 = nn_ui2d_5a3500((__int64)v4, v16);
           v5 = (float)(PSEUDO_UNFUSED(v17 * (float)(v17 * v17))) +
                (float)((float)(PSEUDO_UNFUSED(
                            v4[2] *

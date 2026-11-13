@@ -36,6 +36,12 @@ extern int GameData_21fdee0;
 extern int GameData_21fdf08;
 extern int GameData_21fdf14;
 float GameRoutine_652770(float, float);
+struct GameRoutine_652770_xy {
+  float x;
+  float y;
+};
+struct GameRoutine_652770_xy GameRoutine_652770_alt1(float, float) __asm__(
+    "GameRoutine_652770");
 float exp2f(float);
 float powf(float, float);
 __int64 gfxa_TaskColorGrading_Impl_Impl(__int64 a1, __int64 a2);
@@ -436,6 +442,7 @@ __int64 TaskColorGrading_b55630(__int64* a1, __int64 a2, _BYTE* a3)
   __int64 v7;
   float v8;
   __int64 v9;
+  struct GameRoutine_652770_xy v34_;
   float v10;
   float v11;
   float v12;
@@ -562,17 +569,19 @@ __int64 TaskColorGrading_b55630(__int64* a1, __int64 a2, _BYTE* a3)
     if (a3[248] != 0) {
       v9 = 244;
     }
-    v10 = GameRoutine_652770(v8, *(float*)&a3[v9]),
-    v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w")),
-    v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s1", "=w")),
-    v27 = COERCE_AS(__typeof__(v27), PSEUDO_REGISTER(float, "s1", "=w")),
-    v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(float, "s1", "=w"));
+    v34_ = GameRoutine_652770_alt1(v8, *(float*)&a3[v9]);
+    v10 = v34_.x;
+    v11 = v34_.y;
+    v14 = v34_.y;
+    v27 = v34_.y;
+    v30 = v34_.y;
     v12 = v11;
-    v13 = GameRoutine_652770(0x1.9640000000000p+12f, 0x0.0p+0f),
-    v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w")),
-    v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s1", "=w")),
-    v27 = COERCE_AS(__typeof__(v27), PSEUDO_REGISTER(float, "s1", "=w")),
-    v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(float, "s1", "=w"));
+    v34_ = GameRoutine_652770_alt1(0x1.9640000000000p+12f, 0x0.0p+0f);
+    v13 = v34_.x;
+    v11 = v34_.y;
+    v14 = v34_.y;
+    v27 = v34_.y;
+    v30 = v34_.y;
     v15 = v13 / v14;
     v16 = (float)((float)(0x1.0000000000000p+0f - v13) - v14) / v14;
     v17 = (float)((float)(0x1.0000000000000p+0f - v10) - v12) / v12;
@@ -622,17 +631,19 @@ __int64 TaskColorGrading_b55630(__int64* a1, __int64 a2, _BYTE* a3)
   }
   else {
     v23 = 0x0.0p+0f;
-    v26 = GameRoutine_652770(0x1.9640000000000p+12f, 0x0.0p+0f),
-    v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w")),
-    v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s1", "=w")),
-    v27 = COERCE_AS(__typeof__(v27), PSEUDO_REGISTER(float, "s1", "=w")),
-    v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(float, "s1", "=w"));
+    v34_ = GameRoutine_652770_alt1(0x1.9640000000000p+12f, 0x0.0p+0f);
+    v26 = v34_.x;
+    v11 = v34_.y;
+    v14 = v34_.y;
+    v27 = v34_.y;
+    v30 = v34_.y;
     v28 = v27;
-    v29 = GameRoutine_652770(0x1.9640000000000p+12f, 0x0.0p+0f),
-    v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w")),
-    v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(float, "s1", "=w")),
-    v27 = COERCE_AS(__typeof__(v27), PSEUDO_REGISTER(float, "s1", "=w")),
-    v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(float, "s1", "=w"));
+    v34_ = GameRoutine_652770_alt1(0x1.9640000000000p+12f, 0x0.0p+0f);
+    v29 = v34_.x;
+    v11 = v34_.y;
+    v14 = v34_.y;
+    v27 = v34_.y;
+    v30 = v34_.y;
     v31 = v29 / v30;
     v25 = 0x0.0p+0f;
     v32 = (float)((float)(0x1.0000000000000p+0f - v29) - v30) / v30;
