@@ -2882,9 +2882,12 @@ __int64 TrickEntity_7d1080(__int64 result)
                                LANES128_OF(vextq_s8(v13, v13, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v13).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0])))
-            .n64_f32[0] != 0x0.0p+0f) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0])))
+                .n64_f32[0],
+            0x0.0p+0f)) {
       LANES128(v10[19]).n128_f32[0] = v7;
       LANES128(v10[19]).n128_f32[1] = v9;
       v14 = v10[19];

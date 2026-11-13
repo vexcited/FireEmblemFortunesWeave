@@ -285,7 +285,7 @@ __int64 HistoryMenu_Unknown2(__int64 a1)
   }
   v11 = v4 - v9;
   if (v4 != v9) {
-    v12 = *(_DWORD*)(a1 + ((__int64)((*(_DWORD*)(a1 + 1776) + 5) % 11) << 6) +
+    v12 = *(_DWORD*)(a1 + ((__int64)((*(int*)(a1 + 1776) + 5) % 11) << 6) +
                      1072);
     v13 = GameRoutine_1270b00(a1, (unsigned int)(v12 + v11));
     v14 = *(_QWORD**)(a1 + 232);
@@ -387,7 +387,7 @@ LABEL_41:
   if (v32 != 0 &&
       *(__int64 (***)())v32 == game_map_anonymous_HistoryMenuItem_vtable &&
       *(_BYTE*)(v32 + 88) == 1) {
-    v33 = *(_DWORD*)(a1 + ((__int64)((*(_DWORD*)(a1 + 1776) + 5) % 11) << 6) +
+    v33 = *(_DWORD*)(a1 + ((__int64)((*(int*)(a1 + 1776) + 5) % 11) << 6) +
                      1072);
     if (*(_QWORD*)(v32 + 56) == 0) {
       goto LABEL_49;
@@ -458,13 +458,13 @@ __int64 HistoryMenu_Unknown144(__int64 a1, int a2)
   __int64 v13;
   _BYTE* v14;
 
-  v3 = *(_DWORD*)(a1 + ((__int64)((*(_DWORD*)(a1 + 1776) + 5) % 11) << 6) +
+  v3 = *(_DWORD*)(a1 + ((__int64)((*(int*)(a1 + 1776) + 5) % 11) << 6) +
                   1072);
   v4 = GameData_22400f8;
   if (a2 < 1) {
     if (GameData_22400f8 != 0 &&
         game_map_history_12297e0(GameData_22400f8, v3) != 0) {
-      while (++v3 < *(_DWORD*)(v4 + 824)) {
+      while (++v3 < *(int*)(v4 + 824)) {
         v9 = game_map_history_12297e0(v4, v3);
         if (v9 == 0) {
           break;
@@ -528,7 +528,7 @@ __int64 HistoryMenu_Unknown145(__int64 a1)
   v1 = GameData_22400f8;
   if (GameData_22400f8 != 0) {
     v2 = a1;
-    v3 = *(_DWORD*)(a1 + ((__int64)((*(_DWORD*)(a1 + 1776) + 5) % 11) << 6) +
+    v3 = *(_DWORD*)(a1 + ((__int64)((*(int*)(a1 + 1776) + 5) % 11) << 6) +
                     1072);
     v4 = game_map_history_12297e0(GameData_22400f8, v3);
     if (v3 >= 1 && v4 != 0) {
@@ -567,10 +567,10 @@ __int64 HistoryMenu_Unknown146(__int64 a1)
 
   v2 = *GameData_21309c8[0];
   if (*GameData_21309c8[0] != 0) {
-    v3 = *(_DWORD*)(a1 + ((__int64)((*(_DWORD*)(a1 + 1776) + 5) % 11) << 6) +
+    v3 = *(_DWORD*)(a1 + ((__int64)((*(int*)(a1 + 1776) + 5) % 11) << 6) +
                     1072);
     if (game_map_history_12297e0(*GameData_21309c8[0], v3) != 0) {
-      while (++v3 < *(_DWORD*)(v2 + 824)) {
+      while (++v3 < *(int*)(v2 + 824)) {
         v4 = game_map_history_12297e0(v2, v3);
         if (v4 == 0) {
           break;
@@ -604,7 +604,7 @@ __int64 HistoryMenu_Unknown7(__int64 a1)
 
   v2 = *GameData_21309c8[0];
   if (*GameData_21309c8[0] != 0) {
-    v3 = *(_DWORD*)(a1 + ((__int64)((*(_DWORD*)(a1 + 1600) + 5) % 11) << 6) +
+    v3 = *(_DWORD*)(a1 + ((__int64)((*(int*)(a1 + 1600) + 5) % 11) << 6) +
                     896);
     if (game_map_history_12297e0(*GameData_21309c8[0], v3) != 0) {
       while (++v3 < (signed __int32)*(_DWORD*)(v2 + 824)) {
@@ -645,7 +645,7 @@ __int64 HistoryMenu_Unknown13(__int64 a1, int a2)
   _BYTE* v14;
 
   v3 =
-      *(_DWORD*)(a1 + ((__int64)((*(_DWORD*)(a1 + 1600) + 5) % 11) << 6) + 896);
+      *(_DWORD*)(a1 + ((__int64)((*(int*)(a1 + 1600) + 5) % 11) << 6) + 896);
   v4 = GameData_22400f8;
   if (a2 < 1) {
     if (GameData_22400f8 != 0 &&
@@ -781,7 +781,7 @@ bool HistoryMenu_1270b00(__int64 a1, int a2)
     v13 = v4 + 5;
     v14 = GameData_21309c8[0];
     do {
-      v15 = v2 + ((__int64)(((int)v12 + *(_DWORD*)(a1 + 1776)) % 11) << 6);
+      v15 = v2 + ((__int64)(((int)v12 + *(int*)(a1 + 1776)) % 11) << 6);
       if (v13 < 0 || v13 >= (signed __int32)*(_DWORD*)(a1 + 1068)) {
         v28 = *(_BYTE*)(v15 + 24);
         *(_DWORD*)v15 = -1;

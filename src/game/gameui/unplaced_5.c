@@ -196,9 +196,8 @@ void game_gameui_171a220(__int64 a1)
   const char* v26;
   __int64 v27;
   __int64 v28;
-  char v29;
   struct {
-    char gap16_[1];
+    char v29;
     char v30[15];
     __int64 v31;
   } v30_;
@@ -326,7 +325,7 @@ void game_gameui_171a220(__int64 a1)
               *(_QWORD*)fw_memory_g_heap_manager_ptr + v20, (__int64)v32_.v34);
         }
         v32_.v32 = 0x6B6565575F540CLL;
-        v29 = 12;
+        v30_.v29 = 12;
         strcpy(v30_.v30, "BgWeek");
         v21 = v14 + 12;
         v22 = v13 - (v14 < 3);
@@ -347,8 +346,8 @@ void game_gameui_171a220(__int64 a1)
         else {
           v26 = GameData_20aee00[(unsigned __int8)v25];
         }
-        game_17bea50((char*)v5, (__int64)&v32_.v32, (__int64)&v29, v26);
-        if ((v29 & 1) != 0 && v30_.v31 != 0) {
+        game_17bea50((char*)v5, (__int64)&v32_.v32, (__int64)&v30_.v29, v26);
+        if ((v30_.v29 & 1) != 0 && v30_.v31 != 0) {
           v27 = 128;
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v27 = 56;

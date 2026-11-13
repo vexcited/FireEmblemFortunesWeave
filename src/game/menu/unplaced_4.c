@@ -1620,10 +1620,12 @@ _QWORD* game_menu_162e6a0(_QWORD* result)
                             LANES128_OF(vextq_s8(v99, v99, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v99).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v99).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v99).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v99).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v99).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         *(_QWORD*)(v97 + 304) = 3204448256LL;
         v100 = *(_OWORD*)(v97 + 304);
         *(_DWORD*)(v97 + 296) |= 1u;
@@ -1640,10 +1642,12 @@ _QWORD* game_menu_162e6a0(_QWORD* result)
                             LANES128_OF(vextq_s8(v102, v102, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v102).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v102).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v102).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v102).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v102).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         *(_QWORD*)(v97 + 320) = 0x40A78D3600000000LL;
         v103 = *(_OWORD*)(v97 + 336);
         *(_OWORD*)(v97 + 320) = *(unsigned __int64*)(v97 + 320);
@@ -1671,10 +1675,12 @@ _QWORD* game_menu_162e6a0(_QWORD* result)
                             LANES128_OF(vextq_s8(v108, v108, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v108).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v108).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v108).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v108).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v108).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         *(_QWORD*)(v106 + 304) = 1056964608;
         v109 = *(_OWORD*)(v106 + 304);
         *(_DWORD*)(v106 + 296) |= 1u;
@@ -1691,10 +1697,12 @@ _QWORD* game_menu_162e6a0(_QWORD* result)
                             LANES128_OF(vextq_s8(v111, v111, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v111).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v111).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v111).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v111).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v111).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         *(_QWORD*)(v106 + 320) = 0x3FA5514D00000000LL;
         v112 = *(_OWORD*)(v106 + 336);
         *(_OWORD*)(v106 + 320) = *(unsigned __int64*)(v106 + 320);

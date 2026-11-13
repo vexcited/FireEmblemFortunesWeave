@@ -1150,7 +1150,7 @@ __int64 CombatCamera_1097a60(__int64 result, float a2)
                           vmulq_n_f32(v51, LANES128(v55).n128_f32[0]), v52,
                           COERCE_AS(float32x2_t, LANES128(v55).n128_u64[0]), 1),
                       v53, v55, 2));
-              LANES128(v56).n128_u32[0] = 5.0f;
+              LANES128(v56).n128_f32[0] = 5.0f;
               if (LANES128(v56).n128_f32[2] <= -5.0f) {
                 LANES128(v56).n128_f32[0] = -LANES128(v56).n128_f32[2];
               }

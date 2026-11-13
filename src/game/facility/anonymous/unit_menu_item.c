@@ -288,7 +288,7 @@ __int64 UnitMenuItem_PlayCursorAnimation(__int64 a1)
             v6 = v9 != 0 && *(_DWORD*)(v9 + 32) != 0;
           }
         }
-        LODWORD(v7) = 1.0;
+        LODWORD(v7) = COERCE_UNSIGNED_INT((float)(1.0));
         if (((v8 != 0) & v6) != 0) {
           v10 = "Select_Clear_On";
         }

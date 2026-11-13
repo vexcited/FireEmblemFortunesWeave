@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_62bec0(_QWORD, _QWORD, _QWORD);
@@ -670,7 +672,12 @@ float32x4_t game_hub_Locator_GetRegisterPos_lambda0_Invoke(__int64 a1,
       v12 = *(_QWORD*)(v6 + 720);
       v13 = v6 + 705;
       v14 = (v8 & 1) != 0 ? v12 : v13;
-      if ((unsigned int)memcmp(v11, v14, v7) == 0) {
+      if (({
+            int r_ = memcmp(v11, v14, v7);
+            result = COERCE_AS(__typeof__(result),
+                               PSEUDO_REGISTER(__n128, "v0", "=w"));
+            r_;
+          }) == 0) {
         if (*(_BYTE*)(v4 + 80) == 1) {
           result = *(float32x4_t*)(v4 + 64);
         }
@@ -685,7 +692,7 @@ float32x4_t game_hub_Locator_GetRegisterPos_lambda0_Invoke(__int64 a1,
         v18 = *(_OWORD*)v17;
         *((_QWORD*)&v18 + 1) = LANES128(result).n128_u32[2];
         *(_OWORD*)v17 = v18;
-        LANES128(result).n128_u32[0] = *(_DWORD*)(v4 + 272);
+        PSEUDO_LOW_LANE128(result, n128_u32, *(_DWORD*)(v4 + 272));
         **(_DWORD**)(a1 + 32) = LANES128(result).n128_u32[0];
         **(_BYTE**)(a1 + 8) = 1;
         if (v3 != 0) {

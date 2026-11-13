@@ -149,11 +149,14 @@ void ActionDamageWait_Unknown7(__int64 a1)
   __int64 v32;
   int v33;
   __int64 v34;
+  unsigned int v35;
 
   v1 = **(_DWORD**)(a1 + 24);
   if ((v1 & 0x40) == 0) {
     v2 = *(_QWORD*)(a1 + 8);
-    if ((v1 & 0x180) == 0 && (*(_DWORD*)(v2 + 96) & 0xFFFFFFFE) != 2) {
+    v35 = *(_DWORD*)(v2 + 96);
+    __asm__ volatile("" ::"r"(v35));
+    if ((v1 & 0x180) == 0 && (v35 & 0xFFFFFFFE) != 2) {
       *(float*)&v5 =
           X8CALL_S0(float, game_combat_10690a0((void*)((__int64)&v34),
                                                *(_QWORD*)(v2 + 808)));
@@ -169,7 +172,7 @@ void ActionDamageWait_Unknown7(__int64 a1)
         }
         v10 = *(_DWORD*)(v8 + 11784);
         v11 = v10 > 0x12;
-        v12 = 0x1FF7Fu >> v10;
+        v12 = 0x1FF7Fu >> (v10 & 31);
         v13 = v11;
         v14 = v13 | v12;
         if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
@@ -217,7 +220,7 @@ void ActionDamageWait_Unknown7(__int64 a1)
               }
               v28 = *(_DWORD*)(v26 + 11784);
               v11 = v28 > 0x12;
-              v29 = 0x1FF7Fu >> v28;
+              v29 = 0x1FF7Fu >> (v28 & 31);
               v30 = v11;
               v31 = v30 | v29;
               if (v27 != 0 &&

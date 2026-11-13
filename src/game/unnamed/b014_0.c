@@ -6466,13 +6466,13 @@ __int64 GameHr_f8dfb0(long double a1)
     if (GameData_21ec550 == 0) {
       return result;
     }
-    LODWORD(a1) = 3.0;
+    LODWORD(a1) = COERCE_UNSIGNED_INT((float)(3.0));
     v4 = GameData_212c958;
     return GameRoutine_809dc0(result, v4, a1);
   }
   result = GameData_21ec550;
   if (GameData_21ec550 != 0) {
-    LODWORD(a1) = 0.5;
+    LODWORD(a1) = COERCE_UNSIGNED_INT((float)(0.5));
     v4 = GameData_212c960;
     return GameRoutine_809dc0(result, v4, a1);
   }

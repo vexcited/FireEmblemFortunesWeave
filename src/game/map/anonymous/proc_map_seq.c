@@ -252,7 +252,7 @@ LABEL_23:
   if (*game_sound_g_game_sound_ptr[0] != 0) {
     *(_DWORD*)(v19 + 2480) = 0;
     snd_Fade_Fade_10c910(v29, 125);
-    LODWORD(v20) = 1.0;
+    LODWORD(v20) = COERCE_UNSIGNED_INT((float)(1.0));
     if (*(_DWORD*)(v19 + 2752) == 1 && *(_DWORD*)(v19 + 2480) >= 1) {
       *(float*)&v20 =
           snd_getDefineValue("SetVolume_SE_Bmap_FootStep", 1.0) / 100.0;

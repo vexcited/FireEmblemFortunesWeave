@@ -257,10 +257,13 @@ void CrowdCharacter_10317a0(__int64 a1)
                               LANES128_OF(vextq_s8(v12, v12, 8u)).n128_u64[0]),
                     COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0])))
                 .n64_u64[0];
-        if (LANES64_OF(
-                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0])))
-                .n64_f32[0] != 0x0.0p+0f) {
+        if (__builtin_islessgreater(
+                LANES64_OF(
+                    vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0])))
+                    .n64_f32[0],
+                0x0.0p+0f)) {
           LANES128(v9[22]).n128_u32[0] = LANES64(v6).n64_u32[0];
           LANES128(v9[22]).n128_u32[1] = LANES64(v6).n64_u32[0];
           v13 = v9[22];

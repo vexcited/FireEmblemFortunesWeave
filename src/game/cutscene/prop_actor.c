@@ -1472,10 +1472,12 @@ void PropActor_Unknown4(__int64 a1, long double a2, float a3)
                             LANES128_OF(vextq_s8(v34, v34, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         *(_QWORD*)(v31 + 304) = LANES128(v32).n128_u64[0];
         v35 = *(_OWORD*)(v31 + 304);
         *(_DWORD*)(v31 + 296) |= 1u;
@@ -1498,7 +1500,7 @@ void PropActor_Unknown4(__int64 a1, long double a2, float a3)
               vpadd_f32(COERCE_AS(float32x2_t, LANES128(v38).n128_u64[0]),
                         COERCE_AS(float32x2_t, LANES128(v38).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64(v39).n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(LANES64(v39).n64_f32[0], 0x0.0p+0f)) {
         *(_QWORD*)(v31 + 320) = LANES128(v36).n128_u64[0];
         v103 = LANES128(v36).n128_f32[0];
         v40 = *(_OWORD*)(v31 + 320);
@@ -1548,10 +1550,12 @@ void PropActor_Unknown4(__int64 a1, long double a2, float a3)
                             LANES128_OF(vextq_s8(v63, v63, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v63).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v63).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v63).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v63).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v63).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         LANES128(v60[22]).n128_u32[0] = LANES64(v39).n64_u32[0];
         LANES128(v60[22]).n128_u32[1] = LANES64(v39).n64_u32[0];
         v64 = v60[22];

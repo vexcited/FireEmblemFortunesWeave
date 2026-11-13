@@ -114,7 +114,7 @@ void ProcBindInOut_1737bc0(__int64 a1, __int64 a2, __int64* a3, __int64 a4,
       *(_QWORD*)v13 = v17 + 16;
       *(_QWORD*)(v13 + 8) = 0;
       *(__n128*)&v18 = game_ProcInst_Register(v13);
-      LODWORD(v18) = 1.0;
+      LODWORD(v18) = COERCE_UNSIGNED_INT((float)(1.0));
       v16[19] = a2;
       v16[20] = a5;
       *v16 = game_gameui_anonymous_ProcInOut_vtable;

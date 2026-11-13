@@ -1466,7 +1466,7 @@ LABEL_20:
               1.0);
   v16 = fabsf(v15);
   v17 = v15 < 0.0;
-  LODWORD(v4) = -1.0;
+  LODWORD(v4) = COERCE_UNSIGNED_INT((float)(-1.0));
   v18 = v16 * 0.5;
   if (v17) {
     *(float*)&v4 = 1.0;

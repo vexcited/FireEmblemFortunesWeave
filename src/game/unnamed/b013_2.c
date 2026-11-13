@@ -6386,7 +6386,7 @@ LABEL_4:
       }
     }
     else {
-      LODWORD(v13) = 0.5;
+      LODWORD(v13) = COERCE_UNSIGNED_INT((float)(0.5));
       result = GameRoutine_e7c3f0(v11, 2, 0, v13);
     }
     if (atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
@@ -6422,7 +6422,7 @@ LABEL_4:
     v21 = GameRoutine_1a0a0c0(v27);
     result = GameRoutine_1a09c50(v27);
     if (v21 != 0 && v28 != 0) {
-      LODWORD(v22) = 0.5;
+      LODWORD(v22) = COERCE_UNSIGNED_INT((float)(0.5));
       v25 = v28;
       v24 = 0;
       goto LABEL_57;

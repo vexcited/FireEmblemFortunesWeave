@@ -1786,6 +1786,7 @@ unsigned int* game_6b7f00(unsigned int* a1, unsigned __int64 a2,
   v15 =
       *(_QWORD*)(*((_QWORD*)a3 + 2) + 8 * (27 - v17) + 8) +
       32LL * (unsigned int)((_DWORD)v14 - v13 - (*GameData_212ce38)[28 - v17]);
+  __asm__ volatile("" ::"r"(v15));
   if (v10 == 28 - v17) {
     goto LABEL_10;
   }

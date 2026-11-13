@@ -248,9 +248,8 @@ __attribute__((swiftcall)) void CharacterSound_1095750(PSEUDO_X8 x8_,
   unsigned __int64 v27;
   char* v28;
   __int64 v29;
-  unsigned __int8 v30;
   struct {
-    char gap8_[1];
+    unsigned __int8 v30;
     _BYTE v31[7];
     unsigned __int64 v32;
     unsigned __int8* v33;
@@ -309,36 +308,36 @@ __attribute__((swiftcall)) void CharacterSound_1095750(PSEUDO_X8 x8_,
     }
   LABEL_27:
     v20 = (_QWORD*)a1;
-    CharacterSound_1095a00_alt3((void*)(&v30), a1, a2, a3,
+    CharacterSound_1095a00_alt3((void*)(&v31_.v30), a1, a2, a3,
                                 *(_QWORD*)(a1 + 8) + 304LL);
-    if ((v30 & 1) != 0) {
+    if ((v31_.v30 & 1) != 0) {
       v21 = v31_.v32;
     }
     else {
-      v21 = (unsigned __int64)v30 >> 1;
+      v21 = (unsigned __int64)v31_.v30 >> 1;
     }
     if (v21 == 0) {
-      GameRoutine_60a020_alt1((__int64)&v30, a2);
+      GameRoutine_60a020_alt1((__int64)&v31_.v30, a2);
     }
-    GameRoutine_1a09ce0_alt1((__int64)&v30, "_Rain", 5u);
-    if ((v30 & 1) != 0) {
+    GameRoutine_1a09ce0_alt1((__int64)&v31_.v30, "_Rain", 5u);
+    if ((v31_.v30 & 1) != 0) {
       v22 = v31_.v33;
     }
     else {
       v22 = v31_.v31;
     }
     v23 = snd_hasSound_alt1(v22);
-    v24 = (v30 & 1) == 0;
+    v24 = (v31_.v30 & 1) == 0;
     if (!v23) {
       v25 = v31_.v32;
-      if ((v30 & 1) == 0) {
-        v25 = (unsigned __int64)v30 >> 1;
+      if ((v31_.v30 & 1) == 0) {
+        v25 = (unsigned __int64)v31_.v30 >> 1;
       }
       if (v25 <= 4) {
         String_60a230_alt1();
       }
-      GameRoutine_a539c0_alt1(&v30, v25 - 5, 5u);
-      v24 = (v30 & 1) == 0;
+      GameRoutine_a539c0_alt1(&v31_.v30, v25 - 5, 5u);
+      v24 = (v31_.v30 & 1) == 0;
     }
     if (v24) {
       v26 = v31_.v31;
@@ -353,14 +352,14 @@ __attribute__((swiftcall)) void CharacterSound_1095750(PSEUDO_X8 x8_,
   }
 LABEL_43:
   v20 = (_QWORD*)a1;
-  CharacterSound_1095a00_alt3((void*)(&v30), a1, a2, a3,
+  CharacterSound_1095a00_alt3((void*)(&v31_.v30), a1, a2, a3,
                               *(_QWORD*)(a1 + 8) + 304LL);
   v27 = v31_.v32;
-  if ((v30 & 1) != 0) {
+  if ((v31_.v30 & 1) != 0) {
     v28 = (char*)v31_.v33;
   }
   else {
-    v27 = (unsigned __int64)v30 >> 1;
+    v27 = (unsigned __int64)v31_.v30 >> 1;
     v28 = v31_.v31;
   }
   if (v27 != 0) {
@@ -371,7 +370,7 @@ LABEL_43:
   }
 LABEL_49:
   CharacterSound_1096020_alt2(v20, v26, v9);
-  if ((v30 & 1) != 0 && v31_.v33 != nullptr) {
+  if ((v31_.v30 & 1) != 0 && v31_.v33 != nullptr) {
     v29 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v29 = 56;

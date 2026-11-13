@@ -1424,7 +1424,7 @@ void CombatUniverse_10ddb30(_QWORD* a1)
           v51 = vsubq_f32(v78, v79);
           v52 = vmuls_lane_f32(LANES128(v51).n128_f32[2], v51, 2) +
                 (float)(LANES128(v51).n128_f32[0] * LANES128(v51).n128_f32[0]);
-          LANES128(v46).n128_u32[0] = 0x1.0000000000000p+0f;
+          LANES128(v46).n128_f32[0] = 0x1.0000000000000p+0f;
           v53 = v52 < 0x1.0000000000000p-23f;
           v54 = 0x1.0000000000000p+0f / sqrtf(v52);
           v55 = LANES128(v51).n128_f32[0] * v54;
@@ -1523,11 +1523,14 @@ void CombatUniverse_10ddb30(_QWORD* a1)
                               LANES128_OF(vextq_s8(v68, v68, 8u)).n128_u64[0]),
                           COERCE_AS(float32x2_t, LANES128(v68).n128_u64[0])))
                       .n64_u64[0];
-              if (LANES64_OF(
-                      vpadd_f32(
-                          COERCE_AS(float32x2_t, LANES128(v68).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v68).n128_u64[0])))
-                      .n64_f32[0] != 0x0.0p+0f) {
+              if (__builtin_islessgreater(
+                      LANES64_OF(
+                          vpadd_f32(
+                              COERCE_AS(float32x2_t, LANES128(v68).n128_u64[0]),
+                              COERCE_AS(float32x2_t,
+                                        LANES128(v68).n128_u64[0])))
+                          .n64_f32[0],
+                      0x0.0p+0f)) {
                 LANES128(v65[19]).n128_u32[0] = LANES128(v66).n128_u32[0];
                 LANES128(v65[19]).n128_u32[1] = *(_DWORD*)(v20 + 116);
                 v69 = v65[19];
@@ -1575,7 +1578,7 @@ void CombatUniverse_10ddb30(_QWORD* a1)
             v58 = 0x1.921fb60000000p+1f;
           }
           v57 = v58 - v57;
-          LANES128(v46).n128_u32[0] = -0x1.0000000000000p+0f;
+          LANES128(v46).n128_f32[0] = -0x1.0000000000000p+0f;
           goto LABEL_85;
         }
       }

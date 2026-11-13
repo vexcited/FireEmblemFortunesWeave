@@ -920,7 +920,7 @@ __int64 GameHr_173bc80(__int64 a1, int a2)
   (*(void (**)(__int64))(*(_QWORD*)a1 + 1024LL))(a1);
   (*(void (**)(__int64))(*(_QWORD*)a1 + 1032LL))(a1);
   GameRoutine_16de600(a1);
-  LODWORD(v12) = 1.0;
+  LODWORD(v12) = COERCE_UNSIGNED_INT((float)(1.0));
   GameRoutine_1562680(a1 + 952, "In", v12);
   *(_BYTE*)(a1 + 1128) = 1;
   if (*(_DWORD*)(a1 + 1120) != 0) {
@@ -1210,7 +1210,8 @@ __int64 GameHr_173f5c0(__int64 a1)
       v4 = result;
       if (v3 != 0) {
         v5 = (*(_BYTE*)(a1 + 176) & 1) != 0 ? *(_QWORD*)(a1 + 192) : a1 + 177;
-        result = LayoutAccessor_1563380(*(__int64**)(a1 + 152), v5, 0);
+        result = ((__int64 (*)(__int64*, __int64, char))
+                      LayoutAccessor_1563380)(*(__int64**)(a1 + 152), v5, 0);
         if ((result & 1) != 0) {
           result = GameHr_1562680(v3, "Wait", 0x1.0000000000000p+0f);
           v6 = *(_QWORD*)(a1 + 8);

@@ -923,10 +923,10 @@ LABEL_51:
   v31 = *(float32x4_t***)(v30 + 8);
   v32 = *(float32x4_t***)(v30 + 16);
   if (v31 != v32) {
-    LODWORD(a5) = -8.0;
-    LODWORD(a6) = 8.0;
+    LODWORD(a5) = COERCE_UNSIGNED_INT((float)(-8.0));
+    LODWORD(a6) = COERCE_UNSIGNED_INT((float)(8.0));
     a4 = *(long double*)&GameData_1a83960;
-    LODWORD(a7) = -16.0;
+    LODWORD(a7) = COERCE_UNSIGNED_INT((float)(-16.0));
     v33 = COERCE_LONG_DOUBLE(
         vaddq_f32(a1[21], COERCE_AS(float32x4_t, GameData_1a83960)));
     LODWORD(a4) = DWORD2(v33);
@@ -948,7 +948,7 @@ LABEL_51:
     LODWORD(a2) = HIDWORD(v155);
   }
 LABEL_65:
-  LODWORD(a4) = 0x1.0000000000000p-1;
+  LODWORD(a4) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p-1));
   LANES128(a1[10]).n128_u8[8] = 0;
   v38 = LANES128(a1[6]).n128_u64[0];
   if (*(float*)&a2 == 0.0) {
@@ -1307,7 +1307,7 @@ LABEL_182:
     v90 = LANES128(a1[3]).n128_u64[0];
     LANES128(v91).n128_u32[0] = 0;
     LANES128(v91).n128_f32[1] = LANES128(a1[3]).n128_f32[2] + 2.5;
-    LANES128(v91).n128_u32[2] = -0x1.e000000000000p+2;
+    LANES128(v91).n128_f32[2] = -0x1.e000000000000p+2;
     v92 = vaddq_f32(a1[21], v91);
     *(_QWORD*)(v90 + 144) = LANES128(v92).n128_u64[0];
     v93 = *(_OWORD*)(v90 + 144);

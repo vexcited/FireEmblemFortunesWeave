@@ -2159,9 +2159,8 @@ __attribute__((swiftcall)) void wld_c525f0(PSEUDO_X8 x8_, __int64 a1)
     _QWORD v45[2];
     const char* v46;
   } v45_;
-  char v47;
   struct {
-    char gap32_[1];
+    char v47;
     char v48[15];
     __int64 v49;
   } v48_;
@@ -2241,7 +2240,7 @@ __attribute__((swiftcall)) void wld_c525f0(PSEUDO_X8 x8_, __int64 a1)
   *(_QWORD*)(v5 + 304) = 1110704128;
   *(_QWORD*)(v5 + 312) = 1065353216;
   *(_DWORD*)(v5 + 40) = 2;
-  v47 = 10;
+  v48_.v47 = 10;
   *(_OWORD*)(v5 + 288) = GameData_1a82c50;
   v9 = *(unsigned int*)(a1 + 56);
   strcpy(v48_.v48, "light");
@@ -2259,7 +2258,7 @@ __attribute__((swiftcall)) void wld_c525f0(PSEUDO_X8 x8_, __int64 a1)
   else {
     v11 = (unsigned __int64)LOBYTE(v45_.v45[0]) >> 1;
   }
-  v12 = (__int64*)GameRoutine_1a09ce0((__int64)&v47, v10, v11);
+  v12 = (__int64*)GameRoutine_1a09ce0((__int64)&v48_.v47, v10, v11);
   v13 = *v12;
   v14 = v12[1];
   *v12 = 0;
@@ -2276,7 +2275,7 @@ __attribute__((swiftcall)) void wld_c525f0(PSEUDO_X8 x8_, __int64 a1)
     }
     nn_mem_StandardAllocator_Free(*v4 + v16, (__int64)v45_.v46);
   }
-  if ((v47 & 1) != 0 && v48_.v49 != 0) {
+  if ((v48_.v47 & 1) != 0 && v48_.v49 != 0) {
     v17 = 128;
     if (*(_QWORD*)(*v4 + 200) == 0) {
       v17 = 56;

@@ -12370,7 +12370,7 @@ void GameHr_155c5d0(__int64 a1, long double a2)
                                 *(unsigned int*)(a1 + 28), *(float*)(a1 + 36),
                                 v6, *(float*)(a1 + 20));
       }
-      LODWORD(a2) = 1.0;
+      LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
       v7 = *(float*)(a1 + 48);
       v8 = 0.0;
       v9 = *(unsigned __int8*)(a1 + 32);

@@ -6146,9 +6146,8 @@ void Manager_136aaf0(__int64* a1, unsigned int a2, const char* a3)
   __int64 v15;
   __int64 v16;
   __int64 v17;
-  char v18;
   struct {
-    char gap8_[1];
+    char v18;
     char v19[15];
     __int64 v20;
   } v19_;
@@ -6187,10 +6186,10 @@ void Manager_136aaf0(__int64* a1, unsigned int a2, const char* a3)
     *(_BYTE*)(v15 + v13) = 0;
     return;
   }
-  v18 = 4;
+  v19_.v18 = 4;
   strcpy(v19_.v19, "^q");
   v5 = strlen_alt1(a3);
-  v6 = (__int64*)GameRoutine_1a0a680_alt1((__int64)&v18, 0, a3, v5);
+  v6 = (__int64*)GameRoutine_1a0a680_alt1((__int64)&v19_.v18, 0, a3, v5);
   v7 = *v6;
   v8 = v6[1];
   *v6 = 0;
@@ -6200,7 +6199,7 @@ void Manager_136aaf0(__int64* a1, unsigned int a2, const char* a3)
   v9 = v6[2];
   v6[2] = 0;
   a1[2] = v9;
-  if ((v18 & 1) != 0 && v19_.v20 != 0) {
+  if ((v19_.v18 & 1) != 0 && v19_.v20 != 0) {
     v10 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v10 = 56;

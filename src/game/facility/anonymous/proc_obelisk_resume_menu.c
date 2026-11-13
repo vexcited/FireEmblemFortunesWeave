@@ -1230,7 +1230,7 @@ LABEL_17:
   }
   ProcObeliskResumeMenu_1727070_alt1(a1, v24);
   GameRoutine_159e7c0(a1 + 848, (unsigned int)a2 >> 31);
-  LODWORD(v25) = 1.0;
+  LODWORD(v25) = COERCE_UNSIGNED_INT((float)(1.0));
   if (a2 >= 0) {
     v26 = "In_L";
   }

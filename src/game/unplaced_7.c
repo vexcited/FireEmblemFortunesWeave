@@ -9139,9 +9139,8 @@ __int64 game_13e5ba0(unsigned __int64 a1, int a2, char a3)
   __int64 v12;
   __int64 v13;
   __int64 v15[2];
-  unsigned __int8 v16;
   struct {
-    char gap16_[1];
+    unsigned __int8 v16;
     _BYTE v17[15];
     _BYTE* v18;
     char v19;
@@ -9153,12 +9152,12 @@ __int64 game_13e5ba0(unsigned __int64 a1, int a2, char a3)
   }
   v6 = 0;
   while (1) {
-    game_13e59c0((void*)(&v16), a1, v6, a2, a3 & 1);
+    game_13e59c0((void*)(&v17_.v16), a1, v6, a2, a3 & 1);
     if ((v17_.v19 & 1) != 0) {
       v7 = v17_.v18;
       v8 = GameData_21732f0;
-      v9 = (unsigned __int64)v16 >> 1;
-      if ((v16 & 1) != 0) {
+      v9 = (unsigned __int64)v17_.v16 >> 1;
+      if ((v17_.v16 & 1) != 0) {
         v9 = *(_QWORD*)&v17_.v17[7];
       }
       else {
@@ -9168,7 +9167,7 @@ __int64 game_13e5ba0(unsigned __int64 a1, int a2, char a3)
       v15[1] = v9;
       v10 = GameHr_7a88a0(v15);
       v11 = game_HashString((__int64)v8);
-      if (v17_.v19 == 1 && (v16 & 1) != 0 && v17_.v18 != nullptr) {
+      if (v17_.v19 == 1 && (v17_.v16 & 1) != 0 && v17_.v18 != nullptr) {
         v12 = v11;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) != 0) {
           v13 = 128;
@@ -10424,9 +10423,8 @@ __int64 game_147d7e0(__int64* a1, __int64 a2)
   int v48;
   int* v49;
   int v50;
-  unsigned __int8 v53;
   struct {
-    char gap24_[1];
+    unsigned __int8 v53;
     _BYTE v54[7];
     char gap32_[8];
     _DWORD* v55;
@@ -10625,9 +10623,9 @@ __int64 game_147d7e0(__int64* a1, __int64 a2)
   v39 = msg_MessageManager_instance__ptr[0];
   while (1) {
     v24 = *v38;
-    SceneTalk_1497180_alt1(&v53, (__int64)"Bird", 4u, a2,
+    SceneTalk_1497180_alt1(&v54_.v53, (__int64)"Bird", 4u, a2,
                            (__int64)&GameData_1ae1fdd, 3u, *v38);
-    if ((v53 & 1) != 0) {
+    if ((v54_.v53 & 1) != 0) {
       v40 = v54_.v55;
     }
     else {
@@ -10664,7 +10662,7 @@ __int64 game_147d7e0(__int64* a1, __int64 a2)
       nn_mem_StandardAllocator_Free_alt2(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v44, v54_.v57);
     }
-    if ((v53 & 1) != 0 && v54_.v55 != nullptr) {
+    if ((v54_.v53 & 1) != 0 && v54_.v55 != nullptr) {
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) != 0) {
         v45 = 128;
       }

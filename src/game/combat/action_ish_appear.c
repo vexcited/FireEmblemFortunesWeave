@@ -230,10 +230,13 @@ __int64 ActionIshAppear_Unknown6(__int64 result)
                               LANES128_OF(vextq_s8(v60, v60, 8u)).n128_u64[0]),
                     COERCE_AS(float32x2_t, LANES128(v60).n128_u64[0])))
                 .n64_u64[0];
-        if (LANES64_OF(
-                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v60).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v60).n128_u64[0])))
-                .n64_f32[0] != 0x0.0p+0f) {
+        if (__builtin_islessgreater(
+                LANES64_OF(
+                    vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v60).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v60).n128_u64[0])))
+                    .n64_f32[0],
+                0x0.0p+0f)) {
           LANES128(v57[19]).n128_u64[0] = LANES128(v64).n128_u64[0];
           v61 = v57[19];
           LANES128(v57[18]).n128_u32[2] |= 1u;

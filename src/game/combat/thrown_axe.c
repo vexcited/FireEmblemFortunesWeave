@@ -61,10 +61,12 @@ float ThrownAxe_Unknown10(__int64 a1)
                               LANES128_OF(vextq_s8(v7, v7, 8u)).n128_u64[0]),
                     COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0])))
                 .n64_u64[0];
-        if (LANES64_OF(
-                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0])))
-                .n64_f32[0] != 0x0.0p+0f) {
+        if (__builtin_islessgreater(
+                LANES64_OF(
+                    vpadd_f32(COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0]),
+                              COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0])))
+                    .n64_f32[0],
+                0x0.0p+0f)) {
           LANES128(v5[19]).n128_u32[0] = LANES128(v1).n128_u32[0];
           LANES128(v5[19]).n128_u32[1] = LANES128(v3[29]).n128_u32[1];
           v1 = v5[19];

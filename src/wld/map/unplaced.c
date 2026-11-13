@@ -473,9 +473,12 @@ LABEL_78:
                              LANES128_OF(vextq_s8(v58, v58, 8u)).n128_u64[0]),
                    COERCE_AS(float32x2_t, LANES128(v58).n128_u64[0])))
           .n64_u64[0];
-  if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v58).n128_u64[0]),
-                           COERCE_AS(float32x2_t, LANES128(v58).n128_u64[0])))
-          .n64_f32[0] != 0x0.0p+0f) {
+  if (__builtin_islessgreater(
+          LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v58).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v58).n128_u64[0])))
+              .n64_f32[0],
+          0x0.0p+0f)) {
     LANES128(v55[19]).n128_u64[0] = LANES128(v56).n128_u64[0];
     v59 = v55[19];
     LANES128(v55[18]).n128_u32[2] |= 1u;

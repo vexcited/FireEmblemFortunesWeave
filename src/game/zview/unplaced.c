@@ -11076,9 +11076,8 @@ void game_zview_d56e60(__int64 a1, char a2, unsigned __int8* a3)
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  char v12;
   struct {
-    char gap16_[1];
+    char v12;
     char v13[7];
     char gap24_[8];
     char* v14;
@@ -11104,7 +11103,7 @@ void game_zview_d56e60(__int64 a1, char a2, unsigned __int8* a3)
     v5 = v4 >> 1;
   }
   if (v5 != 0) {
-    v12 = 8;
+    v13_.v12 = 8;
     strcpy(v13_.v13, "Hit_");
     if ((v4 & 1) != 0) {
       v7 = *((const char**)a3 + 2);
@@ -11112,9 +11111,9 @@ void game_zview_d56e60(__int64 a1, char a2, unsigned __int8* a3)
     else {
       v7 = (const char*)(a3 + 1);
     }
-    GameRoutine_1a09ce0_alt1((__int64)&v12, v7, v5);
-    GameRoutine_1a09ce0_alt1((__int64)&v12, (const char*)v15_.v15 + 1, 2u);
-    if ((v12 & 1) != 0) {
+    GameRoutine_1a09ce0_alt1((__int64)&v13_.v12, v7, v5);
+    GameRoutine_1a09ce0_alt1((__int64)&v13_.v12, (const char*)v15_.v15 + 1, 2u);
+    if ((v13_.v12 & 1) != 0) {
       v8 = v13_.v14;
     }
     else {
@@ -11122,7 +11121,7 @@ void game_zview_d56e60(__int64 a1, char a2, unsigned __int8* a3)
     }
     game_zview_d56ba0((void*)((__int64)&v11), a1, (__int64)v8,
                       0x1.0000000000000p+0f);
-    if ((v12 & 1) != 0 && v13_.v14 != nullptr) {
+    if ((v13_.v12 & 1) != 0 && v13_.v14 != nullptr) {
       v9 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v9 = 56;

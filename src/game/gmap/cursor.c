@@ -185,9 +185,9 @@ LABEL_25:
   v38 = 1090519040;
   if (*(_BYTE*)(v3 + 152) == 1) {
     v26 = *(_QWORD*)v7;
-    LODWORD(v24) = 8.0;
+    LODWORD(v24) = COERCE_UNSIGNED_INT((float)(8.0));
   LABEL_29:
-    LODWORD(v25) = 8.0;
+    LODWORD(v25) = COERCE_UNSIGNED_INT((float)(8.0));
     goto LABEL_30;
   }
   v27 = *v6;

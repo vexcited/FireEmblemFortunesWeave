@@ -69,9 +69,8 @@ void game_telop_TelopWinRule_OnBuild(__int64 a1)
   __int64 v20;
   __int64 v21;
   __int64 v22;
-  char v23;
   struct {
-    char gap0_[1];
+    char v23;
     char v24[15];
     __int64 v25;
   } v24_;
@@ -203,10 +202,10 @@ LABEL_30:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, v28);
   }
-  v23 = 8;
+  v24_.v23 = 8;
   strcpy(v24_.v24, "Lose");
-  GameRoutine_137ab20_alt1(a1, (__int64)&v23, v32);
-  if ((v23 & 1) != 0 && v24_.v25 != 0) {
+  GameRoutine_137ab20_alt1(a1, (__int64)&v24_.v23, v32);
+  if ((v24_.v23 & 1) != 0 && v24_.v25 != 0) {
     v22 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v22 = 56;

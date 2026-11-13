@@ -1430,7 +1430,7 @@ LABEL_289:
 __int64 TelopBattleExp_Unknown35(__int64 result, long double a2)
 {
   if (*(_BYTE*)(result + 928) == 1) {
-    LODWORD(a2) = 1.0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
     return GameRoutine_1562680(result + 168, "Animal_In", a2);
   }
   return result;
@@ -1439,7 +1439,7 @@ __int64 TelopBattleExp_Unknown35(__int64 result, long double a2)
 __int64 TelopBattleExp_Unknown39(__int64 result, long double a2)
 {
   if (*(_BYTE*)(result + 928) == 1) {
-    LODWORD(a2) = 1.0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
     return GameRoutine_1562680(result + 168, "Animal_Out", a2);
   }
   return result;

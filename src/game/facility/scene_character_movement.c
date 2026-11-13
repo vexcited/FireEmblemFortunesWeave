@@ -520,10 +520,12 @@ void SceneCharacterMovement_Unknown3(__int64 a1, long double a2)
                                  LANES128_OF(vextq_s8(v7, v7, 8u)).n128_u64[0]),
                        COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0])))
-              .n64_f32[0] != 0.0) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v7).n128_u64[0])))
+                  .n64_f32[0],
+              0.0)) {
         LANES128(v4[19]).n128_u64[0] = *(_QWORD*)&v29;
         v8 = v4[19];
         LANES128(v4[18]).n128_u32[2] |= 1u;
@@ -552,10 +554,13 @@ void SceneCharacterMovement_Unknown3(__int64 a1, long double a2)
                               LANES128_OF(vextq_s8(v27, v27, 8u)).n128_u64[0]),
                     COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0])))
                 .n64_u64[0];
-        if (LANES64_OF(
-                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0])))
-                .n64_f32[0] != 0.0) {
+        if (__builtin_islessgreater(
+                LANES64_OF(
+                    vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0])))
+                    .n64_f32[0],
+                0.0)) {
           LANES128(v24[22]).n128_u32[0] = LODWORD(a2);
           LANES128(v24[22]).n128_u32[1] = LODWORD(a2);
           v28 = v24[22];
@@ -586,9 +591,12 @@ void SceneCharacterMovement_Unknown3(__int64 a1, long double a2)
                                LANES128_OF(vextq_s8(v14, v14, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0])))
-            .n64_f32[0] != 0.0) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0])))
+                .n64_f32[0],
+            0.0)) {
       LANES128(v9[20]).n128_u32[0] = 0;
       LANES128(v9[20]).n128_f32[1] = v11;
       v9[20] = COERCE_AS(float32x4_t, LANES128(v9[20]).n128_u64[0]);

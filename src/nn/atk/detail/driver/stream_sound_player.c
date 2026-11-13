@@ -25,7 +25,7 @@ __int64 GameRoutine_29e9c0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_29ea40(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_2a0600(_QWORD, _QWORD);
 __int64 GameRoutine_2a1b90(_QWORD);
-__int64 GameRoutine_2a7620(void);
+__int64 GameRoutine_2a7620(__int64);
 __int64 GameRoutine_2a76b0(_QWORD);
 __int64 GameRoutine_2a76e0(void);
 __int64 GameRoutine_2a7880(_QWORD);
@@ -1125,6 +1125,7 @@ __int64 StreamSoundPlayer_2987b0(__int64 a1, __int64 a2)
         if ((GameRoutine_29e900(v19) & 1) == 0) {
         LABEL_10:
           v10 = StreamSoundPlayer_298b80(a1, a1 + 320);
+          __asm__ volatile("" : "+r"(v10));
           if ((v10 & 1) != 0) {
             v11 = *(_QWORD*)(a1 + 384);
             if (v11 <= 0x2000) {
@@ -1162,7 +1163,7 @@ __int64 StreamSoundPlayer_2987b0(__int64 a1, __int64 a2)
                     v17 = (_QWORD*)(a1 + 1160);
                     do {
                       if (*v17 != 0) {
-                        GameRoutine_2a7620();
+                        GameRoutine_2a7620(*v17);
                         *v17 = 0;
                       }
                       --v14;
@@ -1849,8 +1850,10 @@ __int64 StreamSoundPlayer_299620(int* a1, char a2, __int64 a3,
   int* v46;
   __int64 v47;
   int v48;
-  _QWORD v49[4];
-  _QWORD v50[12];
+  struct {
+    _QWORD v49[4];
+    _QWORD v50[12];
+  } v49_;
 
   v5 = *((unsigned __int8*)a1 + 224);
   result = 0;
@@ -1889,7 +1892,12 @@ __int64 StreamSoundPlayer_299620(int* a1, char a2, __int64 a3,
   }
   if (v7 < 1) {
   LABEL_19:
-    if ((StreamSoundPlayer_298b80((__int64)a1, (__int64)(a1 + 80)) & 1) != 0) {
+    if (({
+          __int64 r_ =
+              StreamSoundPlayer_298b80((__int64)a1, (__int64)(a1 + 80));
+          __asm__ volatile("" : "+r"(r_));
+          r_ & 1;
+        }) != 0) {
       if ((*((_BYTE*)a1 + 227) & 1) != 0) {
         *((_BYTE*)a1 + 225) = 1;
         if (*((_BYTE*)a1 + 64) != 1 || (a1[17184] & 1) == 0) {
@@ -1921,14 +1929,14 @@ __int64 StreamSoundPlayer_299620(int* a1, char a2, __int64 a3,
             v21 = 0;
             do {
               v31 = (unsigned int)a1[284];
-              memset(v50, 0, sizeof(v50));
-              memset(v49, 0, sizeof(v49));
+              memset(v49_.v50, 0, sizeof(v49_.v50));
+              memset(v49_.v49, 0, sizeof(v49_.v49));
               if ((int)v31 >= 1) {
                 v32 = (*((_QWORD*)a1 + 48) + 2304LL) * (unsigned int)a1[69];
                 if ((unsigned int)v31 >= 8) {
                   v34 = 0;
                   v33 = 0;
-                  v35 = v50;
+                  v35 = v49_.v50;
                   do {
                     v36 = &a1[v34];
                     v33 += 8;
@@ -1956,7 +1964,7 @@ __int64 StreamSoundPlayer_299620(int* a1, char a2, __int64 a3,
                 }
                 v44 = v31 & 7;
                 if (v44 != 0) {
-                  v45 = &v49[v33];
+                  v45 = &v49_.v49[v33];
                   v46 = &a1[1056 * v33 + 288];
                   do {
                     v47 = *(_QWORD*)v46;
@@ -1995,7 +2003,7 @@ __int64 StreamSoundPlayer_299620(int* a1, char a2, __int64 a3,
               else {
                 v27 = 1;
               }
-              StreamSoundPlayer_29bb80(v25, v49, v26, v22, v24, v27);
+              StreamSoundPlayer_29bb80(v25, v49_.v49, v26, v22, v24, v27);
               v28 = a1[69];
               v29 = a1[68];
               ++v21;

@@ -559,7 +559,7 @@ __int64 GameHr_1782210(__int64 result, long double a2)
     *(float*)(result + 864) = v5;
     if (v5 <= 0.0) {
       *(_DWORD*)(result + 864) = 0;
-      LODWORD(a2) = 1.0;
+      LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
       *(_DWORD*)(result + 832) = 3;
       return GameRoutine_1562680(result + 168, "Out", a2);
     }

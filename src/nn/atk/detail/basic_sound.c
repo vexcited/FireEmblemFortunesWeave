@@ -93,16 +93,16 @@ __int64 BasicSound_27c5a0(__int64 result, __int64 a2)
   }
   v6 = *(_QWORD**)(result + 24);
   if (v6 != v2) {
-    v7 = (*(_DWORD*)(a2 + 124) + *(unsigned __int8*)(a2 + 256)) &
-         ~((*(_DWORD*)(a2 + 124) + *(unsigned __int8*)(a2 + 256)) >> 31);
+    v7 = (*(int*)(a2 + 124) + *(unsigned __int8*)(a2 + 256)) &
+         ~((*(int*)(a2 + 124) + *(unsigned __int8*)(a2 + 256)) >> 31);
     if ((*(_BYTE*)(result + 128) & 1) != 0) {
       if (v7 >= 0x7F) {
         v7 = 127;
       }
       do {
-        if (((*((_DWORD*)v6 - 97) + *((unsigned __int8*)v6 - 256)) &
+        if (((*((int*)v6 - 97) + *((unsigned __int8*)v6 - 256)) &
              (unsigned int)~(
-                 (*((_DWORD*)v6 - 97) + *((unsigned __int8*)v6 - 256)) >>
+                 (*((int*)v6 - 97) + *((unsigned __int8*)v6 - 256)) >>
                  31)) >= v7) {
           break;
         }
@@ -111,8 +111,8 @@ __int64 BasicSound_27c5a0(__int64 result, __int64 a2)
     }
     else {
       do {
-        v8 = (*((_DWORD*)v6 - 97) + *((unsigned __int8*)v6 - 256)) &
-             ~((*((_DWORD*)v6 - 97) + *((unsigned __int8*)v6 - 256)) >> 31);
+        v8 = (*((int*)v6 - 97) + *((unsigned __int8*)v6 - 256)) &
+             ~((*((int*)v6 - 97) + *((unsigned __int8*)v6 - 256)) >> 31);
         if (v8 >= 127) {
           v8 = 127;
         }
@@ -782,7 +782,7 @@ __int64 BasicSound_280a00(__int64 a1)
             while (1) {
               v32 = *(_QWORD*)(a1 + 160);
               if (v32 != 0) {
-                if (v24 >= *(_DWORD*)(v32 + 8) + 1) {
+                if (v24 >= *(int*)(v32 + 8) + 1) {
                   goto LABEL_60;
                 }
               }
@@ -811,7 +811,7 @@ __int64 BasicSound_280a00(__int64 a1)
                 }
                 v35 = 0;
               }
-              if (v35 >= *(_DWORD*)(v32 + 8)) {
+              if (v35 >= *(int*)(v32 + 8)) {
                 v19 = nn_diag_detail_AbortImpl_1a0a590(v19);
               LABEL_103:
                 v19 = nn_diag_detail_AbortImpl_1a0a590(v19);
@@ -821,7 +821,7 @@ __int64 BasicSound_280a00(__int64 a1)
                 v19 = nn_diag_detail_AbortImpl_1a0a590(v19);
                 goto LABEL_106;
               }
-              if (v24 > *(_DWORD*)(v71_.v72 + 8)) {
+              if (v24 > *(int*)(v71_.v72 + 8)) {
                 goto LABEL_103;
               }
               v33 = (__int64*)(*(_QWORD*)v32 + 24LL * (unsigned int)v35);

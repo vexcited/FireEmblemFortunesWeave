@@ -189,7 +189,7 @@ __int64 GmapSound_1530270(__int64 a1)
     if ((v15 & 1) == 0 && (v16 & 1) != 0) {
       v23 = snd_fnd_calcCrc32("ENV_VolControl", 0);
       snd_Fade_Fade_10cb00(v22, "FadeTime_ENV_Gmap_HdsZone_Out");
-      LODWORD(v19) = 1.0;
+      LODWORD(v19) = COERCE_UNSIGNED_INT((float)(1.0));
       snd_startSlotVolume_100b50(&v23, v22, v19);
       snd_Fade_Destroy_Fade(v22);
     }

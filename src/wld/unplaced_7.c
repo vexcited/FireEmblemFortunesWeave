@@ -55,9 +55,12 @@ float wld_a8c1b0(float32x4_t* a1, float32x4_t* a2)
                              LANES128_OF(vextq_s8(v4, v4, 8u)).n128_u64[0]),
                    COERCE_AS(float32x2_t, LANES128(v4).n128_u64[0])))
           .n64_u64[0];
-  if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v4).n128_u64[0]),
-                           COERCE_AS(float32x2_t, LANES128(v4).n128_u64[0])))
-          .n64_f32[0] != 0x0.0p+0f) {
+  if (__builtin_islessgreater(
+          LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v4).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v4).n128_u64[0])))
+              .n64_f32[0],
+          0x0.0p+0f)) {
     LANES128(a1[19]).n128_u32[0] = LANES128(v2).n128_u32[0];
     LANES128(a1[19]).n128_u32[1] = LANES128(*(a2)).n128_u32[1];
     {

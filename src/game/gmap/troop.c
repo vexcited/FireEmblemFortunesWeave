@@ -525,11 +525,11 @@ __int64 Troop_133e8b0(__int64 result, __n128 a2, long double a3)
     v24 = 1065353216;
     if (*(_BYTE*)(result + 288) == 1) {
       v22 = *(_QWORD*)(result + 264);
-      LANES128(a2).n128_u32[0] = 0x1.0000000000000p+0;
+      LANES128(a2).n128_f32[0] = 0x1.0000000000000p+0;
       v20 = result;
       v23 = result + 264;
     LABEL_50:
-      LODWORD(a3) = 0x1.0000000000000p+0;
+      LODWORD(a3) = COERCE_UNSIGNED_INT((float)(1.0));
       result = (*(__int64 (**)(__int64, long double, long double))(v22 + 24))(
           v23, *(long double*)&a2, a3);
       goto LABEL_51;
@@ -1023,7 +1023,7 @@ __int64 Troop_1342fe0(__int64 a1, __n128 a2, long double a3)
         v16 = 1065353216;
         if (*(_BYTE*)(a1 + 288) == 1) {
           v14 = *(_QWORD*)(a1 + 264);
-          LANES128(a2).n128_u32[0] = 0x1.0000000000000p+0;
+          LANES128(a2).n128_f32[0] = 0x1.0000000000000p+0;
         }
         else {
           if (*(float*)(a1 + 272) <= 0.0) {
@@ -1039,7 +1039,7 @@ __int64 Troop_1342fe0(__int64 a1, __n128 a2, long double a3)
           (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
           v14 = *(_QWORD*)(a1 + 264);
         }
-        LODWORD(a3) = 0x1.0000000000000p+0;
+        LODWORD(a3) = COERCE_UNSIGNED_INT((float)(1.0));
         (*(void (**)(__int64, long double, long double))(v14 + 24))(
             a1 + 264, *(long double*)&a2, a3);
       LABEL_37:

@@ -1711,7 +1711,7 @@ LABEL_12:
     }
   }
 LABEL_21:
-  LODWORD(v6) = 1.0;
+  LODWORD(v6) = COERCE_UNSIGNED_INT((float)(1.0));
   *(_DWORD*)(a1 + 276) = 0;
   LayoutAccessor_1562680(a1 + 80, "In", v6);
   if (*(_BYTE*)(a1 + 344) == 1) {

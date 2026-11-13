@@ -123,7 +123,7 @@ __int64 UnitMakeBodySelectMenu_Unknown85(__int64 a1, long double a2)
     }
     *(_DWORD*)(a1 + 356) |= 4u;
   }
-  LODWORD(a2) = 1.0;
+  LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
   GameRoutine_1562680(a1 + 952, "Wait", a2);
   result = (*(__int64 (**)(__int64))(*(_QWORD*)(a1 + 176) + 16LL))(a1 + 176);
   v7 = *(_QWORD**)(a1 + 184);

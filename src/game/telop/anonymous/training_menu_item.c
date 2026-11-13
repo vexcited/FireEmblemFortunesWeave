@@ -455,7 +455,8 @@ __int64 TrainingMenuItem_Unknown71(_QWORD* a1, char a2)
         v6 = a1[17];
         if (a1[18] != v6) {
           v7 = 30;
-          for (i = 0; i < 0xCCCCCCCCCCCCCCCDLL * ((a1[18] - v6) >> 5); ++i) {
+          i = 0;
+          do {
             GaugeUtil_1750310(v6 + v7 - 30, (a2 & 1) == 0);
             v9 = a1[20];
             v10 = i >> 6;
@@ -524,7 +525,8 @@ __int64 TrainingMenuItem_Unknown71(_QWORD* a1, char a2)
           LABEL_6:
             v6 = a1[17];
             v7 += 160;
-          }
+          } while (++i <
+                   0xCCCCCCCCCCCCCCCDLL * ((__int64)(a1[18] - v6) >> 5));
         }
       }
       if (atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
@@ -578,7 +580,8 @@ __int64 TrainingMenuItem_Unknown73_175adc0(__int64 a1)
     v1 = *(_QWORD*)(a1 + 136);
     ++v4;
     v3 += 160;
-  } while (v4 < 0xCCCCCCCCCCCCCCCDLL * ((*(_QWORD*)(a1 + 144) - v1) >> 5));
+  } while (v4 < 0xCCCCCCCCCCCCCCCDLL *
+                    ((__int64)(*(_QWORD*)(a1 + 144) - v1) >> 5));
   return (v5 ^ 1) & 1;
 }
 
@@ -599,7 +602,8 @@ __int64 TrainingMenuItem_Unknown75(__int64 result)
       v1 = *(_QWORD*)(v2 + 136);
       ++v4;
       v3 += 160;
-    } while (v4 < 0xCCCCCCCCCCCCCCCDLL * ((*(_QWORD*)(v2 + 144) - v1) >> 5));
+    } while (v4 < 0xCCCCCCCCCCCCCCCDLL *
+                      ((__int64)(*(_QWORD*)(v2 + 144) - v1) >> 5));
   }
   return result;
 }

@@ -408,10 +408,12 @@ float WallCollisionModule_Unknown5(__int64 a1, double a2, double a3)
                             LANES128_OF(vextq_s8(v26, v26, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         LANES128(v20[19]).n128_u64[0] = LANES128(v24).n128_u64[0];
         v27 = v20[19];
         LANES128(v20[18]).n128_u32[2] |= 1u;

@@ -246,7 +246,7 @@ void ProcUnitFollow_Unknown2(__int64 a1, long double a2)
       }
       v7 = GameRoutine_7435e0(a1, a2),
       v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w"));
-      LODWORD(v9) = 0x1.0000000000000p+1;
+      LODWORD(v9) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+1));
       if ((v7 & 1) == 0) {
         *(float*)&v9 = 0x1.0000000000000p+0;
       }

@@ -39,7 +39,7 @@ __int64 ExpListResultMenu_Unknown96(__int64 a1, __n128 a2)
       v7 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 496LL))(a1);
       a2 = game_gameui_anonymous_ProcGameUIFade_In(v3, v5, v6, v7, 1, a1);
     }
-    LANES128(a2).n128_u32[0] = 1.0;
+    LANES128(a2).n128_f32[0] = 1.0;
     LayoutAccessor_1562680(a1 + 848, "In", *(long double*)&a2);
     *(_BYTE*)(a1 + 1120) = 0;
   }

@@ -1860,7 +1860,7 @@ bool Hub_11998d0(long double a1, __int64 a2, __int64* a3, char a4)
         goto LABEL_12;
       }
     }
-    LODWORD(a1) = 0.5;
+    LODWORD(a1) = COERCE_UNSIGNED_INT((float)(0.5));
     v10 = game_ProcFadeView_instance_;
     if (game_ProcFadeView_instance_ == 0) {
       return true;

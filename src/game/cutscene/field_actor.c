@@ -2779,10 +2779,12 @@ LABEL_13:
                             LANES128_OF(vextq_s8(v19, v19, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v19).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v19).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v19).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v19).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v19).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         LANES128(v15[20]).n128_u64[0] = LANES128(v17).n128_u64[0];
         v20 = LANES128(v17).n128_f32[1];
         v50 = LANES128(v17).n128_f32[0];
@@ -2825,10 +2827,12 @@ LABEL_13:
                             LANES128_OF(vextq_s8(v42, v42, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v42).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v42).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v42).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v42).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v42).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         LANES128(v38[19]).n128_u64[0] = LANES128(v40).n128_u64[0];
         v43 = v38[19];
         LANES128(v38[18]).n128_u32[2] |= 1u;

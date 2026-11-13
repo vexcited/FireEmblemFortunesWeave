@@ -2976,9 +2976,8 @@ __attribute__((swiftcall)) void Character_cafca0(PSEUDO_X8 x8_, __int64 a1)
     __int64 v22;
     int v23;
   } v22_;
-  unsigned __int8 v24;
   struct {
-    char gap40_[1];
+    unsigned __int8 v24;
     _BYTE v25[15];
     const char* v26;
   } v25_;
@@ -2988,9 +2987,9 @@ __attribute__((swiftcall)) void Character_cafca0(PSEUDO_X8 x8_, __int64 a1)
   } v27_;
   _QWORD v29[25];
 
-  Character_caf150((void*)((__int64)&v24), a1);
-  v4 = v24 & 1;
-  v5 = (unsigned __int64)v24 >> 1;
+  Character_caf150((void*)((__int64)&v25_.v24), a1);
+  v4 = v25_.v24 & 1;
+  v5 = (unsigned __int64)v25_.v24 >> 1;
   if (v4 != 0) {
     v5 = *(_QWORD*)&v25_.v25[7];
   }
@@ -3096,7 +3095,7 @@ LABEL_29:
     *(_QWORD*)a2 = 0;
     *(_DWORD*)(a2 + 8) = 0x2000;
   }
-  if ((v24 & 1) != 0) {
+  if ((v25_.v24 & 1) != 0) {
   LABEL_38:
     if (v25_.v26 != nullptr) {
       v19 = 128;

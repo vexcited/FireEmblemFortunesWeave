@@ -1126,7 +1126,7 @@ bool GameHr_6e4be0(int* a1, int* a2, _QWORD* a3)
   int v18;
   int v20;
 
-  v6 = a2 - a1;
+  v6 = ((char*)a2 - (char*)a1) >> 2;
   if (v6 <= 2) {
     if ((unsigned __int64)v6 >= 2) {
       if (v6 == 2) {
@@ -4105,7 +4105,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           }
         }
         v20 = *(_DWORD*)(v14 + 592);
-        result = game_Unit_CanSwitchMount(v14);
+        result = ((__int64 (*)(__int64))game_Unit_CanSwitchMount)(v14);
         if ((result & 1) != 0) {
           v21 = *(_QWORD*)(v14 + 400);
           v22 = *(_QWORD*)(v21 + 88);
@@ -4312,7 +4312,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
             }
           }
           v96 = *(_DWORD*)(v89 + 592);
-          result = game_Unit_CanSwitchMount(v89);
+          result = ((__int64 (*)(__int64))game_Unit_CanSwitchMount)(v89);
           if ((result & 1) != 0) {
             v97 = *(_QWORD*)(v89 + 400);
             v98 = *(_QWORD*)(v97 + 88);
@@ -4377,7 +4377,7 @@ __int64 GameHr_73dc80(__int64 result, __int64* a2, __int64* a3, __int64 a4,
           }
         }
         v75 = *(_DWORD*)(v67 + 592);
-        result = game_Unit_CanSwitchMount(v67);
+        result = ((__int64 (*)(__int64))game_Unit_CanSwitchMount)(v67);
         if ((result & 1) != 0) {
           v76 = *(_QWORD*)(v67 + 400);
           v77 = *(_QWORD*)(v76 + 88);

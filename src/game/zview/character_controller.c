@@ -5805,7 +5805,7 @@ __int64 CharacterController_StateStay_ToStayPos_Unknown4(__int64 result,
                                 1.0) *
                           0.5) +
                   1.5);
-    LODWORD(a2) = 4.0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(4.0));
     v10 = v10 && v8 < 4.0;
     if (!v10) {
       *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v9 + 40) + 8LL) + 64LL) =

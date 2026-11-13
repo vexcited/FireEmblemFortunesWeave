@@ -3793,7 +3793,7 @@ __int64 GameHr_1155520(__int64 a1)
   }
   else {
     if (GameData_21ec550 != 0) {
-      LODWORD(v5) = 4.0;
+      LODWORD(v5) = COERCE_UNSIGNED_INT((float)(4.0));
       GameRoutine_809dc0(GameData_21ec550, &v9, v5);
     }
     return 3;

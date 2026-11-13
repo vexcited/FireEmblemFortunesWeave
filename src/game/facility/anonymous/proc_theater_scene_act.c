@@ -571,9 +571,8 @@ void ProcTheaterSceneAct_13dc340(__int64 a1)
     int v61;
     __int16 v62;
   } v54_;
-  char v63;
   struct {
-    char gap88_[1];
+    char v63;
     _BYTE v64[7];
     char gap96_[8];
     const char* v65;
@@ -603,7 +602,7 @@ void ProcTheaterSceneAct_13dc340(__int64 a1)
     *(_QWORD*)(v4 + 30) = 0x94BCE68B96E95F94LL;
     *(_QWORD*)v4 = 0x83E3A383E3AD82E3LL;
     *(_QWORD*)(v4 + 8) = 0xE3BC83E3A283E3A9LL;
-    game_facility_14107c0((__int64)&v63, (__int64)&v54_.v54);
+    game_facility_14107c0((__int64)&v64_.v63, (__int64)&v54_.v54);
     if ((v54_.v54 & 1) != 0 && v54_.v56 != nullptr) {
       v5 = 128;
       if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
@@ -616,7 +615,7 @@ void ProcTheaterSceneAct_13dc340(__int64 a1)
     v7 = v64_.v69;
     v8 = v64_.v70;
     v9 = v64_.v71;
-    if ((v63 & 1) != 0) {
+    if ((v64_.v63 & 1) != 0) {
       v10 = v64_.v65;
     }
     else {
@@ -691,7 +690,7 @@ void ProcTheaterSceneAct_13dc340(__int64 a1)
               nn_mem_StandardAllocator_Free_alt2(fw_memory_g_heap_manager + v20,
                                                  (__int64)v51_.v53);
             }
-            if ((v63 & 1) != 0 && v64_.v65 != nullptr) {
+            if ((v64_.v63 & 1) != 0 && v64_.v65 != nullptr) {
               v21 = 128;
               if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
                 v21 = 56;
@@ -735,7 +734,7 @@ LABEL_42:
     *(_QWORD*)(v26 + 30) = 0x94BCE68B96E95F94LL;
     *(_QWORD*)v26 = 0x83E3A383E3AD82E3LL;
     *(_QWORD*)(v26 + 8) = 0xE3BC83E3A283E3A9LL;
-    game_facility_14107c0((__int64)&v63, (__int64)&v54_.v54);
+    game_facility_14107c0((__int64)&v64_.v63, (__int64)&v54_.v54);
     if ((v54_.v54 & 1) != 0 && v54_.v56 != nullptr) {
       v27 = 128;
       if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
@@ -758,7 +757,7 @@ LABEL_42:
     nn_os_UnlockMutex_alt1((__int64)&game_g_random_mutex);
     nn_os_LockMutex_alt1((__int64)&game_g_random_mutex);
     nn_os_UnlockMutex_alt1((__int64)&game_g_random_mutex);
-    if ((v63 & 1) != 0) {
+    if ((v64_.v63 & 1) != 0) {
       v33 = v64_.v65;
     }
     else {
@@ -869,7 +868,7 @@ LABEL_42:
       nn_mem_StandardAllocator_Free_alt2(fw_memory_g_heap_manager + v49,
                                          (__int64)v51_.v53);
     }
-    if ((v63 & 1) != 0 && v64_.v65 != nullptr) {
+    if ((v64_.v63 & 1) != 0 && v64_.v65 != nullptr) {
       v50 = 128;
       if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
         v50 = 56;

@@ -218,7 +218,7 @@ __int64 nn_5b3d80(__int64 a1, __int64 a2)
     v12 = -(__int64)(v7 & 0x7FFFFFF8);
     while (1) {
       v13 = *(v10 - 16);
-      if (v5 >= v13) {
+      if (!(v5 < v13)) {
         v13 = v5;
         v14 = *(v10 - 12);
         if (v13 < v14) {
@@ -285,7 +285,7 @@ __int64 nn_5b3d80(__int64 a1, __int64 a2)
       if (v18 < v19) {
       LABEL_17:
         v5 = v10[12];
-        if (v19 >= v5) {
+        if (!(v19 < v5)) {
           goto LABEL_26;
         }
         goto LABEL_9;
@@ -293,7 +293,7 @@ __int64 nn_5b3d80(__int64 a1, __int64 a2)
     LABEL_25:
       v19 = v18;
       v5 = v10[12];
-      if (v19 >= v5) {
+      if (!(v19 < v5)) {
       LABEL_26:
         v5 = v19;
       }
@@ -327,7 +327,7 @@ LABEL_34:
     v31 = -(__int64)(v25 & 0x7FFFFFF8);
     while (1) {
       v32 = *(v29 - 16);
-      if (v26 >= v32) {
+      if (!(v26 < v32)) {
         v32 = v26;
         v33 = *(v29 - 12);
         if (v32 < v33) {
@@ -394,7 +394,7 @@ LABEL_34:
       if (v37 < v38) {
       LABEL_48:
         v26 = v29[12];
-        if (v38 >= v26) {
+        if (!(v38 < v26)) {
           goto LABEL_57;
         }
         goto LABEL_40;
@@ -402,7 +402,7 @@ LABEL_34:
     LABEL_56:
       v38 = v37;
       v26 = v29[12];
-      if (v38 >= v26) {
+      if (!(v38 < v26)) {
       LABEL_57:
         v26 = v38;
       }

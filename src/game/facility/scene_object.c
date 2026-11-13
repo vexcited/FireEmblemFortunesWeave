@@ -229,9 +229,12 @@ void SceneObject_13fc4d0(__int64 a1)
                                LANES128_OF(vextq_s8(v5, v5, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0])))
-            .n64_f32[0] != 0.0) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0])))
+                .n64_f32[0],
+            0.0)) {
       LANES128(v1[19]).n128_u64[0] = LANES128(v38).n128_u64[0];
       v6 = v1[19];
       LANES128(v1[18]).n128_u32[2] |= 1u;
@@ -256,9 +259,12 @@ void SceneObject_13fc4d0(__int64 a1)
                                LANES128_OF(vextq_s8(v14, v14, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0])))
-            .n64_f32[0] != 0.0) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0])))
+                .n64_f32[0],
+            0.0)) {
       *(float*)(v8 + 320) = v10;
       *(float*)(v8 + 324) = v9;
       v36 = v10;
@@ -299,9 +305,12 @@ void SceneObject_13fc4d0(__int64 a1)
                                LANES128_OF(vextq_s8(v34, v34, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0])))
-            .n64_f32[0] != 0.0) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v34).n128_u64[0])))
+                .n64_f32[0],
+            0.0)) {
       LANES128(v31[22]).n128_u32[0] = LANES128(v32).n128_u32[0];
       LANES128(v31[22]).n128_u32[1] = *(_DWORD*)(a1 + 116);
       v35 = v31[22];
@@ -366,10 +375,12 @@ void SceneObject_Unknown2(float32x4_t* a1)
                                  LANES128_OF(vextq_s8(v5, v5, 8u)).n128_u64[0]),
                        COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         *(_DWORD*)(v2 + 304) = LANES128(v3).n128_u32[0];
         *(_DWORD*)(v2 + 308) = LANES128(a1[10]).n128_u32[1];
         v6 = *(_OWORD*)(v2 + 304);
@@ -387,10 +398,12 @@ void SceneObject_Unknown2(float32x4_t* a1)
                                  LANES128_OF(vextq_s8(v9, v9, 8u)).n128_u64[0]),
                        COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         *(_DWORD*)(v2 + 320) = LANES128(v7).n128_u32[0];
         *(_DWORD*)(v2 + 324) = LANES128(a1[11]).n128_u32[1];
         v10 = *(_OWORD*)(v2 + 320);
@@ -433,10 +446,12 @@ void SceneObject_Unknown2(float32x4_t* a1)
                             LANES128_OF(vextq_s8(v32, v32, 8u)).n128_u64[0]),
                   COERCE_AS(float32x2_t, LANES128(v32).n128_u64[0])))
               .n64_u64[0];
-      if (LANES64_OF(
-              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v32).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v32).n128_u64[0])))
-              .n64_f32[0] != 0x0.0p+0f) {
+      if (__builtin_islessgreater(
+              LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v32).n128_u64[0]),
+                            COERCE_AS(float32x2_t, LANES128(v32).n128_u64[0])))
+                  .n64_f32[0],
+              0x0.0p+0f)) {
         *(_DWORD*)(v2 + 352) = LANES128(v30).n128_u32[0];
         *(_DWORD*)(v2 + 356) = LANES128(a1[12]).n128_u32[1];
         v33 = *(_OWORD*)(v2 + 352);

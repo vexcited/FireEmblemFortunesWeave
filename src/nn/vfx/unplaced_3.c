@@ -2402,7 +2402,8 @@ LABEL_3:
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v9 = (float*)(v66 + 1);
     v69 = v68;
-    result = (float*)GameRoutine_5d93c0(v66 + 1, (__int64*)a2, a3),
+    result = (float*)((__int64 (*)(__int64*, __int64*, __int64))
+                          GameRoutine_5d93c0)(v66 + 1, (__int64*)a2, a3),
     v67 = COERCE_AS(__typeof__(v67),
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     if (((unsigned __int8)result & 1) != 0) {

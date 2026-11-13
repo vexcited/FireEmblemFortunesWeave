@@ -475,7 +475,7 @@ _QWORD* GameHr_171ad80(_QWORD* result, __int16* a2, __int64 a3)
   LABEL_29:
     v16 = "ColorDefault";
   LABEL_30:
-    LODWORD(v5) = 1.0;
+    LODWORD(v5) = COERCE_UNSIGNED_INT((float)(1.0));
     return (_QWORD*)GameRoutine_1562680(v15, v16, v5);
   }
   return result;
@@ -533,7 +533,7 @@ __int64* GameHr_171afa0(__int64* result, __int64 a2, unsigned int a3)
       v14 = (unsigned int)(v9 - 15);
     }
     v15 = GameRoutine_7a7dc0("Moon%02d", v14);
-    LODWORD(v16) = 1.0;
+    LODWORD(v16) = COERCE_UNSIGNED_INT((float)(1.0));
     return (__int64*)GameRoutine_1562680(v13, v15, v16);
   }
   return result;

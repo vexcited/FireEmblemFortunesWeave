@@ -990,9 +990,8 @@ void game_character_CharacterObservable_CharacterObservable_lambda3_Invoke(
     __int64 v51;
     __int64 v52;
   } v51_;
-  char v53;
   struct {
-    char gap56_[1];
+    char v53;
     char v54[15];
     const char* v55;
   } v54_;
@@ -1053,13 +1052,13 @@ void game_character_CharacterObservable_CharacterObservable_lambda3_Invoke(
             v59_.v60 = 1;
             v59_.v59 = v14;
             if ((GameRoutine_109e190(&v56_.v56, &v59_.v59) & 1) != 0) {
-              v53 = 14;
+              v54_.v53 = 14;
               strcpy(v54_.v54, "Eff_FS_");
               v15 = *(const char**)(GroundAttributeFile_60b080(v56_.v58) + 48);
               v16 = strlen(v15);
-              GameRoutine_1a09ce0((__int64)&v53, v15, v16);
+              GameRoutine_1a09ce0((__int64)&v54_.v53, v15, v16);
               v17 = strlen(v9);
-              GameRoutine_1a09ce0((__int64)&v53, v9, v17);
+              GameRoutine_1a09ce0((__int64)&v54_.v53, v9, v17);
               if ((atomic_load_explicit(
                        (atomic_uchar* volatile)&GameData_21a6190,
                        memory_order_acquire) &
@@ -1201,7 +1200,7 @@ void game_character_CharacterObservable_CharacterObservable_lambda3_Invoke(
                   vqtbl2_s8(v62, COERCE_AS(int8x8_t, 0xF0E0D0C0B0A0908LL));
               v41 = *(float32x4_t*)(v39 + 448);
               v42 = vmulq_n_f32(v37, LANES128(v41).n128_f32[0]);
-              if ((v53 & 1) != 0) {
+              if ((v54_.v53 & 1) != 0) {
                 v43 = v54_.v55;
               }
               else {
@@ -1230,7 +1229,7 @@ void game_character_CharacterObservable_CharacterObservable_lambda3_Invoke(
                 (*(void (**)(__int64))(*(_QWORD*)v46 + 16LL))(v46);
                 std___1___shared_weak_count___release_weak_alt2(v46);
               }
-              if ((v53 & 1) != 0 && v54_.v55 != nullptr) {
+              if ((v54_.v53 & 1) != 0 && v54_.v55 != nullptr) {
                 v47 = 128;
                 if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr +
                                200LL) == 0) {

@@ -621,7 +621,7 @@ void EffectModule_Unknown7(__int64 a1, long double a2, long double a3)
     goto LABEL_22;
   }
   *(float*)&a2 = fminf(*(float*)(v11 + 120), *(float*)(v11 + 124));
-  LODWORD(a3) = 0x1.0000000000000p+0;
+  LODWORD(a3) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0));
   v12 = *(float*)(v11 + 128) > 0.0 || *(float*)&a2 < 0x1.0000000000000p+0;
   if (*(_QWORD*)(v11 + 32) == 0) {
     goto LABEL_22;

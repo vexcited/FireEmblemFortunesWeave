@@ -19844,9 +19844,8 @@ unsigned int* game_de7fb0(__int64 a1, unsigned int* a2)
     _QWORD v22[2];
     char* v23;
   } v22_;
-  unsigned __int8 v24;
   struct {
-    char gap32_[1];
+    unsigned __int8 v24;
     _BYTE v25[7];
     char gap40_[8];
     _BYTE* v26;
@@ -19900,7 +19899,7 @@ unsigned int* game_de7fb0(__int64 a1, unsigned int* a2)
     memmove((__int64)v7, v4, v6);
   }
   v7[v6] = 0;
-  LocatorDispos_db1ce0((void*)(&v24), (unsigned __int8*)v22_.v22);
+  LocatorDispos_db1ce0((void*)(&v25_.v24), (unsigned __int8*)v22_.v22);
   if ((v22_.v22[0] & 1) != 0 && v22_.v23 != nullptr) {
     v9 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -19909,7 +19908,7 @@ unsigned int* game_de7fb0(__int64 a1, unsigned int* a2)
     nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v9,
                                   (__int64)v22_.v23);
   }
-  if ((v24 & 1) != 0) {
+  if ((v25_.v24 & 1) != 0) {
     v10 = v25_.v26;
   }
   else {
@@ -19993,7 +19992,7 @@ LABEL_47:
     }
   }
 LABEL_52:
-  if ((v24 & 1) != 0 && v25_.v26 != nullptr) {
+  if ((v25_.v24 & 1) != 0 && v25_.v26 != nullptr) {
     v21 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v21 = 56;

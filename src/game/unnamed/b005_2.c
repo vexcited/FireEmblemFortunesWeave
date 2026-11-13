@@ -3287,10 +3287,10 @@ __int64 GameHr_767730(unsigned __int8* a1, long double a2, long double a3)
   v5 = a1 + 152;
   if (v3 == 1) {
     *(_QWORD*)&a2 = 0;
-    LODWORD(a3) = 1.0;
+    LODWORD(a3) = COERCE_UNSIGNED_INT((float)(1.0));
   }
   else {
-    LODWORD(a2) = 1.0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
     *(_QWORD*)&a3 = 0;
   }
   GameRoutine_7677a0(v5, a2, a3, 1.0);

@@ -581,7 +581,7 @@ __int64 TelopResult_1760380(_QWORD* a1)
         }
         v7 = game_util_Format("L_MotivationGauge%02d", (unsigned int)v4);
         v8 = LayoutAccessor_155fbe0(v6, v7);
-        LODWORD(v9) = 1.0;
+        LODWORD(v9) = COERCE_UNSIGNED_INT((float)(1.0));
         LayoutAccessor_1562680(v8, "Out", v9);
         ++v4;
       } while (
@@ -639,7 +639,7 @@ void TelopResult_17604a0(__int64 a1)
       (*(void (**)(__int64))(*(_QWORD*)a1 + 456LL))(a1);
       TelopResult_175fac0(a1);
       v10 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 208LL))(a1);
-      LODWORD(v11) = 1.0;
+      LODWORD(v11) = COERCE_UNSIGNED_INT((float)(1.0));
       LayoutAccessor_1562680(a1 + 168, v10, v11);
       GameRoutine_175ff40(a1);
       v13 = *(_QWORD*)(a1 + 344);

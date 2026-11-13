@@ -1983,10 +1983,13 @@ __int64 CharacterModel_cf6940(__int64 a1, double a2, double a3)
                               LANES128_OF(vextq_s8(v13, v13, 8u)).n128_u64[0]),
                     COERCE_AS(float32x2_t, LANES128(v13).n128_u64[0])))
                 .n64_u64[0];
-        if (LANES64_OF(
-                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v13).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v13).n128_u64[0])))
-                .n64_f32[0] != 0x0.0p+0f) {
+        if (__builtin_islessgreater(
+                LANES64_OF(
+                    vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v13).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v13).n128_u64[0])))
+                    .n64_f32[0],
+                0x0.0p+0f)) {
           LANES128(v10[22]).n128_u32[0] = LODWORD(a3);
           LANES128(v10[22]).n128_u32[1] = LODWORD(a3);
           v14 = v10[22];

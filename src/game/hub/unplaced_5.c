@@ -1978,9 +1978,8 @@ __int64 game_hub_d85af0()
     __int64 v18;
     __int64 v19;
   } v18_;
-  unsigned __int8 v20;
   struct {
-    char gap24_[1];
+    unsigned __int8 v20;
     _BYTE v21[15];
     _BYTE* v22;
   } v21_;
@@ -1992,13 +1991,13 @@ __int64 game_hub_d85af0()
     if (v2 == 0 || v2 == 1 && ((*(_BYTE*)(v1 + 12) & 1) != 0 ||
                                (*(_BYTE*)(v1 + 11) & 1) != 0 ||
                                (*(_BYTE*)(v1 + 13) & 1) != 0)) {
-      Manager_d54320((void*)(&v20));
-      v3 = v20 & 1;
+      Manager_d54320((void*)(&v21_.v20));
+      v3 = v21_.v20 & 1;
       if (v3 != 0) {
         v4 = *(_QWORD*)&v21_.v21[7];
       }
       else {
-        v4 = (unsigned __int64)v20 >> 1;
+        v4 = (unsigned __int64)v21_.v20 >> 1;
       }
       result = v4 != 0;
       if (v4 != 0) {
@@ -2058,7 +2057,7 @@ __int64 game_hub_d85af0()
               *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v18_.v19);
         }
         result = v4 != 0;
-        v3 = v20 & 1;
+        v3 = v21_.v20 & 1;
       }
       if (v3 != 0 && v21_.v22 != nullptr) {
         v15 = result;
@@ -4461,9 +4460,8 @@ game_hub_fb48a0(PSEUDO_X8 x8_, __int64 unused_int0, unsigned __int8* a1)
   float32x4_t v47;
   float32x4_t v48;
   __int128 v49;
-  unsigned __int8 v50;
   struct {
-    char gap8_[1];
+    unsigned __int8 v50;
     _BYTE v51[7];
     unsigned __int64 v52;
     _BYTE* v53;
@@ -4631,23 +4629,23 @@ game_hub_fb48a0(PSEUDO_X8 x8_, __int64 unused_int0, unsigned __int8* a1)
   }
   LOBYTE(v51_.v52) = 0;
   v12 = a1;
-  v50 = 14;
+  v51_.v50 = 14;
   *(_DWORD*)v51_.v51 = -443836695;
   *(_DWORD*)&v51_.v51[3] = 1602988005;
   v13 = (const char*)*(&GameData_1f9caf8 + *a1);
   v14 = strlen(v13);
-  GameRoutine_1a09ce0((__int64)&v50, v13, v14);
-  if ((v50 & 1) != 0) {
+  GameRoutine_1a09ce0((__int64)&v51_.v50, v13, v14);
+  if ((v51_.v50 & 1) != 0) {
     v15 = v51_.v53;
   }
   else {
     v15 = v51_.v51;
   }
-  if ((v50 & 1) != 0) {
+  if ((v51_.v50 & 1) != 0) {
     v16 = v51_.v52;
   }
   else {
-    v16 = (unsigned __int64)v50 >> 1;
+    v16 = (unsigned __int64)v51_.v50 >> 1;
   }
   if (v16 != 0) {
     a1 = v12;
@@ -4708,7 +4706,7 @@ game_hub_fb48a0(PSEUDO_X8 x8_, __int64 unused_int0, unsigned __int8* a1)
     LODWORD(v19) = 1;
     a1 = v12;
   }
-  if ((v50 & 1) != 0 && v51_.v53 != nullptr) {
+  if ((v51_.v50 & 1) != 0 && v51_.v53 != nullptr) {
     v27 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v27 = 56;

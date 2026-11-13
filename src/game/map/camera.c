@@ -310,9 +310,9 @@ LABEL_12:
   LODWORD(v38[0]) = 1065353216;
   if (*(_BYTE*)(a1 + 160) == 1) {
     v22 = *v10;
-    LODWORD(v20) = 1.0;
+    LODWORD(v20) = COERCE_UNSIGNED_INT((float)(1.0));
   LABEL_16:
-    LODWORD(v21) = 1.0;
+    LODWORD(v21) = COERCE_UNSIGNED_INT((float)(1.0));
     goto LABEL_17;
   }
   if (*(float*)(a1 + 144) > 0.0) {

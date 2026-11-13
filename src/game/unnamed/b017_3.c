@@ -2414,7 +2414,7 @@ __int64 GameHr_13176d0(__int64 a1, long double a2, double a3, long double a4)
   v6 = 1.0;
   v7 = 0.0;
   v8 = *(_DWORD*)(a1 + 960);
-  LODWORD(a4) = 0.75;
+  LODWORD(a4) = COERCE_UNSIGNED_INT((float)(0.75));
   if (*(float*)&a2 <= 1.0) {
     v6 = *(float*)&a2;
   }

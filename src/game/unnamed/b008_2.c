@@ -1047,14 +1047,11 @@ void GameHr_a08660(int** a1, const char* a2, const char* a3,
     __int64 v63;
     __int64 v64;
     __int64 v65;
-  } v60_;
-  char v66;
-  struct {
-    char gap88_[1];
+    char v66;
     _BYTE v67[7];
     char gap96_[8];
     _BYTE* v68;
-  } v67_;
+  } v60_;
   const char* v69;
   const char* v70;
   float v71;
@@ -1182,12 +1179,12 @@ void GameHr_a08660(int** a1, const char* a2, const char* a3,
       }
       if (v37 != 0 && v38 != nullptr) {
         LayoutAccessor_155e830((__int64)v38, 1);
-        game_1603b10((void*)((__int64)&v66), v8);
-        if ((v66 & 1) != 0) {
-          v39 = v67_.v68;
+        game_1603b10((void*)((__int64)&v60_.v66), v8);
+        if ((v60_.v66 & 1) != 0) {
+          v39 = v60_.v68;
         }
         else {
-          v39 = v67_.v67;
+          v39 = v60_.v67;
         }
         if (v39 != nullptr) {
           v40 = ui_LayoutAccessor_FindTextBox(v38, (__int64)"T_Key");
@@ -1270,13 +1267,13 @@ void GameHr_a08660(int** a1, const char* a2, const char* a3,
         }
         std___1___shared_weak_count___release_weak(v37);
         ++**a1;
-        if ((v66 & 1) != 0 && v67_.v68 != nullptr) {
+        if ((v60_.v66 & 1) != 0 && v60_.v68 != nullptr) {
           v56 = 128;
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v56 = 56;
           }
           nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v56, (__int64)v67_.v68);
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v56, (__int64)v60_.v68);
         }
       }
       else if (v37 == 0) {

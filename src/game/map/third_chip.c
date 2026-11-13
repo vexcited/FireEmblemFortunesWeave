@@ -35,33 +35,32 @@ void ThirdChip_SetIcon(__int64 a1, __int64 a2)
   __int64 v24;
   __int64 v25;
   __int64 v26[3];
-  unsigned __int8 v27;
   struct {
-    char gap24_[1];
+    unsigned __int8 v27;
     char v28[7];
     unsigned __int64 v29;
     const char* v30;
   } v28_;
 
-  v27 = 12;
+  v28_.v27 = 12;
   strcpy(v28_.v28, "_Third");
   if (*(_BYTE*)(a1 + 76) == 1) {
-    GameRoutine_1a09ce0((__int64)&v27, "Strong", 6u);
+    GameRoutine_1a09ce0((__int64)&v28_.v27, "Strong", 6u);
   }
   v4 = *(_DWORD*)(*(_QWORD*)(a1 + 40) + 592LL);
   if (v4 < 2) {
     strcpy((char*)v26, "&Battle_MiniMap_Unit");
-    if ((v27 & 1) != 0) {
+    if ((v28_.v27 & 1) != 0) {
       v18 = v28_.v30;
     }
     else {
       v18 = v28_.v28;
     }
-    if ((v27 & 1) != 0) {
+    if ((v28_.v27 & 1) != 0) {
       v19 = v28_.v29;
     }
     else {
-      v19 = (unsigned __int64)v27 >> 1;
+      v19 = (unsigned __int64)v28_.v27 >> 1;
     }
     GameRoutine_1a09ce0((__int64)v26, v18, v19);
     if (a2 != 0) {
@@ -80,17 +79,17 @@ void ThirdChip_SetIcon(__int64 a1, __int64 a2)
   }
   if (v4 == 2) {
     strcpy((char*)v26, ",Battle_MiniMap_Unit2x2");
-    if ((v27 & 1) != 0) {
+    if ((v28_.v27 & 1) != 0) {
       v5 = v28_.v30;
     }
     else {
       v5 = v28_.v28;
     }
-    if ((v27 & 1) != 0) {
+    if ((v28_.v27 & 1) != 0) {
       v6 = v28_.v29;
     }
     else {
-      v6 = (unsigned __int64)v27 >> 1;
+      v6 = (unsigned __int64)v28_.v27 >> 1;
     }
     GameRoutine_1a09ce0((__int64)v26, v5, v6);
     if (a2 != 0) {
@@ -123,17 +122,17 @@ void ThirdChip_SetIcon(__int64 a1, __int64 a2)
   }
   if (v4 == 3) {
     strcpy((char*)v26, ",Battle_MiniMap_Unit3x3");
-    if ((v27 & 1) != 0) {
+    if ((v28_.v27 & 1) != 0) {
       v12 = v28_.v30;
     }
     else {
       v12 = v28_.v28;
     }
-    if ((v27 & 1) != 0) {
+    if ((v28_.v27 & 1) != 0) {
       v13 = v28_.v29;
     }
     else {
-      v13 = (unsigned __int64)v27 >> 1;
+      v13 = (unsigned __int64)v28_.v27 >> 1;
     }
     GameRoutine_1a09ce0((__int64)v26, v12, v13);
     if (a2 != 0) {
@@ -167,7 +166,7 @@ void ThirdChip_SetIcon(__int64 a1, __int64 a2)
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v24, v26[2]);
     }
   }
-  if ((v27 & 1) != 0 && v28_.v30 != nullptr) {
+  if ((v28_.v27 & 1) != 0 && v28_.v30 != nullptr) {
     v25 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v25 = 56;

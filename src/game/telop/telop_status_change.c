@@ -954,11 +954,11 @@ __int64 TelopStatusChange_Unknown2(__int64 a1, long double a2)
   v3 = game_g_game_setting_ptr;
   v4 = GameData_22736d0;
   if ((*(_BYTE*)(*(_QWORD*)game_g_game_setting_ptr + 944LL) & 0xB) != 0) {
-    LODWORD(a2) = 8.0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(8.0));
     if (GameData_22736d0 != 0 && *(_DWORD*)(GameData_22736d0 + 624) != 0) {
       if ((GameRoutine_155ea30(GameData_22736d0 + 168) & 1) != 0 &&
           *(_DWORD*)(v4 + 624) == 1) {
-        LODWORD(a2) = 8.0;
+        LODWORD(a2) = COERCE_UNSIGNED_INT((float)(8.0));
         goto LABEL_21;
       }
       GameRoutine_155e830(v4 + 168, 1);
@@ -970,17 +970,17 @@ __int64 TelopStatusChange_Unknown2(__int64 a1, long double a2)
         GameRoutine_155d940(v4 + 272);
         v5 = 1;
       }
-      LODWORD(a2) = 8.0;
+      LODWORD(a2) = COERCE_UNSIGNED_INT((float)(8.0));
     LABEL_20:
       *(_DWORD*)(v4 + 624) = v5;
     }
   }
   else {
-    LODWORD(a2) = 1.0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
     if (GameData_22736d0 != 0 && *(_DWORD*)(GameData_22736d0 + 624) != 2) {
       if ((GameRoutine_155ea30(GameData_22736d0 + 168) & 1) == 0 &&
           *(_DWORD*)(v4 + 624) == 1) {
-        LODWORD(a2) = 1.0;
+        LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
         goto LABEL_21;
       }
       GameRoutine_155cda0(v4 + 272, "Out", 0);
@@ -992,7 +992,7 @@ __int64 TelopStatusChange_Unknown2(__int64 a1, long double a2)
         GameRoutine_155e830(v4 + 168, 0);
         v5 = 1;
       }
-      LODWORD(a2) = 1.0;
+      LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
       goto LABEL_20;
     }
   }

@@ -10,8 +10,8 @@ __attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, _QWORD, _QWORD,
                                                  _QWORD, double, float);
 __int64** GameRoutine_14a1e70(__int64** result, float);
 __int64* Manager_bc6460(_QWORD*, float32x4_t*, char);
-__int64 EffectConst_961260_alt1(__int64, _BYTE**,
-                                __int64) __asm__("EffectConst_961260");
+__int64 EffectConst_961260_alt1(__int64, _BYTE**, __int64,
+                                __n128) __asm__("EffectConst_961260");
 __int64 GameRoutine_112180(__int64, __int64);
 __int64 GameRoutine_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64 GameRoutine_14a1240(_QWORD*, __int64, __int64, __int64);
@@ -205,7 +205,8 @@ __int64 EffectConst_961260(__int64 a1, _BYTE** a2, __int64 a3, __n128 a4)
   result = EffectConst_961520_alt1(
       (__int64*)&v17_.v17, (__int64)v12, (__int64*)a3,
       GameData_1a83bd0[*(unsigned __int8*)(a3 + 24)], *(_BYTE*)(a3 + 25),
-      COERCE_AS(int32x2_t, LANES128(a4).n128_u64[0]), *(float*)(a3 + 20));
+      COERCE_AS(int32x2_t, (unsigned long long)LANES128(a4).n128_u32[0]),
+      *(float*)(a3 + 20));
   if (*v17_.v17 != 0 &&
       *(_DWORD*)(*v17_.v17 + 16) == *((_DWORD*)v17_.v17 + 2)) {
     result = GameRoutine_9a48c0(a1, &v17_.v17);
@@ -507,7 +508,8 @@ void EffectConst_961740(__int64 a1, const char** a2, __int64 a3, char a4)
             v25 = 2;
           }
           GameRoutine_961090_alt1(v29, a3, v25, 1);
-          EffectConst_961260_alt1(a1, (_BYTE**)a2, (__int64)v29);
+          EffectConst_961260_alt1(a1, (_BYTE**)a2, (__int64)v29,
+                                  PSEUDO_REGISTER(__n128, "v0", "=w"));
         }
         else if (a3 != 0) {
           UnitActor_81d430((void*)(&v26), a3);
@@ -628,7 +630,8 @@ void EffectConst_9619a0(__int64 a1, const char** a2, __int64 a3, char a4)
             v25 = 2;
           }
           GameRoutine_961090_alt1(v29, a3, v25, 0);
-          EffectConst_961260_alt1(a1, (_BYTE**)a2, (__int64)v29);
+          EffectConst_961260_alt1(a1, (_BYTE**)a2, (__int64)v29,
+                                  PSEUDO_REGISTER(__n128, "v0", "=w"));
         }
         else if (a3 != 0) {
           UnitActor_81d430((void*)(&v26), a3);

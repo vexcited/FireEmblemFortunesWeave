@@ -6360,11 +6360,11 @@ void ProcGmapSeq_885b00(__n128 a1)
                   a1 = v9[3];
                 }
                 v23 = *(long double*)&a1;
-                LANES128(a1).n128_u32[0] = 0x1.0000000000000p-1f;
+                LANES128(a1).n128_f32[0] = 0x1.0000000000000p-1f;
                 v18 = (unsigned __int64*)&v23;
               }
               else {
-                LANES128(a1).n128_u32[0] = 0x1.0000000000000p-1f;
+                LANES128(a1).n128_f32[0] = 0x1.0000000000000p-1f;
                 v18 = (unsigned __int64*)GameData_212c960;
               }
               game_809dc0(v7, v18, *(long double*)&a1),
@@ -6420,11 +6420,11 @@ void ProcGmapSeq_885b00(__n128 a1)
                 a1 = v13[3];
               }
               v23 = *(long double*)&a1;
-              LANES128(a1).n128_u32[0] = 0x1.0000000000000p+1f;
+              LANES128(a1).n128_f32[0] = 0x1.0000000000000p+1f;
               v19 = (unsigned __int64*)&v23;
             }
             else {
-              LANES128(a1).n128_u32[0] = 0x1.0000000000000p+1f;
+              LANES128(a1).n128_f32[0] = 0x1.0000000000000p+1f;
               v19 = (unsigned __int64*)GameData_212c960;
             }
             game_809dc0(v11, v19, *(long double*)&a1),
@@ -6475,7 +6475,7 @@ void ProcGmapSeq_885b00(__n128 a1)
                                   PSEUDO_REGISTER(__n128, "v0", "=w"));
             }
             else {
-              LANES128(a1).n128_u32[0] = 0x1.0000000000000p-1f;
+              LANES128(a1).n128_f32[0] = 0x1.0000000000000p-1f;
               game_809dc0(v14, GameData_212c960, *(long double*)&a1),
                   v17 = COERCE_AS(__typeof__(v17),
                                   PSEUDO_REGISTER(__n128, "v0", "=w"));
@@ -6773,11 +6773,11 @@ void ProcGmapSeq_886a90()
           v1 = v4[3];
         }
         *(__n128*)v8 = v1;
-        LANES128(v1).n128_u32[0] = 0x1.0000000000000p-1f;
+        LANES128(v1).n128_f32[0] = 0x1.0000000000000p-1f;
         v5 = v8;
       }
       else {
-        LANES128(v1).n128_u32[0] = 0x1.0000000000000p-1f;
+        LANES128(v1).n128_f32[0] = 0x1.0000000000000p-1f;
         v5 = GameData_212c960;
       }
       game_809dc0(v2, v5, *(long double*)&v1);

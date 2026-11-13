@@ -416,7 +416,7 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
 void ProcHubSeq_d85530()
 {
   if (game_hub_ProcHubSeqView_instance_ != 0 && GameData_21f3d10 != 0 &&
-      *(_DWORD*)(game_hub_ProcHubSeqView_instance_ + 232) <= 0) {
+      *(int*)(game_hub_ProcHubSeqView_instance_ + 232) <= 0) {
     *(_BYTE*)(GameData_21f3d10 + 768) = 1;
   }
 }
@@ -425,12 +425,14 @@ __int64 ProcHubSeq_d85570(__int64 a1)
 {
   __int64 v4;
   __int64 v5;
+  int v6;
 
   if (game_hub_ProcHubSeqView_instance_ == 0) {
     return 0;
   }
-  if (*(_QWORD*)GameData_212dbb8[0] == 0 ||
-      *(_DWORD*)(game_hub_ProcHubSeqView_instance_ + 232) > 0) {
+  v6 = *(int*)(game_hub_ProcHubSeqView_instance_ + 232);
+  __asm__ volatile("" ::"r"(v6));
+  if (*(_QWORD*)GameData_212dbb8[0] == 0 || v6 > 0) {
     return 0;
   }
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_2212338,

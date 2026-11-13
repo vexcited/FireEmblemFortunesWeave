@@ -81,7 +81,7 @@ __int64 ProcPartSelect_Unknown96(_QWORD* a1)
     *(__n128*)&v2 =
         ((__n128 (*)(_QWORD*)) * (_QWORD*)(a1[132] + 96LL))(a1 + 132);
   }
-  LODWORD(v2) = 1.0;
+  LODWORD(v2) = COERCE_UNSIGNED_INT((float)(1.0));
   LayoutAccessor_1562680(a1 + 106, "In", v2);
   v3 = LayoutAccessor_15638b0(a1 + 106, "In", 0);
   LayoutAccessor_1562f00(a1 + 106, "In", v3);

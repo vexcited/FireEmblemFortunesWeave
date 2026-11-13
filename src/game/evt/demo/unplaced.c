@@ -2142,13 +2142,13 @@ __int64 game_evt_demo_1155290(__int64 a1, long double a2)
         }
       }
       else {
-        LODWORD(a2) = 0.5;
+        LODWORD(a2) = COERCE_UNSIGNED_INT((float)(0.5));
       }
     }
     v3 = v14;
   }
   else {
-    LODWORD(a2) = 0.5;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(0.5));
   }
   v11 = *(_DWORD*)(a1 + 144);
   v15 = v3;
@@ -2226,13 +2226,13 @@ __int64 game_evt_demo_11553e0(__int64 a1, long double a2)
         }
       }
       else {
-        LODWORD(a2) = 0.5;
+        LODWORD(a2) = COERCE_UNSIGNED_INT((float)(0.5));
       }
     }
     v3 = v14;
   }
   else {
-    LODWORD(a2) = 0.5;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(0.5));
   }
   v11 = *(_DWORD*)(a1 + 144);
   v15 = v3;
@@ -8123,7 +8123,7 @@ __int64 game_evt_demo_115d0b0(__int64 a1, double a2, long double a3)
       }
       else {
       LABEL_34:
-        LODWORD(a3) = 1.0;
+        LODWORD(a3) = COERCE_UNSIGNED_INT((float)(1.0));
       }
     }
     Seq_114d960(*GameData_212fc38[0], 1, v11, a3);

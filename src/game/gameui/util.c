@@ -8094,7 +8094,7 @@ LABEL_14:
   }
   v24 = GameRoutine_8ca410(a2);
   v25 = GameRoutine_8ca500(a2);
-  LODWORD(v26) = 1.0;
+  LODWORD(v26) = COERCE_UNSIGNED_INT((float)(1.0));
   if (v25 >= 1) {
     v27 = v25 - v24;
     if (v25 != v24) {
@@ -10697,7 +10697,7 @@ __int64* Util_1580bf0(__int64* result, __int64 a2, unsigned int a3, char a4,
           v37 = *(unsigned __int16*)(a2 + 2LL * (unsigned __int8)a3 + 514);
           ui_LayoutAccessor_SetPaneVisible(v15, "L_Gauge", 1);
           LayoutAccessor_1560070((void*)(&v57), v15, (__int64)"L_Gauge");
-          LODWORD(v38) = 1.0;
+          LODWORD(v38) = COERCE_UNSIGNED_INT((float)(1.0));
           if (v36 >= 1) {
             v39 = v36 - v32;
             if (v36 != v32) {

@@ -3538,7 +3538,7 @@ __int64 game_gmap_133de90(__int64 result, char a2, __n128 a3, long double a4)
         v17 = 1065353216;
         if (*(_BYTE*)(v6 + 288) == 1) {
           v16 = *(_QWORD*)(v6 + 264);
-          LANES128(a3).n128_u32[0] = 0x1.0000000000000p+0;
+          LANES128(a3).n128_f32[0] = 0x1.0000000000000p+0;
         }
         else {
           if (*(float*)(v6 + 272) <= 0.0) {
@@ -3554,7 +3554,7 @@ __int64 game_gmap_133de90(__int64 result, char a2, __n128 a3, long double a4)
           (*(void (**)(__int64))(*(_QWORD*)(v6 + 264) + 16LL))(v6 + 264);
           v16 = *(_QWORD*)(v6 + 264);
         }
-        LODWORD(a4) = 0x1.0000000000000p+0;
+        LODWORD(a4) = COERCE_UNSIGNED_INT((float)(1.0));
         result = (*(__int64 (**)(__int64, long double, long double))(v16 + 24))(
             v6 + 264, *(long double*)&a3, a4);
       LABEL_37:
@@ -3954,7 +3954,7 @@ LABEL_7:
       v19 = 1065353216;
       if (*(_BYTE*)(a1 + 288) == 1) {
         v18 = *(_QWORD*)(a1 + 264);
-        LANES128(a4).n128_u32[0] = 0x1.0000000000000p+0;
+        LANES128(a4).n128_f32[0] = 0x1.0000000000000p+0;
       }
       else {
         if (*(float*)(a1 + 272) <= 0.0) {
@@ -3970,7 +3970,7 @@ LABEL_7:
         (*(void (**)(__int64))(*(_QWORD*)(a1 + 264) + 16LL))(a1 + 264);
         v18 = *(_QWORD*)(a1 + 264);
       }
-      LODWORD(a5) = 0x1.0000000000000p+0;
+      LODWORD(a5) = COERCE_UNSIGNED_INT((float)(1.0));
       (*(void (**)(__int64, long double, long double))(v18 + 24))(
           a1 + 264, *(long double*)&a4, a5);
     LABEL_42:
@@ -4117,7 +4117,7 @@ __int64 game_gmap_1340560(__int64 result, char a2, __n128 a3, long double a4)
         v16 = 1065353216;
         if (*(_BYTE*)(v7 + 288) == 1) {
           v15 = *(_QWORD*)(v7 + 264);
-          LANES128(a3).n128_u32[0] = 0x1.0000000000000p+0;
+          LANES128(a3).n128_f32[0] = 0x1.0000000000000p+0;
         }
         else {
           if (*(float*)(v7 + 272) <= 0.0) {
@@ -4133,7 +4133,7 @@ __int64 game_gmap_1340560(__int64 result, char a2, __n128 a3, long double a4)
           (*(void (**)(__int64))(*(_QWORD*)(v7 + 264) + 16LL))(v7 + 264);
           v15 = *(_QWORD*)(v7 + 264);
         }
-        LODWORD(a4) = 0x1.0000000000000p+0;
+        LODWORD(a4) = COERCE_UNSIGNED_INT((float)(1.0));
         result = (*(__int64 (**)(__int64, long double, long double))(v15 + 24))(
             v7 + 264, *(long double*)&a3, a4);
       LABEL_37:
@@ -4473,7 +4473,7 @@ LABEL_17:
           goto LABEL_54;
         }
       }
-      LODWORD(a2) = 1.0;
+      LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
       goto LABEL_53;
     }
   }
@@ -7173,9 +7173,8 @@ __int64 game_gmap_1520240(__int64 a1, __int64 a2, char a3)
   __int64 v13;
   float* v14;
   __int64 result;
-  char v17;
   struct {
-    char gap8_[1];
+    char v17;
     char v18[15];
     const char* v19;
   } v18_;
@@ -7183,11 +7182,11 @@ __int64 game_gmap_1520240(__int64 a1, __int64 a2, char a3)
   v3 = (_DWORD*)(a1 + 544);
   for (i = 0; i != 26; i += 2) {
     v7 = (&GameData_204a350)[i];
-    v17 = 12;
+    v18_.v17 = 12;
     strcpy(v18_.v18, "Layer_");
     v8 = strlen_alt1(v7);
-    GameRoutine_1a09ce0_alt1((__int64)&v17, v7, v8);
-    if ((v17 & 1) != 0) {
+    GameRoutine_1a09ce0_alt1((__int64)&v18_.v17, v7, v8);
+    if ((v18_.v17 & 1) != 0) {
       v9 = v18_.v19;
     }
     else {
@@ -7198,20 +7197,20 @@ __int64 game_gmap_1520240(__int64 a1, __int64 a2, char a3)
       v11 = *(const char**)(v10 + 24);
       if (v11 != nullptr) {
         sscanf_alt1(v11, "%d", v3);
-        if ((v17 & 1) == 0) {
+        if ((v18_.v17 & 1) == 0) {
           goto LABEL_2;
         }
       }
       else {
         *v3 = 0;
-        if ((v17 & 1) == 0) {
+        if ((v18_.v17 & 1) == 0) {
           goto LABEL_2;
         }
       }
     }
     else {
       GameRoutine_609140(v10, (__int64)"%d", *v3);
-      if ((v17 & 1) == 0) {
+      if ((v18_.v17 & 1) == 0) {
         goto LABEL_2;
       }
     }

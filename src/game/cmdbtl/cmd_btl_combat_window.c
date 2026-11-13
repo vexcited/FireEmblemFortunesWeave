@@ -630,7 +630,7 @@ void CmdBtlCombatWindow_Unknown4(__int64 a1)
         v5 = a1 + 24;
         v6 = (*(__int64 (**)(__int64, __int64, float))(*(_QWORD*)a1 + 224LL))(
             a1, 1, v4);
-        LODWORD(v7) = 1.0;
+        LODWORD(v7) = COERCE_UNSIGNED_INT((float)(1.0));
         v8 = v6;
         LayoutAccessor_1562680(v5, v6, v7);
         v9 = LayoutAccessor_15638b0(v5, v8, 0);

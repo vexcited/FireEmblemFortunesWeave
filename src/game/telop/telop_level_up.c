@@ -1535,11 +1535,11 @@ __int64 TelopLevelUp_Unknown2(__int64 a1, long double a2)
   v3 = game_g_game_setting_ptr;
   v4 = GameData_22736d0;
   if ((*(_BYTE*)(*(_QWORD*)game_g_game_setting_ptr + 944LL) & 0xB) != 0) {
-    LODWORD(a2) = 8.0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(8.0));
     if (GameData_22736d0 != 0 && *(_DWORD*)(GameData_22736d0 + 624) != 0) {
       if ((GameRoutine_155ea30(GameData_22736d0 + 168) & 1) != 0 &&
           *(_DWORD*)(v4 + 624) == 1) {
-        LODWORD(a2) = 8.0;
+        LODWORD(a2) = COERCE_UNSIGNED_INT((float)(8.0));
         goto LABEL_21;
       }
       GameRoutine_155e830(v4 + 168, 1);
@@ -1551,17 +1551,17 @@ __int64 TelopLevelUp_Unknown2(__int64 a1, long double a2)
         GameRoutine_155d940(v4 + 272);
         v5 = 1;
       }
-      LODWORD(a2) = 8.0;
+      LODWORD(a2) = COERCE_UNSIGNED_INT((float)(8.0));
     LABEL_20:
       *(_DWORD*)(v4 + 624) = v5;
     }
   }
   else {
-    LODWORD(a2) = 1.0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
     if (GameData_22736d0 != 0 && *(_DWORD*)(GameData_22736d0 + 624) != 2) {
       if ((GameRoutine_155ea30(GameData_22736d0 + 168) & 1) == 0 &&
           *(_DWORD*)(v4 + 624) == 1) {
-        LODWORD(a2) = 1.0;
+        LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
         goto LABEL_21;
       }
       GameRoutine_155cda0(v4 + 272, "Out", 0);
@@ -1573,7 +1573,7 @@ __int64 TelopLevelUp_Unknown2(__int64 a1, long double a2)
         GameRoutine_155e830(v4 + 168, 0);
         v5 = 1;
       }
-      LODWORD(a2) = 1.0;
+      LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
       goto LABEL_20;
     }
   }
@@ -2352,7 +2352,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
               goto LABEL_222;
             }
           }
-          LODWORD(v63) = 0x1.0000000000000p+0;
+          LODWORD(v63) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0));
           if (*(_BYTE*)(a1 + 384) != 0) {
             v64 = v56;
           }
@@ -2720,7 +2720,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
                                     v145);
                           }
                           if (v135 != 0 && v137 != 0) {
-                            LODWORD(v136) = 0x1.0000000000000p+0;
+                            LODWORD(v136) = COERCE_UNSIGNED_INT((float)(1.0));
                             LayoutAccessor_1562680(v137, v130, v136);
                           LABEL_283:
                             if (atomic_fetch_add(
@@ -2862,7 +2862,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
         else {
           v9 = &ui_LayoutAccessor_empty_;
         }
-        LODWORD(a2) = 0x1.0000000000000p+0;
+        LODWORD(a2) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0));
         goto LABEL_22;
       }
       *(_DWORD*)(a1 + 16) = 4;
@@ -2893,7 +2893,7 @@ void TelopLevelUp_1749970(__int64 a1, long double a2)
       else {
         v9 = &ui_LayoutAccessor_empty_;
       }
-      LODWORD(a2) = 0x1.0000000000000p+0;
+      LODWORD(a2) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0));
     LABEL_22:
       LayoutAccessor_1562680(v9, "Change", a2);
       return;

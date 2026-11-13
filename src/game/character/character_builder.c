@@ -3298,10 +3298,13 @@ __int64 CharacterBuilder_Unknown5(__int64 a1)
                               LANES128_OF(vextq_s8(v43, v43, 8u)).n128_u64[0]),
                     COERCE_AS(float32x2_t, LANES128(v43).n128_u64[0])))
                 .n64_u64[0];
-        if (LANES64_OF(
-                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v43).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v43).n128_u64[0])))
-                .n64_f32[0] != 0x0.0p+0f) {
+        if (__builtin_islessgreater(
+                LANES64_OF(
+                    vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v43).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v43).n128_u64[0])))
+                    .n64_f32[0],
+                0x0.0p+0f)) {
           LANES128(v40[22]).n128_u32[0] = LANES64(v23).n64_u32[0];
           LANES128(v40[22]).n128_u32[1] = LANES64(v23).n64_u32[0];
           v44 = v40[22];

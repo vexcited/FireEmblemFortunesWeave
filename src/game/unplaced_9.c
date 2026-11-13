@@ -6954,7 +6954,7 @@ float32x4_t game_5bf9f0(int8x16_t* a1, float32x4_t* a2, __int64 a3, double a4,
     v30 = *(_DWORD*)(a3 + 172);
   }
   *(float*)&a5 = vcvts_n_f32_u32(v30, 0x20u);
-  LANES128(v27).n128_u32[0] = 0x1.0000000000000p-1f;
+  LANES128(v27).n128_f32[0] = 0x1.0000000000000p-1f;
   *(_DWORD*)(a3 + 172) = 1103515245 * v30 + 12345;
   LANES128(v31).n128_u64[0] = LANES128(*(a1)).n128_u64[0];
   LANES128(v31).n128_u64[1] = LANES128_OF(vnegq_f32(*a1)).n128_u32[2];

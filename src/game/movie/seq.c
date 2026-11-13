@@ -1659,11 +1659,11 @@ void Seq_11cd790(__int64 a1, __n128 a2)
         v8 = *(long double*)(v7 + 48);
       }
       v9 = v8;
-      LODWORD(v8) = 0.5;
+      LODWORD(v8) = COERCE_UNSIGNED_INT((float)(0.5));
       game_809dc0(v5, &v9, v8);
     }
     else {
-      LANES128(a2).n128_u32[0] = 0.5;
+      LANES128(a2).n128_f32[0] = 0.5;
       game_809dc0(v5, GameData_212c960, *(long double*)&a2);
     }
   }

@@ -4541,7 +4541,7 @@ LABEL_8:
   v1428 =
     -*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c2f0 + 12);
   LODWORD(v26) = 0;
-  HIDWORD(v26) = 0x1.0000000000000p+0;
+  HIDWORD(v26) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0));
   v1447 = COERCE_AS(float32x4_t, v26);
   do {
     v1545 = *v15;

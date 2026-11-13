@@ -367,7 +367,7 @@ LABEL_20:
       *(__n128*)&v24 = std___1___shared_weak_count___release_weak(v159);
     }
     if (v23 != 0 && v25 != nullptr) {
-      LODWORD(v24) = 1.0;
+      LODWORD(v24) = COERCE_UNSIGNED_INT((float)(1.0));
       LayoutAccessor_1562680(v25, v22, v24);
     }
     else if (v23 == 0) {

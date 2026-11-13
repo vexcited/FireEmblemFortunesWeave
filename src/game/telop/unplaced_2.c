@@ -136,7 +136,7 @@ __n128 game_telop_1764a60(__int64 a1, __int64 a2)
       GameRoutine_156c5d0(v12, v11, 0);
     }
   }
-  LODWORD(v10) = 1.0;
+  LODWORD(v10) = COERCE_UNSIGNED_INT((float)(1.0));
   if (*(_QWORD*)(a2 + 8) != 0) {
     v13 = "Select2";
   }

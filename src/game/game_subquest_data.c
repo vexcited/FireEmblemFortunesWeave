@@ -4200,7 +4200,7 @@ __int64 GameSubquestData_125bda0(__int64 result, unsigned __int16* a2)
           if (*(_BYTE*)(result + 9) == 0) {
             *(_BYTE*)(result + 9) = 1;
           }
-          result = GameSubquestData_1258420(result);
+          result = ((__int64 (*)(__int64))GameSubquestData_1258420)(result);
           if ((result & 1) != 0) {
             result = GameSubquestData_125e760(result, (__int64)v19, nullptr);
             v20 = *v19;

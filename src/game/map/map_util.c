@@ -4052,7 +4052,7 @@ __int64 MapUtil_75f320(__int64 a1, long double a2)
           *(float*)&v14 = *(float*)&v14 * 57.296;
         }
       }
-      LANES128(v15).n128_u32[0] = -1.0;
+      LANES128(v15).n128_f32[0] = -1.0;
       UnitActor_81ab40(v5, v14, LANES128(v15).n128_f64[0]);
     }
     result = GameRoutine_76bcd0(a1, v5, 2605753723LL, 1.0);

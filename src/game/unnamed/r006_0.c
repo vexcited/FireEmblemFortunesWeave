@@ -1242,9 +1242,8 @@ void GameHr_1070d60(__int64 a1, _QWORD* a2)
   __int64 v31;
   unsigned __int64 v32;
   __int64 v33;
-  unsigned __int8 v34;
   struct {
-    char gap0_[1];
+    unsigned __int8 v34;
     _BYTE v35[7];
     char gap8_[8];
     const char* v36;
@@ -1274,9 +1273,9 @@ void GameHr_1070d60(__int64 a1, _QWORD* a2)
         game_character_10778e0((__int64)v37_.v37, (__int64)v8, v9);
         if ((unsigned int)(v37_.v38 - 1) <= 0xFFFFFFFD) {
           v37_.v38 = 0;
-          game_character_1077d10((void*)(&v34), (__int64)v37_.v37);
-          v10 = v34 & 1;
-          if ((v34 & 1) != 0) {
+          game_character_1077d10((void*)(&v35_.v34), (__int64)v37_.v37);
+          v10 = v35_.v34 & 1;
+          if ((v35_.v34 & 1) != 0) {
             v11 = v35_.v36;
           }
           else {
@@ -1286,7 +1285,7 @@ void GameHr_1070d60(__int64 a1, _QWORD* a2)
             strncpy((__int64)v39, v11, 0x1Fu);
             HIBYTE(v39[3]) = 0;
             CharacterModel_10711e0(a1, (__int64)v39, (__int64)v40);
-            v10 = v34 & 1;
+            v10 = v35_.v34 & 1;
           }
           if (v10 != 0 && v35_.v36 != nullptr) {
             if (*(_QWORD*)(*v5 + 200) != 0) {
@@ -2715,7 +2714,7 @@ __int64 GameHr_113de80(__int64 result, __int64 a2, __int64** a3)
           v189[1] = v184;
           v190 = v185;
         }
-        LODWORD(v69) = 1.0;
+        LODWORD(v69) = COERCE_UNSIGNED_INT((float)(1.0));
         result = (__int64)X8CALL_X0(
             _QWORD*, GameRoutine_113f5c0((void*)v197, v189, "Scale", v69));
         v20 = v197[0];

@@ -270,7 +270,8 @@ GameRoutine_12274e0_alt1(__int64 result,
 __int64 GameRoutine_a85120_alt1(__int64,
                                 unsigned __int8*) __asm__("GameRoutine_a85120");
 __int64 GameRoutine_b3f0c0_alt1(__int64, unsigned __int8*, __int64,
-                                __int64**) __asm__("GameRoutine_b3f0c0");
+                                __int64**,
+                                char*) __asm__("GameRoutine_b3f0c0");
 __int64 GameRoutine_b45400_alt1(__int64 result, __int64,
                                 __int64) __asm__("GameRoutine_b45400");
 __int64 GameRoutine_b45570_alt1(__int64, __int64, __int64, int*,
@@ -324,7 +325,7 @@ __int64 GameHr_b32240(__int64 a1, const char* a2, int a3);
 void GameHr_b325c0(__int64 a1, const char* a2, __int64 a3);
 __int64 GameHr_b3a120(__int64 result, _QWORD* a2, __int64* a3, __int64 a4,
                       char a5, char a6);
-long double GameHr_b3ef70(__int64 a1);
+__int64 GameHr_b3ef70(__int64 a1);
 __int64 GameHr_b44a80(__int64 result, float* a2, __int64 a3, char a4);
 __int64 GameHr_b52a20(__int64* a1);
 __attribute__((swiftcall)) void
@@ -10077,7 +10078,7 @@ __int64 GameHr_b3c900(__int64 result)
   return result;
 }
 
-long double GameHr_b3ef70(__int64 a1)
+__int64 GameHr_b3ef70(__int64 a1)
 {
 
 #pragma clang fp contract(off)
@@ -10088,21 +10089,22 @@ long double GameHr_b3ef70(__int64 a1)
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  unsigned __int8 v9;
   struct {
-    char gap0_[1];
+    unsigned __int8 v9;
     char v10[15];
     __int64 v11;
   } v10_;
   unsigned __int8* v12;
+  char v14;
 
   v1 = *(_QWORD*)(a1 + 288);
-  v9 = 6;
-  v12 = &v9;
+  v10_.v9 = 6;
+  v12 = &v10_.v9;
   strcpy(v10_.v10, "Sun");
-  v2 = GameRoutine_b3f0c0_alt1(
-      v1 + 592, &v9, (__int64)std___1_piecewise_construct_ptr, (__int64**)&v12);
-  if ((v9 & 1) != 0 && v10_.v11 != 0) {
+  v2 = GameRoutine_b3f0c0_alt1(v1 + 592, &v10_.v9,
+                               (__int64)std___1_piecewise_construct_ptr,
+                               (__int64**)&v12, &v14);
+  if ((v10_.v9 & 1) != 0 && v10_.v11 != 0) {
     v3 = v2;
     v4 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -10112,14 +10114,15 @@ long double GameHr_b3ef70(__int64 a1)
                                   v10_.v11);
     v2 = v3;
   }
-  v12 = &v9;
-  v9 = 8;
+  v12 = &v10_.v9;
+  v10_.v9 = 8;
   strcpy(v10_.v10, "Moon");
   *(_OWORD*)(v2 + 64) = GameData_1a830d0;
   *(_OWORD*)(v2 + 80) = GameData_1a82e20;
-  v5 = GameRoutine_b3f0c0_alt1(
-      v1 + 592, &v9, (__int64)std___1_piecewise_construct_ptr, (__int64**)&v12);
-  if ((v9 & 1) != 0 && v10_.v11 != 0) {
+  v5 = GameRoutine_b3f0c0_alt1(v1 + 592, &v10_.v9,
+                               (__int64)std___1_piecewise_construct_ptr,
+                               (__int64**)&v12, &v14);
+  if ((v10_.v9 & 1) != 0 && v10_.v11 != 0) {
     v6 = v5;
     v7 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -10131,7 +10134,7 @@ long double GameHr_b3ef70(__int64 a1)
   }
   *(_OWORD*)(v5 + 64) = GameData_1a83650;
   *(_OWORD*)(v5 + 80) = GameData_1a82f40;
-  return *(long double*)&GameData_1a83650;
+  return v5;
 }
 
 __int64* GameHr_b3f6c0(_QWORD* a1, __int64 a2)

@@ -1459,7 +1459,7 @@ __int64 GameHr_1068360(__int64 result)
         v21 += 80;
       }
       *(_BYTE*)(v20 + 272) = 0;
-      LODWORD(v13) = 1.0;
+      LODWORD(v13) = COERCE_UNSIGNED_INT((float)(1.0));
       v25 = *(_QWORD*)(v3 + 368);
       if (*(int*)(*(_QWORD*)(*GameData_212d448[0] + 8) +
                   96LL * *(int*)(*(_QWORD*)(v3 + 392) + 96LL) + 280) < 1) {

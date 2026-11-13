@@ -291,7 +291,7 @@ __int64 ProcGameOverMenu_Unknown2(__int64 a1)
 __int64 ProcGameOverMenu_Unknown57(__int64 result, long double a2)
 {
   if ((*(_BYTE*)(result + 1116) & 1) == 0) {
-    LODWORD(a2) = 1.0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
     return GameRoutine_1562680(result + 848, "In", a2);
   }
   return result;
@@ -299,7 +299,7 @@ __int64 ProcGameOverMenu_Unknown57(__int64 result, long double a2)
 
 __int64 ProcGameOverMenu_Unknown84(__int64 a1, long double a2)
 {
-  LODWORD(a2) = 1.0;
+  LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
   GameRoutine_1562680(a1 + 952, "In", a2);
   GameRoutine_15638b0(a1 + 952, "In", 0);
   return GameRoutine_15636c0(a1 + 952, "In", 0);

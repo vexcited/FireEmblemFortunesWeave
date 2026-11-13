@@ -166,9 +166,12 @@ void FieldUnit_1015950(__int64 a1, long double a2)
                                LANES128_OF(vextq_s8(v5, v5, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0])))
-            .n64_f32[0] != 0x0.0p+0f) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v5).n128_u64[0])))
+                .n64_f32[0],
+            0x0.0p+0f)) {
       *(_DWORD*)(v2 + 304) = LODWORD(a2);
       *(_DWORD*)(v2 + 308) = *(_DWORD*)(a1 + 52);
       a2 = *(long double*)(v2 + 304);
@@ -190,9 +193,12 @@ void FieldUnit_1015950(__int64 a1, long double a2)
                                LANES128_OF(vextq_s8(v9, v9, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
-            .n64_f32[0] != 0x0.0p+0f) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
+                .n64_f32[0],
+            0x0.0p+0f)) {
       *(_DWORD*)(v2 + 320) = 0;
       *(float*)(v2 + 324) = v6;
       *(_OWORD*)(v2 + 320) = *(unsigned __int64*)(v2 + 320);

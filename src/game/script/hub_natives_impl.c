@@ -2410,9 +2410,8 @@ __int64 hub_IsSubquestCompletedBySharedComp(__int64 a1)
     _QWORD v19[2];
     char* v20;
   } v19_;
-  char v21;
   struct {
-    char gap24_[1];
+    char v21;
     _BYTE v22[7];
     char gap32_[8];
     const char* v23;
@@ -2481,7 +2480,7 @@ LABEL_9:
     memmove_alt1((__int64)v11, (__int64)v8, v10);
   }
   v11[v10] = 0;
-  LocatorDispos_db2ac0((void*)((__int64)&v21), (unsigned __int8*)v19_.v19);
+  LocatorDispos_db2ac0((void*)((__int64)&v22_.v21), (unsigned __int8*)v19_.v19);
   if ((v19_.v19[0] & 1) != 0 && v19_.v20 != nullptr) {
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -2490,7 +2489,7 @@ LABEL_9:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v19_.v20);
   }
-  if ((v21 & 1) != 0) {
+  if ((v22_.v21 & 1) != 0) {
     v15 = v22_.v23;
   }
   else {
@@ -2506,7 +2505,7 @@ LABEL_9:
   if (result != 0) {
     result = (*(_BYTE*)(result + 11) & 2) != 0;
   }
-  if ((v21 & 1) != 0 && v22_.v23 != nullptr) {
+  if ((v22_.v21 & 1) != 0 && v22_.v23 != nullptr) {
     v17 = result;
     v18 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -2544,9 +2543,8 @@ __int64 hub_IsSubquestTerm(__int64 a1)
     _QWORD v21[2];
     char* v22;
   } v21_;
-  char v23;
   struct {
-    char gap24_[1];
+    char v23;
     _BYTE v24[7];
     char gap32_[8];
     const char* v25;
@@ -2615,7 +2613,7 @@ LABEL_9:
     memmove_alt1((__int64)v11, (__int64)v8, v10);
   }
   v11[v10] = 0;
-  LocatorDispos_db2ac0((void*)((__int64)&v23), (unsigned __int8*)v21_.v21);
+  LocatorDispos_db2ac0((void*)((__int64)&v24_.v23), (unsigned __int8*)v21_.v21);
   if ((v21_.v21[0] & 1) != 0 && v21_.v22 != nullptr) {
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -2624,7 +2622,7 @@ LABEL_9:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v21_.v22);
   }
-  if ((v23 & 1) != 0) {
+  if ((v24_.v23 & 1) != 0) {
     v15 = v24_.v25;
   }
   else {
@@ -2642,7 +2640,7 @@ LABEL_9:
     LOBYTE(v17) = GameSubquestData_1256ec0(v17, 1);
   }
   result = (v18 != nullptr) & (unsigned __int8)v17;
-  if ((v23 & 1) != 0 && v24_.v25 != nullptr) {
+  if ((v24_.v23 & 1) != 0 && v24_.v25 != nullptr) {
     v19 = result;
     v20 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -2678,9 +2676,8 @@ __int64 hub_IsSubquestOrder(__int64 a1)
     _QWORD v19[2];
     char* v20;
   } v19_;
-  char v21;
   struct {
-    char gap24_[1];
+    char v21;
     _BYTE v22[7];
     char gap32_[8];
     const char* v23;
@@ -2749,7 +2746,7 @@ LABEL_9:
     memmove_alt1((__int64)v11, (__int64)v8, v10);
   }
   v11[v10] = 0;
-  LocatorDispos_db2ac0((void*)((__int64)&v21), (unsigned __int8*)v19_.v19);
+  LocatorDispos_db2ac0((void*)((__int64)&v22_.v21), (unsigned __int8*)v19_.v19);
   if ((v19_.v19[0] & 1) != 0 && v19_.v20 != nullptr) {
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -2758,7 +2755,7 @@ LABEL_9:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v19_.v20);
   }
-  if ((v21 & 1) != 0) {
+  if ((v22_.v21 & 1) != 0) {
     v15 = v22_.v23;
   }
   else {
@@ -2774,7 +2771,7 @@ LABEL_9:
   if (result != 0) {
     result = (*(_BYTE*)(result + 9) & 0xFE) == 2;
   }
-  if ((v21 & 1) != 0 && v22_.v23 != nullptr) {
+  if ((v22_.v21 & 1) != 0 && v22_.v23 != nullptr) {
     v17 = result;
     v18 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -2810,9 +2807,8 @@ __int64 hub_IsSubquestProgressing(__int64 a1)
     _QWORD v19[2];
     char* v20;
   } v19_;
-  char v21;
   struct {
-    char gap24_[1];
+    char v21;
     _BYTE v22[7];
     char gap32_[8];
     const char* v23;
@@ -2881,7 +2877,7 @@ LABEL_9:
     memmove_alt1((__int64)v11, (__int64)v8, v10);
   }
   v11[v10] = 0;
-  LocatorDispos_db2ac0((void*)((__int64)&v21), (unsigned __int8*)v19_.v19);
+  LocatorDispos_db2ac0((void*)((__int64)&v22_.v21), (unsigned __int8*)v19_.v19);
   if ((v19_.v19[0] & 1) != 0 && v19_.v20 != nullptr) {
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -2890,7 +2886,7 @@ LABEL_9:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v19_.v20);
   }
-  if ((v21 & 1) != 0) {
+  if ((v22_.v21 & 1) != 0) {
     v15 = v22_.v23;
   }
   else {
@@ -2906,7 +2902,7 @@ LABEL_9:
   if (result != 0) {
     result = *(unsigned __int8*)(result + 9) == 2;
   }
-  if ((v21 & 1) != 0 && v22_.v23 != nullptr) {
+  if ((v22_.v21 & 1) != 0 && v22_.v23 != nullptr) {
     v17 = result;
     v18 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -2942,9 +2938,8 @@ __int64 hub_IsSubquestReportable(__int64 a1)
     _QWORD v19[2];
     char* v20;
   } v19_;
-  char v21;
   struct {
-    char gap24_[1];
+    char v21;
     _BYTE v22[7];
     char gap32_[8];
     const char* v23;
@@ -3013,7 +3008,7 @@ LABEL_9:
     memmove_alt1((__int64)v11, (__int64)v8, v10);
   }
   v11[v10] = 0;
-  LocatorDispos_db2ac0((void*)((__int64)&v21), (unsigned __int8*)v19_.v19);
+  LocatorDispos_db2ac0((void*)((__int64)&v22_.v21), (unsigned __int8*)v19_.v19);
   if ((v19_.v19[0] & 1) != 0 && v19_.v20 != nullptr) {
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -3022,7 +3017,7 @@ LABEL_9:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v19_.v20);
   }
-  if ((v21 & 1) != 0) {
+  if ((v22_.v21 & 1) != 0) {
     v15 = v22_.v23;
   }
   else {
@@ -3038,7 +3033,7 @@ LABEL_9:
   if (result != 0) {
     result = *(unsigned __int8*)(result + 9) == 3;
   }
-  if ((v21 & 1) != 0 && v22_.v23 != nullptr) {
+  if ((v22_.v21 & 1) != 0 && v22_.v23 != nullptr) {
     v17 = result;
     v18 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -3074,9 +3069,8 @@ __int64 hub_IsSubquestCleared(__int64 a1)
     _QWORD v19[2];
     char* v20;
   } v19_;
-  char v21;
   struct {
-    char gap24_[1];
+    char v21;
     _BYTE v22[7];
     char gap32_[8];
     const char* v23;
@@ -3145,7 +3139,7 @@ LABEL_9:
     memmove_alt1((__int64)v11, (__int64)v8, v10);
   }
   v11[v10] = 0;
-  LocatorDispos_db2ac0((void*)((__int64)&v21), (unsigned __int8*)v19_.v19);
+  LocatorDispos_db2ac0((void*)((__int64)&v22_.v21), (unsigned __int8*)v19_.v19);
   if ((v19_.v19[0] & 1) != 0 && v19_.v20 != nullptr) {
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -3154,7 +3148,7 @@ LABEL_9:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v19_.v20);
   }
-  if ((v21 & 1) != 0) {
+  if ((v22_.v21 & 1) != 0) {
     v15 = v22_.v23;
   }
   else {
@@ -3170,7 +3164,7 @@ LABEL_9:
   if (result != 0) {
     result = *(unsigned __int8*)(result + 9) == 4;
   }
-  if ((v21 & 1) != 0 && v22_.v23 != nullptr) {
+  if ((v22_.v21 & 1) != 0 && v22_.v23 != nullptr) {
     v17 = result;
     v18 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -3210,9 +3204,8 @@ void hub_RunSubquestClear(__int64 a1)
     _QWORD v23[2];
     char* v24;
   } v23_;
-  char v25;
   struct {
-    char gap32_[1];
+    char v25;
     _BYTE v26[7];
     char gap40_[8];
     const char* v27;
@@ -3283,7 +3276,7 @@ LABEL_9:
     memmove_alt1((__int64)v12, (__int64)v8, v10);
   }
   v12[v10] = 0;
-  LocatorDispos_db2ac0((void*)((__int64)&v25), (unsigned __int8*)v23_.v23);
+  LocatorDispos_db2ac0((void*)((__int64)&v26_.v25), (unsigned __int8*)v23_.v23);
   if ((v23_.v23[0] & 1) != 0 && v23_.v24 != nullptr) {
     v14 = 128;
     if (*(_QWORD*)(*v11 + 200) == 0) {
@@ -3291,7 +3284,7 @@ LABEL_9:
     }
     nn_mem_StandardAllocator_Free_alt1(*v11 + v14, (__int64)v23_.v24);
   }
-  if ((v25 & 1) != 0) {
+  if ((v26_.v25 & 1) != 0) {
     v15 = v26_.v27;
   }
   else {
@@ -3319,7 +3312,7 @@ LABEL_9:
     }
     nn_mem_StandardAllocator_Free_alt1(*v11 + v21, v20);
   }
-  if ((v25 & 1) != 0 && v26_.v27 != nullptr) {
+  if ((v26_.v25 & 1) != 0 && v26_.v27 != nullptr) {
     v22 = 128;
     if (*(_QWORD*)(*v11 + 200) == 0) {
       v22 = 56;
@@ -3352,9 +3345,8 @@ __int64 hub_IsSideStoryCanTalk(__int64 a1)
     _QWORD v20[2];
     char* v21;
   } v20_;
-  char v22;
   struct {
-    char gap24_[1];
+    char v22;
     _BYTE v23[7];
     char gap32_[8];
     _BYTE* v24;
@@ -3426,7 +3418,7 @@ LABEL_9:
   memmove_alt1((__int64)v11, (__int64)v8, v10);
 LABEL_23:
   v11[v10] = 0;
-  LocatorDispos_db2c40((void*)((__int64)&v22), (unsigned __int8*)v20_.v20);
+  LocatorDispos_db2c40((void*)((__int64)&v23_.v22), (unsigned __int8*)v20_.v20);
   if ((v20_.v20[0] & 1) != 0 && v20_.v21 != nullptr) {
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -3435,7 +3427,7 @@ LABEL_23:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v20_.v21);
   }
-  if ((v22 & 1) != 0) {
+  if ((v23_.v22 & 1) != 0) {
     v15 = v23_.v24;
   }
   else {
@@ -3445,7 +3437,7 @@ LABEL_23:
   result = GameSideStoryData_12b56c0(v7, &v25);
   if (result == 0) {
   LABEL_40:
-    if ((v22 & 1) == 0) {
+    if ((v23_.v22 & 1) == 0) {
       return result;
     }
     goto LABEL_41;
@@ -3461,14 +3453,14 @@ LABEL_23:
   v17 = *(unsigned __int8**)(*(_QWORD*)result + 24LL);
   if (*v17 == v17[2]) {
     result = v17[1] != v17[3];
-    if ((v22 & 1) == 0) {
+    if ((v23_.v22 & 1) == 0) {
       return result;
     }
     goto LABEL_41;
   }
 LABEL_33:
   result = 1;
-  if ((v22 & 1) == 0) {
+  if ((v23_.v22 & 1) == 0) {
     return result;
   }
 LABEL_41:
@@ -3514,9 +3506,8 @@ __int64 hub_IsAcceptEndDay(__int64 a1)
     _QWORD v25[2];
     char* v26;
   } v25_;
-  char v27;
   struct {
-    char gap24_[1];
+    char v27;
     _BYTE v28[7];
     char gap32_[8];
     _BYTE* v29;
@@ -3586,7 +3577,7 @@ LABEL_9:
     memmove_alt1((__int64)v11, (__int64)v8, v10);
   }
   v11[v10] = 0;
-  LocatorDispos_db2c40((void*)((__int64)&v27), (unsigned __int8*)v25_.v25);
+  LocatorDispos_db2c40((void*)((__int64)&v28_.v27), (unsigned __int8*)v25_.v25);
   if ((v25_.v25[0] & 1) != 0 && v25_.v26 != nullptr) {
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -3595,7 +3586,7 @@ LABEL_9:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (__int64)v25_.v26);
   }
-  if ((v27 & 1) != 0) {
+  if ((v28_.v27 & 1) != 0) {
     v15 = v28_.v29;
   }
   else {
@@ -3624,7 +3615,7 @@ LABEL_9:
              ((v18 << 32) | ((unsigned __int64)*v22 << 24)) +
                  ((unsigned __int64)*(unsigned __int8*)(v21 + v17 + 7) << 18);
   }
-  if ((v27 & 1) != 0 && v28_.v29 != nullptr) {
+  if ((v28_.v27 & 1) != 0 && v28_.v29 != nullptr) {
     v23 = result;
     v24 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -3670,9 +3661,8 @@ void hub_SideStoryBeginBmap(__int64 a1)
     _QWORD v28[2];
     char* v29;
   } v28_;
-  char v30;
   struct {
-    char gap24_[1];
+    char v30;
     _BYTE v31[7];
     char gap32_[8];
     _BYTE* v32;
@@ -3718,7 +3708,7 @@ void hub_SideStoryBeginBmap(__int64 a1)
     memmove_alt1((__int64)v5, (__int64)v2, v4);
   }
   v5[v4] = 0;
-  LocatorDispos_db2c40((void*)((__int64)&v30), (unsigned __int8*)v28_.v28);
+  LocatorDispos_db2c40((void*)((__int64)&v31_.v30), (unsigned __int8*)v28_.v28);
   if ((v28_.v28[0] & 1) != 0 && v28_.v29 != nullptr) {
     v7 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -3727,7 +3717,7 @@ void hub_SideStoryBeginBmap(__int64 a1)
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, (__int64)v28_.v29);
   }
-  if ((v30 & 1) != 0) {
+  if ((v31_.v30 & 1) != 0) {
     v8 = v31_.v32;
   }
   else {
@@ -3830,7 +3820,7 @@ void hub_SideStoryBeginBmap(__int64 a1)
       }
     }
   }
-  if ((v30 & 1) != 0 && v31_.v32 != nullptr) {
+  if ((v31_.v30 & 1) != 0 && v31_.v32 != nullptr) {
     v27 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v27 = 56;
@@ -3880,9 +3870,8 @@ void hub_SideStoryClear(__int64 a1)
     _QWORD v36[2];
     char* v37;
   } v36_;
-  char v38;
   struct {
-    char gap24_[1];
+    char v38;
     _BYTE v39[7];
     char gap32_[8];
     _BYTE* v40;
@@ -3952,7 +3941,7 @@ LABEL_9:
     memmove_alt1((__int64)v11, (__int64)v8, v10);
   }
   v11[v10] = 0;
-  LocatorDispos_db2c40((void*)((__int64)&v38), (unsigned __int8*)v36_.v36);
+  LocatorDispos_db2c40((void*)((__int64)&v39_.v38), (unsigned __int8*)v36_.v36);
   if ((v36_.v36[0] & 1) != 0 && v36_.v37 != nullptr) {
     v13 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -3961,7 +3950,7 @@ LABEL_9:
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, (__int64)v36_.v37);
   }
-  if ((v38 & 1) != 0) {
+  if ((v39_.v38 & 1) != 0) {
     v14 = v39_.v40;
   }
   else {
@@ -4039,7 +4028,7 @@ LABEL_9:
     }
     ScheduleNatives_869ec0();
   }
-  if ((v38 & 1) != 0 && v39_.v40 != nullptr) {
+  if ((v39_.v38 & 1) != 0 && v39_.v40 != nullptr) {
     v35 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v35 = 56;

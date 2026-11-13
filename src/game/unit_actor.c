@@ -350,9 +350,9 @@ LABEL_8:
   if (*(_BYTE*)(a1 + 176) == 1) {
     v9 = *(_QWORD*)(a1 + 152);
     v10 = a1 + 152;
-    LODWORD(v7) = 1.0;
+    LODWORD(v7) = COERCE_UNSIGNED_INT((float)(1.0));
   LABEL_12:
-    LODWORD(v8) = 1.0;
+    LODWORD(v8) = COERCE_UNSIGNED_INT((float)(1.0));
   LABEL_13:
     (*(void (**)(__int64, long double, long double))(v9 + 24))(v10, v7, v8);
     *(_QWORD*)(a1 + 160) = 0;
@@ -379,9 +379,9 @@ LABEL_14:
   if (*(_BYTE*)(a1 + 216) == 1) {
     v13 = *(_QWORD*)(a1 + 192);
     v14 = a1 + 192;
-    LODWORD(v11) = 1.0;
+    LODWORD(v11) = COERCE_UNSIGNED_INT((float)(1.0));
   LABEL_18:
-    LODWORD(v12) = 1.0;
+    LODWORD(v12) = COERCE_UNSIGNED_INT((float)(1.0));
     goto LABEL_19;
   }
   if (*(float*)(a1 + 200) > 0.0) {
@@ -3617,10 +3617,13 @@ __int64 game_UnitActor_SetZViewWeight(__int64 result, float a2, double a3)
                               LANES128_OF(vextq_s8(v10, v10, 8u)).n128_u64[0]),
                     COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0])))
                 .n64_u64[0];
-        if (LANES64_OF(
-                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0])))
-                .n64_f32[0] != 0x0.0p+0f) {
+        if (__builtin_islessgreater(
+                LANES64_OF(
+                    vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0])))
+                    .n64_f32[0],
+                0x0.0p+0f)) {
           LANES128(v7[22]).n128_u32[0] = LODWORD(a3);
           LANES128(v7[22]).n128_u32[1] = LODWORD(a3);
           v11 = v7[22];
@@ -4195,9 +4198,9 @@ __int64 UnitActor_81d880(__int64 a1, long double a2, long double a3)
   LODWORD(v37[0]) = 1065353216;
   if (*(_BYTE*)(a1 + 216) == 1) {
     v21 = *(_QWORD*)(a1 + 192);
-    LODWORD(a2) = 0x1.0000000000000p+0;
+    LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
   LABEL_25:
-    LODWORD(a3) = 0x1.0000000000000p+0;
+    LODWORD(a3) = COERCE_UNSIGNED_INT((float)(1.0));
     (*(void (**)(__int64, long double, long double))(v21 + 24))(a1 + 192, a2,
                                                                 a3);
     goto LABEL_26;
@@ -4872,9 +4875,12 @@ __int64 game_UnitActor_CreateMainCharacter_lambda0_Invoke(__int64 a1,
                                LANES128_OF(vextq_s8(v12, v12, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0])))
-            .n64_f32[0] != 0x0.0p+0f) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0])))
+                .n64_f32[0],
+            0x0.0p+0f)) {
       LANES128(v9[22]).n128_u32[0] = LODWORD(a5);
       LANES128(v9[22]).n128_u32[1] = LODWORD(a5);
       v13 = v9[22];
@@ -5062,9 +5068,12 @@ __int64 game_UnitActor_CreateLegionCharacter_lambda0_Invoke(__int64 a1,
                                LANES128_OF(vextq_s8(v27, v27, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0])))
-            .n64_f32[0] != 0x0.0p+0f) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v27).n128_u64[0])))
+                .n64_f32[0],
+            0x0.0p+0f)) {
       LANES128(v24[22]).n128_u32[0] = LANES64(v21).n64_u32[0];
       LANES128(v24[22]).n128_u32[1] = LANES64(v21).n64_u32[0];
       v28 = v24[22];
@@ -5689,9 +5698,12 @@ __int64 game_UnitActor_SetZViewWeight_lambda0_Invoke(__int64 result, __int64 a2,
                                LANES128_OF(vextq_s8(v11, v11, 8u)).n128_u64[0]),
                      COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0])))
             .n64_u64[0];
-    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0]),
-                             COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0])))
-            .n64_f32[0] != 0x0.0p+0f) {
+    if (__builtin_islessgreater(
+            LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0])))
+                .n64_f32[0],
+            0x0.0p+0f)) {
       LANES128(v8[22]).n128_u32[0] = LODWORD(a5);
       LANES128(v8[22]).n128_u32[1] = LODWORD(a5);
       v12 = v8[22];

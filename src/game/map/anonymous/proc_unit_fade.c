@@ -29,7 +29,7 @@ __int64 ProcUnitFade_Destructor(__int64 a1, long double a2, long double a3)
   int v12;
 
   v3 = *(_QWORD*)(a1 + 152);
-  LODWORD(a2) = 1.0;
+  LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
   DWORD1(a3) = 0;
   *(_QWORD*)a1 = game_map_anonymous_ProcUnitFade_vtable;
   v5 = *(unsigned __int8*)(v3 + 176);
@@ -96,7 +96,7 @@ __int64 ProcUnitFade_DeletingDestructor(__int64 a1, long double a2,
   int v13;
 
   v3 = *(_QWORD*)(a1 + 152);
-  LODWORD(a2) = 1.0;
+  LODWORD(a2) = COERCE_UNSIGNED_INT((float)(1.0));
   DWORD1(a3) = 0;
   *(_QWORD*)a1 = game_map_anonymous_ProcUnitFade_vtable;
   v5 = *(unsigned __int8*)(v3 + 176);

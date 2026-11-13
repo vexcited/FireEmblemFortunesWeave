@@ -2335,9 +2335,8 @@ void GameHr_11d1190(const char* a1)
   unsigned __int64 v4;
   _BYTE* v5;
   __int64 v6;
-  char v7;
   struct {
-    char gap8_[1];
+    char v7;
     _BYTE v8[7];
     char v9;
     char gap17_[7];
@@ -2406,12 +2405,12 @@ void GameHr_11d1190(const char* a1)
   }
   GameRoutine_11d6400_alt1(v3 + 1);
   v8_.v9 = 0;
-  v7 = 14;
+  v8_.v7 = 14;
   *(_DWORD*)v8_.v8 = -443044379;
   *(_DWORD*)&v8_.v8[3] = 1603647973;
   v4 = strlen_alt1(a1);
-  GameRoutine_1a09ce0_alt1((__int64)&v7, a1, v4);
-  if ((v7 & 1) != 0) {
+  GameRoutine_1a09ce0_alt1((__int64)&v8_.v7, a1, v4);
+  if ((v8_.v7 & 1) != 0) {
     v5 = v8_.v10;
   }
   else {
@@ -2421,7 +2420,7 @@ void GameHr_11d1190(const char* a1)
                                (__int64)v5, 1)) {
     (*(void (**)(__int64))(*(_QWORD*)(*v2 + 8) + 16LL))(*v2 + 8);
   }
-  if ((v7 & 1) != 0 && v8_.v10 != nullptr) {
+  if ((v8_.v7 & 1) != 0 && v8_.v10 != nullptr) {
     v6 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v6 = 56;
@@ -2438,9 +2437,8 @@ void GameHr_11d1340(const char* a1)
   unsigned __int64 v4;
   char* v5;
   __int64 v6;
-  char v7;
   struct {
-    char gap8_[1];
+    char v7;
     char v8[15];
     char* v9;
   } v8_;
@@ -2506,11 +2504,11 @@ void GameHr_11d1340(const char* a1)
     v3[1] = GameData_20170f0;
   }
   GameRoutine_11da140_alt1(v3 + 1);
-  v7 = 8;
+  v8_.v7 = 8;
   strcpy(v8_.v8, "BGM_");
   v4 = strlen_alt1(a1);
-  GameRoutine_1a09ce0_alt1((__int64)&v7, a1, v4);
-  if ((v7 & 1) != 0) {
+  GameRoutine_1a09ce0_alt1((__int64)&v8_.v7, a1, v4);
+  if ((v8_.v7 & 1) != 0) {
     v5 = v8_.v9;
   }
   else {
@@ -2520,7 +2518,7 @@ void GameHr_11d1340(const char* a1)
                                (__int64)v5, 1)) {
     (*(void (**)(__int64))(*(_QWORD*)(*v2 + 8) + 16LL))(*v2 + 8);
   }
-  if ((v7 & 1) != 0 && v8_.v9 != nullptr) {
+  if ((v8_.v7 & 1) != 0 && v8_.v9 != nullptr) {
     v6 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v6 = 56;

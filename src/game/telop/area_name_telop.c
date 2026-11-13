@@ -49,7 +49,7 @@ bool AreaNameTelop_1782140(__int64 a1)
     LayoutAccessor_1562060(v1 + 168, "T_Title", v2);
     *(_DWORD*)(v1 + 832) = 1;
     LayoutAccessor_155e830(v1 + 168, 1);
-    LODWORD(v3) = 1.0;
+    LODWORD(v3) = COERCE_UNSIGNED_INT((float)(1.0));
     LayoutAccessor_1562680(v1 + 168, "In", v3);
     snd_Fade_Fade_10c830(v6, 0.0);
     snd_play_ff2d0((void*)(&v5), "SE_SYS_Telop_AreaTelop",

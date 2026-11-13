@@ -884,7 +884,7 @@ __int64 ExpMenuItem_Unknown75(__int64 a1)
       if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-        result = std___1___shared_weak_count___release_weak();
+        result = std___1___shared_weak_count___release_weak_alt2(result);
       }
       if (v3 != 0 && *(float*)(a1 + 264) != 0.0) {
         result = ExpMenuItem_1756170(a1, 2);

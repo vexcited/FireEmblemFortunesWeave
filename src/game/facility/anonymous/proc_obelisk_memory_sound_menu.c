@@ -794,7 +794,7 @@ LABEL_9:
             LODWORD(v50) = v16;
             LANES128(v15).n128_u32[0] = 1140457472;
             v17 = snd_Fade_Fade_10c830(v35, LANES128(v15).n128_f64[0]);
-            LANES128(v17).n128_u32[0] = 2.0;
+            LANES128(v17).n128_f32[0] = 2.0;
             snd_startSlotVolume_100b50_alt1(&v50, v35,
                                             LANES128(v17).n128_f64[0]);
             snd_Fade_Destroy_Fade(v35);
@@ -808,7 +808,7 @@ LABEL_9:
             LODWORD(v50) = v22;
             LANES128(v21).n128_u32[0] = 1140457472;
             v23 = snd_Fade_Fade_10c830(v35, LANES128(v21).n128_f64[0]);
-            LANES128(v23).n128_u32[0] = 1.0;
+            LANES128(v23).n128_f32[0] = 1.0;
             snd_startSlotVolume_100b50_alt1(&v50, v35,
                                             LANES128(v23).n128_f64[0]);
             snd_Fade_Destroy_Fade(v35);
@@ -822,9 +822,9 @@ LABEL_9:
         }
         *(_DWORD*)(a1 + 1248) = 1;
         if (v4 == 0) {
-          LODWORD(v8) = 1.0;
+          LODWORD(v8) = COERCE_UNSIGNED_INT((float)(1.0));
           LayoutAccessor_1562680_alt1(a1 + 848, "Info_In", v8);
-          LODWORD(v25) = 1.0;
+          LODWORD(v25) = COERCE_UNSIGNED_INT((float)(1.0));
           LayoutAccessor_1562680_alt1(a1 + 848, "Wait", v25);
         }
         v26 = (*(__int64 (**)(__int64))(*(_QWORD*)v6 + 24LL))(v6);

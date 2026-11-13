@@ -466,7 +466,7 @@ _QWORD* PhysicsObject_10fa360(_QWORD* result, float32x4_t* a2)
                   *(_QWORD*)*v38 + 960LL))(*v38, v39);
             }
             v49 = *v48;
-            LODWORD(v39) = 0x1.0000000000000p+0;
+            LODWORD(v39) = COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0));
           LABEL_29:
             (*(void (**)(long double))(v49 + 304))(v39);
             return (_QWORD*)(*(__int64 (**)(_QWORD, long double))(
