@@ -8,7 +8,7 @@ __int64 GameRoutine_a4dbe0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_util_Format(const char*, ...);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 strlen(_QWORD);
@@ -153,7 +153,7 @@ __int64 ModeMenuItem_Unknown55(_QWORD* a1)
           v19 = 56;
         }
         result = nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v19);
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, (_QWORD)(v21));
       }
       goto LABEL_27;
     }

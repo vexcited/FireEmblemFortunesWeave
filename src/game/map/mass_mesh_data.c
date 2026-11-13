@@ -9,7 +9,7 @@ __int64 GameRoutine_f45440(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_f54fe0(_QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*game_map_MassMeshData_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_script_hub_g_frame_counter_ptr[3];
@@ -1210,7 +1210,8 @@ void MassMeshData_f45440(__int64 a1, _QWORD* a2, __int64 a3)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v36 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v36),
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v36,
+                                  (_QWORD)(v54_.v56)),
         v18 = COERCE_AS(__typeof__(v18), PSEUDO_REGISTER(double, "d1", "=w")),
         v21 = COERCE_AS(__typeof__(v21), PSEUDO_REGISTER(__n128, "v1", "=w"));
     v35 = *v23;

@@ -170,7 +170,7 @@ __int64 memchr(_QWORD, _QWORD, _QWORD);
 __int64 memcmp(_QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
 __int64 sprintf(_QWORD, const char*, ...);
@@ -183,7 +183,7 @@ __n128 GameRoutine_14a10d0_alt1(_QWORD*, __int64, __int64,
                                 __int64) __asm__("GameRoutine_14a10d0");
 __n128 GameRoutine_14a1520(_QWORD*, char);
 __n128 GameRoutine_f2f380(__int64);
-__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
     "std___1___shared_weak_count___release_weak");
@@ -5452,7 +5452,7 @@ __n128 game_f86460(__int64 a1, int a2, _QWORD* a3)
       v21 = 56;
     }
     return nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v21);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, (_QWORD)(v23_.v24));
   }
   return result;
 }
@@ -10217,7 +10217,7 @@ __int64 game_fcfcc0(__int64 result, unsigned int a2, int a3, unsigned int a4,
           v11 = 56;
         }
         result = nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v11);
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, (_QWORD)(v9));
       }
     } while (v5++ != a3);
   }
@@ -16688,7 +16688,7 @@ LABEL_19:
     v16 = 56;
   }
   nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                     v16);
+                                     v16, (_QWORD)(v11));
 LABEL_22:
   if (GameData_21f3d10 != 0 && *(_QWORD*)(GameData_21f3d10 + 200) != 0) {
     DungeonController_f5f960((void*)((__int64*)&v33));
@@ -16700,7 +16700,7 @@ LABEL_22:
         v19 = 56;
       }
       nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v19);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, (_QWORD)(v33));
     }
     if (v18 != (__int64*)v17) {
       v10 |= 8u;

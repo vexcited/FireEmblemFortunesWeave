@@ -4,7 +4,7 @@
 
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212c880[5];
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
@@ -85,7 +85,8 @@ __int64 game_map_BattleSkills_Add_lambda0_Invoke(__int64 result, int* a2)
       if (*(_QWORD*)(*(_QWORD*)v14 + 200LL) == 0) {
         v19 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v14 + v19);
+      result =
+          nn_mem_StandardAllocator_Free(*(_QWORD*)v14 + v19, (_QWORD)(v11));
     }
   }
   else {

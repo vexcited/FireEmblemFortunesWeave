@@ -71,12 +71,12 @@ __int64 game_HasSkill(_QWORD, _QWORD);
 __int64 game_HashString(__int64 result);
 __int64 game_HashString_alt1(_QWORD) __asm__("game_HashString");
 __int64 game_UnitPool_Find_6ead60(_QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt2(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt2(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
-__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
     "std___1___shared_weak_count___release_weak");
@@ -3355,7 +3355,7 @@ void CmdBtlDispos_1005280(__int64 a1)
         v28 = 56;
       }
       nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v28);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v28, (_QWORD)(v29));
     }
   }
 }

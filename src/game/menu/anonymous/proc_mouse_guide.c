@@ -58,7 +58,7 @@ ProcMouseGuide_17a7290_alt1(_QWORD,
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_util_Format(const char*, ...);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 strlen(_QWORD);
 __int64 ui_LayoutAccessor_FindPane(_QWORD, _QWORD);
@@ -1060,7 +1060,7 @@ LABEL_22:
       v15 = 56;
     }
     nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v15);
+                                       v15, (_QWORD)(v19));
   }
   return result;
 }

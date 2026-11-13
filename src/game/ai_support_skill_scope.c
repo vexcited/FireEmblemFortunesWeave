@@ -38,7 +38,7 @@ __int64 game_6c51e0(__int64 result);
 __int64 game_6c6ec0(__int64);
 __int64 game_HasSkill(_QWORD, _QWORD);
 __int64 game_UnitSkillList_GetRangeAddImpl(_QWORD, _QWORD);
-__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 extern _QWORD game_g_shared_system_skills_ptr;
 extern __int64 (*GameData_2018948[])();
@@ -188,7 +188,7 @@ __n128 game_AISupportSkillScope_Update(_BYTE* a1, unsigned int a2,
     if (*(_QWORD*)(v21 + 200) == 0) {
       v22 = 56;
     }
-    result = nn_mem_StandardAllocator_Free_alt1(v21 + v22);
+    result = nn_mem_StandardAllocator_Free_alt1(v21 + v22, (_QWORD)(v29_.v36));
   }
   if (v29_.v33 != 0) {
     v23 = *v20;
@@ -197,7 +197,7 @@ __n128 game_AISupportSkillScope_Update(_BYTE* a1, unsigned int a2,
     if (*(_QWORD*)(v23 + 200) == 0) {
       v24 = 56;
     }
-    result = nn_mem_StandardAllocator_Free_alt1(v23 + v24);
+    result = nn_mem_StandardAllocator_Free_alt1(v23 + v24, (_QWORD)(v29_.v33));
   }
   if (v29_.v29 != 0) {
     v25 = *v20;
@@ -206,7 +206,7 @@ __n128 game_AISupportSkillScope_Update(_BYTE* a1, unsigned int a2,
     if (*(_QWORD*)(v25 + 200) == 0) {
       v26 = 56;
     }
-    return nn_mem_StandardAllocator_Free_alt1(v25 + v26);
+    return nn_mem_StandardAllocator_Free_alt1(v25 + v26, (_QWORD)(v29_.v29));
   }
   return result;
 }

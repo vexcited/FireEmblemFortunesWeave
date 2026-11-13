@@ -20,7 +20,7 @@ extern __int64 GameData_21cd0e8;
 
 extern __int64 GameData_2265ee0;
 
-__int64 GameRoutine_1a0a4e0(_QWORD);
+__int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
 
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD, _QWORD);
 
@@ -900,7 +900,8 @@ __int64* GameHr_1a010e0(__int64* result, __int64 a2)
       if (*(_QWORD*)(GameData_2265ee0 + 200) == 0) {
         v17 = 56;
       }
-      return (__int64*)GameRoutine_1a0a4e0(GameData_2265ee0 + v17);
+      return (__int64*)GameRoutine_1a0a4e0(GameData_2265ee0 + v17,
+                                           (_QWORD)(v3));
     }
   }
   return result;

@@ -3,7 +3,7 @@
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_f19700(_QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*game_map_MapPanelRageBalor_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 MapPanelRageBalor_Destructor_alt1(_QWORD* a1) __asm__(
@@ -325,7 +325,7 @@ LABEL_22:
         v33 = 56;
       }
       result = nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v33);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v33, (_QWORD)(v55_.v60));
     }
     v34 = v55_.v58;
     if (v55_.v58 != nullptr) {
@@ -349,7 +349,7 @@ LABEL_22:
           v17 = 56;
         }
         result = nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v17);
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, (_QWORD)(v55_.v58));
       }
     }
   LABEL_28:
@@ -364,7 +364,7 @@ LABEL_63:
       v39 = 56;
     }
     result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v39);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v39, (_QWORD)(v13));
   }
 LABEL_67:
   *(_BYTE*)(v1 + 8) = 0;

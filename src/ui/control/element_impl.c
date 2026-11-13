@@ -31,7 +31,7 @@ __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 fw_text_String_CopyTerminated(_QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
 __int64 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 nn_ui2d_Pane_GetRuntimeTypeInfoStatic(void);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
@@ -1400,7 +1400,7 @@ LABEL_57:
       v38 = 56;
     }
     return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v38);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v38, (_QWORD)(v46));
   }
   return result;
 }

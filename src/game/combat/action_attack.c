@@ -57,7 +57,7 @@ __int64 __dynamic_cast_alt1(_QWORD, _QWORD, _QWORD,
                             _QWORD) __asm__("__dynamic_cast");
 __int64 game_10a2a40(void);
 __int64 game_combat_1064730(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 extern _UNKNOWN* GameData_212c188;
 extern _UNKNOWN* GameData_212c190;
@@ -776,7 +776,7 @@ LABEL_117:
                 v92 = 56;
               }
               nn_mem_StandardAllocator_Free_alt1(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v92);
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v92, (_QWORD)(v202));
             }
           }
         }

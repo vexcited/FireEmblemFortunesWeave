@@ -19,7 +19,7 @@ __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __n128 StateActionBase_Unknown3(void);
-__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 bool GameRoutine_d42740(_QWORD*, float32x4_t**, int*);
 extern _UNKNOWN GameData_21a6130;
@@ -125,7 +125,7 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
 __int64 game_edea70(__int64, float, float);
 __int64 game_zview_d12d30(__int64 result, int32x2_t*, char);
 __int64 game_zview_d576f0(__int64, __int64, __int64, char, __int64);
-__int64 nn_mem_StandardAllocator_Free_alt2(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt2(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 nn_os_UnlockMutex(_QWORD);
 __int64 snd_fnd_WeakHandle_isValid(__int64*);
@@ -4221,7 +4221,7 @@ __int64 CharacterController_StateJump_Unknown4(__int64 result, long double a2)
           v36 = 56;
         }
         result = nn_mem_StandardAllocator_Free_alt2(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v36);
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v36, (_QWORD)(v26));
       }
       goto LABEL_89;
     }

@@ -26,7 +26,7 @@ __int64 ObjectBuildCreate_c32460(_QWORD, _QWORD);
 __int64 SpineModel_64dde0(_QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 fw_memory_g_heap_manager;
 extern char GameData_1a9f09e;
 void __attribute__((noreturn)) GameRoutine_198de60(void);
@@ -380,7 +380,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
         if (*(_QWORD*)(*v10 + 200) == 0) {
           v16 = 56;
         }
-        nn_mem_StandardAllocator_Free(*v10 + v16);
+        nn_mem_StandardAllocator_Free(*v10 + v16, (_QWORD)(v15));
       }
     }
     result = GameRoutine_ce4320(&v147, (unsigned int)*v143, 0);
@@ -502,7 +502,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
             if (*(_QWORD*)(*v10 + 200) == 0) {
               v34 = 56;
             }
-            nn_mem_StandardAllocator_Free(*v10 + v34);
+            nn_mem_StandardAllocator_Free(*v10 + v34, (_QWORD)(v159));
           }
           goto LABEL_50;
         }
@@ -573,7 +573,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
             if (*(_QWORD*)(*v10 + 200) == 0) {
               v41 = 56;
             }
-            nn_mem_StandardAllocator_Free(*v10 + v41);
+            nn_mem_StandardAllocator_Free(*v10 + v41, (_QWORD)(v159));
           }
           goto LABEL_78;
         }
@@ -644,7 +644,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
             if (*(_QWORD*)(*v10 + 200) == 0) {
               v48 = 56;
             }
-            nn_mem_StandardAllocator_Free(*v10 + v48);
+            nn_mem_StandardAllocator_Free(*v10 + v48, (_QWORD)(v159));
           }
           goto LABEL_106;
         }
@@ -715,7 +715,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
             if (*(_QWORD*)(*v10 + 200) == 0) {
               v55 = 56;
             }
-            nn_mem_StandardAllocator_Free(*v10 + v55);
+            nn_mem_StandardAllocator_Free(*v10 + v55, (_QWORD)(v159));
           }
           goto LABEL_134;
         }
@@ -784,7 +784,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
               if (*(_QWORD*)(*v10 + 200) == 0) {
                 v62 = 56;
               }
-              nn_mem_StandardAllocator_Free(*v10 + v62);
+              nn_mem_StandardAllocator_Free(*v10 + v62, (_QWORD)(v159));
             }
           }
         }
@@ -843,7 +843,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
             if (*(_QWORD*)(*v10 + 200) == 0) {
               v72 = 56;
             }
-            result = nn_mem_StandardAllocator_Free(*v10 + v72);
+            result = nn_mem_StandardAllocator_Free(*v10 + v72, (_QWORD)(v71));
           }
         }
         else {
@@ -899,8 +899,8 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
               if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
                 v85 = 56;
               }
-              result =
-                  nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v85);
+              result = nn_mem_StandardAllocator_Free(
+                  fw_memory_g_heap_manager + v85, (_QWORD)(v76));
             }
           }
           else {
@@ -956,7 +956,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
                 v105 = 56;
               }
               result = nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager +
-                                                     v105);
+                                                     v105, (_QWORD)(v95));
             }
             v154 = (_DWORD*)v104;
           }
@@ -970,56 +970,56 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
           if (*(_QWORD*)(*v10 + 200) == 0) {
             v86 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v86);
+          result = nn_mem_StandardAllocator_Free(*v10 + v86, (_QWORD)(v188));
         }
         if ((v183 & 1) != 0 && v185 != nullptr) {
           v87 = 128;
           if (*(_QWORD*)(*v10 + 200) == 0) {
             v87 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v87);
+          result = nn_mem_StandardAllocator_Free(*v10 + v87, (_QWORD)(v185));
         }
         if ((v180 & 1) != 0 && v182 != nullptr) {
           v88 = 128;
           if (*(_QWORD*)(*v10 + 200) == 0) {
             v88 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v88);
+          result = nn_mem_StandardAllocator_Free(*v10 + v88, (_QWORD)(v182));
         }
         if ((v177 & 1) != 0 && v179 != nullptr) {
           v89 = 128;
           if (*(_QWORD*)(*v10 + 200) == 0) {
             v89 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v89);
+          result = nn_mem_StandardAllocator_Free(*v10 + v89, (_QWORD)(v179));
         }
         if ((v174 & 1) != 0 && v176 != nullptr) {
           v90 = 128;
           if (*(_QWORD*)(*v10 + 200) == 0) {
             v90 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v90);
+          result = nn_mem_StandardAllocator_Free(*v10 + v90, (_QWORD)(v176));
         }
         if ((v172[0] & 1) != 0 && v173 != 0) {
           v91 = 128;
           if (*(_QWORD*)(*v10 + 200) == 0) {
             v91 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v91);
+          result = nn_mem_StandardAllocator_Free(*v10 + v91, (_QWORD)(v173));
         }
         if ((v163[0] & 1) != 0 && v164 != 0) {
           v92 = 128;
           if (*(_QWORD*)(*v10 + 200) == 0) {
             v92 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v92);
+          result = nn_mem_StandardAllocator_Free(*v10 + v92, (_QWORD)(v164));
         }
         if ((v161[0] & 1) != 0 && v162 != 0) {
           v93 = 128;
           if (*(_QWORD*)(*v10 + 200) == 0) {
             v93 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v93);
+          result = nn_mem_StandardAllocator_Free(*v10 + v93, (_QWORD)(v162));
         }
         ++v18;
         v17 += 17;
@@ -1051,7 +1051,8 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
           if (*(_QWORD*)(*v10 + 200) == 0) {
             v107 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v107);
+          result = nn_mem_StandardAllocator_Free(
+              *v10 + v107, (_QWORD)(*(_QWORD*)(v141 + 8)));
         }
         *(_QWORD*)(v141 + 16) = 0;
         *(_QWORD*)(v141 + 24) = 0;
@@ -1070,7 +1071,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
         if (*(_QWORD*)(*v10 + 200) == 0) {
           v111 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*v10 + v111);
+        result = nn_mem_StandardAllocator_Free(*v10 + v111, (_QWORD)(v108));
         *(_QWORD*)(v141 + 40) = 0;
         *(_QWORD*)(v141 + 48) = 0;
       }
@@ -1090,7 +1091,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
         if (*(_QWORD*)(v115 + 200) == 0) {
           v116 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(v115 + v116);
+        result = nn_mem_StandardAllocator_Free(v115 + v116, (_QWORD)(v112));
         *(_QWORD*)(v141 + 64) = 0;
         *(_QWORD*)(v141 + 72) = 0;
       }
@@ -1110,7 +1111,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
         if (*(_QWORD*)(v120 + 200) == 0) {
           v121 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(v120 + v121);
+        result = nn_mem_StandardAllocator_Free(v120 + v121, (_QWORD)(v117));
         v117 = v150;
         *(_QWORD*)(v141 + 88) = 0;
         *(_QWORD*)(v141 + 96) = 0;
@@ -1131,7 +1132,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
         if (*(_QWORD*)(v124 + 200) == 0) {
           v125 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(v124 + v125);
+        result = nn_mem_StandardAllocator_Free(v124 + v125, (_QWORD)(v117));
       }
     }
     else {
@@ -1174,7 +1175,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
       if (*(_QWORD*)(*v10 + 200) == 0) {
         v133 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*v10 + v133);
+      result = nn_mem_StandardAllocator_Free(*v10 + v133, (_QWORD)(v147));
     }
     v134 = v144;
     if (v144 != 0) {
@@ -1191,7 +1192,8 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
           else {
             v137 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v137);
+          result = nn_mem_StandardAllocator_Free(
+              *v10 + v137, (_QWORD)(*(_QWORD*)(v135 + 144)));
         }
         if ((*(_BYTE*)(v135 + 24) & 1) != 0 && *(_QWORD*)(v135 + 40) != 0) {
           if (*(_QWORD*)(*v10 + 200) != 0) {
@@ -1200,7 +1202,8 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
           else {
             v138 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v138);
+          result = nn_mem_StandardAllocator_Free(
+              *v10 + v138, (_QWORD)(*(_QWORD*)(v135 + 40)));
         }
         if ((*(_BYTE*)v135 & 1) != 0 && *(_QWORD*)(v135 + 16) != 0) {
           if (*(_QWORD*)(*v10 + 200) != 0) {
@@ -1209,7 +1212,8 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
           else {
             v139 = 56;
           }
-          result = nn_mem_StandardAllocator_Free(*v10 + v139);
+          result = nn_mem_StandardAllocator_Free(
+              *v10 + v139, (_QWORD)(*(_QWORD*)(v135 + 16)));
         }
         v136 = v135 - 8;
         v135 -= 288LL;
@@ -1221,7 +1225,7 @@ __int64 wld_map_MapEffectLoader_LoadAsync_lambda0_Invoke(__int64 result,
         if (*(_QWORD*)(*v10 + 200) == 0) {
           v140 = 56;
         }
-        return nn_mem_StandardAllocator_Free(*v10 + v140);
+        return nn_mem_StandardAllocator_Free(*v10 + v140, (_QWORD)(v144));
       }
     }
   }

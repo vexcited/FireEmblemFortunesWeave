@@ -14,7 +14,7 @@ __int64 GameRoutine_d8b9c0(__int64, unsigned __int8*);
 __int64 HubTalkNatives_e14270(__int64, __int64);
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 game_menu_Dialog__CreateBind_game_menu_Dialog(__int64, __int64);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 char* GameRoutine_a4dbe0(__int64, unsigned __int8*, char);
 extern _UNKNOWN* std___1_piecewise_construct_ptr;
 extern __int64 (*GameData_1fe2c00[])();
@@ -669,7 +669,7 @@ LABEL_107:
         v79 = 56;
       }
       nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v79),
+                                    v79, (_QWORD)(v98_.v99)),
           v45 = COERCE_AS(__typeof__(v45),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
           v87 = COERCE_AS(__typeof__(v87),
@@ -747,7 +747,7 @@ LABEL_138:
       v89 = 56;
     }
     return (_QWORD*)nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v89);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v89, (_QWORD)(v98_.v99));
   }
   return result;
 }

@@ -922,7 +922,7 @@ __int64 GameRoutine_1a09cf0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1a09fd0(_QWORD);
 __int64 GameRoutine_1a09fe0(_QWORD);
 __int64 GameRoutine_1a0a0c0(_QWORD);
-__int64 GameRoutine_1a0a4e0(_QWORD);
+__int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
 __int64 GameRoutine_1a0a6b0(_QWORD, _QWORD, const char*, ...);
 __int64 GameRoutine_1a0b940(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1a0b950(_QWORD, _QWORD, _QWORD);
@@ -1487,7 +1487,7 @@ void GameHr_8b6090()
     else {
       v4 = 56;
     }
-    GameRoutine_1a0a4e0(*v1 + v4);
+    GameRoutine_1a0a4e0(*v1 + v4, (_QWORD)(v2));
     GameRoutine_1a0a6b0(v13, 256, "%s/%s", "HelpableElement",
                         "Battle_IconGimmick");
     v11 = v13;
@@ -1526,7 +1526,7 @@ void GameHr_8b6090()
     else {
       v7 = 56;
     }
-    GameRoutine_1a0a4e0(*v1 + v7);
+    GameRoutine_1a0a4e0(*v1 + v7, (_QWORD)(v5));
     GameRoutine_1a0a6b0(v13, 256, "%s/%s", "HelpableElement",
                         "Battle_BattleInfoReliance");
     v11 = v13;
@@ -1576,7 +1576,7 @@ void GameHr_8b6090()
     else {
       v10 = 56;
     }
-    GameRoutine_1a0a4e0(*v1 + v10);
+    GameRoutine_1a0a4e0(*v1 + v10, (_QWORD)(v8));
     GameRoutine_1a0a6b0(v13, 256, "%s/%s", "InfoDetails",
                         "Common_AnimalInfoDetail");
     v11 = v13;
@@ -8331,7 +8331,7 @@ __int64 GameHr_936620(__int64 a1, char a2)
         else {
           v16 = 56;
         }
-        result = GameRoutine_1a0a4e0(*(_QWORD*)v5 + v16);
+        result = GameRoutine_1a0a4e0(*(_QWORD*)v5 + v16, (_QWORD)(v14));
         v14 = v15;
       } while (v15 != nullptr);
     }

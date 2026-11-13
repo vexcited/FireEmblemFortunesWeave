@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_map_zv_CoveredManager_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -229,7 +229,7 @@ __int64 game_map_zv_CoveredManager_TryBuild_lambda0_Invoke(__int64 a1,
       if (*(_QWORD*)(*v4 + 200LL) == 0) {
         v25 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*v4 + v25);
+      result = nn_mem_StandardAllocator_Free(*v4 + v25, (_QWORD)(v15));
     }
   }
   else {

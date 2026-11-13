@@ -5,7 +5,7 @@
 __int64 GameRoutine_14a1390(_QWORD, _QWORD);
 __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern _UNKNOWN GameData_21a6130;
 extern _UNKNOWN* GameData_212c540;
@@ -107,7 +107,7 @@ __n128 EffectLine_Destructor(_QWORD* a1)
         v13 = 56;
       }
       return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v13);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, (_QWORD)(v8));
     }
   }
   return result;

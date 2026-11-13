@@ -112,7 +112,7 @@ __int64 game_zview_CharacterAnim_CommitReduceFlag(_QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
 __int64 nn_g3d_5eb5c0(_QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 strlen(_QWORD);
 __int64 wld_Crc32_alt1(int, unsigned __int8*,
@@ -3081,7 +3081,7 @@ __int64 game_zview_CharacterModel_SetActiveSignal_lambda0_Invoke(__int64 result,
             v17 = 56;
           }
           result = nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v17);
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, (_QWORD)(v23_.v25));
         }
         goto LABEL_30;
       }

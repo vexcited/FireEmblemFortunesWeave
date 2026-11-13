@@ -4,7 +4,7 @@
 
 __int64 GameRoutine_74e080(_QWORD, _QWORD);
 __int64 GameRoutine_f4c840(_QWORD);
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*GameData_1ff5668[])();
 extern __int64 (*game_map_MapPanelTutorial_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -615,7 +615,7 @@ LABEL_22:
         v69 = 56;
       }
       nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v69);
+                                    v69, (_QWORD)(v127));
       v18 = v110;
     }
     v70 = v125;
@@ -641,7 +641,7 @@ LABEL_22:
           v19 = 56;
         }
         nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v19);
+                                      v19, (_QWORD)(v125));
         v18 = v110;
       }
     }
@@ -666,7 +666,8 @@ LABEL_111:
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v75 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v75);
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v75,
+                                  (_QWORD)(v141));
   }
 LABEL_115:
   *(_BYTE*)(v1 + 8) = 0;
@@ -753,7 +754,8 @@ LABEL_116:
           else {
             v96 = 56;
           }
-          *(__n128*)&v93 = nn_mem_StandardAllocator_Free(v95 + v96);
+          *(__n128*)&v93 =
+              nn_mem_StandardAllocator_Free(v95 + v96, (_QWORD)(v94));
         }
         v97 = *((void (****)(_QWORD, long double))v76 + 18);
         if (v97 != nullptr) {
@@ -788,7 +790,7 @@ LABEL_116:
             else {
               v81 = 56;
             }
-            nn_mem_StandardAllocator_Free(*(_QWORD*)v79 + v81);
+            nn_mem_StandardAllocator_Free(*(_QWORD*)v79 + v81, (_QWORD)(v97));
           }
         }
         if (*(_QWORD*)(*(_QWORD*)v79 + 200LL) != 0) {
@@ -797,7 +799,7 @@ LABEL_116:
         else {
           v82 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v79 + v82);
+        nn_mem_StandardAllocator_Free(*(_QWORD*)v79 + v82, (_QWORD)(v76));
       }
       v76 = v91;
     } while (v91 != v77);

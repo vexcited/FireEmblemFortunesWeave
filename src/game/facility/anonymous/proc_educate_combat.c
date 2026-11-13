@@ -12,7 +12,7 @@ __int64 SceneManager_138e5e0(__int64, __int64, __int64, __int64, __int64,
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __n128 GameRoutine_a0eb00(__int64);
 __n128 memset(_QWORD, _QWORD, _QWORD);
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __n128 std___1___shared_weak_count___release_weak();
 extern __int64* GameData_212c880[5];
 extern __int64* GameData_212d1e8;
@@ -345,7 +345,8 @@ __n128 ProcEducateCombat_Unknown23(__int64 a1, __int64 a2, __int64 a3,
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v19 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v19),
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v19,
+                                  (_QWORD)(v61_.v64)),
         v12 = COERCE_AS(__typeof__(v12),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
         v13 = COERCE_AS(__typeof__(v13),
@@ -388,7 +389,7 @@ __n128 ProcEducateCombat_Unknown23(__int64 a1, __int64 a2, __int64 a3,
     if (*(_QWORD*)(*v18 + 200) == 0) {
       v20 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v18 + v20),
+    nn_mem_StandardAllocator_Free(*v18 + v20, (_QWORD)(*(_QWORD*)&v60[7])),
         v12 = COERCE_AS(__typeof__(v12),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
         v13 = COERCE_AS(__typeof__(v13),
@@ -445,7 +446,7 @@ __n128 ProcEducateCombat_Unknown23(__int64 a1, __int64 a2, __int64 a3,
     if (*(_QWORD*)(*v18 + 200) == 0) {
       v22 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v18 + v22),
+    nn_mem_StandardAllocator_Free(*v18 + v22, (_QWORD)(v65_.v68)),
         v12 = COERCE_AS(__typeof__(v12),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
         v13 = COERCE_AS(__typeof__(v13),
@@ -606,7 +607,7 @@ __n128 ProcEducateCombat_Unknown23(__int64 a1, __int64 a2, __int64 a3,
     if (*(_QWORD*)(*v18 + 200) == 0) {
       v30 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v18 + v30),
+    nn_mem_StandardAllocator_Free(*v18 + v30, (_QWORD)(v61_.v64)),
         v12 = COERCE_AS(__typeof__(v12),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
         v13 = COERCE_AS(__typeof__(v13),
@@ -649,7 +650,7 @@ __n128 ProcEducateCombat_Unknown23(__int64 a1, __int64 a2, __int64 a3,
     if (*(_QWORD*)(*v18 + 200) == 0) {
       v31 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v18 + v31),
+    nn_mem_StandardAllocator_Free(*v18 + v31, (_QWORD)(*(_QWORD*)&v60[7])),
         v12 = COERCE_AS(__typeof__(v12),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
         v13 = COERCE_AS(__typeof__(v13),
@@ -700,7 +701,7 @@ __n128 ProcEducateCombat_Unknown23(__int64 a1, __int64 a2, __int64 a3,
     if (*(_QWORD*)(*v18 + 200) == 0) {
       v32 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v18 + v32),
+    nn_mem_StandardAllocator_Free(*v18 + v32, (_QWORD)(v65_.v68)),
         v12 = COERCE_AS(__typeof__(v12),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
         v13 = COERCE_AS(__typeof__(v13),
@@ -1145,7 +1146,7 @@ __n128 ProcEducateCombat_Unknown23(__int64 a1, __int64 a2, __int64 a3,
       if (*(_QWORD*)(*v18 + 200) == 0) {
         v45 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v18 + v45),
+      nn_mem_StandardAllocator_Free(*v18 + v45, (_QWORD)(v65_.v66)),
           v12 = COERCE_AS(__typeof__(v12),
                           PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
           v13 = COERCE_AS(__typeof__(v13),
@@ -1190,7 +1191,7 @@ LABEL_46:
     if (*(_QWORD*)(*v18 + 200) == 0) {
       v46 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v18 + v46),
+    nn_mem_StandardAllocator_Free(*v18 + v46, (_QWORD)(v61_.v62)),
         v12 = COERCE_AS(__typeof__(v12),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
         v13 = COERCE_AS(__typeof__(v13),

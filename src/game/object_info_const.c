@@ -47,7 +47,7 @@ __int64 __cxa_guard_release_alt1(_QWORD) __asm__("__cxa_guard_release");
 __int64 fw_memory_HeapManager_Allocate_alt1(
     __int64, __int64, __int64,
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 extern _DWORD GameData_1b56230[6];
 extern _UNKNOWN* GameData_212c540;
@@ -667,7 +667,8 @@ __int64* game_ObjectInfoConst_CreateEffect_lambda0_Invoke(__int64* result,
                   v52 = 128;
                 }
                 nn_mem_StandardAllocator_Free_alt1(
-                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v52),
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v52,
+                    (_QWORD)(v39)),
                     v16 = COERCE_AS(
                         __typeof__(v16),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -678,7 +679,7 @@ __int64* game_ObjectInfoConst_CreateEffect_lambda0_Invoke(__int64* result,
                 v53 = 128;
               }
               result = (__int64*)nn_mem_StandardAllocator_Free_alt1(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v53),
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v53, (_QWORD)(v31)),
               v16 = COERCE_AS(__typeof__(v16),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
               goto LABEL_8;

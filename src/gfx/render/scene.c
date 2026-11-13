@@ -65,7 +65,7 @@ __int64 fw_world_JobQueue_Submit_alt1(__int64,
                                       int) __asm__("fw_world_JobQueue_Submit");
 __int64 gfx_render_LODAdjuster_ExecuteMultiCore(_QWORD*);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*GameData_1fc04e8[])();
@@ -834,7 +834,8 @@ LABEL_102:
                 v134 = 56;
               }
               result = nn_mem_StandardAllocator_Free_alt1(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v134);
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v134,
+                  (_QWORD)(v124));
             }
           }
           *(_QWORD*)(v101 + 216) = v116;

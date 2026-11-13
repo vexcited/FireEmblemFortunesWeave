@@ -55,7 +55,7 @@ __int64 game_menu_ScoutBaseProc_ShowItemDialog(__int64*, __int64, char);
 __int64 game_menu_ScoutBaseProc_ShowItemDialog_alt1(
     _QWORD**, __int64, char) __asm__("game_menu_ScoutBaseProc_ShowItemDialog");
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
@@ -64,7 +64,7 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 strlen(_QWORD);
 __int64 ui_LayoutAccessor_FindTextBox(_QWORD, _QWORD);
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 char* GameRoutine_a4dbe0(__int64, _BYTE*, char);
 extern _UNKNOWN* GameData_212da30;
 extern _UNKNOWN* GameData_2130228;
@@ -705,7 +705,7 @@ void game_menu_anonymous_f6e4e0(__int64 a1)
     if (*(_QWORD*)(*v4 + 200LL) == 0) {
       v14 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v4 + v14);
+    nn_mem_StandardAllocator_Free(*v4 + v14, (_QWORD)(v16));
   }
   GameData_2167768 = 1;
 }
@@ -2614,7 +2614,7 @@ __n128 game_menu_anonymous_fe0360(__int64 a1)
     if (*(_QWORD*)(*v7 + 200LL) == 0) {
       v17 = 56;
     }
-    return nn_mem_StandardAllocator_Free(*v7 + v17);
+    return nn_mem_StandardAllocator_Free(*v7 + v17, (_QWORD)(v19));
   }
   return result;
 }
@@ -2947,7 +2947,7 @@ void game_menu_anonymous_fe0d20(__int64 a1)
     if (*(_QWORD*)(*v2 + 200LL) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v2 + v8);
+    nn_mem_StandardAllocator_Free(*v2 + v8, (_QWORD)(v3));
     GameData_222e468 = 2;
     return;
   }
@@ -3010,7 +3010,7 @@ void game_menu_anonymous_fe0d20(__int64 a1)
       if (*(_QWORD*)(*v22 + 200LL) == 0) {
         v28 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v22 + v28);
+      nn_mem_StandardAllocator_Free(*v22 + v28, (_QWORD)(v23));
       v21 = *(_QWORD*)(a1 + 8);
       if (v21 != 0) {
         while (1) {
@@ -3070,7 +3070,7 @@ void game_menu_anonymous_fe0d20(__int64 a1)
   if (*(_QWORD*)(*v14 + 200LL) == 0) {
     v20 = 56;
   }
-  nn_mem_StandardAllocator_Free(*v14 + v20);
+  nn_mem_StandardAllocator_Free(*v14 + v20, (_QWORD)(v15));
   v21 = *(_QWORD*)(a1 + 8);
   if (v21 != 0) {
     while (1) {

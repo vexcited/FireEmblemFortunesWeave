@@ -6,7 +6,7 @@ __int64 GameRoutine_1958ed0(_QWORD, _QWORD);
 __int64 GameRoutine_658c00(_QWORD);
 __int64 game_ProcInst_Unregister(_QWORD);
 __int64 game_facility_ReleaseGroups(void);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern _DWORD* GameData_2130fb8;
 extern __int64 (*GameData_2036570[])();
@@ -161,7 +161,7 @@ __int64 snd_fnd_WeakHandle_isValid(__int64*);
 __int64 snd_startSlotVolume_100b50(_QWORD, _QWORD, double);
 __n128 GameRoutine_13892a0(__int64);
 __n128 game_facility_TheaterSceneDiff_Initialize_1423e60(_QWORD*, __int64);
-__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __n128 snd_Fade_Fade_10c830_alt1(_QWORD,
                                  long double) __asm__("snd_Fade_Fade_10c830");
@@ -444,7 +444,8 @@ __int64 game_facility_anonymous_ProcTheaterSceneAct_StartOpeningCameraWork(
         if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) == 0) {
           v12 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v7 + v12);
+        result =
+            nn_mem_StandardAllocator_Free(*(_QWORD*)v7 + v12, (_QWORD)(v20));
       }
       v13 = v22;
       if (v22 == 0) {

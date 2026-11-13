@@ -240,7 +240,7 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
 __int64 fw_text_String_CopyTerminated_alt1(
     __int64*, __int64,
     unsigned __int64) __asm__("fw_text_String_CopyTerminated");
-__int64 nn_mem_StandardAllocator_Free_alt2(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt2(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 bool GameRoutine_db2940(__int64);
 extern _UNKNOWN* GameData_212c540;
@@ -5663,7 +5663,8 @@ __int64 hub_character_DngTalkSetupEnd(__int64 result)
         v20 = 56;
       }
       nn_mem_StandardAllocator_Free_alt2(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v20);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v20,
+          (_QWORD)(*(_QWORD*)&v29[15]));
     }
     if (v14 != 0) {
       std___1___shared_weak_count___release_weak(v14);
@@ -5710,7 +5711,8 @@ LABEL_42:
       v27 = 56;
     }
     return nn_mem_StandardAllocator_Free_alt2(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v27);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v27,
+        (_QWORD)(*(_QWORD*)&v29[15]));
   }
   return result;
 }

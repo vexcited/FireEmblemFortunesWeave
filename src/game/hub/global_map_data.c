@@ -4,7 +4,7 @@
 
 __int64 GameRoutine_e273d0(_QWORD);
 __int64 GameRoutine_e298c0(_QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 nn_os_FinalizeMutex(_QWORD);
 extern __int64 (*GameData_1fe3850[])();
 extern __int64 (*game_hub_GlobalMapData_vtable[])();
@@ -64,7 +64,7 @@ __int64 memchr(_QWORD, _QWORD, _QWORD);
 __n128 GameRoutine_e24730(__int64, __int64);
 __n128 GlobalMapData_e24840(unsigned __int8*);
 __n128 GlobalMapData_e26b40(__int64, unsigned __int8*, __int64, char);
-__n128 nn_mem_StandardAllocator_Free_alt2(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt2(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 char** GameRoutine_d5ffa0(char** result, __int64, __int64, unsigned __int64);
 extern __int64 (*GameData_1fe3880[])();
@@ -315,7 +315,8 @@ __int64 GlobalMapData_e25100(__int64 a1)
         else {
           v7 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v7);
+        nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v7,
+                                      (_QWORD)(*(_QWORD*)(v4 - 8)));
       }
       v8 = *(_QWORD*)(v4 - 64);
       if (v8 != 0) {
@@ -326,7 +327,7 @@ __int64 GlobalMapData_e25100(__int64 a1)
         else {
           v9 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v9);
+        nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v9, (_QWORD)(v8));
       }
       v4 -= 80;
     } while (v4 != v3);

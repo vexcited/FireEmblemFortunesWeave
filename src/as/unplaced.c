@@ -25,7 +25,7 @@ __int64 as_Variable_setVariable(_QWORD, _QWORD);
 __int64 as_string_c_str(_QWORD);
 __int64 fw_text_String_CopyTerminated(__int64*, __int64, unsigned __int64);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 nn_os_LockMutex(_QWORD);
 __int64 sprintf(_QWORD, const char*, ...);
@@ -617,7 +617,7 @@ _QWORD* as_c78080(float a1)
         v11 = 56;
       }
       nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v11);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, (_QWORD)(v10));
     }
     *(_QWORD*)(v8 + 1152) = 0;
     goto LABEL_14;
@@ -708,7 +708,7 @@ LABEL_15:
             v32 = 56;
           }
           nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v32);
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v32, (_QWORD)(v31));
         }
         else {
           if (v30 != 7) {

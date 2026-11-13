@@ -46,7 +46,7 @@ __int64 Impl_1328460(__int64);
 __int64 Impl_13287c0(__int64);
 __int64 game_GameVariableTable_Find(_QWORD*, unsigned __int64*);
 __int64 game_HashString(__int64 result);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 bool GameRoutine_133f0c0(__int64);
 bool Impl_1328300(__int64);
@@ -3088,7 +3088,7 @@ LABEL_38:
       v25 = 56;
     }
     nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v25);
+                                       v25, (_QWORD)(v20));
   }
 LABEL_42:
   if (a2 != 0) {

@@ -59,7 +59,7 @@ __int64 game_gameui_1590260(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                             long double);
 __int64 game_util_Format(const char*, ...);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
@@ -70,7 +70,7 @@ __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 ui_LayoutAccessor_FindAlignment(_QWORD, _QWORD);
 __n128 GameRoutine_1007270(__int64);
 __n128 GameRoutine_10073a0(__int64);
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __n128 snd_Fade_Fade_10c830(_QWORD, double);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 bool UnitItem_6e8e50(unsigned __int16*, __int64);
@@ -1449,7 +1449,8 @@ void game_cmdbtl_ea5e20(__int64 a1, __int64* a2, __int64* a3,
         if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
           v21 = 56;
         }
-        nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v21);
+        nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v21,
+                                      (_QWORD)(v5));
       }
       v4 = 0;
       *(_QWORD*)(a1 + 8) = 0;

@@ -10,7 +10,7 @@ __int64 GameRoutine_e305a0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_e30760(void);
 __int64 GameRoutine_e4b940(_QWORD);
 __int64 GameRoutine_ea1560(_QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_combat_CombatLegionManager_vtable[])();
 extern __int64 GameData_22162a8;
@@ -101,7 +101,7 @@ __int64 CombatLegionGroup_e58ae0(__int64, __int64, __int64);
 __int64 CombatLegionManager_e2d300(__int64 result, __int64*, unsigned int);
 __int64 game_HasSkill(_QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
-__n128 nn_mem_StandardAllocator_Free_alt2(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt2(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 extern _QWORD game_g_shared_system_skills_ptr;
 extern _UNKNOWN* GameData_212c188;
@@ -945,7 +945,7 @@ __int64 CombatLegionManager_Destructor(__int64 a1)
       if (*(_QWORD*)(*(_QWORD*)v24 + 200LL) == 0) {
         v28 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v24 + v28);
+      nn_mem_StandardAllocator_Free(*(_QWORD*)v24 + v28, (_QWORD)(v23));
     }
   }
   v29 = *(_QWORD*)(a1 + 48);
@@ -961,7 +961,7 @@ __int64 CombatLegionManager_Destructor(__int64 a1)
     if (*(_QWORD*)(*(_QWORD*)v24 + 200LL) == 0) {
       v31 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v24 + v31);
+    nn_mem_StandardAllocator_Free(*(_QWORD*)v24 + v31, (_QWORD)(v30));
   }
   v32 = *(_QWORD*)(a1 + 32);
   *(_QWORD*)(a1 + 32) = 0;

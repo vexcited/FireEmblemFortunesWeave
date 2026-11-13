@@ -153,7 +153,7 @@ __int64 game_map_BattleUtil_GetHealPower(__int64 result, __int64,
 __int64 game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 nn_os_ConvertToTimeSpan(_QWORD);
 __int64 nn_os_LockMutex(_QWORD);
@@ -183,7 +183,7 @@ __n128 GameRoutine_15940f0(__int64, unsigned int, unsigned int);
 __n128 GameRoutine_174d580(__int64, __int64, __int64, __n128 result);
 __n128 Util_1580bf0_alt1(__int64*, __int64, unsigned int, char, char, char,
                          char, char, __n128 result) __asm__("Util_1580bf0");
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __n128 std___1___shared_weak_count___release_weak();
 __n128 ui_LayoutAccessor_Setup_155dda0(_QWORD*, _QWORD*);
 bool GameRoutine_15a1740(__int64*, __int64*, __int64**);
@@ -2915,14 +2915,14 @@ __int64 game_gameui_158d440(__int64 result, __int64* a2, __int64 a3, char a4)
         if (*(_QWORD*)(*v10 + 200LL) == 0) {
           v34 = 56;
         }
-        result = nn_mem_StandardAllocator_Free_alt1(*v10 + v34);
+        result = nn_mem_StandardAllocator_Free_alt1(*v10 + v34, (_QWORD)(v27));
       }
       if (v29 != 0) {
         v35 = 128;
         if (*(_QWORD*)(*v10 + 200LL) == 0) {
           v35 = 56;
         }
-        return nn_mem_StandardAllocator_Free_alt1(*v10 + v35);
+        return nn_mem_StandardAllocator_Free_alt1(*v10 + v35, (_QWORD)(v29));
       }
       return result;
     }
@@ -4638,7 +4638,8 @@ __n128 game_gameui_15970e0(__int64 a1, unsigned int a2, char* a3, __int64 a4,
                 v34 = 56;
               }
               result = nn_mem_StandardAllocator_Free(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v34);
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v34,
+                  (_QWORD)(v77_.v77[0]));
             }
             if ((v25 & 1) != 0 && v26 != nullptr) {
               v35 = 128;
@@ -4647,7 +4648,7 @@ __n128 game_gameui_15970e0(__int64 a1, unsigned int a2, char* a3, __int64 a4,
                 v35 = 56;
               }
               return nn_mem_StandardAllocator_Free(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v35);
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v35, (_QWORD)(v26));
             }
             return result;
           }
@@ -4765,7 +4766,8 @@ __n128 game_gameui_15970e0(__int64 a1, unsigned int a2, char* a3, __int64 a4,
                   v52 = 56;
                 }
                 result = nn_mem_StandardAllocator_Free(
-                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v52);
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v52,
+                    (_QWORD)(v77_.v77[0]));
               }
               if ((v43 & 1) != 0 && v44 != nullptr) {
                 v53 = 128;
@@ -4774,7 +4776,8 @@ __n128 game_gameui_15970e0(__int64 a1, unsigned int a2, char* a3, __int64 a4,
                   v53 = 56;
                 }
                 return nn_mem_StandardAllocator_Free(
-                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v53);
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v53,
+                    (_QWORD)(v44));
               }
               return result;
             }
@@ -4898,7 +4901,8 @@ __n128 game_gameui_15970e0(__int64 a1, unsigned int a2, char* a3, __int64 a4,
           v70 = 56;
         }
         result = nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v70);
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v70,
+            (_QWORD)(v77_.v77[0]));
       }
       if ((v61 & 1) != 0 && v62 != nullptr) {
         v71 = 128;
@@ -4906,7 +4910,7 @@ __n128 game_gameui_15970e0(__int64 a1, unsigned int a2, char* a3, __int64 a4,
           v71 = 56;
         }
         return nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v71);
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v71, (_QWORD)(v62));
       }
       return result;
     }
@@ -9087,7 +9091,7 @@ LABEL_83:
       v51 = 56;
     }
     return nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v51);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v51, (_QWORD)(v55));
   }
   return result;
 }

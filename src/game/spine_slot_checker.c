@@ -14,7 +14,7 @@ __int64 memchr(_QWORD, _QWORD);
 __int64 memcmp(_QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1_stoi(_QWORD, _QWORD, _QWORD);
 __int64 strlen(_QWORD);
 extern _UNKNOWN GameData_1acaad4;
@@ -1013,7 +1013,7 @@ __int64 SpineSlotChecker_1923b20(__int64 result, __int64 a2)
               v22 = 56;
             }
             nn_mem_StandardAllocator_Free(
-                *(_QWORD*)fw_memory_g_heap_manager_ptr + v22);
+                *(_QWORD*)fw_memory_g_heap_manager_ptr + v22, (_QWORD)(v28));
           }
           return v3;
         }
@@ -1048,7 +1048,8 @@ __int64 SpineSlotChecker_1923b20(__int64 result, __int64 a2)
                   v13 = 56;
                 }
                 nn_mem_StandardAllocator_Free(
-                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v13);
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v13,
+                    (_QWORD)(v28));
               }
               v26 = v23;
               v27 = v24;

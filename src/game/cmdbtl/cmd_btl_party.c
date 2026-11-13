@@ -4,7 +4,7 @@
 
 __int64 CmdBtlUnit_e79df0(_QWORD);
 __int64 GameRoutine_e73e20(_QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak();
 extern __int64 (*game_cmdbtl_CmdBtlParty_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -65,7 +65,7 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
 __int64 game_Unit_GetParam_alt1(__int64) __asm__("game_Unit_GetParam");
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
-__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
     "std___1___shared_weak_count___release_weak");
@@ -469,7 +469,7 @@ __n128 CmdBtlParty_e734e0(__int64 a1)
             v31 = 56;
           }
           result = nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v31);
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v31, (_QWORD)(v20));
         }
         v5 = v22;
         v3 = v21;
@@ -532,7 +532,7 @@ __n128 CmdBtlParty_e734e0(__int64 a1)
             v40 = 56;
           }
           result = nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v40);
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v40, (_QWORD)(v3));
         }
         v3 = v39;
       }
@@ -552,7 +552,7 @@ __n128 CmdBtlParty_e734e0(__int64 a1)
       v42 = 56;
     }
     result = nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v42);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v42, (_QWORD)(v3));
   }
 LABEL_75:
   if (v46_.v46 != nullptr) {
@@ -562,7 +562,7 @@ LABEL_75:
       v43 = 56;
     }
     return nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v43);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v43, (_QWORD)(v46_.v46));
   }
   return result;
 }

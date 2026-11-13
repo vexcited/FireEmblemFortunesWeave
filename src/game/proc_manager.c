@@ -73,7 +73,7 @@ __int64 game_ProcManager_EachByDesc(__int64, __int64);
 __int64 game_evt_1195540();
 __int64 game_map_history_122b460(__int64 result, __int64);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 nn_ui2d_Pane_GetRuntimeTypeInfoStatic(void);
 __int64 snd_Fade_Destroy_Fade(_QWORD*);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD) __asm__("snd_Fade_Destroy_Fade");
@@ -88,7 +88,7 @@ __n128 GameRoutine_14a1390(_QWORD*, char);
 __n128 GameRoutine_14a1520(_QWORD*, char);
 __n128 GameRoutine_7bb6c0(__int64*);
 __n128 GameRoutine_90dac0(_QWORD, _QWORD);
-__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __n128 snd_Fade_Fade_10c830_alt1(_QWORD,
                                  long double) __asm__("snd_Fade_Fade_10c830");
@@ -1143,7 +1143,8 @@ LABEL_39:
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v27 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v27);
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v27,
+                                  (_QWORD)(v34));
     result = v26;
   }
   if ((v30[0] & 1) != 0 && v31 != nullptr) {
@@ -1152,7 +1153,8 @@ LABEL_39:
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v29 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v29);
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v29,
+                                  (_QWORD)(v31));
     return v28;
   }
   return result;

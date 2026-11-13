@@ -11,7 +11,7 @@ __int64 GameRoutine_c19a20_alt1(__int64 result, unsigned __int64, __int64,
                                 __int64) __asm__("GameRoutine_c19a20");
 __int64 ResFile_5e5f00(_QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern _UNKNOWN GameData_1fd1588;
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -956,7 +956,7 @@ _QWORD* wld_map_Layout_Internal_LoadMapModelFile(__int64 a1, __int64 a2,
           v28 = 56;
         }
         nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v28);
+                                      v28, (_QWORD)(v96_.v98));
       }
       v27[5] = v24;
       if (*(_DWORD*)(v24 + 32) != 0) {
@@ -1008,7 +1008,8 @@ _QWORD* wld_map_Layout_Internal_LoadMapModelFile(__int64 a1, __int64 a2,
                   v35 = 56;
                 }
                 nn_mem_StandardAllocator_Free(
-                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v35);
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v35,
+                    (_QWORD)(v100[2]));
               }
               if ((v96_.v96 & 1) != 0 && v96_.v98 != nullptr) {
                 v36 = 128;
@@ -1017,7 +1018,8 @@ _QWORD* wld_map_Layout_Internal_LoadMapModelFile(__int64 a1, __int64 a2,
                   v36 = 56;
                 }
                 nn_mem_StandardAllocator_Free(
-                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v36);
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v36,
+                    (_QWORD)(v96_.v98));
               }
               v96_.v99 = &v96_.v96;
               if (((unsigned __int8)v103_.v103 & 1) != 0) {
@@ -1063,7 +1065,8 @@ _QWORD* wld_map_Layout_Internal_LoadMapModelFile(__int64 a1, __int64 a2,
                       v87 = 56;
                     }
                     nn_mem_StandardAllocator_Free(
-                        *(_QWORD*)fw_memory_g_heap_manager_ptr + v87);
+                        *(_QWORD*)fw_memory_g_heap_manager_ptr + v87,
+                        (_QWORD)(v101_.v102));
                   }
                   goto LABEL_164;
                 }
@@ -1120,7 +1123,7 @@ _QWORD* wld_map_Layout_Internal_LoadMapModelFile(__int64 a1, __int64 a2,
                 v48 = 56;
               }
               nn_mem_StandardAllocator_Free(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v48);
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v48, (_QWORD)(v47));
             }
             if (v96_.v99 == &v96_.v96) {
               v49 = 32;
@@ -1140,7 +1143,8 @@ _QWORD* wld_map_Layout_Internal_LoadMapModelFile(__int64 a1, __int64 a2,
                 v88 = 56;
               }
               nn_mem_StandardAllocator_Free(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v88);
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v88,
+                  (_QWORD)(v103_.v105));
             }
             if (((unsigned __int8)v106_.v106 & 1) != 0 &&
                 v106_.v108 != nullptr) {
@@ -1150,7 +1154,8 @@ _QWORD* wld_map_Layout_Internal_LoadMapModelFile(__int64 a1, __int64 a2,
                 v89 = 56;
               }
               nn_mem_StandardAllocator_Free(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v89);
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v89,
+                  (_QWORD)(v106_.v108));
             }
             return (_QWORD*)(((_UNKNOWN*)0x0LL) + 1);
           }
@@ -1886,8 +1891,8 @@ _QWORD* wld_map_Layout_Internal_LoadDirectModelFile_lambda0_Invoke(__int64 a1,
             else {
               v20 = 56;
             }
-            result =
-                (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v17 + v20);
+            result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v17 + v20,
+                                                            (_QWORD)(v19));
           }
           v13 = v16;
         } while (v16 != v15);
@@ -1915,7 +1920,8 @@ _QWORD* wld_map_Layout_Internal_LoadDirectModelFile_lambda0_Invoke(__int64 a1,
         else {
           v25 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v23 + v25);
+        result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v23 + v25,
+                                                        (_QWORD)(*v24));
         v24[1] = 0;
         v24[2] = 0;
         *v24 = 0;
@@ -1936,7 +1942,8 @@ _QWORD* wld_map_Layout_Internal_LoadDirectModelFile_lambda0_Invoke(__int64 a1,
         else {
           v27 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(v26 + v27);
+        result =
+            (_QWORD*)nn_mem_StandardAllocator_Free(v26 + v27, (_QWORD)(v28));
       }
       ++v22;
       v21 += 32;

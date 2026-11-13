@@ -69,7 +69,7 @@ __int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
 __int64 std___1___shared_weak_count_lock(_QWORD);
 __n128 GameRoutine_14a10d0(_QWORD*, __int64, __int64, __int64);
 __n128 GameRoutine_17b8f40(__int64, char);
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __n128 nn_os_UnlockMutex_alt1(_QWORD) __asm__("nn_os_UnlockMutex");
 __n128 snd_Fade_Fade_10c830_alt1(_QWORD,
                                  double) __asm__("snd_Fade_Fade_10c830");
@@ -2684,7 +2684,7 @@ LABEL_16:
       v13 = 56;
     }
     result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, (_QWORD)(v26_.v26));
   }
 LABEL_26:
   if (game_GameModeData_instance_ == 0 ||
@@ -2722,7 +2722,7 @@ LABEL_26:
             v22 = 56;
           }
           nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                        v22);
+                                        v22, (_QWORD)(v18));
         }
       }
       v26_.v27 = (__int64 (*)())&GameData_1ade186;
@@ -2747,7 +2747,7 @@ LABEL_26:
               v25 = 56;
             }
             return nn_mem_StandardAllocator_Free(
-                *(_QWORD*)fw_memory_g_heap_manager_ptr + v25);
+                *(_QWORD*)fw_memory_g_heap_manager_ptr + v25, (_QWORD)(v24));
           }
         }
       }

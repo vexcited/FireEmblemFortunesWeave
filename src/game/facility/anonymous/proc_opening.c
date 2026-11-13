@@ -33,7 +33,7 @@ __int64 SceneCameraWorkUpdater_14559c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 snd_Fade_Destroy_Fade(_QWORD);
 __int64 snd_fnd_WeakHandle_get(_QWORD);
@@ -359,7 +359,7 @@ __int64 (***game_facility_anonymous_ProcOpening_StartCameraWork(
           v11 = 56;
         }
         result = (__int64 (***)())nn_mem_StandardAllocator_Free_alt1(
-            *(_QWORD*)v6 + v11);
+            *(_QWORD*)v6 + v11, (_QWORD)(v19));
       }
       v12 = v21;
       if (v21 == 0) {

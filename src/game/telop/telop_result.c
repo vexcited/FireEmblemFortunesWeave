@@ -55,7 +55,7 @@ __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_gameui_1592340(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 strlen(_QWORD);
@@ -1040,7 +1040,7 @@ __attribute__((swiftcall)) void TelopResult_17619f0(PSEUDO_X8 x8_, __int64 a1,
     }
     {
       (_QWORD*)nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v12);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, (_QWORD)(v14));
       return;
     }
   }

@@ -4,7 +4,7 @@
 
 __int64 GameRoutine_1921e00(_QWORD);
 __int64 GameRoutine_1922700(_QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_SpineCaptureProcessor_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -863,7 +863,7 @@ void SpineCaptureProcessor_1920da0(__int64 a1)
                 v75 = 56;
               }
               nn_mem_StandardAllocator_Free(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v75);
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v75, (_QWORD)(v109));
             }
           LABEL_138:
             v27 = *(_QWORD*)(a1 + 168);
@@ -941,7 +941,7 @@ void SpineCaptureProcessor_1920da0(__int64 a1)
             v8 = 56;
           }
           nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                        v8);
+                                        v8, (_QWORD)(v6));
           v9 = *(_QWORD*)(a1 + 40);
           if (v9 != 0) {
             (*(void (**)(__int64))(*(_QWORD*)v9 + 32LL))(v9);

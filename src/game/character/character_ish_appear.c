@@ -7,7 +7,7 @@ struct PseudoSret {
 };
 __int64 CmdBtlZoomIn_10a04e0(__int64*, float*, float*, __int64);
 __int64 GameRoutine_109fee0(_QWORD, float, float);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*GameData_200f0b0[])();
 extern __int64 (*game_character_CharacterBaseModule_vtable)();
@@ -116,7 +116,7 @@ __int64 CharacterIshAppear_Unknown5(__int64 result)
     v1 += 16;
   } while (v1 != v2);
   v12 = *(float*)(result + 80);
-  if (v6 > v12 || v12 >= v4) {
+  if (!(v6 <= v12 && v12 < v4)) {
     return result;
   }
   v14 = (float)(*(float*)(*(_QWORD*)(*(_QWORD*)(result + 8) + 496LL) + 16LL) *
@@ -207,7 +207,7 @@ __int64 CharacterIshAppear_Unknown5(__int64 result)
       v28 = 56;
     }
     result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v28);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v28, (_QWORD)(v16));
   }
 LABEL_62:
   v3[2] = 0;

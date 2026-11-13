@@ -4,7 +4,7 @@
 
 __int64 GameRoutine_6315e0(_QWORD);
 __int64 GameRoutine_a4a6a0(__int64);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*GameData_21fdd18)(__int64);
 extern __int64 (*msg_ProjectFile_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -271,7 +271,7 @@ __int64 ProjectFile_DeletingDestructor(_QWORD* a1)
     v4 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+                                       v4, (_QWORD)(a1));
 }
 
 __int64 ProjectFile_Unknown2(__int64 a1)

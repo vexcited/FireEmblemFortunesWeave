@@ -14,7 +14,7 @@ __int64 CharacterAnimatorSound_10f7a60_alt1(
     _QWORD, _QWORD, long double) __asm__("CharacterAnimatorSound_10f7a60");
 __int64 GameRoutine_112180(_QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, long double) __asm__(
     "nn_mem_StandardAllocator_Free");
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -1113,7 +1113,7 @@ game_character_CharacterAnimatorSound_CharacterAnimatorSound_lambda0_Invoke(
         v14 = 56;
       }
       result = nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v14);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, (_QWORD)(v34));
     }
     v15 = 4;
   }
@@ -1149,7 +1149,7 @@ game_character_CharacterAnimatorSound_CharacterAnimatorSound_lambda0_Invoke(
         v24 = 56;
       }
       nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v24);
+                                    v24, (_QWORD)(v38));
     }
     result = GameRoutine_112180(&v35, &v32);
     v15 = 0;

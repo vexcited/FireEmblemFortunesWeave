@@ -7,7 +7,7 @@ __int64 GameRoutine_657850(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_950ec0(_QWORD);
 __int64 GameRoutine_fa6720(_QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern _UNKNOWN* GameData_212c730;
 extern __int64 (*game_facility_anonymous_ProcThermaeThermaeMenu_vtable[])();
 extern __int64 (*game_facility_anonymous_ThermaeThermaeMenuItem_vtable[])();
@@ -72,7 +72,7 @@ __int64 ProcThermaeUnitMenu_192bcc0(__int64 a1)
     if (*(_QWORD*)(*v2 + 200LL) == 0) {
       v9 = 56;
     }
-    return nn_mem_StandardAllocator_Free(*v2 + v9);
+    return nn_mem_StandardAllocator_Free(*v2 + v9, (_QWORD)(v10));
   }
   return result;
 }

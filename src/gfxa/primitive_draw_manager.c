@@ -17,7 +17,7 @@ __int64 fw_text_String_CopyTerminated(_QWORD, _QWORD, _QWORD);
 __int64 memcmp(_QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*GameData_1fbf780[])();
 extern __int64 (*GameData_2109ae8[])();
@@ -1946,7 +1946,7 @@ LABEL_13:
         v51 = 56;
       }
       nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v51);
+                                    v51, (_QWORD)(v77));
     }
     v75 = v72;
     v76 = v73;
@@ -1998,7 +1998,7 @@ LABEL_13:
         v56 = 56;
       }
       result = nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v56);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v56, (_QWORD)(v77));
     }
   LABEL_15:
     v6 = *(_QWORD*)(v3 + 2872);

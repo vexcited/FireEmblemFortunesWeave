@@ -3,7 +3,7 @@
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_1495040(_QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*GameData_203b128)();
 extern __int64 (*GameData_211bff8[])();
 extern __int64 (*GameData_211c040[])();
@@ -1017,7 +1017,8 @@ __int64 ProcTrainingMotion_Destructor_197bc00(_QWORD* a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v3 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v3,
+                                  (_QWORD)(v2));
   }
   return GameRoutine_1495040(v1);
 }

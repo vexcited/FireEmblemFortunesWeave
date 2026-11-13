@@ -16,7 +16,7 @@ __int64 fw_text_String_CopyTerminated(__int64*, __int64, unsigned __int64);
 __int64 memcmp(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
 __int64 memset(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 bool GameRoutine_c05690(_QWORD*, __int64);
@@ -716,35 +716,40 @@ __int64* WindLoader_c72c80(_QWORD* a1, __int64 a2, unsigned __int64 a3,
     if (*(_QWORD*)(*v8 + 200) == 0) {
       v26 = 56;
     }
-    result = (__int64*)nn_mem_StandardAllocator_Free(*v8 + v26);
+    result =
+        (__int64*)nn_mem_StandardAllocator_Free(*v8 + v26, (_QWORD)(v38_.v39));
   }
   if ((v36_.v36[0] & 1) != 0 && v36_.v37 != 0) {
     v27 = 128;
     if (*(_QWORD*)(*v8 + 200) == 0) {
       v27 = 56;
     }
-    result = (__int64*)nn_mem_StandardAllocator_Free(*v8 + v27);
+    result =
+        (__int64*)nn_mem_StandardAllocator_Free(*v8 + v27, (_QWORD)(v36_.v37));
   }
   if ((v31_.v31 & 1) != 0 && v31_.v33 != nullptr) {
     v28 = 128;
     if (*(_QWORD*)(*v8 + 200) == 0) {
       v28 = 56;
     }
-    result = (__int64*)nn_mem_StandardAllocator_Free(*v8 + v28);
+    result =
+        (__int64*)nn_mem_StandardAllocator_Free(*v8 + v28, (_QWORD)(v31_.v33));
   }
   if ((v34_.v34[0] & 1) != 0 && v34_.v35 != nullptr) {
     v29 = 128;
     if (*(_QWORD*)(*v8 + 200) == 0) {
       v29 = 56;
     }
-    result = (__int64*)nn_mem_StandardAllocator_Free(*v8 + v29);
+    result =
+        (__int64*)nn_mem_StandardAllocator_Free(*v8 + v29, (_QWORD)(v34_.v35));
   }
   if ((v40_.v40 & 1) != 0 && v40_.v42 != nullptr) {
     v30 = 128;
     if (*(_QWORD*)(*v8 + 200) == 0) {
       v30 = 56;
     }
-    return (__int64*)nn_mem_StandardAllocator_Free(*v8 + v30);
+    return (__int64*)nn_mem_StandardAllocator_Free(*v8 + v30,
+                                                   (_QWORD)(v40_.v42));
   }
   return result;
 }

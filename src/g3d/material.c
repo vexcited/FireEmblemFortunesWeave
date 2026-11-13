@@ -13,7 +13,7 @@ __int64* GameRoutine_adf6e0(_QWORD*, _QWORD*);
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 __int64 memcmp(_QWORD, _QWORD, _QWORD);
 __int64 memset(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 strlen(_QWORD);
 __int64 strncpy(_QWORD, _QWORD, _QWORD);
@@ -281,7 +281,7 @@ __int64 Material_SetFloat(__int64 a1, char* a2, __int64 a3, float a4)
         v28 = 56;
       }
       nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v28);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v28, (_QWORD)(v27));
     }
   }
   return v26;

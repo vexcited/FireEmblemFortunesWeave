@@ -25,7 +25,7 @@ __int64 Util_15792c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                      _QWORD);
 __int64 Util_1581060(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_facility_1873410(_QWORD*);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
@@ -480,7 +480,7 @@ __int64 BlacksmithMenuItem_Refine_Unknown83(__int64 a1, __int64 a2)
         v10 = 56;
       }
       nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v10);
+                                    v10, (_QWORD)(v57));
       v9 = v53;
     }
   }
@@ -568,7 +568,7 @@ __int64 BlacksmithMenuItem_Refine_Unknown83(__int64 a1, __int64 a2)
         v20 = 56;
       }
       nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v20);
+                                    v20, (_QWORD)(v57));
       v19 = v53;
     }
   }
@@ -662,7 +662,7 @@ __int64 BlacksmithMenuItem_Refine_Unknown83(__int64 a1, __int64 a2)
             v39 = 56;
           }
           nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                        v39);
+                                        v39, (_QWORD)(v57));
           v25 = v53;
         }
       }
@@ -721,7 +721,7 @@ __int64 BlacksmithMenuItem_Refine_Unknown83(__int64 a1, __int64 a2)
         v44 = 56;
       }
       nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v44);
+                                    v44, (_QWORD)(v57));
       v43 = v53;
     }
   }

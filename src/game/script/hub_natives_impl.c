@@ -32,7 +32,7 @@ __int64 fw_text_String_CopyTerminated(_QWORD, _QWORD, _QWORD);
 __int64 game_HashString(_QWORD);
 __int64 memcmp(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 snd_Fade_Fade_10cb00(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 strlen(_QWORD);
@@ -4345,7 +4345,7 @@ LABEL_18:
       v15 = 56;
     }
     return (_QWORD*)nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v15);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v15, (_QWORD)(v17));
   }
   return result;
 }
@@ -5097,7 +5097,7 @@ LABEL_9:
         v15 = 56;
       }
       nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v15);
+                                    v15, (_QWORD)(*(_QWORD*)&v24[15]));
     }
   }
   v23 = 30;
@@ -5141,7 +5141,8 @@ LABEL_36:
       v22 = 56;
     }
     return (_QWORD*)nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v22);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v22,
+        (_QWORD)(*(_QWORD*)&v24[15]));
   }
   return result;
 }

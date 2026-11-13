@@ -44,7 +44,7 @@ __n128 GameRoutine_bfe5c0(__int64, __int64*, unsigned __int16*, __int64,
 __n128 GameRoutine_ed7fe0(__int64);
 __n128 GameRoutine_ed8c10(__int64, __n128 result);
 __n128 GameRoutine_ed90e0(__int64);
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 bool CmdbtlPartyNatives_e73070(_QWORD*, __int64*);
 bool GameRoutine_e726b0(_QWORD*, char);
@@ -3343,7 +3343,7 @@ __int64 game_cmdbtl_anonymous_f40d80(__int64 result)
             v17 = 56;
           }
           *(__n128*)&v16 = nn_mem_StandardAllocator_Free(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v17);
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, (_QWORD)(v18));
         }
         result = GameRoutine_176caa0(
             v3,

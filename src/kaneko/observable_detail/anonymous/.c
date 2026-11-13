@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212fe78[2];
@@ -30,7 +30,7 @@ __int64 __DeletingDestructor(_QWORD* a1)
     v4 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+                                       v4, (_QWORD)(a1));
 }
 
 #pragma GCC visibility pop

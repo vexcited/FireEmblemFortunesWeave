@@ -40,7 +40,7 @@ __int64 game_HashString32(_QWORD, _QWORD);
 __int64 game_ProcInst_Register(_QWORD);
 __int64 game_util_Format(const char*, ...);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 sprintf(_QWORD, const char*, ...);
 __int64 strlen(_QWORD);
 __int64 ui_LayoutAccessor_FindPane(_QWORD, _QWORD);
@@ -696,7 +696,7 @@ LABEL_49:
             v57 = 56;
           }
           nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                        v57);
+                                        v57, (_QWORD)(v94));
         }
       LABEL_168:
         LayoutAccessor_155e140(&v100);

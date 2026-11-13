@@ -31,7 +31,7 @@ __int64 game_HashString(_QWORD);
 __int64 game_util_Format(const char*, ...);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 strlen(_QWORD);
 extern __int64 (*GameData_2032c78[])();
@@ -123,7 +123,7 @@ __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 strcmp(_QWORD, _QWORD);
 __n128 SceneCharacterAnimator_1412540(__int64, int, unsigned __int8*);
 __n128 SceneCharacter_13fed60(__int64, __int64*, __int64*, __int64*);
-__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __n128 std___1___shared_weak_count___release_weak_alt1() __asm__(
     "std___1___shared_weak_count___release_weak");
@@ -2937,28 +2937,32 @@ __int64 game_facility_SceneManager_CloneObject(__int64 a1, unsigned __int8* a2,
       if (*(_QWORD*)(*(_QWORD*)v19 + 200LL) == 0) {
         v28 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v19 + v28);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v19 + v28,
+                                         (_QWORD)(v35_.v37));
     }
     if ((v32_.v32 & 1) != 0 && v32_.v34 != 0) {
       v29 = 128;
       if (*(_QWORD*)(*(_QWORD*)v19 + 200LL) == 0) {
         v29 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v19 + v29);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v19 + v29,
+                                         (_QWORD)(v32_.v34));
     }
     if ((v44_.v44 & 1) != 0 && v44_.v46 != 0) {
       v30 = 128;
       if (*(_QWORD*)(*(_QWORD*)v19 + 200LL) == 0) {
         v30 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v19 + v30);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v19 + v30,
+                                         (_QWORD)(v44_.v46));
     }
     if ((v41_.v41 & 1) != 0 && v41_.v43 != 0) {
       v31 = 128;
       if (*(_QWORD*)(*(_QWORD*)v19 + 200LL) == 0) {
         v31 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v19 + v31);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v19 + v31,
+                                         (_QWORD)(v41_.v43));
     }
     return 1;
   }

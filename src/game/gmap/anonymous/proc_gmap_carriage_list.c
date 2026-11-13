@@ -26,7 +26,7 @@ __int64 game_1678f00(__int64, __int64);
 __int64 game_gmap_SpotMgr_FindSpot(_QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern _UNKNOWN* GameData_212c730;
 extern __int64 (*GameData_2080ec0[])();
 extern __int64 (*game_gmap_anonymous_ProcGmapCarriageList_vtable[])();
@@ -187,7 +187,7 @@ LABEL_8:
     if (*(_QWORD*)(*v2 + 200LL) == 0) {
       v28 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(*v2 + v28);
+    result = nn_mem_StandardAllocator_Free(*v2 + v28, (_QWORD)(v24));
   }
   v29 = v54;
   v30 = v55;
@@ -255,7 +255,7 @@ LABEL_8:
             if (*(_QWORD*)(*v44 + 200LL) == 0) {
               v49 = 56;
             }
-            result = nn_mem_StandardAllocator_Free(*v44 + v49);
+            result = nn_mem_StandardAllocator_Free(*v44 + v49, (_QWORD)(v40));
           }
           else {
             v2 = v44;
@@ -275,7 +275,7 @@ LABEL_8:
     if (*(_QWORD*)(v50 + 200) == 0) {
       v51 = 56;
     }
-    return nn_mem_StandardAllocator_Free(v50 + v51);
+    return nn_mem_StandardAllocator_Free(v50 + v51, (_QWORD)(v29));
   }
   return result;
 }

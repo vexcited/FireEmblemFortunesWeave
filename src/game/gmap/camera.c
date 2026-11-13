@@ -32,7 +32,7 @@ __int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
     "game_GameVariableTable_Find");
 __int64 game_HashString(_QWORD);
 __int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __int64 snd_Fade_Destroy_Fade(_QWORD);
 __int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
 __int64 snd_fnd_WeakHandle_get(__int64);
@@ -897,14 +897,14 @@ LABEL_17:
       if (*(_QWORD*)(*(_QWORD*)v18 + 200LL) == 0) {
         v22 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v18 + v22);
+      nn_mem_StandardAllocator_Free(*(_QWORD*)v18 + v22, (_QWORD)(v17));
     }
   }
   v23 = 128;
   if (*(_QWORD*)(*(_QWORD*)v18 + 200LL) == 0) {
     v23 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v18 + v23);
+  return nn_mem_StandardAllocator_Free(*(_QWORD*)v18 + v23, (_QWORD)(v1));
 }
 
 __int64 Camera_1314ca0(__int64 a1)

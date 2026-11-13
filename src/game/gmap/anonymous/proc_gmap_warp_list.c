@@ -81,7 +81,7 @@ __int64 game_GameVariableTable_Find(_QWORD, _QWORD);
 __int64 game_HashString(_QWORD);
 __int64 game_gmap_SpotMgr_FindSpot(_QWORD);
 __int64 game_menu_Dialog__CreateBind_game_menu_Dialog(_QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 extern _DWORD GameData_1bee99c_alt1[15] __asm__("GameData_1bee99c");
 extern _UNKNOWN* GameData_212c730;
@@ -484,7 +484,8 @@ _QWORD* ProcGmapWarpList_168ca80(_QWORD* result, __int64 a2)
             if (*(_QWORD*)(*v32 + 200LL) == 0) {
               v50 = 56;
             }
-            result = (_QWORD*)nn_mem_StandardAllocator_Free_alt1(*v32 + v50);
+            result = (_QWORD*)nn_mem_StandardAllocator_Free_alt1(*v32 + v50,
+                                                                 (_QWORD)(v41));
           }
         }
         else {
@@ -764,7 +765,8 @@ __int64* ProcGmapWarpList_168cf20(__int64* result)
                           v41 = 56;
                         }
                         nn_mem_StandardAllocator_Free_alt1(
-                            *(_QWORD*)fw_memory_g_heap_manager_ptr + v41);
+                            *(_QWORD*)fw_memory_g_heap_manager_ptr + v41,
+                            (_QWORD)(v32));
                       }
                       v18 = v17;
                     }
@@ -791,7 +793,7 @@ __int64* ProcGmapWarpList_168cf20(__int64* result)
             v51 = 56;
           }
           return (__int64*)nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v51);
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v51, (_QWORD)(v50));
         }
       }
       else {

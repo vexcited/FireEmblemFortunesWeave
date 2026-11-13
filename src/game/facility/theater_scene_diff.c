@@ -4,7 +4,7 @@
 
 __int64 GameRoutine_64dde0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_64df20(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 _BYTE* TheaterSceneDiff_1424140(_QWORD* a1, _QWORD* a2, _QWORD* a3);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -48,7 +48,7 @@ __int64 game_util_Format(const char*, ...);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __n128 GameRoutine_a0d9a0_alt1(__int64) __asm__("GameRoutine_a0d9a0");
-__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __n128 std___1___shared_weak_count___release_weak_alt1() __asm__(
     "std___1___shared_weak_count___release_weak");
@@ -401,7 +401,7 @@ LABEL_26:
         else {
           v28 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v23 + v28);
+        nn_mem_StandardAllocator_Free(*(_QWORD*)v23 + v28, (_QWORD)(v25[4]));
       }
       if (*(_QWORD*)(*(_QWORD*)v23 + 200LL) != 0) {
         v24 = 128;
@@ -409,7 +409,8 @@ LABEL_26:
       else {
         v24 = 56;
       }
-      result = (_BYTE*)nn_mem_StandardAllocator_Free(*(_QWORD*)v23 + v24);
+      result = (_BYTE*)nn_mem_StandardAllocator_Free(*(_QWORD*)v23 + v24,
+                                                     (_QWORD)(v25));
     } while (v22 != nullptr);
   }
   v29 = a1[8];

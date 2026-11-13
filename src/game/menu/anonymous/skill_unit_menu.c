@@ -46,13 +46,13 @@ __int64 game_util_Format(const char*, ...);
 __int64 memcmp(_QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 strlen(_QWORD);
 __int64 ui_LayoutAccessor_FindPane(__int64*, __int64);
 __int64 ui_LayoutAccessor_FindPane_alt1(_QWORD, _QWORD) __asm__(
     "ui_LayoutAccessor_FindPane");
-__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 __n64 GameRoutine_16e54e0(__int64);
 char* game_util_Format_alt1(__int64, __int64, __int64, __int64, __int64,
                             __int64, __int64, __int64,
@@ -912,7 +912,7 @@ LABEL_32:
       v21 = 56;
     }
     nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v21);
+                                       v21, (_QWORD)(v26));
   }
   return v20;
 }

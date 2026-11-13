@@ -3,7 +3,7 @@
 #pragma GCC visibility push(hidden)
 
 __int64 game_Unit_GetParam(_QWORD, _QWORD, _QWORD);
-__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*game_UnitHPScope_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 UnitHPScope_Destructor(__int64 result);
@@ -81,7 +81,7 @@ __int64 UnitHPScope_DeletingDestructor(__int64 a1)
     v6 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v6);
+                                       v6, (_QWORD)(a1));
 }
 
 #pragma GCC visibility pop
