@@ -5059,8 +5059,8 @@ LABEL_11:
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v36 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v36,
-                                  v21);
+    ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v36, (__int64)v26);
   }
 
 LABEL_56:
@@ -5091,8 +5091,8 @@ LABEL_56:
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v44 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v44,
-                                  v43);
+    ((__int64 (*)(__int64, __int64))nn_mem_StandardAllocator_Free)(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v44, (__int64)v40);
   }
   v45 = v51;
   *(_BYTE*)(a1 + 504) = 1;

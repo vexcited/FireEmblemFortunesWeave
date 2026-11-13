@@ -1264,7 +1264,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*v10 + 200LL) == 0) {
       v16 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*v10 + v16, v15);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *v10 + v16, (__int64)v218);
   }
   v17 = *(unsigned __int8*)(v2 + 88);
   v18 = (v17 & 1) == 0;
@@ -1327,7 +1328,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*v10 + 200LL) == 0) {
       v28 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*v10 + v28, v27);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *v10 + v28, (__int64)v218);
   }
   v29 = *(unsigned __int8*)(v2 + 112);
   v30 = (v29 & 1) == 0;
@@ -1390,7 +1392,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
       v41 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v41, v40);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *(_QWORD*)GameData_212bf68 + v41, (__int64)v218);
   }
   v42 = *(unsigned __int8*)(v2 + 88);
   v43 = (v42 & 1) == 0;
@@ -1460,14 +1463,16 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
       v56 = 56;
     }
-    GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v56, v55);
+    ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *(_QWORD*)GameData_212bf68 + v56, (__int64)v218);
   }
   if ((v213 & 1) != 0 && v215 != nullptr) {
     v57 = 128;
     if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
       v57 = 56;
     }
-    GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v57, v55);
+    ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *(_QWORD*)GameData_212bf68 + v57, (__int64)v215);
   }
   v58 = *(unsigned __int8*)(v2 + 64);
   v59 = (v58 & 1) == 0;
@@ -1576,7 +1581,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
       v84 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v84, v83);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *(_QWORD*)GameData_212bf68 + v84, (__int64)v218);
   }
   v85 = *(unsigned __int8*)(v2 + 88);
   v86 = (v85 & 1) == 0;
@@ -1637,7 +1643,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
       v96 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v96, v95);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *(_QWORD*)GameData_212bf68 + v96, (__int64)v218);
   }
   v97 = *(unsigned __int8*)(v2 + 112);
   v98 = (v97 & 1) == 0;
@@ -1699,7 +1706,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*v103 + 200LL) == 0) {
       v109 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*v103 + v109, v108);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *v103 + v109, (__int64)v218);
   }
   v110 = *(unsigned __int8*)(v2 + 64);
   v111 = (v110 & 1) == 0;
@@ -1760,7 +1768,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*v103 + 200LL) == 0) {
       v121 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*v103 + v121, v120);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *v103 + v121, (__int64)v218);
   }
   v122 = *(unsigned __int8*)(v2 + 64);
   v123 = (v122 & 1) == 0;
@@ -1821,7 +1830,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*v103 + 200LL) == 0) {
       v133 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*v103 + v133, v132);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *v103 + v133, (__int64)v218);
   }
   v134 = *(unsigned __int8*)(v2 + 88);
   v135 = (v134 & 1) == 0;
@@ -1882,7 +1892,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*v103 + 200LL) == 0) {
       v145 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*v103 + v145, v144);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *v103 + v145, (__int64)v218);
   }
   v146 = *(unsigned __int8*)(v2 + 64);
   v147 = (v146 & 1) == 0;
@@ -1943,7 +1954,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*v103 + 200LL) == 0) {
       v157 = 56;
     }
-    v3 = (_QWORD*)GameRoutine_1a0a4e0(*v103 + v157, v156);
+    v3 = (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *v103 + v157, (__int64)v218);
   }
   v158 = *(unsigned __int8*)(v2 + 88);
   v159 = (v158 & 1) == 0;
@@ -2004,7 +2016,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
     if (*(_QWORD*)(*v103 + 200LL) == 0) {
       v169 = 56;
     }
-    GameRoutine_1a0a4e0(*v103 + v169, v168);
+    ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *v103 + v169, (__int64)v218);
   }
   if (*(int*)(v2 + 352) >= 1) {
     v170 = 0;
@@ -2115,7 +2128,8 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
             if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
               v189 = 56;
             }
-            GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v189, v188);
+            ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+                *(_QWORD*)GameData_212bf68 + v189, (__int64)v182);
           }
           v214 = v179 + v178;
           v215 = (char*)v187;
@@ -2153,14 +2167,16 @@ __int64 GameHr_c687a0(__int64 a1, char a2)
           if (*(_QWORD*)(*v103 + 200LL) == 0) {
             v201 = 56;
           }
-          GameRoutine_1a0a4e0(*v103 + v201, v200);
+          ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+              *v103 + v201, (__int64)v218);
         }
         if ((v213 & 1) != 0 && v215 != nullptr) {
           v202 = 128;
           if (*(_QWORD*)(*v103 + 200LL) == 0) {
             v202 = 56;
           }
-          GameRoutine_1a0a4e0(*v103 + v202, v200);
+          ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+              *v103 + v202, (__int64)v215);
         }
         v171 += 3;
         --v172;

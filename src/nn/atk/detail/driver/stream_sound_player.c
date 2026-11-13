@@ -3054,8 +3054,8 @@ __int64 StreamSoundPlayer_29a8e0(__int64 result, __int64 a2, double a3,
     *(float*)&v122 = v62;
     *(float*)&v63 = v61 * *((float*)&v122 + 1);
     v64 = *(float*)(a2 + 96);
-    *(_QWORD*)((char*)&v122 + 4) =
-        __PAIR64__(*(float*)(a2 + 92) * *((float*)&v122 + 2), v63);
+    *(_QWORD*)((char*)&v122 + 4) = __PAIR64__(
+        COERCE_UNSIGNED_INT(*(float*)(a2 + 92) * *((float*)&v122 + 2)), v63);
     v65 = v64 * *((float*)&v122 + 3);
     v66 = *(float*)(a2 + 104);
     v67 = *(float*)&v123 + (float)(v18 + *(float*)(a2 + 100));

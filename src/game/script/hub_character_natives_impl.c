@@ -2001,7 +2001,9 @@ _QWORD* HubCharacterNatives_cb4360(_QWORD* result, long double a2)
       else {
         v11 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v11, a2);
+      result = (_QWORD*)((__int64 (*)(__int64, __int64))
+                             nn_mem_StandardAllocator_Free)(
+          *(_QWORD*)v5 + v11, *(_QWORD*)(v3 - 160));
     }
     v3 = v4[2];
   }
@@ -2010,7 +2012,9 @@ _QWORD* HubCharacterNatives_cb4360(_QWORD* result, long double a2)
     if (*(_QWORD*)(*(_QWORD*)v5 + 200LL) == 0) {
       v12 = 56;
     }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v12, a2);
+    return (_QWORD*)((__int64 (*)(__int64, __int64))
+                         nn_mem_StandardAllocator_Free)(*(_QWORD*)v5 + v12,
+                                                        *v4);
   }
   return result;
 }

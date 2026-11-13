@@ -667,7 +667,8 @@ LABEL_34:
     if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
       v31 = 56;
     }
-    GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v31, v28);
+    ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *(_QWORD*)GameData_212bf68 + v31, (__int64)v21);
   }
   v6 = GameData_212c370;
   if (HIDWORD(v29) != 0) {
@@ -716,7 +717,8 @@ LABEL_34:
             if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
               v39 = 56;
             }
-            GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v39, v38);
+            ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+                *(_QWORD*)GameData_212bf68 + v39, (__int64)v55);
           }
           v40 = GameData_2212270;
           strcpy((char*)v54 + 1, "Facility");
@@ -741,7 +743,8 @@ LABEL_34:
             if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
               v43 = 56;
             }
-            GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v43, v38);
+            ((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+                *(_QWORD*)GameData_212bf68 + v43, (__int64)v55);
           }
           goto LABEL_72;
         }
@@ -770,7 +773,7 @@ LABEL_72:
   }
   v48 = *(void (**)(void))(**(_QWORD**)(v47 + 24) + 448LL);
   if ((v44 & 1) == 0) {
-    v48();
+    ((void (*)(__int64))v48)(*(_QWORD*)(v47 + 24));
     result = *(_QWORD**)(v47 + 2240);
     *(_QWORD*)(v47 + 2240) = 0;
     if (result == (_QWORD*)(v47 + 2208)) {
@@ -785,14 +788,15 @@ LABEL_72:
     result = (_QWORD*)(*(__int64 (**)(void*))(*result + v51))(result);
     goto LABEL_82;
   }
-  result = (_QWORD*)((__int64 (*)(void))v48)();
+  result = (_QWORD*)((__int64 (*)(__int64))v48)(*(_QWORD*)(v47 + 24));
 LABEL_82:
   if ((v54[0] & 1) != 0 && v55 != nullptr) {
     v52 = 128;
     if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
       v52 = 56;
     }
-    return (_QWORD*)GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v52, v50);
+    return (_QWORD*)((__int64 (*)(__int64, __int64))GameRoutine_1a0a4e0)(
+        *(_QWORD*)GameData_212bf68 + v52, (__int64)v55);
   }
   return result;
 }

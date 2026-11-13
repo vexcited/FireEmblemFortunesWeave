@@ -10731,8 +10731,9 @@ __attribute__((swiftcall)) void snd_a35e20(PSEUDO_X8 x8_, __int64 a1,
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v32 = 56;
           }
-          result = nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v32, v26);
+          result = ((__int64 (*)(__int64, __int64))
+                        nn_mem_StandardAllocator_Free_alt1)(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v32, (__int64)v9);
         }
         v9 = v28;
         v6 = v33;

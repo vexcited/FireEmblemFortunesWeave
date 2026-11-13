@@ -393,8 +393,10 @@ __int64 nn_atk_detail_2a5b40(__int64 result, int a2, int a3)
       if (*(_BYTE*)(v5 + 191) != 2) {
       LABEL_55:
         result = *(_QWORD*)(v5 + 400);
-        v94_.v95 = __PAIR64__(*(float*)(v5 + 332) + *((float*)&v94_.v95 + 1),
-                              LODWORD(v53));
+        v94_.v95 = __PAIR64__(
+            COERCE_UNSIGNED_INT(*(float*)(v5 + 332) +
+                                *((float*)&v94_.v95 + 1)),
+            LODWORD(v53));
         if (result == 0) {
           goto LABEL_85;
         }
@@ -403,8 +405,9 @@ __int64 nn_atk_detail_2a5b40(__int64 result, int a2, int a3)
     LABEL_64:
       *(float*)&v57 = v53 + GameRoutine_2a38f0(v5 + 156);
       result = *(_QWORD*)(v5 + 400);
-      v94_.v95 =
-          __PAIR64__(*(float*)(v5 + 332) + *((float*)&v94_.v95 + 1), v57);
+      v94_.v95 = __PAIR64__(
+          COERCE_UNSIGNED_INT(*(float*)(v5 + 332) + *((float*)&v94_.v95 + 1)),
+          v57);
       if (result == 0) {
         goto LABEL_85;
       }
@@ -483,8 +486,10 @@ __int64 nn_atk_detail_2a5b40(__int64 result, int a2, int a3)
       if (*(_BYTE*)(v5 + 191) != 2) {
       LABEL_72:
         v67 = *(_QWORD*)(v5 + 400);
-        v85_.v91 = __PAIR64__(*(float*)(v5 + 332) + *((float*)&v85_.v91 + 1),
-                              LODWORD(v66));
+        v85_.v91 = __PAIR64__(
+            COERCE_UNSIGNED_INT(*(float*)(v5 + 332) +
+                                *((float*)&v85_.v91 + 1)),
+            LODWORD(v66));
         BaseNx_2a9930(v67, 1u, (__int64)&v85_.v85);
         result = GameRoutine_283930(*(_QWORD*)(v5 + 304));
         if ((int)result < 2) {
@@ -538,8 +543,10 @@ __int64 nn_atk_detail_2a5b40(__int64 result, int a2, int a3)
         if (*(_BYTE*)(v5 + 191) != 2) {
         LABEL_78:
           v71 = *(_QWORD*)(v5 + 400);
-          v85_.v91 = __PAIR64__(*(float*)(v5 + 332) + *((float*)&v85_.v91 + 1),
-                                LODWORD(v70));
+          v85_.v91 = __PAIR64__(
+              COERCE_UNSIGNED_INT(*(float*)(v5 + 332) +
+                                  *((float*)&v85_.v91 + 1)),
+              LODWORD(v70));
           BaseNx_2a9930(v71, 2u, (__int64)&v85_.v85);
           result = GameRoutine_283930(*(_QWORD*)(v5 + 304));
           if ((int)result >= 3) {
@@ -592,7 +599,9 @@ __int64 nn_atk_detail_2a5b40(__int64 result, int a2, int a3)
             LABEL_84:
               v75 = *(_QWORD*)(v5 + 400);
               v85_.v91 = __PAIR64__(
-                  *(float*)(v5 + 332) + *((float*)&v85_.v91 + 1), LODWORD(v74));
+                  COERCE_UNSIGNED_INT(*(float*)(v5 + 332) +
+                                      *((float*)&v85_.v91 + 1)),
+                  LODWORD(v74));
               BaseNx_2a9930(v75, 3u, (__int64)&v85_.v85);
               result = GameRoutine_283930(*(_QWORD*)(v5 + 304));
               if ((int)result >= 4) {

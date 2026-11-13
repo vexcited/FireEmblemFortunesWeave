@@ -636,9 +636,12 @@ void physx_source_lowleveldynamics_src_327da0(__int64 a1, __int64 a2,
                     v185 = v185 + (float)(PSEUDO_UNFUSED(v231 * v229[4]));
                     v184 = v184 + (float)(PSEUDO_UNFUSED(v231 * v229[5]));
                     v187 = __PAIR64__(
-                        *((float*)&v187 + 1) +
-                            (float)(PSEUDO_UNFUSED(v231 * v229[1])),
-                        *(float*)&v187 + (float)(PSEUDO_UNFUSED(v231 * *v229)));
+                        COERCE_UNSIGNED_INT(
+                            *((float*)&v187 + 1) +
+                            (float)(PSEUDO_UNFUSED(v231 * v229[1]))),
+                        COERCE_UNSIGNED_INT(
+                            *(float*)&v187 +
+                            (float)(PSEUDO_UNFUSED(v231 * *v229))));
                     if (v226 == v197) {
                       goto LABEL_44;
                     }
