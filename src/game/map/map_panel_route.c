@@ -1278,10 +1278,10 @@ void MapPanelRoute_Unknown4(__int64 a1)
   LOBYTE(v50_.v58) = 1;
   v50_.v53 = vmulq_f32(v2, v9);
   v50_.v54 = vmulq_f32(v2, v8);
-  LANES128(v50_.v53).n128_u32[3] =
+  LANES128(v50_.v53).n128_f32[3] =
       vmuls_lane_f32(LANES128(v50_.v53).n128_f32[3], v40_.v42, 3);
   LANES128(v2).n128_u64[0] = __PAIR64__(v7, v6);
-  LANES128(v50_.v54).n128_u32[3] =
+  LANES128(v50_.v54).n128_f32[3] =
       vmuls_lane_f32(LANES128(v50_.v54).n128_f32[3], v40_.v43, 3);
   LANES128(v2).n128_u64[1] = v6;
   v50_.v57 = v2;

@@ -631,8 +631,7 @@ __int64 TaskSSR_b7c060(int* a1, _QWORD* a2, _QWORD* a3, __int64 a4)
   *(_DWORD*)(v16 + 92) = *(_DWORD*)(a4 + 24);
   v21 = *(_DWORD*)(a4 + 32);
   *(_DWORD*)(v16 + 96) = v21;
-  LOBYTE(v21) = *(_BYTE*)(a4 + 36);
-  *(float*)(v16 + 100) = (float)v21;
+  *(float*)(v16 + 100) = (float)*(unsigned __int8*)(a4 + 36);
   v22 = *(float*)(a4 + 64);
   v23 = *(float*)(a4 + 68);
   v24 = *(float*)(a4 + 60) / (float)v12;
@@ -652,11 +651,9 @@ __int64 TaskSSR_b7c060(int* a1, _QWORD* a2, _QWORD* a3, __int64 a4)
               0x1.0000000000000p+0f);
   *(_DWORD*)(v16 + 64) = *(_DWORD*)(a4 + 40);
   *(float*)(v16 + 68) = *(float*)&v26;
-  LOBYTE(v26) = *(_BYTE*)(a4 + 49);
-  v27 = (float)v26;
+  v27 = (float)*(unsigned __int8*)(a4 + 49);
   *(float*)(v16 + 108) = v27;
-  LOBYTE(v27) = *(_BYTE*)(a4 + 48);
-  *(float*)(v16 + 112) = (float)LODWORD(v27);
+  *(float*)(v16 + 112) = (float)*(unsigned __int8*)(a4 + 48);
   *(_DWORD*)(v16 + 116) = *(_DWORD*)(a4 + 52);
   (*(void (**)(__int64))(*(_QWORD*)v15 + 64LL))(v15);
   v28 = a1[136];

@@ -9,7 +9,9 @@ __int64 physx_Sc_BodySim_updateForces(__int64, __int64, __int64, _DWORD*,
                                       float*, __int64, unsigned int, float);
 __int64 physx_Sc_getArticulationSim(__int64, unsigned int);
 __n128 physx_PxGeometryQuery_computeGeomBounds(_QWORD);
-extern __int64 (*physx_PxLightCpuTask_Destroy_PxLightCpuTask_ptr[])();
+extern __int64 (*GameData_1f88218_alt1[])() __asm__("GameData_1f88218");
+extern __int64 (*GameData_1f88278_alt1[])() __asm__("GameData_1f88278");
+extern __int64 (*GameData_1f882d8_alt1[])() __asm__("GameData_1f882d8");
 float GameRoutine_312a20(__int64);
 void physx_Sc_Scene_beforeSolver(__int64 a1, _QWORD* a2);
 
@@ -133,7 +135,7 @@ void physx_Sc_Scene_beforeSolver(__int64 a1, _QWORD* a2)
       *(_QWORD*)(v34 + 2096) = v36;
       *(_QWORD*)(v34 + 2104) = v38;
       v43 = (__int64*)(v34 + 40);
-      *(_QWORD*)v34 = physx_PxLightCpuTask_Destroy_PxLightCpuTask_ptr;
+      *(_QWORD*)v34 = GameData_1f88218_alt1;
       *(_QWORD*)(v34 + 8) = v39;
       v44 = v9;
       *(_DWORD*)(v34 + 2092) = v37;
@@ -239,7 +241,7 @@ LABEL_5:
       *(_DWORD*)(v15 + 32) = 0;
       *(_DWORD*)(v15 + 48) = v14;
       *(_QWORD*)(v15 + 40) = v12 + 8LL * i;
-      *(_QWORD*)v15 = physx_PxLightCpuTask_Destroy_PxLightCpuTask_ptr;
+      *(_QWORD*)v15 = GameData_1f88278_alt1;
       *(_QWORD*)(v15 + 8) = v17;
       *(_DWORD*)(v15 + 52) = v16;
       if (a2 != nullptr) {
@@ -282,7 +284,7 @@ LABEL_5:
         *(_QWORD*)(v25 + 24) = 0;
         *(_DWORD*)(v25 + 32) = 0;
         *(_DWORD*)(v25 + 48) = v24;
-        *(_QWORD*)v25 = physx_PxLightCpuTask_Destroy_PxLightCpuTask_ptr;
+        *(_QWORD*)v25 = GameData_1f882d8_alt1;
         *(_QWORD*)(v25 + 8) = v26;
         *(_QWORD*)(v25 + 56) = v28;
         *(_DWORD*)(v25 + 52) = v27;

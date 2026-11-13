@@ -4,6 +4,10 @@
 
 #pragma GCC visibility push(hidden)
 
+struct GmapDrawer_mtx44 {
+  float32x4_t v[4];
+};
+
 __int64 GameRoutine_19931a0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_a867a0(_QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
@@ -4461,14 +4465,9 @@ void GmapDrawer_153aa40(__int64** a1, char a2)
   float v1574;
   float32x4_t*** v1575;
   float32x4_t*** v1576;
-  _QWORD v1577[2];
-  float32x4_t v1578;
-  __int128 v1579;
-  __int128 v1580;
-  _QWORD v1581[8];
-  _QWORD v1582[4];
-  __int128 v1583;
-  __int128 v1584;
+  _QWORD v1577[44] __attribute__((aligned(16)));
+  _QWORD v1581[8] __attribute__((aligned(16)));
+  _QWORD v1582[8] __attribute__((aligned(16)));
   int8x16x2_t v1585;
   int8x16x2_t v1586;
   int8x16x2_t v1587;
@@ -4548,16 +4547,10 @@ LABEL_8:
       atomic_fetch_add_explicit(
         (atomic_ullong* volatile)(v32 + 1), 1u, memory_order_relaxed);
     }
-    *(_OWORD*)v1577 =
-      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v33 + 16LL))(v33);
-    v1578 = v34;
-    v1579 = v35;
-    v1580 = v36;
-    *(_OWORD*)v1582 =
-      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v33 + 24LL))(v33);
-    *(_OWORD*)&v1582[2] = v37;
-    v1583 = v38;
-    v1584 = v39;
+    *(struct GmapDrawer_mtx44*)v1577 = ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                                        (_QWORD*)(*(_QWORD*)v33 + 16LL))(v33);
+    *(struct GmapDrawer_mtx44*)v1582 = ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                                        (_QWORD*)(*(_QWORD*)v33 + 24LL))(v33);
     v43 = GameRoutine_a6c440(&v1545[2], v1577, v1582);
     if (v32 != nullptr &&
       atomic_fetch_add(
@@ -5167,16 +5160,12 @@ LABEL_8:
                 atomic_fetch_add_explicit((atomic_ullong* volatile)(v104 + 8),
                   1u, memory_order_relaxed);
               }
-              *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                (_QWORD*)(*(_QWORD*)v105 + 16LL))(v105);
-              v1578 = v106;
-              v1579 = v107;
-              v1580 = v108;
-              *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                (_QWORD*)(*(_QWORD*)v105 + 24LL))(v105);
-              *(_OWORD*)&v1582[2] = v109;
-              v1583 = v110;
-              v1584 = v111;
+              *(struct GmapDrawer_mtx44*)v1577 =
+                ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                  (_QWORD*)(*(_QWORD*)v105 + 16LL))(v105);
+              *(struct GmapDrawer_mtx44*)v1582 =
+                ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                  (_QWORD*)(*(_QWORD*)v105 + 24LL))(v105);
               v112 = GameRoutine_a6c440(v102, v1577, v1582);
               if (v104 != 0 &&
                 atomic_fetch_add((atomic_ullong* volatile)(v104 + 8),
@@ -5541,16 +5530,12 @@ LABEL_8:
                   atomic_fetch_add_explicit((atomic_ullong* volatile)(v228 + 1),
                     1u, memory_order_relaxed);
                 }
-                *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                  (_QWORD*)(*(_QWORD*)v229 + 16LL))(v229);
-                v1578 = v230;
-                v1579 = v231;
-                v1580 = v232;
-                *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                  (_QWORD*)(*(_QWORD*)v229 + 24LL))(v229);
-                *(_OWORD*)&v1582[2] = v233;
-                v1583 = v234;
-                v1584 = v235;
+                *(struct GmapDrawer_mtx44*)v1577 =
+                  ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                    (_QWORD*)(*(_QWORD*)v229 + 16LL))(v229);
+                *(struct GmapDrawer_mtx44*)v1582 =
+                  ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                    (_QWORD*)(*(_QWORD*)v229 + 24LL))(v229);
                 v236 = GameRoutine_a6c440(v223, v1577, v1582);
                 if (v228 != nullptr &&
                   atomic_fetch_add((atomic_ullong* volatile)(v228 + 1),
@@ -5835,16 +5820,12 @@ LABEL_8:
               atomic_fetch_add_explicit(
                 (atomic_ullong* volatile)(v321 + 8), 1u, memory_order_relaxed);
             }
-            *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-              (_QWORD*)(*(_QWORD*)v322 + 16LL))(v322);
-            v1578 = v323;
-            v1579 = v324;
-            v1580 = v325;
-            *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-              (_QWORD*)(*(_QWORD*)v322 + 24LL))(v322);
-            *(_OWORD*)&v1582[2] = v326;
-            v1583 = v327;
-            v1584 = v328;
+            *(struct GmapDrawer_mtx44*)v1577 =
+              ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                (_QWORD*)(*(_QWORD*)v322 + 16LL))(v322);
+            *(struct GmapDrawer_mtx44*)v1582 =
+              ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                (_QWORD*)(*(_QWORD*)v322 + 24LL))(v322);
             v329 = GameRoutine_a6c440(&v1548, v1577, v1582);
             if (v321 != 0 &&
               atomic_fetch_add((atomic_ullong* volatile)(v321 + 8),
@@ -5867,16 +5848,12 @@ LABEL_8:
                 atomic_fetch_add_explicit((atomic_ullong* volatile)(v331 + 8),
                   1u, memory_order_relaxed);
               }
-              *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                (_QWORD*)(*(_QWORD*)v332 + 16LL))(v332);
-              v1578 = v333;
-              v1579 = v334;
-              v1580 = v335;
-              *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                (_QWORD*)(*(_QWORD*)v332 + 24LL))(v332);
-              *(_OWORD*)&v1582[2] = v336;
-              v1583 = v337;
-              v1584 = v338;
+              *(struct GmapDrawer_mtx44*)v1577 =
+                ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                  (_QWORD*)(*(_QWORD*)v332 + 16LL))(v332);
+              *(struct GmapDrawer_mtx44*)v1582 =
+                ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                  (_QWORD*)(*(_QWORD*)v332 + 24LL))(v332);
               v339 = GameRoutine_a6c440(&v1549, v1577, v1582);
               if (v331 != 0 &&
                 atomic_fetch_add((atomic_ullong* volatile)(v331 + 8),
@@ -5899,16 +5876,12 @@ LABEL_8:
                   atomic_fetch_add_explicit((atomic_ullong* volatile)(v341 + 8),
                     1u, memory_order_relaxed);
                 }
-                *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                  (_QWORD*)(*(_QWORD*)v342 + 16LL))(v342);
-                v1578 = v343;
-                v1579 = v344;
-                v1580 = v345;
-                *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                  (_QWORD*)(*(_QWORD*)v342 + 24LL))(v342);
-                *(_OWORD*)&v1582[2] = v346;
-                v1583 = v347;
-                v1584 = v348;
+                *(struct GmapDrawer_mtx44*)v1577 =
+                  ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                    (_QWORD*)(*(_QWORD*)v342 + 16LL))(v342);
+                *(struct GmapDrawer_mtx44*)v1582 =
+                  ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                    (_QWORD*)(*(_QWORD*)v342 + 24LL))(v342);
                 v349 = GameRoutine_a6c440(&v1550, v1577, v1582);
                 if (v341 != 0 &&
                   atomic_fetch_add((atomic_ullong* volatile)(v341 + 8),
@@ -5933,16 +5906,12 @@ LABEL_8:
                       (atomic_ullong* volatile)(v351 + 8), 1u,
                       memory_order_relaxed);
                   }
-                  *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                    (_QWORD*)(*(_QWORD*)v352 + 16LL))(v352);
-                  v1578 = v353;
-                  v1579 = v354;
-                  v1580 = v355;
-                  *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                    (_QWORD*)(*(_QWORD*)v352 + 24LL))(v352);
-                  *(_OWORD*)&v1582[2] = v356;
-                  v1583 = v357;
-                  v1584 = v358;
+                  *(struct GmapDrawer_mtx44*)v1577 =
+                    ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                      (_QWORD*)(*(_QWORD*)v352 + 16LL))(v352);
+                  *(struct GmapDrawer_mtx44*)v1582 =
+                    ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                      (_QWORD*)(*(_QWORD*)v352 + 24LL))(v352);
                   v359 = GameRoutine_a6c440(&v1551, v1577, v1582);
                   if (v351 != 0 &&
                     atomic_fetch_add((atomic_ullong* volatile)(v351 + 8),
@@ -5967,16 +5936,12 @@ LABEL_8:
                         (atomic_ullong* volatile)(v361 + 8), 1u,
                         memory_order_relaxed);
                     }
-                    *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                      (_QWORD*)(*(_QWORD*)v362 + 16LL))(v362);
-                    v1578 = v363;
-                    v1579 = v364;
-                    v1580 = v365;
-                    *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                      (_QWORD*)(*(_QWORD*)v362 + 24LL))(v362);
-                    *(_OWORD*)&v1582[2] = v366;
-                    v1583 = v367;
-                    v1584 = v368;
+                    *(struct GmapDrawer_mtx44*)v1577 =
+                      ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                        (_QWORD*)(*(_QWORD*)v362 + 16LL))(v362);
+                    *(struct GmapDrawer_mtx44*)v1582 =
+                      ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                        (_QWORD*)(*(_QWORD*)v362 + 24LL))(v362);
                     v369 = GameRoutine_a6c440(&v1552, v1577, v1582);
                     if (v361 != 0 &&
                       atomic_fetch_add((atomic_ullong* volatile)(v361 + 8),
@@ -6001,16 +5966,12 @@ LABEL_8:
                           (atomic_ullong* volatile)(v371 + 8), 1u,
                           memory_order_relaxed);
                       }
-                      *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                        (_QWORD*)(*(_QWORD*)v372 + 16LL))(v372);
-                      v1578 = v373;
-                      v1579 = v374;
-                      v1580 = v375;
-                      *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                        (_QWORD*)(*(_QWORD*)v372 + 24LL))(v372);
-                      *(_OWORD*)&v1582[2] = v376;
-                      v1583 = v377;
-                      v1584 = v378;
+                      *(struct GmapDrawer_mtx44*)v1577 =
+                        ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                          (_QWORD*)(*(_QWORD*)v372 + 16LL))(v372);
+                      *(struct GmapDrawer_mtx44*)v1582 =
+                        ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                          (_QWORD*)(*(_QWORD*)v372 + 24LL))(v372);
                       v379 = GameRoutine_a6c440(&v1553, v1577, v1582);
                       if (v371 != 0 &&
                         atomic_fetch_add((atomic_ullong* volatile)(v371 + 8),
@@ -6036,16 +5997,12 @@ LABEL_8:
                             (atomic_ullong* volatile)(v381 + 8), 1u,
                             memory_order_relaxed);
                         }
-                        *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                          (_QWORD*)(*(_QWORD*)v382 + 16LL))(v382);
-                        v1578 = v383;
-                        v1579 = v384;
-                        v1580 = v385;
-                        *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                          (_QWORD*)(*(_QWORD*)v382 + 24LL))(v382);
-                        *(_OWORD*)&v1582[2] = v386;
-                        v1583 = v387;
-                        v1584 = v388;
+                        *(struct GmapDrawer_mtx44*)v1577 =
+                          ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                            (_QWORD*)(*(_QWORD*)v382 + 16LL))(v382);
+                        *(struct GmapDrawer_mtx44*)v1582 =
+                          ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                            (_QWORD*)(*(_QWORD*)v382 + 24LL))(v382);
                         v389 = GameRoutine_a6c440(&v1554, v1577, v1582);
                         if (v381 != 0 &&
                           atomic_fetch_add((atomic_ullong* volatile)(v381 + 8),
@@ -6071,16 +6028,12 @@ LABEL_8:
                               (atomic_ullong* volatile)(v391 + 8), 1u,
                               memory_order_relaxed);
                           }
-                          *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                            (_QWORD*)(*(_QWORD*)v392 + 16LL))(v392);
-                          v1578 = v393;
-                          v1579 = v394;
-                          v1580 = v395;
-                          *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                            (_QWORD*)(*(_QWORD*)v392 + 24LL))(v392);
-                          *(_OWORD*)&v1582[2] = v396;
-                          v1583 = v397;
-                          v1584 = v398;
+                          *(struct GmapDrawer_mtx44*)v1577 =
+                            ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                              (_QWORD*)(*(_QWORD*)v392 + 16LL))(v392);
+                          *(struct GmapDrawer_mtx44*)v1582 =
+                            ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                              (_QWORD*)(*(_QWORD*)v392 + 24LL))(v392);
                           v399 = GameRoutine_a6c440(&v1555, v1577, v1582);
                           if (v391 != 0 &&
                             atomic_fetch_add(
@@ -6110,16 +6063,12 @@ LABEL_8:
                                 (atomic_ullong* volatile)(v401 + 8), 1u,
                                 memory_order_relaxed);
                             }
-                            *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                              (_QWORD*)(*(_QWORD*)v402 + 16LL))(v402);
-                            v1578 = v403;
-                            v1579 = v404;
-                            v1580 = v405;
-                            *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                              (_QWORD*)(*(_QWORD*)v402 + 24LL))(v402);
-                            *(_OWORD*)&v1582[2] = v406;
-                            v1583 = v407;
-                            v1584 = v408;
+                            *(struct GmapDrawer_mtx44*)v1577 =
+                              ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                                (_QWORD*)(*(_QWORD*)v402 + 16LL))(v402);
+                            *(struct GmapDrawer_mtx44*)v1582 =
+                              ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                                (_QWORD*)(*(_QWORD*)v402 + 24LL))(v402);
                             v409 = GameRoutine_a6c440(&v1556, v1577, v1582);
                             if (v401 != 0 &&
                               atomic_fetch_add(
@@ -6149,16 +6098,12 @@ LABEL_8:
                                   (atomic_ullong* volatile)(v411 + 8), 1u,
                                   memory_order_relaxed);
                               }
-                              *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                                (_QWORD*)(*(_QWORD*)v412 + 16LL))(v412);
-                              v1578 = v413;
-                              v1579 = v414;
-                              v1580 = v415;
-                              *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                                (_QWORD*)(*(_QWORD*)v412 + 24LL))(v412);
-                              *(_OWORD*)&v1582[2] = v416;
-                              v1583 = v417;
-                              v1584 = v418;
+                              *(struct GmapDrawer_mtx44*)v1577 =
+                                ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                                  (_QWORD*)(*(_QWORD*)v412 + 16LL))(v412);
+                              *(struct GmapDrawer_mtx44*)v1582 =
+                                ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                                  (_QWORD*)(*(_QWORD*)v412 + 24LL))(v412);
                               v419 = GameRoutine_a6c440(&v1557, v1577, v1582);
                               if (v411 != 0 &&
                                 atomic_fetch_add(
@@ -6774,7 +6719,7 @@ LABEL_8:
                   vmulq_f32((*v443)[2], vdupq_n_s32(0x3F673E6Bu)))));
             LANES128(v942).n128_u64[0] = LANES128(v945).n128_u64[0];
             LANES128(v942).n128_u64[1] = LANES128(v945).n128_u32[2];
-            v1578 = v942;
+            *(float32x4_t*)&v1577[2] = v942;
             while (1) {
               if (-1431655765 * v944 <= 0x55555555) {
                 v958 = (float)v944 / 0x1.e000000000000p+5;
@@ -7929,16 +7874,12 @@ LABEL_8:
               atomic_fetch_add_explicit(
                 (atomic_ullong* volatile)(v471 + 1), 1u, memory_order_relaxed);
             }
-            *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-              (_QWORD*)(*(_QWORD*)v472 + 16LL))(v472);
-            *(_OWORD*)&v1582[2] = v473;
-            v1583 = v474;
-            v1584 = v475;
-            *(_OWORD*)v1581 = ((long double (*)(__int64)) *
-              (_QWORD*)(*(_QWORD*)v472 + 24LL))(v472);
-            *(_OWORD*)&v1581[2] = v476;
-            *(_OWORD*)&v1581[4] = v477;
-            *(_OWORD*)&v1581[6] = v478;
+            *(struct GmapDrawer_mtx44*)v1582 =
+              ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                (_QWORD*)(*(_QWORD*)v472 + 16LL))(v472);
+            *(struct GmapDrawer_mtx44*)v1581 =
+              ((struct GmapDrawer_mtx44 (*)(__int64)) *
+                (_QWORD*)(*(_QWORD*)v472 + 24LL))(v472);
             v479 = GameRoutine_a6c440(v468, v1582, v1581);
             if (v471 != nullptr &&
               atomic_fetch_add((atomic_ullong* volatile)(v471 + 1),

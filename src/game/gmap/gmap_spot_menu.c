@@ -90,7 +90,8 @@ extern __int64 (*game_gmap_WarpItem_vtable[])();
 extern __int64 (*game_gmap_anonymous_BanquetMenuItem_vtable[])();
 extern __int64 (*game_gmap_anonymous_BoostFarmItem_vtable[])();
 extern __int64 (*game_gmap_anonymous_BoostRecruitItem_vtable[])();
-extern __int64 (*game_gmap_anonymous_CallAnimalMenuItem_vtable[])();
+extern __int64 (*game_gmap_anonymous_CallAnimalMenuItem_vtable_alt1[])()
+    __asm__("GameData_2028c18");
 extern __int64 (*game_gmap_anonymous_CaptureAnimalMenuItem_vtable[])();
 extern __int64 (*game_gmap_anonymous_CarriageMenuItem_vtable[])();
 extern __int64 (*game_gmap_anonymous_ContinueMoveMenuItem_vtable[])();
@@ -112,7 +113,6 @@ extern __int64 (*game_gmap_anonymous_RecruitItem_vtable[])();
 extern __int64 (*game_gmap_anonymous_ShowItem_vtable[])();
 extern __int64 (*game_gmap_anonymous_SideStoryMenuItem_vtable[])();
 extern __int64 (*game_gmap_anonymous_TalkMenuItem_vtable[])();
-extern __int64 (*game_menu_MenuInput_InputUnknown00_ptr[])();
 extern __int64* GameData_212c790;
 extern __int64* GameData_212d6a8;
 extern __int64 GameData_21316c8;
@@ -459,7 +459,7 @@ LABEL_8:
     std___1___shared_weak_count___release_weak_alt1(v20);
   }
   *v17 = game_gmap_GmapSpotMenu_vtable;
-  v17[22] = game_menu_MenuInput_InputUnknown00_ptr;
+  v17[22] = game_gmap_GmapSpotMenu_vtable + 146;
   v17[132] = GameData_20264e8;
   ProcInst_657850_alt1((__int64)v17, (__int64)GameData_212c730, "GmapSpotMenu",
                        1, v1);
@@ -1015,7 +1015,7 @@ LABEL_85:
   *(_WORD*)(v91 + 80) = 257;
   *(_BYTE*)(v91 + 82) = 1;
   *(_WORD*)(v91 + 84) = 0;
-  *(_QWORD*)v91 = game_gmap_anonymous_CallAnimalMenuItem_vtable;
+  *(_QWORD*)v91 = game_gmap_anonymous_CallAnimalMenuItem_vtable_alt1;
   *(_QWORD*)(v91 + 8) = 0;
   *(_WORD*)(v91 + 84) = game_gmap_GmapSituation_CalcCallAnimal_alt1();
   BasicMenuCursor_16e0c00_alt1(v90, v91);
@@ -1621,13 +1621,13 @@ __int64 game_gmap_GmapSpotMenu_XCall(__int64 a1)
   __int64 v6;
   __int64 v8;
   struct {
-    _QWORD v9[4];
-    _QWORD* v10;
-  } v9_;
-  struct {
     _QWORD v11[4];
     _QWORD* v12;
-  } v11_;
+  } __attribute__((aligned(16))) v11_;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } __attribute__((aligned(16))) v9_;
 
   if ((GameRoutine_8229c0_alt1() & 1) == 0) {
     return 0;

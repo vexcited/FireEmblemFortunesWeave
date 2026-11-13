@@ -26,9 +26,9 @@ extern __int64 (*GameData_1fd1140[])();
 extern __int64 (*GameData_1fd11c0[])();
 extern __int64 (*GameData_1fd1240[])();
 extern __int64* game_g_frame_clock_ptr[3];
-float cosf(float);
+float cosf_alt1(float) __asm__("cosf");
 float exp2f(float);
-float sinf(float);
+float sinf_alt1(float) __asm__("sinf");
 long double GameRoutine_652ba0(_QWORD, float, float);
 __int64 (***gfxa_TaskCharaSceneBuffers_Impl_Impl(__int64* a1, __int64 a2))();
 __int64 TaskCharaSceneBuffers_bfcea0(__int64 result, _QWORD* a2, int8x16_t* a3);
@@ -937,11 +937,11 @@ __int64 TaskCharaSceneBuffers_bfcea0(__int64 result, _QWORD* a2, int8x16_t* a3)
       v127 = 175;
     }
     v128 = LANES128(*(v35)).n128_f32[v127] * 0x1.1df46a0000000p-6;
-    v129 = sinf(v128);
-    v240 = -(float)(v129 * cosf(v126));
-    v123 = -sinf(v126);
-    v130 = cosf(v128);
-    v131 = cosf(v126);
+    v129 = sinf_alt1(v128);
+    v240 = -(float)(v129 * cosf_alt1(v126));
+    v123 = -sinf_alt1(v126);
+    v130 = cosf_alt1(v128);
+    v131 = cosf_alt1(v126);
     LANES128(v122).n128_f32[0] = v240;
     v124 = v130 * v131;
   }
@@ -1429,7 +1429,7 @@ LABEL_86:
     }
     v241 = a3[4];
     v230 = *(float*)&v34[v229] * 0x1.1df46a0000000p-6;
-    if (sinf(v230) >= (float)-LANES128(v218).n128_f32[1]) {
+    if (sinf_alt1(v230) >= (float)-LANES128(v218).n128_f32[1]) {
       v218 = v241;
     }
     else {
@@ -1456,8 +1456,8 @@ LABEL_86:
                              vmulq_f32(v234, vrsqrtsq_f32(
                                                  v234, vmulq_f32(v232, v234)))),
                    vceqzq_f32(v232)),
-          cosf(v230));
-      v235 = sinf(v230);
+          cosf_alt1(v230));
+      v235 = sinf_alt1(v230);
       v218 = v242;
       LANES128(v218).n128_f32[1] = -v235;
     }

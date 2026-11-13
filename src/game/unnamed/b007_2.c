@@ -1123,6 +1123,12 @@ void __attribute__((noreturn))
 GameRoutine_919020_alt1() __asm__("GameRoutine_919020");
 void __attribute__((noreturn))
 GameRoutine_919f10_alt1() __asm__("GameRoutine_919f10");
+__int64 GameRoutine_86b4e0_alt1(__int64*) __asm__("GameRoutine_86b4e0");
+bool GameRoutine_878850_alt1(__int64) __asm__("GameRoutine_878850");
+bool GameRoutine_8789c0_alt1(__int64) __asm__("GameRoutine_8789c0");
+__int64 GameRoutine_8a9d70_alt1(__int64) __asm__("GameRoutine_8a9d70");
+char* GameRoutine_a4dbe0_alt1(__int64, const char*,
+                              char) __asm__("GameRoutine_a4dbe0");
 void GameHr_913ca0(__int64 a1, __int64 a2);
 void GameHr_918410(__int64 a1);
 void GameHr_9184f0(__int64 a1);

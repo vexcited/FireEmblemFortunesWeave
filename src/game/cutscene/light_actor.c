@@ -34,7 +34,7 @@ __n128 game_cutscene_17ffe50(__int64*);
 extern _UNKNOWN* GameData_212c540;
 extern unsigned int GameData_1c0b528[3];
 float GameRoutine_618640(_QWORD, double, double);
-long double PostEffectActor_17fb700(_QWORD, _QWORD);
+float PostEffectActor_17fb700(_QWORD, _QWORD);
 __int64 LightActor_Unknown4(float32x4_t* a1, double a2, float a3);
 __int64 LightActor_Unknown5(__int64 result, float a2);
 __int64 GameRoutine_17fe060_alt1(__int64,
@@ -1259,7 +1259,6 @@ __int64 LightActor_Unknown4(float32x4_t* a1, double a2, float a3)
   float v51;
   unsigned int v52;
   __int64 v53;
-  unsigned __int32 v54;
   unsigned __int64 v55;
   unsigned __int64 v56;
   __int64* v57;
@@ -1273,8 +1272,6 @@ __int64 LightActor_Unknown4(float32x4_t* a1, double a2, float a3)
   float v65;
   unsigned int v66;
   __int64 v67;
-  unsigned __int32 v68;
-  unsigned __int32 v69;
   unsigned __int64 v70;
   unsigned __int64 v71;
   __int64* v72;
@@ -1288,7 +1285,7 @@ __int64 LightActor_Unknown4(float32x4_t* a1, double a2, float a3)
   float v80;
   unsigned int v81;
   __int64 v82;
-  long double v83;
+  float v83;
   unsigned __int64 v84;
   unsigned __int64 v85;
   __int64* v86;
@@ -1302,7 +1299,7 @@ __int64 LightActor_Unknown4(float32x4_t* a1, double a2, float a3)
   float v94;
   unsigned int v95;
   __int64 v96;
-  long double v97;
+  float v97;
   unsigned __int64 v98;
   unsigned __int64 v99;
   __int64* v100;
@@ -1316,7 +1313,7 @@ __int64 LightActor_Unknown4(float32x4_t* a1, double a2, float a3)
   float v108;
   unsigned int v109;
   __int64 v110;
-  long double v111;
+  float v111;
   unsigned __int64 v112;
   unsigned __int64 v113;
   __int64* v114;
@@ -1337,7 +1334,7 @@ __int64 LightActor_Unknown4(float32x4_t* a1, double a2, float a3)
   float v129;
   unsigned int v130;
   __int64 v131;
-  long double v132;
+  float v132;
   unsigned __int64 v133;
   unsigned __int64 v134;
   __int64* v135;
@@ -1351,7 +1348,7 @@ __int64 LightActor_Unknown4(float32x4_t* a1, double a2, float a3)
   float v143;
   unsigned int v144;
   __int64 v145;
-  long double v146;
+  float v146;
   unsigned __int64 v147;
   __int64 v148;
   unsigned __int64 v149;
@@ -1367,7 +1364,7 @@ __int64 LightActor_Unknown4(float32x4_t* a1, double a2, float a3)
   float32x4_t v159;
   float32x4_t v160;
   float32x4_t v161;
-  unsigned int v162;
+  float v162;
   __int64 v163;
   float v164;
   float v165;
@@ -1575,8 +1572,8 @@ LABEL_11:
                 }
               }
               *(float*)&v166 = v49;
-              PostEffectActor_17fb700(&v163, v46 + 88);
-              LANES128(a1[5]).n128_u32[1] = v54;
+              LANES128(a1[5]).n128_f32[1] =
+                  PostEffectActor_17fb700(&v163, v46 + 88);
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(v47 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -1629,10 +1626,10 @@ LABEL_11:
                 }
               }
               *(float*)&v166 = v63;
-              PostEffectActor_17fb700(&v163, v60 + 120);
-              LANES128(a1[6]).n128_u32[0] = v68;
-              PostEffectActor_17fb700(&v163, v60 + 152);
-              LANES128(a1[6]).n128_u32[1] = v69;
+              LANES128(a1[6]).n128_f32[0] =
+                  PostEffectActor_17fb700(&v163, v60 + 120);
+              LANES128(a1[6]).n128_f32[1] =
+                  PostEffectActor_17fb700(&v163, v60 + 152);
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(v61 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -1685,10 +1682,10 @@ LABEL_11:
                 }
               }
               *(float*)&v166 = v78;
-              v162 = COERCE_UNSIGNED_INT128(
-                  PostEffectActor_17fb700(&v163, v75 + 184));
+              v162 = PostEffectActor_17fb700(&v163, v75 + 184);
               v83 = PostEffectActor_17fb700(&v163, v75 + 216);
-              LANES128(a1[7]).n128_u64[0] = __PAIR64__(LODWORD(v83), v162);
+              LANES128(a1[7]).n128_f32[0] = v162;
+              LANES128(a1[7]).n128_f32[1] = v83;
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(v76 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -1742,7 +1739,7 @@ LABEL_11:
               }
               *(float*)&v166 = v92;
               v97 = PostEffectActor_17fb700(&v163, v89 + 248);
-              LANES128(a1[6]).n128_u32[2] = LODWORD(v97);
+              LANES128(a1[6]).n128_f32[2] = v97;
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(v90 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -1796,7 +1793,7 @@ LABEL_11:
               }
               *(float*)&v166 = v106;
               v111 = PostEffectActor_17fb700(&v163, v103 + 280);
-              LANES128(a1[6]).n128_u32[3] = LODWORD(v111);
+              LANES128(a1[6]).n128_f32[3] = v111;
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(v104 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -1879,7 +1876,7 @@ LABEL_11:
               }
               *(float*)&v166 = v127;
               v132 = PostEffectActor_17fb700(&v163, v124 + 104);
-              LANES128(a1[5]).n128_u32[0] = LODWORD(v132);
+              LANES128(a1[5]).n128_f32[0] = v132;
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(v125 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -1933,7 +1930,7 @@ LABEL_11:
               }
               *(float*)&v166 = v141;
               v146 = PostEffectActor_17fb700(&v163, v138 + 136);
-              LANES128(a1[5]).n128_u32[2] = LODWORD(v146);
+              LANES128(a1[5]).n128_f32[2] = v146;
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(v139 + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {

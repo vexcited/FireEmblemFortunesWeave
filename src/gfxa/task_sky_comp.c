@@ -2,6 +2,19 @@
 
 #pragma GCC visibility push(hidden)
 
+struct TaskSkyComp_mtx34 {
+  float32x4_t v[3];
+};
+
+struct TaskSkyComp_mtx44 {
+  float32x4_t v[4];
+};
+
+struct TaskSkyComp_xy {
+  float x;
+  float y;
+};
+
 _QWORD* GameRoutine_604020(_QWORD* result);
 _QWORD* GameRoutine_ad5000(_QWORD*, __int64, unsigned __int64, int);
 __attribute__((swiftcall)) void GameRoutine_b34420(PSEUDO_X8, _QWORD*, __int64,
@@ -18,7 +31,7 @@ __int64 GameRoutine_ad5280(__int64*);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern _UNKNOWN* GameData_212c188;
 extern _UNKNOWN* GameData_212c190;
-extern _UNKNOWN* GameData_212c540;
+extern _UNKNOWN* GameData_212c540_alt1 __asm__("GameData_212c540");
 extern __int64 (*GameData_1fc7a10[])();
 extern __int64* game_g_frame_clock_ptr[3];
 float cosf(float);
@@ -181,14 +194,10 @@ __int64 TaskSkyComp_b77c60(__int64 a1, __int64 a2, __int64 a3)
   __int64 v5;
   bool v7;
   int v8;
-  float32x4_t v9;
-  float32x4_t v10;
   float32x4_t v11;
   float32x4_t v12;
   float32x4_t v13;
   float32x4_t v14;
-  float v15;
-  float v16;
   float v17;
   float v18;
   float v19;
@@ -253,13 +262,9 @@ __int64 TaskSkyComp_b77c60(__int64 a1, __int64 a2, __int64 a3)
   float32x4_t v79;
   float32x4_t v80;
   float32x4x4_t v81;
-
-  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-  v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  struct TaskSkyComp_mtx34 v82_;
+  struct TaskSkyComp_mtx44 v83_;
+  struct TaskSkyComp_xy v84_;
   v3 = *(_DWORD*)(a1 + 216);
   v5 = a1 + 200;
   v7 = v3 < -1;
@@ -268,51 +273,26 @@ __int64 TaskSkyComp_b77c60(__int64 a1, __int64 a2, __int64 a3)
     v8 = -v8;
   }
   *(_DWORD*)(a1 + 216) = v8;
-  v77 = COERCE_FLOAT32X4_T(
-      ((long double (*)(_QWORD)) *
-       (_QWORD*)(**(_QWORD**)(a3 + 136) + 16LL))(*(_QWORD*)(a3 + 136))),
-  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-  v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
-  v78 = v9;
-  v79 = v10;
-  v80 = *(float32x4_t*)GameData_212c540;
-  (*(void (**)(_QWORD))(**(_QWORD**)(a3 + 136) + 24LL))(*(_QWORD*)(a3 + 136)),
-      v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-      v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-      v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-      v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-      v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-      v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  v82_ = ((struct TaskSkyComp_mtx34 (*)(_QWORD)) *
+          (_QWORD*)(**(_QWORD**)(a3 + 136) + 16LL))(*(_QWORD*)(a3 + 136));
+  v77 = v82_.v[0];
+  v78 = v82_.v[1];
+  v79 = v82_.v[2];
+  v80 = *(float32x4_t*)GameData_212c540_alt1;
+  v83_ = ((struct TaskSkyComp_mtx44 (*)(_QWORD)) *
+          (_QWORD*)(**(_QWORD**)(a3 + 136) + 24LL))(*(_QWORD*)(a3 + 136));
+  v11 = v83_.v[0];
+  v12 = v83_.v[1];
+  v13 = v83_.v[2];
+  v14 = v83_.v[3];
   if (LANES128(v14).n128_f32[3] == 0x1.0000000000000p+0f) {
-    v15 = (*(float (**)(_QWORD))(**(_QWORD**)(a3 + 136) + 80LL))(
-        *(_QWORD*)(a3 + 136)),
-    v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-    v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-    v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-    v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-    v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-    v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
-    v17 = v15 / v16;
+    v84_ = ((struct TaskSkyComp_xy (*)(_QWORD)) *
+            (_QWORD*)(**(_QWORD**)(a3 + 136) + 80LL))(*(_QWORD*)(a3 + 136));
+    v17 = v84_.x / v84_.y;
     v18 = (*(float (**)(_QWORD))(**(_QWORD**)(a3 + 136) + 56LL))(
-        *(_QWORD*)(a3 + 136)),
-    v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-    v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-    v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-    v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-    v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-    v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+        *(_QWORD*)(a3 + 136));
     v19 = (*(float (**)(_QWORD))(**(_QWORD**)(a3 + 136) + 64LL))(
-        *(_QWORD*)(a3 + 136)),
-    v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-    v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-    v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-    v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-    v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-    v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+        *(_QWORD*)(a3 + 136));
     LANES128(v20).n128_u64[0] = 0;
     v21 = -0x1.0000000000000p+0f / (float)(v19 - v18);
     LODWORD(v22) = 0;
@@ -392,13 +372,7 @@ __int64 TaskSkyComp_b77c60(__int64 a1, __int64 a2, __int64 a3)
   v24 = *(_QWORD*)(v5 + 8LL * *(int*)(a1 + 216));
   v73 = vsubq_f32(v13, COERCE_AS(float32x4_t, v23));
   v25 = *(float*)(a3 + 176) * 0x1.32617c1bda512p-7;
-  v26 = (*(__int64 (**)(__int64))(*(_QWORD*)v24 + 56LL))(v24),
-  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-  v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  v26 = (*(__int64 (**)(__int64))(*(_QWORD*)v24 + 56LL))(v24);
   v81.val[0] = vmlaq_laneq_f32(
       vmlaq_lane_f32(vmulq_n_f32(v75, LANES128(v77).n128_f32[0]), v74,
                      COERCE_AS(float32x2_t, LANES128(v77).n128_u64[0]), 1),
@@ -444,26 +418,14 @@ __int64 TaskSkyComp_b77c60(__int64 a1, __int64 a2, __int64 a3)
     v29 = 492;
   }
   v30 = sinf((float)(0x1.6800000000000p+6f - *(float*)(v28 + v29)) *
-             0x1.1df46a0000000p-6f),
-  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-  v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+             0x1.1df46a0000000p-6f);
   v31 = *(_QWORD*)(a3 + 160);
   v32 = v30;
   v33 = 608;
   if (*(_BYTE*)(v31 + 576) != 0) {
     v33 = 572;
   }
-  v34 = sinf(*(float*)(v31 + v33) * 0x1.1df46a0000000p-6f),
-  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-  v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  v34 = sinf(*(float*)(v31 + v33) * 0x1.1df46a0000000p-6f);
   v35 = *(_QWORD*)(a3 + 160);
   v36 = v32 - v34;
   v37 = 128;
@@ -499,13 +461,7 @@ __int64 TaskSkyComp_b77c60(__int64 a1, __int64 a2, __int64 a3)
   if (*(_BYTE*)(v43 + 1208) != 0) {
     v46 = 1204;
   }
-  v47 = vmulq_n_f32(v45, exp2f(*(float*)(v43 + v46))),
-  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-  v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+  v47 = vmulq_n_f32(v45, exp2f(*(float*)(v43 + v46)));
   *(_QWORD*)(v26 + 176) = LANES128(v47).n128_u64[0];
   *(_DWORD*)(v26 + 184) = LANES128(v47).n128_u32[2];
   v48 = *(_QWORD*)(a3 + 160);
@@ -539,29 +495,12 @@ __int64 TaskSkyComp_b77c60(__int64 a1, __int64 a2, __int64 a3)
     if (*(_BYTE*)(v56 + 1360) != 0) {
       v58 = 1356;
     }
-    v55 = exp2f(*(float*)(v56 + v58)),
-    v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-    v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-    v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-    v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-    v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-    v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+    v55 = exp2f(*(float*)(v56 + v58));
   }
   *(float*)(v26 + 240) = v55;
   *(float*)(v26 + 92) = *(float*)(a3 + 168) + 0x1.0000000000000p+0f;
   *(float*)(v26 +
-            156) = cosf(*(float*)(a3 + 208)),
-            v10 =
-                COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-            v11 =
-                COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-            v12 =
-                COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-            v13 =
-                COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-            v16 =
-                COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-            v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+            156) = cosf(*(float*)(a3 + 208));
   v59 = *(_OWORD*)(a3 + 192);
   *(_QWORD*)(v26 + 160) = v59;
   v60 = (_QWORD*)(v26 + 160);
@@ -626,20 +565,8 @@ __int64 TaskSkyComp_b77c60(__int64 a1, __int64 a2, __int64 a3)
   *(_QWORD*)(v26 + 192) = LANES128(*(v66)).n128_u64[0];
   *(_DWORD*)(v26 + 200) = LANES128(v67).n128_u32[2];
   v68 = sinf((float)(0x1.6800000000000p+6f - *(float*)(a3 + 268)) *
-             0x1.1df46a0000000p-6f),
-  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-  v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
-  v69 = sinf(*(float*)(a3 + 272) * 0x1.1df46a0000000p-6f),
-  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(__n128, "v0", "=w")),
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
-  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
-  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(float, "s1", "=w")),
-  v9 = COERCE_AS(__typeof__(v9), PSEUDO_REGISTER(__n128, "v1", "=w"));
+             0x1.1df46a0000000p-6f);
+  v69 = sinf(*(float*)(a3 + 272) * 0x1.1df46a0000000p-6f);
   v70 = v68 - v69;
   v71 = *(_DWORD*)(a3 + 264);
   *(_DWORD*)(v26 + 96) = *(_DWORD*)(a3 + 260);

@@ -355,6 +355,12 @@ GameRoutine_18abd30_alt1() __asm__("GameRoutine_18abd30");
 
 void __attribute__((noreturn))
 GameRoutine_874520_alt1() __asm__("GameRoutine_874520");
+void GameRoutine_1366fa0_alt1(__int64, __int64,
+                              __int64) __asm__("GameRoutine_1366fa0");
+void GameRoutine_156c240_alt1(__int64*) __asm__("GameRoutine_156c240");
+__attribute__((swiftcall)) void
+GameRoutine_188a480_alt1(PSEUDO_X8, __int64,
+                         __int64) __asm__("GameRoutine_188a480");
 
 void __cxa_guard_release(__int64);
 

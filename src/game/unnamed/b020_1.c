@@ -895,6 +895,24 @@ __int64 GameHr_15b7780(_QWORD* a1);
 __attribute__((swiftcall)) void
 GameRoutine_159e180_alt1(PSEUDO_X8, __int64*,
                          _QWORD*) __asm__("GameRoutine_159e180");
+__int64 GameRoutine_14b4cf0_alt1(__int64, unsigned int,
+                                 __int64) __asm__("GameRoutine_14b4cf0");
+__attribute__((swiftcall)) void
+GameRoutine_15733c0_alt1(PSEUDO_X8, __int64,
+                         __int64) __asm__("GameRoutine_15733c0");
+__int64 GameRoutine_15a4580_alt1(__int64, __int64, unsigned __int16*,
+                                 char) __asm__("GameRoutine_15a4580");
+bool GameRoutine_15a6d00_alt1(unsigned __int8*,
+                              unsigned __int8*) __asm__("GameRoutine_15a6d00");
+__int64 GameRoutine_188df50_alt1(__int64*, unsigned int*, __int64,
+                                 __int64) __asm__("GameRoutine_188df50");
+__int64
+GameRoutine_1a09ce0_alt1(__int64, const char*,
+                         unsigned __int64) __asm__("GameRoutine_1a09ce0");
+__int64 GameRoutine_6c2b50_alt1(__int64) __asm__("GameRoutine_6c2b50");
+__int64 GameRoutine_6c3980_alt1(__int64, __int64) __asm__("GameRoutine_6c3980");
+char* GameRoutine_a4dbe0_alt1(__int64, const char*,
+                              char) __asm__("GameRoutine_a4dbe0");
 
 __int64 GameHr_15744f0(__int64* a1, char a2, char a3);
 

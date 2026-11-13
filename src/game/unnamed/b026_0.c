@@ -477,6 +477,10 @@ GameRoutine_193b220_alt1() __asm__("GameRoutine_193b220");
 
 void __attribute__((noreturn))
 GameRoutine_65c760_alt1() __asm__("GameRoutine_65c760");
+bool GameRoutine_1939ec0_alt1(__int64*, char*,
+                              __int64) __asm__("GameRoutine_1939ec0");
+void GameRoutine_193c000_alt1(__int64*, unsigned __int64,
+                              __int64*) __asm__("GameRoutine_193c000");
 
 void game_1922c00(__int64, unsigned __int8*);
 

@@ -579,7 +579,7 @@ LABEL_9:
     }
     v51 = 40;
   }
-  (*(void (**)(void)) & (*v92_.v93)[v51])(),
+  (*(void (**)(unsigned __int8**))(*v92_.v93 + v51))(v92_.v93),
       v45 = COERCE_AS(__typeof__(v45),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
       v87 = COERCE_AS(__typeof__(v87),

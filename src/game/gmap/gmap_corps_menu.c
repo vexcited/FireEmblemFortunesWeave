@@ -3084,7 +3084,7 @@ LABEL_24:
           if (v23 == v4) {
             if (*((_DWORD*)v22 + 4) == (_DWORD)v4) {
             LABEL_52:
-              if (v2[28] < *(_DWORD*)(v22[3] + 112)) {
+              if ((int)v2[28] < *(int*)(v22[3] + 112)) {
                 break;
               }
               return 0;
@@ -3125,7 +3125,7 @@ LABEL_53:
       }
       v26 = 10;
     }
-    (*(void (**)(void)) & (*v28_.v29)[v26])();
+    (*(void (**)(_DWORD**))(*v28_.v29 + v26))(v28_.v29);
   }
   return 0;
 }

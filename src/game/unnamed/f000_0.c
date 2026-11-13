@@ -119,6 +119,9 @@ bool GameRoutine_283cd0_alt1(__int64) __asm__("GameRoutine_283cd0");
 float GameRoutine_283c40_alt1(__int64, int, int) __asm__("GameRoutine_283c40");
 float GameRoutine_2a5270_alt1(unsigned int*,
                               float) __asm__("GameRoutine_2a5270");
+__int64 GameRoutine_10d050_alt1(__int64, __int64) __asm__("GameRoutine_10d050");
+float GameRoutine_d28060_alt1(void) __asm__("GameRoutine_d28060");
+__int64 GameRoutine_d8d1a0_alt1(__int64) __asm__("GameRoutine_d8d1a0");
 void* SoundVoiceNX_14e360();
 void GameHr_2a8b80(_DWORD* a1, __int64 a2, __int64 a3, __int64 a4, int a5,
                    __int64 a6);
@@ -3704,8 +3707,7 @@ float GameHr_d78cb0(float* a1, float a2)
       }
     }
     v9 = (float)v7 / 0x1.9000000000000p+6f;
-    GameRoutine_d28060_alt1(),
-        v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s0", "=w"));
+    v10 = GameRoutine_d28060_alt1();
     v6 = v9 * fmaxf(v10, 0x1.0000000000000p+0f);
   }
   result = v6 * *a1;

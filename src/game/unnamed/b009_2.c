@@ -178,6 +178,13 @@ __int64
 GameRoutine_1a09ce0_alt1(__int64, const char*,
                          unsigned __int64) __asm__("GameRoutine_1a09ce0");
 __int64 GameRoutine_b869a0_alt1(__int64) __asm__("GameRoutine_b869a0");
+void GameRoutine_193ab40_alt1(__int64) __asm__("GameRoutine_193ab40");
+__int64 GameRoutine_193ac30_alt1(__int64,
+                                 __int64) __asm__("GameRoutine_193ac30");
+_QWORD* GameRoutine_a993a0_alt1(__int64, __int64*,
+                                __int64*) __asm__("GameRoutine_a993a0");
+_QWORD* GameRoutine_b873c0_alt1(_QWORD*,
+                                __int64*) __asm__("GameRoutine_b873c0");
 
 __int64 GameHr_a988a0(__int64 result, __int64 a2, __int64* a3);
 

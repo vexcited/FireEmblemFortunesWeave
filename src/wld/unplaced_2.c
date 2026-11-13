@@ -2,6 +2,11 @@
 
 #pragma GCC visibility push(hidden)
 
+struct wld_xy {
+  float x;
+  float y;
+};
+
 __attribute__((swiftcall)) void Quat_624bc0(PSEUDO_X8, _QWORD);
 __attribute__((swiftcall)) void math_Quat_FromAxisAngle(PSEUDO_X8, _QWORD,
                                                         float);
@@ -274,7 +279,6 @@ __int64 wld_a7fed0(float32x4_t* a1, __int64 a2, __int64 a3, long double a4,
   float v244;
   float v245;
   float v246;
-  float v247;
   float v248;
   float v249;
   float v250;
@@ -2516,13 +2520,14 @@ LABEL_118:
     }
   }
 LABEL_122:
-  v245 = (*(float (**)(__int64))(*(_QWORD*)a2 + 80LL))(a2);
-  v246 = v245 +
-    (float)((float)((*(float (**)(__int64))(*(_QWORD*)a3 + 80LL))(a3)-v245) *
-      *(float*)&a4);
-  (*(void (**)(__int64))(*(_QWORD*)a2 + 80LL))(a2);
-  v248 = v247;
-  (*(void (**)(__int64))(*(_QWORD*)a3 + 80LL))(a3);
+  v245 = (*(struct wld_xy(**)(__int64))(*(_QWORD*)a2 + 80LL))(a2).x;
+  v246 =
+    v245 +
+    (float)((float)((*(struct wld_xy(**)(__int64))(*(_QWORD*)a3 + 80LL))(a3).x -
+                    v245) *
+            *(float*)&a4);
+  v248 = (*(struct wld_xy(**)(__int64))(*(_QWORD*)a2 + 80LL))(a2).y;
+  v249 = (*(struct wld_xy(**)(__int64))(*(_QWORD*)a3 + 80LL))(a3).y;
   LANES128(a1[7]).n128_f32[0] = v246;
   LANES128(a1[7]).n128_f32[1] =
     v248 + (float)((float)(v249 - v248) * *(float*)&a4);
