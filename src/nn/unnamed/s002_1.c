@@ -42,10 +42,6 @@ extern __int64 SdkData_f60360;
 
 extern _UNKNOWN SdkData_f60368;
 
-extern __int64 SdkData_f65e48;
-
-extern _UNKNOWN SdkData_f65e50;
-
 extern __int64 SdkData_f65e70;
 
 extern _UNKNOWN SdkData_f65e78;
@@ -110,8 +106,6 @@ __int64 SdkRoutine_2d0();
 
 __int64 SdkRoutine_589700(_QWORD, _QWORD, _QWORD, _QWORD);
 
-__int64 SdkRoutine_5a2e10(_QWORD);
-
 __int64 SdkRoutine_5cda10(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                           _QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
 
@@ -120,10 +114,6 @@ __int64 SdkRoutine_5d9ce0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 SdkRoutine_5dcc50(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 SdkRoutine_5dce10(_QWORD, _QWORD);
-
-__int64 SdkRoutine_8584b0(_QWORD);
-
-__int64 SdkRoutine_8584c0(_QWORD);
 
 __int64 SdkRoutine_858b60(_QWORD);
 
@@ -134,8 +124,6 @@ __int64 SdkRoutine_858d00(_QWORD, _QWORD, _QWORD);
 __int64 SdkRoutine_858d40(_QWORD);
 
 __int64 SdkRoutine_858d50(_QWORD);
-
-__int64 SdkRoutine_858db0(_QWORD);
 
 __int64 SdkRoutine_859a50(_QWORD, _QWORD, _QWORD);
 
@@ -168,8 +156,6 @@ __int64 SdkRoutine_85b140(_QWORD);
 __int64 SdkRoutine_85c330(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 SdkRoutine_85c340(_QWORD);
-
-__attribute__((swiftcall)) void SdkRoutine_8726e0(PSEUDO_X8);
 
 __int64 SdkRoutine_872be0(void);
 
@@ -668,94 +654,6 @@ __int64 SdkHr_5964b0(_DWORD* a1)
     *(_QWORD*)a1 = 0;
   }
   return SdkRoutine_858b80(a1 + 2);
-}
-
-__int64 SdkHr_5a28e0(int* a1, __int64 a2, __int64 a3, int a4, __int64 a5,
-                     unsigned int a6)
-{
-  int v11;
-  __int64 v12;
-  __int64 result;
-  __int64 v14;
-  unsigned int* v15;
-  unsigned __int64 v16;
-  __int64 v17;
-  int v18;
-  int v19;
-  unsigned __int64 v20;
-  __int64 v21;
-  unsigned int v22;
-  _QWORD v23[2];
-  _QWORD v24[2];
-  __int64 v25;
-  int v26;
-  __int64 v27;
-  _QWORD v28[8];
-  _BYTE v29[4];
-
-  v29[0] = 0;
-  v28[6] = 0;
-  v28[7] = 0;
-  if (a4 >= 6) {
-    v11 = 6;
-  }
-  else {
-    v11 = a4;
-  }
-  v12 = v11;
-  memset(v28, 0, 48);
-  v27 = 0;
-  SdkRoutine_8726e0((void*)&v25);
-  v23[0] = a3;
-  v23[1] = v12;
-  v24[0] = &v27;
-  v24[1] = v12;
-  v26 = (*(__int64 (**)(__int64, _BYTE*, int*, _QWORD*, _QWORD*, __int64,
-                        _QWORD))(*(_QWORD*)v25 + 104LL))(v25, v29, a1, v24, v23,
-                                                         a5, a6);
-  if (v26 != 0) {
-    SdkRoutine_858db0(&v26);
-    __udf(0);
-  }
-  if (v25 != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v25 + 8LL))(v25);
-  }
-  result = v29[0];
-  if (v29[0] == 1 && *a1 >= 1) {
-    v14 = 0;
-    v15 = (unsigned int*)v28;
-    do {
-      v16 = *((_QWORD*)v15 - 1);
-      v17 = *v15;
-      *(_BYTE*)a2 = v16;
-      *(_BYTE*)(a2 + 1) = (v16 & 0x100) != 0;
-      if ((atomic_load_explicit((atomic_uchar* volatile)&SdkData_f65e50,
-                                memory_order_acquire) &
-           1) == 0) {
-        v22 = result;
-        v20 = v16;
-        v21 = v17;
-        v18 = SdkRoutine_8584b0(&SdkData_f65e50);
-        v16 = v20;
-        v17 = v21;
-        v19 = v18;
-        result = v22;
-        if (v19 != 0) {
-          SdkData_f65e48 = SdkRoutine_5a2e10(v22);
-          SdkRoutine_8584c0(&SdkData_f65e50);
-          v16 = v20;
-          v17 = v21;
-          result = v22;
-        }
-      }
-      v15 += 3;
-      ++v14;
-      *(_QWORD*)(a2 + 8) = SdkData_f65e48 + HIDWORD(v16);
-      *(_QWORD*)(a2 + 16) = v17;
-      a2 += 24;
-    } while (v14 < *a1);
-  }
-  return result;
 }
 
 __int64 SdkHr_5a3040()
