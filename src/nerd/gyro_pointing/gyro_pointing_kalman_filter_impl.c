@@ -66,7 +66,7 @@ nerd_gyro_pointing_GyroPointingKalmanFilter_StoreState(PSEUDO_X8 x8_,
 __int64 nerd_gyro_pointing_GyroPointingKalmanFilter_LoadState(
     __int64 a1, __int64* a2, char a3, char a4, char a5, char a6, char a7,
     char a8, float a9);
-__int64
+_OWORD
 nerd_gyro_pointing_GyroPointingKalmanFilter_GetCalibrationState(void* this_);
 __int64
 nerd_gyro_pointing_GyroPointingKalmanFilter_GetIntegrityState(void* this_);
@@ -4156,121 +4156,62 @@ LABEL_27:
   return 1;
 }
 
-__int64
-
+_OWORD
 nerd_gyro_pointing_GyroPointingKalmanFilter_GetCalibrationState(void* this_)
 {
 
 #pragma clang fp contract(off)
-  unsigned __int64 v1;
   char* v3;
   unsigned __int64 v4;
-  float v5;
-  float v6;
+  double v5;
+  double v6;
   double v7;
-  __int64 v8;
-  double v9;
-  __int64 v10;
-  double v11;
-  __int64 v12;
-  unsigned __int64 v13;
-  __int64 v14;
-  unsigned __int64 v15;
-  float v16;
-  float v17;
-  float v18;
+  double v16;
+  double v17;
+  double v18;
   double v19;
-  __int64 v20;
+  double v20;
   double v21;
-  __int64 v22;
-  double v23;
-  __int64 v24;
-  __int64 v25;
-  double v26;
-  __int64 v27;
+  unsigned __int64 v22;
+  unsigned int v23;
   unsigned __int64 v29;
   unsigned __int64 v30;
   unsigned __int64 v31;
   unsigned __int64 v32;
   unsigned __int64 v33;
-  __int64 v34;
+  unsigned __int64 v34;
 
-  v1 = *((_QWORD*)this_ + 1030);
   v29 = *((_QWORD*)this_ + 1029);
-  v30 = v1;
+  v30 = *((_QWORD*)this_ + 1030);
   v31 = *((_QWORD*)this_ + 1031);
   v29 =
       *fw_math_LookupStateIndex((unsigned __int64*)this_ + 548, (__int64*)&v29);
   v30 =
       *fw_math_LookupStateIndex((unsigned __int64*)this_ + 548, (__int64*)&v30);
-  v3 = (char*)this_ + 16;
   v4 =
       *fw_math_LookupStateIndex((unsigned __int64*)this_ + 548, (__int64*)&v31);
-  v5 = sqrtf(*((float*)this_ + 34 * v30 + 4));
-  v6 = sqrtf(*((float*)this_ + 34 * v4 + 4));
-  v7 = sqrtf(*((float*)this_ + 34 * v29 + 4));
-  if (v7 >= 0x1.0624dd2f1a9fcp-9) {
-    if (v7 >= 0x1.47ae147ae147bp-7) {
-      v8 = 0;
-      v9 = v5;
-      if (v9 < 0x1.0624dd2f1a9fcp-9) {
-        goto LABEL_10;
-      }
-    }
-    else {
-      v8 = 1;
-      v9 = v5;
-      if (v9 < 0x1.0624dd2f1a9fcp-9) {
-        goto LABEL_10;
-      }
-    }
-  }
-  else {
-    v8 = 2;
-    v9 = v5;
-    if (v9 < 0x1.0624dd2f1a9fcp-9) {
-    LABEL_10:
-      v10 = 512;
-      v11 = v6;
-      if (v11 < 0x1.0624dd2f1a9fcp-9) {
-        goto LABEL_11;
-      }
-      goto LABEL_13;
-    }
-  }
-  if (v9 >= 0x1.47ae147ae147bp-7) {
-    v10 = 0;
-    v11 = v6;
-    if (v11 < 0x1.0624dd2f1a9fcp-9) {
-      goto LABEL_11;
-    }
-  }
-  else {
-    v10 = 256;
-    v11 = v6;
-    if (v11 < 0x1.0624dd2f1a9fcp-9) {
-    LABEL_11:
-      v12 = 0x20000;
-      goto LABEL_16;
-    }
-  }
-LABEL_13:
-  if (v11 >= 0x1.47ae147ae147bp-7) {
-    v12 = 0;
-  }
-  else {
-    v12 = 0x10000;
-  }
-LABEL_16:
-  v13 = *((_QWORD*)this_ + 1040);
+  v3 = (char*)this_ + 16;
+  v7 = sqrtf(*(float*)&v3[136 * v29]);
+  v5 = sqrtf(*(float*)&v3[136 * v30]);
+  v6 = sqrtf(*(float*)&v3[136 * v4]);
+
+  // A NaN deviation lands in the last class, the low test comes first.
+  v22 = v7 < 0x1.0624dd2f1a9fcp-9   ? 2
+        : v7 < 0x1.47ae147ae147bp-7 ? 1
+                                    : 0;
+  v22 |= v5 < 0x1.0624dd2f1a9fcp-9   ? 0x200
+         : v5 < 0x1.47ae147ae147bp-7 ? 0x100
+                                     : 0;
+  v22 |= v6 < 0x1.0624dd2f1a9fcp-9   ? 0x20000
+         : v6 < 0x1.47ae147ae147bp-7 ? 0x10000
+                                     : 0;
+
   v31 = *((_QWORD*)this_ + 1039);
-  v32 = v13;
-  v14 = *((_QWORD*)this_ + 1042);
+  v32 = *((_QWORD*)this_ + 1040);
   v33 = *((_QWORD*)this_ + 1041);
-  v34 = v14;
-  v15 = *((_QWORD*)this_ + 1038);
+  v34 = *((_QWORD*)this_ + 1042);
   v29 = *((_QWORD*)this_ + 1037);
-  v30 = v15;
+  v30 = *((_QWORD*)this_ + 1038);
   v29 =
       *fw_math_LookupStateIndex((unsigned __int64*)this_ + 548, (__int64*)&v29);
   v30 =
@@ -4281,102 +4222,43 @@ LABEL_16:
       *fw_math_LookupStateIndex((unsigned __int64*)this_ + 548, (__int64*)&v32);
   v33 =
       *fw_math_LookupStateIndex((unsigned __int64*)this_ + 548, (__int64*)&v33);
-  fw_math_LookupStateIndex((unsigned __int64*)this_ + 548, &v34);
+  v34 =
+      *fw_math_LookupStateIndex((unsigned __int64*)this_ + 548, (__int64*)&v34);
+  v19 = sqrtf(*(float*)&v3[136 * v29]);
   v16 = sqrtf(*(float*)&v3[136 * v30]);
   v17 = sqrtf(*(float*)&v3[136 * v31]);
   v18 = sqrtf(*(float*)&v3[136 * v32]);
-  v19 = sqrtf(*(float*)&v3[136 * v29]);
-  if (v19 >= 0x1.0624dd2f1a9fcp-10) {
-    if (v19 >= 0x1.89374bc6a7efap-9) {
-      v20 = 0;
-      v21 = v16;
-      if (v21 < 0x1.0624dd2f1a9fcp-10) {
-        goto LABEL_25;
-      }
-    }
-    else {
-      v20 = 0x1000000;
-      v21 = v16;
-      if (v21 < 0x1.0624dd2f1a9fcp-10) {
-        goto LABEL_25;
-      }
-    }
-  }
-  else {
-    v20 = 0x2000000;
-    v21 = v16;
-    if (v21 < 0x1.0624dd2f1a9fcp-10) {
-    LABEL_25:
-      v22 = 0x200000000LL;
-      v23 = v17;
-      if (v23 < 0x1.0624dd2f1a9fcp-10) {
-        goto LABEL_26;
-      }
-    LABEL_29:
-      if (v23 >= 0x1.89374bc6a7efap-9) {
-        v24 = 0;
-        if (v21 < 0x1.0624dd2f1a9fcp-10) {
-          goto LABEL_35;
-        }
-      }
-      else {
-        v24 = 0x10000000000LL;
-        if (v21 < 0x1.0624dd2f1a9fcp-10) {
-          goto LABEL_35;
-        }
-      }
-      goto LABEL_31;
-    }
-  }
-  if (v21 < 0x1.89374bc6a7efap-9) {
-    v22 = 0x100000000LL;
-    v23 = v17;
-    if (v23 < 0x1.0624dd2f1a9fcp-10) {
-      goto LABEL_26;
-    }
-    goto LABEL_29;
-  }
-  v22 = 0;
-  v23 = v17;
-  if (v23 >= 0x1.0624dd2f1a9fcp-10) {
-    goto LABEL_29;
-  }
-LABEL_26:
-  v24 = 0x20000000000LL;
-  if (v21 < 0x1.0624dd2f1a9fcp-10) {
-  LABEL_35:
-    v25 = 0x2000000000000LL;
-    v26 = v18;
-    if (v26 < 0x1.0624dd2f1a9fcp-10) {
-      goto LABEL_36;
-    }
-    goto LABEL_38;
-  }
-LABEL_31:
-  if (v21 >= 0x1.89374bc6a7efap-9) {
-    v25 = 0;
-    v26 = v18;
-    if (v26 < 0x1.0624dd2f1a9fcp-10) {
-      goto LABEL_36;
-    }
-  }
-  else {
-    v25 = 0x1000000000000LL;
-    v26 = v18;
-    if (v26 < 0x1.0624dd2f1a9fcp-10) {
-    LABEL_36:
-      v27 = 0x200000000000000LL;
-      return v27 | v25 | v24 | v22 | v20 | v12 | v10 | v8;
-    }
-  }
-LABEL_38:
-  if (v26 >= 0x1.89374bc6a7efap-9) {
-    v27 = 0;
-  }
-  else {
-    v27 = 0x100000000000000LL;
-  }
-  return v27 | v25 | v24 | v22 | v20 | v12 | v10 | v8;
+  v20 = sqrtf(*(float*)&v3[136 * v33]);
+  v21 = sqrtf(*(float*)&v3[136 * v34]);
+
+  v22 |= v19 < 0x1.0624dd2f1a9fcp-10  ? 0x2000000
+         : v19 < 0x1.89374bc6a7efap-9 ? 0x1000000
+                                      : 0;
+  v22 |= v16 < 0x1.0624dd2f1a9fcp-10  ? 0x200000000LL
+         : v16 < 0x1.89374bc6a7efap-9 ? 0x100000000LL
+                                      : 0;
+  v22 |= v17 < 0x1.0624dd2f1a9fcp-10  ? 0x20000000000LL
+         : v17 < 0x1.89374bc6a7efap-9 ? 0x10000000000LL
+                                      : 0;
+  v22 |= v16 < 0x1.0624dd2f1a9fcp-10  ? 0x2000000000000LL
+         : v16 < 0x1.89374bc6a7efap-9 ? 0x1000000000000LL
+                                      : 0;
+  v22 |= v18 < 0x1.0624dd2f1a9fcp-10  ? 0x200000000000000LL
+         : v18 < 0x1.89374bc6a7efap-9 ? 0x100000000000000LL
+                                      : 0;
+  v23 = v20 < 0x1.0624dd2f1a9fcp-10  ? 2
+        : v20 < 0x1.89374bc6a7efap-9 ? 1
+                                     : 0;
+  v23 |= v17 < 0x1.0624dd2f1a9fcp-10  ? 0x200
+         : v17 < 0x1.89374bc6a7efap-9 ? 0x100
+                                      : 0;
+  v23 |= v20 < 0x1.0624dd2f1a9fcp-10  ? 0x20000
+         : v20 < 0x1.89374bc6a7efap-9 ? 0x10000
+                                      : 0;
+  v23 |= v21 < 0x1.0624dd2f1a9fcp-10  ? 0x2000000
+         : v21 < 0x1.89374bc6a7efap-9 ? 0x1000000
+                                      : 0;
+  return __PAIR128__(v23, v22);
 }
 
 __int64

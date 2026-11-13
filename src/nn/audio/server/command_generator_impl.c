@@ -216,7 +216,7 @@ float nn_audio_server_CommandGenerator_GenerateBiquadFilterCommandForVoice(
   int v25;
   int v26;
   __int64 v27;
-  unsigned int (*v28)(void);
+  unsigned int (*v28)(__int64, __int64);
   __int16 v29;
   __int64 v30;
   char v31;
@@ -225,7 +225,7 @@ float nn_audio_server_CommandGenerator_GenerateBiquadFilterCommandForVoice(
   __int64 v34;
   __int64 v35;
   __int64 v36;
-  unsigned int (*v37)(void);
+  unsigned int (*v37)(__int64, __int64);
   char v38;
   char v39;
   __int64 v40;
@@ -248,6 +248,8 @@ float nn_audio_server_CommandGenerator_GenerateBiquadFilterCommandForVoice(
   __int64 v57;
   __int64 v58;
   float v59;
+  __int64 v60;
+  __int64 v61;
 
   result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
   if (*(_BYTE*)(a2 + 72) == 1) {
@@ -320,7 +322,9 @@ float nn_audio_server_CommandGenerator_GenerateBiquadFilterCommandForVoice(
         *(_BYTE*)(v32 + 65) = v14;
         v48 = *(_QWORD*)(v30 + 48);
         if (v48 != 0) {
-          v37 = *(unsigned int (**)(void))(*(_QWORD*)v48 + 272LL),
+          v61 = v48;
+          v37 = *(unsigned int (**)(__int64, __int64))(
+              *(_QWORD*)v48 + 272LL),
           result =
               COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
           goto LABEL_49;
@@ -354,11 +358,13 @@ float nn_audio_server_CommandGenerator_GenerateBiquadFilterCommandForVoice(
                                             PSEUDO_REGISTER(float, "s0", "=w"));
         v36 = *(_QWORD*)(v30 + 48);
         if (v36 != 0) {
-          v37 = *(unsigned int (**)(void))(*(_QWORD*)v36 + 312LL),
+          v61 = v36;
+          v37 = *(unsigned int (**)(__int64, __int64))(
+              *(_QWORD*)v36 + 312LL),
           result =
               COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
         LABEL_49:
-          v49 = (float)v37(),
+          v49 = (float)v37(v61, v32),
           result =
               COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
         LABEL_51:
@@ -401,7 +407,9 @@ float nn_audio_server_CommandGenerator_GenerateBiquadFilterCommandForVoice(
             *(_BYTE*)(v20 + 65) = v14;
             v58 = *(_QWORD*)(v18 + 48);
             if (v58 != 0) {
-              v28 = *(unsigned int (**)(void))(*(_QWORD*)v58 + 272LL),
+              v60 = v58;
+              v28 = *(unsigned int (**)(__int64, __int64))(
+                  *(_QWORD*)v58 + 272LL),
               result = COERCE_AS(__typeof__(result),
                                  PSEUDO_REGISTER(float, "s0", "=w"));
               goto LABEL_64;
@@ -436,7 +444,9 @@ float nn_audio_server_CommandGenerator_GenerateBiquadFilterCommandForVoice(
                                            PSEUDO_REGISTER(float, "s0", "=w"));
             v54 = *(_QWORD*)(v18 + 48);
             if (v54 != 0) {
-              v28 = *(unsigned int (**)(void))(*(_QWORD*)v54 + 312LL),
+              v60 = v54;
+              v28 = *(unsigned int (**)(__int64, __int64))(
+                  *(_QWORD*)v54 + 312LL),
               result = COERCE_AS(__typeof__(result),
                                  PSEUDO_REGISTER(float, "s0", "=w"));
               goto LABEL_64;
@@ -528,7 +538,9 @@ LABEL_30:
     *(_BYTE*)(v20 + 97) = v38;
     v44 = *(_QWORD*)(v18 + 48);
     if (v44 != 0) {
-      v28 = *(unsigned int (**)(void))(*(_QWORD*)v44 + 280LL),
+      v60 = v44;
+      v28 = *(unsigned int (**)(__int64, __int64))(
+          *(_QWORD*)v44 + 280LL),
       result =
           COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
       goto LABEL_64;
@@ -580,10 +592,12 @@ LABEL_30:
   if (v27 == 0) {
     goto LABEL_65;
   }
-  v28 = *(unsigned int (**)(void))(*(_QWORD*)v27 + 320LL),
+  v60 = v27;
+  v28 = *(unsigned int (**)(__int64, __int64))(
+      *(_QWORD*)v27 + 320LL),
   result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
 LABEL_64:
-  v59 = (float)v28(),
+  v59 = (float)v28(v60, v20),
   result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
 LABEL_66:
   result = v59 * *(float*)(v18 + 64);

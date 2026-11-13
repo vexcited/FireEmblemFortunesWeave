@@ -4,6 +4,9 @@
 
 __int64 nn_util_IsValidUtf8String_plt(_QWORD, _QWORD);
 __int64 nn_util_detail_msgpack_ReadCurrent(__int64 a1, _QWORD* a2);
+__int64 nn_util_a1b60(__int64, _QWORD*, unsigned) __asm__("nn_util_a1b60");
+__int64 nn_util_a1c70(__int64, _QWORD*, unsigned) __asm__("nn_util_a1c70");
+__int64 nn_util_a1d70(__int64, _QWORD*, unsigned) __asm__("nn_util_a1d70");
 _DWORD* nn_util_a7120(_DWORD* result, unsigned int a2, int a3);
 __int64 nn_util_a7480(__int64 a1, __int64 a2, __int64 a3);
 __int64
@@ -33,29 +36,6 @@ __int64 nn_util_detail_msgpack_ReadCurrent(__int64 a1, _QWORD* a2)
   __int64 v20;
   __int64 v21;
   __int64 v22;
-  unsigned int v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  __int64 v33;
-  unsigned __int64 v34;
-  __int64 v35;
-  unsigned int v36;
-  __int64 v37;
-  __int64 v38;
-  __int64 v39;
-  __int64 v40;
-  __int64 v41;
-  __int64 v42;
-  __int64 v43;
-  __int64 v44;
-  unsigned __int64 v45;
 
   v2 = a2[2];
   if (a2[1] == v2) {
@@ -227,52 +207,7 @@ __int64 nn_util_detail_msgpack_ReadCurrent(__int64 a1, _QWORD* a2)
     return 1;
   }
   if ((v4 & 0xFC) == 0xCC) {
-    v23 = 0;
-    *(_DWORD*)a1 = 6;
-    if ((unsigned __int8)v4 > 0xCDu) {
-      if ((unsigned __int8)v4 == 206) {
-        v27 = a2[2];
-        if ((unsigned __int64)(a2[1] - v27) < 4) {
-          return 0;
-        }
-        *(_QWORD*)(a1 + 8) = bswap32(*(_DWORD*)(*a2 + v27));
-        v28 = a2[2] + 4LL;
-        goto LABEL_102;
-      }
-      if ((unsigned __int8)v4 == 207) {
-        v25 = a2[2];
-        if ((unsigned __int64)(a2[1] - v25) < 8) {
-          return 0;
-        }
-        *(_QWORD*)(a1 + 8) = bswap64(*(_QWORD*)(*a2 + v25));
-        v28 = a2[2] + 8LL;
-        goto LABEL_102;
-      }
-    }
-    else {
-      if ((unsigned __int8)v4 == 204) {
-        v26 = a2[2];
-        if (a2[1] == v26) {
-          return 0;
-        }
-        v29 = *a2;
-        a2[2] = v26 + 1;
-        *(_QWORD*)(a1 + 8) = *(unsigned __int8*)(v29 + v26);
-        return 1;
-      }
-      if ((unsigned __int8)v4 == 205) {
-        v24 = a2[2];
-        if ((unsigned __int64)(a2[1] - v24) < 2) {
-          return 0;
-        }
-        *(_QWORD*)(a1 + 8) = bswap32(*(unsigned __int16*)(*a2 + v24)) >> 16;
-        v28 = a2[2] + 2LL;
-      LABEL_102:
-        a2[2] = v28;
-        return 1;
-      }
-    }
-    return v23;
+    return nn_util_a1b60(a1, a2, (char)v4);
   }
   if ((unsigned __int8)v4 <= 0xC6u) {
     if ((unsigned __int8)v4 <= 0xC3u) {
@@ -293,150 +228,31 @@ __int64 nn_util_detail_msgpack_ReadCurrent(__int64 a1, _QWORD* a2)
       }
       return 0;
     }
-    *(_DWORD*)a1 = 2;
-    if ((unsigned __int8)v4 == 198) {
-      v32 = a2[2];
-      if ((unsigned __int64)(a2[1] - v32) < 4) {
-        return 0;
-      }
-      *(_QWORD*)(a1 + 8) = bswap32(*(_DWORD*)(*a2 + v32));
-      v33 = a2[2] + 4LL;
-    }
-    else {
-      if ((unsigned __int8)v4 != 197) {
-        if ((unsigned __int8)v4 == 196) {
-          v30 = a2[2];
-          if (a2[1] == v30) {
-            return 0;
-          }
-          v35 = *a2;
-          a2[2] = v30 + 1;
-          *(_QWORD*)(a1 + 8) = *(unsigned __int8*)(v35 + v30);
-          v33 = a2[2];
-          v34 = *(_QWORD*)(a1 + 8);
-          if (a2[1] - v33 >= v34) {
-            goto LABEL_118;
-          }
-        }
-        return 0;
-      }
-      v31 = a2[2];
-      if ((unsigned __int64)(a2[1] - v31) < 2) {
-        return 0;
-      }
-      *(_QWORD*)(a1 + 8) = bswap32(*(unsigned __int16*)(*a2 + v31)) >> 16;
-      v33 = a2[2] + 2LL;
-    }
-    a2[2] = v33;
-    v34 = *(_QWORD*)(a1 + 8);
-    if (a2[1] - v33 >= v34) {
-    LABEL_118:
-      *(_QWORD*)(a1 + 16) = v33;
-      a2[2] += v34;
-      return 1;
-    }
-    return 0;
+    return nn_util_a1c70(a1, a2, v4);
   }
   if ((unsigned int)(unsigned __int8)v4 - 199 > 0x11) {
     return 0;
   }
-  if (((1 << (v4 + 57)) & 0x3E007) == 0) {
-    if ((unsigned __int8)v4 != 202) {
-      if ((unsigned __int8)v4 == 203) {
-        *(_DWORD*)a1 = 5;
-        v19 = a2[2];
-        if ((unsigned __int64)(a2[1] - v19) < 8) {
-          return 0;
-        }
-        goto LABEL_58;
-      }
-      return 0;
-    }
-    *(_DWORD*)a1 = 4;
-    v13 = a2[2];
-    if ((unsigned __int64)(a2[1] - v13) < 4) {
-      return 0;
-    }
-    goto LABEL_80;
+  if (((1 << (v4 - 199)) & 0x3E007) != 0) {
+    return nn_util_a1d70(a1, a2, v4);
   }
-  v36 = 0;
-  *(_DWORD*)a1 = 3;
-  if ((unsigned __int8)v4 > 0xD4u) {
-    if ((unsigned __int8)v4 > 0xD6u) {
-      if ((unsigned __int8)v4 == 215) {
-        v38 = 8;
-      }
-      else {
-        if ((unsigned __int8)v4 != 216) {
-          return v36;
-        }
-        v38 = 16;
-      }
-    }
-    else if ((unsigned __int8)v4 == 213) {
-      v38 = 2;
-    }
-    else {
-      if ((unsigned __int8)v4 != 214) {
-        return v36;
-      }
-      v38 = 4;
-    }
-    goto LABEL_142;
-  }
-  if ((unsigned __int8)v4 > 0xC8u) {
-    if ((unsigned __int8)v4 == 201) {
-      v40 = a2[2];
-      if ((unsigned __int64)(a2[1] - v40) < 4) {
+  if ((unsigned __int8)v4 != 202) {
+    if ((unsigned __int8)v4 == 203) {
+      *(_DWORD*)a1 = 5;
+      v19 = a2[2];
+      if ((unsigned __int64)(a2[1] - v19) < 8) {
         return 0;
       }
-      *(_QWORD*)(a1 + 16) = bswap32(*(_DWORD*)(*a2 + v40));
-      a2[2] += 4LL;
-      goto LABEL_143;
+      goto LABEL_58;
     }
-    if ((unsigned __int8)v4 != 212) {
-      return v36;
-    }
-    v38 = 1;
-    goto LABEL_142;
-  }
-  if ((unsigned __int8)v4 == 199) {
-    v39 = a2[2];
-    if (a2[1] == v39) {
-      return 0;
-    }
-    v41 = *a2;
-    a2[2] = v39 + 1;
-    v38 = *(unsigned __int8*)(v41 + v39);
-  LABEL_142:
-    *(_QWORD*)(a1 + 16) = v38;
-    goto LABEL_143;
-  }
-  if ((unsigned __int8)v4 != 200) {
-    return v36;
-  }
-  v37 = a2[2];
-  if ((unsigned __int64)(a2[1] - v37) < 2) {
     return 0;
   }
-  *(_QWORD*)(a1 + 16) = bswap32(*(unsigned __int16*)(*a2 + v37)) >> 16;
-  a2[2] += 2LL;
-LABEL_143:
-  v42 = a2[2];
-  if (a2[1] == v42) {
+  *(_DWORD*)a1 = 4;
+  v13 = a2[2];
+  if ((unsigned __int64)(a2[1] - v13) < 4) {
     return 0;
   }
-  v43 = *a2;
-  a2[2] = v42 + 1;
-  *(_BYTE*)(a1 + 8) = *(_BYTE*)(v43 + v42);
-  v44 = a2[2];
-  v45 = *(_QWORD*)(a1 + 16);
-  if (a2[1] - v44 < v45) {
-    return 0;
-  }
-  *(_QWORD*)(a1 + 24) = v44;
-  a2[2] += v45;
-  return 1;
+  goto LABEL_80;
 }
 
 _DWORD* nn_util_a7120(_DWORD* result, unsigned int a2, int a3)

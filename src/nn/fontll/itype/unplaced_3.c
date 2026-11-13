@@ -1636,7 +1636,7 @@ __int64 nn_fontll_itype_43e6c0(_DWORD* a1, signed int a2, int a3, signed int a4,
           if (a3 > a5) {
             v17 = v7 - v15;
           }
-          v20 = &a1[6 * v14];
+          v20 = &a1[6 * (__int64)v14];
           *((_WORD*)v20 + 1) = (v15 + v7) >> 17;
           if (a3 <= a5) {
             v21 = v19;
@@ -1663,7 +1663,7 @@ __int64 nn_fontll_itype_43e6c0(_DWORD* a1, signed int a2, int a3, signed int a4,
             v27 = a1[3594] - ((v15 + (int)v22) >> 17);
             if (v27 <= 0xFF) {
               v28 = v24 + 1;
-              v29 = &a1[6 * v24];
+              v29 = &a1[6 * (__int64)v24];
               v30 = v22 - v15;
               a1[3584] = v28;
               *((_WORD*)v29 + 1) = v25 >> 17;
@@ -1721,7 +1721,7 @@ __int64 nn_fontll_itype_43e6c0(_DWORD* a1, signed int a2, int a3, signed int a4,
           v51 = 0x10000 - (unsigned __int16)((unsigned int)(a4 + a2) >> 1);
         }
         a1[3584] = v37 + 1;
-        v52 = &a1[6 * v37];
+        v52 = &a1[6 * (__int64)v37];
         *(_WORD*)v52 = (a4 + a2) >> 17;
         *((_WORD*)v52 + 1) = (a5 + a3) >> 17;
         if (a3 <= a5) {
@@ -1803,7 +1803,7 @@ __int64 nn_fontll_itype_43e6c0(_DWORD* a1, signed int a2, int a3, signed int a4,
       }
       v122 = &a1[2 * v46];
       a1[3584] = v45 + 1;
-      v123 = &a1[6 * v45];
+      v123 = &a1[6 * (__int64)v45];
       *((_WORD*)v123 + 1) = (v44 + v7) >> 17;
       v124 = a1[3595];
       *(_WORD*)v123 = (v42 + v8) >> 17;
@@ -1836,7 +1836,7 @@ __int64 nn_fontll_itype_43e6c0(_DWORD* a1, signed int a2, int a3, signed int a4,
         v132 = a1[3594] - ((v44 + (int)v127) >> 17);
         if (v132 <= 0xFF) {
           v133 = v130 + 1;
-          v134 = &a1[6 * v130];
+          v134 = &a1[6 * (__int64)v130];
           v135 = v127 - v44;
           a1[3584] = v133;
           *((_WORD*)v134 + 1) = v131 >> 17;
@@ -1959,7 +1959,7 @@ __int64 nn_fontll_itype_43e6c0(_DWORD* a1, signed int a2, int a3, signed int a4,
             v108 = 0x10000 - (unsigned __int16)((unsigned int)(v103 + v8) >> 1);
           }
           v109 = v105 + 1;
-          v110 = &v38[6 * v105];
+          v110 = &v38[6 * (__int64)v105];
           v38[3584] = v109;
           *((_WORD*)v110 + 1) = (v78 + v7) >> 17;
           v111 = v38[3595];
@@ -2008,7 +2008,7 @@ __int64 nn_fontll_itype_43e6c0(_DWORD* a1, signed int a2, int a3, signed int a4,
           v116 = 0x10000 - (unsigned __int16)((unsigned int)(v84 + v8) >> 1);
         }
         v117 = v105 + 1;
-        v118 = &v38[6 * v105];
+        v118 = &v38[6 * (__int64)v105];
         v38[3584] = v117;
         *((_WORD*)v118 + 1) = (v85 + v7) >> 17;
         v119 = v38[3595];
@@ -2072,7 +2072,7 @@ __int64 nn_fontll_itype_43e6c0(_DWORD* a1, signed int a2, int a3, signed int a4,
             v96 = -v55;
           }
           v97 = v93 + 1;
-          v98 = &v38[6 * v93];
+          v98 = &v38[6 * (__int64)v93];
           if (v90 >= 0x10000) {
             v96 = 0x10000 - (unsigned __int16)((unsigned int)(v56 + v89) >> 1);
           }
@@ -2148,7 +2148,7 @@ __int64 nn_fontll_itype_43e6c0(_DWORD* a1, signed int a2, int a3, signed int a4,
             v66 = v55;
           }
           v67 = v63 + 1;
-          v68 = &v38[6 * v63];
+          v68 = &v38[6 * (__int64)v63];
           if (v55 >= 0x10000) {
             v66 = 0x10000 - (unsigned __int16)((unsigned int)(v56 + v60) >> 1);
           }
@@ -7358,8 +7358,8 @@ __int64 nn_fontll_itype_449700(char a1, _QWORD* a2, __int64 a3,
         }
       }
       result = (unsigned int)(result + 1);
-      if (*(_DWORD*)(v13 + 4LL * (unsigned __int16)v14) >
-          *(_DWORD*)(v13 + 4 * v20)) {
+      if (*(int*)(v13 + 4LL * (unsigned __int16)v14) >
+          *(int*)(v13 + 4 * v20)) {
         v19 = 1;
       }
       else {
@@ -7398,7 +7398,7 @@ LABEL_54:
       v47 = *(_DWORD*)(v8 + 4 * v46);
       *(_QWORD*)&v58[6] = *((_QWORD*)v44 + 1);
       v48 = v32;
-      while (*(_DWORD*)(v8 + 4LL * *(unsigned __int16*)v45) > v47) {
+      while (*(int*)(v8 + 4LL * *(unsigned __int16*)v45) > v47) {
         v49 = v45[1];
         --v48;
         v45[2] = *v45;
@@ -7420,7 +7420,7 @@ LABEL_54:
       *(_QWORD*)&v59[6] = *((_QWORD*)v52 + 1);
       v54 = *(_DWORD*)(v8 + 4 * v53);
       v55 = v40;
-      while (*(_DWORD*)(v8 + 4LL * *(unsigned __int16*)v55) > v54) {
+      while (*(int*)(v8 + 4LL * *(unsigned __int16*)v55) > v54) {
         v56 = v55[1];
         --v51;
         v55[2] = *v55;
@@ -7449,7 +7449,7 @@ LABEL_54:
     v36 = v33 - 8;
     *(_QWORD*)&v57[6] = v35;
     v37 = *(_DWORD*)(v8 + 4 * v34);
-    while (*(_DWORD*)(v8 + 4LL * *v36) > v37) {
+    while (*(int*)(v8 + 4LL * *v36) > v37) {
       v38 = *((_QWORD*)v36 + 1);
       --v32;
       *((_QWORD*)v36 + 2) = *(_QWORD*)v36;
@@ -12126,7 +12126,7 @@ __int64 nn_fontll_itype_44d880(int a1, __int64* a2)
   unsigned int v23;
   __int64 v25;
   int* v26;
-  _DWORD* v27;
+  int* v27;
   int v28;
   int v29;
   int v30;
@@ -12157,7 +12157,7 @@ __int64 nn_fontll_itype_44d880(int a1, __int64* a2)
   do {
     v11 = *(_DWORD*)(v3 + 4 * v9);
     if (v11 > v7 ||
-        v11 == v7 && *(_DWORD*)(v4 + 4 * v9) < *(_DWORD*)(v4 + 4LL * v10)) {
+        v11 == v7 && *(int*)(v4 + 4 * v9) < *(int*)(v4 + 4LL * v10)) {
       v10 = v9;
       v7 = *(_DWORD*)(v3 + 4 * v9);
     }
@@ -12169,24 +12169,24 @@ __int64 nn_fontll_itype_44d880(int a1, __int64* a2)
   LABEL_27:
     v25 = 4 * v12 + 8;
     v26 = (int*)(v3 + v25);
-    v27 = (_DWORD*)(v4 + v25);
+    v27 = (int*)(v4 + v25);
     do {
       v28 = *(v26 - 1);
-      if (v28 > v7 || v28 == v7 && *(v27 - 1) < *(_DWORD*)(v4 + 4LL * v10)) {
+      if (v28 > v7 || v28 == v7 && *(v27 - 1) < *(int*)(v4 + 4LL * v10)) {
         v10 = v12 + 1;
         v7 = *(v26 - 1);
       }
-      if (*v26 > v7 || *v26 == v7 && *v27 < *(_DWORD*)(v4 + 4LL * v10)) {
+      if (*v26 > v7 || *v26 == v7 && *v27 < *(int*)(v4 + 4LL * v10)) {
         v10 = v12 + 2;
         v7 = *v26;
       }
       v29 = v26[1];
-      if (v29 > v7 || v29 == v7 && v27[1] < *(_DWORD*)(v4 + 4LL * v10)) {
+      if (v29 > v7 || v29 == v7 && v27[1] < *(int*)(v4 + 4LL * v10)) {
         v10 = v12 + 3;
         v7 = v26[1];
       }
       v30 = v26[2];
-      if (v30 > v7 || v30 == v7 && v27[2] < *(_DWORD*)(v4 + 4LL * v10)) {
+      if (v30 > v7 || v30 == v7 && v27[2] < *(int*)(v4 + 4LL * v10)) {
         v10 = v12 + 4;
         v7 = v26[2];
       }

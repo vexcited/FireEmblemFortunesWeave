@@ -63,7 +63,7 @@ __int64 nvidia_649b10(__int64);
 __int64 nvidia_649b40(__int64, __int64*, unsigned __int64, unsigned __int64);
 __int64 strcpy_plt(void* this_, char*);
 bool SdkRoutine_653ca0(__int64, __int64);
-bool SdkRoutine_654120(__int64);
+__int64 SdkRoutine_654120(__int64);
 bool SdkRoutine_66ff80(__int64, __int64, __int64, int, int, int);
 double SdkRoutine_68a1d0(__int64, unsigned int);
 extern _DWORD SdkData_bb00b0[8];
@@ -12456,27 +12456,36 @@ __int64 nn_695c40(__int64 result, int a2, __int64* a3, __int64** a4, __int64 a5,
   int v77;
   unsigned int v79;
   __int64 v80;
-  __int64 v81;
-  int v82;
-  unsigned __int64 v83;
-  int v84;
-  unsigned __int64 v85;
-  int v86;
-  int v87;
-  unsigned __int64 v88;
-  int v89;
-  int8x8_t v90;
-  int v91;
-  int v92;
-  int v93;
-  int v94;
-  int v95;
-  char v96;
-  int v97;
-  int v98;
-  unsigned __int64 v99;
-  int v100;
-  unsigned __int64 v101;
+  struct __attribute__((packed, aligned(8))) {
+    __int64 v81;
+    int v82;
+    unsigned __int64 v83;
+    int v84;
+    char gap24_[8];
+    unsigned __int64 v85;
+    int v86;
+    int v87;
+  } v81_;
+  struct __attribute__((packed, aligned(8))) {
+    unsigned __int64 v88;
+    int v89;
+    int8x8_t v90;
+    int v91;
+    int v92;
+    char gap28_[4];
+    int v93;
+    int v94;
+    char gap40_[4];
+    int v95;
+    char v96;
+    char gap49_[3];
+    int v97;
+    int v98;
+    char gap60_[4];
+    unsigned __int64 v99;
+    int v100;
+    unsigned __int64 v101;
+  } v88_;
 
   v7 = *(_DWORD**)result;
   v11 = result;
@@ -12523,48 +12532,50 @@ __int64 nn_695c40(__int64 result, int a2, __int64* a3, __int64** a4, __int64 a5,
       if (*v18 != nullptr && (*v21 & 0x2000000000000000LL) != 0) {
         v22 = *v21 << 8 >> 56;
       LABEL_14:
-        result = SdkRoutine_66a6d0(v19, (__int64)&v88, v21);
-        v23 = v88;
-        v24 = HIDWORD(v88);
-        if (v92 == 2) {
-          v25 = v98;
-          v26 = v91;
-          v27 = v95 & 0xF | (unsigned __int8)(16 * (v96 & 0xF)) |
-                ((v97 & 0xF) << 8);
+        result = SdkRoutine_66a6d0(v19, (__int64)&v88_.v88, v21);
+        v23 = v88_.v88;
+        v24 = HIDWORD(v88_.v88);
+        if (v88_.v92 == 2) {
+          v25 = v88_.v98;
+          v26 = v88_.v91;
+          v27 = v88_.v95 & 0xF | (unsigned __int8)(16 * (v88_.v96 & 0xF)) |
+                ((v88_.v97 & 0xF) << 8);
           if (v22 == 2) {
             v27 |= 0x10000u;
           }
-          v28 = 64 / v100;
-          v29 = v93;
-          *(_DWORD*)(v12 + 16) = v94;
+          v28 = 64 / v88_.v100;
+          v29 = v88_.v93;
+          *(_DWORD*)(v12 + 16) = v88_.v94;
           *(_DWORD*)v12 = ((v17 - 16) >> 2) | 0x20080000;
           *(_DWORD*)(v12 + 4) = v24;
           *(_DWORD*)(v12 + 8) = v23;
           *(_DWORD*)(v12 + 12) = (v29 + v25 * v28 - 1) & -(v25 * v28);
-          v30 = *((_DWORD*)SdkData_e89ba0 + 12 * SHIDWORD(v101) + 8);
+          v30 = *((_DWORD*)SdkData_e89ba0 + 12 * SHIDWORD(v88_.v101) + 8);
           *(_DWORD*)(v12 + 28) = v26;
           *(_DWORD*)(v12 + 20) = v30;
           *(_DWORD*)(v12 + 24) = v27;
-          v31 = v99 >> 2;
+          v31 = v88_.v99 >> 2;
         }
         else {
-          v32 = v89;
-          v33 = LANES64(v90).n64_u32[1];
+          v32 = v88_.v89;
+          v33 = LANES64(v88_.v90).n64_u32[1];
           LODWORD(v31) = 0;
           *(_DWORD*)v12 = ((v17 - 16) >> 2) | 0x20080000;
           *(_DWORD*)(v12 + 4) = v24;
           *(_DWORD*)(v12 + 8) = v23;
           *(_DWORD*)(v12 + 12) = v32;
           *(_DWORD*)(v12 + 16) = v33;
-          v34 = *((_DWORD*)SdkData_e89ba0 + 12 * SHIDWORD(v101) + 8);
+          v34 = *((_DWORD*)SdkData_e89ba0 + 12 * SHIDWORD(v88_.v101) + 8);
           *(_QWORD*)(v12 + 24) = 0x100001000LL;
           *(_DWORD*)(v12 + 20) = v34;
         }
         *(_DWORD*)(v12 + 32) = v31;
         v12 += 36;
-        v16 = v101;
-        LANES64(v14).n64_u64[0] = LANES64_OF(vmin_s32(v14, v90)).n64_u64[0];
-        v36 = (*(_QWORD*)(v19 + 40) & 0xFE000000LL) == 0x4000000 && v91 > 1;
+        v16 = v88_.v101;
+        LANES64(v14).n64_u64[0] =
+            LANES64_OF(vmin_s32(v14, v88_.v90)).n64_u64[0];
+        v36 = (*(_QWORD*)(v19 + 40) & 0xFE000000LL) == 0x4000000 &&
+              v88_.v91 > 1;
         v13 |= v36;
         goto LABEL_26;
       }
@@ -12644,36 +12655,39 @@ LABEL_29:
                       4LL * (unsigned int)(*(_DWORD*)(v11 + 104) + 98));
     v12 = *(_QWORD*)v11;
   }
-  SdkRoutine_66a6d0(v37, (__int64)&v88, a6);
-  v38 = v88;
-  v39 = HIDWORD(v88);
-  v40 = *((_DWORD*)SdkData_e89ba0 + 12 * SHIDWORD(v101) + 8);
+  SdkRoutine_66a6d0(v37, (__int64)&v88_.v88, a6);
+  v38 = v88_.v88;
+  v39 = HIDWORD(v88_.v88);
+  v40 = *((_DWORD*)SdkData_e89ba0 + 12 * SHIDWORD(v88_.v101) + 8);
   *(_DWORD*)v12 = 537199608;
   *(_DWORD*)(v12 + 4) = v39;
   *(_DWORD*)(v12 + 8) = v38;
   *(_DWORD*)(v12 + 12) = v40 & 0x1F;
-  v41 = LANES64(v90).n64_u32[0];
+  v41 = LANES64(v88_.v90).n64_u32[0];
   *(_DWORD*)(v12 + 16) =
-      v95 & 0xF | (unsigned __int8)(16 * (v96 & 0xF)) | ((v97 & 0xF) << 8);
-  *(_DWORD*)(v12 + 20) = v99 >> 2;
-  v42 = LANES64(v90).n64_u32[1];
-  v43 = v91;
+      v88_.v95 & 0xF | (unsigned __int8)(16 * (v88_.v96 & 0xF)) |
+      ((v88_.v97 & 0xF) << 8);
+  *(_DWORD*)(v12 + 20) = v88_.v99 >> 2;
+  v42 = LANES64(v88_.v90).n64_u32[1];
+  v43 = v88_.v91;
   *(_QWORD*)(v12 + 24) = 0x8001054E8000054ELL;
-  v44 = v94;
-  v45 = (v93 + v98 * (64 / v100) - 1) & -(v98 * (64 / v100));
+  v44 = v88_.v94;
+  v45 = (v88_.v93 + v88_.v98 * (64 / v88_.v100) - 1) &
+        -(v88_.v98 * (64 / v88_.v100));
   *(_DWORD*)(v12 + 32) = 537068682;
   *(_DWORD*)(v12 + 36) = v45;
   *(_DWORD*)(v12 + 40) = v44;
   *(_DWORD*)(v12 + 44) = (unsigned __int16)v43;
-  result = SdkRoutine_66a500(*(_DWORD**)(v11 + 112), (__int64)&v81, v41, v42,
-                             v43, SHIDWORD(v101), *(char*)(v37 + 31),
+  result = SdkRoutine_66a500(*(_DWORD**)(v11 + 112), (__int64)&v81_.v81, v41,
+                             v42, v43, SHIDWORD(v88_.v101),
+                             *(char*)(v37 + 31),
                              *(_WORD*)(v37 + 40));
   if (*(_DWORD*)(*(_QWORD*)(v11 + 112) + 7292LL) == 147371889) {
     v46 = v12 + 48;
     goto LABEL_96;
   }
-  LANES64(v51).n64_u64[0] = v83;
-  v48 = v84;
+  LANES64(v51).n64_u64[0] = v81_.v83;
+  v48 = v81_.v84;
   *(_DWORD*)(v12 + 48) = 537002488;
   v49 = v48 - 1;
   LANES64(v50).n64_u32[0] = LANES64_OF(vshl_n_s32(v51, 0x10u)).n64_u32[0];
@@ -12687,29 +12701,29 @@ LABEL_29:
   *(_DWORD*)(v12 + 60) = v52;
   *(_DWORD*)(v12 + 64) = 537068016;
   LANES64(v50).n64_u32[1] = LANES64(v51).n64_u32[1];
-  v53 = v81;
-  *(_DWORD*)(v12 + 76) = v82;
+  v53 = v81_.v81;
+  *(_DWORD*)(v12 + 76) = v81_.v82;
   *(_QWORD*)(v12 + 68) = v53;
   *(int32x2_t*)(v12 + 52) = v50;
   *(_DWORD*)(v12 + 88) = -2147483149;
   *(_QWORD*)(v12 + 80) = 0x800005808000057FLL;
   result = SdkRoutine_654120(*(_QWORD*)(v11 + 112));
   if ((result & 1) == 0 || (*(_QWORD*)(v37 + 40) & 0x80) == 0) {
-    LANES64(v54).n64_u64[0] = v101;
+    LANES64(v54).n64_u64[0] = v88_.v101;
     v55 = false;
-    *(_DWORD*)(v12 + 100) = v88 >> 8;
+    *(_DWORD*)(v12 + 100) = v88_.v88 >> 8;
     v56 = v12 + 112;
     *(_QWORD*)(v12 + 92) = 0xA0030E10800000BALL;
     *(int8x8_t*)(v12 + 104) =
-        vorr_s8(vshl_n_s32(vext_s8(v90, v54, 4u), 0x10u),
+        vorr_s8(vshl_n_s32(vext_s8(v88_.v90, v54, 4u), 0x10u),
                 COERCE_AS(int8x8_t, __PAIR64__(LANES64(v54).n64_u32[1],
-                                               LANES64(v90).n64_u32[0])));
+                                               LANES64(v88_.v90).n64_u32[0])));
     goto LABEL_95;
   }
   v55 = (*(_QWORD*)(v37 + 40) & 0x80LL) != 0;
   v57 = 0;
-  v58 = (v86 & 0xFFFFF) << 8;
-  v59 = (v86 & 0xFFFFFFFu) >= 0xFFF;
+  v58 = (v81_.v86 & 0xFFFFF) << 8;
+  v59 = (v81_.v86 & 0xFFFFFFFu) >= 0xFFF;
   *(_OWORD*)(v12 + 92) = SdkData_bb52d0;
   if (v59) {
     v60 = 1048321;
@@ -12721,21 +12735,21 @@ LABEL_29:
   *(_DWORD*)(v12 + 112) = 1611661502;
   v61 = 1;
   do {
-    LOWORD(v62) = v86;
-    v64 = (v85 >> v57) & 0xF;
-    if (((v85 >> v57) & 0xF) > 8) {
-      if (((v85 >> v57) & 0xF) > 0xB) {
+    LOWORD(v62) = v81_.v86;
+    v64 = (v81_.v85 >> v57) & 0xF;
+    if (((v81_.v85 >> v57) & 0xF) > 8) {
+      if (((v81_.v85 >> v57) & 0xF) > 0xB) {
         if ((_DWORD)v64 == 15) {
           LOWORD(v62) = 0;
         }
         if ((_DWORD)v64 == 12) {
-          LOWORD(v62) = 8 * v86;
+          LOWORD(v62) = 8 * v81_.v86;
         }
       }
       else {
         if ((unsigned int)(v64 - 9) < 2) {
         LABEL_64:
-          LOWORD(v62) = 2 * v86;
+          LOWORD(v62) = 2 * v81_.v86;
           goto LABEL_76;
         }
         if ((_DWORD)v64 == 11) {
@@ -12743,13 +12757,13 @@ LABEL_29:
         }
       }
     }
-    else if (((v85 >> v57) & 0xF) > 6) {
+    else if (((v81_.v85 >> v57) & 0xF) > 6) {
       if ((_DWORD)v64 == 7) {
         goto LABEL_73;
       }
       if ((_DWORD)v64 == 8) {
       LABEL_75:
-        LOWORD(v62) = 4 * v86;
+        LOWORD(v62) = 4 * v81_.v86;
       }
     }
     else {
@@ -12758,28 +12772,28 @@ LABEL_29:
       }
       if ((_DWORD)v64 == 0) {
       LABEL_73:
-        v62 = (unsigned int)(v86 + 1) >> 1;
+        v62 = (unsigned int)(v81_.v86 + 1) >> 1;
       }
     }
   LABEL_76:
     v65 = v12 + v57;
     *(_DWORD*)(v12 + v57 + 116) =
         v61 + (((unsigned __int16)v62 << 8) | ((_DWORD)v64 << 24)) - 1;
-    LOWORD(v62) = v86;
-    v66 = (v85 >> ((unsigned __int8)v57 + 4)) & 0xF;
-    if (((v85 >> ((unsigned __int8)v57 + 4)) & 0xF) > 8) {
-      if (((v85 >> ((unsigned __int8)v57 + 4)) & 0xF) > 0xB) {
+    LOWORD(v62) = v81_.v86;
+    v66 = (v81_.v85 >> ((unsigned __int8)v57 + 4)) & 0xF;
+    if (((v81_.v85 >> ((unsigned __int8)v57 + 4)) & 0xF) > 8) {
+      if (((v81_.v85 >> ((unsigned __int8)v57 + 4)) & 0xF) > 0xB) {
         if ((_DWORD)v66 == 15) {
           LOWORD(v62) = 0;
         }
         if ((_DWORD)v66 == 12) {
-          LOWORD(v62) = 8 * v86;
+          LOWORD(v62) = 8 * v81_.v86;
         }
       }
       else {
         if ((unsigned int)(v66 - 9) < 2) {
         LABEL_55:
-          LOWORD(v62) = 2 * v86;
+          LOWORD(v62) = 2 * v81_.v86;
           goto LABEL_56;
         }
         if ((_DWORD)v66 == 11) {
@@ -12788,17 +12802,17 @@ LABEL_29:
       }
     }
     else {
-      if (((v85 >> ((unsigned __int8)v57 + 4)) & 0xF) > 6) {
+      if (((v81_.v85 >> ((unsigned __int8)v57 + 4)) & 0xF) > 6) {
         if ((_DWORD)v66 != 7) {
           if ((_DWORD)v66 != 8) {
             goto LABEL_56;
           }
         LABEL_87:
-          LOWORD(v62) = 4 * v86;
+          LOWORD(v62) = 4 * v81_.v86;
           goto LABEL_56;
         }
       LABEL_93:
-        v62 = (unsigned int)(v86 + 1) >> 1;
+        v62 = (unsigned int)(v81_.v86 + 1) >> 1;
         goto LABEL_56;
       }
       if ((unsigned int)(v66 - 5) < 2) {
@@ -12815,7 +12829,7 @@ LABEL_29:
     *(_DWORD*)(v65 + 120) = v63;
   } while (v57 != 64);
   *(_DWORD*)(v12 + 180) = 536936668;
-  *(_DWORD*)(v12 + 184) = (16 * (v87 & 7)) | 1;
+  *(_DWORD*)(v12 + 184) = (16 * (v81_.v87 & 7)) | 1;
   *(_QWORD*)(v12 + 188) = 0x1200100BFLL;
   v56 = v12 + 196;
 LABEL_95:
@@ -12823,9 +12837,9 @@ LABEL_95:
   *(_DWORD*)(v56 + 8) = v55;
   *(_QWORD*)v56 = 0x544A0020E68LL;
 LABEL_96:
-  v47 = v101;
-  LANES64(v14).n64_u64[0] = LANES64_OF(vmin_s32(v14, v90)).n64_u64[0];
-  v68 = (*(_QWORD*)(v37 + 40) & 0xFE000000LL) == 0x4000000 && v91 > 1;
+  v47 = v88_.v101;
+  LANES64(v14).n64_u64[0] = LANES64_OF(vmin_s32(v14, v88_.v90)).n64_u64[0];
+  v68 = (*(_QWORD*)(v37 + 40) & 0xFE000000LL) == 0x4000000 && v88_.v91 > 1;
   v13 |= v68;
 LABEL_103:
   if ((unsigned __int64)(v46 + 196) > *(_QWORD*)(v11 + 8)) {
@@ -12871,9 +12885,9 @@ LABEL_103:
   *(_DWORD*)(v46 + 16) = v77;
   *(_QWORD*)v11 = v46 + 20;
   if (v37 != 0 && (((__int64)(*(_QWORD*)(v37 + 40) << 39) >> 55) | 2) == 0x36) {
-    result = (__int64)nvidia_64ac60((_QWORD*)v11, &v88, 0x10u);
-    *(_BYTE*)v88 = 32;
-    *(_DWORD*)(v88 + 8) = *(unsigned __int16*)(v37 + 120);
+    result = (__int64)nvidia_64ac60((_QWORD*)v11, &v88_.v88, 0x10u);
+    *(_BYTE*)v88_.v88 = 32;
+    *(_DWORD*)(v88_.v88 + 8) = *(unsigned __int16*)(v37 + 120);
   }
   return result;
 }

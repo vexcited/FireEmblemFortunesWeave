@@ -20,6 +20,7 @@ std___1___introsort_7bd280_alt1(__int64 result, unsigned int*, char, __int64,
 __int64
 std___1___introsort_7c1c00_alt1(void) __asm__("std___1___introsort_7c1c00");
 bool algorithm_7cca80_alt1(__int128*, __int128*) __asm__("algorithm_7cca80");
+__int64 algorithm_7cc460_alt1(double*, double*) __asm__("algorithm_7cc460");
 char* SdkRoutine_7c5220(char*, char*, char*);
 double* SdkRoutine_7cc740(double*, double*, double*);
 int* SdkRoutine_7c7f20(int*, int*, int*);
@@ -3545,7 +3546,7 @@ LABEL_3:
   while (1) {
     v10 = v9;
     v7 = v8;
-    v11 = a2 - v8;
+    v11 = ((char*)a2 - (char*)v8) >> 1;
     if (v11 > 2) {
       switch (v11) {
       case 3LL:
@@ -5661,7 +5662,7 @@ LABEL_3:
   while (1) {
     v10 = v9;
     v7 = v8;
-    v11 = a2 - v8;
+    v11 = ((char*)a2 - (char*)v8) >> 3;
     if (v11 > 2) {
       switch (v11) {
       case 3LL:
@@ -6137,7 +6138,7 @@ LABEL_3:
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v8 = v53 + 1;
     v56 = v55;
-    result = (double*)algorithm_7cc460(v53 + 1, a2),
+    result = (double*)algorithm_7cc460_alt1(v53 + 1, a2),
     v52 = COERCE_AS(__typeof__(v52),
                     PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
     v54 = COERCE_AS(__typeof__(v54),

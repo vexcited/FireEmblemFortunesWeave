@@ -1364,7 +1364,7 @@ __int64 fs__realloc(__int64 a1, __int64 a2, int a3)
   __int64 v20;
   __int64 v21;
   int v22;
-  int v23;
+  unsigned int v23;
   __int64 v24;
   unsigned int v26;
   unsigned int* v27;

@@ -2565,9 +2565,14 @@ __int64 get_comp(__int64 a1, __int64 a2, unsigned int a3, __int64* a4,
     v15 = a3;
   }
   if (*(_WORD*)(*(_QWORD*)(v14 + 48) + 50LL) != 0) {
+    if (*(_QWORD*)(v14 + 8) != 0) {
+      v37 = *(_QWORD*)(v14 + 200);
+      __asm__ volatile("" ::"r"(v37));
+    }
     v16 = (unsigned int*)(*(_QWORD*)(v14 + 144) + 4LL * (unsigned __int16)v15);
     v17 = bswap32(*v16);
     v18 = bswap32(v16[1]) - v17;
+    __asm__ volatile("" ::"r"(v18));
     if (*(_DWORD*)(a1 + 72) != 0) {
     LABEL_6:
       v19 = nullptr;
@@ -2580,6 +2585,7 @@ __int64 get_comp(__int64 a1, __int64 a2, unsigned int a3, __int64* a4,
     v21 = bswap32(*v20) >> 16;
     v17 = 2 * v21;
     v18 = 2 * ((bswap32(v20[1]) >> 16) - v21);
+    __asm__ volatile("" ::"r"(v18));
     if (*(_DWORD*)(a1 + 72) != 0) {
       goto LABEL_6;
     }

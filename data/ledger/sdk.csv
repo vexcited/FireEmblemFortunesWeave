@@ -1598,7 +1598,7 @@ a1580,28,verified,src/nn/util/string_builder.cpp,_ZN2nn4util13StringBuilder3FixE
 a15a0,8,verified,src/nn/util/string_builder.cpp,_ZNK2nn4util13StringBuilder7IsValidEv
 a15b0,8,verified,src/nn/util/string_builder.cpp,_ZNK2nn4util13StringBuilder3GetEv
 a15c0,8,verified,src/nn/util/string_builder.cpp,_ZNK2nn4util13StringBuilder9GetLengthEv
-a15d0,888,disputed,src/nn/util/unplaced.c,nn_util_detail_msgpack_ReadCurrent
+a15d0,1256,verified,src/nn/util/unplaced.c,nn_util_detail_msgpack_ReadCurrent
 a1f00,60,verified,src/nn/util/message_pack_detail.cpp,_ZN2nn4util6detail7msgpack11WriteFixMapEPNS0_17MessagePackWriter11StreamParamEh
 a1f40,80,verified,src/nn/util/message_pack_detail.cpp,_ZN2nn4util6detail7msgpack10WriteMap16EPNS0_17MessagePackWriter11StreamParamEt
 a1f90,76,verified,src/nn/util/message_pack_detail.cpp,_ZN2nn4util6detail7msgpack10WriteMap32EPNS0_17MessagePackWriter11StreamParamEj
@@ -9987,7 +9987,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 23cec0,328,verified,src/nn/audio/server/command_generator.cpp,_ZN2nn5audio6server12_GLOBAL__N_112DetailAspectC2ERKNS2_15AspectParameterE
 23d010,428,verified,src/nn/audio/server/command_generator.cpp,_ZN2nn5audio6server13CommandBuffer8GenerateINS1_33MultiTapBiquadFilterAndMixCommandEJRPKNS0_22TBiquadFilterParameterIfEEPhRmRiSC_RA2_bRfSF_bRbEEEPT_jDpOT0_
 23d1c0,228,verified,src/nn/audio/server/command_generator.cpp,_ZN2nn5audio6server12_GLOBAL__N_112DetailAspectD2Ev
-23d2b0,1332,disputed,src/nn/audio/server/command_generator_impl.c,nn_audio_server_CommandGenerator_GenerateBiquadFilterCommandForVoice
+23d2b0,1508,verified,src/nn/audio/server/command_generator_impl.c,nn_audio_server_CommandGenerator_GenerateBiquadFilterCommandForVoice
 23daa0,12,verified,src/nn/audio/server/command_generator.cpp,_ZNK2nn5audio6server16CommandGenerator33UseMultiTapBiquadFilterProcessingEv
 23dab0,12,verified,src/nn/audio/server/command_generator.cpp,_ZNK2nn5audio6server16CommandGenerator30UseBiquadFilterFloatProcessingEv
 23dac0,1444,verified,src/nn/audio/server/command_generator_impl.c,nn_audio_server_CommandGenerator_GenerateVoiceCommand
@@ -14116,7 +14116,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 41c5f0,248,verified,src/nn/fontll/itype/unplaced.c,fs__free
 41c6f0,420,verified,src/nn/fontll/itype/unplaced.c,nn_fontll_itype_41c6f0
 41c8a0,1184,verified,src/nn/fontll/itype/unplaced.c,fs__malloc
-41ceb0,564,disputed,src/nn/fontll/itype/unplaced.c,fs__realloc
+41ceb0,564,verified,src/nn/fontll/itype/unplaced.c,fs__realloc
 41d140,1228,verified,src/nn/fontll/itype/unplaced.c,trim_bitmap
 41d6e0,148,verified,src/nn/fontll/itype/fs_cache_lookup.c,get_bitmap
 41d780,356,verified,src/nn/fontll/itype/fs_cache_lookup_impl.c,find_in_cache
@@ -14227,7 +14227,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 430130,12,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_430130
 430140,16,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_430140
 430150,188,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_430150
-430280,128,disputed,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_430280
+430280,196,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_430280
 430360,200,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_430360
 430430,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_430430v
 430440,20,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_430440m
@@ -14250,7 +14250,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 4318c0,236,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_4318c0
 4319c0,220,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_4319c0
 431ac0,232,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_431ac0
-431bc0,188,disputed,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_431bc0
+431bc0,200,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_431bc0
 431ca0,36,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_431ca0
 431cd0,312,verified,src/nn/unnamed/s001_1.c,SdkHr_431cd0
 431e20,80,verified,src/nn/fontll/itype/unplaced_2.c,nn_fontll_itype_431e20
@@ -14333,7 +14333,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 43b210,164,verified,src/nn/fontll/itype/fsglue_impl.c,get_charData
 43b2c0,956,verified,src/nn/fontll/itype/fsglue_impl.c,apply_transMatrix
 43b6b0,1080,verified,src/nn/fontll/itype/fsglue_impl.c,which_script
-43bb40,1392,disputed,src/nn/fontll/itype/fsglue_impl.c,get_comp
+43bb40,1388,verified,src/nn/fontll/itype/fsglue_impl.c,get_comp
 43c760,852,verified,src/nn/fontll/itype/fsglue_impl.c,sfnt_UnfoldCurve
 43cb50,136,verified,src/nn/fontll/itype/fsglue.c,fsg_CopyElementBackwards
 43cbe0,276,verified,src/nn/fontll/itype/fsglue.c,fsg_SetUpElement
@@ -14343,7 +14343,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 43d590,116,verified,src/nn/fontll/itype/fsglue.c,get_dropout_control
 43d610,368,verified,src/nn/fontll/itype/unplaced_2.c,fsg_ReduceMatrix
 43d780,2412,verified,src/nn/fontll/itype/unplaced_3.c,make_graymap
-43e6c0,2548,disputed,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_43e6c0
+43e6c0,2612,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_43e6c0
 43f120,1412,verified,src/nn/fontll/itype/unplaced_3.c,trim_convert
 43fb70,80,verified,src/nn/fontll/itype/fs_font.c,copy_graymap
 43fbc0,700,verified,src/nn/fontll/itype/unplaced_3.c,get_graymap
@@ -14386,7 +14386,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 444d00,200,verified,src/nn/fontll/itype/unplaced_3.c,internal_get_outline
 444de0,580,verified,src/nn/fontll/itype/unplaced_3.c,FSS_get_gpos_pts
 445090,332,verified,src/nn/fontll/itype/unplaced_3.c,make_outline_ttf
-449700,816,disputed,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_449700
+449700,816,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_449700
 449b00,1064,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_449b00
 44a800,1024,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_44a800
 44ad60,740,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_44ad60
@@ -14396,7 +14396,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 44d520,224,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_44d520
 44d600,376,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_44d600
 44d780,232,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_44d780
-44d880,688,disputed,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_44d880
+44d880,688,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_44d880
 44e2c0,668,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_44e2c0
 44e9e0,292,verified,src/nn/fontll/itype/unplaced_3.c,nn_fontll_itype_44e9e0
 44eb20,296,verified,src/nn/unnamed/h000_0.c,SdkHr_44eb20
@@ -26730,7 +26730,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 695480,284,verified,src/nn/unnamed/a001_2.c,SdkHr_695480
 6955a0,172,verified,src/nn/unnamed/s004_1.c,SdkHr_6955a0
 695b00,304,verified,src/nn/unplaced_4.c,nn_695b00
-695c40,596,disputed,src/nn/unplaced_4.c,nn_695c40
+695c40,1820,verified,src/nn/unplaced_4.c,nn_695c40
 696560,120,verified,src/nn/unnamed/s004_1.c,SdkHr_696560
 6965e0,104,verified,src/nn/unnamed/s004_1.c,SdkHr_6965e0
 696650,1052,verified,src/nn/unplaced_4.c,nn_696650
@@ -29681,7 +29681,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 706610,24,verified,src/nerd/gyro_pointing/gyro_pointing_core.cpp,_ZN4nerd13gyro_pointing16GyroPointingCore21UpdateIfEnoughSamplesEv
 706640,124,verified,src/nerd/gyro_pointing/gyro_pointing_core_impl.c,nerd_gyro_pointing_GyroPointingCore_Update
 70a5e0,352,verified,src/nerd/gyro_pointing/gyro_pointing_core_impl.c,nerd_gyro_pointing_GyroPointingCore_UpdateFusedGyroBiasEstimate
-70a740,1344,disputed,src/nerd/gyro_pointing/gyro_pointing_core_impl.c,nerd_gyro_pointing_GyroPointingCore_UpdateStableOrientation
+70a740,1344,verified,src/nerd/gyro_pointing/gyro_pointing_core_impl.c,nerd_gyro_pointing_GyroPointingCore_UpdateStableOrientation
 70ace0,144,verified,src/nerd/gyro_pointing/unplaced_2.c,nerd_gyro_pointing_70ace0
 70ad80,780,verified,src/math/unplaced_4.c,linear_algebra_70ad80
 70b0c0,2632,verified,src/math/unplaced_6.c,math_70b0c0
@@ -29775,8 +29775,8 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 728260,344,verified,src/math/matrix.cpp,_ZN4nerd14linear_algebraplIffLl21ELl21ENS0_11LMatrixType5DenseILb1EEES4_EEDaRKNS0_7LMatrixIT_XT1_EXT2_ET3_EERKNS5_IT0_XT1_EXT2_ET4_EE
 7283c0,64,verified,src/nn/unnamed/s004_2.c,SdkHr_7283c0
 728730,800,verified,src/math/unplaced_10.c,math_728730
-728fe0,908,disputed,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,gyro_pointing_kalman_filter_728fe0
-729580,1640,disputed,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,gyro_pointing_kalman_filter_729580
+728fe0,908,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,gyro_pointing_kalman_filter_728fe0
+729580,1640,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,gyro_pointing_kalman_filter_729580
 729c20,1468,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,gyro_pointing_kalman_filter_729c20
 72a580,936,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,nerd_gyro_pointing_GyroPointingKalmanFilter_TestParameterStates
 72b170,680,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,nerd_gyro_pointing_GyroPointingKalmanFilter_ApplyCorrection
@@ -29790,7 +29790,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 72d010,488,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,nerd_gyro_pointing_GyroPointingKalmanFilter_StoreState
 72d200,996,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,nerd_gyro_pointing_GyroPointingKalmanFilter_LoadState
 72dae0,3028,verified,src/math/kalman_transition.cpp,_ZN4nerd6kalman20ExtendedKalmanFilterIfNS_13gyro_pointing24GyroPointingKalmanFilterELln33ELb0EE16TransitionUpdateILl0ELln27ENS_14linear_algebra11LMatrixType5DenseILb1EEEEEvRKNS6_7LMatrixIfXT0_EXT_ET1_EERKNS6_7LVectorImXT_ELb0ENS6_11LVectorType5DenseEEERKNSF_ImXT0_ELb0ESH_EERKNSA_IfXT0_EXT0_ES9_EE
-72e790,548,disputed,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,nerd_gyro_pointing_GyroPointingKalmanFilter_GetCalibrationState
+72e790,844,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,nerd_gyro_pointing_GyroPointingKalmanFilter_GetCalibrationState
 72ee20,1336,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter_impl.c,nerd_gyro_pointing_GyroPointingKalmanFilter_GetIntegrityState
 72f360,696,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter.cpp,_ZN4nerd13gyro_pointing24GyroPointingKalmanFilter26ResetVelocityAndParametersEv
 72f620,128,verified,src/nerd/gyro_pointing/gyro_pointing_kalman_filter.cpp,_ZN4nerd13gyro_pointing24GyroPointingKalmanFilter13ResetVelocityEv
@@ -31889,7 +31889,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 7be280,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7be280
 7be2c0,1092,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___introsort_7be2c0
 7be930,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7be930
-7be960,940,disputed,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___introsort_7be960
+7be960,1024,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___introsort_7be960
 7befd0,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7befd0
 7bf000,1356,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___introsort_7bf000
 7bf610,40,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___sort_7bf610
@@ -31900,7 +31900,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 7c0910,40,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___sort_7c0910
 7c0f50,40,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___sort_7c0f50
 7c1590,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7c1590
-7c15c0,1472,disputed,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___introsort_7c15c0
+7c15c0,1504,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___introsort_7c15c0
 7c1bd0,40,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___sort_7c1bd0
 7c1c00,1260,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,std___1___introsort_7c1c00
 7c28c0,2024,verified,src/llvm-libcxx/libcxx/src/algorithm_impl.c,algorithm_7c28c0

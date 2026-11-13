@@ -410,7 +410,7 @@ __int64 nn_fontll_itype_430280(__int64 result)
       v4 &= 0xFFFFFFC0;
       break;
     case 'g':
-      v4 += 63;
+      v4 = (v4 + 63) & 0xFFFFFFC0;
       break;
     default:
       goto LABEL_25;
@@ -1257,6 +1257,8 @@ __int64 nn_fontll_itype_431bc0(__int64 result)
   v2 = result;
   v3 = *(_DWORD*)(v1 + 292);
   if (v3 < 1) {
+    // The original keeps the count in the register it later reads as v5.
+    v5 = (unsigned __int8*)(unsigned __int64)(unsigned int)v3;
   LABEL_5:
     result = longjmp_plt(result + 136, 416);
   }
