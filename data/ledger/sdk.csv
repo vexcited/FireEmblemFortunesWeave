@@ -586,7 +586,7 @@ ffe0,36,verified,src/nn/crypto/detail/sha3_impl.cpp,_ZNK2nn6crypto6detail8Sha3Im
 44430,92,verified,src/libjpeg-turbo/jdinput.c,jinit_input_controller
 444a0,908,verified,src/libjpeg-turbo-nx/jdinput.c,_ZL15consume_markersP22jpeg_decompress_struct
 44890,88,verified,src/libjpeg-turbo-nx/jdinput.c,_ZL22reset_input_controllerP22jpeg_decompress_struct
-44900,464,disputed,src/libjpeg-turbo-nx/jdinput_impl.c,jdinput_44900
+44900,592,verified,src/libjpeg-turbo-nx/jdinput_impl.c,jdinput_44900
 44c60,16,verified,src/libjpeg-turbo-nx/jdinput.c,_ZL17finish_input_passP22jpeg_decompress_struct
 44c80,476,verified,src/libjpeg-turbo-nx/jdmainct.c,jinit_d_main_controller
 45260,556,verified,src/libjpeg-turbo-nx/jdmainct.c,_ZL25process_data_context_mainP22jpeg_decompress_structPPhPjj
@@ -4618,8 +4618,8 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 141af0,416,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk14FormatFallbackEPwmPKwSt9__va_list
 142bc0,52,verified,src/nn/nlibsdk/nlib_printf.cpp,_ZN2nn7nlibsdk17VsnPrintfFallbackEPcmPKcSt9__va_list
 142c00,52,verified,src/nn/nlibsdk/nlib_printf.cpp,_ZN2nn7nlibsdk17VsnPrintfFallbackEPwmPKwSt9__va_list
-142c40,420,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk17VsnPrintfFallbackEPDsmPKDsSt9__va_list
-143d10,236,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk17VsnPrintfFallbackEPDimPKDiSt9__va_list
+142c40,432,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk17VsnPrintfFallbackEPDsmPKDsSt9__va_list
+143d10,628,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk17VsnPrintfFallbackEPDimPKDiSt9__va_list
 144dd0,216,verified,src/nn/nlibsdk/nlib_printf.cpp,nnmem_nlib_snwprintf_fallback
 144eb0,276,verified,src/nn/nlibsdk/nlib_strto_fallback.cpp,nnmem_nlib_strto_int32_fallback
 144fe0,544,verified,src/nn/nlibsdk/nlib_strto_fallback.cpp,_ZN12_GLOBAL__N_112ParseIntegerEPmPbPKcPS3_i
@@ -4677,14 +4677,14 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 149290,240,verified,src/nn/nlibsdk/nlib_timer.cpp,_ZN12_GLOBAL__N_18RunTimerEPv
 149380,148,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail10ParseWidthIcEENS1_9FieldSpecEPPKT_Pji
 149420,148,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail14ParsePrecisionIcEENS1_9FieldSpecEPPKT_i
-1494c0,176,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail11ParseLengthIcEEiPPKT_
+1494c0,124,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail11ParseLengthIcEEiPPKT_
 1495c0,656,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail15FormatCharacterIcEEvPPT_S4_jii
 149870,784,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail12FormatStringIccEEvPPT_S4_jiiPKT0_
 149b80,1144,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail12FormatStringIcwEEvPPT_S4_jiiPKT0_
-14a000,1424,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail11FormatFloatIcEEPT_S4_S4_jiid
+14a000,1412,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail11FormatFloatIcEEPT_S4_S4_jiid
 14a740,148,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail10ParseWidthIwEENS1_9FieldSpecEPPKT_Pji
 14a7e0,148,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail14ParsePrecisionIwEENS1_9FieldSpecEPPKT_i
-14a880,124,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail11ParseLengthIwEEiPPKT_
+14a880,72,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail11ParseLengthIwEEiPPKT_
 14a980,656,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail15FormatCharacterIwEEvPPT_S4_jii
 14ac40,1144,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail12FormatStringIwcEEvPPT_S4_jiiPKT0_
 14b0c0,796,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk6detail12FormatStringIwwEEvPPT_S4_jiiPKT0_
@@ -31072,7 +31072,7 @@ ffee0,324,verified,src/nn/fs/unplaced.c,nn_fs_GetAndClearMemoryReportInfo
 787ec0,84,verified,src/musl/src/regex/tre-mem.c,__tre_mem_destroy
 787f20,312,verified,src/musl/src/regex/tre-mem.c,__tre_mem_alloc_impl
 788060,368,verified,src/nnmusl/stdio/vfprintf.c,vfprintf
-7881e0,664,disputed,src/nnmusl/stdio/vfprintf.c,printf_core
+7881e0,1800,verified,src/nnmusl/stdio/vfprintf.c,printf_core
 789110,648,verified,src/nnmusl/stdio/vfprintf.c,pop_arg
 7893a0,164,verified,src/musl/src/stdio/vfprintf.c,pad
 78bf20,244,verified,src/nnmusl/stdio/vfwprintf.c,vfwprintf

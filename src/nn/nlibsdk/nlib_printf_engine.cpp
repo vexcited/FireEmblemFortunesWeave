@@ -342,10 +342,11 @@ using namespace nn::nlibsdk::detail;
 constexpr int EInval = 22;
 
 // The prefix of the alternate form is written before the padding, and the
-// zeros of the precision before the sign.
+// zeros of the precision before the sign. The arguments are consumed in the
+// list of the caller.
 template <class CharT>
 int Format(CharT* buffer, size_t size, const CharT* format,
-  va_list arguments) {
+  va_list& arguments) {
   if (static_cast<ptrdiff_t>(size) < 0 || format == nullptr ||
     (buffer == nullptr) != (size == 0)) {
     errno = EInval;
@@ -629,7 +630,12 @@ int VsnPrintfFallback(char16_t* buffer, size_t size, const char16_t* format,
 
 int VsnPrintfFallback(char32_t* buffer, size_t size, const char32_t* format,
   va_list arguments) {
-  return Format(buffer, size, format, arguments);
+  // Only this one leaves the list of the caller untouched.
+  va_list copy;
+  va_copy(copy, arguments);
+  int result = Format(buffer, size, format, copy);
+  va_end(copy);
+  return result;
 }
 
 }

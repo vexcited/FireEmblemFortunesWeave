@@ -160,6 +160,7 @@ __int64 silk_Decode(_DWORD* a1, int* a2, unsigned int a3, int a4, __int64* a5,
     __int64 v128;
   } v126_;
   _QWORD v129[2];
+  char* v130 = (char*)&v114_.v114;
 
   LODWORD(v8) = a2[1];
   v114_.v121 = a8;
@@ -502,8 +503,9 @@ LABEL_76:
   LODWORD(v114_.v118) = v52 * a2[3];
   LODWORD(v114_.v117) = v57 * v55;
   if ((int)v114_.v118 >= v57 * v55) {
-    v59 = 2LL * ((int)v56 + 2) * v52;
-    v58 = (char*)&v114_.v114 - ((v59 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+    v59 = 2LL * (int)((unsigned int)(v56 + 2) * (unsigned int)v52);
+    v130 -= (v59 + 15) & 0xFFFFFFFFFFFFFFF0LL;
+    v58 = v130;
     memset_plt(v58, 0, v59);
   }
   v60 = &v58[2 * v56 + 4];
@@ -616,18 +618,19 @@ LABEL_122:
   else {
     v78 = 0;
   }
+  v130 -= (v78 + 15) & 0xFFFFFFFFFFFFFFF0LL;
   if (v77 == 2) {
-    v79 = (char*)&v114_.v114 - ((v78 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+    v79 = v130;
   }
   else {
     v79 = v114_.v120;
   }
-  memset_plt((char*)&v114_.v114 - ((v78 + 15) & 0xFFFFFFFFFFFFFFF0LL), 0, v78);
+  memset_plt(v130, 0, v78);
   v80 = a2[1];
   if ((int)v114_.v118 < (int)v114_.v117) {
     v81 = *(int*)(v13 + 2328);
-    v82 = 2LL * ((int)v81 + 2) * v80;
-    v83 = (_DWORD*)((char*)&v114_.v114 - ((v82 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+    v82 = 2LL * (int)((unsigned int)(v81 + 2) * (unsigned int)v80);
+    v83 = (_DWORD*)(v130 - ((v82 + 15) & 0xFFFFFFFFFFFFFFF0LL));
     memcpy_plt(v83, v114_.v120, v82);
     v114_.v123 = v83;
     v126_.v127 = v83;
@@ -684,7 +687,7 @@ LABEL_122:
       goto LABEL_162;
     }
   LABEL_156:
-    a2[5] = MovieData_a5f60[(*(_DWORD*)(v13 + 2316) - 8) >> 2] *
+    a2[5] = MovieData_a5f60[(*(int*)(v13 + 2316) - 8) >> 2] *
             *(_DWORD*)(v13 + 2308);
     if (v50 == 1) {
       goto LABEL_163;

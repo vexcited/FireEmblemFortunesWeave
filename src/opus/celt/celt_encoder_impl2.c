@@ -5092,24 +5092,23 @@ __int64 tf_analysis(__int64 a1, int a2, int a3, __int64 a4, int a5, __int64 a6,
   v17 = (v12 + 15) & 0xFFFFFFFFFFFFFFF0LL;
   v275_.v292 = a6;
   v275_.v293 = (_DWORD*)((char*)&v275_.v275 - v17);
-  memset_plt((char*)&v275_.v275 - v17, 0, v12);
+  memset_plt(v275_.v293, 0, v12);
   v18 = *(_QWORD*)(a1 + 24);
   v275_.v291 = a1;
   v275_.v298 = v14;
   v19 = 2LL *
         ((*(__int16*)(v18 + 2LL * (int)v11) - *(__int16*)(v18 + 2 * (v16 - 1)))
          << v14);
-  v20 = (char*)&v275_.v275 - ((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
-  v275_.v287 = v20;
-  v275_.v277 = (char*)&v275_.v275 - v17;
+  v20 = (char*)v275_.v293 - ((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v275_.v287 = v20 - ((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+  v275_.v277 = v275_.v287 - v17;
   v275_.v278 = v16 - 1;
-  memset_plt((char*)&v275_.v275 - v17, 0, v12);
-  v275_.v276 = (char*)&v275_.v275 - v17;
-  memset_plt((char*)&v275_.v275 - v17, 0, v12);
+  memset_plt(v275_.v277, 0, v12);
+  v275_.v276 = v275_.v277 - v17;
+  memset_plt(v275_.v276, 0, v12);
   v275_.v282 = v11;
   if ((int)v11 >= 1) {
-    memset_plt((char*)&v275_.v275 - ((v19 + 15) & 0xFFFFFFFFFFFFFFF0LL), 0,
-               v19);
+    memset_plt(v20, 0, v19);
     v21 = v275_.v287;
     memset_plt(v275_.v287, 0, v19);
     v22 = 0;
@@ -5139,7 +5138,8 @@ __int64 tf_analysis(__int64 a1, int a2, int a3, __int64 a4, int a5, __int64 a6,
       LODWORD(v27) = *(__int16*)(v27 + 2 * v22);
       v29 = v28 - v27;
       v30 = (v28 - (_DWORD)v27) << v275_.v298;
-      v31 = v275_.v292 + 2LL * (((_DWORD)v27 << v275_.v298) + v275_.v290);
+      v31 = v275_.v292 +
+            2LL * (int)(((_DWORD)v27 << v275_.v298) + v275_.v290);
       memcpy_plt(v20, v31, 2LL * v30);
       v275_.v295 = v22 + 1;
       v275_.v296 = v22;

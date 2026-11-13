@@ -6937,7 +6937,7 @@ void nerd_gyro_pointing_GyroPointingCore_UpdateStableOrientation(
                                   (float)(PSEUDO_UNFUSED(v63 * v63)))) +
                   0x1.0000000000000p-126f) *
             0x1.0000000000000p-1f;
-      if ((float)(v65 * v65) <= 0x1.47ae140000000p-5f) {
+      if (!((float)(v65 * v65) > 0x1.47ae140000000p-5f)) {
         v66 =
             (float)((float)((float)((float)((float)((float)((float)((float)((float)((float)(v65 *
                                                                                             v65) *
@@ -6989,7 +6989,7 @@ void nerd_gyro_pointing_GyroPointingCore_UpdateStableOrientation(
     }
   }
   v73 = sqrtf(v56 + 0x1.0000000000000p-126f) * 0x1.0000000000000p-1f;
-  if ((float)(v73 * v73) <= 0x1.47ae140000000p-5f) {
+  if (!((float)(v73 * v73) > 0x1.47ae140000000p-5f)) {
     v74 =
         (float)((float)((float)((float)((float)((float)((float)((float)((float)((float)(v73 *
                                                                                         v73) *

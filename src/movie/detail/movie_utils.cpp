@@ -233,8 +233,9 @@ MovieResult GetH264NalUnitStartPositionAndSize(const uint8_t** ppData,
   size_t* pOutOffset) {
   const uint8_t* data = *ppData;
   size_t size = *pSize;
-  *pOutNalUnit = nullptr;
+  // Clearing the size first keeps the read of pSize ahead of the stores.
   *pOutNalUnitSize = 0;
+  *pOutNalUnit = nullptr;
   *pOutOffset = 0;
   if (size < 3) {
     return MovieResult_EndOfStream;

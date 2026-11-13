@@ -532,7 +532,7 @@ __int64 CudaDriverRoutine_86880(void);
 
 __int64 CudaDriverRoutine_86e90(_QWORD, _QWORD);
 
-__int64 CudaDriverRoutine_87d10(_QWORD);
+unsigned __int128 CudaDriverRoutine_87d10(_QWORD);
 
 __int64 CudaDriverRoutine_88180(_QWORD, _QWORD, _QWORD);
 
@@ -4332,11 +4332,14 @@ __int64 CudaDriverHr_209670(__int64 a1, __int64 a2)
   __int64 result;
   __int64 v6;
   int v7;
+  unsigned __int128 v8;
 
   v4 = CudaDriverRoutine_86e90(a1, 0);
   result = 1;
   if (a2 != 0 && v4 == 0 && (*(_BYTE*)(a1 + 28) & 0x40) != 0) {
-    v6 = CudaDriverRoutine_87d10(a1 + 8);
+    v8 = CudaDriverRoutine_87d10(a1 + 8);
+    v6 = (__int64)v8;
+    v7 = (int)(v8 >> 64);
     *(_DWORD*)(a2 + 16) = v7;
     *(_QWORD*)(a2 + 8) = v6;
     *(_DWORD*)a2 = *(_DWORD*)(a1 + 72);

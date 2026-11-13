@@ -610,7 +610,7 @@ __int64 nvidia_d8b80(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -657,7 +657,7 @@ __int64 nvidia_d8cb0(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -704,7 +704,7 @@ __int64 nvidia_d8de0(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -751,7 +751,7 @@ __int64 nvidia_d8f10(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -798,7 +798,7 @@ __int64 nvidia_d9040(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -845,7 +845,7 @@ __int64 nvidia_d9170(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -892,7 +892,7 @@ __int64 nvidia_d92a0(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -939,7 +939,7 @@ __int64 nvidia_d93d0(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -986,7 +986,7 @@ __int64 nvidia_d9500(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1033,7 +1033,7 @@ __int64 nvidia_d9630(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1080,7 +1080,7 @@ __int64 nvidia_d9760(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1127,7 +1127,7 @@ __int64 nvidia_d99c0(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1174,7 +1174,7 @@ __int64 nvidia_d9af0(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1221,7 +1221,7 @@ __int64 nvidia_d9c20(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1268,7 +1268,7 @@ __int64 nvidia_d9d50(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1315,7 +1315,7 @@ __int64 nvidia_d9e80(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1362,7 +1362,7 @@ __int64 nvidia_d9fb0(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1409,7 +1409,7 @@ __int64 nvidia_da210(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1456,7 +1456,7 @@ __int64 nvidia_da340(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1503,7 +1503,7 @@ __int64 nvidia_da470(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1550,7 +1550,7 @@ __int64 nvidia_da5a0(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1597,7 +1597,7 @@ __int64 nvidia_da800(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1644,7 +1644,7 @@ __int64 nvidia_da930(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1691,7 +1691,7 @@ __int64 nvidia_daa60(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1738,7 +1738,7 @@ __int64 nvidia_dab90(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1785,7 +1785,7 @@ __int64 nvidia_dacc0(__int64 a1, __int64 a2)
                             memory_order_relaxed);
   v6 = *(_QWORD*)(a1 + 16);
   v7 = (__int64*)(a1 + 16);
-  v8 = (*(_QWORD*)(a1 + 24) - v6) >> 3;
+  v8 = (__int64)(*(_QWORD*)(a1 + 24) - v6) >> 3;
   if (v8 <= v5) {
     if (v5 + 1 <= v8) {
       if (v5 + 1 < v8) {
@@ -1899,7 +1899,7 @@ __int64 nvidia_dc980(unsigned __int16* a1, unsigned __int64 a2,
     if ((unsigned int)v15 > 0x7F) {
       if ((unsigned int)v15 <= 0x7FF) {
         v17 = (_BYTE*)*a6;
-        if (a5 - *a6 < 2) {
+        if (a5 - (__int64)*a6 < 2) {
           return 1;
         }
         *a6 = v17 + 1;
@@ -1908,7 +1908,7 @@ __int64 nvidia_dc980(unsigned __int16* a1, unsigned __int64 a2,
       }
       if ((unsigned int)v15 >> 11 <= 0x1A) {
         v18 = (_BYTE*)*a6;
-        if (a5 - *a6 < 3) {
+        if (a5 - (__int64)*a6 < 3) {
           return 1;
         }
         *a6 = v18 + 1;
@@ -1921,7 +1921,7 @@ __int64 nvidia_dc980(unsigned __int16* a1, unsigned __int64 a2,
           return 2;
         }
         v29 = (_BYTE*)*a6;
-        if (a5 - *a6 < 3) {
+        if (a5 - (__int64)*a6 < 3) {
           return 1;
         }
         *a6 = v29 + 1;
@@ -1946,7 +1946,7 @@ __int64 nvidia_dc980(unsigned __int16* a1, unsigned __int64 a2,
         return 2;
       }
       v22 = (_BYTE*)*a6;
-      if (a5 - *a6 < 4) {
+      if (a5 - (__int64)*a6 < 4) {
         return 1;
       }
       if ((v20 & 0x3FF | ((v15 & 0x3FF) << 10)) + 0x10000 > a7) {
@@ -1967,7 +1967,7 @@ __int64 nvidia_dc980(unsigned __int16* a1, unsigned __int64 a2,
     }
     else {
       v16 = (_BYTE*)*a6;
-      if (a5 - *a6 < 1) {
+      if (a5 - (__int64)*a6 < 1) {
         return 1;
       }
       *a6 = v16 + 1;

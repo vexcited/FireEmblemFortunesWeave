@@ -296,10 +296,9 @@ __int64 _celt_autocorr(__int16* a1, signed int* a2, __int64 a3, unsigned int a4,
   int v94;
   int v95;
   int* v96;
-  __int64 v98;
 
   v8 = 2LL * a6;
-  v13 = (__int16*)((char*)&v98 - ((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL));
+  v13 = (__int16*)__builtin_alloca((v8 + 15) & 0xFFFFFFFFFFFFFFF0LL);
   memset_plt(v13, 0, v8);
   if (a4 == 0) {
     v14 = a1;

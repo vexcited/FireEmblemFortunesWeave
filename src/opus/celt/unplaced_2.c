@@ -540,6 +540,8 @@ __int64 opus_celt_29540(__int64 result, __int16* a2, unsigned int a3,
         if ((int)a3 < 1) {
         LABEL_76:
           LODWORD(v11) = a7[v80];
+          // The original stores the state back even with no samples.
+          __asm__ volatile("" : "+r"(v11));
           goto LABEL_77;
         }
         if (a3 >= 8) {

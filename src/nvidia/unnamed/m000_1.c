@@ -83,12 +83,15 @@ __int64 NgxHr_941e0(__int64 a1, __int64* a2, _QWORD* a3, __int64* a4)
       do {
         *(_BYTE*)v17 = 0;
         v17 = (_QWORD*)((char*)v17 + 1);
+        // Keeps clang from turning the loops into memset calls.
+        __asm__ volatile("" : "+r"(v17));
         --v15;
       } while (v15 != 0);
     }
     if ((unsigned __int64)(v11 - v10) <= 0xFFFFFFFFFFFFFFF8LL) {
       do {
         *v17++ = 0;
+        __asm__ volatile("" : "+r"(v17));
       } while (v17 != v14);
     }
     result = *a4;

@@ -277,7 +277,7 @@ __int64 NgxHr_4760(__int64 a1)
     }
   }
 LABEL_14:
-  *(_QWORD*)(a1 + 8LL * v13 + 168) = 64 - 2LL * (int)v12 * v13;
+  *(_QWORD*)(a1 + 8LL * v13 + 168) = 64 - 2LL * (int)(v12 * v13);
   v21 = v12 + 31;
   v4 = (int)v12 < -31;
   v22 = v12 + 62;

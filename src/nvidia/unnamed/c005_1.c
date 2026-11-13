@@ -5485,16 +5485,18 @@ __int64 CudaDriverHr_23f690(__int64 a1, unsigned int a2, unsigned int a3,
   __int64 v17;
   _BYTE v18[4];
   _BYTE v19[4];
-  _BYTE v20[4];
-  int v21;
+  struct {
+    _BYTE v20[4];
+    int v21;
+  } v20_;
   __int64 v22;
   __int64 v23;
 
   *a5 = 0;
   v22 = 0;
   v23 = 0;
-  v21 = 0;
-  v20[0] = 0;
+  v20_.v21 = 0;
+  v20_.v20[0] = 0;
   v12 = a1 + 23375416;
   v19[0] = 0;
   v18[0] = 0;
@@ -5517,18 +5519,18 @@ __int64 CudaDriverHr_23f690(__int64 a1, unsigned int a2, unsigned int a3,
   result = (*(__int64 (**)(__int64, _QWORD, _QWORD, _QWORD, _BYTE*, __int64*,
                            int*))(v12 + 840))(a1, a2, a3, a4, v18, &v23, &v16);
   if ((_DWORD)result == 0) {
-    result = CudaDriverRoutine_19bd60(a1, v23, a2, a3, &v17, v20);
+    result = CudaDriverRoutine_19bd60(a1, v23, a2, a3, &v17, v20_.v20);
     if ((_DWORD)result == 0) {
-      if (v20[0] == 1) {
+      if (v20_.v20[0] == 1) {
       LABEL_8:
         *a5 = 0;
         return 0;
       }
       result = (*(__int64 (**)(__int64, _QWORD, _QWORD, _QWORD, int*))(
-          v12 + 320))(a1, a2, a3, a4, &v21);
+          v12 + 320))(a1, a2, a3, a4, &v20_.v21);
       if ((_DWORD)result == 0) {
-        v14 = v21;
-        if (v21 == 0) {
+        v14 = v20_.v21;
+        if (v20_.v21 == 0) {
         LABEL_14:
           result = 0;
           *a5 = 1;
@@ -5537,7 +5539,7 @@ __int64 CudaDriverHr_23f690(__int64 a1, unsigned int a2, unsigned int a3,
           *a6 = v15;
           return result;
         }
-        if (v21 - 1 < 0) {
+        if (v20_.v21 - 1 < 0) {
         LABEL_12:
           result = CudaDriverRoutine_19bcb0(v23, *(_QWORD*)(a1 + 24), &v17, 2,
                                             v19, 0);
@@ -5556,11 +5558,11 @@ __int64 CudaDriverHr_23f690(__int64 a1, unsigned int a2, unsigned int a3,
           if ((_DWORD)result != 0) {
             break;
           }
-          result = CudaDriverRoutine_19bd60(a1, v22, a2, a3, &v17, v20);
+          result = CudaDriverRoutine_19bd60(a1, v22, a2, a3, &v17, v20_.v20);
           if ((_DWORD)result != 0) {
             break;
           }
-          if ((v20[0] & 1) == 0) {
+          if ((v20_.v20[0] & 1) == 0) {
             result = CudaDriverRoutine_19bcb0(v22, *(_QWORD*)(a1 + 24), &v17, 2,
                                               v19, 0);
             if ((_DWORD)result != 0) {

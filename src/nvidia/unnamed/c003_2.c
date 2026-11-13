@@ -783,7 +783,8 @@ __int64 CudaDriverHr_1c3560(__int64 a1, unsigned int a2)
           if ((unsigned int)v8 > 0x40) {
             v11 = 0;
           }
-          if (((*(_QWORD*)(v9 + 56) >> v8 << v11) & 1) == 0) {
+          if (((*(_QWORD*)(v9 + 56) >> (v8 & 0x3F) << (v11 & 0x3F)) & 1) ==
+              0) {
             goto LABEL_5;
           }
         }

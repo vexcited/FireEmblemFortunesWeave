@@ -4920,10 +4920,14 @@ __int64 CudaDriverHr_f41e0(__int64 a1, __int64 a2)
   __int64 v12;
   __int64 v14;
   unsigned int v15;
-  _BYTE v16[8];
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
+  struct {
+    _BYTE v16[8];
+    __int64 v17;
+    _BYTE gap16_[296];
+    __int64 v18;
+    __int64 v19;
+    _BYTE gap328_[56];
+  } v16_;
   __int64 v20;
 
   v2 = *(_QWORD**)(a1 + 552);
@@ -4945,13 +4949,13 @@ __int64 CudaDriverHr_f41e0(__int64 a1, __int64 a2)
                             80LL) +
                  80LL * *(unsigned int*)(v7 + 8) + 8);
     v2[1] = 0;
-    CudaDriverRoutine_25cf30(v16, v8 + 240, 384);
-    v18 = v8;
+    CudaDriverRoutine_25cf30(v16_.v16, v8 + 240, 384);
+    v16_.v18 = v8;
     v9 = *(_QWORD*)(v8 + 632);
     v10 = *(_QWORD*)(v8 + 88);
-    v17 |= 0x100000uLL;
-    v19 = *(_QWORD*)(v7 + 16) - v10;
-    v11 = CudaDriverRoutine_1da1b0(v9, v16, v6, &v20);
+    v16_.v17 |= 0x100000uLL;
+    v16_.v19 = *(_QWORD*)(v7 + 16) - v10;
+    v11 = CudaDriverRoutine_1da1b0(v9, v16_.v16, v6, &v20);
     if (v11 != 0) {
       break;
     }

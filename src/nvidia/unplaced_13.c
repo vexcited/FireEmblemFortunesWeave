@@ -144,7 +144,7 @@ __int64 memset_plt_alt1(__int64, int, unsigned __int64) __asm__("memset_plt");
 bool CudaDriverRoutine_122140(_BOOL8 result);
 bool CudaDriverRoutine_98110(_BOOL8 result);
 bool CudaDriverRoutine_9ac20(__int64);
-bool CudaDriverStub_985a0(__int64);
+__int64 CudaDriverStub_985a0(__int64);
 extern _DWORD CudaDriverData_14328d4;
 extern _DWORD CudaDriverData_143bd30[];
 extern _UNKNOWN* CudaDriverData_1422118;
@@ -3716,8 +3716,7 @@ __int64 nvidia_1fbf20(__int64 a1, _BYTE* a2)
   __int64 v20;
   char* v21;
   char v22;
-  _DWORD v23[4];
-  __int64 v24;
+  _DWORD v23[256];
   _DWORD v25[256];
 
   memset_plt(v25, 0, 1024);
@@ -3733,7 +3732,7 @@ __int64 nvidia_1fbf20(__int64 a1, _BYTE* a2)
     v6 = *(_QWORD*)(a1 + 16104);
     if ((unsigned int)v4 >= 8 && (unsigned __int64)&v23[-6] - v6 >= 0x20) {
       v7 = (unsigned int)v4 & 0xFFFFFFF8;
-      v14 = (int32x4_t*)&v24;
+      v14 = (int32x4_t*)&v23[4];
       v15 = (int32x4_t*)(v6 + 40);
       v16 = vdupq_n_s32(0x50450Cu);
       v17 = v7;

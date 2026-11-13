@@ -982,31 +982,33 @@ __int64 CudaDriverHr_6b050(_QWORD* a1, unsigned int a2)
   unsigned int v5;
   unsigned int v6;
   unsigned int v7;
-  __int64 v8;
-  __int128 v9;
-  __int128 v10;
-  __int128 v11;
-  __int128 v12;
-  __int128 v13;
-  __int128 v14;
-  __int128 v15;
-  __int128 v16;
-  __int128 v17;
-  __int128 v18;
-  __int128 v19;
-  __int128 v20;
-  __int128 v21;
-  __int128 v22;
-  __int128 v23;
-  __int128 v24;
-  __int128 v25;
-  __int128 v26;
-  __int128 v27;
-  __int128 v28;
-  __int128 v29;
-  __int128 v30;
-  __int128 v31;
-  __int64 v32;
+  struct __attribute__((packed)) {
+    __int64 v8;
+    __int128 v9;
+    __int128 v10;
+    __int128 v11;
+    __int128 v12;
+    __int128 v13;
+    __int128 v14;
+    __int128 v15;
+    __int128 v16;
+    __int128 v17;
+    __int128 v18;
+    __int128 v19;
+    __int128 v20;
+    __int128 v21;
+    __int128 v22;
+    __int128 v23;
+    __int128 v24;
+    __int128 v25;
+    __int128 v26;
+    __int128 v27;
+    __int128 v28;
+    __int128 v29;
+    __int128 v30;
+    __int128 v31;
+    __int64 v32;
+  } v8_;
   __int64 v33;
   __int64 v34;
   __int64 v35;
@@ -1025,40 +1027,46 @@ __int64 CudaDriverHr_6b050(_QWORD* a1, unsigned int a2)
       if ((_DWORD)result == 0) {
         result = 1;
         if (a1 != nullptr && a2 != 0) {
-          v32 = 0;
-          v26 = 0u;
-          v27 = 0u;
-          v28 = 0u;
-          v29 = 0u;
-          v25 = 0u;
-          v24 = 0u;
-          v23 = 0u;
-          v22 = 0u;
-          v21 = 0u;
-          v20 = 0u;
-          v19 = 0u;
-          v18 = 0u;
-          v17 = 0u;
-          v30 = 0u;
-          v31 = 0u;
-          v9 = 0u;
-          v10 = 0u;
-          v11 = 0u;
-          v12 = 0u;
-          v13 = 0u;
-          v14 = 0u;
-          v15 = 0u;
-          v16 = 0u;
-          v8 = ((unsigned __int8)(CudaDriverRoutine_ee000(1) & 0x1F) << 26) |
-               0x80000200000202LL;
+          v8_.v32 = 0;
+          v8_.v26 = 0u;
+          v8_.v27 = 0u;
+          v8_.v28 = 0u;
+          v8_.v29 = 0u;
+          v8_.v25 = 0u;
+          // Keeps clang from merging the zeroing into a memset call.
+          __asm__ volatile("" ::: "memory");
+          v8_.v24 = 0u;
+          v8_.v23 = 0u;
+          v8_.v22 = 0u;
+          v8_.v21 = 0u;
+          v8_.v20 = 0u;
+          v8_.v19 = 0u;
+          __asm__ volatile("" ::: "memory");
+          v8_.v18 = 0u;
+          v8_.v17 = 0u;
+          v8_.v30 = 0u;
+          v8_.v31 = 0u;
+          v8_.v9 = 0u;
+          v8_.v10 = 0u;
+          __asm__ volatile("" ::: "memory");
+          v8_.v11 = 0u;
+          v8_.v12 = 0u;
+          v8_.v13 = 0u;
+          v8_.v14 = 0u;
+          v8_.v15 = 0u;
+          v8_.v16 = 0u;
+          v8_.v8 =
+              ((unsigned __int8)(CudaDriverRoutine_ee000(1) & 0x1F) << 26) |
+              0x80000200000202LL;
           if ((unsigned __int8)CudaDriverRoutine_9ab50(*(_QWORD*)(v34 + 64)) ==
               0) {
-            *(_QWORD*)&v9 =
+            *(_QWORD*)&v8_.v9 =
                 (*(unsigned __int8*)(*(_QWORD*)(v34 + 64) + 16988LL) << 19) &
                 0x1000000;
           }
           CudaDriverRoutine_108520(v34 + 24, 0, 0, 0);
-          v5 = CudaDriverRoutine_1da1b0(*(_QWORD*)(v34 + 80), &v8, a2, &v33);
+          v5 = CudaDriverRoutine_1da1b0(*(_QWORD*)(v34 + 80), &v8_.v8, a2,
+                                        &v33);
           CudaDriverRoutine_1085d0(v34 + 24);
           if (v5 != 0) {
             return v5;

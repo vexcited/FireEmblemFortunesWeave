@@ -2068,22 +2068,21 @@ _WORD* opus_silk_fixed_5ef40(__int64 a1, _WORD* a2, __int64 a3, int a4)
     v12 = v22 - HIDWORD(v22);
     if ((int)v22 - HIDWORD(v22) < 0) {
       HIDWORD(v22) = v22;
-      v13 = (SHIDWORD(v23) >> -(char)v12) - v23;
+      v13 = (SHIDWORD(v23) >> (-v12 & 0x1F)) - v23;
     }
     else {
       if (v12 > 0x1F) {
       LABEL_9:
         silk_A2NLSF(a2, (__int64)v24, *(_DWORD*)(a1 + 4640));
-        v14 = (char*)&v20[-1] - ((4LL * v10 + 15) & 0xFFFFFFFFFFFFFFF0LL);
+        v14 = (char*)__builtin_alloca((4LL * v10 + 15) & 0xFFFFFFFFFFFFFFF0LL);
         memset_plt(v14, 0, 4LL * v10);
         v15 = 3;
         while (1) {
           opus_silk_560c0((__int64)v20, a1 + 4500, (__int64)a2, v15,
                           *(_DWORD*)(a1 + 4640));
           MovieRoutine_45380((__int64)v21, (__int64)v20, *(_DWORD*)(a1 + 4640));
-          silk_LPC_analysis_filter(
-              (__int64)&v20[-1] - ((4LL * v10 + 15) & 0xFFFFFFFFFFFFFFF0LL), a3,
-              (__int16*)v21, 2 * v10, *(_DWORD*)(a1 + 4640));
+          silk_LPC_analysis_filter((__int64)v14, a3, (__int16*)v21, 2 * v10,
+                                   *(_DWORD*)(a1 + 4640));
           silk_sum_sqr_shift((_DWORD*)&v26 + 1, (int*)&v25 + 1,
                              (__int64)&v14[2 * *(int*)(a1 + 4640)],
                              v10 - *(_DWORD*)(a1 + 4640));
@@ -2091,20 +2090,20 @@ _WORD* opus_silk_fixed_5ef40(__int64 a1, _WORD* a2, __int64 a3, int a4)
               &v26, (int*)&v25, (__int64)&v14[2 * v10 + 2 * *(int*)(a1 + 4640)],
               v10 - *(_DWORD*)(a1 + 4640));
           if (HIDWORD(v25) - (int)v25 < 0) {
-            SHIDWORD(v26) >>= v25 - BYTE4(v25);
+            SHIDWORD(v26) >>= (v25 - BYTE4(v25)) & 0x1F;
             v16 = v26 + HIDWORD(v26);
             v17 = -(int)v25;
             v18 = -(int)v25 - HIDWORD(v22);
             if (v18 >= 0) {
             LABEL_14:
-              if (v16 >> v18 >= SHIDWORD(v23)) {
+              if (v16 >> (v18 & 0x1F) >= SHIDWORD(v23)) {
                 goto LABEL_11;
               }
               goto LABEL_10;
             }
           }
           else {
-            LODWORD(v26) = (int)v26 >> (BYTE4(v25) - v25);
+            LODWORD(v26) = (int)v26 >> ((BYTE4(v25) - v25) & 0x1F);
             v16 = v26 + HIDWORD(v26);
             v17 = -HIDWORD(v25);
             v18 = -HIDWORD(v25) - HIDWORD(v22);
@@ -2113,7 +2112,7 @@ _WORD* opus_silk_fixed_5ef40(__int64 a1, _WORD* a2, __int64 a3, int a4)
             }
           }
           if ((unsigned int)v18 >= 0xFFFFFFE1 &&
-              v16 < SHIDWORD(v23) >> -(char)v18) {
+              v16 < SHIDWORD(v23) >> (-v18 & 0x1F)) {
           LABEL_10:
             HIDWORD(v23) = v16;
             HIDWORD(v22) = v17;
@@ -2125,7 +2124,7 @@ _WORD* opus_silk_fixed_5ef40(__int64 a1, _WORD* a2, __int64 a3, int a4)
           }
         }
       }
-      v13 = HIDWORD(v23) - ((int)v23 >> v12);
+      v13 = HIDWORD(v23) - ((int)v23 >> (v12 & 0x1F));
     }
     HIDWORD(v23) = v13;
     goto LABEL_9;

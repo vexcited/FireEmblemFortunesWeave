@@ -68,16 +68,8 @@ __int64 opus_silk_fixed_64800(__int64 a1, int* a2, int a3)
   int v60;
   __int64 v61;
   int v63;
-  _QWORD v64[2];
-  _QWORD v65[2];
-  struct {
-    char gap32_[8];
-    _QWORD v66[16];
-    __int64 v67;
-    __int128 v68;
-    __int64 v69;
-    __int64 v70;
-  } v66_;
+  _QWORD v64[25];
+  _QWORD* v65 = v64 + 2;
 
   if (*a2 < 1) {
     memset_plt(a1, 0, 4LL * a3);
@@ -85,14 +77,10 @@ __int64 opus_silk_fixed_64800(__int64 a1, int* a2, int a3)
   }
   else {
     v3 = 0;
-    v66_.v69 = 0;
-    v66_.v70 = 0;
-    v66_.v68 = (__typeof__(v66_.v68)){0};
     v4 = (a3 & ~(a3 >> 31)) + 1;
-    v66_.v67 = 0;
     v5 = v4 & 7;
     v65[1] = 0;
-    memset(v66_.v66, 0, sizeof(v66_.v66));
+    memset(v64 + 4, 0, 21 * sizeof(_QWORD));
     v64[1] = 0;
     v65[0] = 0;
     v64[0] = 0;
@@ -100,7 +88,7 @@ __int64 opus_silk_fixed_64800(__int64 a1, int* a2, int a3)
       v6 = a2 + 4;
       v7 = 0;
       v8 = -(__int64)(v4 & 0xFFFFFFF8);
-      v9 = (int*)v66_.v66;
+      v9 = (int*)(v64 + 4);
       do {
         v10 = *(v6 - 4);
         v11 = *(v6 - 3);
@@ -206,7 +194,7 @@ __int64 opus_silk_fixed_64800(__int64 a1, int* a2, int a3)
           if ((unsigned int)(v24 - 1) >= 3) {
             v47 = 0;
             v48 = v25;
-            v49 = v66_.v66;
+            v49 = v64 + 4;
             do {
               v50 = *((_DWORD*)v49 - 7);
               v51 = *(v48 - 2);
@@ -368,13 +356,13 @@ __int64 opus_silk_fixed_64c40(__int64 a1, unsigned int* a2, int a3)
   int v89;
   unsigned __int64 v90;
   __int16 v92;
-  _QWORD v93[2];
-  _QWORD v94[2];
-  _QWORD v95[21];
+  _QWORD v93[25];
+  _QWORD* v94 = v93 + 2;
+  _QWORD* v95 = v93 + 4;
 
   v3 = *a2;
   v94[1] = 0;
-  memset(v95, 0, sizeof(v95));
+  memset(v95, 0, 21 * sizeof(_QWORD));
   v93[1] = 0;
   v94[0] = 0;
   v93[0] = 0;

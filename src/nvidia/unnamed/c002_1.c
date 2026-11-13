@@ -7474,10 +7474,9 @@ __int64 CudaDriverHr_1193e0(__int64 a1, int a2, _DWORD* a3, double a4,
     *(_BYTE*)(a1 + 1350) = a3[3];
     *(_BYTE*)(a1 + 1353) = a3[4];
     *(_BYTE*)(a1 + 1352) = a3[5];
-    LODWORD(a5) = a3[6];
     v6 = *(_QWORD*)(v5 + 64);
     v7 = *(_DWORD*)(v6 + 3732);
-    v8 = (unsigned int)((double)*(unsigned __int64*)&a5 / 100.0 * (double)v7);
+    v8 = (unsigned int)((double)a3[6] / 100.0 * (double)v7);
     if (a3[7] > v8) {
       v8 = a3[7];
     }
@@ -7513,7 +7512,7 @@ __int64 CudaDriverHr_1193e0(__int64 a1, int a2, _DWORD* a3, double a4,
       }
       for (; v14 != 0; *(_DWORD*)(v12 + 4LL * v20) |= v21) {
         v20 = v15 >> 5;
-        v21 = 1 << v15++;
+        v21 = 1 << (v15++ & 0x1F);
         --v14;
       }
     }

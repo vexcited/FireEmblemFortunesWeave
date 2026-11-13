@@ -12246,6 +12246,7 @@ __int64 CudaDriverHr_d1cc0(__int64 a1)
   __int64 v8;
   unsigned __int8* v9;
   int v10;
+  __int64 v11;
 
   if (*(_BYTE*)(a1 + 1393) != 0) {
     return *(unsigned __int8*)(a1 + 1394);
@@ -12285,11 +12286,18 @@ __int64 CudaDriverHr_d1cc0(__int64 a1)
       while (1) {
         v10 = *v9;
         v9 += 16;
-        if (v10 == 2 &&
-            ((*(_BYTE*)(*(_QWORD*)(*(_QWORD*)(a1 + 1200) + 64LL) + 17012LL) &
-              1) == 0 ||
-             (unsigned __int8)CudaDriverHr_d1cc0(*(_QWORD*)(v8 - 8)) != 0)) {
-          break;
+        if (v10 == 2) {
+          if ((*(_BYTE*)(*(_QWORD*)(*(_QWORD*)(a1 + 1200) + 64LL) + 17012LL) &
+               1) == 0) {
+            break;
+          }
+          v11 = CudaDriverHr_d1cc0(*(_QWORD*)(v8 - 8));
+          // Hides that the result fits a byte, the original tests the low
+          // byte of the whole register.
+          __asm__("" : "+r"(v11));
+          if ((unsigned __int8)v11 != 0) {
+            break;
+          }
         }
         --v7;
         v8 = (__int64)v9;

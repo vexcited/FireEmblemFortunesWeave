@@ -1899,8 +1899,8 @@ _DWORD* silk_P_Ana_calc_corr_st3(_DWORD* result, __int64 a2, int a3, __int64 a4,
   _DWORD* v85;
   unsigned int v86;
   int v87;
-  _QWORD v88[14];
-  _BYTE v89[80];
+  _QWORD v88[24];
+  _BYTE* v89 = (_BYTE*)(v88 + 14);
   _BYTE* v90;
   _DWORD* v91;
   _DWORD* v92;

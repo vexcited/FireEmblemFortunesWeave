@@ -9680,14 +9680,16 @@ __int64 CudaDriverHr_55ad0(__int64 a1, __int64 a2)
   __int64 v31;
   __int64 v32;
   __int64 v33;
-  __int128 v34;
-  __int64 v35;
-  __int64 v36;
-  __int16 v37;
-  __int64 v38;
-  __int64 v39;
-  __int64 v40;
-  __int64 v41;
+  struct {
+    __int128 v34;
+    __int64 v35;
+    __int64 v36;
+    __int16 v37;
+    __int64 v38;
+    __int64 v39;
+    __int64 v40;
+    __int64 v41;
+  } v34_;
   __int64 v42;
   __int64 v43;
 
@@ -9703,30 +9705,30 @@ __int64 CudaDriverHr_55ad0(__int64 a1, __int64 a2)
   if (v8 == 5) {
     *(_QWORD*)(a1 + 240) = v4 & 0xFFFCFFFFFCFFFFF8LL | 2;
     v11 = *(_OWORD*)(v9 + 8);
-    v35 = a2;
-    v36 = 256;
-    v37 = 1;
+    v34_.v35 = a2;
+    v34_.v36 = 256;
+    v34_.v37 = 1;
     v12 = *(_QWORD*)(v9 + 24);
-    v34 = v11;
-    (*(void (**)(__int128*))(v12 + 24))(&v34);
-    v14 = v38;
-    v13 = v39;
-    *(_QWORD*)(a1 + 112) = v39;
+    v34_.v34 = v11;
+    (*(void (**)(__int128*))(v12 + 24))(&v34_.v34);
+    v14 = v34_.v38;
+    v13 = v34_.v39;
+    *(_QWORD*)(a1 + 112) = v34_.v39;
     if ((*(_WORD*)(*(_QWORD*)(v7 + 64) + 16848LL) & 0x10) != 0) {
       v22 = 2;
       v17 = a2;
     }
     else {
-      v15 = v13 - v40;
+      v15 = v13 - v34_.v40;
       v16 = *(_QWORD*)(v9 + 88);
       v17 = a2;
-      if (v40 + a2 <= v16) {
+      if (v34_.v40 + a2 <= v16) {
         v18 = *(_QWORD*)(v9 + 88);
       }
       else {
-        v18 = v40 + a2;
+        v18 = v34_.v40 + a2;
       }
-      if (v15 != *(_QWORD*)(v9 + 80) || v40 + a2 > v16) {
+      if (v15 != *(_QWORD*)(v9 + 80) || v34_.v40 + a2 > v16) {
         if (v16 != 0 && *(_QWORD*)(v9 + 168) != 0) {
           CudaDriverRoutine_1a4580();
           *(_QWORD*)(v9 + 168) = 0;
@@ -9780,25 +9782,25 @@ __int64 CudaDriverHr_55ad0(__int64 a1, __int64 a2)
     v27 = 1;
   LABEL_36:
     v28 = *(_QWORD*)(a1 + 136);
-    HIBYTE(v37) = v27;
+    HIBYTE(v34_.v37) = v27;
     v30 = *(_OWORD*)(v9 + 8);
-    LOBYTE(v37) = 0;
-    v35 = a2;
-    v36 = v28;
+    LOBYTE(v34_.v37) = 0;
+    v34_.v35 = a2;
+    v34_.v36 = v28;
     v31 = *(_QWORD*)(v9 + 24);
-    v34 = v30;
-    (*(void (**)(__int128*))(v31 + 24))(&v34);
-    v14 = v38;
-    v32 = v39;
-    *(_QWORD*)(a1 + 112) = v39;
+    v34_.v34 = v30;
+    (*(void (**)(__int128*))(v31 + 24))(&v34_.v34);
+    v14 = v34_.v38;
+    v32 = v34_.v39;
+    *(_QWORD*)(a1 + 112) = v34_.v39;
     if (v32 != 0) {
       if (v27 == 0) {
         v22 = 1;
         v17 = a2;
         goto LABEL_24;
       }
-      v33 = v41;
-      *(_QWORD*)(a1 + 104) = v41;
+      v33 = v34_.v41;
+      *(_QWORD*)(a1 + 104) = v34_.v41;
       if (v33 != 0) {
         v17 = a2;
         v22 = 0;

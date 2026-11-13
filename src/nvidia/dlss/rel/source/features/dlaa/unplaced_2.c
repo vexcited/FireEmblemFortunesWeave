@@ -3338,12 +3338,15 @@ __int64 nvidia_dlss_rel_source_features_dlaa_840c0(_QWORD* a1, __int64* a2,
       do {
         *(_BYTE*)v17 = 0;
         v17 = (_QWORD*)((char*)v17 + 1);
+        // Keeps clang from turning the loops into memset calls.
+        __asm__ volatile("" : "+r"(v17));
         --v15;
       } while (v15 != 0);
     }
     if ((unsigned __int64)(v11 - v10) <= 0xFFFFFFFFFFFFFFF8LL) {
       do {
         *v17++ = 0;
+        __asm__ volatile("" : "+r"(v17));
       } while (v17 != v14);
     }
     result = *a4;
@@ -5524,12 +5527,15 @@ __int64 nvidia_dlss_rel_source_features_dlaa_88d40(_QWORD* a1, __int64* a2,
       do {
         *(_BYTE*)v17 = 0;
         v17 = (_QWORD*)((char*)v17 + 1);
+        // Keeps clang from turning the loops into memset calls.
+        __asm__ volatile("" : "+r"(v17));
         --v15;
       } while (v15 != 0);
     }
     if ((unsigned __int64)(v11 - v10) <= 0xFFFFFFFFFFFFFFF8LL) {
       do {
         *v17++ = 0;
+        __asm__ volatile("" : "+r"(v17));
       } while (v17 != v14);
     }
     result = *a4;
@@ -8180,12 +8186,15 @@ __int64 nvidia_dlss_rel_source_features_dlaa_8d7e0(_QWORD* a1, __int64* a2,
       do {
         *(_BYTE*)v17 = 0;
         v17 = (_QWORD*)((char*)v17 + 1);
+        // Keeps clang from turning the loops into memset calls.
+        __asm__ volatile("" : "+r"(v17));
         --v15;
       } while (v15 != 0);
     }
     if ((unsigned __int64)(v11 - v10) <= 0xFFFFFFFFFFFFFFF8LL) {
       do {
         *v17++ = 0;
+        __asm__ volatile("" : "+r"(v17));
       } while (v17 != v14);
     }
     result = *a4;
@@ -9136,12 +9145,15 @@ __int64 nvidia_dlss_rel_source_features_dlaa_8fd00(_QWORD* a1, __int64* a2,
       do {
         *(_BYTE*)v17 = 0;
         v17 = (_QWORD*)((char*)v17 + 1);
+        // Keeps clang from turning the loops into memset calls.
+        __asm__ volatile("" : "+r"(v17));
         --v15;
       } while (v15 != 0);
     }
     if ((unsigned __int64)(v11 - v10) <= 0xFFFFFFFFFFFFFFF8LL) {
       do {
         *v17++ = 0;
+        __asm__ volatile("" : "+r"(v17));
       } while (v17 != v14);
     }
     result = *a4;
@@ -9350,12 +9362,15 @@ _WORD* nvidia_dlss_rel_source_features_dlaa_90ca0(_QWORD* a1, __int64* a2,
         do {
           *(_BYTE*)v15 = 0;
           v15 = (_QWORD*)((char*)v15 + 1);
+          // Keeps clang from turning the loops into memset calls.
+          __asm__ volatile("" : "+r"(v15));
           --v13;
         } while (v13 != 0);
       }
       if ((unsigned __int64)(v9 - v8) <= 0xFFFFFFFFFFFFFFF8LL) {
         do {
           *v15++ = 0;
+          __asm__ volatile("" : "+r"(v15));
         } while (v15 != v12);
       }
       v16 = *a4;

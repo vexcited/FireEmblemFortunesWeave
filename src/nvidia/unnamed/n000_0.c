@@ -5191,7 +5191,7 @@ __int64 NgxHr_7dc0(__int64 result)
 LABEL_11:
   *(_QWORD*)(result + 8 * v2 + 128) = 0;
   *(_QWORD*)(result + 128) =
-      64 - 2 * *(int*)(result + 52) *
+      64 - 2LL * *(int*)(result + 52) *
                (*(int*)(result + 76) * (__int64)*(int*)(result + 72) - 1);
   return result;
 }
@@ -5271,7 +5271,7 @@ __int64 NgxHr_7f20(__int64 result)
 LABEL_11:
   *(_QWORD*)(result + 8 * v2 + 128) = 0;
   *(_QWORD*)(result + 128) =
-      64 - 2 * *(int*)(result + 52) *
+      64 - 2LL * *(int*)(result + 52) *
                (*(int*)(result + 76) * (__int64)*(int*)(result + 72) - 1);
   return result;
 }
@@ -5351,7 +5351,7 @@ __int64 NgxHr_8080(__int64 result)
 LABEL_11:
   *(_QWORD*)(result + 8 * v2 + 128) = 0;
   *(_QWORD*)(result + 128) =
-      64 - 2 * *(int*)(result + 52) *
+      64 - 2LL * *(int*)(result + 52) *
                (*(int*)(result + 76) * (__int64)*(int*)(result + 72) - 1);
   return result;
 }
@@ -5431,7 +5431,7 @@ __int64 NgxHr_81e0(__int64 result)
 LABEL_11:
   *(_QWORD*)(result + 8 * v2 + 128) = 0;
   *(_QWORD*)(result + 128) =
-      64 - 2 * *(int*)(result + 52) *
+      64 - 2LL * *(int*)(result + 52) *
                (*(int*)(result + 76) * (__int64)*(int*)(result + 72) - 1);
   return result;
 }
@@ -5511,7 +5511,7 @@ __int64 NgxHr_8340(__int64 result)
 LABEL_11:
   *(_QWORD*)(result + 8 * v2 + 128) = 0;
   *(_QWORD*)(result + 128) =
-      64 - 2 * *(int*)(result + 52) *
+      64 - 2LL * *(int*)(result + 52) *
                (*(int*)(result + 76) * (__int64)*(int*)(result + 72) - 1);
   return result;
 }
@@ -5591,7 +5591,7 @@ __int64 NgxHr_84a0(__int64 result)
 LABEL_11:
   *(_QWORD*)(result + 8 * v2 + 128) = 0;
   *(_QWORD*)(result + 128) =
-      64 - 2 * *(int*)(result + 52) *
+      64 - 2LL * *(int*)(result + 52) *
                (*(int*)(result + 76) * (__int64)*(int*)(result + 72) - 1);
   return result;
 }

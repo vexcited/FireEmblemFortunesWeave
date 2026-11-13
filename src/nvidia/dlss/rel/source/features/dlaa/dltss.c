@@ -271,37 +271,40 @@ __int64 dltss_62a00(__int64* a1, __int64 a2, __int64 a3, __int64 a4,
     int v158;
   } v154_;
   __int64 v159;
-  __int64 v160[7];
-  int v161;
-  int v162;
-  int v163;
-  int v164;
-  int v165;
-  int v166;
-  int v167;
-  float v168;
-  float v169;
-  float v170;
-  float v171;
-  int v172;
-  int v173;
-  int v174;
-  int v175;
-  int v176;
-  int v177;
-  int v178;
-  int v179;
-  int v180;
-  int v181;
-  int v182;
-  int v183;
-  int v184;
-  float v185;
-  int v186;
-  float v187;
-  __int64 v188;
-  int v189;
-  int v190;
+  struct __attribute__((packed)) {
+    __int64 v160[7];
+    int v161;
+    int v162;
+    int v163;
+    int v164;
+    int v165;
+    int v166;
+    int v167;
+    float v168;
+    float v169;
+    float v170;
+    float v171;
+    int v172;
+    int v173;
+    int v174;
+    int v175;
+    int v176;
+    int v177;
+    int v178;
+    int v179;
+    int v180;
+    int v181;
+    int v182;
+    int v183;
+    int v184;
+    float v185;
+    int v186;
+    float v187;
+    __int64 v188;
+    int v189;
+    int v190;
+    int gap180_;
+  } v160_;
   __int64 v191;
   unsigned int v192;
   struct {
@@ -1377,9 +1380,9 @@ LABEL_83:
     v49 = (unsigned int)v49;
   }
   v57 = *v53;
-  v189 = v193_.v200 || *(float*)(a4 + 568) != 0x1.0000000000000p+0f;
-  v165 = v40;
-  v164 = v41;
+  v160_.v189 = v193_.v200 || *(float*)(a4 + 568) != 0x1.0000000000000p+0f;
+  v160_.v165 = v40;
+  v160_.v164 = v41;
   if ((int)v52 >= v51) {
     v52 = (unsigned int)v51;
   }
@@ -1398,65 +1401,65 @@ LABEL_83:
   v191 = v57;
   v65 = *(_DWORD*)(a4 + 512);
   v66 = *(_QWORD*)(a4 + 608);
-  v160[5] = v61;
-  v160[6] = v59;
+  v160_.v160[5] = v61;
+  v160_.v160[6] = v59;
   LODWORD(v61) = *(_DWORD*)(a4 + 516);
-  v160[0] = v64;
-  v160[1] = v208_.v208;
+  v160_.v160[0] = v64;
+  v160_.v160[1] = v208_.v208;
   LODWORD(v64) = *(unsigned __int8*)(a4 + 636);
-  v160[3] = v204_.v204;
-  v160[4] = v57;
+  v160_.v160[3] = v204_.v204;
+  v160_.v160[4] = v57;
   v67 = *(unsigned __int8*)(a4 + 637);
   v68 = *(_BYTE*)(v66 + 104);
-  v163 = v193_.v194;
-  v172 = v62;
-  v173 = v63;
+  v160_.v163 = v193_.v194;
+  v160_.v172 = v62;
+  v160_.v173 = v63;
   v70 = *((_DWORD*)a5 + 22);
   v69 = *((_DWORD*)a5 + 23);
-  v168 = v193_.v201;
-  v169 = v193_.v202;
-  v160[2] = v203;
-  v161 = v61;
-  v162 = v65;
+  v160_.v168 = v193_.v201;
+  v160_.v169 = v193_.v202;
+  v160_.v160[2] = v203;
+  v160_.v161 = v61;
+  v160_.v162 = v65;
   LODWORD(v59) = *((_DWORD*)a5 + 30);
   LODWORD(v61) = *((_DWORD*)a5 + 31);
   v72 = *((_DWORD*)a5 + 42);
   v71 = *((_DWORD*)a5 + 43);
-  v166 = v64;
+  v160_.v166 = v64;
   v73 = a5[6];
-  v167 = v67;
-  v174 = v69;
-  v175 = v70;
-  v176 = v61;
-  v178 = v59;
+  v160_.v167 = v67;
+  v160_.v174 = v69;
+  v160_.v175 = v70;
+  v160_.v176 = v61;
+  v160_.v178 = v59;
   v74 = v57 == v73;
   v76 = *((_DWORD*)a5 + 40);
   v75 = *((_DWORD*)a5 + 41);
-  v170 = 0x1.0000000000000p+0f / v193_.v201;
-  v171 = 0x1.0000000000000p+0f / v193_.v202;
-  v177 = v61 + v71 - 1;
-  v179 = v59 + v72 - 1;
-  v182 = v211_.v215;
+  v160_.v170 = 0x1.0000000000000p+0f / v193_.v201;
+  v160_.v171 = 0x1.0000000000000p+0f / v193_.v202;
+  v160_.v177 = v61 + v71 - 1;
+  v160_.v179 = v59 + v72 - 1;
+  v160_.v182 = v211_.v215;
   v77 = *((float*)a5 + 44);
-  v183 = v211_.v214;
+  v160_.v183 = v211_.v214;
   if (!v74) {
     v75 = 0;
     v76 = 0;
   }
-  v180 = v75;
-  v181 = v76;
-  v186 = HIDWORD(v211_.v211);
-  v184 = v211_.v211;
-  v185 = v77;
-  v188 = 0x3E4CCCCD38D1B717LL;
-  v190 = *((_DWORD*)a5 + 27);
-  v187 = 0x1.0000000000000p+0f / v77;
+  v160_.v180 = v75;
+  v160_.v181 = v76;
+  v160_.v186 = HIDWORD(v211_.v211);
+  v160_.v184 = v211_.v211;
+  v160_.v185 = v77;
+  v160_.v188 = 0x3E4CCCCD38D1B717LL;
+  v160_.v190 = *((_DWORD*)a5 + 27);
+  v160_.v187 = 0x1.0000000000000p+0f / v77;
   if ((v68 & 1) == 0) {
     v78 = 752;
     if ((v60 & 1) != 0) {
       v78 = 760;
     }
-    memcpy_plt(*(_QWORD*)(a4 + v78) + 416LL, v160, 184),
+    memcpy_plt(*(_QWORD*)(a4 + v78) + 416LL, v160_.v160, 184),
         v42 = COERCE_AS(__typeof__(v42),
                         PSEUDO_REGISTER(unsigned long long, "x5", "=r")),
         v43 = COERCE_AS(__typeof__(v43),
@@ -1794,7 +1797,8 @@ LABEL_132:
     }
     else {
       nvidia_dlss_rel_source_features_dlaa_611b0(
-          (__int64)a1, a2, v92, a4, v93, (__int64)a5, &v193_.v193, &v191, v160),
+          (__int64)a1, a2, v92, a4, v93, (__int64)a5, &v193_.v193, &v191,
+          v160_.v160),
           v42 = COERCE_AS(__typeof__(v42),
                           PSEUDO_REGISTER(unsigned long long, "x5", "=r")),
           v43 = COERCE_AS(__typeof__(v43),
@@ -3264,11 +3268,11 @@ __int64 dltss_64a50(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
     return result;
   }
   v8 = (float)*(int*)(a2 + 80) / (float)*(int*)(a2 + 104);
-  if (v8 >= 0x1.99999a0000000p-2f) {
+  if (!(v8 < 0x1.99999a0000000p-2f)) {
     *(_DWORD*)(a2 + 588) = 1;
-    if (v8 >= 0x1.147ae20000000p-1f) {
-      if (v8 >= 0x1.3d70a40000000p-1f) {
-        if (v8 >= 0x1.6666660000000p-1f) {
+    if (!(v8 < 0x1.147ae20000000p-1f)) {
+      if (!(v8 < 0x1.3d70a40000000p-1f)) {
+        if (!(v8 < 0x1.6666660000000p-1f)) {
           v9 = 44;
           if (v8 < 0x1.fae1480000000p-1f) {
             v9 = 64;
